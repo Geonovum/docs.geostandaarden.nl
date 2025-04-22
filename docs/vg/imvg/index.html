@@ -1,0 +1,1107 @@
+<!DOCTYPE html><html lang="nl" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 19.0.1"><meta lang="" property="dc:language" content="en">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  <title>Informatiemodel Vastgoedgebruik (IMVG)</title>
+  
+  
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: .3em;
+  background-color: white;
+  padding-bottom: .5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "IM",
+  "pubDomain": "vg",
+  "publishDate": "2018-07-18",
+  "editors": [
+    {
+      "name": "Gerard Trouborst",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "imvg",
+  "github": "https://github.com/Geonovum/IMVG",
+  "issueBase": "https://github.com/Geonovum/IMVG/issues/",
+  "localBiblio": {
+    "BAG_2009": {
+      "href": "https://www.geonovum.nl",
+      "title": "BAG objectenhandboek 2009-2014",
+      "authors": [
+        "T. Test"
+      ],
+      "date": "Maand Jaar",
+      "publisher": "KING"
+    }
+  }
+}</script><meta name="description" content="Deze standaard beschrijft de datastructuur van het Informatiemodel Vastgoedgebruik (IMVG)."></head>  
+  <body aria-busy="false" class="h-entry" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p><a class="logo" href="http://www.geonovum.nl/"><img width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM"></a></p>
+  <p><!--_hyper: 1051939634;--></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Informatiemodel Vastgoedgebruik (IMVG)</h1>
+  <h2 id="geonovum-informatiemodelconsultatieversie-18-juli-2018">Geonovum Informatiemodel<br>Consultatieversie
+    <time property="dcterms:issued" class="dt-published" datetime="">
+      18 juli 2018
+    </time>
+  </h2>
+  <dl>
+    <dt>Deze versie:</dt>
+    <dd><a class="u-url" href="https://docs.geostandaarden.nl/vg/cv-im-imvg-20180718/">https://docs.geostandaarden.nl/vg/cv-im-imvg-20180718/</a></dd>
+    <dt>Laatst gepubliceerde versie:</dt>
+    <dd><a href="https://docs.geostandaarden.nl/vg/imvg/">https://docs.geostandaarden.nl/vg/imvg/</a></dd>
+     
+    <dt>Laatste werkversie:</dt>
+    <dd><a href="https://geonovum.github.io/IMVG/">https://geonovum.github.io/IMVG/</a></dd>
+         <dt>
+      Redacteur:
+    </dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Gerard Trouborst</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+    
+    <dt>Doe mee:</dt>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMVG">
+                      GitHub Geonovum/IMVG
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMVG/issues/">
+                      Dien een melding in
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMVG/commits/gh-pages">
+                      Revisiehistorie
+                    </a>
+    </dd>
+         
+    <dt>Rechtenbeleid:</dt>
+    <div class="copyright" style="margin: 0.25em 0;">
+      <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+      <div style="display:inline-block; vertical-align:top">
+        <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+      </div>
+    </div>
+  </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="samenvatting" resource="#samenvatting"><span property="xhv:role" resource="xhv:heading">Samenvatting</span></h2>
+      <p>              
+        Deze standaard beschrijft de datastructuur van het <b>Informatiemodel Vastgoedgebruik</b> (IMVG).
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-van-dit-document" resource="#status-van-dit-document"><span property="xhv:role" resource="xhv:heading">Status van dit document</span></h2>
+<p>
+  <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="http://www.geonovum.nl/wegwijzer/standaarden">http://www.geonovum.nl/wegwijzer/standaarden</a></em>
+</p>
+   
+<p>
+  Dit is een door de werkgroep goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar
+  <a href="mailto:geo-standaarden@geonovum.nl">
+      geo-standaarden@geonovum.nl</a>.
+</p>
+    
+      <p>        
+      </p>
+     </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave" resource="#inhoudsopgave"><span property="xhv:role" resource="xhv:heading">Inhoudsopgave</span></h2><ol class="toc" role="directory"><li class="tocline"><a href="#inleiding-en-leeswijzer" class="tocxref"><span class="secno">1. </span>Inleiding en Leeswijzer</a><ol class="toc"><li class="tocline"><a href="#doel" class="tocxref"><span class="secno">1.1 </span>Doel</a></li><li class="tocline"><a href="#leeswijzer" class="tocxref"><span class="secno">1.2 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">2. </span>Scope</a></li><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3. </span>Overview</a><ol class="toc"><li class="tocline"><a href="#naam-en-acroniemen" class="tocxref"><span class="secno">3.1 </span>Naam en Acroniemen</a></li><li class="tocline"><a href="#informeleBeschrijving" class="tocxref"><span class="secno">3.2 </span>Informele beschrijving</a><ol class="toc"><li class="tocline"><a href="#definitie" class="tocxref"><span class="secno">3.2.1 </span>Definitie</a></li><li class="tocline"><a href="#beschrijving" class="tocxref"><span class="secno">3.2.2 </span>Beschrijving</a></li><li class="tocline"><a href="#toelichting" class="tocxref"><span class="secno">3.2.3 </span>Toelichting</a></li></ol></li><li class="tocline"><a href="#normatieve-referenties" class="tocxref"><span class="secno">3.3 </span>Normatieve referenties</a></li><li class="tocline"><a href="#totstandkoming" class="tocxref"><span class="secno">3.4 </span>Totstandkoming</a><ol class="toc"><li class="tocline"><a href="#algemeen" class="tocxref"><span class="secno">3.4.1 </span>Algemeen</a></li><li class="tocline"><a href="#ontwikkeling-standaard" class="tocxref"><span class="secno">3.4.2 </span>Ontwikkeling standaard</a></li></ol></li><li class="tocline"><a href="#termen-en-definities" class="tocxref"><span class="secno">3.5 </span>Termen en Definities</a></li></ol></li><li class="tocline"><a href="#identificatie" class="tocxref"><span class="secno">4. </span>Identificatie</a></li><li class="tocline"><a href="#data-content-en-structuur" class="tocxref"><span class="secno">5. </span>Data content en structuur</a><ol class="toc"><li class="tocline"><a href="#inleiding" class="tocxref"><span class="secno">5.1 </span>Inleiding</a></li><li class="tocline"><a href="#algemene-uitgangspunten" class="tocxref"><span class="secno">5.2 </span>Algemene uitgangspunten</a></li><li class="tocline"><a href="#uitwerking" class="tocxref"><span class="secno">5.3 </span>UML-diagrammen</a><ol class="toc"><li class="tocline"><a href="#beschrijving-algemeen" class="tocxref"><span class="secno">5.3.1 </span>Beschrijving algemeen</a></li><li class="tocline"><a href="#overzicht" class="tocxref"><span class="secno">5.3.2 </span>Overzicht</a></li></ol></li><li class="tocline"><a href="#objectcatalogus" class="tocxref"><span class="secno">5.4 </span>Objectcatalogus</a><ol class="toc"><li class="tocline"><a href="#objecttypen" class="tocxref"><span class="secno">5.4.1 </span>Objecttypen</a><ol class="toc"><li class="tocline"><a href="#objecttype-1-vastgoedobject" class="tocxref"><span class="secno">5.4.1.1 </span>Objecttype 1 - Vastgoedobject</a></li></ol></li><li class="tocline"><a href="#gegevensgroeptypen" class="tocxref"><span class="secno">5.4.2 </span>Gegevensgroeptypen</a><ol class="toc"><li class="tocline"><a href="#gegevensgroeptype-1-vastgoedgebruik" class="tocxref"><span class="secno">5.4.2.1 </span>Gegevensgroeptype 1 - Vastgoedgebruik</a></li></ol></li><li class="tocline"><a href="#gestructureerd-datatype" class="tocxref"><span class="secno">5.4.3 </span>Gestructureerd datatype</a></li><li class="tocline"><a href="#enumeraties" class="tocxref"><span class="secno">5.4.4 </span>Enumeraties</a></li></ol></li></ol></li><li class="tocline"><a href="#referentiesystemen" class="tocxref"><span class="secno">6. </span>Referentiesystemen</a><ol class="toc"><li class="tocline"><a href="#ruimtelijkreferentiesysteem" class="tocxref"><span class="secno">6.1 </span>Ruimtelijkreferentiesysteem</a></li><li class="tocline"><a href="#tijdreferentiesysteem" class="tocxref"><span class="secno">6.2 </span>Tijdreferentiesysteem</a></li></ol></li><li class="tocline"><a href="#dataset-niveau-metadata" class="tocxref"><span class="secno">7. </span>Dataset niveau metadata</a><ol class="toc"><li class="tocline"><a href="#metadata" class="tocxref"><span class="secno">7.1 </span>Metadata</a></li></ol></li><li class="tocline"><a href="#levering" class="tocxref"><span class="secno">8. </span>Levering</a><ol class="toc"><li class="tocline"><a href="#leveringsmedium" class="tocxref"><span class="secno">8.1 </span>Leveringsmedium</a></li><li class="tocline"><a href="#formaten-encodings-" class="tocxref"><span class="secno">8.2 </span>Formaten (encodings)</a></li></ol></li><li class="tocline"><a href="#inwinningencodings" class="tocxref"><span class="secno">9. </span>Inwinningencodings</a></li><li class="tocline"><a href="#visualisatie" class="tocxref"><span class="secno">10. </span>Visualisatie</a><ol class="toc"><li class="tocline"><a href="#laag-soorten" class="tocxref"><span class="secno">10.1 </span>Laag soorten</a></li><li class="tocline"><a href="#default-stijlen" class="tocxref"><span class="secno">10.2 </span>Default stijlen</a></li><li class="tocline"><a href="#overige-stijlen" class="tocxref"><span class="secno">10.3 </span>Overige stijlen</a></li><li class="tocline"><a href="#laag-organisatie" class="tocxref"><span class="secno">10.4 </span>Laag organisatie</a></li></ol></li></ol></nav>  
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#inleiding-en-leeswijzer" property="bibo:hasPart"><!--OddPage--><h2 id="inleiding-en-leeswijzer" resource="#inleiding-en-leeswijzer"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Inleiding en Leeswijzer</span></h2><p>In 2015 voerden het Kadaster en Geonovum gezamenlijk onderzoek uit naar behoefte aan leegstandsinformatie bij marktpartijen en overheden. Daaruit bleek een duidelijke behoefte aan een geüniformeerde methodiek en aan eenduidige definities. Het vervolgonderzoek uit 2016 bevestigde dat beeld. Vanuit gebruiksoptiek en vanuit informatiekundig perspectief is het van belang deze methodiek en definities goed vast te leggen in een informatiestandaard.</p><section typeof="bibo:Chapter" resource="#doel" property="bibo:hasPart"><h3 id="doel" resource="#doel"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Doel</span></h3><p>Dit document bevat een dataspecificatie ten behoeve van gegevensontsluiting middels een <strong>Informatiemodel Vastgoedgebruik</strong> (IMVG). Het IMVG legt de gebruiksstatus en aanvullende relevante kenmerken vast van vastgoedobjecten in Nederland. Deze informatie biedt bijvoorbeeld inzicht in de hoeveelheid leegstaande vastgoedobjecten in een bepaald gebied. Het doel van deze dataproductbeschrijving is om achtergrondinformatie te verstrekken over het dataproduct.</p><p>Een dataspecificatie geeft een beschrijving van de gegevensstructuur en de objectdefinities. Op basis van de dataspecificatie kan een eindgebruiker zich een goed beeld vormen van de data die door de dienst en voorziening worden aangeboden en de data inhoudelijk interpreteren. Daarnaast geldt dat de verschillende onderdelen van de dataspecificatie de grondslag zijn voor het bouwen en ontwikkelen van de applicaties. Dit betreft een 0.9 versie ter voorbereiding op de consultatie van de betrokken partijen. Dit document is bedoeld voor de gezamenlijke gedachtenvorming en nog niet voor implementatie.</p></section><section typeof="bibo:Chapter" resource="#leeswijzer" property="bibo:hasPart"><h3 id="leeswijzer" resource="#leeswijzer"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Leeswijzer</span></h3><p>De dataspecificatie van het IMVG beschrijft het concept-informatiemodel. Deze versie is opgebouwd uit vijf hoofdstukken. Hoofdstuk 2 licht het domein waarop deze dataspecificatie van toepassing is toe. Hoofdstuk 3 geeft een informele beschrijving van dit domein en de toepassing van de dataspecificatie in een informatie- en data-uitwisselingsproces. Verder bevat dit hoofdstuk de normatieve referenties en de lijst met termen, definities en afkortingen. Hoofdstuk 4 vat in tabelvorm de identificatie van de dataspecificatie samen. Hoofdstuk 5 zet het UML-model uiteen en licht het referentiemodel en het informatiemodel toe. Hiertoe behoort ook de objectcatalogus waarin alle modelinforatmmie in tabelvorm is opgenomen.</p><p>Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de referentiesystemen, de metadata, de datalevering, de inwinningscodings en eventueel de visualisatie. Deze onderwerpen vallen buiten de scope van het concept-informatiemodel. Deze onderwerpen zijn alvast opgenomen in de hoofdstukstructuur van de dataspecificatie.
+Op deze manier geeft het document inzicht in de onderwerpen die voor een implementeerbaar model verder uitgewerkt moeten worden. Hiervoor dienen hoofdstuk 6 tot en met 10.</p></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#scope" property="bibo:hasPart"><!--OddPage--><h2 id="scope" resource="#scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Scope</span></h2><p>Dit document beschrijft de dataspecificatie van het Informatiemodel Vastgoedgebruik (IMVG). De dataspecificatie bevat een gedetailleerde uiteenzetting van de structuur, inhoud, data-inwinning en datakwaliteit van het IMVG. Op deze manier dient de dataspecificatie als basis voor de realisatie en ontsluiting van verschillende dataproducten.</p><p>De kern van het IMVG bestaat uit de koppeling van een viertal basisregistraties.</p><ul>
+<li>Basisregistratie Adressen en Gebouwen (BAG);</li>
+<li>Basisregistratie Waardering Onderoerende Zaken (WOZ);</li>
+<li>Handelsregister (HR);</li>
+<li>Basisregistratie Personen (BRP);</li>
+</ul><p>Deze koppeling verschaft inzage in de gebruiksstatus van vastgoedobjecten in Nederland. Het informatiemodel gaat voor elk pand met een verblijfsobject (BAG), na of er in één van de andere registraties een gebruiker staat geregistreerd. Stand- en ligplaatsen vallen buiten de scope van de informatievoorziening.</p><p>Ook bevatten de registraties aanvullende objectinformatie die de gebruiksstatus van belangrijke context voorziet. Het IMVG neemt ook deze informatie mee en beschrijft op die manier de informatieproducten van de Landelijke Informatievoorziening Vastgoedgebruik (LIV). De LIV bestaat uit de volgende informatieproducten:</p><table style="width:100%" valign="top" border="1">
+    <colgroup><col width="20%">
+    <col width="80%">
+    </colgroup><tbody><tr>
+        <th>Product</th>
+        <th>Toelichting</th>
+    </tr>
+    <tr>
+        <td>Landelijke Leegstandsmonitor</td>
+        <td>Jaarlijkse publicatie door CBS op gemeenteniveau voor niet-woningen en op gemeente, wijk- en buurtniveau voor woningen</td>
+    </tr>
+    <tr>
+        <td>Remote Access</td>
+        <td>Voorziening bij het CBS voor onderzoek op objectniveau</td>
+    </tr>
+    <tr>
+        <td>Teruglevering</td>
+        <td>levering resultaten door CBS aan gemeenten op objectniveau</td>
+    </tr>
+</tbody></table></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart"><!--OddPage--><h2 id="overview" resource="#overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Overview</span></h2><section typeof="bibo:Chapter" resource="#naam-en-acroniemen" property="bibo:hasPart"><h3 id="naam-en-acroniemen" resource="#naam-en-acroniemen"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Naam en Acroniemen</span></h3><blockquote>
+<p><strong>IMVG</strong>: Dataspecificatie voor vastgoedgebruiksinformatie</p>
+<p><strong>Informatiemodel Vastgoedgebruik</strong>: Dataspecificatie voor het dataproduct van de Landelijke Informatievoorziening Vastgoedgebruik (LIV)</p>
+</blockquote><p></p></section><section typeof="bibo:Chapter" resource="#informeleBeschrijving" property="bibo:hasPart"><h3 id="informeleBeschrijving" resource="#informeleBeschrijving"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Informele beschrijving</span></h3><p></p><section typeof="bibo:Chapter" resource="#definitie" property="bibo:hasPart"><h4 id="definitie" resource="#definitie"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Definitie</span></h4><p>Voor de definitie van begrippen in het IMVG is ervoor gekozen om steeds zo dicht mogelijk bij de bron te blijven om op die manier de informatie zo precies mogelijk weer te geven. In de praktijk zien we meerdere definities van het begrip leegstand, die soms onderling conflicteren. Het IMVG heeft specifiek betrekking op <a href="#administratieveLeegstand" title="Ga naar: definitie administratieve leegstand">administratieve leegstand</a>. Deze definitie wijkt af van de <a href="#feitelijkeLeegstand" title="Ga naar: definitie feitelijke leegstand">feitelijke leegstand</a>.</p></section><section typeof="bibo:Chapter" resource="#beschrijving" property="bibo:hasPart"><h4 id="beschrijving" resource="#beschrijving"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Beschrijving</span></h4><p>Uit verschillende onderzoeken van de provincie Overijssel, CBS, Kadaster en Geonovum in 2015 en 2016, bleek een sterke behoefte bij overheden en marktpartijen aan integrale, uniforme en landsdekkende informatie over vastgoedgebruik. Voor de uitwisseling van informatie over vastgoedobjecten vormt het IMVG het gemeenschappelijke begrippenkader. De totale verzameling van vastgoedobjecten bestaat onder andere uit woningen, winkels, kantoren, scholen, ziekenhuizen, fabrieken en sportfaciliteiten. Dit heet de gebouwenvoorraad en hiertoe behoort al het vastgoed dat is vastgelegd in de BAG. Het IMVG brengt informatie over het gebruik van deze objecten samen.</p><p>Het IMVG koppelt de basisregistraties BAG, WOZ, HR en BRP. Indien een object <em>administratief</em> niet in gebruik is, dan is sprake van <em>administratieve leegstand</em>. Niet alle informatie uit deze bronnen is relevant voor het IMVG. Er is een afspraak nodig over welke informatie wel of niet wordt opgenomen in het IMVG. Om die reden is een selectieve en geïntegreerde <i>view</i> gewenst. Een view geeft weer welke objecten, relaties en attributen van een informatiemodel relevant zijn voor een specifiek doel (in dit geval: vastgoedgebruik). Elementen die voor dit doel overbodig zijn, worden weggelaten en indien nodig worden extra elementen toegevoegd. De LIV fungeert als <em>use case</em> voor het IMVG en levert informatie op het domein van vastgoedgebruik. Bovendien richt de LIV zich in eerste instantie op het in beeld brengen van leegstand. Het IMVG volgt die doelstelling.</p></section><section typeof="bibo:Chapter" resource="#toelichting" property="bibo:hasPart"><h4 id="toelichting" resource="#toelichting"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Toelichting</span></h4><p>Het vastgoed in het IMVG omvat alle <a href="#bagPand" title="Ga naar: definitie BAG-pand">panden</a> met een <a href="#bagVbo" title="Ga naar: definitie BAG-vbo">verblijfsobject</a>. Het IMVG richt zich in eerste instantie op het vaststellen van de administratieve gebruiksstatus voor deze objecten. Deze eerste versie van het informatiemodel concentreert zich op het deel van de gebouwenvoorraad dat administratief <em>niet in gebruik</em> is, ofwel: het deel dat administratief leegstaat. De koppeling tussen basisregistraties geeft inzicht in het administratieve gebruik op het niveau van een verblijfsobject (BAG). </p><p>Om administratief gebruik vast te stellen, koppelt het IMVG de WOZ, HR en BRP aan de BAG. Deze registraties geven een indicatie van de gebruiksstatus van het verblijfsobject. In het IMVG is er sprake van <em>administratieve leegstand</em> op het moment dat er op een verblijfsobject geen registratie is van een <em>gebruiker</em> in de WOZ<!--[<mark>wozOnderscheid</mark>]-->, een <em>vestiging</em> in het HR en een <em>persoon</em> in de BRP. Daarnaast bevatten sommige registraties relevante extra informatie. In het verlengde van een integrale benadering, ligt een uniforme benadering. Hoewel er verschillende partijen zijn die naar het gebruik van vastgoed kijken en daarover publiceren, is er onderling geen consensus over de methode en de definities. Daarom heeft een brede groep partijen de wens geuit om hierover afspraken te maken. Het IMVG legt deze afspraken op uniforme manier vast.</p><p><strong>Integrale benadering</strong></p><p>Bestaande informatievoorzieningen richten zich vaak op een specifiek segment van het vastgoed, bijvoorbeeld kantoren of winkels. Ondanks de voordelen die dit heeft voor de marktspecifieke informatiebehoefte, zijn er ook nadelen. Het blijkt lastig om informatie tussen deze voorziening uit te wisselen. Bovendien bestaat niet voor alle typen vastgoed een informatievoorziening. Integraliteit is een belangrijke voorwaarde voor het IMVG. Het informatiemodel beschrijft daarom alle <i>typen</i> vastgoed die voorkomen in de BAG. </p><p>Om verschillende redenen bleek het relevant om binnen een bepaald gebied informatie over verschillende vastgoedtypen aan elkaar te kunnen relateren. Gemeenten en provincies zijn bijvoorbeeld verplicht de Ladder Duurzame Verstedelijking toe te passen voor het in kaart brengen van de ruimtebehoefte. Op die manier ligt het belang van integraal inzicht in feite verankerd in een wettelijk basis.</p><p>Het gebruik van een pand (zowel vergund als feitelijk) zegt respectievelijk iets over het oorspronkelijke gebruiksdoel en het huidige gebruik. Als iets leegstaat kan het zijn dat het object leegstaat als gevolg van bijvoorbeeld overaanbod voor die specifieke functie (bijv. kantoor), terwijl er aan een andere functie misschien een tekort is (bijv. woning). In zulke gevallen is het relevant om vraag en aanbod van ruimte integraal aan elkaar te relateren.</p><p><strong>Vastgoedregistratie: BAG als ruggengraat</strong></p><p>In Nederland registreert de overheid "<em>alle met "gebouwen" samenhangende objecten</em>" in de Basisregistratie Adressen en Gebouwen (BAG). Deze objecten zijn afgebakend en voorzien van een unieke aanduiding. De BAG onderscheidt de volgende vier objecten en legt hiervan de gegevens vast: <em>panden</em>, <em>verblijfsobjecten</em>, <em>standplaatsen</em> en <em>ligplaatsen</em>.
+<!-- BAG-2009-2014_objectenhandboek -->
+<!-- **Note:** hierop aanvullen dat voor LIV *standplaatsen* en *ligplaatsten* niet meegenomen worden. Is het logisch dat we deze niet meenemen? Ja: want geen gebruiksfunctie? Nee, want soms wel gebruiksfunctie
+Uit: BAG_2009-2014_objectenhandboek - *Daarnaast bevat de basisregistratie gebouwen (permanente) ligplaatsen van woonboten en (permanente) standplaatsen van woonwagens.* -->
+<!--Op een rij:
+elke stand- en ligplaats is een pand in de BAG
+verblijfsobjecten, stand- en ligplaatsen zijn adresseerbare objecten -->
+<!--Reeds herschreven-->
+Wat opvalt is dat de BAG <em>panden</em> definieert in plaats van <em>gebouwen</em>. Dit komt omdat de <a target="_blank" href="https://www.geobasisregistraties.nl/documenten/publicatie/2017/11/24/catalogus-bag-2018-v0.998" title="Ga naar: BAG-catalogus">definitie van het object "gebouw"</a> onvoldoende aansloot op de gewenste toepassing van een gebouwenregistraties.</p><p>De BAG brengt in feite <a target="_blank" href="https://www.kadaster.nl/basisregistratie-gebouwen" title="Ga naar: kadaster.nl/basisregistratie-gebouwen">twee samenhangende basisregistraties</a> bij elkaar: de Basisregistratie Adressen (BRA) en de Basisgebouwenregistratie (BGR). Het gegevensmodel van de BGR maakt onderscheid tussen (kleinste) bouwkundige eenheden (<a href="#bagPand" title="Ga naar: definitie BAG-pand">panden</a>) en (kleinste) gebruikseenheden (<a href="#bagVbo" title="Ga naar: definitie BAG-vbo">verblijfsobjecten</a>). Hoewel er tussen beide objecten relaties bestaan, bakent de <a target="_blank" href="https://www.geobasisregistraties.nl/documenten/publicatie/2017/11/24/catalogus-bag-2018-v0.998" title="Ga naar: BAG-catalogus">BGR</a> een pand onafhankelijk af van een verblijfsobject. Een verblijfsobject maakt altijd deel uit van één of meerdere panden, maar een pand hoeft geen verblijfsobject te bevatten.</p><p>Een verblijfsobject moet volgens de definitie functioneel zelfstandig zijn. Dit heeft belangrijke consequenties voor informatie over vastgoedgebruik. Niet elk pand heeft één (of meerdere) verblijfsobject(en); sommige gebouwen vervullen namelijk een ondersteunende functie voor een ander gebouw <!--[<mark>ondersteunendeFuncties</mark>]-->
+<!-- BAG-2009-2014_objectenhandboek -->. Deze <em>ongeadresseerde</em> gebouwen of <em>bij</em>gebouwen zijn in een aantal gevallen eveneens relevant voor het in kaart brengen van vastgoedgebruik<!--[<mark>bijgebouwen</mark>]-->. Het Kadaster deed onderzoek naar de mogelijkheid <a target="_blank" href="https://www.cbs.nl/-/media/_pdf/2018/26/180629%20rapport%20landelijke%20leegstand%20-%20praktijktoetsen.pdf" title="Ga naar: rapport Landelijke Informatievoorziening Vastgoedgebruik - praktijktoetsen leegstand">leegstand van agrarische bebouwing</a> in beeld te brengen. De huidige versie van het IMVG neemt bijgebouwen niet mee.</p><p>Een verblijfsobject in de BAG heeft een <a href="#bagGebruiksdoel" title="Ga naar: definitie BAG-gebruiksfunctie">gebruiksfunctie</a>. Dit type gebruik wordt ook wel het vergunde gebruik genoemd. Zo is voor elk verblijfsobject tenminste één gebruiksdoel vastgesteld<!--[<mark>dubbelfunctie</mark>]-->. Het gebruiksdoel leent zich voor een rudimentaire classificatie<!--[<mark>gebruiksdoelen</mark>]--> van verblijfsobjecten. <!--[<mark>dubbelfunctie</mark>] In sommige gevallen kan de bronhouder (gemeente) ervoor kiezen om een zogenaamde dubbelfunctie toe te kennen, bijvoorbeeld: woon-/winkelfunctie.--><!--[<mark>gebruiksdoelen</mark>] De BAG onderscheidt 11 gebruiksdoelen: woon-, bijeekomst-, cel-, gezondheid-, industrie-, kantoor-, logies-, onderwijs-, sport-, winkel- en overige gebruiksfunctie. Deze indeling sluit niet altijd goed aan bij de praktijk. Agrarisch vastgoed wordt in deze classificatie bijvoorbeeld niet apart onderscheiden, maar valt onder industriefunctie.-->Kortom, het onderscheid naar verblijfsobjecten is op twee manieren relevant voor het Informatiemodel Vastgoedgebruik: [<strong>1</strong>] om de <i>gebruiksstatus</i> van een (deel van) een vastgoedobject als geheel vast te stellen, en [<strong>2</strong>] om binnen een vastgoedobject het <i>type gebruik</i> per gebruikseenheid te kunnen onderscheiden.</p><p><b id="dataspecificatie">Dataspecificatie: bronnen</b></p><p>Het IMVG haalt gegevens op uit (delen van) vier bronbestanden (BAG, WOZ, HR en BRP) en koppelt de gegevens aan elkaar op basis van de verblijfsobjectidentificatie (vbo-ID) uit de BAG (zie: figuur 1). Het vbo-ID is één van de <a href="http://www.stelselvanbasisregistraties.nl/authentieke_gegevens/" title="Ga naar: definitie authentieke gegevens in stelselcatalogus">authentieke gegevens</a> uit de BAG, die de andere bronnen vanuit de <a href="https://www.digitaleoverheid.nl/beleid/naar-een-gegevenslandschap/themas/stelselafspraken/" title="Ga naar: Stelselafspraken">stelselverplichting</a> gebruiken.</p><figure id="fig-dataspecificatie-imvg-bronnen-en-producten-klik-voor-vergroting">
+<a target="_blank" href="images/dataspecificatie_bronnen_en_producten.png">
+        <img src="images/dataspecificatie_bronnen_en_producten.png" alt="Dataspecificatie IMVG" width="70%" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">- Dataspecificatie IMVG bronnen en producten (klik voor vergroting)</span></figcaption>
+</figure><p>De BAG vormt daarmee het middelpunt van de informatievoorziening. De koppeling vindt plaats op vbo-id (kleinste gebruikseenheid). Daarbij is het pand is als de (kleinste) bouwkundige eenheid een belangrijk object.  De wens van gebruikers van de informatievoorziening is om op verblijfsobjectniveau te kunnen zien wat de administratieve gebruiksstatus is binnen het pand. Bovendien blijkt uit een <a href="https://www.geonovum.nl/sites/default/files/methodiek_stappenplan_leegstand.pdf">pilot</a> dat bij <a href="http://maps.objectvision.nl/hoornleegstand/?layers=OPENBASISKAART,Hoorn_GEBRUIKSDOEL_ALLE,&amp;zoom=9&amp;lat=518900&amp;lon=133200&amp;language=nl">visualisatie van leegstand op objectniveau</a> het hoge detailniveau en het type geometrie ("Point") van verblijfsobjecten de leesbaarheid bemoeilijkt, waardoor <a href="http://maps.objectvision.nl/hoornleegstand/?layers=OPENBASISKAART,Hoorn_GEBRUIKSDOEL_ALLE,&amp;zoom=9&amp;lat=518900&amp;lon=133200&amp;language=nl">aggregatie naar pandniveau</a> (geometrie: "Polygon") wenselijk is.</p><p><strong>Uitgangspunten</strong></p><p>Uitgangspunten toegepast bij het modelleren van IMVG:</p><ul>
+<li>Beschrijven van het totaalpakket aan informatie dat voorziet in het dataleveringsproces voor de Landelijke Informatievoorziening Vastgoedgebruik (LIV), waaruit de dataproducten Landelijke Leegstandsmonitor, Remote Access Vastgoedgebruik, Ruimtelijke Concentratie Leegtand (methode Woonzorgwijzer) en Datalevering op objectniveau voor Gemeenten zijn afgeleid;</li>
+<li>het bevat geen specificatie van de datafunctionaliteiten zelf;</li>
+<li>het model vormt het afgestemde begrippenkader voor het domein vastgoedgebruik;<!--* beschrijft de informatievoorziening. Het bevat geen beschrijving van de 'eindproducten', danwel (data)functionaliteiten waarvoor de IMVG als basis dient.--></li>
+<li>het voorziet in een objectgerichte, gevectoriseerde data-uitwisseling;</li>
+<li>het IMVG kan worden toegepast in <em>view</em> en <em>download services</em>;</li>
+<li>De toepassing van 3D-informatie staat nog open. Enerzijds omdat dit mogelijk een onderwerp voor de toekomst is. Indien de BAG 3D beschikbaar komt, is het mogelijk relevant om voor panden met meerdere verblijfsobjecten met behulp van hoogte-informatie een meer nauwkeurige locatiebepaling te geven van de ligging van het verblijfsobject. Anderzijds ligt de implementatie ervan buiten de scope van het IMVG: die vindt immers plaats in de basisregistratie(s) waar het IMVG uit put;</li>
+<li>het maakt gebruik van bestaande geometrieën en voegt hieraan geen nieuwe geometrie toe. Wel voegt het model extra informatie toe aan de bestaande geometrieën, met als belangrijkste kenmerk de gebruiksstatus van een verblijfsobject;</li>
+<li>ook bevat het model temporele informatie. Voor het vaststellen van de gebruiksstatus van een verblijfsobject is bij uitstek relevant dat de koppeling van de informatie gebeurt op basis van de dezelfde peildatum. Bovendien is voor het monitoren van leegstand relevant om over een langere periode de resultaten van meerdere meetmomenten met elkaar te kunnen vergelijken, zodat de ontwikkeling over meerder jaren met elkaar vergeleken kan worden;<!--* differentiatie van informatie: hoe en waar geregeld?--></li>
+<li>het biedt integrale informatie, dat wil zeggen: informatie over alle typen vastgoed;</li>
+<li>het biedt uniforme informatie: de indicatie van de gebruiksstatus en andere relevante kenmerken is voor alle typen vastgoed op dezelfde wijze vastgelegd;</li>
+<li>het biedt landsdekkende informatie door gebruik te maken van basisregistraties.</li>
+</ul><p><strong>Data-uitwisselingsarchitectuur</strong></p><p>Het volgende figuur toont de data-uitwisselingsarchitectuur waarvan het IMVG onderdeel uitmaakt. Het figuur illustreert de informatiestroom van bronhouder tot eindproduct, maar is niet normatief voor de implementatie van de voorziening. Het figuur onderscheidt data-uitlevering en data-aanlevering. Data-uitlevering heeft betrekking op het leveren van data aan de uiteindelijke afnemers. Data-aanlevering is de aanlevering van data door bronhouders ten behoeve van de realistie van de tussenproducten of voorzieningen die met die gegevens in staat zijn om eindproducten te realiseren.</p><figure id="fig-imvg-data-uitwisselingsarchitectuur-klik-voor-vergroting">
+<a target="_blank" href="images/data-uitwisselingsarchitectuur.png">
+        <img src="images/data-uitwisselingsarchitectuur.png" alt="Data-uitwisselingsarchitectuur IMVG" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">- IMVG Data-uitwisselingsarchitectuur (klik voor vergroting)</span></figcaption>
+</figure><p>Voor de BAG, de WOZ en de BRP zijn de gemeenten bronhouder en voor het HR is dat de Kamer van Koophandel. Zij verzamelen en beheren de gegevens in de basisregistraties. Behalve voor de BRP, zijn deze bronnen ontsloten via een landelijke voorziening <!--Als laag toevoegen in het model?-->. De landelijke voorziening levert gegevens aan en koppelt de verschillende bronnen aan elkaar met behulp van het vbo-ID. Op die manier is het mogelijk om per verblijfsobject de administratieve gebruiksstatus vast te stellen. Het resultaat hiervan is de Landelijke Informatievoorziening Vastgoedgebruik (LIV).</p><p>De LIV maakt onderscheidt tussen functionaliteiten voor zowel alle overheden als marktpartijen en functionaliteiten die exclusief aan gemeenten toebehoren (zie: figuur 3). Het deel van de voorziening dat geaggregeerde gegevens aanbiedt is openbaar toegankelijk, maar de functionaliteiten met informatie op objectniveau worden via een authenticatie- en authorisatielaag aangeroepen; de gebruiker van de informatie moet zich identificeren en geautoriseerd zijn om over de objectdata te mogen beschikken. <!--Dat laatste klopt nog niet helemaal, want voor gemeenten inderdaad authorisatie bij CBS. Voor remote access (woonzorg=remote access) waarschijnlijk ook, maar tussen gemeenten en remote access is wel onderling verschil.-->
+<!--TABEL uitwisselingsarchitectuur--></p><figure id="fig-type-voorzieningen-binnen-het-dataproduct-landelijke-informatievoorziening-vastgoedgebruik">
+    .
+            <table style="width:100%" border="1">
+        <tbody><tr>
+            <th>naam</th>
+            <th>type</th>
+            <th>detailniveau</th>
+            <th>toegang</th>
+            <th>wie</th>
+        </tr>
+        <tr>
+            <td>Landelijke Leegstandsmonitor</td>
+            <td>viewer</td>
+            <td>gemeenten</td>
+            <td>openbaar</td>
+            <td>allen</td>
+        </tr>
+        <tr>
+            <td>Landelijke Leegstandsmonitor</td>
+            <td>download</td>
+            <td>gemeenten</td>
+            <td>openbaar</td>
+            <td>allen</td>
+        </tr>
+        <tr>
+            <td>Remote Access</td>
+            <td>download</td>
+            <td>verblijfsobject</td>
+            <td>gesloten</td>
+            <td>toegang CBS</td>
+        </tr>
+        <tr>
+            <td>Teruglevering</td><td>download</td>
+            <td>verblijfsobject</td>
+            <td>gesloten</td>
+            <td>gemeenten</td>
+        </tr>
+    </tbody></table>
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">- Type voorzieningen binnen het dataproduct Landelijke Informatievoorziening Vastgoedgebruik</span></figcaption>
+</figure></section></section><section typeof="bibo:Chapter" resource="#normatieve-referenties" property="bibo:hasPart"><h3 id="normatieve-referenties" resource="#normatieve-referenties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Normatieve referenties</span></h3><p>De volgende documenten zijn onmisbaar voor de totstandkoming van dit document: </p><ul>
+<li><a target="_blank" href="https://www.geonovum.nl/uploads/documents/Raamwerk%20Geo-Standaarden%20v3.0.pdf" title="Ga naar: Raamwerk geo-standaarden">Raamwerk van geo-standaarden 3.0</a></li>
+<li>NEN 3610:2011/A1:2016 Basismodel Geo-informatie</li>
+<li><a target="_blank" href="https://www.bouwbesluitonline.nl/Inhoud/docs/wet/bb2012" title="Ga naar: Bouwbesluit 2012 (online)">Bouwbesluit 2012</a></li>
+<li><a target="_blank" href="https://www.geobasisregistraties.nl/binaries/basisregistraties-ienm/documenten/publicatie/2018/03/12/catalogus-2018/Catalogus-BAG-2018.pdf" title="Ga naar: Catalogus basisregistraties adressen en gebouwen 2018">Catalogus basisregistraties adressen en gebouwen 2018</a>;</li>
+<li><a target="_blank" href="https://www.waarderingskamer.nl/fileadmin/publieksportaal/documents/public/lv-woz/Catalogus_Basisregistratie_WOZ_versie_1.7.pdf" title="Ga naar: Catalogus Basisregistratie WOZ">Catalogus Basisregistratie WOZ versie 1.7</a></li>
+<li>Gegevenscatalogus Handelsregister versie 2.3</li>
+<li><a target="_blank" href="https://www.rvig.nl/binaries/rvig/documenten/richtlijnen/2016/10/14/logisch-ontwerp-gba-versie-3-10/LO+GBA+3.10.pdf" title="Ga naar: Logisch Ontwerp GBA">Logisch Ontwerp BRP</a></li>
+<li><a target="_blank" href="https://www.vngrealisatie.nl/sites/king/files/RSG%20Basisgegevens%202.01%20%20deel%20I%20(in%20gebruik).pdf" title="Ga naar: Referentiemodel Stelsel van Gemeentelijke Basisgegevens (RSGB)">Referentiemodel Stelsel van Gemeentelijke Basisgegevens (RSGB)</a></li>
+</ul></section><section typeof="bibo:Chapter" resource="#totstandkoming" property="bibo:hasPart"><h3 id="totstandkoming" resource="#totstandkoming"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Totstandkoming</span></h3><p>Deze specificatie is opgesteld door Geonovum en is gebaseerd op het voorbeeld Dataspecificatie Template DSO.</p><table style="width:100%" border="1">
+    <tbody><tr>
+        <td><b>Documenttitel</b></td>
+        <td>IMVG - Dataspecificatie Informatiemodel Vastgoedgebruik</td>
+    </tr>
+    <tr>
+        <td><b>Referentiedatum</b></td>
+        <td>2018-06-15</td>
+    </tr>
+    <tr>
+        <td><b>Auteur(s)</b></td>
+        <td>Gerard Trouborst</td>
+    </tr>
+    <tr>
+        <td><b>Betrokken partijen</b></td>
+        <td>CBS, Kadaster, Object Vision en Geonovum</td>
+    </tr>
+    <tr>
+        <td><b>Taal</b></td>
+        <td>Nederlands</td>
+    </tr>
+</tbody></table><section typeof="bibo:Chapter" resource="#algemeen" property="bibo:hasPart"><h4 id="algemeen" resource="#algemeen"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Algemeen</span></h4><p>Het doel van een informatiestandaard is om te komen tot een geüniformeerde wijze voor het beschrijven van de semantische inhoud van de registraties. Semantiek heeft betrekking op de betekenis van taal. In een standaard leggen we die betekenis eenduidig vast. Deze wijze van beschrijven gebeurt door middel van deze dataspecificatie. Die beschrijft in detail de data-inhoud van de informatievoorziening en de dataproducten die worden geleverd. Centraal in een hierin staat het informatiemodel. Dit zet de afspraken over begrippen en definities van gegevens binnen een bepaald domein schematisch op een rij. Dit helpt om de uitwisseling van informatie te vereenvoudigen.</p></section><section typeof="bibo:Chapter" resource="#ontwikkeling-standaard" property="bibo:hasPart"><h4 id="ontwikkeling-standaard" resource="#ontwikkeling-standaard"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.2 </span>Ontwikkeling standaard</span></h4><p>In het kader van hergebruik van informatie neemt het Informatiemodel Vastgoedgebruik het stelsel van basisregistraties als vertrekpunt. Ook voor de ontwikkeling van het informatiemodel kan op die manier gebruik gemaakt worden van bijbehorende bestaande datastructuren. Niet alleen zijn deze datastructuren reeds ontwikkeld, vanuit de stelselgedachte zijn ze ook al op elkaar afgestemd.</p><figure id="fig-gebruikte-informatiemodellen-voor-het-imvg">
+<table style="width: 100%" border="1">
+        <tbody><tr>
+            <td><b>BAG</b></td>
+            <td>2017-02-10_IMBAG_UML_MIM_InOnderzoek_metagegevens.EAP</td>
+        </tr>
+        <tr>
+            <td><b>WOZ</b></td>
+            <td>imwoz 2012 08 31 11.30 technisch.EAP</td>
+        </tr>
+        <tr>
+            <td><b>HR</b></td>
+            <td>Online Catalogus v3.01 Overheid (html)</td>
+        </tr>
+        <tr>
+            <td><b>BRP</b></td>
+            <td>20161024 Verstuffingversie InfoMod RSGB.EAP &amp; RGBZ_01.00_in_gebruik.EAP</td>
+        </tr>
+    </tbody></table>
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">- gebruikte informatiemodellen voor het IMVG</span></figcaption>
+</figure><p>Om informatiemodellen binnen het overheidsdomein onderling beter op elkaar af te stemmen, hebben VNG Realisatie, Kadaster en Geonovum gezamenlijk het Metamodel voor Informatiemodellering ontwikkeld. Hierin bundelen de drie organisaties hun kennis ten aanzien van informatiemodellering. Het <a target="_blank" href="https://www.geonovum.nl/geo-standaarden/metamodel-informatiemodellering/nationaal-metamodel-voor-informatiemodellering" title="Ga naar: informatie over MIM">metamodel</a> richt zich op registraties binnen het overheidsdomein, maar is in bredere context inzetbaar.</p><p>Waar mogelijk past het IMVG het MIM toe. Maar, het IMVG koppelt bestaande informatiemodellen aan elkaar en sommige informatiemodellen bestonden al vóór het MIM en hanteren een afwijkende UML-notatie. In bepaalde gevallen was het verschil tussen de oorspronkelijke notatie en het MIM te groot. Het IMVG hanteert dan de oorspronkelijke UML-notatie. We zien ook dat binnen één model soms op twee verschillende manieren dezelfde relatie gemodelleerd is. Beide manieren zijn overgenomen. Dit maakt het model wel minder eenduidig.</p><p><strong>Knelpunten bij (operationele) uitvoering</strong></p><p>Bij de ontwikkeling van het informatiemodel, kwamen er een aantal uitdagingen aan het licht. Van de vier basisregistraties was alleen een informatiemodel van de BAG beschikbaar dat volgens het MIM was gemodelleerd. <!--De informatiemodellen van de WOZ, HR en BRP waren nog vanuit eerdere inzichten opgebouwd.--> </p><p>Van sommige basisregistraties waren meerdere modellen beschikbaar waarbij niet zonder meer duidelijk was welk model het meest toereikend zou zijn.
+Niet van alle modellen was een UML-versie beschikbaar in Enterprice Architect (EA). Van de BAG en WOZ waren deze wel beschikbaar, maar van HR en BRP niet. Het informatiemodel van het HR was wel aanwezig als UML in html-formaat. Officieel is bij de Kamer van Koophandel ook een EA-versie, maar dit model wordt niet met andere partijen gedeeld. </p><p>Van de BRP is geen model beschikbaar. De Rijksdienst voor Identiteitsgegevens (beheerder van de BRP) verwees voor de benodigde informatie naar het Logisch Ontwerp BRP; een document in pdf-formaat. Het doel van het logisch ontwerp is niet om de datastructuur van de BRP te specificeren. Desondanks staat er wel relevante informatie in. Via de Referentiemodel Stelsel van Gemeentelijke Basisgegevens (RSGB) is het model van Gemeentelijke Basis Administratie verkregen.</p><p>Het BRP registreert naast ingezetenen (GBA) ook niet-ingezetenen (personen in het buitenland). Personen in het buitenland zijn voor het IMVG niet relevant. Het GBA volstaat voor het Informatiemodel Vastgoedgebruik. Het lastige is dat vanuit het GBA in het RSGB geen duidelijke link gelegd wordt met de BAG. In combinatie met het Logisch Ontwerp van de BRP is wel af te leiden waar die verbinding moet liggen.</p><p>Deze versie van het WOZ-model is uit 2012. De LIV maakt specifiek gebruik van de Landelijke Voorziening WOZ (LV WOZ). Hoewel er geen grote wijzigingen hebben plaatsgevonden, kan het model op kleine punten afwijken van de huidige situatie. Verder is het UML-model van de WOZ mogelijk vanuit andere software in EA geïmporteerd, want de diagrammen waren zeer moeilijk leesbaar.</p><p>In het stelsel zijn de BRP, WOZ en het HR aan de BAG gekoppeld. Het was lastig om die structuur goed uit de modellen terug te lezen omdat er niet op een éénduidige manier werd gerefereerd. Om de modellen op elkaar aan te laten sluiten, moesten daarom keuzes gemaakt worden. <!-- dit moet zich nog verder uitkristaliseren --></p><p><strong>Mogelijke discrepantie IMVG en LIV</strong></p><p>Reproduceerbaarheid was vanaf het beging een belangrijk speerpunt van het IMVG en de LIV. Transparantie van de gebruikte methodiek was daarvoor cruciaal. Bij de ontwikkeling van de dataspecificatie bleek er tussen het IMVG en de LIV een discrepantie te zijn ontstaan. De resultaten zijn ook met dit informatiemodel niet volledig te reproduceren omdat het CBS met een hoogwaardige standaadisatie werkt om de bestanden te koppelen, waar geavanceerde IT en voortschrijdend inzicht tot optimale koppelresultaten leiden.</p><p>Het CBS heeft voor statistische doeleinden toegang tot de informatie uit de  basisregistraties. Voor kwaliteitsdoeleinden maakt het CBS een verbeterslag op de ruwe data uit de basisregistraties. Deze stap gebeurt buiten de directe scope van het IMVG om en geldt als input voor alle CBS-afdelingen die gebruik maken van deze data. Het voordeel is dat de kwaliteit van de broninformatie door deze bewerking toeneemt. Dit heeft echter wel consequenties voor de reproduceerbaarheid van de methodiek.</p><p>Een poging om de gemaakte keuzes en gebruikte aanvullende data uit de voorbewerking in beeld te brengen, toonde aan dat dit een complexe stap is. Bovendien was het onduidelijk of van de geprepareerde bronnen een informatiemodel beschikbaar was. In hoeverre en in welke mate dit tot verschillen leidt, is daarom onduidelijk. Wat we wel weten is dat de bewerking op het HR het meest complex is. Op dat punt zullen de verschillen tussen ruwe en bewerkte data het grootst zijn. Om de kwaliteit van de cijfers te verbeteren wordt gebruik gemaakt van informatie uit aanvullende bronnen.</p><p>Concluderend: er is voor LIV een pragmatische keuze gemaakt. Eerdere cijfers die in het kader van de LIV door het CBS gepubliceerd zijn, vonden op dezelfde brondata plaats. Bovendien gaat het om een bewerking die de kwaliteit van de cijfers verbetert. Daarom is besloten om hierop voort te bouwen. Deze dataspecificatie sluit zo dicht mogelijk aan bij deze methodiek, maar wijkt op een aantal kleine punten af.</p></section></section><section typeof="bibo:Chapter" resource="#termen-en-definities" property="bibo:hasPart"><h3 id="termen-en-definities" resource="#termen-en-definities"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Termen en Definities</span></h3><p>Lijst van termen en definities die in deze beschrijving worden gehanteerd.</p><p><strong>activiteit</strong></p><blockquote>
+<p>"De activiteit van een natuurlijk persoon of niet-natuurlijk persoon. Activiteiten worden geregistreerd bij de rechtspersoon of bij de vestigingen. Bij zowel de maatschappelijke activiteit als de onderneming wordt de verzameling van Standaard Bedrijfsindeling (SBI)-codes gegroepeerd.</p>
+<ul>
+<li>Maatschappelijke Activiteit: De totale verzameling van SBI-codes die betrekking hebben op de rechtspersoon of op de niet-commerciële vestigingen.</li>
+<li>Onderneming: De verzameling van SBI-codes die betrekking hebben op een Onderneming. Dit is de verzameling van alle SBI-codes die worden uitgeoefend op de commerciële vestigingen" (<a target="_blank" href="https://docplayer.nl/9332496-Gegevenscatalogus-handelsregister-handelsregisterwet-2007-stb-2007-nr-153-versie-2-3-8-januari-2013.html" title="Ga naar: Gegevenscatalogus Handelsregister">bron: HR 2013</a>).</li>
+</ul>
+</blockquote><p><b id="administratieveLeegstand">administratieve leegstand</b></p><blockquote>
+<p>De situatie waarin de koppeling van de basisregistraties WOZ, HR en BRP aan de BAG respectievelijk: geen gebruiker(s), geen relatie(s) met een vestiging en geen relatie(s) met een persoon oplevert (zie: figuur 8, combinatie 8)</p>
+</blockquote><p><strong>adresseerbaar object</strong> <!--oorsprong definitie?--></p><blockquote>
+<p>Objecten waaraan in de BAG een adres kan worden toegekend: standplaats, ligplaats of verblijfsobject <a target="_blank" href="https://www.geobasisregistraties.nl/documenten/publicatie/2017/11/24/catalogus-bag-2018-v0.998" title="Ga naar: BAG-catalogus">bron: BAG 2018</a></p>
+</blockquote><p><strong>annotatie</strong></p><blockquote>
+<p>Elke toevoeging op een kaartbeeld voor verduidelijking</p>
+</blockquote><p><strong>applicatieschema</strong></p><blockquote>
+<p>informatiemodel dat gegevens beschrijft die worden gebruikt door een of meer applicaties. IMKL is met UML beschreven in een applicatieschema.</p>
+</blockquote><p><strong>associatie of relatie (UML)</strong></p><blockquote>
+<p>semantische relatie tussen twee of meer klassen die de connectie tussen hun instanties weergeeft</p>
+</blockquote><p><strong>attribuut</strong></p><blockquote>
+<p>kenmerk van een object</p>
+</blockquote><p><strong>attribuutwaarde (value)</strong></p><blockquote>
+<p>waarde die een attribuut aanneemt</p>
+</blockquote><p><strong>bag-object</strong></p><blockquote>
+<p>"De BAG is <a target="_blank" href="https://www.amsterdam.nl/stelselpedia/woordenboek/" title="Ga naar: woordenboek gemeente Amsterdam">op­ge­bouwd uit</a> de vol­gen­de soor­ten ob­ject­ty­pen: woon­plaats, open­ba­re ruim­te, num­mer­aan­dui­ding, stand­plaats, lig­plaats, ver­blijfs­ob­ject, pand"</p>
+</blockquote><p><strong>coördinaat</strong></p><blockquote>
+<p>getal in een sequentie van n getallen om de positie van een punt in een n-dimensionale ruimte te bepalen</p>
+</blockquote><p><strong>coördinaatreferentiesysteem</strong></p><blockquote>
+<p>coördinaatsysteem dat aan een object is gerelateerd door een datum.</p>
+</blockquote><p><strong>coördinaatsysteem</strong></p><blockquote>
+<p>set van wiskundige regels voor het toekennen van coördinaten aan punten</p>
+</blockquote><p><strong>datatype</strong></p><blockquote>
+<p>gestructureerde gegevens zonder identiteit</p>
+</blockquote><p><strong>datum</strong></p><blockquote>
+<p>parameter of set van parameters voor het definiëren van het nulpunt, de schaal en de oriëntatie van een
+coördinaatsysteem</p>
+</blockquote><p><strong>download service</strong></p><blockquote>
+<p>service that enables copies of spatial data sets, or parts of such sets, to be downloaded and, where
+practicable, accessed directly.
+INSPIRE</p>
+</blockquote><p><strong>extensie (van informatiemodel)</strong></p><blockquote>
+<p>Een informatiemodel als uitbreiding op een ander informatiemodel</p>
+</blockquote><p><b id="feitelijkeLeegstand">feitelijke leegstand</b></p><blockquote>
+<p>Een eenduidige definitie ontbreekt. Sectorspecifieke leegstandsdefinities wijken af van de definitie in het IMVG. In het buitengebied ontbreekt bijvoorbeeld een eenduidige relatie tussen <em>administratie leegstand</em> en <em>vrijkomende agrarische bebouwing</em> (VAB); vastgoed dat in de toekomst leeg kan komen te staan. In de commerciële markt gaat het vaak om <em>beschikbaarheid</em> van vastgoed. Als er een object wordt aangeboden voor een nieuwe gebruiker, wordt dat in de commerciële vastgoedmarkten vaak geassocieerd met <em>economische</em> of <em>financiële leegstand</em>. Het object hoeft in dat geval niet zichtbaar leeg te staan. Voor publieke partijen heeft leegstand vaak de associatie met <em>verpaupering</em> en <em>verloedering</em>. Ook hier is de relatie met administratieve leegstand niet eenduidig. <!--De kans is groot dat problematische leegstand administratief leeg is, maar we weten inmiddels dat het omgekeerde lang niet altijd waar is.-->Er is derhalve geen objectief kader voor (feitelijke) leegstand.</p>
+</blockquote><p><strong>gebruiker</strong></p><blockquote>
+<p>De (rechts-)persoon die door de gemeente is aangewezen "belanghebbende gebruiker" van het WOZ-object (<a target="_blank" href="https://www.waarderingskamer.nl/fileadmin/publieksportaal/documents/public/lv-woz/Catalogus_Basisregistratie_WOZ_versie_1.7.pdf" title="Ga naar: Gegevenscatalogus WOZ">bron: WOZ 2012</a>).</p>
+</blockquote><p><b id="bagGebruiksdoel">gebruiksdoel</b></p><blockquote>
+<p>"Een categorisering van de gebruiksdoelen van het betreffende
+verblijfsobject, zoals dit door de overheid als zodanig is
+toegestaan" (<a target="_blank" href="https://www.kadaster.nl/documents/32706/37743/bag+grondslagen+catalogus/d6bb83b9-33e5-47bb-939c-fa7fde1f2b16" title="Ga naar: BAG-grondslagen catalogus">bron: BAG 2009</a>).</p>
+<p>"Het gebruiksdoel zal initieel worden afgeleid uit de bouwkundige gebruiksfunctie conform de categorisering van het Bouwbesluit 2003 zoals deze in de bouwvergunning als zodanig is aangemerkt. Op een later moment kunnen ook door de gemeente geformaliseerde gebruiswijzigingen als basis dienen voor opnamen van een aanvulend gebruiksdoel. Het gebruiksdoel dient niet te worden verward met de <em>planologische bestemming</em> en het <em>feitelijk gebruik</em>". (<a target="_blank" href="https://www.kadaster.nl/documents/32706/37743/bag+grondslagen+catalogus/d6bb83b9-33e5-47bb-939c-fa7fde1f2b16" title="Ga naar: BAG-grondslagen catalogus">bron: BAG 2009</a>).</p>
+</blockquote><p><strong>geo-informatie (geo-information, geographic information)</strong></p><blockquote>
+<p>informatie met een directe of indirecte referentie naar een plaats ten opzichte van de aarde (bijvoorbeeld
+ten opzichte van het aardoppervlak).Geo-informatie is synoniem aan geografische informatie.</p>
+</blockquote><p><strong>geo-object (geographic feature type, feature class)</strong></p><blockquote>
+<p>abstractie van een fenomeen in de werkelijkheid dat direct of indirect is geassocieerd met een locatie
+relatief ten opzichte van de aarde (bijvoorbeeld ten opzichte van het aardoppervlak)</p>
+</blockquote><p><strong>georeferentie (georeference)</strong></p><blockquote>
+<p>locatie van een ruimtelijk object vastgelegd in een ruimtelijk referentiesysteem</p>
+</blockquote><p><strong>informatiemodel (conceptual model, conceptual scheme)</strong></p><blockquote>
+<p>formele definitie van objecten, attributen, relaties en regels in een bepaald domein.  Domein is in dit verband: een kennisgebied of activiteit gekarakteriseerd door een
+verzameling van concepten en begrippen</p>
+</blockquote><p><strong>instantie (instance, occurrence)</strong></p><blockquote>
+<p>benoemd, identificeerbaar object uit een objectklasse</p>
+</blockquote><p><strong>objectklasse (feature class)</strong></p><blockquote>
+<p>verzameling van objecten met dezelfde eigenschappen</p>
+</blockquote><p><b id="#bagPand">pand</b><!-- (Wet basisregistraties adressen en gebouwen, artikel 1, lid o)--></p><blockquote>
+<p>"de kleinste bij de totstandkoming functioneel en bouwkundig-constructief zelfstandige eenheid die direct en duurzaam met de aarde is verbonden en betreedbaar en afsluitbaar is" (<a target="_blank" href="https://www.kadaster.nl/documents/32706/37743/bag+grondslagen+catalogus/d6bb83b9-33e5-47bb-939c-fa7fde1f2b16" title="Ga naar: BAG-grondslagen catalogus">bron: BAG 2009</a>).</p>
+</blockquote><p><strong>persoon</strong></p><blockquote>
+<p>"Inwoner van Nederland (ingezetene)" (<a target="_blank" href="https://www.rijksoverheid.nl/onderwerpen/privacy-en-persoonsgegevens/vraag-en-antwoord/gegevens-basisadministratie-personen" title="Ga naar: Rijksoverheid.nl">bron: Rijksoverheid</a>).</p>
+</blockquote><p><strong>presentatie</strong></p><blockquote>
+<p>presentatie van informatie aan mensen
+Presentatie van informatie door visualisatie, hoorbaar maken, tastbaar maken (tactiel) of
+combinaties hiervan.</p>
+</blockquote><p><strong>productmodel</strong></p><blockquote>
+<p>informatiemodel afgeleid van een ander informatiemodel om de toepassing in een dataproduct te
+realiseren</p>
+</blockquote><p><strong>registratie</strong></p><blockquote>
+<p>op nationaal niveau geïdentificeerde en erkende gegevensverzameling
+Een basisregistratie is een registratie.</p>
+</blockquote><p><strong>registratiehouder</strong></p><blockquote>
+<p>organisatie verantwoordelijk voor het houden van de registratie
+de registratiehouder is de organisatie die unieke objectidentificaties toekent voor
+objecten in een registratie</p>
+</blockquote><p><strong>representatie</strong></p><blockquote>
+<p>inhoudelijk vastleggen van de werkelijkheid. Het informatiemodel is een representatie van de werkelijkheid.</p>
+</blockquote><p><strong>ruimtelijk referentiesysteem</strong></p><blockquote>
+<p>model (systeem) voor identificatie van een positie (locatie) in de werkelijkheid. Identificatie van een positie kan door coördinaten (directe locatie) en door geografische
+identificatoren (indirecte locatie).</p>
+</blockquote><p><strong>sectormodel</strong></p><blockquote>
+<p>model voor beschrijving van de werkelijkheid binnen het domein van een beleidsveld</p>
+</blockquote><p><strong>temporeel referentiesysteem</strong></p><blockquote>
+<p>Referentiesysteem waarin de tijd is bepaald.</p>
+</blockquote><p><strong>vastgoedgebruik</strong></p><blockquote>
+<p>De situaties waarin een koppeling van de WOZ, het HR en de BRP aan de BAG in tenminste één gebruiker, of één relatie met een vestiging of één relatie met één persoon oplevert (combinatie 1 t/m 7, <a href="#tabelVastgoedgebruik" title="Ga naar: tabel vastgoedgebruik" class="fig-ref">figuur 8</a>).</p>
+</blockquote><p><strong>vastgoedobject</strong></p><blockquote>
+<p>Een pand met één of meerdere verblijfsobjecten (stand- en ligplaatsen zijn uitgesloten)</p>
+</blockquote><p><strong>vectorformaat</strong></p><p><b id="bagVbo">verblijfsobject</b><!--(Wet basisregistraties adressen en gebouwen, artikel 1, lid q)--></p><blockquote>
+<p>"De kleinste binnen één of meer panden gelegen en voor woon-, bedrijfsmatige, of recreatieve doeleinden geschikte eenheid van gebruik die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is" (<a target="_blank" href="https://www.kadaster.nl/documents/32706/37743/bag+grondslagen+catalogus/d6bb83b9-33e5-47bb-939c-fa7fde1f2b16" title="Ga naar: BAG-grondslagen catalogus">bron: BAG 2009</a>).</p>
+</blockquote><p><strong>vestiging</strong></p><blockquote>
+<p>"Een vestiging is een gebouw of complex van gebouwen waar duurzame uitoefening van activiteiten van een onderneming of rechtspersoon plaatsvindt. Een vestiging kent twee verzamelingen:</p>
+<ul>
+<li>Een commerciële vestiging</li>
+<li>Een niet commerciële vestiging
+Een vestiging (commercieel of niet commercieel) wordt geïdentificeerd door het vestigingsnummer" (<a target="_blank" href="https://docplayer.nl/9332496-Gegevenscatalogus-handelsregister-handelsregisterwet-2007-stb-2007-nr-153-versie-2-3-8-januari-2013.html" title="Ga naar: Gegevenscatalogus Handelsregister">bron: HR 2013</a>)</li>
+</ul>
+</blockquote><p><strong>view service</strong></p><blockquote>
+<p>service that makes it possible, as a minimum, to display, navigate, zoom in and out, pan or overlay
+viewable spatial data sets and to display legend information and any relevant content of metadata.
+INSPIRE</p>
+</blockquote><p><strong>waardelijst</strong></p><blockquote>
+<p>lijst van waarden</p>
+</blockquote><p><strong>werkelijkheid</strong></p><blockquote>
+<p>beeld van de echte of hypothetische wereld die alles van belang omvat</p>
+</blockquote></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#identificatie" property="bibo:hasPart"><!--OddPage--><h2 id="identificatie" resource="#identificatie"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Identificatie</span></h2><p>Dit hoofdstuk beschrijft de identificatie van de dataspecificatie. In onderstaande overzicht is de beschrijvende informatie opgenomen van de dataspecificatie.</p><table style="width: 100%" cellpadding="10" border="1">
+    <colgroup><col width="25%">
+    <col width="75%">
+    </colgroup><tbody><tr>
+        <td valign="top"><b>Titel</b></td>
+        <td valign="top">IMVG - Dataspecificatie Informatiemodel Vastgoedgebruik</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Samenvatting</b></td>
+        <td valign="top">IMVG beschrijft de semantiek van de view op de basisregistraties BAG, WOZ, NHR en BRP voor het vaststellen vastgoedgebruik. De BAG bevat de geometrieën van vastgoedobjecten (panden met verblijfsobjecten; stand- en ligplaatsen vallen buiten de scope). Informatie uit de andere basisregistraties kan op die manier gekoppeld worden aan een locatie. De vastgoedobjecten worden getypeerd aan de hand van het gebruiksdoel van het verblijfsobject in de BAG. Het geheel van vastgoedobjecten vormt de vastgoedvoorraad waarvan de administratieve gebruiksstatus wordt beschreven en de directe geografische positie middels coördinaten</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Onderwerpcategorieën</b></td>
+        <td valign="top">Vastgoedgebruik, (Administratief) Vastgoedgebruik, (Administratieve)Leegstand, Basisregistraties</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Geografische beschrijving</b></td>
+        <td valign="top">De dataspecificatie IMVG heeft betrekking op het Nederlands grondgebied (Europese Deel)</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Doel</b> [optioneel]</td>
+        <td valign="top">Doel van dit document is het beschrijven van het Informatiemodel Vastgoedgebruik (IMVG) ten behoeve van de Landelijke Informatievoorziening Vastgoedgebruik (LIV). IMVG is ontwikkeld voor de realisatie van digitaal berichtenverkeer rond het thema vastgoedgebruik en de daarin voorkomende vastgoedobjecten.<!-- ... Ladder Duurzame Verstedelijking en de Leegstandswet.--></td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Aanvullende informatie</b> [optioneel]</td>
+        <td valign="top">De eerste versie van het IMVG richt zich specifiek op administratieve leegstand, maar biedt aanknopingspunten voor uitbreiding in de toekomst met gebruiksinformatie in het algemeen. Bovendien is het denkbaar dat het IMVG wordt aangevuld met andere bronnen, zoals bijvoorbeeld energieverbruik.</td>
+    </tr>
+</tbody></table></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#data-content-en-structuur" property="bibo:hasPart"><!--OddPage--><h2 id="data-content-en-structuur" resource="#data-content-en-structuur"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Data content en structuur</span></h2><section typeof="bibo:Chapter" resource="#inleiding" property="bibo:hasPart"><h3 id="inleiding" resource="#inleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Inleiding</span></h3><p>Dit hoofdstuk beschrijft de inhoud en structuur van het IMVG met behulp van UML-diagrammen en bijbehorende objectcatalogus.</p><p>De verschillende uitwisselingsprocessen BAG, WOZ, NHR en BRP worden alleen in dit document behandeld als ze afwijken van hetgeen in de betreffende eigen documentatie is opgenomen. Het IMVG is opgebouwd uit de volgende onderdelen:</p><ul>
+<li>IMVG-Vastgoedgebruik</li>
+<li>IMVG-BAG</li>
+<li>IMVG-WOZ</li>
+<li>IMVG-NHR</li>
+<li>IMVG-BRP</li>
+</ul><p>Het eerste deel van dit hoofdstuk geeft een algemene beschrijving aan de hand van het referentiemodel IMVG. Vervolgens gaat het hoofdstuk dieper in op de technische details van het informatiemodel. Het eerste gedeelte van dit hoofdstuk bevat de UML-diagrammen van het referentiemodel en het volledige Informatiemodel Vastgoedgebruik. Objecten, attributen, datatypen en relaties tussen objecten beschrijven eenduidig, schematisch en detail de inhoudelijke informatie van het informatiemodel. </p><p>Het tweede gedeelte van dit hoofdstuk bevat de objectcatalogus met in tabelvorm dezelfde informatie als in de UML-diagrammen, maar in dit geval met taal beschreven. Alle informatie-elementen zijn daarbij voorzien van definities en waar nodig van een toelichting. De objectcatalogus bevat de gezamenlijke informatie-inhoud van alle onderdelen van het informatiemodel. Met andere woorden: de objectcatalogus maakt dus geen apart onderscheidt tussen de specifieke objecten die toebehoren aan vastgoedgebruik en de objecten uit de bestaande basisregistraties.</p></section><section typeof="bibo:Chapter" resource="#algemene-uitgangspunten" property="bibo:hasPart"><h3 id="algemene-uitgangspunten" resource="#algemene-uitgangspunten"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Algemene uitgangspunten</span></h3><p>De volgende uitgangspunten lagen ten grondslag aan de modellering van het Informatiemodel Vastgoedgebruik. Hiermee vormden zij de kaders bij het opstellen van het UML-model.</p><ul>
+<li>hergebruik van informatie: maak gebruik van basisregistraties; bouw geen volledig nieuw model</li>
+<li>transparantie: maak zoveel mogelijk gebruik van openbare bronnen en openbare gegevens</li>
+<li>privacy: informatie over vastgoedgebruik moet voldoen aan de voorwaarden die de Wet bescherming persoonsgegevens (Wbp) daaraan stelt</li>
+<li>eenduidige definities over typen objecten (bijv. vastgoed) en attributen (oppervlakte) en datatypen (bijv. type metrage: gebruiksoppervlak); sluit hiervoor aan bij bestaande definities (per vastgoedsegment) in de markt</li>
+<li>uniforme methodiek voor het vaststellen van gebruik</li>
+<li>landsdekkend informatie: alle vastgoed binnen NL</li>
+<li>integrale informatie: alle typen vastgoed</li>
+<li>vaststellen gebruiksinformatie (administratief)</li>
+<li>focus op niet-in-gebruik = leegstand</li>
+<li>mogelijkheid om ontwikkelingen in de tijd te kunnen volgen</li>
+<li>mogelijkheid om model in toekomst o.b.v. gebruikswensen uit te breiden met view op en/of extra informatie: generiek of met specifieke extensies voor verschillende doelgroepen</li>
+</ul></section><section typeof="bibo:Chapter" resource="#uitwerking" property="bibo:hasPart"><h3 id="uitwerking" resource="#uitwerking"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>UML-diagrammen</span></h3><section typeof="bibo:Chapter" resource="#beschrijving-algemeen" property="bibo:hasPart"><h4 id="beschrijving-algemeen" resource="#beschrijving-algemeen"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3.1 </span>Beschrijving algemeen</span></h4><p>Het Informatiemodel Vastgoedgebruik is opgebouwd uit verschillende onderdelen. In de kern bestaat een model uit <em>objecten</em> met <em>attributen</em> en de onderlinge <em>relaties</em> tussen <em>objecten</em>. Maar een model kan nog meer onderdelen (stereotypen) bevatten. Al deze onderdelen zijn gedefinieerd en vastgelegd in het <a target="_blank" href="https://docs.geostandaarden.nl/mim/def-st-mim10-20170614" title="Ga naar: documentatie Nationaal Metamodel Informatiemodellering (MIM)">MIM</a>. In onderstaande tabel zijn alle stereotypen opgenomen met hun definitie. Een uitgebreidere toelichting is opgenomen de documentatie die via bovenstaande link beschikbaar is.</p><figure id="fig-gebruikte-stereotypen-vanuit-het-mim">
+<br><br><br><br><br><table style="width: 100%" valign="top" border="1">
+        <colgroup><col width="20%">
+        <col width="20%">
+        <col width="60%">
+        </colgroup><tbody><tr>
+            <th>Stereotype</th>
+            <th>Modelelement</th>
+            <th>Beschrijving</th>
+        </tr>
+        <tr>
+            <td>Objecttype</td>
+            <td>UML-Class</td>
+            <td>De typering van een groep objecten (in de werkelijkheid) die binnen een domein relevant zijn en als gelijksoortig worden beschouwd.</td>
+        </tr>
+        <tr>
+            <td>Attribuutsoort</td>
+            <td>UML-Property</td>
+            <td>De typering van gelijksoortige gegevens die voor een objecttype van toepassing is.</td>
+        </tr>
+        <tr>
+            <td>Gegevensgroep</td>
+            <td>UML-Property</td>
+            <td>Een typering van een groep van gelijksoortige gegevens die voor een objecttype van toepassing is.</td>
+        </tr>
+        <tr>
+            <td>Gegevensgroeptype</td>
+            <td>UML-Class</td>
+            <td>Een groep van met elkaar samenhangende attribuutsoorten. Een gegevensgroeptype is altijd een type van een gegevensgroep.</td>
+        </tr>
+        <tr>
+            <td>Generalisatie</td>
+            <td>UML-generalization</td>
+            <td>De typering van het hiërarchische verband tussen een meer generiek object van een objecttype en een meer specifiek object van een ander objecttype waarbij het laatstgenoemde object eigenschappen van het eerstgenoemde object overerft.</td>
+        </tr>
+        <tr>
+            <td>Relatiesoort</td>
+            <td>UML-association</td>
+            <td>De typering van het structurele verband tussen een object van een objecttype en een (ander) object van een ander (of hetzelfde) objecttype.</td>
+        </tr>
+        <tr>
+            <td>Relatieklasse</td>
+            <td>UML-associationClass</td>
+            <td>Een relatiesoort met eigenschappen.</td>
+        </tr>
+        <tr>
+            <td>Externe koppeling</td>
+            <td>UML-association</td>
+            <td>Een associatie waarmee vanuit het perspectief van het eigen informatiemodel een objecttype uit het ‘eigen’ informatiemodel gekoppeld wordt aan een objecttype van een extern informatiemodel. De relatie zelf hoort bij het ‘eigen’ objecttype.</td>
+        </tr>
+        <tr>
+            <td>Relatierol</td>
+            <td>UML-Property</td>
+            <td>De benaming van de manier waarop een object deelneemt aan een relatie met een ander object.</td>
+        </tr>
+        <tr>
+            <td>Referentielijst</td>
+            <td>UML-Datatype</td>
+            <td>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd. De domeinwaarden in de lijst kunnen in de loop van de tijd aangepast, uitgebreid, of verwijderd worden, zonder dat het informatiemodel aangepast wordt (in tegenstelling tot bij een enumeratie).</td>
+        </tr>        <tr>
+            <td>Referentie element</td>
+            <td>UML-Property</td>
+            <td>Een eigenschap van een object in een referentielijst in de vorm van een gegeven.</td>
+        </tr>
+        <tr>
+            <td>Enumeratie</td>
+            <td>UML-enumeration</td>
+            <td>Een datatype waarvan de mogelijke waarden limitatief zijn opgesomd in een statische lijst.</td>
+        </tr>
+        <tr>
+            <td>Enumeratiewaarde</td>
+            <td>UML-enumerationLiteral</td>
+            <td>Een gedefinieerde waarde, in de vorm van een eenmalig vastgesteld constant gegeven.</td>
+        </tr>
+        <tr>
+            <td>Stereotype «Codelist»</td>
+            <td>UML-datatype</td>
+            <td>De definitie van een codelist is gelijk aan de definitie van een referentielijst.</td>
+        </tr>
+        <tr>
+            <td>Primitief datatype</td>
+            <td>UML-PrimitiveType</td>
+            <td>Een in het eigen model gedefinieerd primitieve datatype. Deze worden wel door de modelleur gecreëerd, met een eigen naam en een eigen definitie (en eigen metagegevens).</td>
+        </tr>
+        <tr>
+            <td>Gestructureerd datatype</td>
+            <td>UML-property</td>
+            <td>Specifiek benoemd gestructureerd datatype dat de structuur van een gegeven beschrijft, samengesteld uit minimaal twee elementen.</td>
+        </tr>
+        <tr>
+            <td>Data element</td>
+            <td>UML-property</td>
+            <td>Een onderdeel/element van een Gestructureerd datatype die als type een datatype heeft.</td>
+        </tr>
+        <tr>
+            <td>Union</td>
+            <td>UML-datatype</td>
+            <td>Gestructureerd datatype, waarmee wordt aangegeven dat er meer dan één mogelijkheid is voor het datatype van een attribuut. Het attribuut zelf krijgt als datatype de union. De union biedt een keuze uit verschillende datatypes, elk afzonderlijk beschreven in een union element.</td>
+        </tr>        <tr>
+            <td>Union element</td>
+            <td>UML-property</td>
+            <td>Een type dat gebruikt kan worden voor het attribuut zoals beschreven in de definitie van Union. Het union element is een onderdeel van een Union, uitgedrukt in een eigenschap (attribute) van een union, die als keuze binnen de Union is gerepresenteerd.</td>
+        </tr>
+        <tr>
+            <td>Extern</td>
+            <td>UML-package</td>
+            <td>Een groepering van constructies die een externe instantie beheert en beschikbaar stelt aan een informatiemodel en die in het informatiemodel ongewijzigd gebruikt worden.</td>
+        </tr>        <tr>
+            <td>View</td>
+            <td>UML-package</td>
+            <td>Een groepering van objecttypen die gespecificeerd zijn in een extern informatiemodel en vanuit het perspectief van het eigen informatiemodel inzicht geeft welke gegevens van deze objecttypen relevant zijn binnen het eigen informatiemodel.</td>
+        </tr>
+        <tr>
+            <td>Id</td>
+            <td>UML-property</td>
+            <td>Aanduiding dat de relatiesoort waarop de «id» is gedefinieerd een onderdeel is van de unieke aanduiding van een objecttype.</td>
+        </tr>        <tr>
+            <td>Constraint</td>
+            <td>UML-Constraint</td>
+            <td>Een constraint is een conditie of een beperking, die over een of meerdere modelelementen uit het informatiemodel geldt.</td>
+        </tr>    </tbody></table>
+<figcaption>Figuur <span class="figno">5</span> <span class="fig-title">- Gebruikte stereotypen vanuit het MIM</span></figcaption>
+</figure><p>Het IMVG maakt gebruik van het <a target="_blank" href="https://www.digitaleoverheid.nl/voorzieningen/gegevens/inhoud-basisregistraties/stelselplaat/" title="Ga naar: Stelselplaat">stelsel van basisregistraties</a> (zie: figuur 6). Binnen het IMVG vastgoedgebruik gemodelleerd als de koppeling van de modellen van de basisregistraties WOZ, NHR, BRP aan het model van de BAG. Vanuit deze koppeling ontstaat informatie over het administratieve gebruik. Bovendien bevatten de registraties relevante aanvullende informtie over het object. De volgende paragrafen geven een uitwerking van de verschillende elementen van het IMVG. Eerst volgt een uiteenzetting van de globale structuur aan de hand van het referentiemodel IMVG. Daarop volgt een toelichting op <em>vastgoedgebruik</em> aan de hand van het UML-model van het IMVG.</p><figure id="fig-stelsel-van-basisregistraties-stelselplaat-klik-voor-vergroting">
+<a target="_blank" href="https://upload.wikimedia.org/wikipedia/commons/8/8f/Stelsel_van_Basisregistraties.png">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Stelsel_van_Basisregistraties.png" alt="Stelselplaat" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">6</span> <span class="fig-title">- Stelsel van Basisregistraties: stelselplaat (klik voor vergroting)</span></figcaption>
+</figure><p><strong>Referentiemodel</strong></p><p>Het Informatiemodel Vastgoedgebruik (IMVG) koppelt verschillende basisregistraties aan elkaar (zie: figuur 7). Het doel en de structuur van deze bronnen bepalen in belangrijke mate de afbakening van het begrip <em>vastgoedgebruik</em>. Met andere woorden: het model geeft informatie over de <em>administratieve gebruiksstatus</em> van een verblijfsobject (zie: <a href="#informeleBeschrijving" title="Ga naar: Informele beschrijving">paragraaf 3.2</a>). Per bron leggen we hieronder kort uit wat de rol is in het informatiemodel. Tot slot volgt een beknopte toelichting op de objecten <em>IMVG_Vastgoedobject</em> en <em>IMVG_Vastgoedgebruik</em>.</p><figure id="fig-referentiemodel-imvg-klik-voor-vergroting">
+<a target="_blank" href="images/IMVG_referentiemodel.png">
+        <img src="images/IMVG_referentiemodel.png" alt="Referentiemodel IMVG" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">7</span> <span class="fig-title">- Referentiemodel IMVG (klik voor vergroting)</span></figcaption>
+</figure><p><strong>BAG</strong></p><p>Het Informatiemodel Vastgoedgebruik stelt de BAG centraal. Deze basisregistratie bevat alle adressen en geometrieën van gebouwen in Nederland en voorziet ze van een unieke identificatiecode. De andere drie basisregsistraties verwijzen voor locatiegegevens naar de BAG op basis van die identificatiecode. Hierdoor is het mogelijk om informatie uit de andere bronnen rechtstreeks aan een BAG-locatie te koppelen. Dat geeft inzicht in de gebeurtenissen op een locatie; in dit geval het gebruik. Bovendien voorziet de BAG gebouwen van aanvullende informatie, zoals: bouwjaar (pand), gebruiksdoel en oppervlakte (verblijfsobject).</p><p><strong>BRP</strong></p><p>Woningen vormen het belangrijkste deel van de gebouwenvoorraad, namelijk 80%. De <a target="blank" href="https://www.rijksoverheid.nl/onderwerpen/privacy-en-persoonsgegevens/basisregistratie-personen-brp" title="Ga naar: privacy en persoonsgegevens op rijksoverheid.nl">BRP</a> legt van alle inwoners van Nederland het woonadres vast. Hiermee is het mogelijk om te zien of een woning in gebruik is. Heeft een woning tenminste één bewoner, dan bevat het BRP op die locatie een inschrijving. Het BRP verwijst voor het adres naar de BAG. Met andere woorden: koppelt de BAG aan de BRP, dan heeft het BAG-object een gebruiker.</p><p><strong>NHR</strong></p><p>De overige 20% van de gebouwenvoorraad bestaat uit niet-woningen (kantoren, winkels, scholen, etc.). Voor de aanwezigheid van activiteiten op deze locaties is het Handelsregister raadpleegbaar. Het <a target="_blank" href="https://www.kvk.nl/over-de-kvk/over-het-handelsregister/" title="Ga naar: kvk.nl">Handelsregister</a> registreert alle bedrijven, rechtspersonen en andere organisaties die deelnemen aan het economisch verkeer in Nederland. Op een vergelijkbare manier als met het BRP is voor de niet-woningen na te gaan of er op een locatie gebruik is. Vindt er op een locatie tenminste één economische activiteit plaats, dan bevat het NHR op die locatie tenminste één inschrijving. Voor de adresgegevens maakt het register een verwijzing naar de BAG. Daarom is de aanname: koppelt de BAG aan het NHR, dan heeft het BAG-object een gebruiker.</p><p><strong>WOZ</strong></p><p>Alle gegevens die nodig zijn om de WOZ-waarde te relateren aan zowel een onroerende zaak als aan een belanghebende, zijn ondergebracht in de basisregistratie <a target="_blank" href="https://www.digitaleoverheid.nl/voorzieningen/gegevens/inhoud-basisregistraties/woz/" title="Ga naar: inhoud basisregistratie WOZ">WOZ</a>. Voor de adressering van een onroerende zaak maakt de WOZ een koppeling met de BAG. Grofweg kent de WOZ twee typen belanghebbenden: een <em>eigenaar</em> of een <em>gebruiker</em>. Een WOZ-object heeft tenminste één eigenaar en geen of meerdere gebruikers. Soms is de eigenaar zelf gebruiker. Maar, als dat niet het geval is, kan het voorkomen dat een WOZ-object wel een eigenaar, maar geen gebruiker heeft.</p><p>De basisregistratie WOZ beslaat de totale vastgoedvoorraad (woningen en niet-woningen). Daardoor geeft het extra inzicht in het gebruik van zowel woningen als niet-woningen. Het afleiden van gebruik uit de WOZ, verschilt dus van de manier waarop dat met de BRP en het NHR gebeurt, want daar is de koppeling <em>an sich</em> de indicatie voor gebruik. <!-- WEGLATEN: dit heeft geen betrekking op de het informatieproduct, maar op de voorziening (LIV)-->Overigens komt het voor dat de WOZ geen uitsluitsel geeft óf niet koppelt aan de BAG. Hier houdt de huidige versie van het IMVG nog geen rekening mee.</p><p><strong>Vastgoedobject en Vastgoedgebruik</strong></p><p>De administratieve gebruiksstatus van een vastgoedobject registreert het IMVG vast met de objecten <em>IMVG_Vastgoedobject</em> en <em>IMVG_Vastgoedgebruik</em>. Niet alle panden in de BAG hebben een relatie met één of meerdere verblijfsobjecten. Het IMVG richt zich op <em>vastgoedobjecten</em>. Dat zijn panden met één of meerdere verblijfsobjecten. Een koppeling van bovenstaande basisregistraties aan het vastgoedobject resulteert in de verschillende voorkomens van <em>vastgoedgebruik</em> van verblijfsobjecten binnen het vastgoedobject (zie: figuur 8). Indien geen van de drie bronnen een indicatie van gebruik geeft, geldt het verblijfsobject als administratief <em>leeg</em> (zie: figuur 8, combinatie 8). In sommige gevallen is de belanghebbende in de WOZ onbekend (zie: figuur 8, combinatie 9 t/m 12). Als dit voorkomt en beide andere registraties geven geen gebruiksindicatie, dan is de gebruiksstatus eveneens onbekend. In de overige gevallen gaat het informatiemodel uit van <em>gebruik</em> (zie: figuur 8, combinatie 1-7).</p><figure id="tabelVastgoedgebruik">
+<a target="_blank" href="images/tabel_leegstand_combinaties.jpg">
+        <img src="images/tabel_leegstand_combinaties.jpg" alt="Combinaties gebruik basisregistraties" width="100%" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">8</span> <span class="fig-title">- Mogelijke combinaties gebruiksstatus IMVG (klik voor vergroting)</span></figcaption>
+</figure></section><section typeof="bibo:Chapter" resource="#overzicht" property="bibo:hasPart"><h4 id="overzicht" resource="#overzicht"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3.2 </span>Overzicht</span></h4><p>Het onderstaand UML-diagram bevat het complete Informatiemodel Vastgoedgebruik, inclusief de relatie met de basisregistraties BAG, WOZ, NHR en BRP. De tabel licht het kleurgebruik in het UML-diagram toe. De volgende paragrafen gaan afzonderlijk in op de verschillende onderdelen vna het diagram. Het IMVG neemt van elke basisregistratie slechts een deel van de inhoud over en voegt daar de specifieke informatie aan toe die nodig is voor de realisatie van de in de scope genoemde processen. Dit heet een <em>view</em>; het IMVG heeft als het ware een eigen 'kijk' op de informatie in de basisregistraties, namelijk vanuit het perspectief van vastgoedgebruik.</p><figure id="fig-kleurgebruik-in-uml-diagrammen">
+<br><table style="width: 100%" cellpadding="10" border="1">
+    <colgroup><col width="15%">
+    <col width="85%">
+        </colgroup><tbody><tr>
+            <th>Kleur</th>
+            <th>Uitleg</th>
+        </tr>
+        <tr>
+            <td><font color="#ace600"><b>Groen</b></font></td>
+            <td>Landelijke Voorziening Waarde Onroerende Zaken</td>
+        </tr>        <tr>
+            <td><font color="#00bfff"><b>Blauw</b></font></td>
+            <td>Informatiemodel Vastgoedgebruik</td>
+        </tr>
+        <tr>
+            <td><font color="#ffbf00"><b>Oranje</b></font></td>
+            <td>Landelijke Voorziening Basisregistratie Adressen en Gebouwen</td>
+        </tr>
+        <tr>
+            <td><font color="#8000ff"><b>Paars</b></font></td>
+            <td>Basisregistratie Nationaal Handelsregister</td>
+        </tr>
+        <tr>
+            <td><font color="#ff0080"><b>Roze</b></font></td>
+            <td>Basisregistratie Personen/Gemeentelijke Basisadministratie</td>
+        </tr>
+    </tbody></table>
+<figcaption>Figuur <span class="figno">9</span> <span class="fig-title">- Kleurgebruik in UML diagrammen</span></figcaption>
+</figure><figure id="fig-informatiemodel-imvg-klik-voor-vergroting">
+<a target="_blank" href="images/IMVG_informatiemodel.png">
+        <img src="images/IMVG_informatiemodel.png" alt="Informatatiemodel IMVG" class="img-responsive">
+    </a>
+<figcaption>Figuur <span class="figno">10</span> <span class="fig-title">- Informatiemodel IMVG (klik voor vergroting)</span></figcaption>
+</figure><p><strong>Objecten, attributen en relaties</strong></p><p>Het UML-diagram toont de informatie die nodig is voor de indicatie van administratief vastgoedgebruik. Ook bevat het model alle gegevens uit de basisregistraties BAG, WOZ, NHR en BRP die vastgoedobject van relevante extra kenmerken voorziet (bijv. aantal vierkante meters in gebruik of leegstaand). Daarom zijn in het model ook de relaties met (delen van) deze basisregistraties opgenomen in het model. Aan de linkerkant bevindt zich de IMVG view op het informatiemodel van de LV WOZ (groen). Het deelmodel rechtsboven geeft in de IMVG view op de LV BAG weer (oranje). Rechtsonder toont de IMVG view op de NHR (paars). Het deelmodel middenboven geeft gestalte aan de IMVG view op het BRP/GBA.</p><p>De kern van het model, vastgoedgebruik, bevindt zich in het midden van het diagram (blauw). Vastgoedgebruik wordt gegenereerd op het koppelvlak van de vier basisregistraties. Het IMVG-objecttype <em>vastgoedgebruik</em> koppelt de verschillende basisregistraties aan elkaar op basis van het objecttype <em>verblijfsobject</em> uit de BAG. Dat object fungeert in alle basisregistraties als unieke koppelsleutel. Voor de leesbaarheid zijn de datatypen, gegevensgroepen en waardelijsten van de basisregistraties niet het overzicht opgenomen.</p><p>Het objecttype <em>vastgoedobject</em> is een specialisatie van het objecttype <em>pand</em> uit de BAG. Het IMVG modelleert specifiek de administratieve gebruiksstatus van <em>panden met één of meer verblijfsobject(en)</em>. Het objecttype <em>pand</em> uit de BAG bevat echter ook standplaatsen, ligplaatsen en ongeadresseerde objecten (bijgebouwen). Maar, die typen panden vallen buiten de scope van het informatiemodel. Daarom is het specifieke objecttype <em>vastgoedobject</em> gecreëerd. Via de relaties met <em>verblijfsobject</em> en <em>pand</em> erft het objecttype <em>vastgoedobject</em> de geometrieën en andere attributen uit de BAG. Hierdoor is het mogelijk administratief gebruik (en dus ook leegstand) op gebouwniveau weer te geven op een kaart.</p><p>Naast het vastgoedobject is ook het objecttype <em>vastgoedgebruik</em> opgenomen. Dit objecttype heeft als belangrijkste attribuut <em>gebruiksstatusVerblijfsobject</em>. Dit is het centrale gegeven van het informatiemodel. Via dit objecttype worden de registraties aan elkaar gekoppeld. Het heeft daarom een relatie met de verblijfsobjectidentificatie (of adresseerbaarobjectidentificatie indien niet apart gespecificeerd) uit elke registratie. Voor de koppeling met het NHR en het BRP geldt dat wanneer de koppeling met de BAG voor één van deze registraties slaagt (de registratie bevat een relatie met een verblijfsobject in de BAG), is er sprake van gebruik.</p><p>De koppeling met de WOZ ziet anders uit. De WOZ heeft per definitie een link met een verblijfsobject in de BAG. Gemeenten wijzen aan wie de <em>belanghebbende eigenaar</em>, de <em>belanghebbende gebruiker</em> of de <em>medebelanghebbende</em> van WOZ-object is. Dit wordt vastgelegd in het attribuut aanduidigingEigenaarGebruiker. Voor vastgoedgebruik is met name relevant of een verblijfobject daadwerkelijk een gebruiker heeft. Koppelt één van de andere registraties niet, maar is er wel een gebruiker in de WOZ bekend, dan is sprake van administratief gebruik. Slechts in het geval waarin via het NHR en BRP geen link kan worden gelegd met de BAG én in de WOZ geen gebruiker wordt gevonden is er sprake van administratieve leegstand. Als er in het NHR en de BRP niks staat geregistreerd op een verblijfsobject en in de WOZ de belanghebbende onbekend is, krijgt ook de gebruiksstatusVerblijfsobject de waarde 'onbekend'. Deze condities zijn weergegeven met het blauwe element <em>contraint note</em> «Pre-condition».</p><p>De mogelijke waarden (<em>objectInGebruik</em> of <em>objectStaatLeeg</em>) zijn weergegeven in de waardelijst <em>gebruiksStatus</em>. Naast de relaties met de vier basisregistraties heeft het objecttype <em>vastgoedgebruik</em> ook een relatie met het objecttype <em>vastgoedobject</em>. In principe zou via het verblijfsobject de relatie met het pand gelegd kunnen worden, maar omdat het IMVG specifiek kijkt naar een deelpopulatie (vastgoedobjecten), is een directe relatie gelegd tussen het objecttype <em>vastgoedgebruik</em> en <em>vastgoedobject</em>. Het belang van de keuze komt voort uit de <a href="#dataspecificatie" title="Ga naar: Dataspecificatie">toepassing</a> van de gegevens. </p><p><strong>Waardelijsten</strong></p><p>Waardelijsten die als datatype «codeList» zijn opgenomen in de IMVG-view op de basisregistraties worden niet in het UML beheerd, maar in externe waardelijsten. Deze waardelijsten behoren toe aan andere bronhouders en worden derhalve niet binnen het IMVG en vallen daarmee buiten de scope van dit model. Meer in het algemeen geldt dat waardelijsten van het type «enumeration» binnen het model zijn opgenomen en dat waardelijsten van het type «codeList» extern worden opgenomen, behalve als ze wel onderdeel uitmaken van het inhoudelijke beheer van het IMVG. Dit gebeurt om twee redenen: [1] omdat de externe modellen deze lijsten zelf niet hebben opgenomen en [2] om het model leesbaar te houden.</p><p><strong>Basisattributen voor identificatie</strong></p><p>Alle concrete objecttypen en daarmee objecten in een dataset hebben een attribuut voor identificatie. Met deze identificatie kunnen ze uniek geïdentificeerd worden. Het MIM hanteert hiervoor het attribuut Id. Niet alle informatiemodellen waren KKG-compliant in UML beschikbaar. Omdat ervoor gekozen is om bij de modellering van het IMVG de oorspronkelijke modelleringsconcepten in tact te laten, is de identificatie <em>an sich</em> wel gewaarbord, alleen gebeurt dit binnen het model niet op een uniforme manier.</p><p>Verder beschikken de objecten in de dataset over verschillende attributen met temporele informatie. Omdat gebruik is gemaakt van verschillende basisregistraties die semantisch (nog) niet op elkaar zijn afgestemd kan de benaming van dit attribuut onderling verschillen. Bovendien is het attribuut binnen sommige registraties generiek (bijv. BAG) en binnen andere registraties specifiek (bijv. NHR). Kortom, de benodigde temporele informatie is binnen de modellen aanwezig, maar niet eenduidig.</p></section></section><section typeof="bibo:Chapter" resource="#objectcatalogus" property="bibo:hasPart"><h3 id="objectcatalogus" resource="#objectcatalogus"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4 </span>Objectcatalogus</span></h3><section typeof="bibo:Chapter" resource="#objecttypen" property="bibo:hasPart"><h4 id="objecttypen" resource="#objecttypen"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.1 </span>Objecttypen</span></h4><section typeof="bibo:Chapter" resource="#objecttype-1-vastgoedobject" property="bibo:hasPart"><h5 id="objecttype-1-vastgoedobject" resource="#objecttype-1-vastgoedobject"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.1.1 </span>Objecttype 1 - Vastgoedobject</span></h5><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="80%">
+    </colgroup><tbody><tr>
+        <td><b>Naam</b></td>
+        <td>IMVG_Vastgoedobject</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst</b></td>
+        <td>IMVG</td>
+    </tr>
+    <tr>
+        <td><b>Definitie</b></td>
+        <td>Een pand met één of meerdere verblijfsobjecten</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst definitie</b></td>
+        <td>IMVG</td>
+    </tr>
+</tbody></table><p><em>Overzicht Attributen</em></p><table style="width: 100%" valign="top" border="1">
+    <colgroup><col width="20%">
+    <col width="60%">
+    <col width="15%">
+    <col width="5%">
+    </colgroup><tbody><tr>
+        <th>Attribuutnaam</th>
+        <th>Definitie</th>
+        <th>Formaat</th>
+        <th>Kardinaliteit</th>
+    </tr>
+    <tr>
+        <td>identificatie</td>
+        <td>Identificatiegegevens voor de universeel unieke identificatie van een object</td>
+        <td>NEN3610ID</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>objectBeginTijd</td>
+        <td>Tijdstip waarop het object in de registratie is ontstaan</td>
+        <td>DateTime</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>objectEindTijd</td>
+        <td>Tijdstip waarop het object in de registratie niet meer geldig is</td>
+        <td>DateTime</td>
+        <td>0</td>
+</tr></tbody></table><p><em>Overzicht Relaties</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="60%">
+    <col width="15%">
+    <col width="5%">
+    </colgroup><tbody><tr>
+        <th>Rolnaam</th>
+        <th>Definitie</th>
+        <th>Doelklasse</th>
+        <th>Kardinaliteit</th>
+    </tr>
+    <tr>
+        <td>is specialisatie van</td>
+        <td>n.v.t.</td>
+        <td>Pand</td>
+        <td>n.v.t.</td>
+    </tr>
+    <tr>
+        <td>verblijfsobject</td>
+        <td>n.v.t.</td>
+        <td>Verblijfsobject</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>vastgoedgebruik</td>
+        <td>n.v.t.</td>
+        <td>Vastgoedgebruik</td>
+        <td>1</td>
+    </tr>
+</tbody></table></section></section><section typeof="bibo:Chapter" resource="#gegevensgroeptypen" property="bibo:hasPart"><h4 id="gegevensgroeptypen" resource="#gegevensgroeptypen"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.2 </span>Gegevensgroeptypen</span></h4><section typeof="bibo:Chapter" resource="#gegevensgroeptype-1-vastgoedgebruik" property="bibo:hasPart"><h5 id="gegevensgroeptype-1-vastgoedgebruik" resource="#gegevensgroeptype-1-vastgoedgebruik"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.2.1 </span>Gegevensgroeptype 1 - Vastgoedgebruik</span></h5><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="80%">
+    </colgroup><tbody><tr>
+        <td><b>Naam</b></td>
+        <td>IMVG_Vastgoedgebruik</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst</b></td>
+        <td>IMVG</td>
+    </tr>
+    <tr>
+        <td><b>Definitie</b></td>
+        <td>De gebruiksstatus van een vastgoedobject</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst definitie</b></td>
+        <td>Rapport Landelijke Leegstand 2017</td>
+    </tr>
+</tbody></table><p><em>Overzicht Attributen</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="60%">
+    <col width="15%">
+    <col width="5%">
+    </colgroup><tbody><tr>
+        <th>Attribuutnaam</th>
+        <th>Definitie</th>
+        <th>Formaat</th>
+        <th>Kardinaliteit</th>
+    </tr>
+    <tr>
+        <td>gebruiksstatusVerblijfsobject</td>
+        <td>De aanduiding van het gebruik van een vastgoedobject</td>
+        <td>IMVG_Gebruiksstatus</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>objectBeginTijd</td>
+        <td>Tijdstip waarop het object in de registratie is ontstaan</td>
+        <td>DateTime</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>objectEindTijd</td>
+        <td>Tijdstip waarop het object in de registratie niet meer geldig is</td>
+        <td>DateTime</td>
+        <td>0</td>
+    </tr>
+</tbody></table><p><em>Overzicht Relaties</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="60%">
+    <col width="15%">
+    <col width="5%">
+    </colgroup><tbody><tr>
+        <th>Rolnaam</th>
+        <th>Definitie</th>
+        <th>Doelklasse</th>
+        <th>Kardinaliteit</th>
+    </tr>
+    <tr>
+        <td>gebruiksstatusVerblijfsobject</td>
+        <td>n.v.t.</td>
+        <td>IMVG_Vastgoedobject</td>
+        <td>1</td>
+    </tr>
+</tbody></table></section></section><section typeof="bibo:Chapter" resource="#gestructureerd-datatype" property="bibo:hasPart"><h4 id="gestructureerd-datatype" resource="#gestructureerd-datatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.3 </span>Gestructureerd datatype</span></h4><p><em>Gestructureerd datatype IMVG_gebruiksstatus</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="80%">
+    </colgroup><tbody><tr>
+        <td><b>Naam</b></td>
+        <td>NEN3610ID</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst</b></td>
+        <td>NEN 3610:2011</td>
+    </tr>
+    <tr>
+        <td><b>Definitie</b></td>
+        <td>Identificatiegegevens voor de universeel unieke identificatie van een object</td>
+    </tr>
+    <tr>
+        <td><b>Herkomst definitie</b></td>
+        <td>NEN 3610:2011</td>
+    </tr>
+</tbody></table><p><em>Overzicht Attributen</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="60%">
+    <col width="15%">
+    <col width="5%">
+    </colgroup><tbody><tr>
+        <th>Attribuutnaam</th>
+        <th>Definitie</th>
+        <th>Formaat</th>
+        <th>Kardinaliteit</th>
+    </tr>
+    <tr>
+        <td>namespace</td>
+        <td>Unieke verwijzing naar een registratie van objecten</td>
+        <td>CharacterString</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>lokaalID</td>
+        <td>Unieke identificatiecode binnen een registratie</td>
+        <td>CharacterString</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>versie</td>
+        <td>Versie-aanduiding van een object</td>
+        <td>CharacterString</td>
+        <td>0</td>
+    </tr>
+</tbody></table></section><section typeof="bibo:Chapter" resource="#enumeraties" property="bibo:hasPart"><h4 id="enumeraties" resource="#enumeraties"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4.4 </span>Enumeraties</span></h4><p><em>Enumeratie IMVG_gebruiksstatus</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="80%">
+    </colgroup><tbody><tr>
+        <td>IMVG_gebruiksstatus</td>
+        <td></td>
+    </tr>
+</tbody></table><p><em>Enumeratiedetails IMVG_gebruiksstatus</em></p><table style="width: 100%" border="1">
+    <colgroup><col width="20%">
+    <col width="30%">
+    <col width="50%">
+    </colgroup><tbody><tr>
+        <th colspan="3"><b>Definitie (v/d lijst)</b></th>
+    </tr>
+    <tr>
+        <th>Code</th>
+        <th>Naam</th>
+        <th>Definitie (v/d waarde)</th>
+    </tr>
+    <tr>
+        <td>n.v.t.</td>
+        <td>objectstatusInGebruik</td>
+        <td><b>voorstel</b>: objectstatus administratief in gebruik</td>
+    </tr>
+    <tr>
+        <td>n.v.t.</td>
+        <td>objectstatusLeeg</td>
+        <td><b>voorstel</b>: objectstatus administratief <b>niet</b> in gebruik</td>
+    </tr>
+    <tr>
+        <td>n.v.t.</td>
+        <td>objectstatusOnbekend</td>
+        <td><b>voorstel</b>: objectstatus administratief onbekend</td>
+    </tr>
+<!-- </table> --></tbody></table></section></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#referentiesystemen" property="bibo:hasPart"><!--OddPage--><h2 id="referentiesystemen" resource="#referentiesystemen"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Referentiesystemen</span></h2><blockquote>
+<p><strong>NOTE</strong>: Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de referentiesystemen. Dit onderwerp valt buiten de scope van het concept-informatiemodel. Door het onderwerp al op te nemen in de hoofdstukstructuur, biedt de dataspecificatie een raamwerk voor verdere uitwerking. </p>
+</blockquote><section typeof="bibo:Chapter" resource="#ruimtelijkreferentiesysteem" property="bibo:hasPart"><h3 id="ruimtelijkreferentiesysteem" resource="#ruimtelijkreferentiesysteem"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Ruimtelijkreferentiesysteem</span></h3></section><section typeof="bibo:Chapter" resource="#tijdreferentiesysteem" property="bibo:hasPart"><h3 id="tijdreferentiesysteem" resource="#tijdreferentiesysteem"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>Tijdreferentiesysteem</span></h3></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#dataset-niveau-metadata" property="bibo:hasPart"><!--OddPage--><h2 id="dataset-niveau-metadata" resource="#dataset-niveau-metadata"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Dataset niveau metadata</span></h2><blockquote>
+<p><strong>NOTE</strong>: Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de metadata. Dit onderwerp valt buiten de scope van het concept-informatiemodel. Door het onderwerp al op te nemen in de hoofdstukstructuur, biedt de dataspecificatie een raamwerk voor verdere uitwerking. </p>
+</blockquote><section typeof="bibo:Chapter" resource="#metadata" property="bibo:hasPart"><h3 id="metadata" resource="#metadata"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.1 </span>Metadata</span></h3></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#levering" property="bibo:hasPart"><!--OddPage--><h2 id="levering" resource="#levering"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>Levering</span></h2><blockquote>
+<p><strong>NOTE</strong>: Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de datalevering. Dit onderwerp valt buiten de scope van het concept-informatiemodel. Door het onderwerp al op te nemen in de hoofdstukstructuur, biedt de dataspecificatie een raamwerk voor verdere uitwerking. </p>
+</blockquote><section typeof="bibo:Chapter" resource="#leveringsmedium" property="bibo:hasPart"><h3 id="leveringsmedium" resource="#leveringsmedium"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.1 </span>Leveringsmedium</span></h3></section><section typeof="bibo:Chapter" resource="#formaten-encodings-" property="bibo:hasPart"><h3 id="formaten-encodings-" resource="#formaten-encodings-"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2 </span>Formaten (encodings)</span></h3></section></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#inwinningencodings" property="bibo:hasPart"><!--OddPage--><h2 id="inwinningencodings" resource="#inwinningencodings"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>Inwinningencodings</span></h2><blockquote>
+<p><strong>NOTE</strong>: Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de inwinningscodings. Dit onderwerp valt buiten de scope van het concept-informatiemodel. Door het onderwerp al op te nemen in de hoofdstukstructuur, biedt de dataspecificatie een raamwerk voor verdere uitwerking.</p>
+</blockquote></section>
+      <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#visualisatie" property="bibo:hasPart"><!--OddPage--><h2 id="visualisatie" resource="#visualisatie"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>Visualisatie</span></h2><blockquote>
+<p><strong>NOTE</strong>: Voor de implementatie van het informatiemodel is ook een beschrijving nodig van de visualisatie. Dit onderwerp valt buiten de scope van het concept-informatiemodel. Door het onderwerp al op te nemen in de hoofdstukstructuur, biedt de dataspecificatie een raamwerk voor verdere uitwerking.</p>
+</blockquote><section typeof="bibo:Chapter" resource="#laag-soorten" property="bibo:hasPart"><h3 id="laag-soorten" resource="#laag-soorten"><span property="xhv:role" resource="xhv:heading"><span class="secno">10.1 </span>Laag soorten</span></h3></section><section typeof="bibo:Chapter" resource="#default-stijlen" property="bibo:hasPart"><h3 id="default-stijlen" resource="#default-stijlen"><span property="xhv:role" resource="xhv:heading"><span class="secno">10.2 </span>Default stijlen</span></h3></section><section typeof="bibo:Chapter" resource="#overige-stijlen" property="bibo:hasPart"><h3 id="overige-stijlen" resource="#overige-stijlen"><span property="xhv:role" resource="xhv:heading"><span class="secno">10.3 </span>Overige stijlen</span></h3></section><section typeof="bibo:Chapter" resource="#laag-organisatie" property="bibo:hasPart"><h3 id="laag-organisatie" resource="#laag-organisatie"><span property="xhv:role" resource="xhv:heading"><span class="secno">10.4 </span>Laag organisatie</span></h3></section></section>
+  
+
+<p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

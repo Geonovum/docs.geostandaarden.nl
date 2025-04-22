@@ -1,0 +1,797 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Beheer basis geo-standaarden</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "BD",
+  "format": "markdown",
+  "publishDate": "2021-08-18",
+  "github": "https://github.com/Geonovum/Geo-standaarden-beheerplan",
+  "issueBase": "https://github.com/Geonovum/Geo-standaarden-beheerplan/issues",
+  "edDraftURI": "https://geonovum.github.io/Geo-standaarden-beheerplan/",
+  "editors": [
+    {
+      "name": "Friso Penninga",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Dick Krijtenburg",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Dick Krijtenburg",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "gsb",
+  "pubDomain": "gbd",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    },
+    "PUB-4": {
+      "title": "Titel van Publicatie-4",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-4",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "publishISODate": "2021-08-18T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 18 augustus 2021"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/gbd/def-bd-gsb-20210818/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Beheer basis geo-standaarden",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-08-18",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/Geo-standaarden-beheerplan/issues",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Friso Penninga",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Dick Krijtenburg",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Dick Krijtenburg",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Beheer basis geo-standaarden</h1>
+  
+  <h2>Geonovum Beheerdocumentatie<br>
+  Vastgestelde versie <time class="dt-published" datetime="2021-08-18">18 augustus 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/gbd/def-bd-gsb-20210818/">https://docs.geostandaarden.nl/gbd/def-bd-gsb-20210818/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/gbd/gsb/">https://docs.geostandaarden.nl/gbd/gsb/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/Geo-standaarden-beheerplan/">https://geonovum.github.io/Geo-standaarden-beheerplan/</a></dd>
+    <dt>Redacteurs:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Friso Penninga</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Dick Krijtenburg</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Dick Krijtenburg</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/Geo-standaarden-beheerplan/">GitHub Geonovum/Geo-standaarden-beheerplan</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Geo-standaarden-beheerplan/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Geo-standaarden-beheerplan/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Geo-standaarden-beheerplan/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de beheerdocumentatie. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#standaarden-voor-geo-informatie"><span class="secno">1.1 </span>Standaarden voor geo-informatie</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.2 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#strategie"><span class="secno">2. </span>Strategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#governance"><span class="secno">2.1 </span>Governance</a></li><li class="tocline"><a class="tocxref" href="#visie"><span class="secno">2.2 </span>Visie</a></li><li class="tocline"><a class="tocxref" href="#financien"><span class="secno">2.3 </span>Financiën</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tactiek"><span class="secno">3. </span>Tactiek</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#architectuur"><span class="secno">3.1 </span>Architectuur</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#internationale-europese-en-nationale-geo-standaardisatiegemeenschap"><span class="secno">3.1.1 </span>Internationale Europese en nationale geo-standaardisatiegemeenschap</a></li><li class="tocline"><a class="tocxref" href="#samenwerking-met-andere-beheerorganisaties"><span class="secno">3.1.2 </span>Samenwerking met andere beheerorganisaties</a></li><li class="tocline"><a class="tocxref" href="#raamwerk-van-geo-standaarden"><span class="secno">3.1.3 </span>Raamwerk van geo-standaarden</a></li><li class="tocline"><a class="tocxref" href="#nederlandse-overheid-referentie-architectuur-nora"><span class="secno">3.1.4 </span>Nederlandse Overheid Referentie Architectuur - NORA</a></li></ol></li><li class="tocline"><a class="tocxref" href="#toekomstige-ontwikkeling"><span class="secno">3.2 </span>Toekomstige ontwikkeling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#standaardenagenda"><span class="secno">3.2.1 </span>Standaardenagenda</a></li><li class="tocline"><a class="tocxref" href="#wijzigingsbeheer"><span class="secno">3.2.2 </span>Wijzigingsbeheer</a></li><li class="tocline"><a class="tocxref" href="#wijzigingsprotocol"><span class="secno">3.2.3 </span>Wijzigingsprotocol</a></li><li class="tocline"><a class="tocxref" href="#versiebeheer"><span class="secno">3.2.4 </span>Versiebeheer</a></li><li class="tocline"><a class="tocxref" href="#procesvarianten"><span class="secno">3.2.5 </span>Procesvarianten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#community"><span class="secno">3.3 </span>Community</a></li><li class="tocline"><a class="tocxref" href="#adoptie-en-erkenning"><span class="secno">3.4 </span>Adoptie en erkenning</a></li><li class="tocline"><a class="tocxref" href="#rechtenbeleid"><span class="secno">3.5 </span>Rechtenbeleid</a></li><li class="tocline"><a class="tocxref" href="#kwaliteitsbeleid-en-benchmarking"><span class="secno">3.6 </span>Kwaliteitsbeleid en benchmarking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#operationeel"><span class="secno">4. </span>Operationeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemeen"><span class="secno">4.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#standaarden-in-gebruik"><span class="secno">4.2 </span>Standaarden in gebruik</a></li><li class="tocline"><a class="tocxref" href="#door-ontwikkeling-van-de-standaard"><span class="secno">4.3 </span>(Door)ontwikkeling van de standaard</a></li><li class="tocline"><a class="tocxref" href="#inzicht-in-het-wijzigingsproces"><span class="secno">4.4 </span>Inzicht in het wijzigingsproces</a></li><li class="tocline"><a class="tocxref" href="#toetsing"><span class="secno">4.5 </span>Toetsing</a></li><li class="tocline"><a class="tocxref" href="#implementatie-van-de-standaard"><span class="secno">4.6 </span>Implementatie van de standaard</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#soorten-documenten"><span class="secno">4.6.1 </span>Soorten documenten</a></li><li class="tocline"><a class="tocxref" href="#hulpmiddelen"><span class="secno">4.6.2 </span>Hulpmiddelen</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#implementatieondersteuning"><span class="secno">5. </span>Implementatieondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#helpdesk"><span class="secno">5.1 </span>Helpdesk</a></li><li class="tocline"><a class="tocxref" href="#opleiding-en-advies"><span class="secno">5.2 </span>Opleiding en advies</a></li><li class="tocline"><a class="tocxref" href="#validatie"><span class="secno">5.3 </span>Validatie</a></li><li class="tocline"><a class="tocxref" href="#conformiteittoetsing"><span class="secno">5.4 </span>Conformiteittoetsing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#communicatie"><span class="secno">6. </span>Communicatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#publicatie"><span class="secno">6.1 </span>Publicatie</a></li><li class="tocline"><a class="tocxref" href="#betrekken-van-de-community"><span class="secno">6.2 </span>Betrekken van de community</a></li><li class="tocline"><a class="tocxref" href="#promotie"><span class="secno">6.3 </span>Promotie</a></li><li class="tocline"><a class="tocxref" href="#klachtenafhandeling"><span class="secno">6.4 </span>Klachtenafhandeling</a></li></ol></li></ol></nav><div data-format="markdown"><p><strong>Versiebeheer</strong></p>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Bewerking</strong></th>
+<th><strong>Toelichting</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>jul-10</td>
+<td>Vervallen</td>
+<td></td>
+<td>Oplevering voor publicatie</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>mei-11</td>
+<td>Vervallen</td>
+<td></td>
+<td>Op basis van evaluatie zijn aanpassingen doorgevoerd</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>1-sep-14</td>
+<td>Vervallen</td>
+<td></td>
+<td>Actualisatie van het beheerdocument.</td>
+</tr>
+<tr>
+<td>1.2.1</td>
+<td>22-sep-14</td>
+<td>Vervallen</td>
+<td></td>
+<td>Paragraaf 3.5 extra toelichting op rechtenbeleid.Versiebeheer overzicht geactualiseerd.</td>
+</tr>
+<tr>
+<td></td>
+<td>30-jul-15</td>
+<td></td>
+<td></td>
+<td>Publicatie via Geonovum website.</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>9-feb-17</td>
+<td>Werkversie</td>
+<td></td>
+<td>-Controle en actualiseren voetnoten verwijzingen naar websites;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Verwijzingen College/ Forum Standaardisatie geactualiseerd;-Roadmap heeft sinds 2017 een nieuwe naam: standaardenagenda;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Paragraaf Governance verantwoordelijken en taken programmaraad geduid, aanvullend op de procedurele activiteiten beschreven in de rest van het document;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Paragraaf internationale standaarden geactualiseerd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Paragraaf Raamwerk geactualiseerd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Paragraaf NORA aangevuld;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Paragraaf Wijzigingsbeheer beschrijving status melding in lijn gebracht met ons meldingensysteem.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Vastgestelde versie door Programmaraad.</td>
+</tr>
+<tr>
+<td></td>
+<td>13-mrt-17</td>
+<td>Definitief</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.3.1</td>
+<td>28-mei-20</td>
+<td>Werkversie</td>
+<td></td>
+<td>-Actualiseren op licentie (4.0 ipv 3.0 Creative Commons)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Toevoegen GeoPackage aan set Geostandaarden t.g.v. besluitvorming Forum Standaardisatie</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Correctie in naamgeving (o.a. Ministerie IenM vervangen door BZK, EZ als subsidieverstrekker nu vervangen door LNV)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-Releasebeleid geactualiseerd n.a.v. vaststelling wijzigingsprotocol in Programmaraad 2 juli 2019 (update paragrafen Wijzigingsprotocol, versiebeheer, toevoeging pragraaf Procesvarianten)</td>
+</tr>
+<tr>
+<td></td>
+<td>18-aug-21</td>
+<td>Definitief</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</div><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p><strong>In Nederland ontwikkelt en beheert Geonovum de basis geo-standaarden. Mensen die in de praktijk gebruik maken van deze standaarden hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen er spelen en hebben mogelijk suggesties voor aanpassingen van deze standaarden. In dit document worden de verschillende beheeraspecten beschreven zoals implementatieondersteuning, wijzigingsproces, governance, etc. zodat iedere organisatie die de basis geo-standaarden gebruikt hun weg weten te vinden in de geo-standaarden.</strong></p><section id="standaarden-voor-geo-informatie"><h3 id="x1-1-standaarden-voor-geo-informatie"><span class="secno">1.1 </span>Standaarden voor geo-informatie</h3><p>Geonovum maakt geo-informatie van de publieke sector toegankelijk en ontwikkelt en beheert de
+standaarden die daarvoor nodig zijn. Een bepaalde set van deze geo-standaarden vormt de algemene basis die nodig is voor een goedwerkende gemeenschappelijke geo-informatie infrastructuur. Deze set noemen wij de basis geo-standaarden en is onderwerp van dit document.</p><p>De basis geo-standaarden kunnen worden onderverdeeld in:</p><ul>
+<li>standaarden voor het beschrijven van geo-informatie, waaronder informatiemodellen en standaarden voor metadata, uitwisseling en coördinaatreferentiesystemen. Met deze standaarden wordt de geo-informatie (data) zelf beschreven;</li>
+<li>standaarden voor services, waaronder die voor het serveren van vector-, raster- en sensordata. Met deze standaarden wordt beschreven hoe de data geserveerd wordt.
+</li>
+</ul><p>Onder standaarden worden hier niet verstaan praktijkrichtlijnen, werkafspraken, handreikingen of andersoortige publicaties over de geo-standaarden. Deze publicaties gaan in op de toepassing van de standaarden in de praktijk, de standaarden beschrijven de vereisten.</p><p>Concreet bestaan de basis geo-standaarden uit:</p><ul>
+<li>het basismodel geo-informatie <a href="http://www.geonovum.nl/onderwerpen/basismodel-geo-informatie-nen3610">NEN3610</a>;</li>
+<li>Geography Markup Language <a href="http://www.geonovum.nl/onderwerpen/geography-markup-language-gml">GML</a>;</li>
+<li><a href="http://www.geopackage.org/spec/">GeoPackage</a>;</li>
+<li><a href="https://www.geonovum.nl/geo-standaarden/metadata">metadataprofielen voor geografie en webservices</a> ;</li>
+<li>webserviceprofielen voor <a href="https://www.geonovum.nl/geo-standaarden/services">Web Feature Service en Web Map Service</a></li>
+</ul><p>De basisset geo-standaarden staat op <a href="https://www.forumstandaardisatie.nl/open-standaarden">de Pas-toe-of-leg-uit-lijst van het Forum Standaardisatie</a>.</p><p>Met behulp van het beheer- en ontwikkelmodel voor open standaarden <a href="https://www.logius.nl/diensten/bomos">BOMOS</a> geeft Geonovum het beheer en de verdere ontwikkeling van de basis geo-standaarden structureel vorm. Zo geven wij de gebruikers van de basis geo-standaarden, onze relaties en onszelf inzicht in hoe het beheer van deze standaarden is ingericht.</p></section><section id="leeswijzer"><h3 id="x1-2-leeswijzer"><span class="secno">1.2 </span>Leeswijzer</h3><p>Na deze inleiding leest u in <a href="#strategie">Hoofdstuk 2</a> de strategie voor het beheer van de basis geo-standaarden: de governance, onze visie en de financiën voor het beheer van deze standaarden. <a href="#tactiek">Hoofdstuk 3</a> gaat in op de tactiek van het beheer. De architectuur van de standaarden is de basis voor toekomstige ontwikkelingen die met behulp van de standaardenagenda inzichtelijk worden gemaakt voor de gemeenschap. Wat Geonovum doet om adoptie en erkenning van standaarden te bewerkstelligen is ook in dit hoofdstuk beschreven. De praktische kant hiervan is in <a href="#operationeel">Hoofdstuk 4</a> uitgewerkt. In <a href="#implementatieondersteuning">Hoofdstuk 5</a> komt vervolgens de implementatieondersteuning aan bod. Hoe geeft Geonovum als beheerder advies en opleiding over de geo-standaarden en waar kan men terecht met vragen? Het toetsen van de data aan de standaarden kan met behulp van een Validator. <a href="#communicatie">Hoofdstuk 6</a> geeft tot slot inzicht in de communicatie over de basis geo-standaarden.</p></section></section><section data-format="markdown" id="strategie"><!--OddPage--><h2 id="x2-strategie"><span class="secno">2. </span>Strategie</h2><p><strong>Governance, visie en financiën zijn onderdelen van de strategie voor het beheer van de basis geo-standaarden.</strong></p><section id="governance"><h3 id="x2-1-governance"><span class="secno">2.1 </span>Governance</h3><p>Geonovum is een overheidsstichting met een onafhankelijk bestuur, een Raad van Toezicht en een programmaraad. De minister van BZK benoemt de leden van onze Raad van Toezicht. Onze missie, doelen, taken en jaarlijkse uitvoeringsplan staan op onze <a href="http://www.geonovum.nl/over-geonovum/waar-wij-voor-staan">website</a> .
+De programmaraad adviseert het bestuur over de inhoud en prioriteiten voor het basisprogramma en over onze andere werkzaamheden. Voor het basisprogramma, het beheer van de geo-standaarden, treedt de programmaraad op als stuurgroep. De programmaraad beoordeelt en beslist over deze wijzigingsvoorstellen en stelt een nieuwe (versie) van de standaard vast van geo-standaarden die bij Geonovum in beheer zijn. Ook is de programmaraad aanspreekpunt voor klachten over het beheer van de standaarden door Geonovum. De <a href="https://www.geonovum.nl/over-geonovum/wie-wij-zijn/programmaraad">programmaraad</a> bestaat uit vertegenwoordigers van publieke organisaties in het geo-werkveld. Zij zijn de voornaamste belanghebbenden van Geonovum.</p><p><img src="media/organogram.png" alt="Organogram Geonovum"></p><p>De overheid beter laten presteren met geo-informatie. Dat is waar Geonovum dagelijks aan werkt. We doen dat door de uitwisseling van geo-informatie onderling en met andere soorten gegevens mogelijk te maken met standaarden. De ontwikkeling en beheer van de geo-standaarden is een basistaak van Geonovum en is belegd in ons basisprogramma. Jaarlijks adviseert de programmaraad aan het bestuur bindend over de inhoud van het basisprogramma. De Raad van Toezicht keurt het uitvoeringsplan, waarin het basisprogramma is opgenomen, goed voordat het bestuur het uitvoeringsplan vaststelt. Eenmaal per kwartaal rapporteert Geonovum aan de programmaraad en het bestuur over de voortgang in het basisprogramma.</p><p>Samenwerking met andere standaardisatieorganisaties is onderdeel van de governance (zie paragraaf (zie paragraaf <a href="#internationale-europese-en-nationale-geo-standaardisatiegemeenschap">Internationale, Europese en nationale geo-standaardisatiegemeenschap</a> en paragraaf <a href="#samenwerking-met-andere-beheerorganisaties">Samenwerking met andere beheerorganisaties</a>).
+Mocht de beheertaak van Geonovum voor de basis geo-standaarden vervallen, dan zullen de intellectuele eigendomsrechten overgaan naar de nieuwe beheerder of bij gebrek daaraan aan het ministerie van Binnenlandse Zaken en Koninkrijksrelaties.</p></section><section id="visie"><h3 id="x2-2-visie"><span class="secno">2.2 </span>Visie</h3><p>Dit is onze visie op het beheer van de basis geo-standaarden. Een standaard die niet in beheer is, is geen standaard. De standaarden die Geonovum in beheer heeft, zijn ingebed in nationale en internationale standaarden. Geonovum voert het beheer transparant uit in samenwerking met belanghebbende partijen.</p></section><section id="financien"><h3 id="x2-3-financien"><span class="secno">2.3 </span>Financiën</h3><p>Het beheer van de basis geo-standaarden is onderdeel van ons basisprogramma. Dit programma wordt gesubsidieerd door ministeries van Binnenlandse Zaken en Koninkrijksrelaties en Landbouw, Natuur en Voedselveiligheid, van het Kadaster en van de Geologische Dienst Nederland TNO. Jaarlijks wordt bepaald welk deel van de basisfinanciering besteed wordt aan het standaardisatiewerk en daarmee het beheer van de basis geo-standaarden. Over de besteding van de basisfinanciering leggen wij verantwoording af aan onze subsidieverleners en via het jaarverslag, inclusief jaarrekening voorzien van een goedkeurende accountantsverklaring.</p></section></section><section data-format="markdown" id="tactiek"><!--OddPage--><h2 id="x3-tactiek"><span class="secno">3. </span>Tactiek</h2><p><strong>Iedereen die de basis geo-standaarden gebruikt, ongeacht waarom, willen wij voorzien van de juiste en actuele standaarden en van informatie over de toepassing ervan. Dit hoofdstuk beschrijft hoe wij de basis geo-standaarden ontwikkelen en op welke wijze beschikbaar stellen.</strong></p><section id="architectuur"><h3 id="x3-1-architectuur"><span class="secno">3.1 </span>Architectuur</h3><p>Architectuur richt zich op de samenhang tussen de standaarden onderling en op het uitzetten en toetsen van de inhoudelijke lijnen van de standaarden. Daarbij is het van belang de samenhang te bewaken tussen de inhoudelijke producten van het geo-werkveld en die van buiten het werkveld, zoals standaarden in aangrenzende domeinen. Overlap wordt hierdoor voorkomen. Bijzondere aandacht verdient de relatie met de internationale standaardisatiegemeenschap.</p><section id="internationale-europese-en-nationale-geo-standaardisatiegemeenschap"><h4 id="x3-1-1-internationale-europese-en-nationale-geo-standaardisatiegemeenschap"><span class="secno">3.1.1 </span>Internationale Europese en nationale geo-standaardisatiegemeenschap</h4><p>Belangrijk uitgangspunt van Geonovum bij standaardisatie is de afstemming met internationale ontwikkelingen. Ontwikkelingen in standaarden op internationaal, Europees en nationaal niveau zijn van invloed op het beheer van de basis geo-standaarden. Geonovum zorgt ervoor dat nieuwe en veranderde internationale geo-standaarden, indien relevant en door Nederland ondersteund, geadopteerd en erkend worden in Nederland. 
+Op onze website staat een overzicht van <a href="https://www.geonovum.nl/themas/standaardisatie">standaardisatieorganisaties op nationaal, Europees en internationaal niveau</a>. Wij zijn op deze drie niveaus actief en daardoor op de hoogte van relevante ontwikkelingen.
+</p><p>Geonovum behartigt de Nederlandse belangen voor geo-standaarden door actieve participatie binnen de internationale standaardisatiefora <a href="https://www.isotc211.org/">ISO/TC 211</a>, <a href="https://www.ogc.org/">OGC</a> en <a href="https://www.w3.org">W3C</a>. Deze standaardisatie organisaties maken technische geo-standaarden die Nederland semantisch invult. Geonovum is tevens betrokken bij de Europese richtlijn <a href="https://inspire.ec.europa.eu/">INSPIRE</a>. 
+Participatie bestaat onder andere uit deelname aan de werkgroepen, die standaarden ontwikkelen en aanpassen. Daarnaast volgen wij de ontwikkelingen bij <a href="https://www.omg.org/">OMG</a>  die zich bezighouden met standaarden voor het web en ICT. En op Europees niveau in <a href="https://standards.cen.eu/">CEN/TC 287</a>.
+Geonovum is ook lid van het Forum Standaardisatie zodat een goede inbreng van de geo-standaarden naar de digitale overheid en visa versa is geborgd. De voorbereidingen van de bijeenkomsten van ISO/TC 211 en CEN/TC 287 en stemmingen worden gedaan in de <a href="https://www.nen.nl/normcommissie-geo-informatie">NEN normcommissie 351 240 Geo-informatie</a>. Geonovum is voorzitter van deze normcommissie die bestaat uit een representatieve afvaardiging van Nederlandse belanghebbende organisaties.
+</p></section><section id="samenwerking-met-andere-beheerorganisaties"><h4 id="x3-1-2-samenwerking-met-andere-beheerorganisaties"><span class="secno">3.1.2 </span>Samenwerking met andere beheerorganisaties</h4><p>Geonovum werkt samen met andere standaardisatieorganisaties als zij te maken hebben met geo-informatie en er wederzijds behoefte aan samenwerking is. Hierbij kan onderscheid gemaakt worden in twee groepen, namelijk infrastructurele en thematische standaarden en hun organisaties.</p><p><strong>figuur Infrastructurele en thematische standaarden</strong>
+<img src="media/Infrastructurele_thematische_standaarden.png" alt="Infrastructurele en thematische standaarden"></p><aside class="example" id="example-1"><div class="marker">
+      <a class="self-link" href="#example-1">Voorbeeld 1</a>
+    </div><p>Voorbeelden van infrastructurele standaarden organisaties zijn <a href="http://www.ictu.nl">ICTU</a> en <a href="http://www.logius.nl">Logius</a>. Zij ontwikkelen en beheren standaarden voor de <a href="https://www.digitaleoverheid.nl/">digitale overheid</a>. Geonovum borgt dat de basis geo-standaarden onderdeel zijn van de digitale overheid. Voorbeelden van thematische standaarden zijn de informatiemodellen voor de ruimtelijke ordening of cultuurhistorie als uitwerking op het Basismodel Geo-informatie (NEN 3610), of de community standaarden voor bodemsanering en voor remote sensing, elk met een eigen beheerorganisatie.</p>
+</aside></section><section id="raamwerk-van-geo-standaarden"><h4 id="x3-1-3-raamwerk-van-geo-standaarden"><span class="secno">3.1.3 </span>Raamwerk van geo-standaarden</h4><p>Om inzicht te geven in de veelheid van standaarden voor geo-informatie heeft Geonovum <a href="https://www.geonovum.nl/uploads/documents/Raamwerk%20Geo-Standaarden%20v3.0.pdf">het Raamwerk van geo-standaarden</a> opgesteld. Het Raamwerk benoemt de standaarden die voor Nederland binnen het geo-domein van toepassing zijn voor aansluiting met andere domeinen. Het sluit aan op de Europese infrastructuur en integreert het geo-domein met de elektronische overheid. Het Raamwerk geo-standaarden is een aanvulling op het <a href="https://www.noraonline.nl/wiki/Geo" title="zie paragraaf [Nederlandse Overheid Referentie Architectuur - NORA](#nederlandse-overheid-referentie-architectuur---nora">NORA dossier geo-informatie</a>) . Het is geschreven voor iedereen die betrokken is bij het toepassen van standaarden voor geo-informatie. Zoals informatiemanagers, stuurgroepleden, beleidsmedewerkers, projectleiders, adviseurs, architecten, IT-leveranciers, en voor personen die standaarden en specificaties implementeren in hun organisatie en willen kunnen integreren met andere organisaties in Nederland en Europa.</p></section><section id="nederlandse-overheid-referentie-architectuur-nora"><h4 id="x3-1-4-nederlandse-overheid-referentie-architectuur-nora"><span class="secno">3.1.4 </span>Nederlandse Overheid Referentie Architectuur - NORA</h4><p>De Nederlandse Overheid Referentie Architectuur <a href="https://www.digitaleoverheid.nl/dossiers/nederlandse-overheid-referentie-architectuur-nora/">NORA</a> geeft algemene architectuurprincipes voor domeinarchitecturen, zoals voor het Rijk (MARIJ), provincies (PETRA) en gemeenten (GEMMA). Geo-informatie wordt gezien als een aspect van architectuur. Dit betekent dat geo-informatie niet domeingericht is, maar voor iedereen geldig is of kan zijn. Om deze reden is geo-informatie integraal opgenomen in <a href="http://www.geonovum.nl/sites/default/files/nora_dossier_geo-informatie.pdf">NORA</a> vanaf <a href="https://www.geonovum.nl/sites/default/files/nora3.0.pdf">versie 3.0</a>. Forum Standaardisatie heeft NORA 3.0 in oktober 2010 goedgekeurd. Er is daarmee een aanvullend <a href="https://www.geonovum.nl/onderwerpen/geo-architectuur/geo-nora">NORA dossier Geo-informatie</a> beschikbaar gekomen. Het kennisplatform NORA online is uitgebreid, conform NORA 3.0, met het thema <a href="http://www.noraonline.nl/wiki/Geo">GEO</a>.</p></section></section><section id="toekomstige-ontwikkeling"><h3 id="x3-2-toekomstige-ontwikkeling"><span class="secno">3.2 </span>Toekomstige ontwikkeling</h3><p>Ontwikkelingen van de basis geo-standaarden in de toekomst maken wij inzichtelijk via de standaardenagenda en door transparant versiebeheer volgens wijzigingsprotocollen en wijzigingsbeheer.</p><section id="standaardenagenda"><h4 id="x3-2-1-standaardenagenda"><span class="secno">3.2.1 </span>Standaardenagenda</h4><p>Met behulp van de standaardenagenda geven we inzicht in onze jaarlijkse werkzaamheden en activiteiten rondom de basis geo-standaarden. De standaardenagenda wordt jaarlijks vastgesteld door de programmaraad en gepubliceerd op de website van Geonovum. De standaardenagenda is een vertaling van requirements en ontwikkelingen vanuit het werkveld. Het werkpakket benoemd in de standaardenagenda is te herleiden naar de activiteiten voor ontwikkeling en beheer conform BOMOS.</p><p><strong>figuur Introductieplaat standaardenagenda</strong></p><p><img src="media/Introductieplaat_standaardenagenda.png" alt="Introductieplaat standaardenagenda"></p></section><section id="wijzigingsbeheer"><h4 id="x3-2-2-wijzigingsbeheer"><span class="secno">3.2.2 </span>Wijzigingsbeheer</h4><p>Belanghebbenden kunnen meldingen (wijzigingsverzoeken), variërend van wensen tot aanpassing van en fouten in een basis geo-standaard, indienen bij Geonovum (Een voorbeeld van een meldingen overzicht voor de geo-standaard <a href="https://www.geonovum.nl/uploads/documents/Meldingenmetadata.pdf">Metadata</a>). Wij geven inzicht in de ontvangen meldingen en bundelen de verzoeken tot een wijzigingsvoorstel in het geval we een wijzigingsproces starten voor een nieuwe versie van de standaard. Het <a href="#wijzigingsprotocol">Wijzigingsprotocol</a>) beschrijft het wijzigingsproces en daarmee ook de procedure die het wijzigingsvoorstel doorloopt. Via onze website geven wij per standaard een overzicht van de ingediende meldingen, met daarbij per melding de status. Zo is te volgen of een melding onderzocht wordt of meegenomen in het wijzigingsvoorstel. De meldingen worden op basis van onderstaand model via de website voor eenieder beschikbaar gesteld. Sommige meldingen slaan de status AFGEMELD over.</p><table>
+<thead>
+<tr>
+<th>Status   voorstel</th>
+<th>Beschrijving activiteiten</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NIEUW</td>
+<td>Als een gebruiker een melding indient krijgt deze de status “nieuw”.</td>
+</tr>
+<tr>
+<td>TERUGKOPPELING</td>
+<td>De actiehouder van de melding controleert of de melding volledig en helder is. Bij een fout gaat hij/zij in de standaard na of dit inderdaad het geval is. Hij/zij kan informatie opvragen of een onderzoek uitvoeren.</td>
+</tr>
+<tr>
+<td>ERKEND</td>
+<td>Deze melding is helder beschreven en is of een wens voor het aanpassen van de standaard, dan wel een gevonden fout. Ook is de melding geen duplicaat van een reeds ingevoerde melding. De melding is hiermee formeel opgenomen in het meldingen systeem.</td>
+</tr>
+<tr>
+<td>BEVESTIGD</td>
+<td>Geonovum neemt deze melding mee in het wijzigingsproces van de standaard.</td>
+</tr>
+<tr>
+<td>TOEGEWEZEN</td>
+<td>De melding is toegewezen aan een actiehouder en gekoppeld aan een nieuwe versie van de standaard.</td>
+</tr>
+<tr>
+<td>OPGELOST</td>
+<td>De melding is opgelost als de melding onderdeel is van de nieuwe versie van de standaard.</td>
+</tr>
+<tr>
+<td>AFGESLOTEN</td>
+<td>De melding wordt afgesloten in de volgende situaties:</td>
+</tr>
+<tr>
+<td></td>
+<td>- wanneer de melding is opgenomen in de nieuwe versie van de standaard;</td>
+</tr>
+<tr>
+<td></td>
+<td>- wanneer de wens niet wordt gehonoreerd in de nieuwe versie van de standaard;</td>
+</tr>
+<tr>
+<td></td>
+<td>- wanneer de fout niet meer relevant wordt geacht voor de standaard.</td>
+</tr>
+<tr>
+<td></td>
+<td>De precieze informatie hierover staat in de melding onder het attribuut ‘oplossing’. Indien een melding uiteindelijk niet is meegenomen in de nieuwe   versie van de standaard maar wel een fout/ wens blijft, wordt de status   teruggezet op erkend.</td>
+</tr>
+</tbody></table></section><section id="wijzigingsprotocol"><h4 id="x3-2-3-wijzigingsprotocol"><span class="secno">3.2.3 </span>Wijzigingsprotocol</h4><p>Een wijzigingsprotocol beschrijft de manier waarop wijzigingen in de basis geo-standaarden plaatsvinden: het wijzigingsproces. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies verstaan wordt en wanneer deze verwacht mogen worden. De daadwerkelijke planning van een nieuwe versie is uitgewerkt in de <a href="#standaardenagenda">standaardenagenda</a>.
+Met behulp van een wijzigingsprotocol voor de basis geo-standaarden geeft Geonovum:</p><ul>
+<li>inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>inzicht in de aangeboden wijzigingsvoorstellen;</li>
+<li>stabiliteit aan de standaard;</li>
+<li>continuïteit aan de standaard;</li>
+<li>een eenduidige aanpak.</li>
+</ul><p>Wijzigingen in de standaarden worden niet zomaar doorgevoerd. Voor de ene gebruiker van de standaard zal de wijziging gering zijn, voor de ander kan het grote gevolgen hebben. Daar houden wij rekening mee. De gebruikersgroepen van de standaarden en andere actoren in het wijzigingsproces zijn vastgelegd, evenals de belangrijkste taken en verantwoordelijkheden en de momenten waarop zij betrokken zijn in dit proces.</p><p>Het volledig wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie, zoals weergegeven in onderstaand figuur. Iedere fase kent vaste stappen die tijdgebonden zijn met een vaste datum van inwerkingtreding van de nieuwe versie van de standaard. De fase Toetsing vormt een brug tussen de inhoud, besluitvorming en de implementatie. In deze fase wordt de inhoudelijke correctheid, de technische haalbaarheid en impact van de voorgestelde wijzigingen getoetst, als de aard van de wijziging dit noodzakelijk maakt. Er is een wezenlijk verschil met besluitvorming. Bij het toetsen wordt de inhoudelijke correctheid vastgesteld, bij besluitvorming de wenselijkheid om de voorgestelde wijzigingen door te voeren. Het resultaat van de fase Toetsing is een (mogelijk aangepast) volledig wijzigingsvoorstel voor de standaard, dat is gevrijwaard van fouten en waarvan de technische haalbaarheid en impact is getoetst.
+De stabiliteit en continuïteit van de standaard maken wij inzichtelijk met de standaardenagenda. Hierdoor is voor een ieder inzichtelijk of de standaard op korte termijn wel of niet wordt gewijzigd.</p><p><strong>figuur Fasen wijzigingsproces</strong></p><p><img src="media/fasen_wijzigingsproces.png" alt="Fasen wijzigingsproces"></p></section><section id="versiebeheer"><h4 id="x3-2-4-versiebeheer"><span class="secno">3.2.4 </span>Versiebeheer</h4><p>Bij een geo-standaard in beheer horen ook afspraken over het versiebeheer. Versies van een standaard zijn er in verschillende gradaties die elk een relatie hebben met een voorgaande versie. De wijzigingen documenteren wij en leggen wij vast in een apart document bij de uitgebrachte versie van de standaard. De gebruiker kan zo nagaan op welke plaatsen de betreffende standaard gewijzigd is.</p><p>Geonovum hanteert drie typen versies voor een wijziging van een basis geo-standaard. Bijvoorbeeld: versie 2.1.0 (=X.Y.Z):</p><ul>
+<li><strong>X-wijzigingen</strong> Deze wijzigingen veranderen de structuur van de standaard. Hierdoor zijn X-wijzigingen niet backwards compatible. Frequentie: maximaal 1 keer per 3 jaar.</li>
+<li><strong>Y-wijzigingen</strong> Dit zijn wijzigingen die niet de structuur veranderen. Dit kunnen bijvoorbeeld updates zijn of inhoudelijke aanpassingen aan objecten, attributen of waardelijsten of de reikwijdte van de standaard. Deze wijzigingen zijn backwards compatible. Frequentie: maximaal 1 keer per jaar.</li>
+<li><strong>Z-wijzigingen</strong> Dit zijn in feite oplossingen van technische fouten of verbeteringen van technische aard. Deze wijzigingen zijn backwards compatible. Frequentie: zo spoedig mogelijk na constatering.</li>
+</ul><p>Na het uitbrengen van een nieuwe versie van een bij Geonovum in beheer zijnde geo-standaard blijven oudere versies beschikbaar en zijn vindbaar via de Geonovum website en de registers (<a href="https://definities.geostandaarden.nl">de conceptenbibliotheek</a>, <a href="https://register.geostandaarden.nl">het technisch register</a> en <a href="https://docs.geostandaarden.nl">het documentenregister</a>). Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk) bepaald. Na het uitbrengen van de nieuwe versie van een geo-standaard wordt de ontwikkeling van de oude versie stopgezet.</p><p>Voor het onderhoud en de ondersteuning van een oude versie van een geo-standaard gelden de volgende uitgangspunten:
+1)    Aan een oude versie worden geen nieuwe features toegevoegd na het uitbrengen van een nieuwe versie. Verzoeken om aanpassing en wijziging voor nieuwe functionaliteit worden niet meer voor de oude geo-standaard in behandeling genomen. Z-wijzigingen zijn nog wel mogelijk, indien het gebruik in de praktijk dit nog rechtvaardigt.</p><p>2)    De programmaraad stelt met advies van de beheerder vast hoelang een oude versie wordt ondersteund en wanneer hij komt te vervallen (decline). Dit betekent dat vragen over het gebruik van de geo-standaard worden beantwoord (helpdesk). Daarnaast ondersteunen we de oude versie van de geo-standaard in de validator. De maximale ondersteuningstermijn is twee jaar, tenzij de programmaraad anders bepaalt. Daarna blijft de versie van de geo-standaard wel beschikbaar, maar biedt Geonovum geen ondersteuning meer, ook niet via de validator. Bij standaarden die niet meer worden ondersteund, wordt duidelijk vermeld of zichtbaar gemaakt dat deze zijn vervallen.
+</p><p>In het algemeen zal de Programmaraad alleen besluiten om een versie te laten vervallen en de ondersteuning te staken, als het de verwachting en/of de intentie is dat gebruikers alleen nog actief de nieuwe versie toepassen en daarbij ondersteuning behoeven.</p></section><section id="procesvarianten"><h4 id="x3-2-5-procesvarianten"><span class="secno">3.2.5 </span>Procesvarianten</h4><p>In paragraaf <a href="#versiebeheer">versiebeheer</a>. zijn de X, Y en Z wijzigingen uitgelegd. Voor wijzigingen kent Geonovum twee proces varianten. Eén voor X en Y wijzigingen en één voor Z wijzigingen.
+</p><p><strong>Proces voor X en Y wijzigingen</strong></p><p>Deze vergen volledige afstemming en het doorlopen van alle in paragraaf 3.4 beschreven fasen: Inhoud, Toetsing, Besluitvorming en Implementatie. Voor de inhoudelijke fase wordt een werkgroep gestart met daarin vertegenwoordiging van belangrijke stakeholders. Het resultaat van de werkgroep wordt in een openbare consultatie getoetst. Besluitvorming over vaststelling van een standaard vindt plaats in de programmaraad van Geonovum. Indien nodig wordt met softwareleveranciers een convenant afgesloten of een bestaand convenant uitgebreid, waarin wordt afgesproken dat zij (onderdelen van) de standaard gaan ondersteunen.</p><p><strong>Proces voor Z wijzigingen</strong></p><p>Deze dienen zo snel als mogelijk uitgevoerd te worden. De inhoudelijke fase wordt door een medewerker van Geonovum gedaan. Toetsing vindt plaats d.m.v. een (beperkte) consultatie met stakeholders. Besluitvorming vindt plaats door het standaardenteam van Geonovum met een notificatie van de wijziging aan de programmaraad. Implementatie vindt plaats door het publiceren van de wijziging op de website van Geonovum.
+</p></section></section><section id="community"><h3 id="x3-3-community"><span class="secno">3.3 </span>Community</h3><p>Betrokkenheid van de gemeenschap bij de verdere ontwikkeling van de standaarden is voor het gebruik en de draagvlak ervan van groot belang. Voor de basis geo-standaarden geldt dat geen onderscheid wordt gemaakt tussen publieke en private organisaties en bijvoorbeeld kennisinstellingen. Zij vormen samen de community. Aan de inspraak in het wijzigingsproces zijn voor hen geen kosten verbonden.
+Geonovum informeert en betrekt de community via onze website en de verschillende nieuwsbrieven. Uit de community worden de werkgroepen gevormd op het moment dat dit benodigd is. De vergaderdata en verslagen van deze werkgroepen zijn beschikbaar voor een ieder via de website bij de betreffende standaard. Inschrijven voor bijeenkomsten is mogelijk via <a href="mailto:info@geonovum.nl">info@geonovum.nl</a>.</p><p>Een voorbeeld van een bestaande werkgroep is NEN 3610. Deze is samengesteld uit de beheerders en eigenaren van sectorale informatiemodellen, die onder het Basismodel Geo-informatie (NEN 3610) vallen. Primair doel is kennisbundeling en -overdracht tussen sectorale informatiemodellen. Hierdoor en door de harmonisatie van inhoud en afstemming van het beheer tussen de modellen blijft het door NEN 3610 gevormde stelsel een stevige basis voor uitwisseling en integratie van geo-informatie. Deze werkgroep verzorgt ook de inhoudelijke inbreng voor de NEN normcommissie 351 240 Geo-informatie waar nieuwe versies van NEN 3610 procedureel worden bepaald.</p></section><section id="adoptie-en-erkenning"><h3 id="x3-4-adoptie-en-erkenning"><span class="secno">3.4 </span>Adoptie en erkenning</h3><p>Het gebruik van de basis geo-standaarden is niet vanzelfsprekend. De toepassing ervan in de praktijk is ons uiteindelijke doel. Werkgroepen zijn hierbij van wezenlijk belang. Voor de adoptie en erkenning van de geo-standaarden door het werkveld heeft Geonovum onder andere de basis geo-standaarden aangeboden aan <a href="http://forumstandaardisatie.nl/">Forum Standaardisatie</a>. Zij publiceren lijsten met open standaarden die door hen zijn goedgekeurd, waaronder <a href="https://www.forumstandaardisatie.nl/standaard/geo-standaarden">de basis geo-standaarden</a>.  Daarnaast adviseren zij in het gebruik van open standaarden.
+In samenwerking met <a href="https://www.nen.nl/normcommissie-geo-informatie">NEN normcommissie 351 240 Geo-informatie</a> streven wij naar adoptie en erkenning van het Basismodel Geo-informatie (NEN 3610).</p></section><section id="rechtenbeleid"><h3 id="x3-5-rechtenbeleid"><span class="secno">3.5 </span>Rechtenbeleid</h3><p>Het organiseren van auteursrecht en de vrijwaringen op het gebied van intellectueel eigendom zijn zaken die onder rechtenbeleid vallen. Het doel hiervan is de beschikbaarheid van de standaarden inzichtelijk te maken. Geonovum geeft aan hoe, voor wie op welke wijze de standaarden beschikbaar zijn door middel van Creative Commons. Elk nieuw document dat vanaf 1 januari 2018 door Geonovum wordt gepubliceerd is voorzien van een <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.nl">licentie</a>
+Partijen die bijdragen aan de ontwikkeling van een standaard die door Geonovum wordt beheerd dienen te accepteren dat hun intellectueel eigendomsrecht altijd onder bovenstaande licentie door Geonovum beschikbaar wordt gesteld.</p></section><section id="kwaliteitsbeleid-en-benchmarking"><h3 id="x3-6-kwaliteitsbeleid-en-benchmarking"><span class="secno">3.6 </span>Kwaliteitsbeleid en benchmarking</h3><p>Kwaliteitsbeleid en benchmarking in het kader van het beheer van de basis geo-standaarden krijgen vorm in pilots en testbeds. In de fase Toetsing (zie Figuur 4) wordt belangrijke informatie over de kwaliteit en toepasbaarheid van een standaard opgedaan. Kortlopende specifiek omschreven toetsprotocollen leiden tot betrokkenheid en input van het bedrijfsleven en andere belanghebbenden. Uitkomsten van de pilots en testbeds koppelen wij terug naar de standaard in ontwikkeling. Hoe Geonovum dit aanpakt is beschreven in paragraaf <a href="#implementatie-van-de-standaard">Implementatie van de standaard</a>.</p></section></section><section data-format="markdown" id="operationeel"><!--OddPage--><h2 id="x4-operationeel"><span class="secno">4. </span>Operationeel</h2><p><strong>De dynamiek van het werkveld zal soms een aanpassing van de basis geo-standaarden vereisen. Hoe deze dagelijkse praktijk van het beheer van de standaard wordt uitgevoerd is, op basis van de structuur in voorgaand hoofdstuk, in dit hoofdstuk nader beschreven.</strong></p><section id="algemeen"><h3 id="x4-1-algemeen"><span class="secno">4.1 </span>Algemeen</h3><p>De basis geo-standaarden publiceren wij op onze <a href="https://www.geonovum.nl">website</a> , samen met aanvullende informatie over inhoud, toepassing en meldingen gerubriceerd per onderwerp. Ook informatie over bijvoorbeeld bijeenkomsten, de werkgroepen en andere documentatie is hier te vinden. Algemene informatie over de geo-standaarden is samen gebracht op de website onder het onderwerp ‘Geo-standaarden’.</p></section><section id="standaarden-in-gebruik"><h3 id="x4-2-standaarden-in-gebruik"><span class="secno">4.2 </span>Standaarden in gebruik</h3><p>Het gebruik van standaarden gaat niet vanzelf. Ondanks verschillende publicaties en informatie via de Geonovum website, kunnen vragen ontstaan over de toepassing van de standaard of fouten ontdekt worden. Niet in de laatste plaats heeft de praktijk juist wel voorstellen tot verbetering van de standaard. Deze praktijkervaring kan aanleiding zijn tot de verdere ontwikkeling van een standaard. 
+Vragen, wensen tot wijziging en gevonden fouten kunnen altijd gemeld worden via de helpdesk (Geonovum heeft verschillende contact adressen, zie voor een <a href="http://www.geonovum.nl/contact/helpdesk">overzicht</a> de Geonovum website. Voor alle basis geo-standaarden kan contact met ons worden opgenomen via <a href="mailto:geostandaarden@geonovum.nl">geostandaarden@geonovum.nl</a> of stel je vraag op het <a href="https://geoforum.nl/">Geoforum</a>). Daarnaast kan met behulp van een meldingen formulier een wijzigingsverzoek voor de standaard worden ingediend. Voor GML en GeoPackage is dit bij het <a href="http://ogc.standardstracker.org/">OGC</a>. Per, bij Geonovum in beheer zijnde standaard, is een lijst van meldingen inzichtelijk.
+</p><p><strong>Helpdesk</strong>
+</p><p>Na ontvangst van de vraag bij de helpdesk Geo-standaarden ontvangt de vraagsteller van Geonovum een ontvangstbevestiging. De helpdeskmedewerker kent aan de melding een actiehouder toe.</p><p><strong>Registratie en publicatie</strong>
+</p><p>Alle bij de helpdesk binnen gekomen vragen, dan wel wensen of fouten, worden geregistreerd in het helpdesk systeem. Wanneer blijkt dat een vraag/ melding een wijzigingsverzoek is, dan wordt deze opgenomen in de meldingenlijst die per standaard via de Geonovum website inzichtelijk is. In de lijst is voor iedereen te zien wat de status van de melding is en of deze wordt of is meegenomen in een volgende wijziging van de standaard. Een vraag over de standaard wordt niet aan de meldingenlijst toegevoegd maar afgehandeld via de helpdesk.
+</p><p><strong>Meldingen formulier</strong>
+</p><p>Naast een overzicht van meldingen per standaard kan een gebruiker van een standaard ook per formulier een wens, eis of fout aan ons kenbaar maken. Iedere standaard heeft op de Geonovum hiervoor een formulier beschikbaar. Degene die een melding maakt, vult naast contactgegevens ook het voorstel tot wijziging met een toelichting daarop in. Het is ook mogelijk bestanden aan de melding toe te voegen.</p></section><section id="door-ontwikkeling-van-de-standaard"><h3 id="x4-3-door-ontwikkeling-van-de-standaard"><span class="secno">4.3 </span>(Door)ontwikkeling van de standaard</h3><p>Voor inzicht in de ontwikkeling van de basis geo-standaarden zijn de <a href="#standaardenagenda">standaardenagenda</a> en het <a href="#wijzigingsprotocol">wijzigingsprotocol</a> beschikbaar. In de standaardenagenda is aangegeven wat de algehele actuele ontwikkelingen zijn op het gebied van de standaarden. In het wijzigingsprotocol is het wijzigingsproces van een standaard beschreven. De planning voor de uitvoering van het wijzigingsproces is terug te vinden in de standaardenagenda. Ontwikkelingen in de standaarden kunnen om verschillende redenen gewenst zijn, waaronder:</p><ul>
+<li>geconstateerde fout in de standaard;</li>
+<li>wens tot wijziging, uitbreiding of vereenvoudiging uit de praktijk;</li>
+<li>aanpassing van de standaard door internationale ontwikkelingen.</li>
+</ul><p>In de aanloop naar een wijziging van de standaarden bundelt Geonovum de meldingen, verzoeken tot wijziging, in een wijzigingsvoorstel. Met behulp van onder andere een publieke consultatie (zie <a href="#toetsing">toetsing</a>) leggen wij de wijziging voor aan de praktijk en vragen hun feedback.
+</p><p><strong>Figuur Communicatie tijdens het ontwikkelproces</strong></p><p><img src="media/communicatie_ontwikkelproces.png" alt="communicatie tijdens ontwikkelproces"></p></section><section id="inzicht-in-het-wijzigingsproces"><h3 id="x4-4-inzicht-in-het-wijzigingsproces"><span class="secno">4.4 </span>Inzicht in het wijzigingsproces</h3><p>De meldingen en wijzigingsverzoeken alsook (inter)nationale ontwikkelingen geven aanleiding tot de verdere ontwikkeling voor een standaard. Zij worden gebundeld in een wijzigingsvoorstel. Het wijzigingsprotocol geeft richting aan het wijzigingsproces dat dit wijzigingsvoorstel doorloopt. In onderstaand figuur is het wijzigingsproces geschetst voor het vaststellen van een nieuwe (versie van een) standaard. De beschrijving geldt voor de type wijziging versie x en y (zie <a href="#versiebeheer">versiebeheer</a>). De programmaraad beoordeelt en beslist over deze wijzigingsvoorstellen. Z-wijzigingen worden door Geonovum zelf uitgevoerd zonder tussenkomst van de programmaraad.
+</p><p><strong>Figuur Proces vaststellen nieuwe standaard</strong></p><p><img src="media/proces_vaststellen_nieuwe_standaard.png" alt="Proces vaststellen nieuwe standaard"></p><p>Dit figuur toont twee groepen: de werkgroep en de programmaraad. De werkgroep voert het wijzigingsvoorstel in de standaard door. Dit resulteert in een definitief concept van de nieuwe versie van de standaard. De programmaraad beoordeelt dit definitief concept. Keurt zij het goed, dan is er een nieuwe standaard. Keurt zij het af, dan gaat het concept terug naar de werkgroep. Na aanpassing wordt het opnieuw aan de programmaraad voorgelegd, net zo lang totdat de programmaraad de nieuwe versie van de standaard accordeert of de standaard teruggetrokken wordt.
+Bij het vaststellen van een nieuwe versie van een standaard stelt de programmaraad met advies van Geonovum vast hoelang een oude versie wordt ondersteund en wanneer een oude versie komt te vervallen. Een uitzondering hierop is het Basismodel Geo-informatie (NEN 3610). Ook nieuwe versies van deze standaard bereidt Geonovum voor in samenwerking met werkgroepen. De programmaraad stelt de nieuwe versie niet vast, maar keurt hem goed (of af) en draagt deze vervolgens voor aan de NEN normcommissie 351 240 Geo-informatie. Deze commissie verzorgt de openbare consultatie en stelt de standaard formeel vast. 
+De programmaraad beslist, op advies van Geonovum, of zij een vastgestelde standaard voordraagt voor opname op <a href="https://www.forumstandaardisatie.nl/open-standaarden">de pas-toe-of-leg-uit-lijst voor open standaarden</a>. Bij een positief besluit verzorgt Geonovum de voordracht bij het Forum Standaardisatie. Organisatorisch bestaat er geen formele relatie tussen de stuurgroep en het Forum Standaardisatie, inhoudelijk dus wel.
+</p></section><section id="toetsing"><h3 id="x4-5-toetsing"><span class="secno">4.5 </span>Toetsing</h3><p>Er is een sterke afhankelijkheid tussen de toets van een wijzigingsvoorstel en de implementatie van de nieuwe standaard in de praktijk. Deze toets voeren wij uit in de vorm van publieke consultatie, pilots en testbeds. Zij zijn van primair belang voor het slagen van het wijzigingsproces en ingebruikname van de nieuwe (versie van de) standaard. Niet goed doordachte wijzigingen zullen het werkveld in grote problemen brengen. Het werkveld betrekken wij daarom nauw bij de uitvoering van de pilots en testbed. Welke actoren en werkgroepen betrokken zijn is aangegeven in het wijzigingsprotocol van de standaarden.</p><p><strong>Publieke consultatie</strong> wordt ingezet voor het toetsen van een (nieuwe versie van de) standaard in praktijk. De (potentiele) gebruikers van de standaard worden door middel van nieuwsberichten en nieuwsbrieven geïnformeerd over de ter inzage liggende standaard. De standaard ligt minimaal 30 dagen ter inzage, doorgaans 6 weken of langer indien gewenst. Er kan gereageerd worden met behulp van een meldingen formulier of door een bericht te sturen aan de geo-standaarden helpdesk. 
+Voor de standaarden die op de pas-toe-of-leg-uit lijst staan wordt een melding gemaakt bij het Forum Standaardisatie zodat het Forum Standaardisatie ook melding kan maken van de consultatie van deze standaarden.
+</p><p><strong>Pilots</strong> worden uitgevoerd bij een volledige nieuwe standaard. Op basis van een pilot wordt naast het werken met de standaard ook bijvoorbeeld toepassingsgebied, (on)mogelijkheden, behoeften, etc. onderzocht. Op basis van de uitkomst van een pilot wordt dan een beslissing genomen of en hoe met deze nieuwe standaard wordt verder gegaan.</p><p><strong>Testbeds</strong> Afhankelijk van het moment in het wijzigingsproces kan een testbed worden uitgevoerd om:</p><ul>
+<li>kleine technische fouten die het werkveld heeft geconstateerd bij de implementatie op een gecontroleerde wijze te herstellen;</li>
+<li>vast te stellen of de standaard in een productieomgeving implementeerbaar is.
+Testbeds passen wij toe als onderdeel van de wijzigingsproces om de kwaliteit van de wijziging op implementatie te toetsen.</li>
+</ul></section><section id="implementatie-van-de-standaard"><h3 id="x4-6-implementatie-van-de-standaard"><span class="secno">4.6 </span>Implementatie van de standaard</h3><section id="soorten-documenten"><h4 id="x4-6-1-soorten-documenten"><span class="secno">4.6.1 </span>Soorten documenten</h4><p>De volgende documentatie wordt onderkend en door Geonovum gebruikt in het beheer van de Geo-standaarden.</p><p><strong>Norm</strong> Een norm is bij een officieel standaardisatie instituut ondergebracht en bevat bindende afspraken.
+Naast het gebruik van normen is NEN 3610 de enige norm waar Geonovum een inhoudelijke verantwoordelijkheid heeft. Het formele beheer en beslissingen worden genomen in de NEN normcommissie 351 240 waar Geonovum de voorzitter van is.</p><p><strong>Standaard</strong>  Een document met (bindende) afspraken.</p><p><strong>Informatiemodel</strong>  Een standaard waarbij door de term informatiemodel te hanteren wordt aangegeven dat het een abstractie (het model) vormt van de werkelijkheid zoals beschreven binnen een bepaalde sector/domein. Informatiemodellen zijn een semantische invulling van normen voor sectoren zoals ruimtelijke ordening, kabels en leidingen, water, etc..</p><p><strong>Praktijkrichtlijn</strong> Praktijkrichtlijnen zijn producten die informatie geven, vaak met een technisch karakter, die nodig is voor het toepassen van standaarden. Een praktijkrichtlijn hoort altijd bij een standaard/norm.</p><p><strong>Handreiking</strong>  Op zichzelf staande documentatie dat als doel heeft een hulpmiddel te zijn, niet verplichtend maar ondersteunend.</p><p><strong>Werkafspraak</strong>  Legt uit hoe wetgeving moet worden toegepast bij onduidelijkheden, discrepanties of fouten in de standaarden.</p><p><strong>Algemeen</strong>  Op zichzelf staande algemene documentatie over standaarden. De documentatie betreft niet een specifieke standaard of onderdeel daarvan, het is ook geen beheerdocumentatie van een specifieke standaard.</p><p><strong>Beheerdocumentatie</strong>   Documentatie met betrekking tot het beheerproces van de standaard. Deze documentatie betreft niet een standaard of onderdeel daarvan, zoals een handreiking of werkafspraak. Dit kan interne gerichte documentatie zijn voor vastleggen van stappen in het dagelijkse werkproces, planning of hoe de helpdesk werkt. Ook kan dit een beheerplan of handboek zijn. Als dit soort documentatie publiekelijk beschikbaar wordt gesteld, dan gebeurd dit door middel van ReSpec.
+</p></section><section id="hulpmiddelen"><h4 id="x4-6-2-hulpmiddelen"><span class="secno">4.6.2 </span>Hulpmiddelen</h4><p>Tot de documentatie behoren de standaarden zelf, maar bijvoorbeeld ook publicaties, verslagen en presentaties over de standaarden. Per standaard zijn verschillende hulpmiddelen beschikbaar. Naast de standaard zelf is voor de implementatie ondersteuning de Geonovum website ook de centrale toegang. 
+Met betrekking tot implementatie ondersteuning is onder andere beschikbaar, dan wel vindbaar via de Geonovum website:
+</p><ul>
+<li>Agenda, dan wel planning;</li>
+<li>Helpdesk en veel gestelde vragen;</li>
+<li>Informatie over eventuele werkgroepen;</li>
+<li>Publicatie als ook presentaties, filmpjes, artikelen die de toepassing van de standaard toelichten;</li>
+<li>Meldingen;</li>
+<li>Validator voor de technische toets van data conform de standaard.</li>
+</ul><p>Voor iedere standaard is daarnaast, middels dit document en de website, aangegeven hoe het beheer van de standaard wordt gevoerd. Nieuwsberichten en nieuwsbrieven houden de gebruikers van de standaard op de hoogte van ontwikkelingen en activiteiten. Hoofdstuk <a href="#Implementatieondersteuning">Implementatieondersteuning</a> geeft een nadere toelichting op implementatieondersteuning.</p></section></section></section><section data-format="markdown" id="implementatieondersteuning"><!--OddPage--><h2 id="x5-implementatieondersteuning"><span class="secno">5. </span>Implementatieondersteuning</h2><p><strong>Voor de toepassing van de standaard zijn verschillende hulpmiddelen beschikbaar. Publicaties en tools zijn voorbeelden die voorvloeien uit een drietal belangrijke pijlers in de implementatie ondersteuning: helpdesk, opleiding en advies en validatie. Daarnaast kan conformiteitstoetsing ook een rol spelen in de adoptie en erkenning van de standaard.</strong>
+</p><section id="helpdesk"><h3 id="x5-1-helpdesk"><span class="secno">5.1 </span>Helpdesk</h3><p>Voor iedere basis geo-standaard is op de Geonovum <a href="https://www.geonovum.nl/contact/helpdesk">website</a> aangegeven hoe en aan wie vragen over de standaard gesteld kunnen worden.
+</p><p>Vragen over de standaard kunnen altijd per e-mail aan Geonovum worden gesteld via <a href="mailto:geostandaarden@geonovum.nl">geostandaarden@geonovum.nl</a>. De vraagsteller ontvangt binnen drie werkdagen een reactie van de helpdesk. De minimale informatie die de vraagsteller ontvangt is dat de vraag ontvangen en in behandeling is.</p><p><strong>Vragen</strong> en meldingen die bij de helpdesk binnen komen worden door de helpdeskmedewerker gecategoriseerd:</p><ul>
+<li>vragen die uitleg vragen over toepassing van de standaard;</li>
+<li>meldingen van wensen en fouten voor wijziging van de standaard.</li>
+</ul><p>De vragen archiveert de helpdeskmedewerker in het helpdeskregistratiesysteem. Naast een uniek nummer is de vraag voorzien van contactgegevens van de vraagsteller, op welk onderdeel van de standaard de vraag betrekking heeft, de behandelaar en een status. Een vraag kan leiden tot een melding. In dat geval wordt de vraag ook geregistreerd in een wensen- en foutenregistratiesysteem, onder vermelding van het nummer uit het helpdesksysteem. De lijst van meldingen is te raadplegen via de Geonovum website per betreffende standaard. 
+Afhankelijk van de gestelde vragen, ontwikkelingen in de standaard worden veel gestelde vragen over de standaard via de website inzichtelijk gemaakt.
+</p><p><strong>Meldingen</strong> zijn wensen en gevonden fouten die kunnen leiden tot wijzigingsverzoeken. Gebruikers van de standaard kunnen deze via de helpdesk indienen, maar ook via het meldingen formulier via de Geonovum website. Meldingen worden op vergelijkbare wijze in behandeling genomen als helpdesk vragen. Meldingen komen ook terecht bij de helpdesk van de betreffende standaard en worden geregistreerd in een wensen- en foutenregistratiesysteem. De helpdesk toetst de melden periodiek. De lijst is inzichtelijk via de Geonovum website. De standaardenagenda geeft aan wanneer meldingen getoetst worden en als wijzigingsvoorstel in de wijzigingsprocedure doorgaan.</p></section><section id="opleiding-en-advies"><h3 id="x5-2-opleiding-en-advies"><span class="secno">5.2 </span>Opleiding en advies</h3><p>Op verschillende manieren geven wij advies en informatie over de toepassing van de basis geo-standaarden. Dit kunnen wij bijvoorbeeld doen als gastdocent via regulier <a href="https://www.geonovum.nl/onderwerpen/kennisplein">onderwijs</a> voor studenten, trainingen en de wiki.
+</p><p><strong>Wiki</strong> Eenduidig communiceren over de standaarden, de kennis delen en toegankelijk maken doen wij met onze <a href="http://wiki.geonovum.nl">wiki</a>. Samen met trainers onderhouden wij de wiki’s. Zij hebben een account om wijzigingen in de wiki te kunnen doorvoeren.</p><p><strong>Train de trainer</strong> Geonovum leidt zelf geen eindgebruikers op van de standaarden. In plaats daarvan leiden wij de mensen op die opleiding geven, zoals docenten HBO en WO, cursusleiders en softwareleveranciers. Kennis over de standaardisatie van geo-informatie staat hierin centraal. Dat doen wij op basis van behoefte op basis van de wiki’s en het liefst zoveel mogelijk in samenwerking met andere koepels.</p><p><strong>Workshops</strong> Naast de pilots en de testbeds (zie <a href="#toetsing">toetsing</a>) verzorgen wij workshops om kennis te delen met het werkveld over de wijziging van een standaard. Dat doen wij doorgaans eenmaal per jaar en zo vaak als gewenst binnen een wijzigingsproces.</p></section><section id="validatie"><h3 id="x5-3-validatie"><span class="secno">5.3 </span>Validatie</h3><p>Validatie is een manier om de kwaliteit van de toepassing van de standaarden te verhogen. Geonovum heeft voor de basis geo-standaarden verschillende validators <a href="https://validatie.geostandaarden.nl/">online</a> beschikbaar. Aan het gebruik van de validator zijn geen voorwaarden of kosten verbonden.
+Daarnaast is de kennis en ervaring die we daarmee hebben opgedaan zijn bij elkaar gebracht in één nieuwe online validator. Deze nieuwe validator, de <a href="https://www.geonovum.nl/over-geonovum/actueel/vanaf-1-juli-is-er-nog-maar-een-geonovum-validator">ETF-validator</a>, is de centrale ingang voor validatie van data, metadata en services tegen nationale en internationale standaarden en profielen.</p><p><strong>Data</strong> Een dataset die is opgesteld conform een standaard zou zo in elke applicatie die deze standaarden gebruikt, kunnen worden ingelezen. De praktijk is echter weerbarstiger. Een standaard kan net even anders zijn geïnterpreteerd in de ene applicatie, waardoor de dataset uit deze applicatie moeilijkheden geeft bij het inlezen in een andere applicatie. Het is daarom belangrijk om een mechanisme te hebben, waarmee gecheckt kan worden of een standaard juist is toegepast in een dataset.
+Met behulp van een validator kan men nagaan of een dataset conform de standaarden is opgesteld. Het is een online applicatie die een bestand controleert op de uitwisselingsstandaarden. Het directe resultaat van deze controle is een rapport met bevindingen.</p><p><strong>Services</strong> Niet alleen voor datasets, maar ook voor services om de data uit te wisselen biedt Geonovum validators. Dit geldt voor web mapping services (WMS) en web feature services (WFS). De validators toetsen of de service op de Nederlandse profielen. Het gaat er hier om of de service zich gedraagt zoals is afgesproken.</p><p><strong>Metadata</strong> De validators voor metadata bieden de mogelijkheid metadata voor geografie en voor services te toetsen aan de Nederlandse en INSPIRE profielen voor metadata. De metadata wordt getoetst op structuur en op inhoud, voor zo ver geautomatiseerd mogelijk is.</p></section><section id="conformiteittoetsing"><h3 id="x5-4-conformiteittoetsing"><span class="secno">5.4 </span>Conformiteittoetsing</h3><p>Een andere manier om de kwaliteit van de toepassing van de standaarden te verhogen is toetsing van software (applicaties). Geonovum heeft de NEN 3610 conformiteitstoets ontwikkeld. Het uitvoeren van deze toets levert een objectieve kwaliteitsbeoordeling op van modellen op basis van NEN 3610. De toets is inzetbaar in verschillende fasen van de ontwikkeling van een model. De eerste fase is een pré-toets in de laatste fase van de modelontwikkeling of -herziening. De ontwikkelaar krijgt dan een beeld waar nog extra aandacht in relatie tot NEN 3610 nodig is. Software die de conformiteitstoets goed heeft doorstaan, verzekert gebruikers ervan dat zij data kunnen aanmaken volgens de standaard.</p></section></section><section data-format="markdown" id="communicatie"><!--OddPage--><h2 id="x6-communicatie"><span class="secno">6. </span>Communicatie</h2><p><strong>Communicatie is integraal verweven in het beheerproces van de geo-standaarden en hebben we nodig om de toepassing van de standaard in de praktijk uit te leggen. Belangrijke pijlers van communicatie publicatie, promotie en klachtenafhandeling en komen daarom separaat in dit hoofdstuk aan de orde.</strong></p><section id="publicatie"><h3 id="x6-1-publicatie"><span class="secno">6.1 </span>Publicatie</h3><p>De Geonovum website is de centrale toegang tot de standaarden en aan de standaarden gerelateerde documenten zoals nieuwsbrieven, presentaties en publicaties. Alle basis geo-standaarden zijn te downloaden via de Geonovum website. Iedere standaard heeft een eigen dossier op de site, gerubriceerd als ‘onderwerp’. Naast de vigerende standaard zijn ook eerdere versies te beschikbaar en raadpleegbaar. Zo is de historie van de standaarden voor iedereen in te zien. In publicaties verwijzen wij altijd naar de site voor meer informatie.
+</p></section><section id="betrekken-van-de-community"><h3 id="x6-2-betrekken-van-de-community"><span class="secno">6.2 </span>Betrekken van de community</h3><p>Een succesvolle en duurzame toepassing van de basis geo-standaarden vraagt om een continue dialoog tussen de gebruikers en de beheerder. Bij de ontwikkeling en het beheer van standaarden is betrokkenheid en input van het werkveld essentieel. Rond de standaarden worden daarom ‘communities’ gevormd: mensen die actief (meeschrijven) of passief (meelezen), bij de (verdere) ontwikkeling van de standaarden zijn betrokken (zie ook <a href="#community">Community</a>).
+</p><p>Ontwikkelen wij een nieuwe standaard of richtlijn, dan nodigen wij het werkveld uit om deel te nemen aan de werkgroep. Deze uitnodiging plaatsen wij op onze website en via onze nieuwsbrief geo-standaarden om een breed publiek te bereiken. Op basis van de ontvangen reacties, eventueel aangevuld met gerichte uitnodigingen om tot een evenwichtige samenstelling van de groep te komen, wordt een werkgroep ingesteld. De verslagen van de werkgroep overleggen (zo ver beschikbaar) zijn via de Geonovum website, bij de betreffende standaard, te raadplegen. Via onze nieuwsbrief houden wij een brede groep geïnteresseerden op de hoogte van de voortgang van verschillende werkgroepen.
+Zodra het resultaat van de werkgroep, in publieke consultatie gaat, verschijnt hierover een nieuwsbericht op onze site. Bij een geheel nieuwe standaard of richtlijn of een wijziging van een bestaande standaard met grote impact voor gebruikers geven wij ook een persbericht uit over de consultatie aan relevante vakmedia.</p><p>De resultaten van de publieke consultatie publiceren wij. Daarbij geven wij aan hoe het ontvangen commentaar is verwerkt. Is een standaard eenmaal vastgesteld, dan verschijnt er een nieuwsbericht op onze website en gaat er een persbericht naar relevante vakmedia. Bij een geheel nieuwe standaard of richtlijn of een wijziging van een bestaande standaard met grote impact voor gebruikers publiceren wij ook artikelen in vakbladen en organiseren wij workshops.</p></section><section id="promotie"><h3 id="x6-3-promotie"><span class="secno">6.3 </span>Promotie</h3><p>Is een (nieuwe versie van een) standaard eenmaal vastgesteld, dan kan hij in gebruik worden genomen. De belangrijkste communicatiefunctie in deze fase is promotie van de standaard. Door in de fase Inhoud (zie <a href="#wijzigingsprotocol">Wijzigingsprotocol</a>) van de standaard de juiste partijen aan tafel te hebben en door open te communiceren over wat er in de werkgroepen gebeurt, werken wij van meet af aan aan de acceptatie van de standaard door het werkveld. Om de invoering van onze standaarden tot een succes te maken is onze helpdesk cruciaal. Door mensen kundig en tijdig te woord te staan, voorkomen wij ergernis en houden wij de dialoog met het werkveld open. Ter promotie van de standaarden zetten wij verschillende middelen in. De belangrijkste zijn workshops, presentatie en publicaties. Rond nieuwe standaarden en rond grote wijzigingen brengen wij persberichten uit en schrijven wij artikelen voor de vakbladen. Andere publicatiemiddelen die we inzetten zijn: factsheets (wat is de standaard, wat kan je ermee, hoe voer ik hem in), interviews met gebruikers in bijvoorbeeld het jaarverslag van Geonovum, externe publicaties, etc.</p><p><strong>Workshops</strong> Bij de introductie van een nieuwe standaard organiseren wij een workshop met als doel kennis te maken met de nieuwe standaard. Hiervoor worden onder meer de softwareleveranciers en informatiemanagers uit het werkveld uitgenodigd. Soms is het mogelijk een workshop te combineren met een testbed waarin de laatste praktische punten rond de implementatie ter plaatse kunnen worden opgelost.</p><p><strong>Presentaties</strong> Naast workshops verzorgen wij regelmatig presentaties over ontwikkelingen van en rond de basis geo-standaarden. Wij doen dat bijvoorbeeld op bijeenkomsten van of voor overheidsorganisaties en onderwijsinstellingen, (verwante) standaardisatieorganisaties en op bijeenkomsten voor sectoren waarbinnen onze standaarden van toepassing zijn. Met onze presentaties komen wij het meest in aanraking met nieuwe doelgroepen (mensen die ons of onze standaarden nog niet kennen).</p><p><strong>Publicaties</strong> Om op de hoogte te raken en blijven van welke standaarden er zijn en wat men ermee kan, maken wij gebruik van verschillende publicaties. Allereerst onze eigen website, met onze nieuwsrubriek. Alle nieuwtjes rond de standaarden verschijnen op onze site. Via RSS-feeds kunnen geïnteresseerden en andere sites, onze nieuwsberichten automatisch verzamelen. Aanvullend brengen wij een digitale nieuwsbrief geo-standaarden uit waarin berichten van de website gebundeld per e-mail worden aangeboden. Wij stimuleren het overnemen van berichten van onze website op andere sites en andere relevante media.
+</p></section><section id="klachtenafhandeling"><h3 id="x6-4-klachtenafhandeling"><span class="secno">6.4 </span>Klachtenafhandeling</h3><p>Het garanderen van het serieus nemen van klachten kan alleen, door deze volgens een zorgvuldige procedure te behandelen. Klachten kunnen ook beschouwd worden als verbetersuggestie. We onderscheiden daarom twee verschillende type klachten met betrekking tot de standaarden:</p><ul>
+<li>Klachten over de toepassingsmogelijkheid van de standaard;</li>
+<li>Klachten over het beheer van de standaard.</li>
+</ul><p>In het eerste geval is het feitelijk geen klacht maar een wens of eis tot het aanpassen van de standaard. De beheerders van de betreffende geo-standaard nemen dit in behandeling en vastgelegd als wijzigingsverzoek en niet als klacht. In dit geval doet Geonovum haar werk goed. 
+In het tweede geval is er sprake van ontevredenheid over de uitvoering van het beheerproces van de geo-standaard en betreft niet de inhoud, de geo-standaard zelf. De indiener is van mening dat Geonovum, het standaardenteam, dan wel een persoon het werk niet naar behoren uitvoert. In dat geval wordt de klacht doorgezet naar de <a href="#governance">Programmaraad</a>.
+</p><p>De route van indienen van klachten is bij Geonovum in principe via de helpdesk geo-standaarden. Dit is de manier om met Geonovum in contact te komen, vragen te stellen en wensen en eisen met betrekking tot de standaard kenbaar te maken. De helpdesk route voor zowel vragen, wijzigingsverzoeken, klachten en incidenten geeft een zo compleet mogelijk overzicht in het contact met de gebruikers van de standaarden, over de standaarden.</p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

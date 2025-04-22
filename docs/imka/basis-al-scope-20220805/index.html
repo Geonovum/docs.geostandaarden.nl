@@ -1,0 +1,1224 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Scopedocument Klimaatadaptatie</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-BASIS.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-BASIS",
+  "specType": "AL",
+  "format": "markdown",
+  "publishDate": "2022-08-05",
+  "github": "https://github.com/geonovum/imka-scope",
+  "issueBase": "https://github.com/geonovum/imka-scope/issues",
+  "edDraftURI": "https://geonovum.github.io/imka-scope/",
+  "editors": [
+    {
+      "name": "Sytske Postma",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Wideke Boersma",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Gerard Trouborst",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "scope",
+  "pubDomain": "imka",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    },
+    "PUB-4": {
+      "title": "Titel van Publicatie-4",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-4",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "publishISODate": "2022-08-05T00:00:00.000Z",
+  "generatedSubtitle": "Document 05 augustus 2022"
+}</script><meta name="description" content="Het ministerie van Infrastructuur en Waterstaat (IenW) wil haar informatievoorziening met betrekking tot klimaatadaptatie stroomlijnen, en heeft het initiatief genomen tot het opstellen van een informatiemodel klimaatadaptatie. IenW heeft aan Geonovum gevraagd hierin ondersteuning te bieden."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imka/basis-al-scope-20220805/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Scopedocument Klimaatadaptatie",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-08-05",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/imka-scope/issues",
+  "alternativeHeadline": "",
+  "description": "Het ministerie van Infrastructuur en Waterstaat (IenW) wil haar informatievoorziening met betrekking tot klimaatadaptatie stroomlijnen, en heeft het initiatief genomen tot het opstellen van een informatiemodel klimaatadaptatie. IenW heeft aan Geonovum gevraagd hierin ondersteuning te bieden.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Sytske Postma",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Wideke Boersma",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Gerard Trouborst",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry toc-inline"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Scopedocument Klimaatadaptatie</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Document <time class="dt-published" datetime="2022-08-05">05 augustus 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/imka/basis-al-scope-20220805/">https://docs.geostandaarden.nl/imka/basis-al-scope-20220805/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/imka/scope/">https://docs.geostandaarden.nl/imka/scope/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/imka-scope/">https://geonovum.github.io/imka-scope/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Sytske Postma</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Wideke Boersma</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Gerard Trouborst</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/imka-scope/">GitHub geonovum/imka-scope</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/imka-scope/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/imka-scope/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/imka-scope/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><p>Het ministerie van Infrastructuur en Waterstaat (IenW) wil haar informatievoorziening met betrekking tot klimaatadaptatie stroomlijnen, en heeft het initiatief genomen tot het opstellen van een informatiemodel klimaatadaptatie. IenW heeft aan Geonovum gevraagd hierin ondersteuning te bieden.</p><p>Doel is om de monitoring van klimaatadaptatie effectief en betekenisvol te kunnen uitvoeren en regionale data te kunnen koppelen tot een landelijk beeld. IenW wil in de opdracht die Geonovum uitvoert zicht krijgen op de scope en omvang, en eerste stappen zetten met de realisatie van een informatiemodel voor het onderdeel hitte. Daarbij wordt allereerst gekeken naar de onderwerpen gezondheid, natuur en mobiliteit.</p><p>Er speelt veel op het gebied klimaatadaptatie van agenderende initiatieven tot onderzoeksprojecten en ontwikkelen van modellen. Het domein hitte is complex. Als het gaat om de impact van hitte, dan zijn er vele gevolgeffecten en vele samenhangen te ontdekken. Vele actoren zijn bezig met het treffen van maatregelen, denken na over normen voor hitte, onderzoeken effecten van hitte en ontwikkelen tools en kaarten.
+</p><p>De complexiteit van het domein komt ook tot uiting door het ontbreken van een duidelijk kader, of dit nu wettelijk, beleidsmatig of semantisch is. Uit interviews met de stakeholders blijkt een verschillende (informatie)behoefte. De bedoeling van het scopedocument is vast te leggen waar het informatiemodel en bijbehorend begrippenkader op gericht wordt. De vraag is dus eerst: wat moet er worden opgelost of bereikt met een begrippenkader en informatiemodel?
+</p><p>Op metaniveau zijn de vragen: kunnen we binnen het domein hitte ‘dezelfde taal’ gaan spreken en hoe krijgen we zicht krijgen op of Nederland klimaatbestendiger wordt. Dus wanneer ben je klimaatadaptief, hoe effectief zijn maatregelen?</p><p>Dit is geen eenvoudige vraagstelling. Los van het gebrek aan eenduidigheid in terminologie en definities, is er (nog) geen uniformiteit in het bepalen van effecten van hitte noch in die van adaptieve maatregelen. Ook zijn er (nog) geen wettelijke normen voor klimaatadaptatie, gemeenten bepalen de normen zelf. Tenslotte is het effect van hitte en het effect van maatregelen niet alleen locatie specifiek, maar ook afhankelijk van demografische en sociaal-economische factoren.</p><p>In het Deltaprogramma Ruimtelijke Adaptatie (2016) is afgesproken dat alle overheden stresstesten zouden uitvoeren, ook voor hitte. Het leek daarom een goed idee om de hittestresstesten aan te grijpen om een begrippenkader en informatiemoel voor te ontwikkelen. Echter, alhoewel er een vorm van standaardisatie is, is er ook veel ruimte voor lokaal maatwerk. Het ‘optellen’ van uitkomsten van hittestresstesten tot een landelijk beeld is daarom nog niet zo eenvoudig.
+</p><p>Er is vervolgens met opdrachtgever gezocht naar een nieuwe kapstok: de Klimaateffectatlas. Deze zal naar verwachting een rol gaan spelen in de monitoring van klimaatadaptiviteit op landelijk niveau. Deze ‘kapstok’ is vervolgens meer concreet gemaakt om daarmee de scoping richting te geven (zie Hoofdstuk 8). </p><p>In dit scopedocument is de weerslag van de uitgevoerde verkenning. Op voorhand kan worden gezegd dat, gezien de complexiteit van het onderwerp, deze verkenning niet volledig is. Het geeft een beeld van wat er speelt. Hoewel er ruim 16 interviews zijn afgenomen, moet dit worden gezien als steekproef en zijn lang niet alle groepen stakeholders bevraagd. Uitspraken van stakeholders en bevindingen van Geonovum mogen daarom niet als absolute conclusies worden gezien, eerder als indrukken, die waardevol zijn, inzicht geven en aanknopingspunten geven voor een vervolg.</p><p>Er is behoefte aan eenduidige definities van begrippen, bij voorkeur voorzien van een methode hoe die begrippen worden bepaald of berekend. Eenduidige kaarten of daaraan ten grondslag liggende datasets of ontsluiting van nog andere data, daar is ook behoefte aan. Tenslotte speelt naast informatie over de ‘buitenruimte’ informatie over de ‘binnenruimte’ een belangrijke rol, omdat mensen nu eenmaal meer binnen dan buiten zijn. De rol en plek van een informatiemodel in het hitte-domein, daarin zijn keuzes te maken. Daarom geven we in dit document, naast onze bevindingen, een aantal opties voor een vervolgfase. Deze opties hebben te maken met keuze in inhoudelijke scope (‘buiten’, ‘binnen’, hitte-breed) en keuze in aanpak (de breedte of de diepte in of een combinatie).</p><p><img src="media/samenvatting.jpg" alt="samenvatting" title="Samenvatting proces hitte in relatie tot woordenboek en informatiemodel"></p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+
+    Dit is een document zonder officiële status.
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel"><span class="secno">1.1 </span>Doel</a></li><li class="tocline"><a class="tocxref" href="#resultaat"><span class="secno">1.2 </span>Resultaat</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inhoud"><span class="secno">2. </span>Klimaatadaptie, onderdeel hitte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klimaatadaptie"><span class="secno">2.1 </span>Klimaatadaptie</a></li><li class="tocline"><a class="tocxref" href="#hitte-het-wordt-warmer"><span class="secno">2.2 </span>Hitte: het wordt warmer</a></li><li class="tocline"><a class="tocxref" href="#gevolgen-en-maatregelen-van-hitte"><span class="secno">2.3 </span>Gevolgen en maatregelen van hitte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gezondheid"><span class="secno">2.3.1 </span>Gezondheid</a></li><li class="tocline"><a class="tocxref" href="#infrastructuur"><span class="secno">2.3.2 </span>Infrastructuur</a></li><li class="tocline"><a class="tocxref" href="#natuur"><span class="secno">2.3.3 </span>Natuur</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#wettelijkkader"><span class="secno">3. </span>Wettelijk kader</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#hoe-pakt-nederland-klimaatadaptatie-aan"><span class="secno">3.1 </span>Hoe pakt Nederland klimaatadaptatie aan?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nationaal-deltaprogramma"><span class="secno">3.1.1 </span>Nationaal Deltaprogramma</a></li><li class="tocline"><a class="tocxref" href="#deltaplan-ruimtelijke-adaptatie-dpra"><span class="secno">3.1.2 </span>Deltaplan Ruimtelijke adaptatie (DPRA)</a></li><li class="tocline"><a class="tocxref" href="#nationale-klimaatadaptatiestrategie-nas"><span class="secno">3.1.3 </span>Nationale klimaatadaptatiestrategie (NAS)</a></li><li class="tocline"><a class="tocxref" href="#actielijnen-klimaatadaptatie-natuur"><span class="secno">3.1.4 </span>Actielijnen klimaatadaptatie natuur</a></li></ol></li><li class="tocline"><a class="tocxref" href="#normen-en-richtlijnen"><span class="secno">3.2 </span>Normen en richtlijnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#richtlijnen-de-hittebestendige-stad"><span class="secno">3.2.1 </span>Richtlijnen 'De hittebestendige stad’</a></li><li class="tocline"><a class="tocxref" href="#bouwbesluit"><span class="secno">3.2.2 </span>Bouwbesluit</a></li></ol></li><li class="tocline"><a class="tocxref" href="#internationaal-en-europees-kader"><span class="secno">3.3 </span>Internationaal en Europees kader</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#europese-green-deal"><span class="secno">3.3.1 </span>Europese Green Deal</a></li><li class="tocline"><a class="tocxref" href="#europese-klimaatwet"><span class="secno">3.3.2 </span>Europese Klimaatwet</a></li><li class="tocline"><a class="tocxref" href="#europese-adaptatiestrategie"><span class="secno">3.3.3 </span>Europese Adaptatiestrategie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#werkproces"><span class="secno">4. </span>Het (keten)werkproces klimaatadaptatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klimaatstresstesten"><span class="secno">4.1 </span>Klimaatstresstesten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bijsluiter-voor-de-gestandaardiseerde-stresstest"><span class="secno">4.1.1 </span>Bijsluiter voor de gestandaardiseerde stresstest</a></li><li class="tocline"><a class="tocxref" href="#bijsluiter-gestandaardiseerde-stresstest-hitte"><span class="secno">4.1.2 </span>Bijsluiter gestandaardiseerde stresstest hitte</a></li><li class="tocline"><a class="tocxref" href="#risicodialogen"><span class="secno">4.1.3 </span>Risicodialogen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#uitvoeringsagenda-met-maatregelenprogramma"><span class="secno">4.2 </span>Uitvoeringsagenda met maatregelenprogramma</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#impulsregeling-klimaatadaptatie"><span class="secno">4.2.1 </span>Impulsregeling klimaatadaptatie</a></li><li class="tocline"><a class="tocxref" href="#life-ip-klimaatadaptatie"><span class="secno">4.2.2 </span>LIFE-IP Klimaatadaptatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#monitoring"><span class="secno">4.3 </span>Monitoring</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#monitoring-op-landelijk-niveau"><span class="secno">4.3.1 </span>Monitoring op landelijk niveau</a></li><li class="tocline"><a class="tocxref" href="#monitoren-van-de-cascade-effecten-van-maatregelen"><span class="secno">4.3.2 </span>Monitoren van de cascade-effecten van maatregelen</a></li><li class="tocline"><a class="tocxref" href="#europese-rapportageverplichtingen-aangaande-adaptatiebeleid"><span class="secno">4.3.3 </span>Europese rapportageverplichtingen aangaande adaptatiebeleid</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#tools"><span class="secno">5. </span>Tools en informatiebronnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#tools-0"><span class="secno">5.1 </span>Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klimaateffectatlas-kea"><span class="secno">5.1.1 </span>Klimaateffectatlas (KEA)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kaartverhalen-met-de-belangrijkste-kaarten"><span class="secno">5.1.1.1 </span>Kaartverhalen met de belangrijkste kaarten</a></li><li class="tocline"><a class="tocxref" href="#basiskaarten"><span class="secno">5.1.1.2 </span>Basiskaarten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#nas-bollenschema-s"><span class="secno">5.1.2 </span>NAS-bollenschema's</a></li><li class="tocline"><a class="tocxref" href="#mindmap-hitte-in-de-stad"><span class="secno">5.1.3 </span>Mindmap 'Hitte in de stad'</a></li><li class="tocline"><a class="tocxref" href="#andere-tools"><span class="secno">5.1.4 </span>Andere tools</a></li></ol></li><li class="tocline"><a class="tocxref" href="#europese-informatiebronnen"><span class="secno">5.2 </span>Europese informatiebronnen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stakeholders"><span class="secno">6. </span>Stakeholders</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#breed-speelveld"><span class="secno">6.1 </span>Breed speelveld</a></li><li class="tocline"><a class="tocxref" href="#stakeholders-op-gebied-van-gezondheid"><span class="secno">6.2 </span>Stakeholders op gebied van gezondheid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vws"><span class="secno">6.2.1 </span>VWS</a></li><li class="tocline"><a class="tocxref" href="#gemeente-rotterdam"><span class="secno">6.2.2 </span>Gemeente Rotterdam</a></li><li class="tocline"><a class="tocxref" href="#ggd"><span class="secno">6.2.3 </span>GGD</a></li><li class="tocline"><a class="tocxref" href="#hogeschool-van-amsterdam"><span class="secno">6.2.4 </span>Hogeschool van Amsterdam</a></li><li class="tocline"><a class="tocxref" href="#klimaatverbond"><span class="secno">6.2.5 </span>Klimaatverbond</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stakeholders-op-gebied-van-natuur"><span class="secno">6.3 </span>Stakeholders op gebied van natuur</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#lnv"><span class="secno">6.3.1 </span>LNV</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stakeholders-op-gebied-van-infrastructuur"><span class="secno">6.4 </span>Stakeholders op gebied van infrastructuur</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ienw-in-relatie-tot-infrastructuur"><span class="secno">6.4.1 </span>IenW (in relatie tot infrastructuur)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#stakeholders-op-gebied-van-informatievoorziening"><span class="secno">6.5 </span>Stakeholders op gebied van informatievoorziening</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ienw-in-relatie-tot-informatievoorziening"><span class="secno">6.5.1 </span>IenW (in relatie tot informatievoorziening)</a></li><li class="tocline"><a class="tocxref" href="#rivm"><span class="secno">6.5.2 </span>RIVM</a></li><li class="tocline"><a class="tocxref" href="#unie-van-waterschappen-dpra-in-relatie-tot-bijsluiter-stresstest-hitte"><span class="secno">6.5.3 </span>Unie van Waterschappen / DPRA (in relatie tot bijsluiter stresstest hitte)</a></li><li class="tocline"><a class="tocxref" href="#rijkswaterstaat-ienw"><span class="secno">6.5.4 </span>Rijkswaterstaat / IenW</a></li><li class="tocline"><a class="tocxref" href="#overleg-standaarden-klimaatadaptatie-oska-nen"><span class="secno">6.5.5 </span>Overleg Standaarden Klimaatadaptatie (OSKA)/NEN</a></li><li class="tocline"><a class="tocxref" href="#climate-adaptation-services-cas"><span class="secno">6.5.6 </span>Climate Adaptation Services (CAS)</a></li><li class="tocline"><a class="tocxref" href="#cobra"><span class="secno">6.5.7 </span>Cobra</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#standaarden"><span class="secno">7. </span>Relevante standaarden en documentatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nationaal"><span class="secno">7.1 </span>Nationaal</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informatiemodel-natuurbeheer-imna"><span class="secno">7.1.1 </span>Informatiemodel Natuurbeheer (IMNa)</a></li><li class="tocline"><a class="tocxref" href="#aquo"><span class="secno">7.1.2 </span>Aquo</a></li><li class="tocline"><a class="tocxref" href="#imbor"><span class="secno">7.1.3 </span>IMBOR</a></li><li class="tocline"><a class="tocxref" href="#immetingen"><span class="secno">7.1.4 </span>IMMetingen</a></li><li class="tocline"><a class="tocxref" href="#nictiz"><span class="secno">7.1.5 </span>NICTIZ</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inspire"><span class="secno">7.2 </span>INSPIRE</a></li><li class="tocline"><a class="tocxref" href="#overig-internationaal"><span class="secno">7.3 </span>Overig internationaal</a></li><li class="tocline"><a class="tocxref" href="#technische-standaarden"><span class="secno">7.4 </span>Technische standaarden</a></li><li class="tocline"><a class="tocxref" href="#andere-relevante-handreikingen-e-d"><span class="secno">7.5 </span>Andere relevante handreikingen e.d.</a></li></ol></li><li class="tocline"><a class="tocxref" href="#keuzes"><span class="secno">8. </span>Bevindingen en voorstellen voor vervolg</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bevindingen"><span class="secno">8.1 </span>Bevindingen</a></li><li class="tocline"><a class="tocxref" href="#voorstellen-voor-vervolg"><span class="secno">8.2 </span>Voorstellen voor vervolg</a></li></ol></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Het klimaat verandert. De temperatuur op aarde stijgt. Nederland krijgt steeds meer te maken met extreem weer zoals hitte en droogte, maar ook met wateroverlast en overstromingen. Klimaatverandering heeft grote gevolgen voor mens, natuur en milieu. Daarom neemt Nederland maatregelen om zich aan te passen aan de gevolgen van klimaatverandering (klimaatadaptatie) en om verdere klimaatverandering te beperken o.a. door de vermindering van de uitstoot van broeikasgassen (klimaatmitigatie).
+</p><p>Het ministerie van Infrastructuur en Waterstaat (IenW) wil haar informatievoorziening met betrekking tot klimaatadaptatie stroomlijnen, en heeft het initiatief genomen tot het opstellen van een begrippenkader en informatiemodel klimaatadaptatie. IenW heeft aan Geonovum gevraagd hierin ondersteuning te bieden. </p><section id="doel"><h3 id="x1-1-doel"><span class="secno">1.1 </span>Doel</h3><p>Om monitoring van klimaatadaptatie effectief en betekenisvol te kunnen uitvoeren en regionale data te kunnen koppelen tot een landelijk beeld is het nodig dat dezelfde ‘taal’ wordt gesproken en dat gegevens uitwisselbaar zijn. Aangezien klimaatadaptatie een zeer brede reikwijdte heeft, wil IenW eerst zicht krijgen op de scope en omvang voor het onderdeel hitte en dan specifiek rondom de onderwerpen gezondheid, natuur en mobiliteit. De verkenning voor het onderdeel hitte moet leiden tot een duidelijke scope voor het op te stellen begrippenkader en informatiemodel.</p></section><section id="resultaat"><h3 id="x1-2-resultaat"><span class="secno">1.2 </span>Resultaat</h3><p>In de voor u liggende document beschrijft deze verkenning voor het onderdeel hitte en dan specifiek rondom de onderwerpen gezondheid, natuur en mobiliteit. Uitgangspunt voor het onderdeel hitte is de nationale aanpak voor klimaatadaptatie, zoals beschreven in de Nationale klimaatadaptiestrategie (NAS) en het Deltaplan Ruimtelijke adaptatie (DPRA), onderdeel van het nationaal Deltaprogramma.
+</p><p>De verkenning is uitgevoerd middels desk-research en interviews met de stakeholders. Hitte is echter een complex speelveld en de verkenning beoogt dan ook niet volledig te zijn. De verkenning richt zich met name op de volgende aspecten: </p><ul>
+<li>Wat is de behoefte aan informatie rondom klimaatadaptatie, specifiek voor hitte en voor welk doel?</li>
+<li>Wat zijn de knelpunten en de verbeterpunten in de informatievoorziening rondom hitte?</li>
+<li>Wat zijn de oplossingen? Is dit een begrippenkader en/of een informatiemodel. En waarvoor?</li>
+</ul></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>Dit  document  begint  met  een  inleiding  waarin  de  achtergrond  en  aanleiding  van  deze verkenning  wordt toegelicht. In hoofdstuk twee wordt klimaatadaptatie en specifiek het klimaatrisico hitte toegelicht. In  hoofdstuk drie wordt het wettelijk kader beschreven. Het werkproces rondom klimaatadaptie komt aan de orde in hoofdstuk vier waarna vervolgens in hoofdstuk vijf ingegaan wordt op de belangrijkste tools en informatie in het proces rondom hitte. In hoofdstuk 6 komen de stakeholders aanbod en hun rol/belang in het werkproces. De relevante standaarden worden beschreven in hoofdstuk 7. Tot slot worden in het laatste twee hoofdstukken de inhoudelijke keuzes op hoofdlijnen beschreven en de mogelijk aanpak voor het vervolg.</p></section></section><section data-format="markdown" id="inhoud"><!--OddPage--><h2 id="x2-klimaatadaptie-onderdeel-hitte"><span class="secno">2. </span>Klimaatadaptie, onderdeel hitte</h2><p><em>Beschrijving van het domein klimaatadaptatie, hitte, en een eerste definitie van het onderwerp Klimaatadaptatie, hitte. Duiding van hitte in het beleidsveld.</em></p><section id="klimaatadaptie"><h3 id="x2-1-klimaatadaptie"><span class="secno">2.1 </span>Klimaatadaptie</h3><p>Zoals in de inleiding aangegeven, verandert het klimaat. De temperatuur op aarde stijgt en er is meer kans op een hittegolf, een extreme regenbui, en op langere, droge periodes. Klimaatverandering heeft grote gevolgen voor de gezondheid, de leefbaarheid en de economie. Een hittegolf zorgt bijvoorbeeld voor extra sterfte onder kwetsbare groepen. Maar hitte veroorzaakt ook uitzettingsproblemen bij spoorwegen, bruggen en andere infrastructuur. Nederland moet zich voorbereiden op de risico’s van het veranderende klimaat en hierop de omgeving aanpassen. Dit heet klimaatadaptatie.
+</p><p>Klimaatadaptatie voorkomt klimaatschade. Niets doen betekent dat er tot 2050 tussen de € 77,5 en 173,6 miljard aan klimaatschade kan zijn. Daarom is klimaatadaptatie nodig. Voorbeelden van klimaatadaptatie zijn: meer groen in steden en dorpen, dijken verstevigen en rivieren verbreden. </p><p>De <a href="#nationale-klimaatadaptatiestrategie-nas">Nationale klimaatadaptatiestrategie (NAS)</a> en en het <a href="#deltaplan-ruimtelijke-adaptatie-dpra">Deltaplan Ruimtelijke adaptatie (DPRA)</a> beschrijven de belangrijkste klimaatrisico’s: hitte, droogte, wateroverlast en overstromingen. De klimaatrisico's hebben echter invloed op elkaar. Door de hitte kan er bijvoorbeeld droogte ontstaan. Deze verkenning richt zich echter specifiek op het klimaatrisico hitte.</p></section><section id="hitte-het-wordt-warmer"><h3 id="x2-2-hitte-het-wordt-warmer"><span class="secno">2.2 </span>Hitte: het wordt warmer</h3><p>Door klimaatverandering stijgt de temperatuur en worden onze zomers warmer. Uit de KNMI klimaatscenario’s (2014) blijkt dat niet alleen de gemiddelde temperatuur stijgt, maar dat ook de hitte-extremen, zoals hittegolven, toenemen. In de afgelopen 130 jaar is het wereldwijd gemiddeld 1,0°C warmer geworden. Voor Nederland is dat zelfs nog meer, namelijk ruim 2 °C . Volgens de KNMI-klimaatscenario’s neemt de gemiddelde temperatuur in Nederland de komende jaren verder toe. In het meest extreme scenario zal de temperatuurstijging vanaf 1901 in Nederland in 2050 oplopen tot zo’n 3,5 °C en in 2085 zelfs tot 4,9 °C.
+</p><p><strong>Hitte-eilandeffect</strong></p><p>In de stad wordt het vaak warmer dan in het omliggende gebied doordat steden meer warmte vasthouden. Dit heet het hitte-eilandeffect. Dit hitte-eilandeffect neemt verder toe doordat steden steeds meer verstenen. Het ‘hitte-eilandeffect’ wordt veroorzaakt door de volgende factoren:</p><ul>
+<li>Stenige materialen absorberen zonnestraling, waardoor het materiaal opwarmt.</li>
+<li>Er is een gebrek aan verdamping door weinig groen en water. Daardoor wordt een groot deel van de zonnestraling omgezet in voelbare warmte.</li>
+<li>Verschillende menselijke activiteiten stoten warmte uit, bijvoorbeeld in industrie en huishoudens.</li>
+</ul><p>'s Nachts is het verschil in temperatuur tussen de stad en het omliggende buitengebied het grootst. Dit komt doordat de stad na zonsondergang langzamer afkoelt dan het buitengebied. Het temperatuurverschil kan oplopen tot meer dan 7 graden. De sterkte van het hitte-eilandeffect in een stad hangt vooral af van de hoeveelheid bebouwing, verharding en groen van het oppervlak. Verder speelt mee wat de verhouding is tussen gebouwhoogte en straatbreedte, en hoeveel warmte gebouwen en andere oppervlakken uitstralen naar de atmosfeer. Wat ook invloed heeft is in hoeverre een gebied open is zodat er wind doorheen kan waaien. De inrichting van een straat of wijk heeft dus invloed op de lokale temperatuur. De ene wijk veroorzaakt een sterker hitte-eilandeffect dan de andere.</p><p>Hitte-eiland als maat voor de ernst van hitte wordt echter ter discussie gesteld. Zo zijn bedrijventerreinen ook hitte-eilanden, vanwege de vele steenachtige materialen, maar wonen er geen mensen (er werken wel mensen). Daarnaast blijkt ook dat juist aspecten met betrekking tot woningbouw en sociaal-economische status en demografie van invloed op de vraag of de hitte ook tot hittestress leidt; in arme wijken of wijken met veel ouderen met oudere slecht geïsoleerde woningen lijken problemen groter te zijn dan in sec op basis van fysieke factoren zoals temperatuur en verharding berekend wordt.</p></section><section id="gevolgen-en-maatregelen-van-hitte"><h3 id="x2-3-gevolgen-en-maatregelen-van-hitte"><span class="secno">2.3 </span>Gevolgen en maatregelen van hitte</h3><p>De gevolgen van de toenemende hitte zijn heel divers. Een bekend gevolg van hitte is hittestress, waar vooral ouderen en andere kwetsbare groepen erg ziek van kunnen worden. Maar ook onze natuur, infrastructuur, de beschikbaarheid en kwaliteit van ons drinkwater en verminderde arbeidsproductiviteit lijden onder extreme hitte.</p><p>Om de gevolgen van hitte te bepalen zijn verschillende tools beschikbaar. Vanuit de <a href="#nationale-klimaatadaptatiestrategie-nas">Nationale klimaatadaptatiestrategie (NAS)</a> zijn de <a href="#nas-bollenschema-s">NAS-bollenschema's</a> ontwikkeld, die de impact, kansen en bedreigingen van de vier klimaatrisico's in beeld brengen. Daarnaast geeft de <a href="#mindmap-hitte-in-de-stad">Mindmap 'Hitte in de stad'</a> (Hogeschool van Amsterdam) de effecten weer van hitte in de stad voor gezondheid, buitenruimte, leefbaarheid, netwerken en water. Beide tools worden nader beschreven in het hoofdstuk <a href="#tools">Tools en informatiebronnen</a>.</p><p>In de onderstaande paragrafen wordt kort nader ingegaan op de gevolgen voor de gezondheid, de natuur en infrastructuur.</p><section id="gezondheid"><h4 id="x2-3-1-gezondheid"><span class="secno">2.3.1 </span>Gezondheid</h4><p>Een veel gebruikte indeling voor gezondheid om de gevolgen en maatregelen te bepalen is de indeling:</p><ul>
+<li>Gebied: gevolgen voor de buitenruimte</li>
+<li>Gebouw: gevolgen voor woningen</li>
+<li>Gebruiker: gevolgen voor de gezondheid</li>
+</ul><p><strong>Gebied</strong></p><p>Met gebied wordt zowel de openbare ruimte als de particuliere gebieden bedoeld. Daaronder vallen de gebieden waar we recreëren, verkoeling zoeken en van de natuur genieten, zoals bossen, strandjes, parken en (eigen) tuinen. Maar ook de versteende gebieden, zoals wegen, terrassen, pleinen, vallen er onder. Hitteproblemen treden vooral op in versteende gebieden. Eén van de oplossingen om hitte te beperken is de omgeving vergroenen. Groen werkt verkoelend, doordat het schaduw biedt en water verdampt.
+</p><p><strong>Gebouw</strong></p><p>Veel woningen in Nederland zijn zo gebouwd dat ze zoveel mogelijk zon binnenlaten. In de zomer kunnen de woningen daardoor te heet worden. Ook het isoleren van de woning om energie te besparen, zorgt er in de zomer soms voor de hitte de woning niet meer kan verlaten. Vergroenen van de tuin of platte dak helpt vaak om de directe omgeving van een woning en ook de woning zelf te verkoelen. Daarnaast kun je denken aan ventileren met ramen of deuren, buitenzonwering, witte muren en daken of airco's. Of deze maatregelen worden genomen, hangt met name af van het gedrag van de gebruiker.</p><p><strong>Gebruiker</strong></p><p>Bij de gebruiker staat de gezondheid van de mens centraal. Gezondheidsklachten door hitte heet hittestress. Milde klachten van extreme temperaturen of aanhoudende hitte zijn bijvoorbeeld concentratieproblemen, hoofdpijn of vermoeidheid. Maar de gevolgen kunnen ook ernstiger zijn namelijk overlijden door hittestress, vooral bij ouderen en kwetsbare mensen komt dit voor.
+</p><p>Maatregelen zijn zeer divers zoals voldoende drinken of de verkoeling opzoeken. Deze maatregelen zijn vooral gekoppeld aan het gedrag van de mens. Het Nationaal Hitteplan (RIVM) richt zich op de gezondheid van mensen die kwetsbaar zijn voor hitte. Daarnaast ontwikkelen lagere overheden lokale hitteplannen. </p></section><section id="infrastructuur"><h4 id="x2-3-2-infrastructuur"><span class="secno">2.3.2 </span>Infrastructuur</h4><p>Ook de infrastructuur is kwetsbaar voor hitte. Beweegbare bruggen kunnen niet openen of sluiten. Als oplossingen wordt vooral koelen gezien. Incidenteel worden brugdelen ingekort. Het gevolg voor de scheepvaart is met name het risico op stremmingen en wachttijden, met hogere kosten tot gevolg.</p><p>Wegen hebben last van uitzetting van het wegdek en daardoor het spatten van het wegdek. De gevolgen van het spatten van wegdek zijn o.a. schade aan het wegdek (met als gevolg (nood)reparaties) en stremmingen door wegafzetting en ongelukken (met als gevolg schade aan weg, auto’s en kosten voor incidentenmanagement). En ook bermbranden zijn aan de orde.
+</p><p>Voor de watersystemen geldt dat verzilting op kan treden en het hitte heeft effect op de waterkwaliteit. Door hogere verdamping, maar ook door verminderde afvoer bovenstrooms, nemen de gehalten in het water toe. Ook is er een groter risico op algenbloei. Door deze aspecten kan het oppervlaktewater niet meer geschikt zijn als proces, koel- of drinkwater.</p></section><section id="natuur"><h4 id="x2-3-3-natuur"><span class="secno">2.3.3 </span>Natuur</h4><p>Voor de natuur geldt dat deze wordt ingezet als maatregel, namelijk bij het vergroenen van steden. Maar door de hitte kan ook hittestress optreden in de natuur, bijvoorbeeld schade aan bodem en planten door UV en verdroging, waardoor vegetatie verzwakt en vatbaar wordt voor ziekten en plagen. Daarnaast zorgt de gemiddelde temperatuurstijging ervoor dat klimaatzones verschuiven en dat het landschap en de natuur verandert. De samenstelling van soorten verandert behoorlijk, warmteminnende soorten nemen toe en tegelijk verdwijnen er steeds meer koudeminnende soorten.</p><p>De vele klimatologische veranderingen hebben daarnaast invloed op allerlei andere abiotische factoren, zoals de samenstelling of diepte van water en bodem. Veranderingen hierin hebben weer uiteenlopende gevolgen voor dieren en planten. Doordat de totale natuur in Nederland zwaar onder druk staat, is de veerkracht van de natuur sterk afgenomen. Niet alleen de hitte maar vooral de toenemende droge zomers zorgen voor grote veranderingen en kunnen natuurschade veroorzaken.</p></section></section></section><section data-format="markdown" id="wettelijkkader"><!--OddPage--><h2 id="x3-wettelijk-kader"><span class="secno">3. </span>Wettelijk kader</h2><p><em>Voor zover bekend is er geen wettelijk kader voor klimaatadaptatie, domein hitte. Er is een beleidskader en er zijn richtlijnen, vormen van standaarden, tools en vuistregels voor normen.</em></p><section id="hoe-pakt-nederland-klimaatadaptatie-aan"><h3 id="x3-1-hoe-pakt-nederland-klimaatadaptatie-aan"><span class="secno">3.1 </span>Hoe pakt Nederland klimaatadaptatie aan?</h3><p>Om heel Nederland klimaatbestendig en waterrobuust in te richten, is het nodig dat klimaatadaptatie op alle overheidsniveaus onderdeel is van beleid en uitvoering. Daarvoor is in de eerste plaats een landelijke aanpak nodig. Die landelijke aanpak gebeurt vanuit twee programma’s: het Nationaal Deltaprogramma en de Nationale klimaatadaptatiestrategie (NAS).</p><p><img src="media/samenhang_wettelijk_kader.png" alt="samenhang_wettelijk_kader" title="Samenhang tussen Nationale Klimaatadaptatie Strategie (NAS) en Nationaal Deltaprogramma"></p><section id="nationaal-deltaprogramma"><h4 id="x3-1-1-nationaal-deltaprogramma"><span class="secno">3.1.1 </span>Nationaal Deltaprogramma</h4><p>In het <a href="https://www.deltaprogramma.nl/">Nationaal Deltaprogramma</a> staat hoe de overheid Nederland beschermt tegen overstromingen, zorgt voor voldoende zoetwater en werkt aan een klimaatbestendige en waterrobuuste inrichting. Het Rijk, provincies, gemeenten, waterschappen, Rijkswaterstaat en verschillende maatschappelijke organisaties werken vanuit het Deltaprogramma samen aan deze opgaven, onder leiding van de deltacommissaris.
+</p><p>Ruimtelijke adaptatie is een van de drie thema’s in het Deltaprogramma. Het algemene beleid is vastgelegd in de <strong>Deltabeslissing Ruimtelijke adaptatie</strong>. De kern daarvan is dat Nederland in 2050 waterrobuust en klimaatbestendig is ingericht. Het Rijk heeft de deltabeslissing en overig beleid voor ruimtelijke adaptatie vastgelegd in het ontwerp Nationaal Waterprogramma (NWP), de Nationale Omgevingsvisie en de <strong>Nationale Klimaatadaptatiestrategie (NAS)</strong>. Concrete maatregelen voor de uitvoering van het beleid staan beschreven in het <strong>Deltaplan Ruimtelijke adaptatie (DPRA)</strong>.</p></section><section id="deltaplan-ruimtelijke-adaptatie-dpra"><h4 id="x3-1-2-deltaplan-ruimtelijke-adaptatie-dpra"><span class="secno">3.1.2 </span>Deltaplan Ruimtelijke adaptatie (DPRA)</h4><p>Het Deltaplan Ruimtelijke adaptatie (DPRA) is onderdeel van het nationaal Deltaprogramma. In het plan staat hoe gemeenten, waterschappen, provincies en het Rijk het proces van ruimtelijke adaptatie willen versnellen en intensiveren. In het deltaplan staan 7 ambities van de overheid voor een waterrobuust en klimaatbestendig Nederland in 2050. Het deltaplan geeft aan welke doelen de partijen nastreven, hoe ze daaraan gaan werken en hoe ze de resultaten in beeld brengen. Bij het deltaplan hoort een actieplan met concrete acties en maatregelen. De overheden werken met elkaar samen in 45 werkregio’s.</p></section><section id="nationale-klimaatadaptatiestrategie-nas"><h4 id="x3-1-3-nationale-klimaatadaptatiestrategie-nas"><span class="secno">3.1.3 </span>Nationale klimaatadaptatiestrategie (NAS)</h4><p>De <a href="https://klimaatadaptatienederland.nl/publish/pages/120542/nas_rapport_5_1.pdf">Nationale klimaatadaptatiestrategie (NAS)</a> is de overkoepelende Nederlandse strategie op het gebied van klimaatadaptatie. Deze strategie uit 2016 beschrijft de belangrijkste klimaatrisico’s voor Nederland en zet de koers uit om deze risico’s aan te pakken. Dit programma richt zich op sectoren, ketens, thema’s en klimaatrisico’s die niet in het Deltaprogramma en het Deltaplan Ruimtelijke adaptatie voorkomen en vult een aantal thema’s hieruit aan. De NAS brengt voor de vier klimaatrisico's (warmer, natter, droger en zeespiegelstijging) de effecten van klimaatverandering voor negen sectoren in beeld.
+</p><p>De NAS is het Nederlandse antwoord op de oproep van de Europese Commissie aan alle lidstaten om uiterlijk in 2017 een klimaatadaptatiestrategie op te stellen. De NAS wordt op dit moment geëvalueerd.</p></section><section id="actielijnen-klimaatadaptatie-natuur"><h4 id="x3-1-4-actielijnen-klimaatadaptatie-natuur"><span class="secno">3.1.4 </span>Actielijnen klimaatadaptatie natuur</h4><p>Voor het thema natuur is het beleidsdocument <a href="https://www.rijksoverheid.nl/documenten/rapporten/2021/03/31/actielijnen-klimaatadaptatie-natuur">Actielijnen klimaatadaptatie natuur</a> van het KAN-team (interbestuurlijk projectteam) een relevant kader. Dit advies, dat de ministeries van IenW en van LNV in afstemming met VNG, IPO, UvW hebben opgesteld, is een direct gevolg van de Beleidstafel Droogte (opgericht na de extreme droogte in 2018) en de klimaatadaptatiedialogen (2017-2019) die het ministerie startte na verschijnen van de NAS.</p><p>Klimaatverandering heeft directe invloed op natuur, omdat de condities van de ecosystemen veranderen. Zowel droogte als wateroverlast als verzilting tasten natuurgebieden aan. Natuur wordt kwetsbaarder voor andere bedreigingen, zoals milieuverontreiniging en plagen. Daarnaast treedt er verschuiving van klimaatzones op, waardoor huidige soorten zich lastiger kunnen handhaven. Klimaatverandering vraagt om ingrepen in het bodem-watersysteem: water moet langer worden vastgehouden en ecosystemen worden vergroot en met elkaar verbonden. Klimaatbestendigheid van natuur moet daarom worden meegenomen en worden verbonden met de gezamenlijke natuur- en ontwikkelopgave van rijk en provincies.</p><p>Natuur is ook een maatregel voor klimaatadaptatie. Denk hierbij aan groene daken (isolatie), schaduwwerking (bomen) en waterbuffering (bodem). Hier staan ook nadelen tegenover, zoals de introductie van invasieven (daken) en muggen (wadi’s). Doordat het warmer wordt nemen zoönosen ook toe.</p><p>De volgende actielijnen zijn in het advies benoemd:</p><ol>
+<li>Natuurdoelen en klimaatverandering: natuurdoelen houden voldoende rekening met klimaatverandering.</li>
+<li>Klimaatslim inrichten en beheren: ruimte voor water en natuur bestemmen, vergroenen en verbindingen met groen buiten stedelijk gebied.</li>
+<li>Toekomstbestendig gebruik ecosystemen: duurzaam gebruik ecosystemen.</li>
+<li>Natuur inclusieve oplossingen: natuur als ‘maatregel’ voor klimaatadapatie.</li>
+</ol><p>Deze vier actielijnen worden ondersteund door de actielijnen: Gebiedsgerichte uitwerking en Kennis &amp; monitoring:</p><ul>
+<li>Bij kennis wordt voorgesteld een kennisagenda te formuleren, gericht op kennistonwikkeling, maar ook op bewustwording en kennisdelen (best practices).</li>
+<li>Bij monitoring wordt verwezen naar de herijking van de nulmeting (NAS) door PBL. Deze herijking zou idealiter moeten leiden tot een structurele en langdurige monitoring die gericht is op impacts van klimaatverandering voor alle relevante sectoren, op beleidseffectiviteit en op implementatie van maatregelen (zie <a href="#monitoring">Monitoring</a>). Het KAN-team adviseert om daarbij specifiek aandacht te besteden aan mogelijkheden om standaarden voor klimaatadaptief groen (op basis van systeemaanpak) in normen/regelgeving bij overheden op te nemen. Daarnaast is er behoefte aan inzicht in hoe de gevolgen van klimaatverandering op de natuur- en klimaatadaptiemaatregelen voor natuur gevolgd kunnen worden en hoe deze informatie gebruiksklaar kan worden gemaakt voor de planning, monitoring en evaluatie van klimaatadaptatie natuur in relevante transities. Het Programma Natuur werkt een zes-jaarlijkse monitoringcyclus uit, die aansluit bij de bestaande landelijke monitoring van de beheerplannen (van provincies, Natura 2000). Onderdeel van de monitor is o.a. stijgende temperaturen. Aangesloten wordt op de natuurtellingen die provincies al uitvoeren. De bijdrage aan monitoring van klimaatadaptatie van natuur zelf maakt onderdeel uit van het onderzoeksprogramma van PBL.</li>
+</ul><p><img src="media/kader.jpg" alt="kader" title="Kader hitte"></p></section></section><section id="normen-en-richtlijnen"><h3 id="x3-2-normen-en-richtlijnen"><span class="secno">3.2 </span>Normen en richtlijnen</h3><p>Voor zover bekend is er geen wettelijk (normen)kader. Wel zijn er vuistregels en richtlijnen (in de maak).</p><section id="richtlijnen-de-hittebestendige-stad"><h4 id="x3-2-1-richtlijnen-de-hittebestendige-stad"><span class="secno">3.2.1 </span>Richtlijnen 'De hittebestendige stad’</h4><p>De Hogeschool van Amsterdam heeft in 2020 gerapporteerd over een <a href="https://www.hva.nl/urban-technology/gedeelde-content/publicaties/publicaties-algemeen/praktijkonderzoek-hitte-richtlijnen.html">praktijkonderzoek Hitte-richtlijnen</a>. Dit praktijkonderzoek Hitte-richtlijnen is een samenwerking van TAUW, Hogeschool van Amsterdam, Delta Programma Ruimtelijke Adaptatie en de deelnemende gemeenten. Aanleiding was dat gemeenten hebben aangegeven voor hitte behoefte te hebben aan concrete richtlijnen voor een hittebestendige stad. In het RAAK-project <a href="https://klimaatadaptatienederland.nl/actueel/actueel/interviews/hittebestendige-stad/">‘De hittebestendige stad’</a> zijn naar aanleiding van deze behoefte <strong>drie ontwerprichtlijnen</strong> voor een hitte bestendige inrichting van de buitenruimte opgesteld:</p><ol>
+<li>Afstand tot koelte: Iedere woning moet zich voldoende dicht bij een aangename en aantrekkelijke koele verblijfsplek bevinden (voorstel: binnen 300 m).</li>
+<li>Percentage schaduw op belangrijke looproutes en in buurten: Er is op het heetst van de dag voldoende schaduw (voorstel minimaal 40% op belangrijke looproutes), zodat essentiële functies in de stad voor iedereen bereikbaar blijven.’</li>
+<li>Percentage groen per buurt: Er moet zoveel groen zijn dat er verdamping kan optreden en de gemiddelde luchttemperatuur wordt beperkt (voorstel afhankelijk per wijktype).</li>
+</ol><p>Voor elke van de richtlijnen worden de methode, resultaten en aanbevelingen beschreven, zodat de aanpak eenvoudig opschaalbaar is naar andere  gemeenten.
+Deze richtlijnen zijn relevant voor de scope van dit document.</p></section><section id="bouwbesluit"><h4 id="x3-2-2-bouwbesluit"><span class="secno">3.2.2 </span>Bouwbesluit</h4><p>Per 1 januari 2021 moet alle nieuwbouw voldoen aan de nieuwe <a href="https://www.rvo.nl/onderwerpen/wetten-en-regels-gebouwen/beng/indicatoren">BENG (Bijna EnergieNeutrale Gebouwen) eisen</a>. TOjuli staat voor "TemperatuurOverschrijding juli" en is een aanvullende eis. TOjuli is een indicator voor verlaging van het risico op oververhitting. De definitieve grenswaarde voor TOjuli is nu vastgesteld op 1,20 en geldt voor nieuw te bouwen woningen. Deze waarde is aangepast ten opzicht van de eerder voorlopig bepaalde grenswaarde van 1,00.</p><p>Deze normen hebben betrekking op bouwen en vallen daarom buiten scope van dit document.</p></section></section><section id="internationaal-en-europees-kader"><h3 id="x3-3-internationaal-en-europees-kader"><span class="secno">3.3 </span>Internationaal en Europees kader</h3><p>Overal op aarde hebben landen te maken met klimaatverandering. Daarom is klimaatadaptatie op internationaal niveau heel belangrijk. Het <a href="https://wetten.overheid.nl/BWBV0006603/2017-08-27#Verdrag_2">klimaatverdrag van Parijs</a> uit 2015 maakt dit duidelijk door naast mitigatie ook aandacht te geven aan klimaatadaptatie. En ook de strategie van de Europese Commissie, Europese Green Deal geeft aan hoe belangrijk het klimaat is.</p><section id="europese-green-deal"><h4 id="x3-3-1-europese-green-deal"><span class="secno">3.3.1 </span>Europese Green Deal</h4><p>De <a href="https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_nl">Europese Green Deal</a> is een nieuwe groeistrategie, die Europa moet omvormen tot een eerlijke en welvarende samenleving, met een moderne, hulpbronnenefficiënte en concurrerende economie, waar vanaf 2050 netto geen broeikasgassen meer worden uitgestoten en economische groei is losgekoppeld van het gebruik van hulpbronnen. De Green Deal maakt integraal deel uit van de strategie van de Commissie om de doelstellingen voor duurzame ontwikkeling van de Agenda 2030 van de Verenigde Naties te verwezenlijken.</p><p>De Green Deal is het programma van de Commissie Von der Leyen om klimaatverandering tegen te gaan. Met deze Green Deal moet Europa het eerste klimaat-neutrale continent worden: voor 2050 dient de Europese Unie niet meer bij te dragen aan de opwarming van de aarde door de uitstoot van broeikasgassen. Om Europa voor 2050 klimaatneutraal te maken, is er een routekaart uitgestippeld met een hele reeks aan wetgeving en maatregelen.</p><p>Een van de acht geformuleerde doelstellingen is de doelstelling voor klimaat: het verhogen van het EU-ambitieniveau aangaande het klimaat in 2030 en 2050.</p></section><section id="europese-klimaatwet"><h4 id="x3-3-2-europese-klimaatwet"><span class="secno">3.3.2 </span>Europese Klimaatwet</h4><p>De <a href="https://ec.europa.eu/clima/policies/eu-climate-action/law_nl">Europese Klimaatwet</a> schrijft het doel in de Europese Green Deal voor de Europese economie en samenleving om tegen 2050 klimaatneutraal te worden in de wet. De wet stelt ook het tussentijdse doel om de netto-uitstoot van broeikasgassen tegen 2030 met ten minste 55% te verminderen, vergeleken met het niveau van 1990. Deze wet geeft tevens aan hoe belangrijk klimaatadaptatie is.
+</p></section><section id="europese-adaptatiestrategie"><h4 id="x3-3-3-europese-adaptatiestrategie"><span class="secno">3.3.3 </span>Europese Adaptatiestrategie</h4><p>In 2013 heeft de Europese Commissie haar eerste Europese Strategie voor klimaatadaptatie opgesteld. Een belangrijk deel van deze strategie is dat alle lidstaten een Nationale Adaptatie Strategie opstellen. In Nederland is dit de <a href="#nationale-klimaatadaptatiestrategie-nas">NAS</a>.</p><p>Op 24 februari 2021 heeft de Commissie een herziene <a href="https://ec.europa.eu/clima/eu-action/adaptation-climate-change/eu-adaptation-strategy_en">Europese Adaptatiestrategie</a> aangenomen. Door voort te bouwen op de eerste strategie wil de Commissie lidstaten stimuleren om sneller adaptiemaatregelen te nemen en deze maatregelen op een grote schaal in te voeren.</p></section></section></section><section data-format="markdown" id="werkproces"><!--OddPage--><h2 id="x4-het-keten-werkproces-klimaatadaptatie"><span class="secno">4. </span>Het (keten)werkproces klimaatadaptatie</h2><p><em>Er is niet een enkel (werk)proces voor hitte waarin data geproduceerd/gebruikt wordt. Als het gaat om het gebruik van data dan kan worden gedacht aan hittestresstesten (zie paragraaf 4.1). Of de monitoring van klimaatbestendigheid (zie paragraaf 4.4). In dit hoofdstuk beschrijven we niet alles, maar hebben we gekozen om vanuit het beleidskader DPRA en NAS herkenbare (werk)processen te beschrijven.</em>
+</p><section id="klimaatstresstesten"><h3 id="x4-1-klimaatstresstesten"><span class="secno">4.1 </span>Klimaatstresstesten</h3><p>In het <a href="#deltaplan-ruimtelijke-adaptatie-dpra">Deltaplan Ruimtelijke Adaptatie (DPRA)</a> is afgesproken dat heel Nederland in 2050 waterrobuust en klimaatbestendig is ingericht. Het Deltaplan gebruikt hiervoor zeven ambities, waarvan ‘kwetsbaarheden in beeld brengen’ er één is. Om die kwetsbaarheden in beeld te krijgen, moesten alle overheden uiterlijk in 2019 een klimaatstresstest uitvoeren.
+</p><p>In een klimaatstresstest wordt geïdentificeerd wat de mogelijke kwetsbaarheden zijn binnen een gebied. Er wordt daarvoor een test gedaan voor de vier klimaatrisico's: wateroverlast, hitte, droogte en overstroming. De test bestaat in de kern uit:</p><ul>
+<li>het verzamelen en creëren van informatie die beschrijft welke effecten klimaatverandering (de ‘stress’ die op het systeem wordt gezet) in de toekomst kan hebben,
+</li>
+<li>en uit het combineren van deze informatie met verzamelde gegevens over de gevoeligheid van objecten en functies voor deze effecten. 
+Om te bepalen waar en wanneer welke knelpunten hierdoor kunnen ontstaan, onder verschillende mogelijke klimaatontwikkelingen.</li>
+</ul><p>De stresstest gaat over het stedelijk en landelijk gebied. De stresstest onderzoekt de kwetsbaarheid van allerlei objecten en functies in een gebied, maar specifieke aandacht wordt gevraagd voor de vitale en kwetsbare functies. Dit zijn functies die cruciaal zijn voor rampenbeheersing, zoals de drinkwatervoorziening en functies die bij uitval of een calamiteit ernstige schade veroorzaken voor mens, milieu of economie.</p><p>Een belangrijk hulpmiddel om een stresstest uit te voeren is de <strong>Klimaateffectatlas</strong>. De Klimaateffectatlas levert input bij de eerste stap in de stresstest, namelijk om basisinformatie over kwetsbaarheden op te halen. De Klimaateffectatlas geeft een eerste indruk van de (toekomstige) dreigingen van wateroverlast, hitte, droogte en overstroming in Nederland. In het hoofdstuk <a href="#tools">Tools en informatiebronnen</a> staat de <a href="#klimaateffectatlas-kea">Klimaateffectatlas</a> verder beschreven.</p><section id="bijsluiter-voor-de-gestandaardiseerde-stresstest"><h4 id="x4-1-1-bijsluiter-voor-de-gestandaardiseerde-stresstest"><span class="secno">4.1.1 </span>Bijsluiter voor de gestandaardiseerde stresstest</h4><p>Overheden zijn vrij om zelf te bepalen hoe ze een stresstest uitvoeren. Om ze te ondersteunen heeft het <a href="#deltaplan-ruimtelijke-adaptatie-dpra">Deltaprogramma Ruimtelijke Adaptatie (DPRA)</a> samen met een groot aantal partijen de <em>Bijsluiter voor de gestandaardiseerde stresstest</em> ontwikkeld. Daarin staat hoe een stresstest uitgevoerd kan worden. De bijsluiter is een bundeling van aanwijzingen voor het uitvoeren van de stresstest en helpt bij het interpreteren en toepassen van uitkomsten. Daarnaast wijst de bijsluiter op de keuzes die gemaakt moeten worden en helpt het bij het maken van deze keuzes.
+</p><p>De bijsluiter beschrijft niet van A tot Z en tot in detail de volledige werkwijze bij een stresstest. Dat is een bewuste keuze zodat er voldoende ruimte is voor inbreng van gebiedskennis en deskundigheid door uitvoerders, opdrachtgevers en overige betrokkenen. De bijsluiter focust op generiek toepasbare onderdelen in de werkwijze (standaarden) die de vergelijkbaarheid en kwaliteit van de stresstest uitkomsten verbeteren.</p><p>Per klimaatrisico is een bijsluiter ontwikkeld met specifieke aanwijzingen die passen bij het kenmerk van de risico, aanwijzingen over de informatie die beschikbaar is en over de gebruikersbehoeften. Verder geeft de bijsluiter adviezen voor het gebruik van de uitkomsten van de stresstest.
+</p></section><section id="bijsluiter-gestandaardiseerde-stresstest-hitte"><h4 id="x4-1-2-bijsluiter-gestandaardiseerde-stresstest-hitte"><span class="secno">4.1.2 </span>Bijsluiter gestandaardiseerde stresstest hitte</h4><p>Voor hitte is ook een <a href="https://klimaatadaptatienederland.nl/stresstest/bijsluiter/hitte/">bijsluiter gestandaardiseerde stresstest</a> ontwikkeld. Deze bijsluiter maakt  gebruik van de kaarten uit de <a href="#klimaateffectatlas-kea">Klimaateffectatlas</a>. Maar lokale overheden kunnen er gebiedsspecifieke informatie aan toevoegen. Samen met de <a href="#mindmap-hitte-in-de-stad">Mindmap Hitte in de stad</a> worden de mogelijke effecten van hitte inzichtelijk gemaakt.
+</p><p>De eerste stap is het verkennen van kwetsbaarheden met de informatie uit de <a href="#klimaateffectatlas-kea">Klimaateffectatlas</a>.</p><p>In het kaartverhaal <em>'Het wordt heter'</em> wordt de mogelijke ontwikkeling van de temperatuur aan de hand van verschillende KNMI-statistieken toegelicht. Daarnaast wordt aanbevolen om de volgende twee hittekaarten te gebruiken:</p><ul>
+<li>de kaart met de gevoelstemperatuur;</li>
+<li>de kaart met het aantal warme nachten.</li>
+</ul><p>Tijdens de ontwikkeling van deze stresstest is ook een gestandaardiseerde methode ontwikkeld waarmee een gedetailleerde gevoelstemperatuurkaart gemaakt kan worden.</p><p>De tweede stap is om ieder gevolg uit de <a href="#mindmap-hitte-in-de-stad">Mindmap Hitte in de stad</a> te overwegen of dat gevolg hier speelt en of de blootstelling ervan relevant is. Indien dit zo is, moet bepaalt worden waar in het gebied het gevolg speelt en welke klimatologische factoren dit beïnvloeden. Ook wordt geadviseerd niet niet-klimatologische factoren (zoals vergrijzing in een bepaalde wijk) mee te nemen. En tot slot of al bepaalde maatregelen zijn genomen.
+</p><p>Al deze informatie helpt bij het duiden van de urgentie en bij het selecteren van de relevante gevolgen voor een bepaalde gemeente of regio. Deze informatie vormt een goede basis voor een risicodialoog.</p><p>Ondanks de standaardisatie via de bijsluiter is er voldoende ruimte voor het toevoegen en mee laten wegen van andere lokale factoren. Dit maakt dat de uitkomsten van de stresstesten lokaal niveau niet vergelijkbaar zijn en niet aggregeren zijn naar een landelijk beeld.</p></section><section id="risicodialogen"><h4 id="x4-1-3-risicodialogen"><span class="secno">4.1.3 </span>Risicodialogen</h4><p>Door de klimaatstresstesten komen de kwetsbaarheden in een gebied in beeld, maar nog zonder waardeoordeel. Of de kwetsbaarheden daadwerkelijk een risico vormen, het  beschermingsniveau en of er maatregelen moeten worden genomen, wordt afgewogen tijdens de risicodialoog.</p><p>De risicodialoog is één van de zeven ambities uit het <a href="#deltaplan-ruimtelijke-adaptatie-dpra">Deltaplan Ruimtelijke adaptatie</a>. Het is de stap tussen de stresstest en het maken van een uitvoeringsprogramma voor klimaatadaptatie.
+</p><p>Het procesverloop van de risicodialoog ligt niet vast. Er zijn verschillende routes mogelijk. Maar meestal zal in wisselwerking met de stresstest een ‘van grof-naar-fijn-aanpak’ worden gevolgd. Daarbij wordt eerst, als voorbereiding op de dialoog, voor de vier klimaatrisico's een verkennende stresstest uitgevoerd met gebruik van landelijk of regionaal beschikbare basisinformatie. De resultaten hiervan zijn voeding voor de dialoog. Daar kan worden besloten dat meer informatie of meer detail nodig is. Er volgt dan een stap waarin informatie op maat wordt gecreëerd. Ook de resultaten hiervan gaan naar de dialoog. Maar het kan ook voorkomen dat eerst een risicodialoog plaatsvindt, nog voordat er een stresstest is uitgevoerd, bijvoorbeeld na een calamiteit door extreem weer.</p><p>"De stappen in de stresstest en de wisselwerking tussen stresstest en risicodialoog zijn verbeeld in onderstaande infographic:"</p><figure id="fig-infographic-stresstest-risicodialoog-bron-bijsluiter-gestandaardiseerde-stresstest"><a href="media/infographic_stresstest.png" target="_blank">
+      <img src="media/infographic_stresstest.png" alt="Infographic Stresstest">
+   </a>
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Infographic stresstest - risicodialoog (bron:
+<a href="https://klimaatadaptatienederland.nl/stresstest/bijsluiter" target="_blank">Bijsluiter gestandaardiseerde stresstest</a>)
+</span></figcaption>
+</figure></section></section><section id="uitvoeringsagenda-met-maatregelenprogramma"><h3 id="x4-2-uitvoeringsagenda-met-maatregelenprogramma"><span class="secno">4.2 </span>Uitvoeringsagenda met maatregelenprogramma</h3><p>Met het afronden van de risicodialoog komen de belanghebbenden in het gebied tot het opstellen van een (adaptatie)strategie of het maken van een (aanzet voor) een uitvoeringsagenda. Concrete afspraken worden vastgelegd over wat de belanghebbenden kunnen en willen doen om bij te dragen aan het klimaatbestendig inrichten van een gebied. De uitvoeringsagenda bevat de uitwerking in maatregelen op korte termijn en oplossingsrichtingen op lange termijn.</p><section id="impulsregeling-klimaatadaptatie"><h4 id="x4-2-1-impulsregeling-klimaatadaptatie"><span class="secno">4.2.1 </span>Impulsregeling klimaatadaptatie</h4><p>Gemeenten, provincies en waterschappen kunnen via de <a href="https://klimaatadaptatienederland.nl/overheden/sra/impulsregeling-klimaatadaptatie/">Impulsregeling klimaatadaptatie</a> een bijdrage van het Rijk krijgen voor klimaatadaptatiemaatregelen. Het maatregelpakket moet echter bijdragen aan het verminderen van de kwetsbaarheid van gebieden voor wateroverlast, droogte of de gevolgen van overstromingen. Hitte gerelateerde problematiek is hier geen onderdeel van.
+</p></section><section id="life-ip-klimaatadaptatie"><h4 id="x4-2-2-life-ip-klimaatadaptatie"><span class="secno">4.2.2 </span>LIFE-IP Klimaatadaptatie</h4><p><a href="https://klimaatadaptatienederland.nl/overheden/life-ip-klimaatadaptatie/">LIFE-IP Klimaatadaptatie (2022-2027)</a> is een Nederlands programma met cofinanciering door de Europese Unie (EU). Het omvat maatregelen voor het versnellen van de uitvoering van klimaatadaptatiemaatregelen in Nederland. Een consortium van 22 overheden en organisaties gaat het programma uitvoeren. De coördinatie van het programma ligt bij IenW en het RIVM. Zo legt het programma ook een duidelijke link tussen klimaat en gezondheid.</p><p>LIFE-IP Klimaatadaptatie richt zich op vier thema’s. In dit programma heten die ook wel ‘tandwielen’, omdat ze in elkaar haken, elkaar aanzwengelen en niet zonder elkaar kunnen. Door op die vier tandwielen te focussen, kan LIFE-IP Klimaatadaptatie gericht barrières wegnemen die een snellere uitvoering van maatregelen in de weg staan. Dit zijn de vier tandwielen:</p><ul>
+<li>Bundeling en uitwisseling van kennis, ervaringen en tools;</li>
+<li>Stimuleren van de bewustwording en het urgentiebesef ten aanzien van klimaatverandering;</li>
+<li>Governance en integrale aanpak, gericht op efficiënte organisatie en klimaatadaptatie als vanzelfsprekend onderdeel van alle ruimtelijke plannen en projecten;</li>
+<li>Ontwikkeling van nieuwe verdienmodellen en nieuwe vormen van financiering.</li>
+</ul></section></section><section id="monitoring"><h3 id="x4-3-monitoring"><span class="secno">4.3 </span>Monitoring</h3><section id="monitoring-op-landelijk-niveau"><h4 id="x4-3-1-monitoring-op-landelijk-niveau"><span class="secno">4.3.1 </span>Monitoring op landelijk niveau</h4><p>Monitoring van klimaatadaptatie is het systematisch volgen en bijhouden van adaptatieontwikkelingen over een langere periode. Verschillende ontwikkelingen kunnen gemonitord worden, bijvoorbeeld van het adaptatiebeleid tot de werking van uitgevoerde maatregelen. Het PBL heeft in 2021 een <a href="https://www.pbl.nl/publicaties/navigeren-naar-een-klimaatbestendig-nederland">scopingstudie</a> gepubliceerd om de uitvoering van het beleid voor de aanpassing aan klimaatverandering op kortere en langere termijn te monitoren. Het PBL schetst drie monitoringsvarianten. De varianten maken het mogelijk om in de gaten te houden hoe de klimaatimpacts en -risico’s zich ontwikkelen en hoe de uitvoering van het adaptatiebeleid verloopt: zijn het beleid en de maatregelen effectief? Komen de gestelde doelen binnen bereik? Waar en hoe moet er worden bijgestuurd?</p><p>Op basis van dit rapport is gekozen voor de eerste variant die zich richt op de <strong>herijking van de klimaatimpacts en -risico's</strong> tot 2026. In de herijking worden de klimaatimpacts en -risico’s voor 13 beleidsvelden (samen te vatten als economisch, persoonsgebonden/maatschappelijk, cultuurhistorisch en leefomgeving) uitgewerkt. Het PBL coördineert de herijking. Welke indicatoren voor de 13 beleidsvelden worden gehanteerd, is op dit moment nog niet precies bekend. Mogelijke indicatoren voor hitte zijn: oversterfte door hitte (CBS), schade door hitte en misschien hoeveel gemeenten een lokaal hitteplan hebben opgesteld.
+</p><p>Het PBL geeft wel aan dat het goed is om in het achterhoofd te houden dat de klimaatimpacts en -risico’s niet alleen het gevolg zijn van klimaatverandering, maar de resultante zijn van de interactie tussen:</p><ol>
+<li>die optredende klimaatverandering;</li>
+<li>de fysieke en organisatorische inrichting van Nederland;</li>
+<li>de sociaal-economische ontwikkelingen;</li>
+<li>het gevoerde beleid op verschillende beleidsdossiers en op de verschillende schaalniveaus; en</li>
+<li>het adaptatiebeleid en het gedrag van mensen, bedrijven en organisaties.</li>
+</ol><p>De effectiviteit van de maatregelen, die in kader van klimaatadaptatie worden genomen, worden in deze herijking niet worden gemonitord.</p><figure id="fig-het-beheersen-van-de-klimaatimpacts-en-risico-s-en-het-benutten-van-eventuele-kansen-die-voortvloeien-uit-klimaatverandering-vormen-de-maatschappelijk-opgave-en-urgenties-van-het-klimaatadaptatiebeleid-bron-pbl-navigeren-naar-een-klimaatbestendig-nederland"><a href="media/pbl_klimaatimpact_risico_maatsch_opgave.png" target="_blank">
+      <img src="media/pbl_klimaatimpact_risico_maatsch_opgave.png" alt="Herijking PBL">
+   </a>
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">Het beheersen van de klimaatimpacts en -risico’s en het benutten van eventuele kansen die voortvloeien uit klimaatverandering vormen de maatschappelijk opgave en urgenties van het klimaatadaptatiebeleid (bron:
+<a href="https://www.pbl.nl/publicaties/navigeren-naar-een-klimaatbestendig-nederland" target="_blank">PBL, Navigeren naar een klimaatbestendig Nederland</a>)
+</span></figcaption>
+</figure></section><section id="monitoren-van-de-cascade-effecten-van-maatregelen"><h4 id="x4-3-2-monitoren-van-de-cascade-effecten-van-maatregelen"><span class="secno">4.3.2 </span>Monitoren van de cascade-effecten van maatregelen</h4><p>Voor monitoringdoeleinden is het zinvol dan wel noodzakelijk inzicht te hebben in oorzaak-gevolg. Pas dan is het mogelijk maatregelen te treffen én de effectiviteit van maatregelen te monitoren. In dit geval gaat het om effecten van klimaatverandering, waardoor klimaatadaptieve maatregelen nodig zijn. Of die effectief zijn is dan het monitoringvraagstuk.</p><p>In het geval van hitte zijn er vaak vervolgeffecten en cascade-effecten: van het één komt het ander. Dit inzicht is nog onvolledig. De <a href="#nas-bollenschema-s">NAS-bollenschema’s</a> geven een aanzet hiertoe. Door sommigen worden deze als volledig gezien, maar door anderen als niet heel praktisch. De bollenschema's zijn agenderend bedoeld, niet om een relatie-effect-keten te beschrijven.</p><p>Cascade-effecten zijn lastig te kwantificeren en zeker als het gaat om het beoordelen van maatregelen, want hoe is immers het effect van een maatregel in een oorzaak-effect-keten te herleiden? Er zijn immers veel factoren van invloed. Uit de verkenning blijkt dat er nog weinig bekend is over relaties tussen effecten, zowel kwalitatief als kwantitatief, maar dat er wel behoefte  aan is deze te kennen.
+</p></section><section id="europese-rapportageverplichtingen-aangaande-adaptatiebeleid"><h4 id="x4-3-3-europese-rapportageverplichtingen-aangaande-adaptatiebeleid"><span class="secno">4.3.3 </span>Europese rapportageverplichtingen aangaande adaptatiebeleid</h4><p>Adequate informatievoorziening over de ontwikkeling van de klimaatverandering, de klimaatimpacts en -risico’s en de implementatie van het klimaatadaptatiebeleid, is ook van belang in de context van de EU-Klimaatadaptatiestrategie. Sinds 1 januari 2021 zijn Europese lidstaten verplicht om aan Brussel meer te rapporteren dan voorheen over klimaatrisico’s en klimaatadaptatie in hun land, onder meer over de huidige risicosituatie en mogelijke risico’s in de toekomst.</p></section></section></section><section data-format="markdown" id="tools"><!--OddPage--><h2 id="x5-tools-en-informatiebronnen"><span class="secno">5. </span>Tools en informatiebronnen</h2><p><em>Overzicht van bestaande tools en informatiebronnen voor hitte gerelateerde klimaatadaptatie-processen, -monitoring, opslag en verstrekking van klimaatadaptatiegegevens, etc. Eerst worden de belangrijkste tools beschreven en vervolgens wordt nog nader ingegaan op de verschillende Europese informatiebronnen.</em></p><section id="tools-0"><h3 id="x5-1-tools"><span class="secno">5.1 </span>Tools</h3><section id="klimaateffectatlas-kea"><h4 id="x5-1-1-klimaateffectatlas-kea"><span class="secno">5.1.1 </span>Klimaateffectatlas (KEA)</h4><p>De <a href="https://www.klimaateffectatlas.nl/nl/">Klimaateffectatlas</a> is voor lokale en regionale overheid vaak het startpunt voor de <a href="#klimaatstresstesten">klimaatstresstest</a>. Daarnaast speelt de atlas ook een rol in de algemene bewustwording rondom klimaateffecten. De Klimaateffectatlas is gebaseerd op landelijke gegevens en geeft een eerste indruk van de gevolgen van klimaatverandering voor de verschillende gemeentes en regio’s in Nederland. Ook de Klimaateffectatlas maakt voor de klimaateffecten onderscheid in de vier klimaatrisico's: overstromingen, wateroverlast, droogte en hitte. De atlas bestaat uit een kaartviewer en kaartverhalen.
+</p><section id="kaartverhalen-met-de-belangrijkste-kaarten"><h5 id="x5-1-1-1-kaartverhalen-met-de-belangrijkste-kaarten"><span class="secno">5.1.1.1 </span>Kaartverhalen met de belangrijkste kaarten</h5><p>De kaartverhalen geven achtergrondinformatie bij de belangrijkste kaarten. Ze vertellen wat op de kaarten te zien is en helpen om met de informatie aan de slag te gaan. Daarnaast bieden de kaartverhalen handvatten voor mogelijke oplossingsrichtingen.
+</p><p>Voor hitte zijn momenteel vijf kaartverhalen uitgewerkt:</p><ul>
+<li><strong>Het wordt heter</strong>: Dit kaartverhaal bevat de informatie van de KNMI-statistieken over hitte. Per weerstation zijn beschikbaar o.a. aantal warme, zomerse of tropische dagen, aantal tropische nachten en behoefte aan verkoeling van huizen.</li>
+<li><strong>Hittekaart - gevoelstemperatuur</strong>: De hittekaart gevoelstemperatuur laat de lokale gevoelstemperatuur zien op een extreem hete zomermiddag. De gevoelstemperatuur geeft aan hoe warm een persoon het heeft in een bepaalde weersituatie. Als de gemeten luchttemperatuur bijvoorbeeld 30 ºC is, kan het in de volle zon en uit de wind voelen als 40 ºC. Daarnaast hebben ouderen en mensen met overgewicht vaak eerder last van een hogere gevoelstemperatuur, doordat ze hun warmte minder kwijt kunnen aan de omgeving.
+</li>
+<li><strong>Hittekaart - Warme nachten</strong>: Bij warme nachten is kans op hittestress. De kaart geeft een indicatie van het aantal tropische nachten voor het huidige klimaat (1981-2010) voor stedelijke gebieden. Bij tropische nachten komt de temperatuur niet onder de 20°C. Dit leidt tot risico's voor de gezondheid.</li>
+<li><strong>Afstand tot koelte</strong>: De kaart toont koele plekken en de afstand tot deze plekken vanaf huizen en andere gebouwen in stedelijke gebieden in Nederland. Elk huis moet een aangename koele plek hebben binnen een loopafstand van 300 meter. Wanneer een plek koel is, is eigenlijk lastig te zegggen. Hiervoor zijn een aantal basiscriteria gebruikt met betrekking tot de grootte, temperatuur, afstand tot wegen en de vorm.
+</li>
+<li><strong>Opwarming oppervlaktewater</strong>: De kaart geeft een indicatie van het risico voor hoge watertemperaturen tijdens een zomer in het huidige klimaat. De watertemperatuur beïnvloedt namelijk de kwaliteit en de ecologische toestand van het water.</li>
+</ul></section><section id="basiskaarten"><h5 id="x5-1-1-2-basiskaarten"><span class="secno">5.1.1.2 </span>Basiskaarten</h5><p>Voor het uitvoeren van de stresstesten biedt de klimaateffectatlas vier (typen) basiskaarten aan. Overheidsorganen die verplicht zijn de zesjaarlijkse stresstest uit te voeren, kunnen deze informatie gebruiken als vertrekpunt voor het uitvoeren van de test.</p><p>Belangrijke basiskaarten voor hitte in relatie tot gezondheid, natuur en infrastructuur zijn o.a.:</p><ul>
+<li>Boom, groen, grijs en water per buurt</li>
+<li>Groen binnen openbare en niet openbare ruimte</li>
+<li>Wijktypologie</li>
+<li>Beweegbare bruggen</li>
+</ul></section></section><section id="nas-bollenschema-s"><h4 id="x5-1-2-nas-bollenschema-s"><span class="secno">5.1.2 </span>NAS-bollenschema's</h4><p>In de Nationale klimaatadaptatiestrategie zijn de gevolgen van klimaatverandering visueel gemaakt in vier bollenschema’s. Deze bollenschema’s geven een samenvatting van de huidige wetenschappelijke kennis over de directe klimaateffecten en de indirecte gevolgen van de toenemende hitte, neerslag, droogte en zeespiegelstijging. De indidrecte gevolgen worden voor 9 sectoren, waaronder gezondheid, natuur en infrastructuur, in beeld gebracht. Hierbij wordt aangegeven of de impact een middelgroot tot groot gevolg dit decennium heeft of een groot gevolg deze eeuw. Ook wordt de aard van het gevolg aangegeven, namelijkj als een bedreiging, een kans of het is onduidelijk of het gevolg een kans of bedreiging is.</p><p>Voor hitte is het onderstaande schema beschikbaar:</p><figure id="fig-nas-bollenschema-het-wordt-warmer-bron-nas-adaptatietool"><a href="media/bollenschema_warmer_v18_c_up_11024_1.jpg" target="_blank">
+      <img src="media/bollenschema_warmer_v18_c_up_11024_1.jpg" alt="NAS_bollenschema 'Het wordt warmer'">
+   </a>
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">NAS-bollenschema 'Het wordt warmer' (bron:
+<a href="https://nas-adaptatietool.nl/" target="_blank">NAS-adaptatietool</a>)
+</span></figcaption>
+</figure><p>Via de <a href="https://nas-adaptatietool.nl/">NAS adaptatie tool</a> zijn de actueelste bollenschema's beschikbaar. </p><p>Het bollenschema wordt als volledig beschouwd en kan worden gebruikt als overzicht van aandachtspunten.</p></section><section id="mindmap-hitte-in-de-stad"><h4 id="x5-1-3-mindmap-hitte-in-de-stad"><span class="secno">5.1.3 </span>Mindmap 'Hitte in de stad'</h4><p>In de <a href="https://www.hittebestendigestad.nl/mindmap/">Mindmap Hitte in de stad</a> zijn de problemen van extreme hitte verdeeld in vijf thema’s: gezondheid, netwerken, water, leefbaarheid en buitenruimte. Bij elk thema staan vier of vijf problemen waarvoor een factsheet beschikbaar is met aanvullende uitleg over het probleem, informatie en kaarten voor meer inzicht. Tot slot worden mogelijke maatregelen en richtlijnen gegeven om het probleem tegen te gaan. Voor de betreffende kaarten wordt onder meer verwezen naar de <a href="#klimaateffectatlas-kea">Klimaateffectatlas</a>.</p><figure id="fig-mindmap-hitte-in-de-stad-bron-hogeschool-van-amsterdam"><a href="media/mindmap_hitte_hoge_resolutie.png" target="_blank">
+      <img src="media/mindmap_hitte_hoge_resolutie.png" alt="Mindmap 'Hitte in de stad">
+   </a>
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">Mindmap 'Hitte in de stad' (bron:
+<a href="https://www.hittebestendigestad.nl/mindmap/" target="_blank">Hogeschool van Amsterdam</a>)
+</span></figcaption>
+</figure><p>De mindmap wordt gebruikt in de <a href="#bijsluiter-gestandaardiseerde-stresstest-hitte">bijsluiter gestandaardiseerde stresstest hitte</a>.</p></section><section id="andere-tools"><h4 id="x5-1-4-andere-tools"><span class="secno">5.1.4 </span>Andere tools</h4><p>Het <a href="https://klimaatadaptatienederland.nl/">Kennisportaal Klimaatadaptatie</a> ondersteunt <a href="#nationale-klimaatadaptatiestrategie-nas">NAS</a> en <a href="#deltaplan-ruimtelijke-adaptatie-dpra">DPRA</a>. Het geeft informatie over hoe Nederland zich voorbereidt op de gevolgen van klimaatverandering.
+</p><p>Het kennisportaal biedt ook een overzicht van <a href="https://klimaatadaptatienederland.nl/hulpmiddelen/">hulpmiddelen</a> die vanuit het DPRA ontwikkeld zijn, zoals de hierboven Klimaateffectatlas of de bijsluiter stresstesten. Voor hitte zijn nog meer hulpmiddelen beschikbaar. Deze worden hier niet beschreven, maar hiervoor wordt verwezen naar het kennisportaal. Voorbeelden van hitte gerelateerde hulpmiddelen op gebied van maatregelen zijn o.a.:</p><ul>
+<li>Toolbox Klimaatbestendige Stad: verkent adaptatiemaatregelen voor wijk, straat of terrein;</li>
+<li>Hittestresstool: maatregelen tegen hittestress in de buitenruimte virtueel uitproberen en toetsen</li>
+<li>Cool Towns Heat Stress Measurement Protocol: meetprotocol om een Thermal Comfort Assessment op straatniveau uit te voeren;</li>
+<li>EfFact checker: worden antwoorden gegeven op allerhande praktijkvragen over hittemaatregelen in de buitenruimte.
+</li>
+</ul></section></section><section id="europese-informatiebronnen"><h3 id="x5-2-europese-informatiebronnen"><span class="secno">5.2 </span>Europese informatiebronnen</h3><p>In de <a href="#europese-adaptatiestrategie">Europese Adaptatiestrategie</a> wordt aangegeven dat gegevens over klimaatgerelateerde risico’s en verliezen cruciaal zijn voor een betere nauwkeurigheid van de klimaatrisicobeoordeling. Om “klimaatblinde” beslissingen te vermijden, moeten gegevens van zowel de particuliere als de publieke sector op een omvattende en geharmoniseerde wijze worden geregistreerd, verzameld en gedeeld. In dit kader worden verschillende Europese gegevensbronnen genoemd:</p><ul>
+<li><strong>Copernicus en EMODnet</strong>: De Europese Adaptatiestrategie geeft aan dat alle gegevens van wetenschappelijke kerninitiatieven van de EU, zoals Copernicus en het Europees marien observatie- en datanetwerk (EMODnet) zijn vrij en openlijk beschikbaar voor alle gebruikers wereldwijd. De dienst van Copernicus voor klimaatverandering zal de bruikbaarheid van de gegevens verder verbeteren en diensten ontwikkelen zoals voor toewijzing van extreme weersverschijnselen. Daarnaast geeft de Europese Adaptatiestrategie aan dat ter onderbouwing van de besluitvorming gebruik moet worden gemaakt van de meest recente digitale technologieën en klimaatdiensten bevorderen (bijvoorbeeld teledetectie, slimme weerstations, kunstmatige intelligentie en high-performance computing). En nieuwe instrumenten zoals Destination Earth en Digital Twins zijn veelbelovend om het begrip van huidige en toekomstige klimaateffecten op planetaire en lokale schaal te vergroten.
+</li>
+<li><strong>INSPIRE richtlijn, Richtlijn Open data en Richtlijn inzake het hergebruik van overheidsinformatie</strong>: De Commissie wil de toegang voor belanghebbenden tot gegevens over klimaatgerelateerde risico’s en verliezen vergemakkelijken. De INSPIRE-richtlijn, de Richlijn inzake Open data en de richtlijn inzake het hergebruik van overheidsinformatie worden in dit kader genoemd. De INSPIRE richtlijn, welke in 2021 is geëvalueerd, zal als onderdeel van het GreenData4All initiatief worden uitgebreid zodat gegevens over milieu- en klimaatgerelateerde verliezen na rampen worden opgenomen en de reikwijdte van de publieke toegang wordt uitgebreid. Gegevens over klimaatgerelateerde verliezen na rampen worden ook beschouwd als hoogwaardige datasets bij toekomstige herzieningen van de uitvoeringshandeling van de richtlijn inzake open data en de richtlijn inzake het hergebruik van overheidsinformatie. Evenzo zullen de gegevens die in publiek-private partnerschappen worden verzameld zo toegankelijk mogelijk worden gemaakt.</li>
+<li><strong>Climate-ADAPT</strong>: De Europese commissie wil <a href="https://climate-adapt.eea.europa.eu/">Climate-ADAPT</a> verder ontwikkelen tot toonaangevend Europees platform voor de aanpassing aan de klimaatverandering. De Commissie wil Climate-ADAPT uitbreiden als kennisbron over klimaateffecten en -aanpassing, onder meer door diverse informatiebronnen te bundelen. Daarnaast gaat Climate-ADAPT als mechanisme dienen voor monitoring en verslaglegging. Tot slot wordt in het kader van Climate-ADAPT een Europese waarnemingspost voor klimaat en gezondheid opgericht. De Commissie wil gegevens, instrumenten en deskundigheid bijeenbrengen en met elkaar in verband brengen om de gevolgen van de klimaatverandering voor de gezondheid van de mens op basis van een “één gezondheid”-benadering bekend te maken, te monitoren, te analyseren en te voorkomen. Sterfte en verwondingen als gevolg van hitte, overstromingen of bosbranden worden in dit kader genoemd als ook de verschijning en verspreiding van infectieziekten en allergenen die verband houden met geografische verschuivingen in vectoren en pathogenen.</li>
+</ul></section></section><section data-format="markdown" id="stakeholders"><!--OddPage--><h2 id="x6-stakeholders"><span class="secno">6. </span>Stakeholders</h2><p><em>overzicht van brede speelveld aan stakeholders inclusief hun informatiebehoefte op gebied van hitte</em>
+</p><section id="breed-speelveld"><h3 id="x6-1-breed-speelveld"><span class="secno">6.1 </span>Breed speelveld</h3><p>Een breed speelveld aan stakeholders is betrokken bij hitte. Naast de rijksoverheid zijn de regionale en lokale overheden betrokken. Met name de lokale overheden, zoals de gemeenten, voeren de stresstesten m.b.t. hitte uit, maar ook Rijkswaterstaat voert deze stresstesten uit voor de rijksinfrastructuur. Vanuit de markt zijn er diverse partijen die een (verdiepende) stresstest aanbieden. Rondom hitte zijn ook nog veel vragen. Kennisinstituten, markt- en onderwijspartijen spelen een belangrijke rol in het vele onderzoek wat nog plaats vindt.</p><p>Vanuit de rijksoverheid spelen verschillende ministeries een rol in het hittedossier. Het ministerie van IenW heeft een coördinerende en stimulerende rol m.b.t. de Nationale klimaatadaptiestrategie (NAS) en het Deltaprogramma. Het ministerie van VWS is verantwoordelijk voor de gezondheid in relatie tot hitte, LNV heeft deze rol voor de natuur in Nederland en BZK staat aan de lat voor klimaatadaptief bouwen. Daarnaast is bijvoorbeeld het ministie van V&amp;J mede-verantwoordelijk voor de vitale infrastructuur, zoals elektriciteit en drinkwater. Als vitale infrastructuur uitvalt door hitte, kan dat grootschalige maatschappelijke ontwrichting veroorzaken.
+</p><p>Op het gebied van standaardisatie binnen klimaatadaptatie is er het samenwerkingsverband Overleg Standaarden Klimaatadaptatie (OSKA). In OSKA werken overheden, marktpartijen, kennisinstituten en standaardisatie-organisaties met elkaar samen. OSKA wil bevorderen dat klimaatadaptatie snel een plek krijgt in nieuwe en bestaande standaarden.</p><p>Om de informatiebehoefte van dit brede speelveld in kaart te brengen zijn 21 stakeholders geïnterviewd, afkomstig van:</p><ul>
+<li>IenW</li>
+<li>LNV</li>
+<li>VWS</li>
+<li>Rijkswaterstaat</li>
+<li>Provincie Noord-Brabant</li>
+<li>Gemeente Rotterdam</li>
+<li>GGD</li>
+<li>PBL</li>
+<li>RIVM</li>
+<li>Unie van Waterschappen</li>
+<li>Informatiehuis Water</li>
+<li>OSKA</li>
+<li>Climate Adaptation Services (CAS)</li>
+<li>Klimaatverbond</li>
+<li>Cobra</li>
+<li>Hogeschool van Amsterdam</li>
+</ul><p>De stakeholders zijn bevraagd naar hun rol en het belang in het hittedossier, hun informatiebehoefte, de knelpunten en de verbeterpunten in de informatievoorziening rondom hitte en tot slot wat een mogelijke oplossing is, zoals een begrippenkader en/of een informatiemodel.</p><p>Hieronder staan de bevindingen per stakeholder aangegeven. De bevindingen uit het interview met PBL zijn verwerkt in de paragraaf over <a href="#monitoring">monitoring</a>.</p><p><img src="media/stakeholders.jpg" alt="stakeholders" title="Stakeholders hitte"></p></section><section id="stakeholders-op-gebied-van-gezondheid"><h3 id="x6-2-stakeholders-op-gebied-van-gezondheid"><span class="secno">6.2 </span>Stakeholders op gebied van gezondheid</h3><p>Betrokken stakeholders zijn o.a. VWS, provincies, gemeenten, GGD's, RIVM, HvA, Klimaatverbond, ZonMW en diverse marktpartijen.</p><section id="vws"><h4 id="x6-2-1-vws"><span class="secno">6.2.1 </span>VWS</h4><p><strong>Rol en belang</strong> 
+Rol van VWS is rondom gezondheid en gedrag. Hoe omgaan met adaptieve maatregelen en gedragscodes.
+</p><p><strong>Informatiebehoefte</strong>
+Via 3G's:
+</p><ul>
+<li>Gebied: LNV, IenW, BZK: geen hitte-eilanden, schaduw belangrijk</li>
+<li>Gebouw: IenW, BZK, LNV:
+</li>
+<li>Voor gebouwen is het belangrijkste dat ze 's nachts afkoelen.
+</li>
+<li>Vergroening van de stad. Heeft beperkte waarde. Voor koelte, biodiversiteit, gezondheid, sporten, bewegen, recreëren.</li>
+<li>Gebruiker, gezondheid, gedrag: Hiervoor is Nationaal hitteplan uit 2007 (ouderen, voldoende drinken). Effectiviteit nooit geëvalueerd. Ook lokale hitteplannen. Effectiviteit zou je in samenhang willen onderzoeken. Netwerk rondom hitteplannen: VWS, koepels zorgorganisaties, Rode Kruis, GGD's. Waar wonen de kwetsbare mensen (o.a. hart- en vaatziekten, asma).</li>
+</ul><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>Isolatie van de woning in verband met energie. Wat betekent dit voor hitte. VWS wil dit weten. BZK wil dit voor gebouwen weten. Hiervoor nieuwe norm: TOjuli. Waar nieuwbouw huizen aan moeten voldoen, staat in Bouwbesluit.</li>
+<li>Zie ook Factsheet RIVM groen en gezondheid.</li>
+</ul><p><strong>Oplossingen</strong>
+Woordenboek is mogelijk behulpzaam bij de samenhang tussen de 3 G's: gebied, gebouw, gebruiker</p></section><section id="gemeente-rotterdam"><h4 id="x6-2-2-gemeente-rotterdam"><span class="secno">6.2.2 </span>Gemeente Rotterdam</h4><p><strong>Rol en belang</strong> 
+Adviseur hitte en droogte. Gemeente Rotterdam doet veel met hitte. Gemeente heeft kaarten over gevoelstemperatuur, hitte-eilanden.
+</p><p><strong>Informatiebehoefte</strong>
+Eerst gewerkt met de landelijke data uit Klimaateffectatlas. Maar gemeente werkt nu met Tygron, software die kan modelleren. Met Tygron kan de gemeente de gevoelstemperatuur en luchtvochtigheid modelleren op basis van recept van de <a href="#bijsluiter-gestandaardiseerde-stresstest-hitte">bijsluiter gestandaardiseerde stresstest hitte</a>. Gevoelstemperatuur is wel een lastig begrip, want het is lokaal zeer verschillend. Daarnaast speelt de vraag 'hoe goed is het model?'. Worden bepaalde factoren in het model wel/niet meegenomen.</p><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>De binnentemperatuur is eigenlijk veel belangrijker, want mensen slapen binnen. Gevoelstemperatuur binnen is voor een gemeente lastiger te sturen want het betreft vastgoed. NKWK-onderzoek vindt momenteel plaats naar de binnenruimte.</li>
+<li>Er zijn momenteel twee kaarten voor de gevoelstemperatuur, de kaart die is uitgewerkt door Witteveen +Bosch (W+B) volgens het landelijke recept en een methode ontwikkeld door Nelen &amp; Schuurmans (N&amp;S) met andere aannames. Daardoor is het lastig te vergelijken. Het zou handig zijn als dezelfde uitgangspuntenn worden gehanteerd.</li>
+<li>Dit geldt zowiezo voor onderzoek/uitbestedingen aan bureaus. Er worden veel aannames gedaan. Praten langs elkaar.</li>
+<li>Er is geen standaard voor afstand tot groen. In de Klimaateffectatlas is wel de kaart afstand tot koelte opgenomen. Maar elke gemeente geeft eigen invulling aan groen in relatie tot koelte; niet alle groene plekken zijn koel. De gemeente Rotterdam gebruikt dan ook eigen methode. Zo'n landelijk beeld heeft dan geen meerwaarde. De behoefte is aan meer detailniveau. Er zouden meer handvaten moeten komen, zoals publicatie van HvA.</li>
+<li>Landelijk Nationaal hitteplan is effectief, maar als gemeente moet je het gedetailleerder maken.</li>
+<li>Voor in huis: BENG normen.
+</li>
+<li></li>
+</ul><p><strong>Oplossingen</strong>
+Informatiemodel is een lastig begrip. Met name gesproken over woordenboek. In eerste instantie is het antwoord dat de mensen die zich echt met hitte bezig houden echt goed weten waar ze het over hebben. Daar is onderling geen spraakverwarring. Maar onder niet-experts is er wel begripsverwarring. Vooral begrippen als hittestress, gevoelstemperatuur, hitte eiland. Deze begrippen worden door mensen die geen expert zijn op het gebied van hitte, maar generalist zijn, wel door elkaar heen gebruikt. Er zijn heel veel mensen die wel meepraten over hitte maar geen specialist zijn. Er wordt wel afgevraagd of een woordenboek gaat helpen, want de gemeente verwacht niet dat elke generalist de moeite zal nemen om een woordenboek te raadplegen. De expert daar hoef je het niet voor te doen, want in overleggen waar het echt over hitte gaat, dan weten de mensen waar het over gaat. Maar mogelijk kan het wel helpen bij uitbestedingen (verschillende aannames). In dit kader wordt aangegeven dat hitte een nieuw onderwerp is. Iedereen is op zoek naar informatie. Iedereen heeft weer andere onderzoeken gelezen. Er is geen één duidelijke lijn. </p><p>Richtlijnen mmaken. Provincies doen dat ook, bijvoorbeeld provincie Zuid-Holland. Voor voorbeelden van richtlijnen wordt verwezen naar HvA:</p><ul>
+<li>% schaduw op looproutes</li>
+<li>Verblijfsobjecten</li>
+<li>Afstand tot koele plek</li>
+<li>Hoeveel m2 koele plek per inwoner</li>
+<li>% groen dat er moet zijn bij een ontwikkeling in de buitenruimte</li>
+</ul></section><section id="ggd"><h4 id="x6-2-3-ggd"><span class="secno">6.2.3 </span>GGD</h4><p><strong>Rol en belang</strong> 
+Adviseren over groene en gezonde leefomgeving. Zijn betrokken bij het opstellen van de stresstesten en de lokale hitteplannen. Betreft niet alleen fysieke aspecten zoals temperatuur maar de kwetsbaren, ouderen (75+).
+</p><p><strong>Informatiebehoefte</strong>
+Effecten van hitte op gezondheid zijn lastig te meten, omdat ze niet heel eenduidig zijn. Er is vaak sprake van een combinatie van factoren (onderliggend lijden, maar ook de duur van een hittegolf of de type woning). Hittedoden zoals het CBS die registreert is daarom vrij onbetrouwbaar getal.
+</p><p>Relevante parameters zijn:</p><ul>
+<li>Hitte buiten</li>
+<li>Hitte binnen (afhankelijk van gebouwkenmerken en gedrag).</li>
+<li>Gebouwkenmerken: plat dak, flat/laagbouw, bouwjaar, gevel op het zuiden</li>
+<li>Is er een relatie tussen energielabel en binnentemperatuur?</li>
+<li>Demografie</li>
+<li>Koele plekken kaarten (schaduw, gekoelde gebouwen); kunnen 75+-ers daar komen? Doen ze dat ook als het heet is?</li>
+</ul><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>Effectiviteit van maatregelen (zonwering, ventilatie) zijn moeilijk te monitoren omdat het met individueel gedrag te maken heeft.</li>
+<li>Gezondheidsmonitor van 25 GGD's, RIVM en CBS (vierjaarlijks, 500.000 respondenten): mogelijk uit te breiden met vragen over hitte. Data is echter alleen beschikbaar voor GGD's en niet landelijk wordt ontsloten.</li>
+<li>GGD's adviseren de Klimaateffectatlas uit te breiden met aspecten m.b.t. de binnenruimte en gedrag.
+</li>
+<li>Om beter in beeld te brengen wat de hitte in de woning is; betreft ook kenmerken van de woning (bouwjaar, wijktypologie, aantal verdiepingen, platte daken, ramen op het zuiden) en verkoelingsmaatregelen (zonwering, ramen open ’s nachts).</li>
+<li>Rondom groen is een lastige semantiek: groen als recreatie, als schaduw, als verkoeling door verdamping.</li>
+<li>Mogelijke rol satellietdata in groenherkenning?</li>
+<li>Hittekaarten / hitte-eilandeffect: bedrijfsterreinen zijn ook hitte-eilanden, maar wonen er geen mensen (er werken wel mensen). Hoogste risicogebied in Amsterdam is bijvoorbeeld niet het centrum, maar de ring met arme wijken met oude huizen en weinig groen. Dus in de hittekaarten niet alleen temperatuur meenemen, maar ook andere parameters zoals sociaal-economische factoren (is het mogelijk om wel of geen airco of zonwering te kopen).</li>
+<li>NAS-bollenschema's zijn zeer volledig.</li>
+</ul><p><strong>Oplossingen</strong>
+Bij hitte niet alleen de temperatuur buiten en binnen meenemen maar ook andere aspecten, zie informatiebehoefte. Voordelen van standaardisatie is dat het nog  inzichtelijker wordt, want het is vergelijkbaar.</p><p>Klimaatadaptatie is een complex probleem dat veel samenwerking vraagt. Klimaatgeletterdheid moet eerst omhoog, zodat adaptief handelen in de kern van het handelen komt.</p></section><section id="hogeschool-van-amsterdam"><h4 id="x6-2-4-hogeschool-van-amsterdam"><span class="secno">6.2.4 </span>Hogeschool van Amsterdam</h4><p><strong>Rol en belang</strong> 
+Interdisciplinaire onderzoeksgroep hitte in de stad. Lector is ook partime werkzaam bij Tauw.
+</p><p><strong>Informatiebehoefte</strong>
+Kernvragen van hitte zijn:</p><ul>
+<li>Hoe heet wordt het? Luchttemperatuur, gevoelstemperatuur, nachttemperatuur.</li>
+<li>Hoe snel gaat de opwarming?</li>
+<li>Hoe kan je de buitenruimte zo inrichten dat je klimaatbestendig wordt?</li>
+</ul><p>Onderzoeksvragen verschuiven meer van buitenruimte naar binnenruimte:</p><ul>
+<li>Gebied: groen/grijs
+</li>
+<li>Gebouw: isolatie en zonwering</li>
+<li>Gebruiker: hitteplannen en gedrag</li>
+</ul><p>Praktische handreiking hitte in de woning (welke woningen extra risico, welke typen huizen, welke adaptatiemaatregelen (zoals zonwerking, airco), NKWK-onderzoek hitte in de woning (beleving en metingen) in samenwerking met Klimaatverbond, TAUW en GGD. Onderzoeksresultaten komen terug in de Klimaateffectatlas. Belangrijk programma is <a href="https://www.waterenklimaat.nl/">Nationaal Kennisprogramma Water en klimaat (NKWK)</a>. Ook voor monitoring van klimaatadaptatie en ook voor (belevings)onderzoeken hitte in de woning.</p><p>Belangrijkste parameters uit de Klimaateffectatlas zijn:</p><ul>
+<li>Gevoelstemperatuur</li>
+<li>Nachttemperatuur (wordt geupdated, mogelijk met Citizen science)</li>
+<li>Percentage groen, schaduw en koelte (afstand tot koelte)</li>
+</ul><p>Ook gekoppeld aan de door HvA opgestelde richtlijnen voor een hittebestendige stad. Drie <a href="https://www.hva.nl/urban-technology/gedeelde-content/publicaties/publicaties-algemeen/praktijkonderzoek-hitte-richtlijnen.html">ontwerprichtlijnen</a> voor een hittebestendige inrichting van de buitenruimte zijn opgesteld. Deze voorgestelde richtlijnen zijn in het onderzoek concreet met grenswaarden ingevuld (bijvoorbeeld 300 meter tot een koele plek, of 40 % schaduw op loopgebieden).</p><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>Hitte-eilandkaart is lastig. Hierop ook bedrijventerrein, maar er wonen geen mensen. Mogelijk wel weer te gebruiken voor waterberging. Is geen goede monitorparameter.</li>
+<li>Voor monitoring is het zinvol om de volgende parameters te monitoren:</li>
+<li>Schaduw</li>
+<li>Groen</li>
+<li>Afstand tot koelte</li>
+<li>Gevoelstemperatuur (is eigenlijk ook een schaduwkaart)</li>
+<li>Kwetsbare ouderen is ook een lastige parameter. Hoe bepaal je de kwetsbare oudere?</li>
+<li>Richtlijnen voor herinrichting gebieden (buitenruimte) is eenvoudig houden. Groen is maatregel voor klimaatadaptatie en vergroot ook leefbaarheid. Schaduw toevoegen is de enige echte oplossing en daarna verdamping.</li>
+<li>De mindmap Hitte in de stad en het NAS-bollenschema zijn aanvullend. Het NAS-bollenschema is veel uitgebreider, maar minder praktisch (meer een ‘denk hieraan’ plaat).</li>
+<li>Vanuit HvA is infrastructuur geen hittevraag. Zijn praktische problemen die gemitigeerd moeten worden (bijv. bruggen koelen) of bij ontwerp worden opgelost.</li>
+</ul><p><strong>Oplossingen</strong>
+Begrippenkader is niet per se nodig. Over de termen in de mindmap hitte in de stad is al goed nagedacht. Het sluit aan op Klimaateffectatlas. Over de Klimaateffectatlas is consensus, adviesbureaus doen het wel beetje anders. Standaardisatie is niet per se nodig.</p></section><section id="klimaatverbond"><h4 id="x6-2-5-klimaatverbond"><span class="secno">6.2.5 </span>Klimaatverbond</h4><p><strong>Rol en belang</strong> 
+Hitte in relatie tot gezondheid en daarin de 3G aanpak: gebied, gebouw en gezondheid. Het gaat over de gezondheid van de mens. Elk domein heeft z'n eigen vraagstuk: wat weten we wel en wat weten we niet. Elk domein vraagt verdieping. Harde gegevens m.b.t. gezondheid zijn alleen de CBS-statistieken m.b.t. oversterfte, gegevens over de spoedeisende hulp in relatie tot hitte zijn niet bekend. Via de huisartsen wordt via NIVEL wel een en ander bijgehouden
+</p><p><strong>Informatiebehoefte</strong></p><p>Hitte-eiland effect: RIVM en HvA mee aan de slag. HvA heeft hittebestendige stad opgesteld met 3 richtlijnen:</p><ul>
+<li>Afstand tot koelte (binnen 300m koele plek)</li>
+<li>% schaduw looproutes</li>
+<li>% groen</li>
+</ul><p>Hitteplan: Nationaal voor bewustwording en communicatie mbt adviezen. Om dichter bij de doelgroep te komen: lokale hitteplannen op gemeentelijk niveau. Door hitteplannen is de effectiviteit toegenomen, maar de onderbouwing loopt achter. Klimaatverbond pleit voor een hitte regisseur.</p><p>Hitte-indicatoren:</p><ul>
+<li>Gezondheidsmonitor, de broosheid van mensen. Kwetsbare mensen in kaart gebracht door RIVM (75+, soms 80+, mensen met chronische ziekten of bepaald medicijn gebruik, jonge kinderen)</li>
+<li>Woningen: per woningtype label voor hitte verder ontwikkelen</li>
+<li>Hittekaarten: waar is het warm?</li>
+</ul><p>Deze 3 indicatoren brengen de kwetsbaarheid in beeld. Volgende stap is het nemen van maatregelen en effectiviteit te bepalen. Arcadis heeft rekenmodel ontwikkeld m.b.t. effectivitteit van de woning (buiten zonwering, isolatie woning of directe omgeving vergroenen). Maar hitte betreft een combinatie van factoren (eenzaamheid, immobiliteit) gekoppeld aan gedrag (drinken, ventilate). En daarnaast is afwegingskader belangrijk: energiebesparing versus hitte.
+</p><p><strong>Knel- en verbeterpunten</strong>
+Er loopt momenteel veel onderzoek via NKWK en ZonMW:</p><ul>
+<li>NKWK: Per buurt: hoe hittegevoelig zijn de woningen (Tauw trekker)</li>
+<li>NKWK:    Gezondheid van de bewoners</li>
+<li>ZonMW: Warm aanbevolen, kijken naar de fysiologie van het lichaam zelf.</li>
+</ul><p>Discussiepunten zijn:</p><ul>
+<li>Heeft groen nu wel of geen impact op de vermindering van hitte.</li>
+<li>Hoge nachttemperaturen: effect op mensen nog onbekend. Ook in relatie tot arbeid.</li>
+</ul><p>Bij hittedossier staan we nog aan het begin. Effect van hitte zit niet in het gebied maar vooral in de aanpak van de woning en het gedrag van de mens. Eigenlijk is belevingsonderzoek nodig gekoppeld aan bijvoorbeeld hittelabel van woning, soort bewoners en gedrag, wel of niet geïsoleerd.</p><p><strong>Oplossingen</strong>
+Begrippenkader: Dit heb je nodig, zodat duidelijker is wat de definitie van bepaalde zaken zijn.
+</p></section></section><section id="stakeholders-op-gebied-van-natuur"><h3 id="x6-3-stakeholders-op-gebied-van-natuur"><span class="secno">6.3 </span>Stakeholders op gebied van natuur</h3><p>Betrokken stakeholders zijn o.a. LNV, provincies en terreinbeheerders.</p><section id="lnv"><h4 id="x6-3-1-lnv"><span class="secno">6.3.1 </span>LNV</h4><p><strong>Rol en belang</strong> 
+Betrokken bij de <a href="#actielijnen-klimaatadaptatie-natuur">Actielijnen klimaatadaptatie natuur</a>, welke programma's en projecten spelen er rondom klimaatverandering en natuur. Proberen de verbinding te zoeken, kennisvragen uit te zetten, wat is het kader?
+</p><p>Klimaatverandering heeft impact op de natuur, maar de natuur kan ook worden ingezet als maatregel voor klimaatadaptatie.</p><p><strong>Informatiebehoefte</strong>
+Klimaatadaptatie zowel in het landelijke als stedelijke gebied. Vergroening in het landelijk gebied, rond de 17.000 ha. Water- en bodemsysteem en systeemdenken moet leidend worden in beleid. Waterbeschikbaarheid is direct gerelateerd aan hitte in relatie tot de natuur. Waterbodemsysteem is leidend, maar nog niet geoperationaliseerd.
+</p><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>De semantische discussie over wat ‘hitte’ is: Spreek je dan over langere korte periodes met een hogere temperatuur –langere/meer hittegolven-, of heb je het over een hogere gemiddelde temperatuur. Dat laatste, die constante temperatuurverhoging is voor de natuur een groter probleem. Een hittegolf hoeft voor de natuur niet meteen problemen op te leveren als er voldoende water is. Een langdurige temperatuursverhoging heeft meer gevolgen.
+</li>
+<li>En wat is klimaatadaptief in relatie tot hitte: moet je dan tot een harde grens komen?</li>
+<li>Nuance verschillen qua (korte of lange) termijn en schaalniveaus verschilt tussen de verschillende bestuurslagen (rijk, provincie, gemeente). Dit heeft verschil in hoe je naar hitte kijkt én hoe je het aanpakt.
+</li>
+</ul><p><strong>Oplossingen</strong>
+Een woordenboek om dezelfde taal te spreken is wel van belang, tussen de ministeries is er echter een verschillende scope. LNV kijkt anders naar de begrippen dan de NAS of andere partijen. LNV zou er belang bij hebben wanneer de woorden weer los worden getrokken van hun huidige context. Hitte is nu geassocieerd met mensen, maar zou ook met natuur moeten worden geassocieerd.</p></section></section><section id="stakeholders-op-gebied-van-infrastructuur"><h3 id="x6-4-stakeholders-op-gebied-van-infrastructuur"><span class="secno">6.4 </span>Stakeholders op gebied van infrastructuur</h3><p>Betrokken stakeholders zijn o.a. IenW, RWS, ProRail, Waterschappen, provincies.</p><section id="ienw-in-relatie-tot-infrastructuur"><h4 id="x6-4-1-ienw-in-relatie-tot-infrastructuur"><span class="secno">6.4.1 </span>IenW (in relatie tot infrastructuur)</h4><p><strong>Rol en belang</strong> 
+Klimaatadaptatie, in relatie tot vitale en kwetsbare infrastructuur. Klimaatbestendigheid worden moet worden meegenomen bij vernieuwing, beheer van infrastructuur en assets. Bepaald moet worden wat het rijk hierin gaat doen en wat de regio. In de DPRA zijn 13 vitale en kwetsbare functies benoemd, zoals elektriciteit, gas, telecom, water, objecten, hoofdinfrastructuur. Ministerie van V&amp;J   verantwoordelijk voor weerbare infrastructuur voor vitale processen. 29 processen zijn geïdentificeerd die vitaal zijn (denk aan datacentra, drinkwater, etc).
+</p><p><strong>Informatiebehoefte</strong>
+IenW is alleen verantwoordelijk voor de eigen infrastructuur/netwerken (spoor, hoofdwegen, vaarwegen). Deze netwerken wil je klimaatbestendig maken. Hiervoor heb je wel normen en eenzelfde taal nodig. Waar heb je het over? Hoe moet je interventie plegen bij hitte. Wat is het risico en wat moet je concreet doen. Voor precieze informatiebehoefte wordt verwezen naar collega's en RWS.
+</p><p>Voor informatiebehoefte wordt verder verwezen naar de NAS-bollenschema's. Dit is een belangrijke basis. Belangrijkste is hoe we ministeries, andere overheden, uitvoerders bewuster maken van dit soort risico’s. En hoe je vervolgens maatregelen hiertegen neemt. Belangrijk is dan wel dat je de assets in beeld hebt.</p><p>Cascade-effecten zijn nog niet in beeld. Hier is wel behoefte aan: wat als de infrastructuur uitvalt, wat valt er dan nog meer uit?</p><p><strong>Knel- en verbeterpunten</strong>
+RWS heeft een eigen Klimaateffectatlas. Dit is wel lastig ten opzicht van de Klimaateffectatlas.
+</p><p>Zoals aangegeven gaat IenW alleen over de eigen infrastructuur. EZK gaat bijvoorbeeld over de energienetwerken. Vraag is of EZK op de hoogte is van klimaatadaptatie en of hitte hier wordt meegenomen. Mogelijk EZK interviewen of misschien de netbeheerders zelf. IenW heeft een coördinerende rol vanuit klimaatadaptatie: integraal en afgestemd. Alleen ligt veel ook bij andere ministeries, overheden: LNV, VWS, RWS, gemeenten, waterschappen.
+</p><p><strong>Oplossingen</strong>
+Begrippenkader: IenW geeft aan normen en eenzelfde taal nodig zijn.</p><p>Elke twee weken is er een breed klimaatadaptatie-overleg met meerdere ministeries en aanverwante partijen (oa CAS, Klimaatbestendig NL). Bredere groep experts zit aan aan tafel. Suggestie wordt gegeven om dit project ook in het brede klimaatadaptatie-overleg  te presenteren en feedback te vragen.
+</p></section></section><section id="stakeholders-op-gebied-van-informatievoorziening"><h3 id="x6-5-stakeholders-op-gebied-van-informatievoorziening"><span class="secno">6.5 </span>Stakeholders op gebied van informatievoorziening</h3><p>Betrokken stakeholders zijn o.a. IenW, RIVM, WUR, Informatiehuis Water, OSKA, Climate Adaptation Services (CAS), Cobra en andere marktpartijen zoals Tauw.</p><section id="ienw-in-relatie-tot-informatievoorziening"><h4 id="x6-5-1-ienw-in-relatie-tot-informatievoorziening"><span class="secno">6.5.1 </span>IenW (in relatie tot informatievoorziening)</h4><p><strong>Rol en belang</strong> 
+Klimaatadapatie, in relatie tot bodem, water, gebouwde omgeving en werkgroep stresstesten.
+</p><p><strong>Informatiebehoefte</strong>
+Hitte is grootste probleem wat onderschat wordt. Nieuw onderwerp met nog veel vragen. Hitte treft gebouwaanpassingen, ruimtelijke aanpassingen en gedrag. Waarbij gedrag de belangrijkste factor is. En voor gedrag is nog te weinig aandacht.</p><p>Klimaateffectatlas is goed startpunt om gesprek te starten.</p><p><strong>Knel- en verbeterpunten</strong>
+Wat is het probleem rondom hitte? Zijn het de hete nachten of bijvoorbeeld de plekken waar een hoge dag- en nachttemperatuur is en waar kwetsbare mensen wonen. Dit moet je eerst weten voordat je oplossingen kan denken.</p><p>Monitoring van hitte: vanuit theorie een mooi idee, maar in praktijk lastig. Hitte is niet gebiedsgericht. Hittestress kan in het ene gebouw wel voorkomen en in de woning ernaast niet.
+</p><p>Uniformering stresstesten: Ambitie is uniformiteit, maar gemeenten zijn verantwoordelijk voor de stresstesten en aanpak. Als je wilt uniformeren dan moet je eigenlijk de verantwoordelijkheid weghalen bij de gemeenten en nationaal bepalen.</p><p><strong>Oplossingen</strong>
+Start kan wel zijn zelfde begrip van de termen te hebben. Hitte moet meer gaan leven bij gemeenten en GGD’s en ook de burger.</p></section><section id="rivm"><h4 id="x6-5-2-rivm"><span class="secno">6.5.2 </span>RIVM</h4><p><strong>Rol en belang</strong>
+</p><p>Het RIVM had coördinerende rol bij het ontwikkelen van de standaard voor de stresstest hitte. Het betreft de ontwikkeling van een gestandaardiseerde methode om een gedetailleerde <strong>gevoelstemperatuurkaart</strong> te maken en het opstellen van een leidraad voor de stresstest hitte. De methode is ontwikkeld door de WUR. De leidraad is opgesteld door de Hogeschool van Amsterdam.</p><p><strong>Informatiebehoefte</strong></p><p>Hitte in de woning te bepalen en welke impact heeft op de mens. Hiervoor zijn nodig:</p><ul>
+<li>Gevoelstemperatuur</li>
+<li>Nachttemperatuur</li>
+<li>Temperatuur in huis gekoppeld aan gebouwinformatie
+</li>
+</ul><p><strong>Knel- en verbeterpunten</strong></p><p>Gevoelstemperatuur:</p><ul>
+<li>methode is te ingewikkeld, methode versimpelen zodat rekenen sneller gaat
+</li>
+<li>baseren op hoogste temperatuur in laatste 10 jaar en windstil weer</li>
+<li>baseren op meer metingen en ook in meerdere steden</li>
+<li>baseren op basisregistraties</li>
+</ul><p>Temperatuur in huis:</p><ul>
+<li>Aantal partijen (HvA, Klimaatverbond,Tauw, BZK) zijn bezig hiervoor een monitor op te zetten op basis van NETATMO-weerstations (<a href="https://weathermap.netatmo.com/">https://weathermap.netatmo.com/</a>). Deze stations meten binnen- en buitentemperatuur. In project willen ze deze informatie verzamelen en op de kaart zetten.
+</li>
+</ul><p>Algemeen:</p><ul>
+<li>Lacune is dat KNMI niet meet in de steden.</li>
+<li>Kwetsbare mensen in beeld. Dit wordt via NKWK onderzoek nu in beeld gebracht.</li>
+<li>Ook diverse hitte-projecten via ZonMW.</li>
+</ul><p>Combinatie van kaarten:
+Nachttemperatuur en de temperatuur in huizen koppelen aan gebouwinformatie om zo de hitte in woningen te bepalen en welke impact dit heeft op de mens: hittedoden via CBS, ziekte of ziekenhuisopname via ziektemeldingen en andere zorgregistraties. Uiteindelijk kosten in beeld brengen.
+</p><p><strong>Oplossingen</strong></p><p>Begrippenkader is handig hulpmiddel. Hierdoor krijg je minder spraakverwarrring.</p><p>Informatiemodel is misschien nodig voor de basisdata die gebruikt in de methodes zoals de gevoelstemperatuur. Mogelijk in toekomst hittestressmodel.
+</p><p>Algemeen: Nog veel onduidelijk rondom hitte. Valt tussen wal en schip. Ook beleidsmatig: IenW of VWS; wie is verantwoordelijk?</p><p>Andere modellen:</p><ul>
+<li>In Tygron zit hittestressmodule. HvA is hierbij betrokken.</li>
+<li>VITO (België) heeft hittemodel ontwikkeld waar de antropogene bronnen (airco’s, auto’s door de stad) in zijn meegenomen</li>
+</ul></section><section id="unie-van-waterschappen-dpra-in-relatie-tot-bijsluiter-stresstest-hitte"><h4 id="x6-5-3-unie-van-waterschappen-dpra-in-relatie-tot-bijsluiter-stresstest-hitte"><span class="secno">6.5.3 </span>Unie van Waterschappen / DPRA (in relatie tot bijsluiter stresstest hitte)</h4><p><strong>Rol en belang</strong> 
+Stresstest hitte en bijsluiter gestandaardiseerde stresstest hitte. Met de stresstest worden de kwetsbaarheden in kaart gebracht. Vooral gemeenten voeren stresstesten uit. Voor hitte was, toen de stresstest werd opgesteld, nog weinig kennis. Met een consortium (HvA, RIVM, TNO, WUR, aantal adviesbureaus) is de bijsluiter opgesteld.
+</p><p><strong>Informatiebehoefte</strong>
+De kwetsbare gebieden voor hitte bepaald door twee kaarten:</p><ul>
+<li>Gevoelstemperatuurkaart</li>
+<li>Aantal hete, tropische nachten</li>
+</ul><p>Waar zijn deze gebieden? Deze gaan risicodialoog in. Wat kan gemeente doen om temperatuur te verlagen? Welk handelingsperspectief? Hiervoor wordt Mindmap Hitte (HvA) en de Bollenschema NAS gebruikt. Bijv. impact op infrastructuur, comfort binnen en buiten. Ook wordt naar routes gekeken: koele routes naar koele plek. Gemeenten, provincies, waterschappen krijgen tips voor handelingsperspectief.</p><p>Belangrijkste vragen zijn:</p><ul>
+<li>Wat is de norm? Deze vraag ligt nog op tafel. Hoe wordt die bepaald? Door de kwetsbaren en ouderen. Ook hoe een gebouw is ingericht speelt een rol. Hitte wordt nog steeds verschillend geïnterpreteerd. Er is geen grenswaarde.</li>
+<li>Welke maatregelen moeten worden genomen? Meer groen, maar welk groen of de hoeveelheid groen. Dit soort vragen spelen nog steeds en hier wordt ook onderzoek naar gedaan.</li>
+</ul><p><strong>Knel- en verbeterpunten</strong></p><p>Gevoelstemperatuurkaart:
+</p><ul>
+<li>Complexe kaart. Recept is opgesteld door RIVM, WUR. Met het idee dat gemeenten zelf de kaart kon opstellen. Gemeenten vonden echter lastig. Vervoglens is opdracht gegeven aan Witteveen +Bosch (W+B) om de landelijke gevoelstemperatuurkaart te berekenen. Deze kaart staat op de Klimaateffectatlas.</li>
+<li>Nelen en Schuurman hebben ook een gevoelstemperatuurkaart gemaakt. Deze verschilt in details met de kaart op de Klimaateffectatlas. Deze verschillen geven discussies. De gebruikte brondata onderliggend is verschillend. Het zou handig zijn als die geüniformeerd worden, zodat je 1 landelijke kaart hebt.</li>
+</ul><p>Aantal hete, tropische nachten:</p><ul>
+<li>Deze kaart is ook verouderd. Nu opdracht gegeven aan Nelen &amp; Schuurmans (N&amp;S) om deze kaart te verbeteren. Tauw en HvA werken hier ook aan mee.</li>
+</ul><p>Monitoring:</p><ul>
+<li>De vraag ‘hoe je de effecten van maatregelen kan meten’ is een belangrijke vraag. De vraag is ook gesteld door Delta commissaris. Er worden maatregelen genomen, dan verwacht je dat het gebied minder kwetsbaar is. Is dit dan ook zo? Dit is lastig om te bepalen.
+</li>
+<li>De gebruikte modellen modeleren nu ook niet in dit detail (bijv. op straatniveau). </li>
+</ul><p><strong>Oplossingen</strong>
+Begrippenkader: CAS heeft hierin al veel gedaan via de Klimaateffectatlas, maar mogelijk zijn er nog hiaten.</p></section><section id="rijkswaterstaat-ienw"><h4 id="x6-5-4-rijkswaterstaat-ienw"><span class="secno">6.5.4 </span>Rijkswaterstaat / IenW</h4><p><strong>Rol en belang</strong>
+Breed georienteerd, met name op gebied monitoring klimaatadaptatie en evaluatie NAS. Eerste stap in monitoring is de herijking klimaatrisico's en impacts van PBL. Beleidsevaluaties doen met horizon 2050/2100.</p><p><strong>Informatiebehoefte</strong>
+Voor klimaatverandering de hele beleidscyclus monitoren. Dus niet alleen de gevolgen, de risico's en de impacts maar ook de beleidseffecten meten. Op basis hiervan weer nieuwe prioriteiten stellen.
+</p><p><strong>Knel- en verbeterpunten</strong>
+Sluit aan bij de ISO (2021), Adaptation to climate change - Guidelines on vulnerability, impacts and risk assessment. First edition 2021-02. Reference number ISO 14091:2021(E). Het PBL gebruikt deze ISO standaard bij de herijking.</p><p><strong>Oplossingen</strong>
+Informatiemodel is nodig voor zowel de monitoring als de Klimaateffectatlas. Beide onderwerpen zijn ook verbonden met elkaar. Naast ruimtelijke aspecten ook niet-ruimtelijke aspecten meenemen, bijvoorbeeld het gezondheidsdomein. Ook in de monitoring.</p></section><section id="overleg-standaarden-klimaatadaptatie-oska-nen"><h4 id="x6-5-5-overleg-standaarden-klimaatadaptatie-oska-nen"><span class="secno">6.5.5 </span>Overleg Standaarden Klimaatadaptatie (OSKA)/NEN</h4><p><strong>Rol en belang</strong> 
+Werkt bij NEN en is vanuit die rol bij OSKA aanhaakt. Doet verkenningen voor actieteams.
+</p><p>OSKA staat Overleg Standaarden KlimaatAdaptatie. OSKA wordt aangestuurd door OSKA Plenair, NEN vormt daarvoor het secretariaat. Aan het OSKA Plenair nemen veel verschillende stakeholders deel. OSKA Plenair bepaalt welke thema’s opgepakt gaan worden in verkenningen. In OSKA Plenair wordt alleen opgehaald wat er in de markt leeft. Als er behoefte is, dan kan er een verkenning worden gestart. IenW is betrokken bij OSKA.</p><p>In verkenningen worden de belangstellenden samen gebracht; peilen van de behoeften. Dit wordt vastgelegd in rapportages en er worden aanbevelingen gedaan. De uitvoer wordt niet opgepakt in verkenningen. Als dat aan de orde is, dan gaat het naar standaardisatieteams (dat kan bijvoorbeeld bij NEN zijn) of naar actieteams als het in de praktijk toepast moet worden.
+</p><p><strong>Informatiebehoefte</strong>
+OSKA werkt nu aan de verkenning 'Hitte in de buitenruimte'. Uit deze verkenning komt naar voren dat er behoeften voor richtlijnen zijn. In het team hebben ze de 3 richtlijnen uit het onderzoek van HvA genomen voor hoe je een koele plek voor de mens kunt creëren. De gemeentes die deelnemen in de verkenning worstelen met welke richtlijn ze moeten opnemen in beleid.
+</p><p>Bij de Verkenning ligt nu behoefte in de ontwerpfase; welke keuze maak ik in de maatregelen, welke maatregelen kies ik op welk moment, welke data is nodig. Ga je werken in een bestaand bebouwd gebied of is het een nieuwe omgeving. Dat is een ander uitgangspunt. Vervolgens/uiteindelijk wil je weten wat de effectiviteit is van de maatregel. De Hoe-vraag komt er dan bij kijken: hoe stel je dat vast? Iedereen is het er wel over eens, maak dat nu niet te ingewikkeld, maar maak het simpel in de basis.</p><p><strong>Knel- en verbeterpunten</strong></p><ul>
+<li>Verkenning Hitte is opgepakt omdat er een behoefte is aan eenduidige kaarten voor hitte.
+</li>
+<li>De Klimaateffectatlas is er, maar als je inzoomt naar lokaal niveau dan zijn er verschillen. Bij uitbestedingen is het mogelijk dat je twee verschillende antwoorden krijgt. Dit is voor de gemeenten lastig.
+</li>
+</ul><p><strong>Oplossingen</strong>
+Een woordenboek wordt interessant gevonden.</p><p>Richtlijnen, procesbeschrijvingen zouden helpen voor degenen die de kaarten maken. Bijvoorbeeld over tijdstippen en welke data neem je mee. Definities en meetmethodes zijn hierbij erg belangrijk.</p><p>Nu 3 basisrichtlijnen:</p><ul>
+<li>afstand tot koele plek voorstel 300 meter,
+</li>
+<li>Percentage schaduw. Dit is gericht op looproutes. Dit wordt verschillend geïnterpreteerd.</li>
+<li>Percentage groen in de buurt, afhankelijk van wijktype.</li>
+</ul><p>Er is vooral behoefte aan kaarten. Wel komen bij kaarten ook weer issues op, zoals de definitie van wijken en buurten. CBS hanteert een andere indeling dan die gemeenten zelf gebruiken. </p></section><section id="climate-adaptation-services-cas"><h4 id="x6-5-6-climate-adaptation-services-cas"><span class="secno">6.5.6 </span>Climate Adaptation Services (CAS)</h4><p><strong>Rol en belang</strong> 
+Klimaatadaptatie, in dit kader bevraagt in releatie tot Klimaateffectatlas
+</p><p><strong>Informatiebehoefte</strong>
+De klimaateffectatlas heeft een sterke centrale rol voor stakeholders en ook voor bewustwording. De informatie is andersoortige informatie. Het betreft geen brondata, maar de best beschikbare informatie, vaak model/analyse resultaten. De status van de data is twijfelachtig. Het behoeft een kwaliteitsslag en dat kan mogelijk via standaardisatie van de data.</p><p>Hittestresskaarten in de Klimaateffectatlas zijn:</p><ul>
+<li>Gevoelstemperatuurkaart
+</li>
+<li>Nachthittekaart</li>
+</ul><p>De gevoelstemperatuurkaart is ook weer input voor de afstand tot koelte. Stakeholders voeren op het laatste beleid.</p><p>Klimaateffectatlas richt zich op de buitenruimte, maar nu ook onderzoek naar de binnenruimte (HvA, Tauw)</p><p><strong>Knel- en verbeterpunten</strong></p><p>Gevoelstemperatuurkaart:</p><ul>
+<li>Twee versies zijn momenteel beschikbaar. Een van deze versies staat in de Klimaateffectatlas</li>
+<li>Methode dient vernieuwd te worden, evenals de brondata.</li>
+<li>Alle partijen zijn akkoord om deze te standaardiseren. Het betreft meer een productbeschrijving dan een informatiemodel: bronbestanden, welke analyse; uitkomst; welke kwaliteitsaspecten. Voorstel CAS voor de scope is om deze kaart te standaardiseren en te vereenvoudigen.
+</li>
+</ul><p>Nachthittekaart:
+Voor deze kaart wordt momenteel nieuw ontwikkeld. Deze kaart is minder kansrijk om te standaardiseren.</p><p>Afstand tot koelte / koele plekken:
+Wordt afgeleid van de gevoelstemperatuurkaart plus aanvullende eisen.
+</p><p>Monitoring:
+Verschillende aspecten kunnen gemonitord worden:</p><ul>
+<li>Hoeveelheid groen</li>
+<li>Hoe ontwikkelt de gevoelstemperatuur zich</li>
+<li>Afstand tot koelte</li>
+</ul><p>Verbeterpunten: </p><ul>
+<li>Basisregistraties inzetten als brondata, zoals de BGT. Bijvoorbeeld als indicatie voor groen, verharding.</li>
+<li>Ook satelietbeelden mogelijk als bron. Bij klimaatadapatie loop het gebruik van satelietdata achter. Watersector heeft al wel stappen gezet.</li>
+</ul><p><strong>Oplossingen</strong>
+Begrippenkader is mogelijk waardevollestap om te verkennen.</p><p>Informatiemodel: daar moeten we uiteindelijk naar toe, maar een IM is logischer voor ander thema bijv. wateroverlast. IM is bijna een soort digital twin.</p></section><section id="cobra"><h4 id="x6-5-7-cobra"><span class="secno">6.5.7 </span>Cobra</h4><p><strong>Rol en belang</strong> 
+Leefbaarheid in kaart brengen m.b.v. remote sensing, luchtfoto's. Zowel de huidige als de toekomstige situatie. Het gaat over het effect van klimaat op groen en vice versa, de rol van groen op klimaat.
+</p><p><strong>Informatiebehoefte</strong>
+Behoefte aan:</p><ul>
+<li>Kaarten</li>
+<li>Begrippenkader</li>
+<li>Richtlijnen in kader van opdrachtverlening</li>
+</ul><p><strong>Knel- en verbeterpunten</strong>
+Geen goede thesaurus voor hitte is er momenteel. Dit is wel nodig. Wat is een koele plek en hoe vertaal je dit in een kaart. Standaardisatie is nodig. Nu ontstaan er semantische discussies door andere definities en andere afbakening. Bijvoorbeeld is schaduw: is het schaduw door een gebouw of door groen. Cobra ontwikkelt eigen jargon: grijze schaduw en groene schaduw. En alleen op groene schaduw wordt beleidsmatig gestuurd.
+</p><p>Miscommunicatie ontstaat door het gebrek aan richtlijnen. Het is moeilijk om opdrachten eenduidig in te markt te kunnen zetten. De realiteit op dit moment is dat als je nu verschillende bureaus vraagt om werk te doen dan komen ze met een verschillend antwoord terug. Dat komt omdat er geen vaste richtlijnen zijn en iedereen verschillende aannames doet. Dit is niet fijn voor de opdrachtgever (veelal overheid), maar dit is ook niet prettig voor de opdrachtnemer (de bureaus) want zij willen wel de gewenste gegevens opleveren. Als je de eenduidige opdrachtverlening niet verbeterd, dan blijft er een situatie in stand van verschillende uitkomsten. Dit gaat pijn doen als je wil gaan monitoren.</p><p>Bij groen speelt daarnaast bodemvocht een belangrijke rol. Deze informatie is niet beschikbaar. Mogelijk wordt het straks geleverd door de Basisregistratie Ondergrond (BRO).</p><p>Verwijst voor thesaurus ook naar <a href="https://www.ecopedia.be/encyclopedie/inbo">Vlaanderen</a>, die al veel rondom groen hebben gedefinieerd.
+</p><p>Temperatuur: Data van KNMI combineren met sensoren uit Citizen science. Fijnmazige informatie is nodig. Geldt niet alleen voor temperatuur, ook voor andere aspecten. Bijvoorbeeld de bodemkaart. Deze is nog steeds niet beschikbaar voor het stedelijke gebied.</p><p>Mogelijk kunnen de basisregistraties een rol spelen en ook andere landelijke datasets: BGT, BAG, BRO, luchtfoto's, AHN, etc. Cobra heeft een eigen bomenmonitor.</p><p><strong>Oplossingen</strong>
+Een begrippenkader met begrippen en enkel definities is niet voldoende. Dit zal zeker wel helpen, maar de echte behoefte zit aan de ontwikkeling van richtlijnen. 
+Als je wil komen tot (goede) richtlijnen dan loop je tegen allerlei semantische issues aan. Want wat betekenen de termen die je gebruikt? Definities, afbakening, maar ook welke meetmethodes zijn er en welke parameters worden daarbij gehanteerd, zijn die wel echt vergelijkbaar? Zijn dezelfde aannames gedaan?
+</p></section></section></section><section data-format="markdown" id="standaarden"><!--OddPage--><h2 id="x7-relevante-standaarden-en-documentatie"><span class="secno">7. </span>Relevante standaarden en documentatie</h2><p><em>Overzicht van relevante standaarden. Nationale datastandaarden, normen, INSPIRE, internationale OGC/W3C/ISO standaarden, etc.</em>
+</p><p><em>Methodes die adviesbureau’s gebruiken voor het maken van hittekaarten of andere ondersteunende kaarten voor klimaatadaptatie zijn niet geïnventariseerd. Dit wordt gezien als decentrale methoden en zijn daarmee buiten scope. Richtlijnen die algemeen geaccepteerd zijn, zijn beperkt bekend.</em></p><div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><span>Issue 1</span></div><aside class=""><p>Onderstaande verzameling is een heel brede, eerste inventarisatie. Er kunnen nog standaarden in ontbreken, en voor veel van de standaarden die er wel in staan is nog niet bepaald of ze daadwerkelijk relevant zijn voor klimaatadaptatie-hitte.</p>
+</aside></div><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Noot</span></div><aside class=""><p>In deze inventarisatie is nog geen onderscheid gemaakt tussen standaarden die datasets beschrijven die bron kunnen zijn voor data die nodig zijn voor bv hittestresstests, en standaarden die concepten definiëren die we kunnen hergebruiken en/of bij aansluiten.</p>
+<p>Dit onderscheid is lastig te maken totdat we een beter beeld hebben van scope/inhoud/doel van het informatiemodel.</p>
+</aside></div><section id="nationaal"><h3 id="x7-1-nationaal"><span class="secno">7.1 </span>Nationaal</h3><p>Lijst van standaarden, in willekeurige volgorde, met een korte duiding waarom ze relevant zouden kunnen zijn.
+</p><p>Onder de tabel wordt op de standaarden die mogelijk relevant zijn, nader ingegaan. </p><table>
+<thead>
+<tr>
+<th>Standaard</th>
+<th>Inhoud</th>
+<th>Relevantie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>informatiemodel Landelijk Gebied. Zie <a href="https://edepot.wur.nl/154743">2009 WUR rapport</a>.</td>
+<td>Landbouw/tuinbouw/visserij is niet een van de sectoren waar wij ons op richten, in eerste instantie focussen we op natuur, gezondheid en infrastructuur. Stakeholder van het IMLG was/is LNV; het informatiemodel gaat over agrarische AAN percelen, aantallen dieren etc. Doel is agrarische subsidieregelingen te ondersteunen. Het heeft raakvlakken met natuur- en landschapsbeheer, daarom opgenomen in deze lijst.</td>
+<td>Waarschijnlijk niet relevant</td>
+</tr>
+<tr>
+<td>informatiemodel natuur <a href="https://www.geonovum.nl/geo-standaarden/informatiemodellen-nen3610-familie/informatiemodel-natuur-imna">IMNa</a></td>
+<td>Ondersteunt landelijk uniforme uitwisseling van natuurgegevens. Van het IPO.</td>
+<td>Waarschijnlijk relevant</td>
+</tr>
+<tr>
+<td>landgebruik <a href="https://www.geonovum.nl/geo-standaarden/informatiemodellen-nen3610-familie/informatiemodel-top10nl-imtop">BRT / Top10NL</a></td>
+<td>Landelijke topografie, basisgeoinformatie over waar terreinen, gebouwen, bovengrondse infrastructuur, water, bos, etc zich bevinden. Inclusief typering van gebouwen o.a. ziekenhuis. Heeft ook locatie beweegbare bruggen.</td>
+<td>Vooral relevant als databron</td>
+</tr>
+<tr>
+<td><a href="https://docs.geostandaarden.nl/bgt/def-im-gcbgt111-20130700">Basisregistratie Grootschalige Topografie</a></td>
+<td>Idem, maar gedetailleerder dan BRT met nauwkeurigere geometrie van topografische objecten, parken, groenstroken, grasvelden, verhardingssoort van wegen, en bv locatie van individuele bomen en fonteinen in steden. Maar veel van de gedetailleerdere informatie is optioneel en waarschijnlijk niet landsdekkend beschikbaar.</td>
+<td>Vooral relevant als databron</td>
+</tr>
+<tr>
+<td>Basisregistratie Gebouwen en Adressen (BAG)</td>
+<td>Bevat gebouwen met locatie en bouwjaar. Energielabels zitten er niet in maar zijn te relateren aan BAG objecten.</td>
+<td>Vooral relevant als databron</td>
+</tr>
+<tr>
+<td><a href="https://www.aquo.nl/">Aquo standaarden</a></td>
+<td>Standaarden voor watermanagement. Naar verwachting is veel hergebruik van Aquo en gerelateerde vocabulaires mogelijk. Maar gevaar is wel dat definitie anders kan zijn vanuit waterbeheer dan vanuit juridische context. Dit is iets om verder over door te praten. Er is ook al een droogte vocabulaire.</td>
+<td>Relevant</td>
+</tr>
+<tr>
+<td>Gegevenswoordenboek Stedelijk Water (GWSW)</td>
+<td>Uniform vastleggen, uitwissel en hergebruiken van gegevens in het stedelijke waterbeheer. i.e. riolering.</td>
+<td>Mogelijk relevant als databron</td>
+</tr>
+<tr>
+<td><a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/STOPTPOD">Omgevingswet standaarden</a></td>
+<td>De Omgevingswet bundelt de wetgeving en regels voor ruimte, wonen, infrastructuur, milieu, natuur en water. De omgevingswet (DSO) standaarden zijn bedoeld om de besluiten van overheden over de leefomgeving te kunnen vastleggen. Het gaat concreet om omgevingsplannen, visies, waterschapsverordeningen etc. Er lijkt niet een direct raakvlak te zijn met hitte-adaptatie.</td>
+<td>Waarschijnlijk niet relevant.</td>
+</tr>
+<tr>
+<td>Informatiemodel Beheer Openbare Ruimte <a href="https://www.crow.nl/thema-s/management-openbare-ruimte/imbor/over-imbor-1">IMBOR</a></td>
+<td>Veel details over objecten in de openbare ruimte, die relevant kunnen zijn voor hitte. Een voorbeeld is boomeigenschappen zoals hoogte, soort, etc.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>landschapselementen agrarische gebied <a href="https://github.com/Geonovum/IMLE">IMLE</a></td>
+<td>Informatiemodel in ontwikkeling. Modelleert informatie over landschapselementen zoals gegroepeerde bomen in verschillende vormen, individuele bomen inclusief stamhoogte en geometrie van de boomkruin, en kleine waterelementen. Veel landschapselementen hebben naast een historische en een landschappelijke ook een landschapsecologische functie: ze kunnen dan beschouwd worden als ecotopen in een ecosysteem.</td>
+<td>Mogelijk relevant, maar nog in ontwikkeling</td>
+</tr>
+<tr>
+<td>Informatiemodel kabels en leidingen <a href="https://www.geonovum.nl/geo-standaarden/informatiemodellen-nen3610-familie/informatiemodel-kabels-en-leidingen-imkl">IMKL</a>)</td>
+<td>Voor het uitwisselen van gegevens over de positie van kabels en leidingen in de grond.</td>
+<td>Waarschijnlijk niet relevant</td>
+</tr>
+<tr>
+<td>Informatiemodel Metingen <a href="https://www.geonovum.nl/geo-standaarden/informatiemodellen-in-nen3610-familie/informatiemodel-metingen-im-metingen">IM Metingen</a></td>
+<td>Nederlandse extensie op ISO/OGC Observations &amp; Measurements. Voor het modelleren van observaties / metingen inclusief monstername en analyses in laboratoria.</td>
+<td>Mogelijk relevant, maar waarschijnlijk gaat het te ver om daadwerkelijk observaties te modelleren in IMKA.</td>
+</tr>
+<tr>
+<td><a href="https://www.nictiz.nl/standaardisatie/informatiestandaarden/">standaarden van Nictiz</a></td>
+<td>Nictiz maakt informatiestandaarden in het zorgdomein. Relevantie (zijn er raakvlakken met klimaatadaptatie/hitte?) moet nog bekeken worden. Waarschijnlijk hebben ze wel relevante begrippen rondom gezondheid. Denk bv aan sterfte, doodsoorzaken, etc.</td>
+<td>Waarschijnlijk relevant</td>
+</tr>
+<tr>
+<td>BRO standaarden (deze worden genoemd in de <a href="https://climadapserv.maps.arcgis.com/apps/MapSeries/index.html?appid=68303bbfd5904b62a55c8ef3c688da27">Handreiking 'Hoe gebruik ik bodeminformatie bij klimaatadaptatie?</a>)</td>
+<td>Geomorfologische kaart; Bodemkaart; Booronderzoek; GeoTOP; Digitaal Geologisch Model</td>
+<td>Vooral relevant als databron</td>
+</tr>
+<tr>
+<td>Informatiemodel Geluid <a href="https://docs.geostandaarden.nl/cvgg/img/">IMGeluid</a></td>
+<td>Voor geluidsoverlastmodellen</td>
+<td>Waarschijnlijk niet relevant.</td>
+</tr>
+<tr>
+<td>Informatiemodel KICH</td>
+<td>Gaat over cultuurhistorie. "Hittestress ontstaat juist doordat steen, beton en asfalt warmte vasthouden. Aan de hand van historische informatie kan ook de verstening en verharding van een stad in beeld worden gebracht. Historische kaarten kunnen eenvoudig gecombineerd worden met de kaartlagen uit de Klimaateffectatlas" <a href="https://klimaatadaptatienederland.nl/publish/pages/156580/cultuurhistorie_als_kennisbron_voor_de.pdf">bron</a></td>
+<td>Waarschijnlijk niet relevant. IMKICH is niet in gebruik en cultuurhistorische informatie is vooral relevant bij waterhuishouding, bij hitte minder.</td>
+</tr>
+</tbody></table><p>Standaarden die waarschijnlijk relevant zijn worden hieronder nader toegelicht.
+</p><section id="informatiemodel-natuurbeheer-imna"><h4 id="x7-1-1-informatiemodel-natuurbeheer-imna"><span class="secno">7.1.1 </span>Informatiemodel Natuurbeheer (IMNa)</h4><p>Dit informatiemodel heeft als doel om een aantal processen in de natuurketen te ondersteunen, te weten subsidieverlening, monitoring en verantwoording over natuurbeheer en natuurkwaliteit. Het IMNa bestaat uit vier productmodellen die apart beheerd worden:
+</p><ul>
+<li>Productmodel <strong>Natuurbeheer</strong>: model voor het uitwisselen van natuurbeheerplannen van provincies. Geeft inzicht in het soort natuur dat aanwezig of geambieerd is op een bepaalde plaats. </li>
+<li>Productmodel <strong>Natuurontwikkeling</strong>: model voor het uitwisselen van kwantitatieve voortgangsgegevens. Wordt gebruikt voor de jaarlijkse <a href="https://www.bij12.nl/vrn">Voortgangsrapportage natuur</a>. Bevat ook de begrenzing van het Natuurnetwerk Nederland.
+</li>
+<li>Productmodel <strong>Natuurkwaliteit</strong>: model voor het uitwisselen van kwaliteitsgegevens over natuur. De kwaliteit van natuur wordt gemonitord en beoordeeld en deze data wordt conform dit model uitgewisseld. </li>
+<li>Productmodel <strong>Vegetatie en habitats</strong>: model om gegevens over vegetatie-, habitat- en structuurgegevens vast te leggen en uit te wisselen. Deze gegevens, gebaseerd op periodieke waarnemingen in het veld, zijn input voor de monitoring.
+</li>
+</ul><p>Bron: <a href="https://www.bij12.nl/onderwerpen/natuur-en-landschap/natuurgegevens-uniform-uitwisselen-imna/informatiemodel-natuur-imna/">Bij12</a>. Voor catalogus en codelijsten van het informatiemodel zie de Actuele downloads onderaan de pagina van Bij12. </p></section><section id="aquo"><h4 id="x7-1-2-aquo"><span class="secno">7.1.2 </span>Aquo</h4><p>Aquo is de Nederlandse standaard voor het uitwisselen van gegevens binnen de watersector voor kwaliteitsverbetering van het waterbeheer. Aquo wordt beheerd door het Informatiehuis Water; een samenwerkingsprogramma van de provincies, waterschappen en Rijkswaterstaat. De set Aquo standaarden bestaat uit een begrippenkader, een symbolenset voor visualisatie, een verzameling domeintabellen, en het semantisch informatiemodel Aquo.
+</p><p>Om een idee te krijgen van de reikwijdte van Aquo kunnen we kijken naar de <a href="https://www.aquo.nl/index.php/Categorie:Collecties">categorieën in het begrippenkader</a>. Hoewel onze focus 'hitte' is (waarbij 'droogte' is uitgesloten) en die van Aquo 'water' zijn er bij een snelle blik al wel raakvlakken te vinden. Onder de categorie <a href="https://www.aquo.nl/index.php/Id-ace3d4c1-0fb6-41f0-8941-be20911f5019">Calamiteitenzorg</a> vallen bijvoorbeeld algemene begrippen zoals <em>bevoegd gezag</em>, <em>bevolking</em>, <em>calamiteit</em>, <em>effect</em>, of <em>maatschappelijke schade</em>. De categorie <a href="https://www.aquo.nl/index.php/Id-4aebd96e-5744-4e08-9182-413e43f6b416">Ecologie</a> is ook interessant met bv termen als <em>bijzondere natuur</em>, <em>beschermde gebieden</em>, <em>biodiversiteit</em> en allerlei termen die soorten flora/fauna beschrijven.
+</p><p>Bron: <a href="https://www.aquo.nl/index.php/Wat_is_Aquo%3F">aquo.nl</a></p></section><section id="imbor"><h4 id="x7-1-3-imbor"><span class="secno">7.1.3 </span>IMBOR</h4><p>Het informatiemodel Beheer Openbare Ruimte is een door CROW ontwikkelde en beheerde uitbreiding op het IMGeo waarbij allerlei beheerkenmerken aan objecten in de openbare ruimte, waarvan de geometrie in IMGeo zit, worden toegevoegd. Gemeenten gebruiken dit voor de planning en uitvoering van hun beheer en inspectiewerkzaamheden. Het deel van IMBOR over Groen is met name interessant; hier kun je bijvoorbeeld informatie over individuele bomen vinden zoals diameter, soort, hoogte, en over de beplanting in plantsoenen etc. Maar ook Meubilair, Water en Wegen zou relevant kunnen zijn.
+</p><figure id="fig-imbor-inhoud-overzicht"><figcaption>Figuur <span class="figno">5</span> <span class="fig-title">IMBOR inhoud - overzicht</span></figcaption>
+<img src="https://www.crow.nl/getmedia/b555e3a6-02b6-412c-aad2-7ba890a5ee69/Figuur-Openingspagina-van-de-IMBOR-Access-Database.jpg.aspx" alt="Overzicht IMBOR inhoud, vakdisciplines en relaties">
+</figure></section><section id="immetingen"><h4 id="x7-1-4-immetingen"><span class="secno">7.1.4 </span>IMMetingen</h4><p>Nederlandse standaard voor het uitwisselen van observaties / metingen, zowel in het veld als metingen op monsters door laboratoriumanalyse. Het Aquo is hier op gebaseerd. IMMetingen is op zijn beurt gebaseerd op het internationale OGC Observations &amp; Measurements (O&amp;M).
+</p><p>O&amp;M / IMMetingen is bedoeld voor het uitwisselen van allerlei (meta)informatie <em>over</em> metingen zoals door wie, wanneer, waar en hoe de meting is gedaan, informatie over de monstername etc. Alleen als al deze metainformatie van belang is om uit te wisselen, dienen deze standaarden te worden toegepast.</p></section><section id="nictiz"><h4 id="x7-1-5-nictiz"><span class="secno">7.1.5 </span>NICTIZ</h4><p>NICTIZ is een organisatie die standaarden voor de zorg maakt. Het is een zeer omvangrijke set standaarden, wat het moeilijk maakt om tijdens een korte inventarisatie de relevantie te duiden. Er lijken echter wel raakvlakken te zijn, in het bijzonder de <a href="https://www.nictiz.nl/standaardisatie/informatiestandaarden/basisgegevensset-zorg-bgz/">Basisgegevensset Zorg</a> waar allerlei aandoeningen die bij patiënten worden aangetroffen (bv <em>aandoening gerelateerd aan omgeving</em>, <a href="https://terminologie.nictiz.nl/art-decor/snomed-ct?conceptId=404684003"><em>blootstelling aan hitte</em></a>, <em>zonnesteek</em>, veroorzaakt door <em>warmte</em>) en bevindingen die over patiënten worden gedaan, gedefinieerd worden.</p></section></section><section id="inspire"><h3 id="x7-2-inspire"><span class="secno">7.2 </span>INSPIRE</h3><p>De relevantie van de diverse thema's moet nog bekeken worden. Voor een eerste snelle inventarisatie is gekeken naar de <a href="https://www.geonovum.nl/geo-standaarden/inspire-europese-leefomgeving#Dataproviders">INSPIRE aanmerkingsrapporten</a> die Geonovum heeft gemaakt, omdat die een compact overzicht bieden.</p><p>De volgende thema's zijn mogelijk interessant:
+</p><table>
+<thead>
+<tr>
+<th>Standaard</th>
+<th>Inhoud</th>
+<th>Relevantie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Protected sites</td>
+<td>gebieden die worden aangeduid of beheerd in het kader van internationale en communautaire wetgeving of wetgeving van de lidstaten om specifieke  doelstellingen op het vlak van milieubescherming te verwezenlijken. Hieronder vallen oa Natura 2000 gebieden, nationale parken, wetlands.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Land cover</td>
+<td>Fysiek voorkomen van het terrein, i.e. een niet-geïnterpreteerde vastlegging van de feitelijke bedekking van het grondgebied. Het gaat niet om het menselijk gebruik (dat is land use, een ander INSPIRE thema). De dataspecificaties zijn vrij algemeen gesteld.</td>
+<td>Mogelijk wel relevant, maar land use wellicht relevanter.</td>
+</tr>
+<tr>
+<td>Agricultural and aquaculture facilities</td>
+<td>informatie die gaat over landbouw, jacht en dienstverlening voor de landbouw en jacht; en visserij en kweken van vis en schaaldieren.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Atmospheric conditions</td>
+<td>Waarnemingen in de atmosfeer</td>
+<td>Waarschijnlijk niet relevant</td>
+</tr>
+<tr>
+<td>Buildings</td>
+<td>Gebouwen met typering naar soort gebouw en huidig gebruik.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Environmental monitoring Facilities</td>
+<td>betreft meet- en waarnemingsvoorzieningen, bv weerstations, grondwatermonitoringsputten. Het gaat niet om metingen of waarnemingen zelf.</td>
+<td>Waarschijnlijk niet relevant</td>
+</tr>
+<tr>
+<td>Human health and safety</td>
+<td>drie subthema’s: Statistische gezondheidsdata, Gezondheid gerelateerde milieudata en Calamiteiten.</td>
+<td>Mogelijk relevant, vooral het eerste subthema.</td>
+</tr>
+<tr>
+<td>Area management/restriction/regulation zones</td>
+<td>gebieden die worden beheerd, gereguleerd of gebruikt voor rapportage op verschillende schaalniveaus (o.a. landelijk, lokaal, regionaal). Heel breed thema dat is afgebakend op gegevens gerelateerd aan milieubeheer. Mogelijk relevant in dit thema zijn bv plant health zones, animal health zones, forest management zones.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Meteorological geographical features</td>
+<td>Weersomstandigheden en de metingen daarvan</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Natural risk zones</td>
+<td>Risicogebieden; onder andere gebieden met risico op natuurbranden, plagen, dierziekten, allergenen.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Population distribution and demography</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Species distribution</td>
+<td>geografische verspreiding van dier- en plantsoorten</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Bio-geographical regions</td>
+<td>beschrijving van gebieden (habitats) op basis van ecologische omstandigheden.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Habitats and biotopes</td>
+<td>ook een beschrijving van gebieden op basis van ecologische omstandigheden, maar dan veel specifieker uitgewerkt met ruimte voor gegevens over specifieke soorten.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Land use</td>
+<td>menselijk gebruik van het grondgebied, i.e. de functie waarvoor een terrein benut wordt. Opgesplitst in huidig en toekomstig landgebruik (dit laatste is ingevuld met ruimtelijke plannen).</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Soil</td>
+<td>Gegevens over de ondiepe bodem. De samenstelling daarvan, grondwater, etc.</td>
+<td>Mogelijk relevant</td>
+</tr>
+<tr>
+<td>Geology</td>
+<td>Gegevens over de diepe ondergrond</td>
+<td>Waarschijnlijk niet relevant</td>
+</tr>
+</tbody></table><p>Ook mogelijk relevant - als O&amp;M relevant is:
+</p><ul>
+<li><a href="https://inspire.ec.europa.eu/id/document/tg/d2.9-o%26m-swe">Guidelines for the use of Observations &amp; Measurements and Sensor Web Enablement-related standards in INSPIRE</a></li>
+</ul></section><section id="overig-internationaal"><h3 id="x7-3-overig-internationaal"><span class="secno">7.3 </span>Overig internationaal</h3><table>
+<thead>
+<tr>
+<th>Standaard</th>
+<th>Inhoud</th>
+<th>Relevantie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ISO 14091</td>
+<td>Adaptation to climate change — Guidelines on vulnerability, impacts and risk assessment</td>
+<td>Mogeijk relevant voor definities van begrippen</td>
+</tr>
+<tr>
+<td>ISO 19156 Observations &amp; Measurements (O&amp;M 2.0)</td>
+<td>Conceptueel model voor het beschrijven van metingen.</td>
+<td>Waarschijnlijk gaat dit te ver maar zou toegepast kunnen worden voor sterftecijfers e.d.</td>
+</tr>
+<tr>
+<td>OGC Observations, Measurements &amp; Samples 3.0 (O&amp;M 3.0)</td>
+<td>Conceptueel model voor het beschrijven van metingen; nieuwe 3.0 versie die bij ISO nog niet is goedgekeurd maar bij OGC wel.</td>
+<td>Idem als O&amp;M 2.0</td>
+</tr>
+<tr>
+<td>OGC CityGML 3.0 (het datamodel)</td>
+<td>Conceptueel model voor het beschrijven van 3D modellen van stad en landelijk gebied.</td>
+<td>Mogelijk relevant of alleen als databron</td>
+</tr>
+<tr>
+<td>OGC Simple Features</td>
+<td>Basis geometrietypen</td>
+<td>Relevant voor het modelleren van geo-objecten</td>
+</tr>
+<tr>
+<td>OGC WaterML</td>
+<td>Hydrologie e.d.</td>
+<td>Nader te onderzoeken als er een raakvlak hitte/water is.</td>
+</tr>
+<tr>
+<td>IFC</td>
+<td>Bestandsformaat voor bouwwerkinformatiemodellen.</td>
+<td>Wellicht relevant in het kader van infrastructuur.</td>
+</tr>
+<tr>
+<td>OGC LandInfra</td>
+<td>Informatiemodel voor bouwwerkinformatiemodellen (gebouwen / infra)</td>
+<td>Wellicht relevant in het kader van infrastructuur</td>
+</tr>
+</tbody></table></section><section id="technische-standaarden"><h3 id="x7-4-technische-standaarden"><span class="secno">7.4 </span>Technische standaarden</h3><p>Standaarden over informatiemodellering e.d.</p><ul>
+<li><strong>MIM</strong>: Metamodel informatiemodellering. Relevant, IMKA zal conform MIM ontwikkeld worden.</li>
+<li><strong>NEN 3610</strong>: basismodel geo-informatie. Relevant, IMKA zal conform NEN 3610 ontwikkeld worden.</li>
+<li><strong>SKOS</strong>:    Linked data standaard voor begrippen en definities. Relevant; het IMKA begrippenkader zal conform SKOS ontwikkeld worden.
+</li>
+</ul></section><section id="andere-relevante-handreikingen-e-d"><h3 id="x7-5-andere-relevante-handreikingen-e-d"><span class="secno">7.5 </span>Andere relevante handreikingen e.d.</h3><ul>
+<li><a href="https://docs.geostandaarden.nl/nen3610/gimeg/">Geometrie in model en GML</a></li>
+<li><a href="https://docs.geostandaarden.nl/crs/crs/">Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie</a></li>
+<li><a href="https://www.hva.nl/urban-technology/gedeelde-content/publicaties/publicaties-algemeen/praktijkonderzoek-hitte-richtlijnen.html">Praktijkonderzoek Hitte Richtlijnen</a></li>
+</ul></section></section><section data-format="markdown" id="keuzes"><!--OddPage--><h2 id="x8-bevindingen-en-voorstellen-voor-vervolg"><span class="secno">8. </span>Bevindingen en voorstellen voor vervolg</h2><p><em>Allereerst wordt in gegaan op de bevindingen op basis van de gesprekken met stakeholders en uit relevante documentatie en vervolgens worden een aantal voorstellen gepresenteerd voor het vervolg.</em></p><section id="bevindingen"><h3 id="x8-1-bevindingen"><span class="secno">8.1 </span>Bevindingen</h3><p>Hoe klimaatadaptief is Nederland? Dat is de achterliggende vraag bij dit scopedocument. Het scopedocument is bedoeld om zicht te krijgen op de scope en omvang van het informatiemodel klimaatadapatie, onderdeel hitte, thema’s gezondheid, natuur en infrastructuur. Uit gesprekken met stakeholders en uit relevante documentatie zijn de volgende bevindingen naar voren gekomen met betrekking tot het klimaatadaptatie, domein hitte en naar de mogelijke scope:</p><ul>
+<li>Het is een complex speelveld, omdat het gaat om fysieke factoren én ruimtelijke inrichting én gedrag én gebouwen.</li>
+<li>Het is complex, omdat hitte-effecten doorwerken en veel samenloop en samenhang ontstaat (keten met vertakkingen); zoals het NAS-bollenschema illustreert.</li>
+<li>Iedereen is zoekende: er is geen wettelijk kader, geen normen, terwijl iedereen ‘iets’ met hitte ‘moet’ en wil weten wat ‘het goede’ is. Wat is klimaatadaptief?</li>
+<li>Veel data en kaarten richten zich op de BUITENRUIMTE. Vanuit GGD’s, VWS en HvA is er in toenemende mate behoefte aan informatie over de BINNENRUIMTE.</li>
+<li>Er is verschil in schaal en dus detailniveau bij stakeholders, bijvoorbeeld het landelijk beeld in de Klimaateffectatlas versus omvang van een boomkruin bij lokale hittestresstesten. Dit verschil in schaal is er ook tussen bijvoorbeeld gezondheid (bebouwd gebied) en natuur (landelijk gebied, bodem/watersysteem).</li>
+<li>Er is verschil in fase: onderzoekend (bijvoorbeeld HvA) versus agenderend (bijvoorbeeld LNV).</li>
+<li>Er is verschil in opvatting wat data kan ‘doen’: bijvoorbeeld Klimaateffectatlas (visualisatie data en uitkomsten rekenmodellen) versus GGD’s en VWS (hoe zorg ik dat mensen beschermd worden tegen hitte? Hoe beïnvloed ik hun gedrag?).</li>
+<li>Monitoring staat nog in de kinderschoenen.</li>
+<li>Stakeholdergroep is zeer divers: KNMI, PBL, TNO etc., adviesbureaus, CAS, GGD’s…. Architecten, RO-ers, zorgverleners, gebiedsontwikkelaars, verzekeraars…..</li>
+</ul><p>Om het scopedocument richting te geven is met de senior user van het informatiemodel en gedelegeerd opdrachtgever afgesproken:</p><ul>
+<li>Voor het informatiemodel staat de Klimaateffectatlas centraal: doel is dat datasets op landelijk niveau (in de Klimaateffectatlas) beschikbaar komen waaruit een beeld te maken is waaruit blijkt hoe klimaatadaptief Nederland is.
+</li>
+<li>De Klimaateffectatlas heeft daarnaast waarde voor andere gebruikers, bijvoorbeeld op lokaal niveau, maar het landelijke niveau van de data staat centraal. </li>
+<li>In de verkenning moet duidelijk worden welke data noodzakelijk dan wel wenselijk is voor de Klimaateffectatlas en wat bronnen daarvan zijn en of data al beschikbaar is of is te maken.</li>
+<li>Het uniformeren van uitkomsten van hittestresstesten met het oog op genereren van een landelijk beeld lijkt geen haalbare kaart. Hittestresstesten zijn een instrument voor lokaal niveau, data die daarvoor gebruikt wordt kan uit de Klimaateffectatlas komen. Met stakeholders op lokaal niveau wordt onderzocht welke data zij gebruiken/nodig hebben en welke zij kunnen leveren.
+</li>
+<li>Het woordenboek beperkt zich niet uitsluitend tot de Klimaateffectatlas.</li>
+<li>In de verkenning onderzoeken we welke werkprocessen (zoals de hittestresstesten) raakvlak of aansluiting hebben met/op de Klimaateffectatlas. Dit doen we door stakeholders te bevragen.</li>
+<li>We kijken ook naar cascade- of keteneffecten. Dit brengen we met stakeholders in beeld. Hierna scopen we wat nu in het informatiemodel kan worden opgenomen.</li>
+</ul><p>De waarde van een ‘woordenboek’ wordt wel herkend. Sommige stakeholders willen heel specifiek een definitie met vastgestelde meetmethode daarbij om een begrip vast te leggen, anderen zien op meer abstract niveau meerwaarde in een gemeenschappelijke ‘taal’. Hierbij hoeft het ‘woordenboek’ zich niet tot de Klimaateffectatlas te beperken.</p><p>Op lokaal niveau wordt de Klimaateffectatlas beperkt gebruikt. Dit heeft te maken met locatiespecifieke gegevens die niet in de Klimaateffectatlas zitten en met het statische karakter. Wel is de Klimaateffectatlas een goed vertrekpunt. Informatie waaraan behoefte is, gaat over effecten en maatregelen van hitte in de binnenruimte. Gezondheidsaspecten staan bij veel van de stakeholders op de agenda. Onderstaand figuur vat de informatiebehoefte voor gezondheid samen. Deze is vrij concreet te maken. Daarbij is onderscheid gemaakt tussen veelgebruikte begrippen: <em>gebied, gebouw, gebruiker</em>.</p><p><img src="media/informatiebehoefte_gezondheid.jpg" alt="informatiebehoefte_gezondheid" title="Informatiebehoefte voor gezondheid"></p><p><strong>Toelichting informatiebehoefte</strong></p><p>Parameters voor hitte buitenruimte:
+</p><ul>
+<li>Gevoelstemperatuur</li>
+<li>Aantal tropische nachten</li>
+<li>Afstand tot koelte (groen maar ook gekoelde gebouwen)
+</li>
+<li>Schaduw: bomen en gebouwen </li>
+<li>Groen: schaduw en verdamping (dus ook koelte); relatie met droogte (als randvoorwaarde voor groen) en wateroverlast (buffering) en leefbaarheid (gezondheid).</li>
+</ul><p>Parameters voor hitte binnenruimte: </p><ul>
+<li>Gebied</li>
+<li>Zie parameters voor hitte buitenruimte
+</li>
+<li>Gebouw </li>
+<li>Ouderdom en samenstelling woningen
+</li>
+<li>Wijktypologie</li>
+<li>Platte daken en samenstelling (zwart/groen)
+</li>
+<li>Adaptatiemaatregelen: isolatie, zonwering, airco
+</li>
+<li>Gebruiker 
+i)    Demografie: 75+, sociaal-economische status, jonge kinderen</li>
+</ul><p>Beleidsparameters: </p><ul>
+<li>Hitteplannen
+</li>
+<li>Hitterampen (maar dit is niet gedefinieerd)
+</li>
+</ul><p>Uit de verkenning van de scope valt verder op dat ‘natuur’ een eigen aanpak en schaalniveau kent, die in dit scopedocument beperkt is uitgewerkt. De indruk bestaat dat klimaatadaptatie voor natuur zich nog in een agenderende fase bevindt. Natuur heeft eigen hitte-effecten, waarbij het minder robuust en weerbaar worden van het ecosysteem er één van is. Groen als maatregel tegen hitte (in de stad) kan daarom niet los worden gezien van een robuust bodem/watersysteem. Als het gaat om een ‘woordenboek’, dan is het zinvol de context van ‘hitte’ breder te beschouwen dan alleen de menselijke maat.</p><p>Uit de verkenning blijkt ook dat Rijkswaterstaat voor water- en weginfrastructuur in een eigen Klimaateffectatlas de effecten van hitte, inclusief de doorwerking en een kapitalisatie van effecten. Dit domein is beperkt onderzocht.</p><p>Stakeholders zijn ook bevraagd op cascade-effecten of doorwerkingseffecten. De NAS-bollenschema’s geven een beeld van mogelijke doorwerkingen en samenhang tussen verschillende effecten, maar geven geen eenduidig oorzaak-effect-relaties. Er lijkt nog weinig bekend, zowel kwalitatief als kwantitatief, over oorzaak-effectrelaties.</p></section><section id="voorstellen-voor-vervolg"><h3 id="x8-2-voorstellen-voor-vervolg"><span class="secno">8.2 </span>Voorstellen voor vervolg</h3><p>Uit de verkenning komt in ieder geval naar voren:</p><ul>
+<li>Landelijk schaalniveau staat centraal (Klimaateffectatlas).</li>
+<li>Gebruik van informatie uit Basisregistraties heeft de voorkeur.</li>
+<li>Gebruik van op landelijk niveau (geaggregeerde) datasets heeft de voorkeur.</li>
+<li>Naast buitenruimte heeft binnenruimte de aandacht.</li>
+<li>Er is een duidelijke informatiebehoefte voor gebied, gebouw, gebruiker.</li>
+</ul><p>De uitkomst van dit scopedocument is dat er meerdere opties voor vervolg mogelijk zijn. De mogelijkheden zijn enerzijds door inhoud ingegeven, anderzijds door aanpak.</p><p><strong>Inhoudelijke scopekeuzen</strong></p><ol>
+<li>Hitte – de fysieke ruimte (buiten), op basis van Klimaateffectatlas, kaartverhaal hitte;</li>
+<li>Hitte – gebouwen (binnenruimte), aanvulling op Klimaateffectatlas, kaartverhaal hitte;</li>
+<li>Hitte – in de breedte, maar met minder diepgang dan opties 1 en 2; welke begrippen wordt door stakeholders in werksessies al doende bepaald.</li>
+</ol><p><strong>Keuzes op aanpak</strong></p><p><strong>A. “Eerst de breedte in”</strong>: Eerst een begrippenkader (woordenboek) maken op basis van de Klimaateffectatlas, kaartverhaal hitte. Vervolgens een eerste aanzet tot een informatiemodel maken voor één of een klein aantal sleutelbegrippen, bijvoorbeeld <em>‘gevoelstemperatuur’</em> en <em>‘koele plekken’</em>, omdat deze uit de verkenning als belangrijk naar voren kwamen. Het informatiemodel geeft, naast een definitie, ook de herkomst van de data aan (o.a. basisregistraties, landelijk geaccepteerde bronnen), maar geen beschrijving van rekenmethode(s). Ook worden er geen inhoudelijke (nieuwe) modellen of richtlijnen gemaakt. Wel wordt een verwijzing opgenomen naar methodes, richtlijnen en normen die algemeen door het werkveld geaccepteerd zijn. Deze aanpak, die meer waterval is, heeft als voordeel dat eerst een ‘paraplu’ wordt gecreëerd, die voor een brede groep interessant is, alvorens de diepte in wordt gegaan.</p><p><strong>B. “Eerst de diepte in”</strong>: Steeds één sleutelbegrip definiëren in een begrippenkader (woordenboek) plus eerste aanzet tot het informatiemodel. Dezelfde kanttekeningen bij het informatiemodel als onder A gelden ook hier. Deze aanpak, die meer Agile is, heeft als voordeel dat snel een beeld wordt verkregen van het product ‘begrippenkader’. Het informatiemodel wordt al doende uitgebouwd, maar blijft waarschijnlijk beperkt. In deze aanpak wordt naar verwachting met een kleine groep experts gewerkt, afhankelijk van het gekozen begrip.</p><p><strong>C. “Volledige breedte”</strong>: Alleen een woordenboek met begrippen, zo breed en diep als mogelijk in de gestelde tijd. Er wordt geen informatiemodel gemaakt. Wel wordt de samenhang tussen begrippen gevisualiseerd (“praatplaat”) wat inzicht geeft hoe het domein hitte in elkaar zit. Deze aanpak is gericht op een brede groep stakeholders, op ‘dezelfde taal’ gaan spreken en daarmee meer procesmatig en op draagvlak gericht.</p><p><strong>D. “Verdere verkenning”</strong>: Het scopedocument verder uitwerken, bedoeld om de probleemstelling rondom informatievoorziening klimaatadaptatie, hitte scherper te krijgen. De verkenning kan worden verdiept en er kan worden gezocht naar de gezamenlijke definitie van het probleem hitte en wat daarmee samenhangt. Er kan worden gezocht naar kritieke oorzaak-gevolg-paden binnen de deelaspecten, met het oog op toekomstige monitoring.</p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

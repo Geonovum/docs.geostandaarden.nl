@@ -1,0 +1,2305 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2">
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20190917 - GK - Praktijkrichtlijn Structuurvisies v1.1.4                -  -->
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - --  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Praktijkrichtlijn Structuurvisies v1.1.4</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "format": "markdown",
+  "publishDate": "2018-10-23",
+  "github": "https://github.com/geonovum/ROST/PRSV2012",
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+    }
+  ],
+  "shortName": "sv2012",
+  "pubDomain": "ro",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    }
+  },
+  "publishISODate": "2018-10-23T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 23 oktober 2018"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-pr-sv2012-20181023/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Praktijkrichtlijn Structuurvisies v1.1.4",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2018-10-23",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/PRSV2012/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Praktijkrichtlijn Structuurvisies v1.1.4</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2018-10-23">23 oktober 2018</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-pr-sv2012-20181023/">https://docs.geostandaarden.nl/ro/def-pr-sv2012-20181023/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/sv2012/">https://docs.geostandaarden.nl/ro/sv2012/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/">https://geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/PRSV2012/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/PRSV2012/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/PRSV2012/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/PRSV2012/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" data-include="" class="introductory"><h2></h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de praktijkrichtlijn. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+ Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product dat informatie geeft, vaak met een technisch karakter, dat nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p><p>PRSV2012 v1.1.4</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#H01"><span class="secno">1. </span>Een digitale structuurvisie?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context-van-deze-praktijkrichtlijn"><span class="secno">1.1 </span>Context van deze praktijkrichtlijn</a></li><li class="tocline"><a class="tocxref" href="#kan-het-ook-anders"><span class="secno">1.2 </span>Kan het ook anders?</a></li><li class="tocline"><a class="tocxref" href="#wat-is-een-objectgerichte-structuurvisie"><span class="secno">1.3 </span>Wat is een objectgerichte structuurvisie?</a></li><li class="tocline"><a class="tocxref" href="#waarom-een-objectgerichte-structuurvisie"><span class="secno">1.4 </span>Waarom een objectgerichte structuurvisie?</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.5 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H02"><span class="secno">2. </span>De planobjecten en hun onderlinge relaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wat-zijn-planobjecten"><span class="secno">2.1 </span>Wat zijn planobjecten?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#zelfstandig-logisch-onderdeel-in-de-tekst"><span class="secno">2.1.1 </span>Zelfstandig, logisch onderdeel in de tekst</a></li><li class="tocline"><a class="tocxref" href="#via-verschillende-ingangen-toegankelijk"><span class="secno">2.1.2 </span>Via verschillende ingangen toegankelijk</a></li></ol></li><li class="tocline"><a class="tocxref" href="#objectenstructuur"><span class="secno">2.2 </span>Objectenstructuur</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wat-is-een-objectenstructuur"><span class="secno">2.2.1 </span>Wat is een objectenstructuur?</a></li><li class="tocline"><a class="tocxref" href="#wat-betekent-een-verbinding-in-de-objectenstructuur"><span class="secno">2.2.2 </span>Wat betekent een verbinding in de objectenstructuur?</a></li></ol></li><li class="tocline"><a class="tocxref" href="#objectenstructuur-versus-inhoudsopgave-en-kaartlegenda"><span class="secno">2.3 </span>Objectenstructuur versus inhoudsopgave en kaartlegenda</a></li><li class="tocline"><a class="tocxref" href="#de-eigenschappen-van-planobjecten"><span class="secno">2.4 </span>De eigenschappen van planobjecten</a></li><li class="tocline"><a class="tocxref" href="#werkwijze-opstellen-objectgerichte-structuurvisie"><span class="secno">2.5 </span>Werkwijze opstellen objectgerichte structuurvisie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#stap-1-opstellen-concept-objectenstructuur"><span class="secno">2.5.1 </span>Stap 1: Opstellen concept objectenstructuur</a></li><li class="tocline"><a class="tocxref" href="#stap-2-opstellen-concept-inhoudsopgave-en-de-eerste-teksten"><span class="secno">2.5.2 </span>Stap 2: Opstellen concept inhoudsopgave en de eerste teksten</a></li><li class="tocline"><a class="tocxref" href="#stap-3-opstellen-concept-kaart-en"><span class="secno">2.5.3 </span>Stap 3: Opstellen concept kaart(en)</a></li><li class="tocline"><a class="tocxref" href="#stap-4-bepalen-type-van-ieder-planobject"><span class="secno">2.5.4 </span>Stap 4: Bepalen type van ieder planobject</a></li><li class="tocline"><a class="tocxref" href="#stap-5-afronden-van-de-tekst"><span class="secno">2.5.5 </span>Stap 5: Afronden van de tekst</a></li><li class="tocline"><a class="tocxref" href="#stap-6-controle"><span class="secno">2.5.6 </span>Stap 6: Controle</a></li></ol></li><li class="tocline"><a class="tocxref" href="#resultaat"><span class="secno">2.6 </span>Resultaat</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H03"><span class="secno">3. </span>Tekstueel aanduiden van planobjecten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#objectgericht-schrijven"><span class="secno">3.1 </span>Objectgericht schrijven</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#waarom-objectgericht-schrijven"><span class="secno">3.1.1 </span>Waarom objectgericht schrijven?</a></li><li class="tocline"><a class="tocxref" href="#overerving"><span class="secno">3.1.2 </span>Overerving</a></li></ol></li><li class="tocline"><a class="tocxref" href="#schrijven-voor-het-web"><span class="secno">3.2 </span>Schrijven voor het web</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H04"><span class="secno">4. </span>Geografisch aanduiden van planobjecten: kaarten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kaart-en"><span class="secno">4.1 </span>Kaart(en)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kaartnaam-en-volgorde"><span class="secno">4.1.1 </span>Kaartnaam en volgorde</a></li><li class="tocline"><a class="tocxref" href="#planobjecten-op-een-of-meerdere-kaarten"><span class="secno">4.1.2 </span>Planobjecten op één of meerdere kaarten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#weergave-van-planobjecten-op-de-kaart"><span class="secno">4.2 </span>Weergave van planobjecten op de kaart</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vorm-van-de-planobjecten"><span class="secno">4.2.1 </span>Vorm van de planobjecten</a></li><li class="tocline"><a class="tocxref" href="#volgorde-van-de-planobjecten-op-de-kaart"><span class="secno">4.2.2 </span>Volgorde van de planobjecten op de kaart</a></li></ol></li><li class="tocline"><a class="tocxref" href="#legenda"><span class="secno">4.3 </span>Legenda</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#volgorde-planobjecten-in-de-legenda"><span class="secno">4.3.1 </span>Volgorde planobjecten in de legenda</a></li><li class="tocline"><a class="tocxref" href="#kopjes-in-de-legenda-opnemen"><span class="secno">4.3.2 </span>Kopjes in de legenda opnemen</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H05"><span class="secno">5. </span>De planobjecten en hun eigenschappen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klasse-structuurvisieplangebied"><span class="secno">5.1 </span>Klasse Structuurvisieplangebied</a></li><li class="tocline"><a class="tocxref" href="#klasse-structuurvisiegebied"><span class="secno">5.2 </span>Klasse Structuurvisiegebied</a></li><li class="tocline"><a class="tocxref" href="#klasse-structuurvisiecomplex"><span class="secno">5.3 </span>Klasse Structuurvisiecomplex</a></li><li class="tocline"><a class="tocxref" href="#klasse-structuurvisieverklaring-alleen-voor-provincies"><span class="secno">5.4 </span>Klasse Structuurvisieverklaring (alleen voor provincies)</a></li><li class="tocline"><a class="tocxref" href="#metadata"><span class="secno">5.5 </span>Metadata</a></li></ol></li><li class="tocline"><a class="tocxref" href="#B01"><span class="secno">6. </span>Bijlage 1 - Veel gestelde vragen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemene-vragen"><span class="secno">6.1 </span>Algemene vragen</a></li><li class="tocline"><a class="tocxref" href="#vragen-over-de-tekst"><span class="secno">6.2 </span>Vragen over de tekst</a></li><li class="tocline"><a class="tocxref" href="#vragen-over-de-verbeelding"><span class="secno">6.3 </span>Vragen over de verbeelding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#B02"><span class="secno">7. </span>Bijlage 2 - Weergave van vlakken</a></li><li class="tocline"><a class="tocxref" href="#B03"><span class="secno">8. </span>Bijlage 3 - Gedeeltelijke herziening</a></li><li class="tocline"><a class="tocxref" href="#B04"><span class="secno">9. </span>Bijlage 4 - Geldende situatie: de versie “geconsolideerd”</a></li><li class="tocline"><a class="tocxref" href="#B05"><span class="secno">10. </span>Bijlage 5 – Invulhulp voor het bepalen van het type planobject</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bepalen-van-het-type-planobject-klasse"><span class="secno">10.1 </span>Bepalen van het type planobject (klasse)</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiegebied-invulvariant-a"><span class="secno">10.2 </span>Structuurvisiegebied, invulvariant A</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiegebied-invulvariant-b"><span class="secno">10.3 </span>Structuurvisiegebied, invulvariant B</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiegebied-invulvariant-c"><span class="secno">10.4 </span>Structuurvisiegebied, invulvariant C</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-a"><span class="secno">10.5 </span>Structuurvisiecomplex, invulvariant A</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-b"><span class="secno">10.6 </span>Structuurvisiecomplex, invulvariant B</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-c"><span class="secno">10.7 </span>Structuurvisiecomplex, invulvariant C</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-d"><span class="secno">10.8 </span>Structuurvisiecomplex, invulvariant D</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-e"><span class="secno">10.9 </span>Structuurvisiecomplex, invulvariant E</a></li><li class="tocline"><a class="tocxref" href="#structuurvisiecomplex-invulvariant-f"><span class="secno">10.10 </span>Structuurvisiecomplex, invulvariant F</a></li><li class="tocline"><a class="tocxref" href="#structuurvisieverklaring-invulvariant-a"><span class="secno">10.11 </span>Structuurvisieverklaring, invulvariant A</a></li></ol></li></ol></nav><div id="H00" data-format="markdown"><h2>Versiebeheer</h2>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document
+geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Aanpassing</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.9</td>
+<td>19 mei 2014</td>
+<td>ter publieke consultatie</td>
+<td>Samenvoegen van drie praktijkrichtlijnen over het instrument structuurvisie tot deze praktijkrichtlijn. Het betreft de documenten:</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>- PRgSV2012</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>- PRpSV2012</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>- PRrSV2012</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Naast samenvoegen is er ook een stap gemaakt in de uitleg van het maken van een structuurvisie, naast het feit dat dit document een toelichting is op de norm IMRO2012.</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>20 augustus 2012</td>
+<td>Vervallen</td>
+<td>Naar aanleiding van de consultatie is er een voorbeeld uit de praktijkrichtlijn gehaald. Zie hiervoor de rapportage over de consultaties.</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>oktober 2015</td>
+<td>Werkversie</td>
+<td>- Inconsequent gebruik van planstatus geconsolideerd; paragraaf 1.5, Bijlage 1, Bijlage 3 en Bijlage 4 aangepast daar waar ‘geconsolideerde versie’ werd gebruikt dit vervangen door ‘versie geconsolideerd’ of ‘geconsolideerd besluit’.</td>
+</tr>
+<tr>
+<td></td>
+<td>14 december 2015</td>
+<td>Definitief</td>
+<td>- Besproken met BROS en softwareleveranciers; wijzigingen definitief.</td>
+</tr>
+<tr>
+<td>1.1.2</td>
+<td>December 2016</td>
+<td>Werkversie</td>
+<td>- Bijlage 4 over consolideren aangevuld.</td>
+</tr>
+<tr>
+<td></td>
+<td>27 Maart 2017</td>
+<td>Definitief</td>
+<td>- Besproken met BROS en softwareleveranciers; wijzigingen definitief.</td>
+</tr>
+<tr>
+<td>1.1.3</td>
+<td>Augustus 2017</td>
+<td>Werkversie</td>
+<td>- Paragraaf 5.1 aanpassen in verband met verplichting BGT en verwijderen van GBK</td>
+</tr>
+<tr>
+<td></td>
+<td>25 oktober 2017</td>
+<td>Definitief</td>
+<td></td>
+</tr>
+<tr>
+<td>1.1.4</td>
+<td>20 september 2018</td>
+<td>Werkversie</td>
+<td>- Paragraaf 1.2 aanpassen voor het gebruik van PDF bestanden zonder Flashcompnenten.</td>
+</tr>
+<tr>
+<td></td>
+<td>23 oktober 2018</td>
+<td>Definitief</td>
+<td></td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-een-digitale-structuurvisie"><span class="secno">1. </span>Een digitale structuurvisie?</h2><p><strong>In dit hoofdstuk gaan we in op de digitale structuurvisie. De mate van
+‘digitaal’ heeft effect op de leesbaarheid en bruikbaarheid van de
+structuurvisie. Eerst wordt ingegaan op de relatie van deze praktijkrichtlijn
+met de andere onderdelen van de RO Standaarden en de Wet ruimtelijke ordening.
+Tot slot is in de leeswijzer aangegeven hoe deze praktijkrichtlijn is ingedeeld.</strong></p><section id="context-van-deze-praktijkrichtlijn"><h3 id="x1-1-context-van-deze-praktijkrichtlijn"><span class="secno">1.1 </span>Context van deze praktijkrichtlijn</h3><p>In deze praktijkrichtlijn wordt de methode van digitalisering van het
+ruimtelijke instrument ‘Structuurvisie’ beschreven. Hiermee wordt zowel de
+gemeentelijke, provinciale als Rijksstructuurvisie bedoeld.<br>Deze praktijkrichtlijn is net als de andere praktijkrichtlijnen onder de RO
+Standaarden een toelichting op de verplicht te gebruiken normen Informatiemodel
+Ruimtelijke Ordening <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/informatiemodel-ruimtelijke-ordening-imro2012">(IMRO2012)</a> en Standaard Toegankelijkheid Ruimtelijke
+Instrumenten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">(STRI2012)</a>.</p><p>Het verschil met de andere praktijkrichtlijnen is dat deze praktijkrichtlijn de
+maker van de structuurvisie meer bij de hand neemt daar waar de andere
+praktijkrichtlijnen gericht zijn op de uitleg van de techniek. Dit komt tot
+uiting door bijvoorbeeld een stappenplan en meer context voor het objectgericht
+werken met een structuurvisie. Deze werkwijze kan zorgen voor een verhoogde
+leesbaarheid en bruikbaarheid van de structuurvisie.</p><p><em>Wettelijk kader</em><br>Sinds 1 januari 2010 kent de Wet ruimtelijke ordening (Wro) voor structuurvisies
+de digitaliseringsverplichting. In het Besluit ruimtelijke ordening <a href="http://wetten.overheid.nl/BWBR0023798">(Bro)</a>
+zijn de uitgangspunten van digitalisering nader uitgewerkt. Via de Regeling
+standaarden ruimtelijke ordening <a href="http://wetten.overheid.nl/BWBR0031829">(Rsro)</a> wordt bepaald dat bij de
+digitalisering van ruimtelijke instrumenten zoals de structuurvisie gebruik moet
+worden gemaakt van IMRO2012. Dit informatiemodel is de standaard voor de
+beschrijving en codering van ruimtelijke instrumenten.</p></section><section id="kan-het-ook-anders"><h3 id="x1-2-kan-het-ook-anders"><span class="secno">1.2 </span>Kan het ook anders?</h3><p>De objectgerichte werkwijze bij het maken van een structuurvisie, die in deze
+praktijkrichtlijn wordt uitgelegd, is gelet op de vele voordelen de meest
+wenselijke, maar is niet de enige manier om een structuurvisie te maken. De norm
+IMRO2012 laat technisch gezien ook andere werkwijzen toe. Een voorbeeld van zo’n
+alternatieve werkwijze is een Structuurvisie die bestaat uit de volgende twee
+objecten:
+</p><ul>
+<li>het object StructuurvisiePlangebied die het gebied aangeeft waarvoor de
+structuurvisie geldt, met daaraan gekoppeld de gehele plantekst in
+pdf-formaat;  </li>
+<li>het object StructuurvisieGebied. IMRO2012 schrijft voor dat behalve het
+object StructuurvisiePlangebied ook het object StructuurvisieGebied minimaal
+eenmaal voorkomt in het plan. Het meest eenvoudige is om dit object qua
+begrenzing gelijk te houden aan het object StructuurvisiePlangebied en ook
+hieraan dezelfde gehele plantekst als pdf te koppelen.</li>
+</ul><p>Deze praktijkrichtlijn richt zich op de objectgerichte structuurvisie die in de
+volgende paragraaf verder wordt toegelicht.</p></section><section id="wat-is-een-objectgerichte-structuurvisie"><h3 id="x1-3-wat-is-een-objectgerichte-structuurvisie"><span class="secno">1.3 </span>Wat is een objectgerichte structuurvisie?</h3><p><em>Het instrument Structuurvisie</em><br>Ten behoeve van een goede ruimtelijke ordening worden voor het gehele
+grondgebied van de gemeente, provincie of het Rijk één of meer structuurvisies
+vastgesteld waarin de hoofdzaken van het te voeren ruimtelijk beleid zijn
+vastgelegd.</p><p><em>Objectgerichte structuurvisie</em><br>Een structuurvisie bestaat uit tekst en geografische aanduidingen. Per
+geografische aanduiding kan worden aangegeven welke kleur deze moet krijgen.
+Door één of meerdere verzamelingen van geografische aanduidingen in de visie
+samen af te beelden, ontstaan één of meerdere digitale kaarten.<br>Door de teksten in zelfstandige onderdelen op te knippen en te koppelen aan
+bijbehorende geografische aanduidingen, ontstaat interactie tussen de tekst en
+de kaart. We spreken dan van een objectgerichte structuurvisie. In paragraaf 2.2
+wordt ingegaan op deze zelfstandige onderdelen die de interactie tussen tekst en
+kaart mogelijk maken. De onderlinge samenhang tussen deze zelfstandige
+onderdelen vormt als het ware het ‘cement’ van de structuurvisie en wordt
+objectenstructuur genoemd. Dit wordt nader toegelicht in paragraaf 2.3.</p><p>Kortom een objectgerichte structuurvisie bestaat uit de volgende drie
+onderdelen:</p><ul>
+<li><p>tekst, geordend door een inhoudsopgave (zie Figuur 1);</p>
+</li>
+<li><p>geometrie (meestal door de opsteller gegroepeerd in een of meerdere kaarten,
+geordend door een legenda per kaart (zie Figuur 2);</p>
+</li>
+<li><p>de zelfstandige onderdelen van de objectgerichte structuurvisie, geordend in
+een objectenstructuur die dit alles bij elkaar houdt (zie Figuur 3).</p>
+</li>
+</ul><p><img src="media/71cf7145db0a80bbb56efd3b7255ebed.png" alt=""></p><p><strong>Figuur 1 Inhoudsopgave</strong></p><p><img src="media/3a0957c6bc7280d7bc622bb816d926c8.png" alt=""></p><p><strong>Figuur 2 Legenda</strong></p><p><img src="media/4a47f09c1cce8c6836d8eb89ff0a75d9.png" alt=""></p><p><strong>Figuur 3 Objectenstructuur</strong></p></section><section id="waarom-een-objectgerichte-structuurvisie"><h3 id="x1-4-waarom-een-objectgerichte-structuurvisie"><span class="secno">1.4 </span>Waarom een objectgerichte structuurvisie?</h3><p>Een objectgerichte structuurvisie kenmerkt zich door integratie tussen tekst en
+kaart. Dit leidt tot:</p><ul>
+<li><p>betere leesbaarheid van de structuurvisie;</p>
+</li>
+<li><p>betere bruikbaarheid van de structuurvisie in het werkproces;</p>
+</li>
+<li><p>betere kwaliteitscontrole tijdens het opstellen</p>
+</li>
+</ul><p><em>Betere leesbaarheid</em><br>Doordat in een objectgerichte structuurvisie tekst waar mogelijk aan thema’s
+en/of gebieden is gekoppeld, is het voor de gebruiker makkelijk te achterhalen
+waar welk beleid over welk thema geldt. De gebruiker hoeft niet de integrale
+tekst door te lezen om tot voor hem of haar relevante beleid te komen. Hierbij
+biedt vervolgens de aangebrachte indeling houvast bij het lezen. De visie wordt
+hiermee toegankelijker.</p><p><em>Betere bruikbaarheid</em><br>De bruikbaarheid van de informatie heeft betrekking op de wijze waarop
+informatie uit de structuurvisie makkelijk opgenomen kan worden in
+informatiesystemen, en daarmee combineerbaar en vergelijkbaar is met andere
+informatie, zoals andere structuurvisies, bestemmingsplannen, provinciale
+verordeningen en AMvB's. Daarnaast kan in zo'n geografisch informatiesysteem ook
+een combinatie worden gemaakt met andere relevante geografische gegevens zoals
+allerlei sociaal-economische kenmerken van de bevolking of
+bereikbaarheidsgegevens. Hiermee kan de consistentie van het ruimtelijk beleid
+tussen de verschillende bestuurslagen, maar ook de consistentie tussen de
+verschillende instrumenten ingezet binnen een bestuurslaag, eenvoudiger worden
+gecontroleerd en bewaakt.</p><p><img src="media/f17d7cab1b9a4fc98796e32c33658e6d.png" alt=""></p><p><strong>Figuur 4 Structuurvisie Meppel zonder (links) en met (rechts) de
+Structuurvisie provincie Drenthe</strong></p><p>Een objectgerichte structuurvisie vergemakkelijkt het samenwerken, bijvoorbeeld
+in de RO-keten, doordat de bestuurlijke partners of samenwerkingsorganisaties de
+structuurvisie kunnen inlezen in hun geografische informatie systemen. Dit komt
+doorwerking van het ruimtelijk beleid ten goede.</p><p>Tenslotte maakt een objectgerichte structuurvisie het makkelijk om onderdelen
+opnieuw te gebruiken of te gebruiken als referentie bij het opstellen van andere
+RO-instrumenten zoals verordeningen en bestemmingsplannen. Dit komt de
+beleidsconsistentie en doorwerking van het ruimtelijk beleid ten goede.</p><p><em>Betere kwaliteitscontrole</em><br>De objecten in een structuurvisie zijn een ideaal hulpmiddel om bij het
+opstellen van de structuurvisie de taken te verdelen over een schrijversteam uit
+verschillende disciplines zoals natuur, water en cultuurhistorie. Doordat vanaf
+het begin al wordt nagedacht over de verschillende onderdelen in de tekst en op
+de kaart en hun onderlinge samenhang, worden eventuele strijdigheden sneller
+opgespoord.<br>De ervaring leert dat structuurvisies door dit extra vangnet duidelijker worden.</p><p><em>Gebruik van PDF-bestanden</em><br>Indien er PDF-bestanden worden gebruikt in een planset dan is het beter om PDF-
+bestanden te gebruiken die geen flashcomponenten bevatten. Bestanden met
+flashcomponenten kunnen om veiligheidsredenen niet meer in een webbrowser worden
+geopend waardoor de PDF-bestanden bij raadpleging van Ruimtelijkeplannen.nl geen
+inhoud bevatten.<br>Controleer daarom vóór publicatie dat uw PDF-documenten geen Flashcomponenten
+bevatten.</p></section><section id="leeswijzer"><h3 id="x1-5-leeswijzer"><span class="secno">1.5 </span>Leeswijzer</h3><p>De opbouw van deze praktijkrichtlijn is anders dan de andere praktijkrichtlijnen
+onder de RO Standaarden. In deze praktijkrichtlijn is de toelichting op de norm
+IMRO gegeven in Hoofdstuk 5. In dit hoofdstuk is aangegeven welke informatie
+verplicht is op te nemen in de digitale structuurvisie.<br>Verder kent deze praktijkrichtlijn de opbouw die maken van een structuurvisie
+volgt. In Hoofdstuk 2 wordt de structuur van objecten toegelicht en wordt
+ingegaan op de eigenschappen en mogelijkheden van de objecten. Vervolgens is het
+maken van de plantekst in Hoofdstuk 3 toegelicht en Hoofdstuk 4 gewijd aan het
+maken van de kaarten. De technische toelichting op de norm is in Hoofdstuk 5
+opgenomen.<br>Er is een vijftal bijlagen opgenomen bij deze praktijkrichtlijn:
+</p><ul>
+<li>In <a href="#B01">Bijlage 1</a> zijn een aantal veel gestelde vragen rondom deze praktijk en
+structuurvisies algemeen opgenomen;  </li>
+<li>In <a href="#B02">Bijlage 2</a> zijn voor de weergave in de kaart een aantal voorbeelden van
+vlakken. Dit is op basis van de symbool codelijst;
+</li>
+<li><a href="#B03">Bijlage 3</a> licht toe de werkwijze toe van een gedeeltelijke herziening van
+een structuurvisie;  </li>
+<li><a href="#B04">Bijlage 4</a> is gewijd aan de versie “geconsolideerd” ;
+</li>
+<li>Tot slot is in <a href="#B05">Bijlage 5</a> een invulhulp opgenomen.</li>
+</ul></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-de-planobjecten-en-hun-onderlinge-relaties"><span class="secno">2. </span>De planobjecten en hun onderlinge relaties</h2><p><strong>Om de praktijkrichtlijnen van de RO Standaarden onderling vergelijkbaar te
+houden, wordt de term ‘planobject’ behalve voor plannen ook voor besluiten en
+visies gehanteerd. In dit hoofdstuk de structuur die wordt aangebracht in de
+structuurvisie toegelicht.</strong></p><section id="wat-zijn-planobjecten"><h3 id="x2-1-wat-zijn-planobjecten"><span class="secno">2.1 </span>Wat zijn planobjecten?</h3><p>In deze praktijkrichtlijn wordt gebruikt gemaakt van de term planobject:
+</p><blockquote>
+<p><em>Een planobject is een zelfstandig, logisch onderdeel in het plan waarvan de
+planopsteller wil dat deze via verschillende ingangen toegankelijk is voor de
+gebruiker.</em></p>
+</blockquote><p>Het desbetreffende planobject is dus niet alleen via de tekstuele ingang
+toegankelijk, maar kan ook via de kaart of via andere ingang (bijvoorbeeld via
+de objectenstructuur) gevonden worden. De termen ‘zelfstandig logisch onderdeel
+in de tekst’ en ‘via verschillende ingangen toegankelijk’ worden respectievelijk
+in paragraaf 2.1.1 en 2.1.2 nader toegelicht.</p><section id="zelfstandig-logisch-onderdeel-in-de-tekst"><h4 id="x2-1-1-zelfstandig-logisch-onderdeel-in-de-tekst"><span class="secno">2.1.1 </span>Zelfstandig, logisch onderdeel in de tekst</h4><p>In Figuur 5 is een voorbeeld van een plantekst opgenomen, bestaande uit twee
+zelfstandige, logische onderdelen (werkgelegenheid en aard van
+bedrijvenbestand).</p><p><strong>Figuur 5 Zelfstandig, logisch onderdeel in de tekst</strong></p><p><img src="media/ab3d2f528f8b5797359c861d2f86a22f.png" alt=""></p></section><section id="via-verschillende-ingangen-toegankelijk"><h4 id="x2-1-2-via-verschillende-ingangen-toegankelijk"><span class="secno">2.1.2 </span>Via verschillende ingangen toegankelijk</h4><p>Het is aan de opsteller van de structuurvisie om te bepalen welke onderdelen van
+de tekst van de structuurvisie zowel via de tekstuele ingang als via andere
+ingangen toegankelijk dienen te zijn. Het ligt voor de hand dat de planopsteller
+bijvoorbeeld het tekstuele onderdeel ‘Voorwoord’ alleen via de tekstuele ingang
+en niet via de kaart toegankelijk maakt. Dit wil niet zeggen dat deze tekst dan
+verdwijnt. Via de tekstuele ingang is het voorwoord altijd weer terug te vinden.</p><p>De praktijk leert dat met name onderdelen uit het thematische en uit het
+gebiedsgerichte deel van de plantekst via meerdere ingangen worden ontsloten en
+dus worden bestempeld als planobjecten. Voorbeelden van andere ingangen zijn via
+de kaart of via een objectenstructuur. In Figuur 6 is een voorbeeld opgenomen
+waarbij de plantekst zowel via de kaart als via een objectenstructuur wordt
+opgeroepen.</p><p><img src="media/39e428dd57f7efdcb8bbb023f680f946.png" alt=""></p><p><strong>Figuur 6 Tekst via verschillende ingangen toegankelijk</strong></p></section></section><section id="objectenstructuur"><h3 id="x2-2-objectenstructuur"><span class="secno">2.2 </span>Objectenstructuur</h3><section id="wat-is-een-objectenstructuur"><h4 id="x2-2-1-wat-is-een-objectenstructuur"><span class="secno">2.2.1 </span>Wat is een objectenstructuur?</h4><p>Een structuurvisie kan uit een groot aantal planobjecten bestaan en deze staan
+niet op zich zelf. Sommige groepjes planobjecten hebben een inhoudelijke relatie
+met elkaar. Het ligt het voor de hand deze objecten te groeperen in grotere
+logische eenheden. Zo ontstaat een structuur in de planobjecten: een
+objectenstructuur (zie Figuur 7).</p><p><img src="media/67ff254a199df89d61a1f61327bb8576.png" alt=""></p><p><strong>Figuur 7 Planobjecten ongeordend (links) en geordend in een objectenstructuur
+(rechts)</strong></p><p>Het enige planobject op het hoogste niveau in de objectenstructuur is altijd het
+plangebied. Dit planobject heeft als naam de aanhaaltitel van de structuurvisie,
+als tekst de gehele plantekst en als geografische aanduiding het gebied waar de
+structuurvisie over gaat.</p><p><u>Let op</u>: dit gebied kan nooit groter zijn dan het gebied waar de opsteller van
+de structuurvisie bevoegd gezag is.</p></section><section id="wat-betekent-een-verbinding-in-de-objectenstructuur"><h4 id="x2-2-2-wat-betekent-een-verbinding-in-de-objectenstructuur"><span class="secno">2.2.2 </span>Wat betekent een verbinding in de objectenstructuur?</h4><p>Voor alle planobjecten die onder een ander planobject hangen in de
+objectenstructuur geldt dat de teksten die van toepassing zijn op het
+bovenliggende planobject ook van toepassing zijn op het onderliggende
+planobject. Op deze wijze kunnen de teksten die bij onderliggende planobjecten
+horen, beter in de context worden geplaatst. Dit wordt geïllustreerd aan de hand
+van het voorbeeld in Figuur 8.<br>In dit voorbeeld bestaat de tekst uit drie zelfstandige logische onderdelen,
+namelijk paragraaf 3.1 (EHS), 3.2 (EHS-land) en 3.3 (EHS-water). De
+planopsteller wil deze 3 onderdelen zowel via de tekstuele ingang als via de
+kaart ontsluiten en ze worden daarom beschouwd als planobjecten.<br>Twee planobjecten (EHS-land en EHS-water) worden geografisch aangeduid
+(respectievelijk met groen en blauw). In de objectenstructuur is aangegeven dat
+het planobject EHS als onderliggende objecten EHS-land en EHS-water kent.</p><p><img src="media/1b6add76e658e518f3db5c0e237a3934.png" alt=""></p><p><strong>Figuur 8 Overerving</strong></p><p>Als op het groene deel van de kaart wordt geklikt, wordt het planobject
+‘EHS-land’ gevonden met daarbij de volgende verwijzingen naar tekst:</p><ul>
+<li><p>3.1 algemeen beleid EHS</p>
+</li>
+<li><p>3.2 Specifiek voor EHS-land</p>
+</li>
+</ul><p>Als op het blauwe deel van de kaart wordt geklikt, wordt het planobject
+‘EHS-water’ gevonden met daarbij de volgende verwijzingen naar tekst:</p><ul>
+<li><p>3.1 algemeen beleid EHS</p>
+</li>
+<li><p>3.3 Specifiek voor EHS-water</p>
+</li>
+</ul><p>Uit dit voorbeeld komt het principe van overerving naar voren. Zowel het
+planobject EHS-land als EHS-water erven de verwijzing naar tekst van het
+bovenliggende object (EHS) over, namelijk paragraaf ‘3.1 Algemeen beleid EHS’.<br>De kind-planobjecten kennen meestal eigen geografische aanduiding. Meestal zal
+dit geografisch gebied vallen binnen het geografisch gebied van het
+bovenliggende (moeder-)planobject. Dit hoeft echter niet.<br>Indien een kind-planobject geen duidelijke geografische aanduiding kent, dan kan
+een gebruiker aannemen dat de geografische aanduiding van het moeder-planobject
+van toepassing is. Het heeft echter de voorkeur om waar mogelijk een duidelijke
+geografische aanduiding op te nemen.</p></section></section><section id="objectenstructuur-versus-inhoudsopgave-en-kaartlegenda"><h3 id="x2-3-objectenstructuur-versus-inhoudsopgave-en-kaartlegenda"><span class="secno">2.3 </span>Objectenstructuur versus inhoudsopgave en kaartlegenda</h3><p>De objectenstructuur vormt het cement van een structuurvisie en groepeert de
+planobjecten die op hun beurt zorgen voor de integratie tussen de teksten en
+kaarten. De tekst en kaart(en) kennen ook hun eigen indeling, namelijk de
+inhoudsopgave en kaartlegenda.</p><p>Het staat de opstellers van de structuurvisie vrij om de indeling van de
+planobjecten (objectenstructuur), de indeling van de tekst (inhoudsopgave) en de
+indeling van de kaarten (legenda) naar eigen inzicht op te stellen. Deze drie
+indelingen zullen nooit exact gelijk zijn, alleen al vanwege het feit dat alle
+planobjecten wel in de tekst, maar niet op de kaart hoeven voor te komen.</p><p>Wel is het zo dat hoe meer deze indelingen op elkaar lijken, des te beter
+raadpleegbaar de structuurvisie wordt. Immers het integreren van tekst en kaart
+zal bij een structuurvisie waarbij de inhoudsopgave gelijkenis vertoont met de
+indeling van de legenda van de kaarten, gemakkelijker gaan dan bij een
+structuurvisie waarin de inhoudsopgave sterk verschilt van de kaartlegenda. Voor
+elke nieuwe structuurvisie kan een nieuwe, logische indeling gekozen worden.
+Wanneer een structuurvisie een partiële herziening of een uitwerking is van een
+eerdere structuurvisie is het handig een indeling te kiezen die past bij de
+oorspronkelijke structuurvisie.</p></section><section id="de-eigenschappen-van-planobjecten"><h3 id="x2-4-de-eigenschappen-van-planobjecten"><span class="secno">2.4 </span>De eigenschappen van planobjecten</h3><p>Voor veel planobjecten zal gelden dat deze betrekking hebben op een bepaald
+gebied en dus op een kaart zullen voorkomen. Ook is het mogelijk dat een
+planobject op meerdere kaarten voorkomt (bijvoorbeeld op de visiekaart en op een
+thematische kaart). Of anders verwoord: het planobject heeft als eigenschap
+meerdere verwijzingen naar kaarten.</p><p>Er zijn echter ook planobjecten die wel in de tekst maar niet op de kaart
+voorkomen. Deze hebben dus als eigenschap een verwijzing naar de tekst, maar
+kennen geen verwijzing naar de kaart[^5]. Teksten van deze planobjecten kunnen
+op de volgende manieren worden opgeroepen:</p><p>[^5]: <em>Objecten zonder verwijzing naar de kaart, ofwel objecten zonder geometrie,
+zijn alleen mogelijk bij rijksstructuurvisies.</em></p><ul>
+<li><p>via de tekstuele ingang;</p>
+</li>
+<li><p>via de objectenstructuur (zie Figuur 7);</p>
+</li>
+<li><p>indirect via een onderliggend planobject dat wel op de kaart staat. Via
+overerving erft het onderliggende planobject de teksten over van dit
+planobject (zie paragraaf 2.2.2).</p>
+</li>
+</ul><p>Meestal zal een planobject op meerdere plekken in de tekst worden beschreven
+(bijvoorbeeld in het thematische deel en in het gebiedsgerichte deel). Het
+planobject heeft dan als eigenschap meerdere verwijzingen naar de tekst.</p><p>Samenvattend: een planobject bevat <em>altijd</em> een verwijzing naar één of meerdere
+teksten en <em>kan</em> (hoeft niet) een verwijzing naar één of meerdere kaarten
+bevatten (zie Figuur 9).</p><p><strong>Figuur 9 Eigenschappen van planobjecten</strong></p><p><img src="media/4744b86e489d61d97bd691b2c7d539a9.png" alt=""></p><p>Naast een verwijzing naar de tekst of naar één of meerdere kaarten,
+kunnen/moeten er voor een planobject nog meer eigenschappen worden vastgelegd,
+zoals thema, belang, rol en instrument. Door het invullen van deze
+eigenschappen, wordt de bruikbaarheid van de structuurvisie vergroot. De
+gebruiker kan dan bijvoorbeeld alle planobjecten selecteren die behoren tot het
+thema ‘natuur’.</p></section><section id="werkwijze-opstellen-objectgerichte-structuurvisie"><h3 id="x2-5-werkwijze-opstellen-objectgerichte-structuurvisie"><span class="secno">2.5 </span>Werkwijze opstellen objectgerichte structuurvisie</h3><p>In deze paragraaf wordt een eenduidige werkwijze beschreven om een
+objectgerichte structuurvisie inhoudelijk goed op te zetten. Er zijn echter meer
+manieren mogelijk.</p><section id="stap-1-opstellen-concept-objectenstructuur"><h4 id="x2-5-1-stap-1-opstellen-concept-objectenstructuur"><span class="secno">2.5.1 </span>Stap 1: Opstellen concept objectenstructuur</h4><p>Stap 1A en 1B kunnen ook in omgekeerde volgorde worden uitgevoerd.</p><p><em>Stap 1A - Thema’s</em><br>Benoem de thema’s die in de structuurvisie aan de orde komen (geef ze namen) en
+beschrijf de inhoud met enkele steekwoorden. Maak hierbij gebruik van de
+themalijst. Dit resulteert in de eerste planobjecten van de structuurvisie.</p><p><em>Stap 1B - Gebieden</em><br>Geef alle gebieden waarvoor beleid wordt gemaakt (of die ter toelichting dienen
+op het beleid) aan op de kaart. Geef die gebieden namen en beschrijf het beleid
+met enkele steekwoorden.</p><p><em>Stap 1C - Koppelen gebieden aan thema’s</em><br>Deel de gebieden uit stap 1B toe aan de thema’s uit stap 1A. Een gebied kan bij
+meer thema's horen. Hierdoor ontstaat een eerste versie van de
+objectenstructuur.</p><p><em>Stap 1D - Groeperen van planobjecten</em><br>Verzamel planobjecten in groepen die beleid met elkaar gemeen hebben zodat
+algemenere beleidsuitspraken in die groepen ook kunnen gelden voor de
+onderliggende objecten. Beschouw deze groepen ook weer als planobjecten en geef
+deze unieke namen. De objectenstructuur is nu nog verder gegroeid.<br>Benoem het beleid in enkele steekwoorden (eventueel via verwijzingen naar al
+geschreven teksten) en bepaal of er sprake is van een begrenzing door middel van
+een omschrijving of een weergave op kaart.<br>Vaak is het handig om in stap 1C en 1D te werken met een schematische weergave
+in blokjes zoals in Figuur 10 (gebruik daarbij sprekende namen in plaats van
+“thema 2” of gebied 4”).</p><p><img src="media/37a065357f23d607edf3f5d12b86ac80.png" alt=""></p><p><strong>Figuur 10 Groeperen in planobjecten</strong></p><p>Op deze wijze ontstaat de eerste globale versie van de objectenstructuur die als
+startpunt wordt gebruikt voor zowel het opstellen van de eerste teksten als het
+maken van de eerste kaart(en). Het spreekt voor zich dat er een wisselwerking is
+tussen het schrijven van teksten, het opstellen van de kaarten en het opstellen
+van de objectenstructuur.</p></section><section id="stap-2-opstellen-concept-inhoudsopgave-en-de-eerste-teksten"><h4 id="x2-5-2-stap-2-opstellen-concept-inhoudsopgave-en-de-eerste-teksten"><span class="secno">2.5.2 </span>Stap 2: Opstellen concept inhoudsopgave en de eerste teksten</h4><p>Schrijf vervolgens alle teksten die horen bij de planobjecten, en zet vervolgens
+die teksten op een logische volgorde zodat er een lopende tekst ontstaat: de
+tekst van de digitale structuurvisie.<br>Vaak verandert gedurende het schrijfproces de inhoud van een structuurvisie en
+daarmee ook de bij de planobjecten horende teksten. Dit komt mede doordat
+tijdens het schrijven het beleid wordt aangescherpt. Vaak is het bij zo'n
+wijzigende tekst nodig om de objectenstructuur aan te passen en/ of de
+geografische duiding van de objecten. Voor meer informatie over het opstellen
+van de teksten, zie Hoofdstuk 3.</p></section><section id="stap-3-opstellen-concept-kaart-en"><h4 id="x2-5-3-stap-3-opstellen-concept-kaart-en"><span class="secno">2.5.3 </span>Stap 3: Opstellen concept kaart(en)</h4><p>Groepeer de planobjecten met een geografische aanduiding in één of meerdere
+`kaarten` en kies de gebruikte symbolen en kleuren.</p><blockquote>
+<p>Wat is een kaart?<br>In een digitale structuurvisie wordt met de term ‘kaart’ bedoeld de verzameling planobjecten waarvan de planopsteller wil dat deze samen worden getoond.</p>
+</blockquote><p><u>Let op</u>: de verbeeldingsmogelijkheden (kaartkleuren en symbolen) van digitale
+structuurvisies zijn relatief beperkt. Wel is het mogelijk om een geheel
+transparante kleur mee te geven. Hierdoor wordt het planobject wel gevonden als
+op de kaart wordt geklikt, maar is het niet zichtbaar. Dit is met name handig
+voor planobjecten waarvan de begrenzing zeer gevoelig ligt, maar die men toch
+wil opnemen op de kaart.</p><p><u>Let wel</u>: een gebruiker die de structuurvisie inleest in een geografisch
+informatiesysteem ziet de begrenzing natuurlijk zoals hij of zij dat zelf wil.
+Voor meer informatie over het opstellen van de kaarten, zie Hoofdstuk 4.</p></section><section id="stap-4-bepalen-type-van-ieder-planobject"><h4 id="x2-5-4-stap-4-bepalen-type-van-ieder-planobject"><span class="secno">2.5.4 </span>Stap 4: Bepalen type van ieder planobject</h4><p>Omdat planobjecten heel verschillend kunnen zijn, dient eerst te worden bepaald
+tot welk type (ook wel klasse genoemd) een bepaald planobject behoort. Per type
+(klasse) is aangegeven welke eigenschappen moeten/mogen worden ingevuld. Het
+gaat hierbij om eigenschappen zoals thema, belang, rol en instrument.<br>In Bijlage 5 is een vragenlijst opgenomen waarmee kan worden bepaald tot welk
+type (klasse) een bepaald planobject uit de objectenstructuur behoort. Om de
+werking van deze vragenlijst toe te lichten, is deze toegepast op het voorbeeld
+in Figuur 11. Het voorbeeld betreft een provinciale structuurvisie.</p><p><strong>Figuur 11 Voorbeeld objectenstructuur</strong></p><p><img src="media/bec044a98b3be4e78218556c7641a765.png" alt=""></p><p>In Tabel 1 zijn voor ieder object alle vragen uit de vragenlijst van de
+invulhulp van Bijlage 5 opgenomen.</p><p><strong>Tabel 1 Toepassing vragenlijst uit Bijlage 5</strong></p><table>
+<thead>
+<tr>
+<th><strong>Planobject</strong></th>
+<th><strong>Toelichting</strong></th>
+<th><strong>Vragenlijst</strong></th>
+<th><strong>Type (klasse)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EHS</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiecomplex. invulariant A</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: JA</td>
+<td></td>
+</tr>
+<tr>
+<td>Duurzaamheid</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiecomplex, invulvariant C</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 4: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td>Verkeer</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiecomplex, invulvariant C</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 4: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td>EHS-land</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiegebied, invulvariant A</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+<tr>
+<td>EHS-water</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiegebied, invulvariant A</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+<tr>
+<td>Windenergie</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiecomplex, invulvariant C</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 4: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td>Zonne-energie</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td>Niet te coderen</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 6: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td>Doorstroming</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td>Niet te coderen</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 6: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td>Zoekgebied windenergie</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td>Structuurvisiegebied, invulvariant A</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+</tbody></table></section><section id="stap-5-afronden-van-de-tekst"><h4 id="x2-5-5-stap-5-afronden-van-de-tekst"><span class="secno">2.5.5 </span>Stap 5: Afronden van de tekst</h4><p>Voeg overige teksten toe als voorwoord, begrippenlijst, etc. Deze teksten hoeven
+niet aan een van de objecten uit voorgaande stappen te worden toegevoegd. Ze
+horen 'vanzelf' bij het plan. Pas wel op dat er geen beleid staat in een van die
+teksten, want dan hoort zo'n tekst wel bij een van de objecten. Neem ook nog
+alle plaatjes op. Benoem de relaties met overige plannen.</p></section><section id="stap-6-controle"><h4 id="x2-5-6-stap-6-controle"><span class="secno">2.5.6 </span>Stap 6: Controle</h4><p>Uit stap 4 kan volgen dat sommige planobjecten niet kunnen worden gecodeerd. In
+het voorbeeld in Figuur 12 zijn deze geel weergegeven.</p><p><strong>Figuur 12 Planobjecten die niet kunnen worden gecodeerd</strong></p><p><img src="media/1a8cddd7a8d028d04ef46aeb9df3f3e3.png" alt=""></p><p>Verwijder deze planobjecten uit de objectenstructuur. Zorg er wel voor dat de
+teksten van de verwijderde objecten bij een ander (meestal bovenliggend) object
+terecht komen.</p><p>Bekijk vervolgens of er planobjecten voorkomen die behoren tot het type
+Structuurvisiecomplex A, B, C, D, E of F (zie bijlage voor uitleg) en geen
+onderliggende planobjecten hebben. In het voorbeeld gaat het om het object
+‘verkeer’ (in Figuur 13 in groen weergegeven). Omdat alle onderliggende objecten
+onder dit object zijn verwijderd, dient voor dit object opnieuw te worden
+bepaald tot welk type deze behoort (zie Tabel 2).</p><p><strong>Figuur 13 Planobjecten van het type Structuurvisiecomplex zonder onderliggende
+planobjecten</strong></p><p><img src="media/01af6e5ca41ed045fa725e26f6fb8a7c.png" alt=""></p><p>In Tabel 2 zijn voor ieder object alle vragen uit de vragenlijst van de
+invulhulp van Bijlage 5 opgenomen.</p><p><strong>Tabel 2 Doorlopen stappen in het stappenplan uit Bijlage 5</strong></p><table>
+<thead>
+<tr>
+<th><strong>Planobject</strong></th>
+<th><strong>Toelichting</strong></th>
+<th><strong>Vragenlijst</strong></th>
+<th><strong>Type (klasse)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Verkeer</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen</td>
+<td>vraag 1: JA</td>
+<td>Niet te coderen</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 6: NEE</td>
+<td></td>
+</tr>
+</tbody></table><p>Omdat het object ‘verkeer’ niet te coderen is, wordt deze ook verwijderd. Kijk
+wederom of er planobjecten voorkomen van het type Structuurvisiecomplex A, B, C,
+D, E of F zonder onderliggende planobjecten. Herhaal dit totdat deze niet meer
+voorkomen.</p><p>Daarnaast is het aan te bevelen om de uiteindelijke structuur van het plan goed
+te controleren. Een van de hulpmiddelen daarbij is om een planobject te nemen,
+en dan alle tekst te lezen van dat object en alle bovenliggende planobjecten.
+Dan moet, vanwege het principe van overerving (zie paragraaf 2.2.2) alle voor
+dat van planobject van toepassing zijnde beleid (en eventuele toelichting op dit
+beleid) zijn gelezen. Is dat niet het geval, dan klopt de structuur niet.
+Herhaal deze test een aantal malen voor verschillende planobjecten.</p></section></section><section id="resultaat"><h3 id="x2-6-resultaat"><span class="secno">2.6 </span>Resultaat</h3><p>Zoals aangegeven in paragraaf 1.3 bestaat een objectgerichte structuurvisie uit
+drie onderdelen:
+</p><ul>
+<li>tekst, geordend door een inhoudsopgave;</li>
+<li>geometrie (meestal door de opsteller gegroepeerd in een of meerdere kaarten,
+geordend door een legenda per kaart);</li>
+<li>de zelfstandige onderdelen van de objectgerichte structuurvisie, geordend in
+een objectenstructuur die dit alles bij elkaar houdt.
+Volgens de Standaard Toegankelijkheid Ruimtelijke Instrumenten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">(STRI2012)</a>
+dient de geometrie en de objectenstructuur samen in één bestand in gml-formaat
+ter beschikking te worden gesteld. Voor het beschikbaar stellen van de teksten
+biedt de STRI2012 de volgende twee opties toegestaan:</li>
+</ul><p><em>Mogelijkheid 1: xml-formaat</em><br>In deze optie wordt de tekst beschikbaar gesteld conform het Informatiemodel
+Ruimtelijke Ordening voor Planteksten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-planteksten-prpt2012">(IMROPT2012)</a>. Dit betekent dat in
+ieder geval de regels, de toelichting en/of het beleids-/besluitdocument
+beschikbaar worden gesteld in XML formaat. Bijlagen kunnen ofwel in dit zelfde
+XML formaat beschikbaar worden gesteld, ofwel in separate bronbestanden in
+HTML-, XHTML- of PDF-formaat.</p><p><em>Mogelijkheid 2: html-formaat</em><br>In deze optie wordt de tekst in HTML-, XHTML- of PDF-formaat beschikbaar
+gesteld.</p><p>Voordeel van de eerste optie (xml-formaat) is dat ‘de computer’ van ieder
+tekstobject weet waar deze begint en eindigt. Het is hierdoor mogelijk om in
+viewers bepaalde tekstobjecten te selecteren of ‘highlighten’ (te markeren met
+een bepaalde kleur). Dit is met planteksten in html-formaat niet mogelijk.</p><p>Het resultaat vormt een set van bestanden (zie hoofdstuk 2 van de STRI2012) die
+langs elektronische weg beschikbaar dienen te worden gesteld (zie hoofdstuk 5
+van de STRI2012).</p></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-tekstueel-aanduiden-van-planobjecten"><span class="secno">3. </span>Tekstueel aanduiden van planobjecten</h2><p><strong>Vanuit de RO Standaarden worden er geen eisen gesteld aan de inhoud of de
+structuur van structuurvisieteksten. Wel worden er eisen gesteld aan het
+bestandsformaat waarin de tekst beschikbaar wordt gesteld. Zo is het niet
+toegestaan om bijvoorbeeld de tekst als een MSWord document aan te bieden. Welke
+formaten wel zijn toegestaan conform de STRI2012 is in paragraaf 2.6 toegelicht.</strong></p><section id="objectgericht-schrijven"><h3 id="x3-1-objectgericht-schrijven"><span class="secno">3.1 </span>Objectgericht schrijven</h3><section id="waarom-objectgericht-schrijven"><h4 id="x3-1-1-waarom-objectgericht-schrijven"><span class="secno">3.1.1 </span>Waarom objectgericht schrijven?</h4><p>Het feit dat er geen eisen worden gesteld aan de structuur van de teksten, kan
+leiden tot digitaal slecht raadpleegbare plannen. Zo kan de tekst over een
+bepaald planobject versnipperd zijn op vele plekken in de tekst. Dit heeft als
+gevolg dat als de gebruiker op een kaart op dit object klikt, hij of zij moet
+kiezen uit vele verwijzingen naar de tekst.</p><p>Ook kan een stuk tekst gaan over twee planobjecten. Het is voor de gebruiker dan
+niet meteen duidelijk wat er geldt voor het planobject waar hij of zij op heeft
+geklikt; zie voorbeeld in Figuur 14.</p><p><strong>Figuur 14 De snelweg A28 aangeklikt, teksten over allerlei snelwegen</strong></p><p><img src="media/2b037bdd7f15856713397b9df520dfb9.png" alt=""></p><p>Objectgericht schrijven is:
+</p><ul>
+<li>werken met een heldere structuur;</li>
+<li>de teksten opknippen in stukken zoals hoofdstukken, paragrafen e.d..
+Uitgangspunt is dat ieder stuk tekst zelfstandig leesbaar is, een titel heeft,
+begint met een hoofdletter en eindigt met een punt. Dit helpt de lezer, zeker
+als de plannen via het internet worden ontsloten waarbij vaak fragmentarisch
+door de tekst kan worden genavigeerd.</li>
+</ul></section><section id="overerving"><h4 id="x3-1-2-overerving"><span class="secno">3.1.2 </span>Overerving</h4><p>Zoals in paragraaf 2.2.2 is uitgelegd, geldt voor alle planobjecten die onder
+een ander planobject hangen in de objectenstructuur dat de teksten die van
+toepassing zijn op het bovenliggende planobject ook van toepassing zijn op het
+onderliggende planobject. Op deze wijze kunnen de teksten die bij onderliggende
+planobjecten horen, beter in de context worden geplaatst.</p></section></section><section id="schrijven-voor-het-web"><h3 id="x3-2-schrijven-voor-het-web"><span class="secno">3.2 </span>Schrijven voor het web</h3><p>Uit onderzoek[^8] is gebleken dat gebruikers bij het lezen van teksten op een
+beeldscherm meestal links bovenaan het scherm beginnen. Iedere volgende regel
+wordt steeds eerder afgebroken en uiteindelijk scant de lezer de linkerkant van
+de tekst naar beneden. Dit leidt tot een soort F-patroon (zie Figuur 15):</p><p>[^8]: How People Read on the Web: The Eyetracking Evidence, Jakob Nielsen</p><p><strong>Figuur 15 F-patroon bij lezen vanaf het beeldscherm</strong></p><p><img src="media/5ed650b3c5f75292d6768acbdff02ae0.jpg" alt=""></p><p>Omdat de digitale structuurvisie ook vanaf het beeldscherm zal worden gelezen,
+heeft dit onderzoek ook gevolgen voor het opstellen van structuurvisieteksten.
+Belangrijk is als opsteller van de tekst te realiseren dat de gebruiker hooguit
+de eerste twee alinea’s van een hoofdstuk of paragraaf zullen lezen, waarbij ze
+waarschijnlijk meer zullen lezen van de eerste dan van de tweede alinea. In deze
+alinea’s moet de belangrijkste boodschap staan.</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-geografisch-aanduiden-van-planobjecten-kaarten"><span class="secno">4. </span>Geografisch aanduiden van planobjecten: kaarten</h2><p><strong>De verbeelding van de structuurvisie is een belangrijk onderdeel. Het gaat bij
+structuurvisies niet alleen om de inhoud, maar ook om een bepaalde visie over te
+brengen. De verbeelding, in één of meerdere kaarten, is hierbij een handig
+instrument. Het is van belang hierbij in het oog te houden dat de wijze waarop
+een kaart wordt getoond qua kleur en volgorde van de planobjecten per viewer kan</strong>
+verschillen.</p><section id="kaart-en"><h3 id="x4-1-kaart-en"><span class="secno">4.1 </span>Kaart(en)</h3><section id="kaartnaam-en-volgorde"><h4 id="x4-1-1-kaartnaam-en-volgorde"><span class="secno">4.1.1 </span>Kaartnaam en volgorde</h4><p>Een structuurvisie kan één of meerdere kaarten bevatten. Via het attribuut
+<em>cartografieInfo</em> dat bij een planobject kan worden ingevuld, kan de kaartnaam
+en het kaartnummer worden aangegeven.<br>Op basis van de ingevulde kaartnamen en kaartnummers bij ieder planobject kan
+een viewer bepalen welke kaarten en in welke volgorde moeten worden getoond.<br>Iedere kaart bevat dus minimaal:
+</p><ul>
+<li>één planobject waarmee de kaartnaam en kaartnummer van de kaart kan worden
+bepaald;</li>
+<li>het plangebied van de structuurvisie.
+Voor het plangebied geldt dat niet hoeft te worden aangegeven op welke kaart
+deze voorkomt.</li>
+</ul><p>Als kaartnaam dient voor iedere kaart een unieke naam te worden ingevuld. Het
+kaartnummer is een oplopend nummer waarmee de opsteller van de structuurvisie de
+volgorde waarin hij of zij de kaarten in een viewer wil laten tonen, aangeeft.
+Het kaartnummer is een heel getal beginnend met 1 en oplopend. Kaartnummer 1
+wordt in de viewer als hoofdkaart beschouwd. Als de structuurvisie een
+visiekaart bevat, dan is het gebruikelijk om deze als hoofdkaart in te stellen
+en dus kaartnummer 1 mee te geven.</p></section><section id="planobjecten-op-een-of-meerdere-kaarten"><h4 id="x4-1-2-planobjecten-op-een-of-meerdere-kaarten"><span class="secno">4.1.2 </span>Planobjecten op één of meerdere kaarten</h4><p>Een planobject kan op één of meerdere kaarten voorkomen. Als een planobject op
+meerdere kaarten wordt getoond, wil dit niet zeggen dat dit planobject ook in de
+objectenstructuur meerdere keren moet voorkomen. Het attribuut <em>cartografieInfo</em>
+kan per planobject meerdere keren worden gebruikt. In het voorbeeld in Tabel 3
+is aangegeven hoe het planobject ‘EHS 2013’ op zowel kaart 2a als kaart 5 kan
+worden opgenomen. Indien gewenst kan de kleur van het planobject per kaart
+verschillen, alhoewel dit verwarrend kan werken voor de gebruiker en om die
+reden beter kan worden vermeden.</p><p><img src="media/a208028353ea6d16b7621f7d551d79ae.png" alt=""></p><p><strong>Tabel 3 Attribuut cartografieInfo bij een planobject dat op twee kaarten
+voorkomt</strong></p></section></section><section id="weergave-van-planobjecten-op-de-kaart"><h3 id="x4-2-weergave-van-planobjecten-op-de-kaart"><span class="secno">4.2 </span>Weergave van planobjecten op de kaart</h3><p>In deze paragraaf wordt ingegaan op:
+</p><ul>
+<li>de vorm waarin het planobject wordt weergegeven op de kaart (zie paragraaf 4.2.1);</li>
+<li>de volgorde waarin de planobjecten worden getoond op de kaart (zie paragraaf 4.2.2);</li>
+<li>de opbouw van de legenda van iedere kaart (zie paragraaf 4.3.1).</li>
+</ul><section id="vorm-van-de-planobjecten"><h4 id="x4-2-1-vorm-van-de-planobjecten"><span class="secno">4.2.1 </span>Vorm van de planobjecten</h4><p>Het plangebied wordt altijd weergegeven met een contour. Voor de andere
+planobjecten geldt dat ze:
+</p><ul>
+<li>geen geometrie kunnen bevatten;</li>
+<li>als vlak op de kaart worden weergegeven;</li>
+<li>als lijn op de kaart worden weergegeven;</li>
+<li>als punt op de kaart worden weergegeven;</li>
+<li>als een combinatie van vlakken, lijnen en/of punten worden weergegeven. Een
+voorbeeld van een combinatie van vlakken en lijnen is opgenomen in Figuur
+16, waar het planobject ‘EHS 2013’ is weergegeven met zowel vlakken als
+lijnen.</li>
+</ul><p><strong>Figuur 16 Een planobject weergegeven met een combinatie van een vlak en een
+lijn</strong></p><p><img src="media/10acfb8ca5207acd9b7a8e8f1026b53b.png" alt=""></p><p>Het wordt aangeraden om waar mogelijk punten en lijnen te vermijden en zoveel
+mogelijk met vlakken te werken.</p><p><strong>Kleur/patroon van vlakken</strong><br>Het plangebied wordt op iedere kaart op dezelfde wijze (conform de plangrens in
+de SVBP2012) weergegeven (zie Figuur 17).</p><p><img src="media/817254a0b7bd47a8448450a72c5383f2.png" alt=""></p><p><strong>Figuur 17 Verbeelding van het plangebied</strong></p><p>Voor alle andere planobjecten die als vlak zijn weergegeven, kan de opsteller
+van de structuurvisie zelf bepalen hoe deze wordt weergegeven. Wel moet worden
+gekozen uit een vaste lijst met symboolcodes.</p><p>Vlakken kunnen op verschillende manieren worden weergegeven. In Bijlage 2 zijn
+deze weergave mogelijkheden voor vlakken beschreven. Per mogelijkheid zijn
+meerdere kleuren mogelijk.</p><p><em>Verborgen objecten</em><br>Planobjecten die niet zichtbaar, maar wel opvraagbaar moeten zijn in het
+kaartbeeld (zogenaamde verborgen objecten) worden gecodeerd met een symboolcode
+met een 100% transparante vulling (code ES133).</p><p><u>Let op</u>: dit planobject wordt wel getoond in de legenda (zie planobject
+‘Essentie van de Visie’ in Figuur 18).<br><u>Let op</u>: een ontvanger van het bestand is vrij om een eigen verbeelding in zijn eigen omgeving toe te passen, waardoor
+het object daar wel getoond kan worden.</p><p><img src="media/05287cd3f38eb388e334fff5e77ff6d1.png" alt=""></p><p><strong>Figuur 18 Verborgen objecten</strong></p><p><strong>Vorm en kleur/patroon van lijnen</strong><br>Als een planobject (deels) als lijn is ingetekend, dan dient te worden
+aangegeven door welk type lijn, met welke lijndikte en met welke lijnkleur de
+lijn moet worden verbeeld.<br>Qua lijntype kan worden gekozen tussen:</p><p><img src="media/4e5a04bb9d99811faae9e5152f9ceab3.png" alt="">
+Per mogelijkheid zijn meerdere lijndiktes en kleuren mogelijk.</p><p><strong>Vorm en kleur/patroon van punten</strong><br>Als een planobject (deels) als punt is ingetekend, dan dient te worden
+aangegeven door welk symbool, met welke grootte en met welke kleur het punt moet
+worden verbeeld.<br>Qua typering kan worden gekozen uit abstracte symbolen:
+<img src="media/6ade9adbd39cd287b1129f2b7caadf8a.png" alt=""></p><p>Bij het plaatsen van het puntsymbool kan de grootte worden meegegeven. Dit heeft
+als consequentie dat iedere meegegeven grootte van het puntsymbool mee schaalt
+bij het inzoomen als de structuurvisie wordt geraadpleegd in een viewer.<br>Er is ook de mogelijkheid om als opsteller zelf een figuratief symbool te
+tekenen als vlak. Dit betekent dat het vlak als symbool geïnterpreteerd moet
+worden en geen relatie heeft met de begrenzing van het planobject in de
+werkelijkheid. Het vlak wordt gebruikt om een figuur af te beelden.<br>Bij de weergave van dit getekende figuur kan dan worden gekozen uit de
+weergavemogelijkheden van vlakken. Bij de nauwkeurigheid dient dan
+‘cartografisch figuur’ te worden aangegeven. De gebruiker weet dan dat het
+getoonde vlak als figuur moet worden geïnterpreteerd.<br><u>Let wel</u>: deze werkwijze is alleen bedoeld voor het verbeelden van planobjecten
+die met een lijn of punt zijn weergegeven.</p><p>Een voorbeeld waarbij het gebruik van ‘cartografisch figuur’ handig kan zijn, is
+om bijvoorbeeld uitbreidingsrichtingen weer te geven (zie Figuur 19).</p><p><strong>Figuur 19 Voorbeelden verbeelding van een planobject via cartografisch
+figuur</strong></p><p><img src="media/c8e1a4cffa36ab7a40a176e8c59af342.png" alt=""></p><p><strong>Nauwkeurigheid</strong><br>Voor ieder planobject geldt dat de nauwkeurigheid van de begrenzing moet worden
+aangegeven. Dit gebeurt via het attribuut ‘idealisatie’ en is voor de
+verschillende objecttypen uitgelegd in Hoofdstuk 5. Voor het planobject
+‘plangebied’ geldt dat de idealisatie altijd ‘exact’ is en voor planobjecten die
+als cartografisch figuur zijn weergegeven, is de waarde voor het attribuut
+idealisatie altijd ‘cartografisch figuur’.<br>Voor alle overige planobjecten kan worden gekozen tussen:
+</p><blockquote>
+<p>‘Exact’  </p>
+</blockquote><p><em>Exact</em> geeft aan dat de geometrie van het object opgenomen is met de nauwkeurigheid die behoort bij de dataset, waarmee de begrenzing als exact wordt beschouwd.</p><blockquote>
+<p>‘Indicatief’
+</p>
+</blockquote><p><em>Indicatief</em> betekent dat de geometrie indicatief geïnterpreteerd moet
+worden; waarmee de begrenzing niet is vastgelegd.<br>Het ligt voor de hand om de verbeelding van het planobject af te stemmen op de
+mate van nauwkeurigheid. Zo lenen arceringen zonder rand zich beter voor
+planobjecten die indicatief zijn begrensd. Planobjecten die exact zijn begrensd,
+kunnen beter met een duidelijke rand worden verbeeld.</p></section><section id="volgorde-van-de-planobjecten-op-de-kaart"><h4 id="x4-2-2-volgorde-van-de-planobjecten-op-de-kaart"><span class="secno">4.2.2 </span>Volgorde van de planobjecten op de kaart</h4><p>De volgorde waarop de planobjecten in de kaart worden getoond (met 1 onder en 5
+boven), is:</p><ol>
+<li>gevuld vlakken (S-nummers);</li>
+<li>semi-transparant gevulde vlakken of vlakken zonder vulling (ES-nummers);</li>
+<li>gearceerde vlakken (AS-nummers);</li>
+<li>lijnen (L-nummers);</li>
+<li>punten (P-nummers).
+Indien twee vlakken op dezelfde wijze worden verbeeld (bijvoorbeeld beide
+als gevuld vlak), dan wordt
+gekeken naar de positie van het planobject in de objectenstructuur.
+Planobjecten die lager in de objectenstructuur zijn geplaatst, worden
+bovenaan getoond.</li>
+</ol></section></section><section id="legenda"><h3 id="x4-3-legenda"><span class="secno">4.3 </span>Legenda</h3><section id="volgorde-planobjecten-in-de-legenda"><h4 id="x4-3-1-volgorde-planobjecten-in-de-legenda"><span class="secno">4.3.1 </span>Volgorde planobjecten in de legenda</h4><p>Bij het bepalen van de volgorde waarop de planobjecten in de legenda worden
+getoond, wordt eerst gekeken naar de positie van het planobject in de
+objectenstructuur. Planobjecten die hoger in de objectenstructuur zijn
+geplaatst, worden eerst getoond. Planobjecten die binnen de objectenstructuur
+op hetzelfde niveau voorkomen, worden alfabetisch gesorteerd op naam van het
+planobject.</p></section><section id="kopjes-in-de-legenda-opnemen"><h4 id="x4-3-2-kopjes-in-de-legenda-opnemen"><span class="secno">4.3.2 </span>Kopjes in de legenda opnemen</h4><p>Ook is het mogelijk om een planobject alleen als kopje in de legenda op te
+nemen. Dit werkt als volgt:<br>Vul bij het planobject wel het kaartnummer en de kaartnaam in, maar niet de
+symboolcode (zie Tabel 4).</p><p><strong>Tabel 4 cartografieInfo bij een planobject als kopje in de legenda</strong></p><table>
+<thead>
+<tr>
+<th><em>Attribuut ‘cartografieInfo’ behorende bij het planobject ‘Landschapstypen’</em></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>Kaartnummer</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>kaartnaam</td>
+<td>Kaart 2b. Kernkwaliteit Landschap</td>
+</tr>
+<tr>
+<td></td>
+<td>symboolcode</td>
+<td></td>
+</tr>
+</tbody></table><p>Het planobject is dan niet klikbaar via de kaart, maar het is opgenomen als
+kopje in de legenda boven één of meerdere onderliggende planobjecten (zie
+planobject ‘Landschapstypen’ in Figuur 20).</p><p><strong>Figuur 20 Planobject als kopje in de legenda</strong></p><p><img src="media/0fda4f4f41a1434d1bc2e7ab49ddf97d.png" alt=""></p></section></section></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-de-planobjecten-en-hun-eigenschappen"><span class="secno">5. </span>De planobjecten en hun eigenschappen</h2><p><strong>In dit hoofdstuk worden de klassen (objecttypen) met bijbehorende attributen
+beschreven. Elk object binnen een klasse kent eigenschappen die als attribuut
+daaraan worden toegekend. In IMRO2012 is in het UML-schema weergegeven hoe de
+objecten (klassen) samenhangen en welke attributen mogelijk zijn. In Bijlage 5
+is een stappenplan opgenomen aan de hand waarvan u kunt bepalen welke klasse en
+welke attributen u dient in te vullen. Waar mogelijk zijn een aantal attributen
+al ingevuld of juist weggelaten.</strong></p><p>De objecttypen van de structuurvisie worden per paragraaf beschreven:
+</p><ul>
+<li>Structuurvisieplangebied in <a href="#klasse-structuurvisieplangebied">paragraaf 5.1</a>;</li>
+<li>Structuurvisiegebied in <a href="#klasse-structuurvisiegebied">paragraaf 5.2</a>;</li>
+<li>Structuurvisiecomplex in <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>;</li>
+<li>Structuurvisieverklaring in <a href="#klasse-structuurvisieverklaring-alleen-voor-provincies">paragraaf 5.4</a>.</li>
+</ul><p>Tot slot wordt in <a href="#metadata">paragraaf 5.5</a> metadata toegelicht.</p><section id="klasse-structuurvisieplangebied"><h3 id="x5-1-klasse-structuurvisieplangebied"><span class="secno">5.1 </span>Klasse Structuurvisieplangebied</h3><p>Het enige planobject op het hoogste niveau in de objectenstructuur behoort
+altijd tot de klasse ‘Structuurvisieplangebied’. In Tabel 5 zijn voor deze
+klasse de attributen benoemd, de waarden aangegeven die deze attributen moeten
+bevatten en is aangegeven of het gebruik van het attribuut verplicht is en of
+het attribuut meerdere malen mag worden gebruikt.</p><p><u>Let op</u>: dit kan verschillen tussen Rijk, provincie en gemeente. Daarom is,
+waar dit van toepassing is, voor het Rijk (zie kolom R), de provincie (zie kolom
+P) en de gemeente (zie kolom G) afzonderlijk weergegeven. Ook is aangegeven of
+attributen in samenhang moeten worden gebruikt (samengesteld attribuut). Na de
+tabel is per attribuut een nadere beschrijving gegeven.</p><p><strong>Tabel 5 Klasse Structuurvisieplangebied</strong></p><p><img src="media/dcca2e7ba9c2819f534d4db12e6b73ee.png" alt=""></p><p><strong><em>identificatie</em></strong> (verplicht):<br>Ieder ruimtelijk instrument kent een eigen identificatienummer (idn). Deze
+identificatie maakt het mogelijk dat op landelijk niveau een uniek onderscheid
+voor ieder instrument aanwezig is. Voor het geval het werkingsgebied bestaat uit
+meerdere ruimtelijk gescheiden gebieden kent het totaal van die gebieden één
+identificatienummer. De geometrie van het object <em>Structuurvisieplangebied</em> is
+hierbij een multipolygoon.<br>Het samengestelde attribuut verwijst naar het object NEN3610ID bestaande uit de
+attributen <em>namespace, lokaalID</em> en <em>versie</em>.
+</p><ul>
+<li><strong>namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten is
+dat ‘NL.IMRO’.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Unieke identificatiecode binnen de registratie van ruimtelijke plannen.
+Bestaande uit een bronhouderscode van 4 cijfers (voor het Rijk 0000, voor
+provincies 99xx waarbij xx staat voor het provincienummer en voor gemeente
+het CBS-nummer) gevolgd door een punt (.) en maximaal door de bronhouder te
+bepalen 18 alfanumerieke tekens. Er geldt de volgende reguliere expressie:
+[0-9]{4}\.[A-Za-z0-9]{1,18}
+</li>
+<li><strong>Versie:</strong> (verplicht)<br>Versie-aanduiding van het plangebied bestaande uit 4 alfanumerieke tekens
+door de bronhouder te bepalen. Er geldt de volgende reguliere expressie:
+[A-Za-z0-9]{4}
+Uit de waarden van de attributen <em>namespace, lokaalID</em> en <em>versie</em> wordt de
+bestandsnaam van het plan opgebouwd conform STRI2012:
+namespace.lokaalID-versie. De samengestelde reguliere expressie is:
+NL\.IMRO\.[0-9]{4}\.[A-Za-z0-9]{1,18}-[A-Za-z0-9]{4}</li>
+</ul><p><strong>typePlan</strong> (verplicht):<br>Voor het attribuut <em>typePlan</em> wordt het domein <em>RuimtelijkPlanOfBesluit_SV</em>
+gebruikt. Hier wordt de vaste waarde <em>structuurvisie</em> ingevuld.</p><p><strong>beleidsmatigVerantwoordelijkeOverheid</strong> (verplicht):<br>Hier wordt de overheid die beleidsmatig verantwoordelijk is voor het opstellen
+van het plan opgenomen uit een van domeinen <em>Overheden_R (voor het Rijk)</em>,
+<em>Overheden_P (voor provincies) of Overheden_G</em> (voor gemeenten).</p><p><strong>naamOverheid</strong> (verplicht, zo vaak als nodig):<br>Hier wordt de naam van de beleidsmatig verantwoordelijke overheid opgenomen.
+Voor het Rijk is dit in de vorm van de tekst “ministerie …….”. In het geval er
+meerdere verantwoordelijke ministeries zijn, wordt naamOverheid evenzoveel
+ingevuld.<br>Voor de provincie is dit in de vorm van de tekst “provincie …….” En voor
+gemeenten is dit in de vorm van de tekst “gemeente …….” of
+“deelgemeente/stadsdeel …….”..</p><p><strong>overheidsCode</strong> (verplicht):<br>Teneinde kenbaar te maken van welke beleidsmatig verantwoordelijke overheid de
+structuurvisie is, wordt hier het viercijferige CBS-nummer van die overheid
+opgenomen. Hier wordt voor het Rijk 0000, voor provincies 99xx waarbij xx staat
+voor het provincienummer en voor gemeente het CBS-nummer ingevuld.</p><p><strong>naam</strong> (verplicht):<br>In het waardeveld van het attribuut <em>naam</em> dient de naam van de structuurvisie
+te worden op­genomen. Het gaat daarbij om de volledige naam. Indien er sprake is
+van een aanhaaltitel in het plan dan wordt deze gebruikt.</p><p><strong>locatieNaam</strong> (zo vaak als gewenst):<br>Het kan gewenst zijn om de naam van de locatie(s) waarover de structuurvisie
+gaat kenbaar te maken. De naam van die locatie(s) worden hier ingevuld.</p><p><strong><em>planstatusInfo</em></strong> (verplicht):<br>Dit attribuut is noodzakelijk om de plangegevens te kunnen plaatsen naar tijd en
+belang. Het samengesteld attribuut <em>planstatus</em> verwijst naar het object
+<em>PlanstatusEnDatum</em>, bestaande uit de attributen <em>planstatus</em> en <em>datum</em>.
+</p><ul>
+<li><strong>planstatus</strong> (verplicht)<br>Het domein <em>Planstatus</em> geeft de toegestane waarden voor het attribuut <em>planstatus</em> waaruit er één moet worden gekozen. De waarde van dit attribuut
+geeft de planstatus weer.  </li>
+<li><strong>datum</strong> (verplicht)<br>Het attribuut <em>datum</em> is bedoeld om de proceduredatum van het plan op te
+nemen. De in het waardeveld op te nemen datum dient overeenkomstig het
+binnen het IMRO afgesproken datumformaat te worden genoteerd: jjjj-mm-dd.</li>
+</ul><p><strong>besluitnummer</strong> (onder voorwaarde verplicht):<br>Nummer van het vaststellingsbesluit van de structuurvisie. Het besluitnummer is
+alleen toegestaan en dan ook verplicht indien de planstatus <em>vastgesteld</em> is.</p><p><strong>verwijzingNaarVaststellingsbesluit</strong> (onder voorwaarde verplicht):<br>Hierin wordt een link opgenomen naar de tekst van het vaststellingsbesluit. In
+het format conform de bestandsnaamconventie <em>vaststellingsbesluit</em> volgens de
+STRI2012. Alleen toegestaan en dan ook verplicht indien de planstatus
+<em>vastgesteld</em> is. Aan het bestand kunnen ook eventueel bij het
+vaststellingsbesluit behorende bijlagen worden toegevoegd.</p><p><strong><em>verwijzingNaarIllustratieInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut is bedoeld om illustraties bij de structuurvisie op te nemen. Het
+betreft afbeeldingen op het niveau van het plangebied en niet op het niveau van
+onderliggende objecten.<br>Het attribuut verwijst naar het samengestelde attribuut
+<em>IllustratieReferentiePG</em>, bestaande uit de attributen
+<em>verwijzingNaarIllustratie</em> en <em>typeIllustratie</em>.
+</p><ul>
+<li><strong>verwijzingNaarIllustratie</strong> (verplicht)<br>Dit attribuut is exclusief bedoeld om (hyper)links te kunnen opnemen. Hier
+dient een (hyper)link naar de illustratie die bij het object behoort te
+worden opgenomen. Het format dient overeenkomstig de afspraak over de
+bestandsnaamconventie voor het bestandstype <em>illustratie</em> conform de
+STRI2012 te zijn.  </li>
+<li><strong>typeIllustratie</strong> (verplicht)<br>Hierin wordt het type van de illustratie vastgelegd: om wat voor soort
+illustratie het gaat. Er dient te worden gekozen uit één van de waarden
+(<em>afbeelding</em> of <em>kaart</em>) volgens het domein <em>Illustratie</em>.</li>
+</ul><p><strong><em>verwijzingNaarTekstInfo</em></strong> (verplicht):<br>Dit attribuut dat verwijst naar het samengestelde attribuut
+TekstReferentiePG_SV, bestaande uit de attributen <em>verwijzingNaarTekst</em> en
+<em>typeTekst</em>.<br>Het attribuut wordt met de volgende cardinaliteit opgenomen:
+</p><ul>
+<li>1 verwijzing naar volledige beleidsdocument;</li>
+<li>0..1 verwijzing naar volledige toelichting;</li>
+<li>0..1 verwijzing naar volledige bijlagen.
+</li>
+</ul><p>Teneinde een zo beperkt mogelijk aantal verwijzingen naar teksten te verkrijgen
+is het aantal keren dat het attribuut <em>verwijzingNaarTekstInfo</em> mag worden
+gebruikt beperkt. De raadpleger van de structuurvisie heeft daar baat bij, omdat
+hij dan niet direct geconfronteerd wordt met een mogelijk lange lijst van
+verwijzingen. Daarom moet er maximaal één verwijzing zijn naar het volledige
+beleidsdocument en mag er maximaal één verwijzing zijn naar de volledige
+toelichting en maximaal één naar de volledige bijlagen. Er mag worden verwezen
+naar een inhoudsop­gave of index, waardoor indirect meer mogelijkheden aanwezig
+zijn.<br>De bronhouder kiest voor het al dan niet gebruik van objectgerichte planteksten.
+In beide gevallen wordt dit attribuut <em>verwijzingNaarTekstInfo</em> gebruikt. De
+keuze voor XML of HTML/PDF planteksten geldt niet alleen voor het plangebied, de
+keuze geldt ook voor de andere objecten (structuurvisiegebieden/
+structuurvisiecomplexen) binnen de structuurvisie. Daarnaast wordt de keuze
+vastgelegd met behulp van het attribuut <em>verwijzingNorm</em> bij
+Structuurvisieplangebied_R van deze structuurvisie. Het format dient
+overeen­komstig de afspraak over de bestandsnaamconventies conform de STRI2012
+te zijn.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)<br>De waarde van dit attribuut is een (hy­per)­link naar het soort document dat
+is aangegeven bij het attribuut <em>typeTekst</em>. Er wordt in de waarde geen
+elementen van een directory­structuur/pad opgenomen.  </li>
+<li><strong>typeTekst</strong> (verplicht)<br>Aanduiding van het type tekst waarnaar verwezen wordt. Domein: <em>TeksttypePG_SV</em>:  <ul>
+<li>document</li>
+<li>toelichting</li>
+<li>bijlage</li>
+</ul>
+</li>
+</ul><p><strong><em>ondergrondInfo</em></strong> (verplicht, zo vaak als gewenst):<br>Dit attribuut verwijst naar het samengestelde attribuut <em>Ondergrondreferentie</em>,
+bestaande uit de attributen <em>ondergrondtype</em> en <em>ondergronddatum.</em> Met dit
+attribuut wordt, conform artikel 1.2.4 Bro, aangegeven welke ondergrond bij het
+vaststellen van de structuurvisie is gebruikt.<br>Er zijn meerdere waarden mogelijk.
+</p><ul>
+<li><strong>ondergrondtype</strong> (verplicht)<br>Het type van de gebruikte ondergrond volgens het domein Ondergronden. Op
+grond van de Wet basisregistratie grootschalige topografie (BGT) is het per
+1 juli 2017 voor bestuursorganen verplicht om gebruik te maken van de <strong>Basisregistratie Grootschalige Topografie (BGT).</strong> Een bestuursorgaan kan
+daar indien nodig gemotiveerd van afwijken. Bij afwijking kan het
+bestuursorgaan gebruik maken van:  <ul>
+<li>basisregistratie topografie (BRT)</li>
+<li>basisregistratie kadaster (BRK)<br>Indien geen gebruik is gemaakt van een ondergrond uit het domein
+Ondergronden, dan wordt de naam van het bestand van de gebruikte
+ondergrond(en) als vrije tekst opgegeven. In de PRTRI2012, hoofdstuk 7, is
+toegelicht welke bestandformaten voor de ondergrond kunnen worden gebruikt.
+</li>
+</ul>
+</li>
+<li><strong>ondergronddatum</strong> (verplicht)<br>De datum van de gebruikte ondergrond.</li>
+</ul><p><strong><em>*verwijzingNaarExternPlanInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut wordt gebruikt om de relatie met een ander instrument vast te
+leggen. In bijlage 3 is dit met betrekking tot herzieningen toegelicht. Een
+structuurvisie staat niet altijd op zichzelf, maar kan een relatie hebben met
+een ander plan van dezelfde of een andere overheidsorganisatie. Voorbeelden:
+</p><ul>
+<li>de structuurvisie is een uitwerking van een overkoepelend plan;</li>
+<li>de structuurvisie wordt nader uitgewerkt in bijvoorbeeld een uitvoeringsplan.</li>
+</ul><p>Het attribuut verwijst naar het samengestelde attribuut <em>ExternPlanReferentie_PG_SV</em>, bestaande uit de attributen <em>naamExternPlan,
+idnExternPlan</em> en <em>rolExternPlan.</em>
+</p><ul>
+<li><strong>naamExternPlan</strong> (verplicht)<br>Hier wordt de naam van het externe plan of in voorkomend geval besluit
+waarnaar verwezen wordt opgegeven. Dit kan een specifieke naam zijn indien
+deze bekend is, maar ook een algemene benaming ingeval het bijvoorbeeld een
+plan betreft dat nog niet bestaat.
+</li>
+<li><strong>idnExternPlan</strong> (indien gewenst)<br>In het geval een identificatie (idn) van het externe plan waarnaar verwezen
+wordt, bekend is, kan deze idn hier worden opgenomen. </li>
+<li><strong>rolExternPlan</strong> (verplicht)<br>Hierin wordt de betekenis van het externe plan/besluit ten opzichte van het
+hier betreffende plan vastgelegd. Het betreft hier een van de volgende vaste
+waarden uit het domein <em>RolExternPlanPG_SV</em>:  <ul>
+<li><em>in extern plan/besluit uit te werken</em> in geval het plan dat als gevolg
+dient te hebben;</li>
+<li><em>in extern plan/besluit uitgewerkt</em> ingeval dat het geval is;</li>
+<li><em>ten gevolge van extern plan/besluit</em> in geval het plan een gevolg is van
+een ander plan of besluit;</li>
+<li><em>informatie in extern plan/besluit</em> in geval (nadere) informatie in een
+extern plan of besluit staat;</li>
+<li><em>ter vervanging van extern plan</em> ingeval daarvan sprake is, een en ander als
+uiteengezet in bijlage 3 van deze praktijkrichtlijn.</li>
+<li><em>als mutatie opgenomen</em> voor het geval er sprake is van een mutatieplan, een
+en ander als uiteengezet in bijlage 3 van deze praktijkrichtlijn.</li>
+</ul>
+</li>
+</ul><p><strong>verwijzingNorm</strong> (verplicht):<br>Teneinde de zekerheid te hebben welke technische status de data hebben, is het
+noodzakelijk dat wordt aangegeven aan welke IMRO versie de gegevensset voldoet.
+Tevens moet een verwijzing worden opgenomen naar de gebruikte versie van de
+praktijkrichtlijn. In het geval objectgerichte planteksten (XML) onderdeel zijn
+van de Rijksstructuurvisie, dan wordt ook de verwijzing naar de standaard voor
+planteksten opgenomen.<br>Het attribuut <em>verwijzingNorm</em> dient minimaal twee keer te wor­den opgeno­men
+met de verwijzing naar de betreffende versies in het waardeveld: IMRO2012 en
+PRrSV2012 voor rijksstructuurvisies, PRpSV voor provinciale structuurvisies of
+PRgSV voor het gemeentelijke structuurvisies[^9].</p><p>[^9]: Dit terwijl de huidige praktijkrichtlijn de toelichting op IMRO2012 bevat
+voor het maken van structuurvisies op alle overheidslagen. IMRO is bij het maken
+van deze praktijkrichtlijn niet aangepast. Hiervoor is een melding opgenomen in
+de meldingen lijst van de RO Standaarden:
+<a href="https://www.geonovum.nl/documents/meldingenrospdf">https://www.geonovum.nl/documents/meldingenrospdf</a>,
+melding 4498.</p><p>Bij het gebruik van objectgerichte planteksten in dit ruimtelijk plan moet ook
+worden opgenomen: IMROPT2012.</p><p><strong><em>begrenzing</em></strong> (verplicht):<br>Dit attribuut verwijst naar het samengestelde attribuut <em>GeometriePlangebied
+(voor Rijk en gemeente) of GeometriePlangebied_P (voor provincie)</em>, bestaande
+uit de attributen <em>geometrie, inwinningsschaal</em> en <em>idealisatie</em>.
+</p><ul>
+<li><strong>geometrie</strong> (verplicht)<br>Het object <em>Structuurvisieplangebied</em> kent uitsluitend de geometrie van een
+vlak of multivlak (multipolygoon). Dit attribuut legt de coördinaten in een
+vastgesteld format (gml) vast. De coördinaten worden door de applicatie
+automatisch gegenereerd.
+</li>
+<li><strong>inwinningsschaal</strong> (alleen voor provincie, indien gewenst)<br>De inwinningsschaal is de schaal waarop het object is ingewonnen. Het schaal
+aspect kan bij individuele objecten een rol spelen in relatie tot de
+verbeelding daarvan of de interpretatie die aan het object kan worden
+gegeven. Deze schaal kan hier worden opgegeven.
+</li>
+<li><strong>idealisatie</strong> (verplicht)<br>Met het attribuut <em>idealisatie</em> kan de nauwkeurigheid van de begrenzing van
+een object worden aangegeven. Dit attribuut heeft de vaste waarde exact
+volgens het domein <em>Idealisatie_1</em>. De vaste waarde <em>exact</em> geeft aan dat de
+geometrie van het object opgenomen is met de nauwkeurigheid die behoort bij
+de dataset.</li>
+</ul></section><section id="klasse-structuurvisiegebied"><h3 id="x5-2-klasse-structuurvisiegebied"><span class="secno">5.2 </span>Klasse Structuurvisiegebied</h3><p>In Tabel 6 zijn de attributen behorend bij de klasse <em>Structuurvisiegebied</em>
+benoemd, de waarden aangegeven die deze attributen moeten bevatten en is
+aangegeven of het gebruik van het attribuut verplicht is en of het attribuut
+meerdere malen mag worden gebruikt. Ook is aangegeven of attributen in samenhang
+moeten worden gebruikt. Na de tabel is per attribuut een nadere toelichting
+gegeven.</p><p><strong>Tabel 6 Klasse Structuurvisiegebied</strong></p><p><img src="media/4cd1315f60b848b1fe256b937ef3ea0c.png" alt=""></p><p><strong><em>identificatie (idn)</em></strong> (verplicht):<br>Elk object <em>Structuurvisiegebied</em> krijgt een eigen unieke identificatie binnen
+deze structuurvisie. Het samengestelde attribuut <em>identificatie</em> verwijst naar
+het object NEN3610ID bestaande uit de attributen <em>namespace</em> en <em>lokaalID</em>.
+</p><ul>
+<li><strong>namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten is
+dat ‘NL.IMRO’.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Door de bronhouder te bepalen unieke identificatiecode binnen de context van
+het bestand bestaande uit maximaal 32 alfanumerieke tekens. Toegestane
+tekens: {”A”…”Z”, “a”…”z”, ”0”…”9”, “_”, “- “, “,”, ”.”}.</li>
+</ul><p><strong>typePlanobject</strong> (verplicht):<br>Het attribuut <em>typePlanobject</em> maakt het via het bijbehorende domein
+<em>RuimtelijkPlanobject</em> mogelijk aan te geven welk object het betreft. Hier wordt
+de vaste waarde <em>structuurvisiegebied_R (voor het Rijk), structuurvisiegebied_P
+(voor provincie) of structuurvisiegebied_G (voor gemeente)</em> ingevuld.</p><p><strong>plangebied</strong> (verplicht):<br>Voor elk object is een verwijzing noodzakelijk naar het object
+<em>Structuurvisieplangebied</em> waar het object deel van uitmaakt. Dit attribuut
+verwijst daartoe naar het attribuut <em>identificatie</em> van het bijbehorende object
+<em>Structuurvisieplangebied</em>. Dit zal automatisch binnen een applicatie, gebruikt
+om het plan op te stellen, gestalte kunnen krijgen.</p><p><strong>naam</strong> (verplicht):<br>Aan het attribuut <em>naam</em> wordt als waarde een binnen het plan unieke
+(beleids)representerende naam van het object meegegeven, mogelijk zoals deze in
+de tekst die ernaar verwijst is opgenomen. Niet altijd zal dit het geval zijn.
+In dat geval zal een zinvolle onderscheidende naam moeten worden ingevuld, zodat
+het object voor gebruikers herkenbaar is en de gebruiker hierop desgewenst kan
+classificeren.</p><p><strong>thema</strong> (verplicht, zo vaak als gewenst):<br>Met dit attribuut wordt het thema van het object opgenomen. Het thema wordt
+gekozen uit de waarden volgens het domein <em>Thema</em>. Indien geen bruikbare waarde
+wordt gevonden kan een vrije tekst worden opgenomen. Dit attribuut kan meerdere
+keren worden opgenomen.</p><p><strong><em>beleidinfo</em></strong> (verplicht voor Rijk en provincie, optioneel voor gemeente. Zo vaak
+als gewenst):<br>De Wro stelt dat een structuurvisie de hoofdlijnen bevat van de voorgenomen
+ontwikkeling van dat gebied. De structuurvisie gaat tevens in op de wijze waarop
+men zich voorstelt die voorgenomen ontwikkeling te doen verwezenlijken. Voor dit
+doel biedt het attribuut beleidinfo mogelijkheden om aspecten daarvan kenbaar te
+maken. Het attribuut <em>beleidinfo</em> verwijst naar het samengestelde attribuut <em>Beleidinfo_RSV (voor het Rijk), Beleidinfo_PSV (voor provincie) of
+Beleidinfo_GSV (voor gemeente)</em> dat bestaat uit de attributen <em>belang</em>, <em>rol</em> en
+<em>instrument.</em>
+</p><ul>
+<li><strong>belang</strong> (verplicht voor Rijk en provincie, optioneel voor gemeente)<br>Hier kan het belang worden aangegeven dat door het bestuursorgaan met het
+object wordt beoogd. Het belang dient in (enkele) trefwoorden te worden
+benoemd.  </li>
+<li><strong>rol</strong> (verplicht voor Rijk en provincie, optioneel voor gemeente.)<br>Hier wordt aangegeven hoe het belang wordt verwezenlijkt. De rol dient in
+(enkele) trefwoorden te worden benoemd.
+</li>
+<li><strong>instrument</strong> (indien gewenst, maximaal 1 keer)<br>Hier wordt het instrument genoemd dat wordt ingezet om het belang te
+verwezenlijken. Voor deze instrumenten moet worden gekozen uit een lijst die
+is opgenomen in de domeinen <em>Instrument_RSV (voor het Rijk), Instrument_PSV
+(voor de provincies) of Instrument_GSV (voor de gemeenten)</em>. Het huidig
+juridisch instrumentarium is opgenomen in de lijst. Voor toekomstig
+juridisch instrumentarium en/of andere instrumenten kan de mogelijkheid tot
+het invullen van een vrije waarde worden gebruikt.</li>
+</ul><p><strong><em>verwijzingNaarTekstInfo</em></strong> (verplicht, zo vaak als gewenst):<br>Het attribuut is bedoeld voor het verwijzen naar specifieke tekst die behoort
+bij het betreffende object <em>Structuurvisiegebied</em>. Het attribuut verwijst naar
+het samengestelde attribuut <em>Tekstreferentie_SV (voor Rijk en gemeente) of
+Tekstreferentie_PSV (voor provincie)</em>, bestaande uit de attributen <em>verwijzingNaarTekst</em> en <em>typeTekst</em>.<br>De bronhouder kiest voor dezelfde vorm van planteksten als bij het object <em>Structuurvisieplangebied</em>: objectgericht in XML of niet-objectgericht in HTML
+formaat. Het formaat dient overeen­komstig de afspraak over de
+bestandsnaamconventies conform de STRI2012 te zijn. De keuze van de bronhouder
+wordt vastgelegd in de <em>verwijzingNorm</em> bij deze structuurvisie.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)<br>Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een
+(hy­per)­link naar het soort document dat is aangegeven bij het attribuut <em>typeTekst</em> te worden opgenomen.<br>Voor de waarde van het attribuut <em>verwijzingNaarTekst</em> geldt dat geen
+elementen van een directorystructuur/pad mogen worden opgenomen. Wel moet
+een nadere precisering naar de plaats binnen een document te worden
+opgenomen met behulp van een fragmentidentifier. Het fragment in de
+hyperlink is de locatie in de plantekst (XML of HTML) waar het van
+toepassing zijnde attribuut <em>typeTekst</em> betrekking op heeft. Een hyperlink
+krijgt dan de vorm: <em>bestandsnaam.xml­#fragment</em> of <em>bestandsnaam.htm­#fragment</em>.  </li>
+<li><strong>typeTekst</strong> (verplicht)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing
+naar tekst dient gekozen te worden uit een van de waarden van het domein <em>Teksttype_SV (voor Rijk en gemeente) of Teksttype_PSV (voor provincie).</em></li>
+</ul><p><strong><em>verwijzingNaarIllustratieInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut is bedoeld om een specifieke afbeelding of illustratie behorende
+bij het object op te nemen. Het attribuut verwijst naar het samengestelde
+attribuut <em>IllustratieReferentie_SV (voor rijk en gemeente) of
+IllustratieReferentie_PSV (voor provincie)</em>, bestaande uit de attributen <em>verwijzingNaarIllustratie, typeIllustratie</em> en <em>legendanaam</em>.:
+</p><ul>
+<li><strong>verwijzingNaarIllustratie</strong> (verplicht)<br>Dit attribuut is exclusief bedoeld om links te kunnen opnemen. Hier dient
+een link naar de illustratie die bij het object behoort te worden opgenomen.
+Het format dient overeenkomstig de afspraak over de bestandsnaamconventie
+voor het bestandstype <em>illustratie</em> conform de STRI2012 te zijn.  </li>
+<li><strong>typeIllustratie</strong> (verplicht)<br>Hierin wordt het type van de illustratie vastgelegd: om wat voor soort
+illustratie het gaat. Er dient te worden gekozen uit één van de waarden <em>afbeelding</em> of <em>kaart</em> volgens het domein <em>Illustratie</em>.
+</li>
+<li><strong>naamIllustratie</strong> (alleen voor provincie, indien gewenst)<br>Met dit attribuut kan de naam van de illustratie worden opgegeven.  </li>
+<li><strong>legendanaam</strong> (indien gewenst)<br>Indien het object in de legenda van de illustratie is opgenomen kan hier de
+naam van de legenda-eenheid worden opgenomen teneinde duidelijk te maken
+welk deel van de illustratie bij het object behoort.</li>
+</ul><p><strong><em>verwijzingNaarExternPlanInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut verwijst naar het samengestelde attribuut <em>ExternPlanReferentie_SV</em>, bestaande uit de attributen <em>naamExternPlan</em>, <em>idnExternPlan</em> en <em>rolExternPlan</em>. De verwijzing naar het externe plan moet ook
+voorkomen bij het plangebied.
+</p><ul>
+<li><strong>naamExternPlan</strong> (verplicht)<br>Dit attribuut verwijst naar een ander plan/besluit waarin het beleid
+waarnaar het object verwijst is uitgewerkt/opgenomen. In het waardeveld
+staat in dat geval de naam van dat plan/besluit. Dit kan een specifieke naam
+zijn indien deze bekend is, maar ook een algemene benaming ingeval het
+bijvoorbeeld een plan betreft dat nog niet bestaat.
+</li>
+<li><strong>idnExternPlan</strong> (indien gewenst)<br>In het geval een identificatie (idn) van het externe plan/besluit waarnaar
+verwezen wordt, bekend is, kan deze idn hier worden opgenomen.  </li>
+<li><strong>rolExternPlan</strong> (verplicht)<br>Hierin wordt de betekenis van het externe plan/besluit ten opzichte van het
+object <em>Structuurvisiegebied</em> vastgesteld. Het betreft hier een van de
+volgende vaste waarden uit het domein <em>RolExternPlan_SV</em>:  <ul>
+<li><em>in extern plan/besluit uit te werken</em> in geval het beleid achter het object
+dat als gevolg dient te hebben;
+</li>
+<li><em>in extern plan/besluit uitgewerkt</em> ingeval dat het geval is in relatie tot
+dit object;  </li>
+<li><em>ten gevolge van extern plan/besluit</em> in geval het object een gevolg is van
+een ander plan of besluit;
+</li>
+<li><em>informatie in extern plan/besluit</em> in geval (nadere) informatie in een
+extern plan of besluit over dit object staat.</li>
+</ul>
+</li>
+</ul><p><strong><em>cartografieInfo</em></strong> (zo vaak als gewenst):<br>Het attribuut <em>cartografieInfo</em> wordt gebruikt om verschillende kaarten in de
+structuurvisie zichtbaar en presenteerbaar te maken. De structuur van de
+kaartopbouw staat echter los van de planstructuur. Geen of foutief gebruik van
+het attribuut <em>cartografieInfo</em> resulteert in een grijze of andere
+objectweergave in een interactieve raadpleegomgeving. Een object kan in meerdere
+kaarten voorkomen. Er moeten meerdere attributen <em>cartografieInfo</em> met waarden
+toegevoegd worden om dit te realiseren.<br>Het attribuut verwijst naar het samengestelde attribuut <em>cartografieInfo</em>
+bestaande uit de attributen <em>kaartnummer, kaartnaam en symboolcode.</em>
+</p><ul>
+<li><strong>kaartnummer</strong> (verplicht)<br>Het nummer van de kaart van de structuurvisie waartoe dit object behoort.
+Het kaartnummer is door de bronhouder te bepalen. Kaarten kunnen in een
+interactieve raadpleegomgeving worden geprioriteerd op basis van
+kaartnummer. De kaart met nummer 1 wordt als hoofdkaart gezien en moet
+altijd voorkomen, kaartnummer 0 niet mag voorkomen. Voorloopnullen worden
+genegeerd (001 wordt bijvoorbeeld 1). Het kaartnummer is een uniek nummer
+gekoppeld aan een kaartnaam.  </li>
+<li><strong>kaartnaam</strong> (verplicht)<br>De naam van de kaart van de structuurvisie waartoe dit object behoort. De
+kaartnaam is door de bronhouder te bepalen.
+</li>
+<li><strong>symboolcode</strong> (zo vaak als gewenst)<br>De symboolcode uit de symboolcodelijst voor vormvrije plannen (onderdeel van
+de RO Standaarden 2012). De symboolcode geeft de kleur en patroon aan voor
+de wijze waarop het object <em>Structuurvisiegebied_G</em> in de interactieve
+raadpleegomgeving wordt weergegeven.<br>Een symboolcode die aan een object wordt toegevoegd geldt deze alleen voor
+dit object zelf en niet voor de onderliggende objecten. Er vindt dus geen
+overerving van symboolcode plaats.</li>
+</ul><p><strong><em>begrenzing</em></strong> (Voor het Rijk conditioneel, voor provincie en gemeente verplicht.
+Zo vaak als gewenst):<br>Voor provincie en gemeente is dit attribuut verplicht. Voor het Rijk geldt dat
+wanneer voor het object een illustratie met een kaartbeeld van het object is
+opgenomen, dit attribuut verplicht is. Het attribuut verwijst naar het
+samengestelde attribuut <em>GeometrieStructuurvisieObject (voor Rijk en gemeente)
+of GeometrieStructuurvisieObject_P (voor provincie)</em>, bestaande uit de
+attributen:
+</p><ul>
+<li><strong>geometrie</strong> (verplicht)<br>De geometrie van het object <em>Structuurvisiegebied</em> kan een beschrijving van
+punt, lijn, vlak of meervoudige versies daarvan (multipunt, multilijn,
+multivlak) zijn, tezamen de geometrie van het object vormend. Dit attribuut
+legt de coördinaten in een vastgesteld format (gml) vast. De coördinaten
+kunnen door een applicatie automatisch worden gegenereerd.  </li>
+<li><strong>inwinningsschaal</strong> (alleen voor provincie, indien gewenst)<br>De inwinningsschaal is de schaal waarop het object is ingewonnen. Het schaal
+aspect kan bij individuele objecten een rol spelen in relatie tot de
+verbeelding daarvan of de interpretatie die aan het object kan worden
+gegeven. Deze schaal kan hier worden opgegeven. Indien deze waarde hier
+wordt opgegeven treedt deze waarde in de plaats van de waarde die bij het
+object <em>Structuurvisieplangebied</em> is opgegeven.
+</li>
+<li><strong>idealisatie</strong> (verplicht)<br>Met het attribuut <em>idealisatie</em> kan de nauwkeurigheid van de begrenzing van
+een object worden aangegeven. Er dient een keuze gemaakt te worden volgens
+het domein <em>Idealisatie_3</em>. De nauwkeurigheid van de begrenzing van een
+object neemt af in de keuzes, van <em>exact</em>, via <em>indicatief</em> naar <em>cartografisch</em> figuur:  <ul>
+<li><em>Exact</em> geeft aan dat de geometrie van het object opgenomen is met de
+nauwkeurigheid die be-hoort bij de dataset, waarmee de begrenzing als exact
+wordt beschouwd.  </li>
+<li><em>Indicatief</em> betekent dat de geometrie indicatief geïnterpreteerd moet
+worden; waarmee de be-grenzing niet is vastgelegd.
+</li>
+<li><em>Cartografisch figuur</em> betekent dat de geometrie (het figuur) als symbool
+geïnterpreteerd moet worden en geen relatie heeft met de begrenzing van het
+object in de werkelijkheid; waardoor slechts de locatie zonder een
+aangegeven begrenzing is vastgelegd.</li>
+</ul>
+</li>
+</ul></section><section id="klasse-structuurvisiecomplex"><h3 id="x5-3-klasse-structuurvisiecomplex"><span class="secno">5.3 </span>Klasse Structuurvisiecomplex</h3><p>In Tabel 7 zijn de attributen behorend bij de klasse <em>Structuurvisiecomplex</em>
+benoemd, de waarden aangegeven die deze attributen moeten bevatten en is
+aangegeven of het gebruik van het attribuut verplicht is en of het attribuut
+meerdere malen mag worden gebruikt. Ook is aangegeven of attributen in samenhang
+moeten worden gebruikt. Na de tabel is per attribuut een nadere toelichting
+gegeven.</p><p><strong>Tabel 7 Klasse Structuurvisiecomplex</strong></p><p><img src="media/e2397882987324fc27486e8f50d8bdd4.png" alt=""></p><p><strong><em>identificatie (idn)</em></strong> (verplicht):<br>Elk object Structuurvisiecomplex krijgt een eigen unieke identificatie binnen
+deze structuurvisie. Het samengestelde attribuut identificatie verwijst naar het object NEN3610ID
+bestaande uit de attributen namespace en lokaalID.
+</p><ul>
+<li><strong>namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten is
+dat „NL.IMRO‟.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Door de bronhouder te bepalen unieke identificatiecode binnen de context van
+het bestand bestaande uit maximaal 32 alfanumerieke tekens. Toegestane
+tekens: {”A”…”Z”, “a”…”z”, 0”…”9”, “_”, “- “, “,”, ”.”}.</li>
+</ul><p><strong>typePlanobject</strong> (verplicht):<br>Het attribuut typePlanobject maakt het via het bijbehorende domein
+RuimtelijkPlanobject mogelijk aan te
+geven welk object het betreft. Hier wordt de vaste waarde <em>structuurvisiecomplex_R (voor het Rijk), structuurvisiecomplex_P (voor
+provincie) of structuurvisiecomplex_G (voor gemeente)</em> ingevuld.</p><p><strong>plangebied</strong> (verplicht):<br>Voor elk object is een verwijzing noodzakelijk naar het object
+Structuurvisieplangebied waar het object
+deel van uitmaakt. Dit attribuut verwijst daartoe naar het attribuut
+identificatie van het bijbehorende
+object Structuurvisieplangebied. Dit zal automatisch binnen een applicatie
+gestalte kunnen krijgen.</p><p><strong>planobject</strong> (verplicht, zo vaak als gewenst):<br>Verwijzing naar alle objecten waaruit het complex bestaat: dit kunnen zowel
+gebieden als (andere) complexen, als verklaringen zijn. Als waarde worden de identificaties van alle
+objecten Structuurvisiegebied, Structuurvisiecomplex en Structuurvisieverklaring
+opgenomen.</p><p><strong>naam</strong> (verplicht):<br>Aan het attribuut naam wordt als waarde een (beleids)representerende naam van
+het object meegegeven,
+mogelijk zoals deze in de tekst die ernaar verwijst is opgenomen. Niet altijd
+zal dit het geval zijn. In dat
+geval zal een zinvolle onderscheidende naam moeten worden ingevuld, zodat het
+object voor gebruikers
+herkenbaar is en de gebruiker hierop desgewenst kan classificeren.</p><p><strong>thema</strong> (zo vaak als gewenst):<br>Met dit attribuut wordt het thema van het object opgenomen. Het thema wordt
+gekozen uit de waarden
+volgens het domein Thema. Indien geen bruikbare waarde wordt gevonden kan een
+vrije tekst worden
+opgenomen. Dit attribuut kan meerdere keren worden opgenomen.</p><p><strong><em>beleidInfo</em></strong> (zo vaak als gewenst):<br>De Wro stelt dat een structuurvisie de hoofdlijnen bevat van de voorgenomen
+ontwikkeling van dat gebied,
+alsmede de hoofdzaken van het door het bestuursorgaan te voeren ruimtelijk
+beleid. De structuurvisie gaat tevens in op de wijze waarop het bestuursorgaan
+zich voorstelt die voorgenomen ontwikkeling te doen verwezenlijken. Voor dit
+doel biedt het attribuut beleidinfo mogelijkheden om aspecten daarvan kenbaar te
+maken. Het attribuut beleidinfo verwijst naar het samengestelde attribuut <em>Beleidinfo_RSV (voor het Rijk), Beleidinfo_PSV (voor provincie) of
+Beleidinfo_GSV (voor gemeente)</em>, dat bestaat uit de attributen belang, rol en instrument.
+</p><ul>
+<li><strong>belang</strong> (verplicht voor Rijk en provincies, indien gewenst voor gemeenten,
+maximaal 1 keer)<br>Met dit attribuut moet in enkele trefwoorden het belang of de belangen die
+betrekking hebben op dit object in de vorm van vrije tekst worden
+aangegeven.  </li>
+<li><strong>rol</strong> (verplicht voor Rijk en provincies, indien gewenst voor gemeenten,
+maximaal 1 keer)<br>Met dit attribuut moet per belang in de vorm van vrije tekst worden
+aangegeven hoe de overheid haar rol hierin ziet (in een paar trefwoorden).
+</li>
+<li><strong>instrument</strong> (indien gewenst, maximaal 1 keer)<br>Hier wordt het instrument genoemd dat door de overheid wordt ingezet om het
+belang te verwezenlijken. Voor deze instrumenten moet worden gekozen uit een
+lijst die is opgenomen in de domeinen <em>Instrument_RSV (voor het Rijk),
+Instrument_PSV (voor de provincies) of Instrument_GSV (voor de gemeenten).</em>
+Het huidig juridisch instrumentarium is opgenomen in de lijst. Voor
+toekomstig juridisch instrumentarium en/of andere instrumenten kan de
+mogelijkheid tot het invullen van een vrij waarde worden gebruikt.</li>
+</ul><p><strong><em>verwijzingNaarTekstInfo</em></strong> (zo vaak als gewenst):<br>Het attribuut is bedoeld voor het verwijzen naar specifieke tekst die behoort
+bij het betreffende object
+Structuurvisiecomplex. Het attribuut verwijst naar het samengestelde attribuut <em>TekstReferentie_SV (voor het Rijk en de gemeente) of TekstReferentie_PSV (voor
+de provincie)</em>, bestaande uit de attributen verwijzingNaarTekst en typeTekst.<br>Het bestuursorgaan kiest voor dezelfde vorm van planteksten als bij het object
+Structuurvisieplangebied: objectgericht in XML of niet-objectgericht in HTML
+formaat. Het format dient overeenkomstig de afspraak
+over de bestandsnaamconventies conform de STRI2012 te zijn. De keuze van de
+bronhouder wordt vastgelegd in de <em>verwijzingNorm</em> bij deze structuurvisie.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)<br>Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een
+(hyper)link naar het soort document dat is aangegeven bij het attribuut
+typeTekst te worden opgenomen.
+Voor de waarde van het attribuut verwijzingNaarTekst geldt dat geen elementen
+van een
+directorystructuur/pad mogen worden opgenomen. Wel moet een nadere
+precisering naar de plaats binnen een document te worden opgenomen met
+behulp van een fragmentidentifier. Het fragment in de hyperlink is de
+locatie in de plantekst (XML of HTML) waar het van toepassing zijnde
+attribuut typeTekst betrekking op heeft. Een hyperlink krijgt dan de vorm:
+bestandsnaam.xml#fragment of bestandsnaam.htm#fragment.  </li>
+<li><strong>typeTekst</strong> (verplicht)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing
+naar tekst dient gekozen te worden uit een van de waarden van de domein
+Teksttype_SV (voor Rijk en gemeente) of Teksttype_PSV (voor provincie).</li>
+</ul><p><strong><em>verwijzingNaarIllustratieInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut is bedoeld om een specifieke afbeelding of illustratie behorende
+bij het object op te nemen.
+Het attribuut verwijst naar het samengestelde attribuut
+<em>IllustratieReferentie_SV (voor Rijk en gemeente) of IllustratieReferentie_PSV
+(voor provincie)</em>, bestaande uit de
+attributen verwijzingNaarIllustratie, typeIllustratie, naamIllustratie en
+legendanaam.
+</p><ul>
+<li><strong>verwijzingNaarIllustratie</strong> (verplicht)<br>Dit attribuut is exclusief bedoeld om links te kunnen opnemen. Hier dient
+een link naar de illustratie die bij het object behoort te worden opgenomen.
+Het format dient overeenkomstig de afspraak over de bestandsnaamconventie
+voor het bestandstype illustratie conform de STRI2012 te zijn.  </li>
+<li><strong>typeIllustratie</strong> (verplicht)<br>Hierin wordt het type van de illustratie vastgelegd: om wat voor soort
+illustratie het gaat. Er dient gekozen te worden uit één van de waarden
+afbeelding of kaart volgens het domein Illustratie.
+</li>
+<li><strong>naamIllustratie</strong> (indien gewenst)<br>Met dit attribuut kan de naam van de illustratie worden opgegeven.
+legendanaam (indien gewenst)
+Indien het object in de legenda van de illustratie is opgenomen kan hier de
+naam van de legenda-eenheid worden opgenomen teneinde duidelijk te maken
+welk deel van de illustratie bij het object behoort.</li>
+</ul><p><strong><em>verwijzingNaarExternPlanInfo</em></strong> (zo vaak als gewenst):<br>een attribuut dat verwijst naar het samengestelde attribuut
+ExternPlanReferentie_SV, bestaande uit de
+attributen naamExternPlan, idnExternPlan en rolExternPlan.
+</p><ul>
+<li><strong>naamExternPlan</strong> (verplicht)<br>Dit attribuut verwijst naar een ander plan/besluit waarin het beleid waarnaar
+het object verwijst is
+uitgewerkt/opgenomen. In het waardeveld staat in dat geval de naam van dat
+plan/besluit. Dit kan een specifieke naam zijn indien deze bekend is, maar
+ook een algemene benaming ingeval het bijvoorbeeld een plan betreft dat nog
+niet bestaat.
+</li>
+<li><strong>idnExternPlan</strong> (indien gewenst)<br>In het geval een identificatie (idn) van het externe plan/besluit waarnaar
+verwezen wordt, bekend is, kan deze idn hier worden opgenomen.  </li>
+<li><strong>rolExternPlan</strong> (verplicht)<br>Hierin wordt de betekenis van het externe plan/besluit ten opzichte van het
+object
+Structuurvisiecomplex vastgesteld. Het betreft hier een van de volgende
+vaste waarden uit het domein RolExternPlan_SV:  <ul>
+<li>in extern plan/besluit uit te werken in geval het beleid achter het object
+dat als gevolg dient te hebben;
+</li>
+<li>in extern plan/besluit uitgewerkt ingeval dat het geval is in relatie tot
+dit object;  </li>
+<li>ten gevolge van extern plan/besluit in geval het object een gevolg is van
+een ander plan of besluit;
+</li>
+<li>informatie in extern plan/besluit in geval (nadere) informatie in een extern
+plan of besluit over dit object staat.</li>
+</ul>
+</li>
+</ul><p><strong><em>cartografieInfo</em></strong> (zo vaak als gewenst):<br>Het attribuut cartografieInfo wordt gebruikt om verschillende kaarten in de
+structuurvisie zichtbaar en presenteerbaar te maken. De structuur van de
+kaartopbouw staat echter los van de planstructuur. Geen of foutief gebruik van
+het attribuut cartografieInfo resulteert in een grijze of andere objectweergave
+in een interactieve raadpleegomgeving. Een object kan in meerdere kaarten
+voorkomen. Er moeten dan meerdere attributen cartografieInfo met waarden
+toegevoegd worden om dit te realiseren.
+Het attribuut verwijst naar het samengestelde attribuut cartografieInfo
+bestaande uit de attributen kaartnummer, kaartnaam en symboolcode.
+</p><ul>
+<li><strong>kaartnummer</strong> (verplicht)<br>Het nummer van de kaart van de structuurvisie waartoe dit object behoort.
+Het kaartnummer is door de bronhouder te bepalen. Kaarten kunnen in een
+interactieve raadpleegomgeving worden geprioriteerd op basis van
+kaartnummer. De kaart met nummer 1 wordt als hoofdkaart gezien en moet
+altijd voorkomen, kaartnummer 0 niet mag voorkomen. Voorloopnullen worden
+genegeerd (001 wordt bijvoorbeeld 1). Het kaartnummer is een uniek nummer
+gekoppeld aan een kaartnaam.  </li>
+<li><strong>kaartnaam</strong> (verplicht)<br>De naam van de kaart van de structuurvisie waartoe dit object behoort. De
+kaartnaam is door de bronhouder te bepalen.
+</li>
+<li><strong>symboolcode</strong> (zo vaak als gewenst)<br>De symboolcode uit de symboolcodelijst voor vormvrije plannen (onderdeel van
+de RO Standaarden 2012).<br>De symboolcode geeft de kleur en patroon aan voor de wijze waarop het object
+Structuurvisiegebied_G in de interactieve raadpleegomgeving wordt
+weergegeven. Een symboolcode die aan een object wordt toegevoegd geldt
+alleen voor dit object zelf en niet voor de onderliggende objecten. Er vindt
+dus geen overerving van symboolcode plaats.</li>
+</ul><p><strong><em>begrenzing</em></strong> (zo vaak als gewenst):<br>Het kan voorkomen dat een object Structuurvisiecomplex geen geometrie kent omdat
+deze uitsluitend als beleidsobject wordt beschreven. Wanneer geen begrenzing is opgenomen neemt
+het complex de
+begrenzing van de samenstellende objecten ook niet over. Het attribuut verwijst
+naar het samengestelde attribuut <em>GeometrieStructuurvisieObject (voor Rijk en gemeente) of
+GeometrieStructuurvisieObject_P (voor provincie)</em>, bestaande uit de attributen
+geometrie, inwinningsschaal en idealisatie.
+</p><ul>
+<li><strong>geometrie</strong> (verplicht)<br>De geometrie van het object Structuurvisiecomplex kan een beschrijving van punt,
+lijn, vlak of
+meervoudige versies daarvan (multipunt, multilijn, multivlak)zijn, tezamen
+de geometrie van het object vormend. Dit attribuut legt de coördinaten in
+een vastgesteld format (gml) vast. De coördinaten kunnen door een applicatie
+automatisch worden gegenereerd.  </li>
+<li><strong>inwinningsschaal</strong> (alleen voor provincies, indien gewenst, maximaal 1 keer)<br>De inwinningsschaal is de schaal waarop het object is ingewonnen. Het schaal
+aspect kan bij individueel objecten een rol spelen in relatie tot de
+verbeelding daarvan of de interpretatie die aan het object kan worden
+gegeven. Deze schaal kan hier worden opgegeven. Deze schaal kan hier worden
+opgegeven. Indien deze waarde hier wordt opgegeven treedt deze waarde in de
+plaats van de waarde die bij het object Structuurvisieplangebied is
+opgegeven.
+</li>
+<li><strong>idealisatie</strong> (verplicht)<br>Met het attribuut idealisatie kan de nauwkeurigheid van de begrenzing van een
+object worden
+aangegeven. Er dient een keuze gemaakt te worden volgens het domein
+Idealisatie_3. De nauwkeurigheid van de begrenzing van een object neemt af
+in de keuzes, van exact, via indicatief naar cartografisch figuur:  <ul>
+<li>Exact geeft aan dat de geometrie van het object opgenomen is met de
+nauwkeurigheid die behoort bij de dataset, waarmee de begrenzing als exact
+wordt beschouwd;  </li>
+<li>Indicatief betekent dat de geometrie indicatief geïnterpreteerd moet worden;
+waarmee de begrenzing niet is vastgelegd;
+</li>
+<li>Cartografisch figuur betekent dat de geometrie (het figuur) als symbool
+geïnterpreteerd moet worden en geen relatie heeft met de begrenzing van het
+object in de werkelijkheid; waardoor slechts de locatie zonder een
+aangegeven begrenzing is vastgelegd.</li>
+</ul>
+</li>
+</ul></section><section id="klasse-structuurvisieverklaring-alleen-voor-provincies"><h3 id="x5-4-klasse-structuurvisieverklaring-alleen-voor-provincies"><span class="secno">5.4 </span>Klasse Structuurvisieverklaring (alleen voor provincies)</h3><p>In provinciale structuurvisies kan gebruik worden gemaakt van de klasse
+<em>Structuurvisieverklaring</em>. In Tabel 8 zijn de attributen behorend bij de klasse
+<em>Structuurvisieverklaring</em> benoemd, de waarden aangegeven die deze attributen
+moeten bevatten en is aangegeven of het gebruik van het attribuut verplicht is
+en of het attribuut meerdere malen mag worden gebruikt. Ook is aangegeven of
+attributen in samenhang moeten worden gebruikt. Na de tabel is per attribuut een
+nadere toelichting gegeven.</p><p><strong>Tabel 8 Klasse Structuurvisieverklaring</strong></p><p><img src="media/655027d410a698033da07e9c1a56ad67.png" alt=""></p><p><strong><em>identificatie (idn)</em></strong> (verplicht):<br>Elk object Structuurvisieverklaring krijgt een eigen unieke identificatie binnen
+deze structuurvisie. Het samengestelde attribuut identificatie verwijst naar het object NEN3610ID
+bestaande uit de attributen namespace en lokaalID.
+</p><ul>
+<li><strong>namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten is
+dat „NL.IMRO‟.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Door de bronhouder te bepalen unieke identificatiecode binnen de context van
+het bestand bestaande uit maximaal 32 alfanumerieke tekens. Toegestane
+tekens: {”A”…”Z”, “a”…”z”, ”0”…”9”, “_”, “- “, “,”, ”.”}.</li>
+</ul><p><strong>typePlanobject</strong> (verplicht):<br>Het attribuut typePlanobject maakt het via het bijbehorende domein
+RuimtelijkPlanobject mogelijk aan te geven welk object het betreft. Hier wordt de vaste waarde
+structuurvisieverklaring_P ingevuld.</p><p><strong>plangebied</strong> (verplicht):<br>Voor elk object is een verwijzing noodzakelijk naar het object
+Structuurvisieplangebied_P waar het object
+deel van uitmaakt. Dit attribuut verwijst daartoe naar het attribuut
+identificatie van het bijbehorende
+object Structuurvisieplangebied_P. Dit zal automatisch binnen een applicatie
+gestalte kunnen krijgen.</p><p><strong>naam</strong> (verplicht):<br>Aan het attribuut naam wordt als waarde een representerende naam van het object
+meegegeven, mogelijk
+zoals deze in de tekst die ernaar verwijst is opgenomen. Niet altijd zal dit het
+geval zijn. In dat geval zal
+een zinvolle onderscheidende naam moeten worden ingevuld, zodat het object voor
+gebruikers herkenbaar
+is en de gebruiker hierop desgewenst kan classificeren.</p><p><strong>thema</strong> (zo vaak als gewenst):<br>Met dit attribuut wordt het thema van het object opgenomen. Het thema wordt
+gekozen uit de waarden
+volgens het domein Thema. Indien geen bruikbare waarde wordt gevonden kan een
+vrije tekst worden
+opgenomen. Dit attribuut kan meerdere keren worden opgenomen.</p><p><strong><em>verwijzingNaarTekstInfo</em></strong> (zo vaak als gewenst):<br>Het attribuut is bedoeld voor het verwijzen naar specifieke tekst die behoort
+bij het betreffende object
+Structuurvisieverklaring_P. Het attribuut verwijst naar het samengestelde
+attribuut TekstReferentie_PSV,
+bestaande uit de attributen verwijzingNaarTekst en typeTekst.
+De bronhouder kiest voor dezelfde vorm van planteksten als bij het object
+Structuurvisieplangebied_P:
+objectgericht in XML of niet-objectgericht in HTML formaat. Het format dient
+overeenkomstig de afspraak
+over de bestandsnaamconventies conform de STRI2012 te zijn. De keuze van de
+bronhouder wordt
+vastgelegd in de verwijzingNorm bij deze structuurvisie.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)<br>Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een
+(hyper)link naar het soort document dat is aangegeven bij het attribuut
+typeTekst te worden opgenomen.
+Voor de waarde van het attribuut verwijzingNaarTekst geldt dat geen elementen
+van een directorystructuur/pad mogen worden opgenomen. Wel moet een nadere
+precisering naar de plaats binnen een document te worden opgenomen met
+behulp van een fragmentidentifier. Het fragment in de hyperlink is de
+locatie in de plantekst (XML of HTML) waar het van toepassing zijnde
+attribuut typeTekst betrekking op heeft. Een hyperlink krijgt dan de vorm:
+bestandsnaam.xml#fragment of bestandsnaam.htm#fragment.
+</li>
+<li><strong>typeTekst</strong> (verplicht)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing
+naar tekst dient de vaste waarde toelichting volgens het domein
+TeksttypeV_PSV opgenomen te worden.</li>
+</ul><p><strong><em>verwijzingNaarIllustratieInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut is bedoeld om een specifieke afbeelding of illustratie behorende
+bij het object op te nemen.
+Het attribuut verwijst naar het samengestelde attribuut
+IllustratieReferentie_PSV, bestaande uit de
+attributen verwijzingNaarIllustratie, typeIllustratie, naamIllustratie en
+legendanaam.
+</p><ul>
+<li><strong>verwijzingNaarIllustratie</strong> (verplicht)<br>Dit attribuut is exclusief bedoeld om links te kunnen opnemen. Hier dient
+een link naar de illustratie die bij het object behoort te worden opgenomen.
+Het format dient overeenkomstig de afspraak over de bestandsnaamconventie
+voor het bestandstype illustratie conform de STRI2012 te zijn.  </li>
+<li><strong>typeIllustratie</strong> (verplicht)<br>Hierin wordt het type van de illustratie vastgelegd: om wat voor soort
+illustratie het gaat. Er dient gekozen te worden uit één van de waarden
+afbeelding of kaart volgens het domein Illustratie.
+</li>
+<li><strong>naamIllustratie</strong> (indien gewenst)<br>Met dit attribuut kan de naam van de illustratie worden opgegeven.  </li>
+<li><strong>legendanaam</strong> (indien gewenst)<br>Indien het object in de legenda van de illustratie is opgenomen kan hier de
+naam van de legenda-eenheid worden opgenomen teneinde duidelijk te maken
+welk deel van de illustratie bij het object behoort.</li>
+</ul><p><strong><em>cartografieInfo</em></strong> (zo vaak als gewenst)<br>Het attribuut cartografieInfo wordt gebruikt om verschillende kaarten in de
+structuurvisie zichtbaar en presenteerbaar te maken. De structuur van de
+kaartopbouw staat echter los van de planstructuur. Geen of foutief gebruik van
+het attribuut <em>cartografieInfo</em> resulteert in een grijze of andere
+objectweergave in een interactieve raadpleegomgeving. Een object kan in meerdere
+kaarten voorkomen. Er moeten dan meerdere attributen <em>cartografieInfo</em> met
+waarden toegevoegd worden om dit te realiseren.
+Het attribuut verwijst naar het samengestelde attribuut <em>cartografieInfo</em>
+bestaande uit de attributen kaartnummer, kaartnaam en symboolcode.
+</p><ul>
+<li><strong>kaartnummer</strong> (verplicht)<br>Het nummer van de kaart van de structuurvisie waartoe dit object behoort.
+Het kaartnummer is door de bronhouder te bepalen. Kaarten kunnen in een
+interactieve raadpleegomgeving worden geprioriteerd op basis van
+kaartnummer. De kaart met nummer 1 wordt als hoofdkaart gezien en moet
+altijd voorkomen, kaartnummer 0 niet mag voorkomen. Voorloopnullen worden
+genegeerd (001 wordt bijvoorbeeld 1). Het kaartnummer is een uniek nummer
+gekoppeld aan een kaartnaam.  </li>
+<li><strong>kaartnaam</strong> (verplicht)<br>De naam van de kaart van de structuurvisie waartoe dit object behoort. De
+kaartnaam is door de bronhouder te bepalen.
+</li>
+<li><strong>symboolcode</strong> (zo vaak als gewenst)<br>De symboolcode uit de symboolcodelijst voor vormvrije plannen (onderdeel van
+de RO Standaarden 2012).<br>De symboolcode geeft de kleur en patroon aan voor de wijze waarop het object
+Structuurvisiegebied_P in de interactieve raadpleegomgeving wordt
+weergegeven. Een symboolcode die aan een object wordt toegevoegd geldt
+alleen voor dit object zelf en niet voor de onderliggende objecten. Er vindt
+dus geen overerving van symboolcode plaats.</li>
+</ul><p><strong><em>begrenzing</em></strong> (zo vaak als gewenst):<br>Het attribuut verwijst naar het samengestelde attribuut
+GeometrieStructuurvisieObject, bestaande uit de attributen geometrie,
+inwinningsschaal en idealisatie.
+</p><ul>
+<li><strong>geometrie</strong> (verplicht)<br>De geometrie van het object Structuurvisieverklaring kan een beschrijving
+van punt, lijn, vlak of meervoudige versies daarvan (multipunt, multilijn,
+multivlak) zijn, tezamen de geometrie van het object vormend. Dit attribuut
+legt de coördinaten in een vastgesteld format (gml) vast. De coördinaten
+kunnen door een applicatie automatisch worden gegenereerd.
+</li>
+<li><strong>inwinningsschaal</strong> (indien gewenst)<br>De inwinningsschaal is de schaal waarop het object is ingewonnen. Het schaal
+aspect kan bij individueel objecten een rol spelen in relatie tot de
+verbeelding daarvan of de interpretatie die aan het object kan worden
+gegeven. Deze schaal kan hier worden opgegeven. Indien deze waarde hier
+wordt opgegeven treedt deze waarde in de plaats van de waarde die bij het
+object Structuurvisieplangebied_P is opgegeven.
+</li>
+<li><strong>idealisatie</strong> (verplicht)<br>Met het attribuut idealisatie kan de nauwkeurigheid van de begrenzing van een
+object worden
+aangegeven. Er dient een keuze gemaakt te worden volgens het domein
+Idealisatie_3. De nauwkeurigheid van de begrenzing van een object neemt af
+in de keuzes, van exact, via indicatief naar cartografisch figuur:  <ul>
+<li>Exact geeft aan dat de geometrie van het object opgenomen is met de
+nauwkeurigheid die behoort bij de dataset, waarmee de begrenzing als exact
+wordt beschouwd.  </li>
+<li>Indicatief betekent dat de geometrie indicatief geïnterpreteerd moet worden;
+waarmee de begrenzing niet is vastgelegd.
+</li>
+<li>Cartografisch figuur betekent dat de geometrie (het figuur) als symbool
+geïnterpreteerd moet worden en geen relatie heeft met de begrenzing van het
+object in de werkelijkheid; waardoor slechts de locatie zonder een
+aangegeven begrenzing is vastgelegd.
+</li>
+</ul>
+</li>
+</ul></section><section id="metadata"><h3 id="x5-5-metadata"><span class="secno">5.5 </span>Metadata</h3><p>In het GML bestand is ook bepaalde informatie over de structuurvisie opgenomen.
+Ook in het geleideformulier en manifest is bepaalde informatie over de
+structuurvisie opgenomen. Gegevens over gegevens wordt metadata genoemd. In
+IMRO2012 zijn bij de klasse <em>Metadata­IMRO­­­bestand</em> regels opgenomen over de
+in het GML bestand op te nemen metadata. In Tabel 9 wordt klasse
+<em>Metadata­IMRObestand</em> toegelicht.</p><p><img src="media/7284b6518d98f6173eed3740dae54dc9.png" alt=""></p><p><strong>Tabel 9 KlasseMetadataIMRObestand 1*</strong></p><p><strong>toepassingsschaal</strong><br>Structuurvisies worden vastgelegd in structuurvisiegebieden,
+structuurvisiecomplexen en structuurvisieverklaringen die geometrisch zijn
+bepaald op basis van het Rijksdriehoekstelsel (RD-coördinaten). Daarvoor is de
+schaal in principe niet van belang. Bij de digitale en analoge verbeelding is de
+schaal waarop (gedeelten van) de structuurvisie zinvol kunnen worden weergegeven
+wel van belang. Daarom wordt in de metadata van de dataset de maximale schaal
+meegegeven waarop het plan zinvol ver­beeld mag worden.</p></section></section><section id="B01" data-format="markdown"><!--OddPage--><h2 id="x6-bijlage-1-veel-gestelde-vragen"><span class="secno">6. </span>Bijlage 1 - Veel gestelde vragen</h2><p>Op de website van Geonovum[^10] zijn antwoorden te vinden op de meest gestelde
+vragen. In deze bijlage wordt ingegaan op een aantal veel gestelde vragen bij
+het opstellen van een digitale structuurvisie.</p><p>[^10] ( <a href="https://www.geonovum.nl/geo-standaarden/ruimtelijke-ordening/veelgestelde-vragen-ro-standaarden">https://www.geonovum.nl/geo-standaarden/ruimtelijke-ordening/veelgestelde-vragen-ro-standaarden</a> )</p><section id="algemene-vragen"><h3 id="x6-1-algemene-vragen"><span class="secno">6.1 </span>Algemene vragen</h3><ol>
+<li><p><em>Wat is het verschil tussen deze versie van de praktijkrichtlijn en de
+PRrSV2012, de PRpSV2012 en de PRgSV2012?</em><br>Deze praktijkrichtlijn (PRPV2012) geeft een toelichting voor het opstellen
+van structuurvisies door het rijk, de provincies als de gemeenten en
+vervangt daarmee de Praktijkrichtlijn voor rijksstructuurvisies (PRrSV2012),
+de Praktijkrichtlijn voor provinciale structuurvisies (PRpSV2012) en de
+Praktijkrichtlijn voor gemeentelijke structuurvisies (PRgSV2012).</p>
+</li>
+<li><p><em>Moeten eerst de teksten worden geschreven of eerst de kaart worden
+opgesteld?</em><br>Dit maakt in principe niet zoveel uit. Belangrijker is dat het maken van de
+tekst en de kaart goed op elkaar wordt afgestemd.</p>
+</li>
+<li><p><em>Hoe neem ik het vaststellingsbesluit mee?</em><br>Alleen bij de vastgestelde versie van de structuurvisie kan en moet het
+ondertekende vaststellingsbesluit in HTML-, XHTML of PDF-formaat worden
+meegenomen. Deze moet niet als bijlage bij de tekst worden opgenomen, maar
+als los bestand met als verplichte naamgeving:<br>vb_IDN.pdf (of .xhtml of .html). Voor meer informatie zie de STRI2012[^11].</p>
+</li>
+</ol><p>[^11] (<a href="http://ro-standaarden.geonovum.nl/2012/STRI/1.1/STRI2012-v1.1.pdf">http://ro-standaarden.geonovum.nl/2012/STRI/1.1/STRI2012-v1.1.pdf</a>)</p><ol start="4">
+<li><p><em>Hoe ga ik om met herzieningen?</em><br>Dit is nader toegelicht in <a href="#B03">Bijlage 3</a>.</p>
+</li>
+<li><p><em>Hoe maak ik een versie “geconsolideerd”?</em><br>Dit is nader toegelicht in <a href="#B04">Bijlage 4</a>.</p>
+</li>
+</ol></section><section id="vragen-over-de-tekst"><h3 id="x6-2-vragen-over-de-tekst"><span class="secno">6.2 </span>Vragen over de tekst</h3><ol>
+<li><em>Gaan tekstonderdelen zoals ‘voorwoord’ en ‘inleiding’ wel mee als ik ze
+niet opneem op een kaart?</em><br>Omdat de gehele plantekst aan het planobject Structuurvisieplangebied is
+gekoppeld, zijn alle tekstonderdelen via dit planobject ook via de kaart te
+openen (zie rood omcirkeld in Figuur 21).</li>
+</ol><p><strong>Figuur 21 Raadpleegbare tekst</strong></p><p><img src="media/df35b6089addf998d881526f1ce99397.png" alt=""></p></section><section id="vragen-over-de-verbeelding"><h3 id="x6-3-vragen-over-de-verbeelding"><span class="secno">6.3 </span>Vragen over de verbeelding</h3><ol>
+<li><p><em>Moet een planobject dat op meerdere kaarten voorkomt, ook meerdere keren in
+de objectenstructuur worden opgenomen?</em><br>Nee, voor het planobject waarvan de opsteller van de structuurvisie wil dat
+deze bijvoorbeeld op kaart 1en kaart 3 wordt getoond, wordt het attribuut <em>cartografieInfo</em> tweemaal opgenomen (zie Tabel 3 in paragraaf 4.1.2).</p>
+</li>
+<li><p><em>Kleurcodes zijn te beperkend, daarom wil ik een eigen illustratie opnemen.
+Hoe doe ik dit?</em><br>Het is mogelijk om naast de digitale kaart ook een verwijzing vanuit het
+planobject StructuurvisiePlangebied een verwijzing op te nemen naar een
+illustratie (zie Tabel 10).</p>
+</li>
+</ol><p><strong>Tabel 10 Verwijzen naar een illustratie</strong></p><p><img src="media/683fa9eb1ff613274f08d8f5e02ed1a5.png" alt=""></p></section></section><section id="B02" data-format="markdown"><!--OddPage--><h2 id="x7-bijlage-2-weergave-van-vlakken"><span class="secno">7. </span>Bijlage 2 - Weergave van vlakken</h2><p><strong>In deze bijlage is met voorbeelden de weergave van vlakken aangegeven.</strong></p><p><em>Let op</em>: Per type zijn meerdere kleuren mogelijk. De opgenomen kleuren en
+nummers dienen slechts als voorbeeld.</p><p><strong>Tabel 11 Voorbeelden van vlak weergave</strong></p><p><img src="media/3ac20230f79feab5d2d54e3b3be45242.png" alt=""></p></section><section id="B03" data-format="markdown"><!--OddPage--><h2 id="x8-bijlage-3-gedeeltelijke-herziening"><span class="secno">8. </span>Bijlage 3 - Gedeeltelijke herziening</h2><p><strong>Het herzien van een structuurvisie is in deze bijlage kort toegelicht.</strong></p><p>Bij de herziening van een structuurvisie kan worden gekozen uit twee methoden:
+</p><ol>
+<li>er kan een geheel nieuwe structuurvisie worden opgesteld, al dan niet
+samenvallend met de begrenzing van een of meer voorgaande structuurvisies
+of;
+</li>
+<li>er kan worden volstaan met de herziening van een bepaald aspect in tekst of
+de geometrie van een object van een eerder vastgestelde structuurvisie.</li>
+</ol><p>In het eerste geval is sprake van een nieuwe structuurvisie die in de plaats
+treedt van het (de) bestaande structuurvisie(s). De werkwijze zoals beschreven
+in deze praktijkrichtlijn is op deze situatie volledig van toepassing.<br>In het tweede geval is uitsluitend voor de betreffende aspecten sprake van
+aanpassing van de structuurvisie. In dit geval worden alleen die aspecten die de
+aanpassing betreffen gecodeerd. Dit wordt echter wel ter beschikking gesteld als
+een nieuwe structuurvisie. Een gedeeltelijke herziening betekent dus niet dat de
+codes van de reeds vastgestelde structuurvisie moeten worden aangepast!<br>Als verplicht onderdeel moet het planobject <em>Structuurvisieplangebied</em> worden
+gebruikt (zie Tabel 12). De begrenzing van het plangebied heeft betrekking op de
+te herziene locatie. Dit kan afwijken van de begrenzing van het oorspronkelijk
+plangebied waarop de herziening betrekking heeft. Enige verschil is dat bij een
+gedeeltelijke herziening het attribuut <em>verwijzingNaarExternPlanInfo</em> verplicht
+moet worden ingevuld, zodat de relatie met het plan dat gedeeltelijk wordt
+herzien, is vastgelegd.<br>De oorspronkelijke structuurvisie blijft in zijn geheel beschikbaar.</p><p><strong>Tabel 12 Attribuut verwijzingExternPlanInfo bij het planobject
+Structuurvisieplangebied</strong>
+<img src="media/d03990aba95f1b2adc010bf2805e4b21.png" alt=""></p><p>Daarnaast kunnen vervolgens alle herziene planobjecten van de klasse
+<em>Structuurvisiegebied</em>, <em>Structuurvisiecomplex</em> en/of
+<em>Structuurvisieverklaring</em>, met alle (nieuwe of aanpassingen van de) teksten,
+voor zover dit de herziening betreft, worden gecodeerd.<br>Op deze wijze wordt al hetgeen de herziening betreft gecodeerd en wordt voldaan
+aan de wettelijke plicht te beschikken over een digitale structuurvisie, maar
+ontstaat geen compleet overzicht van de nieuwe geldende situatie. Een oplossing
+daarvoor is om gebruik te maken van een versie "geconsolideerd" waarin de
+gevolgen van de herziening zijn verwerkt. Daarop wordt in <a href="#B04">Bijlage 4</a> nader
+ingegaan.</p></section><section id="B04" data-format="markdown"><!--OddPage--><h2 id="x9-bijlage-4-geldende-situatie-de-versie-geconsolideerd"><span class="secno">9. </span>Bijlage 4 - Geldende situatie: de versie “geconsolideerd”</h2><p><strong>De geldende actuele status kan met bijvoorbeeld de zgn. versie “geconsolideerd”
+worden weergegeven.</strong></p><p>Om de raadpleger van <a href="http://www.ruimtelijkeplannen.nl/">ruimtelijkeplannen.nl</a>
+meer duidelijkheid te kunnen bieden over de exacte status en werkingssfeer van
+de (wijzigingen op de) visies en het actuele planologische regime ter plaatse
+kan het gebruik van een versie “geconsolideerd” de oplossing zijn. Op die manier
+is niet alleen in één oogopslag duidelijk wat de juridische status van de
+desbetreffende visie en de bijbehorende wijzigingen is maar ook de data van het
+bevoegd gezag kan hiermee op orde worden gesteld. Tevens wordt duidelijk wat het
+geldende planologische regime ter plaatse is. Hierdoor is het niet (meer) nodig
+via andere, vaak omslachtige, wegen te zoeken naar de geldende regels. Dat geeft
+duidelijkheid, kost minder tijd en is dus klantvriendelijk naar de raadpleger.<br><u>Let op</u>: het gaat dus niet om een nieuw ruimtelijk plan maar om het samenvoegen
+van meerder ruimtelijke plannen om zo een integrale versie, en daardoor een
+beter leesbare versie, te tonen. Er vinden dus geen nieuwe ontwikkelingen
+plaats. De versie “geconsolideerd” van een structuurvisie kent geen wettelijke,
+dus geen juridische status, omdat deze versie niet door het bevoegd gezag is
+vastgesteld. Het gebruik van een geconsolideerd besluit is een keuze van het
+bevoegd gezag.</p><p>Omdat bevoegde gezagen grote mate van vrijheid hebben bij het opstellen van
+structuurvisies en wijzigingen daarop kan slechts een algemene werkwijze gegeven
+worden. Uiteindelijk is de essentie van het consolideren van een structuurvisie,
+met (gedeeltelijke) wijzigingen die erop zijn gevolgd, het maken van een
+consistent document waarin het geldende beleid (de visie) en de onderbouwing
+daarvan is verwoord en op kaart getoond.</p><p>Het consolideren gebeurt op door het behandelen van de objecten waaruit de
+visies zijn opgebouwd. Objecten kunnen daarbij ongewijzigd, gewijzigd of nieuw
+zijn. Ongewijzigde objecten en nieuwe objecten kunnen in principe rechtstreeks
+worden overgenomen in de geconsolideerde versie. Bij gewijzigde objecten kan er
+sprake zijn van gewijzigd beleid, waarbij dan de tekst in de geconsolideerde
+versie het uiteindelijk beleid weerspiegelt. Indien er sprake is van gewijzigde
+geometrie moet goed gekeken worden of er nog oud beleid is dat van toepassing is
+op gebied dat niet meer opgenomen is in de begrenzing. Dan zal er een object
+bijgemaakt moeten worden.<br>Bij alle gewijzigde of nieuwe objecten is het belangrijk om goed te letten op de
+overerving van het beleid zoals uitgelegd in hoofdstuk 2 van deze
+praktijkrichtlijn.</p><p>Aangezien deze versie niet door het bevoegd gezag wordt vastgesteld, is het voor
+de hand liggend om voor de datum van deze versie geconsolideerd aan te sluiten
+bij het in werking treden / onherroepelijk worden van de meest recente
+wijziging. Tevens is het aan te raden om te verwijzen naar de geldige visies dan
+wel besluiten.<br>Bij het attribuut <em>verwijzingNaarExternPlanInfo</em> worden alle visies/besluiten
+opgenomen die in deze versie geconsolideerd zijn verwerkt. De waarde van het
+attribuut <em>rolExternPlan</em> is in dit geval: ´als mutatie opgenomen´. De
+structuurvisie met de planstatus ‘geconsolideerd’ wordt in het manifest met
+behulp van de dossierstatus ‘geconsolideerd’ geplaatst.</p></section><section id="B05" data-format="markdown"><!--OddPage--><h2 id="x10-bijlage-5-invulhulp-voor-het-bepalen-van-het-type-planobject"><span class="secno">10. </span>Bijlage 5 – Invulhulp voor het bepalen van het type planobject</h2><p><strong>Deze bijlage kan worden gebruikt bij het maken van een objectgericht
+structuurvisie, maar is <em>niet</em> verplicht. De voor ingevulde varianten van
+klassen die in deze bijlage worden beschreven, zijn niets meer dan mogelijke
+manieren waarop de klassen uit het IMRO2012, zoals beschreven in Hoofdstuk 5,
+kunnen worden ingevuld en dienen ook als zodanig te worden beschouwd. De
+volgende attributen worden niet genoemd in deze bijlage omdat ervan uitgegaan is
+dat de software dit automatisch invult: identificatie, plangebied, planobject.</strong></p><section id="bepalen-van-het-type-planobject-klasse"><h3 id="x10-1-bepalen-van-het-type-planobject-klasse"><span class="secno">10.1 </span>Bepalen van het type planobject (klasse)</h3><p>Het eerste planobject in de objectenstructuur is altijd het plangebied. Dit
+planobject heeft als naam de aanhaaltitel van de structuurvisie, als tekst de
+gehele plantekst en als geografische aanduiding de buitenste grens van het
+gebied waar de structuurvisie over gaat. Dit planobject behoort tot de klasse
+‘Structuurvisieplangebied’. In paragraaf 5.2 wordt voor deze klasse nader
+toegelicht welke eigenschappen moeten/mogen worden ingevuld.<br>Voor de overige planobjecten in de objectenstructuur dient eerst nader te worden
+bepaald tot welke klasse deze behoren voordat de bijbehorende eigenschappen
+kunnen worden ingevuld. In deze paragraaf is een vragenlijst opgenomen, waarmee
+per planobject kan worden bepaald tot welk type deze behoort. Aan het eind van
+deze paragraaf is een voorbeeld opgenomen ter verduidelijking.</p><p><em>Vraag 1. Is er beleid gekoppeld aan dit planobject?</em><br>JA: ga naar vraag 2<br>NEE: ga naar vraag 7</p><p><em>Vraag 2. Wordt dit planobject verder onderverdeeld?</em><br>JA: ga naar vraag 3<br>NEE: ga naar vraag 5</p><p><em>Vraag 3. Wordt dit planobject geografisch aangeduid?</em><br>JA: <a href="#structuurvisiecomplex-invulvariant-a">Structuurvisiecomplex, invulvariant A</a><br>NEE: ga naar vraag 4</p><p><em>Vraag 4. Dient dit planobject als kopje in de legenda te worden opgenomen?</em><br>JA: <a href="#structuurvisiecomplex-invulvariant-b">Structuurvisiecomplex, invulvariant B</a><br>NEE: <a href="#structuurvisiecomplex-invulvariant-c">Structuurvisiecomplex, invulvariant C</a></p><p><em>Vraag 5. Wordt dit planobject geografisch aangeduid?</em><br>JA: <a href="#structuurvisiegebied-invulvariant-a">Structuurvisiegebied, invulvariant A</a><br>NEE: ga naar vraag 6</p><p><em>Vraag 6. Betreft het een Structuurvisie van het Rijk?</em><br>JA: <a href="#structuurvisiegebied-invulvariant-b">Structuurvisiegebied, invulvariant B</a><br>NEE: het planobject is niet te coderen</p><p><em>Vraag 7. Wordt dit planobject verder onderverdeeld?</em><br>JA: ga naar vraag 8<br>NEE: ga naar vraag 10</p><p><em>Vraag 8. Wordt dit planobject geografisch aangeduid?</em><br>JA: <a href="#structuurvisiecomplex-invulvariant-d">Structuurvisiecomplex, invulvariant D</a><br>NEE: ga naar vraag 9</p><p><em>Vraag 9. Dient dit planobject als kopje in de legenda te worden opgenomen?</em><br>JA: <a href="#structuurvisiecomplex-invulvariant-e">Structuurvisiecomplex, invulvariant E</a><br>NEE: <a href="#structuurvisiecomplex-invulvariant-f">Structuurvisiecomplex, invulvariant F</a>*</p><p><em>Vraag 10. Betreft het een Structuurvisie van het Rijk?</em><br>JA: het planobject is niet te coderen<br>NEE: ga naar vraag 11</p><p><em>Vraag 11. Betreft het een Structuurvisie van de provincie?</em><br>JA: <a href="#structuurvisieverklaring-invulvariant-a">Structuurvisieverklaring, invulvariant A</a><br>NEE: <a href="#structuurvisiegebied-invulvariant-c">Structuurvisiegebied, invulvariant C</a></p><p><strong>Figuur 22 Voorbeeld planstructuur</strong></p><p><img src="media/631b14e6799ecfa0c4a9b3c9892a9235.png" alt=""></p><p><strong>Tabel 13 Vragenlijst toegepast op voorbeeld uit Figuur 22</strong></p><table>
+<thead>
+<tr>
+<th><strong>Planobject</strong></th>
+<th><strong>Toelichting</strong></th>
+<th><strong>Vragenlijst</strong></th>
+<th><strong>Type (klasse)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Natuur</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid, maar wel als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiecomplex-invulvariant-b">Structuurvisiecomplex. invulvariant B</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Water</td>
+<td>Betreft beleidstekst. Het planobject wordt niet geografisch aangeduid en ook niet als kopje in de legenda opgenomen.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiecomplex-invulvariant-c">Structuurvisiecomplex, invulvariant C</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 4: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EHS</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiecomplex-invulvariant-a">Structuurvisiecomplex, invulvariant A</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 3: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Waterbergingsgebied</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiegebied-invulvariant-a">Structuurvisiegebied, invulvariant A</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Waterschappen</td>
+<td>Betreft een toelichtende tekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: NEE</td>
+<td><a href="#structuurvisieverklaring-invulvariant-a">Structuurvisieverklaring, invulvariant A</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 7: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 10: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 11: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EHS-land</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiegebied-invulvariant-a">Structuurvisiegebied, invulvariant A</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EHS-water</td>
+<td>Betreft beleidstekst. Het planobject wordt geografisch aangeduid.</td>
+<td>vraag 1: JA</td>
+<td><a href="#structuurvisiegebied-invulvariant-a">Structuurvisiegebied, invulvariant A</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 2: NEE</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>vraag 5: JA</td>
+<td></td>
+</tr>
+</tbody></table></section><section id="structuurvisiegebied-invulvariant-a"><h3 id="x10-2-structuurvisiegebied-invulvariant-a"><span class="secno">10.2 </span>Structuurvisiegebied, invulvariant A</h3><p><em>Beleid, geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisiegebied met verwijzingen
+naar één of meerdere beleidsteksten en verwijzingen naar één of meerdere
+kaarten, dan kan volstaan met het invullen van de in Tabel 14 aangegeven
+attributen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiegebied">paragraaf 5.2</a>.</p><p><strong>Tabel 14 Klasse Structuurvisiegebied, invulvariant A</strong></p><p><img src="media/bb15372d05fb97dd6a68d6b9b8c22435.png" alt=""></p></section><section id="structuurvisiegebied-invulvariant-b"><h3 id="x10-3-structuurvisiegebied-invulvariant-b"><span class="secno">10.3 </span>Structuurvisiegebied, invulvariant B</h3><p><em>Beleid, niet geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisiegebied met verwijzingen
+naar één of meerdere beleidsteksten maar zonder verwijzing naar een kaart, dan
+kan volstaan met het invullen van de in Tabel 15 aangegeven attributen. Voor een
+toelichting op alle attributen zie <a href="#klasse-structuurvisiegebied">paragraaf 5.2</a>.</p><p><strong>Tabel 15 Klasse Structuurvisiegebied, invulvariant B</strong></p><p><img src="media/a45aa953b8967e7c84016060c9ba18c0.png" alt=""></p></section><section id="structuurvisiegebied-invulvariant-c"><h3 id="x10-4-structuurvisiegebied-invulvariant-c"><span class="secno">10.4 </span>Structuurvisiegebied, invulvariant C</h3><p><em>Geen beleid, geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisiegebied met verwijzingen
+naar uitsluitend toelichtende teksten en verwijzingen naar één of meerdere
+kaarten, dan kan volstaan met het invullen van de in Tabel 16 aangegeven
+attributen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiegebied">paragraaf 5.2</a>.</p><p><strong>Tabel 16 Klasse Structuurvisiegebied, invulvariant C</strong></p><p><img src="media/f29e93ca2d863caa08a1be92ba133eea.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-a"><h3 id="x10-5-structuurvisiecomplex-invulvariant-a"><span class="secno">10.5 </span>Structuurvisiecomplex, invulvariant A</h3><p><em>Beleid, geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar één of meerdere beleidsteksten en verwijzingen naar één of meerdere
+kaarten, dan kan volstaan met het invullen van de in Tabel 17 aangegeven
+attributen. Indien gewenst, mogen de grijs gemarkeerde attributen worden
+overgeslagen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 17 Klasse Structuurvisiecomplex, invulvariant A</strong></p><p><img src="media/921eddebe0902a07ce92cb7d35feba27.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-b"><h3 id="x10-6-structuurvisiecomplex-invulvariant-b"><span class="secno">10.6 </span>Structuurvisiecomplex, invulvariant B</h3><p><em>Beleid, niet geografisch aangeduid, als kopje in legenda</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar één of meerdere beleidsteksten en als legenda-kopje is opgenomen maar niet
+op de kaart zelf, dan kan volstaan met het invullen van de in Tabel 18
+aangegeven attributen. Indien gewenst, mogen de grijs gemarkeerde attributen
+worden overgeslagen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 18 Klasse Structuurvisiecomplex, invulvariant B</strong></p><p><img src="media/dddc853439e2cbaddadfeb26617081d2.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-c"><h3 id="x10-7-structuurvisiecomplex-invulvariant-c"><span class="secno">10.7 </span>Structuurvisiecomplex, invulvariant C</h3><p><em>Beleid, niet geografisch aangeduid, niet als kopje in legenda</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar één of meerdere beleidsteksten en geen verwijzing naar een kaart, dan kan
+volstaan met het invullen van de in Tabel 19 aangegeven attributen. Indien
+gewenst, mogen de grijs gemarkeerde attributen worden overgeslagen. Voor een
+toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 19 Klasse Structuurvisiecomplex, invulvariant C</strong></p><p><img src="media/d40fa6493f8aa5323bbc58072e9b86cd.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-d"><h3 id="x10-8-structuurvisiecomplex-invulvariant-d"><span class="secno">10.8 </span>Structuurvisiecomplex, invulvariant D</h3><p><em>Geen beleid, geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar uitsluitend toelichtende teksten en verwijzingen naar één of meerdere
+kaarten, dan kan volstaan met het invullen van de in Tabel 20 aangegeven
+attributen. Indien gewenst, mag het grijs gemarkeerde attribuut worden
+overgeslagen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 20 Klasse Structuurvisiecomplex, invulvariant D</strong></p><p><img src="media/35b2d7993f7804744185d0bfc9cb583b.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-e"><h3 id="x10-9-structuurvisiecomplex-invulvariant-e"><span class="secno">10.9 </span>Structuurvisiecomplex, invulvariant E</h3><p><em>Geen beleid, niet geografisch aangeduid, als kopje in de legenda</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar uitsluitend toelichtende teksten en als legenda-kopje is opgenomen maar
+niet op de kaart zelf, dan kan volstaan met het invullen van de in Tabel 21
+aangegeven attributen. Indien gewenst, het grijs gemarkeerde attribuut worden
+overgeslagen. Voor een toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 21 Klasse Structuurvisiecomplex, invulvariant E</strong></p><p><img src="media/e2d372455396d9355789011d3ec44c17.png" alt=""></p></section><section id="structuurvisiecomplex-invulvariant-f"><h3 id="x10-10-structuurvisiecomplex-invulvariant-f"><span class="secno">10.10 </span>Structuurvisiecomplex, invulvariant F</h3><p><em>Geen beleid, niet geografisch aangeduid, niet als kopje in de legenda</em><br>Als een planobject behoort tot de klasse Structuurvisiecomplex met verwijzingen
+naar uitsluitend toelichtende teksten en geen verwijzing naar een kaart, dan kan
+volstaan met het invullen van de in Tabel 22 aangegeven attributen. Indien
+gewenst, het grijs gemarkeerde attribuut worden overgeslagen. Voor een
+toelichting op alle attributen zie <a href="#klasse-structuurvisiecomplex">paragraaf 5.3</a>.</p><p><strong>Tabel 22 Klasse Structuurvisiecomplex, invulvariant F</strong></p><p><img src="media/94effd91e53bfedee52ca0d99a76fc26.png" alt=""></p></section><section id="structuurvisieverklaring-invulvariant-a"><h3 id="x10-11-structuurvisieverklaring-invulvariant-a"><span class="secno">10.11 </span>Structuurvisieverklaring, invulvariant A</h3><p><em>Geen beleid, geografisch aangeduid</em><br>Als een planobject behoort tot de klasse Structuurvisieverklaring dan kan
+volstaan met het invullen van de in Tabel 23 aangegeven attributen. Indien
+gewenst, mogen de grijs gemarkeerde attributen worden overgeslagen. Voor een
+toelichting op alle attributen zie <a href="#klasse-structuurvisieverklaring-alleen-voor-provincies">paragraaf 5.4</a>.</p><p><strong>Tabel 23 Klasse Structuurvisieverklaring invulvariant A</strong></p><p><img src="media/f3b4ea86145f2927e1f5fd95282f0660.png" alt=""></p></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

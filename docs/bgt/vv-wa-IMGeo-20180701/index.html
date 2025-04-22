@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 19.0.1"><meta lang="" property="dc:language" content="en">
+    
+    <title>Werkinstructie Panden en OverigeBouwwerken in de BGT door BAG 2.0</title>   
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: .3em;
+  background-color: white;
+  padding-bottom: .5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-VV",
+  "specType": "WA",
+  "publishDate": "2018-07-01",
+  "editors": [
+    {
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "imgeo@geonovum.nl"
+    },
+    {
+      "company": "Ministerie BZK",
+      "companyURL": "https://www.geobasisregistraties.nl/"
+    },
+    {
+      "company": "VNG Realisatie",
+      "companyURL": "https://www.vngrealisatie.nl/"
+    },
+    {
+      "company": "SVB-BGT",
+      "companyURL": "http://www.svb-bgt.nl/"
+    },
+    {
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/bag"
+    }
+  ],
+  "shortName": "IMGeo",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo",
+  "previousPublishDate": "2017-01-01"
+}</script><meta name="description" content="Dit document beschrijft een werkafspraak voor toepassing van de BGT|IMGeo standaarden door BGT bronhouders als gevolg van de aangepaste afbakeningsregels voor panden in BAG 2.0."></head>
+  <body aria-busy="false" class="h-entry" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p><a class="logo" href="http://www.geonovum.nl/"><img width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM"></a></p>
+  <p><!--_hyper: 2007440107;--></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Werkinstructie Panden en OverigeBouwwerken in de BGT door BAG 2.0</h1>
+  <h2 id="geonovum-werkafspraakversie-ter-vaststelling-01-juli-2018">Geonovum Werkafspraak<br>Versie ter vaststelling
+    <time property="dcterms:issued" class="dt-published" datetime="">
+      01 juli 2018
+    </time>
+  </h2>
+  <dl>
+    <dt>This version:</dt>
+    <dd><a class="u-url" href="https://docs.geostandaarden.nl/bgt/vv-wa-IMGeo-20180701/">https://docs.geostandaarden.nl/bgt/vv-wa-IMGeo-20180701/</a></dd>
+    <dt>
+      Editors:
+    </dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:imgeo@geonovum.nl">imgeo@geonovum.nl</a></span></span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://www.geobasisregistraties.nl/">Ministerie BZK</a></span>
+<span property="rdf:rest" resource="_:editor2"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor2"><span property="rdf:first" typeof="foaf:Person"><a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://www.vngrealisatie.nl/">VNG Realisatie</a></span>
+<span property="rdf:rest" resource="_:editor3"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor3"><span property="rdf:first" typeof="foaf:Person"><a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.svb-bgt.nl/">SVB-BGT</a></span>
+<span property="rdf:rest" resource="_:editor4"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor4"><span property="rdf:first" typeof="foaf:Person"><a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://www.kadaster.nl/bag">Kadaster</a></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+    
+    <dt>Participate:</dt>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMGeo">
+                      GitHub Geonovum/IMGeo
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMGeo/issues/">
+                      File a bug
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/IMGeo/commits/gh-pages">
+                      Commit history
+                    </a>
+    </dd>
+         
+    <dt>Rechtenbeleid:</dt>
+    <div class="copyright" style="margin: 0.25em 0;">
+      <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+      <div style="display:inline-block; vertical-align:top">
+        <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+      </div>
+    </div>
+  </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="abstract-0" resource="#abstract-0"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+      <p> 	      
+	      Dit document beschrijft een werkafspraak voor toepassing van de BGT|IMGeo standaarden door BGT bronhouders als gevolg van de aangepaste afbakeningsregels voor panden in BAG 2.0. 
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document" resource="#status-of-this-document"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+<p>
+  <em></em>
+</p>
+    
+<p>
+  Dit is een definitief concept van de nieuwe versie van de standaard. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+  De programmaraad van Geonovum beoordeelt dit definitief concept. Keurt zij het goed, dan is er een nieuwe standaard.
+</p>
+   
+      <p>        
+      </p>
+     </section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ol class="toc" role="directory"><li class="tocline"><a href="#aanleiding" class="tocxref"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a href="#werkafspraak" class="tocxref"><span class="secno">2. </span>Werkafspraak</a><ol class="toc"><li class="tocline"><a href="#toelichting" class="tocxref"><span class="secno">2.1 </span>Toelichting</a></li><li class="tocline"><a href="#aandachtspunten" class="tocxref"><span class="secno">2.2 </span>Aandachtspunten</a></li></ol></li><li class="tocline"><a href="#impact" class="tocxref"><span class="secno">3. </span>Impact</a></li><li class="tocline"><a href="#registratie" class="tocxref"><span class="secno">4. </span>Registratie</a></li><li class="tocline"><a href="#bijlage-werkinstructie" class="tocxref"><span class="secno">5. </span>Bijlage: Werkinstructie</a><ol class="toc"><li class="tocline"><a href="#scenario-s" class="tocxref"><span class="secno">5.1 </span>Scenario’s</a></li><li class="tocline"><a href="#beslisboom" class="tocxref"><span class="secno">5.2 </span>Beslisboom</a></li><li class="tocline"><a href="#overzichttabel" class="tocxref"><span class="secno">5.3 </span>Overzichttabel</a></li></ol></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#aanleiding" property="bibo:hasPart"><!--OddPage--><h2 id="aanleiding" resource="#aanleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Aanleiding</span></h2><p>In het kader van de herziening van de wet- en regelgeving voor de BAG (ook wel
+‘BAG 2.0’ genoemd) is er per 1 juli 2018 een nieuwe <a href="https://www.geobasisregistraties.nl/documenten/publicatie/2018/03/12/catalogus-2018">Catalogus BAG
+(2018)</a>
+in werking. In deze Catalogus zijn t.o.v. de vorige Catalogus de
+afbakeningsregels aangescherpt en zijn er zoveel mogelijk uitzonderingen op de
+reguliere regels (zoals beschreven in het Objectenhandboek BAG) geschrapt. Als
+gevolg daarvan zullen bepaalde objecten die voorheen (‘BAG 1.0’) niet als Pand
+werden afgebakend (bijvoorbeeld bunker of windturbine, op grond van een
+uitzonderingsregel) met ingang van BAG 2.0 wel als Pand worden opgenomen in de
+BAG (mits ze aan definitie en afbakeningsregels voldoen).</p><p>Deze objecten komen nu veelal voor in de BGT als OverigBouwwerk met een typering
+van het bouwwerk. Een Pand in de BGT heeft geen nadere typering</p><blockquote>
+<p>  Voorbeeld windturbine:</p>
+<p>  <strong>BAG 1.0</strong> stelt dat een windturbine als uitzondering geen Pand is, en
+  conform de huidige versie van BGT|IMGeo wordt deze windturbine opgenomen
+  als OverigBouwwerk:windturbine in de BGT.</p>
+<p>  <strong>BAG 2.0</strong> stelt dat deze windturbine -indien voldoet aan de definitie en
+  afbakeningsregels- als Pand wordt opgenomen in de BAG, en vervolgens als
+  Pand in de BGT.</p>
+</blockquote><p>Op het moment dat deze overige bouwwerken worden omgezet naar panden in de BAG
+en dus BGT, treedt informatieverlies voor gebruikers op. Een windturbine is als
+BGT Pand als zodanig niet herkenbaar door het ontbreken van typering voor panden
+in de BGT.</p><p>In een volgende versie van BGT|IMGeo wordt mogelijk de typering van panden
+toegevoegd aan het model. Echter, deze versie van IMGeo kan niet voor de
+inwerkingtreding van BAG 2.0 (1 juli 2018) worden gerealiseerd.</p><p>De volgende twee uitgangspunten zijn aanleiding voor deze werkafspraak:</p><ol>
+<li><p>Informatieverlies ten opzichte van de huidige inhoud van IMGeo moet
+voorkomen worden. Bronhouders dienen de typeringen van OverigeBouwwerken
+conform de huidige spelregels van IMGeo op te nemen in de BGT (zie <a href="https://www.geonovum.nl/geo-standaarden/bgt-imgeo/gegevenscatalogus-bgt-111">BGT
+Catalogus</a>
+en <a href="https://www.geonovum.nl/geo-standaarden/bgt-imgeo/IMGeo%20Catalogus">IMGeo
+Catalogus</a>).</p>
+</li>
+<li><p>BAG en BGT dienen consistent te zijn wat betreft populatie van Panden. BGT
+neemt altijd panden uit de BAG over. Mutaties van panden worden niet
+aangehouden tot een nieuw model van IMGeo beschikbaar is.</p>
+</li>
+</ol><p>Om die reden geldt de volgende werkafspraak voor de periode van inwerkingtreding
+BAG 2.0 tot de aanpassing van het model van IMGeo om informatieverlies als
+gevolg van BAG 2.0 op te vangen. Daarbij wordt de BGT bronhouder geadviseerd om
+in deze periode voor een bouwwerk zowel een Pand als een OverigBouwwerk met type
+in de BGT te registreren (‘dubbel registreren’). Na aanpassing van het model van
+IMGeo kunnen het Pand en OverigBouwwerk met type weer worden samengevoegd tot
+één object: een Pand/Bouwwerk met type.</p></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#werkafspraak" property="bibo:hasPart"><!--OddPage--><h2 id="werkafspraak" resource="#werkafspraak"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Werkafspraak</span></h2><p>De volgende werkafspraak geldt voor de BGT keten voor het behandelen van
+mutaties vanuit de BAG als gevolg van toepassing van de BAG 2.0
+afbakeningsregels door BAG (zie <a href="https://www.geobasisregistraties.nl/documenten/publicatie/2018/03/12/catalogus-2018">Catalogus BAG
+2018</a>):</p><blockquote>
+<p>  Bij opvoeren van nieuwe panden in de BAG, neemt BGT bronhouder altijd deze
+  panden over in de BGT. Daarnaast legt BGT bronhouder de typering van het
+  OverigBouwwerk conform het huidige spelregels van IMGeo in een extra laag
+  vast.</p>
+</blockquote><section typeof="bibo:Chapter" resource="#toelichting" property="bibo:hasPart"><h3 id="toelichting" resource="#toelichting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Toelichting</span></h3><p>Deze werkafspraak betekent het volgende:</p><ol>
+<li><p>Als BAG een nieuw Pand opvoert, dan neemt BGT bronhouder dit object altijd
+binnen de geldende actualiteitseisen als Pand op in de BGT.</p>
+</li>
+<li><p>Als dit bouwwerk conform het huidige IMGeo als OverigBouwwerk met bepaalde
+typering in de verplichte BGT voorkomt, dan moet BGT bronhouder ook een
+OverigBouwwerk met dit type opnemen.</p>
+</li>
+<li><p>Als dit bouwwerk conform het huidige IMGeo als OverigBouwwerk met bepaalde
+typering in het optionele deel van IMGeo voorkomt, dan mag BGT bronhouder
+ook een OverigBouwwerk met dit type opnemen.</p>
+</li>
+</ol><p>Deze werkafspraak geldt voor de volgende objecten:</p><ul>
+<li><p>Verplichte BGT: <strong>windturbine</strong>, <strong>open loods</strong> (of open frontstal),
+<strong>opslagtank</strong> (of silo)</p>
+</li>
+<li><p>Optionele IMGeo: <strong>schuur</strong>, <strong>bunker</strong></p>
+</li>
+<li><p>Niet-IMGeo objecten: parkeergarage, publieke lift / trappenhuis, wachtruime
+perron en loopbrug.</p>
+</li>
+</ul><p>In de bijlage is een werkinstructie opgenomen hoe BGT bronhouder bovenstaande
+werkafspraak toe kan passen.</p></section><section typeof="bibo:Chapter" resource="#aandachtspunten" property="bibo:hasPart"><h3 id="aandachtspunten" resource="#aandachtspunten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Aandachtspunten</span></h3><p>Hieronder worden enige aandachtspunten beschreven bij de toepassing van deze
+werkafspraak.</p><p><strong>Meer objecten worden pand met BAG 2.0</strong> Door de nieuwe afbakeningsregels en
+het schrappen van uitzonderingen in BAG 2.0 worden méér objecten als pand
+afgebakend. Een OverigBouwwerk in de BGT kan dus een Pand worden, en niet
+andersom.</p><p><strong>Alleen objecten die voldoen aan criteria BAG 2.0 worden Pand.</strong> Niet alle
+overige bouwwerken in de BGT zullen als Pand worden afgebakend. Objecten die
+niet voldoen aan de definities en afbakeningscriteria van BAG (zie <a href="https://www.geobasisregistraties.nl/documenten/publicatie/2018/03/12/catalogus-2018">Catalogus
+BAG
+2018</a>)
+worden niet als Pand opgenomen. Bijvoorbeeld, kleine windturbines die niet
+betreedbaar zijn, en waar geen persoon in kan staan.</p><p><strong>Pand op maaiveldniveau, OverigeBouwwerken naar inrichtende laag</strong> Panden
+worden altijd op maaiveldniveau in de BGT opgenomen. Bij het opnemen van
+typeringen van OverigeBouwwerken in de extra laag, kunnen overlap-conflicten
+ontstaan als verplichte OverigeBouwwerken en Panden op elkaar liggen. Een
+verplicht/opdelend OverigBouwwerk dient op een andere relatieve hoogte dan het
+Pand te worden gelegd, voor een optioneel/inrichtend</p><p><strong>Alleen BAG 2.0 bij nieuwe gevallen/vergunningen en terugmeldingen</strong>
+<a href="https://www.geobasisregistraties.nl/documenten/publicatie/2018/03/27/kwaliteitskader-bag-2018">Kwaliteitskader BAG 2.0
+2018</a>
+adviseert BAG bronhouders om alleen de BAG 2.0 afbakeningsregels toe te passen
+bij nieuwe gevallen/vergunningen en bij terugmeldingen (in verband met impact).
+Er wordt niet met terugwerkende kracht getracht om alle panden conform BAG 2.0
+op te voeren. Het is dus niet de bedoeling om via mutatiesignalering uit
+luchtfoto’s de BAG (en dus BGT) met panden conform BAG 2.0 te vullen, indien de
+bronhouder dit voor zijn eigen processen nodig acht mag het overigens wel.</p><p><strong>Verplicht vs. optioneel</strong> Bij vergunningverlening mogen Panden met status
+‘plan’ worden opgenomen in de BGT; vanaf status ‘Bouw gestart’ <em>moeten</em> Panden
+met status ‘bestaand’ worden opgenomen in de BGT. Idem geldt voor OverigBouwwerk
+van het type ‘windturbine’, ‘open loods’, ‘opslagtank’ dat deze tot de
+verplichte inhoud van de BGT toe behoren; ‘schuur’ en ‘bunker’ zijn vrijwillige,
+optionele IMGeo inhoud. Deze werkafspraak ontslaat BGT bronhouder niet van de
+verplichting om BGT-gegevens conform het huidige model te leveren aan de LV-BGT.</p><p><strong>BAG als bron voor Panden</strong> Deze werkafspraak gaat er van uit dat BGT
+bronhouder de panden muteert op aangeven van BAG. Als in een organisatie andere
+afspraken zijn gemaakt dat ontstaan van panden begint BGT, blijft gelden dat BGT
+bronhouder zowel de Panden overneemt als de OverigeBouwwerken conform huidig
+IMGeo.</p></section></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#impact" property="bibo:hasPart"><!--OddPage--><h2 id="impact" resource="#impact"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Impact</span></h2><p>De volgende impact wordt voorzien voor de schakels in de BGT keten.</p><p><strong>Bronhouder</strong> moet dubbel registreren, dus dubbelwerk. Dubbelwerk wordt
+verwacht opgelost te worden met IMGeo 3.0 c.q. de integrale objectenregistratie.</p><p><strong>Softwareleverancier</strong> heeft geen impact, als bronhoudersoftware werkt conform
+de (topologische) eisen van IMGeo.</p><p><strong>SVB-BGT/LV-BGT</strong> heeft geen impact. De techniek van de BGT keten kan deze
+werkafspraak aan.</p><p><strong>Gebruiker</strong> wordt geconfronteerd met dubbele objecten op dezelfde locatie.
+Communicatie wenselijk.</p></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#registratie" property="bibo:hasPart"><!--OddPage--><h2 id="registratie" resource="#registratie"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Registratie</span></h2><p>Een melding over dit onderwerp is opgenomen in het registratiesysteem dat
+Geonovum voor het beheer van de BGT|IMGeo standaarden gebruikt. Het issue is
+bekend onder: <a href="https://github.com/Geonovum/IMGeo2018/issues/26">Github #26</a>.</p></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-werkinstructie" property="bibo:hasPart"><!--OddPage--><h2 id="bijlage-werkinstructie" resource="#bijlage-werkinstructie"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Bijlage: Werkinstructie</span></h2><p>Deze bijlage geeft in meer detail de werkinstructies voor BGT bronhouder.</p><section typeof="bibo:Chapter" resource="#scenario-s" property="bibo:hasPart"><h3 id="scenario-s" resource="#scenario-s"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Scenario’s</span></h3><p>Aanleiding om deze werkinstructie er bij te pakken is dat BGT een mutatie op of
+een nieuw pand vanuit BAG heeft ontvangen. Er worden drie scenario’s
+onderscheiden:</p><ol>
+<li><p><strong>Op de plek van het BAG-Pand is reeds een BGT Pand aanwezig</strong> Voor de BGT
+is dit een reguliere mutatie: de gegevens van het BGT Pand worden bijgewerkt
+op basis van de gegevens van BAG.</p>
+</li>
+<li><p><strong>Op de plek van het BAG-Pand is een OverigBouwwerk aanwezig</strong> In dat geval
+neemt de BGT bronhouder een nieuw BGT Pand op, én indien het OverigBouwwerk
+van het type:</p>
+</li>
+<ol>
+<li><strong>Windturbine</strong>, <strong>open loods</strong> of <strong>opslagtank</strong> wijzigt BGT bronhouder de
+  relatieve hoogteligging van het OverigBouwwerk naar één hoger dan het nieuwe
+  BGT Pand.</li>
+<li><strong>Schuur</strong> of <strong>bunker</strong> hoeft BGT bronhouder geen wijziging op dit
+  OverigBouwwerk door te voeren.</li>
+<li><strong>Niet ingevuld/leeg</strong> beëindigd BGT bronhouder het OverigBouwwerk. De
+  eventueel gekoppelde gegevens in de eigen omgeving aan het OverigBouwwerk
+  worden gekoppeld aan het nieuwe Pand.</li></ol>
+
+<li><strong>Op de plek van het BAG-Pand is geen Pand of OverigBouwwerk aanwezig</strong> In
+In dat geval neemt de BGT bronhouder een nieuw Pand op, én een nieuw
+OverigBouwwerk conform de huidige regels van IMGeo, waarbij een
+OverigBouwwerk van type:</li>
+
+<ol><li><strong>Windturbine</strong>, <strong>open loods</strong> of <strong>opslagtank verplicht</strong> wordt opgenomen
+  op een relatieve hoogteligging één hoger dan het nieuwe Pand.</li>
+<li><strong>Schuur</strong> of <strong>bunker optioneel</strong> wordt opgenomen op dezelfde relatieve
+  hoogteligging als het nieuwe Pand.</li>
+</ol>
+</ol>
+</section><section typeof="bibo:Chapter" resource="#beslisboom" property="bibo:hasPart"><h3 id="beslisboom" resource="#beslisboom"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Beslisboom</span></h3><p>De drie scenario’s zijn uitgewerkt in onderstaande beslisboom.</p><p><img src="media/57019f9ded8e24043c4d9f0ef3113438.png" alt=""></p></section><section typeof="bibo:Chapter" resource="#overzichttabel" property="bibo:hasPart"><h3 id="overzichttabel" resource="#overzichttabel"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>Overzichttabel</span></h3><p>In onderstaande overzichtstabel is per objecttype, aanleiding en doorwerking in
+BAG beschreven hoe BGT bronhouder de gegevens in de BGT dient over te nemen.</p><p><img src="media/46589bc79eb6a1c6299357773fcc2128.png" alt=""></p></section></section>
+  
+     
+
+<p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

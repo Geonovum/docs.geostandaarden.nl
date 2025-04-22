@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Technische handreiking TAM omgevingsverordening</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "license": "cc-by-nd",
+  "publishDate": "2023-05-30",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "HRTAMomver",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "previousPublishDate": "2023-03-13",
+  "previousStatus": "GN-DEF",
+  "publishISODate": "2023-05-30T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 30 mei 2023"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230530/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Technische handreiking TAM omgevingsverordening",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2023-05-30",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230313/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Technische handreiking TAM omgevingsverordening</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2023-05-30">30 mei 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230530/">https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230530/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/HRTAMomver/">https://docs.geostandaarden.nl/ro/HRTAMomver/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230313/">https://docs.geostandaarden.nl/ro/def-hr-HRTAMomver-20230313/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/HRTAMomver/">https://Geonovum.github.io/ROST/HRTAMomver/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#werkafspraak-en-handreiking"><span class="secno">1.1 </span>Werkafspraak en handreiking</a></li><li class="tocline"><a class="tocxref" href="#doel-van-de-handreiking"><span class="secno">1.2 </span>Doel van de handreiking</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#omgevingsverordening"><span class="secno">2. </span>Omgevingsverordening</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</a></li><li class="tocline"><a class="tocxref" href="#gebruik-imro"><span class="secno">2.2 </span>Gebruik IMRO</a></li><li class="tocline"><a class="tocxref" href="#tam-omgevingsverordening"><span class="secno">2.3 </span>TAM omgevingsverordening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#publiceren"><span class="secno">3. </span>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#weergave-dso"><span class="secno">3.3 </span>Weergave DSO</a></li></ol></li><li class="tocline"><a class="tocxref" href="#placeholder-document"><span class="secno">4. </span>Placeholder document</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-0"><span class="secno">4.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#keuzes"><span class="secno">4.2 </span>Keuzes</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten"><span class="secno">5. </span>Aandachtspunten</a></li><li class="tocline"><a class="tocxref" href="#bijlage-placeholder"><span class="secno">6. </span>Bijlage: placeholder</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#reikwijdte"><span class="secno">6.1 </span>Reikwijdte</a></li><li class="tocline"><a class="tocxref" href="#artikelstructuur"><span class="secno">6.2 </span>Artikelstructuur</a></li><li class="tocline"><a class="tocxref" href="#detailniveau-annoteren"><span class="secno">6.3 </span>Detailniveau annoteren</a></li><li class="tocline"><a class="tocxref" href="#functionele-structuur"><span class="secno">6.4 </span>Functionele structuur</a></li><li class="tocline"><a class="tocxref" href="#tekst-van-de-artikelen"><span class="secno">6.5 </span>Tekst van de artikelen</a></li><li class="tocline"><a class="tocxref" href="#voorbeelden"><span class="secno">6.6 </span>Voorbeelden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#zuid-holland"><span class="secno">6.6.1 </span>Zuid-Holland</a></li><li class="tocline"><a class="tocxref" href="#noord-brabant"><span class="secno">6.6.2 </span>Noord-Brabant</a></li></ol></li></ol></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Er is niet voorzien in overgangsrecht voor de omgevingsverordening. Op het moment van inwerkingtreding van de Omgevingswet moeten de provincies hun omgevingsverordeningen hebben vastgesteld en bekendgemaakt.
+De provincie moet voor inwerkingtreding van de Omgevingswet conform Awb artikel 3.4 een ontwerp-omgevingsverordening en een definitieve omgevingsverordening, op basis van de Omgevingswet, publiceren. Daarna volgen wijzigingsbesluiten, of volgt een gehele intrekking van de omgevingsverordening waarna een geheel nieuwe omgevingsverordening wordt vastgesteld. Zowel de initiële omgevingsverordening als de wijzigingsbesluiten kunnen worden gemaakt met behulp van de werkafspraak TAM-omgevingsverordening. Juridisch gezien is de met behulp van de TAM opgestelde, vastgestelde en gepubliceerde omgevingsverordening een volwaardige omgevingsverordening onder de Omgevingswet. Inhoudelijk moet deze (wijziging van de) omgevingsverordening voldoen aan de eisen vanuit de Omgevingswet. De met de RO Standaarden opgestelde omgevingsverordening moet door de provincie uiteindelijk worden inhoudelijk verwerkt en technisch omgezet in de omgevingsverordening op basis van de STOP/TPOD standaard.
+</p><section id="werkafspraak-en-handreiking"><h3 id="x1-1-werkafspraak-en-handreiking"><span class="secno">1.1 </span>Werkafspraak en handreiking</h3><p>Met de werkafspraak TAM-omgevingsverordening wordt provincies de mogelijkheid geboden om een omgevingsverordening onder de Omgevingswet op te stellen op basis van de RO Standaarden 2012 te maken en te publiceren via Ruimtelijkeplannen.nl en de overbruggingsfunctie van het Informatiehuis Ruimte naar het Digitaal Stelsel Omgevingswet. De omgevingsverordening conform TAM maakt juridisch onderdeel uit van de Omgevingswet maar wordt technisch in de huidige landelijke voorziening geplaatst. Rekening houdend met de wettelijke vereisten van de Omgevingswet is de TAM omgevingsverordening een omgevingsdocument.
+</p><p>De onderdelen van de TAM-omgevingsverordening voor provincies zijn: </p><ul>
+<li>de werkafspraak TAM-omgevingsverordening;</li>
+<li>validatieregels, geïmplementeerd in de validator van Ruimtelijkeplannen.nl;</li>
+<li>de verwerking door de overbruggingsfunctie van het Informatiehuis Ruimte naar het Digitaal Stelsel Omgevingswet;</li>
+<li>deze technische handreiking.</li>
+</ul><p>Deze  handreiking is een aanvulling op de werkafspraak, ter ondersteuning van de provincies voor de technische toepassing van de werkafspraak in de praktijk. 
+In het <a href="https://geonovum.github.io/TPOD/TPOD%20Omgevingsverordening/TPOD_omgevingsverordening_v2.0.1.pdf" target="_blank">Toepassingsprofiel (TPOD) omgevingsverordening</a> zijn de inhoudelijke aspecten van de omgevingsverordening beschreven.
+</p></section><section id="doel-van-de-handreiking"><h3 id="x1-2-doel-van-de-handreiking"><span class="secno">1.2 </span>Doel van de handreiking</h3><p>De handreiking geeft de werkwijze en keuzemogelijkheden weer voor het Omgevingswet-instrument omgevingsverordening. Deze omgevingsverordening wordt door de provincie technisch gerealiseerd met de RO Standaarden 2012 en daarna, door gebruik te maken van de Wro planketen via Ruimtelijkeplannen.nl, naar het Digitaal Stelsel Omgevingswet te ontsluiten.
+</p><p>Deze handreiking gaat niet in op de inhoud van het instrument omgevingsverordening. Voor de juridische context van het instrument verwijzen we naar de Omgevingswet en onderliggende regelgeving. Voor meer informatie over de omgevingsverordening, raadpleeg de TPOD omgevingsverordening via de <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/STOPTPOD" target="_blank">Geonovum website</a> en de website 
+<a href="https://iplo.nl/regelgeving/instrumenten/omgevingsverordening" target="_blank">Informatiepunt Leefomgeving</a>.
+</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>Deze handreiking is bedoeld voor iedereen die een omgevingsverordening gaat maken en/of publiceren en daarbij overweegt gebruikt te maken van deze tijdelijke alternatieve maatregel. Aangeraden wordt om de hele handreiking te lezen, naast de werkafspraak. Het is wel van belang om de toepassing van het gebruik van deze tijdelijke alternatieve maatregel in zijn geheel te begrijpen om een afgewogen beslissing te kunnen nemen en te beoordelen hoe de TAM toegepast kan worden in de eigen organisatie.</p><p>De werkafspraak en de handreiking gaan samen in op hoe het technisch mogelijk gemaakt wordt om Wro plansoftware te gebruiken om een (wijziging van de) omgevingsverordening te maken en te publiceren via Ruimtelijkeplannen.nl. Via het Informatiehuis Ruimte (de ‘overbruggingsfunctie’) komt het besluit daardoor ook beschikbaar in het omgevingsloket. Deze handreiking is een <em>technische</em> handleiding en geen juridische. We geven dus niet aan hoe een de omgevingsverordening juridisch/inhoudelijk moet worden vormgegeven conform de Omgevingswet.
+</p><p>Hoofdstuk 2 gaat in op de <a href="#omgevingsverordening">omgevingsverordening</a>. Hoofdstuk 3 betreft het <a href="#publiceren">publiceren</a> van de omgevingsverordening. Een omgevingsverordening conform TAM moet worden gebruikt in combinatie met een zogenoemde placeholder om toepasbare regels bij activiteiten te kunnen maken: het opnemen van toepasbare regels met indieningsvereisten voor het vullen van aanvraagformulieren is verplicht. In <a href="#placeholder-document">hoofdstuk 4</a> is een korte toelichting en de keuzes met betrekking tot de placeholder opgenomen. <a href="#aandachtspunten">Hoofdstuk 5</a> geeft de aandachtspunten bij de afweging om al dan niet gebruik te gaan maken van de optie TAM-omgevingsverordening. In de <a href="#bijlage-placeholder">bijlage van deze handreiking</a> is dit verder toegelicht en zijn er voorbeelden opgenomen.</p></section></section><section data-format="markdown" id="omgevingsverordening"><!--OddPage--><h2 id="x2-omgevingsverordening"><span class="secno">2. </span>Omgevingsverordening</h2><p>De <a href="https://iplo.nl/regelgeving/instrumenten/omgevingsverordening/" target="_blank'">omgevingsverordening</a> bevat alle provinciale regels voor de fysieke leefomgeving. Per provincie is er één omgevingsverordening die de bestaande verordeningen kan vervangen. Zoals de milieuverordening, de planologische verordening, de ontgrondingenverordening, de landschapsverordening en de waterverordening.</p><p>Er is geen overgangsrecht voor bestaande provinciale verordeningen die opgaan in de omgevingsverordening op basis van de Omgevingswet. De provincies hebben afgesproken dat de omgevingsverordening klaar moet zijn wanneer de Omgevingswet ingaat. Bestaande provinciale verordeningen gelden dus niet meer vanaf de inwerkingtreding.
+De werkafspraak TAM-omgevingsverordening betreft het opstellen van een initiële omgevingsverordening en het is ook mogelijk in het geval van wijzigingsbesluiten de TAM-omgevingsverordening te gebruiken. Dit wordt in <a href="#tam-omgevingsverordening">paragraaf 2.3</a> toegelicht.
+</p><section id="technische-uitgangspunten"><h3 id="x2-1-technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</h3><p>De kern van het gebruik van de TAM-omgevingsverordening is, dat in aanloopt naar en na inwerkingtreding van de Omgevingswet, de bestaande Wro planketen gebruikt kan worden voor het opstellen en publiceren van de omgevingsverordening. De RO Standaarden 2012 worden niet aangepast. Ook wordt op geen enkele manier iets aangepast aan de Wro plansoftware die wordt gebruikt voor digitale ruimtelijke plannen. Ook aan de manier van publiceren naar Ruimtelijkeplannen.nl verandert niets. Wel wordt de <a href="https://www.ruimtelijkeplannen.nl/validator/validator" target="_blank'">validator</a> van Ruimtelijkeplannen.nl met validatieregels aangevuld en aangepast om het overgangsrecht van Wro naar Omgevingswet te faciliteren en de TAM-omgevingsverordening mogelijk te maken.</p><p>De validator moet een TAM-omgevingsverordening kunnen herkennen om een ontwerpversie wel door te laten ná inwerkingtreding. Daarom is in de werkafspraak bepaald dat de plannaam begint met “TAM-omgevingsverordening”, gevolgd door een spatie en de naam van het plan. Hiermee wordt het onderscheid gemaakt tussen een Wro provinciale verordening en een nieuw omgevingsdocument op basis van de TAM-omgevingsverordening. Om een omgevingsdocument te kunnen maken met behulp van de TAM-omgevingsverordening wordt uitsluitend gebruik gemaakt van de planfiguur ‘provinciale verordening’.
+</p><p>Een TAM-omgevingsverordening moet uiteindelijk door de provincie omgezet worden naar STOP/TPOD. Het gebruik van de TAM-omgevingsverordening houdt dus altijd (extra) werk in de toekomst in. Dit gegeven moet mee worden genomen bij de afweging over het al dan niet gebruiken van TAM-omgevingsverordening.</p></section><section id="gebruik-imro"><h3 id="x2-2-gebruik-imro"><span class="secno">2.2 </span>Gebruik IMRO</h3><p>Om een TAM-omgevingsverordening te maken, kan binnen het planfiguur ‘provinciale verordening’ in principe gebruik worden gemaakt van alle objecten: besluitgebied, besluitvlak, besluitsubvlak. Belangrijk is te bedenken dat een TAM-omgevingsverordening technisch moet voldoen aan IMRO2012 om door de validator te kunnen komen. Concreet betekent dat ook dat er altijd een object ‘besluitgebied’ moet zijn met de gegevens van het besluit, ondanks dat de omgevingsverordening dit niet kent onder de Omgevingswet.
+</p><p>In principe is een omgevingsverordening vormvrij. De provincie bepaalt binnen zekere grenzen hoe een omgevingsverordening wordt opgebouwd. Toch is het niet in lijn met de Omgevingswetgedachte om te blijven werken met de Wro-objecten besluitgebied, besluitvlak, besluitsubvlak, daar waar een TAM-omgevingsverordening gebruik maakt van objecten zoals activiteiten en gebiedsaanwijzingen. Daarnaast gaat de STOP/TPOD standaard uit van een koppeling van een werkingsgebied (locatie) aan elke regeltekst. Dit komt overeen met het feit dat IMRO2012 bij de objecten besluitgebied, besluitvlak, besluitsubvlak verplicht het attribuut verwijzingNaarTekstInfo moet worden gebruikt.
+</p><figure id="fig-koppeling-tussen-regeltekst-en-locatie-werkingsgebied-zoals-deze-wordt-gebruik-in-de-stop-tpod-standaard"><img src="media/Koppeling_regeltekst_locatie.png" alt="Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard" style="width: 100%;">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard</span></figcaption>
+</figure></section><section id="tam-omgevingsverordening"><h3 id="x2-3-tam-omgevingsverordening"><span class="secno">2.3 </span>TAM omgevingsverordening</h3><p>Een omgevingsverordening opgesteld met behulp van TAM in plaats van de STOP/TPOD standaarden, moet herkenbaar zijn. Dit is belangrijk voor een goede validatie en voor de overbruggingsfunctie naar de landelijke voorziening Digitaal Stelsel Omgevingswet. De werkafspraak is als volgt:
+</p><ul>
+<li>het typePlan is provinciale verordening</li>
+<li>de naam van het plan is ‘TAM-omgevingsverordening[spatie][plannaam]’</li>
+</ul><p>Let er bij de naamgeving op dat:</p><ul>
+<li>TAM wordt geschreven in hoofdletters;</li>
+<li>omgevingsverordening wordt geschreven in kleine letters;</li>
+<li>er geen gebruik wordt gemaakt van spaties tussen TAM en omgevingsverordening, maar alleen een koppelteken.</li>
+</ul><p>Er is altijd een besluitgebied dat de gehele provincie betreft. Bij het object besluitgebied moet het atribuut planStatusInfo worden ingevuld. Ten behoeve van de TAM-omgevingsverordening is de volgende planstatus toegestaan: ontwerp en vastgesteld. 
+Gekoppeld met de dossierstatus in het manifest betekent dit:
+</p><ul>
+<li>planstastus ontwerp met de dossierstatus in voorbereiding;</li>
+<li>planstastus vastgesteld met de dossierstatus vastgesteld dan wel geheel onroepelijk in werking.
+</li>
+</ul><p>Er is minimaal 1 besluitvlak. Voor Gebiedsaanwijzingen en Activiteiten kan gebruik gemaakt worden van besluitvlakken of besluitsubvlakken. 
+Bij tekstwijzigingen bevat het besluit alleen de gewijzigde artikelen. Bij artikelen die op een specifieke locatie gericht zijn, kan er een besluitvlak of besluitsubvlak worden aangemaakt met de duiding van de wijziging.</p></section></section><section data-format="markdown" id="publiceren"><!--OddPage--><h2 id="x3-publiceren"><span class="secno">3. </span>Publiceren</h2><section id="ruimtelijkeplannen-nl"><h3 id="x3-1-ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</h3><p>Het publiceren van het uiteindelijk met de RO Standaarden 2012 vormgegeven (wijziging van de) omgevingsverordening gaat niet anders dan de publicatie van een provinciale verordening op basis van de Wro. Dat betekent dat er geen aanpassingen aan software, procedure of manier van handelen nodig zijn. De enige voorwaarde is dat de omgevingsverordening conform TAM voldoet aan de technische vereisten van de RO Standaarden. Dat kan op de normale wijze vooraf worden getoetst door de omgevingsverordening via de optie manifest-validatie aan te bieden aan de <a href="https://www.ruimtelijkeplannen.nl/validator/validator/?" target="_blank">validator</a> van Ruimtelijkeplannen.nl. Als deze online validatie slaagt zal bijna zeker de publicatie ook goed gaan.</p><p>De publicatie van een omgevingsverordening conform TAM volgt dezelfde route als een provinciale verordening onder de Wro. Door met de plansoftware het gevalideerde plan te publiceren, wordt de set bestanden die de omgevingsverordening vormen op de webdirectory van de provincie geplaatst (dat kan ook een locatie bij de leverancier zijn). Tweemaal per dag komt de harvester van Ruimtelijkeplannen.nl langs, controleert of er nieuwe plannen in het manifest van de provincie staan. Als dat het geval is, dan worden de planbestanden opgehaald en weergegeven op de website van Ruimtelijkeplannen.nl.</p><p>Technisch betekent dit dat de omgevingsverordening onderdeel wordt van de provinciale Wro planvoorraad zoals opgenomen in het Wro-manifest. Dat heeft weinig consequenties, maar de totale planvoorraad moet wel goed beheerd worden door de provincie. Het is immers tijdelijk dat Wro-besluiten en omgevingsdocumenten door elkaar staan in de planvoorraad die beheerd wordt met behulp van de Wro plansoftware.</p><p>Alle plannen in Ruimtelijkeplannen.nl worden voortdurend verwerkt door de overbruggingsfunctie van Informatiehuis Ruimte voor de ontsluiting in het DSO-LV. Hierdoor worden de besluiten van de provincie zichtbaar in de viewer 'Regels op de Kaart' (het omgevingsloket).
+</p></section><section id="pilot-ruimtelijkeplannen-nl"><h3 id="x3-2-pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</h3><p>Technische gezien is een omgevingsverordening conform TAM een IMRO2012 provinciale verordening. Daarom kan de omgevingsverordening ook gepubliceerd worden op de test-omgeving van Ruimtelijkplannen.nl. Dit maakt de verordeningen raadpleegbaar op pilot.ruimtelijkeplannen.nl zonder dat daar juridische consequenties aan verbonden zijn. Deze route kan dienen om, <i>voorafgaand</i> aan de inwerkingtreding van de Omgevingswet, de omgevingsverordening conform TAM<i>technisch</i> te toetsen op juistheid en volledigheid.
+</p><p>Het is voor de inwerkingtreding van de Omgevingswet slechts beperkt en alleen in samenwerking met het ministerie BZK en het Kadaster mogelijk een omgevingsverordening conform TAM te testen in de keten naar het omgevingsloket, de zogenaamde pré-omgeving van het DSO. </p></section><section id="weergave-dso"><h3 id="x3-3-weergave-dso"><span class="secno">3.3 </span>Weergave DSO</h3><p>Bij inwerkingtreding van de Omgevingswet zal de viewer van Ruimtelijkeplannen.nl niet meer de volledige actuele situatie weergeven. Raadplegen van ruimtelijke plannen kan vanaf dat moment in samenhang met de omgevingsdocumenten op basis van STOP/TPOD uitsluitend via de viewer ‘Regels op de Kaart’ van het omgevingsloket.
+De viewer ‘Regels op de Kaart’ van het omgevingsloket geeft de Wro plannen zoveel mogelijk weer als nu gebruikelijk is op Ruimtelijkeplannen.nl. De kaartweergave van provinciale verordeningen, en dus ook van omgevingsverordeningen conform TAM, kan door het bevoegd gezag gestuurd worden met de keuze van de symboolcodes en kaarten, bij het definiëren van objecten in de Wro plansoftware. Als de provincie kiest voor een structuur van de omgevingsverordening conform TAM dat dicht bij de opbouw van de huidige provinciale verordening ligt, dan zal de weergave daarvan ook veel lijken op wat we gewend zijn bij de provinciale verordeningen van de Wro. Gebruik van de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/informatiemodel-ruimtelijke-ordening-imro2012/" target="_blank'">symboolcodes</a> van <a href="https://docs.geostandaarden.nl/ro/def-pr-pv2012-20181023/" target="_blank'">Praktijkrichtlijn Provinciale Verordening</a> is noodzakelijk om de TAM-omgevingsverordening goed door de keten te krijgen en te verbeelden in het omgevingsloket.</p></section></section><section data-format="markdown" id="placeholder-document"><!--OddPage--><h2 id="x4-placeholder-document"><span class="secno">4. </span>Placeholder document</h2><section id="inleiding-0"><h3 id="x4-1-inleiding"><span class="secno">4.1 </span>Inleiding</h3><p>Het maken van een omgevingsverordening conform TAM bestaat uit twee onderdelen: a) publicatie van de omgevingsverordening via de Wro-route, b) publicatie van een <a href="https://aandeslagmetdeomgevingswet.nl/implementatie/digitaal-stelsel/tam/tam-publicatie-omgevingsverordening/" target="_blank'">placeholder document</a> conform STOP/ TPOD.
+</p><p>Het placeholder document is een via de Landelijke voorziening bekendmaken en beschikbaar stellen (LVBB) gepubliceerd document met een link naar de publicatie van de verordening en naar de benodigde activiteit-annotaties bij die verordening. Hierdoor is het mogelijk om toepasbare regels klaar te zetten in het Omgevingsloket die horen bij de omgevingsverordening. De placeholder maakt het mogelijk om de toepasbare regels die horen bij de omgevingsverordening, klaar te zetten in het Omgevingsloket. Deze is nodig om aan de wettelijke vereisten op het gebied van digitale dienstverlening bij inwerkingtreding te voldoen.</p></section><section id="keuzes"><h3 id="x4-2-keuzes"><span class="secno">4.2 </span>Keuzes</h3><p>Voor het maken van een placeholder document kan de provincie kiezen uit twee mogelijkheden:
+</p><ol>
+<li>De provincie maakt het placeholder document <i>niet</i> zelf. De provincie vraagt ondersteuning bij het maken van het placeholder document bij het Informatiepunt Leefomgeving (IPLO) door contact op te nemen met de <a href="https://iplo.nl/contact/" target="_blank'">IPLO helpdesk</a>. De aanvraag voor het laten maken van een placeholder document kan uiterlijk 30 november 2023 bij de IPLO helpdesk worden ingediend.
+</li>
+<li>De provincie maakt het placeholder document <i>wel</i> zelf. De provincie bepaalt welke gegevens minimaal worden opgenomen en maakt zelf het placeholder document met de beschikbare software conform de STOP/ TPOD standaarden. In de <a href="#bijlage-placeholder">bijlage van deze handreiking</a> is dit verder toegelicht en zijn er voorbeelden opgenomen.   </li>
+</ol></section></section><section data-format="markdown" id="aandachtspunten"><!--OddPage--><h2 id="x5-aandachtspunten"><span class="secno">5. </span>Aandachtspunten</h2><p>Een omgevingsverordening is juridisch een omgevingsdocument op basis van de Omgevingswet maar technisch een provinciale verordening op basis van de RO Standaarden 2012. Dat heeft als voordeel dat in noodgevallen toch besluiten voor ruimtelijke ontwikkelingen doorgang kunnen vinden zelfs als de keten ‘van plan tot publicatie’ door welke oorzaak dan ook nog niet kan worden ingezet na inwerkingtreding van de Omgevingswet. Maar er zijn ook aandachtspunten, hiermee dient rekening te worden gehouden bij de inzet van de TAM-omgevingsverordening:</p><ul>
+<li>De weergave van een omgevingsverordening conform TAM wordt gestuurd door de keuze van de IMRO-symboolcodes die worden ingezet om het omgevingsdocument te maken. Het omgevingsdocument is raadpleegbaar in het omgevingsloket. De werking van de viewer Regels op de Kaart en de overbruggingsfunctie bepalen uiteindelijk hoe bruikbaar het kaartbeeld wordt;</li>
+<li>Tijdreizen in de viewer Regels op de Kaart zal niet goed werken met een TAM-omgevingsverordening: IMRO2012 heeft niet de juiste tijdreisattributen om dit te kunnen ondersteunen;</li>
+<li>Bij het gebruik van de TAM-omgevingsverordening kan wel de relatie juridische regel en werkingsgebied worden nagebootst, maar annotaties zijn niet mogelijk. IMRO2012 biedt hier geen mogelijkheden voor. Dat houdt in dat er geen relatie met Toepasbare Regels kan worden gelegd, en een omgevingsverordening conform TAM niet werkt bij de vragenbomen in het omgevingsloket, net zoals dat ook voor bestemminsplannen in het tijdelijk deel omgevingsplan geldt. Voor activiteiten waarvoor de TAM-omgevingsverordening regelingen opneemt, geldt dat er een placeholder document in het DSO nodig is dat met behulp van de STOP/ TPOD standaarden is geladen;</li>
+<li>Uiteindelijk moet een omgevingsverordening, inclusief de wijzigingsbesluiten conform de STOP/TPOD standaarden zijn opgesteld en geladen in het DSO. Dit betekent feitelijk dat het besluit opnieuw gemaakt en bekendgemaakt moet worden. Dat is extra werk en afhankelijk van de juridisch inbedding, is het besluit opnieuw appellabel, ondanks het feit dat het al juridisch een omgevingsdocument is.</li>
+</ul><p>Het zijn deze overwegingen die meegenomen kunnen worden bij de afweging om al dan niet gebruik te gaan maken van de mogelijkheid van een omgevingsverordening conform TAM.</p></section><section data-format="markdown" id="bijlage-placeholder"><!--OddPage--><h2 id="x6-bijlage-placeholder"><span class="secno">6. </span>Bijlage: placeholder</h2><p>De juridisch geldende versie van het omgevingsdocument omgevingsverordening is in het geval van TAM een omgevingsverordening die technisch is gemaakt op basis van de RO standaarden 2012 en die via het oude publicatiespoor is bekendgemaakt. De omgevingsverordening wordt ook getoond in de viewer 'Regels op de Kaart' (het omgevingsloket). Omdat het IMRO niet dezelfde manier van annoteren kent zoals in de STOP/ TPOD standaarden, kunnen alleen de tekst en locaties getoond worden in de viewer. Voor het kunnen doen van meldingen en vergunningaanvragen (waarbij indieningsvereisten een rol spelen) via het DSO omgevingsloket is dit niet voldoende. Daarom is het de bedoeling dat er naast de omgevingsverordening conform TAM, separaat ook een STOP/ TPOD document met geannoteerde activiteiten in het DSO worden geladen: het placeholder document.
+</p><p>Bij het maken van een placeholder kunnen op een aantal vlakken keuzes worden gemaakt die kunnen leiden tot een heel simpele variant, of juist een versie met wat meer informatie en betere dienstverlening. Visuele voorbeelden van testen van de placeholders van Zuid-Holland en Noord-Brabant die dit illustreren zijn toegevoegd in paragraaf <a href="#voorbeelden">voorbeelden</a>.</p><section id="reikwijdte"><h3 id="x6-1-reikwijdte"><span class="secno">6.1 </span>Reikwijdte</h3><p>Het al dan niet tevoorschijn komen van de functie vergunningcheck of activiteiten waarvoor een vergunning aangevraagd kan worden of een melding kan worden gedaan, kan in het omgevingsloket afhankelijk zijn van de locatie waarvoor dit wordt gedaan. De geografische reikwijdte waarin de activiteiten naar voren komen zijn:
+</p><p><b>Geheel ambtsgebied</b>
+Dit is het geval als alle activiteiten conform de TPOD standaarden als <i>activiteitlocatieaanduiding</i> 'het ambtsgebied' krijgen of als alle activiteiten, eventueel met specifiekere activiteitlocatieaanduidingen, worden opgenomen in een artikel met als werkingsgebied 'het ambtsgebied'. Het gevolg van deze keuze is dat in het loket een grote hoeveelheid activiteiten naar voren komen, die mogelijk niet relevant zijn voor de betreffende locatie waarop de vergunning check of een vergunning aanvraag wordt gedaan. 
+Voorbeeld: placeholder Zuid-Holland.
+</p><p><b>Specifiek in het van toepassing zijnde gebied</b>
+Dit vraagt om een toepassing van de activiteiten in verschillende artikelen met specifieke werkingsgebieden en specifieke activiteitlocatieaanduidingen, en de opname van de OW-locaties en en Geografische Informatie Objecten (GIO's) in het placeholder document. 
+Voorbeeld: placeholder Noord-Brabant.</p></section><section id="artikelstructuur"><h3 id="x6-2-artikelstructuur"><span class="secno">6.2 </span>Artikelstructuur</h3><p>In een placeholder document kunnen activiteiten gezamenlijk in één artikel worden geannoteerd of er kan gekozen worden voor het opnemen van elke afzonderlijke activiteit in een eigen artikel. De wijze waarin de structuur van de artikelen met de annotaties van de (juridisch geldende via TAM gepubliceerde) omgevingsverordening kan worden vormgegeven, kan op twee manieren worden uitgewerkt:</p><p><b>Geen gerelateerde structuur</b>
+het placeholder document bevat één artikel in de meest eenvoudig variant of een opsomming van enkel de artikelen met geannoteerde activiteiten. Afhankelijk van de gebruikte software krijgen die daarmee een andere nummering en   hoofdstukindeling in de opgestelde TAM- omgevingsverordening. Er is in dit geval geen relatie te leggen met de omgevingsverordening. De weergave in de viewer 'Regels op de Kaart' heeft weinig inhoudelijke toegevoegde waarde.</p><p><b>Zelfde structuur</b> 
+Het placeholder document bevat alle artikelen die ook in de TAM-omgevingsverordening voorkomen. Dit betekent dat:
+</p><ul>
+<li>hoofdstukken zonder activiteiten op gereserveerd kunnen worden gezet;
+</li>
+<li>in de hoofdstukken met activiteiten, de artikelen zonder activiteit op gereserveerd kunnen worden gezet (worden leeggemaakt en worden gereserveerd);</li>
+<li>de artikelen met activiteiten worden geannoteerd. 
+De gebruiker in de viewer 'Regels op de Kaart' kan makkelijker de relatie leggen naar de tekst van de omgevingsverordening conform TAM. Ook werkt bij de viewer 'Regels op de Kaart' het filtermechanisme (als gevolg van de werkingsgebieden en met het filteren op activiteit) waardoor de relevante artikelen naar voren komen.
+</li>
+</ul></section><section id="detailniveau-annoteren"><h3 id="x6-3-detailniveau-annoteren"><span class="secno">6.3 </span>Detailniveau annoteren</h3><p>Bij het hanteren van dezelfde structuur van de regels in de opgestelde TAM-omgevingsverordening als in het placeholder document kan er bij het annoteren ook nog een keuze gemaakt worden voor een wat globalere aanpak of een aanpak die meer de inhoudelijke artikelen volgt.
+</p><p><b>Globale structuur</b>
+De annotaties kunnen globaler gehouden worden, bijvoorbeeld gekoppeld aan de artikelen ‘toepassingsbereik’ en ‘aanwijzing van de activiteiten’. Dan is de activiteitregelkwalificatie bijvoorbeeld ‘anders geduid’. 
+In het voorbeeld placeholder Noord-Brabant is dit toegepast in de afdeling over het stiltegebied.</p><p><b>Structuur conform inhoudelijke artikelen</b> 
+Volg hiervoor de werkwijze zoals deze is beschreven in de <a href="https://geonovum.github.io/TPOD/TPOD%20Omgevingsverordening/TPOD_omgevingsverordening_v2.0.1.pdf" target="_blank">Toepassingsprofiel (TPOD) omgevingsverordening</a>.
+</p></section><section id="functionele-structuur"><h3 id="x6-4-functionele-structuur"><span class="secno">6.4 </span>Functionele structuur</h3><p>De inhoudelijke keuzes bij de opbouw van de functionele structuur van activiteiten zijn niet anders dan bij de reguliere verordening. De functionele structuur volgt aan de ene kant de opbouw van de juridische regels maar moet aan de andere kant rekening houden met de gewenste effecten bij de toepasbare regels.</p></section><section id="tekst-van-de-artikelen"><h3 id="x6-5-tekst-van-de-artikelen"><span class="secno">6.5 </span>Tekst van de artikelen</h3><p>Net als bij de artikelstructuur zijn er voor het opnemen van tekst in het placeholder document meerdere varianten mogelijk. Bij de eenvoudige versie zonder de structuur van de verordening zijn de varianten als volgt:</p><ul>
+<li>Alleen een beschrijving van de status van de placeholder, bij voorkeur met een verwijzing naar de naam en identificatie van de omgevingsverordening conform TAM. Belangrijk is dat de naam correct wordt gebruikt. Dus 'TAM-omgevingsplan Noord-Brabant' of 'TAM-omgevingsplan Zuid-Holland';</li>
+<li>Een verwijzing naar de omgevingsverordening conform TAM met enkel de benoeming van de activiteit en de locatie;</li>
+<li>Een verwijzing naar de omgevingsverordening conform TAM met de hele artikeltekst waarin de activiteit en de locatie aan de orde komen om zo meer duiding te kunnen geven aan de activiteit.</li>
+</ul></section><section id="voorbeelden"><h3 id="x6-6-voorbeelden"><span class="secno">6.6 </span>Voorbeelden</h3><section id="zuid-holland"><h4 id="x6-6-1-zuid-holland"><span class="secno">6.6.1 </span>Zuid-Holland</h4><p><u>Naam</u>: TAM-omgevingsplan Zuid-Holland</p><p><u>Identificatie</u>: /akn/nl/act/pv28/2022/OOWPVZH8Reg</p><p><b>Variant met  één artikel</b> 
+Aan dit artikel zijn alle activiteiten gekoppeld met als werkingsgebied het hele ambtsgebied.
+</p><figure id="fig-activiteiten-gekoppeld-met-als-werkingsgebied-het-hele-ambtsgebied"><img src="media/ZH_ph_vb_1a.png" alt="Activiteiten gekoppeld met als gebied het hele ambtsgebied" style="width: 100%;">
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">Activiteiten gekoppeld met als werkingsgebied het hele ambtsgebied</span></figcaption>
+</figure><figure id="fig-activiteiten-gekoppeld-met-als-werkingsgebied-het-hele-ambtsgebied-van-provincie-zuid-holland"><img src="media/ZH_ph_vb_1b.png" alt="Activiteiten gekoppeld met als gebied het hele ambtsgebied van provincie Zuid-Holland" style="width: 100%;">
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">Activiteiten gekoppeld met als werkingsgebied het hele ambtsgebied van provincie Zuid-Holland</span></figcaption>
+</figure></section><section id="noord-brabant"><h4 id="x6-6-2-noord-brabant"><span class="secno">6.6.2 </span>Noord-Brabant</h4><p><u>Naam</u>: TAM-omgevingsverordening Noord-Brabant</p><p><u>Identificatie</u>: /akn/nl/act/pv30/2022/omgevingsverordeningGK</p><p><b>Variant met volledige tekststructuur omgevingsverordening</b></p><figure id="fig-niet-geannoteerde-onderdelen-staan-op-gereserveerd-geannoteerde-artikelen-zijn-volledig-opgenomen"><img src="media/NB_ph_vb_2.png" alt="Niet-geannoteerde onderdelen staan op gereserveerd, geannoteerde artikelen zijn volledig opgenomen." style="width: 100%;">
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">Niet-geannoteerde onderdelen staan op 'gereserveerd', geannoteerde artikelen zijn volledig opgenomen.</span></figcaption>
+</figure><b>Annotatie activiteit en werkingsgebied bij elk artikel waar dit relevant is</b><figure id="fig-specifieke-activiteitregelkwalificatie-bijvoorbeeld-een-verbod-bij-het-verbodsartikel"><img src="media/NB_ph_vb_3.png" alt="Specifieke activiteitregelkwalificatie, bijvoorbeeld een verbod bij het verbodsartikel." style="width: 100%;">
+<figcaption>Figuur <span class="figno">5</span> <span class="fig-title">Specifieke activiteitregelkwalificatie, bijvoorbeeld een verbod bij het verbodsartikel.</span></figcaption>
+</figure><b>Alternatief: globalere annotatie</b><figure id="fig-globale-annotatie-in-beeld"><img src="media/NB_ph_vb_4.png" alt="Globale annotatie in beeld" style="width: 100%;">
+<figcaption>Figuur <span class="figno">6</span> <span class="fig-title">Globale annotatie in beeld</span></figcaption>
+</figure><figure id="fig-globale-annotatie-in-tekst"><img src="media/NB_ph_vb_5.png" alt="Globale annotatie in tekst" style="width: 100%;">
+<figcaption>Figuur <span class="figno">7</span> <span class="fig-title">Globale annotatie in tekst</span></figcaption>
+</figure><figure id="fig-globale-annotatie-in-beeld-en-tekst"><img src="media/NB_ph_vb_6.png" alt="Globale annotatie in beeld en tekst" style="width: 100%;">
+<figcaption>Figuur <span class="figno">8</span> <span class="fig-title">Globale annotatie in beeld en tekst</span></figcaption>
+</figure></section></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

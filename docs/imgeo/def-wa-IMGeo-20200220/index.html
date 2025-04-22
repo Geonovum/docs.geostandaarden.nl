@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Tijdzones in berichtenverkeer en formele historie van objecten</title>    
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "publishDate": "2020-02-20",
+  "editors": [
+    {
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "imgeo@geonovum.nl"
+    }
+  ],
+  "shortName": "IMGeo",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo",
+  "publishISODate": "2020-02-20T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 20 februari 2020"
+}</script><meta name="description" content="Dit document beschrijft een werkafspraak voor de te hanteren tijdzones in het berichtenverkeer en voor de formele historie van objecten voor het LV-BGT, BAG-BGT en Geo-BOR berichtenverkeer."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imgeo/def-wa-IMGeo-20200220/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Tijdzones in berichtenverkeer en formele historie van objecten",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-02-20",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/IMGeo/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document beschrijft een werkafspraak voor de te hanteren tijdzones in het berichtenverkeer en voor de formele historie van objecten voor het LV-BGT, BAG-BGT en Geo-BOR berichtenverkeer.",
+  "editor": [
+    {
+      "type": "Person",
+      "foaf:mbox": "imgeo@geonovum.nl",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "http://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <body cz-shortcut-listen="true" class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Tijdzones in berichtenverkeer en formele historie van objecten</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2020-02-20">20 februari 2020</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/imgeo/def-wa-IMGeo-20200220/">https://docs.geostandaarden.nl/imgeo/def-wa-IMGeo-20200220/</a></dd>    
+    <dt>Latest editor's draft:</dt><dd><a href="http://geonovum.github.io/IMGeo/werkafspraken/tijdzone-berichtenverkeer-objecten/">http://geonovum.github.io/IMGeo/werkafspraken/tijdzone-berichtenverkeer-objecten/</a></dd>
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard"><a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <a class="ed_mailto u-email email" href="mailto:imgeo@geonovum.nl">imgeo@geonovum.nl</a></dd>
+    
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/Geonovum/IMGeo/">GitHub Geonovum/IMGeo</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p> 	      
+	      Dit document beschrijft een werkafspraak voor de te hanteren tijdzones in het berichtenverkeer en voor de formele historie van objecten voor het LV-BGT, BAG-BGT en Geo-BOR berichtenverkeer. 
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+    Dit is de definitieve versie van de werkafspraak. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+</p>
+      <p>        
+      </p>
+    </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#werkafspraak"><span class="secno">2. </span>Werkafspraak</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#berichtenverkeer"><span class="secno">2.1 </span>Berichtenverkeer</a></li><li class="tocline"><a class="tocxref" href="#formele-historie-van-objecten"><span class="secno">2.2 </span>Formele historie van objecten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#impact"><span class="secno">3. </span>Impact</a></li><li class="tocline"><a class="tocxref" href="#registratie"><span class="secno">4. </span>Registratie</a></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>In de catalogi van de BGT en IMGeo, en de koppelvlakspecificaties voor het
+LV-BGT berichtenverkeer, BAG-BGT berichtenverkeer en Geo-BOR berichtenverkeer is
+nergens expliciet vastgelegd welke tijdzone moet worden gehanteerd voor
+berichten (<em>StUF:tijdstipBericht</em>) en de formele historie van objecten
+(<em>tijdstipRegistratie, eindRegistratie</em> en <em>LV-publicatiedatum</em>).</p><p>Deze werkafspraak legt de eerdere afspraken over toepassing van tijdzone in tijdstippen in
+berichtenverkeer en bij objecten expliciet vast.</p></section>
+   <section data-format="markdown" aria-busy="false" id="werkafspraak"><!--OddPage--><h2 id="x2-werkafspraak"><span class="secno">2. </span>Werkafspraak</h2><p>Voor het BGT, BAG-BGT en Geo-BOR berichtenverkeer geldt de volgende werkafspraak
+voor de toepassing van tijdstippen in berichtenverkeer en formele historie van
+objecten.</p><section id="berichtenverkeer"><h3 id="x2-1-berichtenverkeer"><span class="secno">2.1 </span>Berichtenverkeer</h3><p>Voor het berichtenverkeer wordt de continue tijd UTC+1 zonder zomer/wintertijd
+aangehouden in het tijdstipBericht in de StUF:stuurgegevens.</p></section><section id="formele-historie-van-objecten"><h3 id="x2-2-formele-historie-van-objecten"><span class="secno">2.2 </span>Formele historie van objecten</h3><p>Voor de tijdstippen van BAG- en IMGeo objecten volgt deze werkafspraak de regels
+voor Tijdgeldigheid zoals opgenomen in paragraaf 4.7.3. van de <a href="https://www.geobasisregistraties.nl/documenten/publicatie/2018/03/12/catalogus-2018">Catalogus
+Basisregistratie Adressen en Gebouwen – 2018</a>
+van 1 juli 2018, ofwel:</p><p><em>Voor het ontstaan, wijzigen en vervallen van objecten geldt de
+Nederlandse wettelijke tijd. Daarbij wordt in de winter de wintertijd
+aangehouden, ofewel Midden-Europese Tijd, en in de zomer de zomertijd, ofewel
+Midden-Europese Zomertijd. Om dubbele tijdstippen te voorkomen mag in de nacht
+van zomertijd naar wintertijd (ofewel de nacht van zaterdag op zondag in het
+laatste weekend van oktober wanneer de klok een uur teruggaat ) geen tijdstip
+worden toegekend aan (versies van) objecten.</em></p></section></section>
+   <section data-format="markdown" aria-busy="false" id="impact"><!--OddPage--><h2 id="x3-impact"><span class="secno">3. </span>Impact</h2><p>Dit is een bestaande werkwijze; de impact wordt ingeschat op nihil.</p></section>
+   <section data-format="markdown" aria-busy="false" id="registratie"><!--OddPage--><h2 id="x4-registratie"><span class="secno">4. </span>Registratie</h2><p>Een melding over dit onderwerp is opgenomen in het registratiesysteem dat
+Geonovum voor het beheer van de BGT|IMGeo standaarden gebruikt. Het issue is
+bekend onder: <a href="https://github.com/Geonovum/IMGeo2018/issues/45">#45</a> en <a href="https://github.com/Geonovum/IMGeo2018/issues/58">#58</a>.</p></section>
+     
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

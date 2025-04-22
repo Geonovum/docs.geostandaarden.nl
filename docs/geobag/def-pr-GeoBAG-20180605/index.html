@@ -1,0 +1,500 @@
+<!DOCTYPE html><html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 19.0.1"><meta lang="" property="dc:language" content="en">
+    
+    <title>n:m berichtenverkeer tussen Geo-BAG applicaties</title>   
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: .3em;
+  background-color: white;
+  padding-bottom: .5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "publishDate": "2018-06-05",
+  "editors": [
+    {
+      "name": "Arnoud de Boer",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "a.deboer@geonovum.nl",
+      "note": ""
+    }
+  ],
+  "shortName": "GeoBAG",
+  "pubDomain": "GeoBAG",
+  "github": "https://github.com/Geonovum/GeoBAG",
+  "previousPublishDate": "2017-01-01"
+}</script><meta name="description" content="Dit document beschrijft een praktijkrichtlijn voor het n:m berichtenverkeer tussen Geo en BAG applicaties."></head>
+  <body aria-busy="false" cz-shortcut-listen="true" class="h-entry" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p><a class="logo" href="http://www.geonovum.nl/"><img width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM"></a></p>
+  <p><!--_hyper: 355593101;--></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">n:m berichtenverkeer tussen Geo en BAG applicaties</h1>
+  <h2 id="geonovum-praktijkrichtlijnvastgestelde-versie-05-juni-2018">Geonovum Praktijkrichtlijn<br>Vastgestelde versie
+    <time property="dcterms:issued" class="dt-published" datetime="">
+      05 juni 2018
+    </time>
+  </h2>
+  <dl>
+    <dt>This version:</dt>
+    <dd><a class="u-url" href="https://docs.geostandaarden.nl/geobag/def-pr-GeoBAG-20180605/">https://docs.geostandaarden.nl/geobag/def-pr-GeoBAG-20180605/</a></dd>
+    <dt>Latest published version:</dt>
+    <dd><a href="https://docs.geostandaarden.nl/geobag/GeoBAG/">https://docs.geostandaarden.nl/geobag/GeoBAG/</a></dd>
+          <dt>
+      Editor:
+    </dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Arnoud de Boer</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:a.deboer@geonovum.nl">a.deboer@geonovum.nl</a></span></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+    
+    <dt>Participate:</dt>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/GeoBAG">
+                      GitHub Geonovum/GeoBAG
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/GeoBAG/issues/">
+                      File a bug
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/GeoBAG/commits/gh-pages">
+                      Commit history
+                    </a>
+    </dd>
+         
+    <dt>Rechtenbeleid:</dt>
+    <div class="copyright" style="margin: 0.25em 0;">
+      <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+      <div style="display:inline-block; vertical-align:top">
+        <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+      </div>
+    </div>
+  </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="abstract-0" resource="#abstract-0"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+      <p> 	      
+	      Dit document beschrijft een praktijkrichtlijn voor het n:m berichtenverkeer tussen Geo en BAG applicaties o.b.v. StUF-Geo BAG berichtenverkeer.
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document" resource="#status-of-this-document"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+<p>
+  <em></em>
+</p>
+ 
+<p>
+  Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product die informatie geeft, vaak met een technisch karakter, die nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p>
+      
+      <p>        
+      </p>
+     </section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ol class="toc" role="directory"><li class="tocline"><a href="#inleiding" class="tocxref"><span class="secno">1. </span>Inleiding</a></li><li class="tocline"><a href="#waarom-deze-praktijkrichtlijn-" class="tocxref"><span class="secno">2. </span>Waarom deze praktijkrichtlijn?</a></li><li class="tocline"><a href="#uitgangspunten" class="tocxref"><span class="secno">3. </span>Uitgangspunten</a></li><li class="tocline"><a href="#stuurgegevens" class="tocxref"><span class="secno">4. </span>Stuurgegevens</a></li><li class="tocline"><a href="#scenario-s" class="tocxref"><span class="secno">5. </span>Scenario’s</a><ol class="toc"><li class="tocline"><a href="#geometrieverzoeken-en-leveringen" class="tocxref"><span class="secno">5.1 </span>Geometrieverzoeken en –leveringen</a></li><li class="tocline"><a href="#responsberichten" class="tocxref"><span class="secno">5.2 </span>Responsberichten</a></li></ol></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#inleiding" property="bibo:hasPart"><!--OddPage--><h2 id="inleiding" resource="#inleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Inleiding</span></h2><p>De specificaties van het Geo-BAG berichtenverkeer beschrijven de uitwisseling
+van berichten tussen één zender en één ontvanger. Bij dit 1:1 berichtenverkeer
+is er altijd sprake van één Geo-applicatie en één BAG-applicatie.</p><p>In een Geo-BAG bericht wordt in de StUF:stuurgegevens de adressering van zender
+en ontvanger opgenomen bestaande uit de volgende elementen:</p><ul>
+<li><p>Organisatie: gemeente, samenwerking of andere type publiek of
+privaatrechtelijke vorm die werkzaamheden uitvoert of applicatie
+onderhoud/hoost voor Geo of BAG</p>
+</li>
+<li><p>Applicatie: software voor Geo of BAG bronhouder werkzaamheden</p>
+</li>
+<li><p>Administratie: een dataset binnen een applicatie die specifiek voor een
+bepaalde gemeente is als bronhouder</p>
+</li>
+<li><p>Gebruiker</p>
+</li>
+</ul><p>In het Geo-BAG berichtenverkeer is afgesproken dat tenminste organisatie,
+applicatie en administratie opgenomen dient te worden bij zender en ontvanger in
+de StUF:stuurgegevens.</p></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#waarom-deze-praktijkrichtlijn-" property="bibo:hasPart"><!--OddPage--><h2 id="waarom-deze-praktijkrichtlijn-" resource="#waarom-deze-praktijkrichtlijn-"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Waarom deze praktijkrichtlijn?</span></h2><p>In de praktijk komen binnen een organisatie configuraties voor waarbij er één of
+meer Geo-applicaties berichten uitwisselen met één of meer BAG applicaties. Een
+applicatie kan weer uit één of meer administraties bestaan, waarbij elke
+administratie een eigen unieke adressering heeft conform StUF. Dit noemen we n:m
+berichtenverkeer. Onder andere kunnen de volgende situatie voorkomen:</p><ul>
+<li><p>Er is één Geo-applicatie en er zijn meerdere BAG-applicaties (1:m)</p>
+</li>
+<li><p>Er is één Geo-applicatie en er is één BAG applicatie met meerdere
+BAG-administraties van verschillende gemeenten (1:m)</p>
+</li>
+<li><p>Er is één BAG-applicatie en er zijn meerdere GEO-applicaties (n:1)</p>
+</li>
+<li><p>Er is één BAG applicatie en er is één Geo-applicatie met meerdere
+BGT-administraties van verschillende gemeenten (n:1)</p>
+</li>
+<li><p>Meerdere Geo-applicaties en/of administraties wisselen uit met meerdere
+BAG-applicaties en/of administraties (n:m).</p>
+</li>
+</ul><p>Een applicatie kan uit één of meer administraties bestaan, waarbij elke
+administratie een eigen unieke adressering heeft conform StUF.</p><p>Om een n:m berichtenverkeer werkend te krijgen binnen een organisatie, worden de
+volgende aanvullende afspraken in deze praktijkrichtlijn vastgelegd.</p></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#uitgangspunten" property="bibo:hasPart"><!--OddPage--><h2 id="uitgangspunten" resource="#uitgangspunten"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Uitgangspunten</span></h2><p>De volgende uitgangspunten gelden:</p><ol>
+<li><p>De zendende applicatie is verantwoordelijk voor het verzenden van een
+bericht aan juiste ontvanger.</p>
+</li>
+<li><p>Er wordt altijd 1 bericht verstuurd naar 1 ontvanger bij
+leveringen/verzoeken en goed-/afkeuringen.</p>
+</li>
+<li><p>StUF:stuurgegevens moeten een zender en ontvanger uniek adresseren, d.w.z.
+de combinatie van organisatie, applicatie en administratie is uniek voor
+elke zender en ontvanger.</p>
+</li>
+<li><p>De BAG-gemeentecode is in de regel gelijk aan de BGT-bronhoudercode minus de
+vaste prefix ‘G’ voor gemeentelijke BGT-bronhouders. Dus voor gemeente
+Amersfoort geldt, BAG-gemeentecode = 0307 en BGT-bronhoudercode = G0307.</p>
+</li>
+</ol></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#stuurgegevens" property="bibo:hasPart"><!--OddPage--><h2 id="stuurgegevens" resource="#stuurgegevens"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Stuurgegevens</span></h2><p>Voor de unieke adressering van berichten wordt afgesproken dat elke Geo- en
+BAG-applicatie in de adressering van de berichten tenminste de combinatie van
+&lt;organisatie&gt;, &lt;applicatie&gt;, en &lt;administratie&gt; in de StUF:stuurgegevens
+van ontvanger en zender opneemt, en wel als volgt.</p><ul>
+<li><p>&lt;organisatie&gt; code of naam van de organisatie die de Geo of BAG-applicatie
+beheert.</p>
+</li>
+<li><p>&lt;applicatie&gt; Unieke aanduiding van de applicatie</p>
+</li>
+<li><p>&lt;administratie&gt; de code of naam van de administratie van de gemeente
+waarbinnen het (geconstateerde) object ligt conform de gemeentegrens van de
+BAG</p>
+</li>
+</ul><blockquote>
+<p>  De &lt;organisatie&gt; mag/kan gelijk zijn aan &lt;administratie&gt;.</p>
+</blockquote><p>De volgende uitgangspunten gelden voor de stuurgegevens van de Geo-applicatie:</p><ul>
+<li><p>In het Geo-BAG berichtenverkeer hanteert de Geo-applicatie dezelfde
+stuurgegevens als wordt toegepast in het berichtenverkeer met SVB-BGT.</p>
+</li>
+<li><p>In het BGT berichtenverkeer geldt dat één organisatie één BGT administratie
+heeft; voor het Geo-BAG berichtenverkeer geldt dit ook.</p>
+</li>
+<li><p>Het stuurgegeven &lt;organisatie&gt;is gelijk aan de bronhoudercode.</p>
+</li>
+<li><p>Onder een samenwerkingsverband kunnen meerdere organisaties (=bronhouders)
+vallen, echter de naam of code van het samenwerkingsverband wordt niet
+opgenomen in de stuurgegevens.
+</p>
+</li>
+</ul></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#scenario-s" property="bibo:hasPart"><!--OddPage--><h2 id="scenario-s" resource="#scenario-s"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Scenario’s</span></h2><section typeof="bibo:Chapter" resource="#geometrieverzoeken-en-leveringen" property="bibo:hasPart"><h3 id="geometrieverzoeken-en-leveringen" resource="#geometrieverzoeken-en-leveringen"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Geometrieverzoeken en –leveringen</span></h3><p>Bij 1 Geo en meerdere BAG-applicaties:</p><ul>
+<li><p>Bij een verzoek vanuit BAG, vult de BAG-applicatie de stuurgegevens zo
+specifiek in dat Geo altijd 1 bericht terug kan sturen naar de juiste
+ontvanger. Filtering aan de kant van Geo is niet nodig.</p>
+</li>
+<li><p>Bij een levering voor bestaande BAG-objecten is de gemeentecode bekend, en
+kan Geo de juiste ontvangende stuurgegevens ( o.a. administratie) invullen.</p>
+</li>
+<li><p>Bij een levering met geconstateerde objecten vanuit Geo filtert Geo
+(bijvoorbeeld geometrisch op de gemeentegrens om de gemeentecode te bepalen)
+zodanig dat de levering naar de juiste ontvangende organisatie wordt
+gestuurd.</p>
+</li>
+</ul><p>Geo vult de <em>stuurgegevens</em> als volgt in: &lt;organisatie&gt;is gemeentecode,
+&lt;applicatie&gt;is naam BAG-applicatie, en &lt;administratie&gt;de uitfiltering
+verkregen gemeentecode bij meerdere BAG-administraties[^1].</p><p>[^1]: immers de exacte BAG-administratie kan Geo niet bepalen</p><p>Bij 1 BAG-applicatie en meerdere Geo-applicaties:</p><ul>
+<li>Als er 1 Geo-applicatie voor een gemeente is, dan filtert BAG op
+gemeentecode om de naam van de BGT-administratie te bepalen. Vervolgens
+krijgt de betreffende Geo-applicatie o.b.v. de gemeentecode het juiste
+bericht (waarbij gemeentecode als code voor de BGT-administratie in
+&lt;administratie&gt;wordt ingevuld).</li>
+</ul><blockquote>
+<p>  De <em>stuurgegevens</em> voor de ontvangende Geo-applicatie worden als volgt door
+  BAG bepaald/ingevuld: in &lt;organisatie&gt;de organisatie waar de applicatie
+  staat, in &lt;applicatie&gt;de naam van de Geo-applicatie, in &lt;administratie&gt;
+  de code van de gemeente van de BGT-administratie.</p>
+</blockquote><p>Bij 1 BAG-applicatie en één Geo-applicatie met meerdere BGT-administratie van
+verschillende gemeenten:</p><ul>
+<li>Als er meerdere BGT-applicaties in een gemeente zijn, dan wordt er één
+centrale BGT applicatie aangewezen waarnaar steeds 1 bericht wordt verstuurd
+door BAG.</li>
+</ul></section><section typeof="bibo:Chapter" resource="#responsberichten" property="bibo:hasPart"><h3 id="responsberichten" resource="#responsberichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Responsberichten</span></h3><p>Een respons-bericht wordt altijd verstuurd naar met in de stuurgegevens van de
+ontvanger, de stuurgegevens van de zender van het bericht waarop het respons
+wordt teruggegeven.
+
+
+
+
+
+
+</p></section></section>
+  
+
+<p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

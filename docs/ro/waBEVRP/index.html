@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Beveiligingseisen beschikbaar stellen ruimtelijke instrumenten (STRI)</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "license": "cc-by-nd",
+  "publishDate": "2014-01-01",
+  "authors": [
+    {
+      "name": "beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "waBEVRP",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2014-01-01T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 01 januari 2014"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-wa-waBEVRP-20140101/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Beveiligingseisen beschikbaar stellen ruimtelijke instrumenten (STRI)",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2014-01-01",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Beveiligingseisen beschikbaar stellen ruimtelijke instrumenten (STRI)</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2014-01-01">01 januari 2014</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-wa-waBEVRP-20140101/">https://docs.geostandaarden.nl/ro/def-wa-waBEVRP-20140101/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/waBEVRP/">https://docs.geostandaarden.nl/ro/waBEVRP/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#business-case"><span class="secno">2. </span>Business case</a></li><li class="tocline"><a class="tocxref" href="#werkafspraak-tot-inwerkingtreden-wijziging-ro-standaarden"><span class="secno">3. </span>Werkafspraak tot inwerkingtreden wijziging RO Standaarden</a></li><li class="tocline"><a class="tocxref" href="#impact-werkafspraak"><span class="secno">4. </span>Impact werkafspraak</a></li><li class="tocline"><a class="tocxref" href="#wijzigingsvoorstel"><span class="secno">5. </span>Wijzigingsvoorstel</a></li></ol></nav><section data-format="markdown" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>Ieder ruimtelijke instrument dat door een bronhouder beschikbaar wordt gesteld is vastgelegd in het Manifest van de betreffende bronhouder. Dit betekent dat alle bronbestanden van dat instrument beschikbaar zijn via het internet. De eisen voor de beschikbaarstelling van de ruimtelijke instrumenten zijn opgenomen in de Standaard Toegankelijkheid Ruimtelijke Instrumenten (<a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening#ROstandaarden">STRI2012</a>). Een van de eisen betreft de toegestane transport-protocols. In de praktijk blijkt dat deze beveiligingseisen te ruim gedefinieerd te zijn voor het harvesten van de ruimtelijke instrumenten.</p></section><section data-format="markdown" id="business-case"><!--OddPage--><h2 id="x2-business-case"><span class="secno">2. </span>Business case</h2><p>In verband met beveiligingseisen verzoekt de beheerder van Ruimtelijkeplannen.nl, het Kadaster, alle bronhouders van ruimtelijke instrumenten de manifesten en plannen voortaan te publiceren via standaard poortnummers: poort 80&nbsp;voor HTTP verkeer en poort 443 voor HTTPS verkeer.
+</p><p>Het overgrote deel van de bronhouders deed en doet dit al. De vijf gemeenten die manifesten en plannen publiceren op poort 8080 geven alle vijf aan dit om te gaan zetten in de komende tijd. Om er voor te zorgen dat er geen nieuwe bronhouders overgaan op poort 8080 of nog andere poortnummers, wordt met een werkafspraak vastgelegd dat dit niet langer mogelijk is. Op dat moment kan het Kadaster de harvesting van de landelijker voorziening Ruimtelijkeplannen.nl dan ook zo instellen dat alleen genoemde poorten worden gebruikt.</p></section><section data-format="markdown" id="werkafspraak-tot-inwerkingtreden-wijziging-ro-standaarden"><!--OddPage--><h2 id="x3-werkafspraak-tot-inwerkingtreden-wijziging-ro-standaarden"><span class="secno">3. </span>Werkafspraak tot inwerkingtreden wijziging RO Standaarden</h2><p>Vanaf publicatie van deze werkafspraak tot het tijdstip van inwerkingtreden van vernieuwde RO Standaarden of omgevingstandaarden dan wel nader bericht van de beheerder van de RO Standaarden geldt de volgende werkafspraak.</p><p>Vanaf 1 januari 2014 wordt aanvullend op de beveiligingseisen van paragraaf 5.1 van de STRI2012 alleen poort 80&nbsp;voor HTTP verkeer en poort 443 voor HTTPS verkeer nog toegestaan.</p></section><section data-format="markdown" id="impact-werkafspraak"><!--OddPage--><h2 id="x4-impact-werkafspraak"><span class="secno">4. </span>Impact werkafspraak</h2><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 24.399117971334068%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">RO Standaarden
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Bij doorvoering van de werkafspraak worden de beveiligingseisen in paragraaf 5.1 van de STRI2012 verder aangescherpt. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Wet- en regelgeving
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Geen
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Validator
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Geen
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">RO-Online
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Door de toepassing van de werkafspraak worden er geen handmatige uitzonderingen meer beheerd.
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Bronhouders software
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Voor de vijf gemeenten is de impact dat zij al hun plannen opnieuw moeten waarmerken en publiceren. Voor overige bronhouders van ruimtelijke plannen is er geen impact. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Afnemers software
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Geen
+
+</td>
+</tr>
+</tbody>
+</table></section><section data-format="markdown" id="wijzigingsvoorstel"><!--OddPage--><h2 id="x5-wijzigingsvoorstel"><span class="secno">5. </span>Wijzigingsvoorstel</h2><p>Om deze werkafspraak te kunnen meenemen als wijziging in de RO Standaarden is dit wijzigingsvoorstel opgenomen in het registratiesysteem dat Geonovum voor de RO Standaarden gebruikt. Het wijzigingsvoorstel is bekend onder: Mantis 4136. (Dit registratiesysteem is inmiddels niet meer via Internet toegankelijk).</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

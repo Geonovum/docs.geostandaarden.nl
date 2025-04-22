@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>BGT berichtenverkeer</title>   
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+	<script>
+            mermaid.initialize({ startOnLoad: true });
+    </script>
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "WA",
+  "publishDate": "2022-03-08",
+  "editors": [
+    {
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "imgeo@geonovum.nl"
+    }
+  ],
+  "shortName": "IMGeo",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo",
+  "publishISODate": "2022-03-08T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 08 maart 2022"
+}</script><meta name="description" content="Dit document beschrijft een werkafspraak voor het BGT berichtenverkeer als gevolg van de overgang van de functionaliteit van systeem BRAVO naar Kadaster."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imgeo/cv-wa-IMGeo-20220308/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "BGT berichtenverkeer",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-03-08",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/IMGeo/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document beschrijft een werkafspraak voor het BGT berichtenverkeer als gevolg van de overgang van de functionaliteit van systeem BRAVO naar Kadaster.",
+  "editor": [
+    {
+      "type": "Person",
+      "foaf:mbox": "imgeo@geonovum.nl",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "http://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">BGT berichtenverkeer</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Consultatieversie <time class="dt-published" datetime="2022-03-08">08 maart 2022</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/imgeo/cv-wa-IMGeo-20220308/">https://docs.geostandaarden.nl/imgeo/cv-wa-IMGeo-20220308/</a></dd><dt>Latest published version:</dt><dd><a href="https://docs.geostandaarden.nl/imgeo/werkafspraken/bgt-berichtenverkeer/">https://docs.geostandaarden.nl/imgeo/werkafspraken/bgt-berichtenverkeer/</a></dd>
+    
+    
+    <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/IMGeo/werkafspraken/bgt-berichtenverkeer/">https://geonovum.github.io/IMGeo/werkafspraken/bgt-berichtenverkeer/</a></dd>
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn"></span><a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <a class="ed_mailto u-email email" href="mailto:imgeo@geonovum.nl">imgeo@geonovum.nl</a></dd>
+    
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/Geonovum/IMGeo/">GitHub Geonovum/IMGeo</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p> 	      
+	      Dit document beschrijft een werkafspraak voor het BGT berichtenverkeer als gevolg van de overgang van de functionaliteit van systeem BRAVO naar Kadaster. 
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+    <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current Geonovum publications and the latest revision of this document can be found via <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>(in Dutch).</em>
+  </p><p>
+
+
+
+    Dit is een door de werkgroep goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar
+    <a href="mailto:geo-standaarden@geonovum.nl">
+        geo-standaarden@geonovum.nl</a>.
+
+
+
+
+
+
+</p>
+      <p>        
+      </p>
+    </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#werkafspraak"><span class="secno">2. </span>Werkafspraak</a></li><li class="tocline"><a class="tocxref" href="#impact"><span class="secno">3. </span>Impact</a></li><li class="tocline"><a class="tocxref" href="#registratie"><span class="secno">4. </span>Registratie</a></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>In de opbouwfase van de BGT leverden bronhouders via het systeem BRAVO van het
+SVB-BGT hun initiële levering en mutatielevering aan de Landelijke Voorziening
+BGT (LV-BGT).</p><p>Met de afbouw van het bureau SVB-BGT wordt de functionaliteit van het systeem
+BRAVO overgedragen aan het Kadaster. Dit betekent dat bronhouder per 1 november
+2022 direct aanlevert aan de LV-BGT, zonder tussenkomst van BRAVO.</p><p>Dit heeft gevolgen voor het BGT berichtenverkeer zoals dat nu in de Standaard
+BGT berichtenverkeer is vastgelegd. Middels deze werkafspraak worden de
+wijzigingen in het BGT berichtenverkeer vastgelegd, waarbij het uitgangspunt is
+dat de impact op de bronhouders en hun software zo laag mogelijk wordt gehouden.</p><p><img src="media/ebe8e3def00fa87112b5c119debcdd54.png" alt="" height="659" width="693"></p><p><em>Figuur. In het BGT berichtenverkeer zal de schakel SVB-BGT per 1 november 2022
+komen te vervallen.</em></p></section>
+   <section data-format="markdown" aria-busy="false" id="werkafspraak"><!--OddPage--><h2 id="x2-werkafspraak"><span class="secno">2. </span>Werkafspraak</h2><p>De volgende werkafspraak geldt voor de BGT keten voor de uitwisseling van
+berichten tussen bronhouder en de Landelijke Voorziening BGT (LV-BGT):</p><blockquote>
+<p>  Het portaal en berichtensysteem BRAVO van SVB-BGT wordt geschrapt in het
+  BGT berichtenverkeer. De communicatie / uitwisseling tussen bronhouders en
+  LV-BGT is in het vervolg rechtstreeks, zonder tussenkomst van het systeem
+  BRAVO van SVB-BGT.*</p>
+</blockquote><p>Deze werkafspraak treedt per 1 november 2022 inwerking. </p><p>Dit betekent de volgende wijzigingen voor het BGT berichtenverkeer:</p><p><strong>Vooraankondigen</strong></p><ol>
+<li><p>Bronhouder maakt vooraankondiging aan via Portaal LV-BGT of stuurt
+vooraankondigingsbericht aan Berichtensysteem LV-BGT.</p>
+</li>
+<li><p>Bronhouder neemt in de stuurgegevens van het vooraankondigingsbericht
+(vavDi01) de gegevens van SVB-BGT of LV-BGT op als «ontvanger».</p>
+</li>
+<li><p>LV-BGT ontvangt en verwerkt het vooraankondigingsbericht (vavDi01).</p>
+</li>
+<li><p>LV-BGT notificeert geraakte bronhouder rechtstreeks van vooraankondiging(en)
+binnen zijn interessegebied, middels een email of geautomatiseerd bericht.</p>
+</li>
+<li><p>LV-BGT neemt in de stuurgegevens van het vooraankondigingsbericht (vavDi01)
+de gegevens van geraakte bronhouder op als «ontvanger».</p>
+</li>
+<li><p>Tot 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de gegevens van SVB-BGT. Vanaf 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de eigen stuurgegevens.</p>
+</li>
+</ol><p><strong>Aanleveren van mutaties en terugkoppeling van werking</strong></p><ol>
+<li><p>Bronhouder levert mutaties rechtstreeks aan LV-BGT van het Kadaster.</p>
+</li>
+<li><p>Bronhouder levert een mutatiebericht van het type mtbSVBDi01 aan LV-BGT. Het
+mutatiebericht tussen SVB-BGT en LV-BGT (mtbLVDi01) vervalt in de Standaard
+BGT berichtenverkeer.</p>
+</li>
+<li><p>Bronhouder neemt in de stuurgegevens van het ophaalverzoek (opvDi01) en
+mutatiebericht (mtbSVBDi01) de gegevens van SVB-BGT of LV-BGT op als «ontvanger».</p>
+</li>
+<li><p>LV-BGT stuurt het verwerkingsresultaat middels emailnotificatie of
+geautomatiseerd reponsbericht (mtbDu01) rechtstreeks naar bronhouder.</p>
+</li>
+<li><p>LV-BGT neemt in de stuurgegevens van het responsbericht (mtbDu01) de
+gegevens van bronhouder op als «ontvanger».</p>
+</li>
+<li><p>Tot 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de gegevens van SVB-BGT. Vanaf 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de eigen stuurgegevens.</p>
+</li>
+</ol><p><strong>Actualiseren</strong></p><ol>
+<li><p>Bronhouder actualiseert rechtstreeks via de LV-BGT. Bronhouder kan via het
+Portaal LV-BGT een interessegebied aanmaken of uploaden (GML).</p>
+</li>
+<li><p>LV-BGT notificeert geraakte bronhouder rechtstreeks van mutaties binnen zijn
+interessegebied, middels een email of geautomatiseerd bericht.</p>
+</li>
+<li><p>LV-BGT neemt in de stuurgegevens van het ophaalverzoek (opvDi01) en
+mutatiebericht (mtbSVBDi01) de gegevens van bronhouder op als «ontvanger».</p>
+</li>
+<li><p>Tot 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de gegevens van SVB-BGT. Vanaf 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als «zender» de eigen stuurgegevens.</p>
+</li>
+</ol><p>De gewijzigde uitwisseling tussen bronhouder en LV-BGT voor <strong>handmatige upload/download</strong> wordt weergegeven in onderstaand sequentiediagram.</p><p><em>N.B. Mocht hieronder geen afbeelding zichtbaar zijn, ververs de pagina dan met CTRL+F5.</em></p><div class="mermaid">
+sequenceDiagram  &nbsp;       
+participant&nbsp;Medewerker Geabonneerde  bronhouder&nbsp;&nbsp;&nbsp;&nbsp;
+participant&nbsp;Medewerker Bronhouder  
+&nbsp;&nbsp;&nbsp;&nbsp;participant&nbsp;Portaal LV BGT&nbsp;   
+Note over Medewerker Bronhouder, Portaal LV BGT: Bronhouder maakt vooraankondiging aan in portaal
+activate Portaal LV BGT
+alt Als vooraankondiging raakt aan interessegebied van Geabonneerde bronhouder    
+Portaal LV BGT--»»Medewerker Geabonneerde  bronhouder: notificatie vooraankondiging (email)
+end
+deactivate Portaal LV BGT
+Note over Medewerker Bronhouder, Portaal LV BGT: Bronhouder maakt levering aan in Portaal.
+activate Portaal LV BGT
+Medewerker Bronhouder--»»Portaal LV BGT:&nbsp;mutatiebericht (ZIP: mtbSVBDi01)
+deactivate Portaal LV BGT   
+Note over Portaal LV BGT: Controle en registratie door LV BGT     
+activate Portaal LV BGT  
+&nbsp;&nbsp;&nbsp;&nbsp;Portaal LV BGT--»»Medewerker Bronhouder:&nbsp;verwerkingsverslag (PDF+GML)    
+deactivate Portaal LV BGT
+alt Als mutatie raakt aan interessegebied van Geabonneerde bronhouder
+Portaal LV BGT--»»Medewerker Geabonneerde  bronhouder: notificatie actualisatie (email)
+activate Portaal LV BGT
+Portaal LV BGT--»»Medewerker Geabonneerde  bronhouder: actualisatiebericht (ZIP: mtbSVBDi01)
+deactivate Portaal LV BGT
+end
+</div><p>De gewijzigde uitwisseling tussen bronhouder en LV-BGT voor <strong>automatisch berichtenverkeer</strong> wordt weergegeven in onderstaand sequentiediagram.</p><p><em>N.B. Mocht hieronder geen afbeelding zichtbaar zijn, ververs de pagina dan met CTRL+F5.</em></p><div class="mermaid">
+sequenceDiagram  &nbsp;       
+participant&nbsp;Berichtensysteem Geabonneerde bronhouder&nbsp;&nbsp;&nbsp;&nbsp;
+participant&nbsp;Berichtensysteem Bronhouder  
+&nbsp;&nbsp;&nbsp;&nbsp;participant&nbsp;Berichtensysteem LV BGT    
+Berichtensysteem Bronhouder--»»Berichtensysteem LV BGT: vooraankondigingsbericht (vavDi01)
+activate Berichtensysteem LV BGT  
+alt Als vooraankondiging raakt aan interessegebied van Geabonneerde bronhouder  
+Berichtensysteem LV BGT--»»Berichtensysteem Geabonneerde bronhouder: vooraankondigingsbericht (vavDi01)
+end
+deactivate Berichtensysteem LV BGT    
+Berichtensysteem Bronhouder--»»Berichtensysteem LV BGT:&nbsp;ophaalverzoek (opvDi01)
+activate Berichtensysteem LV BGT
+    Note over Berichtensysteem Bronhouder ,  Berichtensysteem LV BGT: LV-BGT haalt mutatiebericht op
+    Berichtensysteem Bronhouder--»»Berichtensysteem LV BGT:&nbsp;mutatiebericht (ZIP: mtbSVBDi01)  
+deactivate Berichtensysteem LV BGT   
+    Note over Berichtensysteem LV BGT: Controle en registratie door LV BGT 
+activate Berichtensysteem LV BGT
+Berichtensysteem LV BGT--»»Berichtensysteem Bronhouder: mutatierespons (mtbDu01)    
+&nbsp;&nbsp;&nbsp;&nbsp;Note over Berichtensysteem Bronhouder,  Berichtensysteem LV BGT: Bronhouder downloadt&nbsp;verwerkingsverslag
+Berichtensysteem LV BGT--»»Berichtensysteem Bronhouder: verwerkingsverslag (PDF+GML)    
+deactivate Berichtensysteem LV BGT
+alt Als mutatie raakt aan interessegebied Geabonneerde bronhouder
+Berichtensysteem LV BGT--»»Berichtensysteem Geabonneerde bronhouder: ophaalverzoek (opvDi01)
+activate Berichtensysteem LV BGT
+Note over Berichtensysteem Geabonneerde bronhouder, Berichtensysteem LV BGT: Geabonneerde bronhouder haal mutatiebericht op
+    Berichtensysteem LV BGT--»»Berichtensysteem Geabonneerde bronhouder: mutatiebericht (ZIP: mtbSVBDi01)    
+deactivate Berichtensysteem LV BGT
+end
+</div><p><strong>Vervallen initieel leveren</strong></p><p>Omdat de opbouwfase van de BGT is afgerond wordt in deze werkafspraak ook
+geregeld dat alle berichten en scenario’s voor het initieel leveren van BGT
+gegevens komen te vervallen:</p><ol>
+<li><p>Processtap Assembleren vervalt in het BGT berichtenverkeer.</p>
+</li>
+<li><p>Scenario’s in hoofdstuk 3 Initieel leveren vervallen in zijn geheel.</p>
+</li>
+<li><p>Bericht actualisatiebericht na assemblage (mtoDi01) vervalt.</p>
+</li>
+</ol><p>Het gewijzigde berichtenverkeer wordt samengevat in het volgende document.</p></section>
+   <section data-format="markdown" aria-busy="false" id="impact"><!--OddPage--><h2 id="x3-impact"><span class="secno">3. </span>Impact</h2><p>Er wordt een overgangsperiode gehanteerd voor de stuurgegevens van het bericht:</p><ul>
+<li><p>Tot 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht als
+«zender»de gegevens van SVB-BGT.</p>
+</li>
+<li><p>Vanaf 1 juli 2023 stuurt LV-BGT in de stuurgegevens van het bericht
+«zender»de eigen stuurgegevens.</p>
+</li>
+</ul><p>De volgende impact wordt voorzien voor de schakels in de BGT keten.</p><ul>
+<li><p><strong>Bronhouder</strong> dient (mogelijk) de stuurgegevens voor automatisch
+berichtenverkeer in de bronhoudersoftware opnieuw te (laten) configureren om
+LV-BGT als «zender»in het bericht te kunnen ontvangen.e</p>
+</li>
+<li><p><strong>Softwareleverancier</strong> dient -op verzoek van bronhouder- de stuurgegevens
+voor automatisch berichtenverkeer opnieuw te configureren conform hierboven
+beschreven.</p>
+</li>
+<li><p><strong>SVB-BGT</strong> zet systeem BRAVO uit.</p>
+</li>
+<li><p><strong>LV-BGT</strong> implementeert het zenden en ontvangen van de berichten van
+voorheen BRAVO/SVB-BGT in de LV-BGT.</p>
+</li>
+<li><p><strong>LV-BGT</strong> realiseert een portaal voor het handmatig aanmaken van
+interessegebieden voor actualisaties en vooraankondigingen.</p>
+</li>
+<li><p><strong>(Afnemer</strong> heeft geen impact.)
+«/zender»
+«/zender»
+«/zender»</p>
+</li>
+</ul></section>
+   <section data-format="markdown" aria-busy="false" id="registratie"><!--OddPage--><h2 id="x4-registratie"><span class="secno">4. </span>Registratie</h2><p>Een melding over dit onderwerp is opgenomen in het registratiesysteem dat
+Geonovum voor het beheer van de BGT|IMGeo standaarden gebruikt. Het issue is
+bekend onder: <a href="https://github.com/Geonovum/IMGeo/issues/22">Github #2</a>2.</p><p>Een <a href="https://geonovum.github.io/IMGeo/berichtenverkeer/bgt/">geconsolideerde
+versie</a> waarin de
+wijzigingen op het BGT berichtenverkeer zijn verwerkt, wordt ter informatie
+gepubliceerd via de werkomgeving van de BGT|IMGeo standaarden. Deze
+geconsolideerde versie krijgt geen formele status.</p></section>  
+	  <script>
+            mermaid.initialize({ startOnLoad: true });
+    </script>
+     
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

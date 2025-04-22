@@ -1,0 +1,1130 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+       <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "HR",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/HR-CRS-Gebruik",
+  "issueBase": "https://github.com/geonovum/HR-CRS-Gebruik/issues",
+  "edDraftURI": "https://github.com/geonovum/HR-CRS-Gebruik",
+  "editors": [
+    {
+      "name": "Lennard Huisman",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Friso Penninga",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "crs",
+  "pubDomain": "crs",
+  "licence": "cc-by",
+  "localBiblio": {
+    "SDW-BP": {
+      "title": "Spatial Data on the Web Best Practices",
+      "href": "https://www.w3.org/TR/sdw-bp/",
+      "status": "Best practice",
+      "publisher": "W3C en OGC"
+    },
+    "BRO-CAT": {
+      "title": "Basisregistratie Ondergrond Catalogus Booronderzoek",
+      "href": "https://broprogramma.github.io/BHR-G/",
+      "status": "Werkversie Informatiemodel",
+      "publisher": "BRO"
+    },
+    "NSGI": {
+      "title": "Website NSGI",
+      "href": "https://nsgi.nl"
+    },
+    "RDNAPTRANS™": {
+      "title": "Website over RDNAPTRANS™",
+      "href": "https://nsgi.nl/rdnaptrans",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "EUREF": {
+      "title": "Website EUREF",
+      "href": "http://www.euref.eu",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    },
+    "EUREF-TN1": {
+      "title": "EUREF Technical Note 1: Relationship and Transformation between the International and the European Terrestrial Reference Systems",
+      "href": "http://etrs89.ensg.ign.fr/pub/EUREF-TN-1.pdfTitel",
+      "status": "28 juni 2018"
+    },
+    "NCG-GR-43": {
+      "title": "De geodetische referentiestelsels van Nederland",
+      "href": "https://ncgeo.nl/index.php/nl/publicaties/groene-serie/item/2361-gs-43-a-de-bruijne-de-geodetische-referentiestelsels-van-nederland",
+      "publisher": "NCG"
+    },
+    "van-der-Marel": {
+      "title": "Reference Systems for Surveying and Mapping Lecture notes",
+      "href": "http://gnss1.tudelft.nl/pub/vdmarel/reader/CTB3310_RefSystems_1-2a_online.pdf#page=33",
+      "publisher": "Delft University of Technology"
+    },
+    "DSO-API": {
+      "title": "API- en URI-strategie Digitaal Stelsel Omgevingswet",
+      "href": "https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/api-en-uri-strategie/",
+      "publisher": "Deelprogramma Digitaal Stelsel Omgevingswet"
+    },
+    "DSO-Stelselafspraken": {
+      "title": "Stelselafspraken, Versie 2.5, 27-09-2021",
+      "href": "https://iplo.nl/digitaal-stelsel/documenten/architectuurdocumenten/",
+      "publisher": "Deelprogramma Digitaal Stelsel Omgevingswet"
+    },
+    "Dienst-der-hydrografie": {
+      "title": "Coördinatenreferentiestelsels voor dieptebepaling op zee",
+      "href": "https://www.defensie.nl/onderwerpen/hydrografie/coordinatenstelsels-op-zee/dieptebepaling-op-zee"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "publishISODate": "2021-11-25T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 25 november 2021"
+}</script><meta name="description" content="Een geodetisch onderwerp als CRS is in toenemende mate ook een geo-informatie / GIS-onderwerp aan het worden, wat betekent dat er aandacht nodig is voor hoe je op passende wijze omgaat met dit onderwerp in informatiemodellen, in uitwisselmechanismes en -formaten en in het ontwerp van landelijke voorzieningen."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/crs/cv-hr-crs-20211125/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-11-25",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/HR-CRS-Gebruik/issues",
+  "alternativeHeadline": "",
+  "description": "Een geodetisch onderwerp als CRS is in toenemende mate ook een geo-informatie / GIS-onderwerp aan het worden, wat betekent dat er aandacht nodig is voor hoe je op passende wijze omgaat met dit onderwerp in informatiemodellen, in uitwisselmechanismes en -formaten en in het ontwerp van landelijke voorzieningen.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Lennard Huisman",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Friso Penninga",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Consultatieversie <time class="dt-published" datetime="2021-11-25">25 november 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/crs/cv-hr-crs-20211125/">https://docs.geostandaarden.nl/crs/cv-hr-crs-20211125/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd>geen</dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://github.com/geonovum/HR-CRS-Gebruik">https://github.com/geonovum/HR-CRS-Gebruik</a></dd>
+    <dt>Redacteurs:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Lennard Huisman</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Friso Penninga</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/HR-CRS-Gebruik/">GitHub geonovum/HR-CRS-Gebruik</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/HR-CRS-Gebruik/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/HR-CRS-Gebruik/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/HR-CRS-Gebruik/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><p>Een geodetisch onderwerp als CRS is in toenemende mate ook een geo-informatie / GIS-onderwerp aan het worden, wat betekent dat er aandacht nodig is voor hoe je op passende wijze omgaat met dit onderwerp in informatiemodellen, in uitwisselmechanismes en -formaten en in het ontwerp van landelijke voorzieningen.</p><p>Binnen Geonovum en het werkveld zijn bij o.a. de inrichting van het DSO en de BRO recent ervaringen op dit vlak opgedaan. De <a href="https://nsgi.nl/">Nederlandse Samenwerking Geodetische Infrastructuur (NSGI)</a> is hierbij de autoriteit voor de adviezen over geodetisch correct gebruik van de in Nederland gebruikte CRS-en, terwijl Geonovum de autoriteit is op het vlak van adviezen over en standaarden voor informatiemodellen, uitwisselmechanismes en -formaten. Aan veel van de gekozen voorbeelden liggen adviezen van de NSGI ten grondslag. Deze handreiking bundelt verwijzingen naar bestaande adviezen, past deze toe op de traditionele Geonovum-onderwerpen rond uitwisseling van data en geeft voorbeelden van implementaties.
+</p><p>De belangrijkste CRS-en die worden gebruikt in geo-informatie en GIS zijn opgenomen in deze handreiking, zoals:</p><ul>
+<li>RD;</li>
+<li>NAP;</li>
+<li>ETRS89;</li>
+<li>WGS 84.</li>
+</ul><p>De handreiking gaat hierbij onder andere in op aandachtspunt bij:</p><ul>
+<li>CRS-keuze voor informatiemodellen;</li>
+<li>het meegeven van informatie over CRS-en in informatiemodellen en metadata;</li>
+<li>eenduidige naamgeving van CRS-en;</li>
+<li>eenduidige coördinaattransformaties;</li>
+<li>ondersteuning van CRS-en in uitwisselingsformaten en software(bibliotheken).</li>
+</ul></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+    Dit is een door de werkgroep goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar
+    <a href="mailto:geo-standaarden@geonovum.nl">
+        geo-standaarden@geonovum.nl</a>.
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vooraf-waarom-een-geonovum-handreiking-over-crs"><span class="secno">1.1 </span>Vooraf: waarom een Geonovum Handreiking over CRS</a></li><li class="tocline"><a class="tocxref" href="#introductie-coordinaatreferentiesystemen-crs"><span class="secno">1.2 </span>Introductie coördinaatreferentiesystemen (CRS)</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#achtergrond-gebruikte-crs-en-in-nederland"><span class="secno">2. </span>Achtergrond: Gebruikte CRS-en in Nederland</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opbouw-van-crs"><span class="secno">2.1 </span>Opbouw van CRS</a></li><li class="tocline"><a class="tocxref" href="#naamgeving-van-crs"><span class="secno">2.2 </span>Naamgeving van CRS</a></li><li class="tocline"><a class="tocxref" href="#coordinaattransformatie-datumtransformatie-en-coordinaatconversie"><span class="secno">2.3 </span>Coördinaattransformatie, datumtransformatie en coördinaatconversie</a></li><li class="tocline"><a class="tocxref" href="#indeling-van-crs-en"><span class="secno">2.4 </span>Indeling van CRS-en</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wereldwijde-crs-en"><span class="secno">2.4.1 </span>Wereldwijde CRS-en</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#itrs"><span class="secno">2.4.1.1 </span>ITRS</a></li><li class="tocline"><a class="tocxref" href="#wgs-84"><span class="secno">2.4.1.2 </span>WGS 84</a></li></ol></li><li class="tocline"><a class="tocxref" href="#europees-crs-etrs89"><span class="secno">2.4.2 </span>Europees CRS: ETRS89</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#realisaties-van-etrs89"><span class="secno">2.4.2.1 </span>Realisaties van ETRS89</a></li><li class="tocline"><a class="tocxref" href="#aansluiting-bij-geodetische-infrastructuur-voor-eenduidig-crs-bij-inwinning"><span class="secno">2.4.2.2 </span>Aansluiting bij geodetische infrastructuur voor eenduidig CRS bij inwinning</a></li></ol></li><li class="tocline"><a class="tocxref" href="#crs-op-land-rd-en-nap"><span class="secno">2.4.3 </span>CRS op land: RD en NAP</a></li><li class="tocline"><a class="tocxref" href="#crs-op-zee-lat"><span class="secno">2.4.4 </span>CRS op zee: LAT</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-voor-crs-gebruik"><span class="secno">3. </span>Aandachtspunten voor CRS gebruik</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aandachtspunten-bij-crs-in-informatiemodel-en-informatieketen"><span class="secno">3.1 </span>Aandachtspunten bij CRS in informatiemodel en informatieketen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aandachtspunten-t-a-v-crs-keuze"><span class="secno">3.1.1 </span>Aandachtspunten t.a.v. CRS-keuze</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-t-a-v-informatie-over-crs-en"><span class="secno">3.1.2 </span>Aandachtspunten t.a.v. informatie over CRS-en</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-t-a-v-dubbel-opslaan-of-on-the-fly-transformeren"><span class="secno">3.1.3 </span>Aandachtspunten t.a.v. dubbel opslaan of on-the-fly transformeren</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-coordinaten"><span class="secno">3.1.4 </span>Nauwkeurigheid van coördinaten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-bij-meerdere-crs-en"><span class="secno">3.2 </span>Aandachtspunten bij meerdere CRS-en</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vormvastheid"><span class="secno">3.2.1 </span>Vormvastheid</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-bij-coordinaattransformatie"><span class="secno">3.2.2 </span>Aandachtspunten bij coördinaattransformatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#transformatie-en-conversie-tussen-rd-nap-en-etrs89"><span class="secno">3.2.2.1 </span>Transformatie en conversie tussen RD/NAP en ETRS89</a></li><li class="tocline"><a class="tocxref" href="#transformatie-tussen-etrs89-en-itrs-wgs-84"><span class="secno">3.2.2.2 </span>Transformatie tussen ETRS89 en ITRS/WGS 84</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wgs-84-gelijkstellen-aan-etrs89"><span class="secno">3.2.2.2.1 </span>WGS 84 gelijkstellen aan ETRS89</a></li><li class="tocline"><a class="tocxref" href="#tijdsafhankelijke-transformatie-tussen-etrs89-en-itrs-wgs-84"><span class="secno">3.2.2.2.2 </span>Tijdsafhankelijke transformatie tussen ETRS89 en ITRS/WGS 84</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#crs-bij-uitwisselingsformaten"><span class="secno">3.3 </span>CRS bij uitwisselingsformaten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gebruik-van-andere-crs-en-in-geojson"><span class="secno">3.3.1 </span>Gebruik van andere CRS-en in GeoJSON</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten-bij-toepassing-in-software"><span class="secno">3.4 </span>Aandachtspunten  bij toepassing in software</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#voor-ontwikkelaars-proj"><span class="secno">3.4.1 </span>Voor ontwikkelaars: PROJ</a></li><li class="tocline"><a class="tocxref" href="#voor-gebruikers-qgis"><span class="secno">3.4.2 </span>Voor gebruikers: QGIS</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#tot-slot"><span class="secno">4. </span>Tot slot</a></li><li class="tocline"><a class="tocxref" href="#lijst-met-afkortingen"><span class="secno">5. </span>Lijst met afkortingen</a></li><li class="tocline"><a class="tocxref" href="#bijlage-a-crs-overzicht-tabel"><span class="secno">6. </span>Bijlage A: CRS overzicht tabel</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="vooraf-waarom-een-geonovum-handreiking-over-crs"><h3 id="x1-1-vooraf-waarom-een-geonovum-handreiking-over-crs"><span class="secno">1.1 </span>Vooraf: waarom een Geonovum Handreiking over CRS</h3><p>In de keten van inwinning via verwerking, opslag en ontsluiting tot gebruik, richt Geonovum zich traditioneel gezien op standaardisatie die uitwisseling en gebruik van geo-informatie beter mogelijk maakt. Aandacht voor het juiste gebruik van coördinaatreferentiesystemen (CRS) is er traditioneel voornamelijk bij de inwinning van geodata. Op dit vlak spelen het Kadaster (als beheerder van RD), Rijkswaterstaat (als beheerder van NAP) en de Hydrografische Dienst (primair gericht op het mariene deel van Nederland) een belangrijke rol, die ook tot uiting komt in de <a href="https://nsgi.nl/">Nederlandse Samenwerking Geodetische Infrastructuur (NSGI)</a>.
+</p><p>In de laatste jaren zien we dit veranderen: het volstaat niet langer om alleen aan de voorkant van de keten (bij de landmeetkundige inwinning) aandacht te hebben voor correct omgaan met verschillende CRS-en; inmiddels is dit in elke fase van de keten noodzakelijk, inclusief de stappen rond uitwisseling en gebruik van geo-informatie. We zien twee belangrijke triggers in deze ontwikkeling:</p><ul>
+<li>Door de toenemende aandacht voor het gebruik van ruimtelijke data in laagdrempelige toepassingen via de standaarden van het web, bijvoorbeeld door de opkomst van populaire webtools als Mapbox, Leaflet en Google Maps, en de aandacht daarvoor in o.a. de [Spatial Data on the Web Best Practices (<a href="https://www.w3.org/TR/sdw-bp/">SDW-BP)</a>.</li>
+<li>Door toenemende integratie van data (over grenzen van domeinen, over grenzen van land/zee, over landsgrenzen) moet data in verschillende CRS-en goed met elkaar gecombineerd kunnen worden. Dit integrale werken zie je terug bij gebruikers die analyses uitvoeren, maar ook bij integrale voorzieningen als het Digitaal Stelsel Omgevingswet (DSO) (waarin domeinen die traditioneel met verschillende CRS-en werken, nu door bundeling onder één wet expliciet met elkaar in samenhang worden gebracht) en de Basisregistratie Ondergrond (BRO).</li>
+</ul><p>Hiermee is een geodetisch onderwerp als CRS in toenemende mate ook een geo-informatie / GIS-onderwerp aan het worden, wat betekent dat er aandacht nodig is voor hoe je op passende wijze omgaat met dit onderwerp in informatiemodellen, in uitwisselmechanismes en -formaten en in het ontwerp van landelijke voorzieningen. Hiermee is aandacht voor het goed omgaan met CRS-vraagstukken onderdeel geworden van het werk van Geonovum, waarbij adviezen van de NSGI en aanbevelingen uit de Spatial Data on the Web Best Practices de basis vormen. In deze Handreiking richten we ons op eenieder die actief is op de onderwerpen uitwisseling en gebruik van geo-informatie en daarbij -mogelijk- rekening moet houden met CRS gebruik. Op deze manier willen we adviezen van de NSGI, aanbevelingen uit de Spatial Data on the Web Best Practices en inzichten die recent binnen o.a. DSO en BRO op dit vlak opgedaan zijn, aan elkaar relateren en breed toegankelijk maken.
+</p><div class="advisement"><p><em>AANBEVELING</em> Wanneer er na het lezen van deze Handreiking nog onduidelijkheden bestaan, raden we sterk aan om contact te zoeken met Geonovum én met de experts in de <a href="https://www.nsgi.nl/">Nederlandse Samenwerking Geodetische Infrastructuur</a>.</p>
+</div></section><section id="introductie-coordinaatreferentiesystemen-crs"><h3 id="x1-2-introductie-coordinaatreferentiesystemen-crs"><span class="secno">1.2 </span>Introductie coördinaatreferentiesystemen (CRS)</h3><p>Geo-informatie is direct gekoppeld aan een locatie op aarde. De wijze waarop die koppeling wordt gelegd, wordt beschreven in het coördinaatreferentiesysteem (CRS) waarin coördinaten van een locatie worden vastgelegd. RD, ETRS89 en WGS 84 zijn bekende voorbeelden van CRS-en.
+</p><p>CRS-en nemen vaak de vorm van de aarde als uitgangspunt om locaties vast te leggen. Maar het is ingewikkeld om de vorm van de aarde exact te beschrijven en om de werkelijkheid van het gekromde aardoppervlak in een plat vlak (kaart) weer te geven. Voor het weergeven van geo-informatie in een plat vlak worden kaartprojecties gebruikt. De weergave in het platte vlak is niet mogelijk zonder vervormingen, die afhankelijk zijn van de keuze van de kaartprojectie. Een kaartprojectie kan hoekgetrouw, afstandsgetrouw en/of oppervlakte getrouw zijn, maar niet alle drie eigenschappen tegelijk hebben. Een kaartprojectie bevat dus altijd minimaal een vervorming in hoeken, afstanden of oppervlakten. Dat wil zeggen dat gelijke hoeken, afstanden of oppervlakten in werkelijkheid op de kaart niet allemaal gelijk aan elkaar zijn. De vraag welke projectie het meest geschikt is, hangt af van de beoogde toepassing. Meer achtergrondinformatie is te vinden in 'Een kleine introductie in GIS', onderdeel van de documentatie van het Open Source GIS programma QGIS, o.a. dit stuk over <a href="https://docs.qgis.org/3.16/nl/docs/gentle_gis_introduction/coordinate_reference_systems.html#overview">kaartprojecties</a>.</p><p>De gebruikte CRS-en voor de opslag en uitwisseling van geo-informatie binnen de scope van deze handreiking zijn onder te verdelen in vier groepen:
+</p><ul>
+<li><strong>Geografische CRS-en</strong> geven geografische coördinaten in graden (2D breedte en lengte (Engels: latitude en longitude) en voor 3D ook hoogte) ten opzichte van een ellipsoïdisch model van het aardoppervlak. Voorbeelden zijn het Europese ETRS89, het wereldwijde ITRF2014 en WGS 84. Geografische CRS-en, zoals ETRS89 en WGS 84, kunnen niet gevisualiseerd worden zonder een kaartprojectie.
+</li>
+<li><strong>Geprojecteerde CRS-en</strong> presenteren geo-informatie op een plat vlak in cartesische (x en y) coördinaten. Voor het afbeelden in het platte vlak wordt een kaartprojectie gebruikt. Een voorbeeld hiervan is het Nederlandse RD. </li>
+<li><strong>Verticale CRS-en</strong> voor de vastlegging van hoogte en diepte ten opzichte van een referentievlak. Dit referentievlak is vaak gerelateerd aan een vlak met gelijke zwaartekracht (geoïde); dit vlak staat normaal gesproken niet loodrecht op een ellipsoïde. Bij een op zwaartekracht gebaseerd referentievlak stroomt tussen twee punten met gelijke hoogte (dus gelijke zwaartekracht) geen water, tussen twee punten met gelijke ellipsoïdische hoogte stroomt meestal wel water (want geen gelijke zwaartekracht). Voorbeelden van verticale CRS-en zijn het NAP en het LAT.</li>
+<li><strong>Samengestelde CRS-en</strong> in het Engels 'Compound CRS' zijn samengestelde CRS-en, bijvoorbeeld RDNAP dat is samengesteld uit het geprojecteerde CRS RD en het verticale CRS NAP.</li>
+</ul><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><div class=""><p>Bovenstaande indeling komt grotendeels overeen met de indeling in <a href="https://drive.tiny.cloud/1/4m326iu12oa8re9cjiadxonharclteqb4mumfxj71zsttwkx/7a73e041-adca-4e92-a9fe-73e5969b22ba">EPSG</a> en <a href="https://www.iso.org/obp/ui/#iso:std:iso:19111">ISO 19111:2019</a>. Een verschil is dat in ISO het geografische CRS een geodetisch CRS wordt genoemd.</p>
+</div></div><p>In de praktijk worden voor een dataset in de verschillende stappen van de keten (inwinning, verwerking, uitwisseling en visualisatie) regelmatig verschillende CRS-en gebruikt. De keuze van het meest geschikte CRS hangt af van de toepassing en het gebied waarop de data betrekking heeft. Voor afbeelding van geo-data van alleen Nederland is een ander CRS geschikt dan voor afbeelding van heel Europa of de hele wereld. In veel gevallen wordt de dataset opgeslagen in één CRS. Bij uitwisseling en visualisatie van geo-informatie is het dus van belang om een CRS te kiezen dat geschikt is voor de (gebruikers)toepassing. <a href="https://www.w3.org/TR/sdw-bp/">Spatial Data on the Web Best Practices (SDW-BP)</a> raden aan om data voor visualisatie ook te publiceren in wereldwijd bruikbare CRS-en, omdat de gebruikerstoepassing niet altijd bekend is. Vanuit informatiekundig oogpunt gezien, heeft het toepassen van wereldwijd bruikbare CRS-en als voordeel dat data op deze manier eenvoudiger bruikbaar wordt voor visualisatie door niet-geospecialisten. Maar deze CRS-en zijn bedoeld voor gebruik op kleine (wereldwijde) schaal en niet voor hoognauwkeurige, grootschalige toepassingen. Vanuit geodetisch oogpunt gezien, kleven aan het gebruik van deze wereldwijde CRS-en daarom risico's op systematische afwijkingen of inconsistenties, wanneer de data niet alleen gebruikt wordt voor visualisatie of wanneer datasets worden gecombineerd, zie ook de paragraaf over <a href="#transformatie-tussen-etrs89-en-itrs-wgs-84">transformatie tussen ETRS89 en ITRS/WGS 84</a>. Eenvoudige berekening van afstanden en oppervlakten is bijvoorbeeld niet mogelijk bij gebruik van de aanbevolen wereldwijd bruikbare CRS-en. Aangezien beide invalshoeken valide argumenten aanvoeren, ligt het voor de hand om bij het aanbieden van data te kiezen voor een en-en benadering: faciliteer zowel het laagdrempelige gebruik als het nauwkeurigere gebruik.</p><div class="example"><p><em>VOORBEELD</em> 
+Het gebruik van CRS-en in de keten van inwinning tot uitwisseling en visualisatie van de Basisregistratie Grootschalige Topografie (BGT) kan als volgt worden samengevat:
+</p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICBzdWJncmFwaCBJbndpbm5pbmdcbiAgICBBMVtcIkVUUlM4OSA8YnI-IChHTlNTLVJUSylcIl0gXG4gICAgICAgIEEyW1wiUkQgPGJyPiAoTHVjaHRmb3RvKVwiXVxuICAgIEEzW1wiTG9rYWFsIDxicj4gKFRhY2h5bWV0cmllIDxicj4gTWVldGJhbmQpXCJdXG4gIGVuZFxuICBzdWJncmFwaCBWZXJ3ZXJraW5nIGVuIG9wc2xhZ1xuICAgIEJbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgIEQxW1JEXVxuICBlbmRcbiAgZW5kXG4gIHN1YmdyYXBoIFwiRGF0YXBsYXRmb3JtIChQRE9LKVwiXG4gIHN1YmdyYXBoIFwiT3BzbGFnIFBET0tcIlxuICAgIERbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gIHN1YmdyYXBoIFwiR2VvIFNlcnZpY2VzXCJcbiAgICBFMVtFVFJTODldXG4gICAgRTJbUkRdXG4gICAgRTNbV0dTIDg0XVxuICBlbmRcbiAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXBpL0FwcClcIlxuICAgIEU0W1JEXVxuICBlbmRcbiAgZW5kXG4gIEExLS0-QlxuICBBMi0tPkJcbiAgQTMtLT5CXG4gIEItLT58VWl0d2lzc2VsaW5nfEQxXG4gIEQxLS0-fFVpdHdpc3NlbGluZ3xEXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUyXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUzXG4gIEQtLT58VWl0d2lzc2VsaW5nfEU0IiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjpmYWxzZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICBzdWJncmFwaCBJbndpbm5pbmdcbiAgICBBMVtcIkVUUlM4OSA8YnI-IChHTlNTLVJUSylcIl0gXG4gICAgICAgIEEyW1wiUkQgPGJyPiAoTHVjaHRmb3RvKVwiXVxuICAgIEEzW1wiTG9rYWFsIDxicj4gKFRhY2h5bWV0cmllIDxicj4gTWVldGJhbmQpXCJdXG4gIGVuZFxuICBzdWJncmFwaCBWZXJ3ZXJraW5nIGVuIG9wc2xhZ1xuICAgIEJbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgIEQxW1JEXVxuICBlbmRcbiAgZW5kXG4gIHN1YmdyYXBoIFwiRGF0YXBsYXRmb3JtIChQRE9LKVwiXG4gIHN1YmdyYXBoIFwiT3BzbGFnIFBET0tcIlxuICAgIERbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gIHN1YmdyYXBoIFwiR2VvIFNlcnZpY2VzXCJcbiAgICBFMVtFVFJTODldXG4gICAgRTJbUkRdXG4gICAgRTNbV0dTIDg0XVxuICBlbmRcbiAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXBpL0FwcClcIlxuICAgIEU0W1JEXVxuICBlbmRcbiAgZW5kXG4gIEExLS0-QlxuICBBMi0tPkJcbiAgQTMtLT5CXG4gIEItLT58VWl0d2lzc2VsaW5nfEQxXG4gIEQxLS0-fFVpdHdpc3NlbGluZ3xEXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUyXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUzXG4gIEQtLT58VWl0d2lzc2VsaW5nfEU0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOmZhbHNlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0" alt=""></a></p>
+<p>Bij de inwinning van de BGT worden ETRS89, RD en lokale CRS-en gebruikt. Voor de opslag bij bronhouders, de Landelijke Voorziening en het dataplatform wordt voor de uitwisseling het CRS RD gebruikt. Voor uitwisseling tussen dataplatform en gebruiker worden het Nederlandse RD, het Europese ETRS89 en het wereldwijde  WGS 84 gebruikt. Hierbij zijn voor de visualisatie van ETRS89 en WGS 84 verschillende kaartprojecties mogelijk.</p>
+</div><p>Eenduidig gebruik van CRS-en <a href="#coordinatentransformatie-datumtransformatie-en-coordinatenconversie">coördinatentransformaties</a> voorkomt systematische afwijkingen bij gebruik van meerdere datasets. Eenduidig gebruik is mogelijk door het maken van afspraken over het gebruik van eenduidige coördinatentransformaties. Bij minder precieze coördinatentransformaties kunnen (soms visueel toelaatbare) verschillen ontstaan die afhankelijk zijn van de keuze van CRS en implementatie.</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>Deze Handreiking heeft als doel om gebruikers vanuit het GIS- / geo-informatiewerkveld te voorzien van adviezen hoe om te gaan met met CRS-en bij uitwisseling en visualisatie van geo-informatie, o.a. in de context van Landelijke Voorzieningen en vergelijkbare digitale stelsels.</p><div class="example"><p><em>VOORBEELD</em> 
+In het voorbeeld van de BGT gaat het dus om adviezen voor het omgaan met CRS-en bij:
+</p>
+<ul>
+<li>uitwisseling tussen Bronhouder, Landelijke Voorziening en Dataplatform;</li>
+<li>uitwisseling van Dataplatform naar Gebruiker in verschillende CRS-en en formaten;</li>
+<li>specificatie van CRS in informatiemodellen en datasets;</li>
+<li>visualisatie door de gebruiker.</li>
+</ul>
+</div><p>Het hoofdstuk <a href="#crs-en-in-nederland">Achtergrond: Gebruikte CRS-en in Nederland</a> geeft een overzicht van de huidige veel gebruikte CRS-en in Nederland en de relatie met andere CRS-en. Het hoofdstuk is gericht op nieuwkomers in de geo-wereld, data aanbieders, GIS-gebruikers en modelleurs die hun kennis willen opfrissen.</p><p>Het onderdeel <a href="#specificeren-van-crs">Aanbevelingen t.a.v. CRS-gebruik</a> geeft aan hoe CRS-en eenduidig kunnen worden gebruikt en gespecificeerd in informatiemodellen en bij uitwisseling en visualisatie.</p></section></section><section data-format="markdown" id="achtergrond-gebruikte-crs-en-in-nederland"><!--OddPage--><h2 id="x2-achtergrond-gebruikte-crs-en-in-nederland"><span class="secno">2. </span>Achtergrond: Gebruikte CRS-en in Nederland</h2><p>Voor uitwisseling en visualisatie kunnen in Nederland meerdere CRS-en worden gebruikt. Voor geo-informatie die is beperkt tot land en binnenwateren van Europees Nederland, worden in het horizontale vlak meestal coördinaten in het geprojecteerde CRS RD of in het geografische CRS ETRS89 gebruikt, voor de Noordzee en grensoverschrijdende datasets wordt meestal ETRS89 gebruikt. Het RD is een 2D CRS en ETRS89 en WGS 84 zowel 2D als 3D CRS-en. WGS 84 wordt in specifieke gevallen gebruikt voor visualisatie in combinatie met een kaartprojectie zoals Web-Mercator. Hoogten in ETRS89 en WGS 84 hebben geen fysische betekenis, hierom worden ook andere hoogtesystemen gebruikt, in het bijzonder NAP op land en LAT op zee. De <a href="https://nsgi.nl">Nederlandse Samenwerking Geodetische Infrastructuur (NSGI)</a> is verantwoordelijk voor de definitie en realisatie van de Nederlandse CRS-en en de relatie met het Europese CRS. In dit hoofdstuk worden de opbouw, naamgeving en de belangrijkste CRS-en en hun relaties geïntroduceerd en toegelicht. Uitgebreide informatie over de achtergrond van de relatie tussen RD (NAP) en ETRS89 is beschikbaar in de publicatie <a href="https://ncgeo.nl/index.php/nl/publicaties/groene-serie/item/2361-gs-43-a-de-bruijne-de-geodetische-referentiestelsels-van-nederland"><em>De geodetische referentiestelsels van Nederland</em></a>.</p><section id="opbouw-van-crs"><h3 id="x2-1-opbouw-van-crs"><span class="secno">2.1 </span>Opbouw van CRS</h3><p>Een CRS is opgebouwd uit een datum en een coördinatensysteem. Het coördinatensysteem definieert hoe coördinaten worden uitgedrukt, bijvoorbeeld cartesisch of geografisch. Het datum geeft de relatie van het coördinatensysteem met de aarde. Geografische en geprojecteerde CRS-en maken gebruik van geodetische datums die de gebruikte ellipsoïde en nulmeridiaan definiëren. Vertikale CRS-en maken gebruik van verticale datums. RD en NAP zijn beide een CRS, de combinatie van RD en NAP is een samengesteld (Engels: compound) CRS.</p><div class="example"><p><em>VOORBEELD</em> 3D ETRS89 is een geografisch CRS, ETRS89-LAEA een geprojecteerd CRS en RDNAP is het samengestelde CRS uit het geprojecteerde CRS RD en verticale CRS NAP. Schematisch wordt dit als volgt weergegeven:</p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggXG4gIHN1YmdyYXBoIEVUUlM4OS1MQUVBXG4gICAgS1tcIkdlcHJvamVjdGVlcmQgQ1JTPGJyPkVUUlM4OS1MQUVBXCJdXG4gICAgSzFbXCJHZW9kZXRpc2NoIGRhdHVtPGJyPkVUUlM4OTxicj4oRWxsaXBzb8OvZGU6IEdSUzgwKVwiXVxuICAgIEsyW1wiQ2_DtnJkaW5hdGVuc3lzdGVlbTxiciAvPkNhcnRlc2lzY2g8YnIgLz5OIFttXSwgRSBbbV1cIl1cbiAgICBLM1tcIkthYXJ0cHJvamVjdGllPGJyPkxhbWJlcnQgQXppbXV0aGFsIEVxdWFsIEFyZWFcIl1cbiAgICBcbiAgZW5kXG5cbiAgc3ViZ3JhcGggRVRSUzg5LUdSUzgwaFxuICAgIEZbXCJHZW9ncmFmaXNjaCBDUlM8YnI-RVRSUzg5LUdSUzgwaFwiXVxuICAgIEcxW1wiR2VvZGV0aXNjaCBkYXR1bTxicj5FVFJTODk8YnI-KEVsbGlwc2_Dr2RlOiBHUlM4MClcIl1cbiAgICBHMltcIkNvw7ZyZGluYXRlbnN5c3RlZW08YnIgLz5FbGxpcHNvw69kaXNjaDxiciAvPk5vdGF0aWU6ICZwaGk7IFtkbXNdLCAmbGFtYmRhOyBbZG1zXSwgaCBbbV1cIl1cbiAgICBcbiAgZW5kXG5cbiAgXG5GLS0tRzFcbkYtLS1HMlxuICBcbkstLS1LMVxuSy0tLUsyXG5LMS0tLUszIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggXG4gIHN1YmdyYXBoIEVUUlM4OS1MQUVBXG4gICAgS1tcIkdlcHJvamVjdGVlcmQgQ1JTPGJyPkVUUlM4OS1MQUVBXCJdXG4gICAgSzFbXCJHZW9kZXRpc2NoIGRhdHVtPGJyPkVUUlM4OTxicj4oRWxsaXBzb8OvZGU6IEdSUzgwKVwiXVxuICAgIEsyW1wiQ2_DtnJkaW5hdGVuc3lzdGVlbTxiciAvPkNhcnRlc2lzY2g8YnIgLz5OIFttXSwgRSBbbV1cIl1cbiAgICBLM1tcIkthYXJ0cHJvamVjdGllPGJyPkxhbWJlcnQgQXppbXV0aGFsIEVxdWFsIEFyZWFcIl1cbiAgICBcbiAgZW5kXG5cbiAgc3ViZ3JhcGggRVRSUzg5LUdSUzgwaFxuICAgIEZbXCJHZW9ncmFmaXNjaCBDUlM8YnI-RVRSUzg5LUdSUzgwaFwiXVxuICAgIEcxW1wiR2VvZGV0aXNjaCBkYXR1bTxicj5FVFJTODk8YnI-KEVsbGlwc2_Dr2RlOiBHUlM4MClcIl1cbiAgICBHMltcIkNvw7ZyZGluYXRlbnN5c3RlZW08YnIgLz5FbGxpcHNvw69kaXNjaDxiciAvPk5vdGF0aWU6ICZwaGk7IFtkbXNdLCAmbGFtYmRhOyBbZG1zXSwgaCBbbV1cIl1cbiAgICBcbiAgZW5kXG5cbiAgXG5GLS0tRzFcbkYtLS1HMlxuICBcbkstLS1LMVxuSy0tLUsyXG5LMS0tLUszIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ" alt=""></a>
+<a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggXG4gIHN1YmdyYXBoIFJETkFQXG4gICAgQVtcIlNhbWVuZ2VzdGVsZCBDUlM8YnIgLz5SRE5BUFwiXVxuICAgIEJbR2Vwcm9qZWN0ZWVyZCBDUlM8YnIgLz5SRF1cbiAgICBDW1ZlcnRpa2FhbCBDUlM8YnIgLz5OQVBdXG4gICAgQjFbXCJHZW9kZXRpc2NoIGRhdHVtPGJyIC8-UkQgQmVzc2VsPGJyPihFbGxpcHNvw69kZTogQmVzc2VsIDE4NDEpXCJdXG4gICAgQjJbXCJDb8O2cmRpbmF0ZW5zeXN0ZWVtPGJyIC8-Q2FydGVzaXNjaDxiciAvPk5vdGF0aWU6IHggW21dLHkgW21dXCJdXG4gICAgQzFbXCJWZXJ0aWNhYWwgZGF0dW08YnIgLz5OQVBcIl1cbiAgICBDMltcIkNvb3JkaW5hdGVuc3lzdGVlbTxiciAvPkhvb2d0ZTxiciAvPk5vdGF0aWU6IEggW21dXCJdXG4gICAgQjRbXCJLYWFydHByb2plY3RpZTxicj5TdGVyZW9ncmFmaXNjaGUgcHJvamVjdGllXCJdXG4gIGVuZFxuICBBLS0tQlxuICBBLS0tQ1xuICBCLS0tQjFcbiAgQi0tLUIyXG4gIEIxLS0tQjRcbiAgQy0tLUMxXG4gIEMtLS1DMlxuIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggXG4gIHN1YmdyYXBoIFJETkFQXG4gICAgQVtcIlNhbWVuZ2VzdGVsZCBDUlM8YnIgLz5SRE5BUFwiXVxuICAgIEJbR2Vwcm9qZWN0ZWVyZCBDUlM8YnIgLz5SRF1cbiAgICBDW1ZlcnRpa2FhbCBDUlM8YnIgLz5OQVBdXG4gICAgQjFbXCJHZW9kZXRpc2NoIGRhdHVtPGJyIC8-UkQgQmVzc2VsPGJyPihFbGxpcHNvw69kZTogQmVzc2VsIDE4NDEpXCJdXG4gICAgQjJbXCJDb8O2cmRpbmF0ZW5zeXN0ZWVtPGJyIC8-Q2FydGVzaXNjaDxiciAvPk5vdGF0aWU6IHggW21dLHkgW21dXCJdXG4gICAgQzFbXCJWZXJ0aWNhYWwgZGF0dW08YnIgLz5OQVBcIl1cbiAgICBDMltcIkNvb3JkaW5hdGVuc3lzdGVlbTxiciAvPkhvb2d0ZTxiciAvPk5vdGF0aWU6IEggW21dXCJdXG4gICAgQjRbXCJLYWFydHByb2plY3RpZTxicj5TdGVyZW9ncmFmaXNjaGUgcHJvamVjdGllXCJdXG4gIGVuZFxuICBBLS0tQlxuICBBLS0tQ1xuICBCLS0tQjFcbiAgQi0tLUIyXG4gIEIxLS0tQjRcbiAgQy0tLUMxXG4gIEMtLS1DMlxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ" alt=""></a></p>
+</div></section><section id="naamgeving-van-crs"><h3 id="x2-2-naamgeving-van-crs"><span class="secno">2.2 </span>Naamgeving van CRS</h3><p>CRS-en worden in de praktijk op verschillende manieren aangeduid. In hoofdstuk 2 zijn de officiële benamingen gebruikt, bij opslag en uitwisseling van geo-informatie wordt vaak gebruik gemaakt van gestandaardiseerde aanduiding van de CRS-en in de vorm van een OGC URN of Name Type Specification (NTS) voor CRS-en. Deze hebben de volgende structuur:</p><table>
+<thead>
+<tr>
+<th>Type aanduiding</th>
+<th>structuur</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URN</td>
+<td>urn:ogc:def:crs:<em>authority</em>:<em>version</em>:<em>code</em></td>
+</tr>
+<tr>
+<td>NTS</td>
+<td><a href="http://www.opengis.net/def/crs/_authority_/_version_/_code">http://www.opengis.net/def/crs/_authority_/_version_/_code</a>_</td>
+</tr>
+<tr>
+<td>NTS</td>
+<td><a href="http://www.opengis.net/def/crs?authority=_authority_&amp;version=_version_&amp;code=_code">http://www.opengis.net/def/crs?authority=_authority_&amp;version=_version_&amp;code=_code</a>_</td>
+</tr>
+</tbody></table><p>In deze aanduiding wordt meestal EPSG als de-facto autoriteit gebruikt, maar ook ISO is een voorbeeld van een autoriteit. Bij gebruik van de laatste versie van de database van de authority wordt bij URN <em>version</em> leeg gelaten, terwijl bij de NTS <em>version</em>=0 wordt gebruikt. In <a href="#crs-overzicht-tabel">Bijlage A</a> is een tabel opgenomen met de EPSG-codes voor veelgebruikte CRS-en in Nederland. Met behulp van deze tabel kan de URN en NTS worden afgeleid, bijvoorbeeld voor het RD (EPSG:code 28992), resulteert dit in de volgende aanduidingen.</p><table>
+<thead>
+<tr>
+<th>Type aanduiding</th>
+<th>structuur</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URN</td>
+<td>urn:ogc:def:crs:EPSG::28992</td>
+</tr>
+<tr>
+<td>NTS</td>
+<td><a href="http://www.opengis.net/def/crs/ESPG/0/28992">http://www.opengis.net/def/crs/ESPG/0/28992</a></td>
+</tr>
+<tr>
+<td>NTS</td>
+<td><a href="http://www.opengis.net/def/crs?authority=EPSG&amp;version=0&amp;code=28992">http://www.opengis.net/def/crs?authority=EPSG&amp;version=0&amp;code=28992</a></td>
+</tr>
+</tbody></table></section><section id="coordinaattransformatie-datumtransformatie-en-coordinaatconversie"><h3 id="x2-3-coordinaattransformatie-datumtransformatie-en-coordinaatconversie"><span class="secno">2.3 </span>Coördinaattransformatie, datumtransformatie en coördinaatconversie</h3><p>Het veranderen van coördinaten van het ene CRS naar het andere CRS wordt <strong>coördinaattransformatie</strong> genoemd. Een coördinaattransformatie kan bestaan uit een datumtransformatie en/of een coördinaatconversie.
+</p><ul>
+<li>Het veranderen van coördinaten van het ene datum naar het andere datum wordt <strong>datumtransformatie</strong> genoemd.</li>
+<li>Het uitdrukken van coördinaten in een ander coördinatensysteem, bijvoorbeeld van geografisch naar geprojecteerd, noemen we <strong>coördinaatconversie</strong>.</li>
+</ul><p>De coördinaattransformatie en de onderdelen datumtransformatie en coördinaatconversie worden afgebeeld in onderstaande figuur, dat verder wordt toegelicht in lecture notes van de TU Delft (<a href="http://gnss1.tudelft.nl/pub/vdmarel/reader/CTB3310_RefSystems_1-2a_online.pdf#page=33">H. van der Marel</a>.</p><figure id="coordinatetranformation"><img src="media/conversionTransformation.jpg" alt="hr2">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">coördinaattransformatie, datumtransformaties en coördinaatconversie. Een verandering is een coördinaattransformatie. Horizontale bewerkingen in het figuur zijn coördinaatconversies. De verticale bewerkingen in het figuur zijn datumtransformaties van systeem A naar B. Niet weergegeven in dit diagram zijn het gebruik van correctiegrids of polynoomtransformaties (benaderingen) direct tussen geprojecteerde coördinaten of geografische coördinaten van de twee systemen. Bron: [H. van der Marel](http://gnss1.tudelft.nl/pub/vdmarel/reader/CTB3310_RefSystems_1-2a_online.pdf#page=33).</span></figcaption>
+</figure></section><section id="indeling-van-crs-en"><h3 id="x2-4-indeling-van-crs-en"><span class="secno">2.4 </span>Indeling van CRS-en</h3><p>CRS-en die gebruikt worden in het Nederlandse domein van geo-informatie, kunnen ook worden ingedeeld naar hun geografische toepassingsgebied:</p><ul>
+<li>Een <strong>wereldwijd CRS</strong> is en CRS dat gemiddeld zo goed mogelijk bij de gehele aarde aansluit. Wereldwijde CRS-en zijn bedoeld voor kleinschalige of wereldwijde toepassingen, bijvoorbeeld wereldkaarten, satellietnavigatie en het beschrijven processen zoals zeestromingen en platentektoniek. Wereldwijde CRS-en zijn minder geschikt voor het nauwkeurig vastleggen van geo-informatie, doordat in een wereldwijd CRS de coördinaten tijdsafhankelijk zijn als gevolg van platentektoniek. Voorbeelden van wereldwijde CRS-en zijn het ITRS en WGS 84.</li>
+<li>Een <strong>continentaal of regionaal CRS</strong> is gekoppeld aan een tektonische plaat; hierdoor bewegen coördinaten in het CRS mee met de tektonische plaat. De Euraziatische plaat beweegt met enkele centimeters per jaar naar het noordoosten. Het Europese CRS ETRS89 is gekoppeld aan deze Euraziatische plaat en beweegt dus mee. In een regionaal CRS zoals ETRS89 zijn coördinaten stabiel, behalve bij lokale bodembeweging bijvoorbeeld in berggebieden of als gevolg van de post-glacial rebound in Scandinavië.  Voor de coördinaten van een punt in Nederland is na 10 jaar coördinaatverschil van hetzelfde punt in ETRS89 verwaarloosbaar, terwijl in een wereldwijd CRS zoals WGS 84 het coördinaatverschil enkele decimeters is.</li>
+<li>Een <strong>landelijk CRS</strong> is vaak een geprojecteerd CRS dat zo is gekozen dat de vervormingen in het platte vlak minimaal zijn. Nauwkeurige landelijke CRS-en dateren vaak uit de 20e eeuw, toen hoge nauwkeurigheid alleen op landelijk niveau kon worden gerealiseerd. Nauwkeurige wereldwijde en regionale CRS-en zijn mogelijk geworden door satellietplaatsbepalingstechnieken. Het verschil in oorsprong, schaal en oriëntatie van landelijke CRS-en kan honderden meters verschillen met de regionale en wereldwijde CRS-en. Het stelsel van de Rijksdriehoeksmeting (RD) is het landelijke CRS voor Nederland.</li>
+</ul><section id="wereldwijde-crs-en"><h4 id="x2-4-1-wereldwijde-crs-en"><span class="secno">2.4.1 </span>Wereldwijde CRS-en</h4><p>De meest gebruikte wereldwijde CRS-en zijn het ITRS en WGS 84. Wereldwijde CRS-en zijn dynamische CRS-en, dat wil zeggen dat coördinaten tijdsafhankelijk zijn. Voor eenvoudige visualisatietoepassingen op het internet, waarbij geen hoge nauwkeurigheid is vereist, wordt vaak WGS 84 als niet-dynamisch (statisch) verondersteld en Web-Mercator als kaartprojectie gebruikt. Voor nauwkeurige toepassingen waarbij een wereldwijd CRS benodigd is, is het gebruik van een ITRS-realisatie meer geschikt en is gebruik van een epoche (tijdstip), waarop de coördinaten geldig zijn, noodzakelijk. EPSG adviseert vanaf een beoogde nauwkeurigheid van 1-3 meter of een kaartschaal groter dan 1:10.000 wereldwijde CRS-en niet als statisch te veronderstellen, maar expliciet gebruik te maken van statische CRS-en, zoals RD of ETRS89, of dynamische CRS-en inclusief vermelding van realisatie en een epoche. Het concept van dynamische en statische CRS-en wordt toegelicht in een <a href="https://www.iogp.org/bookstore/product/geomatics-guidance-note-25-dynamic-versus-static-crss-and-use-of-the-itrf/">notitie</a> en <a href="https://www.youtube.com/playlist?list=PLt0-qTVCvEp1ZwKnf8iup320Cvp9AgXso">video</a> van de International Association of Oil &amp; Gas Producers (IOGP) die de bekende <a href="https://epsg.org">EPSG geodetic parameter dataset</a> beheert.</p><section id="itrs"><h5 id="x2-4-1-1-itrs"><span class="secno">2.4.1.1 </span>ITRS</h5><p>Het International Terrestrial Reference System geeft de definities om een wereldwijd CRS te kunnen realiseren; een ITRF is een realisatie hiervan. ITRS wordt onderhouden door de IERS (International Earth Rotation Service). Het gebruik van International Terrestrial Reference Frame (ITRF) als wereldwijd CRS wordt door resoluties van de International Union of Geodesy and Geophysics (IUGG, <a href="http://www.iugg.org/resolutions/2019%20IUGG%20GA%20Resolutions.pdf#page=2">resolutie 2 van 2019</a>) en de Verenigde Naties (<a href="https://undocs.org/en/A/RES/69/266">VN-resolutie A/RES/69/266</a>) aangeraden voor plaatsbepaling, satellietnavigatie, toepassingen van aardwetenschappen en de vastlegging van nationale en regionale CRS-en. Voor eenduidige coördinaten is het van belang om naast de realisatie ook het tijdstip (epoche) te vermelden. Om data in ITRF te visualiseren worden kaartprojecties gekozen die geschikt zijn voor de beoogde toepassing.</p></section><section id="wgs-84"><h5 id="x2-4-1-2-wgs-84"><span class="secno">2.4.1.2 </span>WGS 84</h5><p>Het World Geodetic System 1984 (WGS 84) is het wereldwijde driedimensionale CRS dat wordt gebruikt door het Amerikaanse GNSS-systeem GPS. WGS 84 wordt beheerd door de U.S. National Geospatial Intelligence Agency (NGA). Toegang tot WGS 84 is in Nederland alleen mogelijk via het stand-alone gebruik van de GPS-satellieten. WGS 84-posities kunnen daarom alleen op meterniveau m.b.v. GPS-metingen worden verkregen. In de praktijk wordt vaak over WGS 84 gesproken, ook als het onderliggende CRS eigenlijk ITRS of ETRS89 is.
+</p><p>Voor de realisaties van WGS 84 zijn in het verleden verschillende strategieën gebruikt, waarbij een beperkt aantal stations wereldwijd zijn gebruikt. Hierdoor zijn er verschillen van twee meter tussen de eerste en latere realisaties en op decimeterniveau tussen de latere realisaties. Voor nauwkeurige, eenduidige definitie van het CRS is het daarom nodig om een specifieke realisatie van WGS 84 te vermelden (bijvoorbeeld 3D WGS 84 (G2139)). Sinds 1994 zijn WGS 84-realisaties gekoppeld aan een ITRS-realisatie. WGS 84- en ITRS-realisaties op hetzelfde epoche komen momenteel op centimeterniveau overeen, zo kan bijvoorbeeld WGS 84 (G2139) worden gelijkgesteld aan ITRF2014 voor plaatsbepaling en navigatie <a href="https://earth-info.nga.mil/php/download.php?file=(U)WGS%2084(G2139).pdf">bron</a>.
+</p><p>Doordat de specificatie 'WGS 84' zonder vermelding van realisatie en epoche niet eenduidig is, wordt WGS 84 vanuit geodetisch perspectief niet aanbevolen voor uitwisseling van nauwkeurige data. Vanuit informatiekundig perspectief raadt de  <a href="https://www.w3.org/TR/sdw-bp/">Spatial Data on the Web Best Practices (SDW-BP)</a> aan om geodata, zodra je het aanbiedt op het web, in ieder geval altijd in WGS 84 te publiceren, en daarnaast in één of meer andere CRS-en als daar expliciete behoefte aan is. Voor visualisatie op het web ondersteunt de tooling vaak direct de Web-Mercator kaartprojectie op basis van <em>"WGS 84"</em>. Web-Mercator is een projectie die geschikt is voor visualisatie, maar niet voor het berekenen van bijvoorbeeld afstanden en oppervlakten. In de context van niet-nauwkeurige toepassingen op het web kan WGS 84 het best worden opgevat als een ongedefinieerd datum met als coördinatensysteem geografische coördinaten.
+</p></section></section><section id="europees-crs-etrs89"><h4 id="x2-4-2-europees-crs-etrs89"><span class="secno">2.4.2 </span>Europees CRS: ETRS89</h4><p>ETRS89 wordt gebruikt voor uitwisseling van Europese geo-informatie in het kader van INSPIRE. Geo-informatie in geografische ETRS89-coördinaten kan niet worden afgebeeld op een papieren kaart of een kaart op een plat computerscherm zonder kaartprojectie, omdat deze coördinaten refereren naar een 3D ellipsoïde. INSPIRE raadt voor het projecteren van ETRS89 -afhankelijk van de toepassing- een aantal kaartprojecties aan. Daarnaast zijn voor toepassing binnen het Europese deel van Nederland, inclusief de Nederlandse Exclusieve Economische Zone (EEZ) van de Noordzee, RD-coördinaten zeer geschikt als kaartprojectie voor visualisatie van geo-informatie in ETRS89-coördinaten. De RD-projectie geeft op land en het grootste deel van de Noordzee minder vervormingen dan andere projecties zoals ETRS89-UTMzn. Sinds de invoering van <a href="https://www.nsgi.nl/rdnaptrans">RDNAPTRANS™2018</a> is er geen beperking voor de toepassing van RD op de Noordzee.</p><p>In 2000 is het Nederlandse RD per definitie gekoppeld aan ETRS89. Het Europese ETRS89 (European Terrestrial Reference System 1989) is daarmee sinds 1 oktober 2000 het officiële driedimensionale coördinatenstelsel van Nederland. De meeste andere nationale coördinatensystemen in Europa hebben ook een nauwkeurige koppeling met ETRS89. De relatie tussen ETRS89 en RD/NAP is vastgelegd in de procedure <a href="https://www.nsgi.nl/rdnaptrans">RDNAPTRANS™</a>.</p><p>Opslag van geo-informatie in ETRS89 is ook mogelijk en wordt ondersteund in veel bestandsformaten en ruimtelijke databases.</p><section id="realisaties-van-etrs89"><h5 id="x2-4-2-1-realisaties-van-etrs89"><span class="secno">2.4.2.1 </span>Realisaties van ETRS89</h5><p><a href="http://www.euref.eu/">EUREF</a> is de organisatie die verantwoordelijk is voor de definitie en realisatie van ETRS89. ETRS89 is gekoppeld aan de Euraziatische plaat en is afgeleid van het International Terrestrial Reference System (ITRS). De Euraziatische plaat verschuift met ruim 2 centimeter per jaar, waardoor de relatie tussen ETRS89 en ITRS-realisaties (zoals WGS 84) en daarmee de coördinaattransformatie tijdsafhankelijk is. Coördinaten in ETRS89 en ITRS op het tijdstip 1989.0 waren hetzelfde. Het verschil tussen WGS 84/ITRS en ETRS89 op 1 januari 2025 is in Nederland ongeveer 88 centimeter, dit neemt in Nederland toe met circa 2,4 centimeter per jaar. Door de koppeling van ETRS89 aan de Euraziatische plaat wordt de gemiddelde tektonische beweging van het stabiele deel van Europa geëlimineerd en is de verandering van coördinaten in de tijd voor veel toepassingen binnen Europa te verwaarlozen. De realisaties van ETRS89 worden ook gebruikt voor wetenschappelijke doeleinden en verbeteren continue.
+</p><p>Om verschillen tussen implementaties van ETRS89 voor de opslag en uitwisseling tussen landen te voorkomen, adviseert EUREF het gebruik van de realisatie ETRF2000 voor het vastleggen van geo-informatie <a href="http://etrs89.ensg.ign.fr/pub/EUREF-TN-1.pdf">EUREF-TN1</a>. In Nederland wordt ETRS89 gerealiseerd met behulp van het Actief GNSS Referentiesysteem voor Nederland (AGRS.NL) en sinds de realisatie van 2002 gekoppeld aan de ETRF20000-realisatie van ETRS89. Bij de realisatie hoort altijd een epoche. De ETRF2000-realisatie op basis van de AGRS.NL data uit 2010 heeft bijvoorbeeld epoche 2010.5 en noemen we AGRS2010.  Voor de coördinaten van een punt in Nederland is na 10 jaar het coördinaatverschil van hetzelfde punt in ETRS89 verwaarloosbaar, terwijl in een wereldwijd CRS zoals WGS 84 het coördinaatverschil enkele decimeters is.</p><p>Voor uitwisseling van geo-informatie in ETRS89 wordt dus geadviseerd om ETRF2000 te gebruiken. Waar zeer hoge nauwkeurigheid is vereist, is de aanbeveling om als CRS ook expliciet ETRF2000 als realisatie van ETRS89 te benoemen, omdat verschillen met andere ETRS89-realisatie kunnen oplopen tot meerdere centimeters. Ter indicatie: het verschil tussen de door veel landen gebruikte realisatie ETRF2000 en de recentere realisatie ETRF2014 kan oplopen tot 7 centimeter in Nederland. Voor veel toepassingen mogen de snelheden en verschillen tussen de ETRF2000 realisaties van ETRS89 binnen Nederland verwaarloosd worden voor coördinaten in het horizontale vlak. Voor toepassingen waarbij een zeer nauwkeurige hoogte van belang is, kunnen verticale snelheden en verschillen wel van belang zijn. De NSGI kan hierover adviseren.
+</p></section><section id="aansluiting-bij-geodetische-infrastructuur-voor-eenduidig-crs-bij-inwinning"><h5 id="x2-4-2-2-aansluiting-bij-geodetische-infrastructuur-voor-eenduidig-crs-bij-inwinning"><span class="secno">2.4.2.2 </span>Aansluiting bij geodetische infrastructuur voor eenduidig CRS bij inwinning</h5><p>Voor inwinning van geo-informatie met GNSS-metingen (GPS, Galileo, GLONASS en BeiDou) publiceert de NSGI informatie over GNSS-punten en certificeert de NSGI GNSS-dienstverleners. Het gebruik van deze geodetische infrastructuur geeft zekerheid dat de metingen direct eenduidig gekoppeld zijn aan ETRF2000 volgens de actuele AGRS.NL realisatie. Het verplicht gebruik van aansluiting aan de geodetische infrastructuur wordt vaak opgenomen in productspecificaties, bestekken en handboeken.</p><div class="example"><p><em>VOORBEELD</em> In de <a href="https://www.tenderned.nl/tenderned-tap/aankondigingen/199678">aanbesteding Beeldmateriaal 5</a> is door Het Waterschapshuis de volgende passage opgenomen om zekerheid te hebben over aansluiting van de ingewonnen data aan het Nederlandse CRS:</p>
+<p>Voor het inmeten van coördinaten met een GNSS-techniek moet voor de aansluiting aan het
+Nederlandse driedimensionale coördinatenstelsel gebruik gemaakt worden van één van de volgende referenties:</p>
+<ul>
+<li>AGRS.NL</li>
+<li>NETPOS</li>
+<li>Een door het Kadaster gecertificeerde GNSS-dienstverlener</li>
+<li>GNSS-kernnetpunt(en) met een actualiteit van maximaal vijf jaar</li>
+</ul>
+</div></section></section><section id="crs-op-land-rd-en-nap"><h4 id="x2-4-3-crs-op-land-rd-en-nap"><span class="secno">2.4.3 </span>CRS op land: RD en NAP</h4><p>Voor opslag, uitwisseling en visualisatie van geo-informatie op land en binnenwateren van het Europese deel van Nederland worden voor het horizontale vlak (2D) meestal coördinaten in het Nederlandse Stelsel van de Rijksdriehoeksmeting (RD) gebruikt. Voor het verticale vlak zijn hoogten ten opzichte van Normaal Amsterdams Peil (NAP) de officiële en meest gebruikte hoogten. RD-coördinaten zijn cartesisch in meters in een plat vlak. Doordat RD en NAP in meters zijn en de RD-projectie minimale vervormingen geeft, kan eenvoudig worden gerekend met deze coördinaten.
+</p><p>De beheerders en gebruikers van bestanden hebben bij de introductie van ETRS89 aangegeven RD te willen handhaven, maar wel graag een koppeling te zien met ETRS89. In 2000 is een nieuwe definitie geïntroduceerd waardoor het RD-stelsel een transformatie van de ETRS89-realisatie is. De relatie tussen ETRS89 en RD/NAP is vastgelegd in de procedure <a href="https://www.nsgi.nl/rdnaptrans">RDNAPTRANS™</a>. Het onderhouden van referentiepunten voor ETRS89 in Nederland en de omzetting naar RD-coördinaten zijn wettelijke taken van het Kadaster binnen NSGI. NAP wordt bepaald door de gepubliceerde hoogtes van NAP-peilmerken, hetgeen een wettelijke verantwoordelijkheid is van Rijkswaterstaat binnen NSGI.
+</p></section><section id="crs-op-zee-lat"><h4 id="x2-4-4-crs-op-zee-lat"><span class="secno">2.4.4 </span>CRS op zee: LAT</h4><p>Voor het weergeven van diepten op zee is een nulpunt nodig. De keuze van het nulpunt bepaalt het zogenaamde reductievlak. Het Lowest Astronomical Tide (LAT) is het standaard reductievlak voor zeekaarten. Dit is de laagst mogelijke waterstand gebaseerd op de stand van zon en maan. Waterstanden onder het LAT komen ook voor, door weersomstandigheden zoals een hoge luchtdruk of een aflandige wind <a href="https://www.defensie.nl/onderwerpen/hydrografie/coordinatenstelsels-op-zee/dieptebepaling-op-zee">bron</a>. De relatie tussen LAT en ETRS89 wordt binnen de NSGI bijgehouden door de <a href="https://www.defensie.nl/onderwerpen/hydrografie/coordinatenstelsels-op-zee/dieptebepaling-op-zee">Dienst der Hydrografie van de Koninklijke Marine</a>.</p></section></section></section><section data-format="markdown" id="aandachtspunten-voor-crs-gebruik"><!--OddPage--><h2 id="x3-aandachtspunten-voor-crs-gebruik"><span class="secno">3. </span>Aandachtspunten voor CRS gebruik</h2><section id="aandachtspunten-bij-crs-in-informatiemodel-en-informatieketen"><h3 id="x3-1-aandachtspunten-bij-crs-in-informatiemodel-en-informatieketen"><span class="secno">3.1 </span>Aandachtspunten bij CRS in informatiemodel en informatieketen</h3><p>In een informatiemodel voor geo-informatie worden regels opgenomen voor het te gebruiken CRS(-en).
+</p><section id="aandachtspunten-t-a-v-crs-keuze"><h4 id="x3-1-1-aandachtspunten-t-a-v-crs-keuze"><span class="secno">3.1.1 </span>Aandachtspunten t.a.v. CRS-keuze</h4><p>Bij het opstellen van het informatiemodel is de aanbeveling om te inventariseren welke CRS-en al gebruikt worden in het domein en waarom. Dit kan leiden tot verschillende keuzes in de implementatie, zoals te zien in het onderstaande voorbeeld voor BGT, BRO en DSO.</p><div class="example"><p><em>VOORBEELD</em> 
+Het gebruik van CRS-en in de keten van inwinning tot uitwisseling en visualisatie van de Basisregistratie Grootschalige Topografie (BGT) kan als volgt worden geïnterpreteerd:
+</p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICBzdWJncmFwaCBJbndpbm5pbmdcbiAgICBBMVtcIkVUUlM4OSA8YnI-IChHTlNTLVJUSylcIl0gXG4gICAgICAgIEEyW1wiUkQgPGJyPiAoTHVjaHRmb3RvKVwiXVxuICAgIEEzW1wiTG9rYWFsIDxicj4gKFRhY2h5bWV0cmllIDxicj4gTWVldGJhbmQpXCJdXG4gIGVuZFxuICBzdWJncmFwaCBWZXJ3ZXJraW5nIGVuIG9wc2xhZ1xuICAgIEJbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgIEQxW1JEXVxuICBlbmRcbiAgZW5kXG4gIHN1YmdyYXBoIFwiRGF0YXBsYXRmb3JtIChQRE9LKVwiXG4gIHN1YmdyYXBoIFwiT3BzbGFnIFBET0tcIlxuICAgIERbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gIHN1YmdyYXBoIFwiR2VvIFNlcnZpY2VzXCJcbiAgICBFMVtFVFJTODldXG4gICAgRTJbUkRdXG4gICAgRTNbV0dTIDg0XVxuICBlbmRcbiAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXBpL0FwcClcIlxuICAgIEU0W1JEXVxuICBlbmRcbiAgZW5kXG4gIEExLS0-QlxuICBBMi0tPkJcbiAgQTMtLT5CXG4gIEItLT58VWl0d2lzc2VsaW5nfEQxXG4gIEQxLS0-fFVpdHdpc3NlbGluZ3xEXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUyXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUzXG4gIEQtLT58VWl0d2lzc2VsaW5nfEU0IiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjpmYWxzZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICBzdWJncmFwaCBJbndpbm5pbmdcbiAgICBBMVtcIkVUUlM4OSA8YnI-IChHTlNTLVJUSylcIl0gXG4gICAgICAgIEEyW1wiUkQgPGJyPiAoTHVjaHRmb3RvKVwiXVxuICAgIEEzW1wiTG9rYWFsIDxicj4gKFRhY2h5bWV0cmllIDxicj4gTWVldGJhbmQpXCJdXG4gIGVuZFxuICBzdWJncmFwaCBWZXJ3ZXJraW5nIGVuIG9wc2xhZ1xuICAgIEJbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgIEQxW1JEXVxuICBlbmRcbiAgZW5kXG4gIHN1YmdyYXBoIFwiRGF0YXBsYXRmb3JtIChQRE9LKVwiXG4gIHN1YmdyYXBoIFwiT3BzbGFnIFBET0tcIlxuICAgIERbUkRdXG4gIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gIHN1YmdyYXBoIFwiR2VvIFNlcnZpY2VzXCJcbiAgICBFMVtFVFJTODldXG4gICAgRTJbUkRdXG4gICAgRTNbV0dTIDg0XVxuICBlbmRcbiAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXBpL0FwcClcIlxuICAgIEU0W1JEXVxuICBlbmRcbiAgZW5kXG4gIEExLS0-QlxuICBBMi0tPkJcbiAgQTMtLT5CXG4gIEItLT58VWl0d2lzc2VsaW5nfEQxXG4gIEQxLS0-fFVpdHdpc3NlbGluZ3xEXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUyXG4gIEQtLT58VWl0d2lzc2VsaW5nfEUzXG4gIEQtLT58VWl0d2lzc2VsaW5nfEU0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOmZhbHNlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0" alt=""></a></p>
+<p>Bij de inwinning van de BGT worden ETRS89, RD en lokale CRS-en gebruikt. Voor de opslag bij bronhouders, de Landelijke Voorziening en het dataplatform wordt voor de uitwisseling het CRS RD gebruikt. Voor uitwisseling tussen dataplatform en gebruiker worden het Nederlandse RD, het Europese ETRS89 en het wereldwijde WGS 84 gebruikt. Hierbij zijn voor de visualisatie van ETRS89 en WGS 84 verschillende kaartprojecties mogelijk.
+</p>
+<p>Voor de BRO is de keten echter anders:</p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICAgIHN1YmdyYXBoIElud2lubmluZ1xuICAgICAgQTFbXCJSRFwiXSBcbiAgICAgIEEyW1wiRVRSUzg5XCJdXG4gICAgICBBM1tcIldHUyA4NFwiXVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgICBzdWJncmFwaCBcIkludGFrZSBMVlwiXG4gICAgICBCMVtcIlJEXCJdIFxuICAgICAgQjJbXCJFVFJTODlcIl1cbiAgICAgIEIzW1wiV0dTIDg0XCJdXG4gICAgZW5kXG4gICAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgICAgQjRbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJEYXRhcGxhdGZvcm0gKFBET0spXCJcbiAgICBzdWJncmFwaCBcIk9wc2xhZyBQRE9LXCJcbiAgICAgIERbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gICAgc3ViZ3JhcGggXCJHZW8gU2VydmljZXNcIlxuICAgICAgRTFbRVRSUzg5XVxuICAgICAgRTJbUkRdXG4gICAgICBFM1tXR1MgODRdXG4gICAgZW5kXG4gICAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXRvbSlcIlxuICAgICAgRTRbRVRSUzg5XVxuICAgIGVuZFxuICAgIHN1YmdyYXBoIFwiQlJPIExva2V0XCJcbiAgICAgICAgRjFbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgQTEtLT5CMVxuICBBMi0tPkIyXG4gIEEzLS0-QjNcbiAgQjEtLT58VHJhbnNmb3JtYXRpZXxCNFxuICBCMi0tPkI0XG4gIEIzLS0-fFRyYW5zZm9ybWF0aWV8QjRcbiAgQjQtLT58VWl0d2lzc2VsaW5nfERcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTFcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTJcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTNcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTRcbiAgQjQgLS0-fFVpdHdpc3NlbGluZ3xGMVxuXG4iLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmhvdWRlclxuICAgIHN1YmdyYXBoIElud2lubmluZ1xuICAgICAgQTFbXCJSRFwiXSBcbiAgICAgIEEyW1wiRVRSUzg5XCJdXG4gICAgICBBM1tcIldHUyA4NFwiXVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJMYW5kZWxpamtlIFZvb3J6aWVuaW5nXCJcbiAgICBzdWJncmFwaCBcIkludGFrZSBMVlwiXG4gICAgICBCMVtcIlJEXCJdIFxuICAgICAgQjJbXCJFVFJTODlcIl1cbiAgICAgIEIzW1wiV0dTIDg0XCJdXG4gICAgZW5kXG4gICAgc3ViZ3JhcGggXCJPcHNsYWcgTFZcIlxuICAgICAgQjRbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggXCJEYXRhcGxhdGZvcm0gKFBET0spXCJcbiAgICBzdWJncmFwaCBcIk9wc2xhZyBQRE9LXCJcbiAgICAgIERbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa2VyXG4gICAgc3ViZ3JhcGggXCJHZW8gU2VydmljZXNcIlxuICAgICAgRTFbRVRSUzg5XVxuICAgICAgRTJbUkRdXG4gICAgICBFM1tXR1MgODRdXG4gICAgZW5kXG4gICAgc3ViZ3JhcGggXCJEb3dubG9hZCAoQXRvbSlcIlxuICAgICAgRTRbRVRSUzg5XVxuICAgIGVuZFxuICAgIHN1YmdyYXBoIFwiQlJPIExva2V0XCJcbiAgICAgICAgRjFbRVRSUzg5XVxuICAgIGVuZFxuICBlbmRcbiAgQTEtLT5CMVxuICBBMi0tPkIyXG4gIEEzLS0-QjNcbiAgQjEtLT58VHJhbnNmb3JtYXRpZXxCNFxuICBCMi0tPkI0XG4gIEIzLS0-fFRyYW5zZm9ybWF0aWV8QjRcbiAgQjQtLT58VWl0d2lzc2VsaW5nfERcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTFcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTJcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTNcbiAgRC0tPnxVaXR3aXNzZWxpbmd8RTRcbiAgQjQgLS0-fFVpdHdpc3NlbGluZ3xGMVxuXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9" alt=""></a></p>
+<p>Bij de BRO kunnen bronhouders in verschillende CRS-en aanbieden. Bij intake in de landelijke voorziening wordt getransformeerd naar ETRS89. Voor uitwisseling tussen dataplatform en gebruiker worden het Nederlandse RD, het Europese ETRS89 en het wereldwijde WGS 84 gebruikt. Hierbij zijn voor de visualisatie van ETRS89 en WGS 84 verschillende kaartprojecties mogelijk.
+</p>
+<p>In de architectuur voor de landelijke voorziening van het Digitaal Stelsel Omgevingswet (DSO-LV) zijn weer andere keuzes gemaakt, waaronder het dubbel opslaan van data in twee CRS-en:</p>
+<p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmRhdGFcbiAgICBBMVtcIkVUUlM4OVwiXSBcbiAgICBBMltcIlJEXCJdXG4gIGVuZFxuICBzdWJncmFwaCBcIkRTTy1MVlwiXG4gICAgRDJbUkRdXG4gICAgRDFbRVRSUzg5XVxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa1xuICBzdWJncmFwaCBcIlZpZXdlciBSZWdlbHMgZW4gS2FhcnRcIlxuICAgIEYyW1JEPGJyPm1ldCBnZXRvb25kZSBjb8O2cmRpbmF0ZW48YnI-aW4gUkQgb2YgRVRSUzg5XVxuICBlbmRcbiAgc3ViZ3JhcGggQVBJXG4gICAgRTJbUkRdXG4gICAgRTFbRVRSUzg5XVxuICAgIEUzW1dHUyA4NDxicj5XZWItTWVyY2F0b3JdXG4gIGVuZFxuICBlbmRcbiAgQTEtLT5EMVxuICBBMi0tPkQyIFxuICBEMSAtLS18VHJhbnNmb3JtYXRpZXwgRDJcbiAgRDEtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQyLS0-fFVpdHdpc3NlbGluZ3xFMlxuICBEMS0tPnxVaXR3aXNzZWxpbmc8YnI-TnVsdHJhbnNmb3JtYXRpZXxFM1xuICBEMi0tPkYyXG4gIEQxLS4tPkYyXG4iLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgc3ViZ3JhcGggQnJvbmRhdGFcbiAgICBBMVtcIkVUUlM4OVwiXSBcbiAgICBBMltcIlJEXCJdXG4gIGVuZFxuICBzdWJncmFwaCBcIkRTTy1MVlwiXG4gICAgRDJbUkRdXG4gICAgRDFbRVRSUzg5XVxuICBlbmRcbiAgc3ViZ3JhcGggR2VicnVpa1xuICBzdWJncmFwaCBcIlZpZXdlciBSZWdlbHMgZW4gS2FhcnRcIlxuICAgIEYyW1JEPGJyPm1ldCBnZXRvb25kZSBjb8O2cmRpbmF0ZW48YnI-aW4gUkQgb2YgRVRSUzg5XVxuICBlbmRcbiAgc3ViZ3JhcGggQVBJXG4gICAgRTJbUkRdXG4gICAgRTFbRVRSUzg5XVxuICAgIEUzW1dHUyA4NDxicj5XZWItTWVyY2F0b3JdXG4gIGVuZFxuICBlbmRcbiAgQTEtLT5EMVxuICBBMi0tPkQyIFxuICBEMSAtLS18VHJhbnNmb3JtYXRpZXwgRDJcbiAgRDEtLT58VWl0d2lzc2VsaW5nfEUxXG4gIEQyLS0-fFVpdHdpc3NlbGluZ3xFMlxuICBEMS0tPnxVaXR3aXNzZWxpbmc8YnI-TnVsdHJhbnNmb3JtYXRpZXxFM1xuICBEMi0tPkYyXG4gIEQxLS4tPkYyXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9" alt=""></a></p>
+<p>Brondata van geometrieën voor de DSO-LV wordt volgens de architectuur aangeleverd in ETRS89 of RD. Binnen de DSO-LV worden de geometrieën <em>'as is'</em> getransformeerd voor dubbele opslag in RD en ETRS89. De bronhouder is verantwoordelijk voor toepassing van het langelijnenadvies. Geometrieën worden via een API uitgewisseld in RD, ETRS89 en WGS 84 Web-Mercator. Voor de transformatie tussen ETRS89 en WGS 84 wordt een nultransformatie gebruikt. In de viewer van DSO-LV wordt altijd de RD-kaartprojectie gebruikt en kan de gebruiker kiezen tussen het weergeven van RD of ETRS89 coördinaten.</p>
+</div></section><section id="aandachtspunten-t-a-v-informatie-over-crs-en"><h4 id="x3-1-2-aandachtspunten-t-a-v-informatie-over-crs-en"><span class="secno">3.1.2 </span>Aandachtspunten t.a.v. informatie over CRS-en</h4><p>In het informatiemodel en de bijbehorende afspraken wordt bij voorkeur de volgende informatie vastgelegd:</p><ul>
+<li>In welk(e) CRS(-en) mogen gegevens worden aangeleverd en opgevraagd.</li>
+<li>In welk(e) CRS(-en) worden gegevens opgeslagen.</li>
+<li>Waar eventueel coördinaatformaties plaatsvinden, bijvoorbeeld bij uitwisseling tussen dataplatform en gebruiker.</li>
+<li>Hoe informatie over het bron CRS en de gebruikte transformaties wordt opgeslagen bij gebruik van meerdere CRS-en.</li>
+<li>De numerieke precisie van coördinaten in het model.</li>
+</ul><p>De volgende tabel geeft de link naar voorbeelden van het specificeren van het CRS in informatiemodellen:</p><table>
+<thead>
+<tr>
+<th>Informatiemodel</th>
+<th>Soort specificatie</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Omgevingswet</td>
+<td>Gebruik van RD en ETRS89 in GML-bestanden</td>
+<td><a href="https://geonovum.github.io/TPOD/CIMOW/IMOW_v2.0.0.pdf#page=15">https://geonovum.github.io/TPOD/CIMOW/IMOW_v2.0.0.pdf#page=15</a></td>
+</tr>
+<tr>
+<td>BRO Booronderzoek</td>
+<td>2D: Gebruik van ETRS89 voor opslag, aanlevering toegestaan in RD, ETRS89 en WGS 84</td>
+<td><a href="https://docs.geostandaarden.nl/bro/bhr-g/#referentiestelsels-voor-de-horizontale-positie">https://docs.geostandaarden.nl/bro/bhr-g/#referentiestelsels-voor-de-horizontale-positie</a></td>
+</tr>
+</tbody></table></section><section id="aandachtspunten-t-a-v-dubbel-opslaan-of-on-the-fly-transformeren"><h4 id="x3-1-3-aandachtspunten-t-a-v-dubbel-opslaan-of-on-the-fly-transformeren"><span class="secno">3.1.3 </span>Aandachtspunten t.a.v. dubbel opslaan of on-the-fly transformeren</h4><p>Bij het ontwerp van het informatiemodel, landelijke voorziening of dataportaal kan de afweging worden gemaakt om datumtransformaties op verschillende plaatsen in de keten te laten plaatsvinden en data dubbel op te slaan of juist de transformaties on-the-fly uit te voeren. Aandachtspunten bij deze afweging zijn onder andere de authenticiteit van gegevens, de kostenafweging tussen dubbel opslaan en (herhaaldelijk) on-the-fly transformeren en de borging van voldoende performance.
+</p></section><section id="nauwkeurigheid-van-coordinaten"><h4 id="x3-1-4-nauwkeurigheid-van-coordinaten"><span class="secno">3.1.4 </span>Nauwkeurigheid van coördinaten</h4><p>De nauwkeurigheid van coördinaten moet minstens de nauwkeurigheid realiseren die vermeld wordt in het informatiemodel of bijgeleverde inwinningseisen. Meestal is het aantal decimalen dat in software standaard wordt opgeleverd, groter. Deze decimalen hebben dan geen betekenis meer. Om te voorkomen dat er te grote databestanden ontstaan, wordt aanbevolen de coördinaten af te ronden op 1 decimaal meer dan de nauwkeurigheid van de dataset vereist. Hierdoor kunnen fouten bij herhaaldelijk heen en weer transformeren worden voorkomen.</p><div class="example"><p><em>VOORBEELD</em> zoals opgenomen in <a href="https://geonovum.github.io/TPOD/CIMOW/IMOW_v2.0.0.pdf#page=15">IMOW</a> en het <a href="https://docs.geostandaarden.nl/nen3610/def-st-basisgeometrie-20200930/#nauwkeurigheid-van-coordinaten">model Basisgeometrie</a></p>
+<p>Coördinaten opgenomen bij een geometrie worden standaard uitgewisseld met een getalsnauwkeurigheid van 1 mm of het equivalent daarvan in graden. Voor RD, NAP
+en ETRS89 komt dat overeen met de volgende nauwkeurigheden:</p>
+<ul>
+<li>RD in meters 3 decimalen (1 mm);
+</li>
+<li>NAP-hoogte in meters 3 decimalen (1 mm);
+</li>
+<li>ETRS89-breedte in graden 8 decimalen (1,1 mm);
+</li>
+<li>ETRS89-lengte in graden 8 decimalen (0,7 mm);  </li>
+<li>ETRS89-hoogte in meters 3 decimalen (1 mm).</li>
+</ul>
+<p>Alles wat nauwkeuriger is wordt afgerond op deze nauwkeurigheid van 3 of 8
+decimalen. Afronding is volgens de volgende regel:<br>0,0015 -&gt; 0,002;<br>0,0014 -&gt; 0,001.</p>
+</div></section></section><section id="aandachtspunten-bij-meerdere-crs-en"><h3 id="x3-2-aandachtspunten-bij-meerdere-crs-en"><span class="secno">3.2 </span>Aandachtspunten bij meerdere CRS-en</h3><p>Bij het gebruik van meerdere CRS-en bestaat risico op introductie van fouten door onjuiste implementatie van de relaties tussen CRS-en. Eindgebruikers worden geadviseerd data waar mogelijk op te vragen in hetzelfde CRS.</p><p>Aanbieders van data worden geadviseerd om data aan te bieden in de verschillende CRS-en gericht op de eindgebruikers. Hierbij is het advies zo nauwkeurig mogelijk te transformeren, omdat het niet altijd duidelijk is wie de eindgebruiker is.</p><p>Wanneer voor opslag, uitwisseling en/of visualisatie andere CRS-en worden gebruikt zijn er een aantal aandachtspunten, de belangrijkste zijn:</p><ul>
+<li>Voorkom dat te grote geometrische of topologische verschillen ontstaan</li>
+<li>Maak gebruik van een eenduidige coördinaatransformatie (en leg dit vast)</li>
+</ul><section id="vormvastheid"><h4 id="x3-2-1-vormvastheid"><span class="secno">3.2.1 </span>Vormvastheid</h4><p>Een rechte lijn in werkelijkheid is meestal geen rechte lijn in een kaart, maar een lijn die licht krom loopt. Om er voor te zorgen dat een begrenzing in de kaart -ongeacht de kaartprojectie- met voldoende nauwkeurigheid eenduidig is, heeft de NSGI hiervoor een <a href="https://forum.pdok.nl/uploads/default/original/2X/c/c0795baa683bf3845c866ae4c576a880455be02a.pdf">advies</a> geformuleerd. In dit advies staat dat lange lijnsegmenten van grenzen voorzien moeten worden van synthetische tussenpunten om bij coördinaatransformatie grote geometrische en topologische verandering van de data te voorkomen. De afstand tussen deze tussenpunten is afhankelijk van de acceptabele afwijking en de locatie op aarde. Voor Europees Nederland inclusief EEZ kan de volgende tabel worden gehanteerd:</p><table>
+<thead>
+<tr>
+<th>Acceptabele afwijking</th>
+<th>Advies lijnlengte</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 mm</td>
+<td>200 m</td>
+</tr>
+<tr>
+<td>1 cm</td>
+<td>500 m</td>
+</tr>
+<tr>
+<td>1 dm</td>
+<td>2 km</td>
+</tr>
+<tr>
+<td>1 m</td>
+<td>5 km</td>
+</tr>
+<tr>
+<td>10 m</td>
+<td>20 km</td>
+</tr>
+<tr>
+<td>100 m</td>
+<td>50 km</td>
+</tr>
+</tbody></table><p>Voor een nauwkeurigheid van 1 mm zijn dus punten met 200 m tussenafstand nodig voor de in Nederland gangbare projecties. Voor het genereren van synthetische tussenpunten kan afhankelijk van wat bedoeld is, gekozen worden tussen punten op een rechte lijn in de kaart of een rechte lijn in werkelijkheid (geodetische lijn in ETRS89).</p><div class="advisement"><p><em>ADVIES</em> Wanneer lijnen worden getransformeerd met behulp van RDNAPTRANS™ gebruik dan geen lijnsegmenten die langer zijn dan 200 meter om de lijnen eenduidig te transformeren met de nauwkeurigheid van RDNAPTRANS™.</p>
+</div><div class="example"><p><em>VOORBEELD</em> In de de stelselafspraken voor het DSO is het langelijnenadvies als volgt opgenomen, inclusief een schematisch voorbeeld:</p>
+<p>Het ophakken van lange lijnstukken, zoals geadviseerd door het NSGI, is de expliciete verantwoordelijkheid van de bronhouder. Hierbij kan de volgende aanpak worden gevolgd:</p>
+<ul>
+<li>RDNAPTRANS™ wordt gebruikt voor de transformatie. De Transformatie-API van
+de NSGI geeft daarbij aan wat de (on)nauwkeurigheid is van de uitgevoerde
+transformatie.</li>
+<li>Indien de onnauwkeurig te groot is (te bepalen door de bronhouder), is het
+noodzakelijk om voor alle lange lijnen in de brongegevens synthetische
+tussenpunten toe te voegen.</li>
+<li>De bronhouder moet voor het toevoegen van de genoemde punten kiezen uit a)
+een rechte lijn in werkelijkheid of b) een rechte lijn op de kaart.</li>
+<li>De benodigde voorbewerking kan op basis van de gekozen strategie geautomatiseerd
+worden uitgevoerd en doorgeleverd aan RDNAPTRANS™, teneinde een nauwkeurige
+transformatie te bereiken.</li>
+<li>De voorbewerking dient bij de bron of elders te worden uitgevoerd, maar altijd op
+aanwijzing van de bronhouder. Voor de plan tot publicatie keten zijn de bronhouders
+altijd verantwoordelijk voor aanlevering binnen de gestelde eisen. De LVBB en DSO-LV
+voeren wel transformaties maar geen geo-bewerkingen uit.</li>
+</ul>
+</div></section><section id="aandachtspunten-bij-coordinaattransformatie"><h4 id="x3-2-2-aandachtspunten-bij-coordinaattransformatie"><span class="secno">3.2.2 </span>Aandachtspunten bij coördinaattransformatie</h4><p>De relatie tussen CRS-en is vastgelegd in een <a href="#coordinaattransformatie-datumtransformatie-en-coordinaatconversie">coördinaattransformatie</a>. De relaties RD/NAP, ETRS89, ITRS en WGS 84 zijn weergegeven in onderstaande figuur met daarbij de organisatie die de gegevens van coördinaattransformatie beheerd.</p><p><a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggTFIgXG4gICAgQVtSRE5BUF1cbiAgICBCW0VUUlM4OV1cbiAgICBDW0lUUlNdXG4gICAgRFtXR1MgODRdXG4gICAgXG4gIEEtLS18XCJOU0dJIChSRE5BUFRSQU5TKVwifEJcbiAgQi0tLXxFVVJFRnxDXG4gIEMtLS18TkdBfERcbiAgIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFIgXG4gICAgQVtSRE5BUF1cbiAgICBCW0VUUlM4OV1cbiAgICBDW0lUUlNdXG4gICAgRFtXR1MgODRdXG4gICAgXG4gIEEtLS18XCJOU0dJIChSRE5BUFRSQU5TKVwifEJcbiAgQi0tLXxFVVJFRnxDXG4gIEMtLS18TkdBfERcbiAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ" alt=""></a></p><figcaption>Voor coördinaattransformatie van RDNAP naar WGS 84 moet eerst naar ETRS89 en dan naar ITRS worden getransformeerd. Voor de de transformatie tussen RDNAP is de NSGI verantwoordelijk. Voor de transformatie tussen ETRS89 en ITRS publiceert EUREF parameters. De relatie tussen ITRS en WGS 84 wordt beheerd door de Amerkiaanse NGA.</figcaption><p>In de volgende paragrafen worden de coördinaattransformatie tussen RD en ETRS89 en tussen ETRS89 en WGS 84 beschreven.</p><section id="transformatie-en-conversie-tussen-rd-nap-en-etrs89"><h5 id="x3-2-2-1-transformatie-en-conversie-tussen-rd-nap-en-etrs89"><span class="secno">3.2.2.1 </span>Transformatie en conversie tussen RD/NAP en ETRS89</h5><p>Bij de koppeling tussen ETRS89 en RD in de jaren 1990 werden systematische verschillen gevonden. Vanwege de wens van gebruikers dat RD-coördinaten niet wijzigden bij de introductie van ETRS89, is er voor gekozen om de verschillen te modelleren in correctiegrid, dat deel uitmaakt van de coördinaattransformatie procedure tussen geprojecteerde RD-coördinaten en geografische ETRS89-coördinaten. NAP hoogten kunnen met een quasi-geoïdemodel naar ellipsoïdische hoogten in ETRS89 worden getransformeerd met een precisie die hoger is dan de ETRS89-coördinaten die met de meeste GNSS-metingen wordt verkregen. Het correctiegrid en quasi-geoïdemodel zijn onderdeel van de procedure RDNAPTRANS™.
+</p><p>RDNAPTRANS™ kent verschillende versies, in veel (oudere) GIS-pakketten en andere software is RDNAPTRANS™ niet volledig geïmplementeerd, wat fouten op decimeterniveau oplevert. Met de publicatie van RDNAPTRANS™ 2018 is een versie beschikbaar gekomen die voor aanbieders van GIS-software eenvoudiger te implementeren is. In de regel blijven de oudere, niet juist geïmplementeerde, versies ook beschikbaar in software, waarmee het voor gebruikers belangrijk is om goed te weten welke transformatie zij het beste kunnen gebruiken in hun software. De NSGI publiceert de actuele procedure RDNAPTRANS™ en transformatievalidatieservice op haar <a href="%5B%5BNSGI%5D%5D">website</a>. Voor de transformatie tussen RD/NAP en ETRS89 met gebruik van de RDNAPTRANS™ procedure is tevens een <a href="https://www.nsgi.nl/coordinatentransformatie-api">transformatie-API</a> beschikbaar bij de NSGI. Voorbeelden van implementatie van RDNAPTRANS™ in software worden gegeven in de paragraaf <a href="#crs-in-software">CRS in software</a>.</p><div class="advisement"><p><em>AANBEVELING</em>  Voor de uitwisseling van geo-informatie binnen Europa is het nadrukkelijke advies om altijd de weg via ETRS89 te kiezen. Bij gebruik van de actuele RDNAPTRANS™ procedure is daarbij voor het Nederlandse deel een nauwkeurigheid op centimeterniveau gewaarborgd.</p>
+</div></section><section id="transformatie-tussen-etrs89-en-itrs-wgs-84"><h5 id="x3-2-2-2-transformatie-tussen-etrs89-en-itrs-wgs-84"><span class="secno">3.2.2.2 </span>Transformatie tussen ETRS89 en ITRS/WGS 84</h5><p>Wanneer na zorgvuldige afweging gebruik wordt gemaakt van WGS 84 of ITRS voor visualisatie of uitwisseling zijn verschillende strategieën mogelijk:</p><ul>
+<li><strong><a href="#wgs-84-gelijkstellen-aan-etrs89">WGS 84 gelijkstellen aan ETRS89</a></strong>. Dit is de juiste keuze als er geen expliciete realisatie of epoche van WGS 84 wordt gebruikt. Het beoogd gebruik van de WGS 84 coördinaten mag geen toepassing zijn die hoge nauwkeurigheid vereist.</li>
+<li><strong><a href="#tijdsafhankelijke-transformatie-tussen-etrs89-en-itrs-wgs-84">Tijdsafhankelijke transformatie tussen ETRS89 en ITRS/WGS 84</a></strong>. Dit is de juiste keuze wanneer wel een expliciete realisatie én epoche van ITRS of WGS 84 worden gebruikt.</li>
+</ul><p>Het is verstandig de gekozen strategie in de metadata te vermelden.</p><section id="wgs-84-gelijkstellen-aan-etrs89"><h6 id="x3-2-2-2-1-wgs-84-gelijkstellen-aan-etrs89"><span class="secno">3.2.2.2.1 </span>WGS 84 gelijkstellen aan ETRS89</h6><p>Wanneer de brondata in RD of ETRS89 is en het beoogd gebruik van de data bestaat uit visualisatie of combinatie met andere datasets, kan worden gekozen om WGS 84 en ETRS89 aan elkaar gelijk te stellen. Dit is de standaard implementatie in meerdere GIS-pakketten, namelijk dat zonder expliciete vermelding van de WGS 84 en ETRS89-realisaties een nultransformatie wordt gebruikt. De nauwkeurigheid van de nultransformatie is circa 2 meter. Door het toepassen van deze strategie moet het resultaat worden geïnterpreteerd als een CRS dat bestaat uit een ongedefinieerd datum met als coördinatensysteem lengte en breedte. Het voordeel van het gebruik van de nultransformatie is dat de transformatie niet tijdsafhankelijk is en coördinaten dus niet veranderen in de tijd.</p><div class="example"><p><em>VOORBEELD</em> In de de <a href="https://iplo.nl/digitaal-stelsel/documenten/architectuurdocumenten/">stelselafspraken voor het DSO, versie 2.5 27-09-2021</a> is gebruik van de nultransformatie als volgt vastgelegd:</p>
+<p>Voor de uitlevering via API’s kan ook Pseudo-Mercator op basis van WGS84 (EPSG:3857) worden ondersteund. Hiermee kan bijvoorbeeld in gebruikerstoepassingen worden voorzien die beter aansluiten op Google Maps™. Voor de transformatie van (RD via) ETRS89 naar WGS84 is de aanbeveling om tussen ETRS89 en WGS84 een nultransformatie toe te passen en de coördinaten in ETRS89 en WGS84 dus gelijk aan elkaar te stellen. Gezien de onnauwkeurigheid van WGS84 is dat een gebruikelijke keuze met een acceptabele nauwkeurigheid, waarmee tevens voorkomen wordt dat de verkregen coördinaten in WGS84 door de tijd heen veranderen als gevolg van de tektonische beweging van Europa.</p>
+</div><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="7"><span>Noot</span></div><div class=""><p>Bij gebruik van data waarbij het aangegeven CRS WGS 84 (EPSG:4326) is zonder duidelijke informatie over het CRS van de brondata, de gebruikte transformaties, realisatie en/of het epoche moet de gebruiker er rekening mee houden dat de data systematische fouten in de orde van meters kan bevatten. De toepassing bepaalt of dit acceptabel is of niet. </p>
+</div></div></section><section id="tijdsafhankelijke-transformatie-tussen-etrs89-en-itrs-wgs-84"><h6 id="x3-2-2-2-2-tijdsafhankelijke-transformatie-tussen-etrs89-en-itrs-wgs-84"><span class="secno">3.2.2.2.2 </span>Tijdsafhankelijke transformatie tussen ETRS89 en ITRS/WGS 84</h6><p>Wanneer de dataspecificatie expliciet een realisatie en epoche van WGS 84 of ITRS benoemt, of data gecombineerd wordt met de actuele locatie van de eindgebruiker, dan kan worden gekozen de transformatie tussen ETRS89 en WGS 84 uit te voeren met hoge nauwkeurigheid voor een specifieke realisatie op een specifiek epoche. Dergelijke transformaties zijn vaak niet standaard geïmplementeerd in GIS-software, waardoor de gebruiker zelf de juiste transformatie moet definiëren in de software.
+</p><p>Voor Nederlandse data mag voor ETRS89 de realisatie ETRF2000 worden gekozen. Wanneer de WGS 84-realisatie niet is gespecificeerd, dan wordt de meest recente realisatie gekozen (2D/3D WGS 84 (G2139)) of de realisatie van het (gemiddelde) moment van inwinning van de dataset.</p><p>Om te kunnen transformeren worden de door EUREF gepubliceerde tijdsafhankelijke <a href="http://etrs89.ensg.ign.fr/pub/EUREF-TN-1.pdf">transformatieparameters tussen ETRF2000 en ITRS gebruikt</a> die ook in EPSG zijn opgenomen. Bij deze transformatie wordt de WGS 84-realisatie dan gelijkgesteld aan de bijbehorende ITRS-realisatie (ITRF2014 voor WGS 84 (G2139)). De keuze van het epoche kan voortkomen uit de datum van inwinning, publicatiedatum of een expliciete specificatie en kan indien noodzakelijk per geometrie verschillend zijn.</p><div class="example"><p><em>VOORBEELD</em> Voor de uitwisseling van terrein- en obstakelgegevens voor de luchtvaart in Europa <a href="https://www.eurocontrol.int/sites/default/files/2021-07/eurocontrol-tod-manual-ed-3-0.pdf#page=125">specificeert Eurocontrol</a> dat het horizontale referentiesysteem WGS 84 is. In de <a href="https://www.eurocontrol.int/sites/default/files/publication/files/20130204-do-spec-vol.2-v1.0.pdf#page=16">handreiking bij deze specificatie</a> wordt aangegeven dat WGS 84 voor deze toepassing wordt gelijkgesteld aan ITRF2000 op epoche 2000.0.</p>
+</div><p>Indien de publicatiedatum van de dataset wordt gekozen als epoche voor de transformatie worden bij regelmatige updates (bijvoorbeeld jaarlijks) de WGS 84/ITRS coördinaten bijgesteld als gevolg van de platentektoniek. Wanneer als epoche de (gemiddelde) datum van de inwinning van de dataset, komen de coördinaten gemiddeld het best overeen met de WGS 84/ITRS coördinaten op het moment van inwinning. </p><div class="advisement"><p><em>AANBEVELING</em> Wanneer een coördinaattransformatie plaatsvindt in de keten van inwinning tot gebruik is het advies de gekozen transformatieprocedure in het model en/of metadata op te nemen. Bij tijdsafhankelijke transformaties, zoals van ETRS89 naar WGS 84 moet dan ook het referentieepoche worden opgenomen. Tussen RD/NAP en ETRS89 is het van belang gebruik te maken van de RDNAPTRANS™ procedure.</p>
+</div><div class="example"><p><em>VOORBEELD</em>
+In het informatiemodel van de BRO is gekozen voor het opnemen van het attribuut <a href="https://docs.geostandaarden.nl/bro/bhr-g/#detail_class_Model_Cordinaattransformatie">Coördinaattransformatie</a> waarin in de waardelijst de mogelijke transformaties zijn vastgelegd.</p>
+</div></section></section></section></section><section id="crs-bij-uitwisselingsformaten"><h3 id="x3-3-crs-bij-uitwisselingsformaten"><span class="secno">3.3 </span>CRS bij uitwisselingsformaten</h3><p>Niet alle uitwisselingsformaten ondersteunen (volledig) het gebruik van meerdere CRS-en. De <a href="https://geonovum.github.io/geox/">Handreiking Geometrie in uitwisselingsformaten</a> geeft een keuzehulp van gebruik van uitwisselingsformaten voor 2D vector bestanden, waarin ook de ondersteuning van CRS-en is opgenomen. De tabel hieronder geeft een samenvatting van de ondersteuning van CRS-en voor deze formaten.</p><table>
+<thead>
+<tr>
+<th>CRS</th>
+<th>URN</th>
+<th><a href="https://geonovum.github.io/geox/#html">HTML</a></th>
+<th><a href="https://geonovum.github.io/geox/#geojson">GeoJSON</a></th>
+<th><a href="https://geonovum.github.io/geox/#geopackage">GeoPackage</a></th>
+<th><a href="https://geonovum.github.io/geox/#gml">GML</a></th>
+<th><a href="https://geonovum.github.io/geox/#rdf">RDF</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RD</td>
+<td>urn:ogc:def:crs:EPSG::28992</td>
+<td><span id="kruisje">✕</span></td>
+<td><span id="tilde">～</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+</tr>
+<tr>
+<td>ETRS89</td>
+<td>urn:ogc:def:crs:EPSG::4258</td>
+<td><span id="kruisje">✕</span></td>
+<td><span id="tilde">～</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+</tr>
+<tr>
+<td>3D WGS 84</td>
+<td>urn:ogc:def:crs:EPSG::4326</td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+</tr>
+<tr>
+<td>Web-Mercator</td>
+<td>urn:ogc:def:crs:EPSG::3857</td>
+<td><span id="kruisje">✕</span></td>
+<td><span id="tilde">～</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+<td><span id="vinkje">✓</span></td>
+</tr>
+</tbody></table><p>De tabel laat zien dat de eenvoudige formaten HTML en GeoJSON default alleen WGS 84 ondersteunen. In het geval dat een formaat alleen WGS 84 ondersteund moet dit worden geïnterpreteerd als een ongedefinieerd CRS met geografische coördinaten en lage nauwkeurigheid, omdat bijvoorbeeld een <a href="#wgs-84-gelijkstellen-aan-etrs89">nultransformatie</a> kan zijn toegepast. Voor veel toepassingen op het web voldoet deze lagere nauwkeurigheid. De andere formaten ondersteunen meerdere CRS-en, ook de CRS-en die niet im deze tabel zijn opgenomen, maar wel zijn gegeven in <a href="#bijlage-a-crs-overzicht-tabel">Bijlage A</a>.</p><section id="gebruik-van-andere-crs-en-in-geojson"><h4 id="x3-3-1-gebruik-van-andere-crs-en-in-geojson"><span class="secno">3.3.1 </span>Gebruik van andere CRS-en in GeoJSON</h4><p>Voor GeoJSON zijn in bovenstaande tabel tildes aangegeven voor andere CRS-en. GeoJSON ondersteund default alleen WGS 84, echter de standaard biedt de optie voor gebruik van anders CRS-en, mits door de ontvangende en leverende partij vooraf is afgesproken welk CRS wordt uitgewisseld. Deze ruimte in de GeoJSON-specificatie wordt bijvoorbeeld in de <a href="https://iplo.nl/digitaal-stelsel/aansluiten/standaarden/api-en-uri-strategie/">DSO API-strategie</a> gebruikt door het aangeboden en gevraagde CRS te specificeren in de header van een REST-API aanroep.</p><div class="example"><p><em>VOORBEELD</em> 
+In een aanroep naar de REST-API van de DSO-LV moet het gebruikte CRS voor de geometrie in de aanroep expliciet worden aangegeven door middel van de <code>Content-Crs</code> header. Het CRS waarin de geometrie in het antwoord is gewenst wordt opgegeven via de <code>Accept-Crs</code> header.
+</p>
+</div></section></section><section id="aandachtspunten-bij-toepassing-in-software"><h3 id="x3-4-aandachtspunten-bij-toepassing-in-software"><span class="secno">3.4 </span>Aandachtspunten  bij toepassing in software</h3><p>Diverse software (bibliotheken) ondersteunen het gebruik van meerdere CRS-en. Deze paragraaf geeft een aantal voorbeelden en is zeker niet volledig.</p><section id="voor-ontwikkelaars-proj"><h4 id="x3-4-1-voor-ontwikkelaars-proj"><span class="secno">3.4.1 </span>Voor ontwikkelaars: PROJ</h4><p><a href="https://proj.org">PROJ</a> is een open source softwarebibliotheek voor datumtransformaties en coördinaatconversies, tot februari 2018 was de software bekend onder de naam PROJ.4. PROJ heeft zich ontwikkeld van een software voor conversie van coördinaten tot een software voor geodetische datumtransformaties en coördinaatconversies. In versie PROJ 8.1.1 worden RDNAPTRANS™ en tijdsafhankelijke transformaties ondersteund, versies gebaseerd op PROJ.4 (voor 2018) hebben deze ondersteuning niet. PROJ wordt onder andere gebruikt in de bibliotheek voor het omzetten van dataformaten <a href="https://gdal.org">GDAL</a> en de open-source GIS-software <a href="https://qgis.org">QGIS</a>.</p></section><section id="voor-gebruikers-qgis"><h4 id="x3-4-2-voor-gebruikers-qgis"><span class="secno">3.4.2 </span>Voor gebruikers: QGIS</h4><p><a href="https://www.qgis.org/">QGIS</a> is een open source GIS-software. De ondersteuning van datumtransformaties en coördinaatconversies is gebaseerd op PROJ. QGIS kan ook worden gebruikt om conform het langelijnenadvies tussenpunten volgens een rechte lijn in de kaartprojectie te berekenen. Het berekenen van tussenpunten volgens een rechte lijn in werkelijkheid (geodetische lijn) volgens het <a href="#geometrie-en-topologie">langelijnenadvies</a> is minder eenvoudig, maar kan wel met een speciale functie van PROJ.</p><div class="example"><p><em>VOORBEELD</em> QGIS 3.20 bevat diverse implementaties van de transformatie tussen RD en ETRS89 die zijn opgenomen in de EPSG-database. Zodra in een project RD en ETRS89 worden gebruikt verschijnt een pop-up met de vraag welke transformatie moet worden gebruikt, behalve wanneer de gebruiker al een default heeft geconfigureerd. De meest nauwkeurige transformatie, in het geval van QGIS 3.20 is dat de 2D implementatie van RDNAPTRANS™, wordt als eerste getoond. In onderstaande figuur wordt het pop-up scherm getoond.</p>
+<figure id="plaatje"><img src="media/rdnaptrans2018_qgis.png" alt="hr2">
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">Keuzescherm voor transformatie tussen RD en ETRS89 in QGIS.</span></figcaption>
+</figure>
+<p>De in rood omleidende elementen in de pop-up duiden hier op het gebruik van RDNAPTRANS™, bijvoorbeeld de hoge nauwkeurigheid van de transformatie (0.001 m), de verwijzing naar RDNAPTRANS™2018 in de omschrijving en het gebruik van het correctiegrid in de PROJ-string.</p>
+</div></section></section></section><section data-format="markdown" id="tot-slot"><!--OddPage--><h2 id="x4-tot-slot"><span class="secno">4. </span>Tot slot</h2><p>Deze handreiking geeft verwijzingen naar bestaande adviezen en voorbeelden van implementaties over het op een passende wijze omgaan met CRS-en in informatiemodellen, in uitwisselmechanismes en -formaten en ook in het ontwerp van landelijke voorzieningen. De Nederlandse Samenwerking Geodetische Infrastructuur is hierbij de autoriteit voor de adviezen over goed gebruik over de in Nederland gebruikte CRS-en die ook vaak ten grondslag liggen aan de gekozen voorbeelden.
+</p><p>Het NSGI-advies voor gebruik van de nauwkeurige en eenduidige CRS-en op RDNAP en ETRS89 landelijk en Europees niveau enerzijds en het SDW-BP advies voor eenvoudig bruikbare wereldwijde CRS-en geven een spanningsveld. Het is aan de modelleur, eindgebruiker en ontwikkelaar om hierin de juiste afweging te maken in de context van de keten van inwinning tot uitwisseling en visualisatie en beoogde toepassing. De handreiking beoogd hierbij een hulpmiddel te zijn. Bij twijfel kan altijd contact worden opgenomen met Geonovum én met de experts in de NSGI.</p></section><section data-format="markdown" id="lijst-met-afkortingen"><!--OddPage--><h2 id="x5-lijst-met-afkortingen"><span class="secno">5. </span>Lijst met afkortingen</h2><table>
+<thead>
+<tr>
+<th>Afkorting</th>
+<th>Omschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AGRS.NL</td>
+<td>Actief GNSS Referentiestelsel voor Nederland</td>
+</tr>
+<tr>
+<td>Basisregistratie Grootschalige Topografie</td>
+<td></td>
+</tr>
+<tr>
+<td>BGT</td>
+<td>Basisregistratie Grootschalige Topografie</td>
+</tr>
+<tr>
+<td>BRO</td>
+<td>Basisregistratie Ondergrond</td>
+</tr>
+<tr>
+<td>CRS</td>
+<td>Coördinaatreferentiesysteem</td>
+</tr>
+<tr>
+<td>DSO</td>
+<td>Digtiaal Stelsel Omgevingswet</td>
+</tr>
+<tr>
+<td>ETRS89</td>
+<td>European Terrestrial Reference System 1989</td>
+</tr>
+<tr>
+<td>ETRF</td>
+<td>European Terrestrial Reference Frame</td>
+</tr>
+<tr>
+<td>GNSS</td>
+<td>Global Navigation Satellite System</td>
+</tr>
+<tr>
+<td>IOGP</td>
+<td>International Association of Oil &amp; Gas Producers</td>
+</tr>
+<tr>
+<td>IERS</td>
+<td>International Earrth Rotation Service</td>
+</tr>
+<tr>
+<td>ITRS</td>
+<td>International Terrestrial Reference System</td>
+</tr>
+<tr>
+<td>ITRS</td>
+<td>International Terrestrial Reference Frame</td>
+</tr>
+<tr>
+<td>IUGG</td>
+<td>International Union for Geodesy and Geophysiscs</td>
+</tr>
+<tr>
+<td>LAT</td>
+<td>Lowest Astronomical Tide</td>
+</tr>
+<tr>
+<td>NAP</td>
+<td>Normaal Amsterdams Peil</td>
+</tr>
+<tr>
+<td>NGA</td>
+<td>National Geospatial Intelligence Agency</td>
+</tr>
+<tr>
+<td>NSGI</td>
+<td>Nederlandse Samenwerking Geodetische Infrastructuur</td>
+</tr>
+<tr>
+<td>NTS</td>
+<td>Name Type Specification</td>
+</tr>
+<tr>
+<td>OGC</td>
+<td>Open Geospatial Consortium</td>
+</tr>
+<tr>
+<td>RD</td>
+<td>Stelsel van de Rijksdriehoeksmeting</td>
+</tr>
+<tr>
+<td>SDW-BP</td>
+<td>Spatial Data on the Web Best Practices</td>
+</tr>
+<tr>
+<td>URN</td>
+<td>Uniform Resource Name</td>
+</tr>
+<tr>
+<td>VN</td>
+<td>Verenigde Naties</td>
+</tr>
+<tr>
+<td>WGS 84</td>
+<td>World Geodetic System 1984</td>
+</tr>
+</tbody></table></section><section data-format="markdown" id="bijlage-a-crs-overzicht-tabel"><!--OddPage--><h2 id="x6-bijlage-a-crs-overzicht-tabel"><span class="secno">6. </span>Bijlage A: CRS overzicht tabel</h2><p>Onderstaande tabel geeft de naam en EPSG-code veelgebruikte CRS-en in Nederland. Een ensemble CRS groepeert volgens EPSG en ISO 19111:2019 individuele realisaties van CRS-en en kan worden gebruikt waneer voor de beoogde toepassing en nauwkeurigheid het verschil tussen de individuele relaties niet significant is. Voor het WG 84 ensemble zijn de verschillen tussen realisaties circa 2 meter, voor ETRS89 realisaties zijn de verschillen minder dan 0,1 meter.</p><table>
+<thead>
+<tr>
+<th>CRS-naam</th>
+<th>EPSG-code</th>
+<th>CRS-type</th>
+<th>Opmerkingen</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RD</td>
+<td>28992</td>
+<td>Geprojecteerd<br>Stereografische projectie (x, y)</td>
+<td></td>
+</tr>
+<tr>
+<td>NAP</td>
+<td>5709</td>
+<td>Vertikaal<br>hoogte (H)</td>
+<td></td>
+</tr>
+<tr>
+<td>LAT-NL</td>
+<td>9287</td>
+<td>Vertikaal<br>diepte (H)</td>
+<td>Hydrografische toepassingen op zee</td>
+</tr>
+<tr>
+<td>ETRS89-GRS80</td>
+<td>4258</td>
+<td>Geografisch<br>GRS80 ellipsoïde (φ, λ)</td>
+<td>Ensemble<br>Vaak aangeduidt als ETRS89</td>
+</tr>
+<tr>
+<td>ETRS89-GRS80h</td>
+<td>4937</td>
+<td>Geografisch<br>GRS80 ellipsoïde (φ, λ, h)</td>
+<td>Ensemble<br>Vaak aangeduidt als ETRS89</td>
+</tr>
+<tr>
+<td>ETRS89-XYZ</td>
+<td>4936</td>
+<td>Geocentrisch (X, Y, Z)</td>
+<td>Ensemble</td>
+</tr>
+<tr>
+<td>ETRS89-LAEA</td>
+<td>3035</td>
+<td>Geprojecteerd<br>Lambert Equal Area projectie (y, x)</td>
+<td>INSPIRE projectie voor statistische data</td>
+</tr>
+<tr>
+<td>ETRS89-LCC</td>
+<td>3034</td>
+<td>Geprojecteerd<br>Lambert Conformal Conical (N, E)</td>
+<td>INSPIRE projectie voor kleinschalige (&lt; 1:500 000) pan-Europese data</td>
+</tr>
+<tr>
+<td>ETRS89-TM</td>
+<td>3043</td>
+<td>Geprojecteerd<br>Transversale Mercator projectie (N, E)</td>
+<td>INSPIRE projectie voor grootschalige (&gt; 1:500 000) data voor zone 31N (0° to 6°E)</td>
+</tr>
+<tr>
+<td>ETRS89-TM</td>
+<td>3044</td>
+<td>Geprojecteerd<br>Transversale Mercator projectie (N, E)</td>
+<td>INSPIRE projectie voor grootschalige (&gt; 1:500 000) data voor zone 32N (6° to 12°E)</td>
+</tr>
+<tr>
+<td>ETRF2000</td>
+<td>7931</td>
+<td>Geografisch<br>GRS80 ellipsoïde (φ, λ, h)</td>
+<td>Aanbevolen ETRS89-realisatie voor geo-informatie door EUREF</td>
+</tr>
+<tr>
+<td>ETRF2000</td>
+<td>9067</td>
+<td>Geografisch<br>GRS80 ellipsoïde (φ, λ)</td>
+<td>Aanbevolen ETRS89-realisatie voor geo-informatie door EUREF</td>
+</tr>
+<tr>
+<td>ETRF2000</td>
+<td>7930</td>
+<td>Geocentrisch (X, Y ,Z)</td>
+<td>Aanbevolen ETRS89-realisatie voor geo-informatie dor EUREF</td>
+</tr>
+<tr>
+<td>EVRF2007</td>
+<td>5621</td>
+<td>Vertikaal<br>Normaal hoogte (H)</td>
+<td></td>
+</tr>
+<tr>
+<td>EVRF2019</td>
+<td>9389</td>
+<td>Vertikaal<br>Normaal hoogte (H)</td>
+<td></td>
+</tr>
+<tr>
+<td>RDNAP</td>
+<td>7415</td>
+<td>Samengesteld<br>RD en NAP</td>
+<td></td>
+</tr>
+<tr>
+<td>ETRS89 + NAP</td>
+<td>7432</td>
+<td>Samengesteld<br>ETRS89-GRS80 en NAP</td>
+<td>ETRS89=Ensemble</td>
+</tr>
+<tr>
+<td>ETRS89 + EVRF2007</td>
+<td>7423</td>
+<td>Samengesteld<br>ETRS89-GRS80 en EVRF2007</td>
+<td>ETRS89=Ensemble</td>
+</tr>
+<tr>
+<td>ETRS89 + EVRF2019</td>
+<td>9422</td>
+<td>Samengesteld<br>ETRS89-GRS80 en EVRF2019</td>
+<td>ETRS89=Ensemble</td>
+</tr>
+<tr>
+<td>ETRS89 + LAT-NL</td>
+<td>9289</td>
+<td>Samengesteld<br>ETRS89-GRS80 en LAT-NL</td>
+<td>ETRS89=Ensemble</td>
+</tr>
+<tr>
+<td>ETRF2000 + NAP</td>
+<td>Samengesteld<br>Geografisch ETRF2000 en NAP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ITRF2014</td>
+<td>9000</td>
+<td>Geografisch<br>GRS80 ellipsoïde  (φ, λ)</td>
+<td>Aanbevolen wereldwijd CRS door VN, IUGG en EPSG</td>
+</tr>
+<tr>
+<td>ITRF2014</td>
+<td>7912</td>
+<td>Geografisch<br>GRS80 ellipsoïde  (φ, λ, h)</td>
+<td>Aanbevolen wereldwijd CRS door VN, IUGG en EPSG</td>
+</tr>
+<tr>
+<td>ITRF2014</td>
+<td>7789</td>
+<td>Geocentrisch (X, Y, Z)</td>
+<td>Aanbevolen wereldwijd CRS door VN, IUGG en EPSG</td>
+</tr>
+<tr>
+<td>WGS 84</td>
+<td>4258</td>
+<td>Geografisch<br>WGS 84 ellipsoïde (φ, λ)</td>
+<td>Ensemble<br>Aanbevolen wereldwijd CRS voor toepassingen op het web door OGC</td>
+</tr>
+<tr>
+<td>WGS 84</td>
+<td>4979</td>
+<td>Geografisch<br>WGS 84 ellipsoïde  (φ, λ, h)</td>
+<td>Ensemble<br>Aanbevolen wereldwijd CRS voor toepassingen op het web door OGC</td>
+</tr>
+<tr>
+<td>WGS 84 (G2139)</td>
+<td>9755</td>
+<td>Geografisch (φ, λ)</td>
+<td>WGS 84 realisatie van 3 januari 2021</td>
+</tr>
+<tr>
+<td>WGS 84 (G2139)</td>
+<td>9754</td>
+<td>Geografisch (φ, λ, h)</td>
+<td>WGS 84 realisatie van 3 januari 2021</td>
+</tr>
+<tr>
+<td>WGS 84 (G2139)</td>
+<td>9753</td>
+<td>Geocentrisch (X, Y, Z)</td>
+<td></td>
+</tr>
+<tr>
+<td>WGS 84 / Web Mercator of Pseudo Mercator</td>
+<td>WGS 84</td>
+<td>Gesimplifiseerde mercator projectie (x, y)</td>
+<td>Geen geodetisch CRS, alleen geschikt eenvoudige visualisatie van onnauwkeurige data<br>Aanbevolen voor visualisatie op het web door OGC</td>
+</tr>
+<tr>
+<td>WGS 84 / UTM Zone 31N</td>
+<td>32631</td>
+<td>Transversale Mercator projectie (N, E)</td>
+<td>Projectie voor UTM zone 31N (0° to 6°E)</td>
+</tr>
+<tr>
+<td>WGS 84 / UTM Zone 32N</td>
+<td>32632</td>
+<td>Transversale Mercator projectie (N, E)</td>
+<td>Projectie voor UTM zone 32N (6° to 12°E)</td>
+</tr>
+</tbody></table></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

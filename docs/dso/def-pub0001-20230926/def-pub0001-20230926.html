@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico">
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/geen/style.css">
+<title>Publiceren van omgevingsdocumenten voor en na inwerkingtreden Omgevingswet</title>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/geen/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Publiceren van omgevingsdocumenten voor en na inwerkingtreden Omgevingswet",
+  "shortName": "pub0001",
+  "pubDomain": "dso",
+  "specStatus": "def",
+  "specType": "al",
+  "license": "cc-by-nd",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/dso/pub0001/"
+  ],
+  "publishDate": "2023-09-26",
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/dso/def-al-pub0001-20230926/"
+  ],
+  "edDraftURI": "https://geonovum.github.io/dso-pub0001/",
+  "authors": [
+    {
+      "name": "TPOD-team",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "TPOD-team",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/geen/base.css"></head><body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Publiceren van omgevingsdocumenten voor en na inwerkingtreden Omgevingswet</h1>
+    
+    <h2>
+      Geonovum Algemeen<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-09-26">26 september 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/dso/def-al-pub0001-20230926/">https://docs.geostandaarden.nl/dso/def-al-pub0001-20230926/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/dso/pub0001/">https://docs.geostandaarden.nl/dso/pub0001/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/dso-pub0001/">https://geonovum.github.io/dso-pub0001/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">TPOD-team</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">TPOD-team</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+        </p>
+    <hr title="Separator for header">
+  </div><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-514335F1"><bdi class="secno">1. </bdi>Publiceren van omgevingsdocumenten voor en na inwerkingtreden Omgevingswet</a></li></ol></nav><section id="514335F1" class="chapter"><h2 id="x1-514335F1"><bdi class="secno">1. </bdi>Publiceren van omgevingsdocumenten voor en na inwerkingtreden Omgevingswet</h2><p id="4CF2ADA8" class="space-after">Onderstaand een overzicht voor de meest gebruikte omgevingsdocumenten wanneer voorafgaand en rondom inwerkingtreden van de Omgevingswet het ontwerpbesluit gepubliceerd kan worden, wanneer het bestuursorgaan het kan vaststellen (het definitief besluit kan nemen), wanneer het besluit bekendgemaakt kan worden en wanneer het besluit in werking kan treden. Dit is een technisch overzicht van de mogelijkheden. Of het daadwerkelijk in een concreet geval mogelijk is hangt af van de daadwerkelijk gevoerde procedure</p><p id="28F82BB6">Voor alle omgevingsdocumenten gelden de eisen van de LVBB:</p><ul><li><p id="15F1A9A2">Leverancier heeft voor het omgevingsdocument de verplichte onderdelen van de basischeck succesvol doorlopen</p></li><li><p id="580E6DB9">Begeleiding:</p><ul><li><p id="7E967963">Voor 01-01-2024 wordt iedere aanlevering in de Productie-omgeving attended gedaan, daarvoor moet die levering worden aangemeld bij IPLO, levering wordt dan ingepland<span class="noot">[1]<span class="noottekst">Z zie https://aandeslagmetdeomgevingswet.nl/actueel/nieuws/2023/september/begeleiding-publiceren-omgevingsdocumenten/ <br></span></span> </p></li><li><p id="175471B0" class="space-after">Over de situatie na 01-01-2024 volgt nog bericht</p></li></ul></li></ul><table id="d3e61" style="width: 100%;" class="simple"><caption></caption><colgroup><col id="col1" style="width: 20.001474491300502%;"><col id="col2" style="width: 20.001474491300502%;"><col id="col3" style="width: 29.998525508699498%;"><col id="col4" style="width: 29.998525508699498%;"></colgroup><thead valign="top"><tr><th align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: #3C3C3C;"><p id="5DCFFB08">Instrument</p></th><th align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: #3C3C3C;"><p id="0EDE3E99">Handeling</p></th><th align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: #3C3C3C;"><p id="7F141B24">Juridisch</p></th><th align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: #3C3C3C;"><p id="416230AF">Specifiek</p></th></tr></thead><tbody valign="top"><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="690FC686">Omgevingsplanwijziging</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="249C5B4E">Zie paragraaf 10.4 TPOD omgevingsplan</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="18638226">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3C84AB1F">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="48F53CC8">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="032995E2">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="74A8661D">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7B624CA9">Vanaf 01-01-2024<span class="noot">[2]<span class="noottekst"> Artikel 22.3 Ow<br></span></span> </p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="0523DF6B">Let op: ten minste 2 weken na vaststelling<span class="noot">[3]<span class="noottekst"> Artikel 16.77b lid 1 Ow<br></span></span></p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="500E2FAE">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4B48121B">4 weken na bekendmaking, tenzij latere datum in besluit<span class="noot">[4]<span class="noottekst"> Artikel 16.78 lid 1 Ow<br></span></span></p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="0D5CD99F">Waterschapsverordening</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="69C4786D">Zie paragraaf 10.4 TPOD waterschapsverordening</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="36110810">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="466F2D0C">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="27A4719B">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="6AA71FF2">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4ECF32D1">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7DDD5EAE">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3086227D">Eerste aanlevering definitief besluit Waterschapsverordening (per waterschap) tussen 01-08-2023 en 01-12-2023; als de waterschapsverordening op 01-12-2023 nog niet is geladen door waterschap wordt voor dat waterschap de bruidsschat geladen, tenzij voor 01-12-2023 afspraak is gemaakt met harde datum voor publicatie in december</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="6D13B683">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4CCB1CB3">Vanaf 01-01-2024</p><p id="284DB587">(Met ingang van achtste dag na bekendmaking<span class="noot">[5]<span class="noottekst"> Artikel 10 lid 2 Bekendmakingswet<br></span></span>)</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3AEA2341">Omgevingsverordening</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="57AFDA4A">Zie paragraaf 10.4 TPOD omgevingsverordening</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7F5829CB">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="744854D8">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="520EA35D">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="169E18AE">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="5D413EC5">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="2B11EE19">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="1F1F0769">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="671BBE38">Vanaf 01-01-2024</p><p id="046C0770">(Met ingang van achtste dag na bekendmaking<span class="noot">[6]<span class="noottekst"> Artikel 10 lid 2 Bekendmakingswet<br></span></span>)</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="18F51848">Omgevingsvisie</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="6673B755">Zie paragraaf 10.4 TPOD omgevingsvisie</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="63B21E8F">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="434B313C">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="0F47A997">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4B41B6B5">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="67B05E2D">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7419CEF8">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4C272A52">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="158F72E5">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3B376C45">Uitgangspunt is inwerkingtreding vanaf 01-01-2024, maar een voor 01-01-2024 van kracht geworden omgevingsvisie wordt op grond van het overgangsrecht gelijkgesteld met een omgevingsvisie op grond van de Omgevingswet, die omgevingsvisie moet dan wel aan een aantal voorwaarden voldoen<span class="noot">[7]<span class="noottekst"> Artikel 4.10 Invoeringswet Omgevingswet<br></span></span></p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="272D68F8">Voorbereidingsbesluit</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="53D52FFB">Zie paragraaf 10.4 TPOD voorbereidingsbesluit</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="4AED93CC">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="174BE35C">N.v.t.</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="729389E4">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="211DF07B">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="2569D9A6">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="68CF7537">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="2E1FD91B">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="16D8A286">Vanaf 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="02B12C13">Projectbesluit</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7A51AE96">Zie paragraaf 11.4 TPOD projectbesluit</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3953CA52">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="5E8586FA">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="180952C9">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="38B99B5F">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="71C78CD8">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="0F732EFC">Vanaf 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="760A9839">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="0F7EA697">Vanaf 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="6D1D4E4D">Reactieve interventie</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="1D2560FA">Zie paragraaf 10.4 TPOD reactieve interventie</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="5B4CD10F">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="2CFD2370">N.v.t.</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="191579A7">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="67E8CA1E">Na 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="55120BBE">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="30595C94">Na 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="1F285CE4">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="6A806A39">Na 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="79229539">Programma</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="32780305">Zie paragraaf 9.5 TPOD programma</p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7EE2B878">Publicatie ontwerp</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="5ACBBE5E">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="5E0F00EA">Vaststelling</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="00A2F0FF">Kan al voor 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="72B1634B">Bekendmaking</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="1A3B27DD">Vanaf 01-01-2024</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="16635FCD">Inwerkingtreding</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="7D5EE68E">Kan al voor 01-01-2024 Kan al voor 01-01-2024 (art. 4.11 Invoeringswet Omgevingswet)</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="3CBFC06F">Uitgangspunt is inwerkingtreding vanaf 01-01-2024, maar een voor 01-01-2024 van kracht geworden programma wordt op grond van het overgangsrecht gelijkgesteld met een programma op grond van de Omgevingswet, dat programma moet dan wel aan een aantal voorwaarden voldoen<span class="noot">[8]<span class="noottekst"> Artikel 4.10 Invoeringswet Omgevingswet<br></span></span></p></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td></tr><tr><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="2D5C0A34">Kennisgeving <i>verleende</i> omgevingsvergunning voor buitenplanse omgevingsplanactiviteit</p></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"></td><td align="left" style="border-top: 0.5pt solid #8A8A8A; border-left: 0.5pt solid #8A8A8A; border-bottom: 0.5pt solid #8A8A8A; border-right: 0.5pt solid #8A8A8A; background-color: none;"><p id="58BE3AE3">Kan vanaf 01-01-2024 aan DROP aangeboden worden</p></td></tr></tbody></table></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Algemeen - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

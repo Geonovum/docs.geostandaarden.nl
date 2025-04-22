@@ -1,0 +1,757 @@
+<!DOCTYPE html><html lang="nl"><head><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/font-awesome.css"><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/leaflet.css"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/media/logos/Geonovum.ico">
+  <link rel="stylesheet" type="text/css" href="localstyle.css">
+  <title>BRO Gegevenscatalogus Geotechnisch sondeeronderzoek</title>
+  
+  
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-VV",
+  "specType": "IM",
+  "publishDate": "2022-07-15",
+  "editors": [
+    {
+      "name": "TNO Geologische Dienst Nederland",
+      "url": "https://www.tno.nl/nl/"
+    }
+  ],
+  "shortName": "CPT",
+  "pubDomain": "bro",
+  "github": "https://github.com/BROprogramma/CPT",
+  "previousPublishDate": "2017-06-27",
+  "previousMaturity": "DEF",
+  "publishISODate": "2022-07-15T00:00:00.000Z",
+  "generatedSubtitle": "Versie ter vaststelling 15 juli 2022"
+}</script><meta name="description" content="Het Geotechnisch sondeeronderzoek is een van de registratieobjecten in het domein van bodem- en grondonderzoek.
+      In dat domein gaat het om onderzoek dat er op gericht is gegevens te produceren over de opbouw en de eigenschappen
+      van bodem en ondergrond zonder dat daarvoor direct een bepaald wettelijk of beleidsmatig kader bestaat. Vaak wordt
+      het onderzoek uitgevoerd omdat men de opbouw en de eigenschappen van de ondergrond moet kennen voor het realiseren
+      van projecten in de grond-, weg- en waterbouw, of voor het onderhoud van bestaande infrastructuur."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/bro/vv-im-CPT-20220715/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "BRO Gegevenscatalogus Geotechnisch sondeeronderzoek",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-07-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/BROprogramma/CPT/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/bro/-im-CPT-20170627/",
+  "description": "Het Geotechnisch sondeeronderzoek is een van de registratieobjecten in het domein van bodem- en grondonderzoek.\n      In dat domein gaat het om onderzoek dat er op gericht is gegevens te produceren over de opbouw en de eigenschappen\n      van bodem en ondergrond zonder dat daarvoor direct een bepaald wettelijk of beleidsmatig kader bestaat. Vaak wordt\n      het onderzoek uitgevoerd omdat men de opbouw en de eigenschappen van de ondergrond moet kennen voor het realiseren\n      van projecten in de grond-, weg- en waterbouw, of voor het onderhoud van bestaande infrastructuur.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "TNO Geologische Dienst Nederland",
+      "url": "https://www.tno.nl/nl/"
+    }
+  ],
+  "citation": []
+}</script><script src="https://tools.geostandaarden.nl/respec/scripts/leaflet.js"></script><script src="https://tools.geostandaarden.nl/respec/scripts/easy-button.js"></script><script>
+    
+  function processImages() {
+    Array.from(
+      document.querySelectorAll("figure.scalable img")
+    ).forEach(image => {
+      const { width, height, src } = image;
+      image.hidden = true;
+      const div = document.createElement("div");
+      const map = L.map(div, {
+        maxZoom: 4,
+        minZoom: -4,
+        center: [0, 0],
+        crs: L.CRS.Simple,
+      });
+      const imageBounds = [[0, 0], [height, width]];
+      image.insertAdjacentElement("beforebegin", div);
+      map.setView([height / 2, width / 2], 1);
+      [
+        L.easyButton("fa-arrows-alt", () => window.open(src, "_blank")),
+        L.easyButton("fa-globe", () => map.fitBounds(imageBounds)),
+        L.imageOverlay(src, imageBounds),
+      ].forEach(item => item.addTo(map));
+      map.fitBounds(imageBounds);
+    });
+  }
+;
+    // Calls processImages when the document loads
+    window.addEventListener("DOMContentLoaded", processImages);
+  </script></head>
+
+<body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">BRO Gegevenscatalogus Geotechnisch sondeeronderzoek</h1>
+  
+  <h2>Geonovum Informatiemodel<br>
+  Versie ter vaststelling <time class="dt-published" datetime="2022-07-15">15 juli 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/bro/vv-im-CPT-20220715/">https://docs.geostandaarden.nl/bro/vv-im-CPT-20220715/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/bro/CPT/">https://docs.geostandaarden.nl/bro/CPT/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://www.bro-productomgeving.nl/bpo/latest/bodem-en-grondonderzoek/geotechnisch-sondeeronderzoek-cpt/catalogus-cpt/gebruiksvriendelijke-versie-catalogus-cpt-v1-0">Catalogus CPT v1.0</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://broprogramma.github.io/CPT/">https://broprogramma.github.io/CPT/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.tno.nl/nl/">TNO Geologische Dienst Nederland</a></dd>
+    
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/BROprogramma/CPT/">GitHub BROprogramma/CPT</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/CPT/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/CPT/pulls/">Pull requests</a>
+    </dd>
+	<dt>Contact:</dt>
+    <dd><a href="https://basisregistratieondergrond.nl/servicepagina/">BRO Servicedesk</a></dd>
+    <dd><a href="mailto:support@broservicedesk.nl">support@broservicedesk.nl</a></dd>
+    <dd>088 – 8664 999</dd>
+<dt><img align="right" id="logo_bro" alt="Basisregistratie Ondergrond" width="223" height="115" src="https://docs.geostandaarden.nl/bro/gen/logo_bro.png">
+Algemeen contact:</dt>
+    <dd>Programmabureau BRO</dd>
+    <dd>Directoraat-Generaal Bestuur, Wonen en Ruimte</dd>
+    <dd>Turfmarkt 147 Den Haag</dd>
+    <dd><a href="mailto:bro@minbzk.nl">bro@minbzk.nl</a></dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2>
+    <p>Het <i>Geotechnisch sondeeronderzoek</i> is een van de registratieobjecten in het domein van <i>bodem- en grondonderzoek</i>.
+      In dat domein gaat het om onderzoek dat er op gericht is gegevens te produceren over de opbouw en de eigenschappen
+      van bodem en ondergrond zonder dat daarvoor direct een bepaald wettelijk of beleidsmatig kader bestaat. Vaak wordt
+      het onderzoek uitgevoerd omdat men de opbouw en de eigenschappen van de ondergrond moet kennen voor het realiseren
+      van projecten in de grond-, weg- en waterbouw, of voor het onderhoud van bestaande infrastructuur.</p>
+  </section>
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+  Dit is een definitief concept van de nieuwe versie van het informatiemodel. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+</p>
+    <p>Het voorliggende document is nog niet vastgesteld door het Ministerie van Infrastructuur en Milieu. Op 23 maart 2016
+      is de conceptversie verstuurd naar Geonovum. Die conceptversie is, behoudens kleine redactionele verschillen, gelijk
+      aan dit document.</p>
+  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</a></li><li class="tocline"><a class="tocxref" href="#samenhang-met-andere-documentatie"><span class="secno">1.2 </span>
+  Samenhang met andere documentatie</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opzet-van-het-systeem"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</a></li><li class="tocline"><a class="tocxref" href="#registratieobject"><span class="secno">2.2 </span>Registratieobject</a></li><li class="tocline"><a class="tocxref" href="#registratiedomein"><span class="secno">2.3 </span>Registratiedomein</a></li><li class="tocline"><a class="tocxref" href="#kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</a></li><li class="tocline"><a class="tocxref" href="#formele-en-materiële-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</a></li><li class="tocline"><a class="tocxref" href="#coördinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</a></li><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</a></li><li class="tocline"><a class="tocxref" href="#authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geotechnischsondeeronderzoek"><span class="secno">3. </span>Geotechnisch sondeeronderzoek</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sonderen"><span class="secno">3.1 </span>Sonderen</a></li><li class="tocline"><a class="tocxref" href="#registratieobject-geotechnisch-sonderonderzoek"><span class="secno">3.2 </span>Registratieobject Geotechnisch sondeeronderzoek</a></li></ol></li><li class="tocline"><a class="tocxref" href="#domeinmodel"><span class="secno">4. </span>Domeinmodel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#het-domeinmodel"><span class="secno">4.1 </span>Het domeinmodel</a></li><li class="tocline"><a class="tocxref" href="#domeinmodel-gmm"><span class="secno">4.2 </span>Domeinmodel Geotechnisch sonderonderzoek</a></li><li class="tocline"><a class="tocxref" href="#geotechnisch-sondeeronderzoek"><span class="secno">4.3 </span>Geotechnisch sondeeronderzoek</a></li><li class="tocline"><a class="tocxref" href="#registratiegeschiedenis"><span class="secno">4.4 </span>Registratiegeschiedenis</a></li><li class="tocline"><a class="tocxref" href="#sondeeronderzoek"><span class="secno">4.5 </span>Sondeeronderzoek</a></li><li class="tocline"><a class="tocxref" href="#resultaat"><span class="secno">4.6 </span>Resultaat</a></li><li class="tocline"><a class="tocxref" href="#sondeersapparaat"><span class="secno">4.7 </span>Sondeersapparaat</a></li><li class="tocline"><a class="tocxref" href="#aanvullend-onderzoek"><span class="secno">4.8 </span>Aanvullend onderzoek</a></li></ol></li></ol></nav>
+  <section id="inleiding">
+    <!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2>
+    <section id="doel-en-doelgroep" class="generic">  <h3 id="x1-1-doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</h3>
+  <p>In de basisregistratie ondergrond (BRO) wordt een aantal typen gegevens geregistreerd, de <i>registratieobjecten</i>.</p>
+  <p>Een catalogus is de gegevensdefinitie van een registratieobject en beschrijft welke gegevens van het object in de BRO zijn opgeslagen. 
+    Het document is bedoeld voor alle gebruikers van de BRO en moet duidelijk maken welke gegevens er precies in het systeem zitten. 
+    Aan aanleverende partijen moet het vertellen welke gegevens in de basisregistratie ondergrond moeten komen en aan welke eisen die moeten
+    voldoen, en aan afnemende partijen welke gegevens zij in de basisregistratie ondergrond mogen verwachten.
+    Het document is voor een breed publiek bedoeld en de informatie moet naast precies ook begrijpelijk zijn.</p>
+</section>
+    <section id="samenhang-met-andere-documentatie" class="generic"><h3 id="x1-2-samenhang-met-andere-documentatie"><span class="secno">1.2 </span>
+  Samenhang met andere documentatie</h3>
+<p>Voor ieder <i>registratieobject</i> worden de volgende beschrijvende documenten opgesteld:
+  </p><ul>
+    <li>de catalogus</li>
+    <li>de handboeken voor inname en uitgifte</li>
+    <li>de koppelvlakbeschrijvingen voor inname en uitgifte.</li>
+  </ul>
+<p></p>
+<p>De <i>catalogus</i> beschrijft de inhoud van de basisregistratie ondergrond en vormt de basis voor de andere beschrijvende documenten. In de catalogus staan de definities van de gegevens van het registratieobject, de entiteiten en attributen, met een beschrijving van de onderlinge samenhang. Bij de definitie worden de kardinaliteit (het aantal keer dat het gegeven voorkomt), de regels die in controles worden gebruikt en de waarden die zijn toegestaan vermeld.
+</p>
+<p>Een <i>handboek</i> voor inname of uitgifte beschrijft het proces dat bij inname of uitgifte van gegevens wordt doorlopen.
+  In een handboek worden ook de gegevens gedefinieerd die betrekking hebben op het proces van inname of uitgifte. Om te zien
+  wat er aangeleverd moet worden of wat er uitgeleverd kan worden, heeft men de catalogus nodig.</p>
+<p>De <i>koppelvlakbeschrijvingen</i> zijn geschreven voor softwareontwikkelaars. Op basis van de twee vorige typen documenten
+  staat hierin beschreven hoe het registratieobject en de bijbehorende transacties worden vertaald naar het technische koppelvlak
+  dat is gerealiseerd door middel van webservices. De koppelvlakbeschrijving gaat dus in op de technische realisatie van
+  de transacties waarbinnen gegevens van het registratieobject worden uitgewisseld.</p>
+</section>
+     <p>Deze documenten hangen samen zoals hieronder afgebeeld.</p>
+      <figure id="image001"><img src="media/fig1.png" width="600">
+        <figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Samenhang tussen documentatie
+        </span></figcaption>
+      </figure>
+    </section>
+    <section id="leeswijzer">
+      <h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3>
+      <p>Hoofdstuk 1 geeft het doel en de doelgroep, de samenhang met andere documenten en de versiehistorie van deze catalogus.</p>
+      <p>Hoofdstuk 2 behandelt enkele algemene aspecten van het BROsysteem en behandelt begrippen van algemene aard.</p>
+      <p>Hoofdstuk 3 legt uit wat geotechnisch sondeeronderzoek is, wat de plaats is van het object in de gegevenssystematiek
+        van de BRO en vertelt wat de benadering is geweest bij het opstellen van de gegevensdefinitie. </p>
+      <p>Hoofdstuk 4 geeft de definitie van het registratieobject, van de delen waaruit het is opgebouwd, de entiteiten, en
+        van de eigenschappen van die delen, de attributen. </p>
+      <p>Hoofdstuk 5 ten slotte geeft de definitie van de codelijsten waarnaar in hoofdstuk 4 verwezen wordt. </p>
+    </section>
+  </section>
+  <section id="algemene-kenmerken-en-begrippen" class="generic"><!--OddPage--><h2 id="x2-algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</h2>
+<section id="opzet-van-het-systeem">
+    <h3 id="x2-1-opzet-van-de-landelijke-voorziening"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</h3>
+    <p>De landelijke voorziening van de basisregistratie ondergrond is een systeem dat een schakel vormt in een informatieketen. Aan het begin van de keten staan bestuursorganen die opdracht geven tot de productie van gegevens, of zelf gegevens produceren. Die bestuursorganen worden <i>bronhouders</i> genoemd. De geproduceerde gegevens worden door een <i>dataleverancier</i> geleverd aan de beheerder van het systeem, de <i>registerbeheerder</i>. De bronhouder is verantwoordelijk voor de levering van gegevens. Hij kan besluiten zelf dataleverancier te zijn of andere partijen een machtiging voor levering te verlenen. De beheerder van de landelijke voorziening van de BRO registreert de aangeleverde gegevens en levert ze voor (her)gebruik door aan allerlei afnemers.</p>
+    <p>De opzet van het systeem moet begrepen worden vanuit de verantwoordelijkheden die in de keten zijn belegd. De aangeleverde gegevens vallen onder de verantwoordelijkheid van de bronhouder en de registerbeheerder mag die gegevens niet veranderen. De registerbeheerder moet echter wel gegevens toevoegen om het systeem te kunnen beheren en hij kan gegevens toevoegen om de afnemers goed van dienst te kunnen zijn.</p>
+    <p>Bij wet is geregeld dat de basisregistratie ondergrond zo wordt opgezet dat er onderscheid bestaat tussen de gegevens die aan de registerbeheerder zijn aangeleverd en de gegevens die de registerbeheerder aan de afnemers verstrekt. Het systeem valt uiteen in twee grote deelsystemen, het register <i>brondocumenten ondergrond</i> en de <i>registratie
+          ondergrond</i> (<a href="#image001" class="fig-ref" title="De twee grote deelsystemen van de landelijke voorziening van de BRO.">Figuur <span class="figno">2</span></a>).</p>
+
+    <p>Een geheel van gegevens dat door of onder verantwoordelijkheid van een bronhouder wordt aangeleverd, wordt een <i>brondocument</i> genoemd. De brondocumenten worden in het <i>register brondocumenten ondergrond</i> opgeslagen. De gegevens uit de brondocumenten worden samen met de gegevens die de registerbeheerder toevoegt in de <i>registratie ondergrond</i> vastgelegd. De <i>registratie ondergrond</i> is het deelsysteem dat gebruikt wordt voor uitgifte.</p>
+    
+        <figure id="image001"><img src="https://docs.geostandaarden.nl/bro/gen/media/image002.png" width="350">
+        <figcaption>Figuur <span class="figno">2</span> <span class="fig-title">De twee grote deelsystemen van de landelijke voorziening van de BRO.
+        </span></figcaption>
+    </figure>
+    
+    <p>Met deze opzet verkrijgt het systeem de nodige flexibiliteit. Zo kan een object in de registratie ondergrond gegevens bevatten die uit meer dan één brondocument afkomstig zijn en bij uitgifte kunnen gegevens van verschillende objecten met elkaar gecombineerd worden. Ook is het mogelijk met het brondocument gegevens op te slaan die alleen voor de bronhouder en de aanleverende partij van belang zijn.</p>
+    <p>De catalogus dekt alle gegevens die opgenomen zijn in de registratie ondergrond. Verreweg de meeste gegevens komen uit de brondocumenten die de dataleverancier aanlevert en een paar gegevens komen voort uit de overdracht van een brondocument aan de registerbeheerder. Aan de aangeleverde gegevens worden enkele gegevens door de registerbeheerder toegevoegd. Als een gegeven is toegevoegd door de BRO wordt dat in de beschrijving expliciet vermeld.</p>
+    <p>Alle gegevens in de registratie ondergrond worden uitgegeven, maar niet alle afnemers kunnen alle gegevens geleverd krijgen. De gegevens die niet aan alle afnemers worden uitgeleverd zijn de gegevens die alleen nodig zijn in de communicatie tussen de registerbeheerder enerzijds en de dataleveranciers en bronhouders anderzijds.</p>
+</section>
+<section id="registratieobject">
+    <h3 id="x2-2-registratieobject"><span class="secno">2.2 </span>Registratieobject</h3>
+    <p>Het <i>registratieobject</i> is dé eenheid in de data-architectuur van de basisregistratie ondergrond. Voor de registerbeheerder is het de elementaire bouwsteen van het systeem dat hij moet beheren.</p>
+    <p>Een <i>registratieobject</i> verwijst naar een eenheid van informatie die onder de verantwoordelijkheid van één bronhouder valt en die met een bepaald doel is of wordt gemaakt. Het is in directe of indirecte zin gedefinieerd in de ruimte en dat wil zeggen dat een registratieobject een plaats op het aardoppervlak heeft of dat het gekoppeld is aan een ander type registratieobject met een plaats op het aardoppervlak.</p>
+    <p>Een <i>registratieobject</i> is niet alleen in de ruimte maar ook in de tijd gedefinieerd. Het leven van een registratieobject begint op het moment dat de gegevens zijn geregistreerd en dat is zo kort mogelijk nadat de gegevens zijn geproduceerd. De levensduur van een registratieobject, en de veranderlijkheid van de gegevens verschilt van object tot object. Een grondwatermonitoringput kan tientallen jaren gebruikt worden voor het meten van grondwaterstanden en in de periode kunnen er nieuwe gegevens ontstaan. Dat betekent dat de gegevens van de put in de registratie ondergrond gedurende zijn hele levensduur bijgewerkt moeten kunnen worden. Aan de andere kant van het spectrum staan de objecten waarvan alle gegevens in een keer worden vastgelegd. Geotechnisch sondeeronderzoek is daar een voorbeeld van. Sondeeronderzoek is eenmalig onderzoek en het resultaat ervan kan al na een of enkele dagen aan de bronhouder worden overhandigd.</p>
+</section>
+<section id="registratiedomein">
+    <h3 id="x2-3-registratiedomein"><span class="secno">2.3 </span>Registratiedomein</h3>
+    <p>Registratieobjecten worden in de basisregistratie ondergrond gegroepeerd in domeinen. Vooralsnog worden zes domeinen onderscheiden:
+        </p><ul>
+            <li>bodem- en grondonderzoek</li>
+            <li>bodemkwaliteit</li>
+            <li>grondwatermonitoring</li>
+            <li>grondwatergebruik</li>
+            <li>mijnbouwwet</li>
+            <li>modellen.</li>
+        </ul>
+    <p></p>
+    <p>De domeinen zijn vanuit het oogpunt van beheer van belang voor de ordening van het systeem. Daarnaast zijn zij nuttig in de communicatie met de partijen die bij de realisatie van het systeem betrokken zijn.</p>
+</section>
+<section id="kwaliteitsregime">
+    <h3 id="x2-4-kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</h3>
+    <p>In de basisregistratie ondergrond worden niet alleen gegevens geregistreerd die dateren van na de datum waarop de wet van kracht is geworden. Ook oudere gegevens zullen in de basisregistratie ondergrond worden opgenomen. De noodzaak daartoe ligt in de wet verankerd. Die schrijft voor dat de gegevens uit de eerder bestaande systemen DINO en BIS zo veel mogelijk naar de BRO moeten worden overgezet. Verder staat de wet toe dat bronhouders tot vijf jaar na de inwerkingtreding van de wet historische gegevens ter registratie mogen aanbieden.
+    </p>
+    <p>Historische gegevens kunnen niet altijd voldoen aan de strikte regels die de BRO stelt. Zo kan het voorkomen dat voor gegevens die volgens de strikte regels van de BRO verplicht zijn, geen waarde bekend is. Om de verwerking van de twee categorieën gegevens naast elkaar mogelijk te maken, worden twee kwaliteitsregimes gehanteerd. Voor de aanlevering van gegevens volgens de strikte regels geldt het IMBRO-regime. Bij de aanlevering van historische gegevens wordt geaccepteerd dat een aantal formeel verplichte gegevens geen waarde heeft. Voor deze gegevens wordt het IMBRO/A-regime gehanteerd en dat kent dus minder strikte regels.</p>
+    <p>De introductie van de twee kwaliteitsregimes geeft de bronhouder gedurende een bepaalde periode een zekere mate van vrijheid. Het kan bijvoorbeeld praktisch blijken het IMBRO/A-regime te hanteren voor gegevens die weliswaar pas na de datum waarop de wet in werking is getreden zijn geproduceerd maar die voortkomen uit opdrachten die al voor die datum zijn gegeven. Ook kan het voorkomen dat historische gegevens wel aan alle strikte voorwaarden voldoen en dan is het wenselijk de gegevens onder IMBRO-regime aan te leveren.
+    </p>
+    <p>De periode waarin de bronhouders die vrijheid hebben wordt de <i>transitieperiode</i> genoemd. Over de duur van de transitieperiode zijn nog geen afspraken gemaakt. Na afloop van de transitieperiode kan alleen onder het strikte IMBRO-regime worden aangeleverd.
+    </p>
+</section>
+<section id="formele-en-materiële-geschiedenis">
+    <h3 id="x2-5-formele-en-materiele-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</h3>
+    <p>De basisregistratie ondergrond maakt deel uit van een stelsel van basisregistraties. Binnen het stelsel maakt men onderscheid tussen de materiële geschiedenis en de formele geschiedenis van een object.</p>
+    <p>Het begrip <i>materiële geschiedenis</i> wordt gebruikt om de veranderingen van eigenschappen van een object in de werkelijkheid aan te duiden. De materiële geschiedenis van een object wordt, voor zover relevant, in de registratie ondergrond vastgelegd. Niet alle registratieobjecten hebben een materiële geschiedenis, alleen de objecten met een levensduur, zoals de grondwatermonitoringput. </p>
+    <p>Het begrip <i>formele geschiedenis</i> wordt gebruikt voor de veranderingen van eigenschappen van een object in de registratie zelf. De meeste van die veranderingen gaan terug op een verandering van eigenschappen in de werkelijkheid, en de formele geschiedenis geeft aan wanneer de veranderingen in het systeem geregistreerd zijn. De formele geschiedenis kent ook gebeurtenissen die niet het gevolg zijn van een verandering in de werkelijke eigenschappen van een object. Die gebeurtenissen hebben betrekking op correcties. Het kan gebeuren dat een bronhouder erachter komt dat er een onjuiste waarde was geregistreerd en dan zorgt hij ervoor dat die verbeterd wordt. De registratie van de verbetering is een formele gebeurtenis.
+    </p>
+    <p>Alle registratieobjecten hebben een formele geschiedenis en die wordt in de registratie ondergrond globaal vastgelegd in de <i>registratiegeschiedenis</i> van het object. Globaal wil zeggen dat de registratie ondergrond alleen een overzicht van de formele geschiedenis geeft. Voor de details moet het register brondocumenten ondergrond worden geraadpleegd.</p>
+    <p>Bij correctie wordt het betreffende gegeven in de registratie ondergrond overschreven en is de oude waarde van het gegeven niet meer direct beschikbaar voor de afnemers.
+Zou een afnemer toch willen weten wat de eerdere foute waarde was, dan moet hij het register brondocumenten ondergrond raadplegen.
+</p>
+</section>
+
+<section id="coördinaten-en-referentiestelsels">
+    <h3 id="x2-6-coordinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</h3>
+    <p>De registratieobjecten van de basisregistratie ondergrond zijn gedefinieerd in de ruimte en dat wil zeggen dat een object zelf een plaats op het aardoppervlak, een locatie, heeft, of dat het gekoppeld is aan een ander type registratieobject met een locatie. Afhankelijk van het type registratieobject, wordt de locatie geregistreerd als een punt, een lijn of een vlak.</p>
+    <p>De locatie is de horizontale positie van een object. Voor bepaalde objecten is het voldoende dat alleen die horizontale positie wordt vastgelegd, maar voor veel objecten is ook de verticale positie van belang.</p>
+    <p>Posities worden vastgelegd in coördinaten en die zijn gedefinieerd in een bepaald referentiestelsel.</p>
+    <p>Er zijn verschillende typen referentiestelsels. Zo spreekt men van horizontale referentiestelsels (2D), verticale referentiestelsels (1D), gecombineerde referentiestelsels (2D, 1D) en werkelijke 3D referentiestelsels. In Nederland worden de horizontale en de verticale component van een positie in een afzonderlijk stelsel uitgedrukt. Het is vandaag de dag mogelijk met gps een positie in een 3D-referentiestelsel vast te leggen, maar de wens over te stappen op het gebruik van 3D is nog door geen van de partijen die betrokken zijn bij de basisregistratie ondergrond naar voren gebracht.</p>
+    
+    <section id="referentiestelsels-voor-de-horizontale-positie">
+        <h4 id="x2-6-1-referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</h4>
+        <p>In Nederland zijn traditioneel verschillende referentiestelsels voor de horizontale positie in gebruik. In 2009, bij de eerste voorbereidingen voor de totstandkoming van de basisregistratie ondergrond, is al vastgesteld dat de verscheidenheid aan referentiestelsels de basisregistratie ondergrond voor problemen stelt omdat de registratie dan niet gemakkelijk op een eenduidige manier bevraagd kan worden. In de registratie ondergrond worden namelijk zowel gegevens met een locatie op land als gegevens met een locatie op zee geregistreerd. In de toenmalige praktijk werden op land en op zee verschillende stelsels gebruikt. Op land werd RD gebruikt en op zee waren verschillende stelsels in gebruik, waarvan WGS84 de belangrijkste was.</p>
+        <p>In 2009 was ook al bekend dat de Europese kaderrichtlijn INSPIRE de lidstaten vraagt de gegevens in Europa in één referentiestelsel uit te gaan wisselen, te weten in ETRS89. Met dat in gedachten, is het besluit genomen het BRO-systeem zo in te richten dat de registratie bevraagd gaat worden in ETRS89.</p>
+        <p>Het besluit wordt ondersteund door ontwikkelingen in Nederland. Sinds 2013 wordt er door de drie belangrijkste autoriteiten in Nederland op het gebied van referentiestelsels, het Kadaster, de Dienst der Hydrografie en Rijkswaterstaat, gewerkt aan de totstandkoming van nieuwe afspraken. Die afspraken moeten in lijn zijn met Europese afspraken en leiden tot heldere en eenduidige transformatieprocedures tussen referentiestelsels. Concreet betekent dit dat in Nederland op termijn het ETRS89-stelsel als standaard zal worden gehanteerd voor het uitwisselen van geo-informatie.
+        </p>
+        <p>Het besluit betekent niet dat de gegevens ook in ETRS89 aangeleverd moeten worden. De basisregistratie ondergrond voorziet een periode van transitie waarin de aanleverende partijen zelf bepalen wanneer zij overstappen op ETRS89. Die periode zal naar verwachting jaren duren. Om de transitie te ondersteunen hanteert de basisregistratie ondergrond de volgende spelregels: 
+            </p><ul>
+                <li>Gegevens mogen in een beperkt aantal referentiestelsels worden aangeleverd (RD, WGS84 en ETRS89).
+                    <ul>
+                        <li>Voor locaties op land wordt alleen RD of ETRS89 toegestaan.</li>
+                        <li>Voor locaties op zee wordt alleen WGS84 of ETRS89 toegestaan.</li>
+                    </ul>
+                </li>
+                <li>De aangeleverde coördinaten worden in de registratie opgeslagen.</li>
+                <li>De aangeleverde coördinaten worden door de basisregistratie ondergrond getransformeerd naar
+                    het ETRS89 referentiestelsel.</li>
+                <li>De getransformeerde coördinaten worden naast de aangeleverde coördinaten opgeslagen.
+                </li>
+                <li>Bij de getransformeerde coördinaten wordt ook een identificatie van de gebruikte transformatiemethode opgeslagen.
+                </li>
+                <li>Als de coördinaten in ETRS89 zijn aangeleverd, dan staat bij aangeleverde en getransformeerde positie dezelfde
+                    informatie. Voor de locatie worden de getransformeerde coördinaten en de aangeleverde coördinaten beide
+                    aan de afnemers verstrekt.
+                </li>
+            </ul>
+        <p></p>
+    </section>
+    <section id="referentiestelsels-voor-de-verticale-positie">
+        <h4 id="x2-6-2-referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</h4>
+        <p>In Nederland zijn voor verticale posities op land en zee verschillende referentiestelsels in gebruik. Op land wordt NAP gebruikt. Op zee is het in de voor de BRO relevante werkvelden gebruikelijk posities uit te drukken t.o.v. het gemiddeld zeeniveau (MSL, Mean Sea Level), maar posities t.o.v. LAT komen ook voor (Lowest Astronomical Tide). Dit laatstgenoemde stelsel wordt in de kaderrichtlijn INSPIRE genoemd als het stelsel van voorkeur voor het uitdrukken van verticale posities op zee. De basisregistratie ondergrond staat daarom op zee het gebruik van LAT naast MSL toe. Aangeleverde verticale posities worden door de BRO niet getransformeerd.</p>
+    </section>
+</section>
+<section id="gegevens-op-land-en-op-zee">
+    <h3 id="x2-7-gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</h3>
+    <p>De basisregistratie ondergrond bevat gegevens over de ondergrond van Nederland en zijn zgn. Exclusieve Economische Zone (EEZ). De EEZ is het gebied op de Noordzee waar Nederland economische rechten heeft. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het van belang te weten of de locatie van een object op zee of op land ligt.
+    </p>
+    <p>Als scheidingslijn tussen land en zee wordt in de basisregistratie ondergrond de UNCLOS-basislijn gehanteerd. Het beheer van de basislijn valt onder de verantwoordelijkheid van de Dienst der Hydrografie van het ministerie van Defensie. Deze dienst voert die taak uit op basis van het Zeerechtverdrag van de Verenigde Naties uit 1982, dat in het Engels de United Nations Convention on the Law of the Sea (UNCLOS) heet. 
+De basislijn is opgebouwd uit de nulmeterdieptelijn zoals weergegeven op de zeekaarten en enkele rechte basislijnen die onder meer de monding van de Westerschelde en de wateren tussen de Waddeneilanden afsluiten.
+</p>
+    <p>De grens tussen land en zee is veranderlijk. De Dienst der Hydrografie stelt de grens opnieuw vast wanneer daartoe voldoende aanleiding is. De BRO hanteert bij inname de meest recente versie van de UNCLOS-basislijn en controleert daarmee of de juiste referentiestelsels gebruikt worden.</p>
+    <p>Tussen het moment waarop de locatie van een object wordt bepaald en het moment waarop het gegeven in de basisregistratie ondergrond wordt vastgelegd verloopt enige tijd. In die periode kan de positie van de UNCLOS-basislijn opnieuw zijn vastgesteld, en dan ontstaat er een discrepantie die bij het aanleveren van gegevens tot problemen kan leiden. Wanneer een dergelijk probleem zich voordoet, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Een soortgelijk probleem doet zich voor met betrekking tot de begrenzing van Nederland, met name van het Nederlands territoir. De grenzen van Nederland worden ieder jaar op 1 januari vastgesteld door het Kadaster en vastgelegd in de basisregistratie kadaster. De BRO controleert bij inname of een object in het gebied ligt dat Nederland en zijn Exclusieve Economische Zone omvat, en hanteert daarbij de actuele grenzen. Ook bij problemen die te herleiden zijn tot een verandering in de begrenzing van Nederland, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Binnen het domein Mijnbouwwet wordt de scheidingslijn tussen land en zee niet bepaald door de UNCLOS-basislijn, maar door een over zee lopende lijn die is vastgelegd in een bijlage bij de Mijnbouwwet. In de registratie ondergrond wordt deze lijn aangeduid als mijnbouwgrens. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het binnen het domein Mijnbouwwet van belang te weten of de locatie van een object aan landzijde of aan zeezijde van de mijnbouwgrens ligt. Waar in voorgaande paragrafen ‘op land’ en ‘op zee’ is genoemd, houdt dat binnen het domein Mijnbouwwet in: aan landzijde respectievelijk aan zeezijde van de mijnbouwgrens.</p>
+</section>
+<section id="nauwkeurigheid-van-meetwaarden">
+    <h3 id="x2-8-nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</h3>
+    <p>Voor zinvol gebruik van gegevens met een gemeten, berekende of anderszins bepaalde waarde is het noodzakelijk dat de nauwkeurigheid van die gegevens bekend is.
+    </p>
+    <p>Het begrip nauwkeurigheid laat zich in deze context het best omschrijven als de juistheid van een gemeten of berekende waarde. In de meeste processen waarin de waarde van een gegeven wordt bepaald, kan de afwijking van de daadwerkelijke waarde slechts via een kalibratie- of statistisch proces worden verkregen. Het resultaat omvat dan niet alleen een van de mogelijke realisaties van een meetwaarde maar ook informatie over de mogelijke spreiding van de meetwaarden.</p>
+    <p>De basisregistratie ondergrond gaat ervan uit dat de producenten van gegevens de metingen en berekeningen uitvoeren binnen een stelsel van afspraken dat binnen het desbetreffende werkveld is vastgelegd. Uitgangspunt is dat ook de eisen waaraan de gegevens op het gebied van nauwkeurigheid moeten voldoen in afspraken zijn vastgelegd. Dat kunnen praktische werkafspraken zijn, maar ook afspraken die vertaald zijn naar ISO- en NEN-normen. In de catalogus wordt in beginsel verwezen naar die normen. Waar deze normen niet voorzien in afspraken over de nauwkeurigheid, stelt de basisregistratie ondergrond hieraan specifieke eisen. Deze zijn dan vermeld in de catalogus.
+    </p>
+</section>
+<section id="authentiek-gegeven">
+    <h3 id="x2-9-authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</h3>
+    <p>In de wet is een aantal gegevens expliciet als authentiek aangeduid. Dit wordt in de catalogus nader uitgewerkt; verreweg de meeste gegevens zijn authentiek.</p>
+    <p>Met de aanduiding <i>authentiek</i> wordt, zoals geformuleerd in de memorie van toelichting op de wet, tot uitdrukking gebracht dat:
+        </p><ol type="a">
+            <li>Het gegeven in samenhang met andere gegevens door een groot aantal bestuursorganen in verschillende processen wordt gebruikt en derhalve bestemd is voor informatie-uitwisseling tussen bestuursorganen;</li>
+            <li>de verantwoordelijkheid voor betrouwbaarheid van het gegeven eenduidig geregeld is;
+            </li>
+            <li>het gegeven onderworpen is aan intern en extern kwaliteitsonderzoek, en</li>
+            <li>het gegeven zich leent voor verplicht gebruik door bestuursorganen en eenmalige verstrekking door burgers en bedrijven aan de overheid.</li>
+        </ol>
+    <p></p>
+    <p>In de praktijk mag een gebruiker van de gegevens ervan uitgaan dat alle gegevens correct zijn. De catalogus moet de gebruiker alle informatie geven die voor een goed begrip daarvan nodig is.
+        Heeft een gebruiker echter gerede twijfel over de juistheid van een <i>authentiek</i> gegeven dan wordt verwacht dat hij de registerbeheerder daarvan op de hoogte brengt. Bestuursorganen zijn, bij gerede twijfel over de juistheid van een authentiek gegeven (of het ontbreken ervan), zelfs verplicht daarvan melding te maken. 
+
+</p>
+<p>Voor alle gegevens is aangegeven of ze authentiek zijn. Ook is voor alle gegevens aangegeven of ze aanwezig moeten zijn en een waarde moeten hebben. Dat laat zien dat er gegevens kunnen zijn die authentiek zijn maar geen waarde hoeven te hebben. Juist omdat er verplichtingen gelden t.a.v. authentieke gegevens, vraagt dit om een korte toelichting. 
+Wanneer een authentiek gegeven geen waarde heeft moet de gebruiker ervan uitgaan dat het gegeven niet is geproduceerd. Dat geval kan zich uiteraard alleen voordoen wanneer er vrijheid van beslissen bestaat bij de bronhouder of de producent. 
+Voor de duidelijkheid, als er wel een waarde is dan moet die ook in de BRO worden opgenomen. Bij gerede twijfel over het ontbreken van een waarde, moet een bestuursorgaan dat melden. </p>
+</section>
+</section>
+  <section id="geotechnischsondeeronderzoek">
+    <!--OddPage--><h2 id="x3-geotechnisch-sondeeronderzoek"><span class="secno">3. </span>Geotechnisch sondeeronderzoek</h2>
+    <p>Het <i>Geotechnisch sondeeronderzoek</i> is een van de registratieobjecten in het domein van <i>bodem- en grondonderzoek</i>.
+      In dat domein gaat het om onderzoek dat er op gericht is gegevens te produceren over de opbouw en de eigenschappen
+      van bodem en ondergrond zonder dat daarvoor direct een bepaald wettelijk of beleidsmatig kader bestaat. Vaak wordt
+      het onderzoek uitgevoerd omdat men de opbouw en de eigenschappen van de ondergrond moet kennen voor het realiseren
+      van projecten in de grond-, weg- en waterbouw, of voor het onderhoud van bestaande infrastructuur.</p>
+    <p>Het onderzoek kan direct in het veld worden uitgevoerd, maar vaker is het een combinatie van veld- en laboratoriumonderzoek.</p>
+    <p>Naast <i>geotechnisch sondeeronderzoek</i> omvat het domein nog vier registratieobjecten:
+      </p><ul>
+        <li>geo-elektrisch onderzoek</li>
+        <li>seismisch onderzoek</li>
+        <li>booronderzoek</li>
+        <li>profielonderzoek</li>
+      </ul>
+    <p></p>
+    <p>De vijf registratieobjecten staan op zichzelf en hebben eigen locaties.</p>
+    <p>Voor de wet valt het geotechnisch sondeeronderzoek overigens onder het begrip verkenning. Een verkenning is in de wet
+      gedefinieerd als een waarneming van de opbouw van de ondergrond op een punt, langs een lijn of in een vlak.</p>
+    <section id="sonderen">
+      <h3 id="x3-1-sonderen"><span class="secno">3.1 </span>Sonderen</h3>
+      <p>Geotechnisch sondeeronderzoek is de formele naam die in de BRO gebruikt wordt en het begrip verwijst naar een onderzoekstechniek
+        die gewoonlijk sonderen wordt genoemd. Bij sonderen wordt de informatie direct in het veld verzameld. Sondeeronderzoek
+        is binnen het domein van de geotechniek ontwikkeld. Bij dit type onderzoek wordt een sondeerconus gelijkmatig de
+        grond ingedrukt en terwijl de conus naar beneden gaat, worden quasi-continu waarnemingen gedaan van fysieke grootheden.</p>
+      <p>
+        De techniek is oorspronkelijk ontwikkeld om inzicht te krijgen in het dragend vermogen van de ondergrond om op basis daarvan
+        funderingen te ontwerpen. De grootheid die daartoe gemeten werd en wordt, is de weerstand die de conus op de weg
+        naar beneden ondervindt. In de afgelopen decennia heeft de sondeertechniek zich sterk ontwikkeld en inmiddels is
+        het mogelijk een breed scala aan grootheden te meten. De techniek wordt in Nederland overigens nog steeds in hoofdzaak
+        gebruikt voor het ontwerp van funderingen, maar de resultaten kunnen ook veel breder worden gebruikt omdat zij in
+        meer algemene zin inzicht geven in de eigenschappen en de opbouw van de ondergrond.</p>
+    </section>
+    <section id="registratieobject-geotechnisch-sonderonderzoek">
+      <h3 id="x3-2-registratieobject-geotechnisch-sondeeronderzoek"><span class="secno">3.2 </span>Registratieobject Geotechnisch sondeeronderzoek</h3>
+      <p>Een registratieobject is de belangrijkste eenheid van informatie in de basisregistratie ondergrond. Een registratieobject
+        bestaat uit delen (entiteiten), en de delen hebben eigenschappen (attributen). Om het geotechnisch sondeeronderzoek
+        als informatieobject goed te kunnen definiëren, wordt vanuit een bepaalde benadering gedacht. Deze benadering wordt
+        hieronder toegelicht.</p>
+      <p>Het feitelijke sondeeronderzoek levert een resultaat en dat bevat informatie over het deel van de ondergrond dat op
+        een bepaalde locatie in het veld middels een sonde is onderzocht. Die informatie bestaat uit waarden die zijn bepaald
+        van eigenschappen van het onderzochte deel van de ondergrond.</p>
+      <p>In deze paar zinnen zijn de belangrijkste entiteiten van geotechnische sondeeronderzoek in de basisregistratie ondergrond
+        eigenlijk benoemd: er is sondeonderzoek uitgevoerd op een specifieke locatie aan een specifiek deel van de ondergrond
+        en dat onderzoek heeft resultaten opgeleverd. De resultaten geven de waarden van eigenschappen van het onderzochte
+        deel van de ondergrond.</p>
+      <p>In het denken over wat het object geotechnisch sondeeronderzoek is en hoe de informatie van dat object voor de basisregistratie
+        ondergrond moet worden gemodelleerd staat het begrip onderzoek centraal. Het begrip onderzoek koppelt een resultaat
+        aan een object van onderzoek en in het geval van de basisregistratie ondergrond is dat een deel van de ondergrond.</p>
+      <p>Onder onderzoek moet men in essentie aan een activiteit, een proces of een aaneenschakeling van activiteiten of processen
+        denken. Waarom onderzoek een centrale plaats in het denken inneemt, behoeft wel enige toelichting omdat men in eerste
+        instantie zou denken dat de informatie waar het allemaal om draait, het resultaat van het onderzoek is. Inderdaad
+        gaat het uiteindelijk om het resultaat van onderzoek, dat is immers de informatie die men wil gebruiken. Maar de
+        reden dat het onderzoek in de modellering centraal wordt gesteld, is dat wat een geotechnische sondering uniek maakt
+        niet het resultaat of het object van onderzoek is, maar dat er onderzoek is gedaan.</p>
+      <p>Het onderzoek is de entiteit die het moeilijkst in gegevens kan worden vastgelegd. Onderzoek is veelal een aaneenschakeling
+        van activiteiten en de uitvoering van ieder van die activiteiten kan beïnvloed worden door een groot aantal factoren.
+        Het resultaat van het onderzoek kan daarmee niet los worden gezien van het proces waaruit het voortkomt. We moeten
+        ons daarbij voor ogen houden dat het doel van de basisregistratie hergebruik van informatie is. Om het gebruik van
+        het resultaat van het onderzoek nu en in de toekomst mogelijk te maken, moeten juist de gegevens die het proces beschrijven
+        geregistreerd worden. Anders gezegd, het leidend principe in de modellering is eigenlijk dat informatie per definitie
+        het resultaat is van een proces (of liever een aaneenschakeling van processen) en dat de gebruiker dat proces moet
+        kennen om inzicht te krijgen in de waarde die de informatie heeft in relatie tot het doel waarvoor hij de informatie
+        wil gebruiken.</p>
+      <p>Om het geotechnische sondeeronderzoek als eenheid te definiëren wordt vanuit het proces gedacht. De kernvragen daarbij
+        zijn: waarmee begon het proces dat tot een geotechnische sondering heeft geleid en waarmee eindigde het?</p>
+      <p>Voor de basisregistratie ondergrond begint de geschiedenis bij het uitvoeren van een opdracht tot onderzoek en eindigt
+        de geschiedenis op het moment dat alle gegevens uit het onderzoek correct in de basisregistratie ondergrond zelf
+        zijn vastgelegd. Van de opdracht tot het uitvoeren van sondeeronderzoek worden geen gegevens expliciet vastgelegd.
+        Wel wordt er bij de registratie in de BRO impliciet informatie over de opdracht vastgelegd omdat gespecificeerd wordt
+        binnen welk kader de gegevens aan de registratie worden aangeleverd.</p>
+    </section>
+  </section>
+  <section id="domeinmodel">
+    <!--OddPage--><h2 id="x4-domeinmodel"><span class="secno">4. </span>Domeinmodel</h2>
+    <section class="generic" id="het-domeinmodel"><h3 id="x4-1-het-domeinmodel"><span class="secno">4.1 </span>Het domeinmodel</h3>
+<p>Het domeinmodel geeft een overzicht van de gegevens van het registratieobject en laat de onderlinge samenhang zien. Modellering van informatie kent verschillende invalshoeken. In de catalogus is het inhoudelijke perspectief gekozen omdat dat de meeste waarde heeft voor de mensen die de informatie moeten begrijpen. Een dergelijk model wordt in de basisregistratie ondergrond een domeinmodel genoemd. Uit het domeinmodel wordt een technisch model afgeleid dat meeweegt dat informatiesystemen efficiënt met elkaar moeten kunnen spreken. Voor het domeinmodel wordt de UML-notatie gebruikt. Met kennis van de gebruikte symbolen is het gemakkelijk te lezen.</p>
+<p>Het domeinmodel kent een aantal vaste elementen die bij ieder registratieobject terugkomen. Een begrip van deze elementen vergroot de leesbaarheid van het domeinmodel en de  catalogus. De elementen zijn: entiteiten, attributen, gegevensgroepen en relaties. Een entiteit is een onderscheidend geheel van eigenschappen die gezamenlijk betekenis hebben. Een entiteit heeft altijd een naam en een definitie. In het domeinmodel zijn de entiteiten te herkennen aan het begrip Objecttype.</p>
+<p>In de entiteiten staan de namen opgesomd van de attributen, de eigenschappen van de entiteiten, met daarachter de naam van de bijbehorende waardenverzameling (domein) en de kardinaliteit. Bij attributen is de kardinaliteit alleen opgenomen wanneer die ongelijk is aan 1. Overigens moet de kardinaliteit altijd in samenhang met de regels die in de definitie van het gegeven zijn opgenomen worden begrepen. De kardinaliteit en de regels bepalen samen of een gegeven al dan niet aanwezig is. De figuren laten ook zien welke attributen alleen aan de dataleverancier en de bronhouder worden uitgeleverd. In het domeinmodel zijn de attributen te herkennen aan het begrip Attribuutsoort.</p>
+<p>Soms zijn een aantal attributen gegroepeerd in een groep, aangeduid als gegevensgroep. Het blijven attributen van de entiteit, maar de inhoudelijke definiëring van de gegevensgroep staat elders. Gegevensgroepen kunnen bij meerdere entiteiten terugkomen.</p>
+<p>Het domeinmodel laat daarnaast ook zien hoe entiteiten aan elkaar gerelateerd zijn. Een beschrijving van deze relatie is opgenomen bij de bron-entiteit van de relatie. Een relatie heeft altijd een richting en in de meeste gevallen loopt deze van bron naar doel. In het plaatje van een domeinmodel heeft de relatie een naam en een kardinaliteit. Om de leesbaarheid te vergroten staat de kardinaliteit bij de doelentiteit.</p> 
+<img src="https://docs.geostandaarden.nl/bro/gen/media/domeinmodel-intro-class-model.png">
+<p>Bovenstaand voorbeeld is te lezen als: de entiteit Bepaling bevat één of meerdere metingen. Een meting bestaat uit een meetwaarde en meetconfiguratie-gegevens. De meetconfiguratie bestaat uit twee parameters.</p>
+</section>
+    <section id="domeinmodel-gmm">
+      <h3 id="x4-2-domeinmodel-geotechnisch-sonderonderzoek"><span class="secno">4.2 </span>Domeinmodel Geotechnisch sonderonderzoek</h3>
+      <figure id="domeinmodel-gmm" class="scalable">
+        <img src="data/cpt.svg" hidden="">
+        <figcaption>Figuur <span class="figno">3</span> <span class="fig-title">Domeinmodel Geotechnisch sonderonderzoek</span></figcaption>
+      </figure>
+    </section>
+    <section id="geotechnisch-sondeeronderzoek">
+      <h3 id="x4-3-geotechnisch-sondeeronderzoek"><span class="secno">4.3 </span>Geotechnisch sondeeronderzoek</h3>
+      <p>Geotechnisch sondeeronderzoek is het geheel van gegevens dat betrekking heeft op een specifiek sondeeronderzoek dat
+        op een specifieke locatie in Nederland is uitgevoerd en dat door of onder de verantwoordelijkheid van een bepaalde
+        bronhouder is aangeleverd aan de registerbeheerder van de BRO en vervolgens onder zijn verantwoordelijkheid in de
+        registratie ondergrond is opgenomen. De activiteiten van het sondeeronderzoek omvatten in ieder geval het op locatie
+        doen van metingen met een sondeerapparaat en de uiteindelijke rapportage van de resultaten aan de opdrachtgever.
+        Gegevens over de plaats waar het onderzoek is uitgevoerd worden over verschillende entiteiten verdeeld.</p>
+    </section>
+    <section id="registratiegeschiedenis">
+      <h3 id="x4-4-registratiegeschiedenis"><span class="secno">4.4 </span>Registratiegeschiedenis</h3>
+      <p>De registratiegeschiedenis van een geotechnisch sondeeronderzoek geeft de essentie van de geschiedenis van het object
+        in de registratie ondergrond, de zgn. formele geschiedenis. De registratiegeschiedenis vertelt bijvoorbeeld wanneer
+        een object is geregistreerd en of er na registratie correcties zijn doorgevoerd.</p>
+    </section>
+    <section id="sondeeronderzoek">
+      <h3 id="x4-5-sondeeronderzoek"><span class="secno">4.5 </span>Sondeeronderzoek</h3>
+      <p>Het sondeonderzoek vormt de kern van het geotechnisch sondeeronderzoek. Het is de typering van het geheel van activiteiten
+        dat binnen het sondeeronderzoek is uitgevoerd om met het sondeerapparaat de waarde van bepaalde parameters te meten
+        en die metingen voor de opdrachtgever tot een resultaat te bewerken. De nauwkeurigheid van de gemeten parameters
+        wordt impliciet verantwoord doordat het geotechnisch sondeeronderzoek in zijn geheel aan een bepaalde norm voldoet.
+      </p>
+      <p>Het sondeonderzoek koppelt de resultaten die eruit voortkomen aan het door de sonde bemeten deel van de ondergrond
+        (traject). Het sondeonderzoek bestaat altijd uit het uitvoeren van een conuspenetratietest. De conuspenetratietest
+        kan één of meer keren onderbroken worden om een dissipatietest uit te voeren. Dat is een ander type test, met een
+        eigen resultaat. De meetresultaten worden altijd bewerkt. De activiteiten die uitgevoerd zijn om de metingen te bewerken
+        voor de uiteindelijke rapportage worden apart vastgelegd (de bewerking).
+      </p>
+    </section>
+    <section id="resultaat">
+      <h3 id="x4-6-resultaat"><span class="secno">4.6 </span>Resultaat</h3>
+      <p>Het resultaat geeft de waarden van de bepaalde parameters op bepaalde posities in het sondetraject (conuspenetratietest
+        resultaat), dan wel het verloop van de waarde van gemeten parameters op één bepaalde positie in de tijd (dissipatietest
+        resultaat). Sommige parameters hebben betrekking op de positie van de meting, maar de meeste parameters geven eigenschappen
+        van de ondergrond weer.</p>
+    </section>
+    <section id="sondeersapparaat">
+      <h3 id="x4-7-sondeersapparaat"><span class="secno">4.7 </span>Sondeersapparaat</h3>
+      <p>Het sondeerapparaat is een typering van het apparaat dat bij het sondeeronderzoek is gebruikt. Het belangrijkste onderdeel
+        van het apparaat wordt de sondeerconus genoemd en dat is het eigenlijke meetinstrument oftewel de sonde. De sondeerconus
+        bestaat uit twee functionele onderdelen, de kleefmantel en de conuspunt. De conuspunt omvat niet alleen het kegelvormig
+        uiteinde van de sondeerconus maar ook het cilindrisch deel daar direct boven. De kleefmantel zit daar weer boven.
+        Voor elk van de gemeten parameters kan vóór en na het uitvoeren van het sondeonderzoek de waarde worden afgelezen
+        die het apparaat aangeeft zonder belasting (nulmeting). De nulmetingen worden gebruikt om vast te stellen of en in
+        hoeverre het apparaat tijdens het sonderen aan betrouwbaarheid heeft ingeboet.</p>
+    </section>
+    <section id="aanvullend-onderzoek">
+      <h3 id="x4-8-aanvullend-onderzoek"><span class="secno">4.8 </span>Aanvullend onderzoek</h3>
+      <p>In sommige gevallen worden er in het veld aanvullend onderzoek gedaan. Het gaat om waarnemingen die vaak met het blote
+        oog worden gedaan. Wanneer de ondergrond tot een bepaalde diepte wordt weggegraven voordat met het sondeonderzoek
+        wordt begonnen, wordt er een beschrijving van de weggehaalde lagen gemaakt (verwijderde laag).</p>
+    </section>
+  </section>
+
+
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

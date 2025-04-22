@@ -1,0 +1,1126 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>DiS Geo: Architectuurschets</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "AL",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/disgeo-arch",
+  "issueBase": "https://github.com/Geonovum/disgeo-arch/issues",
+  "edDraftURI": "https://github.com/Geonovum/disgeo-arch",
+  "editors": [
+    {
+      "name": "Jan van Gelder",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Bart-Jan de Leuw",
+      "company": "MinBZK",
+      "companyURL": "https://www.geobasisregistraties.nl"
+    },
+    {
+      "name": "Wim Bakkeren",
+      "company": "VNG Realisatie",
+      "companyURL": "https://www.vngrealisatie.nl"
+    },
+    {
+      "name": "Marcel Reuvers",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl"
+    },
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Jan van Gelder",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "arch",
+  "pubDomain": "disgeo",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    },
+    "PUB-4": {
+      "title": "Titel van Publicatie-4",
+      "href": "https://www.link-naar-publicatie-4.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-4",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "logos": [
+    {
+      "src": "https://www.geobasisregistraties.nl/binaries/medium/content/gallery/basisregistraties-ienm/content-afbeeldingen/dis-geo/logo_disgeo_schaduw_text_rgb.jpg",
+      "alt": "Doorontwikkeling in Samenhang",
+      "id": "TopLogo",
+      "url": "https://www.geobasisregistraties.nl/basisregistraties/doorontwikkeling-in-samenhang"
+    }
+  ],
+  "publishISODate": "2020-08-31T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 31 augustus 2020"
+}</script><meta name="description" content="Het opleveren van een complete beschrijving van de componenten, verbindingen en noodzakelijke standaarden voor de Samenhangende Objectenregistratie zodat doorontwikkeling van ICT-voorzieningen in samenhang kan plaatsvinden naar een duidelijke doelsituatie."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/disgeo/cv-al-arch-20200831/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "DiS Geo: Architectuurschets",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-08-31",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/disgeo-arch/issues",
+  "alternativeHeadline": "",
+  "description": "Het opleveren van een complete beschrijving van de componenten, verbindingen en noodzakelijke standaarden voor de Samenhangende Objectenregistratie zodat doorontwikkeling van ICT-voorzieningen in samenhang kan plaatsvinden naar een duidelijke doelsituatie.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Jan van Gelder",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Bart-Jan de Leuw",
+      "worksFor": {
+        "name": "MinBZK",
+        "url": "https://www.geobasisregistraties.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Wim Bakkeren",
+      "worksFor": {
+        "name": "VNG Realisatie",
+        "url": "https://www.vngrealisatie.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Marcel Reuvers",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Jan van Gelder",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geobasisregistraties.nl/basisregistraties/doorontwikkeling-in-samenhang" class="logo"><img id="TopLogo" alt="Doorontwikkeling in Samenhang" src="https://www.geobasisregistraties.nl/binaries/medium/content/gallery/basisregistraties-ienm/content-afbeeldingen/dis-geo/logo_disgeo_schaduw_text_rgb.jpg" width="830" height="587"></a>
+  <h1 class="title p-name" id="title">DiS Geo: Architectuurschets</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Consultatieversie <time class="dt-published" datetime="2020-08-31">31 augustus 2020</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/disgeo/cv-al-arch-20200831/">https://docs.geostandaarden.nl/disgeo/cv-al-arch-20200831/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd>geen</dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://github.com/Geonovum/disgeo-arch">https://github.com/Geonovum/disgeo-arch</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Jan van Gelder</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Bart-Jan de Leuw</span>, <a class="p-org org h-org h-card" href="https://www.geobasisregistraties.nl">MinBZK</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Wim Bakkeren</span>, <a class="p-org org h-org h-card" href="https://www.vngrealisatie.nl">VNG Realisatie</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Marcel Reuvers</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Jan van Gelder</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/disgeo-arch/">GitHub Geonovum/disgeo-arch</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-arch/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-arch/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-arch/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><section><h3 id="doelstelling">Doelstelling</h3><p>Het opleveren van een complete beschrijving van de componenten, verbindingen en noodzakelijke standaarden voor de Samenhangende Objectenregistratie zodat doorontwikkeling van ICT-voorzieningen in samenhang kan plaatsvinden naar een duidelijke doelsituatie.</p></section><section><h3 id="aanpak">Aanpak</h3><p>De architectuurbeschrijving van de Samenhangende Objectenregistratie wordt stapsgewijs steeds verder gevuld. Daarbij wordt samengewerkt door een kleine groep auteurs met een bredere groep die als klankbord optreedt. Daarom wordt het document op een transparante manier gedeeld. Meekijken mag, bijdragen van suggesties en commentaar kan door het aanmaken van zogeheten issues op <a href="https://github.com/Geonovum/disgeo-arch/issues">https://github.com/Geonovum/disgeo-arch/issues</a>.</p></section><section><h3 id="inhoud">Inhoud</h3><p>De architectuurbeschrijving bevat een inleiding, een afbakening, gehanteerde principes en een inrichting van de componenten en verbindingen van het systeem. De beschrijving blijft op functioneel niveau, ofwel op het niveau van de applicatielaag van het NORA-vijflaagsmodel. De onderscheiden functies (capabilities, "wat moet kunnen") binnen het systeem worden zodanig beschreven dat een opdracht om deze te realiseren inhoudelijk voldoende duidelijk is voor opdrachtgever en opdrachtnemer.</p></section></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+    Dit is een door de werkgroep goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar
+    <a href="mailto:geo-standaarden@geonovum.nl">
+        geo-standaarden@geonovum.nl</a>.
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.2 </span>Leeswijzer</a></li><li class="tocline"><a class="tocxref" href="#het-proces"><span class="secno">1.3 </span>Het proces</a></li></ol></li><li class="tocline"><a class="tocxref" href="#afbakening"><span class="secno">2. </span>Afbakening</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel-van-de-objectenregistratie"><span class="secno">2.1 </span>Doel van de Objectenregistratie</a></li><li class="tocline"><a class="tocxref" href="#context-voor-de-architectuurbeschrijving"><span class="secno">2.2 </span>Context voor de Architectuurbeschrijving</a></li><li class="tocline"><a class="tocxref" href="#scope-van-de-architectuurbeschrijving"><span class="secno">2.3 </span>Scope van de Architectuurbeschrijving</a></li><li class="tocline"><a class="tocxref" href="#interacties-met-partijen-in-de-omgeving"><span class="secno">2.4 </span>Interacties met  partijen in de omgeving</a></li></ol></li><li class="tocline"><a class="tocxref" href="#ict-inrichtingsprincipes"><span class="secno">3. </span>ICT-inrichtingsprincipes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#beleid-samenhangende-objectenregistratie"><span class="secno">3.1 </span>Beleid Samenhangende Objectenregistratie</a></li><li class="tocline"><a class="tocxref" href="#inrichtingsprincipes-vergelijkbare-domeinen"><span class="secno">3.2 </span>Inrichtingsprincipes vergelijkbare domeinen</a></li><li class="tocline"><a class="tocxref" href="#ict-inrichtingsprincipes-samenhangende-objectenregistratie"><span class="secno">3.3 </span>ICT-inrichtingsprincipes Samenhangende Objectenregistratie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inrichting-van-de-objectenregistratie"><span class="secno">4. </span>Inrichting van de Objectenregistratie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-0"><span class="secno">4.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#functionele-lagen-in-de-inrichting"><span class="secno">4.2 </span>Functionele lagen in de inrichting</a></li><li class="tocline"><a class="tocxref" href="#functies-in-de-laag-metabeheer"><span class="secno">4.3 </span>Functies in de laag Metabeheer</a></li><li class="tocline"><a class="tocxref" href="#functies-in-de-laag-uitvoering"><span class="secno">4.4 </span>Functies in de laag Uitvoering</a></li><li class="tocline"><a class="tocxref" href="#functies-in-de-laag-ondersteuning"><span class="secno">4.5 </span>Functies in de laag Ondersteuning</a></li><li class="tocline"><a class="tocxref" href="#overzicht"><span class="secno">4.6 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#functies-in-de-aparte-architectuurlaag-voorzieningenbeheer"><span class="secno">4.7 </span>Functies in de aparte architectuurlaag Voorzieningenbeheer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#uitwerking-onderdelen-inrichting-objectenregistratie"><span class="secno">5. </span>Uitwerking onderdelen inrichting Objectenregistratie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-1"><span class="secno">5.1 </span>Inleiding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlagen-principes"><span class="secno">6. </span>Bijlagen principes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inrichtingsprincipes-digitaal-stelsel-omgevingwet"><span class="secno">6.1 </span>Inrichtingsprincipes Digitaal Stelsel Omgevingwet</a></li><li class="tocline"><a class="tocxref" href="#inrichtingsprincipes-common-ground"><span class="secno">6.2 </span>Inrichtingsprincipes Common Ground</a></li><li class="tocline"><a class="tocxref" href="#basisprincipes-nora"><span class="secno">6.3 </span>Basisprincipes NORA</a></li><li class="tocline"><a class="tocxref" href="#afgeleide-principes-nora"><span class="secno">6.4 </span>Afgeleide principes NORA</a></li><li class="tocline"><a class="tocxref" href="#inrichtingsprincipes-gemma"><span class="secno">6.5 </span>Inrichtingsprincipes GEMMA</a></li><li class="tocline"><a class="tocxref" href="#eisen-aan-basisregistraties"><span class="secno">6.6 </span>Eisen aan basisregistraties</a></li><li class="tocline"><a class="tocxref" href="#x10-golden-rules-data"><span class="secno">6.7 </span>10 golden rules data</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tof"><span class="secno">7. </span>Lijst met figuren</a></li></ol></nav><div data-format="markdown"><p><strong>Versiebeheer</strong></p>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Bewerking</strong></th>
+<th><strong>Toelichting</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.1</td>
+<td>15-mei-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>"Kapstok" document aangemaakt</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>05-jun-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>Hoofdstuk indeling aangepast</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>06-aug-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>Diverse hoofdstukken aangepast</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td>14-aug-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>Diverse hoofdstukken aangepast</td>
+</tr>
+<tr>
+<td>0.4.1</td>
+<td>21-aug-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>Gereed gemaakt voor overdracht</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>31-aug-2020</td>
+<td>concept</td>
+<td>Initieel document</td>
+<td>Gereed gemaakt voor publicatie eerste reviewversie</td>
+</tr>
+</tbody></table>
+</div><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Dit document is de <em>Architectuurbeschrijving</em> van de Samenhangende Objectenregistratie. Het beschrijft de afbakening, de inrichtingsprincipes en de conceptuele of functionele inrichting (de functionele onderdelen en samenhang) van de Samenhangende Objectenregistratie. Van de  De Architectuurbeschrijving beschrijft de Objectenregistratie op de Applicatielaag, laag 4 in het <a href="https://www.noraonline.nl/wiki/Vijflaagsmodel">NORA-vijflaagsmodel</a></p><figure id="nora5laagsmodel"><img src="media/nora5laagsmodel.PNG" alt="nora5laagsmodel" width="475" height="526">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Het NORA 5 laagsmodel</span></figcaption>
+</figure><section id="doel-en-doelgroep"><h3 id="x1-1-doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</h3><p>De Architectuurbeschrijving moet het mogelijk maken om  keuzes te maken voor de verdere inrichting van de ICT-voorzieningen (of applicaties of systemen) voor de Samenhangende Objectenregistratie. Ook moet de Architectuurbeschrijving het mogelijk maken om de transitiestrategie te bepalen voor de overgang van de huidige voorzieningen van o.a. de BAG, BGT, BRO en BRT en delen van andere voorzieningen naar de ICT-voorzieningen voor de Objectenregistratie. Tot slot moet de Architectuurbeschrijving het mogelijk maken om de technische en organisatorische inrichting voor de ICT-voorzieningen voor de Objectenregistratie te bepalen. De onderscheiden functies (capabilities, "wat moet kunnen") binnen het systeem worden zodanig beschreven dat een opdracht om deze te ontwerpen inhoudelijk voldoende duidelijk is voor opdrachtgever en opdrachtnemer.</p><p>De Architectuurbeschrijving geeft richting aan de inrichting van de Objectenregistratie en is daarom met name bedoeld voor degenen die betrokken zijn bij die inrichting. Daarnaast is de Architectuurbeschrijving van belang voor de afstemming over de inrichting van de Objectenregistratie met alle belanghebbenden: beleidsverantwoordelijke(n), bronhouders, verstrekker(s), afnemers, beheerders en (software-)leveranciers en andere belanghebbenden.</p></section><section id="leeswijzer"><h3 id="x1-2-leeswijzer"><span class="secno">1.2 </span>Leeswijzer</h3><p>De Architectuurbeschrijving van de Samenhangende Objectenregistratie heeft de volgende opbouw:</p><p>Het hoofdstuk <a href="#afbakening">Afbakening</a> beschrijft de grenzen van de Objectenregistratie en de bijdragen (de producten en diensten) ervan aan de omgeving. De afbakening brengt in kaart welke rollen en partijen (waaronder bronhouders en afnemers) interactie met de ICT-voorzieningen van de Objectenregistratie hebben en welke soorten interactie er zijn.</p><p>Het hoofdstuk <a href="#ict-inrichtingsprincipes">ICT-inrichtingsprincipes</a> beschrijft de principes die bepalend zijn voor de functionele en deels ook technische inrichting van de ICT-voorzieningen en de bijbehorende ICT-organisatie van de Objectenregistratie.
+</p><p>Het hoofdstuk <a href="#inrichting-van-de-objectenregistratie">Inrichting van de Objectenregistratie</a> beschrijft de conceptuele inrichting van de ICT-voorzieningen van de Objectenregistratie op de applicatielaag van het NORA-vijflaagsmodel.</p><p>Het hoofdstuk <a href="#inrichting-van-de-objectenregistratie">Uitwerking op onderdelen</a> bevat een uitgebreidere beschrijving die het kader vormt voor de technische inrichting en een basis biedt voor de organisatorische inrichting rond de ICT-voorzieningen.</p><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><p class="">
+Reviewers: In groene kaders stellen de auteurs soms een vraag. In jullie reviewcommentaar lezen we graag antwoorden.
+</p></div><p>Relevante bijlagen staan in het hoofdstuk <a href="#bijlagen-principes">Bijlagen</a></p></section><section id="het-proces"><h3 id="x1-3-het-proces"><span class="secno">1.3 </span>Het proces</h3><p>De Architectuurbeschrijving van de Samenhangende Objectenregistratie is een product van een samenwerking van Geonovum, het Kadaster, het ministerie van BZK en VNG Realisatie. Bij de totstandkoming zijn diverse belanghebbenden betrokken, o.a. via een denktank en klankbordgroep.</p></section></section><section data-format="markdown" id="afbakening"><!--OddPage--><h2 id="x2-afbakening"><span class="secno">2. </span>Afbakening</h2><p>Dit hoofdstuk beschrijft de afbakening en context van de Objectenregistratie. Het doel hiervan is de grenzen van de Objectenregistratie en de bijdragen (de producten en diensten) ervan aan de omgeving te bepalen. De afbakening brengt in kaart welke rollen en partijen (waaronder bronhouders en afnemers) interactie met de Objectenregistratie hebben en welke soorten interactie er zijn.</p><section id="doel-van-de-objectenregistratie"><h3 id="x2-1-doel-van-de-objectenregistratie"><span class="secno">2.1 </span>Doel van de Objectenregistratie</h3><p>Voor de Architectuurbeschrijving van de ICT-voorzieningen voor de Objectenregistratie is het goed het doel van de registratie te kennen. In de <a href="https://www.geobasisregistraties.nl/documenten/beleidsnota/2019/11/29/beleidsvisie-samenhangende-objectenregistratie">beleidsvisie voor de samenhangende objectenregistratie</a> is een vijftal doelstellingen geformuleerd voor de Objectenregistratie:</p><ol>
+<li>Een betrouwbare, consistente en actuele samenhangende gegevensset voor heel Nederland;</li>
+<li>Een efficiëntere inwinning en bijhouding van objecten, ook in drie dimensies (3D);</li>
+<li>Een betere inpassing in moderne architecturen;</li>
+<li>Meer en eenvoudiger gebruik van deze informatie in maatschappelijke toepassingen. De registratie gedraagt zich voor de gebruiker als één registratie.</li>
+<li>De objectenregistratie maakt onderdeel uit van een robuuste geo-informatie infrastructuur binnen de generieke digitale infrastructuur en voldoet aan de <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/gegevens/naar-een-gegevenslandschap/themas/twaalf-eisen-stelsel-van-basisregistraties/">12 eisen voor een basisregistratie</a></li>
+</ol></section><section id="context-voor-de-architectuurbeschrijving"><h3 id="x2-2-context-voor-de-architectuurbeschrijving"><span class="secno">2.2 </span>Context voor de Architectuurbeschrijving</h3><p><strong>Processtappen Objectenregistratie</strong></p><p>Onderstaande afbeelding toont de globale werking van de Objectenregistratie. <em>Bronhouders</em> zorgen voor het <strong>inwinnen</strong> van bronmateriaal zoals luchtfoto's of bouwwerkinformatiemodellen of maken gebruik van door anderen ingewonnen bronmateriaal. Op basis van dit bronmateriaal <strong>stelt</strong> de bronhouder objectgegevens <strong>samen</strong> die voldoen aan de eisen van de Objectenregistratie en <strong>registreert</strong> deze objectgegevens in de opslag van de Objectenregistratie waar ze worden <strong>bewaard</strong>. Vanuit de opslag worden gegevens <strong>ontsloten</strong> richting <em>afnemers</em> die deze gegevens <strong>gebruiken</strong> in hun (bedrijfs-)processen. Regelmatig worden de objectgegevens <strong>verrijkt</strong> voordat ze worden gebruikt, bijvoorbeeld door ze te combineren met gegevens uit andere bronnen. Het resultaat van verrijken noemen we <em>informatieproducten</em>. Vanuit de Objectenregistratie worden alleen <em>generieke</em> informatieproducten verstrekt. Dat zijn producten die voor een groot deel van de afnemers relevant zijn. Specifieke informatieproducten waar alleen bepaalde sectoren of afnemers behoefte aan hebben vallen buiten de scope van de Objectenregistratie. Als er bij de afnemers twijfel over de juistheid van de gegevens bestaat dan kunnen zij dat <strong>terugmelden</strong> waarna de bronhouder zal <strong>onderzoeken</strong> of die twijfel klopt.</p><figure id="soreenvoudig"><img src="media/praatplaat-eenvoudig-sor.png" alt="SOReenvoudig" width="3308" height="1616">
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">De globale werking van de Samenhangende objectenregistratie</span></figcaption>
+</figure><p>Samenvattend onderscheiden we de volgende processtappen.</p><table>
+<thead>
+<tr>
+<th>Processtap</th>
+<th>Omschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Inwinnen</strong></td>
+<td>Het door waarneming vanuit de werkelijkheid of uitvraag aan burgers en bedrijven vanuit werkprocessen beschikbaar maken van gegevens over objecten en/of eigenschappen daarvan in een gegevensbron.</td>
+</tr>
+<tr>
+<td><strong>Samenstellen</strong></td>
+<td>Het combineren van vanuit verschillende gegevensbronnen afkomstige ruwe of getransformeerde gegevens over objecten en/of eigenschappen daarvan tot een samenhangende beschrijving conform hetgeen daarover is bepaald in inhoudelijke criteria en kwaliteitseisen.</td>
+</tr>
+<tr>
+<td><strong>Registreren</strong></td>
+<td>Het op een gevalideerde wijze vastleggen van gegevens over objecten en/of eigenschappen daarvan in de registratie</td>
+</tr>
+<tr>
+<td><strong>Bewaren</strong></td>
+<td>Het duurzaam beschikbaar houden van de gegevens over objecten en/of eigenschappen daarvan in de registratie.</td>
+</tr>
+<tr>
+<td><strong>Ontsluiten</strong></td>
+<td>Het beschikbaar stellen van de in de registratie opgenomen gegevens op een zodanige wijze dat deze als gegevens eenvoudig door afnemers kunnen worden benaderd.</td>
+</tr>
+<tr>
+<td><strong>Verrijken</strong></td>
+<td>Het zodanig transformeren of presenteren van in de registratie opgenomen gegevens dat een op afnemersbehoeften afgestemd informatieproduct ontstaat.</td>
+</tr>
+<tr>
+<td><strong>Gebruiken</strong></td>
+<td>Het ophalen van de beschikbaar gestelde gegevens en de toepassing daarvan binnen de werkprocessen waarvoor de gegevens zijn benodigd.</td>
+</tr>
+<tr>
+<td><strong>Terugmelden</strong></td>
+<td>Het vastleggen van twijfel over de gegevens.</td>
+</tr>
+<tr>
+<td><strong>Onderzoeken</strong></td>
+<td>Het onderzoeken van de twijfel over de gegevens om terugkoppeling te geven aan de melder en eventuele aanpassingen aan gegevens te doen.</td>
+</tr>
+</tbody></table><p>De afbakening van de processtappen is nog in ontwikkeling. Bovenstaande processtappen zijn gebaseerd op de voorlopige beelden mbt de organisatie van de Objectenregistratie op 29 mei 2020.</p><p>Onderstaande afbeelding geeft deze processtappen weer in de globale werking van de Objectenregistratie.</p><figure id="soreenvoudigprocesstappen"><img src="media/praatplaat-eenvoudig-processtappen-sor.png" alt="soreenvoudigprocesstappen" width="3445" height="2125">
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">De processtappen in de globale werking van de Samenhangende objectenregistratie</span></figcaption>
+</figure><p><strong>Stelselrollen Objectenregistratie</strong></p><p>Voor de uitvoering van de procesen rond de Objectenregistratie zijn verschillende rollen verantwoordelijk. Het gaat om de volgende stelselrollen.</p><table>
+<thead>
+<tr>
+<th>Stelselrol</th>
+<th>Omschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bronhouder (inwinnen en samenstellen)</strong></td>
+<td>Verantwoordelijkheid voor samenstellen van gegevens op basis van verzamelde gegevens uit eigen en andere gegevensbronnen conform de gestelde inhoudelijke voorschriften en kwaliteitseisen</td>
+</tr>
+<tr>
+<td><strong>Bronhouder (registreren)</strong></td>
+<td>Verantwoordelijkheid voor registreren van samengestelde gegevens conform gestelde eisen</td>
+</tr>
+<tr>
+<td><strong>Verstrekker</strong></td>
+<td>Verantwoordelijkheid voor levering van gegevens uit de registratie (met de daarbij behorende ondersteuning) en de levering van enkele generieke informatieproducten aan afnemers</td>
+</tr>
+<tr>
+<td><strong>Afnemer</strong></td>
+<td>Verantwoordelijkheid voor al dan niet verplicht gebruik van gegevens in de eigen processen</td>
+</tr>
+<tr>
+<td><strong>Toezichthouder</strong></td>
+<td>Verantwoordelijkheid voor toezicht op het in overeenstemming met eisen, afspraken en wetgeving opereren van het systeem van de objectenregistratie</td>
+</tr>
+<tr>
+<td><strong>Beleidsverantwoordelijke</strong></td>
+<td>Verantwoordelijkheid voor het organiseren van een gezamenlijke systeemsturing op de registratie</td>
+</tr>
+<tr>
+<td>Systeemrol</td>
+<td>Omschrijving</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>Dienst/Beheerder</strong></td>
+<td>Verantwoordelijkheid voor het houden van de registratie</td>
+</tr>
+<tr>
+<td><strong>Standaardbeheerder</strong></td>
+<td>Verantwoordelijkheid voor het houden van de standaarden waaronder de informatiemodellen</td>
+</tr>
+</tbody></table><p>De afbakening van de stelselrollen en systeemrollen is nog in ontwikkeling. Bovenstaande rollen zijn gebaseerd op voorlopige beelden met betrekking tot de organisatie van de Objectenregistratie. Voor Beleidsverantwoordelijke wordt ook wel de rol Eigenaar gehanteerd.</p></section><section id="scope-van-de-architectuurbeschrijving"><h3 id="x2-3-scope-van-de-architectuurbeschrijving"><span class="secno">2.3 </span>Scope van de Architectuurbeschrijving</h3><p>Op basis van de processtappen en stelsel-en systeemrollen is de scope van de Architectuurbeschrijving te bepalen. Onderstaande afbeelding geeft dat weer op basis van het besturingsparadigma van de Leeuw. Dit besturingsparadigma maakt onderscheid  tussen een <strong>systeem</strong> bestaande uit een <strong>besturend orgaan</strong> en een <strong>bestuurd systeem</strong> en de <strong>omgeving van het systeem</strong>. In onderstaande afbeelding zijn de stelselrollen en systeemrollen in het bestuurd systeem weergegeven.</p><figure id="scopearchitectuur rollen"><img src="media/systeemrollen-objectenregistratie.png" alt="systeemrollen-objectenregistratie.png" width="1280" height="720">
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">Scope van de rollen</span></figcaption>
+</figure><p>De afbakening van de processtappen en stelselrollen is nog in ontwikkeling. Onderstaande afbakening toont een mogelijke variant. </p><figure id="scopearchitectuur processen"><img src="media/systeemprocessen-objectenregistratie.png" alt="systeemprocessen-objectenregistratie" width="1280" height="720">
+<figcaption>Figuur <span class="figno">5</span> <span class="fig-title">Scope van de processen</span></figcaption>
+</figure><p>Deze architectuurbeschrijving heeft als scope de ICT-voorzieningen voor de <strong>uitvoering en de ondersteuning van de Samenhangende Objectenregistratie</strong>. In de hier getoonde variant van de afbakening betreft dit de processtappen <strong>Registeren, Bewaren, Ontsluiten, (Generiek) Verrijken en Routeren terugmeldingen</strong> en de bijbehorende ondersteundende processen. Alleen het verrijken tot generieke informatieproducten behoort tot de scope van (de ICT-voorzieningen voor) de Objectenregistratie, specifieke informatieproducten waarover geen afspraken zijn gemaakt, vallen buiten scope.
+</p><p>Deze architectuurbeschrijving benoemt binnen de scope de functies, componenten en samenhang en de benodigde standaarden. Voor de processen van de rollen bronhouder en afnemer benoemt deze architectuurbeschrijving alleen de functies. De ICT-componenten en de inrichting daarvan is aan de bronhouders en afnemers zelf.</p></section><section id="interacties-met-partijen-in-de-omgeving"><h3 id="x2-4-interacties-met-partijen-in-de-omgeving"><span class="secno">2.4 </span>Interacties met  partijen in de omgeving</h3><p>De Objectenregistratie heeft de volgende interactie met partijen in de omgeving.</p><figure id="scopearchitectuur interacties"><img src="media/hoofdstructuur-objectenregistratie.png" alt="interacties-objectenregistratie" width="1280" height="720">
+<figcaption>Figuur <span class="figno">6</span> <span class="fig-title">Interacties</span></figcaption>
+</figure><table>
+<thead>
+<tr>
+<th>Partij</th>
+<th>Interacties</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bronhouder(inwinnen/samenstellen)</strong></td>
+<td><strong>Objectgegevens (INVOER)</strong>. De bronhouder registreert objectgegevens.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Meldingen</strong>: De bronhouder verwerkt terugmeldingen van Afnemers.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Catalogus</strong>. De bronhouder gebruikt de gegevenscatalogus om kennis te nemen van de gegevensdefinities van de Objectenregistratie.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Support</strong>. De bronhouder ontvangt ondersteuning bij het gebruik van de Objectenregistratie, zoals bijvoorbeeld een catalogus van beschikbare producten en diensten.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Hulpvraag</strong>. De bronhouder kan om ondersteuning vragen bij het gebruik van de Objectenregistratie.</td>
+</tr>
+<tr>
+<td><strong>Afnemer</strong></td>
+<td><strong>Objectgegevens (UITVOER)</strong>. De afnemer neemt objectgegevens en generieke informatieproducten af.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Meldingen</strong>. De afnemer levert terugmeldingen bij twijfel over de juistheid van de objectgegevens.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Catalogus</strong>. De afnemer gebruikt de gegevenscatalogus om kennis te nemen van de gegevensdefinities van de Objectenregistratie.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Support</strong>. De afnemer (mens of computer) ontvangt ondersteuning bij het gebruik van de Objectenregistratie, zoals bijvoorbeeld een catalogus van beschikbare producten en diensten.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Hulpvraag</strong>. De afnemer kan om ondersteuning vragen bij het gebruik van de Objectenregistratie. Hier wordt zowel geautomatiseerde ondersteuning als menselijke ondersteuning bedoeld.</td>
+</tr>
+<tr>
+<td><strong>Toezichthouder</strong></td>
+<td>De toezichthouder bepaalt binnen het systeem de kwaliteitsindicatoren voor het monitoren van het systeem. Hiertoe ontvangt de toezichthouder sturing vanuit de Eigenaar/Beleidsverantwoordelijke en diens  Overleg met Bronhouders en Afnemers.</td>
+</tr>
+<tr>
+<td><strong>Standaardbeheerder</strong></td>
+<td><strong>Catalogus</strong> De standaardbeheerder beheert de gegevensdefinities van de Objectenregistratie ten behoeve van bronhouders en afnemers. Deze rol biedt de gegevenscatalogus aan alle andere rollen.</td>
+</tr>
+<tr>
+<td><strong>Dienst/Beheerder</strong></td>
+<td>De Dienst/Beheerder is de houder van de registatie. Deze rol biedt de beschikbare producten en diensten, en de suppport die daarbij benodigd is.</td>
+</tr>
+<tr>
+<td><strong>Beleidsverantwoordelijke</strong></td>
+<td>De beleidsverantwoordelijke vormt het Besturend Orgaan van het systeem. Deze bepaalt met name de inhoud van het systeem, dat wil zeggen welke gegevens tot de basisgegevens behoren. Sturing op die inhoud geschiedt in Overleg met Bronhouders en Afnemers.</td>
+</tr>
+</tbody></table><p>Buiten de afbakening:
+De rol Bronhouder(inwinnen/samenstellen) is gepositioneerd als een partij in de omgeving die gebruik maakt van eigen diensten om objectgegevens samen te stellen.
+De rol Afnemer is gepositioneerd als een partij in de omgeving die gebruik maakt van de diensten van de Objectenregistratie om objectgegevens af te nemen.</p><p>Binnen de afbakening:
+De rol Bronhouder (registreren) valt binnen de afbakening van de Objectenregistratie. Het is de rol die de objectgegevens registreert en beheert (vergelijkbaar met de huidige BAG-beheerder, BGT-beheerder, BRT-beheerder, enz.) en bijdraagt aan de routering van terugmeldingen naar de juiste Bronhouder(inwinnen/samenstellen).
+De rol Verstrekker valt binnen de afbakening van de Objectenregistratie. Het is de rol die zorgt voor de ontsluiting en (generieke) verrijking van objectgegevens, en bijdraagt aan de routering van terugmeldingen.
+Ook de rollen Standaardbeheerder, Toezichthouder en Dienst/Beheerder
+</p><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Noot</span></div><p class="">
+REVIEW: De interacties komen overeen met de pijlen in de afbeelding. Opmerkingen op de tabel en op de afbeeldingen zijn in samenhang welkom.
+</p></div><p>NB. Alle genoemde partijen maken gebruik van ondersteunende partijen zoals ICT-leveranciers en kunnen taken uitbesteden aan derden, zoals samenwerkingsverbanden en gegevensleveranciers. De beschreven interacties hebben deels ook betrekking op deze ondersteunende partijen. Zo zullen softwareontwikkelaars ook gebruik maken van de gegevens- en de dienstencatalogus van de Objectenregistratie.</p></section></section><section data-format="markdown" id="ict-inrichtingsprincipes"><!--OddPage--><h2 id="x3-ict-inrichtingsprincipes"><span class="secno">3. </span>ICT-inrichtingsprincipes</h2><p>Dit hoofdstuk beschrijft de principes die richtinggevend zijn voor de functionele inrichting van de ICT-voorzieningen voor de Objectenregistratie en de bijbehorende ICT-organisatie.
+</p><section id="beleid-samenhangende-objectenregistratie"><h3 id="x3-1-beleid-samenhangende-objectenregistratie"><span class="secno">3.1 </span>Beleid Samenhangende Objectenregistratie</h3><p>De overkoepelende <a href="https://www.geobasisregistraties.nl/documenten/publicatie/2020/07/16/houtskoolschets-architectuurvisie-dis-geo">Architectuurvisie DiS-Geo</a> geeft de richtinggevende kaders waarbinnen de bestaande geo basisregistraties worden doorontwikkeld tot een samenhangende objectenregistratie.</p><p>De <a href="https://www.geobasisregistraties.nl/documenten/beleidsnota/2019/11/29/beleidsvisie-samenhangende-objectenregistratie">Beleidsvisie Samenhangende Objectenregistratie</a> beschrijft de doelstellingen en beleidscontouren.
+</p><p>De volgende uitgangspunten voor de architectuur van de objectenregistratie zijn afgeleid uit beide bovenstaande documenten.</p><p><strong>vanuit Architectuurvisie DiS-Geo</strong></p><ol>
+<li>Bronhouders zijn verantwoordelijk voor basisgegevens</li>
+<li>Bronhouders kunnen leveranciers machtigen</li>
+<li>Gegevens aanpassen kan makkelijk en goed</li>
+<li>Gegevens passen bij elkaar: relaties tussen gegevens zijn voor gebruikers duidelijk, en gegevens zijn in samenhang bruikbaar</li>
+<li>De gegevensstructuur kan snel genoeg meegroeien met de gebruiksbehoefte</li>
+</ol><p><strong>vanuit Beleidsvisie Samenhangende Objectenregistratie</strong></p><ol start="6">
+<li>We laten ons bij het ontwerp en de verdere uitwerking niet beperken door de nu bestaande juridische kaders (deze kunnen in principe worden aangepast, via een traject aanpassing wet- en regelgeving).</li>
+<li>In het ontwerp van een samenhangende objectenregistratie is sprake van een nadrukkelijke scheiding tussen de vastlegging van gegevens en de functionaliteit voor het bewerken, opvragen en presenteren daarvan.</li>
+<li>Er wordt gebruik gemaakt van standaard infrastructurele voorzieningen die beschikbaar zijn bij de bronhouders en de gebruikers (denk hierbij aan standaardnetwerken, netwerkprotocollen en beveiligingsmechanismen).</li>
+<li>Er wordt in de eindsituatie zoveel mogelijk uitgegaan van ‘bevragen bij de bron’. Hierbij is van belang dat de gebruiker voor verstrekkingen zoveel mogelijk uit kan gaan van één loket. Een belangrijk aandachtspunt hierbij is het gebeurtenis georiënteerd werken (nader uit te werken). Of de bronhouders gedistribueerd en decentraal werken of direct inwinning en bijhouding in een (of meerdere) voorziening(en) uitvoeren via gestandaardiseerde services moet nader bepaald worden (nadere uitwerking in kader van DiS GEO/beleidsvisie: leveranciers, bronhouders, Kadaster, VNG-R, BZK).</li>
+<li>Er wordt ingewonnen op het niveau van de huidige schaalniveaus van BAG en BGT. De gegevens kunnen gepresenteerd worden op verschillende schaalniveaus (meest gedetailleerde weergave: 1:1.000). Autogeneralisatie voor informatie op hogere schaalniveaus moet mogelijk zijn (op basis van logica en functies). Bijvoorbeeld het (deels) afleiden van de informatie voor de BRT uit de BGT, maar ook voor het definiëren van een wegennetwerk met alle rijkswegen op basis van het gehele wegennetwerk.</li>
+<li>Keuzen voor een technische inrichting van de registratie worden pas later in het traject gemaakt, zodat oplossingen gebaseerd zijn op recente inzichten in oplossingsmogelijkheden.</li>
+<li>Vanuit andere (basis)registraties, zoals de subjectenregistraties BRP of HR, moeten eenvoudig relaties gelegd kunnen worden naar de samenhangende objectenregistratie.</li>
+<li>De registratie gedraagt zich voor gebruikers zoveel mogelijk als één registratie, of het daadwerkelijk één registratie wordt, is nog niet bepaald (nader uit te werken). Daarnaast kunnen er uit de registratie (informatie)producten afgeleid worden en beschikbaar gesteld worden.</li>
+<li>De kerngegevens en aanvullende gegevens worden in principe ontsloten als open data (waar nodig ontsloten op basis van autorisaties), dus het “open data, tenzij” regime geldt.</li>
+<li>In principe kan de informatie via meerdere kanalen, afgestemd op gebruikersbehoefte, uitgeleverd worden (nadere uitwerking in kader van DiS GEO).</li>
+</ol></section><section id="inrichtingsprincipes-vergelijkbare-domeinen"><h3 id="x3-2-inrichtingsprincipes-vergelijkbare-domeinen"><span class="secno">3.2 </span>Inrichtingsprincipes vergelijkbare domeinen</h3><p>Binnen andere domeinen is veel kennis en kunde opgebouwd over inrichtingsprincipes van dit soort ICT-voorzieningen. We hebben hier met name gebruik gemaakt van de volgende groepen met ervaring en vastgelegde kennis:</p><ul>
+<li>De <a href="https://aandeslagmetdeomgevingswet.nl/publish/library/219/dso_-_gas_-_overall_gas_1.pdf">Overall Globale Architectuur Schets (OGAS)</a> van het Digitaal Stelsel Omgevingswet.</li>
+<li>De referentie architectuur <a href="#basisprincipes-nora">NORA</a> van de architecten van samenwerkende Nederlandse overheden
+</li>
+<li>De <a href="#inrichtingsprincipes-gemma">GEMMA</a> van de Vereniging van Nederlandse Gemeentes</li>
+<li>De <a href="#inrichtingsprincipes-common-ground">Common Ground</a> principes van diverse samenwerkende overheidsorgansiaties</li>
+<li>De "10 golden rules data" die tot stand zujngekomen vanuit de best-practices rondom data management.</li>
+</ul></section><section id="ict-inrichtingsprincipes-samenhangende-objectenregistratie"><h3 id="x3-3-ict-inrichtingsprincipes-samenhangende-objectenregistratie"><span class="secno">3.3 </span>ICT-inrichtingsprincipes Samenhangende Objectenregistratie</h3><p>Voor de ICT-inrichting van de Samenhangende Objectenregistratie hanteren we de onderstaande principes. Met 'de oplossing' bedoelen we steeds de ICT-voorzieningen die de Samenhangende Objectenregistratie realiseren.</p><p><strong>Inrichtingsprincipe 1: Gegevens worden gescheiden van applicaties bewaard</strong>, <em>zodat</em> het beheren en afnemen van gegevens onafhankelijk is van de gebruikte applicaties en gegevens te (her)gebruiken zijn in verschillende applicaties voor verschillende doeleinden.</p><p>Grondslag: Uitgangspunten (7, 9), Common Ground
+</p><p><strong>Inrichtingsprincipe 2: Ieder gegeven wordt op precies één plek bijgehouden</strong>, <em>zodat</em> altijd duidelijk is wat het actuele brongegeven is en waar dat wordt beheerd. Dit principe heeft de volgende onderliggende principes in zich:
+- <strong>Dubbele opslag betekent synchroniseren</strong>, zodat partijen altijd naar dezelfde gegevens kijken. Dit geldt zowel binnen als buiten de oplossing, dus ook voor eventuele afgeleide opslag die geoptimaliseerd is ten behoeve van verstrekking.</p><p>Grondslag: Uitgangspunten (9, 11, 15), Common Ground (04)</p><p><strong>Inrichtingsprincipe 3: Gegevens zijn alleen te benaderen via dataservices</strong>, <em>zodat</em> deze services kunnen garanderen dat de gegevens, metagegevens en de toegang ertoe altijd voldoen aan de eisen en dat logging altijd plaatsvindt. Dit principe heeft de volgende onderliggende principes in zich:</p><ul>
+<li><strong>Dataservices regelen de toegang tot gegevens</strong>, <em>zodat</em> deze services ervoor kunnen zorgen dat altijd is voldaan aan de eisen betreffende toegang.</li>
+<li><strong>Dataservices leggen elke toegang tot gegevens vast in logging</strong>, <em>zodat</em> deze services ervoor kunnen zorgen dat aantoonbaar is wat door gemachtigde leveranciers onder verantwoordelijkheid van bronhouders plaatsvindt.</li>
+<li><strong>Dataservices houden metadata actueel</strong>, <em>zodat</em> data en meta-data altijd onderling consistent zijn.</li>
+<li><strong>Dataservices borgen de gegevensregels</strong>, <em>zodat</em> gegarandeerd is dat de gegevens altijd voldoen aan de gegevensregels. <strong>N.B.</strong> niet 'borgen de kwaliteit' want kwaliteit is veel breder dan alleen voldoen aan de gegevensregels.</li>
+</ul><p>Om te garanderen dat de gegevens blijven voldoen aan de gestelde kwaliteit en actualiteit kunnen ze alleen benaderd worden via (data)services. Dit principe zorgt ervoor dat gegevens blijven voldoen aan de (integriteits-)eisen, doordat de dataservices dit waarborgen. Ook zorgt dit principe ervoor dat er een ontkoppeling is tussen de gegevens en de ontsluiting ervan. Applicaties benaderen de gegevens via de dataservices en niet direct. Dat maakt het mogelijk om veranderingen aan te brengen in de gegevensopslag of in de dataservices zonder dat deze elkaar beïnvloeden. Hierdoor kunnen we flexibel omgaan met aanpassingen in het gegevensmodel.
+De service controleert of de gebruiker wel de toegangsrechten heeft om de gegevens te maken, te lezen of aan te passen.
+Alle transacties op de gegevens worden gelogd. Dit is nodig om een audit-trail te kunnen opbouwen.</p><p>Grondslag: Uitgangspunten (1, 2, 3, 5, 7, 8, 9), DSO (05)</p><p><strong>Inrichtingsprincipe 4: We bewaren en ontsluiten informatie op betrouwbare en veilige wijze</strong>, <em>zodat</em> we kunnen aantonen dat data niet bedoeld of onbedoeld gemanipuleerd is. Om op data te kunnen vertrouwen zorgen we ervoor dat data bij alle handelingen vanaf het moment van ontstaan tot het moment van gebruik veilig is. We wijzigen de actuele versie van data daarom alleen op basis van een brondocument of mutatieverwijzing en leggen die vast. We bewaken integriteit en consistentie van data. We bewaren data conform de eisen van de wet (w.o. archiefwet, etc.).</p><p>Grondslag: Uitgangspunten (3, 7, 9), DSO (09), Common Ground (03)</p><p><strong>Inrichtingsprincipe 5: We maken samenhangend gebruik van data makkelijk mogelijk</strong>, zodat data uit verschillende gegevensverzamelingen te combineren is. Zo maken we mogelijk dat er samengestelde producten over het geheel van het gegevenslandschap kunnen worden gerealiseerd. Dit principe heeft de volgende onderliggende principes in zich:</p><ul>
+<li><strong>alles is een service</strong>, <em>zodat</em> zowel computers als mensen de beschikbare functies kunnen begrijpen en benutten.</li>
+<li><strong>intern is extern</strong>, <em>zodat</em> alle services herkenbaar en bruikbaar zijn voor externe leveranciers van bronhouders en afnemers en deze op innovatieve manieren de waarde van gegevens kunnen vergroten.</li>
+</ul><p>Grondslag: Uitgangspunten (4, 12, 13, 15), DSO (05)</p></section></section><section data-format="markdown" id="inrichting-van-de-objectenregistratie"><!--OddPage--><h2 id="x4-inrichting-van-de-objectenregistratie"><span class="secno">4. </span>Inrichting van de Objectenregistratie</h2><section id="inleiding-0"><h3 id="x4-1-inleiding"><span class="secno">4.1 </span>Inleiding</h3><p>Dit hoofdstuk beschrijft de functionele (of conceptuele) inrichting van de Samenhangende Objectenregistratie op de applicatielaag van het NORA-vijflaagsmodel. Het doel ervan is om sturing te kunnen geven aan de transitie naar de Objectenregistratie en te dienen als kader voor technische inrichting van de Objectenregistratie. Ook biedt het een deel van de basis voor de organisatorische inrichting van de Objectenregistratie.
+</p><p>Dit hoofdstuk beschrijft de onderdelen (of componenten) van de Objectenregistratie en de verbindingen daartussen en het wijst de functies van de Objectenregistratie toe aan deze onderdelen. </p><div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Noot</span></div><p class="">
+Een nadere uitwerking van de onderdelen volgt in het hoofdstuk Uitwerking van onderdelen. Dit wordt toegevoegd parallel aan de review op de afbakening en inrichting.
+</p></div></section><section id="functionele-lagen-in-de-inrichting"><h3 id="x4-2-functionele-lagen-in-de-inrichting"><span class="secno">4.2 </span>Functionele lagen in de inrichting</h3><p>We onderscheiden drie lagen in de functionele indeling van de Objectenregistratie, zoals de afbeelding hieronder toont. Daarmee duiden we alleen het doel van de functies (bijvoorbeeld beheren of afnemen van objectgegevens) en doen we geen uitspraak over de de technische inrichting of de verdeling ervan over verschillende ICT-voorzieningen.</p><figure id="inrichtinglagen"><img src="media/functionele-lagen-objectenregistratie.png" alt="functionele lagen" width="1280" height="720">
+<figcaption>Figuur <span class="figno">7</span> <span class="fig-title">Functionele lagen in de inrichting van de Objectenregistratie</span></figcaption>
+</figure><p>De laag <strong>Metabeheer</strong> bevat de functies die betrekking hebben op het beheren van gegevens over de gegevensmeta-data en bestaat uit twee lagen, te weten Meta-gegevensbeheer en 'Inzicht in kwaliteit'. Meta-gegevensbeheer bevat de functies die nodig zijn om informatiemodellen en gegevensregels te beheren evenals het beheren van de gegevenscatalogi om die informatiemodellen en gegevensregels te kunnen toepassen. 'Inzicht in kwaliteit' bevat de functies om kwaliteitsindicatoren te beheren en kwaliteitsmetingen te doen.</p><p>De <strong>Uitvoeringslaag</strong> bevat de functies die nodig zijn voor het voor het beheren en afnemen van objectgegevens, zoals voor het registreren en wijzigen van gegevens en voor het raadplegen ervan. Op deze laag maken we onderscheid tussen de functies ten behoeve van het beheren van objectgegevens door bronhouders en het afnemen ervan door afnemers van de Objectenregistratie.
+</p><p>De <strong>Ondersteuningslaag</strong> bevat de functies die nodig zijn om bronhouders en afnemers te ondersteunen bij het beheren en afnemen van gegevens, zoals het beheren van autorisaties en het raadplegen van gegevens- en dienstencatalogi.</p><p>Naast de drie lagen voor Metabeheer, Uitvoering en Ondersteuning, is ook functionaliteit nodig in het kader van <strong>Voorzieningenbeheer</strong>. De beheerfuncties voor het beheren van de ICT-voorzieningen op het platform, of de platformen, die het beheren en afnemen van objectgegevens en meta-gegevens mogelijk maken. Deze beheerfuncties maken we zichtbaar in een totaaloverzicht.</p></section><section id="functies-in-de-laag-metabeheer"><h3 id="x4-3-functies-in-de-laag-metabeheer"><span class="secno">4.3 </span>Functies in de laag Metabeheer</h3><p>Onderstaande afbeelding toont de clusters van functionaliteiten op de laag Metabeheer. Deze clustering is een functionele indeling, geen technische. Het groepeert functies die bijdragen aan hetzelfde doel.</p><figure id="inrichting-metabeheer"><img src="media/inrichting-metabeheer-objectenregistratie.png" alt="inrichting metabeheer" width="1280" height="720">
+<figcaption>Figuur <span class="figno">8</span> <span class="fig-title">De capability-clusters op de laag Metabeheer
+</span></figcaption>
+</figure><p>De laag <strong>Metabeheer</strong> bestaat uit de delen <strong>Metagegevensbeheer</strong> en <strong>Inzicht in kwaliteit</strong>. </p><p>Het deel Metagegevensbeheer bevat de volgende clusters aan functionaliteiten:</p><ul>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van meta-beheerders tot de beheerdiensten.</li>
+<li><em>Informatiemodel</em>: voor het beheren van het informatiemodel, de gegevensregels en de bijbehorende gegevens- en dienstencatalogi.</li>
+</ul><p>Het deel 'Inzicht in kwaliteit' bevat de volgende clusters aan functionaliteiten:</p><ul>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van meta-beheerders tot de diensten.</li>
+<li><em>kwaliteitsindicatoren</em>: voor het beheren van de door bronhouders en afnemers en andere betrokkenen (zoals toezichthouder en  beleidsverantwoordelijke) overeengekomen kwaliteitsindicatoren en bijbehorende diensten</li>
+<li><em>Kwaliteitsmetingen:</em> Voor het bepalen van de waarden van de kwaliteitsindicatoren ten behoeve van monitoring van de algehele kwaliteit, bijvoorbeeld door middel van analyses</li>
+</ul></section><section id="functies-in-de-laag-uitvoering"><h3 id="x4-4-functies-in-de-laag-uitvoering"><span class="secno">4.4 </span>Functies in de laag Uitvoering</h3><p>Onderstaande afbeelding toont de clusters van functionaliteiten op de laag Uitvoering. Deze clustering is een functionele indeling, geen technische. Het groepeert functies die bijdragen aan hetzelfde doel.</p><figure id="functiesuitvoering"><img src="media/inrichting-uitvoering-objectenregistratie.png" alt="functiesuitvoering" width="1280" height="720">
+<figcaption>Figuur <span class="figno">9</span> <span class="fig-title">De capabilities op de laag Uitvoering</span></figcaption>
+</figure><p>De laag <strong>Uitvoering</strong> bevat de functies voor het beheren van objectgegevens en voor het afnemen van objectgegevens</p><p>Op de Uitvoeringslaag onderkennen we de volgende clusters voor <em>beheer van objectgegevens</em>:</p><ul>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van bronhouders en hun gemachtigden tot de beheerdiensten.</li>
+<li><em>Registratie</em>: voor het creëren en wijzigen van objectgegevens door bronhouders en hun gemachtigden.</li>
+<li><em>Opslag</em>: voor het duurzaam beschikbaar houden van gegevens over objecten en objecteigenschappen.</li>
+</ul><p>Op de Uitvoeringslaag onderkennen we daarnaast de volgende clusters voor het <em>afnemen van objectgegevens</em> :</p><ul>
+<li><em>Afgeleide opslag</em>: voor het beschikbaar maken van gegevens afgestemd op de specifieke behoeften van het afnemen van objectgegevens door grote aantallen afnemers.</li>
+<li><em>Afname gegevens</em>: voor het afnemen van objectgegevens op verschillende manieren, variërend van het raadplegen van enkelvoudige gegevens tot afnamen in 'bulk' voor bijvoorbeeld analysedoeleinden.</li>
+<li><em>Notificatie</em>: voor het notificeren van afnemers van voor hen relevante gebeurtenissen (we gebruiken gebeurtenissen hier in brede zin, breder dan alleen gebeurtenissen die de objectgegevens betreffen)</li>
+<li><em>Afname informatie</em>: voor het afnemen van generieke informatieproducten op verschillende manieren. Het visueel raadplegen van basisgegevens in context (viewer) is zo'n informatieproduct. Ook gecombineerde afname die een afgesproken generieke behoefte van afnemers invult kan zo'n informatieproduct zijn.</li>
+<li><em>Terugmelding</em>: voor het in staat stellen van afnemers om bij gerede twijfel aan de juistheid van gegevens dit te melden.</li>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van afnemers tot de afnamediensten.
+</li>
+</ul></section><section id="functies-in-de-laag-ondersteuning"><h3 id="x4-5-functies-in-de-laag-ondersteuning"><span class="secno">4.5 </span>Functies in de laag Ondersteuning</h3><p>Onderstaande afbeelding toont de clusters van functionaliteiten op de laag Ondersteuning. Deze clustering is een functionele indeling, geen technische. Het groepeert functies die bijdragen aan hetzelfde doel.</p><figure id="functiesuitvoeringondersteuning"><img src="media/inrichting-ondersteuning-objectenregistratie.png" alt="functiesondersteuning" width="1280" height="720">
+<figcaption>Figuur <span class="figno">10</span> <span class="fig-title">De capabilities op de laag Ondersteuning</span></figcaption>
+</figure><p>Op de <strong>Ondersteuningslaag</strong> onderkennen we de volgende clusters voor de ondersteuning van bronhouders en afnemers en hun gemachtigden en leveranciers:</p><ul>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van bronhouders en afnemers tot de ondersteuningsdiensten.</li>
+<li><em>Beheer toegang</em>: voor het beheren van autorisaties op gegevens en diensten door bronhouders en afnemers zelf en eventueel ook door de beheerder van de ICT-voorziening(en).</li>
+<li><em>Beheer abonnementen</em>: voor het beheren van abonnementen op notificaties van gebeurtenissen door bronhouders en afnemers</li>
+<li><em>Beheer betalingen</em>: voor het beheren van de betalingen van betaalde diensten door de gebruikers van die diensten, indien sprake is van betaalde diensten. Betalen kan op verschillende manieren worden ingericht, zoals vooraf, bij afname van de dienst of achteraf.</li>
+<li><em>Beheer kwaliteitsdashboard</em>: voor het inzien van de waarden van kwaliteitsindicatoren per bronhouder of groep van bronhouders (algehele kwaliteit wordt gemeten in de laag Metabeheer, zie onderdeel Inzicht in Kwaliteit)</li>
+<li><em>Beheer gegevenscatalogus</em>: voor het inzien van de beschikbare soorten objectgegevens, eigenschappen en relaties en de betekenis daarvan, evenals het uitvoeren van versiemanagement op de catalogus als er sprake is van nieuwe objectgegevens of gegevensregels (vanuit metagegegevensbeheer)</li>
+<li><em>Dienstencatalogus:</em> voor het inzien van de beschikbare gegevensproducten en diensten voor het beheren en afnemen ervan, evenals voor het uitvoeren van versiemanagement op de dienstencatalogus als er sprake is van nieuwe diensten zoals gegevensdiensten (dataservices), informatiediensten (afname informatie) of abonnementsdiensten op notificaties
+</li>
+</ul><div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Noot</span></div><p class="">
+We maken onderscheid tussen abonnementen op notificaties van gebeurtenissen die betrekking hebben op gegevens (voor bronhouders en afnemers) en abonnementen op notificaties van andersoortige gebeurtenissen (bijvoorbeeld ontwikkelingen die relevant zijn voor ontwikkelaars en beheerders van ICT-voorzieningen voor en bij bronhouders en afnemers)
+</p></div></section><section id="overzicht"><h3 id="x4-6-overzicht"><span class="secno">4.6 </span>Overzicht</h3><p>Onderstaande afbeelding toont de functionaliteiten per cluster op de drie lagen. Deze functionaliteiten zijn beschreven in het hoofdstuk Uitwerking van onderdelen.</p><figure id="metabeheer-inrichting-uitvoering"><img src="media/inrichting-metabeheer-uitvoering-ondersteuning-objectenregistratie.png" alt="inrichting metabeheer uitvoering ondersteuning" width="1280" height="720">
+<figcaption>Figuur <span class="figno">11</span> <span class="fig-title">De capability-clusters op de lagen Metabeheer en Uitvoering en Ondersteuning</span></figcaption>
+</figure><div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Noot</span></div><p class="">
+Het hoofdstuk "Uitwerking van onderdelen" met de detail beschrijving van de functionaliteiten per cluster zal worden opnemen in de volgende versie van de architectuurbeschrijving.  
+</p></div></section><section id="functies-in-de-aparte-architectuurlaag-voorzieningenbeheer"><h3 id="x4-7-functies-in-de-aparte-architectuurlaag-voorzieningenbeheer"><span class="secno">4.7 </span>Functies in de aparte architectuurlaag Voorzieningenbeheer</h3><p>De laag Voorzieningenbeheer bevat de volgende clusters aan functionaliteiten:</p><ul>
+<li><em>Toegang</em>: voor het bewaken en loggen van de toegang van voorzieningingenbeheerders.</li>
+<li><em>Autorisatievormen</em>: voor het beheren van de beschikbare autorisatievormen.</li>
+<li><em>Abonnementsvormen</em>: voor het beheren van de beschikbare abonnementsvormen.</li>
+<li><em>Betalingsvormen</em>: voor het beheren van de beschikbare betalingsvormen.</li>
+<li><em>Dienstvormen</em>: voor het beheren van de beschikbaren dienstvormen.</li>
+<li><em>Metingen</em>: voor het uitvoeren van metingen en raadplegen van uitgevoerde metingen en beschikbaar meetgegevens, zoals aantallen gebruiker.</li>
+</ul><p>Als we alle clusters met functionaliteiten in één overzicht plaatsen, wordt het geheel minder overzichtelijk. Het kan mogelijk wel nuttig zijn zo'n overzicht als praatplaat-aan-de-wand te gaan gebruiken bij de beheerorganisatie(s) bijvoorbeeld in workshops die bij de gezamenlijke inrichting worden gehouden. </p><figure id="alles in een plaat"><img src="media/alles-in-een-plaat.png" alt="alles in een plaat" width="3962" height="2204">
+<figcaption>Figuur <span class="figno">12</span> <span class="fig-title">Alle capability-clusters in een plaat</span></figcaption>
+</figure><div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Noot</span></div><p class="">
+Omdat veel gebruik wordt gemaakt van standaard voorzieningen van de overheid is het beheer soms enkel organisatorisch en soms zowel organisatorisch als technisch.
+</p></div></section></section><section data-format="markdown" id="uitwerking-onderdelen-inrichting-objectenregistratie"><!--OddPage--><h2 id="x5-uitwerking-onderdelen-inrichting-objectenregistratie"><span class="secno">5. </span>Uitwerking onderdelen inrichting Objectenregistratie</h2><section id="inleiding-1"><h3 id="x5-1-inleiding"><span class="secno">5.1 </span>Inleiding</h3><p>Dit hoofdstuk beschrijft de nadere uitwerking van de functionele onderdelen van de Objectenregistratie en hun interne en externe verbindingen.
+</p><div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Noot</span></div><p class="">
+Deze nadere uitwerking volgt. Beschrijving vindt plaats parallel aan de review op de afbakening en inrichting.
+</p></div></section></section><section data-format="markdown" id="bijlagen-principes"><!--OddPage--><h2 id="x6-bijlagen-principes"><span class="secno">6. </span>Bijlagen principes</h2><section id="inrichtingsprincipes-digitaal-stelsel-omgevingwet"><h3 id="x6-1-inrichtingsprincipes-digitaal-stelsel-omgevingwet"><span class="secno">6.1 </span>Inrichtingsprincipes Digitaal Stelsel Omgevingwet</h3><p>Aan de kolommen met de regel en het principe zijn twee kolommen toegevoegd: Data en Functies.<br>Data: Een <em>ja</em> in deze kolom moet worden gezien als 'Ja' dit principe is relevant voor de gegevens in de samenhangende objectenregistratie. Scope zijn de gegevens zelf, oftewel het hart van het systeem.
+Functies: Een <em>ja</em> in deze kolom moet worden opgevat als 'Ja' dit principe is relevant voor de functionaliteit van de Samenhangende Objectenregistratie. Scope is de functionaliteit waarmee de gegevens en/of de informatie aan de gebruikers wordt aangeboden.</p><table>
+<thead>
+<tr>
+<th>Regel</th>
+<th>Principe</th>
+<th>Data</th>
+<th>Functies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><p id="dso-01">01</p></td>
+<td>De klant staat centraal</td>
+<td></td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><p id="dso-02">02</p></td>
+<td>Het stelsel functioneert als één geheel voor zowel personen als systemen</td>
+<td></td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><p id="dso-03">03</p></td>
+<td>Data is de brandstof van het stelsel</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td><p id="dso-04">04</p></td>
+<td>Oplossingen zijn eenvoudig, generiek en kosten effectief</td>
+<td></td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><p id="dso-05">05</p></td>
+<td>Alles is een service</td>
+<td></td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><p id="dso-06">06</p></td>
+<td>Het stelsel is open, transparant en innoverend</td>
+<td>Ja</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td><p id="dso-07">07</p></td>
+<td>Hergebruik voor koop voor maak</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p id="dso-08">08</p></td>
+<td>Continuïteit en compliance is geborgd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p id="dso-09">09</p></td>
+<td>Passende beveiliging &amp; privacy op basis van reële risico’s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p id="dso-10">10</p></td>
+<td>Beheerfunctionaliteit is primaire functionaliteit</td>
+<td></td>
+<td>Ja</td>
+</tr>
+</tbody></table><p>Bron: <a href="https://aandeslagmetdeomgevingswet.nl/publish/library/219/ogas_bijlage_g_-_dso-lv_principes_1.pdf">DSO-LV, bijlage G</a></p></section><section id="inrichtingsprincipes-common-ground"><h3 id="x6-2-inrichtingsprincipes-common-ground"><span class="secno">6.2 </span>Inrichtingsprincipes Common Ground</h3><table>
+<thead>
+<tr>
+<th>Principe</th>
+<th>Omschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><p id="cg-01">01</p></td>
+<td>COMPONENTGEBASEERD: We werken met componenten</td>
+</tr>
+<tr>
+<td><p id="cg-02">02</p></td>
+<td>OPEN: We zijn transparant waar mogelijk</td>
+</tr>
+<tr>
+<td><p id="cg-03">03</p></td>
+<td>VERTROUWD: We zorgen dat informatiebeveiliging en privacy op orde zijn</td>
+</tr>
+<tr>
+<td><p id="cg-04">04</p></td>
+<td>EENMALIGE VASTLEGGING: We leggen gegevens eenmalig vast en vragen op bij de bron</td>
+</tr>
+<tr>
+<td><p id="cg-05">05</p></td>
+<td>REGIE OP GEGEVENS: We faciliteren regie op gegevens</td>
+</tr>
+<tr>
+<td><p id="cg-06">06</p></td>
+<td>STANDAARD: We standaardiseren maximaal</td>
+</tr>
+</tbody></table><p>Bron: <a href="https://www.gemmaonline.nl/images/gemmaonline/c/c7/20190130_-_Common_Ground_-_Informatiearchitectuurprincipes.pdf">Common Ground</a></p></section><section id="basisprincipes-nora"><h3 id="x6-3-basisprincipes-nora"><span class="secno">6.3 </span>Basisprincipes NORA</h3><p>De principes van de NORA zijn bedoeld om overheidsorganisaties richting te duiden bij het inzetten van veranderingen en het
+uitvoeren van projecten. Met name bij het ontwerpen van nieuwe of aangepaste diensten is het noodzaak zichtbaar te maken hoe
+invulling wordt gegeven aan de principes en welke overwegingen daarbij worden gemaakt. Hier geldt het pas-toe-of-leg-uit- principe,
+waarbij afwijkingen dus zijn toegestaan mits dat met goede argumenten wordt onderbouwd en vastgelegd om daar in een later
+stadium op terug te kunnen komen. Zo wordt voorkomen dat belangrijke zaken over het hoofd worden gezien. 
+Bron: <a href="https://www.noraonline.nl/wiki/Principes">https://www.noraonline.nl/wiki/Principes</a>
+</p></section><section id="afgeleide-principes-nora"><h3 id="x6-4-afgeleide-principes-nora"><span class="secno">6.4 </span>Afgeleide principes NORA</h3><p>Afgeleide principes geven meer concrete invulling aan de basisprincipes. Ze zijn te beschouwen als een checklist van 
+kwaliteitskenmerken van de diensten van de overheid en geven handvatten voor operationeel niveau door hun uitwerking in concrete 
+implicaties. 
+Bron: <a href="https://www.noraonline.nl/wiki/Principes">https://www.noraonline.nl/wiki/Principes</a>
+</p></section><section id="inrichtingsprincipes-gemma"><h3 id="x6-5-inrichtingsprincipes-gemma"><span class="secno">6.5 </span>Inrichtingsprincipes GEMMA</h3><p>GEMMA kent 8 inrichtingsprincipes.
+Bron: <a href="https://www.vngrealisatie.nl/gemma">https://www.vngrealisatie.nl/gemma</a>
+</p></section><section id="eisen-aan-basisregistraties"><h3 id="x6-6-eisen-aan-basisregistraties"><span class="secno">6.6 </span>Eisen aan basisregistraties</h3><p>Er zijn 12 eisen aan basisregistraties waaraan een basisregistratie moet voldoen.
+Bron: <a href="https://www.noraonline.nl/images/noraonline/c/c0/Stelselarchitectuur_heden.pdf">https://www.noraonline.nl/images/noraonline/c/c0/Stelselarchitectuur_heden.pdf</a>
+</p></section><section id="x10-golden-rules-data"><h3 id="x6-7-10-golden-rules-data"><span class="secno">6.7 </span>10 golden rules data</h3><p>Deze 10 golden rules zijn tot stand gekomen vanuit de best-practices rondom data management.
+</p><table>
+<thead>
+<tr>
+<th>Regel</th>
+<th>Omschrijving</th>
+<th>Opmerkingen</th>
+<th>Data</th>
+<th>Functies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>Data is het hart van het systeem</td>
+<td>Data blijft jaren bewaard, applicaties bestaan hoogstens 15 jaar. We denken niet meer vanuit applicaties, maar vanuit de data zelf!</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>02</td>
+<td>Data wordt op één plek bijgehouden</td>
+<td>Er is maar 1 plek waar data wordt gecreëerd, gewijzigd en verwijderd (beëindigd). Dit is randvoorwaardelijk voor een "Single Version of the Truth"</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>03</td>
+<td>Dubbele opslag is niet erg, dubbel bijhouden wel</td>
+<td>Dubbel opslaan (bijvoorbeeld op een lokale kopie) kan soms nodig zijn. Het is ook helemaal niet erg, zolang de data read-only is, en je je realiseert dat je niet naar de allerlaatste versie kijkt. Dubbel bijhouden is wél erg want dan weet je niet meer "Wat is de waarheid?". Een lokale kopie is soms nodig om de beschikbaarheid van data te garanderen. Denk aan crisisorganisaties.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>04</td>
+<td>Dubbele opslag betekent synchroniseren!</td>
+<td>Dubbel opslaan vereist toepassing van spelregels. Als je dubbel opslaat, moet je vastleggen welke dataset de 'master' is, en welke dataset de 'slave'. Ook moet je bedenken hoe je synchroniseert. 1x per dag, 1x per uur, near-real-time, real-time. Vuistregel: Hoe actueler de kopie, hoe duurder de oplossing.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>05</td>
+<td>Data is zelf-loggend</td>
+<td>Alle transacties die worden gedaan met de data worden gelogd. Tijdstip plus wie (of wat) de data heeft gewijzigd. Hierdoor kan een wijziging triggers veroorzaken voor afnemers die in hun proces create/update/delete triggers nodig hebben. Loggen gebeurt in ieder geval niet via een bovenliggende applicatie. Dit is nodig voor een audit-trail.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>06</td>
+<td>Data is zelf-autoriserend</td>
+<td>De data zelf bepaalt wie (of wat) de data mag wijzigingen, en niet een bovenliggende applicatie. Applicaties worden vervangen, en kunnen worden omzeild.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>07</td>
+<td>Data is zelf-controlerend</td>
+<td>De data (definitie) bepaalt welke waarden attributen kunnen krijgen, en niet bovenliggende applicaties.    Applicaties worden vervangen, en kunnen worden omzeild.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>08</td>
+<td>Data is zelf-historiserend</td>
+<td>In de data wordt een THT-datumtijd ("tenminste houdbaar tot") vastgelegd. Data heeft een houdbaarheidsdatum.    Niet alle data hoeft even lang op dezelfde manier bewaard te blijven. Met een THT kun je kiezen voor geschikte opslag (qua toegang en opslagmedium (online/offline)) én kun je invulling geven aan  archiveringsbeleid.</td>
+<td>Ja</td>
+<td></td>
+</tr>
+<tr>
+<td>09</td>
+<td>Data wordt bijgehouden aan de bron</td>
+<td>De data wordt bijgehouden daar waar ze ontstaat. Achterliggende reden: aan de bron is de noodzaak en de mogelijkheid voor het hebben van goede kwalitatieve data het grootst.</td>
+<td>Ja</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Data en Informatie zijn twee verschillende dingen</td>
+<td>Informatie is "bewerkte data", met andere woorden, informatie is data waaraan kennis is toegevoegd.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section></section><section id="tof"><!--OddPage--><h2 id="x7-lijst-met-figuren"><span class="secno">7. </span>Lijst met figuren</h2><ul class="tof"><li class="tofline">
+    <a class="tocxref" href="#nora5laagsmodel">Figuur <span class="figno">1</span> <span class="fig-title">Het NORA 5 laagsmodel</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#soreenvoudig">Figuur <span class="figno">2</span> <span class="fig-title">De globale werking van de Samenhangende objectenregistratie</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#soreenvoudigprocesstappen">Figuur <span class="figno">3</span> <span class="fig-title">De processtappen in de globale werking van de Samenhangende objectenregistratie</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#scopearchitectuur rollen">Figuur <span class="figno">4</span> <span class="fig-title">Scope van de rollen</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#scopearchitectuur processen">Figuur <span class="figno">5</span> <span class="fig-title">Scope van de processen</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#scopearchitectuur interacties">Figuur <span class="figno">6</span> <span class="fig-title">Interacties</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#inrichtinglagen">Figuur <span class="figno">7</span> <span class="fig-title">Functionele lagen in de inrichting van de Objectenregistratie</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#inrichting-metabeheer">Figuur <span class="figno">8</span> <span class="fig-title">De capability-clusters op de laag Metabeheer
+</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#functiesuitvoering">Figuur <span class="figno">9</span> <span class="fig-title">De capabilities op de laag Uitvoering</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#functiesuitvoeringondersteuning">Figuur <span class="figno">10</span> <span class="fig-title">De capabilities op de laag Ondersteuning</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#metabeheer-inrichting-uitvoering">Figuur <span class="figno">11</span> <span class="fig-title">De capability-clusters op de lagen Metabeheer en Uitvoering en Ondersteuning</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#alles in een plaat">Figuur <span class="figno">12</span> <span class="fig-title">Alle capability-clusters in een plaat</span></a>
+  </li></ul></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

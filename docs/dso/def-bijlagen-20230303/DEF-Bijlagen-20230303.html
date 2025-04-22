@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico">
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/geen/style.css">
+<title>Bijlagen en op het besluit betrekking hebbende stukken bij omgevingsdocumenten</title>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/geen/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Bijlagen en op het besluit betrekking hebbende stukken bij omgevingsdocumenten",
+  "shortName": "Bijlagen",
+  "pubDomain": "dso",
+  "specStatus": "GN-DEF",
+  "specType": "AL",
+  "license": "cc-by-nd",
+  "latestVersion": [
+    "docs.geostandaarden.nl/dso/Bijlagen/"
+  ],
+  "publishDate": "2023-03-03",
+  "thisVersion": [
+    "docs.geostandaarden.nl/dso/def-al-Bijlagen-20230303/"
+  ],
+  "authors": [
+    {
+      "name": "Nienke Jansen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Nienke Jansen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/geen/base.css"></head><body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Bijlagen en op het besluit betrekking hebbende stukken bij omgevingsdocumenten</h1>
+    
+    <h2>
+      Geonovum Algemeen<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-03-03">03 maart 2023</time>
+    </h2>
+    <dl>
+      
+      
+      
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Nienke Jansen</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Nienke Jansen</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+        </p>
+    <hr title="Separator for header">
+  </div><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-09E00512"><bdi class="secno">1. </bdi>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#x2-163F1E92"><bdi class="secno">2. </bdi>Het verschil tussen bijlagen en op het besluit betrekking hebbende stukken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x2-1-111511C7"><bdi class="secno">2.1 </bdi>Besluit</a></li><li class="tocline"><a class="tocxref" href="#x2-2-1FDB3B3E"><bdi class="secno">2.2 </bdi>Regeling</a></li><li class="tocline"><a class="tocxref" href="#x2-3-7C03BE51"><bdi class="secno">2.3 </bdi>Bijlagen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x2-3-1-0A51C5A5"><bdi class="secno">2.3.1 </bdi>Besluit</a></li><li class="tocline"><a class="tocxref" href="#x2-3-2-60140E29"><bdi class="secno">2.3.2 </bdi>Regeling</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x2-4-16353AA1"><bdi class="secno">2.4 </bdi>Op het besluit betrekking hebbende stukken</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x3-3EC594DC"><bdi class="secno">3. </bdi>Openbaar maken en houden van bijlagen en op het besluit betrekking hebbende stukken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3-1-0478BCD2"><bdi class="secno">3.1 </bdi>Bijlagen bij besluit</a></li><li class="tocline"><a class="tocxref" href="#x3-2-2C4A74D6"><bdi class="secno">3.2 </bdi>Bijlagen bij regeling</a></li><li class="tocline"><a class="tocxref" href="#x3-3-47616A46"><bdi class="secno">3.3 </bdi>Op het besluit betrekking hebbende stukken</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x4-15637CE4"><bdi class="secno">4. </bdi>Achtergrond en juridische verantwoording</a></li></ol></nav><section id="09E00512" class="chapter"><h2 id="x1-09E00512"><bdi class="secno">1. </bdi>Inleiding</h2><p id="722F28DA">Deze notitie legt, voor het domein van de Omgevingswet en de toepassing van de STOP/TPOD-standaard, uit wat het verschil is tussen bijlagen bij het besluit, bijlagen bij de regeling en ‘op het besluit betrekking hebbende stukken’. Dat is het onderwerp van paragraaf 2. In paragraaf 3 wordt een aantal kenmerken ingevuld voor bijlagen en op het besluit betrekking hebbende stukken die met het openbaar maken van informatie te maken hebben. In paragraaf 4 tenslotte staat achtergrondinformatie en de juridische verantwoording.</p></section><section id="163F1E92" class="chapter"><h2 id="x2-163F1E92"><bdi class="secno">2. </bdi>Het verschil tussen bijlagen en op het besluit betrekking hebbende stukken</h2><p id="43633056">Bijlagen kunnen voorkomen bij het besluit en bij de regeling. Daarom begint deze paragraaf met een uitleg van wat de STOP/TPOD-standaard verstaat onder besluit en regeling. Daarna volgt uitleg over wat de standaard bedoelt met bijlagen, bij welke elementen bijlagen kunnen voorkomen en worden voorbeelden van die bijlagen gegeven. In 2.4 tenslotte wordt ingegaan op ‘op het besluit betrekking hebbende stukken’.</p><section id="111511C7" class="body"><h3 id="x2-1-111511C7"><bdi class="secno">2.1 </bdi>Besluit</h3><p id="2F0AD64E">Een besluit als bedoeld in de STOP/TPOD-standaard bevat de tekst die precies beschrijft hoe een bestuursorgaan een nieuwe regeling vaststelt of een bestaande regeling wijzigt, bepaalt om die regeling op een bepaald moment in werking te laten treden en die vaststelling of wijziging onderbouwt, met eventuele bijlagen. Het besluit bevat dus zowel de artikelen waarin het bestuursorgaan vastlegt te hebben besloten om een nieuwe regeling vast te stellen of een bestaande regeling te wijzigen, als de inhoud van die nieuwe regeling of de gewijzigde onderdelen van de bestaande regeling. Voorbeelden zijn: het besluit van de gemeenteraad om de wijziging van het omgevingsplan vast te stellen; het besluit van provinciale staten om de omgevingsvisie vast te stellen.</p></section><section id="1FDB3B3E" class="body"><h3 id="x2-2-1FDB3B3E"><bdi class="secno">2.2 </bdi>Regeling</h3><p id="24B89F8B">Een regeling als bedoeld in de STOP/TPOD-standaard bevat de juridische regels dan wel de beleidstekst of realisatietekst van een omgevingsdocument, met eventuele bijlagen en toelichting. Voorbeelden zijn: de regels van het omgevingsplan; de beleidstekst van de omgevingsvisie.</p></section><section id="7C03BE51" class="body"><h3 id="x2-3-7C03BE51"><bdi class="secno">2.3 </bdi>Bijlagen</h3><p id="627DC461">Een bijlage bevat informatie (tekst, tabellen, afbeeldingen etc.) die integraal deel uitmaakt van de tekst van het onderdeel van besluit of regeling waar de bijlage bij hoort, maar die om redenen van leesbaarheid, vormgeving, omvang e.d. niet in de tekst van dat onderdeel kan worden opgenomen. Dat de informatie uit de bijlage integraal deel uitmaakt van besluit of regeling betekent ook dat het bestuursorgaan die informatie vaststelt en door het nemen van het besluit tot de zijne maakt.</p><p id="0663D80E">De STOP/TPOD-standaard staat bij een aantal elementen bijlagen toe. De volgende twee subparagrafen geven aan bij welke elementen van besluit en regeling bijlagen zijn toegestaan en geven voorbeelden van die bijlagen.</p><section id="0A51C5A5" class="body"><h4 id="x2-3-1-0A51C5A5"><bdi class="secno">2.3.1 </bdi>Besluit</h4><p id="6E232127" class="space-after">De afbeelding<span class="noot">[1]<span class="noottekst">     In de afbeelding komt ook de Wijzigbijlage voor (nr 5). Dit is geen bijlage als bedoeld in deze notitie, maar een technische constructie waarin de volledige tekst van de initiële regeling staat, of de wijzigingen die het besluit in de geconsolideerde regeling aanbrengt. De Wijzigbijlage wordt in de rest van deze notitie niet besproken.<br>Mogelijk valt op dat in de afbeelding geen onderdeel nr 8 voorkomt. Dit is een onderdeel dat in de toekomst gaat vervallen en waarvan het gebruik nu al wordt afgeraden.<br></span></span> hierna toont het besluitmodel en laat zien bij welke elementen van het besluit bijlagen kunnen voorkomen, namelijk bij het besluit, bij de toelichting en bij de motivering:</p><figure id="fig-generatedID"><img src="media/image1.png" alt="" style="width: 62.49276704085175%;"><figcaption><a class="self-link" href="#fig-generatedID">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="4A4CF013">Bijlagen kunnen voorkomen bij:</p><ul><li><p id="7E17F379">de toelichting bij het besluit<br>Het element toelichting als onderdeel van het besluit (nr 7 in de afbeelding) is in de STOP/TPOD-standaard bedoeld voor het voorstel-document waarmee het dagelijks bestuur van gemeente, provincie of waterschap een onderbouwing geeft voor het voorgestelde besluit dat het aan het algemeen bestuur voorlegt. Als er een bijlage bij deze toelichting is, staat daarin tekst die integraal onderdeel is van die toelichting, dus in die toelichting thuishoort, maar daarvoor te omvangrijk is, of waarvan de vormgeving daarvoor te complex is. Een voorbeeld hiervan: In de toelichting wordt een korte opsomming gegeven van het aantal ingediende zienswijzen, waar ze over gaan en hoe voorgesteld wordt daar mee om te gaan. In de toelichting wordt verwezen naar de zienswijzennota die als bijlage is bijgevoegd. In de zienswijzennota-bijlage is ieder van de 200 ingediende zienswijzen samengevat en beantwoord.</p></li><li><p id="6728290B">de motivering van het besluit<br>Het element motivering als onderdeel van het besluit (nr 9 in de afbeelding) is in de STOP/TPOD-standaard bedoeld voor de deugdelijke motivering waarop het besluit ingevolge afdeling 3.7 Awb dient te berusten. Als er een bijlage is bij de motivering, staat daarin tekst die integraal onderdeel is van die motivering, dus in die motivering thuishoort, maar daarvoor te omvangrijk is, of waarvan de vormgeving daarvoor te complex is. Nog niet bekend is of van de mogelijkheid om een bijlage bij de motivering te voegen gebruik gemaakt gaat worden. Een voorbeeld hiervan: Het besluit tot wijziging van het omgevingsplan maakt de bouw van een nieuwe woonwijk mogelijk. In de motivering is beschreven dat daarvoor een keuze is gemaakt uit drie stedenbouwkundige ontwerpen; na zorgvuldige selectie is ontwerp 2 gekozen. In de motivering wordt verwezen naar een uitgebreide bijlage over het keuzeproces, met daarin een tabel waarin de drie ontwerpen</p></li><li><p id="122CE9DA">het besluit<br>Het besluit in de zin van de STOP/TPOD-standaard is het geheel van opschrift, aanhef, lichaam (met daarin de artikelen waarin het bestuursorgaan vastlegt dat het een regeling vaststelt of wijzigt), toelichting en motivering waaruit het besluit bestaat. Bij dit geheel kunnen bijlagen worden gevoegd (nr 6 in de afbeelding). Nog niet bekend is of gebruik gemaakt gaat worden van de mogelijkheid om een bijlage bij het besluit als geheel te voegen. Een voorbeeld hiervan: het projectbesluit van het waterschap behoeft goedkeuring van GS. Om duidelijk te maken dat GS het projectbesluit (geheel of gedeeltelijk) hebben goedgekeurd, kan het waterschap dat goedkeuringsbesluit als bijlage bij het eigen besluit bijvoegen. Ook zou de zienswijzennota die is genoemd als voorbeeld bij het vorige punt als bijlage bij het besluit kunnen worden gevoegd, in plaats van als bijlage bij de motivering.</p></li></ul></section><section id="60140E29" class="body"><h4 id="x2-3-2-60140E29"><bdi class="secno">2.3.2 </bdi>Regeling</h4><p id="52FA0F73" class="space-after">De afbeelding hierna toont het regelingmodel en laat zien bij welke elementen van de regeling bijlagen kunnen voorkomen, namelijk bij de regeling en bij de toelichting:</p><figure id="fig-generatedID-0"><img src="media/image2.png" alt="" style="width: 57.863673185973845%;"><figcaption><a class="self-link" href="#fig-generatedID-0">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title"></span></figcaption></figure><ul><li><p id="7C701D0C" class="space-after">de regeling<br>Het lichaam van de regeling bevat de juridische regels dan wel de beleidstekst van het omgevingsdocument. Als er een bijlage bij de regeling is (nr 3 in de afbeelding), dan staat daarin tekst die integraal onderdeel is van die juridische regels of beleidstekst, dus in die regels of beleidstekst zou moeten staan, maar daarvoor te omvangrijk is. Dit type bijlage komt veel voor. Voorbeelden van deze bijlagen zijn makkelijk te vinden, zoals:</p><ul><li><p id="4D4204B1">Artikel 1.1 Omgevingswet gaat over de begripsbepalingen. Er is een heel lange lijst begripsbepalingen. De begripsbepalingen zijn in een bijlage geplaatst; het artikel bevat alleen een verwijzing naar die bijlage.</p></li><li><p id="3DEF8A6C">Een aantal artikelen in de Omgevingsregeling stelt de norm dat de emissie per dierplaats van een aantal stoffen moet voldoen aan een emissiefactor die afhankelijk is van de diersoort en het toegepaste huisvestingssysteem. Er zijn heel veel verschillende soorten huisvestingssystemen en meerdere emissiefactoren. De grote tabel met die systemen en de emissiefactoren is in een bijlage geplaatst; de artikelen bevatten alleen de norm en een verwijzing naar de bijlage.</p></li></ul></li></ul><p id="299E29BA" style="margin-left: 7.3mm;">Bij Wro-instrumenten zoals bestemmingsplan, uitwerkingsplan en inpassingsplan komt dit type bijlage veelvuldig voor. In die context wordt het ook een bijlage genoemd. In de het InformatieModel Ruimtelijke Ordening vallen deze bijlagen onder de categorie ‘bijlage bij de regels’.</p><ul><li><p id="288E4240">de toelichting op de regeling<br>Het element toelichting als onderdeel van de regeling bevat de algemene toelichting op de hele regeling en/of de artikelsgewijze toelichting op de artikelen in de regeling. Als er een bijlage bij deze toelichting is, staat daarin tekst die integraal onderdeel is van die toelichting, dus in die algemene of artikelsgewijze toelichting zou moeten staan, maar daarvoor te omvangrijk is, of waarvan de vormgeving daarvoor te complex is. Dit type bijlage zal waarschijnlijk minder vaak voorkomen; voorbeelden ervan zijn moeilijker te vinden. Een voorbeeld zou kunnen zijn: In de algemene toelichting op een omgevingsplan is aangegeven dat de bebouwingsregels per gebiedstype verschillen. In de toelichting wordt verwezen naar een bijlage met daarin een toelichtend overzichtskaartje van de gemeente waarop de ligging van die gebiedstypen is aangegeven en per gebiedstype een kaartje en een tabel met bebouwingskarakteristieken.</p></li></ul></section></section><section id="16353AA1" class="body"><h3 id="x2-4-16353AA1"><bdi class="secno">2.4 </bdi>Op het besluit betrekking hebbende stukken</h3><p id="502BB96D">De op het besluit (of ontwerpbesluit) betrekking hebbende stukken zijn stukken die het bestuursorgaan gebruikt bij het komen tot en het motiveren van een besluit, maar niet vaststelt. Deze stukken maken niet integraal deel uit van het besluit of de motivering van of toelichting op het besluit. Tot de op het besluit betrekking hebbende stukken behoren rapportages van onderzoeken die zijn uitgevoerd ter onderbouwing van het besluit, zoals rapportages van uitgevoerd bodemonderzoek, akoestisch onderzoek, archeologisch onderzoek en het milieueffectrapport.</p><p id="38756B55" class="space-after">Een voorbeeld: Als de gemeenteraad het besluit neemt tot wijziging van het omgevingsplan ten behoeve van de transformatie van een bedrijventerrein in een woonwijk, stelt hij de wijziging van het omgevingsplan vast. In de motivering van het besluit beschrijft de raad hoe hij, na een afweging van alle relevante aspecten van de leefomgeving aan de hand van de onderzoeksrapportages, heeft geconcludeerd dat de ontwikkeling bijdraagt aan een evenwichtige toedeling van functies aan locaties. In de motivering worden de resultaten van de uitgevoerde onderzoeken samengevat. De onderzoeksrapportages worden in de motivering genoemd. Ze vormen er geen integraal onderdeel van, maar zijn op het besluit betrekking hebbende stukken. De gemeenteraad stelt deze stukken niet vast, maar betrekt ze bij het nemen van het besluit.</p><p id="06B00AFE">Bij Wro-instrumenten zoals bestemmingsplan, uitwerkingsplan en inpassingsplan komt dit type onderzoeksrapportage veelvuldig voor. Verwarring over of een stuk een bijlage of een op het besluit betrekking hebbend stuk is zal vooral worden veroorzaakt doordat dit soort stukken in die context een bijlage genoemd wordt. In het InformatieModel Ruimtelijke Ordening vallen deze bijlagen onder de categorie ‘bijlage bij de toelichting’.</p></section></section><section id="3EC594DC" class="chapter"><h2 id="x3-3EC594DC"><bdi class="secno">3. </bdi>Openbaar maken en houden van bijlagen en op het besluit betrekking hebbende stukken</h2><p id="62252B79">In deze paragraaf wordt aan de hand van een aantal kenmerken aangegeven hoe bijlagen en op het besluit betrekking hebbende stukken openbaar toegankelijk worden en zijn. Aangegeven wordt of en zo ja aan welke voorziening bijlagen worden aangeleverd, hoe lang ze bewaard moeten worden en door wie, of ze worden geconsolideerd, hoe ze openbaar gemaakt worden en waar ze te raadplegen zijn. Er voor die aspecten verschillen tussen bijlagen bij het besluit en bijlagen bij de regeling, daarom worden ze afzonderlijk beschreven.</p><section id="0478BCD2" class="body"><h3 id="x3-1-0478BCD2"><bdi class="secno">3.1 </bdi>Bijlagen bij besluit</h3><p id="0A144CAE">Voor de bijlagen bij toelichting bij het besluit, bijlagen bij motivering van het besluit, bijlagen bij het besluit worden de kenmerken als volgt ingevuld:</p><ul><li><p id="445ECC2C"><span style="color: #auto;">Aanleveren: aan LVBB, als onderdeel van de aanlevering van het besluit</span></p></li><li><p id="329BA8D4"><span style="color: #auto;">Eisen: aanleveren als Alleen bekend te maken Informatieobject, PDF/A-1a of PDF/A-2a, </span>LVBB stelt beperkingen aan bestandsgrootte</p></li><li><p id="4CFDC4F1"><span style="color: #auto;">Bewaren:</span></p></li><li><p id="51AA42C2"><span style="color: #auto;">door LVBB,</span> conform Bekendmakingswet en Besluit elektronische publicaties</p></li><li><p id="10A52D6B">door bevoegd gezag, conform Archiefwet</p></li><li><p id="0BCFEEA3"><span style="color: #auto;">Consolideren: nee</span><span style="color: #auto;"><sup><span class="noot">[2]<span class="noottekst">     Een besluit leidt tot het ontstaan van een geconsolideerde regeling (bij een initieel besluit) of tot het ontstaan van een nieuwe versie van de geconsolideerde regeling (bij een wijzigingsbesluit), maar het besluit zelf en de bijlagen bij besluit(onderdelen) worden niet geconsolideerd<br></span></span></sup></span></p></li><li><p id="430294BE"><span style="color: #auto;">Wijze van openbaar maken: in publicatieblad bevoegd gezag, als onderdeel van de bekendmaking/mededeling van het besluit</span></p></li><li><p id="0DBA441F"><span style="color: #auto;">Raadplegen:</span></p></li><li><p id="0C05C9B1">overheid.nl: via www.officielebekendmakingen.nl</p></li><li><p id="55174FC9">DSO-LV: vanuit het omgevingsdocument in DSO-viewer, via een link in het kenmerkenscherm naar het besluit op overheid.nl</p></li></ul></section><section id="2C4A74D6" class="body"><h3 id="x3-2-2C4A74D6"><bdi class="secno">3.2 </bdi>Bijlagen bij regeling</h3><p id="0A89D469">Voor de bijlagen bij het lichaam van de regeling en bijlagen bij de toelichting op de regeling worden de kenmerken als volgt ingevuld:</p><ul><li><p id="64A67A96">Aanleveren: aan LVBB, via de aanlevering van het besluit waarmee de regeling wordt ingesteld of gewijzigd, de LVBB levert door aan DSO-LV</p></li><li><p id="23C8B269"><span style="color: #auto;">Eisen: aanleveren als Te consolideren Informatieobject, PDF/A-1a of PDF/A-2a, </span>LVBB stelt beperkingen aan bestandsgrootte</p></li><li><p id="6E7EF43E">Bewaren:</p></li><li><p id="176CEB6F"><span style="color: #auto;">door LVBB,</span> conform Bekendmakingswet en Besluit elektronische publicaties</p></li><li><p id="4890AD02">door bevoegd gezag, conform Archiefwet</p></li><li><p id="2E172F8C">Consolideren: ja</p></li><li><p id="4A87D890">Wijze van openbaar maken: publicatie van de volledige inhoud van de regeling (bij bijlagen in PDF-formaat via link naar het informatieobject) in de nationale en lokale wettenbanken op overheid.nl</p></li><li><p id="08C1D4B0">Raadplegen:</p></li><li><p id="0A961182">overheid.nl: in de nationale en lokale wettenbanken</p></li><li><p id="150F8569">DSO-LV: vanuit het omgevingsdocument in DSO-viewer, tabblad Bijlagen (van een bijlage in STOP-XML staat de volledige inhoud van de bijlage op dat tabblad, bij bijlagen in PDF-formaat is de inhoud van de bijlage te benaderen via een klik op de identificatie-link van het PDF-informatieobject)</p></li></ul></section><section id="47616A46" class="body"><h3 id="x3-3-47616A46"><bdi class="secno">3.3 </bdi>Op het besluit betrekking hebbende stukken</h3><p id="51F505BC">Voor de op het besluit betrekking hebbende stukken worden de kenmerken als volgt ingevuld:</p><ul><li><p id="1FD29965">Aanleveren:</p></li><li><p id="09F1DFC0">definitieve oplossing: Onderzocht wordt of in de toekomst voor de elektronische terinzagelegging van stukken die betrekking hebben op het (ontwerp)besluit van omgevingsdocumenten gebruik gemaakt kan worden van een nog te ontwikkelen centrale voorziening voor het ontsluiten van dergelijke stukken in het kader van de Wet open overheid en de Bekendmakingswet.</p></li><li><p id="590CE7FC">Workaround/tijdelijke oplossing: Zolang er geen centrale voorziening is voor de elektronische terinzagelegging van op het (ontwerp)besluit betrekking hebbende stukken, past het bevoegd gezag naar keuze één van de volgende methoden toe:</p><ul><li><p id="5F2C98B8">het ontsluit de betreffende stukken op een zelf te bepalen elektronische wijze, bijvoorbeeld via de eigen website<br>Eisen: geen, voor overheid is gebruikelijk om te voldoen aan <span style="color: #auto;">PDF/A-1a of PDF/A-2a</span></p></li><li><p id="1F218884">het levert de betreffende stukken aan de LVBB aan als onderdeel van het Besluit conform STOP. <br><span style="color: #auto;">Eisen: aanleveren als Alleen bekend te maken Informatieobject, PDF/A-1a of PDF/A-2a, </span>LVBB stelt beperkingen aan bestandsgrootte</p></li></ul></li><li><p id="647EF988">Bewaren: door bevoegd gezag, conform Archiefwet</p></li><li><p id="7637BE7B">Consolideren: nee</p></li><li><p id="3F9836DE">Wijze van openbaar maken:</p></li><li><p id="09524D78">definitieve oplossing, indien gerealiseerd: via centrale voorziening voor de elektronische terinzagelegging</p></li><li><p id="3572A72C">workaround/tijdelijke oplossing: naar keuze van het bevoegd gezag:</p><ul><li><p id="0A840DC4">door terinzagelegging op een door het bevoegd gezag te bepalen elektronische wijze, bijvoorbeeld via de eigen website</p></li><li><p id="4D4002DF"><span style="color: #auto;">in publicatieblad bevoegd gezag, als onderdeel van de bekendmaking/mededeling van het besluit</span> (bijlage bij het besluit) of in de nationale en lokale wettenbanken op overheid.nl (bijlage bij de regeling).</p></li></ul></li><li><p id="56F00890">Raadplegen: in lokale of centrale voorziening, via links die het bevoegd gezag in de besluitonderdelen heeft gemaakt</p></li><li><p id="76E00BD7">definitieve oplossing, indien gerealiseerd: in centrale voorziening voor de elektronische terinzagelegging, via links die het bevoegd gezag in de besluitonderdelen heeft gemaakt</p></li><li><p id="0C332C5F">workaround/tijdelijke oplossing: naar keuze van het bevoegd gezag:</p><ul><li><p id="2239F654">in door het bevoegd gezag ingerichte voorziening op het internet (bijvoorbeeld de eigen website), via links die het bevoegd gezag in de besluitonderdelen heeft gemaakt</p></li><li><p id="41699B86" class="space-after"><span style="color: #auto;">in publicatieblad bevoegd gezag, als onderdeel van de bekendmaking/mededeling van het besluit</span> (bijlage bij het besluit) of in de nationale en lokale wettenbanken op overheid.nl (bijlage bij de regeling).</p></li></ul></li></ul><p id="1029EFB7">Wanneer het bevoegd gezag zelf de stukken op elektronische wijze ontsluit, neemt het in het onderdeel Motivering dan wel in het onderdeel Toelichting van het Besluit een link op naar de webpagina waar die stukken zijn ontsloten, en/of een link naar het betreffende stuk op die webpagina. Aanbevolen wordt om de terinzagelegging op elektronische wijze van de op het ontwerpbesluit betrekking hebbende stukken en de op het (definitieve) besluit betrekking hebbende stukken in ieder geval te laten voortduren totdat de volledige procedure is afgerond.</p><p id="378B5AEA">Wanneer het bevoegd gezag de stukken opneemt als onderdeel van het Besluit, neemt het ze op als Bijlagen bij de Besluit-onderdelen Motivering dan wel Toelichting.</p></section></section><section id="15637CE4" class="chapter"><h2 id="x4-15637CE4"><bdi class="secno">4. </bdi>Achtergrond en juridische verantwoording</h2><p id="5E994C13">Op de voorbereiding van omgevingsplan, omgevingsverordening, waterschapsverordening, omgevingsvisie, programma, projectbesluit, Natura 2000-aanwijzingsbesluit en Natura 2000-toegangsbeperkingsbesluit is afdeling 3.4 van de Algemene wet bestuursrecht (Awb) van toepassing. Het bestuursorgaan legt het ontwerp van het te nemen besluit, met de daarop betrekking hebbende stukken die redelijkerwijs nodig zijn voor een beoordeling van het ontwerp, ter inzage, met uitzondering van stukken waarvoor bij wettelijk voorschrift mededeling op de in artikel 12 van de Bekendmakingswet (Bmw) bepaalde wijze is voorgeschreven (art. 3:11 lid 1 Awb). Mededeling op de in artikel 12 Bmw bepaalde wijze houdt in de publicatie van de volledige inhoud van het besluit in het publicatieblad van het bevoegd gezag. Voor omgevingsplan, omgevingsverordening, waterschapsverordening, omgevingsvisie en projectbesluit is in het Omgevingsbesluit bepaald dat van het ontwerp mededeling gedaan moet worden in het publicatieblad van het bevoegd gezag. Voor programma, Natura 2000-aanwijzingsbesluit en Natura 2000-toegangsbeperkingsbesluit geldt die verplichting niet en kan worden volstaan met terinzagelegging van het ontwerpbesluit en de daarop betrekking hebbende stukken en een kennisgeving van die terinzagelegging in het publicatieblad. Het is wel mogelijk om ook in die gevallen het ontwerpbesluit in het publicatieblad te publiceren. Dat wordt sterk aanbevolen omdat het alleen op die manier mogelijk is om het ontwerp in de viewer van DSO-LV te raadplegen.</p><p id="15759067">Omgevingsplan, omgevingsverordening, waterschapsverordening, omgevingsvisie, programma, projectbesluit, AMvB, ministeriële regeling, Natura 2000-aanwijzingsbesluit en Natura 2000-toegangsbeperkingsbesluit treden niet in werking voordat ze bekendgemaakt zijn (artt. 8 Bmw en 3:40 Awb). De bekendmaking van deze omgevingsdocumenten geschiedt door plaatsing in de Staatscourant of het publicatieblad van het bevoegd gezag (artt. 5 en 6 Bmw en 3:42 Awb).</p><p id="6E9E9FB7" class="space-after">Gelijktijdig met de bekendmaking van omgevingsplan, programma, projectbesluit en Natura 2000-aanwijzingsbesluit moet kennis worden gegeven van de terinzagelegging van de op de zaak betrekking hebbende stukken, de stukken liggen ter inzage totdat de beroepstermijn is verstreken (artikel 3:44 lid 2 en lid 1 onderdeel a Awb). Voorafgaand aan de terinzagelegging geeft het bestuursorgaan in het publicatieblad kennis van (de terinzagelegging van) deze stukken (art. 3:12 lid 1 Awb, van toepassing verklaard in art. 3:44 lid 1 Awb). De terinzagelegging waarop een mededeling of kennisgeving betrekking heeft, geschiedt zowel op elektronische wijze als op een door het bestuursorgaan aan te wijzen locatie en vindt niet in het publicatieblad van het bevoegd gezag plaats (art. 13 leden 1 en 3 Bmw).</p><p id="4AE01080" class="space-after">Dit leidt tot de conclusie 1) dat er onderscheid is tussen het (ontwerp)besluit (met inbegrip van de daar integraal deel van uitmakende bijlagen) en op het besluit betrekking hebbende stukken en 2) dat de inhoud van het (ontwerp)besluit inclusief bijlagen in het publicatieblad moet worden gepubliceerd en de op het ontwerpbesluit betrekking hebbende stukken ter inzage gelegd moeten worden; de elektronische terinzagelegging mag niet in het publicatieblad plaatsvinden.</p><p id="5F36DAC1">Over de op het (ontwerp)besluit betrekking hebbende stukken bepaalt de Awb het volgende:</p><ul><li><p id="023222FB">De op het ontwerpbesluit betrekking hebbende stukken liggen ter inzage gedurende de termijn van zes weken voor het naar voren brengen van zienswijzen, die begint op de dag waarop het ontwerp ter inzage is gelegd en daarvan kennis is gegeven (artikelen 3:11 en 3:16 Awb).</p></li><li><p id="16903B6F" class="space-after">De op het definitieve besluit betrekking hebbende stukken liggen ter inzage totdat de beroepstermijn van zes weken is verstreken (artikelen 3:44 en 6:7 Awb). De beroepstermijn begint op de dag na die waarop het besluit op de voorgeschreven wijze is bekendgemaakt (of, in het geval van een besluit dat aan goedkeuring is onderworpen, op de dag na die waarop het goedkeuringsbesluit op de voorgeschreven wijze is bekendgemaakt) (artikel 6:8 Awb).</p></li></ul><p id="3644BECE">Uitgangspunt van de wetgever is dus dat de op het (ontwerp)besluit betrekking hebbende stukken gedurende de zes weken van de zienswijzen- respectievelijk beroepstermijn ter inzage liggen. Het kan uiteraard voorkomen dat betrokkenen ook na die termijnen kennis willen nemen van deze stukken. Als de stukken dan niet meer elektronisch worden ontsloten, zou een betrokkene het bestuursorgaan moeten verzoeken om toezending van die stukken, of naar een fysieke locatie toe moeten om inzage te krijgen in die stukken. Daarom wordt aanbevolen om de terinzagelegging op elektronische wijze van de op het ontwerpbesluit betrekking hebbende stukken en de op het (definitieve) besluit betrekking hebbende stukken in ieder geval te laten voortduren totdat de volledige procedure is afgerond. Bij een besluit waartegen geen beroep openstaat is dat totdat het besluit in werking is getreden. Bij een besluit waartegen wel beroep openstaat is dat in ieder geval tot het einde van de beroepstermijn en, als beroep tegen het besluit is ingesteld, totdat de Afdeling bestuursrechtspraak van de Raad van State uitspraak heeft gedaan op de beroepen.</p><p id="2D74B133" class="space-after">Naast de verplichting om op het (ontwerp)besluit betrekking hebbende stukken ter inzage te leggen, gelden ook de verplichtingen uit de Archiefwet. Op grond van deze wet zijn overheidsorganen verplicht de onder hen berustende archiefbescheiden te bewaren en om ze na afloop van de voor het betreffende stuk geldende bewaartermijn te vernietigen.</p></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Algemeen - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico">
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/ro/style.css">
+<title>Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012) 2.1.0</title>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://www.geonovum.nl/geo-standaarden/",
+  "postProcess": [
+    null
+  ],
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/ro/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012) versie 2.1.0",
+  "shortName": "stri",
+  "pubDomain": "ro",
+  "specStatus": "def",
+  "specType": "st",
+  "license": "cc-by-nd",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/ro/stri/"
+  ],
+  "publishDate": "2023-11-29",
+  "publishVersion": "2.1.0",
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/ro/def-st-stri-20231129/"
+  ],
+  "previousPublishDate": "2014-10-06",
+  "previousPublishVersion": "2.0",
+  "prevVersion": [
+    "https://ro-standaarden.geonovum.nl/2012/STRI/2.0/STRI2012-v2.0.pdf"
+  ],
+  "previousMaturity": "def",
+  "github": "https://github.com/geonovum/stri/",
+  "issueBase": "ro-standaarden@geonovum.nl",
+  "authors": [
+    {
+      "name": "Arie Duindam",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/ro/base.css"></head><body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012) 2.1.0</h1>
+    
+    <h2>
+      Geonovum Standaard<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-11-29">29 november 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/ro/def-st-stri-20231129/">https://docs.geostandaarden.nl/ro/def-st-stri-20231129/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/ro/stri/">https://docs.geostandaarden.nl/ro/stri/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/stri/">https://geonovum.github.io/stri/</a></dd>
+      
+      
+      
+      <dt>Vorige versie:</dt><dd><a href="https://ro-standaarden.geonovum.nl/2012/STRI/2.0/STRI2012-v2.0.pdf">https://ro-standaarden.geonovum.nl/2012/STRI/2.0/STRI2012-v2.0.pdf</a></dd>
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Arie Duindam</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/geonovum/stri/">GitHub geonovum/stri</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/stri/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/stri/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/stri/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+        </p>
+    <hr title="Separator for header">
+  </div><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#647D7CCC"><bdi class="secno">1. </bdi>Inleiding op de STRI2012</a></li><li class="tocline"><a class="tocxref" href="#647D7CD7"><bdi class="secno">2. </bdi>Onderdelen van de ruimtelijke instrumenten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#647D7CD9"><bdi class="secno">2.1 </bdi>Beschikbaar stellen van bronbestanden</a></li><li class="tocline"><a class="tocxref" href="#647D7CE0"><bdi class="secno">2.2 </bdi>Beschikbaar stellen met gebruikmaking van objectgerichte planteksten</a></li><li class="tocline"><a class="tocxref" href="#647D7D0F"><bdi class="secno">2.3 </bdi>Beschikbaar stellen zonder gebruikmaking van objectgerichte planteksten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#647D7D66"><bdi class="secno">3. </bdi>Bestandstype</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#647D7D68"><bdi class="secno">3.1 </bdi>Bestandsextensies en toegestane formaten</a></li><li class="tocline"><a class="tocxref" href="#647D7D97"><bdi class="secno">3.2 </bdi>Gebruik van HTML en XHTML</a></li></ol></li><li class="tocline"><a class="tocxref" href="#647D7DA1"><bdi class="secno">4. </bdi>Identificatienummer en bestandsnaam</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#647D7DA3"><bdi class="secno">4.1 </bdi>Identificatienummer</a></li><li class="tocline"><a class="tocxref" href="#4036FA61"><bdi class="secno">4.2 </bdi>Bestandsnaam vereisten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#647D7DE7"><bdi class="secno">5. </bdi>Beschikbaar stellen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#42F69F15"><bdi class="secno">5.1 </bdi>Eisen aan de beschikbaarstelling</a></li><li class="tocline"><a class="tocxref" href="#1A10E1C7"><bdi class="secno">5.2 </bdi>Opbouw Manifest</a></li><li class="tocline"><a class="tocxref" href="#293B3DB0"><bdi class="secno">5.3 </bdi>Opbouw Geleideformulier</a></li><li class="tocline"><a class="tocxref" href="#5EBB12FD"><bdi class="secno">5.4 </bdi>Wijzigen reeds eerder gepubliceerde plannen</a></li><li class="tocline"><a class="tocxref" href="#4FC40025"><bdi class="secno">5.5 </bdi>Aanvullende specificaties</a></li></ol></li><li class="tocline"><a class="tocxref" href="#1CDA4685"><bdi class="secno">6. </bdi>Authenticiteitskenmerken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#717AB549"><bdi class="secno">6.1 </bdi>Waarmerken</a></li><li class="tocline"><a class="tocxref" href="#789E64F8"><bdi class="secno">6.2 </bdi>Authenticiteitskenmerken van een individueel instrument</a></li><li class="tocline"><a class="tocxref" href="#647D7F2D"><bdi class="secno">6.3 </bdi>Authenticiteitskenmerken van het Manifest</a></li></ol></li><li class="tocline"><a class="tocxref" href="#647D7F37"><bdi class="secno">7. </bdi>Toegankelijkheid en raadpleegbaarheid</a></li></ol></nav><section data-type="markdown" id="inleiding-op-de-stri2012"><h2 id="647D7CCC"><bdi class="secno">1. </bdi>Inleiding op de STRI2012</h2><p>In dit inleidende hoofdstuk is het kader gegeven waarbinnen de Standaard Toegankelijkheid Ruimtelijk Instrumenten gebruikt wordt.</p>
+<p>In de <a href="http://wetten.overheid.nl/BWBR0020449" target="_blank">Wet ruimtelijke ordening</a> (Wro) en het <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening</a> (Bro) is vastgelegd dat planologische visies, plannen, besluiten, verordeningen, algemene maatregelen van bestuur en onderliggende ministeriële regelingen door de bronhouder digitaal vervaardigd en op elektronische wijze beschikbaar gesteld moeten worden. Daarnaast is ook in de <a href="http://wetten.overheid.nl/BWBR0024779" target="_blank">Wet algemene bepalingen omgevingsrecht</a> (Wabo) een verplichte elektronische beschikbaarstelling opgenomen voor sommige gevallen. Om dit mogelijk te maken zijn de RO Standaarden ontwikkeld. De voorliggende Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012) is één van de standaarden uit dit samenhangende pakket. De Wro instrumenten, Wabo instrumenten waar deze standaard betrekking op heeft, worden hierna ruimtelijke instrumenten genoemd.</p>
+<p>Deze standaard is nodig om drie redenen:</p>
+<ul><li>Waarborgen van de bruikbaarheid en interoperabiliteit van de ruimtelijke instrumenten door middel van het vaststellen van technische vormvereisten;</li>
+<li>Waarborgen van de vindbaarheid en raadpleegbaarheid van de ruimtelijke instrumenten door middel van het vaststellen van regels rondom de elektronische beschikbaarstelling;</li>
+<li>Waarborgen van de rechtszekerheid door middel van het vaststellen van vereisten rondom integriteit, authenticiteit en volledigheid van de ruimtelijke instrumenten.</li>
+</ul></section><section data-type="markdown" id="onderdelen-van-de-ruimtelijke-instrumenten"><h2 id="647D7CD7"><bdi class="secno">2. </bdi>Onderdelen van de ruimtelijke instrumenten</h2><p>Ieder ruimtelijk instrument is opgebouwd uit een samenhangende set onderdelen. Ieder onderdeel bestaat uit één of meerdere bronbestanden. In dit hoofdstuk worden eisen gesteld aan de mogelijke samenstelling van onderdelen en bronbestanden.</p>
+<section id="beschikbaar-stellen-van-bronbestanden"><h3 id="647D7CD9"><bdi class="secno">2.1 </bdi>Beschikbaar stellen van bronbestanden</h3><p>Ieder ruimtelijk instrument is opgebouwd uit een samenhangende set bronbestanden. Voor verschillende typen instrumenten is dit een andere set. Als er gebruik wordt gemaakt van objectgerichte planteksten ontstaat een andere set bronbestanden dan wanneer de teksten zonder gebruikmaking van objectgerichte planteksten beschikbaar worden gesteld. De vereiste bronbestanden per instrument zijn gegeven in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a>. Deze tabellen zijn limitatief. Een ruimtelijk instrument bestaat alleen uit de genoemde verplichte en optionele bronbestanden.</p>
+<p>Burgemeester en wethouders, gedeputeerde staten en de verantwoordelijke minister of ministers (hierna aangeduid als bronhouder) stellen de geautoriseerde bronbestanden beschikbaar aan een ieder. Bij iedere beschikbaarstelling wordt gekozen uit één van de volgende twee opties:<br>
+Optie 1 : beschikbaar stellen <i>met</i> gebruikmaking van IMROPT2012, zie paragraaf <a href="#647D7CE0">2.2</a>;<br>
+Optie 2 : beschikbaar stellen zonder gebruikmaking van IMROPT2012, zie paragraaf <a href="#647D7D0F">2.3</a>.<br></p>
+</section><section id="beschikbaar-stellen-met-gebruikmaking-van-objectgerichte-planteksten"><h3 id="647D7CE0"><bdi class="secno">2.2 </bdi>Beschikbaar stellen met gebruikmaking van objectgerichte planteksten</h3><p>In deze optie worden er objectgerichte planteksten beschikbaar gesteld conform het <a href="https://docs.geostandaarden.nl/ro/imropt" target="_blank"> Informatiemodel Ruimtelijke Ordening Planteksten (IMROPT2012)</a>. Dit betekent dat in ieder geval de regels, de toelichting en/of het beleids-/besluitdocument beschikbaar worden gesteld in XML formaat. Bijlagen kunnen ofwel in dit zelfde XML formaat beschikbaar worden gesteld, ofwel in separate bronbestanden. Bij gebruikmaking van objectgerichte planteksten is <a href="#T001">Tabel 1</a> van toepassing.</p>
+<table style="width: 100%;" id="T001" class="simple"><caption>Tabel 1 Bronbestanden indien er WEL gebruik wordt gemaakt van objectgerichte planteksten</caption>
+<colgroup><col id="col1" style="width: 29.51312593963224%;">
+<col id="col2" style="width: 21.31375043367642%;">
+<col id="col3" style="width: 21.302185729154623%;">
+<col id="col4" style="width: 27.87093789753672%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Onderdeel van het ruimtelijk instrument<br>
+</th>
+<th align="left">Naamconventie 
+(excl. extensie)<br>
+</th>
+<th align="left">Bestandstype<br>
+</th>
+<th align="center">Multipliciteit<br>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td align="left">IMRO<br>
+</td>
+<td align="left"> [idn]<br>
+</td>
+<td align="left">GML<br>
+</td>
+<td align="center">1<br>
+</td>
+</tr>
+<tr><td align="left">Planteksten<br>
+</td>
+<td align="left">pt_[idn]<br>
+</td>
+<td align="left">XML<br>
+</td>
+<td align="center">1<br>
+</td>
+</tr>
+<tr><td align="left">Vaststellingsbesluit<br>
+</td>
+<td align="left">vb_[idn]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center">0..1<br>
+</td>
+</tr>
+<tr><td align="left">Bijlage<br>
+</td>
+<td align="left"> b_[idn]_[xxx]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center">0..*<br>
+</td>
+</tr>
+<tr><td align="left">Illustratie<br>
+</td>
+<td align="left"> i_[idn]_[xxx]<br>
+</td>
+<td align="left">JPEG, PNG of PDF<br>
+</td>
+<td align="center">0..*<br>
+</td>
+</tr>
+<tr><td align="left">Geleideformulier<br>
+</td>
+<td align="left"> g_[idn]<br>
+</td>
+<td align="left">XML<br>
+</td>
+<td align="center">1<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+</section><section id="beschikbaar-stellen-zonder-gebruikmaking-van-objectgerichte-planteksten"><h3 id="647D7D0F"><bdi class="secno">2.3 </bdi>Beschikbaar stellen zonder gebruikmaking van objectgerichte planteksten</h3><p>In deze optie worden de planteksten niet objectgericht beschikbaar gesteld. Er wordt derhalve geen gebruik gemaakt van IMROPT2012. Dit betekent dat de plan- of besluitregels beschikbaar worden gesteld in HTML of XHTML formaat en de toelichting en/of het beleids-/besluitdocument in HTML, XHTML of PDF formaat. In dit geval is <a href="#T002">Tabel 2</a> van toepassing.</p>
+<table style="width: 100%;" id="T002" class="simple"><caption>Tabel 2 Bronbestanden indien er GEEN gebruik wordt gemaakt van objectgerichte planteksten</caption>
+<colgroup><col id="col1" style="width: 25.04623208506704%;">
+<col id="col2" style="width: 25%;">
+<col id="col3" style="width: 19.995376791493296%;">
+<col id="col4" style="width: 9.997688395746648%;">
+<col id="col5" style="width: 9.997688395746648%;">
+<col id="col6" style="width: 9.96301433194637%;">
+</colgroup>
+<thead valign="top"><tr><th align="left" colspan="6">Plan : bestemmingsplan, inpassingsplan, rijksbestemmingsplan, wijzigingsplan, uitwerkingsplan
+
+<p>Besluit : aanwijzingsbesluit, beheersverordening, amvb, ministeriële regeling, provinciale verordening, reactieve aanwijzing, voorbereidingsbesluit, omgevingsvergunning, exploitatieplan, gerechtelijke uitspraak</p>
+<p>Visie : structuurvisie</p>
+</th>
+</tr>
+<tr><th align="left" rowspan="2">Onderdeel van het ruimtelijk instrument<br>
+</th>
+<th align="left" rowspan="2">Naamconventie (excl. extensie)<br>
+</th>
+<th align="left" rowspan="2">Bestandstype<br>
+</th>
+<th align="left" colspan="3">Multipliciteit<br>
+</th>
+</tr>
+<tr><th align="left">Plan<br>
+</th>
+<th align="left">Besluit<br>
+</th>
+<th align="left">Visie<br>
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left">IMRO<br>
+</td>
+<td align="left"> [idn]<br>
+</td>
+<td align="left">GML<br>
+</td>
+<td align="center" colspan="3">1<br>
+</td>
+</tr>
+<tr><td align="left">Regels<br>
+</td>
+<td align="left"> r_[idn]<br>
+</td>
+<td align="left">HTML of XHTML<br>
+</td>
+<td align="center">1<br>
+</td>
+<td align="center">0..1<br>
+</td>
+<td align="center">0<br>
+</td>
+</tr>
+<tr><td align="left">Beleids-/Besluitdocument<br>
+</td>
+<td align="left"> d_[idn]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center">0<br>
+</td>
+<td align="center">0..1<br>
+</td>
+<td align="center">1<br>
+</td>
+</tr>
+<tr><td align="left">Toelichting<br>
+</td>
+<td align="left"> t_[idn]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center">1<br>
+</td>
+<td align="center">0..1<br>
+</td>
+<td align="center">0..1<br>
+</td>
+</tr>
+<tr><td align="left">Vaststellingsbesluit<br>
+</td>
+<td align="left">vb_[idn]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center" colspan="3">0..1<br>
+</td>
+</tr>
+<tr><td align="left">Bijlage<br>
+</td>
+<td align="left">b_[idn]_[xxx]<br>
+</td>
+<td align="left">HTML, XHTML of PDF<br>
+</td>
+<td align="center" colspan="3">0..*<br>
+</td>
+</tr>
+<tr><td align="left">Illustratie<br>
+</td>
+<td align="left">i_[idn]_[xxx]<br>
+</td>
+<td align="left">JPEG, PNG of PDF<br>
+</td>
+<td align="center" colspan="3">0..*<br>
+</td>
+</tr>
+<tr><td align="left">Geleideformulier<br>
+</td>
+<td align="left">g_[idn]<br>
+</td>
+<td align="left">XML<br>
+</td>
+<td align="center" colspan="3">1<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Verklaring bij <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a>:</p>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"><i>Bestandstype</i></div>
+<div style="flex: 0 1 80%">bestandstype van het onderdeel; voor exacte bestandsformaten zie paragraaf <a href="#4036FA61">4.2</a>;</div>
+</div>
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"><i>[idn]</i></div>
+<div style="flex: 0 1 80%">identificatienummer van het ruimtelijk instrument, zie paragraaf <a href="#647D7DA3">4.1</a>;</div>
+</div>
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"><i>[xxx]</i></div>
+<div style="flex: 0 1 80%">tekstuele extensie als onderdeel van de bestandsnaam, zie paragraaf <a href="#4036FA61">4.2</a>;</div>
+</div>
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"><i>Multipliciteit</i></div>
+<div style="flex: 0 1 10%">1</div>
+<div style="flex: 0 1 70%">het onderdeel komt altijd precies 1 keer voor en is daarmee dus verplicht;</div>
+</div>
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"></div>
+<div style="flex: 0 1 10%">0..1</div>
+<div style="flex: 0 1 70%">het onderdeel komt 0 of 1 keer voor en is dus optioneel;</div>
+</div>
+<div style="display: flex; flex-direction: row">
+<div style="flex: 0 1 20%"></div>
+<div style="flex: 0 1 10%">0..*</div>
+<div style="flex: 0 1 70%">het onderdeel komt 0 of meer keer voor en is dus optioneel.</div>
+</div>
+</div>
+
+<p>De in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a> gespecificeerde optionele onderdelen kunnen onder voorwaarde verplicht zijn. In het <a href="https://docs.geostandaarden.nl/ro/imro" target="_blank"> Informatiemodel Ruimtelijke Ordening Planteksten (IMRO2012)</a> wordt nader aangegeven wanneer dit het geval is.<br></p>
+</section></section><section data-type="markdown" id="bestandstype"><h2 id="647D7D66"><bdi class="secno">3. </bdi>Bestandstype</h2><p>In dit hoofdstuk is aangegeven welke bestandstypen moeten worden gehanteerd. Tevens worden er in dit hoofdstuk nadere regels gesteld aan het gebruik van HTML en XHTML.</p>
+<section id="bestandsextensies-en-toegestane-formaten"><h3 id="647D7D68"><bdi class="secno">3.1 </bdi>Bestandsextensies en toegestane formaten</h3><p>Voor ieder onderdeel worden in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a> eisen gesteld aan de mogelijke bestandstypen. De bestandstypes met toegestane extensies en MIME types worden gegeven in <a href="#T003">Tabel 3</a>.<br></p>
+<table style="width: 100%;" id="T003" class="simple"><caption>Tabel 3 Toegestane extensies en MIME types</caption>
+<colgroup><col id="col1" style="width: 24.075358298659268%;">
+<col id="col2" style="width: 33.33333333333333%;">
+<col id="col3" style="width: 42.5913083680074%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Bestandstype<br>
+</th>
+<th align="left">Extensie<br>
+</th>
+<th align="left">MIME type<br>
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left">XML<br>
+</td>
+<td align="left">.xml<br>
+</td>
+<td align="left">text/xml<br>
+</td>
+</tr>
+<tr><td align="left">GML<br>
+</td>
+<td align="left">.gml<br>
+</td>
+<td align="left">text/xml<br>
+</td>
+</tr>
+<tr><td align="left">HTML<br>
+</td>
+<td align="left">.htm, .html<br>
+</td>
+<td align="left">text/html<br>
+</td>
+</tr>
+<tr><td align="left">XHTML<br>
+</td>
+<td align="left">.htm, .html, .xhtml<br>
+</td>
+<td align="left">application/xhtml+xml<br>
+</td>
+</tr>
+<tr><td align="left">PDF<br>
+</td>
+<td align="left">.pdf<br>
+</td>
+<td align="left">application/pdf<br>
+</td>
+</tr>
+<tr><td align="left">JPEG<br>
+</td>
+<td align="left">.jpeg, .jpg<br>
+</td>
+<td align="left">image/jpeg<br>
+</td>
+</tr>
+<tr><td align="left">PNG<br>
+</td>
+<td align="left">.png<br>
+</td>
+<td align="left">image/png <br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Ten gevolge van extern beleid zijn er voor ieder van de in <a href="#T003">Tabel 3</a> genoemde bestandstypes veelal aanvullende specificaties van toepassing met betrekking tot de exact toegestane bestandsformaten. De specificaties zijn niet opgenomen in deze standaard, omdat deze aan wijzigingen onderhevig zijn die een andere dynamiek kunnen hebben dan de voorliggende standaard.<br></p>
+</section><section id="gebruik-van-html-en-xhtml"><h3 id="647D7D97"><bdi class="secno">3.2 </bdi>Gebruik van HTML en XHTML</h3><p>Een aantal onderdelen van de verschillende ruimtelijke instrumenten kan beschikbaar gesteld worden in HTML of XHTML formaat. Bij het gebruik van deze formaten is een aantal aanvullende regels van kracht:</p>
+<ol><li>het invoegen van de illustraties die onderdeel uitmaken van het ruimtelijk instrument is toegestaan. De URL van de illustratie die in het src attribuut van het &lt;img&gt; element wordt gespecificeerd is een relatieve URL zonder directory elementen. Dit is mogelijk omdat alle bestanden in één virtuele directory beschikbaar worden gesteld. Door het specificeren van een relatieve URL voor de &lt;img&gt; elementen blijft het ruimtelijk instrument bruikbaar indien het in zijn geheel in een andere raadpleegomgeving wordt getoond;</li>
+<li>het invoegen van illustraties die geen onderdeel uitmaken van het ruimtelijk instrument is niet toegestaan;</li>
+<li>gebruik van separate <a href="https://www.w3.org/Style/CSS/" target="_blank">Cascading Style Sheets (CSS bestanden)</a> voor de opmaak van HTML en XHTML bestanden is toegestaan. CSS bestanden maken geen onderdeel uit van het ruimtelijk instrument, maar referenties naar CSS bestanden die bij het tonen van het instrument beoogd zijn door de bronhouder kunnen zowel in &lt;link&gt; elementen alsook in het geleideformulier worden opgenomen (zie Hoofdstuk <a href="#647D7DE7">5</a>). Omdat CSS bestanden geen formeel onderdeel zijn van het instrument, zijn URL's naar CSS bestanden op andere virtuele directories dan de formele onderdelen toegestaan;</li>
+<li>de HTML en XHTML bestanden worden raadpleegbaar op overheidswebsites. Daarom zijn de opmaak en technische randvoorwaarden van deze bestanden veelal gebaseerd op internationaal erkende richtlijnen van het World Wide Web Consortium (W3C) en de <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/digitale-inclusie/digitaal-toegankelijk/" target="_blank">richtlijnen van digitale toegankelijkheid</a>.</li>
+<li>HTML en XHTML pagina's dienen bruikbaar te blijven wanneer CSS door een webbrowser niet ondersteund wordt. Dit betekent dat er in de pagina geen inhoud verloren mag gaan als de CSS niet wordt toegepast op de pagina.</li>
+</ol></section></section><section data-type="markdown" id="identificatienummer-en-bestandsnaam"><h2 id="647D7DA1"><bdi class="secno">4. </bdi>Identificatienummer en bestandsnaam</h2><p>Ieder ruimtelijk instrument kent een eigen identificatienummer (idn). In dit hoofdstuk is aangegeven hoe de opbouw van dit idn is. Tevens zijn in dit hoofdstuk de eisen voor de bestandsnamen van de bronbestanden vastgelegd, waarvan het idn een belangrijke basis is.</p>
+<section id="identificatienummer"><h3 id="647D7DA3"><bdi class="secno">4.1 </bdi>Identificatienummer</h3><p>Ieder ruimtelijk instrument kent een eigen identificatienummer (idn). Het idn is beschreven door middel van een reguliere expressie, als volgt:</p>
+<p>NL.(IMRO.[0-9]{4}.[A-Za-z0-9]{1,18}-[A-Za-z0-9]{4}</p>
+<p>In <a href="#T004">Tabel 4</a> worden de onderdelen van deze reguliere expressie nader verklaard.<br></p>
+<table style="width: 100%;" id="T004" class="simple"><caption>Tabel 4 Onderdelen van het identificatienummer</caption>
+<colgroup><col id="col1" style="width: 22.58504949368529%;">
+<col id="col2" style="width: 77.41495050631471%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Onderdeel reg. exp.<br>
+</th>
+<th align="left">Betekenis <br>
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left">NL\.(IMRO)\.<br>
+</td>
+<td align="left">de namespace NL.IMRO. als vaste tekst.<br>
+</td>
+</tr>
+<tr><td align="left">[0-9]{4}<br>
+</td>
+<td align="left">CBS code van de verantwoordelijke overheid. Altijd 4 cijfers, indien nodig aangevuld met voorloopnullen. Ingeval Rijk “0000”. De CBS-code van de provincie wordt voorafgegaan door 2 voorloopnegens. Ingeval deelgemeente/stadsdeel: CBS-code gemeente.<br>
+</td>
+</tr>
+<tr><td align="left">\.<br>
+</td>
+<td align="left">Een punt .<br>
+</td>
+</tr>
+<tr><td align="left">[A-Za-z0-9]{1,18}<br>
+</td>
+<td align="left">Minimaal 1 en maximaal 18 alfanumerieke tekens, te bepalen door de bronhouder.<br>
+</td>
+</tr>
+<tr><td align="left">- <br>
+</td>
+<td align="left">Een liggend streepje -<br>
+</td>
+</tr>
+<tr><td align="left">[A-Za-z0-9]{4}<br>
+</td>
+<td align="left">Vier alfanumerieke karakters voor de door de bronhouder te bepalen versiecode van het instrument&nbsp;binnen het desbetreffende dossier. De versiecode bestaat uit exact 4 alfanumerieke karakters. De versiecode is uniek voor alle instrumenten die met hetzelfde dossiernummer op een openbare weblocatie beschikbaar gesteld en in het Manifest aangeduid zijn. <br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Het gedeelte van het identificatienummer tot aan het liggend streepje wordt het dossiernummer genoemd. De reguliere expressie voor het dossiernummer is derhalve als volgt:</p>
+<p>NL.(IMRO).[0-9]{4}.[A-Za-z0-9]{1,18}<br></p>
+</section><section id="bestandsnaam-vereisten"><h3 id="4036FA61"><bdi class="secno">4.2 </bdi>Bestandsnaam vereisten</h3><p>Voor ieder bronbestand worden in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a> eisen gesteld aan de bestandsnaam. De reguliere expressie waarmee de naam van een bestand wordt beschreven, is als volgt:</p>
+<p>([a-z]{1,2}_)?NL.(IMRO).[0-9]{4}.[A-Za-z0-9]{1,18}-[A-Za-z0-9]{4}<br>
+(_[A-Za-z0-9.]{1,20})?.(html|htm|xhtml|xml|gml|pdf|png|jpg|jpeg)</p>
+<p>In <a href="#T005">Tabel 5</a> worden de onderdelen van deze reguliere expressie nader verklaard.</p>
+<table style="width: 100%;" id="T005" class="simple"><caption>Tabel 5 Onderdelen van de bestandsnaam vereisten</caption>
+<colgroup><col id="col1" style="width: 43.73648879280919%;">
+<col id="col2" style="width: 56.26351120719081%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Onderdeel<br>
+</th>
+<th align="left">Betekenis <br>
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left">([a-z]{1,2}\_)?<br>
+</td>
+<td align="left">Het type onderdeel als één of twee letters en een underscore _ ; dit onderdeel wordt bij het GML bestand niet toegepast en is daarom optioneel; de beschrijving van de lettercodes wordt nader uitgewerkt bij de bestandsnaamconventies.<br>
+</td>
+</tr>
+<tr><td align="left">NL\.(IMRO)\.[0-9]{4}\.[A-Za-z0-9]{1,18}-[A-Za-z0-9]{4}<br>
+</td>
+<td align="left">idn van het ruimtelijk instrument.<br>
+</td>
+</tr>
+<tr><td align="left">(_[A-Za-z0-9\.]{1,20})?<br>
+</td>
+<td align="left">bij bijlagen en illustraties wordt het identificatienummer gevolgd door een underscore _ en daarna een nadere aanduiding van minimaal 1 en maximaal 20 alfanumerieke tekens en punten, te bepalen door de bronhouder. <br>
+</td>
+</tr>
+<tr><td align="left">\.<br>
+</td>
+<td align="left">Een punt .<br>
+</td>
+</tr>
+<tr><td align="left">(html|htm|xhtml|xml|gml|pdf|png|jpg|jpeg)<br>
+</td>
+<td align="left">De mogelijke bestandsextensies; de exacte relaties tussen onderdelen en bestandsformaten is nader uitgewerkt in paragraaf <a href="#647D7CE0">2.2</a> (met IMROPT) en <a href="#647D7D0F">2.3</a>(zonder IMROPT).<br>
+</td>
+</tr>
+</tbody>
+</table></section></section><section data-type="markdown" id="beschikbaar-stellen"><h2 id="647D7DE7"><bdi class="secno">5. </bdi>Beschikbaar stellen</h2><p>De bronbestanden van ieder ruimtelijk instrument moeten beschikbaar worden gesteld door de bronhouder. In dit hoofdstuk zijn de eisen voor deze beschikbaarstelling gegeven, inclusief inhoud en opbouw van het Manifest en geleideformulier, dat hier een onderdeel van is.</p>
+<section id="eisen-aan-de-beschikbaarstelling"><h3 id="42F69F15"><bdi class="secno">5.1 </bdi>Eisen aan de beschikbaarstelling</h3><p>Ieder ruimtelijk instrument dat is vastgelegd in het Manifest van een bronhouder dient door de bronhouder in zijn geheel beschikbaar te zijn gesteld. Dit betekent dat alle bronbestanden zoals genoemd in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a> beschikbaar zijn via het internet. Deze beschikbaarstelling moet voldoen aan een aantal eisen:</p>
+<ul><li>Publicatie van de manifesten en plannen door bronhouders van ruimtelijke plannen via standaard poort 443 voor HTTPS verkeer;</li>
+<li>Het gebruik van een beveiligde <a href="https://datatracker.ietf.org/doc/html/rfc8446" target="_blank">HTTPS verbinding via TLS</a> is wettelijk verplicht door de <a href="https://wetten.overheid.nl/BWBR0048156" target="_blank">Wet digitale overheid</a>. Gebruik hiervoor de richtlijnen van het <a href="https://www.ncsc.nl/onderwerpen/verbindingsbeveiliging/documenten/publicaties/2021/januari/19/ict-beveiligingsrichtlijnen-voor-transport-layer-security-2.1" target="_blank">NCSC</a>;</li>
+<li>Voor de bestanden is de GET operatie van het transportprotocol van HTTP toegestaan conform de <a href=" https://forumstandaardisatie.nl/open-standaarden/http" target="_blank">lijst van open standaarden</a> van het Forum standaardisatie;</li>
+<li>Het gebruik van HTTP compressie via content encodings is onderdeel van de HTTP/1.1 standaard en is derhalve toegestaan; het gebruik hiervan kan een voordeel bieden bij het beschikbaar stellen van de potentieel erg grote planbestanden;</li>
+<li>Alle bronbestanden dienen zonder autorisatie- of authenticatiemechanismen zoals inloggen beschikbaar te zijn en worden niet afgeschermd door bijvoorbeeld firewalls;</li>
+<li>De beschikbaarstelling van een ruimtelijk instrument mag op iedere URL plaatsvinden en hoeft dus niet op de officiële website van de bronhouder te geschieden;</li>
+<li>Alle bij het ruimtelijk instrument behorende bronbestanden worden binnen 1 virtuele directory beschikbaar gesteld.</li>
+</ul>
+
+<p>De bronbestanden van ieder beschikbaar gesteld ruimtelijk instrument blijven toegankelijk totdat een instrument onherroepelijk in werking is getreden. Op dat moment blijven in elk geval de actuele versie van het instrument en alle eventuele daarbij behorende reactieve aanwijzingen en gerechtelijke uitspraken beschikbaar. Als een instrument geheel vervallen is, mag het in zijn geheel worden verwijderd van internet.<br></p>
+</section><section id="opbouw-manifest"><h3 id="1A10E1C7"><bdi class="secno">5.2 </bdi>Opbouw Manifest</h3><p>Iedere bronhouder in Nederland stelt een Manifest beschikbaar. Het Manifest is een XML bestand dat een inhoudsopgave vormt van alle elektronisch beschikbare ruimtelijk instrumenten van de desbetreffende bronhouder. In het Manifest zijn de ruimtelijke instrumenten gerangschikt per dossiernummer. Aan ieder dossiernummer in het Manifest wordt een procedurestatus toegekend. De bronhouder houdt deze status per dossiernummer bij iedere wijziging actueel. Het Manifest is gewaarmerkt met een elektronische handtekening.</p>
+<p>In aanvulling op het Manifest kent ieder ruimtelijk instrument een verplicht XML Geleideformulier met gedetailleerde informatie over het individueel instrument. Ook het geleideformulier is gewaarmerkt met een elektronische handtekening.</p>
+<p>Het Manifest mag op ieder webadres (URL) beschikbaar worden gesteld. Het geleideformulier wordt beschikbaar gesteld binnen dezelfde virtuele directory als het instrument zelf.</p>
+<p>Hoewel Manifest en geleideformulier beide een Signature element kennen, heeft dit element bij beide types documenten een andere inhoud en betekenis. In Hoofdstuk <a href="#1CDA4685">6</a> wordt hier nader op ingegaan.</p>
+<p>Het Manifest is als volgt opgebouwd:</p>
+<table style="width: 100%;" id="T006" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Manifest
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">overheidsCode<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">CBS-code van de beleidsmatig verantwoordelijke overheid. Altijd 4 cijfers, indien nodig aangevuld met voorloopnullen. Ingeval Rijk “0000”. Ingeval provincie: CBS-code provincie met voorafgaand 2 voorloopnegens. In geval deelgemeente/stadsdeel: CBS-code gemeente.<br>
+</td>
+</tr>
+<tr><td align="left">naamOverheid<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Naam van de voor het Manifest verantwoordelijke overheid.<br>
+</td>
+</tr>
+<tr><td align="left">datum<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Datum waarop het huidige Manifest is gegenereerd.<br>
+</td>
+</tr>
+<tr><td align="left">dossier<br>
+</td>
+<td align="left">1..*<br>
+</td>
+<td align="left">Het ordenend element waarbinnen alle ruimtelijke instrumenten met een identiek dossiernummer worden geplaatst.<br>
+</td>
+</tr>
+<tr><td align="left">signature<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">het PKI-Overheid waarmerk.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Binnen ieder &lt;Dossier&gt; element worden de volgende gegevens opgenomen:</p>
+<table style="width: 100%;" id="T007" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Dossier
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">id<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">het dossiernummer van het desbetreffende Dossier conform het format zoals gegeven in Hoofdstuk <a href="#647D7DA1">4</a> van de STRI2012.<br>
+</td>
+</tr>
+<tr><td align="left">status<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De actuele procedurestatus van het desbetreffende Dossier. De volgende waarden zijn mogelijk:<br>
+<ul><li><b>in voorbereiding</b></li>
+<li><b>vastgesteld</b></li>
+<li><b>geheel in werking</b></li>
+<li><b>deels in werking</b></li>
+<li><b>niet in werking</b></li>
+<li><b>geheel onherroepelijk in werking</b></li>
+<li><b>deels onherroepelijk in werking</b></li>
+<li><b>vervallen</b></li>
+<li><b>geconsolideerd</b></li>
+</ul>
+
+</td>
+</tr>
+<tr><td align="left">plan<br>
+</td>
+<td align="left">1..*<br>
+</td>
+<td align="left">informatie over ieder beschikbaar gesteld ruimtelijk instrument binnen het Dossier.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Bij ieder &lt;Plan&gt; element in het Dossier worden de volgende gegevens over het ruimtelijk instrument opgenomen:</p>
+<table style="width: 100%;" id="T008" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Plan (in Manifest)
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">id<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">het idn van het desbetreffende ruimtelijk instrument conform het format zoals gegeven in Hoofdstuk <a href="#647D7DA1">4</a> van de STRI2012.<br>
+</td>
+</tr>
+<tr><td align="left">naam<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De naam van het ruimtelijk instrument. De waarde is gelijk aan de Naam in het IMRO GML bestand.<br>
+</td>
+</tr>
+<tr><td align="left">datum<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De datum van het ruimtelijk instrument. De Waarde is gelijk aan de Datum in het IMRO GML bestand.<br>
+</td>
+</tr>
+<tr><td align="left">geleideFormulier<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De URL van het geleideformulier van het ruimtelijk instrument.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>De exacte opbouw van het XML Manifest is vastgelegd in een XML Schema dat naast deze standaard beschikbaar is.<br></p>
+</section><section id="opbouw-geleideformulier"><h3 id="293B3DB0"><bdi class="secno">5.3 </bdi>Opbouw Geleideformulier</h3><p>Het geleideformulier is opgebouwd zoals weergegeven met de tabellen in deze paragraaf.</p>
+<table style="width: 100%;" id="T009" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Geleideformulier
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">overheidsCode<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">CBS-code van de beleidsmatig verantwoordelijke overheid. Altijd 4 cijfers, indien nodig aangevuld met voorloopnullen. Ingeval Rijk “0000”. Ingeval provincie: CBS-code provincie met voorafgaand 2 voorloopnegens. Ingeval deelgemeente/stadsdeel: CBS-code gemeente. De waarde is gelijk aan IMRO:overheidsCode in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">naamOverheid<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Naam van de verantwoordelijke overheid. De waarde is gelijk aan IMRO:naamOverheid in het IMRO GML bestand van het instrument. In het geval dat de IMRO:naamOverheid in het IMRO GML bestand meer dan eens voorkomt, worden de waardes in dit attribuut achter elkaar gezet, gescheiden door komma’s.<br>
+</td>
+</tr>
+<tr><td align="left">datum<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Datum waarop het geleideformulier is gegenereerd.<br>
+</td>
+</tr>
+<tr><td align="left">plan<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Het ordenend element waar binnen de informatie met betrekking tot een individueel ruimtelijk instrument wordt geplaatst.<br>
+</td>
+</tr>
+<tr><td align="left">signature<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">het PKI-Overheid waarmerk.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>In het &lt;Plan&gt; element in het Geleideformulier worden de volgende gegevens over het ruimtelijk instrument opgenomen:</p>
+<table style="width: 100%;" id="T010" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Plan (in GeleideFormulier)
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">id<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Identificatienummer van het instrument. De waarde is gelijk aan IMRO:identificatie in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">eigenschappen<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">root element voor alle eigenschappen van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">onderdelen<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">root element van alle onderdelen behorende bij het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">supplementen<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">root element van de bij het instrument behorende supplementen.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>In het &lt;Eigenschappen&gt; element in het Geleideformulier worden de volgende gegevens over het ruimtelijk instrument opgenomen:</p>
+<table style="width: 100%;" id="T011" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Eigenschappen
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">naam<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De naam van het ruimtelijk instrument. De waarde is gelijk aan de Naam in het IMRO GML bestand.<br>
+</td>
+</tr>
+<tr><td align="left">type<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Het type instrument. De waarde is gelijk aan IMRO:typePlan in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">status<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">De status van het instrument. De volgende waarden zijn mogelijk:<br>
+<ul><li><b>concept</b></li>
+<li><b>voorontwerp</b></li>
+<li><b>ontwerp</b></li>
+<li><b>vastgesteld</b></li>
+<li><b>geconsolideerd</b></li>
+</ul>
+
+<p>De waarde is gelijk aan de status in het IMRO GML bestand.<br></p>
+</td>
+</tr>
+<tr><td align="left">datum<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Dit is de datum waarop de Status in werking is getreden of in werking treedt. De waarde is gelijk aan IMRO:datum in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">versieIMRO<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Dit geeft de gebruikte versie van IMRO weer die is gebruikt bij het coderen van het instrument. De waarde is gelijk aan IMRO: verwijzingNorm(norm) in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+<tr><td align="left">versiePraktijkRichtlijn<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">Dit geeft de gebruikte Praktijkrichtlijn weer die is gebruikt bij het coderen van het instrument. De waarde is gelijk aan IMRO: verwijzingNorm(norm) in het IMRO GML bestand van het instrument.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>In het &lt;Onderdelen&gt; element in het Geleideformulier wordt de volgende informatie over de beschikbaar gestelde bronbestanden opgenomen:</p>
+<table style="width: 100%;" id="T012" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Onderdelen
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">basisUrl<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">In dit attribuut wordt de virtuele directory gespecificeerd van alle onderliggende elementen.<br>
+</td>
+</tr>
+<tr><td align="left">IMRO <br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">bestandsnaam van het IMRO GML<br>
+</td>
+</tr>
+<tr><td align="left">planteksten<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">bestandsnaam van de XML planteksten<br>
+</td>
+</tr>
+<tr><td align="left">regels<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">bestandsnaam van de regels<br>
+</td>
+</tr>
+<tr><td align="left">beleidsBesluitdocument<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">bestandsnaam van een beleids/besluitdocument<br>
+</td>
+</tr>
+<tr><td align="left">toelichting<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">bestandsnaam van de toelichting<br>
+</td>
+</tr>
+<tr><td align="left">vaststellingsbesluit<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">bestandsnaam van het vaststellingsbesluit<br>
+</td>
+</tr>
+<tr><td align="left">bijlage<br>
+</td>
+<td align="left">0..*<br>
+</td>
+<td align="left">bestandsnaam van een bijlage<br>
+</td>
+</tr>
+<tr><td align="left">illustratie<br>
+</td>
+<td align="left">0..*<br>
+</td>
+<td align="left">bestandsnaam van een illustratie<br>
+</td>
+</tr>
+<tr><td align="left">geleideformulier<br>
+</td>
+<td align="left">1<br>
+</td>
+<td align="left">bestandsnaam van het XML geleideformulier<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>In het &lt;Supplementen&gt; element in het Geleideformulier worden de volgende gegevens over mogelijke supplementen opgenomen:</p>
+<table style="width: 100%;" id="T013" class="simple"><caption></caption>
+<colgroup><col id="col1" style="width: 25.860889395667048%;">
+<col id="col2" style="width: 6.465222348916762%;">
+<col id="col3" style="width: 67.67388825541619%;">
+</colgroup>
+<thead valign="top"><tr><th align="left">Klasse
+</th>
+<th align="left" colspan="2">Supplementen
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left"><i>attribuutnaam</i><br>
+</td>
+<td align="left"><i>m</i><br>
+</td>
+<td align="left"><i>Toelichting</i><br>
+</td>
+</tr>
+<tr><td align="left">basisURL<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">In dit attribuut wordt de virtuele directory gespecificeerd van alle onderliggende elementen. <br>
+</td>
+</tr>
+<tr><td align="left">startPagina<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">Referentie naar een internetpagina over het instrument dat door de bronhouder beschikbaar is gesteld als startpunt van de verbeelding er van.<br>
+</td>
+</tr>
+<tr><td align="left">CSS<br>
+</td>
+<td align="left">0..1<br>
+</td>
+<td align="left">Referentie naar een Cascading Style Sheet (CSS) voor de lay-out en presentatie van planteksten. Dit is van toepassing op zowel objectgerichte planteksten die vanuit XML naar HTML zijn getransformeerd, als niet-objectgerichte planregels in HTML of XHTML.<br>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>De exacte opbouw van het XML geleideformulier is vastgelegd in een XML Schema dat naast deze standaard beschikbaar is.<br></p>
+</section><section id="wijzigen-reeds-eerder-gepubliceerde-plannen"><h3 id="5EBB12FD"><bdi class="secno">5.4 </bdi>Wijzigen reeds eerder gepubliceerde plannen</h3><p>Ambtelijk foutherstel in een ruimtelijke plan of besluit door de bronhouder, zonder voorafgaand besluit, is het herstellen van de metadata c.q. de technische kenmerken van het ruimtelijk plan of besluit of het opheffen van inconsistenties in de planvoorraad tussen bronhouder en Ruimtelijkeplannen.nl. Het naderhand door de bronhouder aanpassen van reeds eerder gepubliceerde plannen kan en mag, indien het gaat om:<br></p>
+<ul><li>een (beperkte) set van metadata die van cruciaal belang is voor (blijvende) begrijpelijkheid, raadpleegbaarheid en bruikbaarheid van plannen, niet alleen in de landelijke voorziening Ruimtelijkeplannen.nl, maar ook in het Digitaal Stelsel Omgevingswet.</li>
+<li>het ervoor zorgen dat, op grond van de bestaande verplichting daartoe in het Besluit ruimtelijke ordening (Bro), de lokaal aanwezige planvoorraad consistent is met de landelijke voorziening van de Wro; Ruimtelijkeplannen.nl.</li>
+</ul>
+
+<p>Bij gebreken aan de inhoud van het plan of besluit zal het bevoegd gezag een nieuw besluit moeten nemen of een nieuwe procedure moeten volgen.<br></p>
+</section><section id="aanvullende-specificaties"><h3 id="4FC40025"><bdi class="secno">5.5 </bdi>Aanvullende specificaties</h3><p>Naast de voorwaarden voor het Manifest en Geleideformulier in voorgaande paragrafen, gelden deze aanvullende specificaties:<br></p>
+<ul><li>het is niet mogelijk om &lt;Plan&gt; elementen met een verschillend dossiernummer binnen hetzelfde &lt;Dossier&gt; element te plaatsen;</li>
+<li>het is niet mogelijk om &lt;Plan&gt; elementen met hetzelfde dossiernummer in verschillende &lt;Dossier&gt; elementen te plaatsen;</li>
+<li>het is niet mogelijk om meerdere &lt;Dossier&gt; elementen met hetzelfde dossiernummer te plaatsen;</li>
+<li>&lt;Dossier&gt; elementen met de status geconsolideerd bevatten alleen &lt;Plan&gt; elementen met de status geconsolideerd;</li>
+<li>&lt;Dossier&gt; elementen met de status vastgesteld, geheel in werking, deels in werking, niet in werking, geheel onherroepelijk in werking of deels onherroepelijk in werking bevatten altijd minstens één &lt;Plan&gt; element met de status vastgesteld of de status onherroepelijk.</li>
+<li>&lt;Plan&gt; elementen met de status geconsolideerd komen alleen voor in &lt;Dossier&gt; elementen met de status geconsolideerd;</li>
+<li>voor de opbouw van het Manifest en het Geleideformulier is een XML Schema beschikbaar, dat samen met deze standaard beschikbaar is.</li>
+</ul>
+
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><p class="">
+De planstatus onherroepelijk wordt niet gebruikt in ruimtelijke plannen conform IMRO2012. De planstatus onherroepelijk is een planstatus uit het <a href="http://ro-standaarden.geonovum.nl/2008/1.1/20081224-IMRO2008.pdf" target="_blank">Informatiemodel Ruimtelijke Ordening 2008 (IMRO2008)</a>.</p></div></section></section><section data-type="markdown" id="authenticiteitskenmerken"><h2 id="1CDA4685"><bdi class="secno">6. </bdi>Authenticiteitskenmerken</h2><p>De op internet beschikbaar gestelde bronbestanden inclusief Manifest en geleideformulier moeten voorzien zijn van een waarmerk waarmee de integriteit, authenticiteit en volledigheid van de bestanden worden gewaarborgd. In dit hoofdstuk worden de normen hiervoor gegeven.</p>
+<section id="waarmerken"><h3 id="717AB549"><bdi class="secno">6.1 </bdi>Waarmerken</h3><p>In het kader van de beveiliging van de digitale ruimtelijke instrumenten, wordt een aantal concrete maatregelen getroffen:</p>
+<ol><li>Waarmerken van een individueel ruimtelijk instrument door middel van een elektronische handtekening, zie paragraaf <a href="#789E64F8">6.2</a>;</li>
+<li>Waarmerken van het Manifest van een bronhouder door middel van een elektronische handtekening, zie paragraaf <a href="#647D7F2D">6.3</a>;</li>
+<li>Het waarmerken gebeurt met een elektronische handtekening waarbij gebruik gemaakt wordt van <a href="https://cert.pkioverheid.nl/" target="_blank">certificaten van PKI-Overheid</a>;</li>
+<li>De integriteit, authenticiteit en volledigheid van een individueel ruimtelijk instrument moet door de afnemers in de digitale verbeelding van dit instrument vastgesteld kunnen worden.</li>
+</ol>
+
+<p>Bij het waarmerken wordt als technische standaard de W3C <a href="https://www.w3.org/TR/xmldsig-core1/" target="_blank">XML-Signature Syntax and Processing (xmldsig) standaard</a> toegepast, met gebruikmaking van PKI-Overheid certificaten. Vanwege operationele veiligheidsaspecten is een aantal normatieve aanvullende restricties van toepassing, die door de landelijke voorziening <a href=" https://www.ruimtelijkeplannen.nl/" target="_blank">Ruimtelijkeplannen.nl</a> worden gehanteerd.</p>
+<p>Voor aanvullende specificaties en organisatorische aspecten rondom elektronische handtekeningen wordt verder verwezen naar PKI-Overheid.<br></p>
+</section><section id="authenticiteitskenmerken-van-een-individueel-instrument"><h3 id="789E64F8"><bdi class="secno">6.2 </bdi>Authenticiteitskenmerken van een individueel instrument</h3><p>De informatiebeveiliging van een individueel ruimtelijk instrument is als volgt:</p>
+<ol><li>van ieder individueel onderdeel zoals beschreven in <a href="#T001">Tabel 1</a> en <a href="#T002">Tabel 2</a> wordt een <a href="https://www.w3.org/TR/xmldsig-core/#sec-MessageDigests" target="_blank">digest</a> berekend. Dit vormt een waarborg voor de integriteit en authenticiteit van de onderdelen en daarmee van het ruimtelijk instrument zelf;</li>
+<li>ook over de inhoud van het geleideformulier (exclusief de elektronische handtekening) wordt een digest berekend. Dit vormt de waarborg voor de volledigheid van de onderdelen die samen het ruimtelijk instrument vormen;</li>
+<li>de digests worden middels een elektronische handtekening gewaarmerkt;</li>
+<li>de elektronische handtekening wordt samen met de digests vastgelegd in een XML Signature element (xmldsig) in het geleideformulier. Het geleideformulier bevat daarmee dus alle authenticiteitinformatie over het individuele ruimtelijk instrument.</li>
+</ol>
+
+<p>Ieder ruimtelijk instrument heeft precies één gewaarmerkt geleideformulier, waarbij de inhoud van het Signature element overeen komt met bovenstaande onderdelen.<br></p>
+</section><section id="authenticiteitskenmerken-van-het-manifest"><h3 id="647D7F2D"><bdi class="secno">6.3 </bdi>Authenticiteitskenmerken van het Manifest</h3><p>Het Manifest heeft tot doel om de totale beschikbare instrumentele voorraad van een bronhouder te beschrijven. De informatiebeveiliging van het Manifest van de bronhouder wordt als volgt geregeld:</p>
+<ol><li>Over de inhoud van het Manifest (exclusief de elektronische handtekening) wordt een digest berekend. Dit vormt de waarborg voor de integriteit, authenticiteit en volledigheid van het Manifest;</li>
+<li>De digest wordt middels een elektronische handtekening gewaarmerkt;</li>
+<li>De elektronische handtekening wordt samen met de digest vastgelegd in een XML Signature element (xmldsig) in het Manifest.</li>
+</ol>
+
+<p>Iedere bronhouder heeft precies één gewaarmerkt Manifest, waarbij de inhoud van het Signature element overeen komt met bovenstaande onderdelen.<br></p>
+</section></section><section data-type="markdown" id="toegankelijkheid-en-raadpleegbaarheid"><h2 id="647D7F37"><bdi class="secno">7. </bdi>Toegankelijkheid en raadpleegbaarheid</h2><p>In dit hoofdstuk worden eisen gesteld aan de toegankelijkheid en raadpleegbaarheid van het ruimtelijk instrument.</p>
+<p>Naast de verplichting dat de bronbestanden van ieder ruimtelijk instrument door de bronhouder elektronisch beschikbaar worden gesteld, worden er tevens eisen gesteld aan de toegankelijkheid en raadpleegbaarheid van het ruimtelijk instrument, hierna de digitale verbeelding genoemd. Deze digitale verbeelding is een interactieve raadpleegomgeving via het internet en wordt onder andere verzorgd door de landelijke voorziening Ruimtelijkeplannen.nl. Aan de digitale verbeelding wordt een aantal eisen gesteld:</p>
+<ol><li>De digitale verbeelding ontsluit de gehele inhoud van het ruimtelijk instrument;</li>
+<li>Voor bestemmingsplannen en inpassingsplannen wordt de digitale verbeelding gemaakt volgens de <a href="https://docs.geostandaarden.nl/ro/svbp" target="_blank">Standaard Vergelijkbare Bestemmingsplannen (SVBP2012)</a>;</li>
+<li>Voor de verbeelding is het transportprotocol van <a href="https://forumstandaardisatie.nl/open-standaarden/https-en-hsts" target="_blank">HTTPS toegestaan conform de lijst van open standaarden</a> van het Forum standaardisatie;</li>
+<li>Het gebruik van een beveiligde HTTPS verbinding via TLS is wettelijk verplicht door de <a href="https://wetten.overheid.nl/BWBR0048156" target="_blank">Wet digitale overheid</a>. Gebruik hiervoor de <a href="https://www.ncsc.nl/onderwerpen/verbindingsbeveiliging/documenten/publicaties/2021/januari/19/ict-beveiligingsrichtlijnen-voor-transport-layer-security-2.1" target="_blank">richtlijnen van het NCSC</a>;</li>
+<li>Alle webpagina’s zijn zonder autorisatiemechanismen zoals inloggen beschikbaar en zijn niet afgeschermd voor gebruik door firewalls;</li>
+<li>De digitale verbeelding heeft het karakter van een overheidswebsite. Daarom zijn voor de digitale verbeelding veelal de <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/digitale-inclusie/digitaal-toegankelijk/" target="_blank">richtlijnen van digitale toegankelijkheid</a> van toepassing;</li>
+<li>Van iedere puntlocatie van het grondgebied van de bronhouder kan een lijst worden opgevraagd met beschikbare ruimtelijke instrumenten die op deze locatie van toepassing zijn.</li>
+</ol></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Standaard - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

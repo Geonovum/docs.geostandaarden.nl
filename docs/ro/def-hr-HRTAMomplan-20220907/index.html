@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Technische handreiking TAM omgevingsplan</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <!--script src="js/config.js"></script-->
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "license": "cc-by-nd",
+  "publishDate": "2022-09-07",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "HRTAMomplan",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2022-09-07T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 07 september 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-HRTAMomplan-20220907/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Technische handreiking TAM omgevingsplan",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2022-09-07",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Technische handreiking TAM omgevingsplan</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-09-07">07 september 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-HRTAMomplan-20220907/">https://docs.geostandaarden.nl/ro/def-hr-HRTAMomplan-20220907/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/HRTAMomplan/">https://docs.geostandaarden.nl/ro/HRTAMomplan/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/HRTAMomplan/">https://geonovum.github.io/ROST/HRTAMomplan/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#de-werkafspraak"><span class="secno">1.2 </span>De werkafspraak</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li><li class="tocline"><a class="tocxref" href="#doel-van-de-handreiking"><span class="secno">1.4 </span>Doel van de handreiking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#opstellen-wijzigingsbesluit-omgevingsplan"><span class="secno">2. </span>Opstellen wijzigingsbesluit omgevingsplan</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</a></li><li class="tocline"><a class="tocxref" href="#gebruik-imro-objecten"><span class="secno">2.2 </span>Gebruik IMRO objecten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#objectkeuze"><span class="secno">2.2.1 </span>Objectkeuze</a></li><li class="tocline"><a class="tocxref" href="#tam-omgevingsplan"><span class="secno">2.2.2 </span>TAM omgevingsplan</a></li></ol></li><li class="tocline"><a class="tocxref" href="#plantekst"><span class="secno">2.3 </span>Plantekst</a></li></ol></li><li class="tocline"><a class="tocxref" href="#publiceren"><span class="secno">3. </span>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#de-pons"><span class="secno">3.3 </span>De ‘Pons’</a></li><li class="tocline"><a class="tocxref" href="#weergave-dso"><span class="secno">3.4 </span>Weergave DSO</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten"><span class="secno">4. </span>Aandachtspunten</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="aanleiding"><h3 id="x1-1-aanleiding"><span class="secno">1.1 </span>Aanleiding</h3><p>Tijdelijke Alternatieve Maatregelen (TAM) zijn er voor het geval overheden niet op tijd kunnen aansluiten op het DSO of wanneer DSO bijvoorbeeld op een onderdeel niet op tijd klaar is. De minister wil voorkomen dat hierdoor bij gemeenten eventuele woningbouwontwikkelingen of ontwikkelingen zoals op het gebied van de energietransitie vertraging oplopen.</p><p>Aanleiding voor deze handreiking is de <a href="https://zoek.officielebekendmakingen.nl/kst-33118-CF.html" target="_blank">kamerbrief van 27 mei 2021</a>, waarin de minister de kamer informeert over inwerkingtredingsdatum van de Omgevingswet en mogelijke Tijdelijke Alternatieve Maatregelen (TAM).</p><p>Deze tijdelijke alternatieve maatregelen maken inwerkingtreding van de Omgevingswet mede mogelijk. Ze bieden gemeenten naast de zogenaamde ‘hoofdroute’ een tijdelijk een alternatieve route. Deze Tijdelijke Alternatieve Maatregel omgevingsplan biedt gemeenten de mogelijkheid om op basis van de RO Standaarden 2012 na inwerkingtreden van de Omgevingswet het omgevingsplan alsnog te kunnen ontsluiten in het DSO. Hiervoor de werkafspraak TAM omgevingsplan beschikbaar.
+</p><p><br>Geonovum en het Kadaster maken dit technisch mogelijk en ondersteunen het werkveld bij het gebruik van deze TAM. Deze technische handreiking is een aanvulling op de werkafspraak ‘TAM-omgevingsplan’ van Geonovum. De VNG heeft samen met gemeenten de TAM in werkplaatsen in de praktijk beproeft. De bevindingen van deze werkplaatsen zijn door de VNG gebundeld in ‘bijsluiter TAM-omgevingsplan’ en is beschikbaar via de <a href="https://geonovum.email-provider.nl/link/fvmiugimhb/ycg7xdbgrs/eyeieffyby/ojdsogt6uz/ljq4cr5ep1" target="_blank">VNG website</a>. De drie documenten (werkafspraak, deze handreiking en de bijsluiter) vullen elkaar aan.</p></section><section id="de-werkafspraak"><h3 id="x1-2-de-werkafspraak"><span class="secno">1.2 </span>De werkafspraak</h3><p>In werkafspraken geeft Geonovum als beheerder van de RO Standaarden aan hoe het werkveld het beste om kan gaan met onduidelijkheden of kleine gebreken in een standaard, zonder de standaard aan te passen. Ten behoeve van het Omgevingswet instrument omgevingsplan is een werkafspraak uitgebracht. De werkafspraak kan gebruikt worden vanaf inwerkingtreden Omgevingswet, en tot maximaal 1 jaar na inwerkingtreding van de Omgevingswet.</p><p>In de werkafspraak ‘TAM-omgevingsplan’ wordt aangegeven dat het gebruik van deze tijdelijke alternatieve maatregel gezien moet worden als een noodmaatregel om ontwikkelingen door de kunnen laten gaan maar dat er ook nadelen aan het gebruik ervan zitten. In de werkafspraak is aangegeven hoe door middel van de naamgeving van de plannaam het onderscheid wordt gemaakt tussen plannen die vallen onder het overgangsrecht en TAM-plannen die een omgevingswetbesluit zijn. Dat betekent dat een TAM-omgevingsplan technisch aan de eisen van de RO Standaarden 2012 moet voldoen maar inhoudelijk een wijziging van het omgevingsplan is dat moet voldoen aan de Omgevingswet. Deze handreiking vult de werkafspraak aan door te laten zien hoe dat bereikt zou kunnen worden, zonder dwingend voor te schrijven hoe dat moet.</p><p>De werkafspraak is beschikbaar via de website van Geonovum.</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>Deze handreiking is bedoeld voor iedereen die een wijziging van het omgevingsplan gaat maken en/of publiceren en daarbij overweegt gebruikt te maken van deze tijdelijke alternatieve maatregel. Aangeraden wordt om de hele handreiking te lezen, naast de werkafspraak. Het is wel van belang om de toepassing van het gebruik van deze tijdelijke alternatieve maatregel in zijn geheel te begrijpen om een afgewogen beslissing te kunnen nemen of en eventueel hoe de TAM toegepast kan worden in de eigen organisatie.</p><p>De werkafspraak en de handreiking gaan samen in op hoe het technisch mogelijk gemaakt wordt om Wro plansoftware te gebruiken om een wijziging van het omgevingsplan te maken en te publiceren via Ruimtelijkeplannen.nl. Via het Informatiehuis Ruimte (de ‘overbruggingsfunctie’) komt het besluit daardoor ook beschikbaar in het omgevingsloket. Deze handreiking is een technische handleiding en geen juridische. We geven dus niet aan hoe een het TAM-omgevingsplan juridisch/inhoudelijk moet worden vormgegeven conform de Omgevingswet. Aanvullend kan de ‘bijsluiter TAM omgevingsplan’ van de VNG worden gebruikt. Deze bijsluiter geeft meer gedetailleerde informatie over met name deze inhoudelijke / juridische aspecten bij het opstellen van een wijziging van het omgevingsplan op basis van TAM-omgevingsplan.
+</p></section><section id="doel-van-de-handreiking"><h3 id="x1-4-doel-van-de-handreiking"><span class="secno">1.4 </span>Doel van de handreiking</h3><p>De ‘handreiking TAM-omgevingsplan’ ondersteunt het werkveld bij de toepassing en uitwerking van het maken en publiceren van een wijziging van het omgevingsplan met behulp van de IMRO-planketen. Het doel is om technisch te laten zien hoe met IMRO2012 het planfiguur ‘bestemmingsplan’ gebruikt kan worden om een wijziging van het omgevingsplan te modelleren. De handreiking gaat niet in op de juridische aspecten van het gebruik van TAM-omgevingsplan.</p></section></section><section data-format="markdown" id="opstellen-wijzigingsbesluit-omgevingsplan"><!--OddPage--><h2 id="x2-opstellen-wijzigingsbesluit-omgevingsplan"><span class="secno">2. </span>Opstellen wijzigingsbesluit omgevingsplan</h2><section id="technische-uitgangspunten"><h3 id="x2-1-technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</h3><p>De kern van het gebruik van TAM-omgevingsplan is, dat vanaf inwerkingtreding van de Omgevingswet, de bestaande Wro planketen gebruikt kan worden voor het opstellen en publiceren van een wijziging van het omgevingsplan. De RO Standaarden 2012 worden niet aangepast. Ook wordt op geen enkele manier iets aangepast aan de Wro plansoftware die wordt gebruikt voor digitale ruimtelijke plannen. Ook aan de manier van publiceren naar Ruimtelijkeplannen.nl verandert niets. Wel wordt de validator voor Ruimtelijkeplannen.nl aangevuld en enigszins aangepast om het overgangsrecht van Wro naar Omgevingswet te faciliteren, en de TAM-omgevingsplan mogelijk te maken.</p><p>Het gebruik van TAM-omgevingsplan ligt technisch in het verlengde van het overgangsrecht. Een Wro bestemmingsplan dat in ontwerp is gepubliceerd vóór inwerkingtreding van de Omgevingswet kan onder het oude recht en de oude standaarden worden afgerond onder de Omgevingswet. Dat betekent dat na inwerkingtreding een bestemmingsplan met planstatus vastgesteld gepubliceerd kan worden via Ruimtelijkplannen.nl en onderdeel wordt van het tijdelijk deel omgevingsplan. Een bestemmingsplan met planstatus ontwerp wordt na inwerkingtreding geweigerd.
+</p><p>De validator moet een TAM-omgevingsplan kunnen herkennen om een ontwerpversie wel door te laten ná inwerkingtreding. Daarom is in de werkafspraak bepaald dat de plannaam begint met “TAM-omgevingsplan”, gevolgd door de naam van het plan. Hiermee wordt het onderscheid gemaakt tussen een Wro bestemmingsplan onder het overgangsrecht, en een nieuw omgevingswetbesluit op basis van TAM-omgevingsplan.</p><p>Om een omgevingswetbesluit te kunnen nemen met behulp van TAM-omgevingsplan wordt uitsluitend gebruik gemaakt van de planfiguur ‘bestemmingsplan’. Overige Wro planfiguren zullen geweigerd worden tenzij ze vallen onder het overgangsrecht.</p><p>Een TAM-omgevingsplan komt technisch terecht in het tijdelijk deel van het omgevingsplan, waar zich ook de digitale bestemmingsplannen bevinden die van rechtswege omgevingsplan zijn geworden na inwerkingtreding. Juridisch is een TAM-omgevingsplan een echt omgevingswetbesluit, want het besluit is genomen onder de Omgevingswet. Dat betekent dat het TAM-omgevingsplan uiteindelijk door de gemeente omgezet zal moeten worden naar STOP/TPOD, om ook technisch onderdeel te kunnen worden van het omgevingsplan. Het gebruik van TAM-omgevingsplan houdt dus altijd extra werk in de toekomst in. Dit gegeven moet mee worden genomen bij de afweging over het al dan niet gebruiken van TAM-omgevingsplan.</p></section><section id="gebruik-imro-objecten"><h3 id="x2-2-gebruik-imro-objecten"><span class="secno">2.2 </span>Gebruik IMRO objecten</h3><section id="objectkeuze"><h4 id="x2-2-1-objectkeuze"><span class="secno">2.2.1 </span>Objectkeuze</h4><p>Om een TAM-omgevingsplan te maken kan binnen het planfiguur ‘bestemmingsplan’ in principe gebruik worden gemaakt van alle objecten (enkelbestemming, dubbelbestemming, functieaanduiding, maatvoering, etc.) die beschikbaar zijn voor een bestemmingsplan. Belangrijk is te bedenken dat een TAM-omgevingsplan technisch moet voldoen aan IMRO2012 en de SVBP2012 om door de validator te kunnen komen. Concreet betekent dat ook dat er een object ‘plangebied’ moet zijn met de plangegevens van het besluit.
+</p><p>In principe is een omgevingsplan vormvrij. De gemeente bepaalt binnen zekere grenzen hoe een omgevingsplan wordt opgebouwd. Toch is het niet in lijn met de Omgevingswetgedachte om te blijven werken met de Wro-objecten als enkelbestemming en dubbelbestemming, daar waar een TAM-omgevingsplan objecten als activiteiten, functies, andere gebiedsaanwijzingen en omgevingsnormen verwacht. Daarnaast gaat de STOP/TPOD standaard uit van een koppeling van een werkingsgebied (locatie) aan elke regeltekst. Om die reden wordt geadviseerd om binnen TAM-omgevingsplan gebruik te maken van die IMRO-objecten die een directe koppeling hebben met een regeltekst:</p><ul><li>Enkelbestemming;</li>
+<li>Dubbelbestemming;</li>
+<li>Gebiedsaanduiding.</li>
+</ul><figure id="fig-koppeling-tussen-regeltekst-en-locatie-werkingsgebied-zoals-deze-wordt-gebruik-in-de-stop-tpod-standaard"><img src="media/Koppeling_regeltekst_locatie.png" alt="Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard" style="width: 100%;">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard</span></figcaption>
+</figure><p>Voor het object ‘omgevingsnorm’ uit STOP/TPOD kan gebruik worden gemaakt van het IMRO-object ‘maatvoering’. Deze heeft weliswaar geen koppeling met de tekst maar lijkt het meest op de omgevingsnorm. Let er op dat maatvoeringen maar beperkt kunnen worden uitgebreid.</p></section><section id="tam-omgevingsplan"><h4 id="x2-2-2-tam-omgevingsplan"><span class="secno">2.2.2 </span>TAM omgevingsplan</h4><p>In principe is het mogelijk een omgevingsplan zoveel mogelijk na te bootsen met behulp van IMRO2012. Het is uiteraard aan de gemeente om daar inhoudelijk vorm aan te geven. We doen hier een aantal suggesties hoe een TAM-omgevingsplan gemaakt zou kunnen worden met behulp van de bestemmingsplan-objecten uit het IMRO. We willen hier uitdrukkelijk aangeven dat het om <u>voorbeelden</u> gaat en dat het eenieder vrij staat om binnen de mogelijkheden van het IMRO hier op eigen wijze invulling aan te geven.</p><p>Aangeraden wordt om alleen IMRO-objecten met een directe koppeling met plantekst te gebruiken. Dat zorgt voor een directe relatie tussen juridische regel straks in het omgevingsplan, en het bijbehorende werkingsgebied op de kaart.
+</p><p>De meeste Wro plansoftware werkt met een <a href="https://ro-standaarden.geonovum.nl/2012/IMRO/1.2/IMRO2012-v1.2.pdf" target="_blank">IMRO2012</a> bibliotheek waarin standaard de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">SVBP2012</a> is geïmplementeerd. Aangeraden wordt om deze bibliotheek te kopiëren, en in de kopie de wijzigingen aan te brengen waarmee een TAM-omgevingsplan gemaakt gaat worden. Dit omdat er nog enige tijd gewerkt moet kunnen worden aan Wro bestemmingsplannen, en mogelijk tegelijkertijd aan een TAM-omgevingsplan.
+</p><p><b><i>Plangebied</i></b></p><p>Een omgevingswetbesluit kent geen object ‘plangebied’. Voor de validatie is het wel noodzakelijk om een plangebied op te nemen. De onderdelen van de wijziging van het omgevingsplan worden dan gekoppeld aan dit plangebied. Voor de motivering van het wijzigingsbesluit kan gebruik gemaakt worden van het object ‘toelichting’. De toelichting, regels en eventuele bijlagen worden gekoppeld aan het plangebied. Hiermee kan voldaan worden aan de noodzakelijk onderdelen van de wijziging van het omgevingsplan en tevens aan de randvoorwaarden ten behoeve van de validatie door Ruimtelijkeplannen.nl.</p><p><b><i>Gebiedsaanwijzing van het type Functie</i></b></p><p>Als de gemeente er voor kiest gebruik te maken van de gebiedsaanwijzing ‘functie’ onder de Omgevingswet dan kunnen die bijvoorbeeld middels ‘enkelbestemmingen’ worden gemodelleerd. De keuze is daarbij of de bestaande enkelbestemmingen worden gebruikt, bijvoorbeeld ‘Wonen’, of dat enkelbestemmingen worden toegevoegd: elke functiebenaming is toegestaan in het omgevingsplan. IMRO staat het uitbreiden van de enkelbestemmingen toe mits ze voldoen aan de vereisten van de SVBP2012. Een nieuw bestemming/functie wordt dan aangemaakt in de Wro plansoftware, waarbij een hoofdgroep moet worden gekozen, en de naam van de hoofdgroep moet terugkomen in de naam van de bestemming/functie. De naam na de hoofdgroep is geheel vrij te kiezen. De structuur voor de eigen benamingen is, conform de SVBP2012:</p><p><i>Naam hoofdgroep [spatie] [-] [spatie] Specificatie van de bestemming</i></p><p>De eigen benaming na de hoofdgroep en het koppelteken begint altijd met een hoofdletter. Voorbeelden van functiebenamingen kunnen zijn:</p><ul><li>Detailhandel – Kernwinkelgebied;</li>
+<li>Verkeer – Stroomgebied;</li>
+<li>Water – Oppervlaktewater.</li>
+</ul><p>Het gebruik van een hoofdgroep is verplicht en kan gebruikt worden om de kaartweergave te sturen. In de omgevingsloket viewer Regels op de Kaart zal het TAM-omgevingsplan in dezelfde kleuren worden getoond als een bestemmingsplan. In de bovenstaande voorbeelden; donkerroze voor Kernwinkelgebied, donkergrijs voor Stroomgebied en blauw voor Oppervlaktewater.</p><p>Omdat het noodzakelijk is de naam van de hoofdgroep op te nemen in de naam van de functie, ligt het voor de hand inhoudelijke logische hoofdgroepen te kiezen, waardoor dan ook de kleur wordt bepaald. Als die logica er niet is (en dat zal voor een omgevingsplan vaak voorkomen) dan kan gebruik worden gemaakt van de hoofdgroep ‘Overig’. Dat biedt alle ruimte voor eigen toevoegingen. Alle functies die met ‘Overig zijn gemodelleerd, worden dan wel in dezelfde lichtgrijze kleur getoond. Voor de hoofdgroep ‘Overig’ geldt dat de naam van de hoofdgroep niet hoeft te worden opgenomen in de nieuwe benaming, conform de SVBP2012:</p><p><i>Specificatie van de bestemming</i></p><p>Voorbeelden hiervan kunnen zijn:</p><ol><li>Herstructureringsgebied</li>
+<li>Transformatiegebied</li>
+</ol><p>Voor een TAM-omgevingsplan geldt dat locaties naar believen mogen worden gestapeld en/of overlappen, en ook niet verplicht het hele plangebied moeten afdekken. Het is immers geen bestemmingsplan maar een omgevingsplan. Hoewel dit bij enkelbestemmingen onder de Wro niet mag, staat de validator van Ruimtelijkplannen.nl dit wel toe. Het planobject ‘enkelbestemming’ kan dus gestapeld worden gebruikt ten behoeve van het modeleren van het TAM-omgevingsplan</p><p><b><i>Andersoortige gebiedsaanwijzingen</i></b></p><p>Als de gemeente er voor kiest ook andersoortige gebiedsaanwijzingen te gebruiken die mogelijk zijn in het omgevingsplan, dan kan daarvoor bij een TAM-omgevingsplan bijvoorbeeld gebruik worden gemaakt van het object ‘dubbelbestemming’. Dit werkt op identieke wijze als hiervoor beschreven bij functies, ook in de naamgeving. Dubbelbestemmingen kennen slechts drie hoofdgroepen, en er is geen hoofdgroep ‘Overig’.
+Voorbeelden hiervan kunnen zijn:</p><ul><li>Waarde – Gemeentelijk beschermd stadsgezicht;</li>
+<li>Waarde – Historische kelders;</li>
+<li>Waarde – Welstand.</li>
+</ul><p>Meer sectoraal gerichte gebiedsaanwijzingen (geluid, geur, etc.) kunnen goed worden gemodelleerd met behulp van het object ‘gebiedsaanduiding’. Deze werden al gebruikt voor sectorale toepassingen in bestemmingsplannen en hebben daardoor hoofdgroepen waar gebiedsaanwijzingen onder te brengen zijn. De naamgeving moet voldoen aan de SVBP2012:</p><p><i>Hoofdgroep [spatie] [-] [spatie] specificatie van de aanduiding</i></p><p>(let op het gebruik van kleine letter in plaats van hoofdletter)</p><p>Bijvoorbeeld:</p><ul><li>geluidzone – geluidaandachtgebied centrum;</li>
+<li>geurzone – geurbelastingsgebied Westervoortsedijk</li>
+<li>vrijwaringszone – spoorgebied Centraal Station Westzijde</li>
+</ul><p><b><i>Activiteiten</i></b></p><p>Uit de Omgevingswet lijkt te volgen dat activiteiten wel als centraal onderdeel van een omgevingsplan moeten worden opgenomen. Dat geldt daarmee dan ook voor een TAM-omgevingsplan. Activiteiten zijn typisch objecten die we niet kennen in Wro bestemmingsplannen. In de basis gaat het weer over een regeltekst met een activiteit, die daarmee verplicht moet worden voorzien van een locatie (werkingsgebied). Omdat activiteiten wellicht moeilijk aan een hoofdgroep te koppelen zijn kan hiervoor de gebiedsaanduiding met de hoofdgroep ‘overige zone’ worden gebruikt. Er is in IMRO2012 geen beperking aan het aantal gebiedsaanduidingen dat kan worden toegevoegd. Bij het gebruik van de hoofdgroep ‘overige zone’ moet de hoofdgroep worden opgenomen in de benaming van de eigen gebiedsaanduiding, in dit geval activiteit voor het TAM-omgevingsplan, voldoet de naamgeving aan de SVBP2012:
+</p><p><i>Overige zone[spatie] [-] [spatie] specificatie van de aanduiding</i></p><p>(let op het gebruik van kleine letters in plaats van hoofdletters)</p><p>Het is bij gebiedsaanduidingen niet toegestaan om ‘overige zone’ weg te laten vóór de eigen gekozen benaming. Bijvoorbeeld:</p><ul><li>overige zone – activiteit autohandel</li>
+<li>overige zone – activiteit bedrijf geschikt voor functiemenging begane grond</li>
+<li>overige zone – activiteit exploiteren kinderopvang</li>
+</ul><p>Op deze wijze kunnen alle gewenste activiteiten voor een TAM-omgevingsplan met behulp van IMRO2012 worden gemodelleerd. Het is zeker niet verplicht het woord ‘activiteit’ op te nemen in de naam. Het kan wel handig zijn om later de locaties te kunnen onderscheiden bij inlezen in de plansoftware voor de Omgevingswet.</p><p>Op dezelfde manier kunnen ook overige gewenste objecttypen voor een TAM-omgevingsplan worden gemaakt. Denk bijvoorbeeld aan Bouwregels, Omgevingsplanactiviteiten (vergunningplicht), Algemene regels voor activiteiten, etc.</p></section></section><section id="plantekst"><h3 id="x2-3-plantekst"><span class="secno">2.3 </span>Plantekst</h3><p>In paragraaf <a href="#tam-omgevingsplan">2.2.2</a> is aangegeven hoe de kaartobjecten voor een TAM-omgevingsplan kunnen worden gesimuleerd met behulp van IMRO2012 middels het planfiguur ‘bestemmingsplan’. Daarbij moeten ook de regels en de motivering worden meegeleverd in de publicatie. Voor de motivering kan gebruik gemaakt worden van het object toelichting.</p><p>Bij het meeleveren van planteksten zijn twee opties beschikbaar voor het publiceren van de planteksten; HTML-formaat of, middels de standaard IMROPT2012 xml-formaat. De standaard voor objectgerichte planteksten (IMROPT2012) is facultatief voor bestemmingsplannen en werd daardoor niet door alle gemeenten gebruikt.
+</p><p>Voor het maken en aanleveren van TAM-omgeving adviseren wij gebruik te maken van de uitvoer in HTML-formaat. In de praktijk is namelijk gebleken dat er bij gebruik van de planteksten in IMROPT2012 xml-formaat tekstobjecten weg kunnen vallen bij het exporteren uit de Wro plansoftware. Dit gebeurt met name als de tekststructuur (hoofdstuk-indeling, tekstobject-benoeming) niet exact voldoet aan de SVBP2012. Juist voor omgevingswetbesluiten zal vaker van de SVBP structuur worden afgeweken.
+</p><p>Het risico bestaat dat de planteksten in IMROPT2012 xml-formaat niet gevalideerd kunnen worden, of dat er ongemerkt onderdelen niet worden meegenomen in de export naar .xml-formaat. In dat geval is het besluit niet compleet. In deze handreiking adviseren we daarom gebruik te maken van de HTML-export mogelijkheid van de Wro plansoftware/ tekstsoftware voor bestemmingsplannen. </p><p>Voor de validatie moeten in ieder geval de volgende tekst onderdelen aan het plangebied gekoppeld zijn:</p><ul><li>Motivering van het wijzigingsbesluit (IMRO object ‘toelichting’);</li>
+<li>Regeltekst (IMRO object ‘regels’);</li>
+<li>Besluit (IMRO object ‘vaststellingsbesluit’ alleen togestaan en verplicht voor planstatus ‘vastgesteld’).</li>
+</ul><p>Van de opbouw van de regeltekst zoals beschreven in hoofdstuk 6 van de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">SVBP2012</a> mag worden afgeweken.</p></section></section><section data-format="markdown" id="publiceren"><!--OddPage--><h2 id="x3-publiceren"><span class="secno">3. </span>Publiceren</h2><section id="ruimtelijkeplannen-nl"><h3 id="x3-1-ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</h3><p>Het publiceren van het uiteindelijk met RO Standaarden 2012 vormgegeven wijziging van het omgevingsplan gaat niet anders dan zoals onder de Wro een bestemmingsplan wordt gepubliceerd. Dat betekent dat er geen aanpassingen aan software, procedure of manier van handelen nodig is. De enige voorwaarde is dat het TAM-omgevingsplan voldoet aan de technische vereisten van de RO Standaarden. Dat kan op de normale wijze vooraf worden getoetst door de .gml aan te bieden aan de <a href="https://www.ruimtelijkeplannen.nl/validator/validator/?" target="_blank">validator</a> van Ruimtelijkeplannen.nl. Als deze online validatie slaagt zal bijna zeker de publicatie ook goed gaan.</p><p>De publicatie van een TAM-omgevingsplan volgt dezelfde route als een bestemmingsplan onder de Wro. Door met de plansoftware het gevalideerde plan te publiceren, wordt de set bestanden die het TAM-omgevingsplan vormen op de webdirectory van de gemeente geplaatst (dat kan ook en locatie bij de leverancier zijn). Tweemaal per dag komt de harvester van Ruimtelijkeplannen.nl langs, controleert of er nieuwe plannen in het manifest van de gemeente staan, en als dat het geval is dan worden de planbestanden opgehaald en weergegeven op de website van Ruimtelijkeplannen.nl.</p><p>Technisch betekent dat, dat de TAM-omgevingsplannen onderdeel worden van de Wro planvoorraad zoals opgenomen in het Wro-manifest. Dat heeft weinig consequenties maar de totale planvoorraad moet wel goed beheerd worden. Het is dan immers tijdelijk zo dat Wro-besluiten en Omgevingswet-besluiten door elkaar staan in de planvoorraad die beheerd wordt middels de Wro plansoftware.</p><p>Alle plannen uit Ruimtelijkeplannen.nl worden voortdurend ingelezen door de overbruggingsfunctie voor de ontsluiting in het DSO-LV. Hierdoor worden de Wro bestemmingsplannen onderdeel van het tijdelijk deel omgevingsplan, en worden ze zichtbaar in de viewer Regels op de Kaart (het omgevingsloket). Datzelfde geldt dan ook voor het TAM-omgevingsplan. De TAM-omgevingsplannen komen in technische zin in het tijdelijk deel van het omgevingsplan. Daar zijn ze raadpleegbaar in het omgevingsloket maar met minder functionaliteit dan een volwaardig omgevingsplan in de STOP/TPOD standaard.</p></section><section id="pilot-ruimtelijkeplannen-nl"><h3 id="x3-2-pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</h3><p>Omdat een TAM-omgevingsplan technisch een IMRO2012 bestemmingsplan is, kan deze ook gepubliceerd worden op de test-omgeving van Ruimtelijkplannen.nl. Dat maakt de plannen raadpleegbaar op pilot.ruimtelijkeplannen.nl zonder dat daar juridische consequenties aan verbonden zijn. Deze route kan dienen om, voor inwerking treden Omgevingswet, het gemaakte TAM-omgevingsplan <i>technisch</i> te toetsen op juistheid en volledigheid.
+</p><p>NB: Het is op het moment van schrijven nog niet duidelijk of de pilot omgeving na inwerkingtreden Omgevingswet beschikbaar blijft.</p><p>Het is voor inwerkingtreden Omgevingswet slechts beperkt en alleen in samenwerking met VNG en het Kadaster mogelijk een TAM-omgevingsplan te testen in de keten naar het omgevingsloket, de zogenaamde pré-omgeving van het DSO. Hiervoor zijn medio 2022 door de VNG testen door middel van werkplaatsen uitgevoerd. De bevindingen van deze werkplaatsen zijn door de VNG gebundeld in ‘bijsluiter TAM-omgevingsplan’ en is beschikbaar via de <a href="https://geonovum.email-provider.nl/link/fvmiugimhb/ycg7xdbgrs/eyeieffyby/ojdsogt6uz/ljq4cr5ep1" target="_blank">VNG website</a>.
+</p></section><section id="de-pons"><h3 id="x3-3-de-pons"><span class="secno">3.3 </span>De ‘Pons’</h3><p>De STOP/TPOD standaard maakt het voor het bevoegd gezag mogelijk om bij een wijzigingsbesluit omgevingsplan een vlak-object mee te sturen ter grootte van het werkingsgebied van het nieuwe besluit. Dat wordt de pons genoemd. Het effect hiervan is dat de viewer Regels op de Kaart de bestemmingsplannen uit het tijdelijk deel omgevingsplan niet meer toont op de kaart. In plaats daarvan wordt alleen het nieuwe Omgevingswetbesluit getoond. Op deze manier kan door het bevoegd gezag langzaam maar zeker het tijdelijk deel omgevingsplan onzichtbaar worden gemaakt naarmate het ‘echte’ omgevingsplan meer gevuld raakt.</p><p>Het TAM-omgevingsplan wordt gemaakt met IMRO2012 en kent geen object ‘pons’ en geen annotaties. Bovendien komen de TAM-omgevingsplannen, technisch gezien, zelf ook terecht in het tijdelijk deel omgevingsplan.
+</p><p>Als het werkingsgebied van een TAM-omgevingsplan bewust of onbewust overeenkomt met het plangebied van oudere bestemmingsplannen in het tijdelijk deel omgevingsplan, dan kan de gemeente de juiste weergave alleen regelen door de dossierstatus van de oude bestemmingsplannen op ‘vervallen’ te zetten. Een andere mogelijkheid is het verwijderen van de bestemmingsplannen die niet meer getoond moeten worden uit het Wro-manifest. De plannen verdwijnen dan uit Ruimtelijkeplannen.nl en worden ook in het omgevingsloket niet meer getoond.</p></section><section id="weergave-dso"><h3 id="x3-4-weergave-dso"><span class="secno">3.4 </span>Weergave DSO</h3><p>Bij inwerkingtreding van de Omgevingswet zal de viewer van Ruimtelijkeplannen.nl niet meer de volledige actuele situatie weergeven. Raadplegen van ruimtelijke plannen kan vanaf dat moment in samenhang met de omgevingswetbesluiten op basis van STOP/TPOD uitsluitend via de viewer ‘regels op de kaart’ van het omgevingsloket.
+</p><p>De viewer ‘regels op de kaart’ van het omgevingsloket geeft de Wro plannen zoveel mogelijk weer als nu gebruikelijk is op Ruimtelijkeplannen.nl. De weergave van bestemmingsplannen, en dus ook het TAM-omgevingsplan, kan dus gestuurd worden door de keuze van de hoofdgroep bij het definiëren van objecten voor een TAM-omgevingsplan in de Wro plansoftware. Als de gemeente kiest voor een TAM-omgevingsplan dat dicht bij de opbouw van het huidige bestemmingsplan ligt, dan zal de weergave daarvan ook veel lijken op wat we gewend zijn bij de digitale bestemmingsplannen van de Wro. Als juist wordt gekozen voor veel afwijkende omgevingsplan-objecten waarvoor veel de hoofdgroep ‘overig’ of ‘overige zone’ wordt gebruikt, dan zal de weergave minder ‘mooi’ zijn omdat overig wordt getoond als grijs vlak, of alleen als zwarte omlijning.
+</p><p>Het stapelen van enkelbestemmingen voor een TAM-omgevingsplan kan en mag, maar heeft wel gevolgen voor weergave en raadpleegbaarheid in het omgevingsloket. Aangezien niets verplicht is, ligt de keuze bij de gemeente.</p></section></section><section data-format="markdown" id="aandachtspunten"><!--OddPage--><h2 id="x4-aandachtspunten"><span class="secno">4. </span>Aandachtspunten</h2><p>Een TAM-omgevingsplan is juridisch een omgevingswetbesluit maar technisch een (Wro) bestemmingsplan. Dat heeft als voordeel dat in noodgevallen toch ruimtelijke ontwikkelingen doorgang kunnen vinden zelfs als de keten ‘van plan tot publicatie’ door welke oorzaak dan ook nog niet kan worden ingezet na inwerkingtreding van de Omgevingswet. Maar er zijn ook aandachtspunten, hiermee dient rekening te worden gehouden bij de inzet van TAM-omgevingsplan:
+</p><ul>
+<li>De weergave van een TAM-omgevingsplan wordt gestuurd door de keuze van de IMRO-objecten die worden ingezet om het besluit te maken. Het besluit is raadpleegbaar in het omgevingsloket. De werking van de viewer Regels op de Kaart en de overbruggingsfunctie bepalen uiteindelijk hoe bruikbaar het kaartbeeld wordt.</li>
+<li>Het is niet mogelijk om bij een TAM-omgevingsplan de pons-functie mee te geven om het onderliggende Wro-bestemmingsplannen in het tijdelijk deel omgevingsplan onzichtbaar te maken. Een TAM-omgevingsplan komt <u>technische gezien</u> zelf ook in dat tijdelijk deel.</li>
+<li>Tijdreizen in de viewer Regels op de Kaart zal niet goed werken met TAM-omgevingsplan. IMRO2012 heeft niet de juiste tijdreisattributen om dit te kunnen ondersteunen.</li>
+<li>Bij het gebruik van TAM-omgevingsplan kan wel de relatie juridische regel – werkingsgebied worden nagebootst maar annotaties zijn niet mogelijk. IMRO2012 biedt hier geen mogelijkheden voor. Dat houdt in dat er geen relatie met Toepasbare Regels kan worden gelegd, en een TAM-omgevingsplan niet werkt bij de vragenbomen in het omgevingsloket, net zoals dat ook voor bestemminsplannen in het tijdelijk deel omgevingsplan geldt. Het niveau van dienstverlening in het loket is beduidend lager. Ook selecties in de viewer Regels op de Kaart werken niet of minder goed, want deze zijn afhankelijk van annotatie</li>
+<li>Uiteindelijk moet een TAM-omgevingsplan door de gemeente verwerkt worden in het STOP/TPOD omgevingsplan. Dit betekent feitelijk dat het besluit opnieuw gemaakt en bekendgemaakt moet worden. Dat is extra werk en afhankelijk van de juridisch inbedding, is het besluit opnieuw appellabel, ondanks het feit dat het al juridisch een omgevingswetbesluit is.</li>
+<li>Het beheer van de juridische procedures en de besluiten daarin wordt complexer. Naast het afmaken van de lopende procedures van bestemmingsplannen op grond van overgangsrecht, ontstaat er een set besluiten die juridisch omgevingswetbesluit zijn maar technisch in de Wro planvoorraad zijn opgenomen. Daarnaast zullen ook de eerste Omgevingswet besluiten in STOP/TPOD formaat in procedure gaan (wat de juridische consequenties zijn van deze samenloop van de diverse besluiten wordt nog nader uitgewerkt en maakt geen onderdeel uit van deze handreiking)</li>
+</ul><p>Het zijn deze overwegingen die meegenomen kunnen worden bij de afweging om al dan niet gebruik te gaan maken van de optie TAM-omgevingsplan.</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

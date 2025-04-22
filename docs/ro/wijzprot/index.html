@@ -1,0 +1,1575 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 23.7.4">
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Wijzigingsprotocol RO Standaarden v1.3.2</title>    
+        
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "format": "markdown",
+  "publishDate": "2019-02-26",
+  "editors": [
+    {
+      "name": "Irina Entrop, Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Irina Entrop",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "wijzprot",
+  "pubDomain": "ro",
+  "license": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    }
+  },
+  "publishISODate": "2019-02-26T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 26 februari 2019"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-wijzprot-20190226/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Wijzigingsprotocol RO Standaarden v1.3.2",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2019-02-26",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Irina Entrop, Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Irina Entrop",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Wijzigingsprotocol RO Standaarden v1.3.2</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2019-02-26">26 februari 2019</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-wijzprot-20190226/">https://docs.geostandaarden.nl/ro/def-hr-wijzprot-20190226/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/wijzprot/">https://docs.geostandaarden.nl/ro/wijzprot/</a></dd>
+    
+    
+    
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Irina Entrop, Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Irina Entrop</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" data-include="" class="introductory"><h2></h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a href="#H01" class="tocxref"><span class="secno">1. </span>Leeswijzer</a></li><li class="tocline"><a href="#H02" class="tocxref"><span class="secno">2. </span>Inleiding</a><ol class="toc"><li class="tocline"><a href="#scope-van-dit-document" class="tocxref"><span class="secno">2.1 </span>Scope van dit document</a></li><li class="tocline"><a href="#proces-versus-protocol" class="tocxref"><span class="secno">2.2 </span>Proces versus protocol</a></li><li class="tocline"><a href="#het-begrip-wijziging" class="tocxref"><span class="secno">2.3 </span>Het begrip wijziging</a></li><li class="tocline"><a href="#wijzigingsvoorstel-versus-business-case" class="tocxref"><span class="secno">2.4 </span>Wijzigingsvoorstel versus Business Case</a></li></ol></li><li class="tocline"><a href="#H03" class="tocxref"><span class="secno">3. </span>Het primair wijzigingsproces</a><ol class="toc"><li class="tocline"><a href="#hoofdlijnen-van-het-wijzigingsproces" class="tocxref"><span class="secno">3.1 </span>Hoofdlijnen van het wijzigingsproces</a></li><li class="tocline"><a href="#hoofdlijnen-van-het-sturingsprincipe" class="tocxref"><span class="secno">3.2 </span>Hoofdlijnen van het sturingsprincipe</a></li><li class="tocline"><a href="#beschrijving-van-de-fasen-en-resultaten" class="tocxref"><span class="secno">3.3 </span>Beschrijving van de fasen en resultaten</a><ol class="toc"><li class="tocline"><a href="#vooroverleg" class="tocxref"><span class="secno">3.3.1 </span>Vooroverleg</a></li><li class="tocline"><a href="#fase-a-inhoud" class="tocxref"><span class="secno">3.3.2 </span>Fase A: Inhoud</a></li><li class="tocline"><a href="#fase-b-toetsing" class="tocxref"><span class="secno">3.3.3 </span>Fase B: Toetsing</a></li><li class="tocline"><a href="#fase-c-besluitvorming" class="tocxref"><span class="secno">3.3.4 </span>Fase C: Besluitvorming</a></li><li class="tocline"><a href="#fase-d-implementatie" class="tocxref"><span class="secno">3.3.5 </span>Fase D: Implementatie</a></li><li class="tocline"><a href="#evaluatie" class="tocxref"><span class="secno">3.3.6 </span>Evaluatie</a></li></ol></li><li class="tocline"><a href="#belangrijkste-afhankelijkheden" class="tocxref"><span class="secno">3.4 </span>Belangrijkste afhankelijkheden</a></li></ol></li><li class="tocline"><a href="#H04" class="tocxref"><span class="secno">4. </span>De systematiek van opeenvolgende wijzigingen</a></li><li class="tocline"><a href="#H05" class="tocxref"><span class="secno">5. </span>Uitgangspunten</a><ol class="toc"><li class="tocline"><a href="#business-case-is-leidend" class="tocxref"><span class="secno">5.1 </span>Business Case is leidend</a></li><li class="tocline"><a href="#altijd-een-geldige-versie-van-de-ro-standaarden" class="tocxref"><span class="secno">5.2 </span>Altijd één geldige versie van de RO Standaarden</a></li><li class="tocline"><a href="#start-van-de-formele-procedure-is-leidend-bij-versiebepaling" class="tocxref"><span class="secno">5.3 </span>Start van de formele procedure is leidend bij versiebepaling</a></li><li class="tocline"><a href="#een-maal-per-drie-jaar-wijzigingen-doorvoeren" class="tocxref"><span class="secno">5.4 </span>Eén maal per drie jaar wijzigingen doorvoeren</a></li><li class="tocline"><a href="#vaste-datum-inwerkingtreding" class="tocxref"><span class="secno">5.5 </span>Vaste datum inwerkingtreding</a></li><li class="tocline"><a href="#geen-wijzigingsplicht-voor-eenmaal-gepubliceerde-plannen" class="tocxref"><span class="secno">5.6 </span>Geen wijzigingsplicht voor eenmaal gepubliceerde plannen</a></li><li class="tocline"><a href="#aanpassing-van-vorm-of-technische-aspecten-van-een-gepubliceerd-plan" class="tocxref"><span class="secno">5.7 </span>Aanpassing van vorm- of technische aspecten van een gepubliceerd plan</a></li></ol></li><li class="tocline"><a href="#H06" class="tocxref"><span class="secno">6. </span>Tussentijdse werkafspraken</a></li><li class="tocline"><a href="#H07" class="tocxref"><span class="secno">7. </span>Praktijkrichtlijnen</a><ol class="toc"><li class="tocline"><a href="#norm-versus-toelichting" class="tocxref"><span class="secno">7.1 </span>Norm versus toelichting</a></li><li class="tocline"><a href="#lichte-procedure" class="tocxref"><span class="secno">7.2 </span>Lichte procedure</a></li><li class="tocline"><a href="#zware-procedure" class="tocxref"><span class="secno">7.3 </span>Zware procedure</a></li></ol></li><li class="tocline"><a href="#H08" class="tocxref"><span class="secno">8. </span>Communicatie</a><ol class="toc"><li class="tocline"><a href="#communicatieproces" class="tocxref"><span class="secno">8.1 </span>Communicatieproces</a></li><li class="tocline"><a href="#communicatieproducten" class="tocxref"><span class="secno">8.2 </span>Communicatieproducten</a></li></ol></li><li class="tocline"><a href="#H09" class="tocxref"><span class="secno">9. </span>Escalatieprocedure</a><ol class="toc"><li class="tocline"><a href="#wanneer-is-er-sprake-van-een-escalatieprocedure" class="tocxref"><span class="secno">9.1 </span>Wanneer is er sprake van een escalatieprocedure?</a></li><li class="tocline"><a href="#sturende-principes" class="tocxref"><span class="secno">9.2 </span>Sturende principes</a></li></ol></li><li class="tocline"><a href="#H10" class="tocxref"><span class="secno">10. </span>Actoren</a><ol class="toc"><li class="tocline"><a href="#stuurgroep-digitale-ruimtelijke-ordening-sdro" class="tocxref"><span class="secno">10.1 </span>Stuurgroep Digitale Ruimtelijke Ordening (SDRO)</a></li><li class="tocline"><a href="#tripartite-overleg-trip" class="tocxref"><span class="secno">10.2 </span>Tripartite overleg (TRIP)</a></li><li class="tocline"><a href="#beheeroverleg-ruimtelijkeplannen-nl-bor" class="tocxref"><span class="secno">10.3 </span>Beheeroverleg Ruimtelijkeplannen.nl (BOR)</a></li><li class="tocline"><a href="#softwareleveranciers" class="tocxref"><span class="secno">10.4 </span>Softwareleveranciers</a></li><li class="tocline"><a href="#stedenbouwkundige-bureaus" class="tocxref"><span class="secno">10.5 </span>Stedenbouwkundige bureaus</a></li><li class="tocline"><a href="#validator" class="tocxref"><span class="secno">10.6 </span>Validator</a></li><li class="tocline"><a href="#ruimtelijkeplannen-nl" class="tocxref"><span class="secno">10.7 </span>Ruimtelijkeplannen.nl</a></li><li class="tocline"><a href="#professionele-afnemers" class="tocxref"><span class="secno">10.8 </span>Professionele afnemers</a></li><li class="tocline"><a href="#bzk-als-wetgever" class="tocxref"><span class="secno">10.9 </span>BZK als wetgever</a></li><li class="tocline"><a href="#wro-bronhouders" class="tocxref"><span class="secno">10.10 </span>Wro bronhouders</a></li><li class="tocline"><a href="#geonovum-als-beheerder-van-de-ro-standaarden" class="tocxref"><span class="secno">10.11 </span>Geonovum als beheerder van de RO Standaarden</a></li></ol></li><li class="tocline"><a href="#H11" class="tocxref"><span class="secno">11. </span>Voorbeeld initieel formaat voor wijzigingsverzoek</a></li></ol></nav><div id="H00" data-format="markdown"><h2>Versiebeheer</h2>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document
+geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Aanpassing door</strong></th>
+<th><strong>Toelichting</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>juni 2009</td>
+<td>Vervallen</td>
+<td>Monique van Scherpenzeel</td>
+<td>Publicatie na toetsing van protocol bij BROS, AdWro en softwareleveranciers</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Arie Duindam</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Remco Koenders</td>
+<td></td>
+</tr>
+<tr>
+<td>1.1.1</td>
+<td>september 2010</td>
+<td>Vervallen</td>
+<td>Monique van Scherpenzeel</td>
+<td>- Protocol actualiseren</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Erica Verkerk,</td>
+<td>- Afstemming met protocol Ruimtelijkeplannen.nl</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Arie Duindam</td>
+<td>- Aanpassing sluitingsdatum wijzigingsverzoeken</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Datum D= 1 januari</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Verwijdering fouten</td>
+</tr>
+<tr>
+<td>1.1.2</td>
+<td>november 2010</td>
+<td>Vervallen</td>
+<td>Erica Verkerk, Ruby Beltman</td>
+<td>tekstuele aanpassingen</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>aanpassing terminologie</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>december 2010</td>
+<td>Vervallen</td>
+<td>Arie Duindam</td>
+<td>verwerken laatste opmerkingen</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Februari 2016</td>
+<td>Vervallen</td>
+<td>Irina Entrop</td>
+<td>- Lijst van afkortingen bij inhoudsopgave geactualiseerd en verplaatst naar leeswijzer</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Tekstuele aanpassingen: RO-online vervangen door Ruimtelijkplannen.nl, I&amp;M vervangen door IenM, Wijzigingverzoek vervangen door wijzigingsverzoek, Wijzigingvoorstel vervangen door wijzigingsvoorstel, Wijzigingplicht (paragraaf 5.2) vervangen door wijzigingsplicht</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Adviesgroep digitale Wro (AdWro) verwijderd.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Het overleg van TRIP toegevoegd</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Beheer overleg Ruimtelijkeplannen.nl (BOR) toegevoegd</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Wijzigingsprotocol praktijkrichtlijnen (hoofdstuk 7) toegevoegd</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Paragraaf 8.2 :</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- tekst over praktijkrichtlijnen toegevoegd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- ‘Wijzigingsbladen’ vervangen door ‘wijzigingsdocumenten’;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- Besprekingsverslagen AdWro verwijderd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Besprekingsverslagen Stedenbouwkundige bureaus verwijderd.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Paragraaf 10.6 Stedenbouwkundige bureaus als actor aangepast naar alleen implementatie</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Bijlage 1:</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- Bij wettelijke verankerde standaarden de praktijkrichtlijnen verwijderd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- Bij niet wettelijk verankerde standaarden de praktijkrichtlijnen toegevoegd;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- IMWE toegevoegd bij wettelijk verankerde standaarden;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-- PRWE toegevoegd bij de niet wettelijk verankerde standaarden.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Colofon verwijderd</td>
+</tr>
+<tr>
+<td>1.3.1</td>
+<td>24 maart 2016</td>
+<td>Vervallen</td>
+<td>Irina Entrop en Monique van Scherpenzeel</td>
+<td>Hoofdstuk 6 aangepaste inleiding; hiermee vervalt het separate, via de website beschikbare, memo ‘werkafspraken RO Standaarden van 14 januari 2010’.</td>
+</tr>
+<tr>
+<td>1.3.2</td>
+<td>Februari 2019</td>
+<td>Werkversie</td>
+<td>Irina Entrop en Monique van Scherpenzeel</td>
+<td>- Ministerie van Infrastructuur en Milieu (IenM) vervangen door Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (BZK)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Paragraaf 2.3 de link naar de meldingen RO Standaarden verwijderd</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Beheergroep RO Standaarden (BROS) verwijdert uit het document.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Paragraaf 5.4 aangepast en geactualiseerd.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>- Paragraaf 5.6 aangepast en 5.7 toegevoegd m.b.t. wijzigen reeds gepubliceerde plannen.</td>
+</tr>
+<tr>
+<td></td>
+<td>26 februari 2019</td>
+<td>Definitief</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-leeswijzer"><span class="secno">1. </span>Leeswijzer</h2><p><strong>Voor u ligt het wijzigingsprotocol van de RO Standaarden. Hierin staan de
+sturende principes achter het generieke wijzigingsproces van de RO Standaarden.
+Met dit protocol wordt elke wijziging een voorspelbaar proces voor de
+ketenpartners. Voor wie wanneer waarom en wat een wijziging is, dat beantwoordt
+dit wijzigingsprotocol niet.</strong></p><p>Het wijzigingsprotocol beschrijft de manier waarop wijzigingen op de RO
+Standaarden plaatsvinden. De RO Standaarden zijn bij wet vastgelegd met de
+ministeriële ‘Regeling standaarden ruimtelijke ordening’. Wijziging in de
+standaarden, van de aanpassing van een spreekwoordelijke komma tot een
+aanvulling met een nieuwe standaard (doorontwikkeling), kunnen door de
+verankering in de wet- en regelgeving en de vele type gebruikers niet zomaar
+worden doorgevoerd. Een wijziging van de standaarden die voor de ene gebruiker
+gering is, kan voor een ander grote consequenties hebben.</p><p>In dit document worden basisbegrippen en uitgangspunten uiteengezet om het
+wijzigingsproces voor de RO Standaarden in hoofdlijnen te verklaren. Het
+volledig wijzigingsproces doorloopt de fasen:</p><ol>
+<li><p>Inhoud;</p>
+</li>
+<li><p>Toetsing;</p>
+</li>
+<li><p>Besluitvorming;</p>
+</li>
+<li><p>Implementatie.</p>
+</li>
+</ol><p>Dit proces kent vaste stappen die tijdgebonden zijn met een vaste datum van
+inwerkingtreding van de nieuwe set RO Standaarden.</p><p>De vele actoren die betrokken zijn bij het wijzigingsproces van de RO
+Standaarden worden in een apart hoofdstuk beschreven. Het hoofdstuk geeft de
+belangrijkste taken en verantwoordelijkheden van de actoren aan. Iedere actor
+bepaalt zelf of en in hoeverre hij/zij dit algemene wijzigingsprotocol uitwerkt
+in een eigen protocol. Dat is geen taak van Geonovum.</p><p>De RO Standaarden zijn niet statisch, het protocol naar alle waarschijnlijkheid
+ook niet. Wijziging van dit protocol zelf worden vermeld in het versiebeheer. De
+meest actuele versie publiceert Geonovum op de website.</p><p>Door het hele document heen worden processen, activiteiten en mijlpalen
+(producten) steeds weergegeven met eenvoudige opgemaakte proces schema’s. Steeds
+is de activiteit of mijlpaal links in tekst aangegeven. De tijdsduur en planning
+van de activiteit in maanden is aangegeven in relatie tot de datum van
+inwerkingtreding (D) van de wijzigingen. D-6 betekent dus: 6 maanden voor de
+inwerkingtredingdatum van een set wijzigingen. Stippellijntjes --- betekenen een
+optionele of beperkte activiteit binnen een fase. Een ruit ♦ is een mijlpaal.</p><p>Een voorbeeld van zo’n schema is als volgt:</p><p><img src="media/2691441370e94b4bad5da957bb62f986.jpg" alt="" width="1507" height="484"></p><p><strong>Lijst met afkortingen</strong></p><table>
+<thead>
+<tr>
+<th>BC</th>
+<th>Business Case</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BOR</td>
+<td>Beheeroverleg Ruimtelijkeplannen.nl van beheerorganisaties Kadaster en Geonovum</td>
+</tr>
+<tr>
+<td>EC</td>
+<td>Europese Commissie</td>
+</tr>
+<tr>
+<td>EU</td>
+<td>Europese Unie</td>
+</tr>
+<tr>
+<td>IPO</td>
+<td>Interprovinciaal Overleg</td>
+</tr>
+<tr>
+<td>BZK</td>
+<td>Ministerie van Binnenlandse Zaken en Koninkrijksrelaties</td>
+</tr>
+<tr>
+<td>MR</td>
+<td>Ministeriële Regeling</td>
+</tr>
+<tr>
+<td>RO</td>
+<td>Ruimtelijke Ordening</td>
+</tr>
+<tr>
+<td>SDRO</td>
+<td>Stuur- en beheergroep Digitale Ruimtelijke Ordening</td>
+</tr>
+<tr>
+<td>TRIP</td>
+<td>Tripartite overleg van BZK, Kadaster, Geonovum</td>
+</tr>
+<tr>
+<td>VNG</td>
+<td>Vereniging van Nederlandse Gemeenten</td>
+</tr>
+<tr>
+<td>Wro</td>
+<td>Wet ruimtelijke ordening</td>
+</tr>
+</tbody></table></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-inleiding"><span class="secno">2. </span>Inleiding</h2><p><strong>De RO Standaarden zijn een essentiële basis voor de uitvoeringspraktijk van de
+digitale aspecten van de Wro. De RO Standaarden zijn niet statisch. Daarom is
+het van groot belang dat het wijzigingsbeheer van deze standaarden goed geregeld
+is. Dit is iets waar vrijwel alle actoren - de belanghebbenden in de
+werkpraktijk van de ruimtelijke ordening - mee te maken zullen krijgen. Juist
+omdat de wijziging van de standaarden impact heeft op zoveel actoren, die
+bovendien veelal afhankelijkheidsrelaties met elkaar hebben, is het van belang
+om deze afhankelijkheden en verantwoordelijkheden in kaart te brengen en om
+hiermee afdoende rekening te houden. Met dit doel is dit wijzigingsprotocol
+opgesteld. Het beschrijft het geheel aan regels en afspraken om wijzigingen in
+de RO Standaarden op een gecontroleerde en acceptabele manier door te voeren.</strong></p><section id="scope-van-dit-document"><h3 id="x2-1-scope-van-dit-document"><span class="secno">2.1 </span>Scope van dit document</h3><p>Dit document beschrijft de manier waarop wijzigingen op de RO Standaarden
+plaatsvinden. Bij de procesbeschrijvingen wordt steeds uitgegaan van een model
+op hoofdlijnen. Dat betekent dat voor iedere actor duidelijk wordt wat er gedaan
+moet worden, wanneer, wat er verwacht kan worden van andere actoren en welke
+onderlinge afhankelijkheden er zijn. Verder wordt in het hoofdstuk Communicatie
+uiteengezet welke producten er gedurende het proces ontstaan. Dit protocol is
+geen handleiding voor hoe al deze zaken gerealiseerd moeten worden. Dit blijft
+een zaak van de actoren zelf. Zo wordt er niet ingegaan op de projectmatige
+aanpak om in een softwarepakket wijzigingen door te voeren; dit is de
+verantwoordelijkheid van de softwareleverancier. Evenmin wordt ingegaan op hoe
+Geonovum als beheerder van de standaarden de informatie aan het werkveld
+doseert. Wel wordt duidelijk gemaakt wat het werkveld op dit punt kan verwachten
+en wanneer van Geonovum.</p></section><section id="proces-versus-protocol"><h3 id="x2-2-proces-versus-protocol"><span class="secno">2.2 </span>Proces versus protocol</h3><p>De titel van dit document geeft aan dat het hier om een protocol gaat. Toch
+wordt in dit document ook gesproken over processen. Het is goed om kort de
+verschillen te benoemen. Hiermee wordt ook meteen duidelijk wat de afbakening is
+van dit document. Van Dale[^1] geeft de volgende betekenissen:</p><p>[^1]: Bron: Dikke van Dale 3-in-1 Groot woordenboek, 4e editie.</p><ul>
+<li><p><em>protocol</em>: een geheel van vastgelegde regels en afspraken op een bepaald
+gebied;</p>
+</li>
+<li><p><em>proces</em>: het verloop, ontwikkelingsgang.</p>
+</li>
+</ul><p>In dit document, het <strong>wijzigingsprotocol</strong>, wordt dus uitdrukkelijk het geheel
+van vastgelegde regels en afspraken voor het wijzigen van de RO Standaarden
+vastgelegd. Vanuit de aard van de zaak wordt daarbij veel aandacht besteed aan
+het verloop of de ontwikkelingsgang van de hiervoor noodzakelijke activiteiten.</p><p>Een <strong>wijzigingsproces</strong> is een daadwerkelijke wijziging van de RO Standaarden
+op een bepaald moment. Het volledig wijzigingsproces doorloopt de volgende
+tijdgebonden fasen met een vaste datum van inwerkingtreding van de nieuwe set RO
+Standaarden: A. Inhoud, B. Toetsing, C. Besluitvorming en D. Implementatie. Elk
+wijzigingsproces wordt begeleid volgens het beschreven protocol.</p></section><section id="het-begrip-wijziging"><h3 id="x2-3-het-begrip-wijziging"><span class="secno">2.3 </span>Het begrip wijziging</h3><p>De RO Standaarden zijn niet statisch. Er wordt voortdurend gesproken over
+wijzigingen. Hiervoor wordt een veelvoud aan begrippen gehanteerd, waaronder
+kleine wijzigingen, technische wijzigingen, foutherstel, niet-juridische
+relevante wijzigingen, wijzigingen zonder impact, toevoegingen, weglatingen,
+structurele nieuwe ontwikkelingen en nieuwe standaarden. Het wijzigingsprotocol
+voorziet in het doorvoeren van al deze soorten wijzigingen.</p><p>Het is niet wenselijk om voor al soorten wijzigingen aparte afspraken vast te
+leggen. Wijzigingen die futiel zijn voor de één zijn ingrijpend voor de ander.
+Bij elk soort wijziging blijken steeds dezelfde actoren op hoofdlijnen een
+bepaalde rol te spelen, blijken steeds ongeveer dezelfde doorlooptijden en
+afhankelijkheden van toepassing en blijken steeds dezelfde randvoorwaarden ten
+grondslag te liggen aan de manier van doorvoeren. Daarom wordt in dit protocol
+steeds het algemene begrip "wijziging" gehanteerd. Dit kan slaan op het
+veranderen van de spreekwoordelijke komma tot het vaststellen van een geheel
+nieuwe standaard. Het belangrijkste voordeel van dit protocol is de
+duidelijkheid en voorspelbaarheid in het wijzigingsproces.</p><p>In dit document wordt ook gesproken over <strong>wijzigingsverzoeken</strong> en
+<strong>wijzigingsvoorstellen</strong>. Een wijzigingsverzoek is door een actor ingediend bij
+Geonovum, de beheerder van de RO Standaarden; de standaard moet op een bepaald
+punt met deze reden worden aangepast of aangevuld. In het wijzigingsproces
+worden de wijzigingsverzoeken die daarin worden meegenomen gebundeld tot één
+wijzigingsvoorstel. Dit wijzigingsvoorstel kan gedurende het wijzigingsproces
+veranderen: wijzigingsverzoeken kunnen afvallen, omdat besloten wordt hun toch
+niet mee te nemen. Een actueel overzicht van alle wijzigingsverzoeken voor de RO
+Standaarden zijn via de website van Geonovum beschikbaar gesteld.</p><p>Een uitgangspunt in het opzetten van dit protocol is dat de RO Standaarden zich
+dynamisch ontwikkelen en dus dat er geen behoefte is aan een geheel nieuw pakket
+standaarden zoals dat in het verleden is gebeurd: IMRO2003, DURP Standaarden
+2006 en dan de RO Standaarden 2008 en vervolgens de RO Standaarden 2012. De
+intentie is om te werken met één set standaarden die in de tijd evolueert.</p></section><section id="wijzigingsvoorstel-versus-business-case"><h3 id="x2-4-wijzigingsvoorstel-versus-business-case"><span class="secno">2.4 </span>Wijzigingsvoorstel versus Business Case</h3><p>Een business case is een projectmanagementbegrip. Het is een document waarin de
+zakelijke informatie en afweging, de kosten en de baten, staan voor de start of
+uitvoering van een project of taak. Voor de RO Standaarden stelt Geonovum per
+wijzigingsverzoek een business case op. Daarbij wordt gekeken naar de geschatte
+haalbaarheid van het verzoek en impact ervan op de werkwijze in het RO-praktijk
+met advies vanuit de RO-praktijk, zijnde BROS, Beheeroverleg
+Ruimtelijkeplannen.nl en softwareleveranciers. Bijlage 1 geeft een voorbeeld van
+initieel wijzigingsverzoek in het voorgeschreven formaat.</p><p>Een wijzigingsvoorstel is een collectie wijzigingsverzoeken, inclusief business
+case per verzoek. In de loop van een wijzigingsproces komen vier versies van een
+wijzigingsvoorstel langs, exclusief conceptversies. Elke versie is een
+verfijning van de vorige met bijdragen vanuit verschillende invalshoeken en
+partijen en wordt in een besluitmoment vastgesteld:</p><ul>
+<li><p>D-24: 1e versie wijzigingsvoorstel met initiële Business Case;</p>
+</li>
+<li><p>D-21: 2e versie wijzigingsvoorstel met eindconcept Business Case;</p>
+</li>
+<li><p>D-18: 3e versie wijzigingsvoorstel met definitieve Business Case;</p>
+</li>
+<li><p>D-12: Finale versie wijzigingsvoorstel met definitieve wijzigingen.</p>
+</li>
+</ul><p>De verschillende versies en mijlpalen met besluitmomenten zijn beschreven in
+paragraaf 3.3.</p><p>N.B. Hoewel de begrippen wijzigingsvoorstel en business case in dit
+wijzigingsprotocol als afzonderlijke producten gehanteerd worden, ontstaat er in
+de praktijk een samenhangend document waarin zowel de voorgestelde wijzigingen
+zijn beschreven (“wijzigingsvoorstel”) met daarbij per onderdeel de
+noodzakelijke besluitondersteunende informatie (“business case”).</p></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-het-primair-wijzigingsproces"><span class="secno">3. </span>Het primair wijzigingsproces</h2><p><strong>Het wijzigingsprotocol ziet toe op een gecontroleerde manier van wijzigen van de
+RO Standaarden. Een belangrijk onderdeel van dit protocol is het primaire proces
+voor het doorvoeren van voorgestelde wijzigingen. Hierin is vastgelegd welke
+fasering en mijlpalen er zijn en de timing van het wijzigingsproces. Dit
+hoofdstuk beschrijft het primaire proces.</strong></p><section id="hoofdlijnen-van-het-wijzigingsproces"><h3 id="x3-1-hoofdlijnen-van-het-wijzigingsproces"><span class="secno">3.1 </span>Hoofdlijnen van het wijzigingsproces</h3><p>Schema 1 geeft de hoofdlijnen van het primaire proces weer: de algemene
+hoofdfasen en de timing van deze fasen. Het begrip “versie” refereert aan de
+versie van het wijzigingsvoorstel met business case.</p><p><img src="media/aaf5d176a25753b00e6061f8ae36eb08.jpg" alt="" width="1399" height="601"></p><p>Het primaire proces bestaat uit vier formele fasen en twee informele fasen die
+respectievelijk voorafgaat aan de eerste fase en volgt op de vierde fase. Tabel
+1 geeft deze fasen kort weer. Paragraaf 3.3 geeft voor iedere fase een meer
+uitgebreide beschrijving.</p><table>
+<thead>
+<tr>
+<th><strong>Tabel 1 - Algemene fasering van het wijzigingsproces</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vooroverleg</td>
+<td>informele afstemming</td>
+</tr>
+<tr>
+<td>Fase A : inhoud</td>
+<td>wat wordt het voorstel?</td>
+</tr>
+<tr>
+<td>Fase B : toetsing</td>
+<td>is het voorstel inhoudelijk en technisch correct?</td>
+</tr>
+<tr>
+<td>Fase C : besluitvorming</td>
+<td>willen wij het definitief?</td>
+</tr>
+<tr>
+<td>Fase D : implementatie</td>
+<td>doorvoeren in RO werkveld</td>
+</tr>
+<tr>
+<td>Evaluatie</td>
+<td>informele nazorg</td>
+</tr>
+</tbody></table></section><section id="hoofdlijnen-van-het-sturingsprincipe"><h3 id="x3-2-hoofdlijnen-van-het-sturingsprincipe"><span class="secno">3.2 </span>Hoofdlijnen van het sturingsprincipe</h3><p>Algemeen sturingsprincipe is dat voor elke wijziging een valide (positieve)
+business case moet zijn. Deze business case ontwikkelt mee met de uitvoering van
+het wijzigingsproces. Schema 2 geeft deze ontwikkeling weer. Bij iedere mijlpaal
+moet er een positieve business case (BC) zijn voor iedere wijziging. De
+Stuurgroep DRO beoordeelt of een business case positief is.</p><p><img src="media/969575211727ba3c7237d8cfdd70bddc.jpg" alt="" width="1476" height="527"></p></section><section id="beschrijving-van-de-fasen-en-resultaten"><h3 id="x3-3-beschrijving-van-de-fasen-en-resultaten"><span class="secno">3.3 </span>Beschrijving van de fasen en resultaten</h3><section id="vooroverleg"><h4 id="x3-3-1-vooroverleg"><span class="secno">3.3.1 </span>Vooroverleg</h4><p>Dit is een informele fase in het wijzigingsproces. Soms gaat er veel vooroverleg
+vooraf aan het daadwerkelijk in gang zetten van een bepaalde wijziging. Bij het
+ontwikkelen van een nieuwe standaard kan dit een proces van jaren zijn met
+activiteiten als onderzoek, voorstudies en het zoeken van draagvlak.</p><p><em>Resultaat</em>: duidelijk zicht op de scope, draagvlak en oplossingsrichting van de
+beoogde wijzigingen.</p></section><section id="fase-a-inhoud"><h4 id="x3-3-2-fase-a-inhoud"><span class="secno">3.3.2 </span>Fase A: Inhoud</h4><p>In deze fase wordt het inhoudelijke wijzigingsvoorstel bepaald door de concrete
+inhoud van elk wijzigingsverzoek uit te werken en de resultaten van uit het
+vooroverleg te concretiseren: welke wijzigingen worden er precies voorgesteld?
+Deze fases in onderverdeeld drie iteraties.</p><p><strong>Inhoud A1 - Eerste wijzigingsvoorstel met initiële Business Case</strong></p><p><em>Fase A1:</em> In de eerste iteratie worden alle ingediende wijzigingsverzoeken uit
+de voorgaande periode gebundeld en op hoofdlijnen uitgewerkt met voorgestelde
+oplossing (of voorstel om niet mee te nemen).</p><p><em>Resultaat A1:</em> Het eindproduct van deze iteratie is het eerste
+wijzigingsvoorstel met initiële Business Case. Het is de eerste volledige
+beschrijving van de voorgestelde wijzigingen, voldoende uitgewerkt voor
+besluitneming en voor toetsing op juistheid in meer detail.</p><p><em>Opmerkingen over A1</em>: Het eerste wijzigingsvoorstel wordt bekend gemaakt bij
+alle actoren. Dit is het startpunt van fase C Besluitvorming.</p><p><strong>Inhoud A2 – Toetsen, aanpassen, besluiten</strong></p><p><em>Fase A2:</em> In deze inhoudelijke iteratie wordt getoetst of het
+wijzigingsvoorstel inhoudelijke juist is, of de wijzigingen in het voorstel
+juist geformuleerd en uitvoerbaar zijn en of zij technisch haalbaar zijn voor
+ieder actor.</p><p><em>Resultaten A2:</em> de resultaten van deze iteratie zijn het resp. tweede en derde
+wijzigingsvoorstel.</p><p><em>Opmerkingen A2:</em> Gelijktijdig met deze inhoudelijke iteratie vindt
+besluitvorming (fase C) plaats op basis van het eerste wijzigingsvoorstel.
+Gekeken wordt of de wijzigingen in het voorstel wenselijk zijn en te prefereren
+boven alternatieven. In deze iteratie kunnen in het voorstel wijzigingen
+afvallen of veranderen als gevolg van de besluitvorming. Ook kunnen wijzigingen
+technische verbeterd worden als gevolg van de toets.</p><p><strong>Inhoud A3 - Definitieve wijzigingen maken</strong></p><p><em>Fase A3:</em> In deze laatste inhoudelijke iteratie implementeert het werkveld de
+wijzigingen in de praktijk. Bij de implementatie kunnen nog technische
+tekortkomingen worden ontdekt. In deze iteratie kunnen zij worden hersteld:
+technisch foutherstel. Er worden geen nieuwe wijzigingen meer toegevoegd aan het
+wijzigingsvoorstel.</p><p><em>Resultaat A3:</em> Het eindproduct is het definitieve wijzigingsvoorstel.</p><p><em>Opmerkingen A3:</em> Wie de definitieve wijzigingen voor het voorstel maakt en hoe
+de koppeling met het werkveld plaats vindt wordt uitgewerkt in de volgende
+hoofdstukken.</p></section><section id="fase-b-toetsing"><h4 id="x3-3-3-fase-b-toetsing"><span class="secno">3.3.3 </span>Fase B: Toetsing</h4><p>Deze fase vormt een brug tussen de inhoud, besluitvorming en implementatie.
+Toetsen betekent het bepalen van de inhoudelijke correctheid en technische
+haalbaarheid van de wijzigingen in het wijzigingsvoorstel. Er is een wezenlijk
+verschil met besluitvorming. Bij het toetsen wordt de inhoudelijke <em>correctheid</em>
+en technische haalbaarheid vastgesteld, bij besluitvorming de <em>wenselijkheid</em> om
+de voorgestelde wijzigingen door te voeren. Deze fase is opgedeeld in drie
+iteraties.</p><p><strong>Toetsing B1 - Initiële Business Case toetsen</strong></p><p><em>Fase B1:</em> In de eerste iteratie toetsen de actoren inhoudelijk de eerste versie
+van het wijzigingsvoorstel op volledigheid: zijn deze inderdaad de wijzigingen
+die nodig zijn? Als het nodig is worden de formulering of details van het
+wijzigingsvoorstel inhoudelijk aangepast of alternatieven geboden.</p><p><em>Resultaat B1:</em> Het eindproduct van deze iteratie is de tweede versie van het
+wijzigingsvoorstel met eindconcept Business Case. Dit voorstel moet inhoudelijk
+compleet zijn en na oplevering klaar voor technische toetsing voor de
+Definitieve Business Case.</p><p><em>Opmerkingen B1:</em> Actoren mogen ervoor kiezen om in deze iteratie alvast
+technische aspecten naar eigen belang te toetsen.</p><p><strong>Toetsing B2 - Eindconcept Business Case toetsen</strong></p><p><em>Fase B2:</em> In deze tweede iteratie toetsen de actoren of de wijzigingen
+technisch juist geformuleerd zijn, of zij haalbaar zijn (impact en kosten) en of
+zij in een productieomgeving te implementeren zijn. In deze toets kunnen
+wijzigingen pragmatisch aangepast worden.</p><p><em>Resultaat B2:</em> Het eindproduct van deze iteratie is de definitieve Business
+Case. Het is nu helder welke wijzigingen gewenst zijn en haalbaar worden geacht
+en hoe zij juist geformuleerd moeten zijn.</p><p><strong>Toetsing B3 - Definitieve Business Case toetsen</strong></p><p><em>Fase B3:</em> Dit is een technische iteratie. De verschillende actoren toetsen de
+effecten van de wijzigingen onderling in gezamenlijke technische proefomgevingen
+(testbeds). Ruimtelijkeplannen.nl maakt een versie waarmee softwareleveranciers
+hun nieuwe versie van de RO applicatie kunnen toetsen en daarmee
+Ruimtelijkeplannen.nl.</p><p><em>Resultaat B3:</em> Het eindproduct van deze iteratie zijn de Definitieve
+Wijzigingen. In principe is de Definitieve Business Case gelijk aan de
+Definitieve Wijzigingen, tenzij er kleine technische kwesties aan het licht
+komen.</p><p><em>Opmerkingen B3:</em> Dit is ook de eerste iteratie van de fase Implementatie. Deze
+iteratie is er alleen op gericht om kleine technische fouten die het werkveld
+ontdekt bij de implementatie op gecontroleerde wijze te herstellen. Het is niet
+de bedoeling dat er in deze iteratie pas serieus wordt gekeken naar de kwaliteit
+van de wijzigingen in het voorstel.</p></section><section id="fase-c-besluitvorming"><h4 id="x3-3-4-fase-c-besluitvorming"><span class="secno">3.3.4 </span>Fase C: Besluitvorming</h4><p>Als er een eerste wijzigingsvoorstel met initiële Business Case ligt, vindt hier
+formele besluitvorming over plaats. Hierbij hoort onder andere het wettelijke
+traject dat doorlopen moet worden om de gewijzigde of nieuwe standaarden te
+verankeren in de Wro wetgevingsfamilie en de inhoudelijk toetsing van de
+wijzigingen. In bovenstaand schema is met een stippellijn de mogelijke uitloop
+aangegeven. Dit geeft aan dat het volledige besluitvormingsproces langer duurt
+bij de EU notificatieprocedure. In dat geval wordt de fase formeel afgerond met
+de ontvangstbevestiging van de concept ministeriële regeling waarin de
+wijzigingen zullen worden bekrachtigd. De fase besluitvorming is opgedeeld in
+drie iteraties.</p><p><strong>Besluitvorming C1 - advies</strong></p><p><em>Fase C1:</em> In deze iteratie vormen BOR en TRIP een advies over de wijzigingen in
+het voorstel dat door Geonovum hen voorlegt. Dit is de eerste stap in de formele
+besluitvorming.</p><p><em>Resultaten C1:</em> Business Case voorzien van advies.</p><p><strong>Besluitvorming C2 - besluit</strong></p><p><em>Fase C2:</em> In deze iteratie neemt het ministerie van BZK als
+wetgever/beleidsmaker samen met andere leden van de Stuurgroep DRO een formeel
+besluit over het advies van de TRIP.</p><p><em>Resultaat C2:</em> Een formeel besluit door BZK.</p><p><strong>Besluitvorming C3 - verankering</strong></p><p><em>Fase C3:</em> In deze iteratie vindt de optionele EU notificatieprocedure plaats.
+Ook verzorgt BZK de wettelijke verankering.</p><p><em>Resultaat C3:</em> Een (nieuwe) gepubliceerde ministeriële regeling waarmee de
+nieuwe RO Standaarden verankerd zijn.</p></section><section id="fase-d-implementatie"><h4 id="x3-3-5-fase-d-implementatie"><span class="secno">3.3.5 </span>Fase D: Implementatie</h4><p>Nadat de besluitvorming over de voorgestelde wijzigingen wordt begonnen met de
+implementatie. Software moet aangepast worden bij alle bronhouders en afnemers
+van ruimtelijke plannen. Mogelijk moeten RO handboeken, de conformiteitstoets,
+de Validator en/of Ruimtelijkeplannen.nl worden aangepast. Tijdens deze fase
+wordt de implementatie begeleid waar nodig. Implementatie is opgedeeld in drie
+iteraties.</p><p><strong>Implementatie D1</strong></p><p><em>Fase D1:</em> In deze iteratie worden voornamelijk de Validator,
+Ruimtelijkeplannen.nl en indien nodig de software voor de conformiteitstoetsing
+aangepast. Dit is een beperkte iteratie, omdat het hier gaat om de implementatie
+bij een beperkt aantal actoren. Naast het Kadaster en Geonovum als beheerders
+van deze voorzieningen, betreft het mogelijk ook softwareleveranciers die
+vroegtijdig de wijzigingen in hun software willen doorvoeren en toetsen. Het RO
+werkveld in brede zin zal bij iteratie D2 de wijzigingen starten met de
+implementatie van de wijzigingen.</p><p><em>Resultaat D1</em>: een aangepaste Validator en een aangepaste Ruimtelijkeplannen.nl
+ten behoeve van implementatie van bronhouders- en afnemerssoftware.</p><p><strong>Implementatie D2</strong></p><p><em>Fase D2:</em> In deze iteratie worden Ruimtelijkeplannen.nl, bronhouders- en
+afnemerssoftware ontwikkeld en worden conformiteitstoetsen afgenomen indien
+nodig.</p><p><em>Resultaat D1</em>: Software is klaar voor de uitrol bij bronhouders en afnemers,
+bronhouders staan klaar om intern de implementatie uit te voeren voor de datum
+inwerkingtreding.</p><p><strong>Implementatie D3</strong></p><p><em>Fase D3:</em> In deze iteratie wordt software uitgeleverd, worden RO handboeken
+aangepast en wordt dienstverlening op basis van de nieuwe RO Standaarden
+voorbereid.</p><p><em>Resultaat D3:</em> Het werkveld heeft de wijzigingen verwerkt en kan hiermee aan de
+slag na de inwerkingtredingsdatum.</p></section><section id="evaluatie"><h4 id="x3-3-6-evaluatie"><span class="secno">3.3.6 </span>Evaluatie</h4><p>Na de inwerkingtreding van de wijzigingen zal het soms nodig zijn om de juiste
+toepassing te monitoren en/of de effectiviteit te evalueren. Dit is afhankelijk
+van de aard en omvang van de wijzigingen. Net als het vooroverleg is dit een
+informele fase. Het resultaat hiervan is een helder beeld van de werking van de
+ingevoerde wijzigingen en mogelijk zicht op noodzakelijke en/of gewenste
+vervolgacties.</p></section></section><section id="belangrijkste-afhankelijkheden"><h3 id="x3-4-belangrijkste-afhankelijkheden"><span class="secno">3.4 </span>Belangrijkste afhankelijkheden</h3><p>De belangrijkste afhankelijkheden tussen de fases zijn weergegeven in
+onderstaande tabel.</p><table>
+<thead>
+<tr>
+<th><strong>Tabel 2 - Afhankelijkheden tussen de fasen in het wijzigingsproces</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- = weinig of geen afhankelijkheid * = matige afhankelijkheid ** = sterke afhankelijkheid</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Inhoud</td>
+<td>toetsing</td>
+<td>besluitvorming</td>
+<td>implementatie</td>
+<td>evaluatie</td>
+</tr>
+<tr>
+<td>vooroverleg</td>
+<td>**</td>
+<td>-</td>
+<td>*</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>inhoud</td>
+<td></td>
+<td>**</td>
+<td>**</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>toetsing</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>**</td>
+<td>*</td>
+</tr>
+<tr>
+<td>besluitvorming</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>implementatie</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>**</td>
+</tr>
+</tbody></table><p><strong>Vooroverleg inhoud **</strong></p><p>In het vooroverleg wordt feitelijk gewerkt aan draagvlak voor de scope en
+onderwerpen van de wijzigingen. Het heeft geen zin om inhoudelijk aan
+wijzigingsverzoeken te werken als op voorhand duidelijk is dat dit in de
+besluitvorming zal sneuvelen of dat slechts een beperkt deel van de voorgestelde
+wijzigingen binnen de beschikbare budgetten kan worden uitgewerkt en
+geïmplementeerd.</p><p><strong>Vooroverleg besluitvorming *</strong></p><p>In het vooroverleg vindt afstemming plaats over de scope en onderwerpen van de
+wijzigen waar aan gewerkt zal worden. Daarmee wordt draagvlak vooraf gecreëerd.
+Dit draagvlak is nodig voor de besluitvorming. Ook wordt de mate van
+besluitvorming in kaart gebracht – hoe formeel en juridisch het traject wel of
+niet moet zijn en de afhankelijkheden van of impact op andere wetten
+(bijvoorbeeld de Grex of Wabo).</p><p><strong>Inhoud toetsing **</strong></p><p>Dit is een sterke afhankelijkheid. De inhoud wordt getoetst op correctheid
+voorafgaand aan het proces van besluitvorming.</p><p><strong>Inhoud besluitvorming **</strong></p><p>Bij de besluitvorming is het met name van belang dat de voorgestelde wijzigingen
+gewenst zijn. Daarom is tijdens het inhoudelijk bepalen van het
+wijzigingsvoorstel afstemming nodig met TRIP en koepelorganisaties over punten
+waar in de besluitvorming discussie over zou kunnen ontstaan. Te denken valt aan
+het oplossen van een probleem dat op meerdere, verschillende manieren gedaan kan
+worden. Dan is het goed om af te stemmen welke oplossing het meest gewenst is.</p><p><strong>Inhoud implementatie *</strong></p><p>De fase van implementatie is de lakmoesproef voor de vastgestelde wijzigingen.
+Op dat moment moet blijken dat de wijzigingen realistisch en haalbaar zijn. Dit
+betekent dat al tijdens de inhoudelijke fase goed gekeken moet worden of de
+wijzigingsverzoeken hier aan voldoen.</p><p><strong>Inhoud evaluatie *</strong></p><p>In de evaluatie wordt teruggekeken hoe het hele proces verlopen is en hoe
+bepaalde keuzes hebben uitgepakt in de praktijk. De conclusies kunnen input zijn
+voor nieuwe inhoudelijke bijstellingen.</p><p><strong>Toetsing besluitvorming *</strong></p><p>Bij de besluitvorming moet een duidelijk beeld zijn van de kwaliteit van het
+concreet uitgewerkte wijzigingsvoorstel. Ook de uitkomsten van eventuele
+testbeds, die een indruk geven van de mate van realisme en haalbaarheid van de
+voorgestelde wijzigingen, worden meegewogen in de besluitvorming.</p><p><strong>Toetsing implementatie **</strong></p><p>Er is een sterke afhankelijkheid tussen het toetsen van de voorgestelde
+wijzigingen en het implementeren van de definitieve wijzigingen. Dit is cruciaal
+voor het slagen van het gehele wijzigingsproces. Niet goed doordachte
+wijzigingen zullen het werkveld in grote problemen brengen. Het werkveld moet
+daarom goed betrokken zijn tijdens de fase van het toetsen van de wijzigingen
+voordat deze definitief worden.</p><p><strong>Toetsing evaluatie *</strong></p><p>In de evaluatie wordt de wijze van toetsen bekeken. Dit kan tot nieuwe inzichten
+leiden.</p><p><strong>Besluitvorming implementatie *</strong></p><p>In de besluitvorming is het wezenlijk in te schatten hoe haalbaar en realistisch
+de voorgestelde wijzigingen zijn. De implementatie is hiermee afhankelijk van
+een gedegen besluitvorming. Om te kunnen monitoren hoe hun besluiten in de
+praktijk uitpakken is het van belang dat degene die betrokkenen zijn bij de
+besluitvorming de implementatie volgen.</p><p><strong>Besluitvorming evaluatie *</strong></p><p>In de evaluatie wordt de besluitvormingsprocedure bekeken. Dit kan tot nieuwe
+inzichten leiden.</p><p><strong>Implementatie evaluatie **</strong></p><p>De relatie tussen de evaluatie en de implementatie is het belangrijkst.
+Uiteindelijk is de hamvraag in de evaluatie: kan het beroepspraktijk er mee
+werken?</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-de-systematiek-van-opeenvolgende-wijzigingen"><span class="secno">4. </span>De systematiek van opeenvolgende wijzigingen</h2><p><strong>Voor de ontwikkelingen in de ruimtelijke ordening en als gevolg van externe
+ontwikkelingen zullen de RO standaarden naar verwachting de komende jaren steeds
+in beweging blijven. Enerzijds is er foutherstel en het aanbrengen van kleine
+gewenste verbeteringen. Dit zal steeds tot kleine aanpassingen leiden.
+Anderzijds zijn er ook nieuwe ontwikkelingen te verwachten voor de komende
+jaren. Dit alles maakt dat het wijzigingsproces steeds opnieuw zal worden
+uitgevoerd. In dit hoofdstuk wordt deze systematiek toegelicht.</strong></p><p>Het werkveld vraagt om een wijzigingsregime van één samenhangende set
+wijzigingen per drie jaar. Omdat het gehele wijzigingsproces een doorlooptijd
+kent van in principe tweeënhalf jaar, zullen verschillende processen elkaar
+opvolgen, met slechts een korte periode na inwerkingtreding waarin er eigenlijk
+niets gebeurt. Dit is weergegeven in Schema 3:</p><p><img src="media/5a229cf876559b26805d35cf5bb51964.jpg" alt="" width="1272" height="623"></p><p>Doordat de processen elkaar precies opvolgen, kan een set wijzigingen
+gecontroleerd worden doorgevoerd, terwijl er voldoende dynamiek overblijft voor
+updates.</p></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-uitgangspunten"><span class="secno">5. </span>Uitgangspunten</h2><p><strong>Het wijzigingsprotocol gaat uit van een aantal uitgangspunten dat een vaste
+set randvoorwaarden vormt bij het doorvoeren van wijzigingen op de RO
+Standaarden. In dit hoofdstuk wordt nader ingegaan op deze uitgangspunten.</strong></p><p>De uitgangspunten worden gegeven in Tabel 3 en hieronder verder uitgewerkt.</p><table>
+<thead>
+<tr>
+<th><strong>Tabel 3 - uitgangspunten bij het wijzigingsproces</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Business Case is leidend</td>
+</tr>
+<tr>
+<td>Altijd één geldige versie van de RO Standaarden</td>
+</tr>
+<tr>
+<td>Start van de formele procedure is leidend bij versiebepaling</td>
+</tr>
+<tr>
+<td>Eén maal per drie jaar wijzigingen doorvoeren</td>
+</tr>
+<tr>
+<td>Vaste datum inwerkingtreding</td>
+</tr>
+<tr>
+<td>Geen wijzigingsplicht voor eenmaal gepubliceerde plannen</td>
+</tr>
+<tr>
+<td>Aanpassing van vorm- of technische aspecten van een gepubliceerd plan</td>
+</tr>
+</tbody></table><section id="business-case-is-leidend"><h3 id="x5-1-business-case-is-leidend"><span class="secno">5.1 </span>Business Case is leidend</h3><p>Het proces van een initieel idee tot de inwerkingtreding van een wijziging is
+een langdurig proces. Tijdens het proces verschuift de focus van idee naar
+inhoud naar aanpassingen naar besluitvorming naar systemen en werkprocessen en
+naar wetgeving. Als uitgangspunt wordt een business case (BC) opgesteld als
+rationalisatie voor het wel of niet doorvoeren van voorgestelde wijzigingen. In
+dit document is vastgelegd wat de toegevoegde waarde is van de wijzigingen.
+Daarbij wordt per wijziging beschreven waarom bepaalde keuzes zijn gemaakt,
+welke voordelen de wijziging biedt, wat de baten en kosten van de wijziging zijn
+-zowel kwalitatief als kwantitatief- en welke aannames hierbij zijn gehanteerd.</p><p>Een BC bevat liefst een goede investeringsanalyse en een risicoanalyse. Zij
+wordt vooraf goedgekeurd door de stuurgroep en bij ieder beslismoment opnieuw
+aangepast en beoordeeld op geldigheid (zie Schema 2). Na afronding van het
+wijzigingsproces vindt de evaluatie plaats op basis van de uitgangspunten die
+zijn vastgelegd in de BC.</p></section><section id="altijd-een-geldige-versie-van-de-ro-standaarden"><h3 id="x5-2-altijd-een-geldige-versie-van-de-ro-standaarden"><span class="secno">5.2 </span>Altijd één geldige versie van de RO Standaarden</h3><p>Op ieder moment in de tijd is er slechts één versie van de RO Standaarden
+actueel. Tot aan de inwerkingtreding van een set wijzigingen op tijdstip D is de
+actuele versie de versie zonder de wijzigingen (X), vanaf tijdstip D zijn de RO
+Standaarden waarop de wijzigingen zijn doorgevoerd (X+1) actueel. In Schema 1 is
+de actuele versie weergegeven bij opeenvolgende wijzigingen.</p><p>In dit schema is weergegeven dat een nieuwe versie van de RO Standaarden actueel
+wordt op het moment van inwerkingtreding. Dit betekent een aantal dingen, te
+weten:</p><p>het gebruiken van de nieuwe standaarden <em>voor</em> de inwerkingtreding is niet
+toegestaan. Uitzondering zou kunnen zijn bij het opstellen van een nieuw plan
+dat naar verwachting de formele Wro procedure ingaat op het moment dat de nieuwe
+standaard actueel is;</p><p>het gebruiken van de nieuwe standaarden <em>na</em> de inwerkingtreding is verplicht;</p><p>het gebruiken van de oude standaarden <em>na</em> de inwerkingtreding is alleen
+toegestaan bij lopende procedures (zie paragraaf 5.3 en 5.6).</p><p><img src="media/e73a11c6887cbbfd0c653ca0c2ee90a3.jpg" alt="" width="1271" height="469"></p></section><section id="start-van-de-formele-procedure-is-leidend-bij-versiebepaling"><h3 id="x5-3-start-van-de-formele-procedure-is-leidend-bij-versiebepaling"><span class="secno">5.3 </span>Start van de formele procedure is leidend bij versiebepaling</h3><p>Het bepalen welke versie van de RO Standaarden er gebruikt moet worden is
+eenvoudig te beantwoorden. Er wordt namelijk altijd gewerkt met de actuele
+versie van de standaarden op het moment dat de formele Wro procedure van start
+gaat. Bij het bestemmingsplan is dit het moment waarop het ontwerp ter inzage
+wordt gelegd (Wro artikel 3.8 eerste lid), bij veel andere instrumenten is dit
+gelijk aan het moment van vaststelling.</p><p>De procedure wordt afgemaakt -tot het moment dat het instrument onherroepelijk
+wordt- met dezelfde versie van de RO Standaarden die actueel was bij de start
+van de procedure. In de praktijk heeft dit wel tot gevolg dat er dus soms van
+standaard moet worden "gewisseld" voor aanvang van de formele procedure. Dat kan
+lastig zijn in individuele gevallen en vergt voldoende aandacht van de
+bronhouder om bijvoorbeeld tijdig software updates door te voeren.</p></section><section id="een-maal-per-drie-jaar-wijzigingen-doorvoeren"><h3 id="x5-4-een-maal-per-drie-jaar-wijzigingen-doorvoeren"><span class="secno">5.4 </span>Eén maal per drie jaar wijzigingen doorvoeren</h3><p>In maart 2018 is in samenspraak met BZK besloten om de RO Standaarden 2012 niet
+meer te wijzigen en deze RO Standaarden 2012 te blijven gebruiken in aanloop
+naar en in verband met overgangsrecht onder de Omgevingswet. Zonder een business
+case te hebben gemaakt, is geconcludeerd dat op basis van de relevante
+wijzigingsverzoeken die de afgelopen jaren zijn gedaan, dat de kosten van een
+wijzigingsproces nu niet opwegen tegen de baten.</p></section><section id="vaste-datum-inwerkingtreding"><h3 id="x5-5-vaste-datum-inwerkingtreding"><span class="secno">5.5 </span>Vaste datum inwerkingtreding</h3><p>Binnen een driejaarlijkse cyclus van wijzigingen zal er gewerkt worden met een
+vaste datum inwerkingtreding, te weten <strong>1 januari</strong>. Dit uitgangspunt geeft
+voorspelbaarheid bij het werkveld. Het is op die manier ver van tevoren
+duidelijk wanneer er bepaalde inspanningen geleverd moeten worden.</p></section><section id="geen-wijzigingsplicht-voor-eenmaal-gepubliceerde-plannen"><h3 id="x5-6-geen-wijzigingsplicht-voor-eenmaal-gepubliceerde-plannen"><span class="secno">5.6 </span>Geen wijzigingsplicht voor eenmaal gepubliceerde plannen</h3><p>Een planprocedure wordt gestart en doorlopen met één versie van de RO
+Standaarden. Het starten van de formele procedure is daarmee het uitgangspunt,
+bijvoorbeeld bij bestemmingsplannen is dit de datum waarop het ontwerp ter
+inzage is gelegd. Het wijzigen van de RO Standaarden zal dus nooit effect hebben
+op plannen die in procedure zijn. Maar ook plannen die onherroepelijk zijn
+geworden ondervinden geen effecten van het doorvoeren van toekomstige
+wijzigingen op de RO Standaarden, juist vanwege de betekenis van de term
+onherroepelijk. Dit alles kan worden samengevat in het uitgangspunt dat eenmaal
+gepubliceerde informatie nooit gewijzigd hoeft te worden ten gevolge van het
+doorvoeren van wijzigingen in de RO Standaarden.</p></section><section id="aanpassing-van-vorm-of-technische-aspecten-van-een-gepubliceerd-plan"><h3 id="x5-7-aanpassing-van-vorm-of-technische-aspecten-van-een-gepubliceerd-plan"><span class="secno">5.7 </span>Aanpassing van vorm- of technische aspecten van een gepubliceerd plan</h3><p>Ambtelijk foutherstel in een ruimtelijke plan of besluit door de bronhouder is
+mogelijk zonder voorafgaand besluit. Dit valt onder het herstellen van de
+metadata c.q. de technische kenmerken van het ruimtelijk plan of besluit of het
+opheffen van inconsistenties in de planvoorraad tussen bronhouder en
+Ruimtelijkeplannen.nl. Dit is vastgelegd in de werkafspraak ‘Wijzigen reeds
+eerder gepubliceerde plannen’[^1].</p><p>[^1]: Zie ook Werkafspraak <a href="https://www.geonovum.nl/uploads/documents/201809%20ROST%20wa%20wijzigen%20vastgestelde%20versie%20def.pdf">Wijzigen reeds eerder gepubliceerde
+plannen</a>
+en de <a href="https://www.geonovum.nl/uploads/documents/20180925%20Handreiking%20Data%20op%20Orde%20-%20versie%20%201.1_0.pdf">Handreiking “Data op
+orde”</a></p><p>De hoofdregel is dat foutherstel niet gaat over de inhoud van een plan of
+besluit, maar om vorm- of technische aspecten die van belang zijn voor blijvende
+raadpleegbaarheid, bruikbaarheid en toegankelijkheid van het plan. Bij gebreken
+aan de inhoud van het plan of besluit zal het bevoegd gezag een nieuw besluit
+moeten nemen of een nieuwe procedure moeten volgen.</p></section></section><section id="H06" data-format="markdown"><!--OddPage--><h2 id="x6-tussentijdse-werkafspraken"><span class="secno">6. </span>Tussentijdse werkafspraken</h2><p><strong>Het toepassen van de RO Standaarden roept soms vragen op. Bij
+onduidelijkheden, discrepanties of fouten in de RO Standaarden kan de RO
+praktijk vragen hoe zij de Standaarden – in afwachting van een formele
+wijziging– moet toepassen. Omdat er wordt gewerkt in een driejaarlijkse
+wijzigingscyclus, zullen geconstateerde fouten of gewenste wijzigingen in de
+regel niet heel snel worden doorgevoerd in de formele RO Standaarden. Een
+tussentijds gebruiksadvies noemen we een werkafspraak. In dit hoofdstuk lichten
+we de werkwijze van werkafspraken toe.</strong></p><p>Als er een fout of probleem wordt geconstateerd, zal er altijd geruime tijd
+overheen gaan voordat dit wordt hersteld in de formele standaard. Typische
+voorbeelden van dit soort fouten zijn in algemene zin:</p><ul>
+<li><p>de ene standaard hanteert voor een bepaalde aanduiding een andere spelling
+dan een andere standaard, waardoor je plan formeel nooit aan alle
+standaarden kan voldoen;</p>
+</li>
+<li><p>in de standaarden zijn bepaalde technische vrijheden mogelijk die op grond
+van een goede RO praktijk niet zouden moeten worden benut;</p>
+</li>
+<li><p>in de standaarden is iets wel mogelijk, maar niet verplicht, terwijl dit wel
+sterk gewenst is.</p>
+</li>
+</ul><p>In dit soort gevallen zal Geonovum na consultatie van softwareleveranciers, BOR
+en TRIP een werkafspraak publiceren over hoe er in afwachting van formele
+reparatie moet worden omgegaan met een geconstateerd probleem. Zo’n werkafspraak
+heeft de formele status van een <em>advies</em> van Geonovum aan het RO werkveld. De
+werkafspraak kan nooit de wettelijk verankerde RO Standaarden vervangen, omdat
+de Wro geen mogelijkheden biedt om bevoegdheden tot het vaststellen van
+technische regels over te dragen aan de beherende instantie. Echter, het beheer
+van de RO Standaarden wordt uitgevoerd in opdracht van BZK, en BZK beschouwt het
+maken van werkafspraken met het RO werkveld in afwachting van reparatie als een
+onderdeel van het reguliere beheer.</p><p>Voor bovengenoemde voorbeelden zouden de werkafspraken er resp. als volgt uit
+kunnen zien:</p><ul>
+<li><p>hanteer altijd de spelling volgens standaard X;</p>
+</li>
+<li><p>gebruik nooit de mogelijkheid Y die de standaarden bieden;</p>
+</li>
+<li><p>doe het altijd op manier Z.</p>
+</li>
+</ul><p>In Schema 5 is weergegeven in welke periode er werkafspraken gelden in
+afwachting van de volgende versie van de RO Standaarden.</p><p><img src="media/6c9b88df8a060cffcd29e67006424784.jpg" alt="" width="1269" height="469"></p><p>In dit schema is weergegeven dat er voorafgaand aan de inwerkingtreding van een
+set met wijzigingen werkafspraken worden gemaakt die vooruitlopen op de
+aanstaande wijzigingen.</p><p>De status van deze werkafspraken is als volgt:</p><ol>
+<li><p>de werkafspraken zijn van toepassing totdat de wijzigingen in werking zijn
+getreden, daarna zijn ze niet meer van toepassing;</p>
+</li>
+<li><p>indien mogelijk zijn de werkafspraken altijd een directe voorloper van de
+wijzigingen zelf die zullen worden doorgevoerd. Vaak zal een werkafspraak
+een keuze bevatten. Deze zal goed beredeneerd zijn, maar toch anders kunnen
+uitvallen als het daadwerkelijke wijzigingsproces wordt ingezet;</p>
+</li>
+<li><p>binnen het wijzigingsbeheer worden er alleen werkafspraken gemaakt die
+vooruitlopen op aanstaande wijzigingen. Er worden binnen dit kader geen
+permanente werkafspraken gemaakt die niet verankerd zullen worden in de RO
+Standaarden;</p>
+</li>
+<li><p>het toepassen van de werkafspraken is van rechtswege niet verplicht, maar
+met name de leveranciers van RO Software hebben aan Geonovum aangegeven hier
+behoefte aan te hebben;</p>
+</li>
+<li><p>het toepassen van de werkafspraken vergemakkelijkt de implementatie van
+wijzigingen, omdat het een al een voorbereidende werkwijze is voor het
+ander;</p>
+</li>
+<li><p>waar van toepassing zullen de werkafspraken niet leiden tot afkeuring van
+plannen die hier niet aan voldoen door de Validator. Eventueel kan wel een
+waarschuwing of andersoortige melding worden gegeven over de geconstateerde
+afwijking van de werkafspraak.</p>
+</li>
+</ol></section><section id="H07" data-format="markdown"><!--OddPage--><h2 id="x7-praktijkrichtlijnen"><span class="secno">7. </span>Praktijkrichtlijnen</h2><p><strong>Met de invoering van de RO Standaarden 2012 is een strikte(-re) scheiding
+aangebracht tussen de bij ministeriële regeling verankerde normdocumenten (IMRO,
+IMROPT, SVBP, STRI) en de praktijkrichtlijnen (PRxx) die daar een zelfstandig
+leesbare toelichting op vormen. Dit is gedaan vanuit de visie dat op die manier
+de toelichting door de tijd heen verbeterd zou kunnen worden naar behoefte van
+het werkveld, zonder noodzakelijke wijziging aan de normen zelf en/of de
+tussenkomst van een besluit van de minister van BZK.</strong></p><section id="norm-versus-toelichting"><h3 id="x7-1-norm-versus-toelichting"><span class="secno">7.1 </span>Norm versus toelichting</h3><p>Geonovum vormt via de helpdesk, meldingsformulier, beheeroverleg,
+leveranciersoverleg en de overige kanalen een antenne naar het werkveld. Alle
+signalen worden vastgelegd in het registratiesysteem dat Geonovum gebruikt. Op
+basis van deze signalen uit het werkveld wil Geonovum graag een jaarlijks
+actualisatie uitvoeren van de praktijkrichtlijnen binnen de RO Standaarden waar
+nodig. Op die manier kunnen actuele problemen of thema’s nader worden
+toegelicht, zodat er binnen het werkveld op deze onderwerpen een beter begrip en
+een gemeenschappelijke werkwijze ontstaat. Naast de kwaliteitsimpuls die dit
+oplevert voorkomt het ook kosten bij met name de helpdesk RO Standaarden.</p><p>We hanteren twee procedures voor het wijzigen van de praktijkrichtlijnen: een
+lichte procedure en een zware procedure. De lichte procedure passen we toe voor
+ondergeschikte wijzigingen die een beperkte aanpassing voor de toepassing van de
+standaard in de praktijk meebrengen. De zware procedure passen we toe voor meer
+ingrijpende wijzigingen en/of wijzigingen die een grotere aanpassing voor de
+toepassing van de standaard in de praktijk meebrengen. Deze laatste zijn met
+name wijzigingen van de huidige werkwijzen of een totaal nieuwe werkwijze dan
+wel nieuwe onderwerpen. Dit protocol geldt zowel voor de praktijkrichtlijnen van
+de wettelijk geldende standaarden, als voor de facultatieve standaarden en
+praktijkrichtlijnen behorende bij de set RO Standaarden[^1].</p><p>[^1]: Het betreft hier bijvoorbeeld de standaarden voor digitale welstandsnota’s
+en voor plancontour en PDF. Zie <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening#ROStandaarden">Geonovum Website</a></p></section><section id="lichte-procedure"><h3 id="x7-2-lichte-procedure"><span class="secno">7.2 </span>Lichte procedure</h3><ul>
+<li><p>De procedure start met een voorstel van Geonovum: inhoudelijk en procedureel
+(lichte of zware procedure);</p>
+</li>
+<li><p>Ieder moment gedurende het jaar kan de procedure worden gestart;</p>
+</li>
+<li><p>Van voorstel tot publicatie van de nieuwe versie duurt het wijzigingsproces
+maximaal 3 maanden;</p>
+</li>
+<li><p>De conceptversie wordt 1 keer met, softwareleveranciers, BOR en TRIP
+besproken, waarbij in het overleg bepaald wordt of dit voorstel wordt
+doorgevoerd dan wel de zware procedure in moet gaan vanwege de complexiteit
+of gevolgen in de praktijk;</p>
+</li>
+<li><p>Eventuele andere voorstellen en conceptversies tijdens deze procedure worden
+per mail afgehandeld.</p>
+</li>
+</ul></section><section id="zware-procedure"><h3 id="x7-3-zware-procedure"><span class="secno">7.3 </span>Zware procedure</h3><ul>
+<li><p>De procedure start met een voorstel van Geonovum inhoudelijk en procedureel
+(lichte of zware procedure);</p>
+</li>
+<li><p>Ieder moment gedurende het jaar kan de procedure worden gestart;</p>
+</li>
+<li><p>Van voorstel tot publicatie van de nieuwe versie duurt het wijzigingsproces
+maximaal 6 maanden;</p>
+</li>
+<li><p>De conceptversie wordt 1 tot 2 keer met , softwareleveranciers, BOR en TRIP
+besproken. Hiervan in ieder geval 1 keer plenair, en indien nodig nogmaals;</p>
+</li>
+<li><p>De praktijk wordt via een publieke consultatie gevraagd om mee te denken;</p>
+</li>
+<li><p>Eventuele andere voorstellen en conceptversies worden per mail afgehandeld.</p>
+</li>
+</ul></section></section><section id="H08" data-format="markdown"><!--OddPage--><h2 id="x8-communicatie"><span class="secno">8. </span>Communicatie</h2><p><strong>Het hele wijzigingsproces staat of valt met een goede communicatie. Onder goede
+communicatie wordt verstaan het tijdig leveren van de juiste informatie aan de
+juiste belanghebbenden. In dit hoofdstuk wordt de integrale communicatie als
+apart proces beschreven. Er wordt ingegaan op zowel de proceskant alsook de
+producten die er worden gehanteerd.</strong></p><section id="communicatieproces"><h3 id="x8-1-communicatieproces"><span class="secno">8.1 </span>Communicatieproces</h3><p>In het onderstaande schema worden de procesmatige aspecten van de integrale
+communicatie omtrent de RO Standaarden gegeven. Schema 7 geeft aan wat er in
+welke fase verwacht kan worden.</p><p><img src="media/c39ec102783ce19cda3d724582850ff0.jpg" alt="" width="1352" height="564"></p><p><img src="media/eca1fcfa9ac85bdd4fad658a047ef623.jpg" alt="" width="1020" height="879"></p></section><section id="communicatieproducten"><h3 id="x8-2-communicatieproducten"><span class="secno">8.2 </span>Communicatieproducten</h3><p>De volgende producten spelen een rol binnen het communicatieproces.</p><p><strong>Business Case</strong></p><p>De Business Case beschrijft de rechtvaardiging voor het opzetten en continueren
+van de wijzigingen. Geeft de redenen voor de wijzigingen; beantwoord het
+‘waarom’ en bevat een overzicht van te verwachte kosten en baten. De Business
+Case wordt aangepast aan de actualiteit op belangrijke momenten in het proces.</p><p><strong>Initiële Business Case</strong></p><p>De eerste versie van de Business Case is samengevoegd met de eerste versie van
+het wijzigingsvoorstel. Voor ieder wijziging is een indicatie van de redenering
+waarom de wijziging nodig geacht is en wat de impact zou zijn op welke
+ketenpartners. Een overzicht (samenvatting) van het geheel maakt onderdeel uit
+van het set documenten. In dit document is “eerste versie wijzigingsvoorstel”
+nagenoeg uitwisselbaar met de “initiële Business Case” vanwege de samenhangende
+presentatie van de informatie.</p><p><strong>Eerste versie wijzigingsvoorstel: Initiële Business Case</strong></p><p>Het eerste concept wijzigingsvoorstel is de eerste versie van gebundelde
+wijzigingsverzoeken met bij ieder wijzigingsverzoek de Business Case informatie.
+Het is het eerste product dat tijdens de inhoudelijke fase wordt gepubliceerd.
+Dit voorstel is niet per sé een volledig uitgewerkte set wijzigingsverzoeken,
+maar het is een middel om bij software leveranciers, stedenbouwkundige bureaus,
+Ruimtelijkeplannen.nl en de Validator te kunnen toetsen of de oplossingsrichting
+en keuzes worden gedragen. Het wordt opgeleverd omstreeks halverwege de
+inhoudelijke fase en vormt het startpunt voor de toetsingsfase.</p><p><strong>Tweede versie wijzigingsvoorstel: Eindconcept Business Case</strong></p><p>Het tweede versie wijzigingsvoorstel, oftewel Eindconcept Business Case, is een
+tussenproduct in de toetsingsfase, en is de laatste inhoudelijke fase voor het
+definitieve Business Case. Dit product is een uitwerking van de eerste versie en
+is aangevuld/gecorrigeerd naar aanleiding van feedback op de Initiële Business
+Case en ervaringen binnen de RO keten. Doel van dit product is het voorleggen
+voor formeel advies bij TRIP en de stuurgroep DRO. Binnen het
+besluitvormingsproces door de Stuurgroep DRO kunnen er nog wijzigingen
+aangebracht worden in deze versie. Ook zou het kunnen voorkomen dat er slechts
+over een deel van het wijzigingsvoorstel een positief advies wordt gegeven.</p><p><strong>Derde versie wijzigingsvoorstel: Definitieve Business Case</strong></p><p>De derde versie wijzigingsvoorstel is een eindproduct van de technische tests op
+de voorgestelde wijzigingen en bijbehorende oplossingen, en is de laatste
+inhoudelijke fase voordat de keuze van wijzigingen definitief wordt. Deze versie
+is een “kandidaat” voor de definitieve wijzigingen, waar het werkveld mee aan de
+slag gaat. De principe keuzes zijn gemaakt dus is dit de Definitieve Business
+Case. Indien er geen fouten meer in deze versie gevonden worden, zal dit derde
+wijzigingsvoorstel de definitieve versie worden.</p><p><strong>Werkafspraken</strong></p><p>De werkafspraken die bepalen hoe er in de tussentijd moet worden omgegaan met
+geconstateerde fouten en problemen (zie Hoofdstuk 6). De werkafspraken
+publiceren wij via de Geonovum website, onderdeel RO Standaarden. Door middel
+van nieuwsberichten op de website en het versturen van de nieuwsbrief Wro
+Digitaal informeren wij het werkveld over de nieuwe dan wel aangepaste
+werkafspraak.</p><p><strong>Praktijkrichtlijnen</strong></p><p>Het jaarlijks actualiseren van de toelichting op de bij ministeriële regeling
+verankerde normdocumenten (zie Hoofdstuk 7).</p><p><strong>Testdata</strong></p><p>Samen met het opleveren van de Definitieve Business Case wordt er ook relevante
+testdata geleverd aan het werkveld voor wie daar mee aan de slag wil.
+Definitieve Business Case (derde versie wijzigingsvoorstel) en testdata horen
+dus bij elkaar. In principe gaat het om technische testdata. Dit is dus iets
+anders dan de voorbeeldplannen die worden gemaakt (zie hier onder).</p><p><strong>Vastgestelde wijzigingen: definitieve wijzigingen</strong></p><p>Na positief advies van TRIP, een formeel besluit van BZK en de Stuurgroep DRO en
+het afronden van de laatste toetsingsiteratie ten behoeve van foutcorrectie zijn
+de wijzigingen vastgesteld. De vastgestelde wijzigingen zijn de inhoudelijk
+definitieve versie en vormen het eindpunt van de besluitvorming en toetsing.</p><p><strong>Wijzigingsdocumenten</strong></p><p>Met het beschikbaar komen van de vastgestelde definitieve wijzigingen worden
+door Geonovum zogenoemde wijzigingsdocumenten beschikbaar gesteld. Hierin zijn
+de wijzigingen zichtbaar en voor een ieder inzichtelijk.</p><p><strong>Nieuwe RO Standaarden</strong></p><p>Met het beschikbaar komen van de vastgestelde wijzigingen worden door Geonovum
+ook beschikbaar gesteld een integrale set nieuwe RO Standaarden.</p><p><strong>oorbeeldplannen</strong></p><p>Samen met de vastgestelde wijzigingen worden soms ook voorbeeldplannen geleverd
+aan het werkveld voor wie daar mee aan de slag wil. Dit is echter afhankelijk
+van de wijziging van de verschillende normen van de standaarden. Niet voor alle
+plannen kunnen voorbeeldplannen worden aangedragen. Het gaat hier om
+realistische voorbeelden, die wellicht een aanpassing zullen zijn van de reeds
+bestaande set voorbeelden of van (aangepaste) bestaande plannen uit de praktijk.
+Dit is dus iets anders dan de technische testdata, die al in een eerder stadium
+beschikbaar zullen komen (zie hier boven).</p><p><strong>Ministeriële Regeling</strong></p><p>De vastgestelde wijzigingen zullen door BZK wettelijk worden verankerd in een
+ministeriële regeling. In principe is dit een regeling die wordt vastgesteld
+door de minister van BZK. In voorkomende gevallen, bij structurele uitbreidingen
+van de RO Standaarden zal de concept MR ter notificatie aangeboden moeten worden
+aan de lidstaten van de EU en de Europese Commissie (EC). In theorie kan een
+lidstaat of de EC dan nog bezwaar aantekenen, waardoor er toch nog wijzigingen
+noodzakelijk zouden zijn op de vastgestelde versie. Maar gezien eerdere ervaring
+met het geheel nieuwe pakket RO Standaarden 2008 (dat deze notificatieprocedure
+daadwerkelijk doorlopen heeft) en de grondslagen waarop bezwaar gemaakt zou
+kunnen worden, is deze exceptionele situatie niet gemodelleerd in het
+wijzigingsproces.</p><p><strong>Resultaten conformiteitstoets</strong></p><p>Bij substantiële wijzigingen zal Geonovum beoordelen dat Wro software geheel of
+gedeeltelijk opnieuw gecertificeerd moet worden. In dat geval worden de
+resultaten na afname van de conformiteitstoets bekend gemaakt als leveranciers
+deze conformiteitstoets positief hebben afgelegd. Daarmee vormen ze een
+communicatieproduct binnen het wijzigingsproces.</p><p><strong>Besprekingsverslagen overleg softwareleveranciers</strong></p><p>Geonovum organiseert een regelmatig overleg met de softwareleveranciers. In dit
+overleg worden de leveranciers tijdig geïnformeerd over aanstaande wijzigingen
+en wordt ook gevraagd om input aangaande voorgestelde wijzigingen. Van het
+overleg wordt een verslag gemaakt.</p></section></section><section id="H09" data-format="markdown"><!--OddPage--><h2 id="x9-escalatieprocedure"><span class="secno">9. </span>Escalatieprocedure</h2><p><strong>In voorgaande hoofdstukken gaat het protocol er vanuit dat er wijzigingen "in
+vrijheid" worden doorgevoerd. In het primaire proces wordt geen rekening
+gehouden met noodzakelijke wijzigingen die met spoed of onder druk van externe
+nieuwe regelgeving moeten worden doorgevoerd. Dit hoofdstuk gaat in op de wijze
+waarop escalatieprocedures kunnen worden uitgevoerd.</strong></p><section id="wanneer-is-er-sprake-van-een-escalatieprocedure"><h3 id="x9-1-wanneer-is-er-sprake-van-een-escalatieprocedure"><span class="secno">9.1 </span>Wanneer is er sprake van een escalatieprocedure?</h3><p>Er wordt een escalatieprocedure doorlopen als er een wijziging noodzakelijk is
+die niet in het reguliere wijzigingsproces doorgevoerd <em>kan</em> worden, omdat dit
+te lang duurt. Een uitputtende lijst met situaties en criteria wanneer dit van
+toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het
+gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke
+wijziging leidt tot onaanvaardbare risico's voor de uitvoeringspraktijk of het
+onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van de
+ruimtelijke ordening in Nederland.</p><p>De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door
+te kunnen voeren.</p></section><section id="sturende-principes"><h3 id="x9-2-sturende-principes"><span class="secno">9.2 </span>Sturende principes</h3><p>Er wordt geen vast proces gegeven om de escalatieprocedure te doorlopen, omdat
+verschillende situaties wellicht tot een verschillende wijze van handelen moeten
+leiden. In plaats daarvan wordt aan de hand van een aantal sturende principes
+uiteengezet welke verantwoordelijkheden er zijn binnen een escalatieprocedure.
+Dit wordt hier onder geschetst.</p><p><strong>Signalering</strong></p><p>Uit het werkveld kunnen signalen ontstaan dat er met spoed iets gewijzigd zou
+moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden
+zullen ontstaan. Het is wel van belang om de rol van Geonovum te onderkennen als
+antennefunctie voor het werkveld. In ieder geval zullen deze signalen op enig
+moment BZK of Geonovum bereiken, en op dat moment zal er overleg gevoerd worden
+over deze signalen.</p><p><strong>Overleg</strong></p><p>Bij de besluitvorming binnen de escalatieprocedure wordt er in principe overleg
+gevoerd tussen BZK bij monde van de voorzitter van het TRIP Zowel TRIP als
+Geonovum raadplegen de leden van resp. BOR, TRIP, en softwareleveranciers daar
+waar nodig.</p><p><strong>Besluitvorming</strong></p><p>De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de
+voorzitter van Stuurgroep DRO, het hoogste adviesorgaan binnen de
+beheerorganisatie van de RO Standaarden. Ook het besluit <em>welke</em> wijzigingen er
+precies doorgevoerd moeten worden en op welke manier, wordt genomen door de
+voorzitter van Stuurgroep DRO.</p><p><strong>Coördinatie</strong></p><p>De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de voorzitter
+van de Stuurgroep DRO. Belangrijkste reden is de directe toegang tot
+wetgevingsinstrumentarium.</p><p><strong>Communicatie met het werkveld</strong></p><p>De communicatie met het RO werkveld wordt uitgevoerd door Geonovum. Als
+beheerder van de RO Standaarden wordt verwacht dat Geonovum het meest directe
+contacten heeft met het werkveld.</p></section></section><section id="H10" data-format="markdown"><!--OddPage--><h2 id="x10-actoren"><span class="secno">10. </span>Actoren</h2><p><strong>In dit hoofdstuk worden de verschillende actoren in de RO keten beschreven die
+bij het wijzigingsproces betrokken zijn. Voor iedere actor wordt een
+omschrijving gegeven, en vervolgens worden de eigen noodzakelijke taken en
+verantwoordelijkheden aangegeven binnen het algemene wijzigingsproces.</strong></p><p>Niet alle actoren zijn gedurende het hele proces betrokken bij het
+wijzigingsproces. In Schema 8 wordt een overzicht gegeven van de betrokkenheid
+van de actoren per fase. Verderop in dit hoofdstuk wordt dit per actor nader
+uitgewerkt.</p><p><img src="media/9085eadb38ec26bf057d29b2e66b3b2e.jpg" alt="" width="1342" height="755"></p><p>Hier onder volgt per actor een beschrijving van de belangrijkste
+verantwoordelijkheden en mijlpalen.</p><section id="stuurgroep-digitale-ruimtelijke-ordening-sdro"><h3 id="x10-1-stuurgroep-digitale-ruimtelijke-ordening-sdro"><span class="secno">10.1 </span>Stuurgroep Digitale Ruimtelijke Ordening (SDRO)</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+De stuurgroep Digitale Ruimtelijke Ordening(SDRO fungeert als het opdrachtgever-
+/ opdrachtnemeroverleg voor het beheer van de RO-Standaarden en
+Ruimtelijkeplannen.nl. De Stuurgroep DRO verzorgt de opdrachtsturing naar
+Kadaster (voor Ruimtelijkeplannen.nl) en Geonovum (voor zowel
+Ruimtelijkeplannen.nl als RO Standaarden) en komt minstens 2x per jaar bij
+elkaar.</p><p>De Stuurgroep DRO heeft geen (sturings)relatie met de overige overlegverbanden
+en ze is niet gericht op de behandeling van alle inhoudelijke zaken over het
+beheer en de ontwikkeling van de RO Standaarden. Over kleine adaptieve
+wijzigingen beslist Geonovum.</p><p>De Stuurgroep DRO is het besluitvormend orgaan met betrekking tot de kaders voor
+de verschillende beheeropdrachten aan Kadaster en Geonovum (budget, tijd,
+prioriteitstelling, planning&amp;control, kwaliteit, bereik) én met betrekking tot
+de inhoud. Over die inhoud laat de Stuurgroep DRO zich adviseren door Kadaster
+en Geonovum en door het TRIP overleg. BZK kan zelf ook vanuit wetgevingsoogpunt
+een adviserende rol vervullen. De Stuurgroep DRO fungeert ook als stuurgroep bij
+majeure projectmatige vernieuwingen.</p><p>Voorgenomen wijzigingen moeten passen binnen de visie en binnen de daar uit
+voortkomende ontwikkelplannen over meerdere jaren én resp. binnen de concrete
+jaarplannen – zo niet moet dit tot bewuste wijziging en herprioritering leiden.
+Ze moeten ook een plek krijgen op de lijst van vernieuwingsprojecten.</p><p><img src="media/c11ccc5a35ca188a6f557ea6268d428e.jpg" alt="" width="1344" height="598"></p></section><section id="tripartite-overleg-trip"><h3 id="x10-2-tripartite-overleg-trip"><span class="secno">10.2 </span>Tripartite overleg (TRIP)</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+De RO Standaarden zijn met, voor en door het werkveld tot stand komen en worden
+ook samen in stand gehouden. De rol van het TRIP is om dringend, maar geen
+dwingend advies aan de Minister van BZK over voorgestelde wijzigingen. Het TRIP
+wordt daarbij gevoed door de opdrachtnemer, Kadaster, Geonovum en door hun eigen
+achterban (vanuit de ministeriële RO praktijk, de provincies en de gemeenten).
+Mogelijke escalatie tijdens de besluitvormingsfase vindt plaats via het overleg
+van de stuurgroep. Met name ook in de periode van vooroverleg is de rol van het
+TRIP van belang, omdat hiermee de basis wordt gelegd voor het draagvlak tijdens
+de besluitvormingsfase.</p><p><img src="media/8e76df639e6e4497afbbae7f505ca099.jpg" alt="" width="1523" height="562"></p></section><section id="beheeroverleg-ruimtelijkeplannen-nl-bor"><h3 id="x10-3-beheeroverleg-ruimtelijkeplannen-nl-bor"><span class="secno">10.3 </span>Beheeroverleg Ruimtelijkeplannen.nl (BOR)</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+Ruimtelijkeplannen.nl is gezamenlijk in beheer bij Geonovum en het Kadaster. Het
+beheeroverleg vindt gemiddeld negen keer per jaar plaats. Het beheeroverleg
+wordt gevormd door specialisten van zowel Geonovum en Kadaster voor het beheer
+van Ruimtelijkeplannen.nl. In het overleg worden alle voorkomende zaken
+besproken die te maken hebben met het functioneren van Ruimtelijkeplannen.nl.</p><p><img src="media/dad113762055d56e23d8ec2910dfeaf7.jpg" alt="" width="1521" height="379"></p></section><section id="softwareleveranciers"><h3 id="x10-4-softwareleveranciers"><span class="secno">10.4 </span>Softwareleveranciers</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+Hier wordt met name bedoeld: de leveranciers van standaard software producten
+waarmee Wro instrumenten gemaakt en gepubliceerd kunnen worden. Het onderstaande
+schema is dan ook van toepassing op deze groep van softwareleveranciers.</p><p>Er zijn ook leveranciers van maatwerk software ten behoeve van specifieke RO
+taken, zoals de software die nodig is voor het ondersteunen van de BZK
+inspectie. De verantwoordelijkheden die dit met zich meebrengt zijn in dit
+protocol niet opgenomen, behalve in het geval van Ruimtelijkeplannen.nl en de
+Validator (zie volgende paragrafen), vanwege de bijzondere relatie en
+afhankelijkheden met andere actoren in het wijzigingsproces.</p><p>In dit schema is de betrokkenheid geschetst bij het toetsen van nieuwe
+ontwikkelingen in de periode D-24 tot D-12. Verder is het duidelijk dat de
+inspanningen met name tijdens de implementatiefase plaatsvinden. Er is
+aangegeven dat er wellicht eerder kan worden begonnen met het aanpassen van de
+software dan het moment waarop de formele besluitvorming (D-12) wordt afgerond.
+Dit is een verantwoordelijkheid van de individuele leveranciers, die een
+zelfstandige afweging maakt wanneer een wijzigingsvoorstel voldoende zeker is.
+De meeste leveranciers hebben er vertrouwen in zodra de Adviesgroep DRO een
+positief dringend advies heeft gegeven.</p><p><img src="media/f8f38f2a947002ef566990e9dbbc8e0d.jpg" alt="" width="1519" height="487"></p><p>Ook het uitleveren van de nieuwe software kent geen harde startdatum. Op enig
+moment is een leverancier klaar met de aanpassingen en kunnen de updates worden
+uitgerold bij de klanten. In bovenstaand schema is er een startpunt gegeven op
+D-12. Dit heeft als reden dat op dat moment de Validator klaar is om de nieuwe
+standaarden te toetsen, waardoor het voor de leveranciers op dit moment ook pas
+mogelijk is om de eigen software extern te toetsen.</p></section><section id="stedenbouwkundige-bureaus"><h3 id="x10-5-stedenbouwkundige-bureaus"><span class="secno">10.5 </span>Stedenbouwkundige bureaus</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+Stedenbouwkundige bureaus werken dienstverlenend naar Wro bronhouders. Zij zijn
+betrokken bij het vervaardigen van plannen, zowel inhoudelijk als ook technisch.
+De verantwoordelijkheden van stedenbouwkundige bureaus zijn vergelijkbaar met
+die van de Wro bronhouders zelf (zie aldaar).</p><p><img src="media/f7ef68133aaf7cdb8dc56b1222439947.jpg" alt="" width="1522" height="381"></p></section><section id="validator"><h3 id="x10-6-validator"><span class="secno">10.6 </span>Validator</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+De Validator is een technische voorziening die toetst of ruimtelijke plannen aan
+de RO Standaarden voldoen. Hiermee heeft de Validator de rol van de neutrale
+scheidsrechter binnen de RO. Hoewel de technische voorziening momenteel is in
+beheer is bij het Kadaster, zijn de validatieregels in beheer van Geonovum . De
+Validator heeft een zelfstandige functie die breder is dan de poortwachter rol
+voor plannen richting Ruimtelijkeplannen.nl. De Validator toetst op een
+welbepaalde set validatieregels. Het beheer van deze validatieregels is
+ondergebracht binnen de beheerstructuur van de RO Standaarden zelf, om daar een
+optimale afstemming in te krijgen. Geonovum stelt de validatieregels op. Het
+Kadaster ontwerpt en beheert de Validator. Samen zorgen zij ervoor dat (een
+testversie van) de Validator op tijd te gebruiken is in het proces.</p><p><img src="media/9fd59495e798f3099d94d370c7e7b314.jpg" alt="" width="1521" height="490"></p><p>In bovenstaand schema is de bijzondere verantwoordelijkheid van de Validator te
+zien. Er wordt al in een vroeg stadium begonnen met het aanpassen van de
+Validator, mogelijk meteen al op het moment dat de inhoudelijke fase is
+afgerond. Dit komt omdat de softwareleveranciers op een later tijdstip
+afhankelijk zullen worden van de Validator om hun eigen, aan de wijzigingen
+aangepaste producten te kunnen toetsen. Ook de relatie met de
+conformiteitstoets, die gebruik maakt van de diensten van de Validator, ligt ten
+grondslag aan deze vooruitlopende activiteiten.</p></section><section id="ruimtelijkeplannen-nl"><h3 id="x10-7-ruimtelijkeplannen-nl"><span class="secno">10.7 </span>Ruimtelijkeplannen.nl</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+Ruimtelijkeplannen.nl is de landelijke voorziening die verantwoordelijk is voor
+het toegankelijk en raadpleegbaar maken van alle door de bronhouders beschikbaar
+gestelde ruimtelijke plannen. De verantwoordelijkheden zijn opgesplitst in
+enerzijds de website, en anderzijds de webservices. Deze webservices moeten
+eerder klaar zijn dan de website, omdat afnemers hier mogelijk van afhankelijk
+van zijn bij de implementatie van de wijzigingen in hun eigen processen en
+software. Ook Ruimtelijkeplannen.nl werkt vooruit op de definitieve
+besluitvorming[^1].</p><p>[^1]: Ruimtelijkeplannen.nl en Validator kennen ook een wijzigingsprotocol zoals
+deze voor de RO Standaarden. Het wijzigingsprotocol van Ruimtelijkeplannen.nl is
+te vinden via het 
+<a href="https://www.ruimtelijkeplannen.nl/web-roo/docs/bronhouders/Wijzigingsprotocol_RO-Online_v1.0.pdf">Wijzigingsprotocol_RO-Online_v1.0</a>
+</p><p><img src="media/67dd8f3ca9f159bf7d6f159814266592.jpg" alt="" width="1522" height="489"></p><p>In bovenstaand schema is bovendien te zien dat er vanuit gegaan wordt dat
+Ruimtelijkeplannen.nl 6 maanden voor de inwerkingtreding van de wijzigingen
+helemaal klaar is om deze nieuwe bestanden te kunnen ontvangen. Deze marge is
+ingebouwd om ketentesten te kunnen uitvoeren tijdens de implementatie bij andere
+belanghebbenden.</p></section><section id="professionele-afnemers"><h3 id="x10-8-professionele-afnemers"><span class="secno">10.8 </span>Professionele afnemers</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+De term professionele afnemer is gekozen om een onderscheid te maken met burgers
+die ruimtelijke plannen willen inzien. De doelgroep burgers wordt niet gezien
+als een actor in het wijzigingsproces, ondanks dat zij wellicht de belangrijkste
+doelgroep zijn voor het raadplegen van de ruimtelijke plannen. Maar de
+professionele afnemers worden wel gezien als actor, omdat de wijzigingen een
+impact hebben of kunnen hebben op hun werkwijze.</p><p><img src="media/7477d94e8ca9ec3567d20ba438d49c92.jpg" alt="" width="1520" height="342"></p></section><section id="bzk-als-wetgever"><h3 id="x10-9-bzk-als-wetgever"><span class="secno">10.9 </span>BZK als wetgever</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+BZK is bronhouder van ruimtelijk instrumentarium. Maar BZK is ook de
+wetgever/beleidsmaker op het terrein van de ruimtelijke ordening en de Wro. Dit
+brengt bepaalde extra verantwoordelijkheden met zich mee binnen het
+wijzigingsproces. Dit zit met name in het feit dat er door de minister van BZK
+formeel wordt besloten over wijzigingen, omdat de minister van BZK de
+standaarden heeft verankerd bij ministeriële regeling. Ook het wettelijk
+doorvoeren van de wijzigingen, eventueel met inbegrip van de EU
+notificatieprocedure, wordt dus uitgevoerd door BZK als onderdeel van het
+wijzigingsproces.</p><p><img src="media/a0af3bad48e6a2b6fb9323bc39e7da41.jpg" alt="" width="1519" height="487"></p><p>N.B. Behalve wetgever is BZK ook bronhouder van ruimtelijke instrumentarium, zie
+volgende paragraaf.</p></section><section id="wro-bronhouders"><h3 id="x10-10-wro-bronhouders"><span class="secno">10.10 </span>Wro bronhouders</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+De Wro bronhouders zijn alle partijen die ruimtelijke plannen, visies,
+verordeningen, besluiten en AMvB's maken. Kortom, alle gemeentes, alle
+provincies en het Rijk.</p><p>In onderstaand schema is te zien dat bronhouders alleen bij de implementatiefase
+betrokken zijn. Dit doet de bronhouders geen recht. Echter, hun betrokkenheid
+bij inhoudelijke afwegingen, toetsing en besluitvorming loopt gecoördineerd via
+de softwareleveranciers en het TRIP, waar met name de bronhouders een
+belangrijke rol spelen.</p><p><img src="media/aa6d202f0f715930531579d261599a07.jpg" alt="" width="1517" height="342"></p></section><section id="geonovum-als-beheerder-van-de-ro-standaarden"><h3 id="x10-11-geonovum-als-beheerder-van-de-ro-standaarden"><span class="secno">10.11 </span>Geonovum als beheerder van de RO Standaarden</h3><p><img src="media/3a0b1b60049d883e2554d4ede37737e9.png" alt="" width="35" height="49">
+Geonovum is de beheerder van de RO Standaarden en in die hoedanigheid nauw
+betrokken bij het gehele wijzigingsproces. Geonovum faciliteert alle
+bovenstaande processen. In onderstaande schema zijn alleen de eigen activiteiten
+weergegeven, de faciliterende activiteiten niet. Ook voor het gemak zijn
+producten maar één keer weergegeven in één fase hoewel ze bij verschillende
+fasen kunnen behoren (de voortgang van Business Case van initiëel, naar
+eindconcept naar definitieve is onlosmakbaar van respectievelijk de eerste,
+tweede en derde versies van de wijzigingsvoorstellen; daarnaast hoort
+inhoudelijke toetsing zowel onder Inhoud als Toetsing, etc).</p><p>Uit onderstaand schema blijkt vooral de voortdurende betrokkenheid van Geonovum
+als trekker van het beheerproces. De niet weergegeven faciliterende rol is
+geformaliseerd in de inrichting van het beheer. Geonovum is voorzitter van BROS
+en organiseert regelmatig overleg met andere betrokken zoals de
+softwareleveranciers[^2]. Verder wordt er in Hoofdstuk 8 nader ingegaan op de
+integrale aspecten van communicatie. Ook op die plek wordt aan de rol van
+Geonovum meer invulling gegeven.</p><p>[^2]: Meer algemene informatie over het beheer van de RO Standaarden is te
+vinden op de
+<a href="http://www.geonovum.nl/onderwerpen/ruimtelijke-ordening-standaarden/algemeen-ro-standaarden">website van Geonovum</a></p><p><img src="media/2c00286416d1beaa4af4a7cb0d86ce2f.jpg" alt="" width="1273" height="857"></p></section></section><section id="H11" data-format="markdown"><!--OddPage--><h2 id="x11-voorbeeld-initieel-formaat-voor-wijzigingsverzoek"><span class="secno">11. </span>Voorbeeld initieel formaat voor wijzigingsverzoek</h2><p><img src="media/84051e967e8a2057ed1500de61d3a580.jpg" alt="" width="736" height="922">
+<img src="media/b910174ef8484cd32f315aee2c74c303.jpg" alt="" width="732" height="318"></p></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

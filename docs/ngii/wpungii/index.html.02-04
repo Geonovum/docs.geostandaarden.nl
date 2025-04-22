@@ -1,0 +1,559 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Whitepaper Visie op upgrade Nederlandse Geo-informatie Infrastructuur (NGII)</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-BASIS.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-BASIS",
+  "specType": "HR",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/wpungii",
+  "issueBase": "https://github.com/geonovum/wpungii/issues",
+  "edDraftURI": "https://geonovum.github.io/wpungii/",
+  "editors": [
+    {
+      "name": "Friso Penninga",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "wpungii",
+  "pubDomain": "ngii",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    },
+    "PUB-4": {
+      "title": "Titel van Publicatie-4",
+      "href": "https://www.geonovum.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-4",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "publishISODate": "2021-09-10T00:00:00.000Z",
+  "generatedSubtitle": "Document 10 september 2021"
+}</script><meta name="description" content="&quot;De Nederlandse Geo-informatie Infrastructuur is toe aan een upgrade” schreven we vorig jaar in de Geonovum meerjarenvisie 2021-2023. In deze white paper werken we dat ene zinnetje verder uit. Hoe kan de NGII een upgrade krijgen richting een vraaggedreven infrastructuur, die de kracht van locatiedata laagdrempelig inzetbaar maakt voor de grote maatschappelijke opgaven? Welke (nieuwe) standaarden spelen daarbij een rol? Hoe hangen allerlei afzonderlijke ontwikkelingen eigenlijk met elkaar samen? En hoe verhoudt de NGII 2.0 zich bijvoorbeeld tot een Nationale Digital Twin Infrastructuur? In deze white paper zoeken we antwoorden op die vragen. En omdat die antwoorden meer waarde hebben, wanneer ze breed gedragen worden in het werkveld, wordt deze white paper ook in publieke consulatie gebracht."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ngii/basis-hr-wpungii-20210910/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Whitepaper Visie op upgrade Nederlandse Geo-informatie Infrastructuur (NGII)",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-09-10",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/wpungii/issues",
+  "alternativeHeadline": "",
+  "description": "\"De Nederlandse Geo-informatie Infrastructuur is toe aan een upgrade” schreven we vorig jaar in de Geonovum meerjarenvisie 2021-2023. In deze white paper werken we dat ene zinnetje verder uit. Hoe kan de NGII een upgrade krijgen richting een vraaggedreven infrastructuur, die de kracht van locatiedata laagdrempelig inzetbaar maakt voor de grote maatschappelijke opgaven? Welke (nieuwe) standaarden spelen daarbij een rol? Hoe hangen allerlei afzonderlijke ontwikkelingen eigenlijk met elkaar samen? En hoe verhoudt de NGII 2.0 zich bijvoorbeeld tot een Nationale Digital Twin Infrastructuur? In deze white paper zoeken we antwoorden op die vragen. En omdat die antwoorden meer waarde hebben, wanneer ze breed gedragen worden in het werkveld, wordt deze white paper ook in publieke consulatie gebracht.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Friso Penninga",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Whitepaper Visie op upgrade Nederlandse Geo-informatie Infrastructuur (NGII)</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Document <time class="dt-published" datetime="2021-09-10">10 september 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ngii/basis-hr-wpungii-20210910/">https://docs.geostandaarden.nl/ngii/basis-hr-wpungii-20210910/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ngii/wpungii/">https://docs.geostandaarden.nl/ngii/wpungii/</dd><dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/wpungii/">https://geonovum.github.io/wpungii/</a></dd>
+    <dt>Redacteurs:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Friso Penninga</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/wpungii/">GitHub geonovum/wpungii</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/wpungii/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/wpungii/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/wpungii/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="2"><span>Noot</span></div><div class=""><p>Reageren tijdens de consultatie op deze white paper? Dat kan open en transparant door issues aan te maken op <a href="https://github.com/Geonovum/wpungii/issues">GitHub</a>. Geen fan van of toegang tot GitHub? Reageer dan via de <a href="https://www.geonovum.nl/">Geonovum website</a>.</p>
+</div></div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><p>"De Nederlandse Geo-informatie Infrastructuur is toe aan een upgrade” schreven we vorig jaar in de <a href="https://www.geonovum.nl/meerjarenvisie-2021-2023">Geonovum meerjarenvisie 2021-2023</a>. In deze white paper werken we dat ene zinnetje verder uit. Hoe kan de NGII een upgrade krijgen richting een vraaggedreven infrastructuur, die de kracht van locatiedata laagdrempelig inzetbaar maakt voor de grote maatschappelijke opgaven? Welke (nieuwe) standaarden spelen daarbij een rol? Hoe hangen allerlei afzonderlijke ontwikkelingen eigenlijk met elkaar samen? En hoe verhoudt de NGII 2.0 zich bijvoorbeeld tot een Nationale Digital Twin Infrastructuur? In deze white paper zoeken we antwoorden op die vragen. En omdat die antwoorden meer waarde hebben, wanneer ze breed gedragen worden in het werkveld, wordt deze white paper ook in publieke consulatie gebracht.</p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+
+    Dit is een document zonder officiële status.
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#Inleiding"><span class="secno">1. </span>Inleiding: NGII is aan upgrade toe</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#data-van-bijkomstigheid-tot-grondstof"><span class="secno">1.1 </span>Data: van bijkomstigheid tot grondstof</a></li><li class="tocline"><a class="tocxref" href="#ngii-1-0-een-aanbodgedreven-infrastructuur-vanuit-de-gedachte-eenmalige-inwinning-meervoudig-gebruik"><span class="secno">1.2 </span>NGII 1.0: een aanbodgedreven infrastructuur, vanuit de gedachte 'eenmalige inwinning, meervoudig gebruik'</a></li><li class="tocline"><a class="tocxref" href="#ngii-2-0-een-vraaggedreven-infrastructuur-gericht-op-het-creeren-van-waarde-door-data-gedreven-werken-mogelijk-te-maken"><span class="secno">1.3 </span>NGII 2.0: een vraaggedreven infrastructuur, gericht op het creëren van waarde door data gedreven werken mogelijk te maken</a></li></ol></li><li class="tocline"><a class="tocxref" href="#Data"><span class="secno">2. </span>NGII component Basisdata: wat gebruikers van basisdata verwachten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gebruikers-verwachten-volledigere-en-actuelere-data"><span class="secno">2.1 </span>Gebruikers verwachten volledigere en actuelere data</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-verwachten-samenhang"><span class="secno">2.2 </span>Gebruikers verwachten samenhang</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-verwachten-interoperabiliteit"><span class="secno">2.3 </span>Gebruikers verwachten interoperabiliteit</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-verwachten-samenhang-en-interoperabiliteit-ook-over-de-grenzen-van-het-geo-domein"><span class="secno">2.4 </span>Gebruikers verwachten samenhang en interoperabiliteit ook over de grenzen van het geo-domein</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-profiteren-van-eenvoudigere-informatiemodellen"><span class="secno">2.5 </span>Gebruikers profiteren van eenvoudigere informatiemodellen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#Crs"><span class="secno">3. </span>NGII component Coördinaatreferentiesystemen (CRS): hoe gebruikers data krijgen in het CRS dat past bij hun toepassing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#crs-niet-alleen-relevant-bij-inwinning-maar-belangrijk-in-elke-stap-in-de-keten"><span class="secno">3.1 </span>CRS: niet alleen relevant bij inwinning, maar belangrijk in elke stap in de keten</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-willen-niet-onnodig-met-complexere-crsen-hoeven-werken"><span class="secno">3.2 </span>Gebruikers willen niet onnodig met complexere CRSen hoeven werken</a></li><li class="tocline"><a class="tocxref" href="#gebruikers-willen-probleemloos-met-meerdere-crsen-kunnen-werken"><span class="secno">3.3 </span>Gebruikers willen probleemloos met meerdere CRSen kunnen werken</a></li></ol></li><li class="tocline"><a class="tocxref" href="#Ontsluiting"><span class="secno">4. </span>NGII component Ontsluiting: hoe gebruikers basisdata willen krijgen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ontwikkeling-van-losse-bouwstenen-naar-een-integraal-antwoord-op-een-informatiebehoefte"><span class="secno">4.1 </span>Ontwikkeling: van losse bouwstenen naar een integraal antwoord op een informatiebehoefte</a></li><li class="tocline"><a class="tocxref" href="#nieuwe-vormen-van-ontsluiten-van-basisdata"><span class="secno">4.2 </span>Nieuwe vormen van ontsluiten van basisdata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#zicht-op-concrete-informatiebehoefte-bied-api-s"><span class="secno">4.2.1 </span>Zicht op concrete informatiebehoefte: bied API's</a></li><li class="tocline"><a class="tocxref" href="#geen-zicht-op-concrete-informatiebehoefte-bied-mogelijkheid-tot-combineren-met-linked-open-data"><span class="secno">4.2.2 </span>Geen zicht op concrete informatiebehoefte: bied mogelijkheid tot combineren met linked open data</a></li><li class="tocline"><a class="tocxref" href="#voor-elk-mechanisme-geldt-gebruik-waar-mogelijk-lichtere-formaten"><span class="secno">4.2.3 </span>Voor elk mechanisme geldt: gebruik waar mogelijk lichtere formaten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#ontsluiten-van-verbeelding-van-basisdata"><span class="secno">4.3 </span>Ontsluiten van verbeelding van basisdata</a></li></ol></li><li class="tocline"><a class="tocxref" href="#Governance"><span class="secno">5. </span>NGII component Governance: naar meer vraaggerichte en integrale sturing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vraaggerichte-sturing"><span class="secno">5.1 </span>Vraaggerichte sturing</a></li><li class="tocline"><a class="tocxref" href="#integrale-sturing"><span class="secno">5.2 </span>Integrale sturing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#NDTI"><span class="secno">6. </span>NGII 2.0 i.r.t. NDTI (Nationale Digital Twin Infrastructuur voor de fysieke leefomgeving)</a></li><li class="tocline"><a class="tocxref" href="#Architectuur"><span class="secno">7. </span>Consequenties voor de architectuur van de NGII</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opkomst-van-federatieve-structuren"><span class="secno">7.1 </span>Opkomst van federatieve structuren</a></li><li class="tocline"><a class="tocxref" href="#standaarden-van-het-web-als-basis-voor-federatieve-structuren"><span class="secno">7.2 </span>Standaarden van het web als basis voor federatieve structuren</a></li><li class="tocline"><a class="tocxref" href="#federatieve-structuren-sluiten-centrale-voorzieningen-niet-uit"><span class="secno">7.3 </span>Federatieve structuren sluiten centrale voorzieningen niet uit</a></li><li class="tocline"><a class="tocxref" href="#meer-aandacht-voor-beveiliging"><span class="secno">7.4 </span>Meer aandacht voor beveiliging</a></li></ol></li><li class="tocline"><a class="tocxref" href="#Conclusie"><span class="secno">8. </span>Concluderend: SDI.Next - Op weg naar de NGII 2.0 (and beyond...)</a></li></ol></nav><section id="Inleiding" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding-ngii-is-aan-upgrade-toe"><span class="secno">1. </span>Inleiding: NGII is aan upgrade toe</h2><section id="data-van-bijkomstigheid-tot-grondstof"><h3 id="x1-1-data-van-bijkomstigheid-tot-grondstof"><span class="secno">1.1 </span>Data: van bijkomstigheid tot grondstof</h3><p>De status van data is de afgelopen twee decennia radicaal veranderd. Lange tijd was data voor velen een aardige bijkomstigheid -iets wat toevallig ontstond bij het uitvoeren van werkprocessen- maar de focus lag primair op die werkprocessen. Met de komst van het <a href="https://data.overheid.nl/ondersteuning/open-data/beleid">open data beleid</a> van de overheid werd dit bijproduct (de data) toegankelijk gemaakt voor hergebruik. Zo konden anderen profiteren van data die elders al was verzameld. De data werd nadrukkelijk 'as-is' aangeboden: wanneer een dataset voor de toepassing van een hergebruiker niet volledig, actueel of nauwkeurig genoeg was, hield het op. Het open data beleid was primair aanbod-gedreven. 
+Met de democratisering van data (het kunnen benutten van de kracht van analyses, simulaties, dashboards en visualisaties door niet-specialisten) groeit de laatste jaren het besef dat data veel meer potentie biedt. Wanneer data omgezet kan worden in informatie en informatie in kennis, dan wordt data een essentiële grondstof om goed onderbouwde keuzes te maken. Geodata maakt het dan mogelijk om weloverwogen keuzes te kunnen maken in maatschappelijke opgaven met een ruimtelijke component. En de grote maatschappelijke opgaven (klimaatadaptatie, energie- en landbouwtransitie, woningbouwopgave en vervangingsopgave infrastructuur) hebben niet alleen zo'n ruimtelijke component, maar ze concurreren in een aantal gevallen ook onderling om de schaarse ruimte in Nederland: daar waar je zonneweides aanlegt, kun je geen woningen bouwen; daar waar stikstofgevoelige natuur is, is minder ruimte voor intensieve landbouw, etc. De inzichten die vanuit analyses, simulaties en visualisaties kunnen worden verkregen, worden onmisbaar in de aanpak van deze opgaven. En daarmee is data een essentiële grondstof geworden, waar juist vanuit de toepassingen steeds duidelijkere eisen aan gesteld worden. Met de opkomst van digital twins zien we deze beweging steeds krachtiger worden. Naast deze toepassingen speelt de laagdrempeligere toegang tot data ook een belangrijke rol in de beweging naar meer openheid, transparantie en participatie: betrokken burgers kunnen overheidsbeleid controleren, maar ook actief bijdragen door zelf initiatieven of alternatieven te ontwikkelen. Bovendien gaat het in deze hele beweging niet alleen om laagdrempelige toegang tot individuele databronnen, maar steeds vaker ook om het kunnen combineren van data uit verschillende bronnen. Hiermee neemt het belang van zowel semantische als technische interoperabiliteit steeds verder toe.
+</p></section><section id="ngii-1-0-een-aanbodgedreven-infrastructuur-vanuit-de-gedachte-eenmalige-inwinning-meervoudig-gebruik"><h3 id="x1-2-ngii-1-0-een-aanbodgedreven-infrastructuur-vanuit-de-gedachte-eenmalige-inwinning-meervoudig-gebruik"><span class="secno">1.2 </span>NGII 1.0: een aanbodgedreven infrastructuur, vanuit de gedachte 'eenmalige inwinning, meervoudig gebruik'</h3><p>Het besef dat data waarde heeft -ook voor andere processen dan de werkprocessen waarbinnen die data ontstaat- bestaat al langer en is één van de triggers geweest voor het open data beleid. Toenmalig eurocommissaris Neelie Kroes sprak bij de lancering van de Europese open data strategie in 2011 al de woorden “<a href="https://www.binnenlandsbestuur.nl/digitaal/nieuws/kroes-open-data-is-een-goudmijn.3097230.lynkx">Uw data is meer waard, als u die weggeeft</a>”. De directe en indirecte economische impuls van beter toegankelijke overheidsdata zou voor heel Europa <a href="https://ec.europa.eu/commission/presscorner/detail/en/MEMO_11_891">140 miljard euro</a> kunnen bedragen, is in die context becijferd. Een prachtige belofte, alleen bleef onvermeld dat de baten in de regel niet neerslaan waar de kosten worden gemaakt. Daarom werd bij de introductie van de basisregistraties voornamelijk ingezet op het credo ‘eenmalig inwinnen, meervoudig gebruik’. Dit bood de data-inwinners de mogelijkheid om inwinning doelmatiger en efficiënter te organiseren. Bovendien zou het beeld van de werkelijkheid bij de ene inwinner niet langer verschillen van het beeld bij de andere inwinner, wat naast kwaliteitswinst ook gewoon efficiëntie oplevert.
+</p></section><section id="ngii-2-0-een-vraaggedreven-infrastructuur-gericht-op-het-creeren-van-waarde-door-data-gedreven-werken-mogelijk-te-maken"><h3 id="x1-3-ngii-2-0-een-vraaggedreven-infrastructuur-gericht-op-het-creeren-van-waarde-door-data-gedreven-werken-mogelijk-te-maken"><span class="secno">1.3 </span>NGII 2.0: een vraaggedreven infrastructuur, gericht op het creëren van waarde door data gedreven werken mogelijk te maken</h3><p>Met het toenemend besef dat data niet langer slechts een bijproduct is van werkprocessen en mogelijk geschikt voor hergebruik, maar juist een essentiële grondstof vormt, is de NGII aan een upgrade toe. Een upgrade, die rechtdoet aan de nieuwe status van data en daarmee vooral beter aansluit op de behoeften en wensen van gebruikers. Deze meer gebruikersgerichte benadering zien we internationaal ook terug in de ontwikkeling van een nieuwe generatie standaarden, die sterker gericht zijn op het verlagen van drempels om data te kunnen gebruiken. Deze betere aansluiting op de behoeften van gebruikers is de sleutel om de NGII 2.0 in te kunnen zetten als betrouwbare basis voor datagedreven oplossingen voor maatschappelijke opgaven. In deze white paper schetsen we eerst hoe deze stap naar meer gebruikersgerichtheid de verschillende componenten van de NGII beïnvloed, waarbij we achtereenvolgens kijken naar de componenten <a href="#Data">Basisdata</a>, <a href="#Crs">Coördinaatreferentiesystemen</a>, <a href="#Ontsluiting">Ontsluiting</a> en <a href="#Governance">Governance</a>. Vervolgens positioneren we de <a href="#NDTI">upgrade van de NGII ten opzichte van het concept van de Nationale Digital Twin Infrastructuur</a> en bespreken we de <a href="#Architectuur">consequenties van de upgrade voor de architectuur</a> van de NGII en sluiten we af met een opsomming van de <a href="#Conclusie">stappen die nodig zijn op weg naar de NGII 2.0</a>.</p></section></section><section id="Data" data-format="markdown"><!--OddPage--><h2 id="x2-ngii-component-basisdata-wat-gebruikers-van-basisdata-verwachten"><span class="secno">2. </span>NGII component Basisdata: wat gebruikers van basisdata verwachten</h2><section id="gebruikers-verwachten-volledigere-en-actuelere-data"><h3 id="x2-1-gebruikers-verwachten-volledigere-en-actuelere-data"><span class="secno">2.1 </span>Gebruikers verwachten volledigere en actuelere data</h3><p>Vanuit de oorspronkelijke gedachte dat data ontstaat bij werkprocessen en vervolgens als open data vrijgegeven kan worden voor hergebruik, is het goed verklaarbaar dat data vaak onvolledig is of was, en dat data beschikbaar kwam langs de tijdslijnen van die werkprocessen. Denk bijvoorbeeld aan de BGT waarin bomen alleen opgenomen worden als ze in beheer zijn bij desbetreffende BGT-bronhouder, of aan straatnamen die alleen in de BAG waren opgenomen, wanneer er ook een adres was uitgegeven aan die straatnaam. Wanneer je die situaties echter beziet vanuit het perspectief van datagedreven werken, dan wordt duidelijk dat deze onvolledigheid tot problemen leidt. Want hoe kun je analyses over binnenstedelijke hittestress uitvoeren, wanneer je minder dan de helft van de bomen in  beeld hebt? Of hoe stuur je een ambulance naar een vrijliggend fietspad, wanneer de straatnaam niet bij iedereen bekend is? Om data echt als waardevolle grondstof in te kunnen zetten, is het nodig om beter op deze vragen in te kunnen spelen. Om in te spelen op de behoefte aan volledigere en actuelere data is niet één specifieke oplossing voorhanden, maar zal er binnen de NGII 2.0 vaker ingezet worden op:</p><ul>
+<li><strong>Werkafspraken</strong> Met werkafspraken kunnen er -los van eventuele wettelijke verplichtingen rond basisregistraties- aanvullende afspraken gemaakt worden om bepaalde objecttypen vollediger in datasets op te nemen. Een goed voorbeeld hiervan is de actie in april 2020 om zoveel mogelijk locaties waar grotere groepen mensen bijeen kunnen komen (denk aan speeltuinen, parken en sportterreinen), op te nemen in de Basisregistratie Grootschalige Topografie, om tijdens de corona-crisis gerichter te kunnen handhaven. Met werkafspraken kunnen vooral objecttypen, die al wel bij bronhouders bekend zijn maar nog niet gedeeld worden, relatief eenvoudig worden toegevoegd om gebruikers volledigere data te bieden.</li>
+<li><strong>Hybride inwinning incl. AI</strong> Traditioneel wordt veel geo-informatie landmeetkundig ingewonnen. In het veld, in luchtfoto's of uit andere bronnen, maar altijd met menselijke inbreng en met veel aandacht voor geodetische nauwkeurigheid. Door de combinatie van steeds gedetailleerder beeldmateriaal en steeds intelligentere algoritmen (denk aan <em>machine learning</em> voor beeldherkenning) kunnen er steeds meer objecten of mutaties op objecten geautomatiseerd gesignaleerd en ingewonnen worden. Enerzijds kunnen deze nieuwe technieken tot efficiency- en/of effectiviteitswinst leiden t.o.v. traditionele inwinning, anderzijds wordt het door deze nieuwe methoden economisch haalbaar om andere typen objecten nu wel in te winnen. Denk bijvoorbeeld aan het in beeld krijgen van alle bomen of alle verkeersborden in Nederland. Dankzij die economische haalbaarheid kunnen die andere typen nu vollediger en/of sneller (en daarmee leidend tot betere actualiteit) worden ingewonnen.
+</li>
+<li><strong>Publiek gebruik private data</strong> Voor steeds meer gebruikerstoepassingen zien we dat de voor publieke toepassingen gewenste data in handen is van private partijen. Bij de bestrijding van de corona-crisis was dit bijvoorbeeld goed te zien: verplaatsingsdata kwam vrijwel volledig van private partijen. In de traditionele vorm kan de overheid aan private data komen door ze ofwel in te kopen, ofwel via regelgeving afdwingen dat data geleverd wordt aan de overheid. Voor een aantal bronnen volstaan die traditionele bronnen niet langer, en dan zijn er andere vormen van samenwerking nodig, waarbij de overheid een meer gelijkwaardige relatie aangaat met private partijen. Vanuit gebruikerswensen zullen dergelijke nieuwe vormen van samenwerking steeds vaker nodig worden, waarmee de overheid voor de uitdaging staat om deze nieuwe vormen vaker toe te gaan passen. </li>
+</ul><p>Deze omslag aan de productiekant van de data heeft de nodige consequenties. Immers: gegevens zullen vanuit verschillende bronnen ontstaan (bijv. eigen decentrale inwinning vs. centrale post-processing van landelijk ingewonnen elementen), wat per objecttype kan leiden tot verschil in kwaliteit (precisie, nauwkeurigheid, betrouwbaarheid, actualiteit, volledigheid) en in de mate van in control zijn. Dit voelt mogelijk tegennatuurlijk voor bronhouders, maar voor gebruik is dit geen enkele belemmering, op voorwaarde dat de afzonderlijke elementen elk voldoen aan het voor gebruik benodigde kwaliteitsniveau. De opgave om stappen te zetten naar volledigere data, omvat ook het inrichten van een meer vraaggerichte sturing op de inhoud en financiering van basisdatasets als de geobasisregistraties.</p></section><section id="gebruikers-verwachten-samenhang"><h3 id="x2-2-gebruikers-verwachten-samenhang"><span class="secno">2.2 </span>Gebruikers verwachten samenhang</h3><p>Vanuit het oogpunt van data als bijproduct van werkprocessen bezien, is het goed te verklaren dat verschillende datasets een verschillend beeld (lijken te) geven van de werkelijkheid. Immers: het werkproces rond bijvoorbeeld huisnummerbesluiten kent andere aandachtspunten dan werkprocessen rond registratie van eigendom of het beheren van objecten in de openbare ruimte. Maar met het beschikbaar stellen van dergelijke data als open data en het groeiend gebruik daarvan voor allerlei nieuwe doelen, liggen de toepassingen lang niet altijd meer in het verlengde van het oorspronkelijke doel waarvoor de data is ingewonnen of waarbij de data is ontstaan. Gebruikers die dergelijke datasets vinden en vervolgens toepassen, ervaren deze sets vaak als inconsistent. En hoewel gebruikers met de nodige ervaring binnen het geo-domein deze inconsistenties vaak nog kunnen plaatsen, gaat dat voor een toenemend deel van de gebruikers niet meer op. Bovendien blijken inconsistenties regelmatig veroorzaakt te worden door kwaliteits-issues als onvoldoende volledigheid of actualiteit. De kwaliteitsdashboards op diverse basisregistraties (waaronder die van de <a href="https://public.tableau.com/app/profile/kadasterkwaliteitsrapportage">BGT</a>) maken hier gebruik van, door inconsistenties te signaleren en zo kwaliteitsverbeteringen te triggeren.
+</p><p>Om echt een doorbraak te creëren in het datagedreven werken, mag het duidelijk zijn dat ontbrekende samenhang tussen databronnen een issue is dat aangepakt moet worden. Hiervoor zijn meerdere strategieën beschikbaar: </p><p><em>Primair op data gebaseerde strategieën:</em></p><ul>
+<li><strong>Harmoniseren</strong> – zorgen dat objecten die niet volledig hetzelfde zijn of betekenen, wel volledig hetzelfde gaan betekenen. Dit vereist harmonisatie: integratie ofwel afstemming tussen onderliggende informatiemodellen en inwinprocessen en aanpassing van de populatie van de datasets.</li>
+<li><strong>Expliciteren van relaties</strong> – zorgen dat objecten die niet volledig hetzelfde zijn of betekenen, zodanig naar elkaar verwijzen dat de onderlinge relatie (geen “is gelijk aan” relatie) expliciet gelegd wordt. Dit vereist het expliciteren van relaties tussen objecten (verlinken) in informatiemodellen, het bijhouden van die relaties en het toevoegen van die relaties aan bestaande data.</li>
+</ul><p>Kenmerkend voor de primair op data gebaseerde strategieën, is dat de veranderopgave vooral bij de bronhouder van de data komt te liggen. Harmoniseren is hierbij de meest ambitieuze wijze om gegevens bij elkaar te brengen, die vanuit verschillende perspectieven worden verzameld. Bij harmonisatie geldt de aanname dat volledige samenhang tussen informatieobjecten (sets gegevens over objecten) alleen mogelijk is, wanneer de objecten (de dingen in werkelijkheid) gelijk zijn. Bij het expliciteren van relaties wordt geaccepteerd dat informatieobjecten niet op exact dezelfde objecten betrekking hebben (bijvoorbeeld omdat domeinspecifieke invalshoeken dat rechtvaardigen). De vraag welke strategie het meest geschikt of wenselijk is voor het bieden van samenhang, zal in het algemeen beantwoord kunnen worden door te kijken of het (realistisch) haalbaar is het over exact dezelfde objecten te gaan hebben. Binnen een domein (bijvoorbeeld tussen geobasisregistraties) kan dat nog haalbaar zijn, terwijl over domeinen heen het verlinken het hoogst haalbare is (bijvoorbeeld tussen BIM enerzijds en geobasisregistraties anderzijds). Voor het beoordelen van de haalbaarheid, is de omvang van de transitie-opgave een belangrijk criterium. Harmoniseren zal in de regel om een significante transitie vragen. Bij relateren hangt de omvang mede af van de mate waarin het leggen en bijhouden van relaties tussen instanties van objecten te automatiseren valt. Wanneer de relaties op semantisch vlak tussen objecten gelegd zijn, kunnen expliciete relaties tussen instanties van die objecten automatisch worden afgeleid. Beperking hierbij is echter dat deze resultaten nooit 100% betrouwbaar zullen zijn. Wanneer de betrouwbaarheid van de relaties tussen instanties van groot belang is, zullen deze relaties in het werkproces gelegd moeten worden. Dit heeft ook significante impact op de omvang van de beheeropgave: niet alleen het object en de bijbehorende kenmerken moeten actueel gehouden worden, maar ook de verwijzingen naar gerelateerde objecten.
+</p><p>Met de eerste strategie (harmoniseren) zal een gebruiker idealiter geen inconsistenties meer ervaren (in elk geval geen inconsistenties die veroorzaakt worden door semantische verschillen), met de tweede strategie (expliciteren van relaties) zal een gebruiker eventuele inconsistenties eerder kunnen duiden en begrijpen, waarmee idealiter de drempel voor gebruik wordt weggenomen. </p><p>Naast de hierboven op data gebaseerde strategieën, kunnen gebruikers ook in hun behoefte aan samenhang worden voorzien door de ontsluitingswijze hierop te optimaliseren. Bij deze strategieën komt de last om samenhang te bieden niet bij de bronhouder van de data te liggen, maar bij de service provider en/of de afnemende partij. Later in deze white paper zullen twee aanvullende strategieën aan bod komen:</p><p><em>Primair op ontsluiting gebaseerde strategieën:</em></p><ul>
+<li>Het aanbieden van geïntegreerde bevragingen (<strong>ontsluitende partij</strong> legt verbanden).</li>
+<li>Het faciliteren van het leggen van verbanden (<strong>afnemende partij</strong> legt verbanden).</li>
+</ul></section><section id="gebruikers-verwachten-interoperabiliteit"><h3 id="x2-3-gebruikers-verwachten-interoperabiliteit"><span class="secno">2.3 </span>Gebruikers verwachten interoperabiliteit</h3><p>Bij interoperabiliteit denkt men vaak aan eerst aan technische interoperabiliteit: de mate waarin koppelvlakken gestandaardiseerd zijn, met de uitwisselbaarheid 'zoals een stekker in een stopcontact' als streefbeeld. Op het vlak van data gaat het echter om semantische interoperabiliteit: de mate waarin de betekenis van gegevens gestandaardiseerd is, waarbij uitwisselbaarheid draait om het gezamenlijk spreken van dezelfde taal, met de Babylonische spraakverwarring als doembeeld. De behoefte van gebruikers aan semantische interoperabiliteit ligt in het verlengde van de behoefte aan samenhang: bij de behoefte aan samenhang gaat het primair om de wens dat informatieobjecten in verschillende datasets zo eenduidig mogelijk samenhangen met objecten in de werkelijkheid, bij de behoefte aan semantische interoperabiliteit draait het primair om de wens dat informatieobjecten uit verschillende bronnen te combineren en te integreren zijn, wanneer de samenhang al op orde is.
+</p><p>Het meest voor de hand liggende instrument om semantische interoperabiliteit te bevorderen, is het gebruik van gestandaardiseerde informatiemodellen. Met de hele <a href="https://www.geonovum.nl/geo-standaarden/nen-3610-basismodel-voor-informatiemodellen">NEN3610-piramide</a> in het achterhoofd zou men wellicht denken dat de NGII op dit vlak geen uitdagingen meer kent. Immers: er is een hele reeks aan gestandaardiseerde informatiemodellen in gebruik, deels zelfs wettelijk verankerd. Toch ervaren gebruikers nog altijd problemen op het vlak van semantische interoperabiliteit. Bijvoorbeeld omdat identieke situaties in de werkelijkheid op meerdere (valide) wijzes kunnen worden beschreven volgens een informatiemodel. Maar ook omdat verschillende bronhouders een informatiemodel soms net anders interpreteren, waarmee de uiteindelijke vulling minder consistent is. Praktijkvoorbeelden van dit soort gevallen zijn o.a. in de Basisregistratie Grootschalige Topografie te vinden en vormen daar een obstakel voor automatische generalisatie. Nu data steeds vaker door grotere aantallen individuele bronhouders wordt ingewonnen en data ook steeds vaker decentraal beheerd blijft (zie ook paragraaf over architectuur) wordt het borgen van semantische interoperabiliteit een steeds grotere uitdaging. Informatiemodellen en de bijbehorende catalogi, handboeken, werkafspraken en processen zullen kritisch doorgelicht moeten worden op eenduidigheid: wordt er het maximale aan gedaan om te borgen dat identieke situaties in de werkelijkheid ook op identieke wijze terugkomen in data? Vrijheidsgraden in standaarden zullen zoveel mogelijk beperkt moeten worden en waar ze onvermijdelijk zijn, zullen de ondersteunende documenten zoveel mogelijk gericht moeten zijn op eenduidige toepassing van die vrijheidsgraden.</p></section><section id="gebruikers-verwachten-samenhang-en-interoperabiliteit-ook-over-de-grenzen-van-het-geo-domein"><h3 id="x2-4-gebruikers-verwachten-samenhang-en-interoperabiliteit-ook-over-de-grenzen-van-het-geo-domein"><span class="secno">2.4 </span>Gebruikers verwachten samenhang en interoperabiliteit ook over de grenzen van het geo-domein</h3><p>In de voorgaande paragrafen zijn de behoeften aan samenhang en interoperabiliteit beschouwd binnen het domein van de NGII. Voor beide behoeften geldt echter dat ze ook valide zijn over de grenzen van het geo-domein heen. Want de fysieke leefomgeving is niet alleen onderwerp in het geo-domein, maar o.a. ook in het bouwdomein en het assetmanagement-domein. Gebouwen, wegen, kunstwerken, kabels en leidingen en andere objecten in de openbare ruimte: in alle domeinen worden er gegevens over vastgelegd. Gebruikers verwachten de samenhang tussen deze bronnen en willen deze data ook kunnen combineren. Bovendien geldt in veel gevallen dat de overheid een rol speelt in deze domeinen. Eenduidige en consistente informatievoorziening voor elk betrokken onderdeel van de overheid is dan een voor de hand liggende behoefte. Dit maakt dat de NGII voor de uitdaging staat om samenhang en semantische interoperabiliteit niet alleen binnen de eigen infrastructuur, maar juist ook richting aanpalende domeinen te gaan bieden.
+</p></section><section id="gebruikers-profiteren-van-eenvoudigere-informatiemodellen"><h3 id="x2-5-gebruikers-profiteren-van-eenvoudigere-informatiemodellen"><span class="secno">2.5 </span>Gebruikers profiteren van eenvoudigere informatiemodellen</h3><p>Hoewel gebruikers meestal geen expliciete verwachtingen hebben t.a.v. de complexiteit van informatiemodellen en standaarden, bestaat deze verwachting impliciet wel. Gebruikers geven namelijk bij ontsluiting vaak aan dat ze lichtere dataformaten willen kunnen gebruiken. Het is echter niet altijd mogelijk om bij ontsluiting voor een ander (lichter) dataformaat te kiezen: soms maken de onderliggende informatiemodellen gebruik van complexere constructies, die alleen in complexere dataformaten volledig kunnen worden weergegeven. In de praktijk zien we dit o.a. terug bij pogingen om INSPIRE-data naast GML ook in GeoPackage uit te kunnen leveren. Dit betekent dat gestandaardiseerde informatiemodellen daar waar mogelijk zo eenvoudig mogelijk gemaakt moeten worden, om laagdrempelige ontsluiting mogelijk te maken. Wanneer het gebruik van complexere constructies in informatiemodellen slechts voor een beperkt deel van de toepassingen noodzakelijk is, kan het verstandig zijn om standaarden modulair op te bouwen. Modulaire standaarden bestaan uit een relatief eenvoudige <em>core</em> en één of meer extensies, waarmee aanvullende eisen kunnen worden gesteld, die vervolgens alleen gelden voor specifieke gevallen. Op deze manier worden gebruikers niet langer met complexiteit geconfronteerd, wanneer die voor hun toepassing niet relevant is.</p></section></section><section id="Crs" data-format="markdown"><!--OddPage--><h2 id="x3-ngii-component-coordinaatreferentiesystemen-crs-hoe-gebruikers-data-krijgen-in-het-crs-dat-past-bij-hun-toepassing"><span class="secno">3. </span>NGII component Coördinaatreferentiesystemen (CRS): hoe gebruikers data krijgen in het CRS dat past bij hun toepassing</h2><p>De meerwaarde van geo-informatie boven administratieve informatie zit natuurlijk in de ruimtelijke component: de kracht van locatie. Ook databronnen die niet expliciet aan elkaar gerelateerd zijn, kunnen met elkaar in verband worden gebracht, wanneer ze betrekking hebben op dezelfde locatie. Voor elke geospecialist is dit een open deur. Alleen: dit werkt uitsluitend, wanneer je er zeker van kunt zijn dat de locatie klopt. Niet voor niets wordt bij inwinning van geo-informatie veel aandacht besteed aan kwaliteit: precisie, nauwkeurigheid, volledigheid, betrouwbaarheid en actualiteit. Maar wanneer er in datagedreven werkprocessen gegevens uit meerdere bronnen worden gecombineerd, is eenzelfde aandacht voor kwaliteit nodig. Zeker wanneer deze bronnen in verschillende coördinaatreferentiesystemen (CRS) zijn vastgelegd, bijvoorbeeld door het combineren van nationale en internationale bronnen of het combineren van bronnen met primaire focus op land met bronnen met primaire focus op zee.</p><section id="crs-niet-alleen-relevant-bij-inwinning-maar-belangrijk-in-elke-stap-in-de-keten"><h3 id="x3-1-crs-niet-alleen-relevant-bij-inwinning-maar-belangrijk-in-elke-stap-in-de-keten"><span class="secno">3.1 </span>CRS: niet alleen relevant bij inwinning, maar belangrijk in elke stap in de keten</h3><p>Deze opgaven illustreren ook goed, waarom we coördinaatreferentiesystemen als component van de NGII beschouwen. Het volstaat niet langer om alleen aan de voorkant van de keten (bij de landmeetkundige inwinning) aandacht te hebben voor juist CRS-gebruik, inmiddels is dit in elke fase van de keten noodzakelijk. Wanneer je streeft naar een NGII die datagedreven werken mogelijk maakt en die data als essentiële grondstof beschouwt, dan zal die NGII ook het eenvoudig en correct samenstellen van informatieproducten uit data in verschillende CRSen mogelijk moeten maken. Bovendien zien we dat geometrie steeds vaker echt in drie dimensies wordt beschreven, in plaats van in twee of in twee met een administratief attribuut Hoogte. Hiermee wordt de opgave om in alle stappen in de keten correct met CRSen om te gaan, alleen maar groter. Een opgave, waaraan zowel door geodetische als door informatiekundige specialisten gewerkt zal moeten worden.
+</p></section><section id="gebruikers-willen-niet-onnodig-met-complexere-crsen-hoeven-werken"><h3 id="x3-2-gebruikers-willen-niet-onnodig-met-complexere-crsen-hoeven-werken"><span class="secno">3.2 </span>Gebruikers willen niet onnodig met complexere CRSen hoeven werken</h3><p>Voor toepassingen waarbij nauwkeurigheid minder relevant is, zien we een groeiende behoefte aan eenvoudiger gebruik van coördinaatreferentiesystemen. Wanneer je ruimtelijke data wilt optimaliseren voor het gebruik door niet-geospecialisten op het web, raden de <a href="https://www.w3.org/TR/sdw-bp/#bp-crs-choice">Spatial Data on the Web Best Practices</a> aan om data ook altijd te publiceren in wereldwijd bruikbare CRSen, zoals WGS84 Lat/Long (<a href="http://epsg-registry.org/?display=entity&amp;urn=urn:ogc:def:crs:EPSG::4326">EPSG:4326</a>) voor vector data of WebMercator (<a href="http://epsg-registry.org/?display=entity&amp;urn=urn:ogc:def:crs:EPSG::3857">EPSG:3857</a>) voor rasterdata. Een goed praktijkvoorbeeld hiervan in Nederland is <a href="https://nlmaps.nl/">NL Maps</a>, waarmee de BRT geoptimaliseerd voor dergelijke web map tooling wordt aangeboden. Voor veel webviewers en hun toepassingen is de lagere geometrische nauwkeurigheid geen bezwaar en kunnen toepassingen snel en eenvoudig worden gerealiseerd door aan te sluiten bij deze generiek toegepaste CRSen. Dit vormt een tweede opgave voor de NGII: om zoveel mogelijk drempels voor gebruik weg te nemen, zal data vaker in meerdere CRSen aangeboden moeten worden. Denk aan RD en ETRS89 voor nauwkeurige toepassingen en bijvoorbeeld WebMercator voor laagdrempelige online visualisatie (mits het onderwerp zich natuurlijk leent voor minder nauwkeurige weergave - wees kritisch op de nauwkeurigheid van de toepassing én van de onderliggende brondata).</p></section><section id="gebruikers-willen-probleemloos-met-meerdere-crsen-kunnen-werken"><h3 id="x3-3-gebruikers-willen-probleemloos-met-meerdere-crsen-kunnen-werken"><span class="secno">3.3 </span>Gebruikers willen probleemloos met meerdere CRSen kunnen werken</h3><p>In de NGII is het noodzakelijk dat gebruikers probleemloos met meerdere CRS-en kunnen werken. Het gaat in de eerste plaats om RD en ETRS89. Het goed kunnen transformeren van coördinaten van het ene naar het andere stelsel is een eerste vereiste. De <a href="https://www.nsgi.nl/rdnaptrans">RDNAPTRANS</a>-procedure biedt hiervoor al sinds jaar en dag uitkomst, maar helaas was het zo dat deze procedure (zeker voor de komst van RDNAPTRANS 2018) in veel GIS-pakketten niet correct geïmplementeerd was, met soms grote afwijkingen tot gevolg. Met de komst van RDNAPTRANS 2018 is de transformatie tussen RD en ETRS89 eenvoudiger implementeerbaar geworden, doordat de opbouw van de transformatie meer lijkt op in andere landen toegepaste transformaties die al goed zijn geïmplementeerd in GIS-pakketten. Hierdoor vraagt implementatie van de Nederlandse transformatie minder specifiek ontwikkelwerk. Tegelijk met de publicatie van deze nieuwe procedure is ook veel aandacht besteed aan het vergroten van het bewustzijn van het  belang van het gebruik van de juiste procedure. Maar het goed kunnen werken in meerdere stelsels, vraagt meer dan alleen het goed kunnen transformeren van coördinaten. Je wilt immers niet alleen de locatie van een punt correct in beide stelsels kunnen weergeven, maar volledige geometrieën inclusief ruimtelijke relaties in beide stelsels consistent kunnen gebruiken. Een voorbeeld: een rechte lijn in RD komt niet automatisch overeen met een rechte lijn in ETRS89: <a href="https://forum.pdok.nl/uploads/default/original/2X/c/c0795baa683bf3845c866ae4c576a880455be02a.pdf">hoe langer het lijnstuk, hoe groter de afwijkingen</a>. En daarmee kan een punt dat in RD aan de ene kant van zo’n lijn ligt, in ETRS89 aan de andere kant terecht komen. Wanneer dit optreedt in vraagstukken als eigendom of vergunningverlening, leidt dit tot volstrekt onwenselijke situaties. Dit probleem is te voorkomen door aanvullende tussenpunten te vereisen, ook wanneer die op een volmaakt rechte lijn lijken te liggen. Het borgen van dit soort keuzes bij het ontwerp en gebruik van landelijke voorzieningen en digitale stelsels is essentieel. Dit is een opgave voor de NGII: er kan niet langer worden volstaan door alleen aan de inwinningskant van geo-informatie aandacht te hebben voor gebruik van de juiste transformaties en het borgen van keuzes, dit onderwerp moet ook aan de gebruikers- en beheerderskant aandacht krijgen.</p></section></section><section id="Ontsluiting" data-format="markdown"><!--OddPage--><h2 id="x4-ngii-component-ontsluiting-hoe-gebruikers-basisdata-willen-krijgen"><span class="secno">4. </span>NGII component Ontsluiting: hoe gebruikers basisdata willen krijgen</h2><section id="ontwikkeling-van-losse-bouwstenen-naar-een-integraal-antwoord-op-een-informatiebehoefte"><h3 id="x4-1-ontwikkeling-van-losse-bouwstenen-naar-een-integraal-antwoord-op-een-informatiebehoefte"><span class="secno">4.1 </span>Ontwikkeling: van losse bouwstenen naar een integraal antwoord op een informatiebehoefte</h3><p>Hoewel het nu haast niet meer voor te stellen is, is het niet eens zo heel lang geleden dat basisdata nog op DVD per post werd gedistribueerd. Sindsdien is er veel gebeurd. Eén van de laatste belangrijke veranderingen is dat de granulariteit van ontsluiting verandert: de aandacht verschuift van het niveau van datasets naar het niveau van individuele objectinstanties. Tegelijk zien we ook de ontwikkeling richting meer samenhang: waar voorheen afzonderlijke datasets werden ontsloten, groeit nu het besef dat gebruikers gebaat zijn bij samengestelde bevragingen.
+</p><p>Voor deze twee gerelateerde ontwikkelingen zijn meerdere aanleidingen aan te wijzen. Een eerste belangrijke is de groeiende aandacht voor het scheiden van de datalaag en de applicatielaag in architectuur. Dat is an sich geen recent, vernieuwend idee, maar naarmate meer partijen de gevolgen van vendor lock-ins en daaropvolgende moeizame migraties zijn gaan ondervinden, wordt dit principe wel veel actiever nagestreefd. Een tweede belangrijke aanleiding is de beweging om drempels voor gebruik zo veel mogelijk weg te willen nemen. Waar voorheen een gebruiker hooguit de afzonderlijke bouwstenen (in de vorm van datasets) voor zijn informatiebehoefte kon krijgen, groeit het besef dat de gebruiker pas echt geholpen wordt, wanneer er direct in die informatiebehoefte voorzien wordt. Want niet elke gebruiker -en zeker niet buiten de kring van geo-specialisten- heeft de mogelijkheden (o.a. in termen van kennis, applicaties en tijd) om zelf het antwoord op een informatiebehoefte te vinden op basis van die afzonderlijke bouwstenen. Dat gebrek aan mogelijkheden maakte dat veel potentiële gebruikers de kracht van locatiedata niet konden benutten. Om die potentie wel te vervullen, zien we nieuwe vormen van ontsluiting opkomen.</p></section><section id="nieuwe-vormen-van-ontsluiten-van-basisdata"><h3 id="x4-2-nieuwe-vormen-van-ontsluiten-van-basisdata"><span class="secno">4.2 </span>Nieuwe vormen van ontsluiten van basisdata</h3><p>In de huidige NGII is o.a. <a href="https://www.ogc.org/standards/wfs">WFS</a> beschikbaar als ontsluitingsmechanisme. WFS voorziet in een aantal van de hierboven genoemde behoeften (scheiden van applicatie en data en ontsluiten van data op instantieniveau), maar niet aan allemaal (o.a. laagdrempeliger, ook voor niet-geospecialisten). Voor de NGII 2.0 zijn verschillende ontsluitingsmechanismen beschikbaar, die wel beter aansluiten op die punten. De vraag welk mechanisme en welke bijbehorende standaarden het meest geschikt zijn, hangt onder meer af van de mate waarin de aanbiedende partij zicht heeft op de concrete informatiebehoefte van de gebruiker:</p><section id="zicht-op-concrete-informatiebehoefte-bied-api-s"><h4 id="x4-2-1-zicht-op-concrete-informatiebehoefte-bied-api-s"><span class="secno">4.2.1 </span>Zicht op concrete informatiebehoefte: bied API's</h4><p>Wanneer er sprake is van een concrete informatiebehoefte – denk aan ‘mutaties in de BGT voor een op te geven gebied en tijdspanne’ of aan ‘alle pandinformatie die in BAG en BGT bekend is van een op te geven pand’ – dan vormen API’s een voor de hand liggend ontsluitingsmechanisme. API’s kennen een laagdrempelig en voorspelbaar interactiepatroon. Om die laagdrempeligheid ook voor ruimtelijke data te bieden, wordt bij de OGC in hoog tempo een hele familie aan ontsluitingsstandaarden, gebaseerd op REST API’s, ontwikkeld. Deze <a href="https://ogcapi.ogc.org/#standards">OGC API familie</a> is te kenschetsen als de opvolger van de verzameling W*S standaarden. Hiermee sluiten de OGC-standaarden niet alleen beter aan op de nu meest gangbare technieken, maar maken deze nieuwe OGC API standaarden de toegang tot ruimtelijke data ook een stuk laagdrempeliger. Immers, de voorheen zeer geo-specifieke interactiepatronen worden nu vervangen door de generieke interactiepatronen die ook voor niet-ruimtelijke data gangbaar zijn. Bovendien worden deze interactiepatronen ook nog eens op een generieke (in de zin van: niet geo-specifieke) wijze beschreven door deze conform de <a href="https://swagger.io/specification/">Open API Specification (OAS)</a> standaard vast te leggen. De beweging richting OGC API’s past hiermee ook uitstekend binnen de <a href="https://www.geonovum.nl/themas/sdinext-een-data-infrastructuur-waarop-je-kan-bouwen">SDI.Next</a> gedachte: er worden zo veel mogelijk drempels voor het gebruik van geodata weggenomen. 
+Het aanbieden van data via API’s wordt nog laagdrempeliger, wanneer deze <a href="https://docs.geostandaarden.nl/api/def-hr-API-Strategie-20200204/#aanbeveling-2-analyseer-welke-api-s-je-aan-moet-bieden-welke-informatievragen-wil-je-beantwoorden">API’s gericht zijn op specifieke informatiebehoeften</a>. Immers: hoe gerichter de vraag (bijvoorbeeld: geef het volledige adres bij deze postcode + huisnummer), hoe eenvoudiger het interactiepatroon kan zijn, en hoe eenvoudiger de API in gebruik is. Een API die probeert een brede range aan vragen te bedienen, zal altijd complexer in gebruik worden dan wanneer die range aan vragen wordt verspreid over een aantal specifieke API’s. Wanneer een WFS alleen opgevolgd wordt door een API conform de OGC API Features standaard, heeft dit wel het (ook voor niet-geospecialisten) voorspelbaardere interactiepatroon en betere vindbaarheid als voordeel, maar hiermee wordt nog niet direct in een concrete informatiebehoefte voorzien. Pas wanneer er specifiekere API's (de zgn. <em>convenience API's</em>) conform de <a href="https://ogcapi.ogc.org/features/overview.html">OGC API Feature</a> standaard worden gepubliceerd, wordt ook echt in die gerichte informatiebehoeften voorzien. Dergelijke <em>convenience API's</em> zijn erg geschikt zijn voor informatie-uitwisseling in ketens (omdat die ketens bekend zijn) en voor populaire, generieke vragen (zoals het net gegeven adres-voorbeeld). Bij deze laatste categorie speelt het argument vindbaarheid ook een belangrijke rol, want juist door de betere vindbaarheid neemt de kans dat gebruikers van buiten het geo-domein ook daadwerkelijk gaan profiteren van de kracht van locatiedata verder toe. Tegelijk is het belangrijk om te beseffen je met het uitsluitend aanbieden van <em>convenience API's</em> je nooit de volledige informatiebehoefte af kunt dekken: zie <em>convenience API's</em> als de beste manier om de veelgestelde vragen af te handelen, maar weet dat je voor andere vragen en analyses ook generieke API's, downloads of linked open data moet aanbieden.
+</p></section><section id="geen-zicht-op-concrete-informatiebehoefte-bied-mogelijkheid-tot-combineren-met-linked-open-data"><h4 id="x4-2-2-geen-zicht-op-concrete-informatiebehoefte-bied-mogelijkheid-tot-combineren-met-linked-open-data"><span class="secno">4.2.2 </span>Geen zicht op concrete informatiebehoefte: bied mogelijkheid tot combineren met linked open data</h4><p>Lang niet altijd zal er sprake zijn van een concrete informatiebehoefte, die bij de data-aanbieder bekend is. Hoe bied je dan je data zodanig aan, dat onbekende gebruikers met onbekende vragen toch zo veel mogelijk baat kunnen hebben bij je data? Voor die gevallen is de aanpak van linked open data een goede keuze, omdat deze aanpak het mogelijk maakt om zelf relaties te leggen, mede door het bieden van meer context bij de data. De essentie van deze aanpak is dat de onbekende data-gebruiker in staat moet zijn om zelf verbanden te leggen tussen verschillende informatiebronnen. Hiervoor moet niet alleen de data zelf op instantieniveau toegankelijk zijn, maar moeten er van die instanties ook duidelijke relaties gelegd worden naar de semantiek. Op die manier kunnen gebruikers in dat Web of Data zelf data ontdekken en interpreteren. Het linken naar de betekenis van data wordt mogelijk door het gebruik van begrippencatalogi. Ook is het mogelijk relaties te leggen van de ene instantie naar andere instanties, die zich in andere datasets kunnen bevinden, waardoor de data-interoperabiliteit flink verhoogd wordt. Een bekend voorbeeld van deze aanpak is het publiceren van de BAG als linked data. De mogelijkheid tot het combineren beperkt zich niet tot het combineren van de ene soort geodata met de andere soort geodata, maar strekt zich verder uit, ook voor het combineren met administratieve data. De link tussen geo en niet-geodata biedt in beide richtingen voordelen. Zo wordt het door geodata als linked data te publiceren mogelijk dat niet-geo-ict-ers die geodata gebruiken in combinatie met hun eigen administratieve databronnen, terwijl een geospecialist in zijn GIS ook linked data uit administratieve data bronnen naar binnen kan trekken en gebruiken.
+</p><p>Uit bovenstaande kan overigens niet de conclusie worden getrokken dat API's en Linked Data twee tegenovergestelde, elkaar uitsluitende aanpakken zijn. Zo is het bijvoorbeeld prima denkbaar om via API's samengestelde bevragingen aan te bieden, waarbij de antwoorden dankzij linked data technieken tot stand komen. Maar ook de eerder genoemde optie om de meestgestelde vragen via <em>convenience API's</em> af te dekken en voor generiekere vragen en analyses linked open data aan te bieden, is hier een voorbeeld van.</p></section><section id="voor-elk-mechanisme-geldt-gebruik-waar-mogelijk-lichtere-formaten"><h4 id="x4-2-3-voor-elk-mechanisme-geldt-gebruik-waar-mogelijk-lichtere-formaten"><span class="secno">4.2.3 </span>Voor elk mechanisme geldt: gebruik waar mogelijk lichtere formaten</h4><p>De overstap van geo-specifieke ontsluitingsmechanismen naar meer generieke mechanismen helpt bij het verbreden van de doelgroep van de NGII. Maar wanneer deze generieke mechanismen vervolgens nog steeds alleen geo-specifieke formaten uitleveren, dan mist deze overstap alsnog het beoogde effect. Daarom is he belangrijk om de data ook zoveel mogelijk in lichtere formaten aan te bieden. Want hoewel <a href="https://portal.opengeospatial.org/files/?artifact_id=74183&amp;version=2">GML</a> (Geography Markup Language) een hele krachtige uitwisselingsstandaard is, vormt GML voor veel gebruikers van buiten het geodomein een obstakel: GML wordt vaak gezien als complex en lastig te implementeren. Gelukkig komen er steeds meer goede alternatieven beschikbaar, die voor de meerderheid van de toepassingen ook volstaan. Denk hierbij o.a. aan HTML, JSON, GeoPackage en RDF. In de Handreiking <a href="https://geonovum.github.io/geox/">Geometrie in uitwisselingsformaten</a> worden handvaten geboden aan data-aanbieders om die formaten te selecteren, die het meest geschikt zijn voor hun situatie. Voor de NGII geldt dat er actiever gestuurd moet worden op het (ook) aanbieden in lichtere formaten.</p></section></section><section id="ontsluiten-van-verbeelding-van-basisdata"><h3 id="x4-3-ontsluiten-van-verbeelding-van-basisdata"><span class="secno">4.3 </span>Ontsluiten van verbeelding van basisdata</h3><p>Naast het ontsluiten van de data zelf, is de visualisatie van die data juist bij geodata ook heel zinvol. In de huidige NGII wordt hier vooral in voorzien middels de <a href="https://www.ogc.org/standards/wms">WMS</a> en <a href="https://www.ogc.org/standards/wmts">WMTS</a>-mechanismen. Op het vlak van verbeelding groeit de behoefte aan mechanismen met goede performance, met mogelijkheden voor het aanpassen van de opmaak en met goede ondersteuning voor 3D geodata. In de afgelopen periode hebben het gebruik van o.a. <a href="https://docs.mapbox.com/vector-tiles/specification/">(Mapbox) vector tiling</a>, <a href="https://cesium.com/">Cesium</a> en <a href="https://www.ogc.org/standards/i3s">i3S</a> een vlucht genomen. Veel van deze standaarden zijn als <em>de facto</em> standaarden opgekomen, waarbij ze hun populariteit ontlenen aan gebruiksgemak en performance. Vervolgens zijn een aantal van deze standaarden van <em>de facto</em> standaarden gegroeid tot open standaarden, o.a. door de adoptie als <a href="https://www.ogc.org/standards/community">OGC Community Standard</a>. In de beweging om de hele familie W*S standaarden op te laten volgen door de nieuwe generatie OGC API standaarden, zullen voor visualisaties <a href="https://ogcapi.ogc.org/maps/">OGC API Maps</a> (als opvolger van WMS) en <a href="https://ogcapi.ogc.org/tiles/">OGC API Tiles</a> (als opvolger van WMTS) voor de NGII 2.0 belangrijke standaarden worden om te voldoen aan de gebruikerswensen op het gebied van gebruiksgemak, performance en ondersteuning van 3D. Op het vlak van generieke webstandaarden wordt nagedacht over het <em>native</em> ondersteunen van kaarten in HTML. Dit zou het verbeelden van geo-informatie mogelijk maken, zonder dat daar specifieke geostandaarden voor nodig zijn. Ook vanuit het oogpunt van toegankelijkheid (voor gebruikers met een beperking) zou dit meerwaarde kunnen bieden, omdat de meeste toepassingen voor toegankelijkheid direct op HTML werken.</p></section></section><section id="Governance" data-format="markdown"><!--OddPage--><h2 id="x5-ngii-component-governance-naar-meer-vraaggerichte-en-integrale-sturing"><span class="secno">5. </span>NGII component Governance: naar meer vraaggerichte en integrale sturing</h2><section id="vraaggerichte-sturing"><h3 id="x5-1-vraaggerichte-sturing"><span class="secno">5.1 </span>Vraaggerichte sturing</h3><p>Met de verschuivende aandacht van efficiënte en doelmatige inwinning (NGII 1.0) naar datagedreven werken (NGII 2.0), ligt het voor de hand om de besturing van de NGII ook anders in te richten. Immers: in eerste instantie waren de bronhouders, de data-producenten, zelf de belangrijkste stakeholders. Zij profiteerden van de efficiëntere inwinning en consistentie van de eigen data met data van andere partijen. Dergelijke optimalisatieslagen waren goed te organiseren vanuit de afzonderlijke ketens. Nu de aandacht zich echter steeds nadrukkelijker richt op het creëren van maatschappelijke meerwaarde (door datagedreven bij te kunnen dragen aan de grote maatschappelijke opgaven), is een integralere en meer vraaggerichte sturing noodzakelijk, zowel op inhoud als op financiering. In dit kader wordt het aan tafel krijgen van 'de gebruiker' hier regelmatig als uitdaging of zelfs probleem gezien. Want in veel gevallen hebben aanbieders van (open) geodata -mede door eerdere beleidskaders rond open data ('<a href="https://data.overheid.nl/ondersteuning/open-data/wat-is-open-data#:~:text=Open%20data%20zijn%20zonder%20registratie,de%20(potenti%C3%ABle)%20gebruiker%20plaatsvindt.">toegankelijk zonder registratie</a>')- slechts beperkt zicht op hun eindgebruikers. Toch hoeft dit geen fundamentele belemmering te vormen voor een meer vraaggerichte sturing. In de inleiding hebben we een beeld geschetst van een NGII 2.0, die het faciliteren van datagedreven werken aan de grote maatschappelijke opgaven als doel kent. De beleidsdepartementen die voor die maatschappelijke opgaven aan de lat staan, kunnen vanuit die beleidsverantwoordelijkheid de (publieke) gebruikersbelangen behartigen. De belangrijkste uitdaging hierbij is het creëren van voldoende bewustzijn voor het belang en de meerwaarde van data en datagedreven werken. Aansprekende concepten als digital twins kunnen hierbij helpen om de kracht van data, analyse en visualisatie tastbaar te maken.
+</p></section><section id="integrale-sturing"><h3 id="x5-2-integrale-sturing"><span class="secno">5.2 </span>Integrale sturing</h3><p>De huidige governance van componenten in de NGII is nog versnipperd. Zolang de sturing per silo is ingericht, is het onvermijdelijk dat de verbeterslagen primair op de eigen silo gericht zijn. Met integrale sturing over alle databronnen en ontsluitingsvormen heen, kan er veel effectiever worden gestuurd op datgene wat echt meerwaarde biedt voor de gebruiker. Hierbij is ook aandacht nodig voor 'governance op het snijvlak' tussen databronnen: wanneer er meer relaties tussen databronnen gelegd worden, is hier ook specifieke sturing op nodig. Belangrijk bij de integrale sturing is dat alle betrokken partijen primair vanuit het belang van de gebruikers gaan werken, om zo zoveel mogelijk gebruikers daadwerkelijk van de kracht van locatiedata te laten profiteren.
+</p><p>Deze gezamenlijkheid is ook nodig om belangrijke silo-overstijgende onderwerpen te kunnen adresseren. Waar geodata vroeger de data was die 'eenvoudig' als open data gepubliceerd kon worden, omdat het alleen maar om fysieke objecten ging die iedereen kon zien, wordt locatie inmiddels steeds vaker een persoonskenmerk. Dit vraagt om duidelijke en praktische regels voor het verantwoord gebruik van locatiedata, zowel op ethische als op privacy-aspecten. Mede door het <a href="https://www.geosamen.nl/locatiepact/">Locatiepact</a> is dit onderwerp in Nederland al wel goed op de agenda gezet, maar de uitwerking en verankering in de NGII 2.0 is nog een punt van aandacht.</p></section></section><section id="NDTI" data-format="markdown"><!--OddPage--><h2 id="x6-ngii-2-0-i-r-t-ndti-nationale-digital-twin-infrastructuur-voor-de-fysieke-leefomgeving"><span class="secno">6. </span>NGII 2.0 i.r.t. NDTI (Nationale Digital Twin Infrastructuur voor de fysieke leefomgeving)</h2><p>Op allerlei plaatsen lopen initiatieven rond Digital Twins, waarin naast meer statische data ook nadrukkelijk gebruik gemaakt wordt van rekenmodellen, dynamische data en visualisatie-services. In die context wordt er ook nagedacht over een Nationale Digital Twin Infrastructuur (NDTI) voor de fysieke leefomgeving. Doel van een dergelijke overheids-infrastructuur is niet om complete digital twins aan te bieden vanuit de overheid, maar om een gelijk speelveld te creëren. Een speelveld waarop gebruikers en leveranciers digital twin-componenten kunnen afnemen en aanbieden, dat zodanig is ingericht, dat gebruikers kunnen vertrouwen op de uitkomsten van de analyses en die veilig als uitgangspunt voor publiekrechtelijk handelen kunnen nemen. Waar liggen de overeenkomsten en verschillen tussen de NGII en een NDTI? Of anders gezegd: in welke voor digital twins benodigde componenten zal de NGII 2.0 voorzien en welke zullen aanvullend in een NDTI gerealiseerd moeten worden? Door de NDTI te benaderen als een extensie op de NGII 2.0 borg je niet alleen optimaal hergebruik van bestaande componenten, maar kan de upgrade naar de NGII 2.0 ook gezien worden als <em>no regret</em> stap richting een volledige NDTI.</p><p>Het is belangrijk om zich te realiseren dat er veel overeenkomsten zijn tussen beide infrastructuren en dat er geen sprake is van concurrerende infrastructuren. In beide gevallen is het doel om datagedreven werken aan vraagstukken met een ruimtelijke component zodanig te faciliteren, dat er vanuit de overheid een aantal ordeningsprincipes en waarborgen kunnen worden ingebouwd. Hierbij gaat het o.a. om ordening en waarborgen op de volgende aspecten:</p><ul>
+<li>Hoe wordt kwalitatief hoogwaardige geodata FAIR voor alle gebruikers?
+</li>
+<li>Hoe ontstaat een gelijk speelveld waarop alle gebruikers en leveranciers kunnen acteren?</li>
+<li>Hoe worden belangrijke principes rond privacy en ethiek geborgd, nu locatie steeds vaker een persoonskenmerk wordt?</li>
+</ul><p>Open standaarden spelen bij een aantal van deze aspecten een rol, maar ook andersoortige afspraken zijn onmisbaar.</p><p>Op een aantal aspecten gaat de NDTI verder dan de NGII 2.0. Dit verschil in scope komt o.a. in de volgende aspecten tot uiting:</p><ul>
+<li><strong>Bredere scope qua data</strong> - De NGII beperkt zich primair tot basisinformatie en de beschikbaarheid en toegankelijkheid daarvan. Hoe een gebruiker die informatie vervolgens gaat combineren met andere informatie valt buiten de scope van de ordeningsprincipes van de NGII. De NDTI gaat hier een stap verder in en brengt bijvoorbeeld ook ordening op hoe hoog-dynamische data (sensordata) gebruikt kan worden. Hoog-dynamische data blijft in de NGII veelal buiten beschouwing, omdat de basisinformatie zich in de meeste gevallen beperkt tot 'authentieke' data (al wordt die term niet meer zo vaak gebruikt als in de begindagen van het stelsel van basisregistraties). Digital Twins richten zich niet zozeer op de vastlegging van de fysieke leefomgeving, maar vaker op processen in die fysieke leefomgeving: denk bijvoorbeeld aan verkeersstromen, stikstofdistributie of geluidsbelasting. Daarvoor is niet alleen statische data over de fysieke leefomgeving zelf nodig, maar juist ook dynamische data (waarnemingen uit sensoren) over hoe die processen zich afspelen in tijd en ruimte. Hierdoor zal de NDTI zal ook nog meer stappen moeten zetten (dan de NGII al moet) om data uit heterogene bronnen (data uit verschillende domeinen en disciplines) te kunnen combineren, omdat het voor vrijwel alle toepassingen zal draaien om een combinatie van data uit het geo-domein (over de fysieke leefomgeving) en data uit andere domeinen (over de processen die zich afspelen in de fysieke leefomgeving).</li>
+<li><strong>Naast data ook functionaliteit in scope</strong> - De NGII beperkt zich primair tot data, terwijl in de NDTI ook functionaliteit binnen scope valt. Denk bijvoorbeeld aan het toegankelijk en koppelbaar maken van reken- en simulatiemodellen van verschillende aanbieders, het inzetten van <em>serious gaming</em> en het aanbieden van services om inzichten eenduidig en waarheidsgetrouw te kunnen visualiseren (om te voorkomen dat discussies beïnvloed worden door foutieve voorstelling van de visuele impact van ontwikkelingen - denk bijvoorbeeld aan het overdrijven of juist te laag voorstellen van de hoogte en daarmee zichtbaarheid van geplande windmolens).
+</li>
+<li><strong>Hogere eisen op ethisch vlak</strong> - De NGII levert bouwstenen die tot beslissingen kunnen leiden, maar digital twins spelen nadrukkelijker een rol in het tot stand komen van beslissingen. Dat betekent dat er hoge eisen gesteld worden aan o.a. traceerbaarheid (op basis van welke data (incl. provenance: wat is de herkomst van de data) en welke bewerkingen (denk bijv. aan analyses, modellen en algoritmes) is tot een specifiek besluit gekomen), transparantie (hoe werken die bewerkingen die tot beslissingen kunnen leiden eigenlijk?) en bestendigheid (houden beslissingen stand bij een rechter, wanneer er getoetst wordt op aspecten als zorgvuldigheid, rechtvaardigheid en kwaliteit?). Er zijn specifieke ethische afwegingen voor het gebruik van locatiedata, zoals beschreven door W3C/OGC in <a href="https://www.w3.org/TR/responsible-use-spatial/">The Responsible Use of Spatial Data</a>.</li>
+<li><strong>Meer wisselwerking tussen de fysieke en digitale wereld</strong> - De NGII levert primair een digitale representatie van de fysieke wereld, terwijl het concept van digital twins verder gaat: daar is sprake (vergelijk het met <em>plan-do-check-act</em>) van meer wisselwerking tussen digitale en fysieke wereld. Hoe sterker digital twins gericht worden op het nemen van beslissingen, hoe sterker ook die wisselwerking. In veel gevallen zal er nog een menselijk besluit zitten tussen de uitkomst van een analyse in een digital twin en ingrijpen in de fysieke wereld, maar het kan ook automatisch gebeuren (denk bijvoorbeeld aan het anders routeren van verkeer bij files of het sluiten van een waterkering bij bepaalde waterstanden en weervoorspellingen). Het is goed denkbaar dat deze (automatische) wisselwerking in de toekomst een grotere rol krijgt, bijvoorbeeld in toepassingen rond milieu en volksgezondheid. De scope van de afsprakenstelsels voor een NDTI is daarmee ook op dit vlak aanzienlijk breder dan bij de NGII.</li>
+</ul></section><section id="Architectuur" data-format="markdown"><!--OddPage--><h2 id="x7-consequenties-voor-de-architectuur-van-de-ngii"><span class="secno">7. </span>Consequenties voor de architectuur van de NGII</h2><section id="opkomst-van-federatieve-structuren"><h3 id="x7-1-opkomst-van-federatieve-structuren"><span class="secno">7.1 </span>Opkomst van federatieve structuren</h3><p>De NGII is toe aan een upgrade. Maar welke consequenties heeft dat voor de architectuur onder de NGII? Een eerste vereiste voor het faciliteren van datagedreven werken, is het scheiden -conform het <a href="https://www.noraonline.nl/wiki/Vijflaagsmodel">vijf-lagen model</a>- van data en applicaties. Dit principe is in de bestaande NGII al goed terug te zien: dankzij gestandaardiseerde informatiemodellen en services die toegang verlenen tot data, kunnen applicaties rechtstreeks aansluiten op databronnen in de NGII. Hiermee worden onnodige kopieën en de bijbehorende risico's op het gebruik van verouderde data voorkomen. Een tweede vereiste voor het faciliteren van datagedreven werken, is het kunnen combineren van data en services uit verschillende bronnen. De NGII wordt daarmee onderdeel van een federatieve structuur van services die data en/of functionaliteit leveren. De vraag of  de afsprakenstelsels, die nodig zijn om zo'n federatieve structuur te laten werken, volledig binnen scope van een nationale infrastructuur vallen, zal verschillend worden beantwoord voor de NGII 2.0 en de NDTI. In de NDTI wordt gedacht aan een federatieve structuur waarin ook tal van rekenmodellen, dynamische datasets en visualisatie-services door zowel publieke als private partijen worden aangeboden. Om dat ecosysteem goed te laten functioneren, is de ordening nadrukkelijk onderdeel van de NDTI. Maar ook in het kader van de NGII 2.0 is de federatieve structuur een belangrijk gegeven. Niet alleen zal de NGII 2.0 als één van die bronnen in zo'n federatieve structuur gecombineerd moeten kunnen worden met andere bronnen binnen én buiten de geo-sector, maar ook voor het functioneren van de NGII 2.0 zelf kan deze structuur meerwaarde bieden. Zo is het goed denkbaar dat centraal aangeboden ontsluiting (denk bijvoorbeeld aan een API voor samengestelde bevragingen) onder water gevoed wordt door een federatieve structuur van databronnen. En verder redenerend langs die lijn, zou het ook goed kunnen dat huidige ketens van bronhouders naar landelijke voorzieningen (in beide richtingen: zowel aanlevering als synchronisatie) meer op federatieve wijze worden ingericht. Data blijft dan dichter bij de bron, maar de federatieve structuur borgt dan de overkoepelende samenhang. Het resultaat (consistente, betrouwbare en uniforme datasets) blijft hetzelfde, maar de wijze waarop dat resultaat behaald wordt, zal wijzigen. Bij afwegingen over het al dan niet meer op federatieve wijze inrichten van ketens, zal altijd gekeken moeten worden op welke wijze de kwaliteit voor de gebruikers het best geborgd kan worden, welke inrichting het meest kosteneffectief is en hoe bronprocessen zo efficiënt en doelmatig mogelijk ingericht kunnen worden.
+</p></section><section id="standaarden-van-het-web-als-basis-voor-federatieve-structuren"><h3 id="x7-2-standaarden-van-het-web-als-basis-voor-federatieve-structuren"><span class="secno">7.2 </span>Standaarden van het web als basis voor federatieve structuren</h3><p>Eén federatieve structuur kent iedereen: het internet. Waar het wereldwijde web ooit begon als <em>web of documents</em>, worden en zijn er steeds meer stappen gezet om er ook een <em>web of data</em> van te maken. En mede dankzij initiatieven als de <a href="https://www.w3.org/TR/sdw-bp/">Spatial Data on the Web Best Practices</a>, maakt ook ruimtelijke data steeds nadrukkelijker deel uit van dat web. Het ligt daarmee voor de hand om voor de ordening van federatieve structuren aan te sluiten bij de standaarden van het web, zowel de huidige als de toekomstige. Denk bijvoorbeeld aan een ontwikkeling als <a href="https://solidproject.org/">Solid</a> (Social Linked data), geïnitieerd door Tim Berners-Lee, dat zich nadrukkelijk neerzet als decentralisatie-project op het web: data moet weer decentraal en onder volledige controle van data-eigenaren (in veel gevallen de burger!) komen te liggen. Dergelijke decentralisatie is wellicht de meest vergaande variant van een federatieve structuur. In <a href="https://overheid.vlaanderen.be/informatie-vlaanderen/nieuws-en-agenda/solid-ecosysteem">Vlaanderen</a> zien we de eerste voorzichtige stappen om dat gedachtengoed een plaats te geven binnen de ontwikkelingen van de digitale overheid.
+</p></section><section id="federatieve-structuren-sluiten-centrale-voorzieningen-niet-uit"><h3 id="x7-3-federatieve-structuren-sluiten-centrale-voorzieningen-niet-uit"><span class="secno">7.3 </span>Federatieve structuren sluiten centrale voorzieningen niet uit</h3><p>Het is overigens goed om te benadrukken dat een overgang naar een federatieve structuur niet het einde van alle centrale voorzieningen betekent. Sterker nog, hoe meer de focus op de gebruiker wordt gelegd, hoe belangrijker een aantal  centrale voorzieningen worden waar gebruikers eenvoudig data kunnen vinden en afnemen. Vergelijk dit met het concept achter <a href="https://mijn.overheid.nl/">MijnOverheid</a>, dat voor burgers fungeert als centrale ingang voor tal van onderwerpen. Onder water komen deze gegevens uit allerlei verschillende systemen, maar de gebruiker wordt hier idealiter niet mee lastig gevallen: die vindt alle data op één plek. Voor een ontsluitingsvoorziening als <a href="https://www.pdok.nl/">PDOK</a> geldt hetzelfde: wanneer de data-gebruiker niet alle achterliggende systemen en organisaties hoeft te kennen, dan neemt dit drempels weg voor breed gebruik van die data. En net als bij MijnOverheid betekent dit niet per sé dat alle data centraal bij PDOK opgeslagen hoeft te worden; het draait erom dat de gebruiker op één plek geholpen wordt. Want het zou -met de opmerking over de impact van federatieve structuren op ketens in het achterhoofd- goed kunnen dat niet elke Landelijke Voorziening straks meer de vorm heeft van een centrale database waarin alle data opgeslagen is; maar dat neemt niet weg dat een gebruiker de benodigde data net zo eenvoudig op één plek wil kunnen vinden. Als daarvoor onder water een federatieve structuur aangeroepen wordt, is dat prima, zolang de gebruiker er maar geen negatieve gevolgen ondervindt. Voorzieningen als MijnOverheid en PDOK 2.0 zijn daarmee (veel) meer dan alleen de verwijzer naar de afzonderlijke databronnen: de gebruiker wordt ontzorgd doordat de federatieve structuur één duidelijke voordeur heeft.
+</p><p>Een andere belangrijke eis aan de centrale ingangen van een federatieve structuur, is dat ze niet alleen gericht moeten zijn op de menselijke gebruiker, maar ook op de <em>crawlers</em> van zoekmachines. Want die <em>crawlers</em> brengen het immense web van data in beeld, waarmee het mogelijk wordt om in zoekmachines de gezochte data aan zoekende gebruikers te kunnen tonen. Uiteindelijk is het zoek-veld in Google of eender welke zoekmachine namelijk de meest generieke en best gekende centrale ingang voor het web. In het streven om geodata zo laagdrempelig mogelijk toepasbaar te maken, is het vindbaar zijn direct via die universele voordeur een <em>must</em>.</p></section><section id="meer-aandacht-voor-beveiliging"><h3 id="x7-4-meer-aandacht-voor-beveiliging"><span class="secno">7.4 </span>Meer aandacht voor beveiliging</h3><p>Een andere belangrijke ontwikkeling, die niet alleen voortkomt uit het toepassen van federatieve structuren, is de groeiende aandacht voor beveiliging. Door de digitale transitie groeit de afhankelijkheid van data, systemen en ontwikkelaars. Daarmee wordt de impact van een hack, sabotage of programmeerfout op de dienstverlening van de overheid steeds groter. Dat maakt dat de digitale infrastructuur steeds meer ook als vitale infrastructuur beschouwd moet gaan worden. Niet voor niets is 'digitale weerbaarheid' één van de zeven speerpunten van de <a href="https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/kamerstukken/2021/04/26/nederlandse-digitaliseringsstrategie-2021/bijlage-nederlandse-digitaliseringsstrategie-2021.pdf">Nederlandse Digitaliseringsstrategie 2021</a> en één van de tien van de <a href="https://www.digitaleoverheid.nl/wp-content/uploads/sites/8/2021/09/I-Strategie-Rijk.pdf">I-strategie Rijk 2021-2025</a>. Ook voor de NGII geldt dat er structureel aandacht nodig is voor mogelijke kwetsbaarheden, zowel op het niveau van systemen als op het niveau van de data zelf.</p></section></section><section id="Conclusie" data-format="markdown"><!--OddPage--><h2 id="x8-concluderend-sdi-next-op-weg-naar-de-ngii-2-0-and-beyond"><span class="secno">8. </span>Concluderend: SDI.Next - Op weg naar de NGII 2.0 (and beyond...)</h2><p>Bij steeds meer maatschappelijke vraagstukken lijkt datagedreven werken een onmisbare rol te gaan spelen. Tal van organisaties experimenteren hiermee, ook steeds vaker onder de noemer digital twin. De beweging die is ingezet, is onmiskenbaar. Maar wat vraagt dat van de NGII? Welk deel van datagedreven werken organiseer je binnen de NGII, en welk deel erbuiten? Welke rol speelt de overheid, en welke rol speelt de markt? Om datagedreven werken in het publieke domein goed te faciliteren, moet de NGII een aantal randvoorwaarden invullen. Om de stap naar de NGII 2.0 te maken, zijn (geordend per onderwerp) de volgende ontwikkelingen nodig:</p><p><em>Component Basisdata</em></p><ul>
+<li><strong>Breng meer samenhang in basisdata</strong> - gebruikers lopen nu nog vaak tegen inconsistenties aan, die ze niet kunnen duiden. Door meer samenhang in de data te brengen, worden deze inconsistenties ofwel opgelost, ofwel beter begrijpelijk gemaakt (waardoor ze niet langer als inconsistent ervaren worden).</li>
+<li><strong>Werk aan domeinoverstijgende samenhang en interoperabiliteit</strong> - de behoefte aan meer samenhang en betere interoperabiliteit stopt niet bij de grenzen van het geodomein. De grote maatschappelijke opgaven zijn domeinoverstijgend, waarmee datagedreven oplossingen voor die opgaven per definitie ook domeinoverstijgend moeten kunnen werken. Dat vraagt o.a. om sterkere samenhang tussen de werelden van geo, bouw en assetmanagement.
+</li>
+<li><strong>Werken aan volledigere en actuelere datasets</strong> - met meer hybride inwinprocessen en/of in samenwerking met private partijen, kunnen basisdatasets vollediger worden dan ze nu zijn, waarmee ze voor een breder gebruik geschikt worden. Ook kunnen deze aanpakken leiden tot hogere actualiteit.</li>
+</ul><p><em>Component Coördinaatreferentiesystemen</em></p><ul>
+<li><strong>Maak werken met meerdere CRSen mogelijk</strong> - CRS is niet langer alleen relevant bij inwinning van data, maar door de hele keten. Gebruikers moeten zonder problemen datasets kunnen gebruiken in RD, in ETRS89 en in de op het web gangbare CRSen als WGS84 Lat/Long (EPSG:4326) voor vector data en WebMercator (EPSG:3857) voor rasterdata.
+</li>
+</ul><p><em>Component Ontsluiting</em></p><ul>
+<li><strong>Maak ontsluiting laagdrempeliger met API's en lichtere formaten</strong> - door te werken aan de transitie naar de nieuwe generatie OGC API-standaarden, komen koppelvlakken beschikbaar die makkelijker te begrijpen en eenvoudiger te implementeren zijn. Bied <em>convenience API's</em> om antwoorden op veelgestelde vragen en gerichte uitwisseling in ketens zo laagdrempelig mogelijk te ontsluiten.</li>
+<li><strong>Maak data beter te koppelen en te begrijpen</strong> - data-aanbieders zullen nooit alle informatiebehoeften kennen en gericht kunnen ondersteunen. Publiceer basisdata daarom zodanig dat het goed koppelbaar wordt: maak het mogelijk om naar basisdata te linken en ontsluit ook de semantiek als linked data. Zo kunnen onbekende gebruikers met onbekende informatiebehoeften zelf hun relaties leggen en zelf de data correct interpreteren.
+</li>
+</ul><p><em>Component Governance</em></p><ul>
+<li><strong>Stuur eenduidig op maatschappelijke meerwaarde</strong> - de NGII vraagt om centrale en eenduidige sturing op inhoud, organisatie en financiering, waarbij de maatschappelijke meerwaarde leidend is. Dit betekent dat sturing meer vraaggericht en integraler ingericht moet worden.</li>
+<li><strong>Stel duidelijke én praktische regels op voor verantwoord gebruik van locatiedata</strong> - nu locatie steeds vaker een persoonskenmerk wordt en de mogelijkheden van technologie oneindig lijken, wordt het steeds belangrijker dat er duidelijke en praktisch toepasbare regels komen voor het verantwoord gebruik van locatiedata, zowel op ethische als op privacy-gerelateerde aspecten.</li>
+</ul><p><em>Architectuur</em></p><ul>
+<li><strong>Omarm federatieve structuren en sluit aan bij de standaarden van het web</strong> - de NGII wordt enerzijds nadrukkelijker één van de bronnen in een federatieve structuur en zal anderzijds zelf ook steeds meer als federatieve structuur vorm krijgen. Om deze structuren te ordenen, is aansluiting bij de standaarden van het web noodzakelijk.</li>
+<li><strong>Implementeer de één-loket gedachte</strong> - voor zowel menselijke gebruikers als voor zoekmachines. Decentrale structuren betekenen niet het einde van alle centrale voorzieningen; integendeel. Zoals MijnOverheid de integrale ingang is voor burgers tot de digitale overheid, zo is ook een centrale ingang voor geodata-gebruikers noodzakelijk. En vergeet niet, dat de meest universele ingang voor data het zoekveld van Google of eender welke zoekmachine is...
+</li>
+<li><strong>Besteed structureel aandacht aan cyberveiligheid</strong> - hoe maatschappelijk relevanter de NGII wordt, hoe groter de impact van eventuele verstoringen. Beveiliging van data en systemen vraagt daarom structureel aandacht.</li>
+</ul><p>Wanneer de ambities verder reiken, en we niet alleen de NGII 2.0 willen realiseren, maar zelfs een Nationale Digital Twin Infrastructuur voor de fysieke leefomgeving, dan is er nog meer nodig. Want naast alle bovengenoemde componenten van de NGII 2.0 is het dan ook noodzakelijk om die afsprakenstelsels in te richten, die nodig zijn om tot een federatieve structuur te komen die naast de 'traditionele' NGII-inhoud ook services ontsluit van o.a. dynamische data, rekenmodellen, visualisatie en <em>serious gaming</em>. Die services kunnen door zowel publieke als private partijen worden aangeboden. De NDTI richt zich dan ook niet zozeer op het zelf aanbieden van al die services, maar juist op het veilig en effectief kunnen gebruiken van die services.</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

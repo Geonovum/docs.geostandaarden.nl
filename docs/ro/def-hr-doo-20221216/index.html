@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Handreiking Data op Orde (DoO) v2.0</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "license": "cc-by-nd",
+  "authors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "shortName": "doo",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/ROST",
+  "issueBase": "https://github.com/geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2022-12-16T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 16 december 2022",
+  "previousPublishDate": "2019-08-14",
+  "previousMaturity": "GN-DEF"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-doo-20221216/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Handreiking Data op Orde (DoO) v2.0",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2022-12-16",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-hr-doo-20190814/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Handreiking Data op Orde (DoO) v2.0</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-12-16">16 december 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-doo-20221216/">https://docs.geostandaarden.nl/ro/def-hr-doo-20221216/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/doo/">https://docs.geostandaarden.nl/ro/doo/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-hr-doo-20190814/">https://docs.geostandaarden.nl/ro/def-hr-doo-20190814/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#doel-verbeteren-gegevenskwaliteit"><span class="secno">1.2 </span>Doel: Verbeteren gegevenskwaliteit</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algemene-werkwijze-bij-foutherstel"><span class="secno">2. </span>Algemene Werkwijze bij Foutherstel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#werkafspraak-vs-handreiking"><span class="secno">2.1 </span>Werkafspraak vs. Handreiking</a></li><li class="tocline"><a class="tocxref" href="#aanpassing-van-vorm-of-technische-aspecten"><span class="secno">2.2 </span>Aanpassing van vorm- of technische aspecten</a></li><li class="tocline"><a class="tocxref" href="#uitvoeren-foutherstel"><span class="secno">2.3 </span>Uitvoeren foutherstel</a></li><li class="tocline"><a class="tocxref" href="#relatie-met-tijdreizen"><span class="secno">2.4 </span>Relatie met tijdreizen</a></li><li class="tocline"><a class="tocxref" href="#verantwoording-bij-aanpassingen"><span class="secno">2.5 </span>Verantwoording bij aanpassingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#uitwerking-foutherstel-in-de-planvoorraad"><span class="secno">3. </span>Uitwerking foutherstel in de planvoorraad</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consistent-gebruik-planstatus-en-dossierstatus"><span class="secno">3.1 </span>Consistent gebruik planstatus en dossierstatus</a></li><li class="tocline"><a class="tocxref" href="#beschikbaarheid-van-de-planvoorraad"><span class="secno">3.2 </span>Beschikbaarheid van de planvoorraad</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#plan-staat-wel-op-ruimtelijkeplannen-nl-maar-is-niet-of-deels-niet-beschikbaar-bij-de-bronhouder"><span class="secno">3.2.1 </span>Plan staat wel op Ruimtelijkeplannen.nl, maar is niet (of deels niet) beschikbaar bij de bronhouder</a></li><li class="tocline"><a class="tocxref" href="#plan-staat-wel-in-het-manifest-en-bij-de-bronhouder-maar-niet-op-ruimtelijkeplannen-nl"><span class="secno">3.2.2 </span>Plan staat wel in het manifest en bij de bronhouder maar niet op Ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#inhoudelijk-verschillende-plannen-zitten-in-hetzelfde-dossier"><span class="secno">3.2.3 </span>Inhoudelijk verschillende plannen zitten in hetzelfde dossier</a></li></ol></li><li class="tocline"><a class="tocxref" href="#foutief-plantype"><span class="secno">3.3 </span>Foutief plantype</a></li><li class="tocline"><a class="tocxref" href="#relaties-verwijzen-naar-extern-plan"><span class="secno">3.4 </span>Relaties: Verwijzen naar extern plan</a></li><li class="tocline"><a class="tocxref" href="#naamgeving-plannen-chw-en-tam"><span class="secno">3.5 </span>Naamgeving plannen (Chw en TAM)</a></li><li class="tocline"><a class="tocxref" href="#avg-proof"><span class="secno">3.6 </span>AVG-Proof</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-planvoorraad-opschonen"><span class="secno">4. </span>De planvoorraad opschonen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opschonen-van-de-planvoorraad"><span class="secno">4.1 </span>Opschonen van de planvoorraad</a></li><li class="tocline"><a class="tocxref" href="#opschonen-planversies-na-onherroepelijk-worden-van-een-plan"><span class="secno">4.2 </span>Opschonen planversies na onherroepelijk worden van een plan</a></li><li class="tocline"><a class="tocxref" href="#toepassen-van-plancontour-pdf-plannen"><span class="secno">4.3 </span>Toepassen van Plancontour &amp; PDF plannen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#formulier-foutherstel-ruimtelijke-plannen"><span class="secno">5. </span>Formulier foutherstel ruimtelijke plannen</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p><b>In dit eerste hoofdstuk van de handreiking over de gegevenskwaliteit van ruimtelijke plannen wordt de context van het concept ‘Data op orde’ uitgelegd.</b></p><section id="aanleiding"><h3 id="x1-1-aanleiding"><span class="secno">1.1 </span>Aanleiding</h3><p><b>De zolder opruimen voor de verbouwing</b><br>In de loop der jaren zijn er via de landelijke voorziening Ruimtelijkeplannen.nl veel waardevolle gegevens gepubliceerd; en een grote planvoorraad is toegankelijk gemaakt. Maar net zoals een zolder die zo nu en dan opgeruimd moet worden om goed bruikbaar te blijven, geldt dit ook voor de planvoorraad. Zeker als er een grote verbouwing zoals de Omgevingswet op komst is. Alle gegevens in Ruimtelijkeplannen.nl gaan mee naar de Omgevingswet. Zo ook bestemmingsplannen e.d. die opgaan in het tijdelijk omgevingsplan. Deze plannen blijven geldig totdat zij worden vervangen door een nieuw omgevingsplan conform de nieuwe standaard STOP/TPOD.</p><p>Het Informatiehuis Ruimte (IHR) heeft de overbruggingsfunctie gerealiseerd. Deze overbruggingsfunctie zorgt ervoor, dat de gegevens van Ruimtelijkeplannen.nl in het Digitale Stelsel Omgevingswet (DSO) worden ontsloten en in samenhang met de Omgevingswet instrumenten kunnen worden getoond. Hiervoor hoeft de bronhouder (resp. gemeente, provincie of het Rijk) in principe niets te doen, dit gebeurt automatisch.
+</p><p>Zowel voor bronhouders als gebruikers van het DSO is het belangrijk dit zo proces zo soepel mogelijk verloopt. Daarom is het belangrijk dat de gegevenskwaliteit van de ruimtelijke plannen in de landelijke voorziening, maar ook bij de bronhouder zelf, zo hoog mogelijk is.</p></section><section id="doel-verbeteren-gegevenskwaliteit"><h3 id="x1-2-doel-verbeteren-gegevenskwaliteit"><span class="secno">1.2 </span>Doel: Verbeteren gegevenskwaliteit</h3><p>Het doel voor data op orde is het verbeteren van de gegevenskwaliteit. Dit kunnen we grofweg verdelen in 2 onderdelen.</p><p><strong>1. Foutherstel</strong>
+Fouten in de planvoorraad kunnen ertoe leiden dat plannen niet, of niet goed ontsloten worden in het DSO. Deze fouten moeten hersteld worden.
+</p><img src="media/Foutherstel.png" alt="media/Foutherstel.png" style="width: 25%;"><p><strong>2. Opschonen van de planvoorraad</strong>
+In de loop der jaren is de planvoorraad op Ruimtelijkeplannen.nl enorm uitgebreid. Vaak zijn wel plannen toegevoegd maar zijn er geen vervallen plannen en verouderde versies verwijderd.</p><img src="media/Schoonmaken.png" alt="media/Schoonmaken.png" style="width: 25%;"><p>Waarom is de kwaliteit van de planvoorraad zo van belang?</p><ol><li>Ten eerste wordt een aanzienlijk deel van de huidige planvoorraad onderdeel van het tijdelijk omgevingsplan. Het is daarom van groot belang dat daar niet te veel, maar ook niet te weinig in zit.</li>
+<li>Het zorgt ervoor dat <a name="_Int_YeDhvLF5"></a>DSO functionaliteit om huidige plannen beter en gerichter te kunnen ontsluiten voor gebruikers, zoals de overbruggingsfunctie en bepalen leidend plan, beter werken. Hiervoor is vooral belangrijk dat metadata zoals plan- en dossierstatus, plantype en verwijzingen tussen plannen kloppen en actueel zijn.
+</li>
+<li>Een ‘schone’ planvoorraad creëert een goede uitgangspositie voor het maken van het eigenlijke omgevingsplan. De onderliggende gegevens (bijvoorbeeld planobjecten en achterliggende gegevens) zijn dan al beschikbaar.</li>
+<li>Last but not least helpt een betere gegevenskwaliteit ook de huidige dienstverlening, aan de balie, via Ruimtelijkeplannen.nl of eigen website te verbeteren.</li>
+</ol><p>De huidige planvoorraad verschilt per organisatie; het kan gaan om enkele tientallen tot honderden ruimtelijke plannen per bronhouder. Om bronhouders te helpen bij het ordenen en opschonen van de digitale planvoorraad is deze handreiking tot stand gekomen. Met deze handreiking geven we aan welke punten belangrijk zijn bij de gegevenskwaliteit van deze (digitale) planvoorraad en hoe deze kan worden verbeterd.</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>In deze handreiking worden de verschillende onderwerpen toegelicht en worden handige tips &amp; tricks gegeven. De normen en praktijkrichtlijnen, alsook de handreiking archiveren, zijn hiervoor altijd de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening" target="_blank">basis</a>.</p><p>In <a href="#algemene-werkwijze-bij-foutherstel">hoofdstuk 2 Algemene werkwijze bij foutherstel</a> geven we de kaders voor foutherstel van ruimtelijke plannen, wat mag je wel aan een plan wijzigen en wat niet en wat is de te volgen werkwijze.</p><p>In <a href="#uitwerking-foutherstel-in-de-planvoorraad">hoofdstuk 3 Uitwerking foutherstel in de planvoorraad</a> gaan we inhoudelijk in op de meest voorkomende fouten in de planvoorraad. Welke fouten zijn dit, wat zijn consequenties hiervan en hoe kunnen deze fouten worden opgelost.
+</p><p>In <a href="#de-planvoorraad-opschonen">hoofdstuk 4 De planvoorraad opschonen</a> gaan we dieper in op de planvoorraad en lichten we toe hoe deze zo optimaal mogelijk opgeschoond kan worden.</p></section></section><section data-format="markdown" id="algemene-werkwijze-bij-foutherstel"><!--OddPage--><h2 id="x2-algemene-werkwijze-bij-foutherstel"><span class="secno">2. </span>Algemene Werkwijze bij Foutherstel</h2><p><b>Ambtelijk foutherstel in een ruimtelijke plan of besluit door de bronhouder, zonder voorafgaand besluit, is het herstellen van de metadata c.q. de technische kenmerken van het ruimtelijk plan of besluit of het opheffen van inconsistenties in de planvoorraad tussen bronhouder en Ruimtelijkeplannen.nl.</b></p><section id="werkafspraak-vs-handreiking"><h3 id="x2-1-werkafspraak-vs-handreiking"><span class="secno">2.1 </span>Werkafspraak vs. Handreiking</h3><p>Bij onduidelijkheden, tegenstrijdigheden of fouten in de RO Standaarden kan het werkveld de beheerders van de standaarden vragen hoe je de standaard nu moet gebruiken totdat een officiële wijziging van de standaard de onduidelijkheid recht zet. Deze tussentijdse adviezen over het gebruik van de RO Standaarden heten werkafspraken.
+</p><p>De werkafspraak ‘<a href="https://docs.geostandaarden.nl/ro/def-wa-waSTRIIMRO-20180901/" target="_blank">Wijzigen reeds eerder gepubliceerde plannen(STRI/IMRO)</a>’ betreft in dit geval geen wijziging van de Standaard Toegankelijkheid Ruimtelijke Instrumenten/ Informatiemodel Ruimtelijke ordening maar een nadere uitleg en dringend advies over de toepassing van de RO Standaarden bij vastgestelde plannen. De werkafspraak is de basis voor deze handreiking. De hiernavolgende paragrafen zijn aanvullend op deze werkafspraak.</p></section><section id="aanpassing-van-vorm-of-technische-aspecten"><h3 id="x2-2-aanpassing-van-vorm-of-technische-aspecten"><span class="secno">2.2 </span>Aanpassing van vorm- of technische aspecten</h3><p>De hoofdregel is dat foutherstel niet gaat over de inhoud van een plan of besluit, maar om vorm- of technische aspecten die van belang zijn voor blijvende raadpleegbaarheid, bruikbaarheid en toegankelijkheid van het plan. Foutherstel is alleen mogelijk:</p><ul>
+<li>Als het gebrek niet gaat over de inhoud van het besluit, maar om bepaalde metadata of inconsistentie tussen bronhouder en Ruimtelijkeplannen.nl kan worden volstaan met een ambtelijk herstel zonder besluit. Voorbeelden van type aanpassingen zijn:<ul>
+<li>Foutherstel van de dossierstatus in het manifest</li>
+<li>Foutherstel van metadata van de planset zoals, typeplan, datum en status info, overheidscode, identificatienummer, verwijzingen naar externe plannen.</li>
+<li>Anonimiseren van documenten naar aanleiding van de AVG</li>
+</ul>
+</li>
+<li>Randvoorwaarde is dat een goede verantwoording van uitgevoerd foutherstel is gewaarborgd bij de bronhouder. Hierdoor kan later door de bronhouder altijd gereconstrueerd worden wat de aanleiding van de hersteloperatie was en wie, wanneer, wat en hoe het herstel heeft uitgevoerd. Dat geldt nu binnen de context van de Wro, maar evengoed straks binnen de context van de Omgevingswet/ het DSO-LV.</li>
+</ul><p>Bij gebreken aan de inhoud van het plan of besluit zal het bevoegd gezag een nieuw besluit moeten nemen of een nieuwe procedure moeten volgen. Een nieuwe procedure starten conform Wro en op basis van de RO Standaarden kan tot inwerkingtreden Omgevingswet. </p></section><section id="uitvoeren-foutherstel"><h3 id="x2-3-uitvoeren-foutherstel"><span class="secno">2.3 </span>Uitvoeren foutherstel</h3><p>De bronhouder verwijdert het ruimtelijke plan of besluit van de weblocatie en uit het manifest. Door het verwijderen van het plan uit het manifest, wordt door de landelijke voorziening Ruimtelijkeplannen.nl het plan ook van Ruimtelijkeplannen.nl gehaald. Het plan is niet meer beschikbaar en raadpleegbaar via Ruimtelijkeplannen.nl.<br>De bronhouder past de betreffende metadata in dezelfde versie van het plan aan. Het planidentificatienummer van het plan blijft hetzelfde. Het volledige aangepaste plan zet de bronhouder binnen 24 uur weer op de weblocatie en in het manifest. Het plan wordt door de landelijke voorziening geladen en is weer raadpleegbaar via de viewer van Ruimtelijkeplannen.nl.</p><p><strong>Doorlooptijd van foutherstel</strong><br>De gehele cyclus van foutherstel is mogelijk binnen 24 uur. Dit omdat Ruimtelijkeplannen.nl sinds voorjaar 2018 tweemaal per dag de plannen harvest (planwijzigingen ophaalt) bij de bronhouder. Het verwijderen kan ’s ochtends plaatsvinden, het plaatsen van een nieuwe versie ’s middags. De ‘offline’ tijd van een plan blijft zo minimaal.</p></section><section id="relatie-met-tijdreizen"><h3 id="x2-4-relatie-met-tijdreizen"><span class="secno">2.4 </span>Relatie met tijdreizen</h3><p>Op dit moment is ‘tijdreizen’ niet mogelijk in Ruimtelijkeplannen.nl. Het is dus niet mogelijk om te kijken naar een situatie uit het verleden. Vanaf het moment dat de Omgevingswet in werking treedt is tijdreizen alleen mogelijk met het Omgevingsloket (of met de bijbehorende DSO-LV API's) en niet met Ruimtelijkeplannen.nl. Tijdreizen is dan alleen mogelijk naar een versie van het plan dat als laatste is gepubliceerd.
+</p><p>We onderscheiden dus de volgende 2 situaties.</p><ul><li>Verwijderde plannen voor in werking treden Omgevingswet zijn middels tijdreizen <u>niet</u> raadpleegbaar in het DSO;</li>
+<li>Verwijderde plannen na inwerkingtreden Omgevingswet, hiervan blijft via tijdreizen <u>de laatste versie</u> raadpleegbaar in het DSO. De laatste versie is het laatst geladen plan onder hetzelfde planidentificatienummer*.</li>
+</ul><p>*) Zie ook <a href="#uitvoeren-foutherstel">paragraaf 2.3</a></p><p>Zeker bij foutherstel in het kader van de Algemene verordening gegevensbescherming (<a href="https://www.rijksoverheid.nl/onderwerpen/privacy-en-persoonsgegevens" target="_blank">AVG</a>), moet hier rekening mee gehouden worden, zie <a href="#avg-proof">paragraaf AVG-Proof</a> in deze handreiking.
+</p><img src="media/Tijdreizen.png" alt="media/Tijdreizen en plannen verwijderen" style="width: 100%;"></section><section id="verantwoording-bij-aanpassingen"><h3 id="x2-5-verantwoording-bij-aanpassingen"><span class="secno">2.5 </span>Verantwoording bij aanpassingen</h3><p>Ook indien er geen juridische consequenties zijn verbonden aan het herstel van de metadata, vragen aanpassingen van het plan wel om verantwoording: de aanpassingen moeten gerechtvaardigd zijn en in ieder geval intern bij de verantwoordelijke bronhouder expliciet verantwoord kunnen worden. Een duidelijke werkwijze helpt hierbij. De aanbeveling is hierbij de volgende spelregels in acht te nemen:</p><ol><li>Een kennelijke verschrijving wordt opgelost met een ambtelijke wijziging. Dit betekent altijd dat de wijziging van de metadata van het plan, hetzij in een nieuwe versie, hetzij in dezelfde versie moet kunnen worden verantwoord. Intern wordt deze ambtelijke wijziging vastgelegd in het zaak/proces/documentbeheer systeem dat wordt gehanteerd door de bronhouder tijdens de planprocedure.</li>
+<li>Het is hierbij aan te bevelen om de gewijzigde versie van het ruimtelijke plan samen met de verantwoording van de wijziging door de bronhouder te archiveren. De oorspronkelijke versie (zonder aanpassingen in de metadata) hoort dan ook in het archief opgenomen te blijven.</li>
+<li>De planvoorraad op de weblocatie, met manifest, moet na afronding van het foutherstel (weer) gelijk zijn aan de planvoorraad bij de landelijke voorziening Ruimtelijkeplannen.nl*.</li><li>
+</li></ol><p>*) Zie ook <a href="#uitvoeren-foutherstel">paragraaf 2.3</a>.</p><p>In <a href="#formulier-foutherstel-ruimtelijke-plannen">Hoofdstuk 5</a> is een voorbeeld formulier opgenomen die de bronhouder kan gebruiken voor verantwoording en samen met de nieuwe versie van het ruimtelijke plan, intern archiveert. De handreiking Archiveren ruimtelijke plannen is beschikbaar via de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">Geonovum website</a> onder het kopje <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening#handreikingen">Handreikingen</a></p></section></section><section data-format="markdown" id="uitwerking-foutherstel-in-de-planvoorraad"><!--OddPage--><h2 id="x3-uitwerking-foutherstel-in-de-planvoorraad"><span class="secno">3. </span>Uitwerking foutherstel in de planvoorraad</h2><p><strong>Het is belangrijk dat technische fouten in de planvoorraad door de bronhouder worden aangepast; technische fouten kunnen ertoe leiden dat plannen niet of onjuist worden weergegeven in de viewer van het Omgevingsloket.
+Bronhouders kunnen via <i>‘Het kwaliteitsdashboard’</i> van het Kadaster hun planvoorraad zelf monitoren op de meest voorkomende fouten. Om toegang te krijgen tot het kwaliteitsdashboard dien je eerst in te loggen in het portaal van <a href="https://mijn.kadaster.nl/security/login?URL=https%3A%2F%2Fmijn.kadaster.nl%2Fdashboard&amp;retry=no">Mijn Kadaster</a>. Iedere bronhouder kent een zogenaamde “eerste beheerder” die deze toegang kan regelen.</strong></p><section id="consistent-gebruik-planstatus-en-dossierstatus"><h3 id="x3-1-consistent-gebruik-planstatus-en-dossierstatus"><span class="secno">3.1 </span>Consistent gebruik planstatus en dossierstatus</h3><p>Via het manifest van de bronhouder wordt de planvoorraad van het bevoegd gezag beschikbaar gesteld op Ruimtelijkeplannen.nl. In het manifest is ordening aangebracht met behulp van dossiers. In een dossier zijn één of meerdere ruimtelijke plannen opgenomen van dezelfde procedure. Ieder plan heeft een ‘planstatus’, daarnaast heeft het dossier waarin het plan zich bevindt een zogenaamde ‘dossierstatus’. Op basis van deze dossierstatus wordt bepaald in welke fase van de procedure een plan zich bevindt zoals bijvoorbeeld: ‘in voorbereiding’, ‘vastgesteld’ of ‘geheel onherroepelijk in werking’.
+</p><p>De dossierstatus moet passend zijn met de status van het plan in het dossier. Voorbeeld: bevat een dossier uitsluitend een plan met de planstatus ‘concept’, ‘voorontwerp’ of ‘ontwerp’ dan is de dossierstatus ‘in voorbereiding’. Wijzigt de status van het plan in ‘vastgesteld’ dan zal door de bronhouder ook de status van het dossier moeten worden aangepast, eerst in ‘vastgesteld’, maar afhankelijk van het verloop van de procedure naar een volgende status. </p><p>In bijlage 1 van de <a href="https://docs.geostandaarden.nl/ro/tri2012">Praktijkrichtlijn Toegankelijkheid Ruimtelijke Instrumenten (PRTRI)</a> zijn de mogelijke dossierstatussen van ruimtelijke instrumenten beschreven. De verschillende dossierstatussen zijn omschreven in <a href="https://docs.geostandaarden.nl/ro/tri2012/#beschrijving-dossierstatussen-met-overgangen">paragraaf 5.7</a> van de PRTRI2012, en de planstatussen in <a href="https://docs.geostandaarden.nl/ro/tri2012/#beschrijving-planstatussen">paragraaf 5.6</a> van de PRTRI2012.</p><p><strong>Gevolgen in Viewer regels op de kaart van het DSO-LV</strong><br>Onder meer op basis van de dossierstatus, wordt bepaald of het plan wel of niet op de juiste wijze zichtbaar is in de viewer van het DSO-LV. Bijvoorbeeld: wanneer een ‘vastgesteld’ plan in werkelijkheid ‘geheel onherroepelijk in werking’ is, maar de dossierstatus van dit plan staat nog op ‘in voorbereiding’, dan zal dit plan niet als ‘geldende regelgeving’ in het DSO worden getoond. Het is dus van groot belang dat de dossierstatus goed is. Uit monitoring blijkt echter dat met name dit type fout vaak voorkomt. Belangrijk dus om als bronhouder hier iets aan te doen.</p><img src="media/Dossierstatus en viewer.png" alt="media/Dossierstatus en viewer regels op de kaart" style="width: 100%;"><p>Bovenstaande figuur maakt duidelijk wat de gevolgen zijn van een onjuiste dossierstatus/ planstatus is wanneer de gebruiker op Ruimtelijkeplannen.nl zoekt op adres, perceel of een geselecteerd gebied in de viewer.
+</p><p>De meest voorkomende fouten zijn:  </p><ol><li>Vastgestelde plannen (en/of onherroepelijk plannen IMRO2008) in een dossier dat op ‘in voorbereiding’ staat;</li>
+<li>Vastgestelde plannen waarbij het dossier na de beroepstermijn op ‘vastgesteld’ blijft staan;</li>
+<li>Plannen die geen beroep/bezwaartermijn kennen die dossierstatus 'vastgesteld' krijgen, waar dat 'geheel onherroepelijk in werking' moet zijn.</li>
+</ol><p><strong>Wat te doen?</strong>
+</p><ul><li>Pas de dossierstatus aan in het manifest. Let daarop dat de juiste dossierstatus gekozen wordt.
+</li>
+<li>Het aanpassen van de dossierstatus is voor de bronhouder relatief eenvoudig. Aan het plan hoeft niets te worden gewijzigd. Uitsluitend het manifest wordt aangepast.
+</li>
+<li>Let op bij de planstatus ‘vastgesteld’ wijzigt de plantstatus niet meer, maar alleen de dossierstatus. </li>
+</ul></section><section id="beschikbaarheid-van-de-planvoorraad"><h3 id="x3-2-beschikbaarheid-van-de-planvoorraad"><span class="secno">3.2 </span>Beschikbaarheid van de planvoorraad</h3><p>De planvoorraad op de weblocatie bij de bronhouder moet exact overeenkomen met de planvoorraad bij Ruimtelijkeplannen.nl. Dit is een wettelijke verplichting en de bronhouder is hiervoor verantwoordelijk. In de praktijk blijkt dit niet altijd op orde. Er doen zich verschillende situaties voor, die we hierna verder uitwerken:</p><ol><li>Een plan staat wel in het manifest en daardoor ook op Ruimtelijkeplannen.nl, maar het plan (of planonderdelen) zijn niet beschikbaar bij de bronhouder.</li>
+<li>Plan staat wel in het manifest en bij de bronhouder maar niet op Ruimtelijkeplannen.nl.</li>
+<li><a name="_Hlk119946356"></a>Er zitten inhoudelijk verschillende plannen in hetzelfde dossier.</li>
+</ol><section id="plan-staat-wel-op-ruimtelijkeplannen-nl-maar-is-niet-of-deels-niet-beschikbaar-bij-de-bronhouder"><h4 id="x3-2-1-plan-staat-wel-op-ruimtelijkeplannen-nl-maar-is-niet-of-deels-niet-beschikbaar-bij-de-bronhouder"><span class="secno">3.2.1 </span>Plan staat wel op Ruimtelijkeplannen.nl, maar is niet (of deels niet) beschikbaar bij de bronhouder</h4><p>In het manifest van de bronhouder staan de locaties van alle door de bronhouder gepubliceerde plannen, in het geleideformulier bij het plan staan alle afzonderlijke planonderdelen. Ruimtelijkeplannen.nl maakt van dit manifest en deze geleideformulieren gebruik. Wanneer de bronhouder een plan publiceert, haalt Ruimtelijkeplannen.nl op deze locatie het plan op en plaatst het in de landelijke voorziening Ruimtelijkeplannen.nl en wordt het raadpleegbaar gemaakt via de viewer van de landelijke voorziening Ruimtelijkeplannen.nl. Met de <a href="https://www.ruimtelijkeplannen.nl/web-roi/index" target="_blank">index</a> wordt de URL naar de bronhouderlocatie beschikbaar gesteld. Eenieder kan nu via de index over het plan beschikken. De bronhouder voldoet zo aan de wettelijke eisen.</p><p>Wanneer, na het publiceren van het plan, de bronhouder het plan verwijdert of verplaatst, verandert de URL naar de locatie van het plan. Wanneer dit niet in het geleideformulier en het manifest wordt aangepast, blijft het plan wel raadpleegbaar via Ruimtelijkeplannen.nl, maar is het niet meer via de index beschikbaar. Hierdoor voldoet de bronhouder niet meer aan zijn verplichting van raadpleegbaarheid en beschikbaarheid.
+</p><p><b>Wat te doen?</b><br>Om er voor te zorgen dat het plan weer raadpleegbaar en beschikbaar is, kunnen twee werkwijzen worden gevolgd.</p><ol><li><i>Het plan opnieuw publiceren</i><br>Hiervoor moet eerst het plan uit het manifest worden verwijderd. Ruimtelijkeplannen.nl zal het plan nu ook verwijderen. Het plan 24 uur later opnieuw waarmerken, valideren en publiceren. Om een plan met hetzelfde planidentificatienummer opnieuw te kunnen publiceren moet het minimaal 1 dag van Ruimtelijkeplannen.nl verwijderd zijn.</li>
+<li><i>Terugplaatsen van de identieke gewaarmerkte versie</i><br>Hierbij wordt de identieke gewaarmerkte versie van het plan, waarvan de overige metadata zoals plandatum niet door de bronhouder wordt gewijzigd, teruggeplaatst naar de locatie zoals deze in het geleideformulier en het manifest is aangegeven.</li>
+</ol></section><section id="plan-staat-wel-in-het-manifest-en-bij-de-bronhouder-maar-niet-op-ruimtelijkeplannen-nl"><h4 id="x3-2-2-plan-staat-wel-in-het-manifest-en-bij-de-bronhouder-maar-niet-op-ruimtelijkeplannen-nl"><span class="secno">3.2.2 </span>Plan staat wel in het manifest en bij de bronhouder maar niet op Ruimtelijkeplannen.nl</h4><p>Dit komt voor wanneer Ruimtelijkeplannen.nl het plan niet correct kan ophalen. De bronhouder ontvangt dan een bericht op het mailadres dat de bronhouder heeft opgegeven bij de index van Ruimtelijkeplannen.nl. Het betreft hier vaak een validatie probleem.</p><p><b>Wat te doen?</b><br>Naar aanleiding van het bericht van Ruimtelijkeplannen.nl kan de bronhouder achterhalen wat de fout in het plan is. De bronhouder moet het plan aanpassen en opnieuw waarmerken, valideren en publiceren. Dit soort problemen kan ondervangen worden door het plan zelf eerst handmatig te valideren met de <a href="https://www.ruimtelijkeplannen.nl/validator" target="_blank">validator van Ruimtelijkeplannen.nl</a>, en eventueel te publiceren in de pilot omgeving van Ruimtelijkeplannen.nl.
+</p><p>Alle meldingen van Ruimtelijkeplannen.nl worden verstuurd naar het mailadres dat de bronhouder via de index heeft aangemeld bij het Kadaster. Het is belangrijk dat er regelmatig gecheckt wordt of dit mailadres nog actueel is en regelmatig gelezen wordt. Eventuele wijzigingen van contactpersonen bij de bronhouder, kunnen worden doorgegeven aan het Kadaster via het <a href="https://www.ruimtelijkeplannen.nl/web-roo/docs/bronhouders/Aanvraag_wijziging_Index.pdf" target="_blank">wijzigingsformulier op de website van Ruimtelijkeplannen.nl.</a></p></section><section id="inhoudelijk-verschillende-plannen-zitten-in-hetzelfde-dossier"><h4 id="x3-2-3-inhoudelijk-verschillende-plannen-zitten-in-hetzelfde-dossier"><span class="secno">3.2.3 </span>Inhoudelijk verschillende plannen zitten in hetzelfde dossier</h4><p>Dit probleem komt zeer zelden voor, maar hier is sprake van een inhoudelijk probleem. Er zijn twee inhoudelijk verschillende plannen met hetzelfde dossiernummer vastgesteld en gepubliceerd. Het dossier bevat nu bijvoorbeeld twee ontwerpplannen van verschillende locaties.</p><p><b>Wat te doen?</b><br>Het beste advies hierbij is om te kijken welk plan van toepassing is. Eén van de twee plannen zal er vervolgens uitgehaald moeten worden om deze in een nieuw dossier te plaatsen zodat deze een eigen dossiernummer krijgt.</p></section></section><section id="foutief-plantype"><h3 id="x3-3-foutief-plantype"><span class="secno">3.3 </span>Foutief plantype</h3><p>Wettelijk is vastgelegd welke plantypes welk bevoegd gezag kan en mag publiceren. Toch kan het voorkomen dat er per ongeluk plantypes worden gepubliceerd door een bevoegd gezag, die dit in feite niet mag. Dit komt omdat dit (nog) niet wordt afgevangen door de validator van Ruimtelijkeplannen.nl, en vraagt dus extra aandacht. Uit monitoring blijkt dat er een aantal gemeentelijke bronhouders zijn die per ongeluk een aanwijzingsbesluit hebben gepubliceerd terwijl dit een ander type besluit betreft.
+</p><p><b>Wat te doen?</b></p><ol><li>Verwijder het betreffende plan uit het manifest;</li>
+<li>Controleer altijd, voordat een plan opnieuw wordt gepubliceerd, of het verwijderde plan ook daadwerkelijk van Ruimtelijkeplannen.nl verwijderd is;</li>
+<li>Plantype aanpassen;</li>
+<li>Opnieuw waarmerken, valideren en publiceren en een dag later weer aanbieden aan Ruimtelijkeplannen.nl. *</li>
+</ol><p>*) zie ook: <a href="#uitvoeren-foutherstel">paragraaf 2.3</a></p></section><section id="relaties-verwijzen-naar-extern-plan"><h3 id="x3-4-relaties-verwijzen-naar-extern-plan"><span class="secno">3.4 </span>Relaties: Verwijzen naar extern plan</h3><p>Relaties tussen plannen en relaties binnen plannen kunnen worden vastgelegd om zo beter inzicht te krijgen in de geldende regels op een locatie. Soms heeft dit een wettelijke grondslag, soms een praktische reden. Het helpt de planmaker maar ook de raadpleger van het plan om zo meer grip te krijgen op een geldige situatie op een locatie. Ook in de viewer van het DSO wordt gebruik gemaakt van deze relatie tussen plannen.</p><p>In de praktijk blijkt vaak dat er onvolledig een relatie wordt gelegd tussen plannen terwijl dit wel wordt voorgeschreven in het Informatiemodel Ruimtelijke Ordening (IMRO2012). In hoofdstuk 4 van de <a href="https://docs.geostandaarden.nl/ro/bp2012/" target="_blank">Praktijkrichtlijn Bestemmingsplannen 2012</a> (PRBP2012) is toegelicht hoe om te gaan met de verwijzing naar extern plan van uitwerkingsplan, wijzigingsplan, gedeeltelijke herziening van 1 bestemmingsplan en gedeeltelijke herziening van meerdere bestemmingsplannen (parapluherziening).<br>In hoofdstuk 5 van de <a href="https://docs.geostandaarden.nl/ro/gb2012/" target="_blank">PRGB2012</a> is omschreven hoe om te gaan met de verwijzing naar extern plan van aanwijzing, beheersverordening, exploitatieplan, gerechtelijke uitspraak en omgevingsvergunning.
+</p><p><b>Wat te doen?</b></p><ol><li>Verwijder het betreffende plan uit het manifest;</li>
+<li>Controleer altijd, voordat een plan opnieuw wordt gepubliceerd, of het verwijderde plan ook daadwerkelijk van Ruimtelijkeplannen.nl verwijderd is;</li>
+<li>Pas het attribuut ‘verwijzingNaarExternPlanInfo’ aan;</li>
+<li>Opnieuw waarmerken, valideren en publiceren en een dag later weer aanbieden aan Ruimtelijkeplannen.nl.</li>
+</ol><img src="media/Relaties_plannen.png" alt="Onderlinge relaties tussen plannen" style="width: 100%;"></section><section id="naamgeving-plannen-chw-en-tam"><h3 id="x3-5-naamgeving-plannen-chw-en-tam"><span class="secno">3.5 </span>Naamgeving plannen (Chw en TAM)</h3><p><b>Crisis en herstelwet plannen (Chw)</b><br>Met het wijzigen van het Besluit Crisis- en herstelwet in mei 2014 (Stb. 2014, nr. 168) is het voor gemeenten mogelijk bestemmingsplannen (met verbrede reikwijdte) te maken waarmee onder andere kan worden afgeweken van een aantal met name genoemde onderdelen van de geldende wet- en regelgeving. Een van de aspecten waar gemeenten onder voorwaarden van af mogen wijken zijn de digitale aspecten met RO Standaarden en Ruimtelijkeplannen.nl. Om ervoor te zorgen dat deze plannen wel herkenbaar zijn is in de <a href="https://docs.geostandaarden.nl/ro/waCHWbp/" target="_blank">werkafspraak</a> ‘Chw bestemmingsplannen digitaal beschikbaar stellen’ onder andere vastgelegd dat de naamgeving van het plan moet beginnen met: <b>‘</b><b>Chw bestemmingsplan</b><b>’</b>. Wanneer u op dit moment een Chw bestemmingsplan heeft gepubliceerd zonder de juiste naamgeving, kunt u dit alsnog aanpassen.
+</p><p><b>Wat te doen?</b></p><ol><li>Verwijder het betreffende plan uit het manifest;</li>
+<li>Controleer altijd, voordat een plan opnieuw wordt gepubliceerd, of het verwijderde plan ook daadwerkelijk van Ruimtelijkeplannen.nl verwijderd is;</li>
+<li>Pas de plannaam conform de werkafspraak aan;</li>
+<li>Opnieuw waarmerken, valideren en publiceren en een dag later weer aanbieden aan Ruimtelijkeplannen.nl.
+</li></ol><br><b>Tijdelijke Alternatieve Maatregel (TAM)</b><p>Bij inwerkingtreden van de Omgevingswet zal het, voor zover nu bekend, nog enige tijd mogelijk zijn om met behulp van de huidige RO Standaarden en de huidige landelijke voorziening (Ruimtelijkplannen.nl) een beperkt aantakl soorten omgevingswetbesluiten op te stellen. Omdat het noodzakelijk is om deze omgevingswetbesluiten te herkennen en te kunnen onderscheiden van de Wro-besluiten, zijn werkafspraken opgesteld. Hierin is onder andere vastgelegd dat de naam van het besluit moet beginnen met <strong>TAM-[type omgevingswetbesluit]</strong>, bijvoorbeeld 'TAM-omgevingsplan'.<br>De overbruggingsfunctie zal van deze naamgeving gebruik maken om het plan op de juiste wijze te ontsluiten in het DSO. Voor de juiste naamgeving per type omgevingswetbesluit zie de Geonovum website onder <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/tam/" target="_blank">Tijdelijke Alternatieve Maatregelen</a>.</p></section><section id="avg-proof"><h3 id="x3-6-avg-proof"><span class="secno">3.6 </span>AVG-Proof</h3><p>Op grond van de Algemene verordening gegevensbescherming (<a href="https://www.rijksoverheid.nl/onderwerpen/privacy-en-persoonsgegevens" target="_blank">AVG</a>) wordt het afgeraden persoonsgegevens elektronisch beschikbaar te stellen, i.e. op internet te publiceren. Inspraak- of zienswijzennota’s, raadsbesluiten of in de toelichting opgenomen persoonsgegevens moeten voor publicatie geanonimiseerd worden. Dat betekent dat naam-, adres- en woonplaatsgegevens van natuurlijke personen verwijderd of machinaal onleesbaar gemaakt moeten worden. Gegevens mogen niet worden verwerkt tenzij er ten minste één wettelijke basis is om dit te doen. De bronhouder is verantwoordelijk voor deze afweging. Mocht na publicatie van het plan blijken dat er op grond van de AVG onderdelen van het plan alsnog geanonimiseerd moeten worden, dan wordt dit als technische aanpassing beschouwd.
+</p><p><b>Wat te doen?</b></p><ul><li>Verwijder het betreffende plan uit het manifest;</li>
+<li>Controleer altijd, voordat een plan opnieuw wordt gepubliceerd, of het verwijderde plan ook daadwerkelijk van Ruimtelijkeplannen.nl verwijderd is;</li>
+<li>Anonimiseer het betreffende onderdeel van het plan;</li>
+<li>Planversienummer niet aanpassen/ophogen;</li>
+<li>Opnieuw waarmerken, valideren en publiceren en een dag later weer aanbieden aan Ruimtelijkeplannen.nl.
+</li>
+</ul><p>We gaan er vanuit dat alle plannen op Ruimtelijkeplannen.nl voldoen aan de AVG, mocht dit niet zo zijn dan adviseren wij u om dit ruim voor inwerkingtreden Omgevingswet, alsnog aan te passen. Wanneer het toch noodzakelijk is om na in werking treden Omgevingswet foutherstel in het kader van de AVG door te voeren, <u>hou dan rekening met de relatie met tijdreizen, zie <a href="#relatie-met-tijdreizen">paragraaf 2.4</a>.</u></p><p><strong><em>Voorbeeld</em></strong>:<br>De Omgevingswet is van kracht en tijdreizen in het DSO is mogelijk. U constateert dat er een Wro plan in de planvoorraad staat dat persoonsgegevens bevat. U kunt het plan dan aanpassen en onder hetzelfde versie nummer weer publiceren.<br>Echter, stel dat dit plan niet meer actueel is en u wilt het plan in plaats van aan te passen liever verwijderen, dan adviseren wij toch om het plan eerst te anonimiseren en opnieuw te publiceren en pas daarna te verwijderen. Hiermee wordt voorkomen dat middels tijdreizen alsnog de persoonsgegevens vindbaar zijn.</p></section></section><section data-format="markdown" id="de-planvoorraad-opschonen"><!--OddPage--><h2 id="x4-de-planvoorraad-opschonen"><span class="secno">4. </span>De planvoorraad opschonen</h2><p><strong>Gemeenten, provincies en het rijk maken met behulp van een manifest via de index van Ruimtelijkeplannen.nl inzichtelijk welke ruimtelijke plannen beschikbaar gesteld worden. In dit hoofdstuk gaan we in op de verschillende manieren om de planvoorraad op te schonen.</strong></p><section id="opschonen-van-de-planvoorraad"><h3 id="x4-1-opschonen-van-de-planvoorraad"><span class="secno">4.1 </span>Opschonen van de planvoorraad</h3><p>Ieder ruimtelijk instrument is opgebouwd uit een samenhangende set bronbestanden. Via het manifest van de bronhouder wordt de planvoorraad van het bevoegd gezag beschikbaar gesteld op Ruimtelijkeplannen.nl. De huidige planvoorraad op Ruimtelijkeplannen.nl is niet alleen veel data, het is ook een verzameling aan actuele en vervallen planversies door elkaar. Om deze data zo goed mogelijk te kunnen ontsluiten via het Informatiehuis Ruimte (IHR) met behulp van de overbruggingsfunctie naar het Omgevingsloket van het Digitaal Stelsel Omgevingswet, adviseren wij om de planvoorraad voor inwerkingtreden Omgevingswet op te schonen en alleen de meest actuele planversie te laten staan. Bij inwerkingtreding van de Omgevingswet ontstaat zo een beter beeld van de geldende plannen.<br>In dit hoofdstuk lichten we toe hoe de Wro planvoorraad zo optimaal mogelijk opgeschoond kan worden. Zodat deze zo goed mogelijk ontsloten kan worden in het DSO.<br>Let wel, het is een separate wettelijke verplichting van de bronhouder om alle versies van een plan te archiveren en beschikbaar te hebben in een digitaal archief van de bronhouder, de landelijke voorziening voorziet hier niet in.
+</p><p><img src="media/Opbouw_Planvoorraad.png" alt="media/Opbouw van planvoorraad op Ruimtelijkeplannen.nl" style="width: 100%;">
+</p></section><section id="opschonen-planversies-na-onherroepelijk-worden-van-een-plan"><h3 id="x4-2-opschonen-planversies-na-onherroepelijk-worden-van-een-plan"><span class="secno">4.2 </span>Opschonen planversies na onherroepelijk worden van een plan</h3><p>De bronbestanden van iedere beschikbaar gestelde versie van een ruimtelijk instrument blijven toegankelijk totdat een instrument onherroepelijk in werking is getreden of is vervallen. Dit is vastgelegd in het <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening (Bro)</a>. Wanneer het instrument eenmaal onherroepelijk is, mogen de oudere versies, zoals (voor)ontwerp en eventueel eerder vastgestelde versies, verwijderd worden uit het manifest en van Ruimtelijkeplannen.nl. Wanneer het instrument vervallen is, mag het in zijn geheel verwijderd worden. Vanuit de RO Standaarden geldt hiervoor geen verplichting maar om de gegevens straks zo goed mogelijk te kunnen ontsluiten via het Informatiehuis Ruimte, adviseren wij wel om de planvoorraad op te schonen en alleen de onherroepelijke (geldende) versie te laten staan.</p><p>Voor het verwijderen van plannen en/of volledige dossiers kan het gaan om de volgende stukken:</p><ol><li>Oudere versies, concepten, voorontwerpen, ontwerpen van plannen waarvan de procedure inmiddels is afgerond of de procedure vroegtijdig is beëindigd;</li>
+<li>Verouderde voorbereidingsbesluiten (ouder dan 1 jaar);</li>
+<li>Vervallen plannen en dossiers, bijvoorbeeld het plan is inmiddels geactualiseerd of vergunningen die inmiddels verwerkt zijn in een bestemmingsplan;</li>
+<li>Plancontour &amp; PDF Plannen (PCP) en IMRO2006 plannen die inmiddels zijn vervangen door nieuwere plannen.</li>
+</ol><p><strong>Wat te doen?</strong><br>Bij het verwijderen van een plan, kan deze uit het 2006 manifest worden verwijderd, het betreffende plan zal dan ook verwijderd worden van Ruimtelijkplannen.nl. In het geval door de bronhouder het laatste plan en daarmee het gehele 2006 manifest wil verwijderen, moet dit in samenwerking met het Kadaster worden gedaan. Neem hiervoor contact op met het Kadaster via het <a href="https://www.ruimtelijkeplannen.nl/web-roo/docs/bronhouders/Aanvraag_wijziging_Index.pdf" target="_blank">wijzigingsformulier op de website van Ruimtelijkeplannen.nl.</a></p><p>Wanneer de bronhouder een dossier wil verwijderen uit de planvoorraad zijn er binnen de RO Standaarden 3 opties.</p><ol><li><b>Het Dossier de status ‘vervallen’ geven</b><br>Door het dossier de status ‘vervallen’ te geven worden de plannen niet echt verwijderd uit de database van Ruimtelijkeplannen.nl. De plannen die zich in dit ‘vervallen’ dossier bevinden zijn alleen niet meer zichtbaar in de viewer van Ruimtelijkeplannen.nl. Wanneer een gebruiker op een andere wijze gebruik maakt van de data van Ruimtelijkeplannen.nl, bijvoorbeeld via de services, dan zijn deze plannen gewoon beschikbaar. Het dossier en de plannen die daarin staan hebben alleen een label ‘historisch’ meegekregen. Aan individuele planversies kan geen planstatus ‘vervallen’ meegegeven worden. <br>Wanneer een dossier op vervallen wordt gezet blijft het in het manifest aanwezig, inclusief de URL naar de weblocatie van de bronhouder waar het plan beschikbaar is. Het is dan ook van belang dat het plan op de weblocatie van de bronhouder beschikbaar blijft. Dit is een belangrijk verschil met het echt fysiek verwijderen van plannen. Deze plannen worden wel ontsloten in het DSO en zijn vindbaar op naam en op planidentificatienummer. Of dit wenselijk is, is aan de bronhouder.</li>
+<li><b>Het Dossier daadwerkelijk verwijderen uit het manifest en van Ruimtelijkeplannen.nl</b><br>Bij deze werkwijze verwijdert de bronhouder de oude/vervallen plannen (en het dossier) uit het manifest. Ruimtelijkeplannen.nl zal de plannen nu ook daadwerkelijk uit de database verwijderen. De plannen zijn niet meer raadpleegbaar via Ruimtelijkeplannen.nl en niet meer beschikbaar via de index. De plannen zijn nu ook niet meer beschikbaar via de services van Ruimtelijkeplannen.nl. Voorwaarde is dat de bronhouder dit ruim en dus tijdig voor inwerkingtreden van de Omgevingswet uitvoert.
+</li>
+<li><b>In het manifest het 2008 plan merkeren als historisch</b><br>Door het plan als historisch te markeren is dit vergelijkbaar met plannen in een 'vervallen’ dossier: het plan is wel opgenomen in de database van Ruimtelijkeplannen.nl maar niet zichtbaar in de viewer van Ruimtelijkeplannen.nl. Al deze plannen worden opgenomen in de planvoorraad van IHR en ontsloten via het Omgevingsloket van het DSO.</li>
+</ol><p>Gelet op de huidige ontwikkelingen, de voorbereiding op de Omgevingswet en de ontsluiting van de plannen via het Informatiehuis Ruimte in het DSO, is het advies om de oude versies, en vervallen plannen daadwerkelijk te <i>verwijderen</i> uit het manifest. Het is onder de Wro nooit de bedoeling geweest om Ruimtelijkeplannen.nl als archief te gebruiken (zie <a href="https://docs.geostandaarden.nl/ro/arp/" target="_blank">handreiking Archiveren ruimtelijke plannen</a>). Zorg daarbij wel dat officiële planversies digitaal gearchiveerd worden in een gemeentelijk archiefsysteem. Een bronhouder blijft altijd zelf verantwoordelijk voor het archiveren van de data. </p></section><section id="toepassen-van-plancontour-pdf-plannen"><h3 id="x4-3-toepassen-van-plancontour-pdf-plannen"><span class="secno">4.3 </span>Toepassen van Plancontour &amp; PDF plannen</h3><p>Met het <a href="https://zoek.officielebekendmakingen.nl/kst-34666-2.html?zoekcriteria=%3fzkt%3dUitgebreid%26pst%3dParlementaireDocumenten%26dpr%3dAlle%26spd%3d20170210%26epd%3d20170210%26dosnr%3d34666%26kmr%3dEersteKamerderStatenGeneraal%257cTweedeKamerderStatenGeneraal%257cVerenigdeVergaderingderStatenGeneraal%26sdt%3dKenmerkendeDatum%26par%3dAgenda%257cHandeling%257cKamerstuk%257cAanhangsel%2bvan%2bde%2bHandelingen%257cKamervragen%2bzonder%2bantwoord%257cNiet-dossierstuk%257cBijlage%26dst%3dOnopgemaakt%257cOpgemaakt%257cOpgemaakt%2bna%2bonopgemaakt%26isp%3dtrue%26pnr%3d1%26rpp%3d10&amp;resultIndex=1&amp;sorttype=1&amp;sortorder=4" target="_blank">wetsvoorstel voor het vervallen van de actualiseringsplicht van bestemmingsplannen, inpassingsplannen en beheersplannen</a> wordt beoogd om extra ruimte te scheppen voor gemeenten. De wetswijziging van de Wro geldt voor die plannen die ‘elektronisch raadpleegbaar’ zijn via Ruimtelijkeplannen.nl. Voor een plan dat niet op de website staat blijft actualiseringsplicht dus nog van toepassing.<br>In de <a href="https://zoek.officielebekendmakingen.nl/kst-34666-3.html?zoekcriteria=%3fzkt%3dUitgebreid%26pst%3dParlementaireDocumenten%26dpr%3dAlle%26spd%3d20170210%26epd%3d20170210%26dosnr%3d34666%26kmr%3dEersteKamerderStatenGeneraal%257cTweedeKamerderStatenGeneraal%257cVerenigdeVergaderingderStatenGeneraal%26sdt%3dKenmerkendeDatum%26par%3dAgenda%257cHandeling%257cKamerstuk%257cAanhangsel%2bvan%2bde%2bHandelingen%257cKamervragen%2bzonder%2bantwoord%257cNiet-dossierstuk%257cBijlage%26dst%3dOnopgemaakt%257cOpgemaakt%257cOpgemaakt%2bna%2bonopgemaakt%26isp%3dtrue%26pnr%3d1%26rpp%3d10&amp;resultIndex=0&amp;sorttype=1&amp;sortorder=4" target="_blank">toelichting op het wetsvoorstel</a> wordt aangegeven dat een papieren (analoog) plan ook digitaal raadpleegbaar kan zijn als het als pdf-bestand op de website wordt gezet. Voor deze plannen geldt wel dat de analoge plannen de juridisch leidende plannen zijn.<br>Dit houdt in dat de actualiseringsplicht niet alleen vervalt voor de wettelijke digitale plannen (op basis van IMRO2008 en IMRO2012) maar ook voor plannen op basis van IMRO2006 (facultatieve standaard) en analoge plannen die door middel van een Plancontour &amp; PDF (PRPCP2008) via de landelijke voorziening Ruimtelijkeplannen.nl zijn ontsloten. Het blijft verstandig om te actualiseren en digitaliseren volgens de laatste standaarden om zo de data op orde te blijven brengen richting de Omgevingswet.</p><p>Bij het plaatsen van een Plancontour &amp; PDF plan wordt vaak de contour van het hele analoge plan gepubliceerd op Ruimtelijkeplannen.nl. Dit is niet noodzakelijk. Vaak zijn grote plannen in de loop der jaren gedeeltelijk vervangen door digitaal raadpleegbare plannen op basis van de RO Standaarden 2012. Om de raadpleegbaarheid en leesbaarheid van de plannen zo optimaal mogelijk te laten zijn is het verstandig om als bronhouder te bepalen voor welke locatie een analoog plan nog geldig is. Bovendien geeft het voor de interne organisatie een goed beeld van de plangebieden die nog niet geactualiseerd en gedigitaliseerd zijn. Hou er rekening mee dat niet alleen het vigerend bestemmingsplan gepubliceerd wordt als Plancontour &amp; PDF plan, maar ook alle eventuele wijzigings- en uitwerkingsplannen die op basis van dit plan zijn gemaakt.</p><p><b>Wat te doen?</b><br>Bekijk per analoog plan welk gedeelte hiervan nog geldig is. <i>Zorg dat de contour van het te publiceren plan als plancontour alleen dat gedeelte bevat dat geldig is</i>. Dit kunnen meerdere contouren in één plangebied zijn. Zorg hierbij tevens dat op de pdf-plankaart door middel van een duidelijke lijn is aangegeven om welk(e) gebied(en) het gaat. Let bij het publiceren van een ‘oud’ plan dat de datum van dit plan de (oude) vaststellingsdatum is.</p></section></section><section data-format="markdown" id="formulier-foutherstel-ruimtelijke-plannen"><!--OddPage--><h2 id="x5-formulier-foutherstel-ruimtelijke-plannen"><span class="secno">5. </span>Formulier foutherstel ruimtelijke plannen</h2><p>Het formulier is te downloaden als <a href="https://www.geonovum.nl/uploads/documents/FormulierFoutherstelPrint-v1.0.pdf">printbestand</a> en als <a href="https://www.geonovum.nl/uploads/documents/FormulierFoutherstelDigitaal-v1.0_0.pdf">digitaal invulbare pdf</a></p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

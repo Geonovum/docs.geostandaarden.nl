@@ -1,0 +1,823 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+  
+  
+  
+  
+  
+<script>document.title = respecConfig.title</script>
+<title>Hypermedia Module</title>
+   
+  
+<title>Hypermedia Module</title>
+  
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<meta name="description" content="Deze hypermedia module is gebaseerd op het hypermedia hoofdstuk van het NL API Strategie extensies document">
+<style>
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+.hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+.hljs-literal{color:#0b76c5}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie. Commentaar over dit document kan gestuurd worden naar ",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment. Comments regarding this document may be sent to ",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "HAL": {
+      "href": "http://stateless.co/hal_specification.html",
+      "title": "HAL - Hypertext Application Language",
+      "authors": [
+        "Mike Kelly"
+      ],
+      "date": " 2013-09-18",
+      "id": "hal"
+    }
+  },
+  "title": "Hypermedia Module",
+  "specStatus": "vv",
+  "specType": "HR",
+  "pubDomain": "api",
+  "licence": "cc-by",
+  "shortName": "API-Strategie-mod-hypermedia",
+  "edDraftURI": "https://geonovum.github.io/KP-APIs/API-strategie-modules/hypermedia/",
+  "publishDate": "2023-12-21",
+  "publishVersion": "1.0.0",
+  "previousPublishDate": "2023-06-05",
+  "previousMaturity": "def",
+  "editors": [
+    {
+      "name": "Kennisplatform API's",
+      "company": "Kennisplatform API's",
+      "companyURL": "https://github.com/Geonovum/KP-APIs"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Kennisplatform API's",
+      "company": "Kennisplatform API's",
+      "companyURL": "https://github.com/Geonovum/KP-APIs"
+    }
+  ],
+  "github": "https://github.com/Geonovum/KP-APIs"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/base.css"></head>
+
+<body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Hypermedia Module</h1>
+    
+    <h2>
+      Geonovum Handreiking<br>
+      Versie ter vaststelling
+      <time class="dt-published" datetime="2023-12-21">21 december 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-mod-hypermedia-20231221">https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-mod-hypermedia-20231221</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-hypermedia/">https://docs.geostandaarden.nl/api/API-Strategie-mod-hypermedia/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/hypermedia/">https://geonovum.github.io/KP-APIs/API-strategie-modules/hypermedia/</a></dd>
+      
+      
+      
+      <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-ext/#hypermedia">https://docs.geostandaarden.nl/api/API-Strategie-ext/#hypermedia</a></dd>
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Kennisplatform API's</span> (<a class="p-org org h-org" href="https://github.com/Geonovum/KP-APIs">Kennisplatform API's</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Kennisplatform API's</span> (<a class="p-org org h-org" href="https://github.com/Geonovum/KP-APIs">Kennisplatform API's</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/">GitHub Geonovum/KP-APIs</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+        </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Deze hypermedia module is gebaseerd op het hypermedia hoofdstuk van het <a href="https://docs.geostandaarden.nl/api/API-Strategie-ext/#hypermedia">NL API Strategie extensies document</a></p>
+</section>
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#inleiding-van-de-nl-api-strategie"><bdi class="secno">1. </bdi>Inleiding van de NL API strategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#status"><bdi class="secno">1.1 </bdi>Status</a></li><li class="tocline"><a class="tocxref" href="#auteurs"><bdi class="secno">1.2 </bdi>Auteurs</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><bdi class="secno">1.3 </bdi>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hypermedia"><bdi class="secno">2. </bdi>Hypermedia</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#navigation-controls"><bdi class="secno">2.1 </bdi>Navigation controls</a></li><li class="tocline"><a class="tocxref" href="#external-links"><bdi class="secno">2.2 </bdi>External links</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informatieve-referenties"><bdi class="secno">A.1 </bdi>Informatieve referenties</a></li></ol></li></ol></nav>
+  <section class="informative" id="inleiding-van-de-nl-api-strategie"><div class="header-wrapper"><h2 id="x1-inleiding-van-de-nl-api-strategie"><bdi class="secno">1. </bdi>Inleiding van de NL API strategie</h2><a class="self-link" href="#inleiding-van-de-nl-api-strategie" aria-label="Permalink for Section 1."></a></div><p><em>Dit onderdeel is niet normatief.</em></p>
+<p>Dit Hoofdstuk geeft een inleiding op de Nederlandse API strategie. De stategie is opgebouwd uit meerdere documenten, standaarden en modulen. De NL API Strategie wordt doorontwikkeld en beheerd door <a href="https://www.geonovum.nl/themas/kennisplatform-apis">het Kennisplatform API's</a>.</p>
+<section id="status"><div class="header-wrapper"><h3 id="x1-1-status"><bdi class="secno">1.1 </bdi>Status</h3><a class="self-link" href="#status" aria-label="Permalink for Section 1.1"></a></div>
+<p>Op <a href="https://github.com/geonovum/KP-APIs/issues">GitHub</a> kan bekeken worden wat de actuele ontwikkelingen zijn met betrekking tot de Nederlandse API strategie. </p>
+</section><section id="auteurs"><div class="header-wrapper"><h3 id="x1-2-auteurs"><bdi class="secno">1.2 </bdi>Auteurs</h3><a class="self-link" href="#auteurs" aria-label="Permalink for Section 1.2"></a></div>
+<p>Er worden slechts een beperkt aantal auteurs genoemd, echter aan deze strategie is door veel meer mensen gewerkt. Per onderdeel van de API strategie staan de degene verantwoordelijk voor de laatste versie vermeld.
+De genoemde auteurs zijn deelnemers aan de relevante werkgroep van het Kennisplatform API's zoals: API Strategie, Architectuur, Security, Design Rules, Authenticatie en Autorisatie, Strategie en Beleid, en Gebruikerswensen.</p>
+</section><section id="leeswijzer"><div class="header-wrapper"><h3 id="x1-3-leeswijzer"><bdi class="secno">1.3 </bdi>Leeswijzer</h3><a class="self-link" href="#leeswijzer" aria-label="Permalink for Section 1.3"></a></div>
+<p>De API strategie bestaat uit een een inleidend document, verschillende normatieve documenten (NL GOV standaarden) en meerdere modulen die voor verschillende functionele of technische situaties kunnen worden ingezet. Een actueel overzicht van alle documenten is weergegeven in de onderstaande infographic:</p>
+<figure id="fig-nl-api-strategie-infographic">
+  <object data="https://geonovum.github.io/KP-APIs/media/API_infographic.svg" type="image/svg+xml" id="infographic"></object>
+  <figcaption><a class="self-link" href="#fig-nl-api-strategie-infographic">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">NL API Strategie Infographic</span></figcaption>
+</figure>
+
+<p>De verschillende onderdelen van de NL API Strategie bevat de volgende documenten:</p>
+<table class="simple">
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Documentnaam &amp; <br> Verwijzing naar de gepubliceerde versie</th>
+<th>Status</th>
+<th>Versie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie/">Inleiding NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-architectuur/">Architectuur NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-gebruikerswensen/">Gebruikerswensen NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Normatieve standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/api/adr/">API Design Rules (ADR)</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>09-07-2020 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Verplichte standaard</td>
+<td><a href="https://forumstandaardisatie.nl/open-standaarden/openapi-specification">Open API Specification (OAS)</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>25-05-2018 <br> v3.0.0</td>
+</tr>
+<tr>
+<td>Normatieve standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/api/oauth/">NL GOV OAuth profiel</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>09-07-2020 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Voorgestelde standaard</td>
+<td><a href="https://logius.gitlab.io/oidc/">NL GOV OpenID Connect profile</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>18-02-2021 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Verplichte standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/dk/restapi/">Digikoppeling REST API koppelvlak specificatie</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>14-11-2022 <br> v1.1.1</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-geo/">API Geospatial Design Rules module</a></td>
+<td>Vastgesteld * <br> (door Kennisplatform)</td>
+<td>23-05-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-transport-security/">API Transport Security module</a></td>
+<td>Stabiel * <br> (Werkgroep Kennisplatform)</td>
+<td>11-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-access-control/">API Access control module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>11-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-naming-conventions/">API Naming conventions module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>12-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-hypermedia/">API Hypermedia module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>12-07-2023</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Deze modules zijn voordragen als normatief, vaststellingsproces is nog niet compleet</li>
+</ul>
+</section></section>
+  <section id="hypermedia"><div class="header-wrapper"><h2 id="x2-hypermedia"><bdi class="secno">2. </bdi>Hypermedia</h2><a class="self-link" href="#hypermedia" aria-label="Permalink for Section 2."></a></div>
+<p>Hypermedia relates to the use of hyperlinks (from now on called <em>links</em>) as part of a document's payload, which are essentially URIs pointing to other resources. Typically, but not necessarily, these links are retrievable (also called <em>dereferencable</em>) from the web over the HTTP protocol. We intentionally make a clear separation between navigation controls and external links. Both kinds can easily be combined as part of a single API.</p>
+<p><span id="api-70"></span></p>
+<div class="rule" id="/hypermedia/absolute-uris">
+  <p class="rulelab"><b>/hypermedia/absolute-uris</b>: Provide absolute URIs for hyperlinks</p>
+  <p>Only absolute URIs MAY be provided since this enables simple traversal of links by following URIs. While relative links are more compact and may be practical when having multi-environment deployments, they introduce extra complexity for the client and may potentially result in erroneous behaviour (e.g. when dealing with trailing slashes or dot segments). For the same reasons, absolute URIs MAY not be templated.</p>
+</div>
+
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Noot</span></div><p class="">This design rule does explicitly NOT intend the use of hyperlinks as an implementation of the often debated HATEOAS constraint, as described in the well-known REST thesis (Roy Fielding) or the Richardson Maturity Model (Level 3). An API specification must offer a strict and stable contract between server and client, which should guarantee backwards compatiblity during the full lifetime of a given major version, whereas true HATEOAS advocates continually evolving interfaces requiring little to no prior knowledge about how to interact with the application.</p></div>
+
+<section id="navigation-controls"><div class="header-wrapper"><h3 id="x2-1-navigation-controls"><bdi class="secno">2.1 </bdi>Navigation controls</h3><a class="self-link" href="#navigation-controls" aria-label="Permalink for Section 2.1"></a></div>
+<p>Navigation controls are references to URIs within the scope of the originating API, i.e. these paths are typically specified in the same OpenAPI specification and thus residing on the same domain within the same base path. The main (and only) purpose is to increase discoverability by providing navigation links, which can be leveraged by client applications or by developers while building applications or evaluating APIs. Since internal links only serve a navigational purpose, they can only be provided as part of response messages.</p>
+<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Noot</span></div><p class="">The only exception when navigation controls are allowed to point to other APIs is when they share governance and security context. When doing so, the governing party must guarantee stability of links between the APIs, which means the target operation of navigational links may never change during the lifetime of (a major version of) the originating API. They must also share the same security context, otherwise clients have to exchange mixed credentials for different endpoints.</p></div>
+
+<p><span id="api-71"></span></p>
+<div class="rule" id="/hypermedia/support-hal">
+  <p class="rulelab"><b>/hypermedia/support-hal</b>: Support the HAL media type for every GET response</p>
+  <p>The [<cite><a class="bibref" data-link-type="biblio" href="#bib-hal" title="HAL - Hypertext Application Language">HAL</a></cite>] standard is a universal and widely adopted standard for serializing hyperlinks in JSON responses. As standardized by the HAL specification, navigation controls MUST be provided in a dedicated links-container, named <code>_links</code>. This introduces a clear separation between the data and the interface controls, preventing possible naming conflicts. Link objects can reside on any level in the JSON tree. HAL response messages MUST explictly specify the corresponding media type.</p>
+  <div class="example">
+    <p>For example, a book resource may provide a self-referencing link.</p>
+    <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// Content-Type: application/hal+json</span>
+{
+  <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"14d3030c-3b61-4070-b902-342f80e99364"</span>,
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Da Vinci Code"</span>,
+  <span class="hljs-attr">"isbn"</span>: <span class="hljs-string">"902455991X"</span>,
+  <span class="hljs-attr">"_links"</span>: {
+    <span class="hljs-attr">"self"</span>: {
+      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://api.example.org/v1/books/14d3030c-3b61-4070-b902-342f80e99364"</span>
+    }
+  }
+}</code></pre>x
+  </div>
+</div>
+
+<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Noot</span></div><p class="">Navigation controls should not be intermixed with functional identification. Information resources represent real-world entities, which are functionally identified outside the context of an individual API. The same entities may be exchanged via other channels or other (versions of) APIs, providing the same functional identifiers.</p></div>
+
+<p><span id="api-72"></span></p>
+<div class="rule" id="/hypermedia/link-href">
+  <p class="rulelab"><b>/hypermedia/link-href</b>: Provide at least an <code>href</code> attribute for every link object</p>
+  <p>A link object MUST at least contain an <code>href</code> attribute with an absolute URI as value. Additionally, a <code>title</code> attribute MAY be provided for providing a human-readable description of the link. Other attributes SHOULD NOT be used.</p>
+</div>
+
+<p><span id="api-73"></span></p>
+<div class="rule" id="/hypermedia/self-link">
+  <p class="rulelab"><b>/hypermedia/self-link</b>: Provide self-referencing links for all resources</p>
+  <p>In case a JSON object represents an entity which is exposed as an individual resource within the API, a self-referencing link with relation type <code>self</code> MUST be provided. This includes resources which are (partially) embedded in other resources. Self-referencing links typically do not contain a <code>title</code> attribute.</p>
+  <div class="example">
+    <p>For example, a book resource may provide a self-reference for itself and for its author (which resides in a nested object).</p>
+    <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"14d3030c-3b61-4070-b902-342f80e99364"</span>,
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Da Vinci Code"</span>,
+  <span class="hljs-attr">"isbn"</span>: <span class="hljs-string">"902455991X"</span>,
+  <span class="hljs-attr">"_embedded"</span>: {
+    <span class="hljs-attr">"author"</span>: {
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"8e1dbefc-452f-47f9-a104-3faa7eb217aa"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Dan Brown"</span>,
+      <span class="hljs-attr">"_links"</span>: {
+        <span class="hljs-attr">"self"</span>: {
+          <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://api.example.org/v1/authors/8e1dbefc-452f-47f9-a104-3faa7eb217aa"</span>,
+        }
+      }
+    }
+  },
+  <span class="hljs-attr">"_links"</span>: {
+    <span class="hljs-attr">"self"</span>: {
+      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://api.example.org/v1/books/14d3030c-3b61-4070-b902-342f80e99364"</span>
+    }
+  }
+}</code></pre>
+  </div>
+</div>
+
+<p><span id="api-74"></span></p>
+<div class="rule" id="/hypermedia/nav-get">
+  <p class="rulelab"><b>/hypermedia/nav-get</b>: Provide navigational links pointing to GET operations only</p>
+  <p>Navigation controls MAY be provided, only when pointing to read (GET) operations. Other operations require more prior knowledge for client applications to be able to use them in a meaningful manner.</p>
+</div>
+
+<p><span id="api-75"></span></p>
+<div class="rule" id="/hypermedia/nav-functional">
+  <p class="rulelab"><b>/hypermedia/nav-functional</b>: Only provide navigational links when there is a clear functional goal</p>
+  <p>While it might be tempting to provide navigation controls for every possible client interaction, navigation links must be added sparingly. Only when there is a clear functional goal / added value, additional navigation controls SHOULD be provided.</p>
+</div>
+
+</section><section id="external-links"><div class="header-wrapper"><h3 id="x2-2-external-links"><bdi class="secno">2.2 </bdi>External links</h3><a class="self-link" href="#external-links" aria-label="Permalink for Section 2.2"></a></div>
+<p>External links are references to URIs outside of the scope of the originating API. These links can point to literally any location on the web; they may even point to URIs which are not dereferencable at all (e.g. in case they are used as a universal identifier only). A few examples:</p>
+<ul>
+<li>Links to related documents, such as images, PDF documents etc.</li>
+<li>Links to HTML web pages, providing human-friendly content</li>
+<li>Links to universal standards, such as RDF vocabularies</li>
+</ul>
+<p><span id="api-76"></span></p>
+<div class="rule" id="/hypermedia/external-links">
+  <p class="rulelab"><b>/hypermedia/external-links</b>: Treat external links as regular resource attributes</p>
+  <p>External links MUST be considered in the same way as regular resource attributes.</p>
+  <div class="example">
+    <p>For example, a book resource may provide a link to the cover image:</p>
+    <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"14d3030c-3b61-4070-b902-342f80e99364"</span>,
+  <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Da Vinci Code"</span>,
+  <span class="hljs-attr">"isbn"</span>: <span class="hljs-string">"902455991X"</span>,
+  <span class="hljs-attr">"cover"</span>: <span class="hljs-string">"https://cdn.example.org/covers/davincicode.png"</span>,
+  <span class="hljs-attr">"website"</span>: <span class="hljs-string">"https://danbrown.com/the-davinci-code/"</span>,
+  <span class="hljs-attr">"_links"</span>: {
+    <span class="hljs-attr">"self"</span>: {
+      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://api.example.org/v1/books/14d3030c-3b61-4070-b902-342f80e99364"</span>
+    }
+  }
+}</code></pre>
+</div></div></section></section>
+  
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-referenties"><bdi class="secno">A. </bdi>Referenties</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="informatieve-referenties">
+    <div class="header-wrapper"><h3 id="a-1-informatieve-referenties"><bdi class="secno">A.1 </bdi>Informatieve referenties</h3><a class="self-link" href="#informatieve-referenties" aria-label="Permalink for Appendix A.1"></a></div>
+    <dl class="bibliography"><dt id="bib-hal">[HAL]</dt><dd>
+      <a href="http://stateless.co/hal_specification.html"><cite>HAL - Hypertext Application Language</cite></a>. Mike Kelly.  2013-09-18. URL: <a href="http://stateless.co/hal_specification.html">http://stateless.co/hal_specification.html</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Handreiking - Versie ter vaststelling</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

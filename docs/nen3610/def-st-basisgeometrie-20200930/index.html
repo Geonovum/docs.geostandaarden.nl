@@ -1,0 +1,560 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  <link rel="stylesheet" type="text/css" href="localstyle.css">
+  <title>Basisgeometrie</title>
+  
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "ST",
+  "format": "markdown",
+  "publishDate": "2020-09-30",
+  "editors": [
+    {
+      "name": "Paul Janssen",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Paul Janssen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Wilko Quak",
+      "company": "KOOP",
+      "companyURL": "https://www.koopoverheid.nl"
+    }
+  ],
+  "shortName": "basisgeometrie",
+  "pubDomain": "nen3610",
+  "github": "https://github.com/Geonovum/Basisgeometrie-Werkomgeving",
+  "issueBase": "https://github.com/Geonovum/Basisgeometrie-Werkomgeving/issues/",
+  "edDraftURI": "https://geonovum.github.io/Basisgeometrie-Werkomgeving",
+  "licence": "cc-by-nd",
+  "previousPublishDate": "2020-04-01",
+  "previousMaturity": "GN-VV",
+  "maxTocLevel": 4,
+  "publishISODate": "2020-09-30T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 30 september 2020"
+}</script><meta name="description" content="Deze standaard beschrijft de specificaties van het model Basisgeometrie."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/nen3610/def-st-basisgeometrie-20200930/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Basisgeometrie",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-09-30",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/Basisgeometrie-Werkomgeving/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/nen3610/vv-st-basisgeometrie-20200401/",
+  "description": "Deze standaard beschrijft de specificaties van het model Basisgeometrie.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Paul Janssen",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Paul Janssen",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Wilko Quak",
+      "worksFor": {
+        "name": "KOOP",
+        "url": "https://www.koopoverheid.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+
+<body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Basisgeometrie</h1>
+  
+  <h2>Geonovum Standaard<br>
+  Vastgestelde versie <time class="dt-published" datetime="2020-09-30">30 september 2020</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/nen3610/def-st-basisgeometrie-20200930/">https://docs.geostandaarden.nl/nen3610/def-st-basisgeometrie-20200930/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/nen3610/basisgeometrie/">https://docs.geostandaarden.nl/nen3610/basisgeometrie/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/nen3610/vv-st-basisgeometrie-20200401/">https://docs.geostandaarden.nl/nen3610/vv-st-basisgeometrie-20200401/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/Basisgeometrie-Werkomgeving">https://geonovum.github.io/Basisgeometrie-Werkomgeving</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Paul Janssen</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Paul Janssen</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Wilko Quak</span>, <a class="p-org org h-org h-card" href="https://www.koopoverheid.nl">KOOP</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/Basisgeometrie-Werkomgeving/">GitHub Geonovum/Basisgeometrie-Werkomgeving</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Basisgeometrie-Werkomgeving/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Basisgeometrie-Werkomgeving/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/Basisgeometrie-Werkomgeving/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" class="introductory"><h2>Samenvatting</h2><p>
+Deze standaard beschrijft de specificaties van het model <b>Basisgeometrie</b>.
+</p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de standaard. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+ De programmaraad van Geonovum heeft deze standaard goedgekeurd.
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#toepassingsdomein"><span class="secno">2. </span>Toepassingsdomein</a></li><li class="tocline"><a class="tocxref" href="#algemene-informatie"><span class="secno">3. </span>Algemene informatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informele-beschrijving"><span class="secno">3.1 </span>Informele beschrijving</a></li><li class="tocline"><a class="tocxref" href="#normatieve-referenties"><span class="secno">3.2 </span>Normatieve referenties</a></li><li class="tocline"><a class="tocxref" href="#termen-en-definities"><span class="secno">3.3 </span>Termen en definities</a></li></ol></li><li class="tocline"><a class="tocxref" href="#identificatie"><span class="secno">4. </span>Identificatie</a></li><li class="tocline"><a class="tocxref" href="#informatiemodel"><span class="secno">5. </span>Informatiemodel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-0"><span class="secno">5.1 </span>inleiding</a></li><li class="tocline"><a class="tocxref" href="#uml-diagram"><span class="secno">5.2 </span>UML diagram</a></li><li class="tocline"><a class="tocxref" href="#objectcatalogus"><span class="secno">5.3 </span>Objectcatalogus</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#objecttype-geometrie"><span class="secno">5.3.1 </span>Objecttype Geometrie</a></li><li class="tocline"><a class="tocxref" href="#attribuutsoort-id"><span class="secno">5.3.2 </span>Attribuutsoort id</a></li></ol></li><li class="tocline"><a class="tocxref" href="#voorbeeld"><span class="secno">5.4 </span>Voorbeeld</a></li></ol></li><li class="tocline"><a class="tocxref" href="#referentiesystemen"><span class="secno">6. </span>Referentiesystemen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#coordinaatreferentiesysteem"><span class="secno">6.1 </span>Coördinaatreferentiesysteem</a></li><li class="tocline"><a class="tocxref" href="#tijdreferentiesysteem"><span class="secno">6.2 </span>Tijdreferentiesysteem</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevensuitwisseling-en-publicatie"><span class="secno">7. </span>Gegevensuitwisseling en -publicatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#leveringsmedium"><span class="secno">7.1 </span>Leveringsmedium</a></li><li class="tocline"><a class="tocxref" href="#formaten-encodings"><span class="secno">7.2 </span>Formaten (encodings)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gml"><span class="secno">7.2.1 </span>GML</a></li></ol></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-coordinaten"><span class="secno">7.3 </span>Nauwkeurigheid van coördinaten.</a></li></ol></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Dit model voor het gebruiken van een basisgeometrie is een specifieke toepassing voor het koppelen van geometrie aan een informatieobject.</p><p>NEN 3610, het Basismodel geo-informatie, beschrijft een geo-object als
+abstractie van een fenomeen in de werkelijkheid, dat direct of indirect is
+geassocieerd met een locatie relatief ten opzichte van de aarde. Een geo-object
+heeft dus als eigenschap een locatie. Deze locatie kan gerealiseerd worden
+doormiddel van coördinaten met een georeferentie, een geometrie. Het fenomeen of
+het object zelf heeft ook kenmerken die het object definieren.
+Informatiemodellen modelleren de gezamenlijkheid van
+objectkenmerken inclusief locatie en geometrie.</p><p>Er zijn situaties waarbij verschillende modellen gebruikt worden om dezelfde
+objecten in de werkelijkheid te modelleren met elk een specifieke set van
+kenmerken maar wel met dezelfde locatie. Het enige dat de modellen gemeenschappelijk hebben
+is de geometrie van het object. Indien er behoefte is om uit het oogpunt van
+voorkomen van redundantie de modellen te normaliseren vanuit het geometrie
+perspectief is een centraal model voor alleen geometrie een optie.</p><p>Dit model Basisgeometrie biedt hiervoor een gestandaardiseerde oplossing. Het
+model beschrijft een geometrie als een apart objecttype dat vervolgens als een
+eigenschap gebruikt kan worden door een objecttype van een ander
+informatiemodel. Doel is het gezamenlijk kunnen gebruiken van een geometrie of
+geometriebestanden door verschillende informatiemodellen. Het objecttype
+Geometrie in Basisgeometrie bevat alleen een attribuut geometrie en heeft geen
+inhoudelijke attributen.</p></section><section data-format="markdown" id="toepassingsdomein"><!--OddPage--><h2 id="x2-toepassingsdomein"><span class="secno">2. </span>Toepassingsdomein</h2><p>Het toepassingsdomein van Basisgeometrie is geo-informatiemodellen die een
+externe geometriereferentie nodig hebben. De reden voor een externe
+geometriereferentie kan zijn het gezamenlijk gebruik van geometrieën of
+geometriebestanden door meerdere informatiemodellen in een gezamenlijke
+ketenuitwisseling.</p></section><section data-format="markdown" id="algemene-informatie"><!--OddPage--><h2 id="x3-algemene-informatie"><span class="secno">3. </span>Algemene informatie</h2><section id="informele-beschrijving"><h3 id="x3-1-informele-beschrijving"><span class="secno">3.1 </span>Informele beschrijving</h3><p>Het model is ontwikkeld binnen de omgevingswet voor de ketenuitwisseling van
+bevoegd gezag naar landelijke voorziening. Twee informatiemodellen, IMOW en
+IMOP, gebruiken daarbij gezamenlijke geometrieën.</p><p>Beide modellen koppelen andere informatie aan dezelfde geometrie. Door de
+geometrie apart te modelleren, los van de inhoudelijke informatie, ontstaan
+zelfstandige geometrie objecten.</p><p>Vanuit de domeinmodellen kan inhoudelijke informatie bijvoorbeeld via een
+klasse genaamd locatie door een associatie aan een geometrie worden gekoppeld. Ten
+opzichte van het refererende objecttype gedraagt de geometrie zich als een
+eigenschap.</p></section><section id="normatieve-referenties"><h3 id="x3-2-normatieve-referenties"><span class="secno">3.2 </span>Normatieve referenties</h3></section><section id="termen-en-definities"><h3 id="x3-3-termen-en-definities"><span class="secno">3.3 </span>Termen en definities</h3><p>GML: Geography Markup Language</p></section></section><section data-format="markdown" id="identificatie"><!--OddPage--><h2 id="x4-identificatie"><span class="secno">4. </span>Identificatie</h2><p>Dit hoofdstuk beschrijft de identificatie van de dataspecificatie. In onderstaande overzicht is de beschrijvende informatie opgenomen van de dataspecificatie.</p><table style="width: 100%" cellpadding="10" border="1">
+    <colgroup><col width="25%">
+    <col width="75%">
+    </colgroup><tbody><tr>
+        <td valign="top"><b>Titel</b></td>
+        <td valign="top">Basisgeometrie</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Samenvatting</b></td>
+        <td valign="top">Het informatiemodel
+  Basisgeometrie beschrijft een geometrie als een apart objecttype dat als een eigenschap gebruikt kan worden door een objecttype van een ander
+  informatiemodel. Doel is het gezamenlijk kunnen gebruiken van een geometrie of geometriebestanden door verschillende informatiemodellen. Het objecttype
+  Geometrie in Basisgeometrie bevat alleen een attribuut geometrie en heeft geen inhoudelijke attributen.</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Onderwerpcategorieën</b></td>
+        <td valign="top">Algemene
+  toepassing van geometrie zonder domeininformatie.</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Geografische beschrijving</b></td>
+        <td valign="top">Niet
+  van toepassing.</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Doel</b></td>
+        <td valign="top">Beschrijving
+  van het geometriemodel voor koppeling van geometrie als eigenschap aan een
+  inhoudelijk objecttype uit een ander informatiemodel.</td>
+    </tr>
+    <tr>
+        <td valign="top"><b>Aanvullende informatie</b></td>
+        <td valign="top">Deze
+  versie is ontwikkeld voor de toepassing binnen het informatiemodel voor de
+  omgevingswet (IMOW) en het daaraan gerelateerde informatiemodel voor officiele publicaties (IMOP). Doel is het gezamenlijk
+  delen van geometrieën en geometriebestanden. Dit basisgeometrie model is gepubliceerd als inhoud-neutraal model dat ook door andere
+  informatiemodellen gebruikt kan worden.</td>
+    </tr>
+</tbody></table></section><section data-format="markdown" id="informatiemodel"><!--OddPage--><h2 id="x5-informatiemodel"><span class="secno">5. </span>Informatiemodel</h2><section id="inleiding-0"><h3 id="x5-1-inleiding"><span class="secno">5.1 </span>inleiding</h3><p>In dit hoofdstuk wordt aan de hand van een UML-klassediagram en een
+objectcatalogus de informatieinhoud en -structuur van model Basisgeometrie
+beschreven.</p></section><section id="uml-diagram"><h3 id="x5-2-uml-diagram"><span class="secno">5.2 </span>UML diagram</h3><p>Het model Basisgeometrie bevat maar één objecttype: Geometrie.</p><p><img src="media/Basisgeometrie.png" alt=""></p></section><section id="objectcatalogus"><h3 id="x5-3-objectcatalogus"><span class="secno">5.3 </span>Objectcatalogus</h3><section id="objecttype-geometrie"><h4 id="x5-3-1-objecttype-geometrie"><span class="secno">5.3.1 </span>Objecttype Geometrie</h4><table>
+<thead>
+<tr>
+<th><strong>Naam</strong></th>
+<th>Geometrie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Definitie</strong></td>
+<td>Geometrie is het object dat de geometrie bevat: de geometrische bepaling van een locatie door middel van coördinaten.</td>
+</tr>
+<tr>
+<td><strong>Toelichting</strong></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="attribuutsoort-id"><h4 id="x5-3-2-attribuutsoort-id"><span class="secno">5.3.2 </span>Attribuutsoort id</h4><table>
+<thead>
+<tr>
+<th><strong>Naam</strong></th>
+<th>id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Definitie</strong></td>
+<td>Unieke identificatie</td>
+</tr>
+<tr>
+<td><strong>Waardetype</strong></td>
+<td>CharacterString</td>
+</tr>
+<tr>
+<td><strong>Herkomst</strong></td>
+<td>Basisgeometrie</td>
+</tr>
+</tbody></table></section></section><section id="voorbeeld"><h3 id="x5-4-voorbeeld"><span class="secno">5.4 </span>Voorbeeld</h3><p>Het volgende UML diagram geeft een voorbeeld waarin twee domeinmodellen Domein A
+en Domein B van uit een objecttype Locatie verwijzen naar een gemeenschappelijk
+geometrie objecttype.</p><p>De geometrie is daarbij een eigenschap van de locatie-objecten uit de twee
+domeinmodellen.</p><p><img src="media/Voorbeeld.png" alt=""></p></section></section><section data-format="markdown" id="referentiesystemen"><!--OddPage--><h2 id="x6-referentiesystemen"><span class="secno">6. </span>Referentiesystemen</h2><section id="coordinaatreferentiesysteem"><h3 id="x6-1-coordinaatreferentiesysteem"><span class="secno">6.1 </span>Coördinaatreferentiesysteem</h3><p>Het coördinaatreferentiesysteem wordt bepaald door het informatiemodel of de modellen die gebruik maken van Basisgeometrie.</p><p>Voor het definiëren van de coördinaatreferentiesystemen kunnen de EPSG-codes
+(European Petroleum Survey Group) worden gebruikt.</p><p>Voor de handliggende coördinaatreferentiesystemen zijn:</p><ul>
+<li><p>RD stelsel (2D): EPSG:28992</p>
+</li>
+<li><p>RD-NAP (3D): EPSG:7415</p>
+</li>
+<li><p>ETRS89 (2D): EPSG:4258 (lengte, breedte in graden)</p>
+</li>
+<li><p>ETRS89 (3D): EPSG:4937 (lengte, breedte in graden, hoogte in meters tov
+ellipsoide)</p>
+</li>
+<li><p>ETRS89 + EVRF2007 (3D): EPSG:7423 (lengte, breedte in graden, hoogte in
+meters tov NAP)</p>
+</li>
+</ul></section><section id="tijdreferentiesysteem"><h3 id="x6-2-tijdreferentiesysteem"><span class="secno">6.2 </span>Tijdreferentiesysteem</h3><p>Niet van toepassing. Er zijn geen tijdparameters opgenomen.</p></section></section><section data-format="markdown" id="gegevensuitwisseling-en-publicatie"><!--OddPage--><h2 id="x7-gegevensuitwisseling-en-publicatie"><span class="secno">7. </span>Gegevensuitwisseling en -publicatie</h2><section id="leveringsmedium"><h3 id="x7-1-leveringsmedium"><span class="secno">7.1 </span>Leveringsmedium</h3><p>Het medium waarmee de data worden geleverd is niet gedefinieerd op dit niveau.
+Het wordt bepaald door de toepassing van het informatiemodel dat de
+Basisgeometrie toepast.</p></section><section id="formaten-encodings"><h3 id="x7-2-formaten-encodings"><span class="secno">7.2 </span>Formaten (encodings)</h3><p>De volgende encodingformaten zijn beschikbaar:</p><section id="gml"><h4 id="x7-2-1-gml"><span class="secno">7.2.1 </span>GML</h4><p>Beschikbaar GML applicatieschema Basisgeometrie.xsd gepubliceerd op:
+<a href="https://register.geostandaarden.nl/gmlapplicatieschema/basisgeometrie/1.0.0/basisgeometrie.xsd">https://register.geostandaarden.nl/gmlapplicatieschema/basisgeometrie/1.0.0/basisgeometrie.xsd</a></p><p><strong>Nadere specificaties:</strong></p><p><strong>GML versie en profiel:</strong> GML 3.2.2 – SF-0.<br>Simple features profile 0 is gekozen omdat de inhoud van dit model geen
+constructies heeft die complexer zijn dan SF-0. Voor geometrietypen is er tussen
+SF-0, SF-1 en SF-2 geen verschil. Over de data gekoppeld aan dit geometriemodel
+wordt niets gezegd. Die hebben hun eigen comlexiteitseisen.</p><p><strong>Coördinaatrefrentiestelsel:</strong> Het is verplicht om de srsName in te vullen op
+het hoogste niveau van een geometrie. Dat betekent dat van een samengestelde
+geometrie, een multigeometrie, alleen op het niveau van de samenstelling de
+srsName verplicht is ingevuld.</p><p>Invulinstructie:</p><ul>
+<li><p>RD stelsel (2D): srsName="urn:ogc:def:crs:EPSG::28992"</p>
+</li>
+<li><p>RD-NAP (3D): srsName="urn:ogc:def:crs:EPSG::7415"</p>
+</li>
+<li><p>ETRS89 (2D): srsName="urn:ogc:def:crs:EPSG::4258"</p>
+</li>
+<li><p>ETRS89 (3D): srsName="urn:ogc:def:crs:EPSG::4937"</p>
+</li>
+<li><p>ETRS89 + EVRF2007 (NAP)(3D): srsName="urn:ogc:def:crs:EPSG::7423"</p>
+</li>
+</ul><p>De beschrijving van de respectivelijke EPSG codes zijn te vinden onder de url's
+met het format: "<a href="http://www.opengis.net/def/crs/EPSG/0/epsgcode&quot;">http://www.opengis.net/def/crs/EPSG/0/epsgcode"</a>.
+Bijvoorbeeld: <a href="http://www.opengis.net/def/crs/EPSG/0/28992">http://www.opengis.net/def/crs/EPSG/0/28992</a></p><p><strong>gml:id:</strong> Voor implementatie in GML zijn er aanvullende specificaties als het
+gaat om het invullen van een gml:id attribuut. Dit gml:id attribuut heeft geen
+informatiewaarde maar is nodig om interne en externe referenties te realiseren
+voor gebruik binnen het gml formaat. Voor de GML 3.2.1 was dit een verplicht
+element maar voor GML 3.2.2 is dit optioneel.</p><p>Indien de optionele gml:id wordt toegepast dient deze globaal uniek te zijn en
+mag de waarde conform de gml specificaties alleen met een letter of een
+underscore beginnen.</p></section></section><section id="nauwkeurigheid-van-coordinaten"><h3 id="x7-3-nauwkeurigheid-van-coordinaten"><span class="secno">7.3 </span>Nauwkeurigheid van coördinaten.</h3><p>De nauwkeurigheid van de coördinaten opgenomen bij een geometrie moet minstens
+de nauwkeurigheid realiseren die vermeld wordt in het informatiemodel of
+bijgeleverde inwinningseisen. Meestal is het aantal decimalen dat in software
+standaard wordt opgeleverd groter. Deze decimalen hebben dan geen betekenis
+meer. Om te voorkomen dat er te grote databestanden ontstaan wordt aanbevolen de
+coördinaten af te ronden op 1 millimeter of het equivalent daarvan in graden.</p><p><strong>Aanbeveling:</strong></p><p>Coördinaten opgenomen bij een geometrie worden standaard uitgewisseld met een
+getalsnauwkeurigheid van 1 mm of het equivalent daarvan in graden. Voor RD, NAP
+en ETRS89 komt dat overeen met de volgende nauwkeurigheden:</p><p>RD in meters 3 decimalen (1 mm);<br>NAP-hoogte in meters 3 decimalen (1 mm);<br>ETRS89-breedte in graden 8 decimalen (1,1 mm);<br>ETRS89-lengte in graden 8 decimalen (0,7 mm);<br>ETRS89-hoogte in meters 3 decimalen (1 mm).</p><p>Alles wat nauwkeuriger is wordt afgerond op deze nauwkeurigheid van 3 of 8
+decimalen. Afronding is volgens de volgende regel:<br>0.0015 -&gt; 0.002;<br>0.0014 -&gt; 0.001.</p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

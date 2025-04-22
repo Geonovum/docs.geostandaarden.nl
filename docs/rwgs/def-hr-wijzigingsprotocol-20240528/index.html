@@ -1,0 +1,854 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.1.1">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+      
+      
+      
+      
+      
+      
+      
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+      
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/serv/Geonovum.ico">
+      
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/serv/style.css">
+      
+<title>Wijzigingsprotocol Raamwerk van geo-standaarden</title>
+   
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc0",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie. Commentaar over dit document kan gestuurd worden naar ",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment. Comments regarding this document may be sent to ",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    }
+  },
+  "title": "Wijzigingsprotocol Raamwerk van geo-standaarden",
+  "shortName": "wijzigingsprotocol",
+  "pubDomain": "rwgs",
+  "specStatus": "def",
+  "specType": "hr",
+  "publishDate": "2024-05-28",
+  "github": "https://github.com/geonovum/rwgs-wijzigingsprotocol/",
+  "issueBase": "https://github.com/geonovum/rwgs-wijzigingsprotocol/issues/",
+  "edDraftURI": "https://geonovum.github.io/rwgs-wijzigingsprotocol/",
+  "editors": [
+    {
+      "name": "Michel Grothe",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/base.css"></head>
+   <body class="h-entry"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Wijzigingsprotocol Raamwerk van geo-standaarden</h1>
+    
+    <h2>
+      Geonovum Handreiking<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2024-05-28">28 mei 2024</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/rwgs/def-hr-wijzigingsprotocol-20240528">https://docs.geostandaarden.nl/rwgs/def-hr-wijzigingsprotocol-20240528</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/rwgs/wijzigingsprotocol/">https://docs.geostandaarden.nl/rwgs/wijzigingsprotocol/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/rwgs-wijzigingsprotocol/">https://geonovum.github.io/rwgs-wijzigingsprotocol/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Michel Grothe</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/geonovum/rwgs-wijzigingsprotocol/">GitHub geonovum/rwgs-wijzigingsprotocol</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/rwgs-wijzigingsprotocol/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/rwgs-wijzigingsprotocol/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/rwgs-wijzigingsprotocol/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Logo Creative Commons 0 Public Domain Dedication"><br> Creative Commons 0 Public Domain Dedication</a>
+        </p>
+    <hr title="Separator for header">
+  </div>
+      <section id="abstract" class="abstract introductory"><h2>Samenvatting</h2>
+         Het <a href="https://www.geonovum.nl/geo-standaarden/raamwerk-geo-standaarden" target="_blank">Raamwerk van geo-standaarden</a> 
+         is geschreven voor iedereen die geodatasets vastlegt, uitwisselt en beheert en voor iedereen die
+         (geo-)informatiebeleid maakt. Het doel van het Raamwerk van geo-standaarden is om
+         uit de grote verscheidenheid aan standaarden de juiste set te kiezen: die standaarden
+         die nodig zijn om geodata vindbaar, toegankelijk, uitwisselbaar en herbruikbaar te
+         maken. Wij baseren de keuzes voor standaarden in het Raamwerk op de volgende uitgangspunten:
+         internationale aansluiting, volwassenheid en openheid van deze geo-standaarden en
+         brede adoptie en gebruik. Het toepassen van de in dit Raamwerk opgenomen geo-standaarden,
+         draagt bij aan een solide geo-informatie infrastructuur, in lijn met internationale
+         ontwikkelingen en aansluitend op de nationale digitale overheid.
+         
+
+         Gebruikers, die in de praktijk werken met geo-standaarden hebben vragen over de toepassing
+         ervan, willen weten welke geo-standaarden van toepassing zijn, welke versies actueel
+         zijn en welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen
+         van geo-standaarden. Aanpassingen of wijzigingen in het de geo-standaarden worden
+         niet zomaar doorgevoerd; voor de ene gebruiker zal de wijziging gering zijn, voor
+         de ander kan het grote gevolgen hebben. Dit wijzigingsprotocol voor het Raamwerk van
+         geo-standaarden geeft inzicht in het wijzigingsproces van het Raamwerk, evenals de
+         belangrijkste taken en verantwoordelijkheden van de betrokkenen (stakeholders) bij
+         het onderhouden en gebruiken van het Raamwerk van geo-standaarden. De stakeholders
+         worden op diverse momenten betrokken in dit proces.
+         
+      </section>
+      <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#conformance">Conformiteit</a></li><li class="tocline"><a class="tocxref" href="#7CA4157F"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#59A549EF"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</a></li><li class="tocline"><a class="tocxref" href="#15344483"><bdi class="secno">1.2 </bdi>Begrippen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#55CD880F"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#3EE7FC49"><bdi class="secno">2.1 </bdi>Releasebeleid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#64C6632B"><bdi class="secno">2.1.1 </bdi>Nieuwe versie van het Raamwerk</a></li><li class="tocline"><a class="tocxref" href="#1E4463A2"><bdi class="secno">2.1.2 </bdi>Oudere versie van het Raamwerk</a></li></ol></li><li class="tocline"><a class="tocxref" href="#317FB4EA"><bdi class="secno">2.2 </bdi>Proces varianten</a></li><li class="tocline"><a class="tocxref" href="#40EBAE8E"><bdi class="secno">2.3 </bdi>Betrokkenen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#501FAB48"><bdi class="secno">3. </bdi>Wijzigingsproces</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#554554BA"><bdi class="secno">3.1 </bdi>Fasen in het wijzigingsproces</a></li><li class="tocline"><a class="tocxref" href="#11E18F34"><bdi class="secno">3.2 </bdi>Het wijzigingsproces in detail</a></li></ol></li><li class="tocline"><a class="tocxref" href="#190C9848"><bdi class="secno">4. </bdi>Implementatie ondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#064739D0"><bdi class="secno">4.1 </bdi>Opleiding en advies</a></li><li class="tocline"><a class="tocxref" href="#09C256A8"><bdi class="secno">4.2 </bdi>Communicatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#31BF4A03"><bdi class="secno">5. </bdi>Escalatieprocedure en klachtenafhandeling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#63014198"><bdi class="secno">5.1 </bdi>Escalatieprocedure</a></li><li class="tocline"><a class="tocxref" href="#66D79BE4"><bdi class="secno">5.2 </bdi>Klachtenafhandeling</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tof"><bdi class="secno">A. </bdi>Lijst met figuren</a></li></ol></nav>
+      <section id="conformance" class="introductory"><div class="header-wrapper"><h2 id="conformiteit">Conformiteit</h2><a class="self-link" href="#conformance" aria-label="Permalink for this Section"></a></div><p>Naast onderdelen die als niet normatief gemarkeerd zijn, zijn ook alle diagrammen, voorbeelden, en noten in dit document niet normatief. Verder is alles in dit document normatief.</p></section>
+      
+      
+      <section class="chapter" id="inleiding"><div class="header-wrapper"><h2 id="7CA4157F"><bdi class="secno">1. </bdi>Inleiding</h2><a class="self-link" href="#7CA4157F" aria-label="Permalink for Section 1."></a></div><p><em>Dit onderdeel is niet normatief</em>
+<br>
+<br>
+Het Raamwerk van geo-standaarden is geschreven voor iedereen die geodatasets vastlegt, uitwisselt en beheert en voor iedereen die informatiebeleid maakt. Het doel van het Raamwerk van geo-standaarden is om uit de grote verscheidenheid aan standaarden de juiste set te kiezen: die standaarden die nodig zijn om geodata vindbaar, toegankelijk, uitwisselbaar en herbruikbaar te maken. Wij baseren de keuzes voor standaarden in het Raamwerk op de volgende uitgangspunten: internationale aansluiting, volwassenheid en openheid van deze geo-standaarden en brede adoptie en gebruik. Het toepassen van de in dit Raamwerk opgenomen geo-standaarden, draagt bij aan een solide geo-informatie infrastructuur, in lijn met internationale ontwikkelingen en aansluitend op de nationale digitale overheid.
+<br>
+Gebruikers, die in de praktijk werken met geo-standaarden hebben vragen over de toepassing ervan, willen weten welke geo-standaarden van toepassing zijn, welke versies actueel zijn en welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van geo-standaarden. Aanpassingen of wijzigingen in het de geo-standaarden worden niet zomaar doorgevoerd; voor de ene gebruiker zal de wijziging gering zijn, voor de ander kan het grote gevolgen hebben.  Vandaar dat dit wijzigingsprotocol inzicht geeft in het wijzigingsproces van het Raamwerk van geo-standaarden, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (stakeholders) bij het onderhouden en gebruiken van het Raamwerk van geo-standaarden. De stakeholders worden op diverse momenten betrokken in dit proces.</p>
+<section id="waarom-een-wijzigingsprotocol"><div class="header-wrapper"><h3 id="59A549EF"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</h3><a class="self-link" href="#59A549EF" aria-label="Permalink for Section 1.1"></a></div><p>In dit wijzigingsprotocol staan de sturende principes achter het wijzigingsproces voor het Raamwerk van geo-standaarden; de manier waarop wijzigingen in het Raamwerk van geo-standaarden plaatsvinden in afstemming met de stakeholders en gebruikers. Met het protocol wordt elke wijziging van het Raamwerk een voorspelbaar en transparant proces voor bronhouders, beheerders, software leveranciers en gebruikers van het Raamwerk. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies van het Raamwerk verstaan wordt en wanneer deze nieuwe versie(s) verwacht mogen worden. Tevens is een processchema uitgewerkt, dat invulling geeft aan de stappen die de stakeholders met elkaar doorlopen om tot een wijziging van het Raamwerk van geo-standaarden te komen.</p>
+</section><section id="begrippen"><div class="header-wrapper"><h3 id="15344483"><bdi class="secno">1.2 </bdi>Begrippen</h3><a class="self-link" href="#15344483" aria-label="Permalink for Section 1.2"></a></div><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1a" style="width: 30.78895233655751%;">
+<col id="col2a" style="width: 69.2110476634425%;">
+</colgroup>
+<thead><tr><th style="border-top: 0pt none #000000; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000;"><p id="11350A7E">Begrip</p></th>
+<th style="border-top: 0pt none #000000; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="3AE04064">Uitleg</p></th>
+</tr>
+</thead>
+<tbody><tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="1EF8A4C9">Raamwerk van geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="43D68896">In het Raamwerk van geo-standaarden zijn de geo-standaarden opgenomen die bijdragen aan een solide geo-informatie infrastructuur, onderverdeeld naar  internationale, Europese en nationale afspraken en ontwikkelingen en aansluitend op de nationale digitale overheid. De geo-standaarden zijn onderverdeeld naar informatiemodellen, uitwisselformaten, API’s, visualisatie standaarden, metadata en standaarden voor coördinaat referentiesystemen. </p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p class="space-after" id="55BDFDD7">GI-Beraad</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="04D9DE47">Het GI-beraad doet aanbevelingen aan de minister van Binnenlandse Zaken, overige ministers en overheidsorganen over de strategische onderwerpen op het gebied van de geo-informatie in de publieke sector in Nederland. Het GI-beraad bestaat uit vertegenwoordigers van de verschillende gebruikersgroepen uit de publieke sector, zowel van het Rijk, de provincies, gemeenten en waterschappen.  </p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p class="space-after" id="34EC80AB">Regie-overleg geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="553870B6">Het regie-overleg geo-standaarden heeft een adviserende rol bij het wijzigen van het Raamwerk. Het wijzigingsvoorstel wordt ter toetsing voorgelegd aan het regie-overleg geo-standaarden. Het regie-overleg geo-standaarden adviseert waarna het wijzigingsvoorstel, begeleid door het advies van het regie-overleg geo-standaarden naar de Programmaraad gaat. De Programmaraad besluit of de wijziging al dan niet wordt geaccepteerd. Dat leidt tot een nieuwe versie van het Raamwerk.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="14559989">Programmaraad Geonovum</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="32EFE886">De Programmaraad Geonovum accordeert het Raamwerk van geo-standaarden en brengt advies uit aan het GI-beraad indien nodig. De Geonovum programmaraad bestaat uit vertegenwoordigers van de gebruikers en stakeholders van het Geonovum Standaardenprogramma en de beheerder van het Raamwerk.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="0BFC95EB">Werkgroep Raamwerk van geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="74100686">Een werkgroep bestaande uit enkele geo-standaarden experts, die het wijzigingsvoorstellen voor het Raamwerk van geo-standaarden voor informatiemodellen, uitwisselformaten, API’s, visualisatie, metadata coördinaat referentiesystemen voorbereiden en na accordering verwerken in het Raamwerk. </p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="4D8CB117">Standaardenprogramma overleg Geonovum</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="2972A050">Het Standaardenprogramma overleg Geonovum bestaande uit adviseurs en deskundigen van Geonovum, die op innovaties en ontwikkelingen rondom geo-standaarden werken, die in het Raamwerk van geo-standaarden worden vastgelegd.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="2E580ABF">Wijzigingsprotocol</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="02A10CD8">Hiermee wordt het geheel van vastgelegde regels en afspraken voor het wijzigen van Raamwerk van geo-standaarden vastgelegd.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="14E35469">Wijzigingsproces</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="702A03CD">Het wijzigingsproces is de daadwerkelijke wijziging van het het Raamwerk van geo-standaarden op een bepaald moment. Het volledige wijzigingsproces doorloopt de fasen van het wijzigingsprotocol met een datum van inwerkingtreding van de nieuwe versie van het Raamwerk.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="49AB903F">Wijzigingsverzoek</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="55C9A13E">Wijzigingsverzoeken zijn wensen voor aanpassing van het Raamwerk. Een wijzigingsverzoek doorloopt het wijzigingsproces en kan leiden tot een Wijzigingsvoorstel.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="150E5767">Wijzigingsvoorstel</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="623BD2DF">In het wijzigingsproces worden meerdere wijzigingsverzoeken meegenomen en gebundeld tot één wijzigingsvoorstel voor het wijzigen van het Raamwerk van geo-standaarden.</p></td>
+</tr>
+</tbody>
+</table></section></section>
+      <section class="chapter" id="gebruik-van-het-wijzigingsprotocol"><div class="header-wrapper"><h2 id="55CD880F"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</h2><a class="self-link" href="#55CD880F" aria-label="Permalink for Section 2."></a></div><p>Het wijzigingsprotocol schrijft een vast stramien voor het wijzigen van de het Raamwerk van geo-standaarden voor. Het protocol benoemt de fasen en de op te leveren resultaten. Belangrijk zijn de randvoorwaarden en uitgangspunten. De gebruikers, deskundigen (experts) en andere stakeholders van het Raamwerk van geo-standaarden worden bij het wijzigen van het Raamwerk van geo-standaarden nauw betrokken.</p>
+<p>Het wijzigingsprotocol voor het Raamwerk van geo-standaarden geeft:</p>
+<ul>
+<li>Inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>Inzicht in de wijzigingsverzoeken;</li>
+<li>Inzicht in een voorgestelde wijziging van het Raamwerk;</li>
+<li>Stabiliteit aan het Raamwerk;</li>
+<li>Continuïteit aan het Raamwerk;</li>
+<li>Een eenduidige aanpak.</li>
+</ul>
+<section id="releasebeleid"><div class="header-wrapper"><h3 id="3EE7FC49"><bdi class="secno">2.1 </bdi>Releasebeleid</h3><a class="self-link" href="#3EE7FC49" aria-label="Permalink for Section 2.1"></a></div><section id="nieuwe-versie-van-het-raamwerk"><div class="header-wrapper"><h4 id="64C6632B"><bdi class="secno">2.1.1 </bdi>Nieuwe versie van het Raamwerk</h4><a class="self-link" href="#64C6632B" aria-label="Permalink for Section 2.1.1"></a></div><p>Een release van een standaard is een nieuwe uitgave van het Raamwerk. De wijzigingen binnen een release wordt gedocumenteerd en vastgelegd in Bijlage A van het informatiemodel. De gebruiker kan zo nagaan op welke plaatsen de betreffen het Raamwerk gewijzigd is. De nieuwe release kenmerkt zich ten opzichte van de oude versie door een hoger versienummer. Bij de release is ieder product van het Raamwerk voorzien van een nieuw versienummer conform Semantic Versioning (SemVer). Binnen SemVer heeft elk product zijn eigen versienummer conform de X.Y.Z schrijfwijze, bijvoorbeeld versie 2.1.0 (=X.Y.Z):</p>
+<ul><li><b>X-wijziging.</b>&nbsp;Indien het Raamwerk van geo-standaarden een majeure update krijgt met relatief veel nieuwe en ingrijpende wijzigingen dan wordt het Raamwerk als geheel aangeduid met een X wijziging. Frequentie: op voorstel van Geonovum en in overleg met het Regie-overleg geo-standaarden.</li>
+</ul>
+<ul><li><b>Y-wijziging.</b>&nbsp;Indien het Raamwerk van geo-standaarden een beperkte update krijgt met een relatief klien aantal en minder ingrijpende wijzigingen dan wordt het Raamwerk als geheel aangeduid met een Y wijziging.  
+Frequentie: op voorstel van Geonovum en in overleg met het Regie-overleg geo-standaarden.</li>
+</ul>
+<ul><li><b>Z-wijziging. </b>Dit zijn bugs/fouten of aanvullingen in een toelichting, die geen impact hebben op de geo-standaarden en hun versie aanduiding. 
+Frequentie: zo spoedig mogelijk na constatering door Geonovum.</li>
+</ul>
+<br>
+Na het uitbrengen van een nieuwe versie van een standaard is deze nieuwe versie beschikbaar en vindbaar via de&nbsp;Geonovum website, onderdeel samenhang geo-standaarden op de pagina <a href="https://www.geonovum.nl/themas/standaardisatie" target="_blank">standaardisatie</a>.
+
+</section><section id="oudere-versie-van-het-raamwerk"><div class="header-wrapper"><h4 id="1E4463A2"><bdi class="secno">2.1.2 </bdi>Oudere versie van het Raamwerk</h4><a class="self-link" href="#1E4463A2" aria-label="Permalink for Section 2.1.2"></a></div><p>De SemVer-methodiek schrijft backwards compatibility voor op het Y-niveau. Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk) bepaald. Na het uitbrengen van de nieuwe versie van het Raamwerk wordt de ontwikkeling van de oude versie stop gezet.
+Voor het onderhoud en de ondersteuning van een oude versie van een standaard gelden de volgende uitgangspunten:</p>
+<ul><li>Aan een oude versie worden geen nieuwe features toegevoegd, geen aanpassingen gedaan na het uitbrengen van een nieuwe versie. Verzoeken om aanpassing en wijziging voor nieuwe functionaliteit worden niet meer voor het oude Raamwerk in behandeling genomen. Correcties (Z-wijzigingen) worden wel uitgevoerd op de vorige versies zolang deze nog ondersteund worden.</li>
+<li>Bij oplevering van een nieuwe versie wordt de voorgaande versie nog een van te voren vastgestelde periode ondersteund. De duur van de overgangsperiode wordt mede bepaald door de omvang van de wijzigingen (X, Y en Z wijzigingen op de vorige versies), de staat van ontwikkeling van het Raamwerk, en of het Raamwerk in voorlopig dan wel permanent beheer is.</li>
+</ul>
+Na het uitbrengen van een nieuwe versie van een standaard blijven oudere versies beschikbaar en zijn vindbaar via het <a href="https://docs.geostandaarden.nl/rwgs/rw/" target="_blank">Raamwerk van geo-standaarden</a> op de <a href="https://www.geonovum.nl/themas/standaardisatie" target="_blank">Geonovum website</a>.
+
+</section></section><section id="proces-varianten"><div class="header-wrapper"><h3 id="317FB4EA"><bdi class="secno">2.2 </bdi>Proces varianten</h3><a class="self-link" href="#317FB4EA" aria-label="Permalink for Section 2.2"></a></div><p>In paragraaf&nbsp;releasebeleid&nbsp;zijn de X, Y en Z wijzigingen uitgelegd. Wijzigingen kennen drie procesvarianten: eén voor X wijzigingen, één voor Y wijzigingen en één voor Z wijzigingen.
+De start van het proces is voor alle varianten hetzelfde. Op de&nbsp;website&nbsp;wordt een wijzigingsverzoek ingediend bij de <a href="https://www.geonovum.nl/over-geonovum/contact" target="_blank"><b>Helpdesk</b><b> geo-standaarden</b></a>. De impact van deze wijziging wordt door de  <b>Werkgroep Raamwerk van geo-standaarden </b>beoordeeld. Deze eerste impactanalyse beoordeelt tot welke SemVer categorie de wijziging hoort en wat de effecten van de wijziging zijn. Naast de impactanalyse wordt het wijzigingsverzoek .
+<b>Proces voor X en Y wijzigingen</b>
+X en Y wijzigingen vergen volledige afstemming en het doorlopen van alle in paragraaf&nbsp;5.1&nbsp;beschreven fasen: Inhoud, Toetsing, Besluitvorming en Implementatie. Voor de inhoudelijke fase wordt een werkgroep gestart met daarin deskundigen (experts). Het resultaat van de werkgroep is een wijzigingsvoorstel dat in het standaardenoverleg van Geonovum en in het overleg van de <b>Regiegroep geo-standaarden</b> met externe stakeholders wordt besproken. Y en X wijzigingen worden altijd voorgelegd aan de <b>Programmaraad Geonovum</b>, die stelt een nieuwe versie van de Raamwerk van geo-standaarden vast.
+<b>Proces voor Z wijzigingen</b>
+In overleg met de Werkgroep Raamwerk van geo-standaarden worden Z wijzigingen in de volgende release opgenomen. De inhoudelijke fase wordt door het beheer van het Raamwerk uitgevoerd. Besluitvorming vindt plaats in afstemming met de Werkgroep. Implementatie vindt plaats door het publiceren van de wijziging op de&nbsp;<a href="https://www.geonovum.nl/geo-standaarden/raamwerk-geo-standaarden" target="_blank">Geonovum website</a>.</p>
+</section><section id="betrokkenen"><div class="header-wrapper"><h3 id="40EBAE8E"><bdi class="secno">2.3 </bdi>Betrokkenen</h3><a class="self-link" href="#40EBAE8E" aria-label="Permalink for Section 2.3"></a></div><p>De volgende betrokkenen spelen een rol in het wijzigingsproces van het Raamwerk van geo-standaarden:</p>
+<table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 24.973779279804216%;">
+<col id="col2" style="width: 75.02622072019578%;">
+</colgroup>
+<thead><tr><th style="border-top: 0pt none #000000; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000;"><p id="502496B4"><b><span style="color: #FFFFFF;">Rol</span></b></p></th>
+<th style="border-top: 0pt none #000000; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; ">Stakeholder</th>
+</tr>
+</thead>
+<tbody><tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="79779D62">Opdrachtgever (eigenaar) van het Raamwerk van geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="7CDDA5B2">Programmaraad van Geonovum bestaande uit vertegenwoordigers van Kadaster, Ministerie van EZK en Ministerie van LNV, Provincie Gelderland namens de provincies en het Interprovinciaal Overleg (IPO), Ministerie van Defensie - Dienst der Hydrografie, Rijkswaterstaat, Ministerie van BZK, Geologische Dienst Nederland TNO, Vereniging van Nederlandse Gemeenten.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="20E94293">Regie-overleg geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="2FABC3CA">Het Regie-overleg heeft een diverse samenstelling van beheerders, gebruikersvertegenwoordigers en liaison met relevante standaarden organisaties. Het adviseert de Programmaraad, werkt in werkgroepen, agendeert binnen domeinstandaarden en informeert het programma Zicht op Nederland Datafundament.</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="19CAFEC7">Werkgroep Raamwerk van geo-standaarden</p></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="1B9CE459">Adviseurs en experts geo-standaarden Geonovum</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="7193A7AF">Helpdesk geo-standaarden</p></td>
+
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "><p id="4894E108">Adviseurs en experts geo-standaarden Geonovum</p></td>
+</tr>
+<tr><td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "></td>
+<td style="border-top: 0.75pt solid #DDDDDD; border-left: 0pt none #000000; border-bottom: 0pt none #000000; border-right: 0pt none #000000; "></td>
+</tr>
+</tbody>
+</table></section></section>
+      <section class="chapter" id="wijzigingsproces"><div class="header-wrapper"><h2 id="501FAB48"><bdi class="secno">3. </bdi>Wijzigingsproces</h2><a class="self-link" href="#501FAB48" aria-label="Permalink for Section 3."></a></div><p>De aanleiding voor een wijzigingsproces is gebaseerd op meldingen over de wensen en gevonden fouten in het <a href="https://docs.geostandaarden.nl/rwgs/rw/" target="_blank">Raamwerk van geo-standaarden</a>. Dit zijn de wijzigingsverzoeken. Deze verzoeken worden door de Helpdesk geo-standaarden in behandeling genomen en in samenwerking met de werkgroep  <span style="color: #5E5E5E;">Raamwerk van geo-standaarden </span>verwerkt tot een wijzigingsvoorstel voor het Raamwerk. De beheerder neemt het initiatief om een wijzigingsproces te starten, de stappen in het proces zijn conform dit wijzigingsprotocol.</p>
+<section id="fasen-in-het-wijzigingsproces"><div class="header-wrapper"><h3 id="554554BA"><bdi class="secno">3.1 </bdi>Fasen in het wijzigingsproces</h3><a class="self-link" href="#554554BA" aria-label="Permalink for Section 3.1"></a></div><p>Het volledige wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie, zoals weergegeven in&nbsp;figuur 1.</p>
+<figure id="fig-fasen-wijzigingsproces"><img src="media/image4.png" alt="Afbeelding met Graphics, ontwerp" style="width: 35%;">
+<figcaption><a class="self-link" href="#fig-fasen-wijzigingsproces">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title"><a href="https://geonovum.github.io/IMG-wijzigingsprotocol/" target="_blank"></a>Fasen wijzigingsproces</span></figcaption></figure>
+
+<p><b>Inhoud</b>
+In de fase inhoud wordt voor ieder wijzigingsverzoek bepaald of deze wordt opgenomen in de nieuwe versie van het Raamwerk of niet. Dit wordt door de&nbsp;<b>Helpdesk geo-standaarden</b>&nbsp;intern vastgelegd. Ieder wijzigingsverzoek dat wordt meegenomen in de nieuwe versie van het Raamwerk, wordt een impactanalyse uitgevoerd. Met deze impactanalyse beoordeelt ook tot welke SemVer categorie de wijziging hoort, of de geo-standaard voldoet aan de criteria om in het Raamwerk te worden opgenomen en evt. welke betrokken partijen geraakt worden door de wijziging en wat de secundaire effecten van de wijziging zijn.
+<br>
+<br>
+Wanneer tijdens de eerste impactanalyse is vastgesteld dat het om een X of Y wijziging gaat, wordt de <b>Werkgroep&nbsp;geo-standaarden</b> ingepland met de deskundigen. Afhankelijk van de omvang van de wijziging ten opzichte van de voorgaande versie en afhankelijk van welke stakeholders geraakt worden door de wijziging, verandert de samenstelling van de&nbsp;werkgroep. De werkgroep wordt vooraf geïnformeerd over het wijzigingsvoorstel en indien mogelijk wordt een eerste probleemschets en oplossing aangedragen voorafgaand aan de werkgroep. De resultaten van de werkgroep worden in een wijzigingsvoorstel voorgelegd aan de&nbsp;het <b>Regieoverleg geo-standaarden</b> met daarin een breder groep van stakeholders. 
+<br>
+<br>
+<b>Toetsing</b>
+De fase Toetsing vormt een brug tussen de inhoud en besluitvorming. In deze fase wordt voor een X of Y wijziging door het <b>Regieoverleg geo-standaarden</b> het wijzigingsvoorstel getoetst en van een advies voorzien voor besluitvorming in de <b>Programmaraad</b>. Met deze consultatie vragen wij de gebruikers en stakeholders van het Raamwerk actief hun reactie te geven op het wijzigingsvoorstel. Het wijzigingsvoorstel inclusief de terugkoppeling uit een evt. publieke consultatie wordt verwerkt in het wijzigingsvoorstel voor de besluitvorming van het Raamwerk van geo-standaarden.
+<br>
+<br>
+<b>Besluitvorming</b>
+Bij Besluitvorming wordt besloten om de gewijzigde vast te stellen en te publiceren. Afhankelijk van het type wijzigingsvoorstel (X, Y of Z, zie paragraaf&nbsp;proces varianten), besluit de <b>Programmaraad</b> van Geonovum voor X en Y wijzigingen en de <b>Werkgroep geo-standaarden</b> voor de Z wijzigingen.
+<br>
+<br>
+<b>Implementatie</b>
+Het verwerken van het wijzigingsvoorstel in het Raamwerk van geo-standaarden staat centraal in deze fase. Dit wordt gedaan door de <b>Werkgroep geo-standaarden. </b></p>
+</section><section id="het-wijzigingsproces-in-detail"><div class="header-wrapper"><h3 id="11E18F34"><bdi class="secno">3.2 </bdi>Het wijzigingsproces in detail</h3><a class="self-link" href="#11E18F34" aria-label="Permalink for Section 3.2"></a></div><p>De meldingen en wijzigingsverzoeken alsook (inter)nationale ontwikkelingen geven aanleiding tot de verdere ontwikkeling voor een standaard. Het wijzigingsproces dat dit wijzigingsvoorstel doorloopt bestaat uit tien stappen, die in onderstaande figuur 2 in onderlinge samenhang zijn weergegeven. In deze figuur zijn processen, besluiten en de relevante actoren en actorgroepen en hun interacties opgenomen. Iedere processtap is vervolgens kort beschreven.
+<br>
+<br></p>
+<figure id="Figuur_x">
+<a href="media/image5.svg" target="_blank"><img src="media/image5.svg" alt="processchema wijzigingsbeheer"></a>
+<figcaption><a class="self-link" href="#Figuur_x">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Processchema wijzigingsbeheer Raamwerk van geo-standaarden</span></figcaption>
+</figure>
+
+<p><b>Processtappen</b>
+De volgende processtappen worden doorlopen om te komen tot wijzigingen in de Raamwerk van geo-standaarden.</p>
+<ol>
+    <li>Met een ‘melding’ begint het wijzigingsproces. Doorgaans zal de gebruiker van een geo-standaard een eis of wens indienen, maar het kan ook het functioneel of technisch beheer zijn in sommige gevallen (bijv. wanneer een onderliggende standaard is bijgesteld). Er zijn meerdere aanleidingen, doorontwikkelingen of signalen, die kunnen leiden tot het indienen van een wijzigingsverzoek. Eisen en wensen, die kunnen leiden tot wijzigingen in het Raamwerk van geo-standaarden kunnen ontstaan ten gevolge van de volgende aanleidingen, doorontwikkelingen of signalen:
+    <ul>
+        <li>Aanpassing van business doelen van de opdrachtgever;</li>
+        <li>Nieuwe of aangepaste wetgeving;</li>
+        <li>Aanpassing van aspecten van (onderliggende) standaarden;</li>
+        <li>Gewijzigde gebruikerswensen;</li>
+        <li>Wijzigingen in technische voorzieningen;</li>
+        <li>Wijzigingen in systemen waar mee gekoppeld wordt;</li>
+        <li>Het herstellen van fouten/bugs;</li>
+        <li>Het voor zijn van het optreden van fouten (preventief).</li>
+    </ul>
+    De bovengenoemde aanleidingen kunnen leiden tot wijzigingsverzoeken in het Raamwerk van geo-standaarden, waarmee het wijzigingsproces in gang kan worden gezet. In het algemeen worden drie typen meldingen onderscheiden:
+    <ul>
+        <li>Een wijzigingsverzoek n.a.v. het adopteren van een nieuwe geo-standaard;</li>
+        <li>Een wijzigingsverzoek n.a.v. een (versie) update van een bestaande geo-standaard;  </li>
+        <li>Het afvoeren van een niet meer relevante geo-standaard. De melding kan per mail gestuurd aan de&nbsp;<b>Helpdesk geo-standaarden</b>. Bij het aanmelden van meerdere wijzigingsverzoeken, geldt dat voor elk wijzigingsverzoek een aparte mail gestuurd moet worden.</li>
+    </ul>
+    </li>
+    <li>De&nbsp;<b>Helpdesk geo-standaarden</b> registreert het wijzigingsverzoek in het meldingen systeem. De helpdesk beoordeelt het wijzigingsverzoek. De helpdesk is de actiehouder van de melding en controleert of de melding volledig en helder is. Bij een fout onderzoekt de helpdesk of dit inderdaad het geval is. Ook kan de helpdesk verder informatie opvragen bij de indiener van de melding. Ook wordt gecontroleerd of de melding geen duplicaat van een reeds ingevoerde melding. Indien de melding helder is beschreven, en het betreft een wens voor het aanpassen van de geo-standaard of een gevonden fout, dan kan melding worden erkend en wordt de melding formeel opgenomen in het meldingen systeem op <a href="https://github.com/Geonovum/raamwerk-geostandaarden/issues" target="_blank">Github</a>. Indien de melding niet erkend wordt, zal de helpdesk via de mail contact opnemen met de indiener om de melding verder af te stemmen.</li>
+    <li>De binnengekomen meldingen wordt besproken in de <b>Werkgroep Raamwerk van geo-standaarden</b>, het overleg met geo-standaarden experts van Geonovum. De <b>Werkgroep</b> stelt op basis van de binnengekomen helpdesk meldingen jaarlijks een lijst met potentiële wijzigingsverzoeken op. Tevens wordt in deze stap door de Werkgroep een eerste impactanalyse uitgevoerd voor de wijzigingsverzoeken. De impactanalyse betreft de impact van de wijziging van de standaard op de gebruikers en de door hen gebruikte software. De resultaten van de impactanalyse worden gecommuniceerd op&nbsp;<a href="https://github.com/Geonovum/raamwerk-geostandaarden/issues" target="_blank">Github</a>. Indien een melding wordt afgewezen – dus niet in de lijst met wijzigingsverzoeken wordt opgenomen – wordt door de&nbsp;Werkgroep&nbsp;een bericht met de verklaring van de afwijzing van de melding aan de indiener gestuurd.</li>
+    <li>De&nbsp;<b>W</b>erkgroep&nbsp;levert een wijzigingsvoorstel voor een nieuwe versie van het Raamwerk van geo-standaarden op voor het <b>Regieoverleg geo-standaarden</b> in geval van een X of Y-wijziging. </li>
+    <li>Indien het wijzigingsvoorstel enkel Z-wijziging(en) betreft, neemt de Werkgroep Raamwerk van geo-standaarden&nbsp;een besluit en gaat (al dan niet) over tot implementatie van de Z-wijziging. Het <b>Regieoverleg geo-standaarden</b> wordt over de wijziging geïnformeerd. </li>
+    <li>Het <b>Regieoverleg geo-standaarden</b> toetst het wijzigingsvoorstel voor de X of Y wijziging. In het <b>Regieoverleg geo-standaarden</b>&nbsp;hebben gebruikers en belangrijke stakeholders zitting. Indien nodig geacht door het <b>Regieoverleg geo-standaarden</b>, wordt in geval van een X-wijziging het wijzigingsvoorstel één maand ter publieke consultatie aangeboden op de&nbsp;<a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a>. Dit is optioneel. De resultaten van de optionele publieke consultatie worden daarna getoetst door het <b>Regieoverleg geo-standaarden</b>. Indien het <b>Regieoverleg geo-standaarden</b> instemt met het wijzigingsvoorstel, wordt het wijzigingsvoorstel met een positief advies aan de <b>Programmaraad Geonovum</b>&nbsp;gestuurd. In geval het <b>Regieoverleg geo-standaarden</b> het voorstel nog niet van een positief advies kan voorzien en eerst wijzigingen wil doorvoeren en het wijzigingsvoorstel wil laten bijstellen dan wel de impactanalyse wil bijstellen, dan gaat het voorstel terug naar de&nbsp;<b>Werkgroep</b>. De&nbsp;<b>Werkgroep</b>&nbsp;stelt vervolgens het wijzigingsvoorstel bij en brengt het wijzigingsvoorstel opnieuw in bij het <b>Regieoverleg geo-standaarden</b>. Na toetsing wordt een advies gestuurd aan&nbsp;<b>Programmaraad Geonovum</b>&nbsp;voor een besluit.</li>
+    <li>De <b>Programmaraad Geonovum</b>&nbsp;stelt het wijzigingsvoorstel van het Raamwerk van geo-standaarden vast. </li>
+    <li>Indien de <b>Programmaraad Geonovum</b>&nbsp;akkoord is met het wijzigingsvoorstel, wordt het wijzigingsvoorstel verwerkt in het Raamwerk van geo-standaarden door de <b>Werkgroep</b>. Indien het besluit tot implementatie negatief is, wordt terugmelding gemaakt aan de gebruikers en stakeholders en op de&nbsp;<a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a>.</li>
+    <li>Na afronding van wijzigingsproces vindt communicatie plaats over de wijziging van het Raamwerk van geo-standaarden door <b>Geonovum Communicatie</b> via de website van Geonovum.</li>
+</ol></section></section>
+      <section class="chapter" id="implementatie-ondersteuning"><div class="header-wrapper"><h2 id="190C9848"><bdi class="secno">4. </bdi>Implementatie ondersteuning</h2><a class="self-link" href="#190C9848" aria-label="Permalink for Section 4."></a></div><p>Het in gebruik nemen van (een nieuwe versie van) het Raamwerk van geo-standaarden staat centraal in deze fase. Tijdens de implementatie ondersteuning worden desgewenst verschillende activiteiten uitgevoerd worden:</p>
+<ul><li>Het verzorgen van een opleiding en/of advies over het gebruik (optioneel);</li>
+<li>De communicatie.</li>
+</ul>
+
+<section id="opleiding-en-advies"><div class="header-wrapper"><h3 id="064739D0"><bdi class="secno">4.1 </bdi>Opleiding en advies</h3><a class="self-link" href="#064739D0" aria-label="Permalink for Section 4.1"></a></div><p>Opleiding en advies kunnen van toegevoegde waarde zijn voor implementatie ondersteuning van de gebruikers van het Raamwerk van geo-standaarden. Middelen als documentatie, bijeenkomsten en workshops worden ingezet om de kennis over de wijzigingen in nieuwe Raamwerk te delen en te ondersteunen bij de implementatie. Ook publicaties in vakbladen kunnen worden ingezet ter ondersteuning.</p>
+</section><section id="communicatie"><div class="header-wrapper"><h3 id="09C256A8"><bdi class="secno">4.2 </bdi>Communicatie</h3><a class="self-link" href="#09C256A8" aria-label="Permalink for Section 4.2"></a></div><p>Het hele wijzigingsproces staat of valt met een goede communicatie. Onder goede communicatie wordt verstaan het tijdig leveren van de juiste informatie aan de juiste belanghebbenden. Dit betreft de proceskant alsook de producten die er worden opgeleverd.
+<br>
+<br>
+<b>Website(s)</b>
+<br>
+<br>
+De actuele vigerende versie van het Raamwerk van geo-standaarden is via het&nbsp;<a href="https://docs.geostandaarden.nl/rwgs/rw/" target="_blank">documentenregister van Nederlandse geo-standaarden</a>&nbsp;in te zien.
+Wijzigingen in het Raamwerk van geo-standaarden worden bekendgemaakt via de <a href="https://www.geonovum.nl/geo-standaarden/raamwerk-geo-standaarden" target="_blank">Geonovum website</a>.
+<br>
+<br>
+<b>Nieuwsbrief</b>
+<br>
+<br>
+Wijzigingen in het Raamwerk van geo-standaarden worden bekendgemaakt in de geo-standaarden nieuwsbrief van Geonovum.
+<br>
+<br>
+<b>Publieke consultatie</b>
+<br>
+<br>
+Bij X en Y-wijzigingen wordt in sommige gevallen een publieke consultatie in het wijzigingsproces gehouden. De wijzigingen in het Raamwerk wordt dan voor een bepaalde, afgesproken periode voor gelegd ter commentaar aan alle belanghebbenden en geïnteresseerden door middel van een publieke consultatie via de&nbsp;<a href="https://www.geonovum.nl/geo-standaarden/raamwerk-geo-standaarden" target="_blank">Geonovum website</a>&nbsp;en de nieuwsbrief geo-standaarden van Geonovum.</p>
+</section></section>
+      <section class="chapter" id="escalatieprocedure-en-klachtenafhandeling"><div class="header-wrapper"><h2 id="31BF4A03"><bdi class="secno">5. </bdi>Escalatieprocedure en klachtenafhandeling</h2><a class="self-link" href="#31BF4A03" aria-label="Permalink for Section 5."></a></div><p>In voorgaande hoofdstukken gaat het protocol ervan uit dat wijzigingen 'in vrijheid' worden doorgevoerd. In het beheerproces wordt geen rekening gehouden met noodzakelijke wijzigingen, die met spoed of onder druk van bijvoorbeeld (externe) nieuwe wet- en regelgeving moeten worden doorgevoerd. Hiervoor bestaat een escalatieprocedure. Daarnaast kunnen ook klachten ingediend worden over het beheerproces en zijn afspraken gemaakt over de klachtenafhandeling.</p>
+<section id="escalatieprocedure"><div class="header-wrapper"><h3 id="63014198"><bdi class="secno">5.1 </bdi>Escalatieprocedure</h3><a class="self-link" href="#63014198" aria-label="Permalink for Section 5.1"></a></div><p>Er is sprake van een escalatieprocedure als er een wijziging noodzakelijk is die niet in het reguliere wijzigingsproces doorgevoerd kan worden, omdat dit naar verwachting en inschatting te lang duurt. Een uitputtende lijst met situaties en criteria wanneer escalatie van toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke wijziging leidt tot onaanvaardbare risico's voor het werkveld of het onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van werkzaamheden.
+De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door te kunnen voeren. Er is geen vastgelegd proces om de escalatieprocedure te doorlopen, omdat verschillende situaties van escalatie wellicht tot een verschillende wijze van handelen moeten leiden. In plaats daarvan zijn onderstaande sturende principes leidend om verantwoordelijkheden te duiden.
+<br>
+<br>
+<b>Signalering</b>
+<br>
+<br>
+Uit het werkveld kunnen signalen ontstaan dat met spoed een wijziging doorgevoerd zou moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden zullen ontstaan. Het is wel van belang om de rol van Geonovum te onderkennen als antennefunctie voor het werkveld. In ieder geval zullen deze signalen op enig moment de opdrachtgever of Geonovum bereiken, en op dat moment zal er overleg gevoerd worden over deze signalen.
+<br>
+<br>
+<b>Overleg</b>
+<br>
+<br>
+Bij de besluitvorming binnen de escalatieprocedure wordt er in principe overleg gevoerd tussen de opdrachtgever voor het beheer van de betreffende standaard en Geonovum. Beide partijen raadplegen de betrokkenen daar waar nodig.
+<br>
+<br>
+<b>Besluitvorming</b>
+<br>
+<br>
+De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de trekker van het Basisprogramma, dan wel de contactpersoon bij de Programmaraad. Ook het besluit <i>welke </i>wijzigingen er precies doorgevoerd moeten worden en op welke manier, wordt genomen door dezelfde persoon.
+<br>
+<br>
+<b>Coördinatie</b>
+<br>
+<br>
+De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de trekker van het Basisprogramma, dan wel de contactpersoon bij de Programmaraad.
+<br>
+<br>
+<b>Communicatie met het werkveld</b>
+<br>
+<br>
+De communicatie met het werkveld wordt uitgevoerd door Geonovum. Als beheerder van het Raamwerk wordt verwacht dat Geonovum het meest directe contacten heeft met het werkveld.</p>
+</section><section id="klachtenafhandeling"><div class="header-wrapper"><h3 id="66D79BE4"><bdi class="secno">5.2 </bdi>Klachtenafhandeling</h3><a class="self-link" href="#66D79BE4" aria-label="Permalink for Section 5.2"></a></div><p>Het garanderen van het serieus nemen van klachten kan alleen door deze volgens een zorgvuldige procedure te behandelen. Klachten kunnen ook beschouwd worden als verbetersuggestie. Twee verschillende typen klachten met betrekking tot het Raamwerk van geo-standaarden worden onderscheiden:</p>
+<ul><li>Klachten over de toepassingsmogelijkheid van het Raamwerk;</li>
+<li>Klachten over het beheer van het Raamwerk.</li>
+</ul>
+In het eerste geval is het feitelijk geen klacht maar een wens of eis tot het aanpassen van het Raamwerk. Het beheer van de betreffen het Raamwerk neemt de klacht in behandeling en neemt de klacht op als wijzigingsverzoek en niet als klacht. In dit geval doet Geonovum haar werk goed. 
+In het tweede geval is er sprake van ontevredenheid over de uitvoering van het beheerproces van het Raamwerk en betreft de klacht niet de inhoud, maar het Raamwerk zelf. De indiener is van mening dat Geonovum, dan wel de werkgroep het werk niet naar behoren uitvoert. In dat geval wordt de klacht doorgezet naar de Programmaraad.
+Het indienen van klachten loopt in principe via de&nbsp;Helpdesk geo-standaarden.</section></section>
+
+      <section id="tof" class="appendix"><div class="header-wrapper"><h2 id="a-lijst-met-figuren"><bdi class="secno">A. </bdi>Lijst met figuren</h2><a class="self-link" href="#tof" aria-label="Permalink for Appendix A."></a></div><ul class="tof">
+        <li class="tofline">
+    <a class="tocxref" href="#fig-fasen-wijzigingsproces"><span class="self-link">Figuur <bdi class="figno">1</bdi></span> <span class="fig-title">Fasen wijzigingsproces</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#Figuur_x"><span class="self-link">Figuur <bdi class="figno">2</bdi></span> <span class="fig-title">Processchema wijzigingsbeheer Raamwerk van geo-standaarden</span></a>
+  </li>
+      </ul></section>
+   
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Handreiking - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

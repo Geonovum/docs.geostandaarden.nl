@@ -1,0 +1,813 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header ------------------------------------------------------------------------------><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <title>DisGeo Demo II Lessons Learned</title>
+        <link rel="stylesheet" type="text/css" href="./media/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "AL",
+  "format": "markdown",
+  "publishDate": "2021-01-07",
+  "editors": [
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Bart van Leeuwen",
+      "company": "Netage",
+      "companyURL": "https://netage.nl/"
+    },
+    {
+      "name": "Erwin Folmer",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl"
+    },
+    {
+      "name": "Nicky van Oorschot",
+      "company": "Netage",
+      "companyURL": "https://netage.nl/"
+    },
+    {
+      "name": "Niels Hoffmann",
+      "company": "Provincie Noord-Holland",
+      "companyURL": "https://www.noord-holland.nl"
+    },
+    {
+      "name": "Pano Maria",
+      "company": "Skemu",
+      "companyURL": "https://skemu.com"
+    }
+  ],
+  "shortName": "dll2",
+  "pubDomain": "disgeo",
+  "github": "https://github.com/Geonovum/disgeo-demo-2/",
+  "issueBase": "https://github.com/Geonovum/disgeo-demo-2/issues/",
+  "edDraftURI": "https://geonovum.github.io/disgeo-demo-2",
+  "licence": "cc-by-nd",
+  "localBiblio": {
+    "CITAAT": {
+      "title": "Titel van het Citaat",
+      "href": "http://url van de publicatie",
+      "status": "versie van de publicatie",
+      "publisher": "naam van de publiceerder",
+      "company": "eventueel naam van bedrijf"
+    },
+    "DLL1": {
+      "id": "dll1",
+      "title": "DisGeo Demo Lessons Learned",
+      "href": "https://docs.geostandaarden.nl/disgeo/dll/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2020-02-19"
+    },
+    "ISO19108-2005": {
+      "href": "https://www.iso.org/standard/39891.html",
+      "title": "Geographic information -- Rules for application schema",
+      "date": "2005-06",
+      "publisher": "International Organization for Standardization"
+    }
+  },
+  "publishISODate": "2021-01-07T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 07 januari 2021"
+}</script><meta name="description" content="Dit document beschrijft de geleerde lessen die zijn opgedaan tijdens het in 5 dagen ontwikkelen van een demonstrator voor DisGeo. De DisGeo Demo fase 2 toont wat Linked Data voor DisGeo kan betekenen, en wat de tekortkomingen zijn. De nadruk ligt daarbij op integrale gebruiksvragen over datasets heen, gebaseerd op samenhang tussen datasets."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/disgeo/def-al-dll2-20210107/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "DisGeo Demo II Lessons Learned",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-01-07",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/disgeo-demo-2/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document beschrijft de geleerde lessen die zijn opgedaan tijdens het in 5 dagen ontwikkelen van een demonstrator voor DisGeo. De DisGeo Demo fase 2 toont wat Linked Data voor DisGeo kan betekenen, en wat de tekortkomingen zijn. De nadruk ligt daarbij op integrale gebruiksvragen over datasets heen, gebaseerd op samenhang tussen datasets.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Bart van Leeuwen",
+      "worksFor": {
+        "name": "Netage",
+        "url": "https://netage.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Erwin Folmer",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Nicky van Oorschot",
+      "worksFor": {
+        "name": "Netage",
+        "url": "https://netage.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Niels Hoffmann",
+      "worksFor": {
+        "name": "Provincie Noord-Holland",
+        "url": "https://www.noord-holland.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Pano Maria",
+      "worksFor": {
+        "name": "Skemu",
+        "url": "https://skemu.com"
+      }
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://docs.geostandaarden.nl/disgeo/dll/",
+      "type": "TechArticle",
+      "name": "DisGeo Demo Lessons Learned",
+      "url": "https://docs.geostandaarden.nl/disgeo/dll/"
+    },
+    {
+      "id": "https://www.w3.org/TR/sdw-bp/",
+      "type": "TechArticle",
+      "name": "Spatial Data on the Web Best Practices",
+      "url": "https://www.w3.org/TR/sdw-bp/"
+    },
+    {
+      "id": "https://www.w3.org/TR/vocab-ssn/",
+      "type": "TechArticle",
+      "name": "Semantic Sensor Network Ontology",
+      "url": "https://www.w3.org/TR/vocab-ssn/"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/geosparql",
+      "type": "TechArticle",
+      "name": "GeoSPARQL - A Geographic Query Language for RDF Data",
+      "url": "http://www.opengeospatial.org/standards/geosparql"
+    }
+  ]
+}</script></head>
+    <!-- HTML-Body -------------------------------------------------------------------------------->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">DisGeo Demo II Lessons Learned</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Vastgestelde versie <time class="dt-published" datetime="2021-01-07">07 januari 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/disgeo/def-al-dll2-20210107/">https://docs.geostandaarden.nl/disgeo/def-al-dll2-20210107/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/disgeo/dll2/">https://docs.geostandaarden.nl/disgeo/dll2/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/disgeo-demo-2">https://geonovum.github.io/disgeo-demo-2</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Bart van Leeuwen</span>, <a class="p-org org h-org h-card" href="https://netage.nl/">Netage</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Erwin Folmer</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Nicky van Oorschot</span>, <a class="p-org org h-org h-card" href="https://netage.nl/">Netage</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Niels Hoffmann</span>, <a class="p-org org h-org h-card" href="https://www.noord-holland.nl">Provincie Noord-Holland</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Pano Maria</span>, <a class="p-org org h-org h-card" href="https://skemu.com">Skemu</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/disgeo-demo-2/">GitHub Geonovum/disgeo-demo-2</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-demo-2/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-demo-2/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/disgeo-demo-2/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Dit document beschrijft de geleerde lessen die zijn opgedaan tijdens het in 5 dagen ontwikkelen van een demonstrator voor DisGeo. De DisGeo Demo fase 2 toont wat Linked Data voor DisGeo kan betekenen, en wat de tekortkomingen zijn. De nadruk ligt daarbij op integrale gebruiksvragen over datasets heen, gebaseerd op samenhang tussen datasets.</p><p>De belangrijkste conclusies zijn:</p><ul>
+<li>Linked data is onmisbaar bij het realiseren van de DisGeo ambitie om data in samenhang te kunnen gebruiken.
+</li>
+<li>Linked data is er klaar voor. Er zijn geen grote technische belemmeringen meer. Ondersteuning in de markt voor geografische linked data is goed.</li>
+<li>Linked data kan als directe toegangslaag dienen voor gebruikers, en kan ook de basis zijn voor APIs en viewers. Hierdoor kunnen verschillende gebruikersgroepen bediend worden vanuit één bron.</li>
+</ul><p>Veel van de datasets die we gebruiken in de demonstrator zijn wel op basis van linked data standaarden gepubliceerd, maar bevatten geen links naar andere data, ook niet naar bestaande basisregistraties. Op het moment dat die links tussen individuele objecten uit verschillende registraties er wel zijn, wordt werken met de data veel eenvoudiger. Ondersteund door de techniek van linked data werkt samenhang écht, ook tussen officiële overheidsregistraties en private aanvullende registraties. Linked data betekent niet per sé linked OPEN data; en gesloten en open linked data kunnen aan elkaar gekoppeld worden waarbij authenticatie en authorisatie van de gesloten data met standaard web technieken eenvoudig en goed geregeld zijn.De techniek is er klaar voor; organisatorisch moet er nog wel wat gebeuren: het leggen van links tussen objecten vraagt om governance op het snijvlak, i.e. een verantwoordelijke partij die niet alleen de objecten maar ook de links daartussen beheert.</p><p>Software voor het opslaan en bevragen van linked data bleek goede ondersteuning te hebben voor geografische linked data. Dit was een aantal jaren nog niet het geval, maar in de tussentijd heeft een professionalisering plaatsgevonden in dit soort software. Ditzelfde zien we ook in overige linked data tooling: er is goede tooling beschikbaar voor het bewerken, browsen etc en deze tooling werkt volledig interoperabel. Dit is een belangrjike constatering, want hoewel het altijd de belofte van datastandaarden is geweest dat er interoperabiliteit mee bereikt wordt, werd dat in de praktijk nooit volledig waargemaakt. In dit geval wel. Gezien de goede ondersteuning in de markt kunnen we stellen dat linked data er klaar voor is om in serieuze projecten met geografische data ingezet te worden.</p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de algemeen. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie"><span class="secno">1. </span>Introductie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context"><span class="secno">1.1 </span>Context</a></li><li class="tocline"><a class="tocxref" href="#de-demo"><span class="secno">1.2 </span>De demo</a></li><li class="tocline"><a class="tocxref" href="#doel"><span class="secno">1.3 </span>Doel</a></li><li class="tocline"><a class="tocxref" href="#resultaten"><span class="secno">1.4 </span>Resultaten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-cases"><span class="secno">2. </span>Use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#brandweer-case-rotterdam"><span class="secno">2.1 </span>Brandweer case Rotterdam</a></li><li class="tocline"><a class="tocxref" href="#brandweer-bluswater-case-castricum"><span class="secno">2.2 </span>Brandweer bluswater case Castricum</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data"><span class="secno">3. </span>Data</a></li><li class="tocline"><a class="tocxref" href="#tools"><span class="secno">4. </span>Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ontodia"><span class="secno">4.1 </span>Ontodia</a></li><li class="tocline"><a class="tocxref" href="#x3d-viewer"><span class="secno">4.2 </span>3D viewer</a></li><li class="tocline"><a class="tocxref" href="#data-stories"><span class="secno">4.3 </span>Data stories</a></li><li class="tocline"><a class="tocxref" href="#analytics-tool"><span class="secno">4.4 </span>Analytics tool</a></li><li class="tocline"><a class="tocxref" href="#visual-sparql-builder"><span class="secno">4.5 </span>Visual SPARQL Builder</a></li><li class="tocline"><a class="tocxref" href="#rml-en-r2rml"><span class="secno">4.6 </span>RML en R2RML</a></li><li class="tocline"><a class="tocxref" href="#xrm"><span class="secno">4.7 </span>XRM</a></li><li class="tocline"><a class="tocxref" href="#overig"><span class="secno">4.8 </span>Overig</a></li></ol></li><li class="tocline"><a class="tocxref" href="#de-lessons-learned"><span class="secno">5. </span>De Lessons Learned</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#we-zien-nog-weinig-links"><span class="secno">5.1 </span>We zien nog weinig links</a></li><li class="tocline"><a class="tocxref" href="#wat-kan-je-dan-met-die-links"><span class="secno">5.2 </span>Wat kan je dan met die links</a></li><li class="tocline"><a class="tocxref" href="#linksetjes-snel-gemaakt-maar-niet-beheerd"><span class="secno">5.3 </span>Linksetjes... snel gemaakt, maar niet beheerd</a></li><li class="tocline"><a class="tocxref" href="#uniforme-referentie-naar-basisregistraties"><span class="secno">5.4 </span>Uniforme referentie naar basisregistraties</a></li><li class="tocline"><a class="tocxref" href="#open-en-gesloten-linked-data"><span class="secno">5.5 </span>Open en gesloten linked data</a></li><li class="tocline"><a class="tocxref" href="#links-tussen-netwerken-en-fysieke-objecten"><span class="secno">5.6 </span>Links tussen netwerken en fysieke objecten</a></li><li class="tocline"><a class="tocxref" href="#ruimtelijke-vragen-in-linked-data-nu-beter-ondersteund"><span class="secno">5.7 </span>Ruimtelijke vragen in linked data nu beter ondersteund</a></li><li class="tocline"><a class="tocxref" href="#wanneer-geosparql-wanneer-gis"><span class="secno">5.8 </span>Wanneer GeoSPARQL, wanneer GIS</a></li><li class="tocline"><a class="tocxref" href="#geosparql-in-federatieve-queries"><span class="secno">5.9 </span>GeoSPARQL in federatieve queries</a></li><li class="tocline"><a class="tocxref" href="#een-adres-is-nog-geen-locatie"><span class="secno">5.10 </span>Een adres is nog geen locatie</a></li><li class="tocline"><a class="tocxref" href="#geen-vendor-lock-in"><span class="secno">5.11 </span>Geen vendor lock in!</a></li><li class="tocline"><a class="tocxref" href="#samenhang-werkt-echt"><span class="secno">5.12 </span>Samenhang werkt echt</a></li><li class="tocline"><a class="tocxref" href="#hoe-nu-verder"><span class="secno">5.13 </span>Hoe nu verder</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normatieve-referenties"><span class="secno">A.1 </span>Normatieve referenties</a></li></ol></li></ol></nav><section data-format="markdown" id="introductie"><!--OddPage--><h2 id="x1-introductie"><span class="secno">1. </span>Introductie</h2><section id="context"><h3 id="x1-1-context"><span class="secno">1.1 </span>Context</h3><p>Het ministerie van BZK beoogt met het traject Doorontwikkeling in Samenhang (DISGeo) meer samenhang te krijgen in het stelsel van geo(basis)registraties waarbij de focus ligt op semantische harmonisatie van registraties en informatiemodellen, en alternatieve methoden van gegevensuitwisseling en bijhouding (meer centraal, minder kopiëren).
+</p><p>Om te onderzoeken hoe dit doel het beste bereikt kan worden zijn verschillende demonstrators ontwikkeld. Over de eerste demonstrator, uit 2019, is een rapport met lessons learned gepubliceerd [<cite><a class="bibref" href="#bib-dll1">DLL1</a></cite>]. De nadruk lag in die fase op het onderzoeken wat er mogelijk is met de huidige stand van de techniek die nu breed wordt toegepast (gebaseerd op API’s). De tweede demonstrator onderzoekt juist vanuit de gewenste uiteindelijke situatie wat er mogelijk is. De bevindingen uit deze tweede demonstrator worden beschreven in dit document.</p><p>Het is de bedoeling dat</p><ul>
+<li>de demonstrator kan worden uitgebreid op een later moment, als er bv behoefte is aan een demonstrator fase 3;</li>
+<li>we de resultaten van de demonstrator kunnen gebruiken om omdenken naar integraal gebruik te promoten (zonder de data zelf in huis te halen). Het is een uitgelezen kans om het ‘publiek’ vanuit integraal gebruik met de data te laten werken.
+</li>
+</ul></section><section id="de-demo"><h3 id="x1-2-de-demo"><span class="secno">1.2 </span>De demo</h3><p>De DisGeo Demo, fase 2, is ontwikkeld van 8 - 14 juli 2020 in een High 5 setting door Kadaster, Provincie Noord-Holland, Netage, IHW, en Geonovum in opdracht van BZK. De demo toont wat Linked Data voor DisGeo kan betekenen.</p><p>Een High 5 is een soort 5 dagen lange innovatiesprint, waarbij ontwikkelaars samen in korte tijd bepaalde use cases implementeren in een demonstrator. Het verschil met een gewone sprint is dat een High 5 innoverend en inspirerend is: <em>'je mag verrast worden'</em>.
+</p></section><section id="doel"><h3 id="x1-3-doel"><span class="secno">1.3 </span>Doel</h3><p>De DisGeo Demo fase 2 toont wat Linked Data voor DisGeo kan betekenen, en wat de tekortkomingen zijn. De nadruk ligt daarbij op integrale gebruiksvragen over datasets heen, gebaseerd op samenhang tussen datasets.</p><p>In 2019 is de DisGeo Demonstrator fase 1 ontwikkeld, waarbij we er tegenaan liepen dat het wel mogelijk, maar om meerdere redenen niet ideaal is om API's aan elkaar te knopen en op die manier integrale vragen over datasets heen te kunnen stellen [<cite><a class="bibref" href="#bib-dll1">DLL1</a></cite>]. Daarom besloten we een tweede versie van de demonstrator te maken die het ideaalplaatje concreet maakt zodat daarmee:</p><ul>
+<li>Een inrichtingsvorm van DISGeo concreet wordt getoond,
+</li>
+<li>inclusief een infrastructuur van één of meerdere knowledge graphs
+</li>
+<li>Concrete use cases worden getoond. </li>
+<li>De demonstrator breed raadpleegbaar is via een lab-omgeving of productie-omgeving (bij voorkeur bij het Kadaster).</li>
+<li>Lessons learned worden opgeleverd voor DISGeo waaronder ook aanbevelingen voor het (conceptueel) informatiemodel</li>
+</ul><p>En daarmee ook</p><ul>
+<li>Componenten beschikbaar komen voor de Linked Data – en URI-strategie en passend bij de datastrategie van DISGeo die parallel wordt opgesteld.</li>
+<li>De gebruikers met periodiek geactualiseerde data de infrastructuur van knowledge graphs nu al concreet kunnen toepassen in hun werk.
+</li>
+</ul></section><section id="resultaten"><h3 id="x1-4-resultaten"><span class="secno">1.4 </span>Resultaten</h3><ul>
+<li><a href="https://geonovum.github.io/disgeo-demo2">Dit ReSpec document</a></li>
+<li><a href="https://github.com/Geonovum/disgeo-demo-2">Github omgeving voor ontwikkeling</a></li>
+<li><a href="https://labs.kadaster.nl/cases/disgeo-high5">Lab omgeving</a> met <a href="https://data.labs.kadaster.nl/disgeo/">data</a>, breed raadpleegbaar:
+</li>
+<li>Eindpresentatie op dinsdag 14 juli: <a href="https://www.eventbrite.com/e/innoveren-voor-disgeo-eindpresentatie-innovatiesprint-tickets-111946306416">Innoveren voor DisGeo</a></li>
+<li>link naar de video's van het webinar: <a href="https://www.geonovum.nl/themas/linked-data/webinar-dis-geo">Webinar</a></li>
+<li>Communicatie-activiteiten, waaronder een <a href="https://labs.kadaster.nl/assets/videos/disgeo.mp4">video waarin de 3D Rotterdam omgeving wordt gedemonstreerd</a></li>
+</ul></section></section><section data-format="markdown" id="use-cases"><!--OddPage--><h2 id="x2-use-cases"><span class="secno">2. </span>Use cases</h2><section id="brandweer-case-rotterdam"><h3 id="x2-1-brandweer-case-rotterdam"><span class="secno">2.1 </span>Brandweer case Rotterdam</h3><p>Relevant gebied – <strong>regio Rotterdam</strong></p><p>Er woedt een grote brand in een pand ergens in Rotterdam. Om de brand zo goed mogelijk te kunnen bestrijden en de gevolgen voor de omgeving te beperken, moet er allerlei informatie verzameld worden.
+</p><ol>
+<li><strong>Tijdens de brand</strong> wil de brandweer alles weten wat relevant is, op een overzichtelijke manier.  </li>
+</ol><ul>
+<li>Informatie die relevant is voor de brandbestrijding (pand, eigenaar, bedrijf, SBI codes van het KvK, bekende risicofactoren etc.)</li>
+<li>Informatie die relevant is voor evacuatie van de omgeving zoals gevaarlijke bedrijven in de buurt, kinderdagverblijven, scholen, sportzalen (voor opvang), etc.</li>
+</ul><ol start="2">
+<li><strong>Achteraf</strong> wordt er een impactanalyse gedaan: wat was de geschatte impact van de brand; hoeveel bedrijven moesten ontruimd worden; is er verkeershinder geweest en wt was de economische schade daarvan, hoe lang duurde dat, wat is de milieuschade, etc.</li>
+</ol><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><aside class=""><p>Dit kun je ook voor elkaar krijgen in een datawarehouse waar allerlei relevante datasets bij elkaar worden gezet. De winst in deze demonstrator zit echter onder de motorkap. De data blijft bij de bron en is verregaand geïntegreerd door middel van linking, en daardoor in samenhang te gebruiken.
+</p>
+</aside></div></section><section id="brandweer-bluswater-case-castricum"><h3 id="x2-2-brandweer-bluswater-case-castricum"><span class="secno">2.2 </span>Brandweer bluswater case Castricum</h3><p>Relevant gebied – <strong>Castricum</strong></p><p>Er is een brand op een locatie in Castricum. Brandweer is ter plaatse en er wordt volop geblust.
+</p><p>Als het blussen lang duurt, ontstaan er vragen over de beschikbaarheid van het bluswater: </p><ul>
+<li>Kunnen we het water blijven onttrekken uit het huidige punt?
+</li>
+<li>Wat is het gevolg voor de omliggende wateren? </li>
+<li>De dijk die langs het water ligt, gaat deze niet inzakken of uitdrogen?
+</li>
+<li>Wat is de invloed op de grondwaterstand en moet hier rekening mee gehouden worden gegeven omliggende bedrijven die daarvan afhankelijk zijn?</li>
+</ul><p>De andere grote vraag is waar het gebruikte bluswater naar toe gaat. Meestal gaat het om veel water dat bovendien vaak vervuild is, bijvoorbeeld met chloride of asbestdeeltjes. Hierbij speelt: </p><ul>
+<li>Waarmee is het bluswater verontreinigd en welk risico zit hier aan, wat is de mogelijke milieuschade?</li>
+<li>Waar stroomt het gebruikte bluswater naar toe (denk aan sloten die verbonden zijn met omliggend oppervlaktewater, overstortputten, riool dat water afvoert richting gemaal en waterzuiveringsinstallaties)?</li>
+<li>Hoeveel water is dit, wat is de capaciteit van de omgeving voor het afvoeren van het water, is er risico op overstromingen?</li>
+</ul><p>Deze use case demonstreert het koppelen van eigen, gesloten data aan basisregistratie data. In dit geval zijn dit de beheer openbare ruimte (BOR) objecten, ook wel areaaldata, van de Provincie Noord-Holland, die via een link verbonden zijn aan de corresponderende BGT objecten, en via de BGT uiteindelijk aan de GWSW rioolnetwerkdata. In de <a href="https://labs.kadaster.nl/stories/high5-imbor/">data story</a> is vooral de vraag *"waar stroomt het gebruikte bluswater naar toe"* uitgewerkt.</p><p>Voordeel van de beschikbaarheid van deze informatie in samenhang:</p><ul>
+<li>Scenario planning wordt mogelijk ter plekke en op elk moment
+</li>
+<li>Met AI kun je zwakheden in het systeem preventief detecteren</li>
+</ul></section></section><section data-format="markdown" id="data"><!--OddPage--><h2 id="x3-data"><span class="secno">3. </span>Data</h2><p>Er zijn allerlei verschillende databronnen gebruikt in de demonstrator. Sommmige daarvan zijn al beschikbare productiedata of waren al eerder ten behoeve van experimenten geproduceerd, andere zijn ter gelegenheid van deze demonstrator als linked data gepubliceerd.
+</p><p>Selectiecriteria voor de data: </p><ul>
+<li>Het uitgangspunt is dat ALLE data die we in de demonstrator gebruiken, Linked Data is. In sommige gevallen zetten we data zelf nog om.</li>
+<li>Primaire voorkeur voor productiedata.</li>
+<li>De data moet beschikbaar zijn voor tenminste één van onze twee use case gebieden: Rotterdam en Castricum</li>
+</ul><p>Het verzamelen en prepareren van de data is in de weken voorafgaand aan de High 5 grotendeels al gedaan. Om 14:45 op dag 1 van de High 5 is alle data die nodig is voor de demonstrator redelijk compleet. Dit ging sneller dan bij eerdere soortgelijke experimenten. </p><p>Datasets waarbij is aangegeven dat ze via Kadaster Labs beschikbaar zijn, zijn te vinden op de <a href="https://data.labs.kadaster.nl/disgeo/">Kadaster Labs DISGeo landingspagina</a>, ook te bevragen via het <a href="https://api.labs.kadaster.nl/datasets/disgeo/disgeo/services/disgeo/sparql">SPARQL endpoint</a>. Op de landingspagina is beschreven welke gegevens per dataset beschikbaar zijn en onder welke licentie deze eventueel te gebruiken is.</p><p>BAG data hebben we via <a href="https://bag.basisregistraties.overheid.nl/sparql">https://bag.basisregistraties.overheid.nl/sparql</a> gebruikt.
+</p><p>Verder hebben we gebruikt:</p><ul>
+<li>GWSW data van RIONED: <a href="https://sparql.gwsw.nl/">https://sparql.gwsw.nl/</a>
+<a href="https://sparql.gwsw.nl/sparql">https://sparql.gwsw.nl/sparql</a>
+</li>
+<li>RCE data: <a href="https://linkeddata.cultureelerfgoed.nl/">https://linkeddata.cultureelerfgoed.nl/</a></li>
+<li>Basisschool data (DUO): <a href="https://lod.onderwijsregistratie.nl/">https://lod.onderwijsregistratie.nl/</a></li>
+<li>3D data Rotterdam
+</li>
+<li>Areaaldata (BOR) van Provincie Noord-Holland van de trajecten N203 en N513 (Uitgeest, Castricum) <a href="https://data.labs.kadaster.nl/disgeo/AreaaldataN203N513/sparql/AreaaldataN203N513">SPARQL endpoint</a></li>
+</ul></section><section data-format="markdown" id="tools"><!--OddPage--><h2 id="x4-tools"><span class="secno">4. </span>Tools</h2><p>De volgende tools zijn ingezet voor de demonstrator.</p><section id="ontodia"><h3 id="x4-1-ontodia"><span class="secno">4.1 </span>Ontodia</h3><p><a href="https://metaphacts.com/ontodia">Ontodia</a> is een linked data viewer waarmee je zowel datamodelen als data kunt visualiseren. Deze tool maakt mooi zichtbaar hoe je door samenhangende data heen kan browsen. Bijzonder hierbij is dat de data niet op één plek hoeft te staan. Je kunt, als er maar links tussen datasets aangebracht zijn, naadloos van object naar object browsen ongeacht in welke datasets deze objecten staan.
+</p><p>Je kunt <a href="https://labs.kadaster.nl/demonstrators/graph-browser/">hier</a> de in de demonstrator gebruikte data bekijken in Ontodia. </p></section><section id="x3d-viewer"><h3 id="x4-2-3d-viewer"><span class="secno">4.2 </span>3D viewer</h3><p>Deze viewer toont een interactief 3D model van Rotterdam van waaruit je met SPARQL access informatie kunt opvragen uit DisGeo bronnen. Je kunt zo de kracht van een GIS systeem (de 3D viewer is gebaseerd op ArcGIS) combineren met de kracht van linked data waardoor je administratieve gegevens kunt integreren met geodata.
+</p></section><section id="data-stories"><h3 id="x4-3-data-stories"><span class="secno">4.3 </span>Data stories</h3><p><a href="https://labs.kadaster.nl/stories/">Data stories</a> zijn een medium dat het Kadaster Science team gebruikt om verhalen rondom data te vertellen. Een data story combineert interactieve datavisualisaties met toelichtende tekst. De datavisualisaties zijn altijd gebaseerd op actuele data omdat deze gebruik maken van SPARQL bevragingen.
+</p><ul>
+<li>Data story <a href="https://labs.kadaster.nl/stories/disgeo/">DisGeo data analyse</a></li>
+<li>Data story <a href="https://labs.kadaster.nl/stories/high5-imbor/">Integratie Linked Data &amp; Geo-data</a></li>
+</ul></section><section id="analytics-tool"><h3 id="x4-4-analytics-tool"><span class="secno">4.4 </span>Analytics tool</h3><p><a href="http://vega.github.io/voyager/">Voyager</a>. Voyager is een javascript library voor data visualisatie die met CSV output van SPARQL query kan werken. Deze wordt in de Rotterdam use case toepast voor de 'analyse achteraf' stap.</p></section><section id="visual-sparql-builder"><h3 id="x4-5-visual-sparql-builder"><span class="secno">4.5 </span>Visual SPARQL Builder</h3><p>Deze tool maakt het zelf maken van SPARQL queries eenvoudiger met een user interface.
+</p><p>In combinatie met Ontodia kan dit een krachtige tool zijn. Als je in Ontodia een interessant gegevenspatroon hebt gevonden, kun je dit omzetten naar een query, die je met behulp van de Visual Query Builder kunt parameteriseren en dan loslaten op een dataset om vergelijkbare data te vinden. Op basis hiervan kun je dan bijvoorbeeld weer rapporten maken.
+</p><aside class="voorbeeld"><p>Je bekijkt in Ontodia alle gegevens van het pand waar een brand is geweest; dit is blijkbaar een interessante combinatie van eigenschappen die ervoor zorgde dat het incident kon plaatsvinden. Dit gegevenspatroon laat je met behulp van de Visual Query Builder los op alle panden in Rotterdam, zodat je vergelijkbare panden kunt vinden en preventieve maatregelen nemen om te voorkomen dat daar een vergelijkbare brand uitbreekt.</p>
+</aside></section><section id="rml-en-r2rml"><h3 id="x4-6-rml-en-r2rml"><span class="secno">4.6 </span>RML en R2RML</h3><p><a href="https://rml.io/specs/rml/">RML</a> en <a href="https://www.w3.org/TR/r2rml/">R2RML</a> zijn de specificaties die gebruikt worden om een mapping te beschrijven om JSON, XML, CSV en databases om te zetten naar RDF formaat. Er zijn tools beschikbaar die het mogelijk maken om deze mappings uit te voeren. Binnen deze high-five zijn <a href="https://github.com/carml/carml">CARML</a> en <a href="https://github.com/netage">LinkedDataFactory</a> (Wordt binnenkort geopensourced) gebruikt.</p></section><section id="xrm"><h3 id="x4-7-xrm"><span class="secno">4.7 </span>XRM</h3><p>Om mappings te maken in RML zodat bestanden omgezet kunnen worden naar linked data formaat (rdf) is de tool <a href="https://zazuko.com/products/expressive-rdf-mapper/">Expressive RDF Mapper</a> gebruikt. XRM werkt met een "domain specific language" en bevat een simpele syntax die binnen Eclipse gebruikt kan worden om een mapping vorm te geven en vervolgens geautomatiseerd de volledige mapping uitwerkt. Hierdoor worden mapping beheersbehaar en makkelijk op te bouwen en aan te passen.</p></section><section id="overig"><h3 id="x4-8-overig"><span class="secno">4.8 </span>Overig</h3><p>Eventueel toetje: KOOPjs in combinatie met ArcGis StoryMaps. Deze laatste kan nu ook met data werken die niet in ArcGis zit, maar die je live uit een SPARQL endpoint haalt.</p></section></section><section data-format="markdown" id="de-lessons-learned"><!--OddPage--><h2 id="x5-de-lessons-learned"><span class="secno">5. </span>De Lessons Learned</h2><p>Tijdens het ontwikkelen van de demonstrator is er veel geleerd. Dit zijn belangrijke inzichten voor de verdere ontwikkeling van DiSGeo en voor diverse standaardenactiviteiten. Wat goed bleek te werken, en wat (nog) niet, wordt in dit hoofdstuk beschreven.</p><section id="we-zien-nog-weinig-links"><h3 id="x5-1-we-zien-nog-weinig-links"><span class="secno">5.1 </span>We zien nog weinig links</h3><p>Veel van de datasets die we gebruiken in de demonstrator zijn wel op basis van linked data standaarden gepubliceerd, maar bevatten geen links naar andere data, ook niet naar bestaande basisregistraties. Toch zijn juist deze koppelingen erg waardevol. De Spatial Data on the Web Best Practices [<cite><a class="bibref" href="#bib-sdw-bp">sdw-bp</a></cite>] beveelt dit aan in <a href="https://www.w3.org/TR/sdw-bp/#linking">best practice 3: Link resources together to create the Web of data</a>. Geodata wordt pas echt onderdeel van het web van data, als het administratieve links bevat naar andere data op het web.
+</p><p>Onze basisregistraties zijn bij uitstek geschikt om naar te linken. Toch gebeurt dit nog veel te weinig. </p><aside class="example" id="example-1"><div class="marker">
+      <a class="self-link" href="#example-1">Voorbeeld 1</a>
+    </div><ul>
+<li>De data die we in de Brandweer bluswater case Castricum gebruiken, bevat geen administratieve links naar basisregistraties. Links tussen bijvoorbeeld IMGeo putten en GWSW rioolputten zouden veel toegevoegde waarde hebben.
+</li>
+<li>De Rijksmonumenten dataset zou eigenlijk links tussen rijksmonumenten en kadastrale percelen moeten bevatten, maar deze zijn niet aanwezig.
+</li>
+</ul>
+</aside><p>Beide datasets bevatten wel <em>ruimtelijke relaties</em> met objecten uit basisregistraties. Door zelf een ruimtelijke vraag te stellen, bijvoorbeeld 'met welk kadastraal perceel overlapt dit rijksmonument?' kun je de informatie wel achterhalen. Maar dit heeft een aantal nadelen. </p><p>Het eerste nadeel is een praktische: niet alle gebruikers beschikken over de kennis en/of tooling om dit soort vragen te kunnen stellen. Je hebt hier ofwel GeoSPARQL, ofwel een GIS systeem voor nodig. Dit is een drempel voor een deel van de potentiele gebruikers.</p><p>Het tweede nadeel heeft te maken met interpretatie van de data. Gebruikers kunnen op basis van zelf ontdekte ruimtelijke relaties verkeerde conclusies trekken. Objecten zullen soms ruimtelijk overlappen maar in feite niet de relatie met elkaar hebben die de gebruiker veronderstelt. Hoe interpreteer je bijvoorbeeld een situatie waar meerdere percelen met een rijksmonument overlappen? Of in welke mate topografische objecten die elkaar overlappen of raken, met elkaar te maken hebben? Kunstwerken die onder provinciale wegen doorlopen hoeven bijvoorbeeld geen onderdeel uit te maken van het provinciale wegennetwerk, maar kunnen alles te maken hebben met het waterschap ter plaatse. Of denk aan BGT wegdelen die in het gebied van een waterschap vallen, maar waar dat waterschap niet voor verantwoordelijk is.</p><p>Aan de andere kant is het ook niet te doen om alle mogelijke ruimtelijke relaties die er zijn tussen objecten, administratief vast te leggen. Dit zou veel te veel relaties opleveren, waardoor gebruikers door de bomen het bos niet meer zien.
+</p><p>De vraag is dan: welke ruimtelijke links ga je administratief vastleggen, en welke niet? Binnen DISGeo moet hierover nagedacht worden. </p><p>Om in de demonstrator met de datasets in samenhang te kunnen werken, zijn er tijdens de High 5 ad hoc linksets (koppeltabellen) tussen de data gemaakt. Meer hierover in <a href="#linksetjes-snel-gemaakt-maar-niet-beheerd">de geleerde les over linksets</a>.</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Denk binnen DISGeo goed na over welke ruimtelijke relaties vastgelegd moeten worden in de data. Daarnaast moet er meer nadruk gelegd worden op het vastleggen van reeds bestaande relaties.</p>
+</aside></section><section id="wat-kan-je-dan-met-die-links"><h3 id="x5-2-wat-kan-je-dan-met-die-links"><span class="secno">5.2 </span>Wat kan je dan met die links</h3><p>Op het moment dat die links tussen individuele objecten uit verschillende registraties er zijn, wordt werken met de data veel eenvoudiger. Dit laat de demonstrator zien.
+</p><p>Je kunt bijvoorbeeld eenvoudig door de data browsen. We kunnen nu met behulp van een tool zoals Ontodia door data die gelinkt is heen klikken en daarbij zonder enige moeite doorklikken van een BOR object van een provincie naar het BGT object en van daaruit doorklikken naar het corresponderende GWSW object. Over de grenzen van registraties heen, waarbij de data echt fysiek op verschillende plekken staat.
+</p><p>Je kunt op basis van deze gelinkte registraties ook eenvoudig rapportjes maken uit de data. Via de Ontodia browser kun je ook, als je een interessant data patroon bij elkaar hebt geklikt, daar een query van maken, die een beetje aanpassen in een query bouwtool en het resultaat vervolgens op een dashboard laten zien. </p><p>Tenslotte kun je ook complexe analyses uitvoeren waarbij je baat hebt bij het gekoppeld zijn van de data.
+</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Binnen DiSGeo wordt tot nu toe vooral nadruk gelegd op de harmonisatie van de huidige geobasisregistraties door het aanbrengen van relaties, semantische harmonisatie en het vastleggen van de semantiek tussen met name BGT, BRT, BAG, en WOZ. Vanuit een beleidsoogpunt is het natuurlijk essentieel dat de informatie die aangeboden wordt juist is, goed aansluit en duidelijk is.</p>
+<p>Echter zou er voor bredere adoptie ook veel meer aandacht moeten zijn voor de voordelen die het biedt voor de afnemer wanneer deze met dezelfde technieken werkt. DiSGeo kan veel meer zijn dan een 'samenhangende objectenregistratie' in de zin van een nieuwe, grotere bak (silo) van geobasisgegevens die in samenhang zijn gebracht. De grote meerwaarde voor afnemers zit juist in de samenhang tussen die samenhangende objectenregistratie en de gegevens daaromheen, in registraties die sector-, domein of organisatiespecifiek zijn (bijvoorbeeld de beheergegevens van de provincie Noord Holland in een van onze voorbeelden). Dit kan zowel open als gesloten data zijn: juist de integratie met eigen, gesloten linked datasets biedt enorme voordelen voor organisaties die hun eigen data direct kunnen koppelen aan de samenhangende objectenregistratie.
+</p>
+<p>Binnen zowel het informatiemodel als de architectuur van DisGeo zou er dan ook aandacht zou moeten zijn voor de voordelen die het biedt voor afnemers van de data wanneer DisGeo data als linked data wordt gepubliceerd.</p>
+</aside></section><section id="linksetjes-snel-gemaakt-maar-niet-beheerd"><h3 id="x5-3-linksetjes-snel-gemaakt-maar-niet-beheerd"><span class="secno">5.3 </span>Linksetjes... snel gemaakt, maar niet beheerd</h3><p>Er zijn tijdens de High 5 meerdere linksets gemaakt, bijvoorbeeld tussen scholen uit de Duo dataset en BAG verblijfsobjecten en tussen Rijksmonumenten uit de RCE dataset en kadastrale percelen. Dat is, bij een dataset van beperkte omvang, vrij eenvoudig te doen met behulp van een SPARQL query, als er hiervoor maar aanknopingspunten in de data zijn. Het eerste 'linksetje' verscheen al tijdens de eerste uurtjes van de High 5.
+</p><p>Zulke linksets worden echter vaak eenmalig gemaakt op basis van een query. Terwijl de desbetreffende links, die relaties tussen objecten vastleggen, eigenlijk in de data zouden moeten zitten en beheerd worden. De data wijzigt immers voordurend. Bovendien zou de kwaliteit van belangrijke links, zeker links van en naar basisregistraties, de verantwoordelijkheid van een data eigenaar moeten zijn. Dit beheer en eigenaarschap is er echter meestal niet, want wie is verantwoordelijk voor de linkset? Wie beheert de links en betaalt daar dus ook voor?
+</p><p>Er zijn tegenwoordig al aardig wat als linked data gepubliceerde (overheids- geo-) datasets in Nederland. <em>Maar deze data is vrijwel nooit gelinkt aan andere datasets!</em> Het gaat in andere woorden veelal om vier sterren, geen vijf sterren linked data - de vijfde ster betreft namelijk het gelinkt zijn van de data. </p><p>Er zijn maar enkele voorbeelden die we kennen van een beheerde linkset tussen basisregistraties; tussen de BRT en de BAG, de BRK en de BAG en de BGT en de BAG.</p><p>De linkset tussen de BRT en de BAG is een goed voorbeeld van een koppeling tussen twee datasets waarvan het beheer tegenwoordig geregeld is. Als onderdeel van het werkproces rondom het actualiseren van BRT data wordt ook gekeken naar de BAG panden, met als resultaat relaties tussen BRT objecten en gerelateerde BAG panden. Deze links werden tot voor kort echter weer weggegooid; tegenwoordig wordt deze informatie doorgespeeld aan het Kadaster data science team dat de linkset tussen BRT en BAG publiceert en actueel houdt.</p><p>Tijdens de High 5 gemaakte linksets:
+</p><ul>
+<li>Tussen BRK aliases (om verschillende URIs voor percelen te koppelen)</li>
+<li>Tussen BRK percelen en RCE Rijksmonumenten</li>
+<li>Tussen DUO onderwijsaanbieders en BAG verblijfsobjecten</li>
+<li>Tussen NHR adresgegevens en BAG nummeraanduidingen</li>
+</ul><p>Bij de vorige DISGeo demontrator kwam dit punt ook al naar voren: zie de uitleg in <a href="https://docs.geostandaarden.nl/disgeo/dll/#governance-op-het-snijvlak">governance op het snijvlak</a>. Het is noodzakelijk dat niet alleen de objecten uit basisregistraties (en ook andere registraties), maar ook de <em>links tussen objecten</em> (relaties) beheerd worden. Zoals een toeschouwer van de einddemo op de laatste dag van de High 5 opmerkte: Het moet voor de gebruiker duidelijk zijn met welke actualiteit hij/zij werkt. Dit geldt ook voor de relaties die er tussen objecten zijn gelegd, want deze zijn gevoelig voor verandering als objecten veranderen. In de high 5 liepen we niet expliciet tegen problemen met actualiteit aan, maar we nemen dit punt wel mee in ons verdere werk voor DiS Geo.
+</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Zoals reeds in de eerdere demonstrator gemeld, <a href="https://docs.geostandaarden.nl/disgeo/dll/#governance-op-het-snijvlak">governance op het snijvlak</a> verdient veel meer aandacht. Ook in deze demonstrator is de noodzaak daarvan weer duidelijk zichtbaar geworden.</p>
+<p>Bij het vaststellen van de inhoud van de samenhangende objectenregistratie moeten ook de relaties tussen objecten en de governance op deze relaties worden meegenomen.</p>
+</aside></section><section id="uniforme-referentie-naar-basisregistraties"><h3 id="x5-4-uniforme-referentie-naar-basisregistraties"><span class="secno">5.4 </span>Uniforme referentie naar basisregistraties</h3><p>In de huidige praktijk is er gebrek aan eenduidigheid bij het refereren naar objecten uit basisregistraties, vanuit een eigen dataset of door basisregistraties onderling. Dit probleem is eerder al onderkend tijdens een <a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/37">linked data onderzoek in INSPIRE context</a>.</p><p>Internationaal is er een gestandaardiseerd lijstje van linksoorten om te linken van het ene geo-object naar het andere (denk aan <code>within</code>, <code>touches</code>, <code>contains</code>). Dit is beschreven in Spatial Data on the Web <a href="https://www.w3.org/TR/sdw-bp/#entity-level-links">Best Practice 10: Use appropriate relation types to link Spatial Things</a>.
+</p><p>Wat echter nog ontbreekt, is een gestandaardiseerde property waarmee partijen kunnen linken naar objecten in basisregistraties, op zo'n manier dat gebruikers kunnen zien dat het naar een basisgegeven linkt. Zo'n property zou gestandaardiseerd moeten worden in de DISGeo vocabulaire onder bijvoorbeeld de naam: <code>disgeo-object-ref</code> of <code>basisgegeven-ref</code>.</p><p>We vragen ons nog wel af of zo'n generieke verwijzing voldoende is, of dat wilt kunnen zien naar wat voor soort object de link verwijst. Bijvoorbeeld: <code>disgeo-pand-ref</code>, <code>disgeo-kunstwerk-ref</code>. Overwegingen hierbij:</p><ul>
+<li>Meestal is een generieke link voldoende: je kunt achterhalen wat voor type object het is, door de link te volgen.
+</li>
+<li>In het geval dat een object linkt naar meerdere basisregistratie objecten, dan hebben specifiekere referenties meerwaarde, want je kunt dan aan de linknaam zien om wat voor objecten het gaat. Je hoeft ze dan niet op te halen om te zien om wat voor type objecten het gaat .</li>
+<li>Als zulke, specifiekere links er zijn kun je op basis daarvan ook kwaliteitscontroles uitvoeren.</li>
+</ul><p>Er zijn ook andere standaarden die dit soort linknamen definiëren, bijvoorbeeld:</p><ul>
+<li>Het top level model van de nieuwe NTA 8035 definieert een aantal relaties zoals <code>heeftBegrenzing</code>.</li>
+<li>De <a href="https://w3c-lbd-cg.github.io/bot/">building ontology</a> definieert semantische relaties met geo-objecten, zoals <code>hasBuilding</code>.
+</li>
+<li>Semantic Sensor Network Ontology [<cite><a class="bibref" href="#bib-vocab-ssn">vocab-ssn</a></cite>] standaardiseert de link van metingen naar het object waarvan een eigenschap gemeten wordt.</li>
+</ul><p>Een gestandaardiseerde <code>disgeo-object-ref</code> staat niet in de weg van het gebruik van deze andere standaarden. Het is geen enkel probleem, sterker nog het verhoogt juist de interoperabiliteit, om in deze gevallen twee keer de link te leggen: één keer met behulp van de door DisGeo gestandaardiseerde link, en één keer met de link uit de andere standaard. </p><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Noot</span></div><aside class=""><p>Het is in linked data niet ongebruikelijk om één relatie tussen twee objecten met meerdere triples vast te leggen. Dit kan door het expliciet uitdrukken van deze triples, of bijvoorbeeld door afleiden van extra relaties op basis van inferencing.</p>
+<p>Naast de relatief semantisch zwakkere disgeo relaties is het alsnog mogelijk om:</p>
+<ul>
+<li>als het object exact hetzelfde object is als in de basisregistratie,<ul>
+<li>direct gebruik te maken van de basisregistratie URI als onderwerp van eigen triples;</li>
+<li>gebruik te maken van owl:sameAs om de objecten gelijk te stellen.</li>
+</ul>
+</li>
+<li>als het object niet exact hetzelfde is, maar wel gerelateerd, andere semantische relaties te gebruiken om de relatie tussen de objecten te beschrijven.</li>
+</ul>
+</aside></div><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Om vanuit andere dan basisregistraties een relatie naar een basisregistratie uit te drukken zou een gestandariseerde verwijzing veel duidelijkheid bieden. Dit helpt om duidelijk te maken dat de links binnen een dataset verwijzen naar 1 van de basisregistraties waardoor de samenhang beter zichtbaar wordt.</p>
+<p>Overweeg het opnemen van deze gestandaardiseerde relatie in het informatiemodel voor de samenhangende objectenregistratie, zodat deze beschikbaar is voor hergebruik.</p>
+</aside></section><section id="open-en-gesloten-linked-data"><h3 id="x5-5-open-en-gesloten-linked-data"><span class="secno">5.5 </span>Open en gesloten linked data</h3><p>Hoe koppel je open en gesloten knowledge graphs aan elkaar? Afhankelijk van wat je linked data opslagsysteem (oftwel triple store) kan is het tegenwoordig al mogelijk om ofwel op graph (dataset) niveau, ofwel op objectniveau in te stellen op basis van welke voorwaarden gebruikers de data mogen ontvangen.
+</p><p>Twee belangrijke use cases hiervoor zijn: </p><ul>
+<li>Als de data belangrijk is voor een commercieel verdienmodel, zoals bijvoorbeeld bij een bedrijf dat data verkoopt voor gebruik in apps. Dit bedrijf wil aan de ene kant goed gevonden worden en dus de data vindbaar via Google laten zijn, maar aan de andere kant ook weer niet de complete data in al haar rijkheid, want die wil ze kunnen verkopen. Een deel van de data is dan open, een deel alleen beschikbaar voor wie betaalt. Denk bijvoorbeeld aan een online krant.</li>
+<li>Als de data privacygevoelig is. Je wilt dan een gebruiker alleen toegang geven tot persoonlijke informatie als via bijvoorbeeld Digid geverifiëerd is dat die persoon die data mag zien.
+</li>
+</ul><p>In de demonstrator hebben we dit niet uitgebreid laten zien, juist omdat het al eenvoudig is om dit te doen. Het is wel een belangrijk punt om je te realiseren: linked data betekent niet per sé linked OPEN data; en gesloten en open linked data kunnen aan elkaar gekoppeld worden waarbij authenticatie en authorisatie van de gesloten data met standaard web technieken eenvoudig en goed geregeld zijn. </p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Linked data betekent niet per sé linked OPEN data; gesloten en open linked data kunnen aan elkaar gekoppeld. Voor een eigenaar van gesloten linked data biedt dit veel voordeel, zo kan een provincie bijvoorbeeld de open data van DisGeo als uitgangspunt nemen en daarmee de eigen, gesloten beheerdata verrijken. Dit punt moet goed onder de aandacht gebracht worden van het werkveld.</p>
+</aside></section><section id="links-tussen-netwerken-en-fysieke-objecten"><h3 id="x5-6-links-tussen-netwerken-en-fysieke-objecten"><span class="secno">5.6 </span>Links tussen netwerken en fysieke objecten</h3><p>Geo-objecten spelen vaak een rol in een netwerk, bijvoorbeeld rioolputten in een waterafvoernetwerk, bruggen in een wegtransportnetwerk, of sluizen in een watertransportnetwerk.
+</p><p>De beheerders van deze netwerken (bijvoorbeeld waterschappen, wegbeheerders) leggen doorgaans de fysieke- en beheerkenmerken van zulke objecten vast in een systeem, en het netwerk met haar knooppunten en verbindingen in een ander systeem. Bij het beantwoorden van vragen zoals in onze brandweer use cases, maar ook bijvoorbeeld in vele mobiliteits-use cases, zijn <em>beide</em> van belang en vooral ook <em>in samenhang met elkaar</em>.
+</p><p>Wij trekken hieruit de conclusie dat DISGeo de mogelijkheid moet bieden om netwerkmodellen op te nemen. Dit netwerkmodel is idealiter geharmoniseerd met de nieuwe NEN 2660, omdat deze standaard gevolgd zal worden in de systemen die gebruikt worden voor het beheer van de objecten. </p><p>Het betekent ook dat er links gelegd moeten worden tussen de knooppunten en verbindingslijnen in het netwerk enerzijds, en de fysieke objecten die het netwerk realiseren in de fysieke werkelijkheid anderszijds. Bijvoorbeeld: een link tussen het BGT waterdeel dat een deel van een kanaal representeert en de corresponderende verbindingslijn in het waternetwerk.</p><p>Alle fysieke objecten én alle knooppunten en verbindingslijnen moeten dus een ID hebben zodat er links naartoe gelegd kunnen worden. Met andere woorden, ze moeten voldoen aan Spatial Data on the Web <a href="https://www.w3.org/TR/sdw-bp/#globally-unique-ids">Best Practice 1: Use globally unique persistent HTTP URIs for Spatial Things</a>.</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Neem een algemeen netwerkmodel op in DisGeo; probeer dit te laten voldoen aan en/of aansluiten op de nieuwe NEN 2660. Zorg dat fysieke objecten en netwerkobjecten gekoppeld kunnen worden; sluit hiervoor aan op internationale best practices.</p>
+</aside></section><section id="ruimtelijke-vragen-in-linked-data-nu-beter-ondersteund"><h3 id="x5-7-ruimtelijke-vragen-in-linked-data-nu-beter-ondersteund"><span class="secno">5.7 </span>Ruimtelijke vragen in linked data nu beter ondersteund</h3><p>GeoSPARQL [<cite><a class="bibref" href="#bib-geosparql">geosparql</a></cite>] is de standaard querytaal voor het ruimtelijk bevragen van linked geodata. Onze ervaringen tijdens deze high 5 lieten zien dat vergeleken met 2 á 3 jaar geleden  de ondersteuning voor GeoSPARQL enorm verbeterd is, zowel wat betreft compliance aan de standaard, als wat betreft performance. Er heeft een verschuiving plaatsgevonden van academische implementaties naar commerciële.
+</p><p>De meeste triple stores die GeoSPARQL support hebben, bieden: </p><ul>
+<li>Voor het uitdrukken van geometrie: WKT en vaak ook GML.
+</li>
+<li>2D en 3D support. </li>
+<li>WGS84 als coordinaatsysteem, meestal geen support voor andere ruimtelijke referentiesystemen.</li>
+<li>Voor ruimtelijke relaties meestal alleen Simple Features (geen Egenhofer en RCC8).
+</li>
+<li>Ruimtelijke indexering is meestal gebaseerd op WKT, 3D, en WGS84 coordinaten, dus je kan niet op centimeter nauwkeurigheid selecteren.
+</li>
+<li>De GeoSPARQL onderdelen Query rewrite en RDFS entailment worden meestal niet ondersteund. </li>
+</ul><p>De volgende tabel geeft voor een aantal gangbare triple stores aan of ze voldoen aan de GeoSPARQL standaard en hoe de performance is wat betreft ruimtelijke vragen. </p><table>
+<thead>
+<tr>
+<th>product</th>
+<th>compliance</th>
+<th>performance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://graphdb.ontotext.com">GraphDB</a></td>
+<td>ja</td>
+<td>redelijk, maar met grote datavolumes zoals die van de basisregistraties niet toereikend</td>
+</tr>
+<tr>
+<td><a href="https://www.stardog.com">Stardog</a></td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr>
+<td><a href="https://virtuoso.openlinksw.com">Virtuoso</a></td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr>
+<td><a href="https://www.marklogic.com">MarkLogic</a></td>
+<td>nee</td>
+<td>ja</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SemWebCentral/parliament">parliament</a></td>
+<td>verouderd</td>
+<td>onbekend</td>
+</tr>
+</tbody></table><p>De performance van GeoSPARQL-ondersteunende triple stores kan getest worden met deze <a href="https://data.labs.kadaster.nl/geosparql-test">dataset for benchmarking GeoSPARQL</a>.
+</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Er zijn de afgelopen tijd veel verbeteringen doorgevoerd wat betreft de ondersteuning van ruimtelijke Linked Data in de diverse producten. Echter is een aantal zaken in de diverse standaarden, waaronder GeoSPARQL, nog onvoldoende uitgewerkt. Voor DisGeo zijn deze standaarden van belang en DiSGeo zou om die reden internationale ontwikkelingen voor het verbeteren ervan, die momenteel gaande zijn, moeten ondersteunen. Dit kan bijvoorbeeld door vanuit het DisGeo programma in werkgroepen deel te nemen of experimenten te doen met in ontwikkeling zijnde standaarden.</p>
+</aside></section><section id="wanneer-geosparql-wanneer-gis"><h3 id="x5-8-wanneer-geosparql-wanneer-gis"><span class="secno">5.8 </span>Wanneer GeoSPARQL, wanneer GIS</h3><p>In de geowereld hebben we natuurlijk al lang de mogelijkheid om ruimtelijke vragen te stellen. Maar gegeven de beschikbaarheid van geo linked data, wanneer is het dan beter om GeoSPARQL te gebruiken, en wanneer een GIS? Je kunt je dit voorstellen als een tweetrapsraket. Vaak is er, om een ruimtelijk probleem op te lossen, eerst een selectie nodig van allerlei relevante data in een bepaald gebied. Data, die in verschillende systemen staat. Vervolgens wordt op die dataverzameling nadere analyse gedaan om de gestelde vraag te beantwoorden. In zo'n geval spelen zowel GeoSPARQL als GIS een cruciale rol:
+</p><ul>
+<li>De selectievraag wordt beantwoord met GeoSPARQL. Hiermee kun je eenvoudig heterogene data bij elkaar zoeken, uit verschillende registraties of systemen, en ongeacht of dit geodata is of niet. Denk bijvoorbeeld aan een combinatie van BAG panden, bijbehorende wijken en buurten en de CBS statistieken van dit gebied.  </li>
+<li>De analysevraag wordt na het inladen van deze geselecteerde data vervolgens beantwoord in een GIS.</li>
+</ul><p>Met andere woorden, geo-linked data en GIS zijn complementair. </p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>De realisatie, dat GIS en geo-Linked Data complementair zijn en ieder op hun eigen vlak de voorkeur verdienen, is een belangrijk inzicht en moet aan een breder publiek duidelijk gemaakt worden.</p>
+</aside></section><section id="geosparql-in-federatieve-queries"><h3 id="x5-9-geosparql-in-federatieve-queries"><span class="secno">5.9 </span>GeoSPARQL in federatieve queries</h3><p>Bij het gebruik van GeoSPARQL is er nog wel een technische beperking. Eén van de sterke punten van linked data is het kunnen bevragen van meerdere data endpoints binnen één query, waardoor je in één stap informatie kunt halen uit meerdere registraties. Je kunt, simpel gezegd, aan een triple store vragen:
+</p><p>"Geef mij het BGT object Wegdeel met id 12345 en zoek ook even bij dit andere endpoint op wat er nog meer over dit wegdeel bekend is"</p><p>Als je hierbij echter een geovraag wilt stellen (bijvoorbeeld: welke putten uit endpoint GWSW vallen binnen het polygoon van wegdeel Y uit endpoint BGT?) is dat nog maar zeer beperkt mogelijk. Tussen 2 endpoints van dezelfde vendor, bijvoorbeeld twee Virtuoso endpoints, werkt het mogelijk nog wel, maar tussen 2 endpoints van verschillende triple store producten niet. Hier laat de interoperabiliteit ons dus in de steek. Een mogelijke verklaring hiervoor is dat de endpoints alleen geovragen willen beantwoorden waarbij de objecten in de eigen ruimtelijke index staan.</p><p>Om te bewerkstelligen dat vendors dit mogelijk gaan maken, moet er in de GeoSPARQL standaard een aanbeveling komen over het ondersteunen van geovragen in federatieve queries. GeoSPARQL is ouder dan SPARQL 1.1, waarin federatie geregeld is.</p><p>In de demonstrator liepen we hier tegenaan bij de Castricum use case, en is dit opgelost door de gewenste query in stukken te knippen met een linkset tussen BGT en GWSW.</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Het stellen van ruimtelijke vragen over verschillende Linked Data bronnen heen wordt nog niet goed ondersteund. Dit is iets wat in de standaarden opgelost moet worden aangezien hier niet eerder use cases voor waren. DiSGeo zou een mooie Use Case aan kunnen bieden hiervoor. Dit sluit aan bij de <a href="#ruimtelijke-vragen-in-linked-data-nu-beter-ondersteund">eerdere aanbeveling</a> over het bijdragen aan ontwikkelingen in de relevante internationale standaarden.</p>
+</aside></section><section id="een-adres-is-nog-geen-locatie"><h3 id="x5-10-een-adres-is-nog-geen-locatie"><span class="secno">5.10 </span>Een adres is nog geen locatie</h3><p>Bij objecten die een adres hebben, of aan een BAG verblijfsobject gekoppeld zijn, blijkt dit niet altijd te betekenen dat het object zich ook daadwerkelijk op dit adres bevindt. Pas dus altijd goed op hoe je dit interpreteert, en verifieer zo goed mogelijk wat er precies bedoeld wordt met een adreskoppeling.
+</p><aside class="example" id="example-2"><div class="marker">
+      <a class="self-link" href="#example-2">Voorbeeld 2</a>
+    </div><p>Tijdens de High 5 vonden we voor de Rotterdam use case een kinderdagverblijf vlak bij de locatie van ons fictieve incident. Althans... volgens het KvK vestigingsadres, waarvan ook Google ervan uitgaat dat dit de locatie van het kinderdagverblijf is. Echter, volgens de dataset van kinderdagverblijven bevindt dit kinderdagverblijf zich op een ander adres! Dit bleek het adres te zijn waar de bijbehorende stichting geregistreerd staat. Aan de link, met de naam <code>bagid</code>, is dit niet te zien. De kinderen bevinden zich dus daadwerkelijk op de locatie vlak bij de brand, maar als de brandweer was uitgegaan van de kinderdagverblijven dataset, hadden ze dit niet geweten.</p>
+</aside><p>Onze aanbeveling is om in DISGeo goed vast te leggen wat er precies wordt bedoeld met adreskoppelingen of andere indirecte koppelingen met een locatie. Betekent dit dat het object zich daadwerkelijk op die locatie bevindt? Of is het niet meer dan een administratieve aanduiding? Ook objecten met een indirecte koppeling aan een locatie kunnen dan in ruimtelijke vragen gebruikt worden, terwijl objecten met een administratieve locatieaanduiding daarbij niet meegenomen worden.</p><p>Bovendien zou het zinnige verrijking zijn om de daadwerkelijke locaties van objecten, waar dit van toepassing is, zo veel mogelijk op te nemen, naast eventuele administratieve aanduidingen zoals een postadres. Met een herkenbare link uiteraard.
+</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Verwijzingen naar identifiers van bijvoorbeeld adressen in de basisregistraties hebben niet altijd de juiste of zelfs maar een duidelijke betekenis. Daardoor is het in ruimtelijke vragen niet goed mogelijk om objecten die relevant zijn in de context van de vraag, te scheiden van objecten die dat niet zijn. Denk bijvoorbeeld aan het kinderdagverblijf dat op basis van het vestigingsadres (waar de administratie zich bevindt, maar geen kinderen opgevangen worden) terugkomt in een zoekvraag naar locaties waar kinderen opgevangen kunnen worden.</p>
+<p>Het is belangrijk dat (Basis)registraties goed vastleggen wat ze bedoelen met adreskoppelingen. Ter bevordering van de samenhang zou DisGeo daarin moeten faciliteren (eventueel met een gestandaardiseerde relatie zoals in <a href="#uniforme-referentie-naar-basisregistraties">5.4</a> beschreven).</p>
+</aside></section><section id="geen-vendor-lock-in"><h3 id="x5-11-geen-vendor-lock-in"><span class="secno">5.11 </span>Geen vendor lock in!</h3><p>Tijdens de High 5, en ook tijdens het schrijven van deze Lessons Learned, waren we al snel zo lekker op dreef dat we ons op dag vier pas deze les realiseerden:
+</p><p>We hadden helemaal geen afspraken vooraf gemaakt over de te gebruiken tooling en versies daarvan. En tóch werkte alles. </p><p>Het feit dat we linked data standaarden gebruikten, en dat willekeurig welke tooling deze standaarden blijkbaar zonder ambiguiteiten ondersteunt, maakte het mogelijk dat we gewoon aan de slag konden met de toolset van onze voorkeur en daarbij geen enkel interoperabiliteitsprobleem ondervonden hebben. Dit is een belangrjike constatering, want hoewel het altijd de belofte van datastandaarden is geweest dat er interoperabiliteit mee bereikt wordt, werd dat in de praktijk nooit volledig waargemaakt. In dit geval wel!</p><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>De focus moet naast het verbeteren van de samenhang van basisregistraties ook liggen op de voordelen van het gebruik van open standaarden. De Linked Data aangeboden binnen DiSGeo kan met een grote verscheidenheid aan commerciële en open source tools gebruikt worden. Dit betekent dat organisaties die gebruik maken van de DiSGeo infrastructuur niet een specifieke tool of versie opgedrongen krijgen.</p>
+<p>Maak dit een uitgangspunt van zowel het informatiemodel voor de samenhangende objectregistratie, en van de DisGeo architectuur: baseer DisGeo op open standaarden zodat gebruikers hun eigen toolkeuze kunnen maken.</p>
+<p>Het algemene advies bij het ontwikkelen van zowel het informatiemodel voor de samenhangende objectenregistratie als de technische architectuur is: zorg voor goede aansluiting bij reeds bestaande standaarden en best practices voor het oplossen van uitdagingen zoals wij die in de demonstrator hebben gezien, in plaats van het wiel opnieuw te gaan uitvinden!</p>
+</aside></section><section id="samenhang-werkt-echt"><h3 id="x5-12-samenhang-werkt-echt"><span class="secno">5.12 </span>Samenhang werkt echt</h3><p>Door het op de juiste manier doorvoeren van de links, in de tijdens de High 5 gerealiseerde linked data variant van de basisregistraties (de knowledge graph), is de waarde van de links direct zichtbaar te maken. Met een combinatie van de juiste <a href="http://ontodia.org">tooling</a> en de juiste standaarden hebben we gezien dat bevragen van basisregistraties over hun silo grenzen heen prima werkt. De relaties tussen objectinstanties in bijvoorbeeld de WOZ, BAG en BRK zijn direct inzichtelijk te maken zonder de noodzaak om alle data in één systeem te laden.</p><p>Als een organisatie een interne, gesloten dataset gebruikt die volgens de standaarden refereert aan een basisregistratie is de koppeling direct bruikbaar waardoor de interne dataset direct verrijkt kan worden met gegevens uit de basisregistratie. Dit is te zien in de <a href="#brandweer-bluswater-case-castricum">Castricum use case</a>.</p><p>Zoals genoemd in één van de lessons learned, <a href="#uniforme-referentie-naar-basisregistraties">Uniforme referentie naar basisregistraties</a>, kan de relatie met de basisregistratie ook dienen als kwaliteitscheck voor de interne data.</p><aside class="example" id="example-3"><div class="marker">
+      <a class="self-link" href="#example-3">Voorbeeld 3</a>
+    </div><p>Als een interne registratie gerelateerd is aan een verblijfsobject maar de link naar de basisregistratie wijst naar een pand is dat een indicatie van een data kwaliteits probleem.</p>
+</aside><div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Noot</span></div><aside class=""><p>De samenhang op deze manier is voornamelijk bruikbaar voor het verkennen van informatie van enkele instanties, grootschalige analyse is niet zonder meer mogelijk.</p>
+</aside></div><aside class="advisement"><p><strong>Overwegingen voor vervolg</strong></p>
+<p>Op dit moment ligt de nadruk van de samenhang vooral op de integriteit van de geobasisregistraties die in eerste instantie deel uitmaken van DisGeo; deze demonstrator heeft laten zien dat de samenhang ook veel voordelen biedt voor het verkennen van relaties, iets wat voor een eindgebruiker een stuk interessanter is. Deze gaat er namelijk impliciet van uit - en mag hier ook van uit gaan - dat de data in DiSGeo in de basis van goede kwaliteit is.</p>
+<p>Stimuleer (of zelfs op termijn: verplicht) het leggen van betekenisvolle relaties tussen objecten in DiSGeo, andere basisregistraties, sectorale en organisatiespecifieke registraties. Hiermee wordt de waarde van de data voor eindgebruikers veel hoger.</p>
+</aside></section><section id="hoe-nu-verder"><h3 id="x5-13-hoe-nu-verder"><span class="secno">5.13 </span>Hoe nu verder</h3><p>Tenslotte plaatsen we bij het succes van deze High 5 de volgende kanttekening. De deelnemers aan deze vijf dagen waren, zoals één van hen zei, waren de 'crème de la crème' van de Nederlandse linked data community. We gingen uit van een te realiseren 'ideaalplaatje', dat we met behulp van linked data standaarden en tooling hebben weten te realiseren. Alles wat we bereikt hebben, is mede te danken aan de expertise die er deze week aan tafel zat. Dit laat zien dat de mogelijkheden bijna onbegrensd zijn, en dat met behulp van linked data de DISGeo ambities te realiseren zijn bij de huidige stand van de techniek, mits er voldoende kennis aanwezig is.
+</p><p>We zouden een soortgelijk experiment eigenlijk nog een keer moeten herhalen met ontwikkelaars die minder linked data kennis hebben.</p></section></section><section id="references" class="appendix">
+      <!--OddPage--><h2 id="a-referenties"><span class="secno">A. </span>Referenties</h2>
+      
+    <section id="normatieve-referenties">
+        <h3 id="a-1-normatieve-referenties"><span class="secno">A.1 </span>Normatieve referenties</h3>
+      <dl class="bibliography">
+        <dt id="bib-dll1">[DLL1]</dt><dd><a href="https://docs.geostandaarden.nl/disgeo/dll/"><cite>DisGeo Demo Lessons Learned</cite></a>.  Geonovum. 2020-02-19. Definitief. URL: <a href="https://docs.geostandaarden.nl/disgeo/dll/">https://docs.geostandaarden.nl/disgeo/dll/</a></dd><dt id="bib-geosparql">[geosparql]</dt><dd><a href="http://www.opengeospatial.org/standards/geosparql"><cite>GeoSPARQL - A Geographic Query Language for RDF Data</cite></a>. Matthew Perry; John Herring. OGC. 10 September 2012. URL: <a href="http://www.opengeospatial.org/standards/geosparql">http://www.opengeospatial.org/standards/geosparql</a></dd><dt id="bib-sdw-bp">[sdw-bp]</dt><dd><a href="https://www.w3.org/TR/sdw-bp/"><cite>Spatial Data on the Web Best Practices</cite></a>. Jeremy Tandy; Linda van den Brink; Payam Barnaghi. W3C. 28 September 2017. W3C Note. URL: <a href="https://www.w3.org/TR/sdw-bp/">https://www.w3.org/TR/sdw-bp/</a></dd><dt id="bib-vocab-ssn">[vocab-ssn]</dt><dd><a href="https://www.w3.org/TR/vocab-ssn/"><cite>Semantic Sensor Network Ontology</cite></a>. Armin Haller; Krzysztof Janowicz; Simon Cox; Danh Le Phuoc; Kerry Taylor; Maxime Lefrançois. W3C. 19 October 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/vocab-ssn/">https://www.w3.org/TR/vocab-ssn/</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
