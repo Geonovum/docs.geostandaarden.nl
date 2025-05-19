@@ -1,0 +1,18 @@
+name: Main Workflow
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    secrets:
+      SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_TARGET_DIR: ${{ secrets.SSH_TARGET_DIR }}
+      SSH_USER: ${{ secrets.SSH_USER }}
