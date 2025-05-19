@@ -1,27 +1,37 @@
-name: Build
+name: Deploy Static Docs
+
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+  release:
+    types: [published]
+  workflow_dispatch:
+
 jobs:
-  main:
-    name: Snapshot
+  deploy:
+    name: Deploy `/docs` via SCP
     runs-on: ubuntu-22.04
+
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+      SSH_HOST:        ${{ secrets.SSH_HOST }}
+      SSH_USER:        ${{ secrets.SSH_USER }}
+      SSH_TARGET_DIR:  ${{ secrets.SSH_TARGET_DIR }}
+
     steps:
-    - name: Deploy docs via SCP
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
-        SSH_HOST:        ${{ secrets.SSH_HOST }}
-        SSH_USER:        ${{ secrets.SSH_USER }}
-        SSH_TARGET_DIR:  ${{ secrets.SSH_TARGET_DIR }}
-      run: |
-        # 1. Setup SSH key
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-    
-        # 2. Trust de host (voorkom interactiviteit)
-        ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
-    
-        # 3. Copy docs/ recursief
-        scp -r -i ~/.ssh/id_rsa \
-          docs/ \
-          "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Copy `/docs` via SCP
+        run: |
+          scp -r -i ~/.ssh/id_rsa docs/ "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
