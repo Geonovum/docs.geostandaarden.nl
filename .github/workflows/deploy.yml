@@ -32,6 +32,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-      - name: Copy `/docs` via SCP
+      - name: Copy `/docs` via rsync
         run: |
-          scp -r -i ~/.ssh/id_rsa docs/ "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
+          rsync -avzP \
+          --ignore-existing \
+          -e "ssh -i ~/.ssh/id_rsa" \
+          docs/ \
+          "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
