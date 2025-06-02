@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>TAM reactieve interventie</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "license": "cc-by-nd",
+  "publishDate": "2023-05-30",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerteam RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "waTAMreaint",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST",
+  "issueBase": "https://github.com/Geonovum/ROST/issues",
+  "edDraftURI": "https://Geonovum.github.io/ROST",
+  "previousPublishDate": "2022-12-12",
+  "previousMaturity": "GN-DEF",
+  "publishISODate": "2023-05-30T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 30 mei 2023"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20230530/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "TAM reactieve interventie",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2023-05-30",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20221212/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">TAM reactieve interventie</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2023-05-30">30 mei 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20230530/">https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20230530/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/waTAMreaint/">https://docs.geostandaarden.nl/ro/waTAMreaint/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20221212/">https://docs.geostandaarden.nl/ro/def-wa-waTAMreaint-20221212/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/waTAMreaint/">https://Geonovum.github.io/ROST/waTAMreaint/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#uitgangspunt"><span class="secno">2. </span>Uitgangspunt</a></li><li class="tocline"><a class="tocxref" href="#werkwijze"><span class="secno">3. </span>Werkwijze</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunt"><span class="secno">4. </span>Aandachtspunt</a></li><li class="tocline"><a class="tocxref" href="#resultaat"><span class="secno">5. </span>Resultaat</a></li></ol></nav><section data-format="markdown" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>Tijdelijke Alternatieve Maatregelen (TAM) zijn er voor het geval overheden niet op tijd kunnen aansluiten op het DSO of wanneer DSO bijvoorbeeld op een onderdeel niet op tijd klaar is. De minister wil voorkomen dat hierdoor bij gemeenten, provincies en het Rijk eventuele woningbouwontwikkelingen of ontwikkelingen zoals op het gebied van de energietransitie vertraging oplopen.</p><p>De Omgevingswet geeft gedeputeerde staten (verder: GS) de bevoegdheid om te besluiten dat een onderdeel van een besluit van een gemeente tot vaststelling of wijziging van een omgevingsplan geen deel van het omgevingsplan uitmaakt. Dit besluit van GS wordt reactieve interventie genoemd. In de Omgevingswet is vastgelegd in welke gevallen en onder welke omstandigheden GS van deze bevoegdheid gebruik kunnen maken. Voorafgaand aan het nemen van dit besluit moeten GS met B&amp;W c.q. gemeenteraad van de betreffende gemeente overleg voeren.</p><p>Met de werkafspraak TAM-reactieve interventie wordt provincies de mogelijkheid geboden om juridisch een Omgevingswet reactieve interventie op te stellen op basis van de techniek van de Wro (namelijk RO Standaarden 2012), en te publiceren via Ruimtelijkeplannen.nl en de overbruggingsfunctie van het Informatiehuis Ruimte naar het Digitaal Stelsel Omgevingswet (DSO).
+</p><p>Aanleiding voor deze werkafspraak is de <a href="https://zoek.officielebekendmakingen.nl/kst-33118-CF.html" target="_blank">kamerbrief van 27 mei 2021</a>, waarin de minister de Tweede Kamer informeert over inwerkingtredingsdatum van de Omgevingswet en mogelijke Tijdelijke Alternatieve Maatregelen (TAM). Deze tijdelijke alternatieve maatregelen maken inwerkingtreding van de Omgevingswet mede mogelijk. Deze zgn. TAM's bieden gemeenten, provincies en het Rijk naast de zogenaamde ‘hoofdroute’ tijdelijk een alternatieve route.</p></section><section data-format="markdown" id="uitgangspunt"><!--OddPage--><h2 id="x2-uitgangspunt"><span class="secno">2. </span>Uitgangspunt</h2><p>Met de werkafspraak TAM-reactieve interventie wordt provincies de mogelijkheid geboden om juridisch een Omgevingswet-reactieve interventie te nemen op basis van de RO Standaarden, in het geval de provincie niet op tijd kan aansluiten op het DSO of wanneer het DSO bijvoorbeeld op een onderdeel niet op tijd klaar is. 
+Deze noodmaatregel zorgt ervoor dat de provincies/ GS kunnen besluiten dat een onderdeel van een besluit tot vaststelling of wijziging van een omgevingsplan geen deel daarvan uitmaakt. De reactieve interventie alleen kan bestaan uit het verwijderen van (delen van) regels uit het besluit tot wijziging van het omgevingsplan.
+</p><p>Voor het gebruik deze TAM-reactieve interventie geldt, dat vanaf inwerkingtreding van de Omgevingswet, de Wro planketen gebruikt kan worden voor het opstellen en publiceren van een reactieve interventie. De RO Standaarden 2012 worden niet aangepast. Ook wordt op geen enkele manier iets aangepast aan de Wro plansoftware die (op dat moment nog) wordt gebruikt voor digitale ruimtelijke plannen conform overgangsrecht van Wro naar Omgevingswet. Ook aan de manier van publiceren via Ruimtelijkeplannen.nl verandert niets. Wel wordt de validator voor Ruimtelijkeplannen.nl aangevuld en enigszins aangepast om het overgangsrecht van Wro naar Omgevingswet te faciliteren, en de TAM-reactieve interventie mogelijk te maken.</p><p>Om een omgevingswetbesluit te kunnen nemen met behulp van de TAM-reactieve interventie wordt uitsluitend gebruik gemaakt van de Wro planfiguur (IMRO plantype) ‘reactieve aanwijzing’, conform de RO Standaarden 2012. Omdat het mogelijk blijft een reactieve aanwijzing te geven over een bestemmingsplan dat op het moment van inwerkingtreding van de Omgevingswet in procedure is, is het belangrijk dat er een onderscheidt gemaakt kan worden tussen een TAM-reactieve interventie en een reactieve aanwijzing. 
+De validator moet een TAM-reactieve interventie kunnen herkennen. Daarom is met deze werkafspraak de plannaam bepalend: de plannaam begint met “TAM-reactieve interventie”, gevolgd door een spatie en de naam van het besluit. Hiermee wordt het onderscheid gemaakt tussen een Wro reactieve aanwijzing en een reactieve interventie onder de Omgevingswet.
+</p></section><section data-format="markdown" id="werkwijze"><!--OddPage--><h2 id="x3-werkwijze"><span class="secno">3. </span>Werkwijze</h2><p>Technisch gezien maakt de provincie de reactieve interventie conform de RO Standaarden 2012, met toepassing van:
+</p><ul>
+<li>het IMRO2012 typePlan reactieve aanwijzing;</li>
+<li>het STRI2012 manifest beschikbaarstelling op de weblocatie van de bronhouder ten behoeve van de ontsluiting via Ruimtelijkeplannen.nl.</li>
+</ul><p>Een reactieve interventie opgesteld met behulp van TAM in plaats van de STOP/TPOD standaarden, moet herkenbaar zijn. Dit is belangrijk voor een goede validatie en ten behoeve van de overbruggingsfunctie naar de landelijke voorziening Digitaal Stelsel Omgevingswet. Daarom leggen we in deze werkafspraak de naamgeving vast:</p><p>Werkafspraak: de naam van het plan is ‘TAM-reactieve interventie[spatie][plannaam]’</p><p>De reactieve interventie valt onder IMRO2012 in de categorie ‘Gebiedsgerichte Besluiten’: feitelijk niet meer dan het plangebied met daarbinnen één of enkele gebieden (vlakken) waarvoor regels kunnen gelden. De motivering van het besluit van GS, waarin is aangeven waarom ze geen gebruik hebben kunnen maken van andere bevoegdheden die zij hebben om het provinciaal belang te beschermen (artikel 16.21 lid 3 Ow), wordt als 'besluitdocument' bij het attribuut verwijzingNaarTekstInfo toegevoegd. De motivering als besluit ook gekoppeld als vaststellingsbesluit. Het Omgevingswet reactieve interventie als TAM-reactieve interventie kan op dezelfde wijze worden gemaakt als de Wro reactieve aanwijzing. Zie daarvoor de <a href="https://docs.geostandaarden.nl/ro/def-pr-gb2012-20181023/#aanwijzing" target="_blank">Praktijkrichtlijn Gebiedsgerichte Besluiten</a>, paragraaf 5.2.1.</p><p>De werkafspraak is samengevat in Tabel 1.
+</p><p><b>Tabel 1 Specifieke waarden ‘Besluitgebied’ bij een TAM-reactieve interventie</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 21.239242685025815%;" <col="" <="" colgroup="">
+</colgroup><thead valign="top"><tr><th align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #000000;"><b>attribuut</b>
+
+</th>
+<th align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #000000;"><b>waarde</b>
+
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">typePlan
+
+</td>
+<td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">reactieve aanwijzing
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">naam
+
+</td>
+<td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">TAM-reactieve interventie[spatie][plannaam]
+
+</td>
+</tr>
+</tbody>
+</table><p>Het publiceren van een reactieve interventie met behulp van TAM-reactieve interventie gaat op dezelfde wijze als de Wro reactieve aanwijzing: met de RO Standaarden 2012. Vooraf kan met de validator van pilot.Ruimtelijkeplannen.nl worden gecontroleerd of het besluit valide is, van belang is de naamgeving conform deze werkafspraak.</p><p>TAM-reactieve interventies worden weergegeven in de viewer Regels op de Kaart (omgevingsloket). Er is geen sturing op de weergave met de RO Standaarden mogelijk, en daarmee ook niet op TAM-reactieve interventies.</p></section><section data-format="markdown" id="aandachtspunt"><!--OddPage--><h2 id="x4-aandachtspunt"><span class="secno">4. </span>Aandachtspunt</h2><p>De wetgever heeft de reactieve interventie zo bedoeld dat het nemen van dit besluit tot gevolg heeft dat de regels van een ander type omgevingsdocument, te weten het omgevingsplan, worden gewijzigd. In artikel 16.2 Omgevingswet is dan ook bepaald dat, ter uitvoering van artikel 19 van de Bekendmakingswet, het bestuursorgaan van Rijk of provincie dat met toepassing van artikel 16.21 een omgevingsplan wijzigt, verplicht is om deze wijziging te verwerken in een nieuwe geconsolideerde versie van het omgevingsplan conform de STOP/TPOD standaarden. Deze werkafspraak gaat niet in op de verantwoordelijkheid voor het aanpassen van het omgevingsplan en meervoudig bronhouderschap.</p></section><section data-format="markdown" id="resultaat"><!--OddPage--><h2 id="x5-resultaat"><span class="secno">5. </span>Resultaat</h2><p>Een Omgevingswet reactieve interventie op basis van de RO Standaarden 2012 dat via de overbruggingsfunctie wordt ontsloten in de landelijke voorziening Digitaal Stelsel Omgevingswet.</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

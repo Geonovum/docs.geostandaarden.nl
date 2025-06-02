@@ -1,0 +1,853 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2">
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20190425 - GRK - ReSpec file PRPT2012 versie 1.2.1 dd. 14 december 2015    -->
+		<!-- - - - - - - -20221111 - GRK - ReSpec file PRPT2012 versie 1.2.2 aanpassing link         -->
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Praktijkrichtlijn voor Planteksten 2012 (PRPT2012) v1.2.2</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "format": "markdown",
+  "publishDate": "2022-12-15",
+  "github": "https://github.com/geonovum/ROST",
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Geonovum",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "pt2012",
+  "pubDomain": "ro",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "previousPublishDate": "2015-12-14",
+  "previousMaturity": "GN-DEF",
+  "publishISODate": "2022-12-15T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 15 december 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-pr-pt2012-20221215/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Praktijkrichtlijn voor Planteksten 2012 (PRPT2012) v1.2.2",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-12-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-pr-pt2012-20151214/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Praktijkrichtlijn voor Planteksten 2012 (PRPT2012) v1.2.2</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-12-15">15 december 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-pr-pt2012-20221215/">https://docs.geostandaarden.nl/ro/def-pr-pt2012-20221215/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/pt2012/">https://docs.geostandaarden.nl/ro/pt2012/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-pr-pt2012-20151214/">https://docs.geostandaarden.nl/ro/def-pr-pt2012-20151214/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/">https://geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" data-include="" class="introductory"><h2></h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de praktijkrichtlijn. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+ Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product dat informatie geeft, vaak met een technisch karakter, dat nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#H01"><span class="secno">1. </span>Objectgerichte planteksten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#toepassingsgebied"><span class="secno">1.2 </span>Toepassingsgebied</a></li><li class="tocline"><a class="tocxref" href="#status"><span class="secno">1.3 </span>Status</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.4 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H02"><span class="secno">2. </span>Wat en Waarom</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wat-zijn-objectgerichte-planteksten"><span class="secno">2.1 </span>Wat zijn objectgerichte planteksten?</a></li><li class="tocline"><a class="tocxref" href="#welke-teksten-kunnen-objectgericht-worden-gemaakt"><span class="secno">2.2 </span>Welke teksten kunnen objectgericht worden gemaakt?</a></li><li class="tocline"><a class="tocxref" href="#waarom-objectgerichte-teksten"><span class="secno">2.3 </span>Waarom objectgerichte teksten?</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H03"><span class="secno">3. </span>Schrijven van een objectgerichte tekst</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemeen"><span class="secno">3.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#tekstobjecten"><span class="secno">3.2 </span>TekstObjecten</a></li><li class="tocline"><a class="tocxref" href="#verwijzingen"><span class="secno">3.3 </span>Verwijzingen</a></li><li class="tocline"><a class="tocxref" href="#verschillende-planfiguren-verschillende-toepassing"><span class="secno">3.4 </span>Verschillende planfiguren, verschillende toepassing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H04"><span class="secno">4. </span>Modelmatige opbouw</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-objectbenadering-van-imro2012-en-objectgerichte-planteksten"><span class="secno">4.1 </span>De objectbenadering van IMRO2012 en objectgerichte planteksten</a></li><li class="tocline"><a class="tocxref" href="#de-basisindeling-van-objectgerichte-teksten"><span class="secno">4.2 </span>De basisindeling van objectgerichte teksten</a></li><li class="tocline"><a class="tocxref" href="#verbeelding-van-geometrie-en-tekst"><span class="secno">4.3 </span>Verbeelding van geometrie en tekst</a></li><li class="tocline"><a class="tocxref" href="#uitgangspunt-uit-te-wisselen-gegevens"><span class="secno">4.4 </span>Uitgangspunt uit te wisselen gegevens</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H05"><span class="secno">5. </span>De planobjecten met attributen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klasse-tekstobject"><span class="secno">5.1 </span>Klasse TekstObject</a></li><li class="tocline"><a class="tocxref" href="#klasse-tekstmetadata"><span class="secno">5.2 </span>Klasse TekstMetaData</a></li></ol></li></ol></nav><div id="H00" data-format="markdown"><h2>Versiebeheer</h2>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document
+geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Aanpassing</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>1 januari 2012</td>
+<td>Vervallen</td>
+<td>Eerste versie</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>15 november 2012</td>
+<td>Vervallen</td>
+<td>Samenvoegen overzicht praktijkrichtlijnen in paragraaf 1.1;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Toelichting op gerechtelijk uitspraak conform IMROPT2012 aangepast in paragraaf 1.2;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Tekstcorrectie paragraaf 3.4;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Tekstcorrectie toelichting <em>multipliciteit</em> Tabel 1;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Toelichting attributen <em>titelInfo</em> en i<em>nterneVerwijzing</em> paragraaf 5.1 aangevuld;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Tekstcorrectie toelichting attribuut <em>tekstMetadata</em> paragraaf 5.1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Tekstcorrectie inleiding en toelichting <em>multipliciteit</em> Tabel 2 in paragraaf 5.2;</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>19 mei 2014</td>
+<td>Vervallen</td>
+<td>In paragraaf 1.3 is een verwijzing naar de werkafspraak ‘IMROPT2012 toevoegen objecttype (sub)lid’ opgenomen.</td>
+</tr>
+<tr>
+<td>1.2.1</td>
+<td>oktober 2015</td>
+<td>Werkversie</td>
+<td>Tekstfout beschrijving van het attribuut typePlan in paragraaf 5.2.</td>
+</tr>
+<tr>
+<td></td>
+<td>14 december 2015</td>
+<td>Definitief</td>
+<td>Besproken met BROS en softwareleveranciers; wijzigingen definitief.</td>
+</tr>
+<tr>
+<td>1.2.2</td>
+<td>23 november 2022</td>
+<td>Definitief</td>
+<td>Aanpassing link</td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-objectgerichte-planteksten"><span class="secno">1. </span>Objectgerichte planteksten</h2><p><strong>De Praktijkrichtlijn voor Planteksten maakt het mogelijk om de teksten van
+ruimtelijk instrumenten objectgericht op te bouwen. In dit hoofdstuk is de
+achtergrond van de praktijkrichtlijn gegeven evenals de strekking van de
+standaard.</strong></p><section id="aanleiding"><h3 id="x1-1-aanleiding"><span class="secno">1.1 </span>Aanleiding</h3><p>In de Wet ruimtelijke ordening (<a href="http://wetten.overheid.nl/BWBR0020449">Wro</a>) en het Besluit ruimtelijke ordening (<a href="http://wetten.overheid.nl/BWBR0023798">Bro</a>) is vastgelegd dat planologische visies,
+plannen, besluiten, verordeningen, algemene maatregelen van bestuur en
+ministeriële regelingen digitaal vervaardigd en op elektronische wijze
+beschikbaar gesteld moeten worden. Daarnaast is ook in de Wet algemene
+bepalingen omgevingsrecht (Wabo) een verplichte elektronische
+beschikbaarstelling opgenomen voor sommige gevallen. Om dit mogelijk te maken
+zijn de RO standaarden ontwikkeld. Deze verplichte RO Standaarden zijn, vastgelegd met de <a href="http://wetten.overheid.nl/BWBR0031829">ministeriële Regeling standaarden ruimtelijke ordening</a>,:</p><ul>
+<li>Informatiemodel Ruimtelijke Ordening (IMRO2012);</li>
+<li>Standaard voor Toegankelijkheid Ruimtelijke Instrumenten (STRI2012);</li>
+<li>Standaard Vergelijkbare Bestemmingsplannen (SVBP2012);</li>
+<li>Informatiemodel Ruimtelijke Ordening voor Planteksten (IMROPT2012).</li>
+</ul><p>De standaard voor planteksten (IMROPT2012) is onder voorwaarde verplicht.
+Toepassing van IMROPT2012 is verplicht wanneer de bronhouder ervoor kiest de
+planteksten in objectgerichte vorm (XML) beschikbaar te stellen.</p><p>IMRO2012 is normstellend voor de codering van ruimtelijke instrumenten. IMRO2012
+is van belang voor applicatiebouwers en als referentie voor andere IMRO2012
+gerelateerde documenten. IMRO2012 wordt beschreven zonder in te gaan over de
+praktische toepassing van het model voor het coderen van digitale ruimtelijke
+instrumenten. Alle voor dit toepassingsdoel benodigde informatie is opgenomen in
+zogenoemde praktijkrichtlijnen:
+</p><ul>
+<li>Praktijkrichtlijn Bestemmingsplannen (PRBP2012);</li>
+<li>Praktijkrichtlijn gemeentelijke Structuurvisies (PRgSV2012);</li>
+<li>Praktijkrichtlijn provinciale Structuurvisies (PRpSV2012);</li>
+<li>Praktijkrichtlijn Rijks Structuurvisies (PRrSV2012);</li>
+<li>Praktijkrichtlijn Gebiedsgerichte Besluiten (PRGB2012);</li>
+<li>Praktijkrichtlijn Provinciale Verordening (PRPV2012);</li>
+<li>Praktijkrichtlijn Algemene Maatregel van Bestuur (PRAMvB2012);</li>
+<li>Praktijkrichtlijn voor Planteksten (PRPT2012);</li>
+<li>Praktijkrichtlijn Toegankelijkheid Ruimtelijke Instrumenten (PRTRI2012).</li>
+</ul><p>Tot slot is er ook een richtlijn voor de analoge bestemmingsplan kaart:  </p><ul>
+<li>Praktijkrichtlijn Analoge Bestemmingsplan Kaart (PRABPK2012).</li>
+</ul><p>Bovenstaande praktijkrichtlijnen zijn met name gericht op de geometrie en opbouw
+van de desbetreffende instrumenten. De geografie vormt hierbij de ingang voor
+het raadplegen van de ruimtelijke plannen. Om ruimtelijke plannen efficiënter en
+effectiever toegankelijk te maken, is het nodig ook met de planteksten
+objectgericht om te gaan. Dat levert een aantal voordelen op die benoemd worden
+in paragraaf 2.3. Binnen de RO standaarden 2012 is het gebruik van
+objectgerichte planteksten mogelijk. Hiermee wordt het mogelijk om de tekst te
+laten fungeren als ingang voor het raadplegen van het ruimtelijk plan.</p><p>Het voorliggende document betreft de Praktijkrichtlijn voor Planteksten
+(PRPT2012). Deze praktijkrichtlijn beschrijft de wijze waarop objectgerichte
+planteksten kunnen worden opgebouwd en uitgewisseld binnen de RO Standaarden 2012. Deze 
+praktijkrichtlijn vormt een toelichting op het IMRO2012 voor Planteksten: IMROPT2012. 
+In deze 2012 versie ligt de nadruk op bevorderen van uitwisselbaarheid.
+</p></section><section id="toepassingsgebied"><h3 id="x1-2-toepassingsgebied"><span class="secno">1.2 </span>Toepassingsgebied</h3><p>IMROPT2012 en deze praktijkrichtlijn zijn van toepassing op alle instrumenten
+waarop het Informatiemodel Ruimtelijke Ordening (IMRO2012) van toepassing is:</p><ul>
+<li>bestemmingsplan;</li>
+<li>rijksbestemmingsplan;</li>
+<li>inpassingsplan;</li>
+<li>structuurvisie;</li>
+<li>beheersverordening;</li>
+<li>voorbereidingsbesluit;</li>
+<li>aanwijzingsbesluit (proactieve aanwijzing);</li>
+<li>reactieve aanwijzing;</li>
+<li>provinciale verordening;</li>
+<li>algemene maatregel van bestuur;</li>
+<li>ministeriële regeling;</li>
+<li>exploitatieplan;</li>
+<li>omgevingsvergunning.</li>
+</ul><p>Het ligt niet voor de hand om een gerechtelijke uitspraak als objectgerichte
+plantekst conform IMROPT beschikbaar te stellen, dit is echter wel mogelijk en
+toegestaan.  </p></section><section id="status"><h3 id="x1-3-status"><span class="secno">1.3 </span>Status</h3><p>Zoals hierboven beschreven is in Wro en Wabo vastgelegd dat bepaalde ruimtelijk
+instrumenten op elektronische wijze beschikbaar gesteld moeten worden. Binnen
+deze vereisten is het toegestaan om de teksten van deze ruimtelijk instrumenten
+in objectgerichte vorm beschikbaar te stellen als authentieke bronbestanden
+conform IMROPT2012.<br>Toepassing van IMROPT2012 en deze praktijkrichtlijn is binnen de RO standaarden
+2012 facultatief voor bronhouders, omdat het ook toegestaan is om teksten in
+HTML en PDF beschikbaar te stellen. In de STRI2012 en bijbehorende
+Praktijkrichtlijn Ruimtelijke Instrumenten (PRTRI2012) wordt hier nader op
+ingegaan.</p><p>Voor afnemers houdt de mogelijkheid om planteksten alleen in objectgerichte vorm
+(XML) beschikbaar te stellen als authentieke bronbestanden de verplichting in om
+dit uitwisselingsformaat te ondersteunen. Immers, er zullen plannen beschikbaar
+worden gesteld waarvan de teksten alleen in dit XML formaat beschikbaar zijn.</p><p>Voor IMROPT2012 geldt sinds juni 2013 een werkafspraak met betrekking tot het
+toevoegen van een objecttype. Vanaf publicatie van deze werkafspraak tot het
+tijdstip van inwerkingtreden van vernieuwde RO Standaarden of
+omgevingstandaarden dan wel nader bericht van de beheerder van de RO Standaarden
+geldt de werkafspraak. 
+De werkafspraak is beschikbaar via de <a href="http://www.geonovum.nl/onderwerpen/ruimtelijke-ordening-standaarden">Geonovum website, pagina RO Standaarden</a>, of direct: <a href="https://docs.geostandaarden.nl/ro/def-wa-waIMROPT-20130611/">Objectgerichte planteksten; IMROPT2012 toevoegen objecttype (sub)lid</a>
+</p></section><section id="leeswijzer"><h3 id="x1-4-leeswijzer"><span class="secno">1.4 </span>Leeswijzer</h3><p>In <a href="#H02">Hoofdstuk 2</a> wordt er ingegaan op wat objectgerichte teksten zijn en welke
+voordelen en extra mogelijkheden het gebruik er van biedt boven traditionele
+teksten. In <a href="#H03">Hoofdstuk 3</a> wordt nader ingegaan op het schrijven van objectgerichte
+teksten. <a href="#H04">Hoofdstuk 4</a> beschrijft de modelmatige opbouw. Tot slot worden in
+<a href="#H05">Hoofdstuk 5</a> de planobjecten en hun attributen toegelicht.</p></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-wat-en-waarom"><span class="secno">2. </span>Wat en Waarom</h2><p><strong>In dit hoofdstuk wordt ingegaan op twee zaken: wat zijn objectgerichte teksten
+en welke voordelen biedt het gebruik er van boven traditionele teksten.</strong></p><section id="wat-zijn-objectgerichte-planteksten"><h3 id="x2-1-wat-zijn-objectgerichte-planteksten"><span class="secno">2.1 </span>Wat zijn objectgerichte planteksten?</h3><p>Objectgerichte teksten zijn gewone teksten, die op een slimme manier in stukken
+(objecten) zijn verdeeld.
+Bij objectgerichte planteksten worden planteksten opgeknipt in stukken zoals
+hoofdstukken, paragrafen en subparagrafen of artikelen, leden en subleden.
+Uitgangspunt is dat ieder object (stuk) zelfstandig leesbaar is, een titel
+heeft, begint met een hoofdletter en eindigt met een punt. Dit helpt de lezer,
+zeker als de plannen via het internet worden ontsloten waarbij vaak
+fragmentarisch door de tekst kan worden genavigeerd.</p><p>In het beste, meest objectgerichte geval, kan de tekst in vaststaande,
+betekenisvolle delen worden verdeeld. Dat is inmiddels het geval voor de regels
+van bestemmingsplannen. Daarvan is exact bekend, uit de SVBP2012, hoe ze zijn
+ingedeeld. Daar is dus in objectgerichte termen eigenlijk ook geen sprake van
+een artikel, maar van een bestemming waarvan de beschrijving in een artikel te
+vinden is. Voor de overige teksten geldt dit (nog) niet.
+Bij het indelen van overige teksten in objecten gebruik je de normale ordenende
+principes voor het schrijven van teksten. Een document bestaat uit verschillende
+delen die weer uit delen kunnen worden opgebouwd. Zo kan steeds een dieper
+niveau aan de structuur worden toegevoegd.</p><p>Ieder object krijgt een eigen identificatie waardoor ernaar verwezen kan worden;
+vanuit geometrie of vanuit de tekst. Of zelfs vanuit een externe bron.</p><p>Aan ieder object kunnen aanvullende kenmerken worden toegevoegd, bijvoorbeeld
+welk soort object het is -bijvoorbeeld een begripsbepaling- en met welke
+objecten het samenhangt.</p></section><section id="welke-teksten-kunnen-objectgericht-worden-gemaakt"><h3 id="x2-2-welke-teksten-kunnen-objectgericht-worden-gemaakt"><span class="secno">2.2 </span>Welke teksten kunnen objectgericht worden gemaakt?</h3><p>In principe kunnen alle teksten die volgens een vaste structuur worden
+geschreven objectgericht worden gemaakt. Deze praktijkrichtlijn geeft alleen
+invulling aan de ruimtelijk instrumenten zoals genoemd in paragraaf 1.2 van deze
+praktijkrichtlijn.</p></section><section id="waarom-objectgerichte-teksten"><h3 id="x2-3-waarom-objectgerichte-teksten"><span class="secno">2.3 </span>Waarom objectgerichte teksten?</h3><p>Bij het gebruik van ruimtelijke plannen hebben objectgerichte planteksten in
+potentie veel voordelen. Objectgerichte teksten zijn uitwisselbaar, beter met de
+geometrie te verbinden, beter doorzoekbaar en beter op maat te tonen aan de
+lezer. Ook voor de schrijver is er een aantal voordelen. In de volgende alinea’s
+staan de belangrijkste redenen voor het gebruik van objectgerichte teksten.</p><p><strong>Objectgerichte planteksten maken volledig uitwisselen mogelijk</strong>
+Een objectgerichte tekst kan, net als de objectgerichte kaart, verder worden
+bewerkt. Dat betekent dat objectgerichte teksten ook gebruikt kunnen worden voor
+uitwisseling in processen. Met de HTML/PDF versies die “eindversies” zijn kan
+dit niet, omdat dit presentatieformaten zijn die niet ingericht zijn om weer te
+bewerken. Denk hierbij bijvoorbeeld aan de uitwisseling tussen adviesbureaus en
+opdrachtgevers.</p><p><strong>Objectgerichte teksten kunnen dienen als basis bij herzieningen</strong><br>Als (plan)teksten herzien worden, levert dit soms veel werk op omdat de
+bewerkbare versie van een plan niet meer beschikbaar is. Als een objectgerichte
+(XML) tekst de officiële versie is, bestaat dat probleem niet meer.</p><p><strong>Objectgerichte teksten sluiten beter aan op de IMRO2012-gecodeerde geometrie</strong><br>Op het moment dat zowel de geometrie als de tekst uit objecten bestaan, kunnen
+relaties worden gelegd tussen deze objecten. Zo worden geometrie en tekst
+onderling en met elkaar verbonden. Door de relaties tussen de objecten en de
+kenmerken van die objecten, ontstaat beter raadpleegbare informatie. Het wordt
+mogelijk vanuit de digitale verbeelding naar de bijbehorende tekst te gaan, maar
+ook omgekeerd van tekst naar verbeelding is mogelijk. Ook binnen teksten zijn
+verwijzingen mogelijk.</p><p><strong>Objectgerichte teksten zijn beter toegankelijk</strong><br>Objectgerichte teksten kunnen beter raadpleegbaar gemaakt worden dan
+bijvoorbeeld Word- of HTML-documenten. Omdat:</p><ul>
+<li>Gegevens op meerdere manieren kunnen worden getoond. Iedere gebruikersgroep
+kan een eigen “bril” krijgen. Makelaars kunnen informatie anders
+gepresenteerd krijgen dan burgers;</li>
+<li>Gegevens ook anders kunnen worden getoond op verschillende media;</li>
+<li>Zoekmechanismen beter en verfijnder kunnen worden gemaakt;</li>
+<li>Geometrie en tekst beter verknoopt zijn;</li>
+<li>Meer vraaggericht werken met plannen mogelijk is: de gebruiker heeft een
+vraag en maakt deze kenbaar. Hij krijgt de informatie die daar bij hoort.
+Informatie moet hiervoor “slimmer” zijn opgeslagen dan in HTML of PDF.</li>
+</ul><p><strong>Er is minder kans op fouten</strong><br>Vooraf ligt vast welke soort objecten er zijn en hoe deze samenhangen. Er kan
+dan ook alleen maar op die manier worden gewerkt. Nummeringen, koppelingen en
+verwijzingen worden automatisch bijgehouden, wat fouten voorkomt.</p><p><strong>Inhoud en opmaak (verbeelding) zijn gescheiden bij objectgerichte
+planteksten</strong><br>Kenmerk van objectgericht werken is dat vorm en inhoud gescheiden zijn. Omdat de
+inhoud volledig gescheiden is van opmaak, hoeft de planschrijver zich niet bezig
+te houden met opmaak.
+De opmaak is apart geregeld. In de STRI2012 en de PRTRI2012 wordt hier nader op
+ingegaan.</p><p><strong>Objectgerichte planteksten hebben één bron en vele verschijningsvormen</strong><br>Vanuit dezelfde bron kunnen zonder veel werk papieren afdrukken en digitale
+versies in allerlei soorten (Word, PDF, HTML, database etc.) worden gegenereerd.</p></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-schrijven-van-een-objectgerichte-tekst"><span class="secno">3. </span>Schrijven van een objectgerichte tekst</h2><p><strong>In dit hoofdstuk wordt ingegaan op het algemene schrijfproces van objectgerichte
+teksten.</strong></p><section id="algemeen"><h3 id="x3-1-algemeen"><span class="secno">3.1 </span>Algemeen</h3><p>Een goed opgebouwde tekst kent een heldere structuur. Voor de schrijver is dit
+gemakkelijk, omdat duidelijk is wat waar hoort. Voor de lezer helpt een
+duidelijke en herkenbare structuur bij het doorgronden van de tekst.
+Objectgericht tekstverwerken vereist structuur. Vooraf is vastgelegd hoe de
+tekst in elkaar zit. Dat kan heel gedetailleerd, zoals bij bestemmingsplannen.
+Maar dat kan ook alleen op globaal niveau.</p></section><section id="tekstobjecten"><h3 id="x3-2-tekstobjecten"><span class="secno">3.2 </span>TekstObjecten</h3><p>Een tekstobject bestaat uit een zelfstandig leesbaar stuk(-je) tekst met een
+titel. De inhoud van een object kan bestaan uit tekst, maar ook uit andere
+objecten of een combinatie van beide. Als een hoofdstuk bestaat uit een aantal
+paragrafen zijn dat ook zelfstandige objecten. Zijn er binnen de paragrafen
+subparagrafen aanwezig, dan zijn ook dit weer zelfstandige objecten.</p></section><section id="verwijzingen"><h3 id="x3-3-verwijzingen"><span class="secno">3.3 </span>Verwijzingen</h3><p>Alle objecten hebben een eigen identificatie. Daarmee zijn ze vindbaar en
+definieerbaar voor geautomatiseerde systemen. Er kan vanuit de digitale
+verbeelding naar worden verwezen (´klik en open de tekst´), maar ook binnen de
+tekst kan verwezen worden (“zoals bedoeld in artikel 1 lid 1”).
+Of verwezen mag worden naar alle niveaus, hangt af van regelingen die daarvoor
+per instrument getroffen kunnen zijn. Deze standaard zegt hier niets over.</p></section><section id="verschillende-planfiguren-verschillende-toepassing"><h3 id="x3-4-verschillende-planfiguren-verschillende-toepassing"><span class="secno">3.4 </span>Verschillende planfiguren, verschillende toepassing</h3><p>Objectgerichte planteksten zijn een relatief nieuw fenomeen. Op het gebied van
+bestemmingsplannen en structuurvisies is er al behoorlijk wat ervaring opgedaan.
+Bovendien zijn de regels van bestemmingsplannen zeer goed gestructureerd en is
+deze structurering ook wettelijk geborgd via de SVBP2012. Voor andere
+ruimtelijke instrumenten is er minder structuur voorhanden. In iedere
+praktijkrichtlijn zoals genoemd in paragraaf 1.1 wordt er om die reden apart
+aandacht besteed aan de opbouw van de objectgerichte teksten.</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-modelmatige-opbouw"><span class="secno">4. </span>Modelmatige opbouw</h2><p><strong>In dit hoofdstuk wordt de algemene modelmatige opbouw van objectgerichte teksten
+geschetst inclusief de relatie met IMRO objecten.</strong></p><section id="de-objectbenadering-van-imro2012-en-objectgerichte-planteksten"><h3 id="x4-1-de-objectbenadering-van-imro2012-en-objectgerichte-planteksten"><span class="secno">4.1 </span>De objectbenadering van IMRO2012 en objectgerichte planteksten</h3><p>Het IMRO2012 definieert de objectgerichte benadering binnen de ruimtelijke
+ordening. De digitale verbeelding wordt ontleed tot haar samenstellende
+(geometrisch bepaalde) delen. Het IMRO2012 kent hierbij plangebieden en
+planobjecten. De planobjecten bevinden zich altijd binnen een plangebied.</p><p><img src="media/1bf381641fbe45efe546e8143bcef948.png" alt=""><br><strong>Figuur 1 Algemene modelopbouw IMRO2012</strong></p><p>Planteksten kunnen ook gezien worden als een verzameling objecten. In het
+onderliggende model bestaat het plantekstenbestand uit twee soorten objecten:
+TekstMetadata en TekstObject. Daarbij worden alle onderdelen met een nummer
+en/of een titel als TekstObject beschouwd. TekstMetadata bevat de kenmerken die
+horen bij alle TekstObjecten samen. Omdat het om ruimtelijke plannen gaat zijn
+TekstMetadata en alle TekstObjecten altijd met een plangebied verbonden.</p><p><img src="media/ee5740ff6083e5a7f5e8f6931b338ebb.png" alt=""><br><strong>Figuur 2 Relatie tussen plangebied en tekstobjecten</strong></p><p>IMRO2012 noemt deze objectsoorten (TekstMetadata en TekstObject) <strong>Klassen</strong>.<br>Elke klasse kent eigenschappen die als attributen worden toegekend. Voor
+objectgerichte planteksten is een uitbreiding op IMRO2012 gemaakt.</p><p>In het IMRO2012 zijn voor de verschillende soorten instrumenten specifieke
+versies van plangebieden en planobjecten gemaakt. Zo heet de klasse plangebied
+voor bestemmingsplannen ‘bestemmingsplangebied’ en is een ‘bestemmingsvlak’ een
+voorbeeld van een klasse planobject. Bij objectgerichte planteksten wordt dit
+onderscheid niet gemaakt. Voor ieder ruimtelijk instrument zijn alleen de
+klassen TekstMetadata en TekstObject in gebruik. Voor de verschillende
+instrumenten zijn er mogelijk wel verschillen in de mogelijke waardes van de
+attributen.
+</p><p>Voor bestemmingsplannen ontstaat zo het totaalbeeld van een geometrie en tekst
+in één mode als weergegeven in Figuur 3.  </p><p><img src="media/6ac2f59608ecdbd02818da832aa6f846.png" alt=""><br><strong>Figuur 3 Modelopbouw Bestemmingsplan IMRO2012 inclusief tekstobjecten</strong></p></section><section id="de-basisindeling-van-objectgerichte-teksten"><h3 id="x4-2-de-basisindeling-van-objectgerichte-teksten"><span class="secno">4.2 </span>De basisindeling van objectgerichte teksten</h3><p>Dit is aangegeven in Hoofdstuk 3 van IMROPT2012.
+</p><p>Ieder TekstObject is een zelfstandig leesbaar stuk, heeft een titel, begint met
+een hoofdletter en eindigt met een punt. Een TekstObject kan bijvoorbeeld zijn
+een hoofdstuk, paragraaf, of een sublid. Verschillende TekstObjecten vormen
+samen een ander TekstObject: verschillende paragrafen vormen samen 1 hoofdstuk.
+De identificatie van ieder TekstObject is uniek en daardoor traceerbaar, maar
+vooral: koppelbaar.
+</p><p>Ieder ruimtelijk instrument kent wat betreft planteksten een eigen
+basisindeling. In Hoofdstuk 3 van IMROPT2012 is voor drie verschillende groepen
+ruimtelijke instrumenten de opbouw van de planteksten vastgelegd.</p></section><section id="verbeelding-van-geometrie-en-tekst"><h3 id="x4-3-verbeelding-van-geometrie-en-tekst"><span class="secno">4.3 </span>Verbeelding van geometrie en tekst</h3><p>In ruimtelijke plannen zijn geometrie en tekst sterk met elkaar verbonden. In
+het IMRO2012-model is om die reden een verwijzingNaarTekst voorzien. Dit
+attribuut vormt het “bruggenhoofd” naar zowel niet-objectgerichte planteksten
+(HTML en/of PDF) als objectgerichte planteksten (XML). Met objectgerichte
+teksten zijn mogelijkheden uitgebreider:</p><p><strong>Precies verwijzen</strong><br>Elk onderdeel van een objectgerichte tekst kent een eigen identificatie,
+waardoor preciezer kan worden verwezen.</p><p><strong>Enkelzijdig verwijzen</strong><br>Verwijzen van geometrie naar tekst en omgekeerd is in principe mogelijk omdat
+beide kanten gebruik maken van de XLink verwijzingstechniek. In IMRO2012 is
+vanwege de eenduidigheid echter gekozen voor een enkelzijdige verwijzing: van
+kaart naar tekst.</p><p><strong>Presentatie versus representatie</strong><br>Objectgerichte teksten hebben als doel het uitwisselen van de inhoud van
+ruimtelijke planteksten mogelijk te maken. De verbeelding (de opmaak) moet los
+hiervan worden geregeld. In zeer beperkte mate kan opmaak/verbeelding worden
+uitgewisseld Het gaat dan om zaken als <em>nadruk</em> of <strong>sterke nadruk</strong>. Echte
+opmaak zoals lettertype en tekstgrootte wordt niet mee uitgewisseld. De
+ontvanger van het bestand kan met de inhoud van het bestand weer een volledige
+tekst opbouwen en een eigen weergave kiezen.
+</p></section><section id="uitgangspunt-uit-te-wisselen-gegevens"><h3 id="x4-4-uitgangspunt-uit-te-wisselen-gegevens"><span class="secno">4.4 </span>Uitgangspunt uit te wisselen gegevens</h3><p>Uitgangspunt voor deze praktijkrichtlijn is dat alle teksten die onderdeel zijn
+van ieder mogelijk type ruimtelijk instrument zoals genoemd in paragraaf 1.2
+toegankelijk zijn. Dat betekent dat het bestand met het plantekstenbestand
+compleet is. Op basis van deze praktijkrichtlijn wordt dus altijd de gehele
+inhoud van het instrument gereconstrueerd.<br>Hiermee is het plantekstenbestand een aanvulling op de geometrisch georiënteerde
+bepalingen van IMRO2012 en de bijbehorende praktijkrichtlijnen en kan uit de
+twee bestanden (voor geometrie, resp. tekst) dus altijd een volledig plan worden
+gereconstrueerd, afgezien van mogelijke bijlagen.</p></section></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-de-planobjecten-met-attributen"><span class="secno">5. </span>De planobjecten met attributen</h2><p><strong>Een klasse, te beschouwen als een objecttype, kent attributen die de
+eigen­schappen van dat object­type geven. In dit hoofdstuk worden de klassen
+(objec­ttypen) met bijbe­horende attributen be­schreven.</strong></p><section id="klasse-tekstobject"><h3 id="x5-1-klasse-tekstobject"><span class="secno">5.1 </span>Klasse TekstObject</h3><p>Het object (de klasse) <em>TekstObject</em> is het object dat een individueel
+tekstonderdeel represen­teert. Ieder TekstObject is een zelfstandig leesbaar
+stuk, heeft een titel, begint met een hoofdletter en eindigt met een punt. Een
+TekstObject kan bijvoorbeeld zijn een hoofdstuk, paragraaf, of een sublid. Aan
+dit object worden de algemene ei­gen­schappen van het tekstonderdeel als
+attribuut ge­koppeld.</p><p>In Tabel 1 zijn de attributen benoemd, de waarden aangegeven die deze attributen
+kunnen bevatten en wordt aangegeven of het gebruik van het attribuut ver­plicht
+is en of het attribuut meerdere malen mag worden gebruikt (multipliciteit). Ook
+is aangege­ven of het sa­mengestelde attributen betreffen, dat wil zeggen altijd
+in samenhang moeten worden gebruikt. Na de tabel is per attribuut een nadere
+toelichting gegeven.</p><p><strong>Tabel 1 Klasse TekstObject 1..n*</strong><br><img src="media/4413b36f54e63a6d8a675a5dd49e0ea9.png" alt="">
+</p><p><strong>identificatie</strong> (verplicht)<br>Ieder TekstObject behoeft een eigen identificatie. Deze identificatie bestaat
+uit een binnen het plantekstenbestand uniek nummer per object. Dit nummer begint
+met “NL.IMRO.PT.” gevolgd door maximaal 32 vrij te gebruiken alfanumerieke
+tekens. De lengte van de identificatie is daardoor maximaal 43 alfanumerieke
+tekens. Samen met het attribuut verwijzingNaarPlangebied levert dit een unieke
+identificatie op.</p><p><strong>verwijzingNaarPlangebied</strong> (verplicht)<br>Voor elk object is een verwijzing noodzakelijk naar het IMRO Plangebied waar het
+object bij hoort. Dit attribuut verwijst daarom naar het attribuut identificatie
+van het bijbehorende IMRO Plangebied object.</p><p><strong>volgnummer</strong> (verplicht)<br>Het volgnummer geeft de volgorde binnen de tekst aan. Het eerste TekstObject
+krijgt volgnummer 1, het tweede TekstObject krijgt volgnummer 2, enzovoort tot
+aan het laatste TekstObject. Dit nummer mag niet verward worden met de
+identificatie of het nummer.</p><p><strong>niveau</strong> (verplicht)<br>Alle TekstObjecten krijgen een niveau aanduiding mee. Hiermee is het mogelijk
+een tekst netjes op te bouwen en opmaakkenmerken voor een hele tekst in één keer
+te regelen. Er is slechts één TekstObject met niveau nul. Verder mogen er geen
+tussenliggende niveaus ontbreken. Dit betekent dat het niveau van het
+bovenliggend TekstObject waar via het ouderId attribuut naar wordt verwezen
+altijd precies één niveau hoger is (numerieke waarde 1 lager) dan het niveau van
+het actuele TekstObject, met uitzondering van het TekstObject met niveau nul,
+dat naar zichzelf verwijst.</p><p><strong>ouderId</strong> (verplicht)<br>Elk TekstObject verwijst naar het TekstObject waar het bij hoort (een paragraaf
+is onderdeel van een hoofdstuk bijvoorbeeld). Bij een TekstObject met niveau nul
+wordt de identificatie (idn) van het actuele TekstObject ingevuld, waarmee het
+naar zichzelf verwijst. Het ligt voor de hand dat deze attribuutwaarde
+automatisch wordt gegenereerd. Uiteraard moet de ingevulde waarde bestaan binnen
+het plantekstenbestand.</p><p><strong>type</strong> (verplicht)<br>Bepaalde onderdelen van het plantekstenbestand hebben een vaste functie. Denk
+hierbij aan de hoofdstukindeling en de vaste onderdelen van het
+bestemmingsartikel zoals in de SVBP is geregeld. De lijst die daarin is
+opgenomen is voor het domein ObjecttypePlan gebruikt. Voor andere plantypen zijn
+meer algemene termen als “hoofdstuk” en “paragraaf” beschikbaar in
+ObjecttypePlan, ObjecttypeVisie en ObjecttypeBesluit. De toepassing hiervan is
+beschreven in Hoofdstuk 3 van IMROPT. Met het gebruik van dit attribuut wordt
+duidelijk wat het doel is van een bepaald stuk tekst.</p><p><strong>typeTekst</strong> (facultatief)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing naar
+tekst dient gekozen te worden uit een van de volgende waarden van het domein
+Teksttype.</p><p><strong><em>titelInfo</em></strong> (verplicht)<br>Dit attribuut bepaalt de aanhef van een TekstObject. Het samengesteld attribuut
+<em>titelInfo</em> verwijst naar het object <em>TitelInfo</em>. De TitelInfo bestaat uit drie
+onderliggende attributen die allemaal afzonderlijk leeg gelaten mogen worden,
+maar waarvoor verder geldt dat tenminste één van de drie met een niet-lege
+waarde moet zijn gevuld, zodat er nooit een lege titel ontstaat. Verder kunnen
+er vanuit de SVBP eisen worden gesteld aan de waarden voor dit attribuut. De
+titel is opgebouwd uit de volgende attributen:<br><strong>label</strong> (facultatief)<br>De tekstobjecten worden voorzien van een soortnaam van het object. Dit kan
+bijvoorbeeld zijn "hoofdstuk"of "artikel". Deze labels kunnen in een koptekst
+worden opgenomen. Vaak zal het label overeen komen met het type. Het label is
+echter gericht op de verschijningsvorm/verbeelding van de tekst, terwijl het
+type naar de functie van een tekst verwijst.<br><strong>nummer</strong> (facultatief)<br>Een nummer is meestal een opvolgende reeks. (1,2,3 of A,B,C). In principe wordt
+er een doornummerende reeks opgebouwd. Het kan nodig zijn hiervan af te wijken
+en een nummering zoals "2a" toe te passen.<br><strong>naam</strong> (facultatief)<br>Elk tekstobject heeft een titel. Deze werkwijze maakt leesbare teksten en
+transparante verwijzingsmechanismes mogelijk.
+</p><p><strong>interneVerwijzing</strong> (facultatief)<br>Een interne verwijzing kan objecten binnen de tekst met elkaar verbinden. In een
+vieweromgeving kan dit bijvoorbeeld opleveren dat de specifieke toelichting bij
+een bepaalde regel direct bij de regel benaderbaar is. Interne verwijzingen
+worden gelegd vanuit het object waar ze bij horen. De toelichting bij het
+bestemmingsartikel wonen wordt dus gekoppeld vanuit de regel. Het is wel
+toegestaan ook in de toelichting een verwijzing te maken. Dan is er ook vanuit
+de toelichting een rechtstreekse toegang tot het artikel te realiseren.<br>De interneVerwijzing kan als attribuut bij een object worden opgenomen of in de
+tekst worden opgenomen. Een verwijzing in de tekst werkt als een hyperlink. Een
+verwijzing als attribuut kan door viewers worden geïnterpreteerd om categorieën
+als “zie ook” of “zie verder” te vullen.</p><p><strong>externeVerwijzing</strong> (facultatief)<br>Vanuit de planteksten kan worden verwezen naar andere bronbestanden waaruit het
+instrument is opgebouwd. Dit wordt gedaan door de bestandsnaam van het
+gerefereerde bronbestand op te nemen. Zo kan er vanuit de planteksten eenvoudig
+worden verwezen naar bijlagen en illustraties. Er kan niet worden verwezen naar
+bronnen die geen onderdeel zijn van het instrument. De waarde van dit attribuut
+moet voldoen aan de vereisten die in paragraaf 4.2 van de STRI2012 worden
+gesteld aan de bestandsnaam van een bronbestand, eventueel gevolgd door een
+“fragment identifier” #. In paragraaf 2.3 van IMROPT wordt dit nader
+gespecificeerd.<br>De externeVerwijzing kan als attribuut bij een object worden opgenomen of in de
+tekst worden opgenomen. Een verwijzing in de tekst werkt als een hyperlink. Een
+verwijzing als attribuut kan door viewers worden geïnterpreteerd om categorieën
+als “zie ook” of “zie verder” te vullen.
+</p><p><em>Voorbeeld: In de toelichting van een bestemmingsplan kan bijvoorbeeld worden
+verwezen naar een Notitie van uitgangspunten, die als bijlage bronbestand in PDF
+formaat is toegevoegd aan het plan. Op de plek in de toelichting waar dit
+relevant is, kan een hyperlink worden opgenomen zodat in een vieweromgeving
+direct naar dit stuk kan worden verwezen.</em></p><p><strong>tekstMetadata</strong> (conditioneel)<br>Verwijzing naar de metadata van dit bestand. Hiermee is een link opgenomen naar
+de algemene gegevens die van toepassing zijn op de hele tekst. Deze verwijzing
+mag maar 1 keer opgenomen worden en komt daarom alleen, verplicht, voor bij de
+teksttypen document en besluitdocument</p><p><strong>tekst</strong> (facultatief)<br>dit attribuut bevat de daadwerkelijke tekstinhoud. Hier vinden de cijfer- en
+lettertekens die samen een tekst vormen hun plek.<br>Deze tekst mag worden opgemaakt met een beperkte set van XHTML coderingen,
+aangevuld met enkele specifieke codes. Wat er in de tekst mag worden opgenomen
+staat beschreven in paragraaf 2.3 van IMROPT.</p></section><section id="klasse-tekstmetadata"><h3 id="x5-2-klasse-tekstmetadata"><span class="secno">5.2 </span>Klasse TekstMetaData</h3><p>Gegevens over gegevens worden metadata genoemd. In IMROPT2012 zijn bij de klasse
+<em>TekstMetadata</em> regels opgenomen over de in het tekstbestand op te nemen
+metadata. In Tabel 2 wordt klasse <em>TekstMetadata</em> toegelicht.</p><p><strong>Tabel 2 Klasse TekstMetadata 1*</strong></p><p><img src="media/9f6403e7d0465688cd14fa731d1da88d.png" alt=""></p><p><strong>identificatie</strong> (verplicht)<br>Elke object binnen het plantekstenbestand behoeft een eigen identificatie. Deze
+identificatie bestaat uit een binnen het plantekstenbestand uniek nummer per
+object. Dit nummer begint met “NL.IMRO.PT.” en wordt gevolgd door maximaal 32
+vrij te gebruiken alfanumerieke tekens. De lengte van de identificatie is
+daardoor maximaal 43 alfanumerieke tekens. Samen met het attribuut
+verwijzingNaarPlangebied levert dit een unieke identificatie op.</p><p><strong>verwijzingNaarPlangebied</strong> (verplicht)<br>Voor elk object is een verwijzing noodzakelijk naar het IMRO Plangebied waar het
+object bij hoort. Dit attribuut verwijst daarom naar het attribuut identificatie
+van het bijbehorende IMRO Plangebied object.</p><p><strong>typePlan</strong> (facultatief)<br>Voor dit attribuut wordt de waarde van typePlan behorende bij het IMRO
+plangebied gespecificeerd.</p><p><strong>naam</strong> (facultatief)<br>In het waardeveld van het attribuut <em>naam</em> dient de naam van het ruimtelijk
+instrument te worden op­genomen. Het gaat daarbij om de volledige naam. Indien
+er sprake is van een aanhaaltitel dan wordt deze gebruikt.</p><p><strong>beleidsmatigVerantwoordelijkeOverheid</strong> (facultatief)<br>Hier wordt de overheid die beleidsmatig verantwoordelijk is voor het opstellen
+van het plan opgeno­men<em>.</em> In dit geval een van de volgende vaste waarden:
+</p><ul>
+<li>gemeentelijke overheid</li>
+<li>deelgemeente/stadsdeel</li>
+<li>provinciale overheid</li>
+<li>nationale overheid.</li>
+</ul><p><strong>naamOverheid</strong> (facultatief)<br>Hier wordt de naam van de beleidsmatig verantwoordelijke overheid opgenomen, in
+de vorm van de tekst “gemeente …….”, “deelgemeente ……”, "stadsdeel ……",
+“provincie …….” of “ministerie …….”. In het geval er meerdere verantwoordelijke
+ministeries zijn, wordt naamOverheid evenzoveel ingevuld,</p><p><strong>overheidsCode</strong> (facultatief)<br>Teneinde kenbaar te maken van welke beleidsmatig verantwoordelijke overheid het
+ruimtelijk instrument is, wordt hier het viercijferige CBS-nummer van die
+overheid opgenomen. Voor deelgemeen­ten/­stadsdelen wordt het nummer gebruikt
+van de gemeente waartoe zij behoren. Voor de provincies worden, voorafgaand aan
+het CBS-nummer van de provincie, twee voorloop negens geplaatst, zodat de totale
+lengte 4 posities bedraagt. Voor het Rijk wordt het nummer "0000" gebruikt.</p><p><strong>creatiedatum</strong> (facultatief)<br>Datum waarop de plantekst is gemaakt. Formaat in de in de vorm: jjjj-mm-dd.</p><p><strong>naamPraktijkrichtlijn</strong> (verplicht)<br>Om de ontvanger duidelijk te maken welke gegevens hij ontvangt en welke status
+aan deze gegevens mag worden toegekend is het noodzakelijk om aan te geven dat
+de gegevensset voldoet aan de betreffende praktijkrichtlijn, inclusief de versie
+daarvan, in dit geval PRPT2012.</p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

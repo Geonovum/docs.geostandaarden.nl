@@ -1,0 +1,1488 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2">
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - GRK - ReSpec file Praktijkrichtlijn Gebiedsgerichte Besluiten - -->
+        <!-- - - - - - - -20221111 - GRK - v2.3.6 reparaties links                                -  -->		
+		<!-- - - - - - - - - - - - - - - - IMRO2012-  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Praktijkrichtlijn Gebiedsgerichte Besluiten 2012 (PRGB2012) v1.3.6</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "format": "markdown",
+  "publishDate": "2022-12-15",
+  "github": "https://github.com/geonovum/ROST",
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Geonovum",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "gb2012",
+  "pubDomain": "ro",
+  "licence": "cc-by",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "previousPublishDate": "2018-10-23",
+  "previousMaturity": "GN-DEF",
+  "publishISODate": "2022-12-15T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 15 december 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-pr-gb2012-20221215/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Praktijkrichtlijn Gebiedsgerichte Besluiten 2012 (PRGB2012) v1.3.6",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-12-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-pr-gb2012-20181023/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Praktijkrichtlijn Gebiedsgerichte Besluiten 2012 (PRGB2012) v1.3.6</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-12-15">15 december 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-pr-gb2012-20221215/">https://docs.geostandaarden.nl/ro/def-pr-gb2012-20221215/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/gb2012/">https://docs.geostandaarden.nl/ro/gb2012/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-pr-gb2012-20181023/">https://docs.geostandaarden.nl/ro/def-pr-gb2012-20181023/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/">https://geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" data-include="" class="introductory"><h2></h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de praktijkrichtlijn. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+ Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product dat informatie geeft, vaak met een technisch karakter, dat nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#H01"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#context"><span class="secno">1.2 </span>Context</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H02"><span class="secno">2. </span>Het informatiemodel toegelicht</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-objectbenadering-van-een-gebiedsgericht-besluit"><span class="secno">2.1 </span>De objectbenadering van een gebiedsgericht besluit</a></li><li class="tocline"><a class="tocxref" href="#structuur"><span class="secno">2.2 </span>Structuur</a></li><li class="tocline"><a class="tocxref" href="#besluit-en-digitale-verbeelding"><span class="secno">2.3 </span>Besluit en digitale verbeelding</a></li><li class="tocline"><a class="tocxref" href="#gemeente-en-provinciegrensoverschrijdende-besluiten"><span class="secno">2.4 </span>Gemeente- en provinciegrensoverschrijdende besluiten</a></li><li class="tocline"><a class="tocxref" href="#geometrie-of-tekst-als-ingang-voor-beleid"><span class="secno">2.5 </span>Geometrie of tekst als ingang voor beleid</a></li><li class="tocline"><a class="tocxref" href="#metadata"><span class="secno">2.6 </span>Metadata</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H03"><span class="secno">3. </span>De planobjecten met attributen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#klasse-besluitgebied_x"><span class="secno">3.1 </span>Klasse Besluitgebied_X</a></li><li class="tocline"><a class="tocxref" href="#klasse-besluitvlak_x"><span class="secno">3.2 </span>Klasse Besluitvlak_X</a></li><li class="tocline"><a class="tocxref" href="#klasse-besluitsubvlak_x"><span class="secno">3.3 </span>Klasse Besluitsubvlak_X</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H04"><span class="secno">4. </span>Herzieningen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gedeeltelijke-herziening"><span class="secno">4.1 </span>Gedeeltelijke herziening</a></li><li class="tocline"><a class="tocxref" href="#geldende-situatie-de-versie-geconsolideerd"><span class="secno">4.2 </span>Geldende situatie: de versie ‘geconsolideerd’.</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H05"><span class="secno">5. </span>Verschillende typen gebiedsgerichte besluiten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemeen"><span class="secno">5.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#gebiedsgerichte-besluiten-inhoud"><span class="secno">5.2 </span>Gebiedsgerichte besluiten: inhoud</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanwijzing"><span class="secno">5.2.1 </span>Aanwijzing</a></li><li class="tocline"><a class="tocxref" href="#beheersverordening"><span class="secno">5.2.2 </span>Beheersverordening</a></li><li class="tocline"><a class="tocxref" href="#exploitatieplan"><span class="secno">5.2.3 </span>Exploitatieplan</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gebiedsgerichte-besluiten-kennisgeving"><span class="secno">5.3 </span>Gebiedsgerichte besluiten: kennisgeving</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gerechtelijke-uitspraak"><span class="secno">5.3.1 </span>Gerechtelijke uitspraak</a></li><li class="tocline"><a class="tocxref" href="#omgevingsvergunning"><span class="secno">5.3.2 </span>Omgevingsvergunning</a></li><li class="tocline"><a class="tocxref" href="#voorbereidingsbesluit"><span class="secno">5.3.3 </span>Voorbereidingsbesluit</a></li></ol></li></ol></li></ol></nav><div id="H00" data-format="markdown"><h2>Versiebeheer</h2>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document
+geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Aanpassing</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1 januari 2012</td>
+<td>Vervallen</td>
+<td>Eerste versie</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>15 november 2012</td>
+<td>Vervallen</td>
+<td>- Tekstcorrectie van inleiding van Hoofdstuk 2; - Tekstcorrectie in paragrafen 2.2, 2.3; - Tekstcorrectie Tabel 3 attribuut <em>verwijzingNaarIllustratieInfo</em> conform IMRO2012; -Tekstcorrectie toelichting multipliciteit Tabel 3; - Tekstcorrectie toelichting attributen paragraaf 3.1; - Toelichting attribuut <em>verwijzingNaarExternPlanInfo</em> paragraaf 3.1 aangevuld; -Tekstcorrecties paragraaf 4.1: in plaats van beheersverordening gebiedsgericht besluit; -Verduidelijken van de inleiding van Hoofdstuk 5 en een algemene toelichting toegevoegd als paragraaf 5.1; - Tabellen aangevuld met attributen om een completer overzicht te geven van benodigde attributen per gebiedsgericht besluit: Tabel 7 tot en met Tabel 12; - Teksten in de subparagrafen van Hoofdstuk 5 aangevuld met extra toelichting op de verschillende gebiedsgerichte besluiten.</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>13 juni 2013</td>
+<td>Vervallen</td>
+<td>Verwijzing naar de uitspraak aangepast naar aanleiding van wijziging AbRS met in gebruik name van ECLI (European Case Law Identifier) in paragraaf 5.3.1.</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>mei 2014</td>
+<td>Vervallen</td>
+<td>-Paragraaf 3.1 toelichting attribuut <em>ondergrond</em> uitgebreid en in lijn gebracht met nieuwe paragraaf 7.2 van de PTRI2012; - Paragraaf 4.1 aangevuld met keuze voor inhoud door bronhouder; - Paragraaf 5.3.1 aangevuld met verwijzing naar toelichting werkwijze uitspraken in PRTRI.</td>
+</tr>
+<tr>
+<td>1.3.1</td>
+<td>20 augustus 2014</td>
+<td>Vervallen</td>
+<td>Voor de objecten besluitvlak en besluitsubvlak is de toelichting op het identificatienummer aangepast van 24 naar 32, omdat dit niet overeenkomt met IMRO2012.</td>
+</tr>
+<tr>
+<td>1.3.2</td>
+<td>Oktober 2015</td>
+<td>Werkversie</td>
+<td>-Inconsequent gebruik van planstatus geconsolideerd; paragraaf 1.3 en Hoofdstuk 4 aangepast daar waar ‘geconsolideerde versie’ werd gebruikt dit vervangen door ‘versie geconsolideerd’ of ‘geconsolideerd besluit’. -Besproken met BROS en softwareleveranciers; wijzigingen definitief.</td>
+</tr>
+<tr>
+<td></td>
+<td>14 december 2015</td>
+<td>Definitief</td>
+<td></td>
+</tr>
+<tr>
+<td>1.3.3</td>
+<td>December 2016</td>
+<td>Werkversie</td>
+<td>- Paragraaf 4.2 aanpassen omschrijving versie geconsolideerd - Paragraaf 5.3.2 toevoegen dat ook een concept of ontwerp omgevingsvergunning mag worden gepubliceerd. - Besproken met BROS en softwareleveranciers; wijzigingen definitief.</td>
+</tr>
+<tr>
+<td></td>
+<td>27 Maart 2017</td>
+<td>Definitief</td>
+<td></td>
+</tr>
+<tr>
+<td>1.3.4</td>
+<td>Augustus 2017</td>
+<td>Werkversie Definitief</td>
+<td>-Paragraaf 3.1 aanpassen in verband met verplicht gebruik BGT. GBK ondergrond verwijderen.</td>
+</tr>
+<tr>
+<td></td>
+<td>25 oktober 2017</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.3.5</td>
+<td>20 september 2018 23 oktober 2018</td>
+<td>Werkversie Definitief</td>
+<td>-Paragraaf 1.2 aanpassen voor het gebruik van PDF bestanden zonder Flashcompnenten. - Paragraaf 3.1, tabel op blz. 15, bij <em>‘verwijzingNaarExternPlanInfo’, AMB</em> vervangen door <em>GB.</em></td>
+</tr>
+<tr>
+<td>1.3.6</td>
+<td>23 november 2022</td>
+<td>Definitief</td>
+<td>Diverse verbeteringen van links</td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p><strong>De Praktijkrichtlijn Gebiedsgerichte Besluiten is een toelichting op het
+Informatiemodel Ruimtelijke Ordening. In dit hoofdstuk wordt de achtergrond van
+de praktijkrichtlijn gegeven evenals de strekking van de standaard.</strong></p><section id="aanleiding"><h3 id="x1-1-aanleiding"><span class="secno">1.1 </span>Aanleiding</h3><p>In de Wet ruimtelijke ordening (<a href="http://wetten.overheid.nl/BWBR0020449">Wro</a>) en het Besluit ruimtelijke ordening (<a href="http://wetten.overheid.nl/BWBR0023798">Bro</a>) is vastgelegd dat planologische visies, plannen, besluiten, verordeningen en
+algemene maatregelen van bestuur digitaal vervaardigd en op elektronische wijze
+beschikbaar gesteld moeten worden. De digitale visie, plan, besluit verordening,
+maatregel is conform artikel 1.2.1 van het Bro het juridisch authentieke stuk.
+Daarnaast is ook in de Wet algemene bepalingen omgevingsrecht (Wabo) een
+verplichte elektronische beschikbaarstelling opgenomen voor sommige gevallen. Om
+dit mogelijk te maken zijn de RO standaarden ontwikkeld. Deze verplichte RO
+Standaarden zijn, vastgelegd met de <a href="http://wetten.overheid.nl/BWBR0031829">ministeriële Regeling standaarden ruimtelijke ordening</a>,:
+</p><ul>
+<li>Informatiemodel Ruimtelijke Ordening (IMRO2012); </li>
+<li>Standaard voor Toegankelijkheid Ruimtelijke Instrumenten (STRI2012);</li>
+<li>Standaard Vergelijkbare Bestemmingsplannen (SVBP2012).</li>
+<li>Informatiemodel Ruimtelijke Ordening voor Planteksten(IMROPT2012).</li>
+</ul><p>De standaard voor planteksten (IMROPT2012) is onder voorwaarde verplicht.
+Toepassing van IMROPT2012 is verplicht wanneer de bronhouder ervoor kiest de
+planteksten in objectgerichte vorm (XML) beschikbaar te stellen.</p><p>IMRO2012 is normstellend voor de codering van ruimtelijke instrumenten. IMRO2012
+is van belang voor applicatiebouwers en als referentie voor andere IMRO2012
+gerelateerde documenten. IMRO2012 wordt beschreven zonder in te gaan over de
+praktische toepassing van het model voor het coderen van digitale ruimtelijke
+instrumenten. Alle voor dit toepassingsdoel benodigde informatie is opgenomen in
+zogenoemde praktijkrichtlijnen:
+</p><ul>
+<li>Praktijkrichtlijn Bestemmingsplannen (PRBP2012);</li>
+<li>Praktijkrichtlijn Structuurvisies (PRSV2012);</li>
+<li>Praktijkrichtlijn Gebiedsgerichte Besluiten (PRGB2012);</li>
+<li>Praktijkrichtlijn Provinciale Verordening (PRPV2012);</li>
+<li>Praktijkrichtlijn Algemene Maatregel van Bestuur (PRAMvB2012);</li>
+<li>Praktijkrichtlijn voor Planteksten (PRPT2012).</li>
+</ul><p>De STRI2012 is ook in praktijkrichtlijn nader toegelicht: </p><ul>
+<li>Praktijkrichtlijn Toegankelijkheid Ruimtelijke Instrumenten (PRTRI2012).</li>
+</ul><p>Het voorliggende rapport betreft de Praktijkrichtlijn Gebiedsgerichte Besluiten
+(PRGB2012). Als uitgangspunt voor deze praktijkrichtlijn worden alle gegevens
+beschouwd die in de vorm van een gebiedsgericht besluit worden vastgesteld. Op
+basis van deze praktijkrichtlijn kan te allen tijde vanuit de gegevensset de
+inhoud van het oorspronkelijke gebiedsgerichte besluit worden geraadpleegd.
+Daarmee wordt de volledige digitale representatie van een gebiedsgericht besluit
+vastgelegd. De PRGB2012 is van toepassing op de instrumenten:
+</p><ul>
+<li>aanwijzingsbesluit (proactieve aanwijzing);</li>
+<li>beheersverordening;</li>
+<li>exploitatieplan;</li>
+<li>gerechtelijke uitspraak;</li>
+<li>omgevingsvergunning (voormalig Wro projectbesluit);</li>
+<li>reactieve aanwijzing;</li>
+<li>voorbereidingsbesluit.</li>
+</ul></section><section id="context"><h3 id="x1-2-context"><span class="secno">1.2 </span>Context</h3><p>Naast de voorliggende praktijkrichtlijn is sprake van andere praktijkrichtlijnen
+en standaarden die in samenhang zijn ontwikkeld in de context van de Wro. De
+praktijkrichtlijnen voor de provinciale verordening (PRPV2012) en de algemene
+maatregel van bestuur (PRAMvB2012) zijn onderdelen van de RO Standaarden die
+nauw aansluiten op deze praktijkrichtlijn. Alle drie zijn een toelichting op het
+Informatie Model Ruimtelijke Ordening (IMRO2012).</p><p>Hieronder wordt een aantal relevante aspecten genoemd en daarvan de globale
+context in relatie tot praktijkrichtlijnen, de voorliggende in het bijzonder,
+genoemd.</p><p><strong>Wet ruimtelijke ordening (Wro)</strong><br>In de Wro wordt aangegeven dat nadere regels kunnen worden gesteld omtrent de
+vormgeving en inrichting van een gebiedsgericht besluit. In het Besluit
+ruimtelijke ordening zijn die uitgewerkt.</p><p><strong>Besluit ruimtelijke ordening (Bro)</strong><br>Het Bro legt vast dat een gebiedsgericht besluit in elk geval bevat een
+geometrische plaatsbepaling van het gebied waarop de visie betrekking heeft.
+Daarmee wordt het belang van de voorliggende praktijkrichtlijn, die de wijze van
+elektronisch (digitaal) vastleggen bepaalt, evident.</p><p><strong>Regeling standaarden ruimtelijke ordening (Rsro)</strong><br>Deze ministeriële regeling noemt de feitelijke standaarden die basis moeten zijn
+voor het vormgeven, inrichten en beschikbaar stellen van ruimtelijke
+instrumenten. Dit zijn de RO standaarden 2012.</p><p><strong>Informatiemodel Ruimtelijke Ordening (IMRO2012)</strong><br>In de Rsro is bepaald dat bij de digitalisering van ruimtelijke instrumenten
+gebruik moet worden gemaakt van IMRO2012. Dit informatiemodel is de standaard
+voor de beschrijving en codering van ruimtelijke instrumenten. IMRO2012 is
+gebaseerd op het Basismodel Geo-Informatie (NEN 3610: 2011). Dit Basismodel
+kent een aantal objectklassen en attributen waarmee aan het aardoppervlak
+gerelateerde ruimtelijke objecten kunnen worden gecodeerd. IMRO2012 gebruikt
+slechts één van deze objectklassen, namelijk PlanologischGebied.
+Met IMRO wordt de inhoud (representatie van de werkelijkheid) digitaal
+vastgelegd. De gebruiker van het bestand bouwt zelf de door hem gewenste
+verbeelding op. Deze verbeelding kan dus een andere presentatie zijn van
+dezelfde gegevens.</p><p><strong>Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012)</strong><br>Conform Wro en Bro wordt een gebiedsgericht besluit met de daarbij behorende
+toelichting in digitale geautoriseerde bronbestanden vastgelegd en in die vorm
+vastgesteld. De STRI2012 beschrijft hoe de beschikbaarstelling van ruimtelijke
+instrumenten gerealiseerd dient te worden en gaat onder meer in op
+naamconventies en het digitaal waarmerken van de elektronisch te publiceren
+dataset. Bij de STRI2012 behoort de toelichting Praktijkrichtlijn
+Toegankelijkheid Ruimtelijke Instrumenten (PRTRI2012).</p><p><strong>Standaard voor planteksten (IMROPT)</strong><br>De standaard voor planteksten moet onder voorwaarde verplicht worden gebruikt.
+Toepassing van IMROPT2012 is verplicht wanneer de bronhouder ervoor kiest de
+planteksten in objectgerichte vorm (XML) beschikbaar te stellen. De bronhouder
+mag er ook voor kiezen de planteksten in de vorm van HTML en PDF bestanden
+beschikbaar te stellen. IMROPT is in dit geval dan niet van toepassing.
+IMROPT2012 wordt toegelicht in de Praktijkrichtlijn voor Planteksten (PRPT2012).</p><p><strong>Gebruik van PDF-bestanden</strong><br>Indien er PDF-bestanden worden gebruikt in een planset dan is het beter om PDF-
+bestanden te gebruiken die geen flashcomponenten bevatten. Bestanden met
+flashcomponenten kunnen om veiligheidsredenen niet meer in een webbrowser worden
+geopend waardoor de PDF-bestanden bij raadpleging van Ruimtelijkeplannen.nl geen
+inhoud bevatten.
+Controleer daarom vóór publicatie dat uw PDF-documenten geen Flashcomponenten
+bevatten.</p><p><strong>Praktijkrichtlijn</strong><br>In een praktijkrichtlijn wordt de methode van digitalisering van ruimtelijke
+instrumenten beschreven. De praktijkrichtlijn stoelt geheel op de in de Regeling
+standaarden ruimtelijke ordening vastgelegde RO standaarden. De
+praktijkrichtlijn is te beschouwen als een toelichting op en nadere uitwerking
+van de RO standaarden. Voor de hier onderscheiden gebiedsgerichte besluiten is
+dit de voorliggende Praktijkrichtlijn Gebiedsgerichte Besluiten (PRGB2012).</p><p>De gebiedsgerichte besluiten worden hieronder opgesomd en van een korte
+verklarende beschrijving voorzien.</p><p><strong>de beheersverordening: artikel 3.38 Wro</strong><br>De beheersverordening is een instrument dat in plaats van een bestemmings­plan
+door gemeenten kan worden ingezet. Het kan worden gezien als een conserve­rende
+ge­bruiksregeling voor gebieden waar zich geen nieuwe ontwikkelingen voordoen.</p><p><strong>het voorbereidingsbesluit: artikel 3.7, 3.26, 3.28, 4.1, 4.2, 4.3, 4.4 en 10.3
+Wro</strong><br>Het voorbereidingsbesluit is het bestaande instrument in relatie tot het
+voornemen om een bestemmingsplan op te stellen. Bij het voorbereidingsbesluit
+kan worden bepaald, dat het verboden is om binnen een bij dat plan aangegeven
+gebied zonder omgevingsvergunning:
+</p><ul>
+<li>bepaalde werken, geen bouwwerken zijnde, of werkzaamheden uit te voeren;</li>
+<li>bouwwerken te slopen.
+Het instrument kan ook gebruikt worden door provincie en Rijk om voorbescherming
+te verkrijgen voor een op te stellen inpassingsplan. Ook kunnen provincie en
+Rijk, in relatie tot het geven van een aanwijzing aan gemeenten overeenkomstig
+artikel 4.2 en 4.4, verklaren dat een bestemmingsplan door de gemeente wordt
+voorbereid. Het zelfde instrument wordt ook geboden in de artikelen 4.1, lid 5
+en 4.3, lid 4 waar provincie en Rijk de mogelijkheid hebben
+voorbereidingsbescherming te geven aan een op te stellen provinciale
+verordening, respectievelijk AMvB.</li>
+</ul><p><strong>het aanwijzingsbesluit (proactieve aanwijzing): artikel 4.2 en 4.4 Wro</strong><br>Dit is een door gedeputeerde staten of door de minister van Infrastructuur en
+Milieu (IenM) of door de minister verantwoordelijk voor het desbetreffende
+beleidsterrein in overeenstemming met de minister van IenM te geven aanwijzing
+voor het opstellen van een bestemmingsplan aan de gemeente­raad, provinciale
+staten of gedeputeerde staten.</p><p><strong>de reactieve aanwijzing: artikel 3.8, lid 6 Wro</strong><br>Met een reactieve aanwijzing kan de provincie onderdelen van een bestemmingsplan
+niet inwerking laten treden. Voor de onderdelen van het bestemmingsplan waar een
+reactieve aanwijzing op&nbsp;is gegeven blijven de 'oude' bestemmingsplannen van
+toepassing.</p><p><strong>het exploitatieplan: artikel 6.12 Wro</strong><br>Een exploitatieplan is een publiekrechtelijk instrument om bij
+gebiedsontwikkeling waarbij de grond niet in handen is van de gemeente
+kostenverhaal te kunnen realiseren. Het exploitatieplan is meestal onderdeel van
+het bestemmingsplan in dezelfde procedure..</p><p><strong>de omgevingsvergunning: artikel 2.1 lid 1 onder c juncto artikel 2.12 eerste
+lid, onderdeel a, sub 3e&nbsp;Wabo</strong><br>De uitgebreide procedure om af te wijken van een bestemmingsplan ten behoeve van
+gebiedsontwikkeling (vroeger: artikel 19 lid 1 en 2 WRO, vervolgens artikel 3.10
+Wro) is van de Wro naar de Wabo overgebracht. Met een omgevingsvergunning voor
+de activiteit “gebruik in strijd met een planologische regeling” kan elk gebruik
+(waaronder bouwen) worden toegestaan, ongeacht wat er in de geldende
+planologische regeling staat. Op dit moment moet een dergelijke
+omgevingsvergunning tevens een vergunning bevatten voor activiteiten die
+onlosmakelijk verbonden zijn met de afwijking van de planologische regeling.
+De mededeling van een met artikel 2.12, eerste lid, onderdeel a, onder 3 van de
+Wabo verleende omgevingsvergunning, dient op basis van artikel 6.14 van het
+Besluit omgevingsrecht (Bor) ook langs elektronische weg plaats te vinden
+overeenkomstig de eisen die hiervoor worden gegeven in de Regeling standaarden
+ruimtelijke ordening.</p><p><strong>gerechtelijke uitspraak</strong><br>Dit betreft zowel een uitspraak van de Afdeling Bestuursrechtspraak van Raad van
+State (ABRS) als van diverse bestuursrechters, die gevolgen kan hebben voor
+ruimtelijk plan of onderdelen daarvan en dientengevolge van belang zijn voor het
+verdere gebruik of de strekking van die ruimtelijke plannen.</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>De voorliggende praktijkrichtlijn gaat in <a href="#H02">Hoofdstuk 2</a> in op aard en karakter van
+de gebiedsgerichte besluiten in de context van het informatiemodel. <a href="#H03">Hoofdstuk 3</a>
+beschrijft alle objecten en de bijbehorende attributen. <a href="#H04">Hoofdstuk 4</a> gaat in op
+gedeeltelijke herzieningen en een geconsolideerd besluit . <a href="#H05">Hoofdstuk 5</a> gaat in
+op de afzonderlijke gebiedsgerichte besluiten zelf: welke teksttypen worden
+gebruik, welke relaties met andere ruimtelijke plannen bestaan er.</p></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-het-informatiemodel-toegelicht"><span class="secno">2. </span>Het informatiemodel toegelicht</h2><p><strong>In een gebiedsgericht besluit zijn naast het werkingsgebied van het besluit alle
+onderdelen door middel van een geometrie met een verwijzing naar de bijbehorende
+tekst vastgelegd. In dit hoofdstuk wordt aangegeven welke gebiedsgerichte
+besluiten er zijn. Verder wordt ook de structuur van een gebiedsgericht besluit
+toegelicht.</strong></p><section id="de-objectbenadering-van-een-gebiedsgericht-besluit"><h3 id="x2-1-de-objectbenadering-van-een-gebiedsgericht-besluit"><span class="secno">2.1 </span>De objectbenadering van een gebiedsgericht besluit</h3><p>Conform IMRO2012 is een object altijd een ruimtelijke object dat een ruimtelijke
+eenheid representeert waar tekst (besluittekst, toelichting, regels, etc.)
+betrekking op heeft. In een gebiedsgericht besluit kunnen deze ruimtelijke
+eenheden geometrisch worden vastgelegd of worden aangeduid. In Tabel 1 zijn alle
+gebiedsgerichte besluittypen die van toepassing zijn in deze praktijkrichtlijn
+samengevat.</p><p><strong>Tabel 1 Gebiedsgerichte besluiten volgens de Wro en Wabo</strong>
+<img src="media/b503446c04bfaec1927eca3e4d9087d5.png" alt=""><br>Een gebiedsgericht besluit bestaat uit drie typen objecten (klassen):
+</p><ul>
+<li>Besluitgebied;</li>
+<li>Besluitvlak;</li>
+<li>Besluitsubvlak.</li>
+</ul><p>In Figuur 1 is het complete schema weergegeven met alle onderscheiden objecten.</p><p><img src="media/99198463f25b2203e13d8c4c5a61f87b.jpg" alt="">
+<strong>Figuur 1 Objectenstructuur</strong></p><p><strong>Besluitgebied</strong><br>Het object <em>Besluitgebied</em> is het werkingsgebied van een gebiedsgericht besluit.
+Het object komt altijd één keer voor (n=1).</p><p><strong>Besluitvlak</strong><br>Het object <em>Besluitvlak</em> is een gebied, geometrisch vastgelegd binnen een object
+<em>Besluitgebied</em>, dat zelfstandige eigenschappen heeft (bijvoorbeeld een daaraan
+gekoppeld(e) voorschrift/regel). In het geval het gebiedsgericht besluit
+uitsluitend inhoudelijke bepalingen kent die betrekking hebben op het hele
+werkingsgebied van het gebiedsgericht besluit wordt het werkingsgebied altijd
+tevens aangeduid als object <em>Besluitvlak</em>. Er is dus altijd tenminste één
+besluitvlak dat in dat geval dezelfde geometrie kent als het object
+<em>Besluitgebied.</em> Meerdere objecten <em>Besluitvlak</em> dekken tezamen het gehele
+object <em>Besluitgebied</em> af en kunnen elkaar overlappen. Het object komt altijd
+tenminste één keer voor (1..n).</p><p><strong>Besluitsubvlak</strong><br>Het object <em>Besluitsubvlak</em> is een gebied, geometrisch vast­gelegd binnen een
+object <em>Besluitgebied</em>, met een inhoude­lijke relatie met een of meer
+bovenliggende geometrisch vastgelegde objecten <em>Besluitvlak</em> of andere objecten
+<em>Besluitsubvlak</em> en heeft geen directe in­houdelijke relatie met het hele
+werkingsgebied van het gebiedsgericht besluit (het object <em>Besluitgebied</em>). Een
+object <em>Besluitsubvlak</em> kan een object <em>Besluitvlak</em> of een ander object
+<em>Besluitsubvlak</em> willekeurig overlappen. Het object komt zo vaak voor als
+gewenst (0..n).</p></section><section id="structuur"><h3 id="x2-2-structuur"><span class="secno">2.2 </span>Structuur</h3><p>Op de beheersverordening na zullen alle besluiten, objectgericht bezien,
+eenvoudig van aard zijn en uit weinig objecten bestaan. Bij de
+beheersverordening gaan we er van uit dat het instrument, bedoeld als eenvoudig
+instrument, ook weinig gedetailleerd zal zijn. Een specifieke indeling, zoals
+bij bestemmingsplannen met onder andere een groot aantal verschillende typen
+aanduidingen, is daarom op voorhand als niet voor de hand liggend beschouwd. Er
+moet volstaan kunnen worden met de voorgestelde besluitvlakken en
+besluitsubvlakken. Deze kunnen mogelijk wel vaak voorkomen binnen een
+beheersverordening.</p><p>Nadrukkelijk wordt hier vermeld dat er bij de genoemde gebiedsgerichte
+besluiten, waaronder de beheersverordening ook geen sprake is van een
+traditionele verbeelding op papier, maar van een volledig digitaal product als
+uitgangspunt. Dit stelt daarom ook geen traditionele kaartgerichte (analoge)
+verbeeldingsvereisten waarvoor meerdere type aanduidingen zullen ontstaan. De
+volgende paragraaf gaat ook nader in op de verbeelding.</p></section><section id="besluit-en-digitale-verbeelding"><h3 id="x2-3-besluit-en-digitale-verbeelding"><span class="secno">2.3 </span>Besluit en digitale verbeelding</h3><p>In tegenstelling tot bestemmingsplannen bestaat er voor gebiedsgerichte
+besluiten geen afspraak over de digitale verbeelding. De vormgeving van de
+digitale verbeelding in kleuren, rasters, lettertypen e.d., wordt niet opgenomen
+in het besluit. Desondanks is er in deze praktijkrichtlijn de mogelijkheid
+opgenomen (facultatief) een kaart als plaatje aan het besluit toe te voegen. Dit
+"plaatje" heeft echter geen geometrie en is derhalve louter illustratief. De
+ontvanger van het bestand bouwt zelf vanuit het GML-bestand de door hem gewenste
+verbeelding op. De digitale verbeelding kan derhalve een andere presentatie
+zijn van dezelfde gegevens. Een interactieve raadpleegomgeving zal er echter
+zorg voor moeten dragen dat het gebiedsgerichte besluit correct en volledig
+wordt weergegeven, waarmee raadpleging van de gebiedsgerichte besluiten
+verzekerd is.</p></section><section id="gemeente-en-provinciegrensoverschrijdende-besluiten"><h3 id="x2-4-gemeente-en-provinciegrensoverschrijdende-besluiten"><span class="secno">2.4 </span>Gemeente- en provinciegrensoverschrijdende besluiten</h3><p>Bij een besluit waarvan het onderwerp de grens van de betreffende overheid wordt
+overschreden, wordt dit besluit voor elk van de betreffende overheden, apart
+vastgesteld voor zover het haar eigen grondgebied betreft. Dit leidt ertoe dat
+er zelfstandige besluiten worden genomen met een eigen planidentificatie. Het
+gevolg daarvan is dat in het kader van de toepassing van deze praktijkrichtlijn
+twee afzonderlijke sets databestanden ontstaan, elk voor het eigen gemeentelijk
+grondgebied en elk met een eigen identiteit (attribuut <em>idn</em>).</p><p>Teneinde kenbaar te kunnen maken welke gemeenten het betreft in geval van een
+provinciaal of Rijksbesluit dient het attribuut <em>locatieNaam</em> te worden gebruikt
+om de betreffende gemeentenamen en in voorkomend geval provincienamen te
+benoemen. Daarvoor wordt verwezen naar het <a href="#H03">volgende hoofdstuk</a>.</p></section><section id="geometrie-of-tekst-als-ingang-voor-beleid"><h3 id="x2-5-geometrie-of-tekst-als-ingang-voor-beleid"><span class="secno">2.5 </span>Geometrie of tekst als ingang voor beleid</h3><p>De voorliggende praktijkrichtlijn is gericht op de geometrie en opbouw van het
+gebiedsgerichte besluit. De geometrie (locatie) vormt hierbij de ingang voor het
+raadplegen van het ruimtelijke plan.</p><p>Binnen de RO Standaarden 2012 is het gebruik van objectgerichte planteksten
+(XML) facultatief. De bronhouder mag er ook voor kiezen de planteksten in de
+vorm van HTML en/of PDF bestanden (ofwel niet-objectgericht) beschikbaar te
+stellen. Bij het gebruik van objectgerichte planteksten wordt het in de toekomst
+mogelijk om de tekst te laten fungeren als ingang voor het raadplegen van het
+ruimtelijk plan binnen een interactieve raadpleegomgeving.</p><p>Voor toelichting op het gebruik van de standaard voor planteksten (IMROPT2012)
+wordt verwezen naar de toelichting Praktijkrichtlijn voor Planteksten
+(PRPT2012).</p></section><section id="metadata"><h3 id="x2-6-metadata"><span class="secno">2.6 </span>Metadata</h3><p>In de voorgaande paragrafen is het IMRO met betrekking tot het gebiedsgerichte
+besluit toegelicht. Wanneer het gebiedsgerichte besluit digitaal wordt
+vastgelegd bestaat deze uit een set van verschillende bestanden: de dataset.
+STRI2012 geeft regels met betrekking tot deze bestanden.</p><p>In het GML bestand is ook bepaalde informatie over het gebiedsgerichte besluit
+opgenomen. Ook in het geleideformulier en manifest is bepaalde informatie over
+het gebiedsgerichte besluit opgenomen. Gegevens over gegevens wordt metadata
+genoemd. In IMRO2012 zijn bij de klasse <em>MetadataIMRObestand</em> regels
+opgenomen over de in het GML bestand op te nemen metadata. In Tabel 2 wordt
+klasse <em>MetadataIMRObestand</em> toegelicht.</p><p><strong>Tabel 2 KlasseMetadataIMRObestand 1*</strong>
+<img src="media/1a81bef29f2c642e10fc741840419e16.png" alt=""></p><p><strong>toepassingsschaal</strong><br>Gebiedsgerichte besluiten worden vastgelegd in besluitvlakken en
+besluitsubvlakken die geometrisch zijn bepaald op basis van het
+Rijksdriehoekstelsel (RD-coördinaten). Daarvoor is de schaal in principe niet
+van belang. Bij de digitale en analoge verbeelding is de schaal waarop
+(gedeelten van) het gebiedsgerichte besluit zinvol kunnen worden weergegeven wel
+van belang. Daarom wordt in de metadata van de dataset de maximale schaal
+meegegeven waarop het plan zinvol verbeeld mag worden.</p></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-de-planobjecten-met-attributen"><span class="secno">3. </span>De planobjecten met attributen</h2><p><strong>In dit hoofdstuk worden de klassen (objecttypen) met bijbehorende attributen
+beschreven. Elk object binnen een klasse kent eigenschappen die als attribuut
+daaraan worden toegekend. In IMRO2012 is in het UML-schema weergegeven hoe de
+objecten (klassen) samenhangen en welke attributen mogelijk zijn.</strong></p><section id="klasse-besluitgebied_x"><h3 id="x3-1-klasse-besluitgebied_x"><span class="secno">3.1 </span>Klasse Besluitgebied_X</h3><p>Het object <em>Besluitgebied_X</em> is het object dat de grenzen van het gebied, of de
+gebieden, waarover het besluit uitspraken doet geometrisch vastlegt. De
+geometrie daarvan is altijd een vlak of multivlak en altijd exact. Aan dit
+object worden de algemene eigenschappen van het gebiedsgericht besluit als
+attribuut gekoppeld.</p><p>In Tabel 3 zijn de attributen behorend bij de klasse <em>Besluitgebied_X</em> benoemd,
+de waarden aangegeven die deze attributen moeten bevatten en is aangegeven of
+het gebruik van het attribuut verplicht is en of het attribuut meerdere malen
+mag worden gebruikt. Ook is aangegeven of attributen in samenhang moeten worden
+gebruikt. Na de tabel is per attribuut een nadere toelichting gegeven.</p><p>In <a href="#H05">Hoofdstuk 5</a> is voor per type gebiedsgerichte besluit een nadere uitwerking
+gegeven van Tabel 3.</p><p><strong>Tabel 3 Klasse Besluitgebied_X 1*</strong></p><p><img src="media/6aadb2a93b7d1664aa005ddcf1191f27.png" alt=""></p><p><strong><em>identificatie</em></strong> (verplicht):<br>Ieder ruimtelijk instrument kent een eigen identificatienummer (idn). Deze
+identificatie maakt het mogelijk dat op landelijk niveau een uniek onderscheid
+voor ieder instrument aanwezig is. Voor het geval het werkingsgebied bestaat uit
+meerdere ruimtelijk gescheiden gebieden kent het totaal van die gebieden één
+identificatienummer. De geometrie van het object <em>Besluitgebied_X</em> is hierbij
+een multipolygoon.
+Het samengestelde attribuut verwijst naar het object NEN3610ID bestaande uit de
+attributen <em>namespace, lokaalID</em> en <em>versie</em>.
+</p><ul>
+<li><strong>Namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten is dat ‘NL.IMRO’.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Unieke identificatiecode binnen de registratie van ruimtelijke plannen. Bestaande uit een bronhouderscode van 4 cijfers (voor het Rijk 0000, voor gemeente het CBS-nummer) gevolgd door een punt (.) en maximaal door de bronhouder te bepalen 18 alfanumerieke tekens. Er geldt de volgende
+reguliere expressie: [0-9]{4}\.[A-Za-z0-9]{1,18}
+</li>
+<li><strong>Versie:</strong> (verplicht)</li>
+</ul><p>Versie-aanduiding van het plangebied bestaande uit 4 alfanumerieke tekens door de bronhouder te bepalen. Er geldt de volgende reguliere expressie:
+[A-Za-z0-9]{4}
+Uit de waarden van de attributen <em>namespace, lokaalID</em> en <em>versie</em> wordt de
+bestandsnaam van het plan opgebouwd conform STRI2012:
+namespace.lokaalID-versie. De samengestelde reguliere expressie is:
+NL\.IMRO\.[0-9]{4}\.[A-Za-z0-9]{1,18}-[A-Za-z0-9]{4}</p><p><strong>typePlan</strong> (verplicht):<br>Voor het attribuut <em>typePlan</em> wordt het domein <em>RuimtelijkPlanOfBesluit_XGB</em>
+gebruikt. Hier wordt een van de volgende waarden ingevuld:
+</p><ul>
+<li>aanwijzingsbesluit;</li>
+<li>beheersverordening;</li>
+<li>exploitatieplan;</li>
+<li>gerechtelijke uitspraak;</li>
+<li>omgevingsvergunning (voormalig Wro projectbesluit);</li>
+<li>reactieve aanwijzing;</li>
+<li>voorbereidingsbesluit.</li>
+</ul><p><strong>beleidsmatigVerantwoordelijkeOverheid</strong> (verplicht):<br>Hier wordt de overheid die beleidsmatig verantwoordelijk is voor het opstellen
+van het plan opgenomen uit het domein <em>Overheden_XGB.</em> In dit geval een van de
+volgende vaste waarden:
+</p><ul>
+<li>gemeentelijke overheid;</li>
+<li>deelgemeente/stadsdeel;</li>
+<li>provinciale overheid of;</li>
+<li>nationale overheid.</li>
+</ul><p><strong>naamOverheid</strong> (verplicht):<br>Hier wordt de naam van de beleidsmatig verantwoordelijke overheid opgenomen, in
+de vorm van de tekst “gemeente …….”, “deelgemeente ……”, “stadsdeel ……”,
+“provincie …….” Of “ministerie …….”. In het geval er meerdere verantwoordelijke
+ministeries zijn, wordt <em>naamOverheid</em> evenzoveel ingevuld.</p><p><strong>overheidsCode</strong> (verplicht):<br>Teneinde kenbaar te maken van welke beleidsmatig verantwoordelijke overheid het
+gebiedsgerichte besluit is, wordt hier het viercijferige CBS-nummer van die
+overheid opgenomen. Voor deelgemeenten/stadsdelen wordt het nummer gebruikt van
+de gemeente waartoe zij behoren. Voor de provincies worden, voorafgaand aan het
+CBS-nummer van de provincie, twee voorloopnegens geplaatst, zodat de totale
+lengte 4 posities bedraagt. Voor het Rijk wordt het nummer “0000” gebruikt.</p><p><strong>Naam</strong> (verplicht):<br>In het waardeveld van het attribuut <em>naam</em> dient de volledige naam van het
+gebiedsgerichte besluit te worden opgenomen zoals deze volgens de
+(aanhaal)titel daarvan wordt genoemd. De volledige naam wordt ge­bruikt. Indien
+er sprake is van een aanhaaltitel in het besluit dan wordt deze gebruikt.</p><p><strong>Normadressant</strong> (indien gewenst):<br>Dit attribuut geeft aan op welke organen of rechtspersonen de regeling zich
+richt. Het domein <em>Normadressant_XGB</em> geeft de toegestane waarden aan waaruit
+eventueel meerdere kunnen worden gekozen.</p><p><strong>locatieNaam</strong> (indien gewenst/voorwaardelijk verplicht):<br>Het kan gewenst zijn om de geografische naam van de locatie waarbinnen de
+gebiedsgericht besluit zich bevindt kenbaar te maken. De naam (namen) van die
+relevante locatie (bv. Groene Hart) kan bij dit attribuut worden ingevuld. Het
+is verplicht het attribuut <em>locatieNaam</em> te gebruiken voor zover het een
+plan/besluit betreft dat door een provincie wordt opgesteld of voor zover het
+plan / besluit door het Rijk wordt opgesteld.</p><p><strong><em>planstatusInfo</em></strong> (verplicht):<br>Dit attribuut is noodzakelijk om de plangegevens te kunnen plaatsen naar tijd en
+belang. Het samengesteld attribuut <em>planstatus</em> verwijst naar het object <em>Planstatus­En­Datum</em>, bestaande uit de attributen planstatus en datum. In
+Hoofdstuk 5 is per gebiedsgericht besluit aangegeven welke status een instrument
+kent. Dit kan in het geval van een gerechtelijke uitspraak bijvoorbeeld alleen <em>vastgesteld</em> zijn.
+</p><ul>
+<li><strong>Planstatus</strong> (verplicht)
+Het domein <em>Planstatus</em> geeft de toegestane waarden voor het attribuut <em>planstatus</em> waaruit er één moet worden gekozen. De waarde van dit attribuut geeft de planstatus weer.  </li>
+<li><strong>Datum</strong>- (verplicht)
+Het attribuut <em>datum</em> is bedoeld om de proceduredatum van het plan op te nemen. De in het waardeveld op te nemen datum dient overeenkomstig het binnen het IMRO afgesproken datumformaat te worden genoteerd: jjjj-mm-dd.</li>
+</ul><p><strong>besluitnummer</strong> (onder voorwaarde verplicht):<br>Nummer van het vaststellingsbesluit van het besluit / plan. Het besluitnummer is
+alleen toegestaan en dan verplicht indien de planstatus <em>vastgesteld</em> is.</p><p><strong>verwijzingNaarVaststellingsbesluit</strong> (onder voorwaarde verplicht):<br>Hierin wordt een link opgenomen naar de tekst van het vaststellingsbesluit. In
+het format conform de bestandsnaamconventie <em>vaststellingsbesluit</em> volgens de
+STRI2012.
+Het vaststellingsbesluit betreft de tekst waarin is aangegeven door wie, op welk
+moment welk besluit is vastgesteld. Het vaststellingsbesluit wordt aan het
+<em>Besluitgebied_X</em> gekoppeld wanneer het besluit de status <em>vastgesteld</em> heeft.
+Bij een andere (eerdere) planstatus is dit attribuut niet toegestaan.
+Aan het bestand kunnen ook eventueel bij het vaststellingsbesluit behorende
+bijlagen worden toegevoegd.</p><p><strong><em>verwijzingNaarTekstInfo</em></strong> (verplicht):<br>Dit attribuut verwijst naar het samengestelde attribuut <em>TekstReferentieBG_XGB</em>,
+bestaande uit de attributen <em>verwijzingNaarTekst</em> en <em>typeTekst</em>. Attribuut
+wordt met de volgende cardinaliteit opgenomen:
+</p><ul>
+<li>Maximaal 1 verwijzing naar het volledige besluitdocument en/of;</li>
+<li>Maximaal 1 verwijzing naar volledige toelichting en/of;</li>
+<li>Maximaal 1 verwijzing naar eventuele volledige regels;</li>
+<li>0..1 verwijzing naar de volledige bijlagen van elk typeTekst:<ul>
+<li>De volledige bijlage bij de regels;</li>
+<li>De volledige bijlage bij het besluitdocument;</li>
+<li>De volledige bijlage bij de toelichting.
+</li>
+</ul>
+</li>
+</ul><p>Het aantal verwijzingen naar teksten is beperkt. De raadpleger van de plannen
+heeft daar baat bij, omdat hij dan niet direct geconfronteerd wordt met een
+mogelijk lange lijst van verwijzingen. Daarom moet er maximaal één verwijzing
+zijn naar het volledige besluitdocument, maximaal één verwijzing naar de
+volledige toelichting en maximaal één naar de volledige regels. Daarnaast mag er
+maximaal één verwijzing zijn naar alle eventuele bijlagen, gegroe­peerd naar
+bijlage bij besluitdocument, toelichting en/of regels. Er mag worden verwezen
+naar een inhoudsop­gave of index, waardoor indirect meer mogelijkheden aanwezig
+zijn.<br>De bronhouder kiest voor het al dan niet gebruik van objectgerichte planteksten.
+Uit de waarde van het attribuut <em>typeTekst</em> (onderdeel van het attribuut
+<em>verwijzingNaarTekstInfo</em>) blijkt wat voor tekst het betreft. Voor zowel
+niet-objectgerichte als objectgerichte planteksten wordt dit attribuut
+<em>verwijzingNaarTekstInfo</em> gebruikt. De keuze voor XML of HTML/PDF planteksten
+geldt niet alleen voor het besluitgebied, de keuze geldt ook voor de andere
+objecten (besluitvlakken/ besluitsubvlakken) binnen het gebiedsgericht besluit.
+De keuze wordt vastgelegd met behulp van het attribuut <em>verwijzingNorm</em> bij
+BesluitGebied_X van dit gebiedsgericht besluit. Het format dient overeenkomstig
+de afspraak over de bestandsnaamconventies conform de STRI2012 te zijn.</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)
+Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een (hyper)link naar het soort document dat is aangegeven bij het attribuut</li>
+<li><strong>typeTekst</strong> te worden opgenomen. Het format dient overeen­komstig deafspraak over de bestandsnaamconventies voor het bestandstype <em>besluitdocument</em>, <em>toelichting</em>, <em>regels</em> of <em>bijlagen</em> conform de STRI2012 te zijn.
+</li>
+<li><strong>typeTekst</strong> (verplicht)
+Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing naar tekst dient gekozen te worden uit een van de volgende waarden van het domein <em>TeksttypeBG_XGB</em>:  <ul>
+<li>besluitdocument;</li>
+<li>voorschriften/regels;</li>
+<li>toelichting;</li>
+<li>bijlage bij besluitdocument;</li>
+<li>bijlage bij voorschriften/regels;</li>
+<li>bijlage bij toelichting.<br>De regels voorzien (bijvoorbeeld bij een beheersverordening) in aanvullende gebruiks-, dan wel bouwregels voor het betreffende object. Regels kunnen voorkomen bij een beheersverordening, exploitatieplan en een voorbereidingsbesluit.
+Het besluitdocument is het totaal document aan tekst bij het besluit en
+heeft betrekking op het volledige besluit. Het besluitdocument wordt
+gekoppeld aan aanwijzingsbesluit (proactieve aanwijzing), reactieve
+aanwijzing, gerechtelijke uitspraak, voorbereidingsbesluit en
+omgevingsvergunning. Wanneer een besluitdocument is gekoppeld aan het <em>Besluitgebied_X</em>, wordt een deel van het besluitdocument, de besluittekst,
+gekoppeld aan het <em>Besluitvlak_X</em> en <em>Besluitsubvlak_X</em> (zover deze voorkomt).
+De toelichting is de onderbouwing van het besluit en kan als zelfstandige
+tekst (de toelichting) worden gekoppeld aan het object of als onderdeel van
+het besluitdocument (d_[idn]) gekoppeld worden aan het object <em>Besluitgebied_X.</em></li>
+</ul>
+</li>
+</ul><p><strong><em>ondergrondInfo</em></strong> (verplicht, zo vaak als gewenst):<br>Dit attribuut verwijst naar het samengestelde attribuut <em>Ondergrondreferentie</em>,
+bestaande uit de attributen <em>ondergrondType</em> en <em>ondergrondDatum.</em> Met dit
+attribuut wordt, conform artikel 1.2.4 Bro, aangegeven welke ondergrond bij het
+vaststellen van het besluit is gebruikt.<br>Er zijn meerdere waarden mogelijk.
+</p><ul>
+<li><strong>ondergrondType</strong> (verplicht)<br>Het type van de gebruikte ondergrond volgens het domein Ondergronden. Op
+grond van de Wet basisregistratie grootschalige topografie (BGT) is het per
+1 juli 2017 voor bestuursorganen verplicht om gebruik te maken van de <strong>Basisregistratie Grootschalige Topografie (BGT).</strong> Een bestuursorgaan kan
+daar indien nodig gemotiveerd van afwijken. Bij afwijking kan het
+bestuursorgaan gebruik maken van:  <ul>
+<li>basisregistratie topografie (BRT)</li>
+<li>basisregistratie kadaster (BRK)<br>Indien geen gebruik is gemaakt van een ondergrond uit het domein
+Ondergronden, dan wordt de naam van het bestand van de gebruikte
+ondergrond(en) als vrije tekst opgegeven. In de PRTRI2012, hoofdstuk 7, is
+toegelicht welke bestandformaten voor de ondergrond kunnen worden gebruikt.
+</li>
+</ul>
+</li>
+<li><strong>ondergrondDatum</strong> (verplicht)<br>De datum van de gebruikte ondergrond.</li>
+</ul><p><strong><em>verwijzingNaarIllustratieInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut is bedoeld om de verbeelding van het gebiedsgerichte besluit (het
+kaartbeeld, de kaartbeelden ingeval dit er meer zijn) zoals deze is vastgesteld,
+op te nemen. Het attribuut verwijst naar het samengestelde attribuut
+<em>IllustratieReferentie_XGB</em>, bestaande uit de attributen:
+</p><ul>
+<li><strong>verwijzingNaarIllustratie</strong> (verplicht)<br>Dit attribuut is exclusief bedoeld om hyperlinks te kunnen opnemen. Hier
+dient een hyperlink naar de illustratie waarbij het object behoort te
+worden opgenomen. Het format dient overeenkomstig de bestandsnaamconventie
+voor het bestandstype <em>illustratie</em> conform de STRI2012 te zijn.  </li>
+<li><strong>typeIllustratie</strong> (verplicht)<br>Hierin wordt het type van de illustratie vastgelegd: om wat voor soort
+illustratie het gaat. Hier is uitsluitend de vaste waarde <em>kaart</em> volgens
+het domein <em>Illustratie_XGB</em> toegestaan.</li>
+</ul><p><strong><em>verwijzingNaarExternPlanInfo</em></strong> (zo vaak als gewenst):<br>Dit attribuut wordt gebruikt om de relatie met een ander instrument of
+bijvoorbeeld uitspraak vast te leggen. In Hoofdstuk 5 is dit per gebiedsgericht
+besluit toegelicht.<br>Dit attribuut verwijst naar het samengestelde attribuut <em>ExternPlanReferentie</em>,
+bestaande uit de attributen:
+</p><ul>
+<li><strong>naamExternPlan</strong> (verplicht)<br>Hier wordt de naam van het externe plan (besluit) waarnaar verwezen wordt
+opgegeven. Dit kan een specifieke naam zijn indien deze bekend is, maar ook
+een algemene benaming.  </li>
+<li><strong>idnExternPlan</strong> (indien aanwezig)<br>In het geval een identificatie (idn) van het externe plan (besluit) waarnaar
+verwezen wordt bekend is, wordt deze idn hier worden opgenomen.
+</li>
+<li><strong>rolExternPlan</strong> (verplicht)<br>Hierin wordt de betekenis van het externe plan (besluit) ten opzichte van
+het hier betreffende gebiedsgerichte besluit vastgelegd. Het betreft hier
+een van de volgende vaste waarden uit het domein <em>RolExternPlan_XGB:</em>
+<ul>
+<li><em>als mutatie opgenomen</em> in het geval er sprake is van een mutatieplan van
+een beheersverordening, een en ander als uiteengezet in hoofdstuk 4.1 van
+deze praktijkrichtlijn;  </li>
+<li><em>ter vervanging van extern plan/besluit</em> in het geval het een gedeeltelijke
+herziening van een beheersverordening betreft, een en ander als uiteengezet
+in paragraaf 4.1 van deze praktijkrichtlijn;
+</li>
+<li><em>informatie in extern plan/ besluit</em> in het geval de aanleiding voor dit
+nieuwe besluit is gegeven in een ander plan, besluit, visie of bijvoorbeeld
+een rapport;  </li>
+<li><em>in extern plan/besluit uit te werken</em> in geval het gebiedsgerichte besluit
+dat als gevolg dient te hebben;
+</li>
+<li><em>ten gevolge van extern plan/besluit</em> in geval het gebiedsgerichte besluit
+een gevolg is van een ander plan (besluit).</li>
+</ul>
+</li>
+</ul><p><strong>verwijzingNorm</strong> (verplicht):<br>Teneinde de zekerheid te hebben welke technische status de data hebben, is het
+noodzakelijk dat wordt aangegeven aan welke IMRO versie de gegevensset voldoet.
+Tevens moet een verwijzing worden opgenomen naar de gebruikte versie van de
+praktijkrichtlijn. In het geval objectgerichte planteksten (XML) onderdeel zijn
+van de het gebiedsgericht besluit, dan wordt ook de verwijzing naar de standaard
+voor planteksten opgenomen.
+Het attribuut <em>verwijzingNorm</em> dient minimaal twee keer te wor­den opgeno­men
+met de verwijzing naar de betreffende versies in het waardeveld: IMRO2012 en
+PRGB2012. Bij het gebruik van objectgerichte planteksten in dit ruimtelijk plan
+moet ook worden opgenomen: IMROPT2012.</p><p><strong>Geometrie</strong> (verplicht):<br>Het object <em>Besluitgebied</em> kent uitsluitend de geometrie van een vlak of
+multivlak (multipolygoon). Dit attribuut kent daarom coördinaten in een
+vastgesteld format (gml) en kan door een applicatie automatisch worden
+gegenereerd.</p></section><section id="klasse-besluitvlak_x"><h3 id="x3-2-klasse-besluitvlak_x"><span class="secno">3.2 </span>Klasse Besluitvlak_X</h3><p>Het besluitvlak is het belangrijkste object (klasse) binnen het besluitgebied.
+Er komt altijd tenminste één object <em>Besluitvlak_X</em> voor, die in dat geval
+dezelfde geometrie zal hebben als het object <em>Besluitgebied_X</em>. De geometrie van
+een object <em>Besluitvlak_X</em> is altijd een vlak of multivlak en altijd exact. De
+eigenschappen van dit object worden bepaald door een aantal attributen dat aan
+dat object wordt gekoppeld.</p><p>In Tabel 4 zijn de attributen behorend bij de klasse <em>Besluitvlak_X</em> benoemd, de
+waarden aangegeven die deze attributen moeten bevatten en is aangegeven of het
+gebruik van het attribuut verplicht is en of het attribuut meerdere malen mag
+worden gebruikt. Ook is aangegeven of attributen in samenhang moeten worden
+gebruikt. Na de tabel is per attribuut een nadere toelichting gegeven.</p><p><strong>Tabel 4 Klasse besluitvlak_X 1..n*</strong></p><p><img src="media/8f12501d1a23de6c1d75ea6e18a294e8.png" alt=""></p><p><strong><em>identificatie (idn)</em></strong> (verplicht):<br>Elk object <em>Besluitvlak_X</em> krijgt een eigen unieke identificatie binnen het
+gebiedsgerichte besluit. Het samengestelde attribuut <em>identificatie</em> verwijst
+naar het object NEN3610ID bestaande uit de attributen <em>namespace</em> en <em>lokaalID</em>.</p><ul>
+<li><strong>Namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten
+is dat ‘NL.IMRO’.
+</li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Door de bronhouder te bepalen unieke identificatiecode binnen de context van
+het bestand bestaande uit maximaal 32 alfanumerieke tekens. Toegestane
+tekens: {”A”…”Z”, “a”…”z”, ”0”…”9”, “_”, “- “, “,”, ”.”}.</li>
+</ul><p><strong>typePlanobject</strong> (verplicht):<br>Het attribuut <em>typePlanobject</em> maakt het via het bijbehorende domein
+<em>RuimtelijkPlanobject</em> mogelijk aan te geven welk object het betreft. Hier
+wordt de vaste waarde <em>besluitvlak_X</em> ingevuld.</p><p><strong>besluitgebied</strong> (verplicht):<br>Voor elk object is een verwijzing noodzakelijk naar het object <em>Besluitgebied_X</em>
+waar het object deel van uitmaakt. Dit attribuut verwijst daartoe naar het
+attribuut <em>identificatie</em> van het bijbehorende object <em>Besluitgebied_X.</em> Dit zal
+automatisch binnen een applicatie ge­stalte kunnen krijgen.</p><p><strong>naam</strong> (verplicht):<br>Aan het attribuut <em>naam</em> wordt als waarde een representerende naam van het
+object meegegeven, mogelijk zoals deze in de tekst die ernaar verwijst is
+opgenomen. Niet altijd zal dit het geval zijn. In dat geval zal een zinvolle
+onder­scheidende naam moeten worden ingevuld, zodat het object voor gebruikers
+herkenbaar is en de gebruiker hierop desgewenst kan classificeren.</p><p><strong><em>verwijzingNaarTekstInfo</em></strong> (verplicht, zo vaak als gewenst):<br>Het attribuut is bedoeld voor het verwijzen naar specifieke tekst die behoort
+bij het betreffende object <em>Besluitvlak_X</em>. Het attribuut verwijst naar het
+samengestelde attribuut <em>TekstReferentie_XGB</em>, bestaande uit de attributen
+<em>verwijzingNaarTekst, typeTekst</em> en <em>normadressant</em>.
+De bronhouder kiest voor dezelfde vorm van planteksten als bij het object
+<em>Besluitgebied_X</em>: objectgericht in XML of niet-objectgericht in HTML formaat.
+Het format dient overeenkomstig de afspraak over de bestandsnaamconventies
+conform de STRI2012 te zijn. De keuze van de bonhouder wordt vastgelegd in de
+<em>verwijzingNorm</em> bij dit gebiedsgericht besluit.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)
+Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een
+(hyper)link naar het soort document dat is aangegeven bij het attribuut <em>typeTekst</em> te worden opgenomen.
+Voor de waarde van het attribuut <em>verwijzingNaarTekst</em> geldt dat geen
+elementen van een directorystructuur/pad mogen worden opgenomen. Wel moet
+een nadere precisering naar de plaats binnen een document te worden
+opgenomen met behulp van een fragmentidentifier. Het fragment in de
+hyperlink is de locatie in de plantekst (XML of HTML) waar het van
+toepassing zijnde attribuut <em>typeTekst</em> betrekking op heeft. Een hyperlink
+krijgt dan de vorm: <u>bestandsnaam.xml#fragment</u>of
+<u>bestandsnaam.htm­#fragment</u>.
+</li>
+<li><strong>typeTekst</strong> (verplicht)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing
+naar tekst dient gekozen te worden uit een van de volgende waarden van het
+domein <em>Teksttype_XGB</em>:<ul>
+<li>besluittekst;</li>
+<li>voorschriften/regels;</li>
+<li>toelichting;</li>
+<li>bijlage bij besluittekst;</li>
+<li>bijlage bij voorschriften/regels;</li>
+<li>bijlage bij toelichting.<br>Wanneer een besluitdocument is gekoppeld aan het <em>Besluitgebied_X</em>, wordt
+een deel van het besluitdocument, de besluittekst, gekoppeld aan het <em>Besluitvlak_X</em> en <em>Besluitsubvlak_X</em> (zover deze voorkomt).</li>
+</ul>
+</li>
+</ul><p><strong>normadressant</strong> (zo vaak als gewenst)<br>Dit attribuut geeft aan op welke organen of rechtspersonen de regeling zich
+richt. Het domein <em>Normadressant_XGB</em> geeft de toegestane waarden aan waaruit
+één of meerdere kunnen worden gekozen. Indien deze waarde hier wordt opgegeven
+treedt deze waarde in de plaats van de waarde die bij het object
+<em>Besluitgebied_X</em> is opgegeven.</p><p><strong>geometrie</strong> (verplicht)<br>Het object <em>Besluitvlak_X</em> kent uitsluitend de geometrie van een vlak of
+multivlak (multipoly­goon). Dit attribuut kent daarom coördinaten in een
+vastgesteld format (gml) en kan door een applicatie automatisch worden
+gegenereerd.</p></section><section id="klasse-besluitsubvlak_x"><h3 id="x3-3-klasse-besluitsubvlak_x"><span class="secno">3.3 </span>Klasse Besluitsubvlak_X</h3><p>Naast objecten van het type <em>Besluitvlak_X</em> kunnen ook objecten van het type
+<em>Besluitsubvlak_X</em> voorkomen. Deze geven een nadere betekenis aan een gedeelte
+van een of meer objecten <em>Besluitvlak_X</em> of aan een of meer andere objecten
+<em>Besluitsubvlak_X</em>. Het object <em>Besluitsubvlak_X</em> kan zo vaak voorkomen als
+gewenst. De geometrie daarvan is altijd een vlak of multivlak en altijd exact.
+De eigenschappen van dit object worden bepaald door een aantal attributen dat
+aan dat object wordt gekoppeld.</p><p>In Tabel 5 zijn de attributen behorend bij de klasse <em>Besluitsubvlak_X</em> benoemd,
+de waarden aangegeven die deze attributen moeten bevatten en is aangegeven of
+het gebruik van het attribuut verplicht is en of het attribuut meerdere malen
+mag worden gebruikt. Ook is aangegeven of attributen gekoppeld worden, dat wil
+zeggen altijd in samenhang moeten worden gebruikt. Na de tabel is per attribuut
+een nadere toelichting</p><p><strong>Tabel 5 Klasse Besluitsubvlak_X 0..n*</strong></p><p><img src="media/340aef6e67d1381abe1bfeb5807c2918.png" alt=""></p><p><strong><em>identificatie (idn)</em></strong> (verplicht):<br>Elk object <em>Besluitsubvlak_X</em> krijgt een eigen unieke identificatie binnen het
+gebiedsgerichte besluit. Het samengestelde attribuut <em>identificatie</em> verwijst
+naar het object NEN3610ID bestaande uit de attributen <em>namespace</em> en <em>lokaalID</em>.
+</p><ul>
+<li><strong>namespace:</strong> (verplicht)<br>Een unieke verwijzing naar een registratie van objecten. Voor IMRO objecten
+is dat ‘NL.IMRO’.  </li>
+<li><strong>lokaalID:</strong> (verplicht)<br>Door de bronhouder te bepalen unieke identificatiecode binnen de context van
+het bestand bestaande uit maximaal 32 alfanumerieke tekens. Toegestane
+tekens: {”A”…”Z”, “a”…”z”, ”0”…”9”, “_”, “- “, “,”, ”.”}.</li>
+</ul><p><strong>typePlanobject</strong> (verplicht):<br>Het attribuut <em>typePlanobject</em> maakt het via het bijbehorende domein
+<em>RuimtelijkPlanobject</em> mogelijk aan te geven welk object het betreft. Hier
+wordt de vaste waarde <em>Besluitsubvlak_X</em> ingevuld.</p><p><strong>besluitgebied</strong> (verplicht):<br>Voor elk object is een verwijzing noodzakelijk naar het object <em>Besluitgebied_X</em>
+waar het object deel van uitmaakt. Dit attribuut verwijst daartoe naar het
+attribuut <em>identificatie</em> van het bijbehorende object <em>Besluitgebied_X.</em> Dit zal
+automatisch binnen een applicatie ge­stalte kunnen krijgen.</p><p><strong>besluitvlak</strong> (onder voorwaarde verplicht):<br>Een object <em>Besluitsubvlak_X</em> heeft op grond van een inhoudelijke relatie altijd
+betrekking op minimaal één object <em>Besluitvlak_X</em> of op minimaal één ander
+object <em>Besluitsubvlak_X</em>. Indien dit object <em>Besluitsubvlak_X</em> geen betrekking
+heeft op een ander object <em>Besluitsubvlak_X</em>, dan dient met dit attribuut het
+idn van het onderliggende object <em>Besluitvlak_X</em> waar dit object
+<em>Besluitsubvlak_X</em> betrekking op heeft, te worden ingevuld. Dit attribuut moet
+meerdere keren worden gebruikt als het object betrekking heeft op meerdere
+onderliggende objecten <em>Besluitvlak_X</em>.</p><p><strong>besluitsubvlak</strong> (onder voorwaarde verplicht):<br>Objecten van het type <em>Besluitsubvlak_X</em> kunnen op grond van een inhoudelijke
+relatie betrekking hebben op andere onderliggende objecten <em>Besluitsubvlak_X</em>.
+Indien dat het geval is, dient met dit attribuut het idn van deze onderliggende
+objecten <em>Besluitsubvlak_X</em> te worden opgenomen.</p><p><strong>naam</strong> (verplicht):<br>Aan het attribuut <em>naam</em> wordt als waarde een representerende naam van het
+object meegegeven, mogelijk zoals deze in de tekst die ernaar verwijst is
+opgenomen. Niet altijd zal dit het geval zijn. In dat geval zal een zinvolle
+onder­scheidende naam moeten worden ingevuld, zodat het object voor gebruikers
+herkenbaar is en de gebruiker hierop desgewenst kan classificeren.</p><p><strong><em>verwijzingNaarTekstInfo</em></strong> (verplicht, zo vaak als gewenst):<br>Het attribuut is bedoeld voor het verwijzen naar specifieke tekst die behoort
+bij het betreffende object <em>Besluitsubvlak_X</em>. Het attribuut verwijst naar het
+samengestelde attribuut <em>TekstReferentie_XGB</em>, bestaande uit de attributen
+<em>verwijzingNaarTekst, typeTekst</em> en <em>normadressant</em>.
+De bronhouder kiest voor dezelfde vorm van planteksten als bij het object
+<em>Besluitgebied_X</em>: objectgericht in XML of niet-objectgericht in HTML formaat.
+Het format dient overeen­komstig de afspraak over de bestandsnaamconventies
+conform de STRI2012 te zijn. De keuze van de bonhouder wordt vastgelegd in de
+<em>verwijzingNorm</em> bij dit gebiedsgericht besluit.
+</p><ul>
+<li><strong>verwijzingNaarTekst</strong> (verplicht)<br>Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een
+(hyper)link naar het soort document dat is aangegeven bij het attribuut <em>typeTekst</em> te worden opgenomen.
+Voor de waarde van het attribuut <em>verwijzingNaarTekst</em> geldt dat geen
+elementen van een directorystructuur/pad mogen worden opgenomen. Wel moet
+een nadere precisering naar de plaats binnen een document te worden
+opgenomen met behulp van een fragmentidentifier. Het fragment in de
+hyperlink is de locatie in de plantekst (XML of HTML) waar het van
+toepassing zijnde attribuut <em>typeTekst</em> betrekking op heeft. Een hyperlink
+krijgt dan de vorm: <u>bestandsnaam.xml­#fragment</u>of
+<u>bestandsnaam.htm#fragment</u>.
+</li>
+<li><strong>typeTekst</strong> (verplicht)<br>Hiermee wordt aangegeven om wat voor type tekst het gaat. Per verwijzing
+naar tekst dient gekozen te worden uit een van de volgende waarden van het
+domein <em>Teksttype_XGB</em>:  <ul>
+<li>besluittekst;</li>
+<li>voorschriften/regels;</li>
+<li>toelichting;</li>
+<li>bijlage bij besluittekst;</li>
+<li>bijlage bij voorschriften/regels;</li>
+<li>bijlage bij toelichting.<br>Wanneer een besluitdocument is gekoppeld aan het <em>Besluitgebied_X</em>, wordt
+een deel van het besluitdocument, de besluittekst, gekoppeld aan het <em>Besluitvlak_X</em> en <em>Besluitsubvlak_X</em> (zover deze voorkomt).</li>
+</ul>
+</li>
+</ul><p><strong>normadressant</strong> (zo vaak als gewenst)<br>Dit attribuut geeft aan op welke organen of rechtspersonen de regeling zich
+richt. Het domein <em>Normadressant_XGB</em> geeft de toegestane waarden aan waaruit
+één of meerdere kunnen worden gekozen. Indien deze waarde hier wordt opgegeven
+treedt deze waarde in de plaats van de waarde die bij het object
+<em>Besluitgebied_X</em> is opgegeven.</p><p><strong>geometrie</strong> (verplicht)<br>Het object <em>Besluitsubvlak_X</em> kent uitsluitend de geometrie van een vlak of
+multivlak (multipolygoon). Dit attribuut kent daarom coördinaten in een
+vastgesteld format (gml) en kan door een applicatie automatisch worden
+gegenereerd.</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-herzieningen"><span class="secno">4. </span>Herzieningen</h2><p><strong>In dit hoofdstuk wordt ingegaan op de wijze waarop gedeeltelijke herzieningen
+gecodeerd moeten worden en hoe beschikt kan worden over een versie
+"geconsolideerd".</strong></p><section id="gedeeltelijke-herziening"><h3 id="x4-1-gedeeltelijke-herziening"><span class="secno">4.1 </span>Gedeeltelijke herziening</h3><p>Hetgeen in Hoofdstuk 4 van deze praktijkrichtlijn is vermeld, is zowel in het
+eenmalige geval als in geval van een herzien besluit volledig van toepassing.
+Op deze wijze wordt al hetgeen een nieuwe gebiedsgericht besluit betreft
+gecodeerd en wordt voldaan aan de wettelijke plicht te beschikken over een
+objectgericht besluit.</p><p>Als verplicht onderdeel moet het object <em>Besluitgebied_X</em> worden gebruikt. De
+begrenzing van het plangebied heeft betrekking op de te herziene locatie. Dit
+kan afwijken van de begrenzing van het oorspronkelijk plangebied waarop de
+herziening betrekking heeft. Verder wordt dezelfde multipliciteit van de
+attributen in acht genomen, met dat verschil dat het attribuut
+<em>verwijzingNaarExternPlanInfo</em> verplicht moet worden ingevuld.
+Daartoe worden bij het object <em>Besluitgebied_X</em> bij het attribuut
+<em>verwijzingNaarExternPlanInfo</em> bij de samenstellende at­tributen respectievelijk
+de naam (type) van het plan dat wordt herzien, het idn van het plan dat wordt
+herzien en de waarde "ter vervanging van extern plan" ingevuld. Daarmee wordt de
+relatie vastgelegd met het gebiedsgerichte besluit dat gedeeltelijk wordt
+herzien.</p><p><strong>Tabel 6 Relatie naar extern plan</strong></p><p><img src="media/7204a97980003c211f2ed844ad75b541.png" alt=""></p><p>Bij het attribuut <em>verwijzingNaarTekstInfo</em> worden alle relevante teksten
+gevoegd. Daartoe wordt ge­bruik gemaakt van de domeinwaarden van het domein
+<em>TeksttypeBG_XGB</em>. De overige attributen spre­ken voor zich.</p><p>Daarnaast kunnen vervolgens alle herziene objecten van de klasse <em>Besluitvlak_X</em>
+en/of <em>Besluitsubvlak_X</em>, met alle (nieuwe of aanpassingen van de) regels, voor
+zover dit de herziening betreft, worden toegevoegd aan dit type besluit. Welke
+objecten (besluitvlakken, dan wel besluitsubvlakken) worden toegevoegd, is
+afhankelijk van de concrete situatie. Nadere regels zijn moeilijk te geven
+gezien de vele mogelijkheden die aard, omvang en onderlinge samenhang van de te
+herziene gedeelten van een gebiedsgericht besluit met zich meebrengen. Ook de
+keuze voor het hergebruik van structuur/ hiërarchie van objecten en regels uit
+het oorspronkelijk plan/ besluit heeft invloed op de mogelijkheden.
+Het kan praktisch zijn om de objecten die behoren bij de herziening zodanig te
+kiezen en te coderen dat er een voordeel ontstaat bij het opstellen van het
+"geconsolideerd besluit " die verderop aan de orde komt. Uiteraard is het
+juridische doel van de herziening maatgevend, maar kan van de ruimte binnen dat
+doel gebruik worden gemaakt om te komen tot een ook voor de codering en de
+verwerking daarvan in een geconsolideerd besluit praktische oplossing.</p><p>Op deze wijze wordt al hetgeen een gebiedsgericht besluit of een herziening
+daarvan betreft gecodeerd en wordt voldaan aan de wettelijke plicht te
+beschikken over een objectgericht plan, maar ontstaat <em>geen</em> compleet overzicht
+van de nieuwe geldende situatie. Een oplossing daarvoor is om gebruik te maken
+van een "geconsolideerd besluit " waarin de gevolgen van de herziening zijn
+verwerkt. Daarop wordt hierna in paragraaf 4.2. nader ingegaan.</p></section><section id="geldende-situatie-de-versie-geconsolideerd"><h3 id="x4-2-geldende-situatie-de-versie-geconsolideerd"><span class="secno">4.2 </span>Geldende situatie: de versie ‘geconsolideerd’.</h3><p>Om de raadpleger van <a href="https://www.ruimtelijkeplannen.nl/">ruimtelijkeplannen.nl</a>
+meer duidelijkheid te kunnen bieden over de exacte status en werkingssfeer van
+de wijzigingen van een gebiedsgericht besluit en het actuele planologische
+regime ter plaatse kan het gebruik van een versie “geconsolideerd” de oplossing
+zijn. Op die manier is in één oogopslag duidelijk wat de juridische status van
+de desbetreffende plannen en besluiten is, en wat de overige gevolgen ervan
+zijn, zoals het vigerende planologische regime ter plaatse. Ook de data van het
+bevoegd gezag kan hiermee op orde worden gesteld. Hierdoor is het niet (meer)
+nodig via andere, vaak omslachtige, wegen te zoeken naar de geldende regels. Dat
+geeft duidelijkheid, kost minder tijd en is dus klantvriendelijk naar de
+raadpleger.</p><p><u>Let op</u>: het gaat dus niet om een herziening of een actualisering van een
+ruimtelijk plan maar om het samenvoegen van meerder ruimtelijke plannen om zo
+een integrale versie, en daardoor een beter leesbare versie, te tonen. Er vinden
+dus geen nieuwe ontwikkelingen plaats. De versie ‘geconsolideerd’ van een
+gebiedsgericht besluit kent geen wettelijke, dus geen juridische status omdat
+deze versie niet door gemeenteraad wordt vastgesteld. Het gebruik van een
+geconsolideerd plan is een keuze van het bevoegd gezag.</p><p>Bij vergunningverlening en handhaving moet altijd verwezen worden naar de
+juridisch geldende plannen. Het consolideren van gebiedsgerichte besluiten gaat
+in eerste instantie altijd over het samenvoegen van twee of meer plankaarten,
+waar nodig. Dit kan in combinatie met het consolideren van de regels en
+toelichting.</p><p>De versie geconsolideerd is van toepassing op de inhoudelijke gebiedsgerichte
+besluiten; beheersverordening en exploitatieplan.
+Een eerste stap bij het consolideren van een ruimtelijk plan is om te
+inventariseren welke verschillende plankaarten zijn ontstaan door de
+herzieningen, wijzigingen etc. Een beheersverordening wordt op
+Ruimetlijkeplannen.nl weergegeven in een cyaan blauwe kleur met kruisjes. Dit is
+anders dan bij bijvoorbeeld bestemmingsplannen. Het consolideren van plankaarten
+beheersverordeningen resulteert in een plangebied met dezelfde kleur en
+opvulling, waarbij optisch weinig verschil te zien is. In het geval van een
+beheersverordening betreft het vastleggen van de bestaande situatie waarbij geen
+nieuwe ruimtelijke ontwikkelingen mogelijk zijn. Een herziening van een
+beheersverordening wordt sporadisch toegepast. Bijvoorbeeld in het geval dat
+bepaalde bouwregels abusievelijk niet zijn opgenomen. Wat ook voorkomt is dat
+binnen een gemeente meerdere beheersverordeningen worden vastgesteld. Het is
+voor te stellen dat deze samen geconsolideerd worden. Exploitatieplannen dienen
+volgens de wet jaarlijks herzien te worden. Een herziening van een
+exploitatieplan komt daardoor vaker voor.</p><p>Vervolgens bundelt de bronouder de regels van de herzieningen die geconsolideerd
+worden. Hierbij verwerkt de bronhouder in de regels van het oorspronkelijke plan
+de wijzigingen die daarin door de herzieningen zijn aangebracht zodat één
+complete set van geldende regels ontstaat. Alle regels worden als het ware in
+elkaar geschoven.
+Het is daardoor niet nodig meerdere plannen te raadplegen en ontstaat er meer
+duidelijkheid voor de raadpleger over wat waar geldig is. Omdat deze versie geen
+geldige juridische status heeft is het aan te bevelen om een verwijzing te maken
+naar de juridisch geldende beheersverordeningen dan wel exploitatieplannen met
+een deeplink in de geconsolideerde tekst naar de brontekst.</p><p>Een volgende stap die nog gedaan kan worden, is het consolideren van de
+toelichting behorende bij een beheersverordening of exploitatieplan. Een
+bronhouder kan hierbij kiezen voor het maken van een algemene toelichting waarin
+de essentie van het consolideren wordt uitgelegd met daarbij de koppeling van de
+toelichtingen van de plannen die geconsolideerd worden. Dit kan een koppeling
+zijn naar een pdf dan wel html van de toelichtingen of een koppeling naar de xml
+bestanden van de toelichtingen in geval van objectgerichte planteksten.</p><p>Aangezien de versie geconsolideerd niet door de gemeenteraad wordt vastgesteld
+is het voor de hand liggend om voor de datum van dit plan aan te sluiten bij het
+in werking treden / onherroepelijk worden van het meest recente
+beheersverordening of exploitatieplan. Met dit laatste zijn dan ook eventuele
+gerechtelijke uitspraken meegenomen. Tevens is het aan te raden om te verwijzen
+naar de geldige plannen dan wel besluiten.
+Bij de waarde van het attribuut <em>verwijzingNaarExternPlanInfo</em> worden alle
+plannen/besluiten opgenomen die in deze versie geconsolideerd zijn verwerkt. De
+waarde van het attribuut <em>rolExternPlan</em> is in dit geval: ‘als mutatie
+opgenomen’. Het ruimtelijke plan met de plan status ‘geconsolideerd’ wordt in
+het manifest met behulp van de dossierstatus ‘geconsolideerd’ geplaatst.</p></section></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-verschillende-typen-gebiedsgerichte-besluiten"><span class="secno">5. </span>Verschillende typen gebiedsgerichte besluiten</h2><p><strong>In deze praktijkrichtlijn is in het algemeen aangegeven hoe voor de
+verschillende gebiedsgerichte besluiten het informatiemodel voor de ruimtelijke
+ordening moet worden toegepast. De gebiedsgerichte besluiten kunnen worden
+verdeeld in 2 categorieën: een type besluiten waarvan de volledige inhoud in het
+instrument zit en een type besluiten waarvan alleen een kennisgeving
+gepubliceerd dient te worden met behulp van de RO Standaarden. De
+verbijzondering van ieder type gebiedsgericht besluit met betrekking tot het
+informatiemodel wordt in dit hoofdstuk toegelicht.</strong></p><section id="algemeen"><h3 id="x5-1-algemeen"><span class="secno">5.1 </span>Algemeen</h3><p>Met behulp van IMRO is een zestal gebiedsgerichte besluiten te maken (coderen)
+die allemaal op dezelfde manier te maken zijn. Deze gebiedsgerichte besluiten
+verschillen echter onderling. De verschillen zorgen er bijvoorbeeld voor dat de
+waarden van bepaalde attributen anders worden ingevuld, of dat er andere
+informatie nodig is. Algemeen geldt dat <a href="#H03">Hoofdstuk 3</a> van deze praktijkrichtlijn
+moet worden gebruikt bij het maken van het instrument.</p><p>In dit hoofdstuk worden de attributen toegelicht die zijn gekoppeld aan het
+plangebied van een bepaald gebiedsgericht besluit en die zorgen voor de
+onderlinge verschillen tussen deze gebiedsgerichte besluiten. Attributen die in
+dit hoofdstuk niet zijn genoemd maar conform IMRO wel verplicht zijn, moeten
+evenwel van waarden worden voorzien. Dit hoofdstuk voorziet in een richtlijn de
+gebiedsgerichte besluiten met deze attributen op deze wijze te maken (coderen).
+Per gebiedsgericht besluit is aangegeven of de tekst bij dat instrument een
+beleids-/besluitdocument betreft of dat de type tekst voorschriften/regels zijn.
+Dit type tekst is aangeven in dit hoofdstuk voor <em>Besluitgebied_X</em>[^1]. Bij de
+besluitvlakken en besluitsubvlakken wordt vervolgens verwezen naar delen van
+deze tekst. In het geval regels zijn gekoppeld aan het <em>Besluitgebied_X,</em> dan
+worden wordt bij de besluit(sub)vlakken alleen naar delen van deze type tekst
+(regels)verwezen.</p><p>[^1]: De voorwaarden hiervoor zijn opgenomen in <a href="https://ro-standaarden.geonovum.nl/2012/IMRO/1.2/IMRO2012-v1.2.pdf">IMRO2012</a> hoofdstuk 8 OCL Model
+Contraints</p></section><section id="gebiedsgerichte-besluiten-inhoud"><h3 id="x5-2-gebiedsgerichte-besluiten-inhoud"><span class="secno">5.2 </span>Gebiedsgerichte besluiten: inhoud</h3><p>De gebiedsgerichte besluiten in deze paragraaf zijn besluiten die naast een
+contour van het plangebied verschillende planobjecten kennen. De planobjecten
+zijn besluitvlakken en besluitsubvlakken in verschillende grootten en
+hoeveelheden, verschillend per besluit. Juist deze planobjecten geven de
+ruimtelijke inhoud van dit type besluit weer in geometrie en tekst.<br>Deze inhoudelijke gebiedsgerichte besluiten zijn:
+</p><ul>
+<li>Aanwijzing;</li>
+<li>Beheersverordening;</li>
+<li>Exploitatieplan.<br>De besluiten worden achtereenvolgens in de paragraaf behandeld.</li>
+</ul><section id="aanwijzing"><h4 id="x5-2-1-aanwijzing"><span class="secno">5.2.1 </span>Aanwijzing</h4><p>Er zijn twee besluittypen binnen de aanwijzingen: een aanwijzingsbesluit
+(proactieve aanwijzing) en reactieve aanwijzing. Een aanwijzing wordt als
+gebiedsgericht besluit beschikbaar gesteld door de bronhouder: provincie of het
+rijk.</p><p><strong>Aanwijzingsbesluit (proactieve aanwijzing)</strong><br>Gedeputeerde staten of de Minister van IenM kunnen een aanwijzing geven aan een
+gemeente respectievelijk gemeente of provincie, tot aanpassing van een
+bestemmingsplan, inpassingsplan of verordening, of kunnen een aanwijzing geven
+in het kader van concrete situaties.</p><p><strong>Reactieve aanwijzing</strong><br>Wanneer de ingediende zienswijze van gedeputeerde staten of de Minister niet
+volledig is overgenomen, of indien de gemeenteraad bij de vaststelling van het
+bestemmingsplan wijzigingen heeft aangebracht ten aanzien van het
+ontwerpbestemmingsplan anders dan naar aanleiding van een zienswijze van
+gedeputeerde staten of de Minister, kan de Minister of Gedeputeerde Staten een
+reactieve aanwijzing geven. De reactieve aanwijzing heeft als doel dat het
+onderdeel waar de reactieve aanwijzing betrekking op heeft, geen deel blijft
+uitmaken van het bestemmingsplan zoals het is vastgesteld.</p><p>Attributen en waarden<br>Van het <em>typeTekst</em> attribuut wordt het besluitdocument bij een aanwijzing
+gekoppeld. Eventueel kunnen ook worden gekoppeld: toelichting, bijlage bij
+besluitdocument en/of bijlage bij toelichting.
+Het besluitdocument wordt gekoppeld aan het object <em>Besluitgebied_X</em>. Bij een
+besluitvlak en besluitsubvlak wordt verwezen naar (een deel van) het
+besluitdocument: de besluittekst.
+Bij een aanwijzing dient het attribuut <em>verwijzingNaarExternPlanInfo</em> verplicht
+te worden ingevuld en te verwijzen naar het plan of besluit waar de aanwijzing
+betrekking op heeft.
+In Tabel 7 is een samenvatting van de attributen die een bepaalde waarde hebben
+bij een aanwijzing weergegeven.</p><p><strong>Tabel 7 Specifieke waarden Besluitgebied_X bij een aanwijzing</strong>
+<img src="media/f5032456451aa7ff21881df7ff770b2e.png" alt=""></p></section><section id="beheersverordening"><h4 id="x5-2-2-beheersverordening"><span class="secno">5.2.2 </span>Beheersverordening</h4><p>De beheersverordening is een instrument dat in plaats van een bestemmings­plan
+door gemeenten kan worden ingezet. In tegenstelling tot het bestemmingsplan is
+de verbeelding van beheersverordening vormvrij. Dit betekent dat er geen
+afspraken zijn gemaakt voor de benaming en kleuren van objecten, en de op te
+stellen regels zoals in de Standaard Vergelijkbare Bestemmingsplannen
+(SVBP2012). De bronhouder bepaalt hoe de verbeelding in kleuren en symboliek
+wordt weergegeven.
+Er is bij de ontwikkeling van de RO Standaarden 2012 bewust gekozen om de
+beheersverordening vormvrij te houden en geen regels voor verbeelding te
+hanteren.
+De Vereniging Nederlandse Gemeenten (VNG) heeft in 2011 de handreiking
+Beheersverordening Wro geactualiseerd. Voor een inhoudelijke toelichting op de
+beheersverordening verwijzen we naar deze handreiking[^2].</p><p>[^2] : Zie: <a href="https://vng.nl/files/vng/vng/Documenten/actueel/beleidsvelden/recht/2011/20110901_Beheersverordening_Wro.pdf">http://www.vng.nl/Documenten/actueel/beleidsvelden/recht/2011/20110901_Beheersverordening_Wro.pdf</a></p><p>Attributen en waarden<br>Een van de waarden van <em>typeTekst</em> is regels. De regels worden gekoppeld aan het
+object <em>Besluitgebied_X</em>. Bij een besluitvlak en besluitsubvlak wordt verwezen
+naar (een deel van) de regels. Eventueel kunnen ook worden gekoppeld:
+toelichting, bijlage bij regels en/of bijlage bij toelichting.
+Beheersverordeningen kennen geen standaard voor vergelijkbaarheid of afgesproken
+kleuren voor de verbeelding. Hierdoor zal de ontvanger zelf moeten bepalen hoe
+de beheersverordening wordt weergegeven. Ruimtelijkeplannen.nl geeft dit
+gebiedsgerichte besluit in grijstinten weer. De bronhouder kan de plankaart als
+PDF koppelen aan het plangebied met behulp van het attribuut
+<em>verwijzingNaarIllustratieInfo.</em> Het&nbsp;‘gekleurde plaatje’ is daardoor alleen te
+bekijken via de gekoppelde PDF en niet interactief zoals een bestemmingsplan. De
+objecten zijn wel raadpleegbaar in de interactieve raadpleegomgeving.
+In het geval een bronhouder in een beheersverordening wel gebruik wil maken van
+afspraken over vergelijkbaarheid en kleuren conform de SVBP2012 en/of
+PRABPBK2012 dan is dit mogelijk door middel van een gekoppelde PDF (gebruik van
+het attribuut <em>verwijzingNaarIllustratieInfo</em>). De verbeelding kan grofweg op
+dezelfde manier worden opgebouwd als bij bestemmingsplan waarbij de
+besluitvlakken vergelijkbaar zijn met bestemmingen, besluitsubvlakken met
+aanduidingen.</p><p>In Tabel 8 is een samenvatting van de attributen die een bepaalde waarde hebben
+bij een beheersverordening weggegeven.</p><p><strong>Tabel 8 Specifieke waarden Besluitgebied_X bij een beheersverordening</strong>
+<img src="media/2735375121d0f565af48a2c9d1c5f947.png" alt=""></p></section><section id="exploitatieplan"><h4 id="x5-2-3-exploitatieplan"><span class="secno">5.2.3 </span>Exploitatieplan</h4><p>Het exploitatieplan kent pas sinds de wijziging van het Bro[^3] en RO
+Standaarden 2012 een verplichte elektronische beschikbaarstelling. Dit wil
+zeggen dat tot de inwerkingtreding van de RO Standaarden 2012 het
+exploitatieplan niet was opgenomen in de lijst van instrumenten in artikel 1.2.1
+Bro die elektronisch beschikbaar gesteld moeten worden. Vanaf 1 oktober 2012 kan
+het exploitatieplan alleen met behulp van de RO Standaarden 2012 beschikbaar
+gesteld worden. Aangezien er een overgangsperiode is tot 1 juli 2013, betekent
+dit dat het exploitatieplan verplicht conform de RO Standaarden 2012 vanaf 1
+juli 2013 beschikbaar moet worden gesteld. Een exploitatieplan kan alleen in een
+2012 manifest beschikbaar gesteld worden door de bronhouder.</p><p>[^3]: Wijziging van het Bro per 1 oktober 2012, zie toelichting wettelijke
+bepalingen op de Geonovum website:
+<a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening</a></p><p>De Vereniging Nederlandse Gemeenten (VNG) heeft eind 2010 een handleiding voor
+het exploitatieplan opgesteld[^4]. Op basis hiervan zijn de specifieke waarden
+voor het besluitgebied in Tabel 9 opgesteld. In deze uitwerking is voor het
+overzicht niet gebruik gemaakt van objectgerichte planteksten, maar dit is
+natuurlijk wel mogelijk.</p><p>[^4]: Zie: <a href="https://vng.nl/files/vng/vng/Documenten/Extranet/Ruimte/2010/20101122_Handreikingexploitatieplan.pdf">https://vng.nl/files/vng/vng/Documenten/Extranet/Ruimte/2010/20101122_Handreikingexploitatieplan.pdf</a></p><p>Attributen en waarden<br>Een van de waarden van <em>typeTekst</em> is regels. De regels worden gekoppeld aan het
+object <em>Besluitgebied_X</em>. Bij een besluitvlak en besluitsubvlak wordt verwezen
+naar (een deel van) de regels. Eventueel kunnen ook worden gekoppeld:
+toelichting, bijlage bij regels en/of bijlage bij toelichting.
+Het exploitatieplan moet jaarlijks worden herzien. In dat geval zal het
+exploitatieplan los van het bestemmingsplan waar het oorspronkelijk samen mee is
+vastgesteld, opnieuw worden vastgesteld. De <em>planstatusInfo</em> zal dan afwijken
+van de <em>planstatusInfo</em> van het bestemmingsplan waar het exploitatieplan bij
+hoort. Er wordt in dit besluit met behulp van het attribuut
+<em>verwijzingNaarExternPlanInfo</em> dan nog steeds verwezen naar het betreffende
+bestemmingsplan. Ook kan het voorgaande exploitatieplan als verwijzing worden
+opgenomen.
+Het kaartmateriaal (zie attribuut <em>verwijzingNaarIllustratieInfo</em>) dat bij dit
+gebiedsgerichte besluit wordt opgenomen is ter illustratie. Het&nbsp;‘gekleurde
+plaatje’ is alleen te bekijken via de gekoppelde PDF en niet interactief zoals
+bijvoorbeeld een bestemmingsplan. Hiermee geeft de bronhouder aan hoe het
+besluit met de objecten besluitgebied, besluitvlakken en besluitsubvlakken door
+de bronhouder is bedoeld.
+Gebiedsgerichte besluiten kennen geen standaard voor vergelijkbaarheid of
+afgesproken kleuren voor de verbeelding. Hierdoor zal de ontvanger, waaronder
+ruimtelijkeplannen.nl dit gebiedsgerichte besluit in grijstinten weergeven.</p><p>In Tabel 9 is een samenvatting van de attributen die een bepaalde waarde hebben
+bij een exploitatieplan weergegeven.</p><p><strong>Tabel 9 Specifieke waarden Besluitgebied_X bij een exploitatieplan</strong>
+<img src="media/c44b2f18eae0ba4347ca166aef14d086.png" alt=""></p></section></section><section id="gebiedsgerichte-besluiten-kennisgeving"><h3 id="x5-3-gebiedsgerichte-besluiten-kennisgeving"><span class="secno">5.3 </span>Gebiedsgerichte besluiten: kennisgeving</h3><p>De gebiedsgerichte besluiten in deze paragraaf zijn besluiten die slechts met de
+contour van het besluitgebied worden weergegeven. Het betreft een mededeling
+c.q. kennisgeving van de bronhouder gebonden aan een bepaalde locatie.</p><p>Deze kennisgeving gebiedsgerichte besluiten zijn:
+</p><ul>
+<li>Gerechtelijke uitspraak</li>
+<li>Omgevingsvergunning;</li>
+<li>Voorbereidingsbesluit.</li>
+</ul><p>De besluiten worden achtereenvolgens in de paragraaf behandeld.</p><section id="gerechtelijke-uitspraak"><h4 id="x5-3-1-gerechtelijke-uitspraak"><span class="secno">5.3.1 </span>Gerechtelijke uitspraak</h4><p>In de PRTRI is een uitbreide toelichting op de werkwijze van gerechtelijke
+uitspraken opgenomen. In deze paragraaf is toegelicht hoe dit gebiedsgericht
+wordt gemaakt en welke informatie erin wordt opgenomen.
+Met het inwerkingtreden van de wijziging van het Bro en de RO Standaarden
+2012[^5] is de gerechtelijke uitspraak als zelfstandig instrument opgenomen.</p><p>[^5]: De basis hiervoor is gelegd in het Bro artikel 1.2.1 lid 3 met de daarbij
+behorende toelichting op de pagina 6 en 9 van Nota van Toelichting.</p><p>Wanneer zich een van de volgende situaties voordoet, beïnvloedt dit de
+inwerkingtreding van een ruimtelijk plan:
+</p><ul>
+<li>Een verzoek om een voorlopige voorziening;</li>
+<li>Een uitspraak van de rechter daaromtrent;</li>
+<li>Een uitspraak in beroep tegen een bestemmingsplan;</li>
+<li>Een aanwijzing van GS of de minister.<br>Uitspraak wordt gedaan door de Afdeling bestuursrechtspraak van de Raad van
+State (AbRS) of bestuursrechter. Een verzoek om voorlopige voorziening schort de
+werking van het besluit mogelijk geheel of gedeeltelijk op, op grond van artikel 8.4 van de Wro. Dit moet dan net als de andere punten zichtbaar gemaakt worden
+in combinatie met het betreffende ruimtelijke plan.
+De bronhouder van het ruimtelijke plan stelt de gerechtelijke uitspraak (als
+kopie van de authentieke informatie van de rechter) als gebiedsgericht besluit
+beschikbaar. Op deze wijze kan het in samenhang met, maar tegelijk los van, het
+plan worden ontsloten. Het resultaat van de uitspraak zelf is dat het
+betreffende ruimtelijke plan niet, deels of geheel onherroepelijk in werking
+treedt. Deze informatie wordt als dossierstatus in het manifest opgenomen[^6].</li>
+</ul><p>[^6]: Zie hiervoor de toelichting in paragraaf 5.7 van de Praktijkrichtlijn
+Toegankelijkheid Ruimtelijke Instrumenten (PRTRI2012), zie
+<a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-toegankelijkheid-ruimtelijke">https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-toegankelijkheid-ruimtelijke</a>.</p><p>Attributen en waarden<br>De <em>typeTekst</em> bij een gerechtelijke uitspraak is het besluitdocument. Het
+besluitdocument wordt gekoppeld aan het object <em>Besluitgebied_X</em>. Eventueel
+kunnen ook worden gekoppeld: toelichting, bijlage bij besluitdocument en/of
+bijlage bij toelichting.
+De status van het gebiedsgerichte besluit <em>gerechtelijk uitspraak</em> heeft altijd
+de status vastgesteld. De gerechtelijke uitspraak is een document waarin het
+besluit en onderbouwing, motivering met betrekking tot deze uitspraak(dictum) is
+opgenomen. De tekst die bronhouder opstelt voor de kennisgeving via lokale
+bekendmaking en via de Staatscourant kan hiervoor worden gebruikt.
+Met behulp van het attribuut <em>verwijzingNaarExternPlanInfo</em> kan de relatie met
+het bijbehorende plan worden gelegd. Bij een gerechtelijk uitspraak worden 2
+verwijzingen opgenomen:
+</p><ul>
+<li>Verwijzing naar het ruimtelijk plan of besluit waar de uitspraak betrekking
+op heeft;</li>
+<li>Verwijzing naar de uitspraak zelf.</li>
+</ul><p>De verwijzing naar de uitspraak kan op verschillende wijzen worden opgenomen.
+Dit kan met behulp van het ECLI (European Case Law Identifier)[^7] dat het AbRS
+gebruikt. Wanneer de AbRS uitspraak doet, staat dit dezelfde dag op website van
+AbRS onder vermelding van het nummer.</p><p>[^7]: Het ECLI (European Case Law Identifier is per eind juni 2013 de opvolger
+van LJN nummer: het nummer waaronder de uitspraak op rechtspraak.nl is
+opgenomen. Per juli 2013 worden geen LJN-nummers meer uitgegeven en alle al
+uitgegeven LJN nummers zijn vanaf dan omgezet naar de ECLI.</p><p>In Tabel 10 is een samenvatting van de attributen die een bepaalde waarde hebben
+bij een gerechtelijke uitspraak weergegeven.</p><p>De planstatus van het betreffende ruimtelijke plan is en blijft vastgesteld. De
+inhoud van de uitspraak bepaalt de dossierstatus van het dossier waarin het
+betreffende plan en de gerechtelijke uitspraak in het manifest zijn geplaatst.</p><p><strong>Tabel 10 Specifieke waarden Besluitgebied_X bij een gerechtelijk uitspraak</strong>
+<img src="media/b33f82facb608608cd0750203c04703d.png" alt=""></p></section><section id="omgevingsvergunning"><h4 id="x5-3-2-omgevingsvergunning"><span class="secno">5.3.2 </span>Omgevingsvergunning</h4><p>De bronhouder is verplicht om de mededeling (kennisgeving in de Staatscourant)
+van een met artikel 2.12, eerste lid, onderdeel a, onder 3 van de Wabo verleende
+omgevingsvergunning met behulp van de RO Standaarden beschikbaar te stellen. In
+het Besluit Omgevingsrecht (Bor) artikel 6.14 is aangegeven dat bij ministeriële
+regeling nadere regels worden gesteld over de wijze waarop de mededeling
+elektronisch wordt gedaan en beschikbaar gesteld. Dit betreft de ministeriële
+Regeling standaarden ruimtelijke ordening 2012. In IMRO2012 en STRI2012 is de
+dit type omgevingsvergunning daarom opgenomen. In deze paragraaf van de
+toelichting op de RO Standaarden (deze praktijkrichtlijn) lichten we de
+werkwijze toe[^8].</p><p>[^8]: In het Besluit Omgevingsrecht (Bor) artikel 6.14 is aangegeven dat bij
+ministeriële regeling nadere regels worden gesteld over de wijze waarop de
+mededeling van een met artikel 2.12, eerste lid, onderdeel a, onder 3 van de
+Wabo <em>verleende</em> omgevingsvergunning elektronisch wordt gedaan en beschikbaar
+gesteld. De nadere regels zijn gegeven in de ministeriële Regeling standaarden
+ruimtelijke ordening 2012: het gebruik van het Informatiemodel Ruimtelijke
+Ordening (IMRO) en Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI) is
+daardoor verplicht. Deze praktijkrichtlijn (PRGB2012) is een toelichting op het
+IMRO2010 voor de toepassing in de praktijk.
+De kennisgeving van de omgevingsvergunning is de tekst die de bronhouder opstelt
+en bekendmaakt via de Staatscourant. De bronhouder koppelt de kennisgeving aan
+een contour van de betreffende locatie. Het is geheel vrijblijvend en aan de
+bronhouder te bepalen of meer informatie dan de kennisgeving, zoals de
+ruimtelijke onderbouwing, aan dit gebiedsgericht besluit wordt gekoppeld. In de
+praktijk wordt de ruimtelijke onderbouwing vaak aan de kennisgeving toegevoegd.
+De omgevingsvergunning om af te wijken van een bestemmingsplan wordt als een
+gebiedsgericht besluit beschikbaar gesteld door de bronhouder. Doordat de
+bronhouder de kennisgeving conform de RO Standaarden beschikbaar stelt op haar
+weblocatie, wordt deze opgehaald door de landelijke voorziening[^9] en is te
+raadplegen via <a href="https://www.ruimtelijkeplannen.nl/">https://www.ruimtelijkeplannen.nl/</a> [^10]. Voor andere onderdelen dan het
+hier genoemde type omgevingsvergunning kent de Wabo geen verplichting tot
+elektronische beschikbaarstelling van een omgevingsvergunning.</p><p>[^9]: Landelijke voorziening: Ruimtleijkeplannen.nl. De bronhouder heeft aan de
+index van de landelijke voorziening bekend gemaakt wat de weblocatie is van de
+bronhouder. Op deze weblocatie wordt met behulp van een manifest inzicht gegeven
+in de door de bronhouder beschikbaar gestelde data. RO-Online haalt iedere nacht
+nieuwe en gewijzigde data op. Zo ook de kennisgeving van een omgevingsvergunning
+om af te wijken van het bestemmingsplan. Op ruimtelijkeplannen.nl is vervolgens
+de kennisgeving in combinatie met de contour te raadplegen.</p><p>[^10]: Voor inwerking treden van de Wabo was deze vorm van de
+omgevingsvergunning in de Wro opgenomen als projectbesluit. Vanaf 1 oktober 2010
+was het al verplicht de kennisgeving digitaal beschikbaar te stellen conform de
+RO Standaarden 2008. Dit is toegelicht in de werkafspraak <em>Elektronisch
+publiceren kennisgeving omgevingsvergunning</em>. Met het in gebruik nemen van de RO
+Standaarden 2012 komt deze werkafspraak te vervallen.</p><p>Attributen en waarden<br>De kennisgeving betreft de mededeling dat de omgevingsvergunning is verleend.
+Deze tekst wordt opgenomen als <em>besluitdocument</em>. Het besluitdocument wordt
+gekoppeld aan het object <em>Besluitgebied_X</em>. De tekst van de kennisgeving wordt
+eveneens opgenomen als <em>vaststellingsbesluit</em>. In het geval de bronhouder
+redenen heeft om de ruimtelijke onderbouwing aan het besluit toe te voegen, dan
+kan deze worden opgenomen als toelichting of als onderdeel van het
+besluitdocument. Eventueel kunnen ook worden gekoppeld: toelichting, bijlage bij
+besluitdocument en/of bijlage bij toelichting. Het vaststellingsbesluit is
+verplicht bij de planstatus <em>vastgesteld</em>.
+De kennisgeving van de omgevingsvergunning is het type gebiedsgerichte besluit
+dat door de bronhouder met de planstatus <em>vastgesteld</em> beschikbaar wordt
+gesteld. De reden hiervoor is dat de kennisgeving pas beschikbaar wordt gesteld
+(conform wet- en regelgeving) als de omgevingsvergunning <em>is verleend</em>. De
+bronhouder kan er voor kiezen om een concept of ontwerp omgevingsvergunning te
+publiceren, dit is niet verplicht en wijkt daarmee af van de voorgeschreven wet-
+en regelgeving.</p><p>In Tabel 11 is een samenvatting weergegeven van de attributen die een bepaalde
+waarde hebben bij een omgevingsvergunning. In de werkafspraak RO Standaarden vs.
+Wabo is aangegeven dat de naam dient te beginnen met ‘omgevingsvergunning’. Bij
+het gebruik van de RO Standaarden 2012 is dit niet meer nodig omdat dit nu met
+het <em>typePlan</em> is aan te geven.</p><p><strong>Tabel 11 Specifieke waarden Besluitgebied_X bij een omgevingsvergunning</strong>
+<img src="media/2208a41310aff54ae6f2c423fb0a2099.png" alt=""></p></section><section id="voorbereidingsbesluit"><h4 id="x5-3-3-voorbereidingsbesluit"><span class="secno">5.3.3 </span>Voorbereidingsbesluit</h4><p>Met dit instrument geeft een bronhouder aan voornemens te zijn een ruimtelijk
+plan als een bestemmingsplan, inpassingsplan, provinciale verordening of AMvB op
+te stellen. Om inzicht te geven voor welk deel van het grondgebied dit voornemen
+geldt, volgt het besluitgebied de grens van het gebied waarop dit
+voorbereidingsbesluit betrekking heeft. Het voorbereidingsbesluit kent een eigen
+begrenzing die niet dezelfde hoeft te zijn als de begrenzing van het te zijner
+tijd op te stellen ruimtelijk plan. Het besluit tot dit voornemen wordt
+opgenomen in het vaststellingsbesluit.</p><p>Attributen en waarden<br>Nadere regels met betrekking tot het voorbereidingsbesluit worden opgenomen in
+de regels bij een voorbereidingsbesluit. De regels worden gekoppeld aan het
+object <em>Besluitgebied_X</em>. Eventueel kunnen ook worden gekoppeld: toelichting,
+bijlage bij besluitdocument en/of bijlage bij toelichting.
+De regels kunnen echter een deel van het gebied bestrijken waarover het
+voorbereidingsbesluit zich uitstrekt. Zowel gebruiksregels als regels ten
+aanzien van werken, geen bouwwerken zijnde, kunnen worden toegevoegd aan
+besluitvlak(ken). Elk zo nodig met een eigen werkingsgebied binnen het
+besluitgebied.</p><p>In Tabel 12 is een samenvatting van de attributen die een bepaalde waarde hebben
+bij een voorbereidingsbesluit weergegeven.</p><p><strong>Tabel 12 Specifieke waarden Besluitgebied_X bij een voorbereidingsbesluit</strong>
+<img src="media/c9d79350e9ba2fc1e877997fc0c2e039.png" alt=""></p></section></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

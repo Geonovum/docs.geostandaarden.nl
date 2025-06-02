@@ -1,0 +1,432 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Technische handreiking TAM projectbesluit</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "license": "cc-by-nd",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "HRTAMpbesluit",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2023-05-10T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 10 mei 2023"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-HRTAMpbesluit-20230510/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Technische handreiking TAM projectbesluit",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2023-05-10",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Technische handreiking TAM projectbesluit</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2023-05-10">10 mei 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-HRTAMpbesluit-20230510/">https://docs.geostandaarden.nl/ro/def-hr-HRTAMpbesluit-20230510/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/HRTAMpbesluit/">https://docs.geostandaarden.nl/ro/HRTAMpbesluit/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/HRTAMpbesluit/">https://geonovum.github.io/ROST/HRTAMpbesluit/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#werkafspraak-en-handreiking"><span class="secno">1.1 </span>Werkafspraak en handreiking</a></li><li class="tocline"><a class="tocxref" href="#doel-van-de-handreiking"><span class="secno">1.2 </span>Doel van de handreiking</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#projectbesluit"><span class="secno">2. </span>Projectbesluit</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</a></li><li class="tocline"><a class="tocxref" href="#gebruik-imro"><span class="secno">2.2 </span>Gebruik IMRO</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#objectkeuze"><span class="secno">2.2.1 </span>Objectkeuze</a></li><li class="tocline"><a class="tocxref" href="#tam-projectbesluit"><span class="secno">2.2.2 </span>TAM-projectbesluit</a></li></ol></li><li class="tocline"><a class="tocxref" href="#regeling-van-het-projectbesluit-en-vrijetekstdeel-van-het-projectbesluit"><span class="secno">2.3 </span>Regeling van het projectbesluit en vrijetekstdeel van het projectbesluit</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#tijdelijk-regelingdeel"><span class="secno">2.3.1 </span>Tijdelijk regelingdeel</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#publiceren"><span class="secno">3. </span>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#weergave-dso"><span class="secno">3.3 </span>Weergave DSO</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtspunten"><span class="secno">4. </span>Aandachtspunten</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Tijdelijke Alternatieve Maatregelen (TAM) zijn er voor het geval overheden niet op tijd kunnen aansluiten op het DSO of wanneer het DSO bijvoorbeeld op een onderdeel niet op tijd klaar is. De minister wil voorkomen dat hierdoor bij gemeenten, provincies en het Rijk eventuele woningbouwontwikkelingen of ontwikkelingen zoals op het gebied van de energietransitie vertraging oplopen.
+</p><p>Het omgevingsdocument projectbesluit is het Omgevingswet-instrument voor het uitvoeren van een project en het in werking hebben of in stand houden daarvan. Het projectbesluit bevat een beschrijving van het project (de te treffen maatregelen en de toestemmingen) en de regels waarmee het projectbesluit het omgevingsplan wijzigt. Doorgaans zal het om omvangrijke projecten met grote belangen gaan. Projectbesluiten worden vastgesteld door waterschap, provincie en het Rijk. Het projectbesluit is de opvolger van:</p><ul>
+<li>Het inpassingsplan op grond van de Wro, voor provincie en Rijk;
+</li>
+<li>Het projectplan op grond van de Waterwet, voor waterschap en Rijk;</li>
+<li>Het tracébesluit op grond van de Tracéwet, voor het Rijk.</li>
+</ul><p>Het toepassen van de TAM-projectbesluit valt onder het overgangsrecht en daarmee transitieperiode van de Omgevingswet. Gedurende de overgangsfase (de periode die de gemeente heeft om het eigen omgevingsplan op te bouwen) hoeft het projectbesluit het omgevingsplan niet te wijzigen, in dat geval geldt het projectbesluit (van rechtswege) als omgevingsvergunning voor de buitenplanse omgevingsplanactiviteit (BOPA) voor zover het in strijd is met het omgevingsplan. In de overgangsfase maakt het projectbesluitvaststellende bestuursorgaan een keuze tussen het omgevingsplan wijzigen met het projectbesluit, of gebruik maken van het overgangsrecht en het projectbesluit laten gelden als omgevingsvergunning BOPA.</p><p>Deze tijdelijk alternatieve maatregel voor het projectbesluit is voor de provincies en het Rijk. Onder de Omgevingswet hebben ook de waterschappen de bevoegdheid een projectbesluit vast te stellen. Deze TAM-projectbesluit is echter niet voor de waterschappen bedoeld, omdat zij onder het huidig recht geen instrumenten opstellen waarop de RO Standaarden van toepassing zijn.</p><section id="werkafspraak-en-handreiking"><h3 id="x1-1-werkafspraak-en-handreiking"><span class="secno">1.1 </span>Werkafspraak en handreiking</h3><p>Met de werkafspraak TAM-projectbesluit wordt provincies en het Rijk de mogelijkheid geboden om juridisch een Omgevingswet-projectbesluit op basis van de techniek van de Wro (namelijk RO Standaarden 2012) te maken en te publiceren via Ruimtelijkeplannen.nl en de overbruggingsfunctie van het Informatiehuis Ruimte naar het Digitaal Stelsel Omgevingswet. Het TAM-projectbesluit maakt juridisch onderdeel uit van de Omgevingswet maar wordt technische in de  landelijke voorziening Ruimtelijkeplannen.nl geplaatst. Rekening houdende met de wettelijke vereisten van de Omgevingswet is het TAM-projectbesluit een omgevingsdocument.</p><p>De onderdelen van de TAM-projectbesluit voor provincies en het Rijk zijn:
+</p><ul>
+<li>de <a href="https://docs.geostandaarden.nl/ro/waTAMpbesluit/" target="_blank">werkafspraak TAM-projectbesluit</a>;</li>
+<li>validatieregels, geïmplementeerd in de <a href="https://www.ruimtelijkeplannen.nl/validator/" target="_blank">validator van Ruimtelijkeplannen.nl</a>;</li>
+<li>de verwerking door de overbruggingsfunctie van het Informatiehuis Ruimte naar het Digitaal Stelsel Omgevingswet;</li>
+<li>deze technische handreiking.</li>
+</ul><p>Deze handreiking is een aanvulling op de werkafspraak, ter ondersteuning van de provincies en het rijk voor de technische toepassing van de werkafspraak in de praktijk. In het <a href="https://geonovum.github.io/TPOD/TPOD%20Projectbesluit/TPOD_Projectbesluit_v3.0.0.pdf" target="_blank">Toepassingsprofiel (TPOD) projectbesluit</a> zijn de inhoudelijke aspecten van de projectbesluit beschreven. </p></section><section id="doel-van-de-handreiking"><h3 id="x1-2-doel-van-de-handreiking"><span class="secno">1.2 </span>Doel van de handreiking</h3><p>De handreiking geeft de werkwijze en keuzemogelijkheden weer voor het omgevingsdocument projectbesluit. Het projectbesluit wordt door de provincie technisch gerealiseerd met de RO Standaarden 2012 en daarna, door gebruik te maken van de Wro plan keten via Ruimtelijkeplannen.nl, naar het Digitaal Stelsel Omgevingswet te ontsluiten.
+</p><p>Deze handreiking gaat niet in op de inhoud van het omgevingsdocument projectbesluit. Voor de juridische context van dit omgevingsdocument verwijzen we naar de Omgevingswet- en regelgeving. De procedurestappen van de projectprocedure komen in deze handreiking ook niet in aan de orde. Voor meer informatie over het projectbesluit, raadpleeg de TPOD projectbesluit via de <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/STOPTPOD" target="_blank">Geonovum website</a> en de website <a href="https://iplo.nl/regelgeving/instrumenten/projectbesluit/" target="_blank">Informatiepunt Leefomgeving</a>.
+</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>In <a href="#opstellen-tam-projectbesluit">hoofdstuk 2</a> komt het gebruik van de RO Standaarden aan de orde voor de totstandkoming van het projectbesluit. In <a href="#publiceren">hoofdstuk 3</a> gaan we in op de beschikbaarstelling van het projectbesluit via de Wro planketen aan Ruimtelijkeplannen.nl en de ontsluiting in de viewer van het DSO-LV. Tot slot nog enkele aandachtspunten in <a href="#aandachtspunten">hoofdstuk 4</a>.</p></section></section><section data-format="markdown" id="projectbesluit"><!--OddPage--><h2 id="x2-projectbesluit"><span class="secno">2. </span>Projectbesluit</h2><p>De onderdelen van het projectbesluit zoals beschreven in het <a href="https://geonovum.github.io/TPOD/TPOD%20Projectbesluit/TPOD_Projectbesluit_v3.0.0.pdf" target="_blank">Toepassingsprofiel (TPOD) projectbesluit</a> zijn:</p><ul>
+<li>besluitdeel;</li>
+<li>het vrijetekstdeel van het projectbesluit;</li>
+<li>de Regeling van het projectbesluit.
+</li>
+</ul><p>In het kader van de tijdelijke alternatieve maatregel voor het omgevingsdocument projectbesluit wordt voor het opstellen van deze drie onderdelen technisch gebruik gemaakt van de RO Standaarden 2012.</p><p>In dit hoofdstuk komen achtereenvolgens aan de orde, de technische uitgangspunten, het gebruik van objecten conform IMRO2012 en tot slot de Regeling en het van het projectbesluit en het vrijetekstdeel van het projectbesluit.
+</p><section id="technische-uitgangspunten"><h3 id="x2-1-technische-uitgangspunten"><span class="secno">2.1 </span>Technische uitgangspunten</h3><p>De kern van het gebruik van de TAM-projectbesluit is, dat vanaf inwerkingtreding van de Omgevingswet, de bestaande Wro planketen gebruikt kan worden voor het opstellen en publiceren van een projectbesluit onder de Omgevingswet. De RO Standaarden 2012 worden niet aangepast. Ook wordt op geen enkele manier iets aangepast aan de Wro plansoftware die wordt gebruikt voor digitale ruimtelijke plannen en aan de manier van publiceren naar Ruimtelijkeplannen.nl verandert eveneens niets. Wel wordt, vanaf inwerkingtreding Omgevingswet, de validator voor Ruimtelijkeplannen.nl aangevuld en enigszins aangepast om het overgangsrecht van Wro naar Omgevingswet te faciliteren en het projectbesluit conform TAM mogelijk te maken.</p><p>Hoewel het projectbesluit onder de Omgevingswet niet een-op-een te vergelijken is met het inpassingsplan onder de Wet ruimtelijke ordening, ligt het gebruik van de TAM-projectbesluit in technische zin in het verlengde van het provinciaal- en rijksinpassingsplan. Conform de <a href="https://docs.geostandaarden.nl/ro/waTAMpbesluit/" target="_blank">werkafspraak</a> maken we gebruik van het IMRO-plantype 'inpassingsplan' met de naamconventie TAM-projectbesluit[spatie][plannaam], voor het opstellen van een TAM-projectbesluit.
+</p><p>Voor het Wro inpassingsplan geldt overgangsrecht. Een Wro inpassingsplan dat in ontwerp is gepubliceerd vóór inwerkingtreding van de Omgevingswet, kan onder het oude Wro recht en de RO Standaarden worden afgerond onder de Omgevingswet. Dat betekent dat na inwerkingtreding een inpassingsplan met planstatus vastgesteld gepubliceerd kan worden via Ruimtelijkplannen.nl en onderdeel wordt van het <a href="https://iplo.nl/regelgeving/instrumenten/omgevingsplan-hoofdlijnen/omgevingsplan-rechtswege/" target="_blank">tijdelijk deel omgevingsplan</a>. Een inpassingsplan met planstatus ontwerp wordt na inwerkingtreding geweigerd.</p><p>De validator van Ruimtelijkeplannen.nl moet een TAM-projectbesluit kunnen herkennen om een ontwerpversie wel door te laten ná inwerkingtreding van de Omgevingswet. Daarom is in de werkafspraak bepaald dat de plannaam begint met “TAM-projectbesluit”, gevolgd door een spatie en de naam van het plan (dit wordt de naamconventie genoemd). Hiermee wordt het onderscheid gemaakt tussen een Wro inpassingsplan onder het overgangsrecht, en een nieuw omgevingsdocument op basis van TAM-projectbesluit.
+Om een besluit te kunnen nemen met behulp van TAM-projectbesluit wordt uitsluitend gebruik gemaakt van de planfiguur ‘inpassingsplan’. Een TAM-projectbesluit komt technisch terecht in het tijdelijk deel van het omgevingsplan, waar zich ook de bestemmingsplannen van de gemeenten en de provinciale- en rijksinpassingsplannen bevinden die van rechtswege omgevingsplan zijn geworden na de inwerkingtreding van de Omgevingswet. Juridisch is een TAM-projectbesluit een echt omgevingsdocument, want het besluit is genomen onder de Omgevingswet. Dat betekent dat het TAM-projectbesluit uiteindelijk omgezet zal moeten worden naar STOP/TPOD. Het gebruik van TAM-projectbesluit houdt dus altijd extra werk in de toekomst in. Dit gegeven moet mee worden genomen bij de afweging door de provincie dan wel het Rijk over het al dan niet gebruiken van TAM-projectbesluit.</p></section><section id="gebruik-imro"><h3 id="x2-2-gebruik-imro"><span class="secno">2.2 </span>Gebruik IMRO</h3><section id="objectkeuze"><h4 id="x2-2-1-objectkeuze"><span class="secno">2.2.1 </span>Objectkeuze</h4><p>Om een projectbesluit conform TAM te maken kan binnen het planfiguur ‘inpassingsplan’ in principe gebruik worden gemaakt van alle objecten (enkelbestemming, dubbelbestemming, functieaanduiding, maatvoering, etc.) die beschikbaar zijn voor een bestemmingsplan. Belangrijk is te bedenken dat een TAM-projectbesluit technisch moet voldoen aan IMRO2012 en de SVBP2012 om door de validator te kunnen komen. Concreet betekent dat ook dat er een object ‘plangebied’ moet zijn met de plangegevens van het besluit.</p><p>In principe is een projectbesluit vormvrij. De opsteller bepaalt binnen zekere grenzen hoe projectbesluit wordt opgebouwd. Toch is het niet in lijn met de Omgevingswetgedachte om te blijven werken met de Wro-objecten als enkelbestemming en dubbelbestemming, daar waar een projectbesluit objecten als activiteiten, functies, andere gebiedsaanwijzingen en omgevingsnormen verwacht. Daarnaast gaat de STOP/TPOD standaard uit van een koppeling van een werkingsgebied (locatie) aan elke regeltekst. Om die reden wordt geadviseerd om binnen TAM-projectbesluit gebruik te maken van die IMRO-objecten die een directe koppeling hebben met een regeltekst:</p><ul><li>Enkelbestemming;</li>
+<li>Dubbelbestemming;</li>
+<li>Gebiedsaanduiding.</li>
+</ul><figure id="fig-koppeling-tussen-regeltekst-en-locatie-werkingsgebied-zoals-deze-wordt-gebruik-in-de-stop-tpod-standaard"><img src="media/Koppeling_regeltekst_locatie.png" alt="Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard" style="width: 100%;">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Koppeling tussen regeltekst en Locatie (werkingsgebied) zoals deze wordt gebruik in de STOP/ TPOD standaard</span></figcaption>
+</figure><p>Voor het object ‘omgevingsnorm’ uit STOP/TPOD kan gebruik worden gemaakt van het IMRO-object ‘maatvoering’. Deze heeft weliswaar geen koppeling met de tekst maar lijkt het meest op de omgevingsnorm. Let er op dat maatvoeringen maar beperkt kunnen worden uitgebreid.</p></section><section id="tam-projectbesluit"><h4 id="x2-2-2-tam-projectbesluit"><span class="secno">2.2.2 </span>TAM-projectbesluit</h4><p>In principe is het mogelijk een projectbesluit zoveel mogelijk na te bootsen met behulp van IMRO2012. Het is uiteraard aan de provincie, dan wel het Rijk, om daar inhoudelijk vorm aan te geven. We doen hier een aantal suggesties hoe een projectbesluit gemaakt zou kunnen worden met behulp van de inpassingsplan-objecten uit het IMRO. We willen hier uitdrukkelijk aangeven dat het om voorbeelden gaat en dat het eenieder vrij staat om binnen de mogelijkheden van het IMRO hier op eigen wijze invulling aan te geven.
+Aangeraden wordt om alleen IMRO-objecten met een directe koppeling met plantekst te gebruiken. Dat zorgt voor een directe relatie tussen juridische regel straks in het projectbesluit, en het bijbehorende werkingsgebied op de kaart.
+De meeste Wro plansoftware werkt met een <a href="https://ro-standaarden.geonovum.nl/2012/IMRO/1.2/IMRO2012-v1.2.pdf" target="_blank">IMRO2012</a> bibliotheek waarin standaard de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">SVBP2012</a> is geïmplementeerd. Aangeraden wordt om deze bibliotheek te kopiëren, en in de kopie de wijzigingen aan te brengen waarmee een TAM-projectbesluit gemaakt gaat worden. Dit omdat er ook nog enige tijd gewerkt moet kunnen worden aan Wro bestemmingsplannen en inpassingsplannen, en mogelijk tegelijkertijd aan een TAM-projectbesluit.</p><p><b><i>Plangebied</i></b></p><p>Een omgevingsdocument kent geen object ‘plangebied’. Voor de validatie in Ruimtelijkeplannen.nl is het wel noodzakelijk om een plangebied op te nemen. De onderdelen van de wijziging van het projectbesluit worden dan gekoppeld aan dit plangebied. Voor de beschrijving van het project kan gebruik gemaakt worden van het object ‘toelichting’. De toelichting, regels en eventuele bijlagen worden gekoppeld aan het plangebied. Hiermee kan voldaan worden aan de noodzakelijk onderdelen voor het projectbesluit en tevens aan de randvoorwaarden ten behoeve van de validatie door Ruimtelijkeplannen.nl.</p><p><b><i>Gebiedsaanwijzing van het type Functie</i></b></p><p>Als de provincie, dan wel het Rijk, er voor kiest gebruik te maken van de gebiedsaanwijzing ‘functie’ onder de Omgevingswet dan kunnen die bijvoorbeeld middels ‘enkelbestemmingen’ worden gemodelleerd. De keuze is daarbij of de bestaande enkelbestemmingen worden gebruikt, bijvoorbeeld ‘Natuur’, of dat enkelbestemmingen worden toegevoegd: elke functiebenaming is toegestaan. IMRO staat het uitbreiden van de enkelbestemmingen toe mits ze voldoen aan de vereisten van de SVBP2012. Een nieuw bestemming/functie wordt dan aangemaakt in de Wro plansoftware, waarbij een hoofdgroep moet worden gekozen, en de naam van de hoofdgroep moet terugkomen in de naam van de bestemming/functie. De naam na de hoofdgroep is geheel vrij te kiezen. De structuur voor de eigen benamingen is, conform de SVBP2012:</p><p><i>Naam hoofdgroep [spatie] [-] [spatie] Specificatie van de bestemming</i></p><p>De eigen benaming na de hoofdgroep en het koppelteken begint altijd met een hoofdletter. Voorbeelden van functiebenamingen kunnen zijn:</p><ul><li>Natuur – Gelders natuurnetwerk;</li>
+<li>Verkeer – Stroomgebied;</li>
+<li>Water – Oppervlaktewater.</li>
+</ul><p>Het gebruik van een hoofdgroep is verplicht en kan gebruikt worden om de kaartweergave te sturen. In de viewer 'Regels op de Kaart' zal het TAM-projectbesluit in dezelfde kleuren worden getoond als een inpassingsplan. In de bovenstaande voorbeelden; groen voor Gelders natuurnetwerk, donkergrijs voor Stroomgebied en blauw voor Oppervlaktewater.
+Omdat het noodzakelijk is de naam van de hoofdgroep op te nemen in de naam van de functie, ligt het voor de hand inhoudelijke logische hoofdgroepen te kiezen, waardoor dan ook de kleur wordt bepaald. Als die logica er niet is dan kan gebruik worden gemaakt van de hoofdgroep ‘Overig’. Dat biedt alle ruimte voor eigen toevoegingen. Alle functies die met ‘Overig' zijn gemodelleerd, worden dan wel in dezelfde lichtgrijze kleur getoond. Voor de hoofdgroep ‘Overig’ geldt dat de naam van de hoofdgroep niet hoeft te worden opgenomen in de nieuwe benaming, conform de SVBP2012:</p><p><i>Specificatie van de bestemming</i></p><ul><li>Herstructureringsgebied;</li>
+<li>Transformatiegebied.</li>
+</ul><p>Voor een TAM-projectbesluit geldt dat locaties naar believen mogen worden gestapeld en/of overlappen, en ook niet verplicht het hele plangebied moeten afdekken. Hoewel dit bij enkelbestemmingen onder de Wro niet mag, staat de validator van Ruimtelijkplannen.nl dit wel toe. Het planobject ‘enkelbestemming’ kan dus gestapeld worden gebruikt ten behoeve van het modeleren van het TAM-projectbesluit.</p><p><b><i>Andersoortige gebiedsaanwijzingen</i></b></p><p>Als de opsteller van het projectbesluit conform TAM er voor kiest ook andersoortige gebiedsaanwijzingen te gebruiken die mogelijk zijn in het projectbesluit, dan kan daarvoor bij een TAM-projectbesluit bijvoorbeeld gebruik worden gemaakt van het object ‘dubbelbestemming’. Dit werkt op identieke wijze als hiervoor beschreven bij functies, ook in de naamgeving. Dubbelbestemmingen kennen slechts drie hoofdgroepen, en er is geen hoofdgroep ‘Overig’. bijvoorbeeld:</p><ul><li>Waarde – beschermd gebied</li></ul><p>Meer sectoraal gerichte gebiedsaanwijzingen (geluid, geur, etc.) kunnen goed worden gemodelleerd met behulp van het object ‘gebiedsaanduiding’. Deze werden al gebruikt voor sectorale toepassingen in bestemmingsplannen en inpassingsplannen en hebben daardoor hoofdgroepen waar gebiedsaanwijzingen onder te brengen zijn. De naamgeving moet voldoen aan de SVBP2012:</p><p><i>Naam hoofdgroep [spatie] [-] [spatie] specificatie van de aanduiding</i></p><p>Let op het gebruik van kleine letter in plaats van hoofdletter! Voorbeelden:</p><ul><li>geluidzone – geluidaandachtgebied;</li>
+<li>geurzone – geurbelastingsgebied Westervoortsedijk;</li>
+<li>vrijwaringszone – spoorgebied.</li>
+</ul><b><i>Activiteiten</i></b><p>Onder de Omgevingswet staat het regelen van activiteiten centraal. Dat geldt ook voor een TAM-projectbesluit. Activiteiten zijn objecten die we niet expliciet terugvinden in de RO Standaarden. In de basis gaat het over een regeltekst met een activiteit, die daarmee verplicht moet worden voorzien van een locatie (werkingsgebied). Omdat activiteiten wellicht moeilijk aan een hoofdgroep te koppelen zijn kan hiervoor de gebiedsaanduiding met de hoofdgroep ‘overige zone’ worden gebruikt. Er is in IMRO2012 geen beperking aan het aantal gebiedsaanduidingen dat kan worden toegevoegd. Bij het gebruik van de hoofdgroep ‘overige zone’ moet de hoofdgroep worden opgenomen in de benaming van de eigen gebiedsaanduiding, in dit geval activiteit voor het TAM-projectbesluit, voldoet de naamgeving aan de SVBP2012:</p><p><i>Overige zone[spatie] [-] [spatie] specificatie van de aanduiding</i></p><p>Let op het gebruik van kleine letters in plaats van hoofdletters! Het is bij gebiedsaanduidingen niet toegestaan om ‘overige zone’ weg te laten vóór de eigen gekozen benaming. Bijvoorbeeld:</p><ul><li>overige zone – activiteit verkeer</li></ul><p>Op deze wijze kunnen alle gewenste activiteiten voor een TAM-projectbesluit met behulp van IMRO2012 worden gemodelleerd. Het is zeker niet verplicht het woord ‘activiteit’ op te nemen in de naam. Het kan wel handig zijn om later de locaties te kunnen onderscheiden bij inlezen in de plansoftware voor de Omgevingswet.</p></section></section><section id="regeling-van-het-projectbesluit-en-vrijetekstdeel-van-het-projectbesluit"><h3 id="x2-3-regeling-van-het-projectbesluit-en-vrijetekstdeel-van-het-projectbesluit"><span class="secno">2.3 </span>Regeling van het projectbesluit en vrijetekstdeel van het projectbesluit</h3><p>In paragraaf <a href="#tam-projectbesluit">2.2.2</a> is aangegeven hoe de kaartobjecten voor een TAM-projectbesluit kunnen worden gesimuleerd met behulp van IMRO2012 middels het planfiguur ‘inpassingsplan’. Daarbij moeten ook de regeling van het projectbesluit (de regels) en het vrije tekstdeel van het projectbesluit (de toelichting) worden meegeleverd in de publicatie. Voor het vrije tekstdeel kan gebruik gemaakt worden van het IMRO object 'toelichting'. Voor de regeling van het projectbesluit kan gebruik gemaakt worden van het IMRO-object 'regels'.</p><p><b>Voorkeur voor HTML-formaat</b>
+Voor het publiceren van planteksten op basis van de RO Standaarden zijn twee opties beschikbaar, het publiceren van de planteksten in HTML-formaat of met behulp van de standaard IMROPT2012 in xml-formaat. 
+Voor het maken en aanleveren van het TAM-projectbesluit adviseren wij gebruik te maken van de uitvoer in HTML-formaat. In de praktijk is namelijk gebleken dat er bij gebruik van de planteksten in IMROPT2012 xml-formaat, tekstobjecten weg kunnen vallen bij het publiceren. Dit gebeurt met name als de tekststructuur (hoofdstuk-indeling, tekstobject-benoeming) niet exact voldoet aan de SVBP2012. Juist voor omgevingsdocumenten zal vaker van de SVBP structuur worden afgeweken.
+</p><p><b>Tekst-plangebied koppeling</b>
+Voor de validatie moeten in ieder geval de volgende tekst onderdelen aan het plangebied gekoppeld zijn:</p><ul><li>Besluit (IMRO-object ‘vaststellingsbesluit’ alleen togestaan en verplicht voor planstatus ‘vastgesteld’);</li>
+<li>Vrijetekstdeel projectbesluit (IMRO-object ‘toelichting’);</li>
+<li>Regelingdeel van het projectbesluit (IMRO-object ‘regels’);</li>
+</ul><p>Van de opbouw van de regeltekst zoals beschreven in hoofdstuk 6 van de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">SVBP2012</a> mag worden afgeweken.</p><section id="tijdelijk-regelingdeel"><h4 id="x2-3-1-tijdelijk-regelingdeel"><span class="secno">2.3.1 </span>Tijdelijk regelingdeel</h4><p>Wanneer een projectbesluit betrekking heeft op het grondgebied van meerdere gemeenten, wordt op basis van STOP/TPOD voor het omgevingsplan van iedere gemeente een afzonderlijk tijdelijk regelingdeel aangeleverd.
+Het is ook binnen het projectbesluit op basis van IMRO mogelijke om aparte regels en geometrie te maken per gemeente. Hiermee wordt aangesloten op het principe binnen STOP/TPOD. Of dit ook technisch en juridisch noodzakelijk is, moet blijken uit de oefensessies/werkplaatsen. Wellicht is hier een keuze te maken uit de minimale variant (wat is minimaal nodig om te voldoen aan de Omgevingswet) en de variant waarbij al meer aansluiting wordt gezocht bij een projectbesluit opgesteld op basis van STOP/TPOD.</p></section></section></section><section data-format="markdown" id="publiceren"><!--OddPage--><h2 id="x3-publiceren"><span class="secno">3. </span>Publiceren</h2><section id="ruimtelijkeplannen-nl"><h3 id="x3-1-ruimtelijkeplannen-nl"><span class="secno">3.1 </span>Ruimtelijkeplannen.nl</h3><p>Het publiceren van het uiteindelijk met de RO Standaarden 2012 vormgegeven wijziging van de TAM-projectbesluit gaat niet anders dan de publicatie van een inpassingsplan op basis van de Wro. Dat betekent dat er geen aanpassingen aan software, procedure of manier van handelen nodig is. De enige voorwaarde is dat de TAM-projectbesluit voldoet aan de technische vereisten van de RO Standaarden. Dat kan op de normale wijze vooraf worden getoetst door het projectbesluit via de optie manifest-validatie aan te bieden aan de <a href="https://www.ruimtelijkeplannen.nl/validator/validator/?" target="_blank">validator</a> van Ruimtelijkeplannen.nl. Als deze online validatie slaagt zal bijna zeker de publicatie ook goed gaan.</p><p>De publicatie van een TAM-projectbesluit volgt dezelfde route als een inpassingsplan onder de Wro. Door met de plansoftware het gevalideerde plan te publiceren, wordt de set bestanden die het TAM-projectbesluit vormen op de webdirectory van de provincie, dan wel het Rijk, geplaatst (dat kan ook een locatie bij de leverancier zijn). Tweemaal per dag komt de harvester van Ruimtelijkeplannen.nl langs, controleert of er nieuwe plannen in het manifest van de bronhouder staan. Als dat het geval is dan worden de planbestanden opgehaald en weergegeven op de website van Ruimtelijkeplannen.nl.</p><p>Technisch betekent dit, dat een TAM-projectbesluit onderdeel wordt van de Wro planvoorraad zoals opgenomen in het Wro-manifest van de provincie, dan wel het Rijk. Dat heeft weinig consequenties maar de totale planvoorraad moet wel goed beheerd worden. Het is dan immers tijdelijk zo dat Wro-besluiten en Omgevingswet-besluiten door elkaar staan in de planvoorraad die beheerd wordt middels de Wro plansoftware.</p><p>Alle planinformatie uit Ruimtelijkeplannen.nl wordt voortdurend gesynchroniseerd door de overbruggingsfunctie voor de ontsluiting in het DSO-LV, en wordt zichtbaar in de viewer Regels op de Kaart (het omgevingsloket). Daar zijn deze plannen raadpleegbaar in het omgevingsloket maar met minder functionaliteit dan een volwaardig projectbesluit op basis van de STOP/TPOD standaard.</p></section><section id="pilot-ruimtelijkeplannen-nl"><h3 id="x3-2-pilot-ruimtelijkeplannen-nl"><span class="secno">3.2 </span>Pilot.ruimtelijkeplannen.nl</h3><p>Omdat een TAM-projectbesluit in technische zin een IMRO2012 inpassingsplan is, kan deze ook gepubliceerd worden op de test-omgeving van Ruimtelijkplannen.nl. Dat maakt het projectbesluit raadpleegbaar op pilot.ruimtelijkeplannen.nl zonder dat daar juridische consequenties aan verbonden zijn. Deze route kan dienen om, voorvoorafgaand aan de inwerkingtreding van de Omgevingswet, het gemaakte TAM-projectbesluit<i>technisch</i> te toetsen op juistheid en volledigheid.
+</p><p>Het is voorafgaand aan het inwerkingtreden van de Omgevingswet slechts beperkt, en alleen in samenwerking met het Kadaster mogelijk een TAM-projectbesluit te testen in de keten naar het omgevingsloket, de zogenaamde pré-omgeving van het DSO. </p></section><section id="weergave-dso"><h3 id="x3-3-weergave-dso"><span class="secno">3.3 </span>Weergave DSO</h3><p>Bij inwerkingtreding van de Omgevingswet zal de viewer van Ruimtelijkeplannen.nl niet meer de volledige actuele situatie weergeven. Raadplegen van ruimtelijke plannen kan vanaf dat moment in samenhang met de omgevingsdocumenten op basis van STOP/TPOD uitsluitend via de viewer ‘Regels op de Kaart’ van het omgevingsloket.
+</p><p>De viewer ‘Regels op de Kaart’ van het omgevingsloket geeft de Wro plannen zoveel mogelijk weer als nu gebruikelijk is op Ruimtelijkeplannen.nl. De weergave van het inpassingsplannen, en dus ook een TAM-projectbesluit, kan dus gestuurd worden door de keuze van de hoofdgroep bij het definiëren van objecten voor een TAM-projectbesluit in de Wro plansoftware. Als de provincie, dan wel het Rijk, kiest voor een TAM-projectbesluit dat dicht bij de opbouw van het huidige inpassingsplan ligt, dan zal de weergave daarvan ook veel lijken op wat we gewend zijn bij de inpassingsplannen van de Wro. Als juist wordt gekozen voor veel afwijkende projectbesluit-objecten waarvoor veel de hoofdgroep ‘overig’ of ‘overige zone’ wordt gebruikt, dan zal de weergave minder duidelijk zijn omdat 'overig' wordt getoond als grijs vlak, of alleen als zwarte omlijning.
+</p><p>Het stapelen van enkelbestemmingen voor een TAM-projectbesluit kan en mag conform de mogelijkheden van de RO Standaarden, de keuze hiervoor ligt bij de bronhouder. Het stapelen van objecten heeft wel gevolgen voor de weergave en raadpleegbaarheid in het omgevingsloket.</p></section></section><section data-format="markdown" id="aandachtspunten"><!--OddPage--><h2 id="x4-aandachtspunten"><span class="secno">4. </span>Aandachtspunten</h2><p>Een TAM-projectbesluit is juridisch een omgevingsdocument maar technisch een (Wro) inpassingsplan. Dat heeft als voordeel dat in noodgevallen toch ruimtelijke ontwikkelingen doorgang kunnen vinden zelfs als de keten ‘van plan tot publicatie’ door welke oorzaak dan ook nog niet kan worden ingezet na inwerkingtreding van de Omgevingswet. Maar er zijn ook aandachtspunten, hiermee dient rekening te worden gehouden bij de inzet van TAM-projectbesluit:</p><ul>
+<li>Het beheer en muteren van het projectbesluit door de provincie dat het projectbesluit heeft vastgesteld is op de langere termijn niet mogelijk, als dit conform TAM projectbesluit is beschikbaar gesteld. Het gebruik van de TAM projectbesluit is een hulpmiddel voor de korte termijn.
+</li>
+<li>De weergave van een TAM-projectbesluit wordt gestuurd door de keuze van de IMRO-objecten die worden ingezet om het besluit te maken. Het besluit is raadpleegbaar in het omgevingsloket. De werking van de viewer 'Regels op de Kaart' en de overbruggingsfunctie bepalen uiteindelijk hoe bruikbaar het kaartbeeld wordt.</li>
+<li>Het is niet mogelijk om bij een TAM-projectbesluit de pons-functie mee te geven, waardoor het niet mogelijk is het projectbesluit in samenhang te tonen met de onderliggende Wro-inpassingsplannen.
+</li>
+<li>Tijdreizen in de viewer 'Regels op de Kaart' zal niet goed werken met een TAM-projectbesluit. IMRO2012 heeft niet de juiste tijdreisattributen om dit te kunnen ondersteunen.</li>
+<li>Bij het gebruik van de TAM-projectbesluit kan wel de relatie juridische regel – werkingsgebied worden nagebootst, maar annotaties zijn niet mogelijk. IMRO2012 biedt hier geen mogelijkheden voor. Dat houdt in dat er geen relatie met Toepasbare Regels kan worden gelegd en dat een TAM-projectbesluit niet werkt bij de vragenbomen in het omgevingsloket. Het niveau van dienstverlening in het loket is daardoor beduidend lager. Ook selecties in de viewer 'Regels op de Kaart' werken niet of minder goed, want deze zijn afhankelijk van annotaties.</li>
+<li>Uiteindelijk moet een TAM-projectbesluit door de provincie, dan wel het Rijk, verwerkt worden in een projectbesluithet conform STOP/TPOD. Dit betekent feitelijk dat het besluit opnieuw gemaakt en bekendgemaakt moet worden en dat is extra werk. Afhankelijk van de juridisch inbedding, is het besluit opnieuw appellabel, ondanks het feit dat het al juridisch een omgevingsdocument is.</li>
+<li>Voor de lange termijn dient het projectbesluit conform de geldende standaarden voor de Omgevingswet (STOP/ TPOD) te worden bekend gemaakt en beschikbaar gesteld.</li>
+<li>Het beheer van de juridische procedures en de besluiten daarin wordt complexer. Naast het afmaken van lopende procedures op grond van overgangsrecht, ontstaat er een set besluiten die juridisch omgevingsdocument zijn maar technisch in de Wro planvoorraad zijn opgenomen. Daarnaast zullen ook de eerste Omgevingswet besluiten in STOP/TPOD formaat in procedure gaan (wat de juridische consequenties zijn van deze samenloop van de diverse besluiten wordt nog nader uitgewerkt en maakt geen onderdeel uit van deze handreiking).
+</li>
+</ul><p>Het zijn deze overwegingen die meegenomen kunnen worden bij de afweging om al dan niet gebruik te gaan maken van de optie TAM-projectbesluit.</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

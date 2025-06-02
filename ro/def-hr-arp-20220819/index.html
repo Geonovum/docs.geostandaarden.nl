@@ -1,0 +1,1613 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- File. . . :  index.html                                                                 -->
+        <!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                   -->
+        <!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                       -->
+        <!--              Deze file moet worden neergezet in de root-directory van de                -->
+        <!--              betreffende standaard.                                                     -->
+        <!-- Door. . . :  Jan van Gelder                                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Log . . . :  20181015 - JvG - Initiele versie                                           -->
+        <!-- - - - - - - -20191022 - IE - ReSpec file Handreiking Archiveren ruimtelijke plannen     -->
+		<!-- - - - - - - - - - - - - - - -                          -  - - - - - - - - - - - - - - - -->
+
+        <!-- meta tags - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        
+        <!-- Invullen: de titel van de standaard of het document - - - - - - - - - - - - - - - - - - -->
+        <title>Handreiking Archiveren ruimtelijke plannen v2.1</title>    
+
+        <!-- Kan hier een 'ondertitel' tag worden gemaakt? -->
+		
+        <!-- Invullen: de naam van de lokale CSS file  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="./media/Geonovumstyle.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/ROST",
+  "issueBase": "https://github.com/geonovum/ROST/issues",
+  "edDraftURI": "https://github/geonovum/ROST/",
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Gijs Koedam, Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "arp",
+  "pubDomain": "ro",
+  "licence": "cc-by-nd",
+  "localBiblio": {
+    "PUB-1": {
+      "title": "Titel van Publicatie-1",
+      "href": "https://www.link-naar-publicatie-1.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-1",
+      "company": "Companynaam"
+    },
+    "PUB-2": {
+      "title": "Titel van Publicatie-2",
+      "href": "https://www.link-naar-publicatie-2.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-2",
+      "company": "Companynaam"
+    },
+    "PUB-3": {
+      "title": "Titel van Publicatie-3",
+      "href": "https://www.link-naar-publicatie-3.nl",
+      "status": "V1.0.1",
+      "publisher": "Publisher-3",
+      "company": "Companynaam"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "previousPublishDate": "2019-10-08",
+  "previousMaturity": "GN-DEF",
+  "publishISODate": "2022-08-19T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 19 augustus 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-hr-arp-20220819/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Handreiking Archiveren ruimtelijke plannen v2.1",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-08-19",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-hr-arp-20191008/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Gijs Koedam, Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Handreiking Archiveren ruimtelijke plannen v2.1</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-08-19">19 augustus 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-hr-arp-20220819/">https://docs.geostandaarden.nl/ro/def-hr-arp-20220819/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/arp/">https://docs.geostandaarden.nl/ro/arp/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-hr-arp-20191008/">https://docs.geostandaarden.nl/ro/def-hr-arp-20191008/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://github/geonovum/ROST/">https://github/geonovum/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Gijs Koedam, Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" data-include="" class="introductory"><h2></h2></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p><p>HRARP v2.1</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#H01"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.2 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H02"><span class="secno">2. </span>Handreiking: archiveren ruimtelijke plannen organiseren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemeen"><span class="secno">2.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#stap-1-inzicht-in-organisatie-van-informatie"><span class="secno">2.2 </span>Stap 1: inzicht in organisatie van informatie</a></li><li class="tocline"><a class="tocxref" href="#stap-2-zaaktypen-per-procedure"><span class="secno">2.3 </span>Stap 2: zaaktypen per procedure</a></li><li class="tocline"><a class="tocxref" href="#stap-3-informatie-vastleggen-tijdens-het-werkproces"><span class="secno">2.4 </span>Stap 3: informatie vastleggen tijdens het werkproces</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#dossier"><span class="secno">2.4.1 </span>Dossier</a></li><li class="tocline"><a class="tocxref" href="#subdossier"><span class="secno">2.4.2 </span>Subdossier</a></li><li class="tocline"><a class="tocxref" href="#document"><span class="secno">2.4.3 </span>Document</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H03"><span class="secno">3. </span>Achtergrond: wetgeving en andere kaders</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wetgeving"><span class="secno">3.1 </span>Wetgeving</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wet-ruimtelijke-ordening"><span class="secno">3.1.1 </span>Wet ruimtelijke ordening</a></li><li class="tocline"><a class="tocxref" href="#welke-ruimtelijke-plannen"><span class="secno">3.1.2 </span>Welke ruimtelijke plannen</a></li><li class="tocline"><a class="tocxref" href="#archiefwet"><span class="secno">3.1.3 </span>Archiefwet</a></li></ol></li><li class="tocline"><a class="tocxref" href="#normen-en-standaarden"><span class="secno">3.2 </span>Normen en standaarden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#digitale-ruimtelijke-ordening"><span class="secno">3.2.1 </span>Digitale ruimtelijke ordening</a></li><li class="tocline"><a class="tocxref" href="#archivering"><span class="secno">3.2.2 </span>Archivering</a></li></ol></li><li class="tocline"><a class="tocxref" href="#andere-kaders"><span class="secno">3.3 </span>Andere kaders</a></li><li class="tocline"><a class="tocxref" href="#digitaal-waarmerken"><span class="secno">3.4 </span>Digitaal waarmerken</a></li><li class="tocline"><a class="tocxref" href="#samenvatting-wet-en-regelgeving-met-bijbehorende-standaarden"><span class="secno">3.5 </span>Samenvatting wet- en regelgeving met bijbehorende standaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H04"><span class="secno">4. </span>Achtergrond: belangrijke aspecten bij het archiveren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metagegevens"><span class="secno">4.1 </span>Metagegevens</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#standaard"><span class="secno">4.1.1 </span>Standaard</a></li><li class="tocline"><a class="tocxref" href="#metagevensschema"><span class="secno">4.1.2 </span>Metagevensschema</a></li><li class="tocline"><a class="tocxref" href="#software"><span class="secno">4.1.3 </span>Software</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bewaartermijnen"><span class="secno">4.2 </span>Bewaartermijnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gemeenten"><span class="secno">4.2.1 </span>Gemeenten</a></li><li class="tocline"><a class="tocxref" href="#provincies"><span class="secno">4.2.2 </span>Provincies</a></li><li class="tocline"><a class="tocxref" href="#het-rijk"><span class="secno">4.2.3 </span>Het Rijk</a></li></ol></li><li class="tocline"><a class="tocxref" href="#toegestane-compressie-en-bestandsformaten"><span class="secno">4.3 </span>Toegestane compressie en bestandsformaten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bestandsformaten"><span class="secno">4.3.1 </span>Bestandsformaten</a></li><li class="tocline"><a class="tocxref" href="#compressie"><span class="secno">4.3.2 </span>Compressie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#vervanging"><span class="secno">4.4 </span>Vervanging</a></li><li class="tocline"><a class="tocxref" href="#archiefsysteem"><span class="secno">4.5 </span>Archiefsysteem</a></li></ol></li><li class="tocline"><a class="tocxref" href="#B01"><span class="secno">5. </span>Bijlage 1 Begrippenlijst</a></li><li class="tocline"><a class="tocxref" href="#B02"><span class="secno">6. </span>Bijlage 2: Eisen voor duurzame toegankelijkheid van overheidsinformatie</a></li><li class="tocline"><a class="tocxref" href="#B03"><span class="secno">7. </span>Bijlage 3: Met dank aan</a></li></ol></nav><div id="H00" data-format="markdown"><p><strong>Versiebeheer</strong></p>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document
+geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Versie</strong></th>
+<th><strong>Datum</strong></th>
+<th><strong>Status</strong></th>
+<th><strong>Bewerking</strong></th>
+<th><strong>Toelichting</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>2 mei 2013</td>
+<td>Definitief</td>
+<td>Geonovum</td>
+<td>Oplevering</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>September 2019</td>
+<td>Werkversie</td>
+<td>Geonovum – Irina Entrop Nationaal Archief – Tom Derks Nationaal Archief – Wout van der Reijden</td>
+<td>-Tekst door hele document geupdated - Bijlage 1: <em>Begrippenlijst</em> toegevoegd - Bijlage 2: <em>Eisen voor duurzame toegankelijkheid van overheidsinformatie</em> toegevoegd</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>Oktober 2019</td>
+<td>Definitief</td>
+<td>Geonovum – Irina Entrop</td>
+<td>Oplevering</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>Augustus 2022</td>
+<td>Definitief</td>
+<td>Geonovum – Gijs Koedam, Monique van Scherpenzeel, Nationaal Archief - Anna van Lankvelt, Wout van der Reijden</td>
+<td>Naast tekstuele wijzigingen ook accurate en actuele context en verwijzingen naar standaarden en wet- en regelgeving</td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p><strong>Waarom een handreiking over het archiveren van digitale ruimtelijke plannen? In
+dit hoofdstuk treft u de aanleiding en wordt aangegeven wat u van deze
+handreiking kunt verwachten.</strong></p><section id="aanleiding"><h3 id="x1-1-aanleiding"><span class="secno">1.1 </span>Aanleiding</h3><p>In de praktijk van de ruimtelijke ordening zijn de digitale ruimtelijke plannen
+conform de Wet ruimtelijke ordening (Wro), de authentieke plannen. Dit betekent
+dat een samenhangende set bronbestanden (dataset genoemd) conform de RO
+Standaarden door gemeenten, provincies en het Rijk geproduceerd, beschikbaar
+gesteld, vindbaar en toegankelijk gemaakt worden.
+</p><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><details class="">
+Gemeenten, provincies en het rijk zijn bronhouders van de ruimtelijke
+plannen. Deze bestuursorganen maken de ruimtelijke plannen genoemd in artikel
+1.2.1 van het Besluit ruimtelijke ordening (Bro).
+</details></div><p>In de dagelijkse praktijk is het archiveren van de analoge stukken geen
+probleem. Met betrekking tot het archiveren van de samenhangende set
+bronbestanden heerst echter na bijna tien jaar digitalisering nog steeds veel
+onbekendheid. Daarnaast wordt soms ten onrechte verondersteld dat de landelijke
+voorziening Ruimtelijkeplannen.nl een archieffunctie heeft of zou moeten hebben.
+Vragen hierover worden aan Geonovum gesteld.</p><p>Dit gaf aanleiding om samen
+met experts van gemeenten, provincies, (destijds) het ministerie van IenM en het Nationaal
+Archief het digitaal archiveren van ruimtelijke plannen nader te onderzoeken en de resultaten samen te vatten in een praktische
+handreiking. De centrale vraag die daarbij werd gesteld is <em>“waar moet ik op
+letten wanneer ik een ruimtelijk plan (bv. bestemmingsplan) archiveer c.q.
+overdraag aan een archiefdienst?</em>”.</p><p>Het doel van de handreiking is een aanzet te geven voor personen die betrokken
+zijn bij het archiveren van data en voor degenen die betrokken zijn bij de creatie en
+vaststelling van het ruimtelijke plan: ruimtelijke ordenaars,
+informatieverzorgers en archivarissen bij een gemeente, provincie en het rijk.
+Een aanzet om het werkproces zo in te richten dat ruimtelijke plannen worden
+gearchiveerd, conform de voorgeschreven wet- en regelgeving. De handreiking
+richt zich op het archiveren van de samenhangende set bronbestanden. De
+handreiking kan een aanvulling zijn op het bestaande informatiebeleid binnen
+deze bestuursorganen. Deze handreiking kan geen aandacht geven aan het
+informatiebeleid, omdat de keuze van onderwerpen en de prioritering daarin, voor
+elke betrokken overheidsorganisatie anders kan zijn.</p><p>Wanneer de handreiking in de praktijk wordt gebruikt, kan blijken dat
+aanscherping en/of uitbreiding van de handreiking wenselijk is. Bijvoorbeeld een
+verdere uitwerking op documentniveau die nog nu nog beperkt is opgenomen.
+Geonovum ontvangt graag deze informatie. U kunt ons dit laten weten via
+<a href="mailto:ro-standaarden@geonovum.nl">ro-standaarden@geonovum.nl</a>.</p></section><section id="leeswijzer"><h3 id="x1-2-leeswijzer"><span class="secno">1.2 </span>Leeswijzer</h3><p>In <a href="#H02">hoofdstuk 2</a> komt het organiseren van het digitaal archiveren van ruimtelijke
+plannen aan de orde: welke informatie moet eenmalig in de organisatie worden
+vastgelegd, welke informatie meermalig. Dit hoofdstuk is de vertaling van 
+<a href="#H03">hoofdstuk 3</a> en <a href="#H04">hoofdstuk 4</a>.
+</p><p>Om te kunnen duiden welke verantwoordelijkheden gemeenten, provincies en het
+rijk hebben en mogelijk op een bepaalde manier zouden moeten uitvoeren, is de
+context van wet- en regelgeving met daaruit voortvloeiende vereisten samengevat.
+Deze vindt u terug in hoofdstuk 3 en hoofdstuk 4.</p><p>In <a href="#B02">Bijlage 2</a> is door middel van verschillende tabellen een lijst van elementen
+opgenomen. Hierdoor is per niveau door het bestuursorgaan te bepalen welke
+informatie over de samenhangende set bronbestanden van het ruimtelijk plan moet
+worden verzameld om aan de slag te gaan met archiveren.</p><p>Zonder de medewerking van een aantal experts op het gebied van archiveren en
+ruimtelijk ordening zou deze handreiking niet tot stand zijn gekomen. Zij worden
+van harte bedankt en genoemd in <a href="#B03">Bijlage 3</a>.</p></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-handreiking-archiveren-ruimtelijke-plannen-organiseren"><span class="secno">2. </span>Handreiking: archiveren ruimtelijke plannen organiseren</h2><p><strong>In dit hoofdstuk wordt in drie stappen uiteengezet welke informatie verzameld
+moet worden om ruimtelijke plannen digitaal te archiveren. De stappen worden
+genomen door de bestuursorganen en betreffen het vastleggen op organisatieniveau,
+type plan en vervolgens het ruimtelijke plan zelf. Dit hoofdstuk is een
+vertaling van de hoofdstukken drie en vier die de achtergrond van wet- en regelgeving
+en andere belangrijke aspecten weergeven.</strong></p><section id="algemeen"><h3 id="x2-1-algemeen"><span class="secno">2.1 </span>Algemeen</h3><p>Het digitaal archiveren van de ruimtelijke plannen op grond van de Wro maakt nu
+over het algemeen geen deel uit van het werkproces waarbij ruimtelijke plannen
+worden gemaakt, vastgesteld en in werking treden. In wet- en regelgeving, zie
+<a href="#H03">hoofdstuk 3</a> en <a href="#H04">hoofdstuk 4</a>, is vastgelegd welke informatie tijdelijk of
+permanent dient te worden bewaard, of er gebruik kan worden gemaakt van ‘zip’,
+of dat archiveren alleen in bepaalde systemen is toegestaan. Zonder de
+informatie uit deze hoofdstukken kan het lastig zijn dit hoofdstuk te
+implementeren.</p><p>De focus van deze handreiking is erop gericht om een aanzet te geven het
+werkproces zo in te richten dat ruimtelijke plannen worden gearchiveerd, conform
+de voorgeschreven wet- en regelgeving. De handreiking richt zich op het
+archiveren van de samenhangende set bronbestanden en de ondergrond van het
+ruimtelijk plan. Daarvoor is in eerste instantie het verzamelen en borgen van
+informatie nodig. Bij het digitaal archiveren van ruimtelijke plannen gaat het
+om twee soorten informatie:
+</p><ol>
+<li>documentatie tijdens het werkproces;  </li>
+<li>de bronbestanden die samen het ruimtelijke plan vormen.</li>
+</ol><p>Welke bronbestanden samen het ruimtelijke plan vormen is mede bepaald door het
+type ruimtelijke plan en wordt voorgeschreven vanuit de RO Standaarden
+(zie paragraaf <a href="#welke-ruimtelijke-plannen">3.1.2</a>). De verschillende bestuursorganen maken gebruik van beheer
+software om deze verzameling (dataset) aan te leggen en beschikbaar te stellen.
+In deze handreiking gaan we dan ook niet in op de wijze van verzamelen van de
+samenhangende set van bronbestanden zelf, maar richten we ons op de
+documentatie: welke informatie moet er worden gedocumenteerd met betrekking tot
+het archiveren en waar ontstaat deze informatie in het proces van creatie en
+vaststelling van het ruimtelijke plan? 
+De metagegevens, slechts een van de vele vereisten van het archiveren, zijn hierbij het uitgangspunt. Metagegevens zijn gegevens die de karakteristieken van archiefstukken beschrijven. Voorbeelden van karakteristieken
+zijn de creator, de datum van creatie, de gebruikte taal en het bestandsformaat.
+Metagegevens beschrijven niet alleen de archiefstukken zelf, maar ook de context
+waarbinnen de archiefstukken zijn ontstaan of ontvangen. En wat er vanaf het moment
+van ontstaan of ontvangst met die archiefstukken is gebeurd.
+</p><p>De handreiking kan tevens worden gebruikt als leidraad bij het archiveren van de
+overige digitale archiefstukken die in het werkproces ontstaan, zoals
+zienswijzen en andere onderdelen dan de samenhangende set bronbestanden van het
+ruimtelijk plan. Het gebruik van een (bepaald) archiefsysteem (paragraaf <a href="#archiefsysteem">4.5</a>)
+komt niet aan de orde, omdat dit voor iedere organisatie weer anders kan zijn.
+Dit heeft echter geen invloed op de het verzamelen van de informatie die
+gearchiveerd moet worden.</p><p>Om te kunnen gaan archiveren moet dit worden georganiseerd voordat feitelijk
+archiefstukken worden aangeboden. Het organiseren van dit archiveringsproces
+valt uiteen in de volgende stappen:
+</p><ol>
+<li>inzicht krijgen in de organisatie van informatie in de organisatie;  </li>
+<li>indelen van ruimtelijke plannen per procedure;
+</li>
+<li>vastleggen van informatie tijdens het werkproces.</li>
+</ol><p>De RO Standaarden maken gebruik van dossiers. Het ruimtelijke plan wordt met de
+eventuele verschillende fasen vastgelegd in dat dossier en op die wijze
+beschikbaar gesteld (paragraaf <a href="#digitale-ruimtelijke-ordening">3.2.1</a>. De term dossier sluit aan op de in deze
+handreiking ook aangehaalde term ‘zaak’. Het zaakgericht werken is een manier,
+hulpmiddel bij het archiveren, echter geen verplichting.</p></section><section id="stap-1-inzicht-in-organisatie-van-informatie"><h3 id="x2-2-stap-1-inzicht-in-organisatie-van-informatie"><span class="secno">2.2 </span>Stap 1: inzicht in organisatie van informatie</h3><p>Inzicht biedt organisaties duidelijkheid over:</p><ul>
+<li>welke informatie binnen de organisatie aanwezig is;
+</li>
+<li>waar die informatie zich bevindt (systemen);  </li>
+<li>wie er verantwoordelijk is voor welke informatie.</li>
+</ul><p>Voor het beschrijven van informatie(objecten), zoals de structuur en betekenis
+daarvan, kan een informatiemodel gemaakt worden of gebruik gemaakt worden van
+sectorspecifieke modellen. IMRO2012 is in dit geval een relevante
+sectorstandaard. Het hebben van een informatiemodel is ook een eis uit
+<a href="https://www.nationaalarchief.nl/archiveren/duto">DUTO</a>, het normenkader
+voor duurzame toegankelijkheid van overheidsinformatie. De DUTO-eisen zijn een
+programma van eisen voor duurzame toegankelijkheid van de informatie in de
+informatiesystemen van overheidsorganisaties. De eisen zijn generiek van aard en
+weerspiegelen de eisen die gebruikers stellen aan de toegankelijkheid van de
+informatie. In dit geval betreft het informatie gerelateerd aan ruimtelijke
+plannen.
+Het Nationaal Archief heeft een overzicht van de <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/overzicht-duto-eisen">DUTO-eisen</a>. Meer hierover in <a href="#B01">Bijlage 1</a>.</p><p>De volgende ruimtelijke plannen worden door de verschillende bevoegde gezagen
+gecreëerd:</p><table>
+<thead>
+<tr>
+<th>Gemeenten</th>
+<th>Provincies</th>
+<th>Rijk</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Beheersverordening</td>
+<td>Aanwijzingsbesluit</td>
+<td>Aanwijzingsbesluit</td>
+</tr>
+<tr>
+<td>Bestemmingsplan</td>
+<td>Inpassingsplan</td>
+<td>Algemene Maatregel van Bestuur</td>
+</tr>
+<tr>
+<td>Exploitatieplan</td>
+<td>Provinciale verordening</td>
+<td>Inpassingsplan</td>
+</tr>
+<tr>
+<td>Omgevingsvergunning*</td>
+<td>Reactieve aanwijzing</td>
+<td>Reactieve aanwijzing</td>
+</tr>
+<tr>
+<td>Structuurvisie</td>
+<td>Structuurvisie</td>
+<td>Rijksbestemmingsplan</td>
+</tr>
+<tr>
+<td>Uitwerkingsplan</td>
+<td>Voorbereidingsbesluit</td>
+<td>Structuurvisie</td>
+</tr>
+<tr>
+<td>Voorbereidingsbesluit</td>
+<td></td>
+<td>Voorbereidingsbesluit</td>
+</tr>
+<tr>
+<td>Wijzigingsplan</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table><p><em>In bovenstaande lijst komt ook omgevingsvergunning voor. Hiermee wordt
+kortweg aangegeven de omgevingsvergunning voor het afwijken van een
+bestemmingsplan: de mededeling van een met artikel 2.12, eerste lid, onderdeel
+a, onder 3 van de Wabo verleende omgevingsvergunning.</em></p><p>Naast deze ruimtelijke plannen is de gerechtelijke uitspraak conform de RO
+Standaarden ook een type ruimtelijk plan. De basis voor dit instrument is gelegd in het Bro artikel 1.2.1 lid 3 met
+de daarbij behorende toelichting onderdeel L van de Nota van Toelichting.
+Wanneer bijvoorbeeld in de
+procedure van het bestemmingsplan beroep volgt, heeft de uitspraak gevolgen voor
+het vastgestelde plan. Dit is een nieuwe fase in de procedure en wordt bij
+voorkeur als subdossier binnen het bestemmingsplan gearchiveerd. Zie paragraaf
+<a href="#subdossier">2.4.2</a>.</p><p>Organisaties gebruiken meerdere systemen om informatie mee vast te leggen en te
+beheren. Het archiveren van digitale ruimtelijke plannen kan in een of meerdere
+van die informatiesystemen. Deze systemen kunnen specifiek voor archivering
+bedoeld zijn, of vakapplicaties in het primaire proces die bepaalde
+archiveringsfunctionaliteit hebben (zoals functionaliteit voor vernietiging).<br>Een organisatie zal daarin keuzes moeten maken, omdat het gevolgen heeft voor
+werkprocessen en de inrichting van systemen. Systemen zullen, idealiter <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/archiveren-by-design">by
+design</a>,
+in staat moeten zijn om informatie duurzaam toegankelijk te kunnen houden voor
+zolang als nodig.<br>Kaders voor de inrichting van systemen worden gegeven vanuit wet- en
+regelgeving, maar ook vanuit normen en standaarden. Een overzicht hiervan is in
+<a href="#H03">hoofdstuk 3</a> te vinden.</p><p>Als duidelijk is welke informatie zich waar bevindt, is het belangrijk om te
+bepalen wie verantwoordelijk is voor de creatie en het beheer van informatie
+gerelateerd aan ruimtelijke plannen (de ‘actor’). De vastlegging hiervan kan
+door middel van metagegevens. Zeker in het geval van keteninformatisering is het
+belangrijk dat de betrokken organisaties hierover afspraken maken.</p><p>Informatie met betrekking tot identificatie van de eigenaar en maker van het
+ruimtelijk plan wordt <em>eenmalig</em> in het gebruikte archiefsysteem van de
+organisatie vastgelegd. In het kader van ruimtelijke plannen is onderstaande
+informatie naar verwachting reeds vastgelegd en kan als eventuele controle
+gebruikt worden.</p><p>De volgende metagegevens zijn of worden verzameld:
+</p><ul>
+<li><em>Zorgdrager</em><br>Het bestuursorgaan dat conform de Archiefwet de verantwoordelijkheid heeft
+voor het archiveren van het ruimtelijk plan wordt aangeduid als de
+zorgdrager. Dit bestuursorgaan is conform de Wro de bronhouder van het
+ruimtelijk plan.<br>Bij de verschillende bestuursorganen zijn hiervoor aangewezen:<ul>
+<li>Gemeente: College van Burgemeester en Wethouders;  </li>
+<li>Provincie: Gedeputeerde Staten of Provinciale Staten;</li>
+<li>Rijk: Betrokken Minister('s).</li>
+</ul>
+</li>
+</ul><p>Toelichting gemeente: Conform artikel 3.1 van de Wet ruimtelijke ordening stelt de gemeenteraad
+een ruimtelijk plan vast. Vanuit de Archiefwet is echter het college aangewezen
+als zorgdrager. Verantwoordelijke voor het archiveren is daardoor niet
+verantwoordelijke voor het vaststellen.  </p><p>Toelichting provincie: Afhankelijk van het type ruimtelijk plan/ zaaktype is Gedeputeerde Staten,
+dan wel Provinciale Staten aangewezen als zorgdrager van het ruimtelijk plan.
+</p><p>Voor het vastleggen van en verwijzen naar institutionele informatie over
+bestuursorganen kan gebruik gemaakt worden van het <a href="https://actorenregister.nationaalarchief.nl/">Actorenregister</a> van het
+Nationaal Archief. Op deze manier is een verwijzing in de metagegevens voldoende
+en kan worden voorkomen dat deze informatie redundant bij de informatie zelf
+wordt opgeslagen.
+</p><ul>
+<li><p><em>Beheerder</em><br>De beheerder van het ruimtelijk plan wordt door het bestuur van de eigen
+organisatie aangewezen. De beheerder legt bijvoorbeeld beheeractiviteiten
+vast en deelt de activiteit in naar type plan en naar fase(n) van dat plan,
+zie stap 2 in paragraaf <a href="#stap-2-zaaktypen-per-procedure">2.3.</a>
+Bijvoorbeeld: algemeen directeur bij een provincie of gemeente secretaris.
+</p>
+</li>
+<li><p><em>Archiefvormer</em><br>De archiefvormer is de organisatie of het organisatieonderdeel dat het
+ruimtelijke plan creëert. Dit kan tegelijkertijd ook de zorgdrager zijn. In
+de loop der tijd kan het zorgdragerschap overgaan naar een andere
+organisatie. Door het vastleggen van de archiefvormer is echter wel altijd
+na te gaan wie de stukken oorspronkelijk creëerde of ontving en daar in
+eerste instantie voor verantwoordelijk was.
+</p>
+</li>
+<li><p><em>Mandaat</em><br>Het mandaat waaronder informatie wordt gevormd of ontvangen. In het
+mandaatbesluit van het betreffende organisatieonderdeel is bepaald welk
+ruimtelijk plan zij oplevert.</p>
+</li>
+</ul></section><section id="stap-2-zaaktypen-per-procedure"><h3 id="x2-3-stap-2-zaaktypen-per-procedure"><span class="secno">2.3 </span>Stap 2: zaaktypen per procedure</h3><p>Als duidelijk is welk organisatieonderdeel archiefstukken oplevert, wordt
+informatie met betrekking tot de type ruimtelijke plannen <em>eenmalig</em> in de
+organisatie vastgelegd. Er kan daarbij gebruik worden gemaakt van een zaaktypecatalogus waarin zaaktypen/ zaakomschrijvingen worden vastgelegd. Dit is niet verplicht; de desbetreffende overheid moet zelf beslissen hoe dit wordt bepaald.</p><p>De VNG heeft een GEMMA zaaktypecatalogus (ZTC) ontwikkeld
+voor het ontwerpen, beheren en uitwisselen van zaaktypen. De laatste versie is beschikbaar via het overzicht op <a href="https://www.gemmaonline.nl/index.php/GEMMA_Zaaktypecatalogus">GEMMA online</a></p><p>Welke ruimtelijke plannen conform de Wro en Wabo (daarmee zaaktypen) per
+bestuursorgaan worden vastgelegd, is in paragraaf <a href="#stap-1-inzicht-in-organisatie-van-informatie">2.2</a> aangegeven. Er moet
+daarnaast onder andere gebruik worden gemaakt worden van RO Standaarden en de
+metagegevens standaarden (paragraaf <a href="#normen-en-standaarden">3.2</a>).</p><p>Het bepalen van het type ruimtelijk plan geeft tevens inzicht in de fasen en
+onderdelen: welke activiteiten vinden er plaats tijdens de procedure van het
+ruimtelijk plan en welke informatie is archiefplichtig. De selectielijst (paragraaf <a href="#bewaartermijnen">4.2</a>) geeft inzicht in de
+bewaartermijn van het betreffende ruimtelijk plan. Een selectielijst geeft aan
+hoe lang de verschillende archiefstukken bewaard moeten of mogen worden.
+Het <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/selectielijst-maken">ontwerpen van een selectielijst</a>, is verplicht voor
+overheidsorganisaties op basis van artikel 5 van de Archiefwet 1995. Nieuwe selectielijsten worden door
+de minister van Onderwijs, Cultuur en Wetenschap vastgesteld door middel van een
+vaststellingsbesluit.</p><p>Per type plan wordt met betrekking tot de RO Standaarden vervolgens bepaald
+welke documenttypen worden gearchiveerd: bijvoorbeeld plankaart, planregels en
+met welke bestandsformaten.</p><p>Het is aan te bevelen om van te voren een begrippenlijst vast te leggen zodat er
+geen verwarring kan ontstaan over bijvoorbeeld procedure, zaak of dossier.
+Een ruimtelijk plan volgt een Wro/ Awb procedure. Bij het archiveren wordt
+vaak gesproken over een zaak. De zaak is gelijk aan het dossier conform de RO
+Standaarden: verzameling van samenhangende set van bronbestanden van het
+betreffende ruimtelijke plan.</p><p>De meest ideale situatie is als alle bestuursorganen dezelfde begrippen zouden
+hanteren. Bij het toepassen hoeven dan alleen de variabelen te worden ingevuld.
+Dit is in de praktijk mogelijk nog niet haalbaar. In <a href="#B01">Bijlage 1</a> is een eerste opzet
+met begrippen toegevoegd.</p></section><section id="stap-3-informatie-vastleggen-tijdens-het-werkproces"><h3 id="x2-4-stap-3-informatie-vastleggen-tijdens-het-werkproces"><span class="secno">2.4 </span>Stap 3: informatie vastleggen tijdens het werkproces</h3><p>Per ruimtelijk plan wordt <em>eenmalig</em> per afzonderlijke procedure één
+dossier/zaak in het informatiesysteem aangemaakt. Per fase in de procedure van
+dit ruimtelijke plan wordt een nieuw subdossier aangemaakt. Er worden dus in het
+geval van een bestemmingsplan <em>meermalig</em> subdossiers aangemaakt. Dit kan per
+ruimtelijke plan verschillen en is bepaald via het zaaktype (paragraaf <a href="#stap-2-zaaktypen-per-procedure">2.3</a>).</p><p>Bijvoorbeeld: bestemmingsplan Buitengebied is het dossier en het eerste
+subdossier dat wordt aangemaakt is die van de fase ontwerp.</p><section id="dossier"><h4 id="x2-4-1-dossier"><span class="secno">2.4.1 </span>Dossier</h4><p>Dossier is een veelgebruikte naam voor een samenhangende aggregatie
+van archiefstukken met een eigen identiteit. Een standaard als
+<a href="https://www.nationaalarchief.nl/archiveren/mdto">MDTO</a> schrijft geen aggregatieniveaus voor, maar biedt organisaties ruimte om
+aggregaties (van archiefstukken) een naam te geven die aansluit bij de eigen
+ordening van informatie.</p><p>In het dossier/ zaak wordt de volgende metagegevens met betrekking tot het
+ruimtelijke plan vastgelegd:</p><ul>
+<li><p><em>Werkproces</em><br>De naam van het werkproces is gelijk aan het zaaktype zoals in paragraaf 2.3
+is aangegeven. Bijvoorbeeld: bestemmingsplan.
+</p>
+</li>
+<li><p><em>Identificatie (ID)</em><br>Het ID van het archiefdossier is identiek aan het STRI2012 dossiernummer dat
+bij de start van de creatie van het ruimtelijk plan door de betreffende
+afdeling, dienst of team aan het ruimtelijk plan wordt toegekend.
+Bijvoorbeeld: NL.IMRO.0034.BP2ABZ01
+</p>
+</li>
+<li><p><em>Beschrijving</em><br>Voor het element beschrijving kan de beschrijving van het ruimtelijke plan
+uit de toelichting of de beleidstekst van het betreffende ruimtelijke plan
+worden gehaald. Het is niet verplicht een beschrijving toe te voegen, maar
+geeft wel beter inzicht: welk ruimtelijk plan, welk gebied is dit?
+</p>
+</li>
+<li><p><em>Titel</em><br>Voor het element titel wordt de naam van het plan gehanteerd zoals deze in
+de GML en de plantekst is opgenomen. Het gaat in alle gevallen om het
+attribuut “naam” van het respectievelijke plangebied in GML.
+Bijvoorbeeld: Centrum Almere Stad  </p>
+</li>
+<li><p><em>Externe relaties</em><br>Met dit element wordt de relatie met andere zaken in het interne archief
+systeem of externe zaken aangegeven. Deze informatie kan direct in de GML
+opgenomen zijn door middel van waarde bij het attribuut
+“relatieExternPlaninfo”. Deze informatie kan ook beschikbaar zijn via de
+betreffende regels/ toelichting van het ruimtelijk plan.<br>Bijvoorbeeld: een verwijzing naar raadsbesluit, een exploitatieplan heeft
+een relatie met het bestemmingsplan, een verwijzing naar de structuurvisie
+van een provincie.
+</p>
+</li>
+<li><p><em>Uitvoerende</em><br>De naam van het organisatieonderdeel dat verantwoordelijk is voor het beheer
+van de archiefstukken. Dit kan hetzelfde zijn als de archiefvormer (stap 1).<br>Bijvoorbeeld: afdeling ruimtelijke ordening.  </p>
+</li>
+<li><p><em>Activiteit</em><br>Dit element betreft de activiteit van de zaak door de zorgdrager: wat
+gebeurt er met de archiefstukken? Vooraf is per zaaktype (stap 2) vastgelegd
+welke activiteiten per zaaktype kunnen plaatsvinden.<br>Bijvoorbeeld: ontvangst, creatie, overdracht, overbrenging, verplaatsing,
+conversie, wijziging, autorisatie, vernietiging.
+</p>
+</li>
+<li><p><em>Planning</em><br>Planning is nauw verbonden met activiteit: met de planning van de
+beheeractiviteit wordt aangegeven wat de planning van verschillende
+activiteiten is en hoe lang deze activiteit duurt. De bewaartermijn worden
+hier geconcretiseerd en gaan in op het moment dar de zaak wordt gesloten.
+Bijvoorbeeld: vernietigingsjaar, overbrengingsjaar, jaar geplande conversie.
+</p>
+</li>
+<li><p><em>Aanwezigheid kopieversies</em><br>Indien van toepassing geldt hier de aanduiding van de vindplaats van de
+archiefstukken in andere beheeromgevingen.
+Bijvoorbeeld: bij ketensamenwerking en in verband met het backupbeleid.</p>
+</li>
+</ul></section><section id="subdossier"><h4 id="x2-4-2-subdossier"><span class="secno">2.4.2 </span>Subdossier</h4><p>Binnen het ruimtelijk planproces zijn diverse fasen te onderscheiden. Per
+dossier kunnen deze fasen verschillen. Per fase wordt in het dossier van het
+betreffende ruimtelijk plan (zaaktype) een subdossier aangemaakt. Wanneer meer
+dan één fase per dossier/ zaak is te onderscheiden worden subdossiers <em>meermalig</em> aangemaakt.</p><p>Naar voorbeeld van het bestemmingsplan of inpassingsplan kunnen de fasen en
+daarmee de subdossiers concept, voorontwerp, ontwerp en vastgesteld worden
+onderscheiden. Vervolgens kan nog een subdossier worden aangemaakt al naar
+gelang het verloop van de bestemmingsplan procedure: geheel onherroepelijk in
+werking, deels onherroepelijk in werking.
+Per fase en daarmee subdossier wordt de volgende metagegevens verzameld.
+</p><ul>
+<li><p><em>Identificatie (ID)</em><br>Het ID van het subdossier is gelijk aan het IMRO2012 planidentificatienummer
+dat aan deze versie van het ruimtelijk plan door de betreffende afdeling,
+dienst of team aan het ruimtelijk plan wordt toegekend.
+Bijvoorbeeld: NL.IMRO.0034.BP2ABZ01-ON01  </p>
+</li>
+<li><p><em>Beschrijving</em><br>De beschrijving van dit stadium van het ruimtelijk planproces.
+Bijvoorbeeld: ontwerp van het bestemmingsplan Centrum Almere Stad  </p>
+</li>
+<li><p><em>Openbaarheid</em><br>Beperkingen in verband met privacy, vertrouwelijkheid ed. worden bij dit
+element verklaard.
+Bronbestanden van ruimtelijke instrumenten zijn verplicht openbaar vanaf de
+fase ontwerp.
+</p>
+</li>
+<li><p><em>Classificatie</em><br>Niveau van informatiebeveiliging, bijvoorbeeld vertrouwelijk, geheim. Bij
+bronbestanden van ruimtelijke instrumenten is dit niet van toepassing.  </p>
+</li>
+<li><p><em>Rechten</em><br>Auteursrecht, gebruiksrecht, eigendomsrecht etc.. Bronbestanden van
+ruimtelijke instrumenten worden als open data beschikbaar gesteld.  </p>
+</li>
+<li><p><em>Integriteit</em><br>Informatie waaruit blijkt of een archiefstuk zijn integriteit heeft
+behouden. In dit geval wordt informatie over het gebruikte PKI-Overheid
+certificaat opgenomen waarmee de bronbestanden van een waarmerk zijn
+voorzien. De versleuteling daarvan is opgeslagen in het bronbestand
+geleideformulier.
+</p>
+</li>
+<li><p><em>Hogerliggend ordenings-niveau</em><br>Hier wordt aangegeven waar dit subdossier onderdeel van uit maakt. Er wordt verwezen naar het dossier.  </p>
+</li>
+<li><p><em>Aanwezigheid kopieversies</em><br>Het bestuursorgaan stelt het betreffende ruimtelijke plan ook voor een ieder
+beschikbaar via de weblocatie die is gemeld aan de
+<a href="https://www.ruimtelijkeplannen.nl/web-roi/index/">Index</a>. De
+publicatie datum van beschikbaarstelling wordt vastgelegd bij het archiveren
+van de samenhangende set van bronbestanden.</p>
+</li>
+</ul><p>Gemeenten, provincies en het Rijk zijn conform het Bro verplicht hun ruimtelijke plannen via
+een vooraf opgegeven locatie aan eenieder beschikbaar, vindbaar en toegankelijk
+te maken. De locatie wordt gemeld aan de index van de landelijk voorziening <a href="https://www.ruimtelijkeplannen.nl/index">Ruimtelijkeplannen.nl</a>.</p></section><section id="document"><h4 id="x2-4-3-document"><span class="secno">2.4.3 </span>Document</h4><p>Binnen het subdossier worden de betreffende bestanden opgeslagen; de betreffende
+documenten. Dit zijn bijvoorbeeld de bronbestanden, maar ook de ondergrond van
+het ruimtelijk plan zelf:
+</p><ul>
+<li>IMRO (plankaart)  </li>
+<li>Planteksten
+</li>
+<li>regels  </li>
+<li>beleids-/ besluitdocument
+</li>
+<li>toelichting  </li>
+<li>Vaststellingsbesluit
+</li>
+<li>Bijlage(n)  </li>
+<li>Illustratie
+</li>
+<li>Geleidefomulier
+</li>
+<li>Ondergrond</li>
+</ul><p>Conform de Standaard Toegankelijkheid Ruimtelijke Instrumenten kan de
+samenstelling van de set bronbestanden per type ruimtelijk plan, maar ook per
+fase van het plan, verschillen. Welke bestandsformaten moeten worden gebruikt is
+tevens aangegeven in paragraaf 4.2 van de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">Standaard Toegankelijkheid Ruimtelijke Instrumenten (STRI2012)</a>. De ondergrond maakt geen deel uit van
+de set van bronbestanden die het ruimtelijke instrument vormen. Om die reden
+bevat de STRI2012 geen voorschrift over de toegelaten bestandsformaten voor de
+ondergrond. De <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-toegankelijkheid-ruimtelijke">Praktijkrichtlijn Toegankelijkheid Ruimtelijke Instrumenten (PRTRI)</a> geeft advies over het gebruik van het formaat.</p><ul>
+<li><p><em>Type</em>
+Met type en daaraan gekoppeld vorm, wordt concreet aangegeven welke
+onderdelen (documenttypen) in dit subdossier vindbaar zijn. Bijvoorbeeld:
+bronbestanden bestemmingsplan onderverdeeld naar kaart en regels met
+toelichting en geleideformulier.
+Binnen het dossier worden naast het ruimtelijk plan in bronbestanden ook
+andere archiefstukken verzameld.
+Bijvoorbeeld: collegevoorstel, startdocument of zienswijzen.
+</p>
+</li>
+<li><p><em>Bestandsnaam</em><br>De unieke bestandsnaam met bestandsformaat die aan ieder onderdeel van de
+bronbestanden is meegegeven conform de RO Standaarden (STRI).  </p>
+</li>
+<li><p><em>Vorm</em><br>Met vorm wordt aangegeven de verschijningsvorm, dan wel documentvorm. Bij
+zienswijzen is dit bijvoorbeeld pdf, maar in het kader van het voorbeeld bij</p>
+</li>
+<li><p>Type* is dit: bronbestanden.
+In de RO Standaarden (STRI) is vastgelegd wat onder bronbestanden worden
+verstaan en welke onderdelen dit zijn per ruimtelijk plan.  </p>
+</li>
+<li><p><em>Benodigde hulpmiddelen</em><br>Naast <em>Vorm</em> wordt aangegeven hoe de bronbestanden kunnen worden
+geraadpleegd, door middel van welke raadpleegsoftware. In het geval van
+ruimtelijke plannen betreft het een viewer die de RO Standaarden
+ondersteunt. Ook is het mogelijk, doordat gebruik is gemaakt van open
+standaarden, in het kader van digitale duurzaamheid te verwijzen naar de RO
+Standaarden. Door de beschikbaarheid van de open standaarden is op een later
+tijdstip altijd de dataset van bronbestanden te interpreteren en te
+verwerken voor het raadplegen.
+</p>
+</li>
+<li><p><em>Vindplaats</em><br>De fysieke of virtuele vindplaats(-en) van het archiefstuk. Dit is de
+vindplaats binnen de eigen organisatie, en niet de openbare vindplaats zoals
+aangegeven in het manifest van het desbetreffende bestuursorgaan. In het
+geval de bronbestanden niet in (bijvoorbeeld) een DMS zijn opgeslagen en de andere stukken
+wel standaard in een DMS zijn opgeslagen, wordt aangegeven waar de
+bronbestanden zijn opgeslagen.</p>
+</li>
+</ul></section></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-achtergrond-wetgeving-en-andere-kaders"><span class="secno">3. </span>Achtergrond: wetgeving en andere kaders</h2><p><strong>De handreiking richt zich met het vorige hoofdstuk op het organiseren van het
+archiveren van ruimtelijke plannen. Om duidelijk te krijgen waarom juist deze
+informatie moet worden verzameld is aan de handreiking ook wetgeving toegevoegd
+om de wettelijk verplichtingen en kaders te kunnen bepalen. Dit hoofdstuk richt
+zich op de Wet ruimtelijke ordening en de Archiefwet.</strong></p><section id="wetgeving"><h3 id="x3-1-wetgeving"><span class="secno">3.1 </span>Wetgeving</h3><p>Wat betreft wetgeving hebben we primair te maken met de Wet ruimtelijke ordening
+en de Archiefwet. Deze worden achtereenvolgens behandeld in deze paragraaf.</p><section id="wet-ruimtelijke-ordening"><h4 id="x3-1-1-wet-ruimtelijke-ordening"><span class="secno">3.1.1 </span>Wet ruimtelijke ordening</h4><p>De <a href="http://wetten.overheid.nl/BWBR0020449">Wet ruimtelijke ordening (Wro)</a> is op 1 juli 2008 in werking getreden. De
+basis voor digitale ruimtelijke plannen is gelegd door voor verschillende
+planprocedures aan te geven dat de betrokken overheid het betreffende plan,
+visie of besluit tevens langs elektronische weg bekend maakt.</p><p>De uitwerking vindt plaats in het <a href="http://wetten.overheid.nl/BWBR0023798">Besluit ruimtelijke ordening (Bro)</a> waar met
+artikel 1.2.1 is bepaald welke instrumenten uit de Wro de betrokken
+bestuursorganen aan eenieder elektronisch beschikbaar moeten stellen. De
+betrokken bestuursorganen zijn gemeenten, provincies en het Rijk. Vervolgens
+bepaalt artikel 1.2.1 Bro dat er een landelijke voorziening is, waar deze
+visies, plannen en besluiten raadpleegbaar zijn. Verder is in de artikelen 1.2.3
+en 1.2.4 Bro bepaald dat een ondergrond samen met de visie, het besluit of plan
+digitaal wordt vastgesteld. 
+Met de artikelen 1.2.5 en 1.2.6 Bro wordt de
+ministeriële <a href="http://wetten.overheid.nl/BWBR0031829">Regeling standaarden ruimtelijke ordening</a> geïntroduceerd waarin
+nadere regels zijn opgenomen betreffende de geometrische plaatsbepaling en
+elektronische beschikbaarstelling, vindbaarheid en toegankelijkheid van de
+ruimtelijke plannen, visies en besluiten. De Regeling standaarden ruimtelijke
+ordening geeft dan ook aan welke normen, aangeduid als de <em>RO Standaarden</em>, in
+de praktijk moeten worden gebruikt.
+</p><p>Naast de beschikbaarstelling is in het Bro bepaalt met artikel 1.2.3 dat de
+digitale vorm van het ruimtelijke plan de authentieke versie is. De papieren
+vorm van de ruimtelijke plannen is daarvan een kopie.</p></section><section id="welke-ruimtelijke-plannen"><h4 id="x3-1-2-welke-ruimtelijke-plannen"><span class="secno">3.1.2 </span>Welke ruimtelijke plannen</h4><p>In de vorige paragraaf is met artikel 1.2.1 Bro aangegeven welke ruimtelijke
+plannen digitaal door de bevoegde gezagen conform de RO Standaarden beschikbaar
+worden gesteld en vindbaar en toegankelijk worden gemaakt. Deze paragraaf geeft
+een concreet overzicht. Dit is inclusief de omgevingsvergunning om af te wijken
+van het bestemmingsplan op basis van de <a href="http://wetten.overheid.nl/BWBR0024779">Wabo</a> en het <a href="https://wetten.overheid.nl/BWBR0027464">Besluit Omgevingsrecht (Bor)</a>.
+</p><p>De wet- en regelgeving verplicht het bestuursorgaan om de mededeling
+(kennisgeving in de Staatscourant) van een met artikel 2.12, eerste lid,
+onderdeel a, onder 3 van de Wabo verleende omgevingsvergunning met behulp van de
+RO Standaarden beschikbaar te stellen. In het Besluit Omgevingsrecht (Bor)
+artikel 6.14 is aangegeven dat bij ministeriële regeling nadere regels worden
+gesteld over de wijze waarop de mededeling elektronisch wordt gedaan en
+beschikbaar gesteld. Dit betreft de ministeriële Regeling standaarden
+ruimtelijke ordening 2012.
+</p><p>Overzicht ruimtelijke plannen die door bevoegde gezagen conform de RO Standaarden beschikbaar
+worden gesteld en vindbaar en toegankelijk worden gemaakt:</p><ul>
+<li>Voorbereidingsbesluit
+</li>
+<li>Bestemmingsplan  </li>
+<li>Inpassingsplan
+</li>
+<li>Rijksbestemmingplan
+</li>
+<li>Wijzigingsplan  </li>
+<li>Uitwerkingsplan
+</li>
+<li>Beheersverordening
+</li>
+<li>Exploitatieplan   </li>
+<li>Gerechtelijke uitspraak
+</li>
+<li>Omgevingsvergunning om af te wijken van het bestemmingsplan
+</li>
+<li>Aanwijzingsbesluit  </li>
+<li>Reactieve aanwijzing
+</li>
+<li>Gemeentelijke structuurvisie
+</li>
+<li>Provinciale structuurvisie  </li>
+<li>Rijksstructuurvisie
+</li>
+<li>Provinciale verordening
+</li>
+<li>Algemene Maatregel van Bestuur</li>
+</ul><p>Daar waar gesproken wordt in deze handreiking over ruimtelijke plannen, worden
+feitelijk bovenstaande plannen, visies en besluiten bedoeld. Digitaal geeft aan:
+conform de RO Standaarden.</p></section><section id="archiefwet"><h4 id="x3-1-3-archiefwet"><span class="secno">3.1.3 </span>Archiefwet</h4><p>Nederlandse overheidsorganen vallen onder de <a href="https://wetten.overheid.nl/BWBR0007376/">Archiefwet 1995</a>. Specifieke
+bepalingen uit de <em>Archiefwet</em> zijn uitgewerkt in het <a href="https://wetten.overheid.nl/BWBR0007748/">Archiefbesluit</a>. En
+gedetailleerde regels voor de informatiehuishouding en de archieven van de
+overheid zijn geformuleerd in de <em>Archiefregeling</em>. Ieder overheidsorgaan moet
+nadere regels vaststellen voor de organisatie van het archiefbeheer,
+bijvoorbeeld in een Archiefverordening (specificatie van de wijze waarop de
+zorgplicht zal worden uitgevoerd) en een besluit Informatiebeheer (specificatie
+van de wijze waarop de beheerplicht zal worden uitgevoerd).</p><p>De Archiefwet en de regels die daaruit voortvloeien hebben betrekking op zowel
+informatie die permanent bewaard moet blijven als op informatie die op termijn
+vernietigd moet worden. De wet- en regelgeving op het gebied van archieven heeft als
+belangrijkste doel de duurzaamheid, authenticiteit, betrouwbaarheid,
+bruikbaarheid en integriteit van overheidsinformatie te borgen. Een belangrijk
+basisconcept daarbij is dat vorm, inhoud en structuur van archiefstukken
+behouden moeten blijven of tenminste reproduceerbaar moeten zijn.</p></section></section><section id="normen-en-standaarden"><h3 id="x3-2-normen-en-standaarden"><span class="secno">3.2 </span>Normen en standaarden</h3><section id="digitale-ruimtelijke-ordening"><h4 id="x3-2-1-digitale-ruimtelijke-ordening"><span class="secno">3.2.1 </span>Digitale ruimtelijke ordening</h4><p>In het kader van de Wro zijn de RO Standaarden bepalend voor het uitwisselbaar,
+beschikbaar, vindbaar en toegankelijk maken van de ruimtelijke plannen. De
+Regeling standaarden ruimtelijke ordening 2012 geeft de volgende normen aan:
+</p><ol>
+<li><p><strong>IMRO</strong>: Informatie Model Ruimtelijke Ordening<br>De plankaart wordt in GML formaat conform het Informatie Model Ruimtelijke
+Ordening opgeleverd. In deze GML is naast inhoudelijke planinformatie, ook
+informatie over het plan opgenomen zoals gegevens over het bestuursorgaan en
+status van het plan en de relatie naar de ondergrond die bij het plan wordt
+vastgesteld. Deze ondergrond is geen onderdeel van de dataset maar moet wel
+bewaard worden door het betreffende bestuursorgaan. Raad van State
+bijvoorbeeld wil naast het plan zelf van een bepaald moment ook over de
+daarbij vastgestelde ondergrond kunnen beschikken. Conform artikel 1.2.4 Bro moet bij het besluit tot vaststelling van het
+ruimtelijk plan worden aangegeven welke ondergrond is gebruikt.</p>
+</li>
+<li><p><strong>STRI</strong>: Standaard Toegankelijkheid Ruimtelijke Instrumenten<br>Bij het beschikbaar en toegankelijk maken van ruimtelijke plannen moet de
+Standaard Toegankelijkheid Ruimtelijke Instrumenten verplicht worden
+toegepast. In de STRI worden eisen gesteld aan de bestandsextensies,
+formaten, bestandsnamen, te gebruiken identificatienummer, het digitaal
+waarmerken (zie <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">STRI2012</a>) en de beschikbaarstelling zelf. </p>
+</li>
+<li><p><strong>SVBP</strong>: Standaard Vergelijkbare Bestemmingsplannen<br>In de Standaard Vergelijkbare Bestemmingsplannen is voor bestemmingsplannen,
+inpassingsplannen, rijksbestemmingsplannen, wijzigings- en
+uitwerkingsplannen aangegeven hoe deze van een verbeelding (weergave) in een
+viewer (software) moeten worden voorzien. Voor andere ruimtelijke plannen
+dan deze plannen geldt dat zij conform de Wro vormvrij zijn: geen
+verbeeldingsafspraken. </p>
+</li>
+<li><p><strong>IMROPT</strong>: Informatie Model Ruimtelijke Ordening Planteksten<br>De standaard voor planteksten moet door de bestuursorganen onder voorwaarde
+verplicht worden gebruikt. Toepassing van IMROPT2012 is verplicht wanneer
+het bestuursorgaan ervoor kiest de planteksten in objectgerichte vorm (XML)
+beschikbaar te stellen. Het bestuursorgaan mag er ook voor kiezen de
+planteksten in de vorm van HTML en PDF bestanden beschikbaar te stellen.
+IMROPT is in dit geval dan niet van toepassing.</p>
+</li>
+</ol><p>In deze standaarden is bepaald dat ieder ruimtelijk plan, visie of besluit is
+opgebouwd uit een samenhangende set bronbestanden (dataset genoemd). Voor
+verschillende typen instrumenten is dit een andere set; welke planonderdelen bij welk instrument van toepassing zijn, is
+aangegeven in hoofdstuk 2 van de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">STRI2012</a></p><p>De dataset omvat de verschillende onderdelen van het ruimtelijk plan:
+</p><ul>
+<li>Plankaart;  </li>
+<li>Regels;
+</li>
+<li>Toelichting;
+</li>
+<li>Bijlage bij regels;
+</li>
+<li>Bijlage bij toelichting;
+</li>
+<li>Besluitdocument;  </li>
+<li>Beleidsdocument;
+</li>
+<li>Geleideformulier.
+</li>
+</ul><p>Tot slot maken ook de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening#ROstandaarden">praktijkrichtlijnen</a> onderdeel uit van de RO Standaarden.
+De praktijkrichtlijnen geven toelichting op de normen IMRO, STRI, SVBP en IMROPT
+door voor de gebruiker van de standaard per type ruimtelijk plan aan te geven
+hoe het ruimtelijk plan moet en kan worden gemaakt volgens de standaard.</p></section><section id="archivering"><h4 id="x3-2-2-archivering"><span class="secno">3.2.2 </span>Archivering</h4><p>Vanuit het oogpunt van archivering is, naast de Archiefwet- en regelgeving, een
+aantal normen en standaarden te benoemen die de duurzame toegankelijkheid van
+informatie ondersteunen:
+</p><ol>
+<li><a href="https://www.nationaalarchief.nl/archiveren/duto">DUTO</a>: Normenkader met
+eisen voor duurzame toegankelijkheid van overheidsinformatie in
+informatiesystemen, mede op basis van wet- en regelgeving en standaarden.
+</li>
+<li><strong>NEN-ISO 30301</strong>: Managementsystemen voor archivering.  </li>
+<li><strong>NEN-ISO 15489-1</strong>: Informatie- en archiefmanagement – Deel 1: Concepten en uitgangspunten: standaard waarin principes en uitgangspunten voor het beheer van archiefstukken worden beschreven.
+</li>
+<li><strong>NEN-ISO 23081</strong>: metagegevens voor archiefstukken. De creatie van een metagegevensschema zoals bedoeld in deze standaard wordt ook voorgeschreven in de Archiefregeling.   </li>
+<li><strong>NEN-ISO 14721</strong>: Open Archival Information System (OAIS) - standaard (referentiemodel) voor de functionaliteit van een e-depot.
+</li>
+<li><strong>NEN-ISO 16175</strong>: internationale standaard Functionele eisen en bijbehorende richtlijnen voor applicaties voor het beheren van digitale archiefstukken.  7.  <strong>OWMS</strong>: de Overheid.nl Web Metadata Standaard (OWMS) is de metagegevensstandaard voor informatie van de Nederlandse overheid op internet. Deze is/ wordt vervangen door <a href="https://tardis.overheid.nl/">TOOI</a>.
+</li>
+<li><strong>NEN-ISO 27000</strong>: Management systeem standaard voor informatiebeveiliging, in Nederland uitgewerkt in de Baseline Informatiebeveiliging Overheid (BIO).</li>
+<li><a href="https://www.iso.org/standard/67325.html"><strong>ISO 19165-1:2018</strong></a> Geographic information -- Preservation of digital
+data and metadata -- Part 1: Fundamentals
+</li>
+<li><a href="https://www.iso.org/standard/53798.html"><strong>ISO 19115-1:2014</strong></a> Geographic information -- Metadata -- Part 1:
+Fundamentals
+</li>
+<li><strong><a href="https://www.geonovum.nl/geo-standaarden/inspire-europese-leefomgeving">INSPIRE richtlijnen</a> en de <a href="https://www.geonovum.nl/geo-standaarden/metadata">Nederlands metadataprofielen voor datasets en services</a></strong>
+</li>
+<li><strong>Common Specification for Geospatial data</strong>, onderdeel van <a href="https://ec.europa.eu/isa2/library/inspire-common-geospatial-data-standards-more-informed-and-timely-decisions_en/">eArchiving building block</a>.  </li>
+</ol></section></section><section id="andere-kaders"><h3 id="x3-3-andere-kaders"><span class="secno">3.3 </span>Andere kaders</h3><p>Naast wetgeving en standaarden zijn er een aantal andere kaders die een rol
+spelen bij ruimtelijke plannen. Een belangrijk kader is de <a href="https://www.noraonline.nl/wiki/NORA_online">Nederlandse Overheid
+Referentie Architectuur (NORA)</a>.</p><p>NORA bevat principes, beschrijvingen, modellen en standaarden voor het ontwerp
+en de inrichting van de elektronische overheid. Het centrale begrip is
+“interoperabiliteit”: het vermogen van organisaties en mensen om informatie uit
+te wisselen en die informatie te begrijpen en te gebruiken. NORA kent meerdere ‘dochters’, zoals GEMMA voor gemeenten, PETRA voor
+provincies, EAR voor het Rijk en WILMA voor waterschappen. Uit NORA
+vloeien, naast andere dossiers, zowel het dossier Geo-informatie als het dossier
+voor beleidskaders voort, zie onderstaande figuur.</p><figure id="NORA_geo"><img src="media/2dd1b161c3795c94ea432bdb7571b098.png" alt="NORA en de relatie met geo-informatie" width="864" height="284">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">NORA en de relatie met geo-informatie</span></figcaption>
+</figure><p>Het <em>dossier Geo-informatie</em> brengt ons waar de Wro ook naar toe leidt: via het Basismodel Geo-informatie (NEN3610) en het domeinmodel voor de ruimtelijke ordening: IMRO. Figuur 2 laat de NEN3610 pyramide zien hoe het basismodel met de onderliggende families van informatiemodellen is ingebed in internationale standaarden.
+Op hetzelfde niveau als dat raamwerk voor geo-standaarden past de Baseline
+Informatiehuishouding binnen het dossier Beleidskaders. Voor zowel het rijk als
+gemeenten is er inmiddels een specifieke Baseline vastgesteld. Deze Baseline is
+het normenkader waarmee de informatiehuishouding van de overheid ingericht
+wordt. Daarbij is rekening gehouden met onder meer de eisen uit de Archiefwet en
+de standaarden voor archief- en informatiehuishouding die hierna zullen worden
+toegelicht.</p><figure id="NEN3610_2022"><p><img id="NEN3610_2022" src="media/Basisprogramma_Infomodel_NEN_3610_stelsel_logo_Groot.png" alt="Basismodel voor geo-informatie met sectorale standaard voor de
+ruimtelijke ordening" width="3005" height="2664"></p>
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">Basismodel voor geo-informatie met sectorale standaard voor de ruimtelijke ordening</span></figcaption>
+</figure></section><section id="digitaal-waarmerken"><h3 id="x3-4-digitaal-waarmerken"><span class="secno">3.4 </span>Digitaal waarmerken</h3><p>In de RO Standaarden is bepaald dat het ruimtelijk plan van een digitaal
+waarmerk moet worden voorzien. De dataset van het ruimtelijk plan wordt met
+behulp van een PKI-Overheid certificaat van een waarmerk voorzien. Op deze wijze
+wordt de authenticiteit van het plan gewaarborgd; dit wordt voorgeschreven vanuit de RO Standaarden, onderdeel Standaard
+Toegankelijkheid Ruimtelijke Instrumenten, zie <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">hoofdstuk 6 van de
+STRI2012</a>..
+</p><p>Pas wanneer dit waarmerk aan het plan is toegevoegd, is dit het digitale authentieke plan conform de RO
+Standaarden dat beschikbaar, toegankelijk en vindbaar moet zijn. Artikel 24 van de Archiefregeling schrijft voor dat, wanneer er gebruik is
+gemaakt van een digitale waarmerk of handtekening conform de <a href="https://www.inspectie-oe.nl/toezichtvelden/overheidsinformatie/wet--en-regelgeving/overige-informatiewetgeving/wet-elektronische-handtekeningen">Wet elektronische handtekening</a> in de metagegevens wordt
+vastgelegd wie de houder is van de digitale handtekening, wanneer de
+handtekening is gevalideerd en wat daar het resultaat van was, welke
+functionaris verantwoordelijk was voor de validatie en de identificatie van het
+certificaat van de digitale handtekening. De handtekening zelf hoeft volgens de
+<em>Archiefwet</em> niet permanent bewaard te worden. De handtekening is slechts belangrijk voor de validatie en dit is bij het gebruik van het PKI-Overheid certificaat voor het waarmerken van de digitale ruimtelijke plannen al geregeld. Voor archivering is alleen belangrijk dát er gevalideerd is en door de juiste persoon.
+</p></section><section id="samenvatting-wet-en-regelgeving-met-bijbehorende-standaarden"><h3 id="x3-5-samenvatting-wet-en-regelgeving-met-bijbehorende-standaarden"><span class="secno">3.5 </span>Samenvatting wet- en regelgeving met bijbehorende standaarden</h3><ul>
+<li><strong>Wet ruimtelijke ordening</strong>
+</li>
+<li>Besluit ruimtelijke ordening  </li>
+<li>Regeling standaarden ruimtelijke ordening  <ul>
+<li>RO Standaarden  <ul>
+<li><a href="https://ro-standaarden.geonovum.nl/2012/IMRO/1.2/IMRO2012-v1.2.pdf">IMRO</a>: Informatie Model Ruimtelijke Ordening;
+</li>
+<li><a href="https://ro-standaarden.geonovum.nl/2012/STRI/1.1/STRI2012-v1.1.pdf">STRI</a>: Standaard Toegankelijkheid Ruimtelijke Instrumenten;
+</li>
+<li><a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.2/SVBP2012-v1.2.pdf">SVBP</a>: Standaard Vergelijkbare Bestemmingsplannen;  </li>
+<li><a href="https://ro-standaarden.geonovum.nl/2012/IMROPT/1.1/IMROPT2012-v1.1.pdf">IMROPT</a>: Informatie Model Ruimtelijke Ordening Planteksten.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Archiefwet</strong>
+</li>
+<li>Archiefbesluit
+</li>
+<li>Archiefregeling  <ul>
+<li>NEN-ISO 23081: Metagegevens voor archiefstukken, zie: <a href="https://www.nen.nl/nen-iso-23081-1-2017-nl-269387">https://www.nen.nl/nen-iso-23081-1-2017-nl-269387</a>, <a href="https://www.nen.nl/nen-iso-23081-2-2021-nl-296581">https://www.nen.nl/nen-iso-23081-2-2021-nl-296581</a> en <a href="https://www.nen.nl/npr-iso-tr-23081-3-2011-en-163226">https://www.nen.nl/npr-iso-tr-23081-3-2011-en-163226</a> (leidraad voor self-assessment);
+</li>
+<li>NEN-ISO 30301]: Managementsysteem standaard voor archivering, zie <a href="https://www.nen.nl/nen-iso-30301-2019-en-256359">https://www.nen.nl/nen-iso-30301-2019-en-256359</a>;  </li>
+<li>NEN-ISO 15489-1: Informatie- en archiefmanagement – Deel 1: Concepten en uitgangspunten, zie: <a href="https://www.nen.nl/nen-iso-15489-1-2016-en-218754">https://www.nen.nl/nen-iso-15489-1-2016-en-218754</a>
+</li>
+<li>NEN-ISO 16175: Functionele eisen en bijbehorende richtlijnen voor applicaties voor het beheren van digitale archiefstukken, zie: <a href="https://www.nen.nl/nen-iso-16175-1-2020-nl-287549">https://www.nen.nl/nen-iso-16175-1-2020-nl-287549</a></li>
+<li>NEN-ISO 27000: Management systeem standaard voor informatiebeveiliging, zie <a href="https://www.nen.nl/nen-en-iso-iec-27000-2020-en-268561">https://www.nen.nl/nen-en-iso-iec-27000-2020-en-268561</a>.</li>
+</ul>
+</li>
+<li><strong>Model Archiefverordening 2017</strong></li>
+<li>Model Aanwijzings- en benoemingsbesluiten informatiebeheer
+</li>
+<li>Model Beheerregeling informatiebeheer  </li>
+<li>Model Raadsbesluit Archiefverordening 2017 (word 2.0 versie)</li>
+</ul></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-achtergrond-belangrijke-aspecten-bij-het-archiveren"><span class="secno">4. </span>Achtergrond: belangrijke aspecten bij het archiveren</h2><p><strong>Nu de kaders van wet- en regelgeving zijn gegeven, wordt in dit hoofdstuk een
+aantal randvoordwaarden op rij gezet. Randvoorwaarden die voortvloeien uit deze
+kaders. We richten ons daarbij met name op de digitale aspecten van het
+archiveren. Achtereenvolgens komen metagegevens, bewaartermijnen, toegestane
+compressie en formaten en het bewaren van software aan de orde.</strong></p><section id="metagegevens"><h3 id="x4-1-metagegevens"><span class="secno">4.1 </span>Metagegevens</h3><p>Metagegevens zijn gegevens die de context, inhoud en structuur van archiefstukken beschrijven, evenals het beheer van die archiefstukken door de tijd heen. Ze zijn niet alleen onmisbaar om de terugvindbaarheid, bruikbaarheid,
+authenticiteit, integriteit en betrouwbaarheid van de archiefstukken te garanderen en
+het beheer ervan op lange termijn mogelijk te maken, maar ook zijn ze van
+essentieel belang voor interoperabiliteit. Om het uitwisselen van archiefstukken tussen
+systemen mogelijk te maken, moeten afspraken gemaakt worden over de manier
+waarop dat gebeurt, in welke ‘taal’ deze systemen met elkaar spreken en hoe
+metagegevens en archiefstukken geïnterpreteerd moeten worden. Uitwisseling tussen
+systemen is zowel aan de orde binnen de bestuursorganen als tussen de
+verschillende organisaties. Als het gaat om metagegevens zijn zulke
+afspraken vastgelegd in onder andere metagegevensschema’s. In een digitale
+wereld zijn metagegevens zo mogelijk nog belangrijker dan vroeger. Dat is ook de
+reden dat metagegevens worden gezien als onlosmakelijk onderdeel van de
+archiefstukken zelf.</p><figure id="NEN-ISO_23081"><img src="media/06559dd772ed0615f21edda007a51f51.png" alt="Basismodel voor metagegevens van NEN ISO 23081" width="865" height="349">
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">Basismodel voor metagegevens van NEN ISO 23081</span></figcaption>
+</figure><p>Bron: Sue McKemmish, Glenda Acland and Barbara Reed, Towards a Framework for Standardising Recordkeeping Metagegevens: <a href="https://research.monash.edu/en/publications/towards-a-framework-for-standardising-recordkeeping-metadata-the-">The
+Australian Recordkeeping Metagegevens Schema</a> en NEN-ISO 23081-1:2017 Metagegevens voor archiefstukken - Principes (paragraaf 9.1).</p><section id="standaard"><h4 id="x4-1-1-standaard"><span class="secno">4.1.1 </span>Standaard</h4><p>De NEN-ISO 19115 metagegevens standaard voor geo-informatie is bij de meeste
+overheden die met ruimtelijke plannen werken vermoedelijk wel bekend vanwege het
+<a href="https://www.geonovum.nl/geo-standaarden/metadata">toepassingsprofiel voor geo-informatie in Nederland</a>. De <a href="https://www.geonovum.nl/geo-standaarden/inspire-europese-leefomgeving">Europese
+richtlichtlijn INSPIRE</a> verplicht het gebruik van het toepassingsprofiel.<br>Er bestaat daarnaast een andere metagegevens standaard, de NEN-ISO 23081, die
+specifiek betrekking heeft op metagegevens voor archiefstukken. Deze standaard
+wordt ook genoemd in de Archiefregeling. Samengevat zegt de Archiefregeling het
+volgende over metagegevens (artikelen 17, 19, 20 en 24 van de Archiefregeling):</p><ol>
+<li><p>Maak een metagegevensschema zoals bedoeld in NEN-ISO 23081;</p>
+</li>
+<li><p>Leg metagegevens vast over:</p>
+<ul>
+<li>inhoud, vorm en structuur van de archiefstukken;
+</li>
+<li>de context waarbinnen de archiefstukken zijn gevormd (binnen welkproces, door welke actor);
+</li>
+<li>relatie met andere archiefstukken;  </li>
+<li>beheersactiviteiten die op de archiefstukken zijn uitgevoerd (denk aan conversie, migratie, selectie, openbaarmaking etc.);
+</li>
+<li>software die gebruikt wordt om archiefstukken te beheren;  </li>
+</ul>
+</li>
+<li><p>Zorg dat de koppeling tussen metagegevens en archiefstukken behouden
+blijft. Dat betekent bijvoorbeeld dat er voorzieningen getroffen moeten
+worden om die koppeling in stand te houden als de archiefstukken
+verplaatst worden vanuit het ene naar het andere systeem.</p>
+</li>
+</ol></section><section id="metagevensschema"><h4 id="x4-1-2-metagevensschema"><span class="secno">4.1.2 </span>Metagevensschema</h4><p>Een metagegevensschema zoals bedoeld in NEN-ISO 23081 is een logisch ontwerp dat
+de relatie tussen metagegevenselementen beschrijft door regels te benoemen voor
+het gebruik en beheer van metagegevens, vooral met betrekking tot:</p><ul>
+<li>semantiek - welke naam kies je voor een element;
+</li>
+<li>syntaxis - hoe wordt de inhoud van het element samengesteld, bijvoorbeeld yyyymmdd of ddmmyyyy;
+</li>
+<li>het verplichtingenregime - welke elementen zijn verplicht en welke optioneel.</li>
+</ul><p>Tezamen wordt dit ook wel een elementen set genoemd. <a href="https://www.nationaalarchief.nl/archiveren/mdto">MDTO</a> is een voorbeeld van
+een elementenset. De elementenset is hier gespecificeerd vanuit het oogpunt
+van duurzame toegankelijkheid en wordt geacht generiek te zijn (dus van
+toepassing op alle soorten informatie). Organisaties kunnen daarnaast andere
+metagegevens vastleggen voor andere doeleinden (zoals het specifiek beschrijven
+van geo-informatie), met behulp andere standaarden of bestaande ontologieën
+(zoals NEN-ISO 19115).</p><p>Op dit moment wordt er gewerkt aan een nieuwe Archiefwet, deze zal naar verwachting behalve vernietiging en overbrenging naar een archiefbewaarplaats (van te bewaren materiaal) ook nog een derde keuze bieden. Namelijk “bewaren bij de bron;, hiermee wordt het onder strenge voorwaarden mogelijk dat een archiefvormer/ zorgdrager zelf als archiefbewaarplaats wordt aangewezen voor bepaalde collecties. Dit is van belang voor organisaties die veel eigen dossiers voor langere tijd willen hergebruiken. Denk hier bij o.a. aan het Kadaster. Bewaren bij de bron heeft geen invloed op de bewaartermijnen zelf maar wel op de locatie en de manier van opslag van archiefstukken.</p><p>Iedere overheidsorganisatie wordt geacht een eigen metagegevensschema vast te stellen. Van belang daarbij is dat in ieder geval elementen zoals gespecificeerd in de elementensets onderdeel zijn van dit schema. Met behulp van dit schema kunnen organisaties nagaan in hoeverre informatiesystemen voldoen aan de regels uit het schema en maatregelen nemen als dit nodig blijkt.</p></section><section id="software"><h4 id="x4-1-3-software"><span class="secno">4.1.3 </span>Software</h4><p>In de metagegevens moet ook worden vastgelegd met welke applicatie de informatie is
+gecreëerd, inclusief versienummer. Ook als er een nieuwe versie wordt
+geïnstalleerd, moet dit worden vastgelegd. Dit is een voorbeeld van
+‘event-history’ zoals in NEN-ISO 23081 en de RMDTO/TMR verder
+wordt toegelicht.</p><p>Doordat de ruimtelijke plannen worden gemaakt met de wettelijke open standaarden (zie ook het <a href="https://forumstandaardisatie.nl/wat-zijn-standaarden">Forum Standaardisatie</a>) is er tot op heden geen aanleiding voor het bewaren van software. Er wordt uitgegaan
+van het principe dat software (viewers) om de plannen weer te geven deze open
+standaard moet kunnen lezen. Om de ruimtelijke plannen vanuit het archief direct
+te kunnen raadplegen is het echter wel van belang dat de zorgdrager over
+geschikte software beschikt.</p></section></section><section id="bewaartermijnen"><h3 id="x4-2-bewaartermijnen"><span class="secno">4.2 </span>Bewaartermijnen</h3><p>De Archiefwet schrijft voor dat ieder overheidsorgaan moet beschikken over een
+selectielijst, die door de minister wordt vastgesteld. In de selectielijsten is
+bepaald of, en zo ja wanneer, archiefstukken vernietigd moeten worden. De
+<a href="https://www.nationaalarchief.nl/archiveren/kennisbank/selectielijst-voor-de-archiefbescheiden-van-gemeentelijke-en">VNG</a> (bij mandaat van alle gemeenten), het <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/selectielijst-voor-archiefbescheiden-van-de-provinciale-organen-vanaf-1">IPO</a> (bij mandaat van de
+provincies) en het <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/selectielijst-van-het-ministerie-van-binnenlandse-zaken-en">Rijk</a> hebben ieder aparte selectielijsten opgesteld.</p><p>Wanneer archiefstukken voor bewaring worden aangemerkt, moeten ze na maximaal
+20 jaar (korter mag ook, langer niet -uitzonderingen daargelaten-) worden
+overgebracht naar de archiefbewaarplaats die door de zorgdrager is aangewezen.
+Het ministerie van OCW is voornemens om de overbrengingstermijn in de
+nieuwe Archiefwet terug te brengen naar 10 jaar.
+Voor de rijksoverheid bevindt die bewaarplaats zich bij het Nationaal Archief.
+Gemeenten en provincies kunnen eigen archiefbewaarplaatsen hebben. Zij kunnen
+ook daarin samenwerken, zoals bijvoorbeeld Regionale Archiefdiensten. Zolang de
+plannen nog niet zijn overgebracht naar een archiefbewaarplaats is de beheerder
+die is aangewezen door het bestuur, verantwoordelijk voor het in goede,
+geordende en toegankelijke staat te houden van de archiefstukken.</p><p>Op dit moment wordt er gewerkt aan een nieuwe Archiefwet, deze zal naar
+verwachting behalve vernietiging en overbrenging naar een archiefbewaarplaats
+(van te bewaren materiaal) ook nog een derde keuze bieden. Namelijk “bewaren bij
+de bron”, hiermee wordt het onder strenge vooraarden mogelijk dat een
+archiefvormer/ zorgdrager zelf als archiefbewaarplaats wordt aangewezen voor bepaalde collecties. Dit is
+van belang voor organisaties die veel eigen dossiers voor langere tijd willen
+hergebruiken. Denk hier bij o.a aan het Kadaster. Bewaren bij de bron heeft geen
+invloed op de bewaartermijnen zelf maar wel op de locatie en de manier van
+opslag van archiefstukken.</p><p>Ook voor ruimtelijke plannen is bepaald of ze voor bewaring of vernietiging op
+termijn in aanmerking komen. Uit de desbetreffende selectielijsten blijkt dat
+deze plannen doorgaans voor permanente bewaring worden bestemd. Vaak is daarbij
+gespecificeerd dat het de vastgestelde versie van het plan betreft.
+Voorbereidende stukken moeten op termijn vernietigd worden (de
+vernietigingstermijnen variëren tussen de 5 en 20 jaar). De bepalingen in de
+selectielijsten gelden voor alle archiefstukken ongeacht de vorm.</p><p>Digitale ruimtelijke plannen vormen daarop geen uitzondering.</p><p>Het kan zijn dat per selectielijst de bewaarplicht van de verschillende
+documenten, en stadia van documenten, verschillend is vastgesteld. Hieronder
+volgt een korte opsomming.</p><section id="gemeenten"><h4 id="x4-2-1-gemeenten"><span class="secno">4.2.1 </span>Gemeenten</h4><p>De stukken die behoren bij de voorbereiding van het ruimtelijke plan, visie of
+besluit worden 20 jaar bewaard. Blijvend bewaard worden de stukken van het
+ruimtelijk plan, visie of besluit dat door de gemeente is vastgesteld. Na 20
+jaar brengt de zorgdrager (de gemeente) de archiefstukken over naar de aangewezen
+archiefbewaarplaats.</p></section><section id="provincies"><h4 id="x4-2-2-provincies"><span class="secno">4.2.2 </span>Provincies</h4><p>Ruimtelijke plannen (zoals structuurvisies), ‘met inbegrip van voorstadia die om
+inhoudelijke of procedurele redenen belangrijke wijzigingen van de tekst
+bevatten’, worden gewaardeerd met bewaren. De waardering (bewaartermijn) van
+overige conceptversies is niet specifiek geregeld. Na 20
+jaar brengt de provincie de archiefstukken over naar de archiefbewaarplaats
+in het eigen archief, streekarchief of Nationaal Archief</p></section><section id="het-rijk"><h4 id="x4-2-3-het-rijk"><span class="secno">4.2.3 </span>Het Rijk</h4><p>Voor de rijksoverheid zijn per beleidsterrein voor de verschillende
+archiefvormers (departementen, uitvoeringsorganisaties etc.) selectielijsten
+vastgesteld. Ruimtelijke plannen vallen onder het beleidsterrein Ruimtelijke
+ordening en geo-informatie. Selectielijsten zijn verzameld in het bijbehorende
+‘Basisselectiedocument’ (BSD 120).</p><p>Kaarten zijn als onderdeel van het vaststellen en evalueren van beleid
+betreffende ruimtelijke ordening gewaardeerd met bewaren (handeling 1, actor
+minister belast met ruimtelijke ordening). Hier is niet expliciet een
+onderscheid gemaakt tussen het bewaren van eindproducten en het na enige tijd
+vernietigen van voorbereidende stukken.</p><p>De handelingen gelden ook voor onder het zorgdragerschap van de minister
+vallende diensten, als daar geen aparte waardering voor is vastgesteld. Niet
+expliciet genoemde archiefvormers die niet onder de minister belast met
+ruimtelijke ordening vallen maar onder Economische Zaken, zoals de Dienst
+Landelijk Gebied, kunnen gebruikmaken van handeling ‘Het bijdragen aan de
+totstandkoming van nota's, programma's, plannen en maatregelen betreffende de
+ruimtelijke ordening op provinciaal of regionaal niveau’ (uit het BSD Landinrichting, minister LNV, waardering Bewaren BSD 59: zie de
+<a href="https://www.nationaalarchief.nl/archiveren/kennisbank/selectielijst-van-het-ministerie-van-binnenlandse-zaken-en">Selectielijst van het ministerie van Binnenlandse zaken en Koninkrijksrelaties</a></p></section></section><section id="toegestane-compressie-en-bestandsformaten"><h3 id="x4-3-toegestane-compressie-en-bestandsformaten"><span class="secno">4.3 </span>Toegestane compressie en bestandsformaten</h3><section id="bestandsformaten"><h4 id="x4-3-1-bestandsformaten"><span class="secno">4.3.1 </span>Bestandsformaten</h4><p>Artikel 26 van de <em>Archiefregeling</em> schrijft voor dat digitale archiefstukken
+opgeslagen worden in een open, en daarmee valideerbaar en gedocumenteerd
+bestandsformaat. Dat betekent dat informatie over de eigenschappen van dat
+formaat bekend en vrijelijk beschikbaar zijn. Het voorschrift dat een
+bestandsformaat valideerbaar moet zijn, is in de eerste plaats bedoeld om vast
+te kunnen stellen dat het bestandsformaat ook daadwerkelijk is wat het lijkt te
+zijn. Validatie kan bijvoorbeeld via een register van bestandsformaten, zoals
+<a href="http://www.nationalarchives.gov.uk/PRONOM/">PRONOM</a>. In Nederland houdt het Forum Standaardisatie voor de overheid een
+lijst bij van geadopteerde open standaarden. Het Nationaal Archief heeft mede op
+basis hiervan de <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/handreiking-voorkeursformaten-nationaal-archief">Handreiking
+Voorkeursformaten</a>
+ontwikkeld. Hiermee worden organisaties handvatten geboden om bij de vorming van
+digitaal archief rekening te houden met de voorkeur van het Nationaal Archief
+(en in het kielzog daarvan ook andere archiefinstellingen). Let op: de lijst
+voorkeursformaten is niet limitatief, het is niet verboden om bestandsformaten
+te gebruiken die niet op de lijst staan. Het zijn slechts de formaten waaraan
+het Nationaal Archief de voorkeur geeft. Wanneer een organisatie bestandsformaten gebruikt die
+niet op de lijst staan dan is er altijd ruimte om deze bestandsformaten en de
+eventuele voor- en nadelen met het Nationaal Archief te bespreken.
+Archiefinstellingen met een eigen archiefbewaarplaats maken hun eigen keuzes
+omtrent de bestandsformaten die zij accepteren. Over het algemeen gaat de keuze
+voor bestandsformaten uit naar formaten die open source zijn en/of voldoen aan
+open standaarden. Specifieke bestandsformaten die in het geo-informatie werkveld
+worden gebruikt zijn nog niet opgenomen in de lijst met voorkeursformaten.
+</p></section><section id="compressie"><h4 id="x4-3-2-compressie"><span class="secno">4.3.2 </span>Compressie</h4><p>Compressie is alleen toegestaan als aangetoond wordt, dat geen informatieverlies
+optreedt (artikel 26 Archiefregeling). Compressie wordt vaak toegepast om de
+bestandsgrootte te reduceren. Veel compressiemethoden zijn gebaseerd op
+patroonherkenning en herkenning van (ogenschijnlijk) overbodige gegevens. Door
+het gebruik van compressie neemt ook de complexiteit van het te bewaren bestand
+toe. Dit kan in de toekomst problemen veroorzaken als het bestand voor behoud
+naar een ander formaat moet worden omgezet. Als er compressie gebruikt wordt is
+het dus in ieder geval van belang dat vastgelegd wordt welk algoritme wordt
+gebruikt. Er kunnen verschillende manieren van compressie gebruikt worden. Zo
+kunnen er bijvoorbeeld compressies uitgevoerd worden die gebruik maken van een
+compressie algoritme wat hetzelfde is als het JPEG compressie algoritme (je
+gooit daadwerkelijk pixels/data weg). Op de LZW-compressie rusten bijvoorbeeld
+commerciële licenties, waardoor het voordeel van een open formaat teniet wordt
+gedaan.</p><p>Van de samenhangende set van bronbestanden van het ruimtelijk plan wordt in de praktijk regelmatig een zip gemaakt. De Raad van State vraagt bijvoorbeeld om de dataset verpakt in een zip te uploaden. Zip is echter niet de aangewezen wijze van archiveren. De afzonderlijke bestanden van de dataset zijn daarvoor niet direct beschikbaar en er kan informatieverlies optreden. In de samenhangende set van bronbestanden zijn GML en XML bestanden opgenomen. Deze zouden in principe een bedreiging kunnen vormen voor het archiefsysteem omdat in een XML programma’s kunnen worden opgenomen. Hiervan is geen sprake bij ruimtelijk plannen conform de RO Standaarden, het is echter wel een punt voor overleg tussen de archiefvormer en de beheerder.</p><p>Een alternatief voor .zip bestanden kan bestaan uit de ‘Geodata Archival
+Information Package’ (GEO-IP) zoals genoemd in de ‘Common Specification for
+Geospatial data’ (zie pagina 17). Met de GEO-IP kan ook beschrijvende metagegevens
+en documentatie van gebruikte XML en GML formaten meegeleverd worden.
+</p></section></section><section id="vervanging"><h3 id="x4-4-vervanging"><span class="secno">4.4 </span>Vervanging</h3><p>Vervanging betekent dat archiefstukken worden vervangen door reproducties. De
+originele bescheiden worden vervolgens vernietigd. De reproducties nemen dus
+volledig de plaats in van de oorspronkelijke bescheiden. De nieuwe
+informatiedragers moeten dan voldoen aan de eisen die worden gesteld in de
+Archiefregeling. Van de ruimtelijke plannen conform het Bro is de digitale
+versie de authentieke versie. Bij vaststelling van het ruimtelijk plan wordt
+tevens een papieren versie gemaakt. Vervanging is in dat geval geen optie, de
+papieren zijn een kopie en mogen gewoon vernietigd of verwijderd
+worden. Echter, een overheidsorganisatie kan, zeker van particulieren, nog plannen of
+reacties daarop in papieren vorm ontvangen en wensen deze digitaal toe te voegen
+aan de overige bescheiden. Dan is vervanging een logische actie.</p><p>Organisaties die onder de werking van de Archiefwet 1995 vallen, mogen
+vervanging toepassen, mits dat gebeurt met juiste en volledige weergave van de
+in de bescheiden voorkomende gegevens (artikel 6, eerste lid van het
+Archiefbesluit 1995). Gaat het om archiefstukken die ingevolge een
+vastgestelde selectielijst niet voor vernietiging (op termijn) in aanmerking
+komen, dan is artikel 26b van de Archiefregeling van toepassing.</p><p>Dit betekent dat de overheid die gaat vervangen, inzicht kan geven in een aantal
+elementen van vervanging, waaronder de reikwijdte, de technische instellingen,
+de gebruikte hard- en software en de kwaliteitsprocedures. Op grond van artikel
+26b moet een zorgdrager deze elementen in het besluit tot vervanging van te
+bewaren archiefstukken opnemen. In de praktijk gebeurt dit door het opstellen
+van een handboek vervanging. Het Nationaal Archief biedt, hoewel zij geen
+formele rol heeft bij het opstellen van een vervangingsbesluit, organisaties een
+handvat in de vorm van de ‘<a href="https://www.nationaalarchief.nl/archiveren/kennisbank/handreiking-vervanging-archiefbescheiden">Handreiking vervanging
+archiefbescheiden</a>’.</p></section><section id="archiefsysteem"><h3 id="x4-5-archiefsysteem"><span class="secno">4.5 </span>Archiefsysteem</h3><p>Het archiefsysteem waar de samenhangende set bronbestanden worden opgeslagen,
+wordt door de zorgdrager onder andere geselecteerd op basis van deze voorwaarden
+en de voorzieningen die binnen de organisatie aanwezig zijn. Zo kan het
+aanwezige systeem voor de BAG, GBA, het e-depot of RO beheersysteem mogelijk
+geschikt zijn. De zorgdrager is niet verplicht vanuit de wet- en regelgeving
+voor archiveren te kiezen voor een bepaalde applicatie of database. De
+zorgdrager kiest het systeem naar aanleiding van de eerder geschetste
+randvoorwaarden zoals de DUTO eisen (zie <a href="#B01">Bijlage 1</a>) en richt het systeem en de
+organisatie op basis van die eisen daarvan in.</p></section></section><section id="B01" data-format="markdown"><!--OddPage--><h2 id="x5-bijlage-1-begrippenlijst"><span class="secno">5. </span>Bijlage 1 Begrippenlijst</h2><ul>
+<li><strong>Aanwezigheid kopieversies</strong>:<br>De vindplaats van de archiefstukken in andere beheeromgevingen.
+</li>
+<li><strong>Activiteit</strong>:<br>Van de zaak door de zorgdrager: wat gebeurt er met de archiefstukken?  </li>
+<li><strong>Archiefvormer</strong>:<br>De organisatie of het organisatieonderdeel dat het ruimtelijke plan creëert.
+</li>
+<li><strong>Archiefwet</strong><br>Nederlandse overheidsorganen vallen onder de Archiefwet 1995. Specifieke
+bepalingen uit de Archiefwet zijn uitgewerkt in het Archiefbesluit. En
+gedetailleerde regels voor de informatiehuishouding en de archieven van de
+overheid zijn geformuleerd in de Archiefregeling.
+</li>
+<li><strong>Archiveren by design</strong>:<br>Archiveren vereist dat de werkprocessen en de daarbij gebruikte
+informatiesystemen (de werksystemen) daarop ingericht worden. De maatregelen die
+daarvoor nodig zijn bepaal je het beste op het moment dat de werksystemen
+gekocht, gebouwd, aangepast of afgeschaft worden.
+</li>
+<li><strong>Beheerder</strong>:<br>Door het bestuur van de eigen organisatie aangewezen persoon die
+verantwoordelijk is voor het ruimtelijk plan.  </li>
+<li><strong>Benodigde hulpmiddelen</strong><br>Door middel van welke raadpleegsoftware kunnen de plannen geraadpleegd worden.
+</li>
+<li><strong>Bestandsnaam</strong><br>De unieke bestandsnaam met bestandsformaat die aan ieder onderdeel van de
+bronbestanden is meegegeven conform de RO Standaarden (STRI).
+</li>
+<li><strong>Beschrijving</strong>:<br>Van het ruimtelijk plan en de locatie.  </li>
+<li><strong>Bronbestanden</strong><br>De originele bestanden van een ruimtelijk plan in verschillende formaten zoals
+gml, xml, html en pdf.
+</li>
+<li><strong>Compressie</strong><br>Het reduceren van de bestandsgrootte.  </li>
+<li><strong>Digitale waarmerk of handtekening</strong><br>De handtekening moet op unieke wijze aan de ondertekenaar zijn verbonden. Ook
+moet de handtekening zijn gemaakt met middelen die de ondertekenaar helemaal
+onder zijn controle kan houden.
+</li>
+<li><strong>Dossierstatus:</strong><br>Bronhouders geven met behulp van de dossierstatus aan welke status het
+ruimtelijke plan heeft.  </li>
+<li><strong>DUTO</strong>:<br>Een programma van eisen voor duurzame toegankelijkheid van de informatie in de
+informatiesystemen van overheidsorganisaties.
+</li>
+<li><strong>Externe relaties</strong>:<br>De relatie met andere zaken in het interne archief systeem of externe zaken.  </li>
+<li><strong>Handreiking Voorkeursformaten</strong><br>Een door het Nationaal Archief opgestelde handreiking om organisaties handvatten
+te bieden om bij de vorming van digitaal archief rekening te houden met de
+voorkeur van het Nationaal Archief.
+</li>
+<li><strong>Identificatie</strong> (ID):<br>Identiek aan STRI2012 dossiernummer dat is aangemaakt.  </li>
+<li><strong>INSPIRE</strong><br>De Europese richtlichtlijn voor het verplicht gebruik van het
+toepassingsprofiel.
+</li>
+<li><strong>Mandaat:</strong><br>Bevoegdheid (op basis van wet- en regelgeving en/of beleidskaders) om bepaalde taken uit te voeren.
+</li>
+<li><strong>Metagegevens:</strong> zijn gegevens die de context, inhoud en structuur van
+archiefstukken beschrijven, evenals het beheer van die archiefstukken door de tijd heen.  <ul>
+<li><em>Identificatie (ID)</em><br>Het ID van het subdossier is gelijk aan het IMRO2012 planidentificatienummer
+dat aan deze versie van het ruimtelijk plan.
+</li>
+<li><em>Beschrijving</em><br>De beschrijving van dit stadium van het ruimtelijk planproces.  </li>
+<li><em>Openbaarheid</em><br>Beperkingen in verband met privacy, vertrouwelijkheid ed. worden bij dit
+element verklaard.
+</li>
+<li><em>Classificatie</em><br>Niveau van informatiebeveiliging, bijvoorbeeld vertrouwelijk, geheim.  </li>
+<li><em>Rechten</em><br>Auteursrecht, gebruiksrecht, eigendomsrecht etc.. Bronbestanden van
+ruimtelijke instrumenten worden als open data beschikbaar gesteld.
+</li>
+<li><em>Integriteit</em><br>Informatie waaruit blijkt of een archiefstuk zijn integriteit heeft
+behouden. </li>
+<li><em>Hogerliggend ordenings-niveau</em><br>Hier wordt aangegeven waar dit subdossier onderdeel van uit maakt.
+</li>
+<li><em>Aanwezigheid kopieversies</em><br>Het bestuursorgaan stelt het betreffende ruimtelijke plan ook voor eenieder
+beschikbaar via de weblocatie die is gemeld aan de
+<a href="https://www.ruimtelijkeplannen.nl/web-roi/index/">Index</a> van de landelijke voorziening Ruimtelijkeplannen.nl. De
+publicatie datum van beschikbaarstelling wordt vastgelegd bij het archiveren
+van de samenhangende set van bronbestanden.
+</li>
+</ul>
+</li>
+<li><strong>NORA</strong> (de Nederlandse Overheid Referentie Architectuur)<br>Bevat principes, beschrijvingen, modellen en standaarden voor het ontwerp en de
+inrichting van de elektronische overheid.  </li>
+<li><strong>Norm</strong><br>De Regeling standaarden ruimtelijke ordening geeft dan ook aan welke normen,
+aangeduid als de RO Standaarden, in de praktijk moeten worden gebruikt.
+</li>
+<li><strong>Ondergrond van het ruimtelijk plan</strong><br>Op grond van artikel 1.2.4 lid 1 Bro moet bij het besluit tot vaststelling van
+het ruimtelijke instrument worden aangegeven welke ondergrond is gebruikt, maar
+maakt geen onderdeel uit van de bronbestanden.
+</li>
+<li><strong>PKI-Overheid certificaat</strong><br>Toevoegen van een waarmerk zodat de authenticiteit van het plan gewaarborgd bij upload naar de landelijke voorziening Ruimelijkeplannen.nl  </li>
+<li><strong>Planning</strong>:<br>Aangeven wat de planning van verschillende activiteiten is en hoe lang deze
+activiteit duurt.
+</li>
+<li><strong>RO Standaarden</strong><br>Afspraken die ervoor zorgen dat makers van plannen in heel Nederland dezelfde
+termen en kleuren toepassen. Ook zijn er technische afspraken gemaakt die ervoor
+zorgen dat plannen digitaal uitgewisseld kunnen worden. Het geheel aan RO
+Standaarden omvat wettelijk verplichte standaarden, praktijkrichtlijnen en
+werkafspraken.
+</li>
+<li><strong>Samenhangende set bronbestanden</strong><br>Ieder ruimtelijk instrument is opgebouwd uit een samenhangende set onderdelen.
+Ieder onderdeel bestaat uit één of meerdere bronbestanden.  </li>
+<li><strong>Selectielijst</strong>:<br>Lijst die bepaald of, en zo ja wanneer, archiefstukken vernietigd moeten worden.
+</li>
+<li><strong>Subdossier:</strong><br>Per dossier kunnen verschillende fasen aangeduid worden.  </li>
+<li><strong>Titel</strong>:<br>Identiek aan de naam in de GML.
+</li>
+<li><strong>Toepassingsprofiel</strong><br>De profielen zijn een verbijzondering van de internationale metagegevenstandaarden
+van ISO en bevatten eveneens de metagegevens vereisten uit de Europese INSPIRE
+richtlijn. Metagegevens wordt toegankelijk gemaakt door ze op te nemen in een
+register.
+</li>
+<li><strong>Type</strong><br>Met type en daaraan gekoppeld vorm, wordt concreet aangegeven welke
+onderdelen (documenttypen) in dit subdossier vindbaar zijn.  </li>
+<li><strong>Uitvoerende</strong>:<br>De naam van het organisatieonderdeel dat verantwoordelijk is voor het beheer van
+de archiefstukken.
+</li>
+<li><strong>Vervanging</strong><br>Originele archiefstukken vervangen door reproducties, waarbij de originelen na vervanging worden vernietigd.
+</li>
+<li><strong>Vindplaats</strong><br>De fysieke of virtuele vindplaats(-en) van het archiefstuk.  </li>
+<li><strong>Vorm</strong><br>De verschijningsvorm, dan wel documentvorm.
+</li>
+<li><strong>Werkproces</strong>:<br>Zaaktype  </li>
+<li><strong>Wet ruimtelijke ordening (Wro)</strong><br>Is op 1 juli 2008 in werking getreden. De basis voor digitale ruimtelijke
+plannen is gelegd door voor verschillende planprocedures aan te geven dat de
+betrokken overheid het betreffende plan, visie of besluit tevens langs
+elektronische weg bekend maakt. De uitwerking vindt plaats in het <em>Besluit
+ruimtelijke ordening</em> (Bro).
+</li>
+<li><strong>Zaaktypecatalogus</strong>:<br>Het verloop van dienstverleningsprocessen waarbij de ‘klant’ een product vraagt
+en geleverd krijgt.  </li>
+<li><strong>Zorgdrager:</strong><br>Het bestuursorgaan dat conform de Archiefwet de verantwoordelijkheid heeft.</li>
+</ul></section><section id="B02" data-format="markdown"><!--OddPage--><h2 id="x6-bijlage-2-eisen-voor-duurzame-toegankelijkheid-van-overheidsinformatie"><span class="secno">6. </span>Bijlage 2: Eisen voor duurzame toegankelijkheid van overheidsinformatie</h2><p>Conform het <a href="https://www.nationaalarchief.nl/archiveren/kennisbank/overzicht-duto-eisen">Nationaal Archief</a>:</p><table>
+<thead>
+<tr>
+<th>Titel</th>
+<th>Eis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/informatiemodel-duto-eis">Informatiemodel</a></td>
+<td>Er is een informatiemodel waarin alle informatieobjecten zijn beschreven die de organisatie ontvangt en creëert.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/risicoklassen-duto-eis">Risicoklassen</a></td>
+<td>Informatieobjecten zijn ingedeeld in risicoklassen. Per risicoklasse is het toegankelijkheidsniveau bepaald waaraan de betreffende informatieobjecten moeten voldoen.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/vastgestelde-selectielijst-duto-eis">Vastgestelde selectielijst</a></td>
+<td>Er is een vastgestelde Selectielijst waarin is beschreven hoe lang informatieobjecten bewaard worden.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/vindbaar-duto-eis">Vindbaar</a></td>
+<td>Er is een zoekfunctie waarmee alle informatieobjecten vindbaar zijn, binnen redelijke tijd en inspanning.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/weergave-duto-eis">Weergave</a></td>
+<td>Van elk informatieobject is een weergave beschikbaar, binnen redelijke tijd en inspanning.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/export-duto-eis">Export</a></td>
+<td>Van elk informatieobject is een export beschikbaar, binnen redelijke tijd en inspanning.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/inzagerecht-duto-eis">Inzagerecht</a></td>
+<td>Een informatieobject is toegankelijk voor iedereen die op basis van regelgeving en beleid inzagerecht heeft.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/gedeeltelijke-weergave-duto-eis">Gedeeltelijke weergave</a></td>
+<td>Als een informatieobject slechts gedeeltelijk openbaar is, dan zijn er een gedeeltelijke weergave en export beschikbaar waarin alleen de openbare delen zijn opgenomen.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/beveiligd-duto-eis">Beveiligd</a></td>
+<td>Informatieobjecten zijn beveiligd tegen onbedoelde en onbevoegde wijzigingen. Conform de geldende standaarden voor informatiebeveiliging.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/standaard-formaat-duto-eis">Standaard formaat</a></td>
+<td>De export van een informatieobject voldoet aan een open standaard formaat.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/metagegevens-duto-eis">Metagegevens</a></td>
+<td>De weergave en export van elk informatieobject bevat minimaal volledige en actuele metagegevens zoals voorgeschreven in de Richtlijn Metagegevens Overheidsinformatie.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/vernietiging-duto-eis">Vernietiging</a></td>
+<td>Informatieobjecten worden niet eerder en niet later vernietigd dan is aangeven in de selectielijst. Na vernietiging van een informatieobject is er een verklaring van vernietiging beschikbaar.</td>
+</tr>
+<tr>
+<td><a href="https://www.nationaalarchief.nl/archiveren/kennisbank/overbrenging-duto-eis">Overbrenging</a></td>
+<td>Een blijvend te bewaren informatieobject wordt binnen twintig jaar overgebracht naar een archiefbewaarplaats.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="B03" data-format="markdown"><!--OddPage--><h2 id="x7-bijlage-3-met-dank-aan"><span class="secno">7. </span>Bijlage 3: Met dank aan</h2><p>De pen van deze handreiking is gevoerd door Geonovum. De schrijvers hebben zeer waardevolle input en feedback mogen ontvangen van experts werkzaam bij de volgende organisaties, die we hierbij hartelijk willen danken voor hun inbreng.</p><p><strong>Versie 2.1:</strong></p><ul>
+<li>Anna van Lankvelt - Nationaal Archief</li>
+<li>Wout van der Reijden – Nationaal Archief</li>
+</ul><p><strong>Versie 2.0:</strong></p><ul>
+<li>Tom Derks – Nationaal Archief</li>
+<li>Wout van der Reijden – Nationaal Archief</li>
+</ul><p><strong>Versie 1.0:</strong></p><ul>
+<li>Anja Meertens – provincie Limburg</li>
+<li>Dirk de Klerk - ministerie van Infrastructuur en Milieu</li>
+<li>Ellie Schetters – provincie Gelderland</li>
+<li>Florence van Limburg – Nationaal Archief (hoofdstuk 4)</li>
+<li>Frans Smit – gemeente Almere (hoofdstuk 2)</li>
+<li>Hans Seinen – provincie Zuid-Holland (hoofdstuk 3 en 4)</li>
+<li>Harold Dello – provincie Limburg (hoofdstuk 3 en 4)</li>
+<li>Heidi Deijkers – ministerie van Infrastructuur en Milieu (hoofdstuk 2)</li>
+<li>Jorien Weterings – Nationaal Archief (hoofdstuk 3 en 4)</li>
+<li>Koos Ju – IPO (hoofdstuk 3 en 4)</li>
+<li>Nelleke Radder – provincie Zuid-Holland</li>
+<li>Ruth van Belkum - ministerie van Infrastructuur en Milieu (hoofdstuk 3 en 4)</li>
+<li>Peter Diebels – provincie Zuid-Holland</li>
+<li>Silvie Pluim – gemeente Almere (hoofdstuk 2)</li>
+</ul></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

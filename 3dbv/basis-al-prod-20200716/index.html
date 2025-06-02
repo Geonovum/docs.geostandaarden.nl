@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header ============================================================================== --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+    
+    
+    <!-- Invullen: de titel van de standaard of het document ==================================== -->
+    <title>Productbeschrijving 3D basisvoorziening</title>
+    <!-- Invullen: de naam van de lokale CSS file =============================================== -->
+    <link rel="stylesheet" type="text/css" href="./media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+    
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-BASIS.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-BASIS",
+  "specType": "AL",
+  "pubDomain": "3dbv",
+  "editors": [
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Vincent van Altena",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Tony Baving",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Willem van Hinsbergh",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Marc Post",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Bertjan Zwerver",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Jantien Stoter",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/",
+      "extras": [
+        {
+          "name": "TU Delft",
+          "href": "https://www.tudelft.nl"
+        }
+      ]
+    },
+    {
+      "name": "Tom Commandeur",
+      "company": "TU Delft",
+      "companyURL": "https://www.tudelft.nl/"
+    },
+    {
+      "name": "Balázs Dukai",
+      "company": "TU Delft",
+      "companyURL": "https://www.tudelft.nl/"
+    },
+    {
+      "name": "Ravi Peters",
+      "company": "TU Delft",
+      "companyURL": "https://www.tudelft.nl/"
+    }
+  ],
+  "shortName": "prod",
+  "github": "https://github.com/geonovum/3dbasisvoorziening",
+  "localBiblio": {
+    "OAuth2": {
+      "href": "https://tools.ietf.org/html/rfc6749",
+      "title": "The OAuth 2.0 Authorization Framework",
+      "authors": [
+        "D. Hardt"
+      ],
+      "date": "October 2012",
+      "publisher": "The Internet Engineering Task Force"
+    }
+  },
+  "publishISODate": "2020-07-16T00:00:00.000Z",
+  "generatedSubtitle": "Document 16 juli 2020"
+}</script><meta name="description" content="Dit document bevat de productbeschrijving van het 3D Basisbestand. Dit bestand bestaat uit drie producten en is momenteel in ontwikkeling bij het Kadaster. Hoewel het 3D Basisbestand nog niet geheel gereed is, werken we wel alvast aan deze productbeschrijving."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/3dbv/basis-al-prod-20200716/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Productbeschrijving 3D basisvoorziening",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-07-16",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/3dbasisvoorziening/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document bevat de productbeschrijving van het 3D Basisbestand. Dit bestand bestaat uit drie producten en is momenteel in ontwikkeling bij het Kadaster. Hoewel het 3D Basisbestand nog niet geheel gereed is, werken we wel alvast aan deze productbeschrijving.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Vincent van Altena",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Tony Baving",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Willem van Hinsbergh",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Marc Post",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Bertjan Zwerver",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Jantien Stoter",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Tom Commandeur",
+      "worksFor": {
+        "name": "TU Delft",
+        "url": "https://www.tudelft.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Balázs Dukai",
+      "worksFor": {
+        "name": "TU Delft",
+        "url": "https://www.tudelft.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Ravi Peters",
+      "worksFor": {
+        "name": "TU Delft",
+        "url": "https://www.tudelft.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>  
+  <!-- HTML-Body ================================================================================ -->
+  <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Productbeschrijving 3D basisvoorziening</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Document <time class="dt-published" datetime="2020-07-16">16 juli 2020</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/3dbv/basis-al-prod-20200716/">https://docs.geostandaarden.nl/3dbv/basis-al-prod-20200716/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/3dbv/prod/">https://docs.geostandaarden.nl/3dbv/prod/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/3dbasisvoorziening/">https://geonovum.github.io/3dbasisvoorziening/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Vincent van Altena</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Tony Baving</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Willem van Hinsbergh</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Marc Post</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Bertjan Zwerver</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Jantien Stoter</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Kadaster</a>, <span><a href="https://www.tudelft.nl">TU Delft</a></span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Tom Commandeur</span>, <a class="p-org org h-org h-card" href="https://www.tudelft.nl/">TU Delft</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Balázs Dukai</span>, <a class="p-org org h-org h-card" href="https://www.tudelft.nl/">TU Delft</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Ravi Peters</span>, <a class="p-org org h-org h-card" href="https://www.tudelft.nl/">TU Delft</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/3dbasisvoorziening/">GitHub geonovum/3dbasisvoorziening</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/3dbasisvoorziening/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/3dbasisvoorziening/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/3dbasisvoorziening/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" data-format="markdown" aria-busy="false" class="introductory"><h2>Samenvatting</h2><p>Dit document bevat de productbeschrijving van het 3D Basisbestand. Dit bestand bestaat uit drie producten en is momenteel in ontwikkeling bij het Kadaster. Hoewel het 3D Basisbestand nog niet geheel gereed is, werken we wel alvast aan deze productbeschrijving.</p><p>Het 3D Basisbestand bevat driedimensionale topografische objecten voor heel Nederland. Het is een afgeleid product. Het is géén 3D BAG of 3D BGT, hoewel deze basisregistraties wel als bron voor dit afgeleide product zijn gebruikt. Het is ook geen authentieke bron voor deze data.</p><p>Deze productbeschrijving beschrijft de inhoud van het 3D Basisbestand, de voorwaarden waaronder het tot stand is gekomen, inclusief aspecten zoals kwaliteit en actualiteit, en het uitwisselingsformaat. Deze productbeschrijving is géén standaard, maar mag wel als eerste input voor een toekomstige 3D standaard worden beschouwd.</p></section><h2>Samenvatting</h2>        
+
+    <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+
+    Dit is een document zonder officiële status.
+
+
+
+
+</p><p>Geonovum schrijft deze productbeschrijving in opdracht van het Kadaster. Het doel is om een beschrijving te maken die kan dienen als een bèta 3D standaard. Dit is ook de reden dat Geonovum betrokken is: om vanuit haar netwerk input mee te nemen van anderen die met 3D bestanden bezig zijn, om te komen tot een framework voor het beschrijven van 3D bestanden, en om issues, die te maken hebben met hoe geometrie in 2D input-bestanden is gemodelleerd, mee terug te nemen naar de 2D standaarden.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-3d-basisvoorziening"><span class="secno">1.1 </span>De 3D Basisvoorziening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#semantisch-model"><span class="secno">2. </span>Semantisch model</a></li><li class="tocline"><a class="tocxref" href="#methodes-van-inwinning-voorbewerking-en-reconstructie"><span class="secno">3. </span>Methodes van inwinning, voorbewerking en reconstructie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#voorbewerking-van-bag-en-bgt"><span class="secno">3.1 </span>Voorbewerking van BAG en BGT</a></li><li class="tocline"><a class="tocxref" href="#het-genereren-van-de-puntenwolken"><span class="secno">3.2 </span>Het genereren van de puntenwolken</a></li><li class="tocline"><a class="tocxref" href="#x3d-reconstructie-met-3dfier"><span class="secno">3.3 </span>3D reconstructie met 3dfier</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-formaat-en-beschikbaarstellen"><span class="secno">4. </span>Data-formaat en beschikbaarstellen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#data-formaat"><span class="secno">4.1 </span>Data-formaat</a></li><li class="tocline"><a class="tocxref" href="#beschikbaarheid"><span class="secno">4.2 </span>Beschikbaarheid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-gebruikte-parameters-voor-3dfier"><span class="secno">5. </span>Bijlage: gebruikte parameters voor 3Dfier</a></li></ol></nav>  
+
+    <section data-format="markdown" aria-busy="false" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>3D-stadsmodellen (en 3D terreinmodellen) worden steeds meer gebruikt bij het plannen en beheren van onze leefomgeving. Recente ontwikkelingen in technieken voor het inwinnen van 3D-hoogte-informatie, LiDAR en fotogrammetrie, hebben het relatief eenvoudig gemaakt om 3D-stadsmodellen automatisch te reconstrueren en deze data te gebruiken voor bijvoorbeeld planning en omgevingssimulaties. </p><p>De huidige 3D stadsmodellen die door verschillende organisaties worden geproduceerd, verschillen echter nog steeds sterk vanwege verschillen in acquisitiemethoden, verschillen in applicaties waarvoor de 3D-gegevens worden ingewonnen, verschillen in datastructuren, formaten enz.</p><p>Daarom verschillen 3D-stadsmodellen (die meer omvatten dan 3D-gebouwen) vaak sterk van elkaar. Bovendien is er doorgaans geen plan om de eenmaal gegenereerde gegevens actueel te houden. Het gevolg is dat 3D-stadsmodellen geen deel uitmaken van de reguliere gegevensinfrastructuren en deze gegevens worden daardoor nog steeds onvoldoende gebruikt in besluitvormingsprocessen van de overheid.</p><p>Om actuele 3D-gegevens over grootschalige topografie uniform beschikbaar te hebben voor diverse overheidsprocessen, zou deze, vanuit technisch oogpunt, het beste kunnen worden ingewonnen als onderdeel van de BGT en BAG en de verantwoordelijkheid zijn van al deze verschillende bronhouders. Maar op dit moment is het niet haalbaar en ook niet wenselijk voor alle BAG en BGT bronhouders om aanvullende 3D-gegevens te verzamelen.</p><p>Daarom heeft het Kadaster een 3D basisvoorziening ingericht om, vooruitlopend op een 3D BAG/BGT in de (verre) toekomst, actuele 3D gegevens voor heel Nederland beschikbaar te stellen. In deze voorziening worden 3D basisgegevens gereconstrueerd op basis van BGT en BAG. Dit gebeurt op een volledig automatische wijze. De 3D gegevens worden landsdekkend gereconstrueerd en beschikbaar gesteld in de open standaard CityJSON via PDOK. De 3D basisvoorziening die we in zomer 2020 beschikbaar stellen, is gebaseerd op zowel puntenwolken gegenereerd uit luchtfoto’s (inwin jaar 2018) als AHN3 (ingewonnen tussen 2014 en 2019). De 3D basisvoorziening zorgt ook voor beheer en periodieke updates, die aansluit op andere informatie-initiatieven zoals Dis-Geo en de Samenhangende Object Registratie (SOR).</p><p>Dit is een eerste versie van het 3D Basisbestand Volledig. We zijn benieuwd naar de gebruikerservaringen en de mogelijke onvolkomenheden om het bestand te verbeteren.</p><section id="de-3d-basisvoorziening"><h3 id="x1-1-de-3d-basisvoorziening"><span class="secno">1.1 </span>De 3D Basisvoorziening</h3><p>De 3D Basisvoorziening bestaat uit drie producten die allemaal automatisch worden gegenereerd:</p><ol>
+<li>het 3D Basisbestand Volledig (combinatie van LoD1.2 gebouwen + terrein (en bruggen))</li>
+<li>het  3D Basisbestand Gebouwen (LoD1.3, met daaraan gekoppeld attributen die de kwaliteit van ieder gebouwmodel beschrijven)</li>
+<li>het 3D Hoogtestatistieken Gebouwen</li>
+</ol><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><aside class="">LoD (Level of Detail) beschrijft  het detailniveau waarop de hoogte van gebouwen beschikbaar is. Dit wordt in figuur 3 nader toegelicht.</aside></div><figure id="fig-visualisatie-van-data-uit-het-3d-basisbestand-volledig">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">visualisatie van data uit het 3D Basisbestand Volledig</span></figcaption>
+<img src="media/image4.png">
+</figure><p>Het product 3D Basisbestand Volledig (een combinatie van LoD1.2 gebouwen + terrein (en bruggen)) dat nu beschikbaar is, bestaat uit terreinvlakken, gegenereerd uit BGT maaiveld-objecten met in het terrein geïntegreerde gebouwen.</p><figure id="fig-gereconstrueerde-brugvlakken">
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">gereconstrueerde brugvlakken</span></figcaption>
+<img src="media/image1.png">
+</figure><p>De gebouwen in dit product worden gegenereerd door de BAG-geometrie van het gebouw op te trekken tot een enkele hoogte, d.w.z. de zogenaamde LoD1.2-weergave, zie onderstaande figuur. </p><figure id="fig-levels-of-detail-voor-gebouwen-f-biljecki-yyyy">
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">Levels of Detail voor gebouwen ( F. Biljecki, yyyy)</span></figcaption>
+<img src="media/image3.png">
+</figure><p>Het horizontale grondvlak van de gebouwmodellen is altijd ingesteld op het laagste snijpunt met het maaiveld om te voorkomen dat het gebouw gaat zweven.
+De twee andere producten worden later dit jaar beschikbaar gesteld. Het 3D Basisbestand Gebouwen bevat blok-modellen waarbij aanzienlijke hoogtesprongen binnen een gebouw in het model worden onderscheiden (conform LoD1.3). Denk bijvoorbeeld aan een kerk met met een toren of een huis met een aangebouwde schuur.</p><p>Het product 3D Hoogtestatistieken Gebouwen bevat de 2D BAG-geometrieën van gebouwen waaraan verschillende hoogte-waarden zijn toegekend. Deze verschillende hoogte-waarden representeren verschillende referentiehoogten die berekend worden op basis van verschillende statistische parameters van de hoogtepunten die zich binnen een BAG polygoon bevinden. Afhankelijk van de toepassing kan een gebruiker beslissen welke referentiehoogte moet worden gebruikt om het 3D model te reconstrueren. Het bestand 3D Hoogtestatistieken Gebouwen komt zowel voor LoD1.2 als voor LoD1.3 beschikbaar. In dat laatste geval is de geometrie opgeknipt in verschillende delen op basis van hoogtesprongen.</p></section></section>
+    <section data-format="markdown" aria-busy="false" id="semantisch-model"><!--OddPage--><h2 id="x2-semantisch-model"><span class="secno">2. </span>Semantisch model</h2><p>De data wordt semantisch gemodelleerd volgens de klassen van CityJSON (zie hoofdstuk 4). CityJSON bevat de volgende klassen waar de gebruikte BGT en BAG klassen onder vallen:</p><ul>
+<li>LandUse </li>
+<li>GenericCityObject</li>
+<li>Building</li>
+<li>Plantcover</li>
+<li>Bridge</li>
+<li>Road</li>
+<li>WaterBody</li>
+</ul><p>De oorspronkelijke BAG en BGT attributen zijn nog aanwezig samen met enkele andere extra attributen die nodig zijn voor het proces. Zo is voor de BAG een extra attribuut gecreëerd om na validatie van de vlakken het oorspronkelijke BAG ID weer terug te zetten. </p><p>De brugdelen van de BGT zijn samengevoegd voor het proces en komen dus niet meer overeen met de delen in de BGT. </p><p>Voor het reconstrueren van gebouwen is gekozen voor de BAG omdat de BAG geometrien de gebouwen van bovenaf modelleren en het meest geschikt is om op te trekken op basis van hoogtes uit luchtfoto’s (die ook van bovenaf worden ingewonnen). </p><p>BAG-panden en omringende BGT-terreinen sluiten topologisch niet altijd. Om toch een waterdicht terrein te hebben,  is het BGT pand object meegenomen als terrein (als BGT pand object gemodelleerd met een 3D vlak).</p></section>
+    <section data-format="markdown" aria-busy="false" id="methodes-van-inwinning-voorbewerking-en-reconstructie"><!--OddPage--><h2 id="x3-methodes-van-inwinning-voorbewerking-en-reconstructie"><span class="secno">3. </span>Methodes van inwinning, voorbewerking en reconstructie</h2><p>Voor het reconstrueren van de 3D data is gebruik gemaakt van 2D geometrieën uit de BAG, BGT en van hoogte die gebaseerd is op puntenwolken. Voor het vervaardigen van puntenwolken worden luchtfoto’s uit de winter van 2018 gebruikt. Aangezien bronhouders van de BGT en de BAG ook gebruik maken van deze luchtfoto’s om hun bestanden te actualiseren, hebben we een latere peildatum voor de BAG en BGT gekozen. Daarmee streven we naar een zo klein mogelijk actualiteitsverschil tussen de hoogtepunten en 2D geometrieën, zie Tabel 1. </p><p><strong>Tabel 1:</strong> actualiteit en toepassing van de brondata</p><table>
+<thead>
+<tr>
+<th>Brondata</th>
+<th>Toepassing</th>
+<th>Peildatum / inwinperiode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BGT</td>
+<td>Terrein</td>
+<td>01-01-2019</td>
+</tr>
+<tr>
+<td>BAG</td>
+<td>Gebouwen</td>
+<td>01-01-2019</td>
+</tr>
+<tr>
+<td>Luchtfoto's</td>
+<td>hoogtepunten</td>
+<td>winter 2018</td>
+</tr>
+</tbody></table><section id="voorbewerking-van-bag-en-bgt"><h3 id="x3-1-voorbewerking-van-bag-en-bgt"><span class="secno">3.1 </span>Voorbewerking van BAG en BGT</h3><p>Om de geometrieën van de BAG en de BGT als input te kunnen gebruiken voor het automatische reconstructie proces zijn een aantal voorbewerkingen uitgevoerd om de objecten te valideren en daarnaast te verrijken met informatie of geometrisch te integreren met omliggende objecten. Hierbij moet worden opgemerkt dat niet alle geometrische bewerkingen correcties zijn op de BGT, maar dat het gaat om het geschikt maken van de data voor het 3D reconstructieproces. Hierdoor zijn de 2D objecten niet altijd meer dezelfde als in de oorspronkelijke BGT en BAG. </p><p>De belangrijkste geometrische bewerkingen zijn:</p><ul>
+<li>het verwijderen van self-intersecties en arcs</li>
+<li>het verwijderen van dubbele objecten waarbij zoveel mogelijk het nieuwste object behouden wordt.</li>
+<li>het snappen van objecten die elkaar raken (hoek, overlap of gedeelde grens) waarbij eventueel datapunten worden toegevoegd. Dit wordt gedaan om gaten in - het BGT maaiveld dicht te krijgen, maar ook om in de BAG aansluitende panden ook werkelijk te laten aansluiten.</li>
+<li>het uitlijnen van datapunten op een grid ten behoeve van de nauwkeurigheid van alle validaties. Alle resulterende coördinaten worden in mm opgeslagen</li>
+</ul><p>Om de objecten te integreren met hun omgeving worden twee bewerkingen uitgevoerd: </p><ul>
+<li>De topologie tussen verschillende hoogteniveaus wordt hersteld om 3d reconstructie mogelijk te maken. Hierbij worden waar nodig datapunten op gedeelde grenzen en bij kruisende objecten geïntroduceerd. Dit speelt met name voor overbruggingsdelen en bijzondere objecten.</li>
+<li>Topologische fouten die problemen kunnen veroorzaken in het reconstructieproces, zoals overlappingen, gaten, en zgn. spikes, worden opgespoord en automatisch gecorrigeerd. Hierbij worden ongeclassificeerde objecten gecreëerd voor gaten in de BGT.</li>
+</ul><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Noot</span></div><aside class="">
+Voor een goede 3D-reconstructie moeten de overbruggingssituaties voldoen aan de standaard die voor de BGT is voorgeschreven, zie (<a href="http://imgeo.geostandaarden.nl/def/imgeo-object/overbruggingsdeel/overbruggingsdeel">http://imgeo.geostandaarden.nl/def/imgeo-object/overbruggingsdeel/overbruggingsdeel</a>). Bovendien moeten de wegdelen op bruggen, die zijn gemodelleerd boven het maaiveld, aansluiten op de wegdelen die op maaiveldhoogte zijn gemodelleerd.</aside></div></section><section id="het-genereren-van-de-puntenwolken"><h3 id="x3-2-het-genereren-van-de-puntenwolken"><span class="secno">3.2 </span>Het genereren van de puntenwolken</h3><p>Voor de reconstructie van 2D naar 3D is hoogte nodig voor de hoogtebepaling van BAG-panden en voor de hoogtebepaling van de maaiveld objecten (BGT). Deze hoogte wordt door middel van <a href="https://en.wikipedia.org/wiki/Semi-global_matching">semi-global matching</a> verkregen. Deze techniek wordt toegepast op de stereofoto’s die ingewonnen worden in de <a href="https://www.beeldmateriaal.nl/">landelijke voorziening beeldmateriaal</a>. Deze voorziening koopt voor de overheidspartijen in Nederland landsdekkend beeldmateriaal in voor het bijhouden van de basisregistraties BAG, BGT en BRT. Voor de hoogtebepaling uit beeldmateriaal worden de stereofoto’s van de wintervlucht gebruikt. </p><p><strong>Tabel 2:</strong> kenmerken stereofoto’s 2018</p><table>
+<thead>
+<tr>
+<th>Kenmerk</th>
+<th>waarde</th>
+<th>toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ground Sampling Distance (GSD)</td>
+<td>10cm</td>
+<td></td>
+</tr>
+<tr>
+<td>Overlap in de strook</td>
+<td>60%</td>
+<td></td>
+</tr>
+<tr>
+<td>Overlap tussen de stroken</td>
+<td>30%</td>
+<td></td>
+</tr>
+<tr>
+<td>Vlieghoogte</td>
+<td>+/- 1700m</td>
+<td>groot deel van Nederland</td>
+</tr>
+<tr>
+<td></td>
+<td>+/-  4300m</td>
+<td>westelijk Nederland rondom Schiphol</td>
+</tr>
+</tbody></table><p>De nauwkeurigheid van de resulterende hoogte wordt onder andere door de overlap in de strook en de vlieghoogte bepaald. Voor punten die worden gegenereerd uit luchtfoto’s ingewonnen op een vlieghoogte van 1700m is dat 15cm; voor punten gebaseerd op beelden ingewonnen op een vlieghoogte van 4300m is dat 35cm (sigma-1).</p><div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Noot</span></div><aside class="">Meer technische achtergronden kunnen gevonden worden in de artikelen: <a href="https://pdfs.semanticscholar.org/1691/09ca918dc5283a0ecf09ac38f7568fc6a0a1.pdf">https://pdfs.semanticscholar.org/1691/09ca918dc5283a0ecf09ac38f7568fc6a0a1.pdf</a> en <a href="https://en.wikipedia.org/wiki/Computer_stereo_vision">https://en.wikipedia.org/wiki/Computer_stereo_vision</a>.</aside></div><p>In een tweede stap wordt er een Digital Surface Model (DSM) gegenereerd op basis van de verkregen puntenwolken. Dit 2.5D model bevat voor elke gedefinieerde pixel in het grid één hoogtewaarde. Deze waarde wordt bepaald door de meest betrouwbare hoogste waarde te nemen. Gekozen is voor een pixelmaat van 20cm. Dus elke m2 bevat maximaal 25 punten. De nodata gebieden worden niet geïnterpoleerd.</p><p>Als laatste stap wordt het DSM geclassificeerd in de klassen gebouw, water, bruggen, hoge vegetatie, ground en not classified (de rest). Hierbij wordt voor water en bruggen gebruik gemaakt van BGT polygonen, voor gebouwen van BAG polygonen. De classificatie van hoge vegetatie maakt gebruikt van de infrarood gegevens van de lage resolutie zomervlucht van de LV Beeldmateriaal. Wanneer de ground detectie niet in staat is om maaiveld te detecteren in bosgebieden wordt data uit het AHN gebruikt. De klasse ground (ook wel aan te duiden met Digital Terrain Model (DTM)) wordt uitgedund naar 4 punten per m2.</p><p>Nu is de puntenwolk geschikt om in de reconstructie te gebruiken met 3Dfier om van 2D geometrieën uit de BAG/BGT 3D versies te genereren.</p></section><section id="x3d-reconstructie-met-3dfier"><h3 id="x3-3-3d-reconstructie-met-3dfier"><span class="secno">3.3 </span>3D reconstructie met 3dfier</h3><p>Voor de hoogte-toekenning aan de BGT maaiveld objecten gebruiken we de open source software <a href="http://tudelft3d.github.io/3dfier/">3dfier</a>. Deze software is ontwikkeld in een samenwerking tussen Kadaster en de 3D geoinformation group van de TU Delft en kan voor verschillende scenario’s ingezet worden. </p><div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Noot</span></div><aside class="">De gebruikte configuratie voor de reconstructie van het 3D Basisbestand zijn opgenomen in de bijlage.</aside></div><p>De software genereert automatisch 3D-representaties op basis van 2D-topografie en puntenwolken en houdt daarbij ook rekening met de semantiek van elke polygoon. De opgetrokken polygonen worden aan elkaar "gestikt" zodat één digitaal oppervlaktemodel wordt gereconstrueerd.</p><div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Noot</span></div><aside class="">Zie voor verdere details <a href="http://tudelft3d.github.io/3dfier/">http://tudelft3d.github.io/3dfier/</a></aside></div><figure id="fig-een-landsdekkend-waterdicht-terreinmodel-met-gebouwvolumes">
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">een landsdekkend waterdicht terreinmodel met gebouwvolumes</span></figcaption>
+<img src="media/image2.png">
+</figure><p>Hiermee wordt een landsdekkend waterdicht 3D terreinmodel verkregen, zonder overlap en gaten, waarbij BGT-gebouwen geïntegreerd zijn in het maaiveld om dit “dicht te rekenen”. Dit 3D terreinmodel kan vervolgens worden gebruikt als input voor bijvoorbeeld simulatiesoftware.</p><p>De LoD1.2 gebouwen zijn gereconstrueerd op basis van hun BAG geometrie en de 3D puntenwolk, waarbij een maximale en minimale hoogte is gebruikt om een volume te construeren. De maximale hoogte is bepaald op basis van het 90 percentiel van de hoogtepunten die binnen een BAG geometrie vallen. Om te voorkomen dat gebouwen boven het maaiveld zweven wordt het laagste punt in het maaiveld dat door de BAG geometrie geraakt wordt gebruikt voor de bepaling van de hoogte van het grondvlak.</p></section></section>
+    <section data-format="markdown" aria-busy="false" id="data-formaat-en-beschikbaarstellen"><!--OddPage--><h2 id="x4-data-formaat-en-beschikbaarstellen"><span class="secno">4. </span>Data-formaat en beschikbaarstellen</h2><section id="data-formaat"><h3 id="x4-1-data-formaat"><span class="secno">4.1 </span>Data-formaat</h3><p>De 3D data wordt beschikbaar gesteld in CityJSON, dit is een JSON codering van het CityGML gegevensmodel (versie 2.0.0). CityGML is een open standaard en uitwisselingsformaat om digitale 3D-modellen van steden en landschappen te definiëren. CityGML is een officiële standaard van het Open Geospatial Consortium (OGC).</p><div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Noot</span></div><aside class="">Voor meer achtergrond zie: <a href="https://www.cityjson.org">https://www.cityjson.org</a></aside></div><p>CityJSON beschrijft zowel de geometrie als de semantiek van de meest gebruikte 3D-objecten (zoals gebouwen, wegen, rivieren, bruggen, vegetatie en stadsmeubilair) en legt daarbij de relaties tussen objecten vast. Het definieert ook verschillende standaard LoDs voor de 3D-objecten, waardoor meerdere detailniveaus van objecten voor uiteenlopende toepassingen en doeleinden kunnen worden weergegeven.</p><p>CityJSON is ontwikkeld om programmeurs optimaal te faciliteren in het lezen en editen van 3D datasets door middel van tools en API's. Omdat met name bij web- en mobiele toepassingen snelheid van belang is, is een CityJSON-object zo compact mogelijk beschreven, waarbij alle voor het object relevante informatie volgens de CityGML behouden wordt. </p><div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Noot</span></div><aside class="">Voor het visualiseren en bewerken van CityJSON files is verschillende software beschikbaar. Een lijst van software die CityJSON ondersteunt is hier te vinden: <a href="https://www.cityjson.org/software/">https://www.cityjson.org/software/</a>.</aside></div></section><section id="beschikbaarheid"><h3 id="x4-2-beschikbaarheid"><span class="secno">4.2 </span>Beschikbaarheid</h3><p>Het 3D Basisbestand Volledig is beschikbaar via een <a href="https://www.pdok.nl/3d-basisvoorziening">downloadservice op PDOK</a>. Hier kunnen de bestanden gedownload worden door middel van tegels (5km x 6km) die worden aangeboden door selectie op een geïndexeerde kaart. </p><p>Objecten die in meerdere tiles vallen zijn weggeschreven in alle tiles waartoe zij behoren. Dit is gedaan om ervoor te zorgen dat een gebruiker niet naar de tile op zoek hoeft waarin een object dat een tile-grens kruist zich bevindt. De gekozen tile-grootte sluit aan bij de kaartbladindeling van BRT (en AHN). Deze grootte van vooraf gedefinieerde tiles is een keuze waarbij soms tussen verschillende “kwaden” moet worden besloten: hoe kleiner de tile-size hoe beter de data te hanteren is. Maar hoe kleiner de tile size, hoe meer objecten er in meerdere tile vallen, dus hoe groter het datavolume.  Een kleine tile-size heeft ook als nadeel dat meer objecten over meerdere tiles heenlopen. </p><p>Later wordt de beschikbaarheid op PDOK mogelijk uitgebreid met een 3D viewer en indien haalbaar zal de service ook downloads op basis van een willekeurig interessegebied gaan ondersteunen. Met dat laatste zal het redundant wegschrijven resulterend in enorme datavolumes zijn opgelost, omdat tiles on the fly (“on user request”) zullen worden gegenereerd.</p><p>Later dit jaar zullen ook het 3D Basisbestand Gebouwen en de 3D Hoogtestatistieken Gebouwen als downloads beschikbaar gesteld worden op PDOK.</p></section></section>
+    <section data-format="markdown" aria-busy="false" id="bijlage-gebruikte-parameters-voor-3dfier"><!--OddPage--><h2 id="x5-bijlage-gebruikte-parameters-voor-3dfier"><span class="secno">5. </span>Bijlage: gebruikte parameters voor 3Dfier</h2><p>Voor het maken van de 3D Basisvoorziening is gebruik gemaakt van de volgende parameters voor 3Dfier:</p><pre aria-busy="false"><code class="hljs">lifting_options: 
+  Building:
+    lod: 1
+    floor: true
+    inner_walls: true
+    triangulate: false
+    ground:
+      height: percentile-10
+      use_LAS_classes:
+        - 2
+        - 9
+    roof:
+      height: percentile-90
+      use_LAS_classes:
+        - 6
+  Terrain:
+    simplification: 0
+    simplification_tinsimp: 0.1
+    use_LAS_classes:
+      - 2
+  Forest:
+    simplification: 0
+    simplification_tinsimp: 0.1
+    use_LAS_classes:
+      - 2
+  Water:
+    height: percentile-10
+    use_LAS_classes_within:
+      - 9
+  Road:
+    height: percentile-50
+    filter_outliers: true
+    flatten: true
+    use_LAS_classes:
+      - 2
+  Separation:
+    height: percentile-80
+    use_LAS_classes:
+      - 2
+      - 17
+  Bridge/Overpass:
+    height: percentile-50
+    flatten: true
+    use_LAS_classes:
+      - 99   
+    use_LAS_classes_within:
+      - 17
+    omit_LAS_classes:
+      - 0 # unclassified
+      - 1 # other
+      - 3 # vegation
+      - 4 # vegation
+      - 5 # vegation 
+    thinning: 0
+options:
+  building_radius_vertex_elevation: 3.0
+  radius_vertex_elevation: 1.0
+  threshold_jump_edges: 0.5
+  threshold_bridge_jump_edges: 1.0
+  stitching: true 
+</code></pre></section>
+  
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

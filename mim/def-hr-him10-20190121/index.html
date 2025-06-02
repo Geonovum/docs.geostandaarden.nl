@@ -1,0 +1,1235 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header ------------------------------------------------------------------------------><head><meta charset="utf-8"><meta name="generator" content="ReSpec 23.7.4"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+<!--------------------------------------------------------------------------------------------------
+//-- File. . . :  index.html
+//-- Bevat . . :  Template voor de index.html die verplicht is voor respec  
+//--              Gebaseerd op https://github.com/Geonovum/respec/wiki
+//--              Deze file moet worden neergezet in de root-directory van de 
+//--              betreffende standaard. 
+//-- Door. . . :  Jan van Gelder
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//-- Log . . . :  20181015 - JvG - Initiele versie 
+//
+----------------------------------------------------------------------------------------------------
+0        1         2         3         4         5         6         7         8         9         0
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+--------------------------------------------------------------------------------------------------->
+        <!-- Invullen: de titel van de standaard of het document ---------------------------------->
+        <title>HIM - Handreiking Informatie Modelleren</title>    
+        <!-- Invullen: de naam van de lokale CSS file --------------------------------------------->
+        <link rel="stylesheet" type="text/css" href="./media/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "format": "markdown",
+  "publishDate": "2019-01-21",
+  "editors": [
+    {
+      "name": "Ir. Paul Janssen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Ir. Paul Janssen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "him10",
+  "pubDomain": "mim",
+  "github": "https://github.com/Geonovum/HIM-Werkomgeving",
+  "issueBase": "https://github.com/Geonovum/HIM-Werkomgeving/issues/",
+  "edDraftURI": "https://geonovum.github.io/HIM-Werkomgeving",
+  "licence": "cc-by-nd",
+  "localBiblio": {
+    "CITAAT": {
+      "title": "Titel van het Citaat",
+      "href": "http://url van de publicatie",
+      "status": "versie van de publicatie",
+      "publisher": "naam van de publiceerder",
+      "company": "eventueel naam van bedrijf"
+    }
+  },
+  "publishISODate": "2019-01-21T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 21 januari 2019"
+}</script><meta name="description" content="Samenvatting"><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/mim/def-hr-him10-20190121/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "HIM - Handreiking Informatie Modelleren",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2019-01-21",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/HIM-Werkomgeving/issues/",
+  "alternativeHeadline": "",
+  "description": "Samenvatting",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Ir. Paul Janssen",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Ir. Paul Janssen",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+    <!-- HTML-Body -------------------------------------------------------------------------------->
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">HIM - Handreiking Informatie Modelleren</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2019-01-21">21 januari 2019</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/mim/def-hr-him10-20190121/">https://docs.geostandaarden.nl/mim/def-hr-him10-20190121/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/mim/him10/">https://docs.geostandaarden.nl/mim/him10/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/HIM-Werkomgeving">https://geonovum.github.io/HIM-Werkomgeving</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Ir. Paul Janssen</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Ir. Paul Janssen</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/HIM-Werkomgeving/">GitHub Geonovum/HIM-Werkomgeving</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/HIM-Werkomgeving/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/HIM-Werkomgeving/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/HIM-Werkomgeving/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><p><strong>Samenvatting</strong></p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a href="#H01" class="tocxref"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a href="#achtergrond" class="tocxref"><span class="secno">1.1 </span>Achtergrond</a></li><li class="tocline"><a href="#toepassingsdomein" class="tocxref"><span class="secno">1.2 </span>Toepassingsdomein</a></li><li class="tocline"><a href="#normatieve-referenties" class="tocxref"><span class="secno">1.3 </span>Normatieve referenties</a></li></ol></li><li class="tocline"><a href="#H02" class="tocxref"><span class="secno">2. </span>Informatiemodellering – algemene aspecten</a><ol class="toc"><li class="tocline"><a href="#rol-van-dataspecificaties-informatiemodellen-en-relatie-met-stelselscatalogus" class="tocxref"><span class="secno">2.1 </span>Rol van dataspecificaties, informatiemodellen en relatie met stelselscatalogus.</a></li><li class="tocline"><a href="#principes" class="tocxref"><span class="secno">2.2 </span>Principes.</a></li><li class="tocline"><a href="#het-proces" class="tocxref"><span class="secno">2.3 </span>Het proces.</a><ol class="toc"><li class="tocline"><a href="#van-use-case-naar-dataspecificatie" class="tocxref"><span class="secno">2.3.1 </span>Van use case naar dataspecificatie</a></li><li class="tocline"><a href="#revers-engineering-met-bestaande-specificaties" class="tocxref"><span class="secno">2.3.2 </span>Revers-engineering met bestaande specificaties</a></li></ol></li><li class="tocline"><a href="#rollen-in-het-proces" class="tocxref"><span class="secno">2.4 </span>Rollen in het proces</a></li><li class="tocline"><a href="#validatie-vaststelling-en-beheer" class="tocxref"><span class="secno">2.5 </span>Validatie, vaststelling en beheer</a></li></ol></li><li class="tocline"><a href="#H03" class="tocxref"><span class="secno">3. </span>Stappenplan </a><ol class="toc"><li class="tocline"><a href="#overzicht" class="tocxref"><span class="secno">3.1 </span>Overzicht.</a></li><li class="tocline"><a href="#use-case-beschrijving" class="tocxref"><span class="secno">3.2 </span>Use-case beschrijving.</a></li><li class="tocline"><a href="#gebruikseisen-user-requirements" class="tocxref"><span class="secno">3.3 </span>Gebruikseisen (User requirements)</a></li><li class="tocline"><a href="#objecttypen" class="tocxref"><span class="secno">3.4 </span>Objecttypen</a></li><li class="tocline"><a href="#ontwikkeling-dataspecificatie" class="tocxref"><span class="secno">3.5 </span>Ontwikkeling dataspecificatie</a></li><li class="tocline"><a href="#testen-en-validatie" class="tocxref"><span class="secno">3.6 </span>Testen en validatie</a></li><li class="tocline"><a href="#harmonisatie" class="tocxref"><span class="secno">3.7 </span>Harmonisatie</a></li><li class="tocline"><a href="#extensies-op-bestaande-modellen" class="tocxref"><span class="secno">3.8 </span>Extensies op bestaande modellen.</a></li></ol></li><li class="tocline"><a href="#H04" class="tocxref"><span class="secno">4. </span>Modelleren </a><ol class="toc"><li class="tocline"><a href="#metamodel-toepassing-van-kkg" class="tocxref"><span class="secno">4.1 </span>Metamodel – Toepassing van KKG</a><ol class="toc"><li class="tocline"><a href="#keuze-uit-alternatieven-van-kkg" class="tocxref"><span class="secno">4.1.1 </span>Keuze uit alternatieven van KKG</a></li></ol></li><li class="tocline"><a href="#objectidentificatie" class="tocxref"><span class="secno">4.2 </span>Objectidentificatie</a></li><li class="tocline"><a href="#temporeel-model" class="tocxref"><span class="secno">4.3 </span>Temporeel model</a></li><li class="tocline"><a href="#standaard-datatypen" class="tocxref"><span class="secno">4.4 </span>Standaard datatypen</a></li><li class="tocline"><a href="#geen-waarde" class="tocxref"><span class="secno">4.5 </span>Geen waarde</a></li></ol></li><li class="tocline"><a href="#H05" class="tocxref"><span class="secno">5. </span>Software en UML profiel </a><ol class="toc"><li class="tocline"><a href="#software-en-uml-profiel" class="tocxref"><span class="secno">5.1 </span>Software en UML profiel</a><ol class="toc"><li class="tocline"><a href="#modelleersoftware" class="tocxref"><span class="secno">5.1.1 </span>Modelleersoftware</a></li><li class="tocline"><a href="#implementatiesoftware" class="tocxref"><span class="secno">5.1.2 </span>Implementatiesoftware</a></li></ol></li></ol></li><li class="tocline"><a href="#B00" class="tocxref"><span class="secno">6. </span>Bijlagen</a><ol class="toc"><li class="tocline"><a href="#bijlage-1-abstracte-conformiteittoets-dataspecificatie-voor-dso" class="tocxref"><span class="secno">6.1 </span>Bijlage 1: Abstracte conformiteittoets: Dataspecificatie voor DSO.</a></li><li class="tocline"><a href="#bijlage-2-termen-en-afkortingen" class="tocxref"><span class="secno">6.2 </span>Bijlage 2: Termen en afkortingen</a></li><li class="tocline"><a href="#bijlage-3-referentie-implementatie-kkg-alternatief-2" class="tocxref"><span class="secno">6.3 </span>Bijlage 3: Referentie implementatie KKG-alternatief 2</a></li><li class="tocline"><a href="#bijlage-4-voorbeeld-dataspecificatie-template" class="tocxref"><span class="secno">6.4 </span>Bijlage 4: Voorbeeld Dataspecificatie template</a></li><li class="tocline"><a href="#bijlage-5-bibliografie" class="tocxref"><span class="secno">6.5 </span>Bijlage 5: Bibliografie</a></li></ol></li></ol></nav><div id="H00" data-format="markdown"><h2>Colofon</h2>
+<p>Documentnaam Handreiking informatie modelleren</p>
+<p>Projectnaam</p>
+<p>Projectnummer PR04</p>
+<p>Versienummer 1.0</p>
+<p>Locatie Amersfoort</p>
+<p>Projectleider Eric van Capelleveen</p>
+<p>Contactpersoon Paul Janssen</p>
+<p>Auteurs Paul Janssen</p>
+<p>Versiehistorie</p>
+<table>
+<thead>
+<tr>
+<th>Versie</th>
+<th>Datum</th>
+<th>Door</th>
+<th>Sectie</th>
+<th>Omschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.99</td>
+<td>06-05-2015</td>
+<td>GOAL</td>
+<td></td>
+<td>Oplevering binnen GOAL</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>14-06-2017</td>
+<td>PR04</td>
+<td>alles</td>
+<td>Rework op basis van metamodel KKG</td>
+</tr>
+</tbody></table>
+</div><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="achtergrond"><h3 id="x1-1-achtergrond"><span class="secno">1.1 </span>Achtergrond</h3><p>De komende jaren wordt de Omgevingswet- en regelgeving geschreven en
+geïmplementeerd. Deze wet zet in op een aantal verbeterdoelen, zoals meer
+gebruiksgemak, snellere en betere besluitvorming en minder onderzoekslasten. Om
+deze doelen te kunnen realiseren is een verbeterslag nodig in de digitale
+ondersteuning van de wet.</p><p>Uit Doelarchitectuur DSO.</p><p><em>Binnen het digitaal stelsel maken veel verschillende partijen meervoudig
+gebruik van gegevens. Het is daarbij van belang dat de onderlinge samenhang en
+betekenis van de gegevens binnen een bepaalde context wordt beschreven. Dit
+gebeurt met behulp van informatiemodellen. Het doel van een informatiemodel is
+een beschrijving van (de informatie over) de werkelijkheid, los van
+implementatieaspecten. Voor het digitaal stelsel is het van groot belang dat
+alle informatiemodellen op dezelfde manier beschreven worden, volgens een nog
+vast te stellen standaard.</em></p><p>Dit document gaat specifiek in op regels voor het opstellen van
+dataspecificaties en de daarin voorkomende informatiemodellen.</p></section><section id="toepassingsdomein"><h3 id="x1-2-toepassingsdomein"><span class="secno">1.2 </span>Toepassingsdomein</h3><p>Deze handreiking voor informatiemodellering richt zich specifiek op
+informatiemodellen voor het beschrijven van informatieproducten of datasets die
+gedeeld c.q. uitgewisseld, of geraadpleegd worden in de context van het DSO. Het
+zijn informatieproducten waarvan standaardisatie nodig is in het kader van
+interoperabiliteit. Voor producten die niet gedeeld worden speelt het
+interoperabiliteitsvraagstuk niet en is deze handreiking niet van toepassing.</p><p>Specifiek is de handreiking voor informatiehuizen binnen het DSO en de vanuit
+die huizen ontsloten informatieproducten. In een bredere context is de
+handreiking van toepassing voor alle informatieproducten binnen het DSO waarbij
+informatiemodellen worden gebruikt voor de beschrijving daarvan.</p><p>Het in deze handreiking gebruikte metamodel voor informatiemodellering is
+gebaseerd op de principes van de objectoriëntatie. Het technisch-conceptuele
+toepassingsdomein is daarmee bepaald tot deze omgeving.</p></section><section id="normatieve-referenties"><h3 id="x1-3-normatieve-referenties"><span class="secno">1.3 </span>Normatieve referenties</h3><p>Deze methode maakt gebruik van verschillende normatieve documenten. Dit zijn
+zowel nationale als internationale standaarden. In dit hoofdstuk zijn deze
+normatieve referenties opgenomen. Voor een goede toepassing van dit document is
+kennis nodig van de opgenomen referenties.</p><p>Metamodel voor informatiemodellering; KING, Kadaster, Geonovum.</p><p>NEN 3610:2011/A1:2016 Basismodel Geo-informatie – Termen, definities relaties en
+algemene regels voor de uitwisseling van informatie over aan de aarde
+gerelateerde ruimtelijke objecten.</p><p>NEN-EN-ISO 19105:2005 Geographic information – Conformance and testing</p><p>NEN-EN-ISO 19131:2008 Geographic Information – Data product specifications.</p><p>NEN-EN-ISO 19135:2007 Geo-informatie - Procedures for registration of
+geographical information items.</p></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-informatiemodellering-algemene-aspecten"><span class="secno">2. </span>Informatiemodellering – algemene aspecten</h2><p>In dit hoofdstuk een omschrijving van het gebruik van dataspecificaties en het
+maakproces in de context van het DSO.</p><section id="rol-van-dataspecificaties-informatiemodellen-en-relatie-met-stelselscatalogus"><h3 id="x2-1-rol-van-dataspecificaties-informatiemodellen-en-relatie-met-stelselscatalogus"><span class="secno">2.1 </span>Rol van dataspecificaties, informatiemodellen en relatie met stelselscatalogus.</h3><p>Het DSO is een infrastructuur voor gegevensuitwisseling, aanbod en gebruik, rond
+het thema leefomgeving/omgevingswet. Voor het ontwerp van een infrastructuur
+spelen standaarden een belangrijke rol. Een onderdeel van die standaarden
+betreft het vastleggen en beschrijven van de semantiek van de registraties
+beheerd door de informatiehuizen. Het DSO omvat informatiehuizen;
+informatiehuizen bevatten gegevens waarmee informatie wordt gegenereerd en
+middels berichten wordt gecommuniceerd. Dataspecificaties beschrijven in detail
+de data inhoud van de informatiehuizen en de dataproducten die worden geleverd.
+Dataspecificaties ondersteunen de volgende functies:</p><ul>
+<li><p>Inwinning van gegevens: definitie van domein, welke gegevens moeten worden
+ingewonnen (of geleverd);</p>
+</li>
+<li><p>Definitie van aanbod: definitie van gegevens die in een dataset of data
+service zitten. Definitie is tot op hoogste detail niveau (kenmerk,
+waardetype, multipliciteit);</p>
+</li>
+<li><p>Genereren van metadata: deel van informatie is input voor metadata;</p>
+</li>
+<li><p>Evaluatie van geschiktheid voor gebruik (door gebruikers);</p>
+</li>
+<li><p>Harmonisatie binnen en tussen data aanbod per informatiehuis;
+informatiedetail maakt inhoudelijke afstemming mogelijk;</p>
+</li>
+<li><p>Integrale informatievragen over de domeinen van informatiehuizen heen;</p>
+</li>
+<li><p>Specificaties voor applicatie-ontwikkeling. Gedetailleerde beschrijving
+geldt als specificatie voor informatiehuishouding en berichtenspecificatie,
+validatie.</p>
+</li>
+</ul><p>In onderstaand figuur wordt de rol van dataspecificaties, of in beperktere zin,
+informatiemodellen, gepositioneerd. Voor dit document betreft het
+dataspecificaties voor informatiehuizen.</p><p><img src="media/Plaatje2.jpg" alt=""></p><p>In figuur 2 is er een centrale rol voor de stelselcatalogus en de toepassing
+daarvan in registers. In het rapport Globaal functioneel ontwerp
+stelselcatalogus wordt die nader toegelicht. In de stelselcatalogus worden
+begrippen opgenomen die betekenis hebben binnen het DSO, hetzij vanuit een
+juridisch perspectief van beleid en wetgeving, hetzij van uit een administratief
+perspectief van gegevensregistraties. De stelselcatalogus brengt die begrippen
+in relatie tot elkaar. Zoekingangen vanuit beide perspectieven leiden daarmee
+tot dezelfde gegevens. Tevens zijn in de stelselcatalogus de metadata van de
+informatiemodellen opgenomen.</p><p>Een dataspecificatie richt zich op de overdracht of levering van gegevens. Het
+is de ‘view’ op de registraties die geheel gericht is op het leveren van
+gegevens. Een dataspecificatie is ook een informatiebron voor de
+stelselcatalogus. De gegevenselementen uit een dataspecificatie worden in een
+stelselcatalogus gepubliceerd. De stelselcatalogus en dataspecificatie zijn
+daarmee complementair. De dataspecificatie puur gericht op de beschrijving van
+de registratie, data vanuit het berichtenperspectief en de catalogus gericht op
+de semantiek van begrippen en koppeling naar de informatiebronnen.</p><p>Onderstaand figuur schets de afhankelijkheden tussen een dataspecificatie en
+gerelateerde producten.</p><p><img src="media/Plaatje3.jpg" alt=""></p><p>Figuur 3 - Relaties tussen een dataspecificatie en gerelateerde producten. Een
+Dataspecificatie is een product van een informatiehuis en specificeert structuur
+en inhoud van datasets of data berichten. De stelselcatalogus is de voorziening
+waarin semantiek wordt geïntegreerd over het hele DSO.</p><p>Figuur 3 heeft twee grote blokken, een gedeelte binnen de structuur van een
+informatiehuis en een gedeelte als algemene DSO-voorziening. Informatiehuizen
+beschrijven hun producten, data, datasets en berichten door middel van een
+dataspecificatie met daarin een informatiemodel. Het informatiemodel publiceert
+de semantiek middels termen en definities in de stelselcatalogus. De
+stelselcatalogus is een algemene DSO-voorziening die vocabulaire koppelt aan de
+termen in een informatiemodel. De stelselcatalogus integreert daarmee de
+semantiek van de informatiehuizen/modellen over het hele DSO. Vanuit het
+gebruikersperspectief is de stelselcatalogus het meest zichtbaar en vormt de
+ingang tot de semantiek en gerelateerde informatiehuizen, data en datasets. Van
+belang is om de relatie tussen catalogus en dataspecificatie duidelijk te hebben
+zodat er geen overlap optreedt. Daarom wordt de relatie nog iets verder
+uitgewerkt.</p><p><strong>Dataspecificatie/informatiemodel:</strong> Beschrijft de inhoud en structuur van de
+data binnen de context (is domein) van een informatiehuis. De beschrijving is
+gericht op het verklaren van de data, datasets en databerichten die een
+informatiehuis als producten kan leveren. De beschrijving omvat termen,
+kenmerken en relaties tussen termen van toepassing binnen het domein.</p><p><strong>Stelselcatalogus:</strong> Bevat het totaal aan begrippen binnen het DSO: het
+vocabulaire. Dit vocabulaire is gekoppeld aan de informatiemodellen en verwijst
+o.a. naar toepassing daarvan in termen van de informatiemodellen.</p><p>Een belangrijk verschil is dat de dataspecificatie/informatiemodel opgesteld is
+binnen de context van het domein van het informatiehuis en de catalogus de hele
+wereld als context heeft. De zogenaamde ‘closed world’ versus een ‘open world’.
+In een ‘closed world’ zou een informatiemodel en de catalogus gelijk zijn. Omdat
+er meerdere huizen zijn en het DSO in een open wereld opereert (algemene
+begrippen, juridische begrippen, administratieve begrippen, vaktaal enz) is een
+algemeen vocabulaire of koppeling van vocabulaires nodig. De stelselcatalogus
+levert die voorziening. Dat wil niet zeggen dat de semantiek van
+informatiehuizen en de gerelateerde informatiemodellen geen harmonisatiedoel
+hebben. Dat hebben ze wel.</p><p>Twee belangrijke relaties tussen catalogus en informatiemodel zijn dat termen
+uit een informatiemodel verwijzen naar de begrippen in het vocabulaire van de
+catalogus en andersom. Om dit mogelijk te maken is het nodig dat inhoud van een
+informatiemodel gepubliceerd wordt in de stelselcatalogus.</p><p>De stelselcatalogus specificeert hiervoor de volgende toepassingseis:</p><table>
+<thead>
+<tr>
+<th>Registreren van informatiemodellen</th>
+<th>De stelselcatalogus moet functionaliteit bevatten om de informatiemodellen, zoveel als mogelijk geautomatiseerd, te kunnen inlezen</th>
+</tr>
+</thead>
+</table><p>Voor de opname van metadata in de stelselcatalogus is de volgende eis opgenomen:</p><table>
+<thead>
+<tr>
+<th>Overzicht datasets</th>
+<th>In de stelselcatalogus is bekend welke datasets aanwezig zijn. Van de datasets zijn metagegevens vastgelegd zoals een titel, beschrijving, gebied dat het betreft , etc. Hierdoor weet een applicatie welke dataset voor bepaalde gegevens en plaats benodigd is.</th>
+</tr>
+</thead>
+</table><p>Beide bovenstaande eisen waaraan de stelselcatalogus moet voldoen stellen ook
+voorwaarden aan de informatiemodellen.</p></section><section id="principes"><h3 id="x2-2-principes"><span class="secno">2.2 </span>Principes.</h3><p>Het basisprincipe achter een dataspecificatie is dat een dataset in voldoende
+mate beschreven moet zijn wil data betekenisvol gebruikt kunnen worden. Uit laan
+infrastructuur - globaal ontwerp: <em>Voor zowel de informatiehuizen als
+ICT-voorzieningen geldt dat hun standaarden voor uitwisseling altijd gebaseerd
+zijn op een informatiemodel, waarin de semantiek vastligt. Ieder informatiehuis
+kent zijn eigen model, maar ook ieder ketenproces (bijvoorbeeld
+vergunningaanvraag) kent een informatiemodel, waarin de betekenis van informatie
+is vastgelegd. Deze informatiemodellen worden voor de Laaninfrastructuur op
+elkaar afgestemd.</em></p><p>Informatiehuizen hebben daarin een eigen verantwoordelijkheid voor het
+beschrijven van de betekenis van hun datasets en ook een gezamenlijke
+verantwoordelijkheid voor afstemming van betekenis tussen informatiehuizen.</p></section><section id="het-proces"><h3 id="x2-3-het-proces"><span class="secno">2.3 </span>Het proces.</h3><p>Het DSO is niet een infrastructuur waarvan alle onderdelen vanuit niets
+opgebouwd hoeven te worden. Hetzelfde geldt voor de dataspecificaties van de
+informatiehuizen. Sommige datasets moeten nog gedefinieerd worden als een
+afgeleide van een beschreven toepassingsdomein terwijl andere sets al toepassing
+vinden maar nog niet op de juiste manier of nog onvolledig beschreven zijn. Er
+is daarom geen algemeen proces te beschrijven. Voor de één zal het een proces
+met use-case met requirements en stakeholders zijn terwijl voor anderen een
+revers-enginering aan de hand van bestaande uitwisseling en services mogelijk
+is. Beide methoden zullen worden toegelicht. Voor beide processen is de
+doelspecificatie wel duidelijk. Ongeacht de gevolgde methode is het eindproduct
+conform deze beschrijving.</p><p>Regel: Een dataspecificatie binnen het DSO is conform de in deze handreiking
+opgenomen specificaties.</p><section id="van-use-case-naar-dataspecificatie"><h4 id="x2-3-1-van-use-case-naar-dataspecificatie"><span class="secno">2.3.1 </span>Van use case naar dataspecificatie</h4><p>Dit wordt verder uitgewerkt in hoofdstuk 5</p></section><section id="revers-engineering-met-bestaande-specificaties"><h4 id="x2-3-2-revers-engineering-met-bestaande-specificaties"><span class="secno">2.3.2 </span>Revers-engineering met bestaande specificaties</h4><p>Het komt vaak voor dat datasets nog geen formele dataspecificatie hebben, of nog
+geen specificatie hebben die conform dit document is. Meestal is er wel andere
+documentatie aanwezig bijvoorbeeld in de vorm van:</p><ul>
+<li><p>Een specificatie in een andere conceptuele modelleertaal, bijvoorbeeld ERD;</p>
+</li>
+<li><p>Een nog niet volledige beschrijving, of nog niet in het voorgestelde format;</p>
+</li>
+<li><p>Geen conceptuele beschrijving maar wel een XML schema;</p>
+</li>
+<li><p>Geen conceptuele beschrijving maar wel een database model.</p>
+</li>
+</ul><p>In het geval van ERD, XML-schema en database modellen zijn er mogelijkheden om
+gedeeltelijk geautomatiseerd te converteren naar UML informatiemodellen. De
+conversieproducten leveren dan een eerste versie van een informatiemodel op dat
+daarna aangepast kan worden.</p></section></section><section id="rollen-in-het-proces"><h3 id="x2-4-rollen-in-het-proces"><span class="secno">2.4 </span>Rollen in het proces</h3><p>Een informatiehuis is verantwoordelijk voor de kwaliteit van de gegevens binnen
+het huis en het aanbod daarvan aan het DSO. Van uit die rol is het
+informatiehuis verantwoordelijk voor aanwezigheid en inhoud van een
+dataspecificatie. In feite is het de inhoudelijke specificatie van het
+informatieproduct dat het huis levert of kan leveren.</p><p>In het proces van de opstelling van een dataspecificatie zijn de volgende
+kennisvelden van belang:</p><ul>
+<li><p>Domeinkennis: inhoudelijke kennis over het domein, data gebruik en
+toepassing in werkprocessen;</p>
+</li>
+<li><p>DSO kennis: kennis over architectuur van het DSO en algemene regels en
+afspraken. Inclusief relaties, afstemming tussen informatiehuizen;</p>
+</li>
+<li><p>Modelleerkennis: Algemene modelleerkennis en informatie analyse, en
+specifiek voor toepassing binnen het DSO;</p>
+</li>
+<li><p>Softwarekennis: De relatie tussen specificaties en de haalbaarheid in
+softwaretoepassing moet worden bewaakt.</p>
+</li>
+</ul><p>De bovengenoemde kennis hoeft niet altijd en tegelijk aanwezig te zijn binnen
+een opdracht voor het opstellen van een dataspecificatie. Het is wel zaak dat
+het proces zo ingericht is dat alle aspecten aan de orde komen. Voor wat betreft
+de rollen zijn de volgende profielen van belang:</p><ul>
+<li><p>Domeinexpert: levert de ervaring en kennis van het domein en de te gebruiken
+data;</p>
+</li>
+<li><p>Procesleider: leidt het proces en zorgt ervoor dat de methode wordt gevolgd;</p>
+</li>
+<li><p>Informatie-analist, UML modelleur: zorgt voor de documentatie van de
+dataspecificaties inclusief de UML modellering.</p>
+</li>
+</ul><p>Details over verantwoordelijkheden en gedetailleerde afspraken zijn specifiek
+voor elk informatiehuis en kunnen hier niet worden opgenomen.</p></section><section id="validatie-vaststelling-en-beheer"><h3 id="x2-5-validatie-vaststelling-en-beheer"><span class="secno">2.5 </span>Validatie, vaststelling en beheer</h3><p>Na het volgen van de methode ligt er een dataspecificatie. Voor het bewaken van
+de kwaliteit van de toepassing van de methode is een conformiteittoets en
+procedure daarvoor een bruikbaar middel. Een conformiteittoets is een meet- en
+controle-instrument maar ook een methode voor review van
+kandidaat-specificaties. In bijlage 2 is een abstracte versie van een
+conformiteittoets opgenomen. Voor een operationele toepassing moet die
+uitgewerkt worden tot concrete testregels en procedure.</p><p>Een volgende stap is de formele vaststelling. Hieraan vooraf gaat meestal een
+consultatie. Afhankelijk van het informatiehuis zal dit verschillend ingevuld
+worden. Een werkveldconsultatie, een nationale consultatie, een beperkte expert
+consultatie zijn voorbeelden. Centraal staat dat na consultatie en verwerking
+daarvan een dataspecificatie wordt vastgesteld en bekrachtigd. Bekrachtiging is
+in drie stappen: binnen de context van een informatiehuis, binnen de context van
+het DSO en op nationaal niveau.</p><p>Als dat doorlopen is, is de dataspecificatie een semantische standaard. De
+standaard voor de inhoudelijke beschrijving van een domein.</p><p>Beheer.</p><p>Een standaard die niet in beheer is, is geen standaard.
+Beheerverantwoordelijkheid omvat velerlei facetten die vaak ook situationeel
+afhankelijk zijn, in dit geval ook van de afzonderlijke informatiehuizen. Binnen
+de context van de individuele informatiehuizen is het verstandig te kiezen voor
+een zelfde algemeen uitgangspunt voor het inrichten van een ontwikkel- en
+beheeromgeving zoals beschreven in de BOMOS<a href="Zie:">^1</a> standaard (Beheer en
+Ontwikkelmodel Open Standaarden) en het BOMOS2i stappenplan. Uit deze standaard
+worden een aantal operationele facetten opgenoemd.</p><p>&lt;https: <a href="http://www.forumstandaardisatie.nl=&quot;&quot;">www.forumstandaardisatie.nl=""</a> open-standaarden="" voor-beheerders="" beheer-van-standaarden=""&gt;</p><p>Communicatie: Promotie en publicatie.</p><p>Implementatie ondersteuning: Helpdesk, Validatie en certificatie.</p><p>Wijzigingsprotocol: Indienen, beoordeling, verwerking.</p><p>Versiebeheer: Visie op operationele toepassing versies en termijnen voor
+opvolgende versies.</p><p>Of er een gemeenschappelijke governance komt van dataspecificaties over de
+informatiehuizen heen is hier niet te bepalen. Het rapport Globaal ontwerp en
+prototype stelselcatalogus adviseert om het beheer van semantiek over de
+informatiehuizen heen bij de stelselcatalogus te leggen. Deze beheerder
+organiseert het beheer aan de stelselcatalogus in een beheeroverleg met de
+betrokkenen zoals de modelleurs van de informatiehuizen. Hierdoor kan de
+stelselcatalogus beheerder vanuit een neutrale rol komen tot harmonisatie-,
+verbeter- en afstemmingsvoorstellen tussen de dataspecificaties.[^2]</p><p>[^2]: Globaal ontwerp en prototype stelselcatalogus
+</p></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-stappenplan"><span class="secno">3. </span>Stappenplan </h2><p>Een proces voor de ontwikkeling van een dataspecificatie is ten dele te
+generaliseren. In dit hoofdstuk worden de typische onderdelen beschreven</p><section id="overzicht"><h3 id="x3-1-overzicht"><span class="secno">3.1 </span>Overzicht.</h3><p>Als basis voor een stappenplan voor het realiseren van een dataspecificatie
+wordt de INSPIRE methode genomen. Hierin wordt sterk gefocust op een use-case
+georiënteerde benadering. In principe is dat ook juist, een registratie heeft
+immers altijd een doel, een use-case of een werkproces. Deze stelt eisen aan de
+semantiek, eisen die leidend zijn voor de ontwikkeling van een dataspecificatie.
+Moeilijkheid is vaak dat registraties een zeer algemene use-case hebben zoals
+bijvoorbeeld ‘voorzien in basisinformatie binnen een domein die voldoet aan
+meervoudig gebruik’, zonder dat het meervoudig gebruik getypeerd kan worden. Een
+andere situatie is dat er veelal registraties zijn die al operationeel
+gepubliceerd worden maar nog geen of nog geen volledige dataspecificaties
+hebben. In dat geval is het maken van een dataspecificatie nog steeds zinvol
+maar ziet het proces er anders en korter uit. Onderstaand zijn grofweg de
+processtappen beschreven. Enkele stappen worden toegelicht.</p><p><img src="media/Plaatje4.jpg" alt=""></p><p>Figuur 4 - Processtappen in het opstellen van een dataspecificatie. (aangepast van INSPIRE D2.6)</p><p>dataspecificatie nog steeds zinvol maar ziet het proces er anders en korter uit.<br>Onderstaand zijn grofweg de processtappen beschreven. Enkele stappen worden toegelicht.</p></section><section id="use-case-beschrijving"><h3 id="x3-2-use-case-beschrijving"><span class="secno">3.2 </span>Use-case beschrijving.</h3><p>De use-case of werkproces is een beschrijving van het doel waarvoor een
+dataspecificatie wordt gemaakt. Het is van belang om de eisen die de aan data
+gesteld worden te bepalen aan de hand van de werkprocessen waar ze voor gebruikt
+gaan worden. Een use-case onderscheidt typen gebruikers en gebruik en
+activiteiten of doelen die worden ondersteund of gerealiseerd. Er kunnen ook
+meerdere use-cases van toepassing zijn. Meestal zijn de beschrijvingen van
+use-cases voor registraties heel algemeen of kan er met enkele specifieke
+voorbeelden een typisch gebruik worden aangegeven. De beschrijving is meestal in
+een beschrijvende taal met de termen zoals die in het toepassingsdomein worden
+gebruikt.</p></section><section id="gebruikseisen-user-requirements"><h3 id="x3-3-gebruikseisen-user-requirements"><span class="secno">3.3 </span>Gebruikseisen (User requirements)</h3><p>De volgende stap is het identificeren van eisen die aan de gegevensset worden
+gesteld. Het is een eerste inventarisatie van uitgangspunten waaraan de gegevens
+moeten voldoen. Op basis van de use-case(s) worden aspecten bepaald zoals
+detail, taal, terminologie, afstemmingsdomein, harmonisatie met domeinen,
+hergebruik van gegevens maar ook modelleerprincipes. De lijst met gebruikseisen
+is hierna de richtlijn die gebruikt wordt om objecttypen en hun eigenschappen te
+bepalen. De gebruikseisen kunnen ook weer leiden tot het aanpassen van de
+use-case.</p></section><section id="objecttypen"><h3 id="x3-4-objecttypen"><span class="secno">3.4 </span>Objecttypen</h3><p>Dit is de fase waar een eerste grove vorm van het informatiemodel wordt gemaakt.
+De use-case en de gebruikseisen hebben al een beeld geschetst wat het
+toepassingsdomein is en de informatie die een rol speelt. Een aantal objecttypen
+kunnen al bepaald worden en een eerste contour van een model worden geschetst.
+Dit is de eerste presentatie van het toepassingsverhaal in een informatiemodel
+in de vorm van een conceptuele taal (in dit geval UML). Het is hierbij van
+belang dat domeinexperts meegenomen worden in dit verhaal. De domeinexperts zijn
+immers degene die de input leveren voor uitwerken van het model.</p></section><section id="ontwikkeling-dataspecificatie"><h3 id="x3-5-ontwikkeling-dataspecificatie"><span class="secno">3.5 </span>Ontwikkeling dataspecificatie</h3><p>Voor de documentatie van een dataspecificatie voor geo-informatie is er een
+internationale standaard ISO 19131. Op basis van die standaard en de toepassing
+daarvan in INSPIRE en in het DSO is een template ontwikkeld (bijlage 4). Dat
+template wordt gebruikt om de verschillende onderwerpen in te vullen. Centraal
+in dit proces is in deze fase nog het informatiemodel. Het startmodel wordt in
+verschillende iteraties met sessies met domeinexperts verder ontwikkeld tot het
+niveau waarop het beantwoordt aan alle aspecten van de use-case en de
+gebruikseisen. Daarna worden de andere hoofdstukken ingevuld.</p></section><section id="testen-en-validatie"><h3 id="x3-6-testen-en-validatie"><span class="secno">3.6 </span>Testen en validatie</h3><p>De dataspecificatie is in eerste instantie nog een theoretisch verhaal. Het
+beschrijft de kennis die door de domeinexperts is aangeleverd. Afhankelijk van
+de complexiteit van de use-case is er een meer of minder complex model ontstaan
+en is er meer of minder zicht op de werkelijke implementatie. In deze fase
+worden de specificaties getest door het maken van voorbeelddata. De toepassing
+in voorbeelddata is een controle op technische haalbaarheid maar leidt meestal
+ook tot nieuw inzicht over inhoudelijke beslissingen.</p><p>Afhankelijk van het ingerichte proces en de concreetheid van de use-case kan de
+test ook een proof of concept omvatten waarbij de voorbeelddata in een
+applicatie worden gebruikt die specifiek aan de use-case beantwoord.</p><p>In deze fase wordt er ook een consultatie van het werkveld uitgevoerd.
+Afhankelijk van de organisatie van het werkveld worden de stakeholders op
+verschillende manieren betrokken bij de consultatie. Dit kan éénmaal aan het
+einde van de oplevering gebeuren of ook meerdere malen in het proces. Een proof
+of concept en ook het maken van de voorbeelddatasets kan eerst door een externe
+consultatie worden voorafgegaan. De resultaten van de consultatie kunnen dan al
+voorafgaand aan de proof of concept worden verwerkt.</p></section><section id="harmonisatie"><h3 id="x3-7-harmonisatie"><span class="secno">3.7 </span>Harmonisatie</h3><p>Een apart en belangrijk punt van aandacht is harmonisatie van semantiek over de
+informatiehuizen heen. Uitgangspunt is dat informatiemodellen voortbouwen op
+semantiek die al geformaliseerd is. Waar informatiemodellen nog vaak binnen de
+context van het informatiehuis blijven zal middels de toepassing van de
+stelselcatalogus relaties met de semantiek van andere huizen eenduidig gelegd
+worden. Er ontstaat daarmee een groeiende verzameling van op elkaar afgestemde
+begrippen. In de ontwikkelfase van een informatiemodel is inventarisatie van wat
+er al is en potentieel hergebruik een belangrijk punt. Voor het leggen van
+relaties, het beoordelen van begrippen voor geschiktheid voor hergebruik of het
+doen van harmonisatievoorstellen wil een informatiemodelleur graag begrippen met
+elkaar kunnen vergelijken[^1]. De stelselcatalogus is daarvoor het middel.</p><p>[^1]: Globaal ontwerp en prototype stelselcatalogus</p><p>Het rapport Globaal ontwerp en prototype stelselcatalogus adviseert om het
+beheer van semantiek over de informatiehuizen heen bij de stelselcatalogus te
+leggen. Deze beheerder organiseert het beheer aan de stelselcatalogus in een
+beheeroverleg met de betrokkenen zoals de wetgevingsjuristen, regelbeheerders en
+modelleurs van de informatiehuizen. Hierdoor kan de stelselcatalogus beheerder
+vanuit een neutrale rol komen tot harmonisatie-, verbeter- en
+afstemmingsvoorstellen.</p></section><section id="extensies-op-bestaande-modellen"><h3 id="x3-8-extensies-op-bestaande-modellen"><span class="secno">3.8 </span>Extensies op bestaande modellen.</h3><p>Al genoemd is dat een informatiemodel zoveel als mogelijk hergebruik maakt van
+bestaande semantiek en bestaande informatiemodellen. Het kan voorkomen dat het
+uitbreiden van bestaande informatiemodellen met extra semantiek een wenselijke
+methode is. O.a. bij het toepassen van INSPIRE dataspecificaties voor
+Nederlandse werkprocessen kan die methode toegepast worden. Een methode daarvoor
+is uitgewerkt op: &lt;http: inspire-extensions.wetransform.to=""&gt;
+</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-modelleren"><span class="secno">4. </span>Modelleren </h2><p>In dit hoofdstuk wordt een metamodel beschreven voor het opstellen van een
+informatiemodel. Centraal hierin staat het metamodel voor informatiemodellering
+KKG[^1]. Het metamodel omvat de informatie-elementen die in een informatiemodel
+kunnen voorkomen en de beschrijvende informatie die bij die elementen hoort.
+Naast het metamodel zijn er ook een aantal regels opgenomen voor
+modelleerconstructies. Uitgangspunt is dat het metamodel en de constructies
+leiden tot een vergelijkbare vorm van informatiemodellering binnen en tussen de
+informatiehuizen.</p><p>[^1]: Metamodel voor informatiemodellen.</p><section id="metamodel-toepassing-van-kkg"><h3 id="x4-1-metamodel-toepassing-van-kkg"><span class="secno">4.1 </span>Metamodel – Toepassing van KKG</h3><p>Een metamodel beschrijft de informatie-elementen op het metaniveau. Het is in
+feite het informatiemodel van het informatiemodel. Het beschrijft de typen en
+eigenschappen van de informatie-elementen die kunnen voorkomen in een
+informatiemodel.</p><p>UML (Unified Modelling Language) is de modelleertaal die voorgeschreven wordt
+voor het maken van een informatiemodel. UML bepaalt voor een deel de structuur
+en informatie-elementen van het informatiemodel. Maar UML laat nog teveel
+vrijheden om als algemene afspraak richtinggevend te zijn. Binnen UML kunnen en
+moeten nog extra regels vastgelegd worden om de betekenis van de
+informatie-elementen eenduidig vast te leggen. Dit wordt in het metamodel
+beschreven. Een registratie kan in de toepassing van het metamodel nog behoefte
+hebben aan nadere afspraken of uitbreidingen op het metamodel. Deze extensies
+zijn mogelijk maar mogen niet in tegenspraak zijn met het metamodel.</p><p>Regel: Een informatiemodel wordt beschreven door middel van UML.</p><p>Regel: Het in dit document beschreven metamodel geldt als uitgangspunt voor de
+nadere specificering van de toepassing van UML.</p><p>Regel: Extensies op het metamodel zijn mogelijk maar mogen niet in tegenspraak
+zijn met het metamodel.</p><p>Het document Metamodel voor informatiemodellen, opgesteld door KING, Kadaster en
+Geonovum wordt overgenomen voor toepassing binnen het DSO. Het genoemde
+metamodel wordt aangeduid als metamodel KKG.</p><p>Regel: DSO gebruikt KKG metamodel voor informatiemodellen.</p><p>Het KKG onderscheidt een aantal niveaus van informatiemodellering, van
+begrippenmodel, conceptueel informatiemodel, logisch informatiemodel tot
+technisch gegevensmodel. Voor het metamodel in deze handreiking is het niveau
+van het logisch informatiemodel van toepassing. Ter begrip hiervan is de volgens
+tekst uit KKG overgenomen:</p><ol>
+<li><p><em>Model van begrippen</em><br>Beschrijft de werkelijkheid binnen het beschouwde domein (de ‘universe of
+discourse’) d.m.v. de daarin gehanteerde begrippen en hun relaties tot
+elkaar. Doel is dat de actoren daarbinnen elkaar begrijpen en één taal
+spreken. Een model van begrippen wordt opgesteld voor gebruik door mensen,
+met name ‘de business’. De begrippen worden beschreven in een formele taal,
+een vocabulaire. Een vocabulaire is geen informatiemodel. Begrippen kunnen
+in meerdere informatiemodellen gebruikt worden.</p>
+</li>
+<li><p><em>Conceptueel informatiemodel</em><br>Modellering van de werkelijkheid binnen het beschouwde domein, v.w.b.
+informatie daarvan, onafhankelijk van ontwerp van en implementatie in
+systemen. Het geeft een zo getrouw mogelijke beschrijving van die
+werkelijkheid en is in natuurlijke taal geformuleerd. Een dergelijk model
+definieert het ‘wat’: welke ‘concepten’ (‘dingen’) worden onderscheiden (in
+de beschouwde werkelijkheid), wat betekenen zij, hoe verhouden ze zich tot
+elkaar en welke informatie (eigenschappen) is daarvan relevant. Het dient
+als taal waarmee domeinexperts kunnen communiceren met informatie-analisten
+en verschaft een eenduidige interpretatie van die werkelijkheid ten behoeve
+van deze communicatie. Een conceptueel informatiemodel wordt dan ook
+opgesteld voor gebruik door mensen, zodat ‘de business’ en de
+ICT-specialisten elkaar gaan begrijpen.</p>
+</li>
+<li><p><em>Logisch informatie- of gegevensmodel</em><br>Beschrijft hoe de, in het conceptuele model onderscheiden, concepten
+gebruikt worden bij de interactie tussen systemen en hun gebruikers en
+tussen systemen onderling. Anders gezegd, een model van de representatie van
+informatie over de werkelijkheid in digitale registraties en in de
+uitwisseling daartussen. Het gaat hierbij, in tegenstelling tot een
+conceptueel model, dus veel meer om het ‘hoe’. Het slaat de brug tussen
+werkelijkheid en systemen maar beschrijft nog niet de implementatie in die
+systemen. Een dergelijk model wordt in een formele taal beschreven en wordt
+waar mogelijk gegenereerd vanuit het conceptueel model. Het logisch model
+wordt opgesteld voor ICT-interoperabiliteit, voor gebruik door met name de
+ontwerpers, bouwers en beheerders van ICT-voorzieningen.</p>
+</li>
+<li><p><em>Fysiek of technisch gegevens- of datamodel</em></p>
+</li>
+</ol><blockquote>
+<p>Specificeert de structuur en eigenschappen van de technologie waarin de
+informatie wordt vastgelegd of uitgewisseld. Dit is sterk afhankelijk van de
+gebruikte opslagtechnologie zoals een specifieke database of de
+servicetechnologie zoals XML, GML, SOAP, REST, (Geo)JSON, LinkedData e.d.
+Het kan tevens informatie bevatten over de manier waarop berichten ‘verpakt’
+worden, het (internet)protocol en de logistiek van het berichtenverkeer. De
+technische specificaties worden over het algemeen zoveel als mogelijk
+gegenereerd uit het logisch informatiemodel. Deze specificaties worden
+opgesteld voor ‘machines’, te gebruiken door software-ontwikkelaars</p>
+</blockquote><p>Binnen de context van deze handreiking geldt het logisch informatiemodel als het
+operationele niveau waarop informatiemodellen zijn beschreven. De keuze hiervoor
+is ingegeven door de overweging dat dit niveau geschikt is voor model driven
+omzetting naar afgeleide producten die een digitale gegevensuitwisseling
+ondersteunen.</p><p>Regel: Dit document gebruikt het logisch informatiemodel als het niveau waarop
+informatiemodellen worden beschreven.</p><section id="keuze-uit-alternatieven-van-kkg"><h4 id="x4-1-1-keuze-uit-alternatieven-van-kkg"><span class="secno">4.1.1 </span>Keuze uit alternatieven van KKG</h4><p>Het metamodel KKG benoemt op enkele punten alternatieve oplossingen. Voor
+toepassing binnen het DSO wordt een keuze gemaakt uit deze alternatieven.</p><p>Relatiesoort of relatierol.</p><p>KKG heeft twee alternatieven voor de modellering en metadatering van relaties
+tussen objecttype. Een relatie wordt gerealiseerd door een ‘relatiesoort’.</p><p><strong>Alternatief 1:</strong> gaat uit van de leidende rol van de relatiesoort, deze heeft
+een naam en bevat alle metagegevens. Er is geen beschrijving van de
+relatrierollen, de rollen die objecttypen in de relatie hebben.</p><p><strong>Alternatief 2:</strong> gaat uit van de leidende rol van de relatierollen. Verplichte
+benoeming van de ‘target rol’ en beschrijving van de metagegevens daarvan. De
+relatiesoort heeft optioneel een naam.</p><p>Regel: Alternatief 2 wordt gevolgd in dit document.</p><p>Naamgevingsconventies.</p><p>KKG heeft twee alternatieven voor naamgevingsconventie van informatie-elementen.</p><p><strong>Alternatief 1</strong>: natuurlijke taal, die dichtbij de gebruiker staat. Met
+natuurlijke taal wordt bedoeld, zoals de gebruikers erover praten, in normaal
+Nederlands. Veelal zijn dit alleen letters en cijfers, met spaties. Koppeltekens
+(‘-’ of ‘_’) kunnen gebruikt worden, indien gewenst, alsmede diakrieten. Deze
+conventie wordt in KKG verplicht gesteld voor het conceptuele niveau.</p><p><strong>Alternatief 2:</strong> taal (ook) leesbaar door systemen. Met machine leesbare taal
+wordt bedoeld dat deze eenvoudig door systemen te verwerken is. Veelal zijn dit
+alleen letters en cijfers, zonder spaties, zonder diakrieten. Koppeltekens (‘-’
+of ‘_’) kunnen gebruikt worden, maar dit wordt veelal vermeden. Deze conventie
+wordt in KKG verplicht gesteld voor het logische niveau.</p><p>Regel: Alternatief 2 wordt gevolgd in dit document.</p><p>Alternatief 2 ingevuld voor deze handreiking leidt tot de volgende
+naamgevingsconventies.</p><p><strong>Naamgevingconventies:</strong></p><ol>
+<li><p>UML-talen zijn hoofdlettergevoelig.</p>
+</li>
+<li><p>UML-talen mogen geen spaties bevatten.</p>
+</li>
+<li><p>UML-talen geven een precieze en begrijpelijke technische beschrijving voor
+klassen, attributen, operaties en parameters.</p>
+</li>
+<li><p>Combineer indien nodig verschillende woorden om precieze en begrijpelijke
+namen te vormen zonder tussenliggende karakters (“_”, “-”, of spatie).</p>
+</li>
+<li><p>Maak van de beginletter van ieder deelwoord van namen van attributen,
+waarden in een lijst, operaties, rollen van associaties en parameters een
+hoofdletter, behalve de beginletter van het eerste woord. Bij namen van
+klassen, packages, typespecificaties en associaties wordt ook de beginletter
+een hoofdletter.</p>
+</li>
+<li><p>Houd namen zo kort als praktisch mogelijk. Gebruik standaard afkortingen als
+ze begrijpbaar zijn, gebruik geen voorzetsels en laat werkwoorden vallen
+wanneer ze niet significant bijdragen aan de betekenis.</p>
+</li>
+<li><p>Afgezien van sleutelwoorden die uit internationale normen komen is de
+voertaal bij voorkeur Nederlands.</p>
+</li>
+</ol></section></section><section id="objectidentificatie"><h3 id="x4-2-objectidentificatie"><span class="secno">4.2 </span>Objectidentificatie</h3><p>De objectidentificatie zorgt voor het identificeren van instanties van
+objecttypen. In feite dus de identificatie van de objecten in een registratie.
+Dit is niet hetzelfde als de identificatie van objecten in de werkelijkheid.
+Voor dat laatste zijn er andere mechanismen die voor elke registratie specifiek
+kunnen zijn. De objectidentificatie is eigenlijk de elektronische pointer of
+sleutel naar de objecten in de registratie. Omdat die sleutel een bruikbare
+waarde moet hebben over alle registraties heen, binnen Nederland en ook
+wereldwijd, is het van belang om een systematiek voor wereldwijde unieke
+identificatie van objecten toe te passen.</p><p>Om dit te realiseren wordt er binnen het DSO een URI strategie ontwikkeld voor
+unieke objectidentificatie. Voor de toepassing hiervan wordt verwezen naar dat
+document[^2].</p><p>[^2]: Kaderstellende notitie, URI-strategie.</p></section><section id="temporeel-model"><h3 id="x4-3-temporeel-model"><span class="secno">4.3 </span>Temporeel model</h3><p>Het bijhouden van historie en toekomst in relatie tot geldigheid van gegevens
+valt onder het temporele model. KKG heeft op meta niveau een mechanisme om aan
+te geven of attributen historie op bouwen. In KKG is op het logisch niveau
+daarvoor geen implementatie beschreven. Binnen deze handreiking is dat ook niet
+opgenomen. Voor de DSO moet worden bezien hiervoor een gestandaardiseerde
+oplossing wordt ontwikkeld.</p></section><section id="standaard-datatypen"><h3 id="x4-4-standaard-datatypen"><span class="secno">4.4 </span>Standaard datatypen</h3><p>Regel:</p><p>Informatiemodellen maken voor basis datatypen (of waardetypen) daar waar van
+toepassing gebruik van internationale standaarden.</p><p>Eén van de onderdelen waarop relatief eenvoudig gestandaardiseerd kan worden is
+de semantiek en syntax van datatypen en specifiek de basis waardetypen.
+Voorbeelden hiervan zijn ‘numerieke waarde’, ‘alfanumerieke waarde’, ‘geheel
+getal’, ‘datum’. Internationaal zijn de equivalenten hiervan gestandaardiseerd.
+Hiermee wordt geharmoniseerd over de informatiemodellen van de leefomgeving
+doormiddel van het aansluiten op internationale standaarden.</p><p>Voorbeelden van standaarddatatypen zijn: characterString, integer, real en ook
+date, dataTime, Surface, Point</p><p>Referentie voor standaard typen is:</p><ul>
+<li><p>ISO/IEC 19501:2005 Information technology – Open distributed Processing
+Modelling Language (UML) Version 1.4.2</p>
+</li>
+<li><p>ISO/IEC 11404: Information technology – General Purpose Datatypes (GPD)</p>
+</li>
+<li><p>ISO 19107: Geographic information – Spatial schema</p>
+</li>
+</ul></section><section id="geen-waarde"><h3 id="x4-5-geen-waarde"><span class="secno">4.5 </span>Geen waarde</h3><p>ISO/IEC 11404 definieert void (geen waarde) als een object waarvan de
+aanwezigheid syntactisch of semantisch nodig is maar in bepaalde voorkomens
+(instanties) geen waarde heeft.</p><p>Een element in de inhoud van een bericht heeft in de regel een waarde. Het XML
+principe is ook dat een element zonder waarde niet wordt uitgewisseld. Toch is
+het zinvol om de reden dat iets geen waarde heeft kenbaar te kunnen maken. Het
+kan bijvoorbeeld zijn dat de waarde er wel is maar de aanvrager niet
+geautoriseerd is, of dat de waarde er niet is omdat ze niet wordt ondersteund
+door de registratie. Zo zijn verschillende redenen die mogelijk van belang
+kunnen zijn om aan te geven. Voor het specificeren van het informatiemodel kan
+het van belang zijn om de ‘geen waarde’ constructie expliciet bij
+informatie-elementen aan te geven. In overeenstemming met ISO/IEC 11404 wordt
+daarmee aangegeven dat het informatie-element semantisch nodig is maar in
+bepaalde gevallen niet kan worden opgenomen of uitgewisseld. Het is dan
+duidelijk voor welke elementen de constructie wel of niet gebruikt mag worden.
+KKG geeft dit aan door bij die elementen een ‘indicatie mogelijk geen waarde’ op
+te nemen. Het kan toegepast worden bij attributen en associatierollen.</p><p>Voor de redenen dat een element niet is ingevuld is een afgesproken lijst
+ontwikkeld. Omdat niet alle redenen van te voren zijn te bepalen is dit een open
+lijst.</p><p>Regel: Voor de redenen voor invullen geen waarde wordt een gestandaardiseerde
+lijst gehanteerd.</p><table>
+<thead>
+<tr>
+<th>Waarde</th>
+<th>Definitie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nietOndersteund</td>
+<td>Zender houdt in zijn registratie geen waardes voor dit element bij.</td>
+</tr>
+<tr>
+<td>nietGeautoriseerd</td>
+<td>Zender vindt dat de ontvanger niet geautoriseerd is om de waarde van dit attribuut te kennen</td>
+</tr>
+<tr>
+<td>geenWaarde</td>
+<td>Het attribuut heeft in de werkelijkheid geen waarde. (om expliciet te maken dat er in de werkelijkheid echt geen waarde is)</td>
+</tr>
+<tr>
+<td>waardeBestaat</td>
+<td>Er bestaat een gangbare waarde voor het attribuut. Bijvoorbeeld toepassen op element overlijdensdatum als zender weet dát de persoon is overleden, maar niet weet wanneer.</td>
+</tr>
+<tr>
+<td>waardeOnbekend</td>
+<td>Of er een gangbare waarde is en zo ja, wat die waarde is voor dit attribuut, is bij de zender niet bekend.</td>
+</tr>
+<tr>
+<td>vastgesteldOnbekend</td>
+<td>Er is een gangbare waarde voor het attribuut, maar het is vastgesteld dat die waarde van het attribuut onbekend is en niet meer kan worden achterhaald (bijvoorbeeld omdat een object in de werkelijkheid niet meer bestaat het gegeven niet meer is te achterhalen)</td>
+</tr>
+</tbody></table><p>Deze UML constructie wordt in XML geïmplementeerd middels een ‘nillable’ type
+met ‘nilreason’.</p></section></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-software-en-uml-profiel"><span class="secno">5. </span>Software en UML profiel </h2><section id="software-en-uml-profiel"><h3 id="x5-1-software-en-uml-profiel"><span class="secno">5.1 </span>Software en UML profiel</h3><p>Voor de toepassing van het metamodel is een UML-profiel met stereotypen gemaakt
+voor toepassing in modelleersoftware.</p><section id="modelleersoftware"><h4 id="x5-1-1-modelleersoftware"><span class="secno">5.1.1 </span>Modelleersoftware</h4><p>Er zijn verschillende sofware tools voor het modelleren van UML modellen. Een
+veel gebruikte tool is Sparx Enterprise Architect (EA), dit is geen open source
+maar is wijd verspreid en biedt daardoor een functionaliteit voor
+interoperabiliteit tussen modelleeromgevingen van verschillende partijen. Er
+zijn ook weer software tools die op basis van EA afgeleide producten kunnen
+genereren.</p><p>Aanbeveling: Gebruik van Sparx Enterprise Architect software voor het modelleren
+vergroot de interoperabiliteit tussen modelleeromgevingen.</p><p>Voor toepassing van KKG in EA is er een UML-profiel ontwikkeld:</p><ul>
+<li>‘Informatiemodel’ UML-profiel, KKG-alt2: UML profiel voor implementatie
+binnen EA. Stereotypen conform KKG alternatief 2. Ontwikkeld binnen project
+Metamodel KKG.</li>
+</ul></section><section id="implementatiesoftware"><h4 id="x5-1-2-implementatiesoftware"><span class="secno">5.1.2 </span>Implementatiesoftware</h4><p>Voor het toepassen van de in UML opgestelde informatiemodellen naar
+specificaties voor berichtenverkeer is er een vertaling van het informatiemodel
+naar de structuur van het berichtenverkeer nodig. In overeenstemming met het
+globaal ontwerp Gegevenstromen Laaninfrastructuur zijn linked data en XML
+gestructureerd berichtenverkeer als implementatie gekozen. Linked data heeft
+daarbij de voorkeur. Bijzonder vermelding is voor geo-data. Linked data
+standaarden kunnen daar in worden gebruikt maar zijn echter niet in alle
+gevallen haalbaar of praktisch. De standaarden van het OGC, INSPIRE en NEN3610
+voor geo-data zijn de huidige bewezen en stabiele standaarden die met name
+tussen overheden goed werken.[^1]</p><p>[^1]: Globaal ontwerp Gegevensstromen Laaninfrastructuur</p><p>Een tool die gebruikt kan worden voor het genereren van GML (XML) of RDF schema
+(linked data) van uit het UML van het informatiemodel is Imvertor. Aan de hand
+van in standaarden beschreven vertaalregels worden de schema’s in het correcte
+format gegenereerd. Imvertor kan daarnaast verschillende documentatie producten
+genereren.</p></section></section></section><section id="B00" data-format="markdown"><!--OddPage--><h2 id="x6-bijlagen"><span class="secno">6. </span>Bijlagen</h2><section id="bijlage-1-abstracte-conformiteittoets-dataspecificatie-voor-dso"><h3 id="x6-1-bijlage-1-abstracte-conformiteittoets-dataspecificatie-voor-dso"><span class="secno">6.1 </span>Bijlage 1: Abstracte conformiteittoets: Dataspecificatie voor DSO.</h3><p>Inleiding</p><p>De test suite voor de conformiteittoets volgt de regels van ISO 19105 Geographic
+information – Conformance and testing. Deze handreiking beschrijft de regels
+voor toepassing van dataspecificaties voor het uitwisselen van data binnen het
+DSO. Het onderwerp voor toetsing is daarmee bepaald tot dataspecificaties binnen
+die context. Met de term dataspecificatie wordt in de test bedoeld het object
+dat wordt getest. De conformiteittest bestaat uit testregels die testen of een
+dataspecificatie voldoet aan deze handreiking.</p><p><strong>Abstracte test versus Uitvoeringstest.</strong></p><p>Deze test suite bevat de beschrijving van de abstracte test. Toepassing hiervan
+in een uitvoeringsformat leidt tot een uitvoeringstest. Deze laatste bevat een
+referentie aan de abstracte test met een concrete uitwerking voor uitvoering. In
+de uitvoeringstest is een format opgenomen hoe de rapportage van de uitvoering
+van de test wordt weergegeven. In deze abstracte test is daarom geen format voor
+de rapportage opgenomen.</p><p>Voor het beschrijven van de testregels wordt het volgende format gebruikt:</p><p>X.Y Testonderwerp</p><ol>
+<li><p>Testreden: Achtergrond van de test.</p>
+</li>
+<li><p>Testmethode: Instructie hoe de test wordt uitgevoerd.</p>
+</li>
+<li><p>Referentie: Onderbouwing met referentie naar dit document.</p>
+</li>
+<li><p>Testtype: Er zijn twee typen: basistest (basic) en detail(capability).</p>
+</li>
+<li><p>De basistest is een eerste test om algemene regels te verifiëren, de
+detailtest valideert op onderdelen.</p>
+</li>
+</ol><p>De testregel wordt gevalideerd en de uitkomst is één van de volgende
+conformiteitklassen</p><ol>
+<li><p>Conform: De dataspecificatie is volledig conform de specificatie beschreven
+in het testonderwerp.</p>
+</li>
+<li><p>Niet conform: De dataspecificatie is niet conform de specificatie beschreven
+in het testonderwerp.</p>
+</li>
+<li><p>Niet van toepassing: Het testonderwerp is niet van toepassing voor deze
+dataspecificatie.</p>
+</li>
+</ol><p><strong>Testregels: ATS dataspecificatie voor DSO.</strong></p><p>1.1 Scope van de dataspecificatie.</p><ol>
+<li><p>Testreden: Bepaal of van de dataspecificatie die getest wordt het onderwerp
+(scope) valt binnen de scope van het DSO, of een rol gaat vervullen.</p>
+</li>
+<li><p>Testmethode: Kijk of het onderwerp van de te testen specificatie beschreven
+is en of het valt binnen de scope van het DSO. <em>Het hoeft niet zo te zijn
+dat een gehele dataspecificatie daaronder valt. Het kan ook gelden voor
+delen van een dataspecificatie.</em></p>
+</li>
+<li><p>Referentie: geen referentie. Deze testregel is niet in alle situaties
+relevant omdat dit document ook voor specificaties buiten het DSO gebruikt
+kan worden. Toch is de testregel hier opgenomen omdat ergens bepaald moet
+worden of een dataspecificatie een rol heeft binnen de context van het DSO.</p>
+</li>
+<li><p>Testtype: Basistest.</p>
+</li>
+</ol><p>1.2 Modelleringsnotatie.</p><ol>
+<li><p>Testreden: controle op gebruik van formele taal voor modelleren.</p>
+</li>
+<li><p>Testmethode: Verifieer gebruik van UML, specifiek het UML package- en
+klassediagram.</p>
+</li>
+<li><p>Referentie: 4.1</p>
+</li>
+<li><p>Testtype: Basistest.</p>
+</li>
+</ol><p>1.3 Metamodel</p><p>1.3.1 Metamodel – KKG</p><ol>
+<li><p>Testreden: controle op het gebruik van het beschreven metamodel.</p>
+</li>
+<li><p>Testmethode: Verifieer het gebruikte metamodel. De dataspecificatie moet
+aangeven dat het KKG metamodel wordt gebruikt of een extensie hiervan.</p>
+</li>
+<li><p>Referentie: 4.1</p>
+</li>
+<li><p>Testtype: Basistest.</p>
+</li>
+</ol><p>1.3.2 Metamodel – extensies</p><ol>
+<li><p>Testreden: controle of extensies op het metamodel niet in tegenspraak met
+het metamodel zijn.</p>
+</li>
+<li><p>Testmethode: Verifieer de extensies op het metamodel. <em>Zijn de toegevoegde
+stereotypen valide niet in tegenspraak met al gedefinieerde stereotypen?
+Zijn uitbreidingen op stereotypen valide.</em></p>
+</li>
+<li><p>Referentie: 4.1</p>
+</li>
+<li><p>Testtype: Detailtest.</p>
+</li>
+</ol><p>1.4 Perspectief van modellering.</p><ol>
+<li><p>Testreden: controle of model op logisch niveau is gedefinieerd</p>
+</li>
+<li><p>Testmethode: Verifieer het niveau waarop het model is gedefinieerd.</p>
+</li>
+<li><p>Referentie: 4.1</p>
+</li>
+<li><p>Testtype: Basistest.</p>
+</li>
+</ol><p>1.5 Toepassing KKG alternatieven voor associaties in het informatiemodel</p><ol>
+<li><p>Testreden: controle of alternatief 2 van KKG wordt gevolgd</p>
+</li>
+<li><p>Testmethode: Zijn de targetrollen van associaties verplicht gebruikt.</p>
+</li>
+<li><p>Referentie: 4.1.1</p>
+</li>
+<li><p>Testtype: Detailtest.</p>
+</li>
+</ol><p>1.6 Naamgeving informatie-elementen</p><ol>
+<li><p>Testreden: controle op naamgeving informatie-elementen conform
+naamgevingsconventie</p>
+</li>
+<li><p>Testmethode: Verifieer of de naamgeving van informatie-elementen,
+objecttype, attributen, associaties de naamgevingsconventie volgt.</p>
+</li>
+<li><p>Referentie: 4.1.1</p>
+</li>
+<li><p>Testtype: Detailtest.</p>
+</li>
+</ol><p>1.5 Standaard datatypen</p><ol>
+<li><p>Testreden: controle op gebruik internationale datatypen.</p>
+</li>
+<li><p>Testmethode: Verifieer of basis datatypen of waardetypen overgenomen zijn
+van internationale standaarden. <em>Voorbeelden zijn numerieke of alfanumerieke
+velden, datumvelden, boolean constructies, geometrietypen.</em></p>
+</li>
+<li><p>Referentie: 4.4</p>
+</li>
+<li><p>Testtype: Detailtest.</p>
+</li>
+</ol><p>1.6 Waardelijst voor geen-waarde informatie is toegepast.</p><ol>
+<li><p>Testreden: controle op gebruik van waardelijst om de reden voor het invullen
+van geen waarde te typeren.</p>
+</li>
+<li><p>Testmethode: Verifieer of de toe te passen waarden conform de opgenomen
+waardelijst is.</p>
+</li>
+<li><p>Referentie: 4.5</p>
+</li>
+<li><p>Testtype: Detailtest.</p>
+</li>
+</ol></section><section id="bijlage-2-termen-en-afkortingen"><h3 id="x6-2-bijlage-2-termen-en-afkortingen"><span class="secno">6.2 </span>Bijlage 2: Termen en afkortingen</h3><p>Termen</p><table>
+<thead>
+<tr>
+<th><strong>term</strong></th>
+<th><strong>bron</strong></th>
+<th><strong>definitie</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dataspecificatie</td>
+<td>[NEN-EN-ISO 19131:2007]</td>
+<td>een gedetailleerde beschrijving van een dataset of dataset series samen met additionele informatie ten behoeve van creatie, levering aan of gebruik door andere partijen.</td>
+</tr>
+<tr>
+<td>domein / sector</td>
+<td>NEN 3610</td>
+<td>kennisgebied of activiteit gekarakteriseerd door een verzameling van begrippen</td>
+</tr>
+<tr>
+<td>informatiemodel</td>
+<td>[NEN-EN-ISO 19101:2005]</td>
+<td>formele definitie van objecten, attributen, relaties en regels in een bepaald domein</td>
+</tr>
+<tr>
+<td>geo-informatie</td>
+<td>[NEN-EN-ISO 19101:2005]</td>
+<td>informatie met een directe of indirecte referentie naar een plaats ten opzichte van de aarde (bijvoorbeeld ten opzichte van het aardoppervlak)</td>
+</tr>
+<tr>
+<td>georeferentie</td>
+<td>NEN 3610</td>
+<td>locatie van een ruimtelijk object vastgelegd in een ruimtelijk referentiesysteem</td>
+</tr>
+<tr>
+<td>model</td>
+<td>[NEN-EN-ISO 19109:2006]</td>
+<td>abstractie van enige aspecten van de werkelijkheid</td>
+</tr>
+<tr>
+<td>presentatie</td>
+<td>[NEN-EN-ISO 19117:2006]</td>
+<td>presentatie van informatie aan mensen</td>
+</tr>
+<tr>
+<td>registratie</td>
+<td>NEN 3610</td>
+<td>op nationaal niveau geïdentificeerde en erkende gegevensverzameling</td>
+</tr>
+<tr>
+<td>registratiehouder</td>
+<td>NEN 3610</td>
+<td>organisatie die unieke objectidentificaties toekent voor objecten in een registratie</td>
+</tr>
+<tr>
+<td>representatie</td>
+<td>NEN 3610</td>
+<td>inhoudelijk vastleggen van de werkelijkheid</td>
+</tr>
+<tr>
+<td>objectcatalogus / feature catalogue</td>
+<td>[ISO/DIS 19110:2013]</td>
+<td>Catalogus met definities en beschrijving van objecttypen, attributen en relaties van één of meer (geografische) datasets, inclusief mogelijk operaties op objecttypen</td>
+</tr>
+<tr>
+<td>Werkelijkheid / universe of discourse</td>
+<td>[NEN-EN-ISO 19101:2005]</td>
+<td>beeld van de echte of hypothetische wereld dat binnen de context van een domein alles van belang omvat</td>
+</tr>
+<tr>
+<td>Concepten woordenboek / Feature concept dictionary</td>
+<td>ISO 19126:2009</td>
+<td>Woordenboek met definities en gerelateerde beschrijvende informatie over concepten die in meer detail beschreven kunnen worden in een objectcatalogus</td>
+</tr>
+<tr>
+<td>dataset</td>
+<td>[ISO 19115]</td>
+<td>identifiable collection of data</td>
+</tr>
+<tr>
+<td>data set series</td>
+<td>[ISO 19115]</td>
+<td>collection of data sets sharing the same product specification</td>
+</tr>
+<tr>
+<td>register</td>
+<td>[ISO 19135]</td>
+<td>set of files containing identifiers assigned to items with descriptions of the associated items</td>
+</tr>
+<tr>
+<td>use case</td>
+<td>INSPIRE D2.6</td>
+<td>A <em>use case</em> defines a goal-oriented set of interactions between actors and the system under consideration.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="bijlage-3-referentie-implementatie-kkg-alternatief-2"><h3 id="x6-3-bijlage-3-referentie-implementatie-kkg-alternatief-2"><span class="secno">6.3 </span>Bijlage 3: Referentie implementatie KKG-alternatief 2</h3><p>Voorbeeld van een UML klassediagram met fictieve informatielelementen.
+KKG-alternatief 2 wordt hierin gevolgd. De naamgevingsconventie voor alternatief
+2 is hier niet toegepast.</p><p><img src="media/PlaatjeBijlage3.png" alt=""></p></section><section id="bijlage-4-voorbeeld-dataspecificatie-template"><h3 id="x6-4-bijlage-4-voorbeeld-dataspecificatie-template"><span class="secno">6.4 </span>Bijlage 4: Voorbeeld Dataspecificatie template</h3><p>Deze bijlage beschrijft het template dat gebruikt kan worden voor het opstellen
+van een dataspecificatie document. Dit template is binnen deze opdracht niet
+gestandaardiseerd. Er is een voorbeeld template gemaakt dat als input kan dienen
+voor het verder afstemmen van gebruik door informatiehuizen:
+Dataspecificatie_Template_DSO.docx. Het voorbeeld is nog niet ontwikkeld voor
+toepassing van het metamodel KKG.
+</p><p>Bij Geonovum wordt een methode ontwikkeld om de documentatie van
+geo-standaarden, waaronder dataspecificaties te beheren van uit een github
+omgeving en op het web te publiceren in HTML.  </p><p>Meer informatie hier over:
+</p><p>Ontwikkelomgeving: &lt;https: github.com="" geonovum="" respec="" wiki=""&gt;</p><p>Voorbeeld 1: (hoofdstuk 5 is uit een UML gegenereerde objectcatalogus)</p><p>&lt;https: tools.geostandaarden.nl="" respec="" test="" whitepapertest.html=""&gt;</p><p>Voorbeeld 2: &lt;https: geonovum.github.io="" metadata-iso19115=""&gt;</p></section><section id="bijlage-5-bibliografie"><h3 id="x6-5-bijlage-5-bibliografie"><span class="secno">6.5 </span>Bijlage 5: Bibliografie</h3><p>GIMAReader Module 5 UML.</p><p>Gemeenschappelijk Afspraken Berichten, GAB (Federatief overleg
+beheerorganisaties basisregistraties en standaarden).</p><p>Geonovum, iov Ministerie van Infrastructuur en Milieu, 2014. Globaal ontwerp
+Laaninfrastructuur.</p><p>Geonovum, iov Ministerie van Infrastructuur en Milieu, 2015. Globaal ontwerp
+Gegevensstromen Laaninfrastructuur.</p><p>Geonovum, iov Ministerie van Infrastructuur en Milieu, 2015. Globaal ontwerp en
+prototype stelselcatalogus.
+</p><p>INSPIRE, 2008. Drafting Team "Data Specifications" – deliverable D2.6:
+Methodology for the development of data specifications.</p><p>INSPIRE, 2014. Drafting Team "Data Specifications" – deliverable D2.5: General
+Conceptual Model.</p><p>Kaderstellende notitie, URI-strategie. Versie 1.57 Concept 15-05-2017.
+Deelprogramma Digitaal Stelsel Omgevingswet.</p><p>KING, 2015. Metamodel voor de Referentiemodellen Gemeentelijke Basisgegevens.
+Versie 0.6.</p><p>Metamodel voor informatiemodellen. 2017. KING, Kadaster, Geonovum</p><p>NEN 3610: 2011/A1:2016 Basismodel Geo-informatie – Termen, definities relaties
+en algemene regels voor de uitwisseling van informatie over aan de aarde
+gerelateerde ruimtelijke objecten.</p><p>NEN-ISO/IEC 11404:2008 Information technology – General Purpose Datatypes (GPD)</p><p>NEN-EN-ISO 19101-1:2014 Geographic information - Reference model - Part 1:
+Fundamentals</p><p>NEN-EN-ISO 19103:2005 Geographic Information – Conceptual schema language.</p><p>NEN-EN-ISO 19105:2005 Geographic information – Conformance and testing</p><p>NEN-EN-ISO 19107:2005 Geographic information – Spatial schema</p><p>NEN-EN-ISO 19109:2006 Geographic Information – Rules for application schema.</p><p>NEN-EN-ISO 19110:2006 Geographic information - Methodology for feature
+cataloguing.</p><p>NEN-EN-ISO 19115-1:2014 Geographic information - Metadata - Part 1:
+Fundamentals.</p><p>NEN-EN-ISO 19117:2014 Geographic information – Portrayal.</p><p>NEN-EN-ISO 19126:2009 Geographic information - Feature concept dictionaries and
+registers.</p><p>NEN-EN-ISO 19131:2008 Geographic Information – Data product specifications.</p><p>NEN-EN-ISO 19135:2007 Geographic information - Procedures for registration of
+geographical information items.</p><p>NEN-EN-ISO 19136:2009 Geographic information - Geography Markup Language (GML).</p><p>NEN-ISO/IEC 19501:2005 Information technology – Open distributed Processing
+Modelling Language (UML) Version 1.4.2</p><p><a href="https://www.nen.nl/NEN-Shop/Norm/NPRCENTR-1544932012-en.htm">NPR-CEN/TR 15449-3:2012 Geographic information - Spatial data infrastructures -
+Part 3: Data centric
+view</a></p><p>INSPIRE Data Specification Extensions:
+&lt;http: inspire-extensions.wetransform.to=""&gt;</p><p>Werkgroep URI-Strategie, 2014. Voorstel URI strategie voor de basisregistraties.<br>&lt;"<a href="http://www.pilod.nl/w/images/1/16/20141009_AdviesURIStrategieBasisregistraties_0.3.pdf&quot;>">http://www.pilod.nl/w/images/1/16/20141009_AdviesURIStrategieBasisregistraties_0.3.pdf"&gt;</a></p><p>Werkgroep Best Practices, 2013. Metamodel voor structuurmodellen in
+(basis)registraties. Whitepaper (Geonovum).
+</p></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

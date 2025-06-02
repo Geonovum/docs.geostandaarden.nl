@@ -1,0 +1,863 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+      
+      
+      <title>Chw bestemmingsplannen digitaal beschikbaar stellen</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "license": "cc-by-nd",
+  "publishDate": "2016-03-24",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "waCHWbp",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/ROST/",
+  "issueBase": "https://github.com/geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2016-03-24T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 24 maart 2016"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-wa-waCHWbp-20160324/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Chw bestemmingsplannen digitaal beschikbaar stellen",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2016-03-24",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Chw bestemmingsplannen digitaal beschikbaar stellen</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2016-03-24">24 maart 2016</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-wa-waCHWbp-20160324/">https://docs.geostandaarden.nl/ro/def-wa-waCHWbp-20160324/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/waCHWbp/">https://docs.geostandaarden.nl/ro/waCHWbp/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#werkwijze"><span class="secno">2. </span>Werkwijze</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl"><span class="secno">2.1 </span>Uitvoering met behulp van een contour op Ruimtelijkeplannen.nl</a></li><li class="tocline"><a class="tocxref" href="#uitvoering-met-behulp-van-een-interactief-raadpleegbaar-plan-op-ruimtelijkeplannen-nl"><span class="secno">2.2 </span>Uitvoering met behulp van een interactief raadpleegbaar plan op Ruimtelijkeplannen.nl</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlagen"><span class="secno">3. </span>Bijlagen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bijlage-1"><span class="secno">3.1 </span>Bijlage 1</a></li><li class="tocline"><a class="tocxref" href="#bijlage-2"><span class="secno">3.2 </span>Bijlage 2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#digitale-verplichtingen-waarvan-kan-worden-afgeweken"><span class="secno">3.2.1 </span>Digitale verplichtingen waarvan kan worden afgeweken</a></li><li class="tocline"><a class="tocxref" href="#welke-digitale-verplichtingen-gelden-wel"><span class="secno">3.2.2 </span>Welke digitale verplichtingen gelden wel?</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-3"><span class="secno">3.3 </span>Bijlage 3</a></li></ol></li></ol></nav><section data-format="markdown" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>Deze werkafspraak is opgesteld en vastgesteld in nauwe samenwerking tussen de volgende organisaties:
+</p><img src="media/LogoOrganisaties.jpg" alt="media/LogoOrganisaties.jpg" style="width: 100%;"><p>Met het wijzigen van het Besluit uitvoering Crisis- en herstelwet in mei 2014
+(<a href="https://zoek.officielebekendmakingen.nl/stb-2014-168.html">Stb. 2014, nr.
+168</a>) en het aanvullen van de bijlagen bij de Crisis- en herstelwet
+(zevende tranche)is het voor een aantal gemeenten mogelijk bestemmingsplannen (met verbrede reikwijdte) te
+maken waarmee kan worden afgeweken van een aantal met name genoemde onderdelen
+van de geldende wet- en regelgeving. De betreffende gemeenten experimenteren
+hiermee in het kader van de Crisis- en herstelwet en doen tevens ervaring op ter
+voorbereiding op de Omgevingswet. Een van de aspecten waar gemeenten onder
+voorwaarden van af mogen wijken zijn de digitale aspecten met RO Standaarden en
+Ruimtelijkeplannen.nl. 
+In de huidige situatie dienen bestemmingsplannen te voldoen aan de op
+basis van artikel 1.2.6 Bro opgestelde Regeling standaarden ruimtelijke ordening 2012. Deze regeling bevat vereisten met betrekking tot vormgeving, inrichting en
+elektronische beschikbaarstelling van het plan: de RO Standaarden 2012.
+Afgeweken kan worden onder de voorwaarde dat het Chw
+bestemmingsplan wel elektronisch op een algemeen toegankelijke wijze beschikbaar
+wordt gesteld en blijft op een door de raad te bepalen internetadres
+(weblocatie). De landelijke voorziening Ruimtelijkeplannen.nl bevat een
+verwijzing naar dit internetadres. Dit is bepaald met artikel 7c, lid 9 van
+Besluit uitvoering Chw.
+</p><p>Deze werkafspraak heeft betrekking op de ontsluiting van de informatie van het
+Chw bestemmingsplan via Ruimtelijkeplannen.nl. De werkafspraak gaat niet in op
+de wijze van ontsluiten via een door de gemeente gekozen andere werkwijze of de
+opbouw en inhoud van het digitale Chw bestemmingsplan. De werkafspraak geldt
+voor alle gemeenten, of deelgebieden binnen die gemeenten, die op grond van
+eerder genoemd Besluit uitvoering Crisis- en herstelwet mogen afwijken van de RO
+Standaarden.</p><p>In <a href="#bijlage-1">bijlage 1</a> van deze werkafspraak is een lijst van gemeenten
+opgenomen uit de 6e tot en met de 10e tranche die bestemmingsplannen met
+verbrede reikwijdte maken. In toekomstige tranches kan het aantal gemeenten
+worden uitgebreid. In <a href="#bijlage-2">bijlage 2</a> is de digitale verplichting in het
+kader van de Chw nader toegelicht.</p><p>Het ministerie van Infrastructuur en Milieu en Geonovum zullen bij het
+ontwikkelen van standaarden voor de Omgevingswet gebruik maken van de ervaringen
+die de betreffende gemeenten opdoen bij het maken van Chw bestemmingsplannen.
+Het is echter goed mogelijk dat niet alle ervaringen en gekozen oplossingen één
+op één worden overgenomen in het toekomstige digitale omgevingsplan op grond van
+de Omgevingswet.</p></section><section data-format="markdown" id="werkwijze"><!--OddPage--><h2 id="x2-werkwijze"><span class="secno">2. </span>Werkwijze</h2><p>Voor het digitaal ontsluiten van het Chw bestemmingsplan maakt de gemeente de
+keuze in hoeverre de inhoud van het bestemmingsplan via Ruimtelijkeplannen.nl
+raadpleegbaar is en of het authentieke plan interactief wordt gepresenteerd. In
+deze werkafspraak worden twee opties omschreven:</p><ol>
+<li><p><u>Uitvoering met behulp van een contour op Ruimtelijkeplannen.nl</u>.<br>De gemeente stelt een contour met daaraan gekoppeld pdf´s van kaart,
+toelichting en regels beschikbaar die via Ruimtelijkeplannen.nl
+raadpleegbaar is; via een andere weblocatie stelt de gemeente het Chw
+bestemmingsplan op een algemeen toegankelijke wijze beschikbaar.</p>
+</li>
+<li><p><u>Uitvoering met behulp van een interactief raadpleegbaar plan op
+Ruimtelijkeplannen.nl</u>.<br>De gemeente stelt het Chw bestemmingsplan beschikbaar als authentiek plan
+waarvan de volledige inhoud via Ruimtelijkeplannen.nl interactief
+raadpleegbaar is.</p>
+</li>
+</ol><p>Voor beide werkwijzen geldt dat het Chw bestemmingsplan via het tabblad
+‘bestemmingsplannen’ van Ruimtelijkeplannen.nl raadpleegbaar zal zijn. Met
+behulp van de zoekfunctie op Ruimtelijkeplannen.nl is het Chw bestemmingsplan
+wel op naam <em>en</em> identificatienummer vindbaar. Het Chw bestemmingsplan zal
+echter niet vindbaar zijn als afzonderlijk ‘plan type’; hiervoor zal gezocht
+moeten worden met behulp van plan type ‘bestemmingsplan’ of
+‘beheersverordening’.</p><p>De gemeente kiest voor <strong>optie 1</strong> in verband met een maximale beleidsmatige
+invulling van het experiment en daarmee voor een maximale technische vrijheid.
+Met deze optie voldoet de gemeente aan de minimum vereiste van artikel 7c, lid 9
+onderdeel a Besluit uitvoering Chw.</p><p>De gemeente stelt via de landelijke voorziening Ruimtelijkeplannen.nl de contour
+van het Chw bestemmingsplan beschikbaar met behulp van een uniek
+plan-identificatienummer.
+</p><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Noot</span></div><details class="">
+De toepassing van een uniek plan identificatienummer is voorgeschreven
+door de Standaard Toegankelijkheid Ruimtelijke Instrumenten 2012. Ieder
+ruimtelijk Wro plan, visie of besluit kent een ‘NL.IMRO’ nummer. Ondanks dat op
+grond van het Besluit uitvoering Crisis- en herstelwet van de RO Standaarden mag
+worden afgeweken, dient het plan wel een uniek planidentificatienummer te
+hebben. Zonder uniek planidentificatienummer zal de Validator het plan afkeuren
+en zal het niet geladen worden op Ruimtelijkeplannen.nl.
+</details></div><p>Voor de contour wordt het plantype ‘beheersverordening’ gebruikt. Op een door de gemeenteraad te bepalen
+internetadres stelt de gemeente het gehele Chw bestemmingsplan op een algemeen
+toegankelijke wijze beschikbaar. De contour die de gemeente via de landelijke
+voorziening beschikbaar stelt bevat een verwijzing naar dit internetadres. De
+gemeente is er zelf verantwoordelijk voor dat het Chw bestemmingsplan dat op het
+gemeentelijke internetadres te raadplegen is daar steeds beschikbaar is (met
+behulp van eigen planviewer), dat het niet zonder formeel besluit gewijzigd kan
+worden en dat het bestemmingsplan in deze vorm voldoende rechtszekerheid biedt.</p><p>De authenticiteit, integriteit, volledigheid, beschikbaarheid en
+raadpleegbaarheid van het Chw bestemmingsplan moet de gemeente met deze optie
+zelf waarborgen. De reden hiervoor is dat de brongegevens van deze plannen niet
+beschikbaar zijn conform de landelijk geldende standaarden (Regeling standaarden
+ruimtelijke ordening 2012). Door het ontbreken van deze brongegevens kunnen deze
+plannen naar verwachting overigens niet worden meegenomen in de algemene
+technische overgang naar het omgevingsplan onder de Omgevingswet. Tot slot
+worden deze plannen ook niet geleverd aan de download service bij PDOK in het
+kader van de EU INSPIRE richtlijn. De gemeente dient dit mogelijk zelf te
+verzorgen. Zie Bijlage 3 voor een toelichting wat gemeenten zelf moeten
+waarborgen.</p><p>Met <strong>optie 2</strong> wordt voldaan aan de minimum vereiste vanuit de Chw en aan de
+huidige RO Standaarden. De volledige inhoud van het Chw bestemmingsplan is
+interactief via de landelijke voorziening Ruimtelijkeplannen.nl te raadplegen.
+De gemeente hoeft hiermee geen eigen planviewer in te richten. Omdat de
+volledige inhoud van het plan via Ruimtelijkeplannen.nl beschikbaar is, gelden
+ook dezelfde waarborgen voor authenticiteit, integriteit, volledigheid,
+beschikbaarheid en raadpleegbaarheid als voor de reguliere bestemmingsplannen.
+Deze optie houdt beperkingen in aan de technische vrijheid die voortvloeien uit
+de RO Standaarden waardoor beleidsmatig niet alle mogelijkheden van de Chw
+kunnen benut.. Door het beschikbaar zijn van de brongegevens van deze Chw
+bestemmingsplannen via de landelijke voorziening zal naar verwachting het plan
+op dezelfde manier als alle reguliere bestemmingsplannen en beheersverordeningen
+kunnen worden meegenomen in de technische overgang naar het omgevingsplan onder
+de Omgevingswet.</p><p>In het vervolg van deze paragraaf worden beide opties toegelicht; optie 1 in paragraaf <a href="/#uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl">2.1</a> en optie 2 in paragraaf <a href="/#uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl">2.2</a>.</p><section id="uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl"><h3 id="x2-1-uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl"><span class="secno">2.1 </span>Uitvoering met behulp van een contour op Ruimtelijkeplannen.nl</h3><p>De gemeente heeft een weblocatie waar het Chw bestemmingsplan op een algemeen
+toegankelijke wijze beschikbaar is. Aangezien dit plan een geometrische
+plaatsbepaling moet bevatten conform artikel 1.2.5 van het Besluit ruimtelijke ordening, zal die algemeen toegankelijke wijze een
+interactieve raadpleegomgeving met behulp van een viewer moeten zijn. Daarnaast
+stelt de gemeente conform de RO Standaarden 2012 een contour met kaartafbeelding
+en tekst via Ruimtelijkeplannen.nl beschikbaar met een duidelijke verwijzing
+naar het internetadres waar het Chw bestemmingsplan volledig interactief
+raadpleegbaar is. De contour wordt met behulp van de RO Standaarden gemaakt:
+conform het Informatiemodel Ruimtelijke Ordening (IMRO2012) plantype beheersverordening. In de bekendmakingen van de
+terinzagelegging van het ontwerpplan en van het vastgestelde plan die in de
+Staatscourant worden geplaatst neemt de gemeente het unieke
+IMRO-plan-identificatienummer op, conform de voorschriften van de Staatscourant;
+in de tekst van die bekendmakingen neemt de gemeente ook een verwijzing op naar
+het internetadres waar het Chw bestemmingsplan op algemeen toegankelijke wijze
+beschikbaar is.</p><p>De uitvoering van de contour is als volgt. 
+Er wordt een contour vervaardigd met behulp van het plantype beheersverordening. Van de kaart wordt een PDF/A bestand
+gemaakt dat aan de contour wordt gekoppeld. Ook wanneer het plan meerdere
+kaarten bevat moeten deze samen in 1 PDF/A bestand worden opgenomen. De tekst
+van het Chw bestemmingsplan, wordt als 1 PDF/A bestand ook gekoppeld aan de
+contour. Deze tekst kan bestaan uit regels en toelichting dan wel een
+algemene inleiding op het bestemmingsplan. De kaart kan bestaan uit de kaarten
+behorend bij het plan, of bijvoorbeeld een screen shot van hoe de kaart(en) word
+en gepresenteerd. Hiermee heeft de raadpleger via Ruimtelijkeplannen.nl een
+eerste indruk van het gebied en kan de raadpleger tekst lezen. Op deze manier
+wordt voldaan aan de minimale vereisten uit het Besluit uitvoering Crisis- en
+herstelwet. Op de gemeentelijke website kan de lezer vervolgens het gehele
+bestemmingsplan met behulp van een planviewer raadplegen.
+</p><p>Voor een volledig overzicht van te koppelen bestanden zoals het
+vaststellingsbesluit, te hanteren bestandsnamen en – formaten, raadpleeg de
+Standaard Toegankelijkheid Ruimtelijke Instrumenten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">STRI2012</a> en de toelichting op deze norm Praktijkrichtlijn Toegankelijkheid Ruimtelijke
+Instrumenten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-toegankelijkheid-ruimtelijke">PTRI2012</a></p><p>Voor het maken en ontsluiten van het Chw bestemmingsplan met behulp van het
+plantype beheersverordening verwijzen we voor een volledige toelichting naar de
+Praktijkrichtlijn Gebiedsgerichte Besluiten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-toegankelijkheid-ruimtelijke">PRGB2012</a>. Enkele attributen en waarden zijn hieronder nader toegelicht.</p><p><strong>Attributen en waarden</strong></p><p>Het typePlan is beheersverordening, de naam hiervan begint echter met “Chw
+bestemmingsplan”. In de toelichting is in ieder geval beschreven welke
+ruimtelijke plannen dit Chw bestemmingsplan vervangt.
+In de toelichting is ook aangegeven op welke wijze en via welk internetadres de
+volledige inhoud van het Chw bestemmingsplan is te raadplegen.
+In het geleideformulier van dit plan wordt het internetadres opgenomen, in de
+Klasse <em>Supplementen</em> in het onderdeel <em>startPagina</em> (zie paragraaf 5.3 van de norm <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-toegankelijkheid-ruimtelijke">STRI2012</a>. Op deze wijze is via
+Ruimtelijkeplannen.nl een hyperlink zichtbaar en kan de raadpleger direct het
+interactieve Chw bestemmingsplan vinden.</p><p><strong>Tabel 1 Specifieke waarden Besluitgebied_X bij een beheersverordening</strong></p><table>
+<thead>
+<tr>
+<th>attribuut</th>
+<th>waarde - toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typePlan</td>
+<td>beheersverordening</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>De naam begint met “Chw bestemmingsplan”</td>
+</tr>
+</tbody></table></section><section id="uitvoering-met-behulp-van-een-interactief-raadpleegbaar-plan-op-ruimtelijkeplannen-nl"><h3 id="x2-2-uitvoering-met-behulp-van-een-interactief-raadpleegbaar-plan-op-ruimtelijkeplannen-nl"><span class="secno">2.2 </span>Uitvoering met behulp van een interactief raadpleegbaar plan op Ruimtelijkeplannen.nl</h3><p>De gemeente kiest ervoor de gehele inhoud van het Chw bestemmingsplan te
+ontsluiten via Ruimtelijkeplannen.nl. In dit geval wordt dan gebruik gemaakt van
+de RO Standaarden 2012. Hierdoor wordt voor de raadpleger zekerheid gegeven dat
+de inhoud van het plan ook daadwerkelijk van de gemeente afkomstig is doordat
+een digitale handtekening aan het plan is gegeven. De brondata is dan ook voor
+een ieder beschikbaar, vindbaar via de <a href="https://www.ruimtelijkeplannen.nl/web-roi/index/">Index van Ruimtelijkeplannen.nl</a>. 
+Mogelijk werken de voorwaarden die voortvloeien uit de RO Standaarden, en de SVBP in het bijzonder, beperkend
+voor gemeenten die een maximale technische vrijheid zoeken om daarmee de door
+hun gewenste maximale beleidsmatige invulling van het Chw bestemmingsplan vorm
+te geven.
+</p><p>Voor het toepassen van deze optie bestaan twee alternatieven, waartussen de
+gemeente kan kiezen. Bij alternatief 1 wordt gebruik gemaakt van het IMRO
+plantype bestemmingsplan. Bij alternatief 2 wordt, met toepassing van het IMRO
+plantype beheersverordening, een volledig interactief raadpleegbare
+beheersverordening gemaakt.</p><p><u>Alternatief 1: plantype bestemmingsplan</u></p><p>Voor de werkwijze in de praktijk van het maken van het Chw bestemmingsplan met
+toepassing van plantype bestemmingsplan en ontsluiten als authentiek en volledig
+interactief raadpleegbaar plan via Ruimtelijkeplannen.nl zijn alle voor het
+bestemmingsplan relevante normen van de RO Standaarden van toepassing, zoals de
+Standaard Vergelijkbare Bestemmingsplannen <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/standaard-vergelijkbare-bestemmingsplannen">SVBP2012</a>. Voor een volledige toelichting verwijzen we naar de Praktijkrichtlijn Bestemmingsplannen
+<a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-bestemmingsplannen-prbp2012">PRBP2012</a>. Enkele attributen en waarden zijn hieronder nader toegelicht.</p><p><strong>Attributen en waarden</strong></p><p>Het <em>typePlan</em> is bestemmingsplan, de <em>naam</em> hiervan begint echter met “Chw
+bestemmingsplan”. In de toelichting is in ieder geval beschreven welke
+ruimtelijke plannen dit Chw bestemmingsplan vervangt.</p><p><strong>Tabel 2 Specifieke waarden Bestemmingsplangebied bij een bestemmingsplan</strong></p><table>
+<thead>
+<tr>
+<th>attribuut</th>
+<th>waarde - toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typePlan</td>
+<td>bestemmingsplan</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>De naam begint met “Chw bestemmingsplan”</td>
+</tr>
+</tbody></table><p><u>Alternatief 2: plantype beheersverordening</u></p><p>Met dit tweede alternatief wordt een volledig interactief raadpleegbare
+beheersverordening gemaakt. Voor de werkwijze in de praktijk van het maken van
+het Chw bestemmingsplan met toepassing van plantype beheersverordening en
+ontsluiten als authentiek en volledig interactief raadpleegbaar plan via
+Ruimtelijkeplannen.nl zijn alle voor de beheersverordening relevante normen van
+de RO Standaarden van toepassing, zoals de toelichtende Praktijkrichtlijn
+Gebiedsgerichte Besluiten <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/praktijkrichtlijn-gebiedsgerichte-besluiten">PRGB2012</a>. Enkele attributen en waarden zijn hieronder nader toegelicht.</p><p>Het verschil tussen dit alternatief en het toepassen van de contour (<a href="#uitvoering-met-behulp-van-een-contour-op-ruimtelijkeplannen-nl">paragraaf
+2.1</a>) is dat alternatief 2 naast een plangebied ook informatie-objecten heeft, in
+de vorm van <em>besluitvlakken</em> en <em>besluitsubvlakken</em>. Net als bij een
+bestemmingsplan zijn alle functies en regels gerelateerd aan een locatie door
+deze informatie-objecten.</p><p>In tegenstelling tot bestemmingsplannen bestaat er voor gebiedsgerichte
+besluiten geen afspraak over de digitale verbeelding. De vormgeving van de
+digitale verbeelding in kleuren, rasters, lettertypen e.d., wordt niet opgenomen in de beheersverordening. Op Ruimtelijkeplannen.nl worden de
+grenzen in een blauwtint en de vlakken transparant met een blauw raster getoond.
+Daarnaast is het mogelijk een kaart als plaatje aan de beheersverordening toe te
+voegen. Dit "plaatje" heeft echter geen geometrie en is derhalve louter
+illustratief.</p><p>Attributen en waarden</p><p>Het <em>typePlan</em> is beheersverordening, de <em>naam</em> hiervan begint echter met “Chw
+bestemmingsplan”. In de toelichting is in ieder geval beschreven welke
+ruimtelijke plannen dit Chw bestemmingsplan vervangt.</p><p><strong>Tabel 3 Specifieke waarden Besluitgebied_X bij een beheersverordening</strong></p><table>
+<thead>
+<tr>
+<th>attribuut</th>
+<th>waarde - toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typePlan</td>
+<td>beheersverordening</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>De naam begint met “Chw bestemmingsplan”</td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="bijlagen"><!--OddPage--><h2 id="x3-bijlagen"><span class="secno">3. </span>Bijlagen</h2><section id="bijlage-1"><h3 id="x3-1-bijlage-1"><span class="secno">3.1 </span>Bijlage 1</h3><p>Gemeenten die conform uitvoeringsbesluit Chw voor aangewezen gebieden een
+bestemmingsplan met verbrede reikwijdte mogen maken en daarbij af mogen wijken
+van de digitale vereisten van Wro en Bro zijn hieronder d.d. maart 2016 aangegeven. Dit
+geldt voor alle gemeenten, of deelgebieden binnen de gemeente, die op grond van
+het Besluit uitvoering Crisis en herstelwet mogen afwijken van de RO
+Standaarden. Gemeenten die in aanmerking komen om een omgevingsvisie onder de
+Chw te maken, zijn niet in deze lijst opgenomen.</p><p><strong>6e tranche</strong></p><ul>
+<li><p>Cruquiusgebied, Amsterdam (zie voor dit project aanvullende mogelijkheden in
+de 8e tranche)</p>
+</li>
+<li><p>gebied Laan 1945, Beuningen</p>
+</li>
+<li><p>Nieuw Den Helder</p>
+</li>
+<li><p>Voormalig NAVO-terrein, Maastricht</p>
+</li>
+<li><p>kernen Zetten en Hemmen, Overbetuwe</p>
+</li>
+<li><p>De Bronnen, Tynaarloo</p>
+</li>
+</ul><p><strong>7e tranche</strong></p><ul>
+<li><p>Oosterwold, Almere en Zeewolde</p>
+</li>
+<li><p>Weerwater, Almere</p>
+</li>
+<li><p>Toeristisch, recreatieve zone (inclusief het TT-circuit), Assen: hele
+gemeente?!</p>
+</li>
+<li><p>Spoorzone, Culemborg</p>
+</li>
+<li><p>Binckhorst, Den Haag</p>
+</li>
+<li><p>luchthaven Twente, Enschede</p>
+</li>
+<li><p>Bloemendalerpolder, Weesp en Muiden</p>
+</li>
+<li><p>Hembrugterrein, Zaandstad</p>
+</li>
+</ul><p><strong>8e tranche, gemeentedekkend:</strong></p><ul>
+<li><p>Breda</p>
+</li>
+<li><p>Bussum</p>
+</li>
+<li><p>Deventer</p>
+</li>
+<li><p>Soest</p>
+</li>
+<li><p>Venlo</p>
+</li>
+<li><p>Oldenzaal</p>
+</li>
+</ul><p><strong>9e tranche</strong></p><ul>
+<li>Delft spoorzone</li>
+</ul><p><strong>10e tranche (nog niet definitief)</strong></p><ul>
+<li><p>De Scheg, gemeente Amstelveen,</p>
+</li>
+<li><p>Bedrijventerrein Rijnhaven-Oost, gemeente Alphen aan den Rijn,</p>
+</li>
+<li><p>het gebied Laan 1945, gemeente Beuningen,</p>
+</li>
+<li><p>Binnensingelgebied, gemeente Enschede,</p>
+</li>
+<li><p>Brainpark, gemeente Eindhoven,</p>
+</li>
+<li><p>Automotive Campus, gemeente Helmond,</p>
+</li>
+<li><p>Buitengebied Leudal, gemeente Leudal,</p>
+</li>
+<li><p>CHV-terrein, gemeente Veghel,</p>
+</li>
+<li><p>Bergwijkpark, gemeente Diemen,</p>
+</li>
+</ul></section><section id="bijlage-2"><h3 id="x3-2-bijlage-2"><span class="secno">3.2 </span>Bijlage 2</h3><p>De Crisis- en herstelwet maakt het mogelijk om gemeenten aan te wijzen die voor
+het geheel of een gedeelte van hun grondgebied een bestemmingsplan met verbrede
+reikwijdte kunnen vaststellen. De verbrede reikwijdte bestaat er uit dat van
+bepaalde wet- en regelgeving kan worden afgeweken. De aanwijzing van gemeenten
+en gebieden en de onderwerpen waarvan kan worden afgeweken vindt plaats in het
+Besluit uitvoering Crisis- en herstelwet. In dit besluit is vastgelegd dat ook
+kan worden afgeweken van bepaalde onderdelen van de digitale verplichtingen.</p><p>Besluit uitvoering Crisis- en herstelwet&nbsp;</p><p>Artikel 7c&nbsp; lid 9&nbsp;&nbsp;</p><p>Bij de voorbereiding, inrichting en beschikbaarstelling van het bestemmingsplan
+kan worden afgeweken van:&nbsp;</p><p>A. de volgende artikelen van het Besluit ruimtelijke ordening:</p><ol>
+<li><p>1.2.1, tweede lid, en 1.2.1a, onderdeel a, onder de voorwaarde dat het
+ontwerp van het bestemmingplan of het vastgestelde bestemmingsplan
+elektronisch op een algemeen toegankelijke wijze beschikbaar wordt gesteld
+en blijft op een door de raad te bepalen internetadres. In dat geval bevat
+de landelijke voorziening, bedoeld in artikel 1.2.1, tweede lid, een
+verwijzing naar dit internetadres;</p>
+</li>
+<li><p>[…] (hier niet relevant)</p>
+</li>
+</ol><p>B. de bij de ministeriële regeling, bedoeld in artikel 1.2.6 van het Besluit
+ruimtelijke ordening, gestelde regels of nadere regels.</p><section id="digitale-verplichtingen-waarvan-kan-worden-afgeweken"><h4 id="x3-2-1-digitale-verplichtingen-waarvan-kan-worden-afgeweken"><span class="secno">3.2.1 </span>Digitale verplichtingen waarvan kan worden afgeweken</h4><p>Op grond van artikel 7c&nbsp; lid 9 van het Besluit uitvoering Crisis- en herstelwet
+kan van deze digitale verplichtingen uit het Bro worden afgeweken:</p><p>Art 1.2.1 lid 2</p><p>Er is een landelijke voorziening waar de visies, plannen, besluiten en
+verordeningen, bedoeld in het eerste lid, raadpleegbaar zijn.</p><p>Art 1.2.1a&nbsp;&nbsp;</p><p>Bij de voorbereiding van een bestemmingsplan, wijzigings- of uitwerkingsplan,
+(…):&nbsp;</p><p>a wordt het ontwerpbesluit met overeenkomstige toepassing van artikel 1.2.1,
+eerste en tweede lid, beschikbaar gesteld;</p><p>De bij de ministeriële regeling, bedoeld in artikel 1.2.6 van het Besluit
+ruimtelijke ordening, gestelde regels of nadere regels.</p><p>De genoemde ministeriële regeling is de Regeling standaarden ruimtelijke
+ordening 2012. Er hoeft niet voldaan te worden aan de standaarden IMRO2012 (het
+informatiemodel ruimtelijke ordening), IMROPT2012 (het informatiemodel voor
+planteksten), SVBP2012 (de standaard vergelijkbare bestemmingsplannen) en
+STRI2012 (de standaard toegankelijkheid ruimtelijke instrumenten).</p></section><section id="welke-digitale-verplichtingen-gelden-wel"><h4 id="x3-2-2-welke-digitale-verplichtingen-gelden-wel"><span class="secno">3.2.2 </span>Welke digitale verplichtingen gelden wel?</h4><p>De volgende digitale verplichtingen blijven wel gelden omdat deze niet zijn
+aangewezen in artikel 7c&nbsp; lid 9 van het Besluit uitvoering Crisis- en
+herstelwet:</p><ul>
+<li><p>B&amp;W stellen het besluit tot vaststelling van het bestemmingsplan met bijbehorende stukken langs elektronische weg beschikbaar. (art 3.8 lid 3 Wro)</p>
+</li>
+<li><p>B&amp;W stellen het bestemmingsplan aan een ieder elektronisch beschikbaar. (art 1.2.1 lid 1 Bro)</p>
+</li>
+<li><p>B&amp;W zorgen er voor dat de status van het bestemmingsplan bij raadpleging langs elektronische weg kenbaar is. (art 1.2.1 lid 3 Bro)</p>
+</li>
+<li><p>De kennisgeving van de terinzagelegging van het ontwerp van het bestemmingsplan en de mededeling van dat een besluit tot vaststelling van het bestemmingsplan is genomen vermelden de plaats waar eenieder de plannen langs elektronische weg kan raadplegen en het identificatienummer van die stukken (art 1.2.1a onderdeel b Bro)</p>
+</li>
+<li><p>Het bestemmingsplan wordt elektronisch vastgesteld. Van het elektronische document wordt ook een papieren versie gemaakt (art 1.2.3 lid 1 Bro)</p>
+</li>
+<li><p>Indien de inhoud van een elektronisch document als bedoeld in het eerste lid tot een andere uitleg aanleiding geeft dan de papieren versie, is het
+elektronisch document beslissend (artikel 1.2.3&nbsp;lid 2 Bro)</p>
+</li>
+<li><p>Het bestemmingsplan bevat een geometrische plaatsbepaling van het werkingsgebied (artikel 1.2.5&nbsp;lid 1 Bro)</p>
+</li>
+<li><p>Ruimtelijkeplannen.nl moet een verwijzing bevatten naar het door de raad te bepalen internetadres waar het ontwerp van het bestemmingplan of het vastgestelde bestemmingsplan elektronisch op een algemeen toegankelijke wijze beschikbaar wordt gesteld en blijft (artikel 7c&nbsp;lid 9&nbsp;onderdeel B Besluit uitvoering Crisis- en herstelwet)</p>
+</li>
+</ul><p>Hoewel in het Besluit uitvoering Crisis- en herstelwet is bepaald dat niet voldaan hoeft te worden aan de standaarden IMRO2012, IMROPT2012, SVBP2012 en STRI2012 moeten sommige onderdelen daarvan wel worden toegepast door de bepaling dat er op ruimtelijkeplannen.nl een verwijzing moet zijn naar het internetadres waar het bestemmingsplan elektronisch op een algemeen toegankelijke wijze beschikbaar wordt gesteld en blijft. Om zo’n verwijzing te kunnen maken en zodanig beschikbaar te stellen dat deze via ruimtelijkeplannen.nl raadpleegbaar is, dient ten minste aan de volgende onderdelen van de RO Standaarden voldaan te worden:</p><ul>
+<li><p>IMRO, voor zover nodig voor het gekozen plantype en de te gebruiken objecten
+(plantype bestemmingsplan, authentieke interactief raadpleegbare variant van
+plantype beheersverordening dan wel de minimale variant van plantype
+beheersverordening als contour met daaraan gekoppeld pdf’s van plankaart,
+toelichting en regels).</p>
+</li>
+<li><p>De bepalingen van de STRI ten behoeve van het beschikbaar stellen van het
+gekozen plantype, inclusief bepalingen over het waarmerken (t.b.v. de
+authenticiteit), geleideformulier en manifest.</p>
+</li>
+<li><p>SVBP voor opmaak van de plankaart en de structuur van de regels, indien
+gekozen wordt voor het plantype bestemmingsplan.</p>
+</li>
+</ul></section></section><section id="bijlage-3"><h3 id="x3-3-bijlage-3"><span class="secno">3.3 </span>Bijlage 3</h3><p>Voor het digitaal ontsluiten van het Chw bestemmingsplan maakt de gemeente de
+keuze in hoeverre de inhoud van het bestemmingsplan via Ruimtelijkeplannen.nl
+raadpleegbaar is en of het authentieke plan interactief wordt gepresenteerd.
+Daar zijn conform hoofdstuk 2 van deze werkafspraak twee opties voor:</p><ol>
+<li><p><u>Uitvoering met behulp van een contour op Ruimtelijkeplannen.nl</u>.<br>De gemeente stelt een contour met daaraan gekoppeld pdf´s van kaart,
+toelichting en regels beschikbaar die via Ruimtelijkeplannen.nl
+raadpleegbaar is; via een andere weblocatie stelt de gemeente het Chw
+bestemmingsplan op een algemeen toegankelijke wijze beschikbaar</p>
+</li>
+<li><p><u>Uitvoering met behulp van een interactief raadpleegbaar plan op
+Ruimtelijkeplannen.nl</u>.<br>De gemeente stelt het Chw bestemmingsplan beschikbaar als authentiek plan
+waarvan de volledige inhoud via Ruimtelijkeplannen.nl interactief
+raadpleegbaar is.</p>
+</li>
+</ol><p>Met de eerste optie wordt via de landelijke voorziening Ruimtelijkeplannen.nl de
+contour van het Chw bestemmingsplan beschikbaar gesteld. Op een door de
+gemeenteraad te bepalen internetadres stelt de gemeente de gehele integrale
+versie van het Chw bestemmingsplan beschikbaar. De <em>authenticiteit</em>,
+<em>integriteit</em>, <em>volledigheid</em>, <em>beschikbaarheid</em> en <em>raadpleegbaarheid</em> van het
+Chw bestemmingsplan moet de gemeente met optie 1 zelf waarborgen. Wat de
+gemeente zelf moet waarborgen, lichten we in deze bijlage van de werkafspraak
+toe. Hiermee moet voor de gemeente duidelijk worden wat zij moeten doen in het
+kader van onweerlegbaarheid, wat binnen de RO Standaarden wel is geborgd door
+middel van het PKI waarmerk.</p><p>De gemeente moet nu zelf de <em>authenticiteit</em>, <em>integriteit</em>, <em>volledigheid</em>, <em>beschikbaarheid</em> en <em>raadpleegbaarheid</em> alsook ook de <em>onweerlegbaarheid</em> van het Chw bestemmingsplan (hierna: plan) borgen. Hierna lichten we deze begrippen toe. Deze toelichting geeft richting aan gemeente hoe ze deze zaken zelf regelt, en geeft ruimte aan een eigen invulling door de gemeente.</p><ol>
+<li><p><em>Authenticiteit</em>: eigenschap van echt, oorspronkelijk te zijn. Het
+authentiseren van een digitaal plan houdt in dat de gemeente voor dit plan
+aangeeft dat het inderdaad van haar afkomstig is, dat het om het
+oorspronkelijke plan gaat. De raadpleger van het plan kan achterhalen wat de
+herkomst daarvan is en of het plan compleet en ongewijzigd is.</p>
+</li>
+<li><p><em>Integriteit</em>: betrouwbaar. Met het beoordelen van de integriteit constateer
+je of het plan ongewijzigd en volledig is. Nadat de inhoud van het plan is
+gewaarmerkt kan en mag het plan niet meer gewijzigd worden. De raadpleger
+van het plan kan er op vertrouwen dat de gemeente het plan in de periode
+tussen beschikbaar stellen en de raadpleger het plan bekijkt, niet is
+aangepast. Wanneer het plan wel is aangepast moet de gemeente er voor zorgen
+dat de informatie wat is aangepast ook bij het plan inzichtelijk is.
+bijvoorbeeld door middel van een nieuw versie nummer met een bijbehorende
+toelichting.</p>
+</li>
+<li><p><em>Volledigheid</em>: dat het volledig is. Alle bij het plan behorende onderdelen
+zijn beschikbaar en raadpleegbaar voor een ieder. De gemeente moet borgen
+dat het integrale plan volledig raadpleegbaar is en de gemeente kan aantonen
+dat ook alle onderliggende stukken en bestanden van dit plan beschikbaar
+zijn. De raadpleger kan controleren en vaststellen dat niets ontbreekt.</p>
+</li>
+<li><p><em>Beschikbaarheid:</em> Alle tot het plan behorende onderdelen, de bronbestanden,
+zijn beschikbaar via een weblocatie en kunnen door een ieder worden
+gedownload.</p>
+</li>
+<li><p><em>Raadpleegbaarheid:</em> het plan is op een toegankelijke manier integraal
+raadpleegbaar. Een gemeente heeft de plicht om naast het op internet
+plaatsen van het plan ook het plan in een interactieve raadpleegomgeving te
+laten zien. De informatie in de vorm van kaart en tekst die is vastgelegd in
+het plan moet in elektronische vorm volledig toegankelijk en raadpleegbaar
+zijn zodat alle relevante bestemmingsplaninformatie wordt getoond: de
+combinatie van (plan)kaart en regels, inclusief toelichting en bijlagen.</p>
+</li>
+<li><p><em>Onweerlegbaarheid:</em> is de waarborg dat ontvangst en/of verzending van een
+instrument niet kan worden ontkend door de beide betrokken partijen. De
+gemeente kan aantonen dat het gedurende de procedure, alsook erna wanneer
+het plan in werking is getreden altijd voor een ieder beschikbaar en
+raadpleegbaar is.</p>
+</li>
+</ol><p>Bij het beschikbaar stellen van een Chw bestemmingsplan hoort een bepaalde
+werkwijze.</p><p><u>Let op</u>: indien een gemeente er voor kiest om enkel een contour te publiceren
+via Ruimtelijkeplannen.nl dan moet de werkwijze zoals toegelicht paragraaf 2.1
+worden gevolgd. Indien een gemeente er voor kiest om een Chw bestemmingsplan
+volgens de RO Standaarden te publiceren via Ruimtelijkeplannen.nl, dan zijn de
+bovenstaande punten automatisch gewaarborgd omdat de werkwijze in paragraaf 2.2
+moet worden gevolgd.</p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

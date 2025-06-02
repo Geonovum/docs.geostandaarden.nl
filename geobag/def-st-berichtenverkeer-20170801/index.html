@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta lang="" property="dc:language" content="en">
+
+    <title>Geo-BAG berichtenverkeer 1.0.1</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/media/logos/Geonovum.ico">
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+
+
+    <style id="respec-mainstyle">
+        /*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+        /* Override code highlighter background */
+
+        .hljs {
+            background: transparent !important;
+        }
+        /* --- INLINES --- */
+
+        em.rfc2119 {
+            text-transform: lowercase;
+            font-style: normal;
+            color: #900;
+        }
+
+        h1 abbr,
+        h2 abbr,
+        h3 abbr,
+        h4 abbr,
+        h5 abbr,
+        h6 abbr,
+        a abbr {
+            border: none;
+        }
+
+        dfn {
+            font-weight: bold;
+        }
+
+        a.internalDFN {
+            color: inherit;
+            border-bottom: 1px solid #99c;
+            text-decoration: none;
+        }
+
+        a.externalDFN {
+            color: inherit;
+            border-bottom: 1px dotted #ccc;
+            text-decoration: none;
+        }
+
+        a.bibref {
+            text-decoration: none;
+        }
+
+        cite .bibref {
+            font-style: normal;
+        }
+
+        code {
+            color: #c83500;
+        }
+
+        th code {
+            color: inherit;
+        }
+        /* --- TOC --- */
+
+        .toc a,
+        .tof a {
+            text-decoration: none;
+        }
+
+        a .secno,
+        a .figno {
+            color: #000;
+        }
+
+        ul.tof,
+        ol.tof {
+            list-style: none outside none;
+        }
+
+        .caption {
+            margin-top: 0.5em;
+            font-style: italic;
+        }
+        /* --- TABLE --- */
+
+        table.simple {
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-bottom: 3px solid #005a9c;
+        }
+
+        .simple th {
+            background: #005a9c;
+            color: #fff;
+            padding: 3px 5px;
+            text-align: left;
+        }
+
+        .simple th[scope="row"] {
+            background: inherit;
+            color: inherit;
+            border-top: 1px solid #ddd;
+        }
+
+        .simple td {
+            padding: 3px 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .simple tr:nth-child(even) {
+            background: #f0f6ff;
+        }
+        /* --- DL --- */
+
+        .section dd>p:first-child {
+            margin-top: 0;
+        }
+
+        .section dd>p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section dd {
+            margin-bottom: 1em;
+        }
+
+        .section dl.attrs dd,
+        .section dl.eldef dd {
+            margin-bottom: 0;
+        }
+
+        #issue-summary>ul,
+        .respec-dfn-list {
+            column-count: 2;
+        }
+
+        #issue-summary li,
+        .respec-dfn-list li {
+            list-style: none;
+        }
+
+        details.respec-tests-details {
+            margin-left: 1em;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        details.respec-tests-details>* {
+            padding-right: 2em;
+        }
+
+        details.respec-tests-details[open] {
+            z-index: 999999;
+            position: absolute;
+            border: thin solid #cad3e2;
+            border-radius: .3em;
+            background-color: white;
+            padding-bottom: .5em;
+        }
+
+        details.respec-tests-details[open]>summary {
+            border-bottom: thin solid #cad3e2;
+            padding-left: 1em;
+            margin-bottom: 1em;
+            line-height: 2em;
+        }
+
+        details.respec-tests-details>ul {
+            width: 100%;
+            margin-top: -0.3em;
+        }
+
+        details.respec-tests-details>li {
+            padding-left: 1em;
+        }
+
+        @media print {
+            .removeOnSave {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        /*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em;
+            color: #333;
+            background: #f8f8f8;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #998;
+            font-style: italic;
+        }
+
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-subst {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .hljs-number,
+        .hljs-literal,
+        .hljs-variable,
+        .hljs-template-variable,
+        .hljs-tag .hljs-attr {
+            color: #008080;
+        }
+
+        .hljs-string,
+        .hljs-doctag {
+            color: #d14;
+        }
+
+        .hljs-title,
+        .hljs-section,
+        .hljs-selector-id {
+            color: #900;
+            font-weight: bold;
+        }
+
+        .hljs-subst {
+            font-weight: normal;
+        }
+
+        .hljs-type,
+        .hljs-class .hljs-title {
+            color: #458;
+            font-weight: bold;
+        }
+
+        .hljs-tag,
+        .hljs-name,
+        .hljs-attribute {
+            color: #000080;
+            font-weight: normal;
+        }
+
+        .hljs-regexp,
+        .hljs-link {
+            color: #009926;
+        }
+
+        .hljs-symbol,
+        .hljs-bullet {
+            color: #990073;
+        }
+
+        .hljs-built_in,
+        .hljs-builtin-name {
+            color: #0086b3;
+        }
+
+        .hljs-meta {
+            color: #999;
+            font-weight: bold;
+        }
+
+        .hljs-deletion {
+            background: #fdd;
+        }
+
+        .hljs-addition {
+            background: #dfd;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    <script id="initialUserConfig" type="application/json">
+        {
+            "specStatus": "GN-DEF",
+            "specType": "ST",
+            "publishDate": "2017-08-01",
+            "editors": [{
+                "name": "Arnoud de Boer",
+                "company": "Geonovum",
+                "companyURL": "http://www.geonovum.nl/",
+                "mailto": "a.deboer@geonovum.nl",
+                "note": ""
+            }],
+            "shortName": "berichtenverkeer",
+            "pubDomain": "geobag",
+            "github": "https://github.com/Geonovum/geobag"
+        }
+    </script>
+    <meta name="generator" content="ReSpec 16.2.1">
+    <meta name="description" content="Deze standaard beschrijft de uitwisseling van BGT|IMGeo gegevens tussen een Geo en BAG-afdeling in een organisatie (gemeente). Dit document beschrijft het Geo-BAG berichtenverkeer en de StUF-Geo BAG berichten in dit berichtenverkeer Op deze twee documenten is de technische implementatie in de vorm van berichtenschema’s (XSD’s) en servicebeschrijvingen (WSDL’s) gebaseerd. De inhoud van de berichten wordt bepaald door de BAG berichtencatalogus en RSGB.">
+</head>
+
+<body aria-busy="false" class="h-entry" id="respecDocument">
+    <div class="head" role="contentinfo" id="respecHeader">
+        <p><a class="logo" href="http://www.geonovum.nl/"><img width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM"></a></p>
+        <p></p>
+        <h1 class="title p-name" id="title" property="dcterms:title">Geo-BAG berichtenverkeer 1.0.1</h1>
+        <h2 id="geonovum-standaardvastgestelde-versie-01-augustus-2017">Geonovum Standaard<br>Vastgestelde versie
+            <time property="dcterms:issued" class="dt-published" datetime="">
+      01 augustus 2017
+    </time>
+        </h2>
+        <dl>
+            <dt>This version:</dt>
+            <dd><a class="u-url" href="https://docs.geostandaarden.nl/geobag/def-st-berichtenverkeer-20170801/">https://docs.geostandaarden.nl/geobag/def-st-berichtenverkeer-20170801/</a></dd>
+            <dt>Latest published version:</dt>
+            <dd><a href="https://docs.geostandaarden.nl/geobag/berichtenverkeer/">https://docs.geostandaarden.nl/geobag/berichtenverkeer/</a></dd>
+            <dt>
+      Editor:
+    </dt>
+            <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Arnoud de Boer</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:a.deboer@geonovum.nl">a.deboer@geonovum.nl</a></span></span>
+                <span property="rdf:rest" resource="rdf:nil"></span>
+            </dd>
+
+            <dt>Participate:</dt>
+
+            <dd>
+                <a href="https://github.com/Geonovum/geobag">
+                      GitHub Geonovum/geobag
+                    </a>
+            </dd>
+
+            <dd>
+                <a href="https://github.com/Geonovum/geobag/issues/">
+                      File a bug
+                    </a>
+            </dd>
+
+            <dd>
+                <a href="https://github.com/Geonovum/geobag/commits/gh-pages">
+                      Commit history
+                    </a>
+            </dd>
+
+            <dt>Rechtenbeleid:</dt>
+            <div class="copyright" style="margin: 0.25em 0;">
+                <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+                <div style="display:inline-block; vertical-align:top">
+                    <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+                </div>
+            </div>
+        </dl>
+        <hr title="Separator for header">
+    </div>
+    <section id="abstract" class="introductory" property="dc:abstract">
+        <h2 id="abstract-0" resource="#abstract-0"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+        <p>
+            Deze standaard beschrijft de uitwisseling van BGT|IMGeo gegevens tussen een Geo en BAG-afdeling in een organisatie (gemeente). Dit document beschrijft het Geo-BAG berichtenverkeer en de StUF-Geo BAG berichten in dit berichtenverkeer Op deze twee documenten
+            is de technische implementatie in de vorm van berichtenschema’s (XSD’s) en servicebeschrijvingen (WSDL’s) gebaseerd. De inhoud van de berichten wordt bepaald door de BAG berichtencatalogus en RSGB.
+        </p>
+    </section>
+    <section id="sotd" class="introductory">
+        <h2 id="status-of-this-document" resource="#status-of-this-document"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+        <p>
+            <em></em>
+        </p>
+
+        <p>
+            Dit is de definitieve versie van de standaard. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd. De programmaraad van Geonovum heeft deze standaard goedgekeurd.
+        </p>
+
+        <p>
+        </p>
+    </section>
+    <nav id="toc">
+        <h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
+        <ol class="toc" role="directory">
+            <li class="tocline"><a href="#inleiding" class="tocxref"><span class="secno">1. </span>Inleiding</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#waarom-dit-koppelvlak-" class="tocxref"><span class="secno">1.1 </span>Waarom dit koppelvlak?</a></li>
+                    <li class="tocline"><a href="#leeswijzer" class="tocxref"><span class="secno">1.2 </span>Leeswijzer</a></li>
+                    <li class="tocline"><a href="#verbinding-met-de-gemma-informatiearchitectuur" class="tocxref"><span class="secno">1.3 </span>Verbinding met de GEMMA Informatiearchitectuur</a></li>
+                    <li class="tocline"><a href="#referenties" class="tocxref"><span class="secno">1.4 </span>Referenties</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#uitgangspunten" class="tocxref"><span class="secno">2. </span>Uitgangspunten</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#actoren-en-verantwoordelijkheden-geo-en-bag" class="tocxref"><span class="secno">2.1 </span>Actoren en verantwoordelijkheden: Geo en BAG</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#berichten" class="tocxref"><span class="secno">2.1.1 </span>Berichten</a></li>
+                            <li class="tocline"><a href="#uitwisselen-van-gegevens-van-bag-objecten" class="tocxref"><span class="secno">2.1.2 </span>Uitwisselen van gegevens van BAG-objecten</a>
+                                <ol class="toc">
+                                    <li class="tocline"><a href="#objecttypen" class="tocxref"><span class="secno">2.1.2.1 </span>Objecttypen</a></li>
+                                    <li class="tocline"><a href="#geometrie" class="tocxref"><span class="secno">2.1.2.2 </span>Geometrie</a></li>
+                                    <li class="tocline"><a href="#samengesteld-uitwisselen-en-alleen-actuele-stand" class="tocxref"><span class="secno">2.1.2.3 </span>Samengesteld uitwisselen en alleen actuele stand</a></li>
+                                </ol>
+                            </li>
+                            <li class="tocline"><a href="#gebeurtenissen-als-aanleiding-voor-berichtenverkeer" class="tocxref"><span class="secno">2.1.3 </span>Gebeurtenissen als aanleiding voor berichtenverkeer</a></li>
+                            <li class="tocline"><a href="#identificaties-van-en-relaties-tussen-berichten" class="tocxref"><span class="secno">2.1.4 </span>Identificaties van en relaties tussen berichten</a></li>
+                            <li class="tocline"><a href="#corrigeren-en-intrekken-van-berichten" class="tocxref"><span class="secno">2.1.5 </span>Corrigeren en intrekken van berichten</a></li>
+                            <li class="tocline"><a href="#identificaties-van-en-relaties-tussen-objecten" class="tocxref"><span class="secno">2.1.6 </span>Identificaties van en relaties tussen objecten</a></li>
+                            <li class="tocline"><a href="#verzenden-en-verwerken-van-berichten" class="tocxref"><span class="secno">2.1.7 </span>Verzenden en verwerken van berichten</a>
+                                <ol class="toc">
+                                    <li class="tocline"><a href="#transacties-en-bundeling-van-berichten" class="tocxref"><span class="secno">2.1.7.1 </span>Transacties en bundeling van berichten</a></li>
+                                    <li class="tocline"><a href="#verplichte-of-niet-verplichte-overname" class="tocxref"><span class="secno">2.1.7.2 </span>Verplichte of niet-verplichte overname</a></li>
+                                    <li class="tocline"><a href="#volgorde-van-verzenden-en-verwerken" class="tocxref"><span class="secno">2.1.7.3 </span>Volgorde van verzenden en verwerken</a></li>
+                                    <li class="tocline"><a href="#synchroniteit" class="tocxref"><span class="secno">2.1.7.4 </span>Synchroniteit</a></li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#scenario-s" class="tocxref"><span class="secno">3. </span>Scenario’s</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#verzoek-om-geometrie-door-bag" class="tocxref"><span class="secno">3.1 </span>Verzoek om geometrie door BAG</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#basisscenario" class="tocxref"><span class="secno">3.1.1 </span>Basisscenario</a></li>
+                            <li class="tocline"><a href="#alternatief-scenario-bag-keurt-levering-af" class="tocxref"><span class="secno">3.1.2 </span>Alternatief scenario: BAG keurt levering af</a></li>
+                            <li class="tocline"><a href="#alternatief-scenario-bag-wil-eerder-verzonden-geometrieverzoek-intrekken" class="tocxref"><span class="secno">3.1.3 </span>Alternatief scenario: BAG wil eerder verzonden geometrieVerzoek intrekken</a></li>
+                            <li class="tocline"><a href="#alternatief-scenario-geo-keurt-geometrieverzoek-af" class="tocxref"><span class="secno">3.1.4 </span>Alternatief scenario: Geo keurt geometrieVerzoek af</a></li>
+                        </ol>
+                    </li>
+                    <li class="tocline"><a href="#constatering-en-of-signalering-door-geo" class="tocxref"><span class="secno">3.2 </span>Constatering en/of signalering door Geo</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#basisscenario" class="tocxref"><span class="secno">3.2.1 </span>Basisscenario</a></li>
+                            <li class="tocline"><a href="#alternatief-scenario-bag-keurt-geometrie-af" class="tocxref"><span class="secno">3.2.2 </span>Alternatief scenario: BAG keurt geometrie af</a></li>
+                            <li class="tocline"><a href="#alternatief-scenario-geo-wil-eerder-verzonden-geometrielevering-intrekken" class="tocxref"><span class="secno">3.2.3 </span>Alternatief scenario: Geo wil eerder verzonden geometrieLevering intrekken</a></li>
+                        </ol>
+                    </li>
+                    <li class="tocline"><a href="#kennisgeving-op-object-door-bag" class="tocxref"><span class="secno">3.3 </span>Kennisgeving op object door BAG</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#berichten" class="tocxref"><span class="secno">4. </span>Berichten</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#stuf-geo-bag-berichten" class="tocxref"><span class="secno">4.1 </span>StUF-Geo BAG berichten</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#geometrieverzoek" class="tocxref"><span class="secno">4.1.1 </span>GeometrieVerzoek</a></li>
+                            <li class="tocline"><a href="#geometrielevering" class="tocxref"><span class="secno">4.1.2 </span>GeometrieLevering</a></li>
+                            <li class="tocline"><a href="#goedkeuringsbericht" class="tocxref"><span class="secno">4.1.3 </span>Goedkeuringsbericht</a></li>
+                            <li class="tocline"><a href="#afkeuringsbericht" class="tocxref"><span class="secno">4.1.4 </span>Afkeuringsbericht</a></li>
+                        </ol>
+                    </li>
+                    <li class="tocline"><a href="#bag-kennisgevingen" class="tocxref"><span class="secno">4.2 </span>BAG-kennisgevingen</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#entiteiten" class="tocxref"><span class="secno">5. </span>Entiteiten</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#entiteiten-met-objectgegevens" class="tocxref"><span class="secno">5.1 </span>Entiteiten met objectgegevens</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#ligplaats" class="tocxref"><span class="secno">5.1.1 </span>ligplaats</a></li>
+                            <li class="tocline"><a href="#overiggebouwdobject" class="tocxref"><span class="secno">5.1.2 </span>overigGebouwdObject</a></li>
+                            <li class="tocline"><a href="#overigterrein" class="tocxref"><span class="secno">5.1.3 </span>overigTerrein</a></li>
+                            <li class="tocline"><a href="#pand" class="tocxref"><span class="secno">5.1.4 </span>pand</a></li>
+                            <li class="tocline"><a href="#standplaats" class="tocxref"><span class="secno">5.1.5 </span>standplaats</a></li>
+                            <li class="tocline"><a href="#verblijfsobject" class="tocxref"><span class="secno">5.1.6 </span>verblijfsobject</a></li>
+                            <li class="tocline"><a href="#woonplaats" class="tocxref"><span class="secno">5.1.7 </span>woonplaats</a></li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#attributen" class="tocxref"><span class="secno">6. </span>Attributen</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#parameters" class="tocxref"><span class="secno">6.1 </span>Parameters</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#idverzoek" class="tocxref"><span class="secno">6.1.1 </span>idVerzoek</a></li>
+                            <li class="tocline"><a href="#idlevering" class="tocxref"><span class="secno">6.1.2 </span>idLevering</a></li>
+                            <li class="tocline"><a href="#gerelateerdverzoek" class="tocxref"><span class="secno">6.1.3 </span>gerelateerdVerzoek</a></li>
+                            <li class="tocline"><a href="#gebeurteniscode" class="tocxref"><span class="secno">6.1.4 </span>gebeurtenisCode</a></li>
+                            <li class="tocline"><a href="#documentverwijzing" class="tocxref"><span class="secno">6.1.5 </span>documentverwijzing</a></li>
+                            <li class="tocline"><a href="#toelichting" class="tocxref"><span class="secno">6.1.6 </span>toelichting</a></li>
+                            <li class="tocline"><a href="#foutcode" class="tocxref"><span class="secno">6.1.7 </span>foutcode</a></li>
+                            <li class="tocline"><a href="#foutomschrijving" class="tocxref"><span class="secno">6.1.8 </span>foutomschrijving</a></li>
+                            <li class="tocline"><a href="#plek" class="tocxref"><span class="secno">6.1.9 </span>plek</a></li>
+                            <li class="tocline"><a href="#details" class="tocxref"><span class="secno">6.1.10 </span>details</a></li>
+                        </ol>
+                    </li>
+                    <li class="tocline"><a href="#elementen-in-entiteiten" class="tocxref"><span class="secno">6.2 </span>Elementen in entiteiten</a>
+                        <ol class="toc">
+                            <li class="tocline"><a href="#identificatie" class="tocxref"><span class="secno">6.2.1 </span>identificatie</a></li>
+                            <li class="tocline"><a href="#typering" class="tocxref"><span class="secno">6.2.2 </span>typering</a></li>
+                            <li class="tocline"><a href="#adresaanduiding" class="tocxref"><span class="secno">6.2.3 </span>adresAanduiding</a></li>
+                            <li class="tocline"><a href="#geometrie" class="tocxref"><span class="secno">6.2.4 </span>geometrie</a></li>
+                            <li class="tocline"><a href="#puntgeometrie" class="tocxref"><span class="secno">6.2.5 </span>puntGeometrie</a></li>
+                            <li class="tocline"><a href="#vlakgeometrie" class="tocxref"><span class="secno">6.2.6 </span>vlakGeometrie</a></li>
+                            <li class="tocline"><a href="#status" class="tocxref"><span class="secno">6.2.7 </span>status</a></li>
+                            <li class="tocline"><a href="#geconstateerd" class="tocxref"><span class="secno">6.2.8 </span>geconstateerd</a></li>
+                            <li class="tocline"><a href="#brondocument" class="tocxref"><span class="secno">6.2.9 </span>brondocument</a></li>
+                            <li class="tocline"><a href="#tijdvakgeldigheid" class="tocxref"><span class="secno">6.2.10 </span>tijdvakGeldigheid</a></li>
+                            <li class="tocline"><a href="#maaktdeeluitvan" class="tocxref"><span class="secno">6.2.11 </span>maaktDeelUitVan</a></li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#bijlage-1-gebeurtenissen" class="tocxref"><span class="secno">7. </span>Bijlage 1 Gebeurtenissen</a></li>
+            <li class="tocline"><a href="#bijlage-2-activiteitenstroom-koppelvlak-geo-bag" class="tocxref"><span class="secno">8. </span>Bijlage 2 Activiteitenstroom koppelvlak Geo-BAG</a></li>
+            <li class="tocline"><a href="#bijlage-3-gegevensmodel-koppelvlak-geo-bag" class="tocxref"><span class="secno">9. </span>Bijlage 3 Gegevensmodel koppelvlak Geo-BAG</a></li>
+            <li class="tocline"><a href="#bijlage-4-ontwerpbeslissingen-en-keuzes-verstuffing" class="tocxref"><span class="secno">10. </span>Bijlage 4 Ontwerpbeslissingen en keuzes verStUFfing</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#afhankelijkheden-schema-s-en-wsdl-s" class="tocxref"><span class="secno">10.1 </span>Afhankelijkheden schema's en wsdl's</a></li>
+                </ol>
+            </li>
+        </ol>
+    </nav>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#inleiding" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="inleiding" resource="#inleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Inleiding</span>
+        </h2>
+        <p>Dit hoofdstuk geeft een inleiding op het StUF-Geo BAG berichtenverkeer. </p>
+        <section typeof="bibo:Chapter" resource="#waarom-dit-koppelvlak-" property="bibo:hasPart">
+            <h3 id="waarom-dit-koppelvlak-" resource="#waarom-dit-koppelvlak-"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Waarom dit koppelvlak?</span>
+            </h3>
+            <p>Voor het automatisch uitwisselen van gegevens tussen twee afdelingen binnen de organisatie zijn afspraken nodig welke worden vastgelegd in een koppelvlak-specificatie. Een koppelvlak is een interface die volgens een bepaalde standaard de uitwisseling
+                van gegevens tussen informatiesystemen verzorgt. Een koppelvlak werkt met standaarden. Het aanleverende systeem is verantwoordelijk voor de vertaling van gegevens naar die standaard en het afnemende systeem zorgt voor omzetting naar haar
+                eigen ‘taal’. </p>
+            <p>Dit koppelvlak beschrijft de gegevensuitwisseling tussen het registratiesysteem BAG en het registratiesysteem Geo binnen een gemeente. In het registratiesysteem BAG worden gebouw- en adresgegevens bijgehouden in het kader van de wet Basisregistraties
+                Adressen en Gebouwen (BAG). In het registratiesysteem Geo worden de geometrie en attribuutgegevens van topografische objecten bijgehouden in het kader van de Basisregistratie Grootschalige Topografie (BGT) en ten behoeve van intern gebruik
+                (o.a. beheer openbare ruimte). Voor het registratiesysteem Geo wordt ook geometrie van objecten in het registratiesysteem BAG ingewonnen en bijgehouden. </p>
+            <p>Om er voor te zorgen dat de registratiesystemen BAG en Geo, en de basisregistraties BAG en BGT onderling consistent zijn, is een koppeling op basis van een standaard van groot belang. Het werkingsgebied van dit koppelvlak is dan ook primair
+                bedoeld voor optimalisatie van gegevensuitwisseling en het beheer van twee wettelijke backoffice processen voor BAG en BGT. Als aanvulling hierop zijn voor aansluiting bij de bredere gemeentelijke behoefte optionele objecttypen uit RSGB
+                toegevoegd, zodat de inwinning van de geometrie van deze objecttypen meegenomen kunnen worden in de bijhouding van de BAG en BGT objecttypen. </p>
+            <p>De voordelen van deze koppelvlakstandaard zijn o.a. dat </p>
+            <ul>
+                <li>in een specifiek applicatielandschap verschillende BAG-applicaties met verschillende BGT-applicaties kunnen koppelen (via een gegevensdistributiecomponent). </li>
+                <li>een geautomatiseerde koppeling voorkomt, ook op de plaats waar het maar door één persoon wordt uitgevoerd, overtikwerk en fouten in de administratie. </li>
+                <li>het de onderlinge consistentie en de kwaliteit van de gegevens in de twee administraties vergroot wat tot betere informatievoorziening bij besluiten en fraudedetectie leidt. </li>
+                <li>het zorgt voor een helder inzicht in de werkvoorraad aan beide zijden en de stroomlijning van de processen: zaken kunnen niet meer onzichtbaar lang blijven liggen; geometrie wordt niet vaker dan noodzakelijk ingemeten. </li>
+            </ul>
+        </section>
+        <section typeof="bibo:Chapter" resource="#leeswijzer" property="bibo:hasPart">
+            <h3 id="leeswijzer" resource="#leeswijzer"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Leeswijzer</span>
+            </h3>
+            <p>Dit document beschrijft het berichtenverkeer tussen het registratiesysteem BAG en het registratiesysteem Geo (hierna respectievelijk BAG en Geo). Deze koppelvlakspecificatie beschrijft de uitwisseling van geometrie voor BAG-objecten, waarbij
+                BAG de partij is die een verzoek doet om geometrie en Geo de partij is die geometrie levert. BAG houdt Geo verder op de hoogte van wijzigingen (o.a. status en attribuutgegevens) op de BAG-objecten via notificaties (BAG-kennisgevingen)
+                (zie Figuur 1). </p>
+            <p><img src="media/fig-schema-geo-bag-berichtenverkeer.png" alt="Alt text"></p>
+            <p><em>Figuur 1.1 Schematische weergave componenten StUF-Geo BAG berichtenverkeer.</em> </p>
+            <p>De standaard van berichten waarmee de gegevens tussen BAG en Geo worden uitgewisseld is gebaseerd op het Standaard Uitwiselings Formaat (StUF). Naast bestaande berichten uit StUF 03.10 en de BAG-berichtencatalogus (als onderdeel van StUF-BG)
+                worden voor dit koppelvlak specifieke berichten toepast, aangeduid met StUF-Geo BAG berichten. Dit koppelvlak is als apart sectormodel (geoBAG) gepositioneerd naast de BAG berichtencatalogus. </p>
+            <p>De structuur van dit document is als volgt: o.b.v. een aantal uitgangspunten o.a. verantwoordelijkheden en taken in Hoofdstuk 2 worden een drietal algemene scenario’s van de werkprocessen tussen BAG en Geo geschetst in Hoofdstuk 3. In deze
+                scenario’s worden bepaalde berichten zoals verzoeken en leveringen verstuurd. De inhoud van de berichten zijn nader gedefinieerd in Hoofdstuk 4 en Hoofdstuk 5. </p>
+        </section>
+        <section typeof="bibo:Chapter" resource="#verbinding-met-de-gemma-informatiearchitectuur" property="bibo:hasPart">
+            <h3 id="verbinding-met-de-gemma-informatiearchitectuur" resource="#verbinding-met-de-gemma-informatiearchitectuur"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.3 </span>Verbinding met de GEMMA Informatiearchitectuur</span>
+            </h3>
+            <p>De GEMMA Informatiearchitectuur[^1] geeft inrichting aan de informatiehuishouding van gemeenten. De informatiehuishouding betreft de referentiecomponenten en applicatiefunctionaliteit waarmee de gegevens kunnen worden opgeslagen, geraadpleegd
+                en processen kunnen worden ondersteund etc. Ook de informatiemodellen (RSGB, RGBZ, ImZTC, etc.) en berichtenstandaarden (StUF, StUF-BG, StUF-ZKN, etc.) die zorgen voor een efficiënte en gestandaardiseerde manier van informatie-uitwisseling,
+                zijn onderdeel van de informatiearchitectuur. </p>
+            <p>Figuur 2 geeft een overzicht van de GEMMA Referentiecomponenten[^2] in gedeeld op beleidsthema’s zoals Milieu &amp; Mobiliteit en Ruimtelijke Ordening &amp; Wonen. De referentiecomponenten die relevant zijn voor het geoBAG-koppelvlak zijn
+                omcirkeld in rood. In onderstaande tabel wordt een vertaling gegeven tussen de naamgeving van de referentiecomponenten in dit koppelvlak en GEMMA. </p>
+            <p><img src="media/fig-overzicht-gemma-referentiecomponenten.png" alt="GEMMA Referentiecomponenten"></p>
+            <p><em>Figuur 1.2: Gemma Referentiecomponenten</em></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Geonovum</th>
+                        <th>GEMMA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registratie BAG</td>
+                        <td>BAG-administratie</td>
+                    </tr>
+                    <tr>
+                        <td>Registratie GEO</td>
+                        <td>BGT-administratie</td>
+                    </tr>
+                    <tr>
+                        <td>Registratie GEO</td>
+                        <td>GIS (Geografisch Informatie Systeem)</td>
+                    </tr>
+                    <tr>
+                        <td>Registratie GEO</td>
+                        <td>CAD (Computer-Aided Design)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>De GEMMA Softwarecatalogus[^3] is een online informatiesysteem dat het (verwachte) softwareaanbod voor gemeenten en het gebruik door gemeenten in kaart brengt. Deze catalogus is gebaseerd op de naamgeving en structuur van de GEMMA Referentiecomponenten.
+                Met de bovenstaande mapping zijn software leveranciers instaat om de geoBAG-koppeling op de juiste manier in te voeren in de software catalogus. </p>
+            <p>[^1] <a href="http://www.gemmaonline.nl/index.php/GEMMA_Informatiearchitectuur">http://www.gemmaonline.nl/index.php/GEMMA_Informatiearchitectuur</a> [^2] <a href="http://www.gemmaonline.nl/index.php/GEMMA_Applicatielandschap">http://www.gemmaonline.nl/index.php/GEMMA_Applicatielandschap</a>                [^3] <a href="https://www.softwarecatalogus.nl">https://www.softwarecatalogus.nl</a> </p>
+        </section>
+        <section typeof="bibo:Chapter" resource="#referenties" property="bibo:hasPart">
+            <h3 id="referenties" resource="#referenties"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.4 </span>Referenties</span>
+            </h3>
+            <p>Deze koppelvlakspecificatie voor het Geo-BAG berichtenverkeer is gebaseerd op de volgende standaarden: </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Afkorting</th>
+                        <th>Document</th>
+                        <th>Versie</th>
+                        <th>Datum</th>
+                        <th>Auteur c.q. beheerder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[BGT]</td>
+                        <td>Gegevenscatalogus BGT</td>
+                        <td>1.1.1</td>
+                        <td>Juli 2013</td>
+                        <td>Geonovum</td>
+                    </tr>
+                    <tr>
+                        <td>[IMGeo]</td>
+                        <td>Gegevenscatalogus IMGeo</td>
+                        <td>2.1.1</td>
+                        <td>Juli 2013</td>
+                        <td>Geonovum</td>
+                    </tr>
+                    <tr>
+                        <td>[BAG-P]</td>
+                        <td>BAG processenhandboek</td>
+                        <td>2013</td>
+                        <td>11 februari 2014</td>
+                        <td>Kadaster</td>
+                    </tr>
+                    <tr>
+                        <td>[StUF]</td>
+                        <td>StUF 03.01: In Gebruik</td>
+                        <td>22</td>
+                        <td>1 juli 2015</td>
+                        <td>KING</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Deze koppelvlakspecificatie voor het Geo-BAG berichtenverkeer hanteert verder de volgende documenten en bestanden die toegepast dienen te worden bij de implementatie: </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Afkorting</th>
+                        <th>Document / bestand</th>
+                        <th>Versie</th>
+                        <th>Datum</th>
+                        <th>Auteur c.q. beheerder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[XSD]</td>
+                        <td>Berichtenschema StUF-Geo BAG</td>
+                        <td>‡‡‡</td>
+                        <td>‡‡‡</td>
+                        <td>Geonovum</td>
+                    </tr>
+                    <tr>
+                        <td>[WSDL]</td>
+                        <td>Servicebeschrijving StUF-Geo BAG</td>
+                        <td>‡‡‡</td>
+                        <td>‡‡‡</td>
+                        <td>Geonovum</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>‡‡‡ Voor de vigerende versie van de StUF-Geo BAG implementatietoolkit, zie de website van Geonovum: <a href="http://www.geonovum.nl/onderwerpen/bgt-imgeo-standaarden">http://www.geonovum.nl/onderwerpen/bgt-imgeo-standaarden</a>. </p>
+            <p>Bij deze documenten en bestanden zijn, ter ondersteuning van de implementatie, werkafspraken gepubliceerd op de website van Geonovum: <a href="http://www.geonovum.nl/onderwerpen/bgt-imgeo-standaarden/werkafspraken-geobag">http://www.geonovum.nl/onderwerpen/bgt-imgeo-standaarden/werkafspraken-geobag</a></p>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#uitgangspunten" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="uitgangspunten" resource="#uitgangspunten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Uitgangspunten</span>
+        </h2>
+        <p>Dit hoofdstuk beschrijft de uitgangspunten voor uitwisseling van gegevens tussen BAG en Geo via StUF-Geo BAG berichtenverkeer. </p>
+        <section typeof="bibo:Chapter" resource="#actoren-en-verantwoordelijkheden-geo-en-bag" property="bibo:hasPart">
+            <h3 id="actoren-en-verantwoordelijkheden-geo-en-bag" resource="#actoren-en-verantwoordelijkheden-geo-en-bag"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Actoren en verantwoordelijkheden: Geo en BAG</span>
+            </h3>
+            <p>Het StUF-Geo BAG berichtenverkeer kent twee actoren[^4}: (het registratiesysteem[^5] van) BAG en (het registratiesysteem van) Geo, hierna respectievelijk BAG en Geo. </p>
+            <p>BAG is eindverantwoordelijk voor de volledigheid van de BAG-objecten, het op een correcte manier afbakenen van BAG-objecten en de vastlegging en distributie van de juiste BAG-gegevens volgens de hiervoor geldende wettelijke eisen. </p>
+            <p>Geo is veelal faciliterend voor de geometrische inwinning en vastlegging van de geometrie van BAG-objecten conform de eisen van de BAG. Voorts is Geo verantwoordelijk voor de afstemming van de BGT met de BAG. </p>
+            <p>De beheerder van Geo[^6] kan vanuit BAG gemandateerd zijn voor de vaststelling van de definitieve geometrie van BAG-panden en BAG-verblijfsobjecten. Het brondocument voor de geometrische mutaties voor BAG-objecten kan en mag opgemaakt en ondertekend
+                worden door de beheerder van Geo. </p>
+            <p>[^4] In het geval dat BAG zelf de inwinning en vastlegging van de geometrie verzorgt, is een deel van het in dit koppelvlak beschreven berichtenverkeer niet van toepassing. Geo heeft dan voldoende aan de kennisgevingsberichten vanuit BAG voor
+                de bijhouding van de gegevens van BGT objecten. [^5] Registratiesysteem wordt hierna “applicatie” genoemd. [^6] In praktijk zijn dit de medewerkers van Geo, danwel de ambtenaar die belast is me de uitbesteding van inwinning van de geometrie
+                voor Geo. </p>
+            <section typeof="bibo:Chapter" resource="#berichten" property="bibo:hasPart">
+                <h4 id="berichten" resource="#berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Berichten</span>
+                </h4>
+                <p>Het berichtenverkeer tussen Geo en BAG maakt gebruik van de volgende typen berichten: </p>
+                <ul>
+                    <li>StUF-Geo BAG berichten: specifiek voor dit koppelvlak gedefinieerde dienstberichten t.w. </li>
+                    <li>geometrieVerzoek (gmvDi01): een asynchroon inkomend vrij bericht als verzoek tot levering van geometrie[^7] voor een bepaald object. </li>
+                    <li>geometrieLevering (gmlDi01): een asynchroon inkomend vrij bericht met de te leveren geometrie[^7] voor een bepaald object. </li>
+                    <li>goedkeuringsbericht (bevestigingDu01): een asynchroon responsbericht met de goedkeuring van (een deel van de inhoud van) een geometrieVerzoek of geometrieLevering. </li>
+                    <li>afkeuringsbericht (foutDu01): een asynchroon responsbericht met een afkeuring van (een deel van de inhoud van) een geometrieVerzoek of geometrieLevering. </li>
+                    <li>StUF-BG / BAG-kennisgevingsberichten </li>
+                    <li>Logistieke StUF bevestigings- en foutberichten, o.a. </li>
+                    <li>Bv03[^8]: een bevestigingsbericht als technische synchrone respons op een asynchroon bericht waarbij het bericht op basis van berichtstuurgegevens verwerkbaar wordt geacht[^9] </li>
+                    <li>Fo03: een foutbericht als technische synchrone respons op een asynchroon bericht waarbij het bericht niet verwerkbaar wordt geacht. </li>
+                </ul>
+                <p>[^7] Naast geometrie worden ook enkele administratieve gegevens uitgewisseld; zie H4 Berichten. </p>
+                <p>[^8] Of Bv04: een servicebus stuurt een Bv04 als technisch synchrone respons op een asynchroon bericht </p>
+                <p>[^9] Een technische synchrone respons wordt op elk samengesteld of kennisgevingsbericht teruggeven cf. StUF conventies, en is dan ook verder niet opgenomen in de uitwerking van het berichtenverkeer. </p>
+                <p>De StUF-Geo BAG berichten zijn gespecifieerd in §4.1. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#uitwisselen-van-gegevens-van-bag-objecten" property="bibo:hasPart">
+                <h4 id="uitwisselen-van-gegevens-van-bag-objecten" resource="#uitwisselen-van-gegevens-van-bag-objecten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2 </span>Uitwisselen van gegevens van BAG-objecten</span>
+                </h4>
+                <p>In het StUF-Geo BAG berichtenverkeer worden gegevens uitgewisseld van BAG-objecten. </p>
+                <section typeof="bibo:Chapter" resource="#objecttypen" property="bibo:hasPart">
+                    <h5 id="objecttypen" resource="#objecttypen"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2.1 </span>Objecttypen</span>
+                    </h5>
+                    <p>De volgende BAG-objecttypen worden ondersteund in het Geo-BAG berichtenverkeer: </p>
+                    <ul>
+                        <li>Pand </li>
+                        <li>Verblijfsobject </li>
+                        <li>Stand-/ligplaats </li>
+                        <li>Woonplaats </li>
+                        <li>Nummeraanduiding[^10]</li>
+                        <li>OpenbareRuimte[^11]</li>
+                    </ul>
+                    <p>Dit berichtschema’s van van het Geo-BAG koppelvlak zijn daarnaast uitgebreid met de optionele objecttypen OverigGebouwdObject en OverigTerrein voor aansluiting met RSGB. Overig optionele BAG+-objecttypen worden in het Geo-BAG berichtenverkeer
+                        niet ondersteund. In de StUF-Geo BAG berichten worden alleen de gegevens opgenomen die noodzakelijk zijn voor een goede verwerking van dit bericht door de ontvanger (zie gegevensmodel in Bijlage 3.). </p>
+                    <p>[^10] Alleen in BAG-kennisgeving, niet in geometrieVerzoek of geometrieLevering. </p>
+                    <p>[^11] Alleen in BAG-kennisgeving, niet in geometrieVerzoek of geometrieLevering. </p>
+                </section>
+                <section typeof="bibo:Chapter" resource="#geometrie" property="bibo:hasPart">
+                    <h5 id="geometrie" resource="#geometrie"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2.2 </span>Geometrie</span>
+                    </h5>
+                    <p>Voor dit koppelvlak geldt dat de geometrie conform de inwinningsregels ten aanzien van nauwkeurigheid en inwinningswijze van de BAG wordt opgenomen. Een BAG-object kan een vlak- of puntgeometrie hebben. </p>
+                    <p>De verplichte geometrie voor een Pand in de BAG is een vlakgeometrie in bovenaanzicht. In het kader van de BGT is Geo ook verantwoordelijk voor de geometrische inwinning van grootschalige topografie. Voor de BGT is de keuze gemaakt
+                        om van een pand de geometrie op maaiveldniveau op te nemen. Door modernere bouwvormen komt het daarbij steeds vaker voor dat de geometrie van een pand op maaiveldniveau aanzienlijk kan afwijken van de geometrie van een pand op
+                        een ander niveau. De geometrie op maaiveld van een Pand kan in de StUF-BG kennisgevingsberichten als optionele geometrie bij dit object worden opgenomen naast de verplichte geometrie van bovenaanzicht. </p>
+                    <ul>
+                        <li>In dit koppelvlak wordt in de StUF-Geo BAG dienstberichten[^12] de geometrie van objecten als volgt opgenomen: objecttype Verblijfsobject wordt uitgewisseld met puntgeometrie, en optioneel met vlakgeometrie. </li>
+                        <li>objecttype Pand wordt uitgewisseld met geometrie van het bovenaanzicht, en optioneel met geometrie op het maaiveld. </li>
+                        <li>alle overige objecttypen[^13] in §2.3.1. met vlakgeometrie. </li>
+                    </ul>
+                    <p>[^12] Dus niet van toepassing voor de StUF-BG kennisgevingsberichten. </p>
+                    <p>[^13] M.u.v. Nummeraanduiding en OpenbareRuimte, deze objecttypen hebben geen geometrie. </p>
+                </section>
+                <section typeof="bibo:Chapter" resource="#samengesteld-uitwisselen-en-alleen-actuele-stand" property="bibo:hasPart">
+                    <h5 id="samengesteld-uitwisselen-en-alleen-actuele-stand" resource="#samengesteld-uitwisselen-en-alleen-actuele-stand"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2.3 </span>Samengesteld uitwisselen en alleen actuele stand</span>
+                    </h5>
+                    <p>In de StUF-Geo BAG berichten worden de gegevens van objecten samengesteld uitgewisseld, d.w.z. een geometrieVerzoek of geometrieLevering bevat de gegevens van één of meerdere BAG-objecten welke tot één bepaalde transactie of gebeurtenis
+                        behoren. Bijvoorbeeld, indien een door Geo uitgevoerde mutatiesignalering uit luchtfoto’s mutaties oplevert op meerdere objecten, worden een of meer mutaties van deze objecten in een bericht (geometrieLevering) door Geo aan BAG
+                        verstuurd. </p>
+                    <p>In dit Geo-BAG berichtenverkeer wordt in een StUF-Geo BAG dienstbericht[^14] alleen de actuele stand (WORDT) van een BAG-object uitgewisseld, en niet in combinatie met de vorige stand (WAS) van het BAG-object[^15]. Zowel BAG als Geo
+                        hebben de gegevens van een vorige stand van een object niet nodig voor het overnemen van de gegevens uit een bericht. In het bijzonder geval dat op enig moment de gegevens van een bepaald object bij Geo en BAG verschillen (asynchroniteit),
+                        zijn de gegevens van de actuele stand in de applicatie van BAG leidend voor dit object. </p>
+                    <p>[^14] Dus niet van toepassing voor de StUF-BG kennisgevingsberichten. </p>
+                    <p>[^15] Dit in afwijking van het StUF-BG en StUF-Geo IMGeo berichtenverkeer waar in een bericht WAS én WORDT van een object wordt uitgewisseld. </p>
+                </section>
+            </section>
+            <section typeof="bibo:Chapter" resource="#gebeurtenissen-als-aanleiding-voor-berichtenverkeer" property="bibo:hasPart">
+                <h4 id="gebeurtenissen-als-aanleiding-voor-berichtenverkeer" resource="#gebeurtenissen-als-aanleiding-voor-berichtenverkeer"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.3 </span>Gebeurtenissen als aanleiding voor berichtenverkeer</span>
+                </h4>
+                <p>Het berichtenverkeer tussen BAG en Geo ontstaat naar aanleiding van een bepaalde gebeurtenis aan de kant van BAG of Geo. In Bijlage 1 is een overzicht met alle gebeurtenissen[^16] van Geo en BAG opgenomen en tot welke berichten zij leiden.
+                    </p>
+                <p>Naar aanleiding van een BAG-gebeurtenis (bijv. verlenen vergunning) stuurt BAG aan Geo een verzoek om geometrie aan te leveren, ofwel een geometrieVerzoek. </p>
+                <p>Naar aanleiding van een Geo-gebeurtenis (bijv. constatering[^17] nieuw pand door mutatiesignalering uit luchtfoto’s) of de geometrische inwinning voor BAG na een geometrieVerzoek, stuurt Geo aan BAG een levering van nieuwe of gewijzigde
+                    geometrie, ofwel een geometrieLevering[^18] </p>
+                <p>Naar aanleiding van een levering van nieuwe of gewijzigde geometrie door Geo, stuurt BAG altijd een functionele respons om de acceptatie en verwerking, of afkeuring van de levering aan Geo te melden, ofwel een responsbericht. </p>
+                <p>Naar aanleiding van een doorgevoerde mutatie op een BAG-object , stuurt BAG een kennisgeving van deze wijziging aan Geo, ofwel een BAG-kennisgevingsbericht (= StUF-BG). Geo filtert hieruit de voor de Geo/BGT relevante mutaties (bijv. wijziging
+                    van een nummeraanduiding door BAG) en verwerkt deze in de eigen applicatie. </p>
+                <p>[^16] Dit overzicht is gebaseerd op de lijst met gebeurtenissen van het formele BAG-processenhandboek en aangevuld met de Geo-gebeurtenissen. </p>
+                <p>[^17] Dit is een vorm van terugmelding op de registratie van BAG. </p>
+                <p>[^18] Geo krijgt de BAG-identificatie van een geconstateerd nieuw pand retour na overname van BAG via een BAG-kennisgevingsbericht. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#identificaties-van-en-relaties-tussen-berichten" property="bibo:hasPart">
+                <h4 id="identificaties-van-en-relaties-tussen-berichten" resource="#identificaties-van-en-relaties-tussen-berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.4 </span>Identificaties van en relaties tussen berichten</span>
+                </h4>
+                <p>De StUF-Geo BAG berichten hebben een logistieke identificatie en functionele identificatie, resp. het
+                    <stuf:referentienummer>in de
+                        <stuf:stuurgegevens>en
+                            <bg:identificatie>in de entiteittypen
+                                <bg:parameters>. </bg:parameters>
+                            </bg:identificatie>
+                        </stuf:stuurgegevens>
+                    </stuf:referentienummer>
+                </p>
+                <p>Indien een geometrieLevering een respons is op een geometrieVerzoek bevat de geometrieLevering een eigen unieke logistieke identificatie en een verwijzing naar de functionele identificatie van het geometrieVerzoek. </p>
+                <p>Daarnaast bevat de geometrieLevering in de eigen functionele identificatie
+                    <bg:identificatie>de functionele identificatie van het geometrieVerzoek in het element
+                        <bg:idgerelateerdverzoek>. De functionele identificatie geldt als een kenmerk om berichten bij een bepaalde gebeurtenis of transactie te kunnen bundelen[^19]. </bg:idgerelateerdverzoek>
+                    </bg:identificatie>
+                </p>
+                <p>[^19] De functionele identificatie is ook nodig voor het corrigeren en intrekken van eerder verzonden bericht, omdat een geometrieVerzoek en geometrieLevering geen StUF:crossReferencenummer in de stuurgegevens hebben. </p>
+                <p><em>Tabel 1. Voorbeeld logistieke en functionele identificatie in een geometrieVerzoek.</em></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>«leeg»</th>
+                            <th>geometrieVerzoek</th>
+                            <th>geometrieLevering</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>StUF:referentienummer</td>
+                            <td>BAG12345678</td>
+                            <td>GEO23456789</td>
+                        </tr>
+                        <tr>
+                            <td>StUF:crossRefnummer</td>
+                            <td></td>
+                            <td>BAG12345678</td>
+                        </tr>
+                        <tr>
+                            <td>BG:identificatie</td>
+                            <td>GMV09876543</td>
+                            <td>GMV09876543</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#corrigeren-en-intrekken-van-berichten" property="bibo:hasPart">
+                <h4 id="corrigeren-en-intrekken-van-berichten" resource="#corrigeren-en-intrekken-van-berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.5 </span>Corrigeren en intrekken van berichten</span>
+                </h4>
+                <p>In het StUF-Geo BAG berichtenverkeer kan het voorkomen dat BAG of Geo een eerder verstuurd StUF-Geo BAG bericht wil corrigeren of intrekken. Een bericht kan door zender worden gecorrigeerd of ingetrokken indien deze nog niet door ontvanger
+                    is afgehandeld, d.w.z. dat er nog niet door </p>
+                <ul>
+                    <li>BAG een goed- of afkeuringsbericht als respons op een geometrieLevering, of </li>
+                    <li>Geo een geometrieLevering of afkeuringsbericht als respons op een geometrieVerzoek is verstuurd. </li>
+                </ul>
+                <p>Voor het intrekken van een StUF-Geo BAG bericht wordt een nieuw bericht gestuurd met daarin opgenomen een eigen unieke logistieke identificatie en een functionele identificatie gelijk aan de functionele identificatie van het in-te-trekken
+                    bericht. Bijvoorbeeld, BAG wil een geometrieVerzoek n.a.v. een BAG-gebeurtenis BAG-<em>*</em> met een logistieke en functionele identificatie resp. BAG12345678 en GMV09876543 intrekken. BAG stuurt daarop een geometrieVerzoek met gebeurteniscode
+                    BAG-NEG met een nieuwe logistieke identificatie en een gelijke functionele identificatie GMV09876543 als het eerder verzonden geometrieVerzoek. </p>
+                <p>Voor het corrigeren van een StUF-Geo BAG bericht wordt eerst het vorige bericht ingetrokken en vervolgens een nieuw bericht met een nieuwe functionele identificatie verstuurd. Bijvoorbeeld, na het intrekken van een geometrieVerzoek met
+                    functionele identificatie GMV09876543 stuurt BAG een nieuw geometrieVerzoek met functionele identificatie GMV09876544. </p>
+                <p><em>Tabel 2. Voorbeeld intrekken en corrigeren van een geometrieVerzoek</em></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>«leeg»</th>
+                            <th>origineel</th>
+                            <th>intrekken</th>
+                            <th>nieuw bericht t.b.v. corrigeren</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>StUF:referentienummer</td>
+                            <td>BAG12345678</td>
+                            <td>BAG12345679</td>
+                            <td>BAG12345680</td>
+                        </tr>
+                        <tr>
+                            <td>BG:identificatie</td>
+                            <td>GMV09876543</td>
+                            <td>GMV09876543</td>
+                            <td>GMV09876544</td>
+                        </tr>
+                        <tr>
+                            <td>BG:gebeurtenisCode[^20]</td>
+                            <td>BAG-<em>*</em></td>
+                            <td>BAG-NEG</td>
+                            <td>BAG-<em>*</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>[^20] Idem voor geometrieLevering met gebeurtenissen resp. GEO-<em>*</em>, GEO-CEG, en GEO-NEG. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#identificaties-van-en-relaties-tussen-objecten" property="bibo:hasPart">
+                <h4 id="identificaties-van-en-relaties-tussen-objecten" resource="#identificaties-van-en-relaties-tussen-objecten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.6 </span>Identificaties van en relaties tussen objecten</span>
+                </h4>
+                <p>Een BAG-object in een StUF-Geo BAG bericht heeft functionele en technische identificaties, t.w. </p>
+                <ul>
+                    <li>BAG-identificatie: de functionele identificatie van een BAG-object zijnde een 16-cijferige code welke wordt toegewezen door de applicatie van BAG nadat het object in de registratie van BAG is opgenomen. Met dit nummer is het object
+                        ook bekend in de Landelijke Voorziening BAG zodra het authentiek is verklaard. </li>
+                    <li>sleutelVerzendend: de technische systeemsleutel van het BAG-object in de applicatie van de verzender van het bericht (dus BAG of Geo) </li>
+                    <li>sleutelOntvangend: de technische systeemsleutel van het BAG-object in de applicatie van de ontvanger van het bericht (dus BAG of Geo). </li>
+                </ul>
+                <p>Het opnemen van de BAG-identificatie bij een object is verplicht, behalve in de volgende twee situaties: </p>
+                <ul>
+                    <li>Bij het versturen van een geometrieVerzoek na gebeurtenis ‘BGR-OBA Ontvangst bouwaanvraag’, waarbij het object nog niet is opgenomen in de applicatie van BAG en dus de BAG-identificatie voor dit object nog niet is uitgedeeld. </li>
+                    <li>Bij het versturen van een geometrieLevering na gebeurtenis ‘GEO-COG Constatering nieuw object’ (bijvoorbeeld bij vergunningsvrije bouw) waarbij het object ontstaat in de applicatie van Geo. Het object is nog niet opgenomen in de applicatie
+                        van BAG en dus is de BAG-identificatie voor dit object nog niet uitgedeeld. </li>
+                </ul>
+                <p>Het opnemen van de technische systeemsleutels StUF:sleutelVerzendend en StUF:sleutelOntvangend bij een object is verplicht als de BAG-identificatie niet kan worden meegestuurd (zie bovenstaande). De StUF:sleutelOntvangend mag alleen leeggelaten
+                    worden als het object is ontstaan in de zendende applicatie en nog niet voorkomt in de applicatie van ontvanger (en dus de technische systeemsleutel van ontvangende applicatie niet bestaat). Na het opnemen van het object in de applicatie
+                    van ontvanger stuurt ontvanger de technische systeemsleutel in een responsbericht aan zender: </p>
+                <ul>
+                    <li>na een geometrieVerzoek van BAG wordt technische systeemsleutel van BAG en Geo in een geometrieLevering teruggegeven aan BAG, </li>
+                    <li>na een geometrieLevering van Geo wordt de technische systeemsleutel van Geo samen met de BAG-identificatie in een goedkeuringsbericht teruggegeven aan Geo. </li>
+                </ul>
+                <p>In zijn algemeenheid geldt dat als de functionele BAG-identificatie bekend is deze wordt meegestuurd in een geometrieVerzoek, geometrieLevering of goedkeuringsbericht. Als de functionele BAG-identificatie niet bekend is, worden de technische
+                    sleutels van Geo en/of BAG meegeleverd, voor zover bekend. Dus de uitwisseling van identificaties is als volgt: </p>
+                <ol>
+                    <li>Indien wel BAG-identificatie bij BAG bekend, stuurt BAG de BAG-identificatie mee en optioneel de technische systeemsleutel van BAG. </li>
+                    <li>Indien geen BAG-identificatie bij BAG bekend, stuurt BAG de technische systeemsleutel van BAG mee. </li>
+                    <li>Indien BAG identificatie bij Geo bekend, dan stuurt Geo de BAG identificatie mee. </li>
+                    <li>Indien geen BAG-identificatie bij Geo bekend en object is ontstaan bij BAG[^21], stuurt Geo de technische systeemsleutel van BAG en Geo mee. </li>
+                    <li>Indien geen BAG-identificatie bij Geo bekend en een object is ontstaan bij Geo, stuurt Geo alleen de technische systeemsleutel van Geo mee[^22].</li>
+                </ol>
+                <p>Ofwel: Geo stuurt altijd de technische systeemsleutel mee. </p>
+                <p>[^21] Deze situatie komt alleen voor als een BAG-object een status ‘vergunning aangevraagd’ heeft, maar nog niet is opgevoerd in de registratie (en dus nog geen BAG-identificatie heeft).</p>
+                <p>[^22] Deze situatie komt voor indien een object geconstateerd wordt door Geo. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#verzenden-en-verwerken-van-berichten" property="bibo:hasPart">
+                <h4 id="verzenden-en-verwerken-van-berichten" resource="#verzenden-en-verwerken-van-berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.7 </span>Verzenden en verwerken van berichten</span>
+                </h4>
+                <p>In StUF-Geo BAG berichtenverkeer kunnen berichten in willekeurige volgorde worden verzonden en verwerkt. </p>
+                <section typeof="bibo:Chapter" resource="#transacties-en-bundeling-van-berichten" property="bibo:hasPart">
+                    <h5 id="transacties-en-bundeling-van-berichten" resource="#transacties-en-bundeling-van-berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.7.1 </span>Transacties en bundeling van berichten</span>
+                    </h5>
+                    <p>Bij bepaalde gebeurtenissen (bijv. bij het verlenen van een bouwvergunning voor een pand met meerdere verblijfsobjecten en nummeraanduidingen) komt het voor dat gegevens van meerdere objecten uitgewisseld gaan worden. Per transactie[^23]
+                        wordt een StUF-Geo BAG bericht met een eigen logistieke identificatie en een gemeenschappelijke functionele identificatie (betreffende de gebeurtenis ‘bouwvergunning verleend’) voor deze transactie samengesteld en in willekeurige
+                        volgorde verstuurd. Het is niet de bedoeling om bijvoorbeeld in één geometrieverzoek voor alle objecten die op die dag zijn opgevoerd in het hele gebied van een gemeente de geometrie te vragen. De eenheid van werk dient zo klein
+                        mogelijk gehouden te worden aan de ontvangende kant, om snelle afhandeling van een verzoek of levering mogelijk te maken. </p>
+                    <p>[^23] Een transactie is een samenstelling / bundeling van (gewijzigde) gegevens van één of meer objecten wat tot een bepaalde gebeurtenis of eenheid van werk toebehoord. </p>
+                </section>
+                <section typeof="bibo:Chapter" resource="#verplichte-of-niet-verplichte-overname" property="bibo:hasPart">
+                    <h5 id="verplichte-of-niet-verplichte-overname" resource="#verplichte-of-niet-verplichte-overname"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.7.2 </span>Verplichte of niet-verplichte overname</span>
+                    </h5>
+                    <p>De gegevens van een object in het StUF-Geo BAG berichtenverkeer welke worden uitgewisseld met asynchrone kennisgevingsberichten kunnen verplicht zijn om te verwerken in de ontvangende applicatie of informatief bedoeld zijn. Of een
+                        BAG-kennisgeving in een bericht verplicht of informatief is, wordt opgenomen in de parameter
+                        <stuf:indicatorovername>met resp. “V” (Verplicht) of “I” (Informatief). </stuf:indicatorovername>
+                    </p>
+                    <p>Voor het Geo-BAG berichtenverkeer heeft een BAG-kennisgeving een indicatorOvername “V” (Verplicht), omdat BAG eindverantwoordelijk is voor de (kwaliteit van) gegevens van de BAG-objecten. Geo neemt de gegevens van BAG verplicht over
+                        in de eigen registratie. </p>
+                    <p>In een StUF-Geo BAG bericht komt het element indicatorOvername niet voor, omdat geen gebruik wordt gemaakt van kennisgevingen24 maar van elementen met een StUF:functie:”entiteit” (hierna: entiteit. De objectgegevens in een geometrieLevering
+                        of geometrieVerzoek zijn niet verplicht om over te nemen, en dienen enkel ter identificatie van het object waarvoor geometrie wordt gevraagd of geleverd. </p>
+                    <p>[^24] Dit omdat alleen de actuele stand van een object wordt uitgewisseld en geen WAS/WORDT structuur.</p>
+                </section>
+                <section typeof="bibo:Chapter" resource="#volgorde-van-verzenden-en-verwerken" property="bibo:hasPart">
+                    <h5 id="volgorde-van-verzenden-en-verwerken" resource="#volgorde-van-verzenden-en-verwerken"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.7.3 </span>Volgorde van verzenden en verwerken</span>
+                    </h5>
+                    <p>Het verzenden van een bericht wordt geïnitieerd door zender en is eenrichtingsverkeer (push-mechanisme). De zendende applicatie kan meerdere berichten achter elkaar versturen, waarbij een volgend bericht niet per sé verzonden wordt
+                        na bevestiging van ontvangst van het vorige bericht. </p>
+                    <p>De ontvanger bevestigt te allen tijde de ontvangst van een bericht met een technisch synchrone respons t.b.v. de logistiek (Bv03/Bv04 of Fo03). Als op een bericht binnen een bepaalde termijn geen bevestiging van ontvangst is teruggekomen,
+                        mag de zender veronderstellen dat het bericht niet is aangekomen. Omdat het de verantwoordelijkheid van zender is dat berichten ‘aankomen’, dient de zender opnieuw het bericht te versturen aan ontvanger. </p>
+                    <p>De afhandeling van het bericht door ontvanger is asynchroon, d.w.z. dat het ontvangen bericht op later moment (dus niet gelijk = synchroon) verwerkt wordt. De berichten in de wachtrij van de ontvangende applicatie worden conform StUF
+                        verwerkt, ofwel: op volgorde van tijdstipBericht. </p>
+                </section>
+                <section typeof="bibo:Chapter" resource="#synchroniteit" property="bibo:hasPart">
+                    <h5 id="synchroniteit" resource="#synchroniteit"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.7.4 </span>Synchroniteit</span>
+                    </h5>
+                    <p>Op bepaalde momenten kunnen de gegevens van BAG-objecten in de applicaties van BAG en Geo tijdelijk uit elkaar lopen (bijv. na afwijzing van een nieuw geconstateerd Pand in een levering van Geo welke na beoordeling door BAG een niet-relevant
+                        BAG-object blijkt te zijn, dus geen BAG-Pand). Geo is verantwoordelijk voor de synchronisatie van de eigen applicatie met BAG voor o.a. overname van gegevens bij het BGT-object Pand.
+
+
+
+
+
+
+                    </p>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#scenario-s" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="scenario-s" resource="#scenario-s"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Scenario’s</span>
+        </h2>
+        <p>Dit hoofdstuk beschrijft drie algemene scenario’s waarvoor StUF-Geo BAG berichtenverkeer toegepast wordt, t.w. verzoek om geometrie door BAG (3.1), constatering en signalering door Geo (3.2), en kennisgeving op object door BAG (3.3). </p>
+        <p>Onderstaand figuur toont een overzicht van de samenhang tussen de verschillende scenario’s (use cases) en de initiërende actor (Geo of BAG) in het StUF-Geo BAG berichtenverkeer. Een volledig overzicht van de samenhang van activiteiten in de scenario’s
+            van het StUF-Geo BAG berichtenverkeer is opgenomen in Bijlage 2. </p>
+        <p><img src="media/fig-use-case-diagram-stuf-geo-bag-berichtenverkeer.png" alt="Use case diagram StUF-Geo BAG berichtenverkeer"></p>
+        <p><em>Figuur 3.1 Use case diagram van het StUF-Geo BAG berichtenverkeer</em></p>
+        <section typeof="bibo:Chapter" resource="#verzoek-om-geometrie-door-bag" property="bibo:hasPart">
+            <h3 id="verzoek-om-geometrie-door-bag" resource="#verzoek-om-geometrie-door-bag"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Verzoek om geometrie door BAG</span>
+            </h3>
+            <section typeof="bibo:Chapter" resource="#basisscenario" property="bibo:hasPart">
+                <h4 id="basisscenario" resource="#basisscenario"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Basisscenario</span>
+                </h4>
+                <p>Op enig moment doet BAG naar aanleiding van een BAG-gebeurtenis (BAG-###) een verzoek aan Geo voor het leveren van geometrie in een geometrieVerzoek. Dit verzoek betreft een wens tot aanlevering van geometrie voor een bepaald object n.a.v.
+                    een bepaalde gebeurtenis. </p>
+                <p>Op het moment dat Geo het verzoek in behandeling neemt, stuurt Geo een goedkeuringsbericht aan BAG. Geo gaat op enig moment over tot verwerking van het verzoek, te weten de inwinning en kartering van de geometrie. Op het moment dat Geo
+                    de inwinning en kartering van de geometrie voltooid heeft, zal Geo de geometrie uitleveren aan BAG in een geometrieLevering. </p>
+                <p>BAG gaat over tot de beoordeling van de geometrieLevering. Indien BAG de geometrie in de geometrieLevering goedkeurt, stuurt BAG een bevestiging van acceptatie/overname van de geometrie aan Geo middels een goedkeuringsbericht. </p>
+                <p>Na succesvolle verwerking in de eigen applicatie stuurt BAG de actuele stand van het BAG-object middels een BAG-kennisgeving aan Geo[^25]. Geo verwerkt de gegevens in de BAG-kennisgeving in de eigen applicatie. </p>
+                <p><img src="media/fig-sd_verzoek_geometrie-bag.png" alt="Sequentiediagram Verzoek om geometrie door BAG"></p>
+                <p><em>Figuur 3.2 Sequentiediagram Verzoek om geometrie door BAG – Basisscenario[^26][^27]</em></p>
+                <p>[^25] En ook naar andere afnemers in de organisatie. </p>
+                <p>[^26] ### is jokerteken voor gebeurteniscode. BAG-### betekent elke gebeurtenis die ontstaat bij BAG. </p>
+                <p>[^27] xxxLk03 betekent voor elke BAG-kennisgeving zijnde een Lk03-bericht. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#alternatief-scenario-bag-keurt-levering-af" property="bibo:hasPart">
+                <h4 id="alternatief-scenario-bag-keurt-levering-af" resource="#alternatief-scenario-bag-keurt-levering-af"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.2 </span>Alternatief scenario: BAG keurt levering af</span>
+                </h4>
+                <p>Indien BAG de gegegevens in een geometrieLevering afkeurt, stuurt BAG de reden van afkeuring aan Geo in één of meer afkeuringsberichten. Indien BAG een gecorrigeerde (geometrie)levering voor dit object wenst te ontvangen, stuurt BAG een
+                    nieuw geometrieVerzoek aan Geo[^28]. </p>
+                <p><img src="media/fig-sd_verzoek_geometrie-bag-alt1.png" alt="Sequentiediagram Verzoek om geometrie door BAG - Alt 1. BAG keurt levering af"></p>
+                <p><em>Figuur 3.3 Sequentiediagram Verzoek om geometrie door BAG – Alt 1. BAG keurt levering af.</em></p>
+                <p>[^28] De gevolgen voor de BGT worden beoordeeld door de BGT operator. Hiermee is de afhandeling van het geometrieVerzoek voor Geo afgerond. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#alternatief-scenario-bag-wil-eerder-verzonden-geometrieverzoek-intrekken" property="bibo:hasPart">
+                <h4 id="alternatief-scenario-bag-wil-eerder-verzonden-geometrieverzoek-intrekken" resource="#alternatief-scenario-bag-wil-eerder-verzonden-geometrieverzoek-intrekken"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.3 </span>Alternatief scenario: BAG wil eerder verzonden geometrieVerzoek intrekken</span>
+                </h4>
+                <p>Indien BAG een eerder verzonden geometrieVerzoek wil intrekken (bijv. indien een vergunning niet wordt verleend, terwijl de aanvraag voor geometrie al was uitgezet door BAG), stuurt BAG een nieuw geometrieVerzoek met gebeurtenis ‘Negeren
+                    eerder verzonden geometrieVerzoek’ (BAG-NEG) naar Geo. </p>
+                <p>Indien Geo het eerder verzonden geometrieVerzoek nog niet heeft afgehandeld[^29], kan het dit geometrieVerzoek negeren. Geo stuurt een bevestiging dat het geometrieVerzoek wordt genegeerd in een goedkeuringsbericht aan BAG. </p>
+                <p><img src="media/fig-sd_verzoek_geometrie-bag-alt2.png" alt="Sequentiediagram Verzoek om geometrie door BAG - Alt 2.  BAG wil eerder verzoek intrekken"></p>
+                <p><em>Figuur 3.4 Sequentiediagram Verzoek om geometrie door BAG – Alt 2. BAG wil eerder verzoek intrekken</em></p>
+                <p>[^29] D.w.z. dat een geometrieLevering is teruggestuurd</p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#alternatief-scenario-geo-keurt-geometrieverzoek-af" property="bibo:hasPart">
+                <h4 id="alternatief-scenario-geo-keurt-geometrieverzoek-af" resource="#alternatief-scenario-geo-keurt-geometrieverzoek-af"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.4 </span>Alternatief scenario: Geo keurt geometrieVerzoek af</span>
+                </h4>
+                <p>Indien Geo een geometrieVerzoek van BAG niet kan verwerken (bijv. BAG-geometrie van object is recent al uitgeleverd), keurt Geo het geometrieVerzoek af. Geo stuurt de reden van afkeuring aan BAG in één of meer afkeuringsberichten[^30].
+                    </p>
+                <p>[^30] De gevolgen voor de BGT worden beoordeeld door de BGT operator. Geo kan op eigen initiatief en met de kennis van de reden van afkeuring opnieuw een geometrieLevering doen aan BAG. </p>
+                <p><img src="media/fig-sd_verzoek_geometrie-bag-alt2.png" alt="Sequentiediagram Verzoek om geometrie door BAG - Alt 3.   Geo keurt verzoek af"></p>
+                <p><em>Figuur 3.5 Sequentiediagram Verzoek om geometrie door BAG – Alt 3. Geo keurt verzoek af</em></p>
+            </section>
+        </section>
+        <section typeof="bibo:Chapter" resource="#constatering-en-of-signalering-door-geo" property="bibo:hasPart">
+            <h3 id="constatering-en-of-signalering-door-geo" resource="#constatering-en-of-signalering-door-geo"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Constatering en/of signalering door Geo</span>
+            </h3>
+            <section typeof="bibo:Chapter" resource="#basisscenario" property="bibo:hasPart">
+                <h4 id="basisscenario" resource="#basisscenario"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Basisscenario</span>
+                </h4>
+                <p>Op enig moment heeft Geo naar aanleiding van een Geo-gebeurtenis (Geo-###) nieuwe objecten geconstateerd en/of wijzigingen op bestaande BAG-objecten gesignaleerd (bijv. na het signaleren van mutaties van BAG-objecten in luchtfoto’s). Geo
+                    stelt voor ieder gewijzigd of nieuw object een bericht geometrieLevering op en stuurt deze aan BAG. Aan de gebeurteniscode kan BAG afleiden dat het een levering betreft naar aanleiding van een constatering of (mutatie)signalering.
+                    </p>
+                <p>BAG gaat over tot de beoordeling van de geometrieLevering. Indien BAG een geconstateerd object in de geometrieLevering goedkeurt, voert BAG een nieuw object op in de eigen registratie. Na succesvolle verwerking in de eigen applicatie stuurt
+                    BAG de actuele stand van het BAG-object middels een BAG-kennisgeving aan Geo[^32]. Geo verwerkt de gegevens in de BAG-kennisgeving in de eigen applicatie. </p>
+                <p>Gelijktijdig of na het versturen van de BAG-kennisgeving stuurt BAG, stuurt BAG een bevestiging van acceptatie/overname van de geometrie aan Geo middels een goedkeuringsbericht. In dit goedkeuringsbericht wordt voor elk goedgekeurd geconstateerd
+                    object de BAG-identificatie en de technische sleutel van Geo opgenomen.</p>
+                <p><img src="media/fig-sd_constatering_signalering_geo.png" alt="Sequentiediagram Verzoek om geometrie door BAG"></p>
+                <p><em>Figuur 3.6 Sequentiediagram Constatering en/of signalering door Geo – Basisscenario</em></p>
+                <p>[^32] En ook naar andere afnemers in de organisatie.</p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#alternatief-scenario-bag-keurt-geometrie-af" property="bibo:hasPart">
+                <h4 id="alternatief-scenario-bag-keurt-geometrie-af" resource="#alternatief-scenario-bag-keurt-geometrie-af"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Alternatief scenario: BAG keurt geometrie af</span>
+                </h4>
+                <p>Indien BAG de gegevens in een geometrieLevering afkeurt, stuurt BAG de reden van afkeuring aan Geo in een afkeuringsbericht[^33]. Eventueel met de reden of toelichting in het vrije tekstveld van “Details”. </p>
+                <p>Indien nodig, stuurt Geo een nieuwe Geometrielevering. </p>
+                <p><img src="media/fig-sd_constatering_signalering_geo_alt1.png" alt="Sequentiediagram Verzoek om geometrie door BAG – Alt 1. BAG keurt levering af"></p>
+                <p><em>Figuur 3.7 Sequentiediagram Constatering en/of signalering door Geo – Alt 1. BAG keurt levering af</em></p>
+                <p>[^33] De gevolgen voor de BGT worden beoordeeld door de BGT operator. Geo kan op eigen initiatief en met de kennis van de reden van afkeuring opnieuw een geometrieLevering doen aan BAG. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#alternatief-scenario-geo-wil-eerder-verzonden-geometrielevering-intrekken" property="bibo:hasPart">
+                <h4 id="alternatief-scenario-geo-wil-eerder-verzonden-geometrielevering-intrekken" resource="#alternatief-scenario-geo-wil-eerder-verzonden-geometrielevering-intrekken"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Alternatief scenario: Geo wil eerder verzonden geometrieLevering intrekken</span>
+                </h4>
+                <p>Indien Geo een eerder verzonden geometrieLevering wil intrekken (bijv. na kwaliteitscontrole door Geo blijkt een object niet juist geclassificeerd en relevant voor BAG), stuurt Geo een nieuwe geometrieLevering met gebeurtenis ‘Negeren
+                    eerder verzonden geometrieLevering’ (GEO-NEG) naar BAG. </p>
+                <p>Indien BAG de eerder verzonden geometrieLevering nog niet heeft verwerkt, kan het deze geometrieLevering negeren. Indien BAG de eerder verzonden geometrieLevering wel heeft verwerkt, volgt een afkeuringsbericht met reden van afkeuring
+                    aan Geo conform §3.2.2. </p>
+                <p><img src="media/fig-sd_constatering_signalering_geo_alt2.png" alt="Sequentiediagram Verzoek om geometrie door BAG – Alt. 2 Geo wil eerder verzoek intrekken"></p>
+                <p><em>Figuur 3.8 Sequentiediagram Verzoek om geometrie door BAG – Alt. 2 Geo wil eerder verzoek intrekken</em></p>
+            </section>
+        </section>
+        <section typeof="bibo:Chapter" resource="#kennisgeving-op-object-door-bag" property="bibo:hasPart">
+            <h3 id="kennisgeving-op-object-door-bag" resource="#kennisgeving-op-object-door-bag"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Kennisgeving op object door BAG</span>
+            </h3>
+            <p>Op enig moment heeft BAG naar aanleiding van een BAG-gebeurtenis (BAG-###) mutaties zijnde toevoeging, wijziging of beëindiging op één of meer BAG-objecten in de eigen applicatie, waarvan Geo op de hoogte gesteld moet worden. BAG stelt hiertoe
+                voor iedere mutatie een apart BAG-kennisgevingsbericht samen en stuurt deze aan Geo[^34]. Geo verwerkt wat ze nodig hebben aan gegevens in de eigen applicatie. Geo verstuurd geen functionele respons na succesvolle verwerking van de BAG-kennisgeving
+                in de eigen applicatie. </p>
+            <p><img src="media/fig-sd_kennisgeving_object_BAG.png" alt="Sequentiediagram Kennisgeving op object door BAG "></p>
+            <p><em>Figuur 3.9 Sequentiediagram Kennisgeving op object door BAG</em></p>
+            <p>[^34] En ook naar andere afnemers in de organisatie.</p>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#berichten" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="berichten" resource="#berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Berichten</span>
+        </h2>
+        <p>Dit hoofdstuk beschrijft de berichten in het berichtenverkeer tussen BAG en Geo. Enerzijds wordt hergebruik gemaakt van bestaande StUF-BAG kennisgevingsberichten en StUF bevestigings- en foutberichten, anderzijds zijn eigen voor dit koppelvlak
+            specifieke StUF-Geo BAG gedefinieerd. </p>
+        <section typeof="bibo:Chapter" resource="#stuf-geo-bag-berichten" property="bibo:hasPart">
+            <h3 id="stuf-geo-bag-berichten" resource="#stuf-geo-bag-berichten"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>StUF-Geo BAG berichten</span>
+            </h3>
+            <p>De StUF-Geo BAG berichten geometrieVerzoek en geometrieLevering zijn eigen voor dit koppelvlak specifieke berichten. De berichten bevatten de volgende elementen: </p>
+            <ul>
+                <li>Logistieke gegevens: standaard StUF-stuurgegevens bevatten o.a. de logistieke identificatie en gegevens van zender/ontvanger. </li>
+                <li>Procesgegevens: bevatten o.a. de functionele identificatie, een toelichting en verwijzing naar een gerelateerde (bron)document. </li>
+                <li>Inhoud: een objectkennisgeving met de gegevens van een BAG-object. Een objectkennisgeving bevat alleen de verplichte gegevens van een van de BAG-objecten. </li>
+            </ul>
+            <section typeof="bibo:Chapter" resource="#geometrieverzoek" property="bibo:hasPart">
+                <h4 id="geometrieverzoek" resource="#geometrieverzoek"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.1 </span>GeometrieVerzoek</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam bericht</th>
+                            <th>geometrieVerzoek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afkorting bericht</td>
+                            <td>gmvDi01</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Berichtcode</td>
+                            <td>Di01 </td>
+                        </tr>
+                        <tr>
+                            <td>Omschrijving</td>
+                            <td>Een geometrieVerzoek is een verzoek van BAG aan Geo tot het inwinnen en/of karteren en/of intekenen van geometrie voor bepaalde BAG-objecten. Dit verzoek ontstaat n.a.v. een BAG-gebeurtenis; de gebeurteniscode is verplicht
+                                in het bericht. De BAG-identificatie en de bij BAG-aanwezige (schets)geometrie van een object wordt meegestuurd in het verzoek. <br> De BAG-identificatie van een betreffend object mag alleen leeg zijn als het bericht wordt
+                                verstuurd na gebeurtenis ‘BGR-OBA Ontvangst bouwaanvraag’. </td>
+                        </tr>
+                        <tr>
+                            <td>Zender</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Ontvanger</td>
+                            <td>Geo</td>
+                        </tr>
+                        <tr>
+                            <td>Stuurgegevens</td>
+                            <td>standaard StUF-stuurgegevens</td>
+                        </tr>
+                        <tr>
+                            <td>Parameters</td>
+                            <td>
+                                <ul>
+                                    <li>idVerzoek [1-1]</li>
+                                    <li>gebeurtenisCode [1-1]</li>
+                                    <li>documentVerwijzing [0-1]</li>
+                                    <li>toelichting [0-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inhoud</td>
+                            <td>Keuze uit één of meer entiteiten (choice [1..n]):
+                                <ul>
+                                    <li>ligplaats [1-1]</li>
+                                    <li>overigGebouwdObject [1-1]</li>
+                                    <li>overigTerrein [1-1]</li>
+                                    <li>pand [1-1]</li>
+                                    <li>standplaats [1-1]</li>
+                                    <li>verblijfsobject [1-1]</li>
+                                    <li>woonplaats [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#geometrielevering" property="bibo:hasPart">
+                <h4 id="geometrielevering" resource="#geometrielevering"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.2 </span>GeometrieLevering</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam bericht</th>
+                            <th>geometrieLevering</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afkorting bericht</td>
+                            <td>gmlDi01</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Berichtcode</td>
+                            <td>Di01</td>
+                        </tr>
+                        <tr>
+                            <td>Omschrijving</td>
+                            <td>Een geometrieLevering bevat levering van de geometrie van één of meer BAG-objecten[^35]. De levering is op verzoek van BAG of op initiatief van Geo na constatering of signalering van mutaties en ontstaat dus n.a.v. een BAG-
+                                of Geo-gebeurtenis (zie bijlage 1); de gebeurteniscode is verplicht in het bericht. De BAG-identificatie (indien beschikbaar) en de door Geo ingewonnen en gekarteerde of ingetekende geometrie van het object wordt meegestuurd
+                                in de levering. De BAG-identificatie mag alleen leeg zijn na gebeurtenis ‘GEO-COG Constatering nieuw object’ of als een levering wordt gedaan op verzoek na gebeurtenis ‘BGR-OBA Ontvangst bouwaanvraag’. De geometrie van
+                                het betreffende object mag alleen leeg zijn na gebeurtenis ‘GEO-AOC Constatering gesloopt object’.</td>
+                        </tr>
+                        <tr>
+                            <td>Zender</td>
+                            <td>Geo</td>
+                        </tr>
+                        <tr>
+                            <td>Ontvanger</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Stuurgegevens</td>
+                            <td>standaard StUF-stuurgegevens</td>
+                        </tr>
+                        <tr>
+                            <td>Parameters</td>
+                            <td>
+                                <ul>
+                                    <li>idLevering [1-1]</li>
+                                    <li>gerelateerdVerzoek [0-1]</li>
+                                    <li>gebeurtenisCode [1-1]</li>
+                                    <li>documentVerwijzing [0-1]</li>
+                                    <li>toelichting [0-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inhoud</td>
+                            <td>Keuze uit één of meer entiteiten (choice [1..n]):
+                                <ul>
+                                    <li>ligplaats [1-1]</li>
+                                    <li>overigGebouwdObject [1-1]</li>
+                                    <li>overigTerrein [1-1]</li>
+                                    <li>pand [1-1]</li>
+                                    <li>standplaats [1-1]</li>
+                                    <li>verblijfsobject [1-1]</li>
+                                    <li>woonplaats [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>[^35] Bij levering op initiatief van Geo, wordt vooralsnog verondersteld dat geconstateerd object een relevant BAG-object is. </p>
+            </section>
+            <section typeof="bibo:Chapter" resource="#goedkeuringsbericht" property="bibo:hasPart">
+                <h4 id="goedkeuringsbericht" resource="#goedkeuringsbericht"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>Goedkeuringsbericht</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam bericht</th>
+                            <th>goedkeuringsbericht</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afkorting bericht</td>
+                            <td>bevestigingDu01</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Berichtcode</td>
+                            <td>Du01</td>
+                        </tr>
+                        <tr>
+                            <td>Omschrijving</td>
+                            <td>Een goedkeuringsbericht is een functioneel asynchroon responsbericht, welke de succesvolle verwerking van (een deel van de inhoud van) een geometrieLevering, of het succesvol intrekken van een geometrieVerzoek bevestigt. De
+                                goedgekeurde objecten worden aan de hand van de identificaties en typering van deze objecten teruggegeven; de afgekeurde objecten worden in een separaat afkeuringsbericht opgenomen. In de parameters van een goedkeuringsbericht
+                                wordt de identificatie van het geometrieVerzoek of de geometrieLevering opgenomen, waarop het respons wordt gegeven.</td>
+                        </tr>
+                        <tr>
+                            <td>Zender</td>
+                            <td>Geo, BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Ontvanger</td>
+                            <td>BAG, Geo</td>
+                        </tr>
+                        <tr>
+                            <td>Stuurgegevens</td>
+                            <td>standaard StUF-stuurgegevens</td>
+                        </tr>
+                        <tr>
+                            <td>Parameters</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inhoud</td>
+                            <td>Keuze uit één of meer entiteiten (choice [1..n]):
+                                <ul>
+                                    <li>ligplaats [1-1]</li>
+                                    <li>overigGebouwdObject [1-1]</li>
+                                    <li>overigTerrein [1-1]</li>
+                                    <li>pand [1-1]</li>
+                                    <li>standplaats [1-1]</li>
+                                    <li>verblijfsobject [1-1]</li>
+                                    <li>woonplaats [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#afkeuringsbericht" property="bibo:hasPart">
+                <h4 id="afkeuringsbericht" resource="#afkeuringsbericht"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>Afkeuringsbericht</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam bericht</th>
+                            <th>afkeuringsbericht</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afkorting bericht</td>
+                            <td>foutDu01</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Berichtcode</td>
+                            <td>Du01</td>
+                        </tr>
+                        <tr>
+                            <td>Omschrijving</td>
+                            <td>Een afkeuringsbericht is een functioneel asynchroon responsbericht, welke de niet-succesvolle verwerking van (een deel van de inhoud van) een geometrieVerzoek of geometrieLevering terugmeldt. De afgekeurde objecten worden aan
+                                de hand van de identificaties en typering van deze objecten teruggegeven; de goedgekeurde objecten worden in een separaat goedkeuringsbericht opgenomen. Per soort reden van afkeuring (fout) wordt een afkeuringsbericht met
+                                één of meer identificatie van objecten verstuurd. In het afkeuringsbericht worden de code, omschrijving, plek en details van de fout opgenomen. In de parameters van een afkeuringsbericht wordt de identificatie van het geometrieVerzoek
+                                of de geometrieLevering opgenomen, waarop het respons wordt gegeven.</td>
+                        </tr>
+                        <tr>
+                            <td>Zender</td>
+                            <td>Geo, BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Ontvanger</td>
+                            <td>BAG, Geo</td>
+                        </tr>
+                        <tr>
+                            <td>Stuurgegevens</td>
+                            <td>standaard StUF-stuurgegevens</td>
+                        </tr>
+                        <tr>
+                            <td>Parameters</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1]</li>
+                                    <li>foutcode [1-1]</li>
+                                    <li>foutomschrijving [0-1]</li>
+                                    <li>plek [1-1]</li>
+                                    <li>details [0-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inhoud</td>
+                            <td>Keuze uit één of meer entiteiten (choice [1..n]):
+                                <ul>
+                                    <li>ligplaats [1-1]</li>
+                                    <li>overigGebouwdObject [1-1]</li>
+                                    <li>overigTerrein [1-1]</li>
+                                    <li>pand [1-1]</li>
+                                    <li>standplaats [1-1]</li>
+                                    <li>verblijfsobject [1-1]</li>
+                                    <li>woonplaats [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Naast de standaard StUF-foutcodes worden voor dit sectormodel de volgende foutcodes onderkend: </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foutsituatie (
+                                <stuf:omschrijving>)</stuf:omschrijving>
+                            </th>
+                            <th>Foutcode (
+                                <stuf:code>)</stuf:code>
+                            </th>
+                            <th>Plek (
+                                <stuf:plek>)</stuf:plek>
+                            </th>
+                            <th>Details[^36] (
+                                <stuf:details>)</stuf:details>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>geometrieLevering is afgekeurd</td>
+                            <td>GB010</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieLevering is afgekeurd; BAG-identificatie bestaat niet</td>
+                            <td>GB011</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieLevering is afgekeurd; SleutelOntvanger niet bekend</td>
+                            <td>GB012</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieLevering is afgekeurd; Object is geen BAG-object</td>
+                            <td>GB013</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieLevering kan niet gecorrigeerd/ingetrokken worden, omdat reeds verwerkt is</td>
+                            <td>GB020</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieVerzoek is afgekeurd;</td>
+                            <td>GB030</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieVerzoek is afgekeurd; SleutelOntvanger niet bekend</td>
+                            <td>GB031</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                        <tr>
+                            <td>geometrieVerzoek kan niet gecorrigeerd/ingetrokken worden, omdat reeds verwerkt is</td>
+                            <td>GB040</td>
+                            <td>Client</td>
+                            <td>«vrij tekst»</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>[^36]
+                    <stuf:details>kunnen door zender worden toegevoegd, bijvoorbeeld met identificaties, of andere fout bevonden gegevens. </stuf:details>
+                </p>
+            </section>
+        </section>
+        <section typeof="bibo:Chapter" resource="#bag-kennisgevingen" property="bibo:hasPart">
+            <h3 id="bag-kennisgevingen" resource="#bag-kennisgevingen"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>BAG-kennisgevingen</span>
+            </h3>
+            <p>De BAG-kennisgevingsberichten uit StUF-BG worden in dit koppelvlak toegepast om mutaties van BAG door te geven aan Geo. Voor nummeraanduidingen en openbare ruimtenamen geeft BAG elke mutatie door, en Geo neemt de gegevens uit deze kennisgevingsberichten
+                over in de eigen applicatie. </p>
+            <p>BAG stuurt na elke mutatie een kennisgevingsbericht aan Geo[^37]. Geo filtert en neemt de gegevens over indien het BAG-kennisgevingsbericht verstuurd wordt na een van de volgende gebeurtenissen[^38]: </p>
+            <ul>
+                <li>BGR-MAB Afzien van bouw </li>
+                <li>BGR-IBV Intrekken bouwvergunning </li>
+                <li>BRA-HNU Hernummeren adresseerbaar object </li>
+                <li>BRA-OHN Hoofdadres en nevenadres van een adresseerbaar object omdraaien </li>
+                <li>BGR-MGS Melding sloop afgerond </li>
+                <li>BGR-VOC Geheel verdwijnen objecten door calamiteit </li>
+                <li>BGR-ISLSP Intrekken standplaats </li>
+                <li>BGR-ISLLP Intrekken ligplaats </li>
+                <li>BRA-BOR Benoemen openbare ruimte </li>
+                <li>BRA-HOR Hernoemen openbare ruimte </li>
+                <li>BRA-IOR Intrekken openbare ruimte </li>
+                <li>BRA-GHO Gedeeltelijk hernoemen openbare ruimte </li>
+                <li>BAG-AOC Archivering bestaand object na constatering </li>
+                <li>BAG-AGO Archivering geconstateerd object </li>
+            </ul>
+            <p>[^37] En ook naar andere afnemers in de organisatie.</p>
+            <p>[^38] De overige gebeurtenissen van de BAG Processen lijken vooralsnog niet relevant voor het koppelvlak Geo-BAG. BAG stuurt een kennisgeving voor een bepaalde gebeurtenis aan Geo; het is aan Geo om te filteren of deze gebeurtenis relevant
+                is om de gegevens uit de kennisgeving te verwerken.
+
+
+
+
+            </p>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#entiteiten" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="entiteiten" resource="#entiteiten"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Entiteiten</span>
+        </h2>
+        <p>Dit hoofdstuk beschrijft de attributen van de objectkennisgevingen in de StUF-Geo BAG berichten. </p>
+        <section typeof="bibo:Chapter" resource="#entiteiten-met-objectgegevens" property="bibo:hasPart">
+            <h3 id="entiteiten-met-objectgegevens" resource="#entiteiten-met-objectgegevens"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Entiteiten met objectgegevens</span>
+            </h3>
+            <section typeof="bibo:Chapter" resource="#ligplaats" property="bibo:hasPart">
+                <h4 id="ligplaats" resource="#ligplaats"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.1 </span>ligplaats</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>ligplaats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor object Ligplaats</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>typering [1-1]</li>
+                                    <li>adresAanduidingGrp [1-1]</li>
+                                    <li>vlakGeometrie [1-1]</li>
+                                    <li>aot.status [1-1]</li>
+                                    <li>aot.geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#overiggebouwdobject" property="bibo:hasPart">
+                <h4 id="overiggebouwdobject" resource="#overiggebouwdobject"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.2 </span>overigGebouwdObject</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>overigGebouwdObject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor het object overigGebouwdObject</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>RSGB</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>typering [1-1]</li>
+                                    <li>adresAanduidingGrp [1-1]</li>
+                                    <li>gbo.puntGeometrie [1-1]</li>
+                                    <li>vlakgeometrie [0-1]</li>
+                                    <li>aot.status [1-1]</li>
+                                    <li>aot.geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#overigterrein" property="bibo:hasPart">
+                <h4 id="overigterrein" resource="#overigterrein"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.3 </span>overigTerrein</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>overigTerrein</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor het object overigTerrein</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>RSGB</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>typering [1-1]</li>
+                                    <li>adresAanduidingGrp [1-1]</li>
+                                    <li>vlakgeometrie [0-1]</li>
+                                    <li>aot.status [1-1]</li>
+                                    <li>aot.geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#pand" property="bibo:hasPart">
+                <h4 id="pand" resource="#pand"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.4 </span>pand</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>pand</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor object Pand</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>geometrie [1-1]</li>
+                                    <li>status [1-1]</li>
+                                    <li>geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#standplaats" property="bibo:hasPart">
+                <h4 id="standplaats" resource="#standplaats"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.5 </span>standplaats</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>standplaats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor object Standplaats</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>typering [1-1]</li>
+                                    <li>adresAanduidingGrp [1-1]</li>
+                                    <li>vlakGeometrie [1-1]</li>
+                                    <li>aot.status [1-1]</li>
+                                    <li>aot.geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#verblijfsobject" property="bibo:hasPart">
+                <h4 id="verblijfsobject" resource="#verblijfsobject"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.6 </span>verblijfsobject</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>verblijfsobject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met de attribuutgegevens voor object Verblijfsobject</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>typering [1-1]</li>
+                                    <li>adresAanduidingGrp [1-1]</li>
+                                    <li>. gbo.puntGeometrie [1-1]</li>
+                                    <li>vlakGeometrie [0-1]</li>
+                                    <li>aot.status [1-1]</li>
+                                    <li>aot.geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                    <li>vbo.maaktDeelUitVan [1..n]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#woonplaats" property="bibo:hasPart">
+                <h4 id="woonplaats" resource="#woonplaats"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.7 </span>woonplaats</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam entiteit</th>
+                            <th>woonplaats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Naam entiteit</td>
+                            <td>woonplaats</td>
+                        </tr>
+                        <tr>
+                            <td>Definitie entiteit</td>
+                            <td>Entiteit met attribuutgegevens voor object Woonplaats</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst entiteit</td>
+                            <td>BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting entiteit</td>
+                            <td>«leeg»</td>
+                        </tr>
+                        <tr>
+                            <td>Overzicht attributen</td>
+                            <td>
+                                <ul>
+                                    <li>identificatie [1-1][^39]</li>
+                                    <li>woonplaatsNaam [1-1]</li>
+                                    <li>geometrie [1-1]</li>
+                                    <li>status [1-1]</li>
+                                    <li>geconstateerd [1-1]</li>
+                                    <li>brondocument [1-1]</li>
+                                    <li>StUF:tijdvakGeldigheid [1-1]</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>[^39] Een goedkeuringsbericht of afkeuringsbericht bevat in het respons alleen de identificatie van het object in de entiteit</p>
+            </section>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#attributen" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="attributen" resource="#attributen"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Attributen</span>
+        </h2>
+        <p>Dit hoofdstuk beschrijft de attributen van de StUF-Geo BAG berichten en objectkennisgevingen. </p>
+        <section typeof="bibo:Chapter" resource="#parameters" property="bibo:hasPart">
+            <h3 id="parameters" resource="#parameters"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Parameters</span>
+            </h3>
+            <section typeof="bibo:Chapter" resource="#idverzoek" property="bibo:hasPart">
+                <h4 id="idverzoek" resource="#idverzoek"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.1 </span>idVerzoek</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>idVerzoek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Identificatie van het geometrieVerzoek</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(40)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#idlevering" property="bibo:hasPart">
+                <h4 id="idlevering" resource="#idlevering"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.2 </span>idLevering</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>idLevering</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Identificatie van de geometrieLevering.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(40)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#gerelateerdverzoek" property="bibo:hasPart">
+                <h4 id="gerelateerdverzoek" resource="#gerelateerdverzoek"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.3 </span>gerelateerdVerzoek</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>gerelateerdVerzoek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Identificatie van het geometrieverzoek waarop een geometrielevering wordt gedaan.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(40)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#gebeurteniscode" property="bibo:hasPart">
+                <h4 id="gebeurteniscode" resource="#gebeurteniscode"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.4 </span>gebeurtenisCode</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>gebeurteniscode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>BAG- of Geo gebeurtenis als aanleiding voor het verzoek/levering geometrie</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>string(var)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td>codeGebeurtenisList</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>Zie bijlage 1 voor de waardenlijst.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#documentverwijzing" property="bibo:hasPart">
+                <h4 id="documentverwijzing" resource="#documentverwijzing"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.5 </span>documentverwijzing</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>documentverwijzing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Verwijzing (URL) naar een achterliggend (bron)document.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(200)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#toelichting" property="bibo:hasPart">
+                <h4 id="toelichting" resource="#toelichting"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.6 </span>toelichting</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>Toelichting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Toelichting op het verzoek in de vorm van tekst.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-Geo BAG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(500)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#foutcode" property="bibo:hasPart">
+                <h4 id="foutcode" resource="#foutcode"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.7 </span>foutcode</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>Foutcode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Code van de fout cf. standaard StUF of foutlijst StUF-Geo BAG sectormodel</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(7)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#foutomschrijving" property="bibo:hasPart">
+                <h4 id="foutomschrijving" resource="#foutomschrijving"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.8 </span>foutomschrijving</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>foutomschrijving</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Toelichting op de fout als vrije tekst.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(200)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#plek" property="bibo:hasPart">
+                <h4 id="plek" resource="#plek"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.9 </span>plek</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>plek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Plek waar de fout is geconstateerd.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String()</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td>"client", "server"</td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#details" property="bibo:hasPart">
+                <h4 id="details" resource="#details"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1.10 </span>details</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Toelichting op de fout</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0..1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(1000)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        <section typeof="bibo:Chapter" resource="#elementen-in-entiteiten" property="bibo:hasPart">
+            <h3 id="elementen-in-entiteiten" resource="#elementen-in-entiteiten"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>Elementen in entiteiten</span>
+            </h3>
+            <section typeof="bibo:Chapter" resource="#identificatie" property="bibo:hasPart">
+                <h4 id="identificatie" resource="#identificatie"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.1 </span>identificatie</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>identificatie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>BAG-identificatie van object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String(16)</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#typering" property="bibo:hasPart">
+                <h4 id="typering" resource="#typering"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.2 </span>typering</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>typering</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>typering van object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>varchar</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>Bijv. Nummeraanduiding, Verblijfobject etc.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#adresaanduiding" property="bibo:hasPart">
+                <h4 id="adresaanduiding" resource="#adresaanduiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.3 </span>adresAanduiding</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>adresAanduidingGrp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Aanduiding van het adres van het object.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>&lt;adresAanduidingGrp&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>Binnen het element adresAanduidingGrp zijn uitsluitend de namen opgenomen van de woonplaats en de openbare ruimte en niet ook hun identificaties. Alle elementen zijn verplicht, ook aoa.woonplaatsWaarinGelegen /wpl.woonplaatsnaam.
+                                Indien het object ligt in de woonplaats aangeduid door wpl.woonplaatsnaam, dan dient in aoa.woonplaatsWaarinGelegen /wpl.woonplaatsnaam dezelfde waarde te worden opgenomen als inwpl.woonplaatsnaam, zo niet dan wordt woonplaats
+                                opgenomen waarin het adresseerbaar object feitelijk ligt.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#geometrie" property="bibo:hasPart">
+                <h4 id="geometrie" resource="#geometrie"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.4 </span>geometrie</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>Geometrie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>De geometrie van het object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>GM_Surface</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>De geometrie is de vlakgeometrie van een Pand of Woonplaats.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#puntgeometrie" property="bibo:hasPart">
+                <h4 id="puntgeometrie" resource="#puntgeometrie"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.5 </span>puntGeometrie</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>puntGeometrie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>De puntgeometrie van het object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>GM_Point</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>De geometrie is de puntgeometrie van een overigGebouwdObject of Verblijfsobject.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#vlakgeometrie" property="bibo:hasPart">
+                <h4 id="vlakgeometrie" resource="#vlakgeometrie"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.6 </span>vlakGeometrie</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>vlakGeometrie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>De vlakgeometrie van het object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>GM_Surface</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>De geometrie is de vlakgeometrie van een Stand/Ligplaats of overigTerrein, of optioneel van een overigGebouwdObject of Verblijfsobject.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#status" property="bibo:hasPart">
+                <h4 id="status" resource="#status"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.7 </span>status</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>De status van het object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>String</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#geconstateerd" property="bibo:hasPart">
+                <h4 id="geconstateerd" resource="#geconstateerd"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.8 </span>geconstateerd</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>geconstateerd</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Indicatie of object geconstateerd is</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#brondocument" property="bibo:hasPart">
+                <h4 id="brondocument" resource="#brondocument"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.9 </span>brondocument</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>Brondocument</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Het onderliggende brondocument van dit object</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>Bevat de identificatie en datum van het brondocument.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#tijdvakgeldigheid" property="bibo:hasPart">
+                <h4 id="tijdvakgeldigheid" resource="#tijdvakgeldigheid"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.10 </span>tijdvakGeldigheid</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>beginGeldigheid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>De datums waarop de geldigheid van gegevens van dit object begint (beginGeldigheid) en eindigt (eindGeldigheid</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[1-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>date</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section typeof="bibo:Chapter" resource="#maaktdeeluitvan" property="bibo:hasPart">
+                <h4 id="maaktdeeluitvan" resource="#maaktdeeluitvan"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2.11 </span>maaktDeelUitVan</span>
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naam attribuut</th>
+                            <th>maaktDeelUitVan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definitie attribuut</td>
+                            <td>Verwijzing naar een Pand waartoe Verblijfsobject behoort.</td>
+                        </tr>
+                        <tr>
+                            <td>Herkomst</td>
+                            <td>StUF-BG</td>
+                        </tr>
+                        <tr>
+                            <td>Multipliciteit</td>
+                            <td>[0-1]</td>
+                        </tr>
+                        <tr>
+                            <td>Waardetype</td>
+                            <td>&lt;elementen&gt; van maaktDeelUitVan</td>
+                        </tr>
+                        <tr>
+                            <td>Waardenverzameling</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toelichting</td>
+                            <td>Alleen bij Verblijfsobject. In XSD is de multipliciteit [1-1] met toepassing van een StUF:noValue.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-1-gebeurtenissen" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="bijlage-1-gebeurtenissen" resource="#bijlage-1-gebeurtenissen"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Bijlage 1 Gebeurtenissen</span>
+        </h2>
+        <p>De tabel in deze bijlage geeft een overzicht van de voor het Geo-BAG berichtenverkeer relevante[\^40] BAG- en Geo-gebeurtenissen en tot welk bericht een bepaalde gebeurtenis leidt<a href=" ">^1</a>. De lijst van BAG gebeurteniscodes is overgenomen
+            uit het landelijk vastgestelde BAG-processenhandboek. Voor Geo zijn voor-dit-koppelvlak relevante gebeurtenissen toegevoegd.</p>
+        <p>In de kolom ‘BGT-mutatie’ wordt aangegeven of een gebeurtenis aanleiding geeft tot een bepaalde mutatie in de BGT:</p>
+        <p>A. Toevoegen BGT Pand als planinformatie</p>
+        <p>B. Beëindigen BGT Pand als planinformatie</p>
+        <p>C. Toevoegen BGT Pand</p>
+        <p>D. Wijzigen geometrie BGT Pand</p>
+        <p>E. Wijzigen nummeraanduidingreeks van BGT Pand</p>
+        <p>F. Beëindigen BGT Pand</p>
+        <p>G. Toevoegen OpenbareRuimte(Label)</p>
+        <p>H. Wijzigen naam OpenbareRuimte(Label)</p>
+        <p>I. Beëindigen OpenbareRuimte(Label)</p>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Code</strong></th>
+                    <th><strong>Gebeurtenis</strong></th>
+                    <th><strong>Ontstaat bij</strong></th>
+                    <th><strong>Aanleiding tot</strong></th>
+                    <th><strong>BGT-mutatie</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BGR-OBA</td>
+                    <td>Ontvangst bouwaanvraag</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BGR-VBN</td>
+                    <td>Verlenen bouwvergunning</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>BGR-MGB</td>
+                    <td>Melding gebruiksgereed</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BGR-KVO</td>
+                    <td>Kleine verbouwing object</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>BGR-VBI</td>
+                    <td>Verlenen bouwvergunning ingrijpende verbouwing</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>BAG-VTP</td>
+                    <td>Verblijfsobject toevoegen aan pand*</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BAG-VG</td>
+                    <td>Verbouwing gereed</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>BGR-SSVSAMEN</td>
+                    <td>Samenvoegen verblijfsobjecten*</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BGR-SSVSPLITS</td>
+                    <td>Splitsen verblijfsobjecten*</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BGR-BSLSP</td>
+                    <td>Benoemen standplaats</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BGR-BSLLP</td>
+                    <td>Benoemen ligplaats</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BRA-BWP</td>
+                    <td>Benoemen woonplaats</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BRA-KWGW</td>
+                    <td>Kleine wijziging grens woonplaats</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BRA-WGW</td>
+                    <td>Wijzigen grens woonplaats</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BAG-COR</td>
+                    <td>Correctie naar aanleiding van een signalering</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>D,E,H</td>
+                </tr>
+                <tr>
+                    <td>BAG-MUT</td>
+                    <td>Mutatie naar aanleiding van een signalering</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>D,E,H</td>
+                </tr>
+                <tr>
+                    <td>BGR-COG</td>
+                    <td>Constatering nieuw object</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>C,E</td>
+                </tr>
+                <tr>
+                    <td>BAG-HLG</td>
+                    <td>Heropname legitiem gegeven</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td>C,E</td>
+                </tr>
+                <tr>
+                    <td>BAG-NEG</td>
+                    <td>Negeer eerder gestuurd GeometrieVerzoek</td>
+                    <td>BAG</td>
+                    <td>geometrieVerzoek</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GEO-COG</td>
+                    <td>Constatering nieuw object</td>
+                    <td>GEO</td>
+                    <td>geometrieLevering</td>
+                    <td>C,E</td>
+                </tr>
+                <tr>
+                    <td>GEO-AOC</td>
+                    <td>Constatering gesloopt object</td>
+                    <td>GEO</td>
+                    <td>geometrieLevering</td>
+                    <td>E,F</td>
+                </tr>
+                <tr>
+                    <td>GEO-MUT</td>
+                    <td>Constatering afwijkende geometrie</td>
+                    <td>GEO</td>
+                    <td>geometrieLevering</td>
+                    <td>D</td>
+                </tr>
+                <tr>
+                    <td>GEO-NEG</td>
+                    <td>Negeer eerder gestuurd geometrielevering</td>
+                    <td>GEO</td>
+                    <td>geometrielevering</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BGR-MAB</td>
+                    <td>Afzien van bouw</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BGR-IBV</td>
+                    <td>Intrekken bouwvergunning</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BRA-HNU</td>
+                    <td>Hernummeren adresseerbaar object</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>BRA-OHN</td>
+                    <td>Hoofdadres en nevenadres van een adresseerbaar object omdraaien</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>BGR-MGS</td>
+                    <td>Melding sloop afgerond</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>E,F</td>
+                </tr>
+                <tr>
+                    <td>BGR-VOC</td>
+                    <td>Geheel verdwijnen objecten door calamiteit</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>E,F</td>
+                </tr>
+                <tr>
+                    <td>BGR-ISLSP</td>
+                    <td>Intrekken standplaats</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BGR-ISLLP</td>
+                    <td>Intrekken ligplaats</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BRA-BOR</td>
+                    <td>Benoemen openbare ruimte</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>G</td>
+                </tr>
+                <tr>
+                    <td>BRA-HOR</td>
+                    <td>Hernoemen openbare ruimte</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>H</td>
+                </tr>
+                <tr>
+                    <td>BRA-IOR</td>
+                    <td>Intrekken openbare ruimte</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>I</td>
+                </tr>
+                <tr>
+                    <td>BRA-GHO</td>
+                    <td>Gedeeltelijk hernoemen openbare ruimte</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>H</td>
+                </tr>
+                <tr>
+                    <td>BAG-AOC</td>
+                    <td>Archivering bestaand object na constatering</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>BAG-AGO</td>
+                    <td>Archivering geconstateerd object</td>
+                    <td>BAG</td>
+                    <td>BAG-kennisgeving</td>
+                    <td>F</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>[\^40] In werksessies met betrokken Geo- en BAG-leveranciers is een lijst samengesteld met de voor dit koppelvlak relevant geachte gebeurtenissen op basis van de vigerende versie van het landelijk vastgestelde BAG-Processenhandboek.</p>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-2-activiteitenstroom-koppelvlak-geo-bag" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="bijlage-2-activiteitenstroom-koppelvlak-geo-bag" resource="#bijlage-2-activiteitenstroom-koppelvlak-geo-bag"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>Bijlage 2 Activiteitenstroom koppelvlak Geo-BAG</span>
+        </h2>
+        <p>Hieronder staat een overzicht van de verschillende activiteitenstromen inclusief aanleiding en gebeurteniscode voor het koppelvlak Geo-BAG. </p>
+        <p>Aanleiding voor de start van activiteitenstroom kan zijn:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Scenario</strong></th>
+                    <th><strong>Omschrijving</strong></th>
+                    <th><strong>codeGebeurtenis</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A)</td>
+                    <td>BAG benodigt geometrie voor een bepaald object</td>
+                    <td>BAG-***</td>
+                </tr>
+                <tr>
+                    <td>B)</td>
+                    <td>BAG wil eerder verzonden geometrieverzoek intrekken</td>
+                    <td>BAG-NEG</td>
+                </tr>
+                <tr>
+                    <td>C)</td>
+                    <td>Geo heeft nieuwe / gewijzigde geometrie geconstateerd</td>
+                    <td>GEO-***</td>
+                </tr>
+                <tr>
+                    <td>D)</td>
+                    <td>Geo wil eerder verzonden geometrieLevering intrekken</td>
+                    <td>GEO-NEG</td>
+                </tr>
+                <tr>
+                    <td>E)</td>
+                    <td>BAG heeft wijziging doorgevoerd op een bepaald object</td>
+                    <td>BAG-***</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Een aanleiding leidt tot de volgende activiteiten/stappen in een scenario.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Stap</strong></th>
+                    <th><strong>Omschrijving</strong></th>
+                    <th><strong>Scenario</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>A)</strong></td>
+                    <td><strong>B)</strong></td>
+                    <td><strong>C)</strong></td>
+                    <td><strong>D)</strong></td>
+                    <td><strong>E)</strong></td>
+                </tr>
+                <tr>
+                    <td>BF1.</td>
+                    <td>BAG stuurt geometrieVerzoek aan GEO</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF2.</td>
+                    <td>Geo start verwerking geometrieVerzoek</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF3.</td>
+                    <td>Geo stuurt geometrieLevering aan BAG</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF4.</td>
+                    <td>BAG beoordeelt geometrieLevering</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF5.</td>
+                    <td>BAG keurt geometrieLevering goed en stuurt bevestiging naar Geo</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF6.</td>
+                    <td>BAG verwerking geometrieLevering in eigen applicatie</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>BF7.</td>
+                    <td>BAG stuurt actuele stand van object in BAG-kennisgeving naar Geo</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>BF8.</td>
+                    <td>Geo verwerkt BAG-kennisgeving in eigen applicatie</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>AF1.1</td>
+                    <td>Geo negeert geometrieVerzoek</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>AF2.1</td>
+                    <td>BAG negeert geometrieLevering</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Indien een verzoek of levering tijdens een activiteitenstroom niet verwerkbaar[^41] blijkt voor ontvanger volgt een foutscenario.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Stap</strong></th>
+                    <th><strong>Omschrijving</strong></th>
+                    <th><strong>Scenario</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <ol>
+            <li>A)<strong>/ B)</strong> | <strong>C) / D)</strong> | | BF1. | BAG stuurt geometrieVerzoek aan GEO | X | | | BF2. | Geo start verwerking geometrieVerzoek | X | | | BF3. | Geo stuurt geometrieLevering aan BAG | X | X | | BF4. | BAG beoordeelt
+                geometrieLevering | X | X | | EX1.1 | Geo keurt geometrieVerzoek af en stuurt functioneel foutbericht aan BAG | | | | EX1.2 | BAG keurt geometrieLEvering af en stuurt functioneel foutbericht aan Geo | | X |</li>
+        </ol>
+        <p>[^41] Dit betreft functioneel niet verwerkbaar dus m.b.t. de inhoud van een bericht na beoordeling.</p>
+        <p>De activiteitenstromen zijn gevisualiseerd in het activiteitendiagram Geo-BAG koppelvlak. </p>
+        <p><img src="media/fig-activiteitenstroom-geo-bag-koppelvlak.png" alt="Activiteitenstromen Geo-BAG koppelvlak"></p>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-3-gegevensmodel-koppelvlak-geo-bag" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="bijlage-3-gegevensmodel-koppelvlak-geo-bag" resource="#bijlage-3-gegevensmodel-koppelvlak-geo-bag"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>Bijlage 3 Gegevensmodel koppelvlak Geo-BAG</span>
+        </h2>
+        <p><img src="media/fig-gegevensmodel-geo-bag.png" alt="Gegevenmodel koppelvlak Geo-BAG"></p>
+    </section>
+    <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-4-ontwerpbeslissingen-en-keuzes-verstuffing" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="bijlage-4-ontwerpbeslissingen-en-keuzes-verstuffing" resource="#bijlage-4-ontwerpbeslissingen-en-keuzes-verstuffing"><span property="xhv:role" resource="xhv:heading"><span class="secno">10. </span>Bijlage 4 Ontwerpbeslissingen en keuzes verStUFfing</span>
+        </h2>
+        <p>Het koppelvlak geoBAG is gedefinieerd met een eigen berichtenset en een eigen namespace. </p>
+        <p>De entiteittypen LIG, STA en VBO zijn gedefinieerd als restrictions op het complexType TGOAOT-basis. Dit mag, omdat het supertype TGOAOT is gedefinieerd in bg0310. Binnen het sectormodel WOZ is dit ook zo gedaan. </p>
+        <p>Binnen het element adresAanduidingGrp zijn uitsluitend de namen opgenomen van de woonplaats en de openbare ruimte en niet ook hun identificaties. Alle elementen zijn verplicht, ook aoa.woonplaatsWaarinGelegen/wpl.woonplaatsnaam. Indien het object
+            ligt in de woonplaats aangeduid door wpl.woonplaatsnaam, dan dient in aoa.woonplaatsWaarinGelegen/wpl.woonplaatsnaam dezelfde waarde te worden opgenomen als in wpl.woonplaatsnaam, zo niet dan wordt woonplaats opgenomen waarin het adresseerbaar
+            object feitelijk ligt. </p>
+        <p>De objectkennisgevingen in hoofdstuk 5 van het functionele ontwerp zijn niet geïmplementeerd als kennisgevingen maar als elementen met StUF:functie=”entiteit” binnen de vrije berichten gmvDi01 en gmlDi01. Hiervoor is gekozen, omdat in het geometrieverzoek
+            de semantiek is het identificeren van het object waarvoor de geometrie wordt gevraagd. In de geometrielevering worden alleen de nieuwe waarden geleverd en dat kan niet met de semantiek van een StUF-kennisgeving. Het element StUF:indicatorOvername
+            is hierdoor vervallen, maar dit is niet erg, omdat het functioneel ontwerp specificeert hoe het bericht verwerkt moet worden. </p>
+        <p>Er is gekozen voor een strakkere definitie van de functionaliteit in vrije berichten. Hierdoor zijn ook de bevestigings- en foutberichten goed te valideren. In de parameters van deze berichten is de functionele identificatie van het bericht waarop
+            wordt gereageerd opgenomen. In geval van een fout zijn in de parameters ook de elementen met de omschrijving van de fout opgenomen. De sleutels van de objecten waarop de respons betrekking heeft, zijn opgenomen als de entiteiten LIG, PND,
+            STA, VBO en WPL met als enig element identificatie en met de attributes sleutelVerzendend en sleutelOntvangend. Het is hiermee mogelijk om een deel van de objecten goed te keuren en een ander deel af te keuren met desgewenst verschillende
+            redenen voor de afkeuring. </p>
+        <section typeof="bibo:Chapter" resource="#afhankelijkheden-schema-s-en-wsdl-s" property="bibo:hasPart">
+            <h3 id="afhankelijkheden-schema-s-en-wsdl-s" resource="#afhankelijkheden-schema-s-en-wsdl-s"><span property="xhv:role" resource="xhv:heading"><span class="secno">10.1 </span>Afhankelijkheden schema's en wsdl's</span>
+            </h3>
+            <p><img src="media/fig-afhankelijkheden-schema-wsdl.png" alt="Afhankelijkheden schema's en wsdl's"> De hiernaast staande figuur geeft de afhankelijkheden voor de wsdl's van het StUF-geoBAG0100-koppelvlak van andere schema's in wsdl's. Bovenaan
+                staan in de groene blokken voor de geoBAG0100 namespace de twee wsdl's voor het StUF-geoBAG0100-koppelvlak. </p>
+            <p>Deze twee wsdl's hangen af van een schema met de berichten voor het koppelvlak en van de wsdl voor stuf0301 in het gele blok, die zelf weer afhankelijk is van het stuf0301 schema. </p>
+            <p>Het koppelvlak is gedefinieerd in een eigen namespace, maar deze namespace wordt alleen toegepast in de berichtelementen op het hoogste niveau. De verdere inhoud van de berichten is gedefinieerd in de bg0310 namespace (blauwe blokken). Het
+                schema met berichtelementen in de geoBAG0100 namespace is daarom afhankelijk van een blauw schema met complexTypes voor de berichtelementen. </p>
+            <p>Dit schema is op zijn beurt weer afhankelijk van: </p>
+            <ul>
+                <li>een schema met de specifiek in het StUF-geoBAG0100 koppelvlak gebruikte complexTypes voor de BAG-entiteittypen in bg0310 en de parameters-elementen in vrije berichten. </li>
+                <li>een schema in de stuf0301 namespace met de definities van de stuurgegevens elementen. </li>
+            </ul>
+            <p>De rest van de pijlen laten de gebruikelijke afhankelijkheden van de schema's onderin de boom van afhankelijkheden zien.</p>
+        </section>
+    </section>
+
+
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+    <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+</body>
+
+</html>

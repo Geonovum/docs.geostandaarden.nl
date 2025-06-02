@@ -1,0 +1,985 @@
+<!DOCTYPE html><html lang="nl"><!-- HTML-Header ============================================================================== --><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+    
+    
+    <!-- Invullen: de titel van de standaard of het document ==================================== -->
+    <title>API Strategie Algemeen (Module gebruikerswensen)</title>
+    <!-- Invullen: de naam van de lokale CSS file =============================================== -->
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+    
+<!-- ============================================================================================ -->
+<!-- File. . . :  index.html                                                                      -->
+<!-- Bevat . . :  Template voor de index.html die verplicht is voor respec                        -->
+<!--              Gebaseerd op https://github.com/Geonovum/respec/wiki                            -->
+<!--              Deze file moet worden neergezet in de root-directory van de                     -->
+<!--              betreffende standaard.                                                          -->
+<!-- Door. . . :  Jan van Gelder                                                                  -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- Log . . . :  20181015 - JvG - Initiele versie                                                -->
+<!--
+====================================================================================================
+0        1         2         3         4         5         6         7         8         9         0
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+================================================================================================= -->
+
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-VV",
+  "specType": "HR",
+  "pubDomain": "api",
+  "previousPublishDate": "2022-03-09",
+  "previousMaturity": "GN-DEF",
+  "edDraftURI": "https://geonovum.github.io/KP-APIs/API-strategie-algemeen/Gebruikerswensen/",
+  "editors": [
+    {
+      "name": "Frank Terpstra",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Jan van Gelder",
+      "company": "Geonovum",
+      "companyURL": "https://www.Geonovum.nl/"
+    },
+    {
+      "name": "Martin van der Plas",
+      "company": "Logius",
+      "companyURL": "https://logius.nl/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Lancelot Schellevis",
+      "company": "Forum Standaardisatie",
+      "companyURL": "https://www.forumstandaardisatie.nl/"
+    },
+    {
+      "name": "Han Zuidweg",
+      "company": "Forum Standaardisatie",
+      "companyURL": "https://www.forumstandaardisatie.nl/"
+    },
+    {
+      "name": "Friso Penninga",
+      "company": "Geonovum",
+      "companyURL": "https://geonovum.nl/"
+    },
+    {
+      "name": "Matthias Snoei",
+      "company": "Swis",
+      "companyURL": "https://swis.nl/"
+    },
+    {
+      "name": "Jasper Roes",
+      "company": "Het Kadaster",
+      "companyURL": "https://www.kadaster.nl/"
+    },
+    {
+      "name": "Peter Haasnoot",
+      "company": "Logius",
+      "companyURL": "https://logius.nl/"
+    },
+    {
+      "name": "Frank van Es",
+      "company": "Logius",
+      "companyURL": "https://logius.nl/"
+    },
+    {
+      "name": "Alexander Green",
+      "company": "Logius",
+      "companyURL": "https://logius.nl/"
+    },
+    {
+      "name": "Martin van der Plas",
+      "company": "Logius",
+      "companyURL": "https://logius.nl/"
+    },
+    {
+      "name": "Dennis de Wit",
+      "company": "Solventa",
+      "companyURL": "https://www.solventa.nl"
+    }
+  ],
+  "shortName": "API-Strategie-gebruikers-wensen",
+  "github": "https://github.com/geonovum/KP-APIs/",
+  "issueBase": "https://github.com/geonovum/KP-APIs/issues/",
+  "localBiblio": {
+    "OAuth2": {
+      "href": "https://tools.ietf.org/html/rfc6749",
+      "title": "The OAuth 2.0 Authorization Framework",
+      "authors": [
+        "D. Hardt"
+      ],
+      "date": "October 2012",
+      "publisher": "The Internet Engineering Task Force"
+    },
+    "Expert": {
+      "href": "https://www.forumstandaardisatie.nl/sites/bfs/files/Expertadvies%20OAuth%202.0.pdf",
+      "title": "Expertadvies OAuth 2.0",
+      "authors": [
+        "P. Dam"
+      ],
+      "date": "24 februari 2017",
+      "publisher": "Forum Standaardisatie"
+    },
+    "JWT": {
+      "href": "https://tools.ietf.org/html/rfc7519",
+      "title": "JSON Web Token (JWT)",
+      "authors": [
+        "M. Jones, J. Bradley, N. Sakimura"
+      ],
+      "date": "may 2015",
+      "publisher": "IETF"
+    },
+    "JWS": {
+      "href": "https://tools.ietf.org/html/rfc7515",
+      "title": "JSON Web Signature (JWS)",
+      "authors": [
+        "M. Jones, J. Bradley, N. Sakimura"
+      ],
+      "date": "may 2015",
+      "publisher": "IETF"
+    },
+    "JWE": {
+      "href": "https://tools.ietf.org/html/rfc7516",
+      "title": "JSON Web Encryption (JWE)",
+      "authors": [
+        "M. Jones, J. Hildebrand"
+      ],
+      "date": "may 2015",
+      "publisher": "IETF"
+    },
+    "JWK": {
+      "href": "https://tools.ietf.org/html/rfc7517",
+      "title": "JSON Web Key (JWK))",
+      "authors": [
+        "M. Jones"
+      ],
+      "date": "may 2015",
+      "publisher": "IETF"
+    },
+    "JWA": {
+      "href": "https://tools.ietf.org/html/rfc7518",
+      "title": "JSON Web Algorithms (JWA)",
+      "authors": [
+        "M. Jones"
+      ],
+      "date": "may 2015",
+      "publisher": "IETF"
+    },
+    "PKCE": {
+      "href": "https://tools.ietf.org/html/rfc7636",
+      "title": "Proof Key for Code Exchange by OAuth Public Clients",
+      "authors": [
+        "N. Sakimura, J. Bradley, N. Agarwal"
+      ],
+      "date": "september 2015",
+      "publisher": "IETF"
+    },
+    "Introspection": {
+      "href": "https://tools.ietf.org/html/rfc7662",
+      "title": "OAuth 2.0 Token Introspection",
+      "authors": [
+        "J. Richer"
+      ],
+      "date": "October 2015",
+      "publisher": "IETF"
+    },
+    "OpenID.Core": {
+      "href": "https://openid.net/specs/openid-connect-core-1_0.html",
+      "title": "OpenID Connect Core 1.0",
+      "authors": [
+        "N. Sakimura, J. Bradley, M. Jones, B. de Medeiros, C. Mortimore"
+      ],
+      "date": "November 8 2014",
+      "publisher": "OpenID foundation"
+    },
+    "iGOV.OpenID": {
+      "href": "https://openid.net/specs/openid-igov-openid-connect-1_0.html",
+      "title": "International Government Assurance Profile (iGov) for OpenID Connect 1.0 - draft 3",
+      "authors": [
+        "M. Varley, P. Grassi"
+      ],
+      "date": "October 5 2018",
+      "publisher": "OpenID foundation"
+    },
+    "iGOV.OAuth2": {
+      "href": "https://openid.net/specs/openid-igov-oauth2-1_0.html",
+      "title": "International Government Assurance Profile (iGov) for OAuth 2.0",
+      "authors": [
+        "J. Richer, M. Varley, P. Grassi"
+      ],
+      "date": "October 5 2018",
+      "publisher": "OpenID foundation"
+    },
+    "OpenID.Discovery": {
+      "href": "https://openid.net/specs/openid-connect-discovery-1_0.html",
+      "title": "OpenID Connect Discovery 1.0",
+      "authors": [
+        "N. Sakimura, J. Bradley, M. Jones, E. Jay"
+      ],
+      "date": "November 8 2014",
+      "publisher": "OpenID foundation"
+    },
+    "I-D.ietf-oauth-pop-architecture": {
+      "href": "https://tools.ietf.org/html/draft-ietf-oauth-pop-architecture-08",
+      "title": "OAuth 2.0 Proof-of-Possession (PoP) Security Architecture",
+      "authors": [
+        "P. Hunt, J. Richer, W. Mills, P. Mishra, H. Tschofenig"
+      ],
+      "date": "July 8, 2016",
+      "publisher": "IETF"
+    },
+    "HEART.OAuth2": {
+      "href": "https://openid.net/specs/openid-heart-oauth2-1_0.html",
+      "title": "Health Relationship Trust Profile for OAuth 2.0",
+      "authors": [
+        "J. Richer"
+      ],
+      "date": "April 25, 2017",
+      "publisher": "OpenID foundation"
+    },
+    "JWS.JWE.Algs": {
+      "href": "https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms",
+      "title": "IANA JSON Web Signatures and Encryption Algorithms registry",
+      "authors": [
+        "Jim Schaad, Jeff Hodges, Joe Hildebrand, Sean Turner"
+      ],
+      "date": "",
+      "publisher": "IANA"
+    },
+    "BCP195": {
+      "href": "https://tools.ietf.org/html/bcp195",
+      "title": "Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "authors": [
+        "Y. Sheffer, R. Holz, P. Saint-Andre"
+      ],
+      "date": "May 2015",
+      "publisher": "IETF"
+    },
+    "HAL": {
+      "href": "http://stateless.co/hal_specification.html",
+      "title": "HAL - Hypertext Application Language",
+      "authors": [
+        "Mike Kelly"
+      ],
+      "date": " 2013-09-18"
+    },
+    "rfc7946": {
+      "href": "https://datatracker.ietf.org/doc/html/rfc7946",
+      "title": "The GeoJSON Format",
+      "authors": [
+        "H. Butler, M. Daly, A. Doyle, S. Gillies, T. Schaub, S. Hagen"
+      ],
+      "date": "2016-08-01"
+    }
+  },
+  "postProcess": [
+    null
+  ],
+  "publishISODate": "2023-12-21T00:00:00.000Z",
+  "generatedSubtitle": "Versie ter vaststelling 21 december 2023"
+}</script><meta name="description" content="Dit document beschrijft een API strategie voor de Nederlandse overheid."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-gebruikers-wensen-20231221/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "API Strategie Algemeen (Module gebruikerswensen)",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2023-12-21",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/KP-APIs/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/api/def-hr-API-Strategie-gebruikers-wensen-20220309/",
+  "description": "Dit document beschrijft een API strategie voor de Nederlandse overheid.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Frank Terpstra",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Jan van Gelder",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.Geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Martin van der Plas",
+      "worksFor": {
+        "name": "Logius",
+        "url": "https://logius.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Lancelot Schellevis",
+      "worksFor": {
+        "name": "Forum Standaardisatie",
+        "url": "https://www.forumstandaardisatie.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Han Zuidweg",
+      "worksFor": {
+        "name": "Forum Standaardisatie",
+        "url": "https://www.forumstandaardisatie.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Friso Penninga",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Matthias Snoei",
+      "worksFor": {
+        "name": "Swis",
+        "url": "https://swis.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Jasper Roes",
+      "worksFor": {
+        "name": "Het Kadaster",
+        "url": "https://www.kadaster.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Peter Haasnoot",
+      "worksFor": {
+        "name": "Logius",
+        "url": "https://logius.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Frank van Es",
+      "worksFor": {
+        "name": "Logius",
+        "url": "https://logius.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Alexander Green",
+      "worksFor": {
+        "name": "Logius",
+        "url": "https://logius.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Martin van der Plas",
+      "worksFor": {
+        "name": "Logius",
+        "url": "https://logius.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Dennis de Wit",
+      "worksFor": {
+        "name": "Solventa",
+        "url": "https://www.solventa.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <!-- HTML-Body ================================================================================ -->
+  <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">API Strategie Algemeen (Module gebruikerswensen)</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Versie ter vaststelling <time class="dt-published" datetime="2023-12-21">21 december 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-gebruikerswensen-20231221/">https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-gebruikerswensen-20231221/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-gebruikerswensen/">https://docs.geostandaarden.nl/api/API-Strategie-gebruikerswensen/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/api/def-hr-API-Strategie-20220309/#inspelen-op-gebruikerswensen-de-sleutel-tot-gebruik">https://docs.geostandaarden.nl/api/def-hr-API-Strategie-20220309/#inspelen-op-gebruikerswensen-de-sleutel-tot-gebruik</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/KP-APIs/API-strategie-algemeen/Gebruikerswensen/">https://geonovum.github.io/KP-APIs/API-strategie-algemeen/Gebruikerswensen/</a></dd>
+    <dt>Redacteurs:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Frank Terpstra</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Jan van Gelder</span>, <a class="p-org org h-org h-card" href="https://www.Geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Martin van der Plas</span>, <a class="p-org org h-org h-card" href="https://logius.nl/">Logius</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Lancelot Schellevis</span>, <a class="p-org org h-org h-card" href="https://www.forumstandaardisatie.nl/">Forum Standaardisatie</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Han Zuidweg</span>, <a class="p-org org h-org h-card" href="https://www.forumstandaardisatie.nl/">Forum Standaardisatie</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Friso Penninga</span>, <a class="p-org org h-org h-card" href="https://geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Matthias Snoei</span>, <a class="p-org org h-org h-card" href="https://swis.nl/">Swis</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Jasper Roes</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/">Het Kadaster</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Peter Haasnoot</span>, <a class="p-org org h-org h-card" href="https://logius.nl/">Logius</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Frank van Es</span>, <a class="p-org org h-org h-card" href="https://logius.nl/">Logius</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Alexander Green</span>, <a class="p-org org h-org h-card" href="https://logius.nl/">Logius</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Martin van der Plas</span>, <a class="p-org org h-org h-card" href="https://logius.nl/">Logius</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Dennis de Wit</span>, <a class="p-org org h-org h-card" href="https://www.solventa.nl">Solventa</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/KP-APIs/">GitHub geonovum/KP-APIs</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/KP-APIs/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/KP-APIs/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/KP-APIs/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" data-format="markdown" aria-busy="false" class="introductory"><h2>Samenvatting</h2><p>Dit document beschrijft een API strategie voor de Nederlandse overheid.</p></section>
+    <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+  Dit is een definitief concept van de nieuwe versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+</p><p>Ten opzichte van de vorige versie van de API strategie (09-03-2022) is de layout verandert en het hoofdstuk gebruikerswensen in een los document geplaatst</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-van-de-nl-api-strategie"><span class="secno">1. </span>Inleiding van de NL API strategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#status"><span class="secno">1.1 </span>Status</a></li><li class="tocline"><a class="tocxref" href="#auteurs"><span class="secno">1.2 </span>Auteurs</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inspelen-op-gebruikerswensen-de-sleutel-tot-gebruik"><span class="secno">2. </span>Inspelen op gebruikerswensen: dé sleutel tot gebruik</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">2.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#overkoepelende-aanbeveling-biedt-een-goede-developer-experience-dx"><span class="secno">2.2 </span>Overkoepelende aanbeveling: biedt een goede ‘developer experience (DX)’</a></li><li class="tocline"><a class="tocxref" href="#gebruik-van-onboarding-tot-in-productie"><span class="secno">2.3 </span>Gebruik: van ‘onboarding’ tot ‘in productie’</a></li><li class="tocline"><a class="tocxref" href="#specifieke-aanbevelingen-voor-een-goede-dx"><span class="secno">2.4 </span>Specifieke aanbevelingen voor een goede DX</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanbeveling-1-werk-met-meerdere-persona-s"><span class="secno">2.4.1 </span>Aanbeveling 1: werk met (meerdere) persona’s</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-2-analyseer-welke-api-s-je-aan-moet-bieden-welke-informatievragen-wil-je-beantwoorden"><span class="secno">2.4.2 </span>Aanbeveling 2: analyseer welke API’s je aan moet bieden: welke informatievragen wil je beantwoorden?</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-3-documenteer-gericht-op-de-gebruiker-biedt-snel-inzicht-en-gebruik-oas-3"><span class="secno">2.4.3 </span>Aanbeveling 3: documenteer gericht op de gebruiker, biedt snel inzicht en gebruik OAS 3</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-4-minimaliseer-time-to-first-call-met-een-goede-sandbox"><span class="secno">2.4.4 </span>Aanbeveling 4: minimaliseer Time to First Call met een goede Sandbox</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-5-borg-ontwikkeling-en-beheer"><span class="secno">2.4.5 </span>Aanbeveling 5: borg ontwikkeling en beheer</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanbeveling-5-1-stel-een-sla-op"><span class="secno">2.4.5.1 </span>Aanbeveling 5.1 Stel een SLA op</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-5-2-biedt-een-roadmap-aan"><span class="secno">2.4.5.2 </span>Aanbeveling 5.2 Biedt een roadmap aan</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-5-3-doe-aan-versiebeheer"><span class="secno">2.4.5.3 </span>Aanbeveling 5.3 Doe aan versiebeheer</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-5-4-sluit-de-feedback-loop-betrek-de-community"><span class="secno">2.4.5.4 </span>Aanbeveling 5.4 Sluit de feedback-loop: betrek de community</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aanbeveling-6-maak-duidelijk-wat-je-data-betekent"><span class="secno">2.4.6 </span>Aanbeveling 6: maak duidelijk wat je data betekent</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-7-wees-vindbaar-voor-developers"><span class="secno">2.4.7 </span>Aanbeveling 7: wees vindbaar voor developers</a></li><li class="tocline"><a class="tocxref" href="#aanbeveling-8-niet-alles-is-een-api"><span class="secno">2.4.8 </span>Aanbeveling 8: niet alles is een API!</a></li></ol></li></ol></li></ol></nav>
+    <!-- vanaf hier per hoofdstuk een sectie of een div in het document ======================== -->
+    <!-- Secties komen in de inhoudsopgave div's niet ========================================== -->
+    <!-- Secties hebben verplicht <h2> tags, div's niet ======================================== -->
+    <section data-format="markdown" class="informative" aria-busy="false" id="inleiding-van-de-nl-api-strategie"><!--OddPage--><h2 id="x1-inleiding-van-de-nl-api-strategie"><span class="secno">1. </span>Inleiding van de NL API strategie</h2><p><em>Dit onderdeel is niet normatief.</em></p><p>Dit Hoofdstuk geeft een inleiding op de Nederlandse API strategie. De stategie is opgebouwd uit meerdere documenten, standaarden en modulen. De NL API Strategie wordt doorontwikkeld en beheerd door <a href="https://www.geonovum.nl/themas/kennisplatform-apis">het Kennisplatform API's</a>.</p><section id="status"><h3 id="x1-1-status"><span class="secno">1.1 </span>Status</h3><p>Op <a href="https://github.com/geonovum/KP-APIs/issues">GitHub</a> kan bekeken worden wat de actuele ontwikkelingen zijn met betrekking tot de Nederlandse API strategie. </p></section><section id="auteurs"><h3 id="x1-2-auteurs"><span class="secno">1.2 </span>Auteurs</h3><p>Er worden slechts een beperkt aantal auteurs genoemd, echter aan deze strategie is door veel meer mensen gewerkt. Per onderdeel van de API strategie staan de degene verantwoordelijk voor de laatste versie vermeld.
+De genoemde auteurs zijn deelnemers aan de relevante werkgroep van het Kennisplatform API's zoals: API Strategie, Architectuur, Security, Design Rules, Authenticatie en Autorisatie, Strategie en Beleid, en Gebruikerswensen.</p></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>De API strategie bestaat uit een een inleidend document, verschillende normatieve documenten (NL GOV standaarden) en meerdere modulen die voor verschillende functionele of technische situaties kunnen worden ingezet. Een actueel overzicht van alle documenten is weergegeven in de onderstaande infographic:</p><figure id="fig-nl-api-strategie-infographic">
+<object data="https://geonovum.github.io/KP-APIs/media/API_infographic.svg" type="image/svg+xml" id="infographic"></object>
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">NL API Strategie Infographic</span></figcaption>
+</figure><p>De verschillende onderdelen van de NL API Strategie bevat de volgende documenten:</p><table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Documentnaam &amp; <br> Verwijzing naar de gepubliceerde versie</th>
+<th>Status</th>
+<th>Versie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie/">Inleiding NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-architectuur/">Architectuur NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Algemeen</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-gebruikerswensen/">Gebruikerswensen NL API Strategie</a></td>
+<td>Vastgesteld <br> (door Kennisplatform)</td>
+<td>09-03-2022</td>
+</tr>
+<tr>
+<td>Normatieve standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/api/adr/">API Design Rules (ADR)</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>09-07-2020 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Verplichte standaard</td>
+<td><a href="https://forumstandaardisatie.nl/open-standaarden/openapi-specification">Open API Specification (OAS)</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>25-05-2018 <br> v3.0.0</td>
+</tr>
+<tr>
+<td>Normatieve standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/api/oauth/">NL GOV OAuth profiel</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>09-07-2020 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Voorgestelde standaard</td>
+<td><a href="https://logius.gitlab.io/oidc/">NL GOV OpenID Connect profile</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>18-02-2021 <br> v1.0.0</td>
+</tr>
+<tr>
+<td>Verplichte standaard</td>
+<td><a href="https://gitdocumentatie.logius.nl/publicatie/dk/restapi/">Digikoppeling REST API koppelvlak specificatie</a></td>
+<td>Verplicht <br> (pas toe leg uit)</td>
+<td>14-11-2022 <br> v1.1.1</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-geo/">API Geospatial Design Rules module</a></td>
+<td>Vastgesteld * <br> (door Kennisplatform)</td>
+<td>23-05-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-transport-security/">API Transport Security module</a></td>
+<td>Stabiel * <br> (Werkgroep Kennisplatform)</td>
+<td>11-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-access-control/">API Access control module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>11-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-naming-conventions/">API Naming conventions module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>12-07-2023</td>
+</tr>
+<tr>
+<td>Aanvullende module</td>
+<td><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-hypermedia/">API Hypermedia module</a></td>
+<td>Stabiel <br> (Werkgroep Kennisplatform)</td>
+<td>12-07-2023</td>
+</tr>
+</tbody></table><ul>
+<li>Deze modules zijn voordragen als normatief, vaststellingsproces is nog niet compleet</li>
+</ul></section></section>
+    <section data-format="markdown" class="informative" aria-busy="false" id="inspelen-op-gebruikerswensen-de-sleutel-tot-gebruik"><!--OddPage--><h2 id="x2-inspelen-op-gebruikerswensen-de-sleutel-tot-gebruik"><span class="secno">2. </span>Inspelen op gebruikerswensen: dé sleutel tot gebruik</h2><p><em>Dit onderdeel is niet normatief.</em></p><section id="inleiding"><h3 id="x2-1-inleiding"><span class="secno">2.1 </span>Inleiding</h3><p>Overheden bezitten kwalitatief hoogwaardige data en bieden deze aan via API’s.
+Vanuit het open data-perspectief maken overheden het hiermee mogelijk dat
+anderen -binnen én buiten de overheid- zinvolle toepassingen kunnen ontwikkelen,
+die maatschappelijke meerwaarde bieden. Maar de overheid gaat nog verder: bij
+initiatieven als Common Ground is het gebruik van API’s zelfs randvoorwaardelijk
+om werkprocessen zodanig in te richten, dat data altijd bij de bron bevraagd en
+gewijzigd kan worden. Een belangrijke succesfactor in deze ontwikkelingen is de
+mate waarin overheden erin slagen om drempels voor het gebruik van hun API’s weg
+te nemen. Om het gebruik zo laagdrempelig mogelijk te maken, is het essentieel
+dat er aandacht is voor de wensen van gebruikers. En om te begrijpen welke wensen ze hebben, is het essentieel om te begrijpen wie die gebruikers zijn. In generieke zin zijn de gebruikers van API's developers: mensen die toepassingen ontwikkelen. Deze developers fungeren als intermediair tussen de data- of dienstaanbieder enerzijds en de eindgebruiker anderzijds. Neem bijvoorbeeld een gemeente die het mogelijk wil maken dat burgers makkelijk melding kunnen maken van een defecte lantarenpaal, losliggende stoeptegel of zwerfvuil, De burger is dan de eindgebruiker, maar de ontwikkelaar van de Melding Openbare Ruimte app is de gebruiker van de API's die de gemeente aanbiedt om bijvoorbeeld een kaartondergrond op te halen of een melding aan te bieden aan de gemeente.
+De gebruikerswensen liggen niet alleen op het “wat” (wat voor data krijg ik?), maar zeker ook op het “hoe” (hoe
+makkelijk kan ik aan de slag met deze API?). Bij de eerste kennismaking met de
+API moet de gebruiker verleidt worden om de API te gaan gebruiken en in alle
+volgende fases van gebruik (implementeren, in productie nemen en in productie
+houden) moet de gebruikerservaring zodanig zijn, dat de gebruiker geen enkele
+reden heeft om af te haken. Sterker nog: idealiter wordt de gebruiker zó
+enthousiast over de API en de bijbehorende ondersteuning, dat de gebruiker
+onderdeel wordt van de gebruikerscommunity en actief gaat bijdragen aan verdere
+ontwikkeling en promotie van die API. Merk op dat dit effect alleen bereikt kan
+worden, wanneer de totaalbeleving klopt: ook al is het product (de data) zelf
+nog zo goed, als de gebruikservaring belabberd is, dan zul je niet veel
+potentiële gebruikers verleiden om met je data zinvolle toepassingen te gaan
+ontwikkelen. En nog erger: gebruikers die tóch met de API aan de slag gaan,
+zullen de helpdesk van de aanbieder zwaar gaan belasten, de data mogelijk
+verkeerd gaan interpreteren en de ICT-infrastructuur onnodig zwaar belasten,
+wanneer zij slechts omslachtig (met veel API-calls) de gewenste gegevens kunnen
+krijgen.</p></section><section id="overkoepelende-aanbeveling-biedt-een-goede-developer-experience-dx"><h3 id="x2-2-overkoepelende-aanbeveling-biedt-een-goede-developer-experience-dx"><span class="secno">2.2 </span>Overkoepelende aanbeveling: biedt een goede ‘developer experience (DX)’</h3><p>De belangrijkste aanbeveling aan aanbieders van API’s is om zich te richten op
+die gebruikservaring; op een goede ‘developer experience (DX)’. Goede DX komt
+voort uit stapeling van aandacht voor <em>functionality</em> (functionaliteit - wat
+moet de API doen?), voor <em>usability</em> (hoe bruikbaar is de API voor de
+developer?) en daar bovenop voor de <em>experience</em> (hoe voelt de developer zich
+als die de API gebruikt?). Dat laatste aspect -hoe voelt de developer zich-
+klinkt wellicht wat vaag, maar het is in essentie de optelsom van ervaringen in
+de interactie tussen een developer en een API aanbieder. Stel: een developer,
+Johan (26 jaar – ZZP-er), heeft moeite om een bepaalde API te vinden, vervolgens
+blijkt het registratieproces lastig en krijgt hij de API key pas een week later,
+daarna blijkt de documentatie in voor Johan deels onbegrijpelijk jargon
+geschreven (én is het ook nog eens een PDF van 352 pagina’s), dan heeft Johan
+meerdere calls nodig om de gewenste data te krijgen en uiteindelijk is data
+helemaal niet in het door Johan gewenst formaat. Elke kleine irritatie is op
+zichzelf niet onoverkomelijk, maar de optelsom maakt dat Johan concludeert: “Dit
+is niet te doen, ik zoek wel wat anders!”.</p></section><section id="gebruik-van-onboarding-tot-in-productie"><h3 id="x2-3-gebruik-van-onboarding-tot-in-productie"><span class="secno">2.3 </span>Gebruik: van ‘onboarding’ tot ‘in productie’</h3><p>De zwakte van veel teksten over ‘developer experience’ is dat men zich vaak
+alleen richt op de use case van een technische developer die een API wil
+implementeren - denk aan Johan in de vorige paragraaf. Gebruik begint echter
+niet bij de poging tot implementatie; hier gaan nog stappen aan vooraf. Johan
+heeft zich al een aantal vragen gesteld, voordat hij besloot om die poging te
+wagen. Die vragen -en daarmee de stappen die hij doorloopt- zijn beter te
+introduceren aan de hand van het voorbeeld van een grotere softwareleverancier.
+Stel: Anne (43 jaar) werkt als product manager bij een commerciële
+softwareleverancier en heeft een aantal applicaties voor de gemeentelijke markt
+in haar portfolio. Ze ziet een API op een ontwikkelaarsportaal en beoordeelt aan
+de hand van de functionele specificaties of implementatie van de API meerwaarde
+biedt voor één van haar applicaties. Eén API trekt haar aandacht en Anne vraagt
+Steven (56 jaar, architect bij hetzelfde bedrijf) om te beoordelen of de API
+past binnen de software stack van het bedrijf en kritisch te kijken naar eventuele security en privacy issues. Steven ziet mogelijkheden en
+vervolgens krijgt Jeffrey (37 jaar, software engineer bij hetzelfde bedrijf) de
+opdracht om binnen een dag te beoordelen of hij de API succesvol kan integreren
+in de nieuwe versie van het product uit Anne’s portfolio. Na Jeffrey’s positieve
+oordeel besluit Gea, de manager, om tijd en geld vrij te maken voor
+implementatie. Zo komt de API uiteindelijk in de productieversie terecht: *"developer tries, business buys"*.</p><p>Dit eindresultaat is bereikt, doordat in alle fases de ‘onboarding’ -het proces
+dat Anne, Steven en Jeffrey doorliepen toen zij voor de eerste keer gebruik
+maakten van een digitale service (het aanbieden van de API)- prettig verliep.
+Uit marketingonderzoeken blijkt een prettige eerste gebruikerservaring van een
+online platform (bijvoorbeeld het ontwikkelaarsportaal waarop Anne de API
+ontdekte en zij vervolgens samen met Steven en Jeffrey de API beoordeelde) veel
+invloed heeft op het verdere gebruik ervan. Oftewel: de kans is groot dat dit
+bedrijf vervolgens ook andere API’s op dit ontwikkelaarsportaal gaat gebruiken.</p><p>De kern van dit verhaal is dat een API technisch gezien weliswaar een machine tot machine koppeling is, maar strategisch juist gezien moet worden als een product. En dat product moet gebruikers (zie ze als potentiële klanten!) verleiden tot gebruik. Dan zijn aspecten als de winkelervaring (in een API store of ontwikkelaarsportaal), de geboden service en de kwaliteit van het product de doorslaggevende factoren in de beslissing om tot gebruik over te gaan.</p></section><section id="specifieke-aanbevelingen-voor-een-goede-dx"><h3 id="x2-4-specifieke-aanbevelingen-voor-een-goede-dx"><span class="secno">2.4 </span>Specifieke aanbevelingen voor een goede DX</h3><section id="aanbeveling-1-werk-met-meerdere-persona-s"><h4 id="x2-4-1-aanbeveling-1-werk-met-meerdere-persona-s"><span class="secno">2.4.1 </span>Aanbeveling 1: werk met (meerdere) persona’s</h4><p>Een API is weliswaar een machine tot machine koppeling, maar onthoud: API's ontwerp en bouw je niet voor een machine, maar voor een gebruiker: een
+mens! Om een goede DX te bieden, moet je dus eerst weten voor wie je ontwerpt en
+bouwt, voordat je dat goed kunt doen. Persona’s zijn dan belangrijk, er is niet
+maar één type developer! Redeneer van buiten naar binnen: wie zijn mijn
+gebruikers, wat willen zij kunnen doen en wat moet ik doen om dat zo goed
+mogelijk te faciliteren. Het typeren van gebruikers en analyseren welke
+behoeften zij hebben, doe je op basis van persona’s.</p><p>Belangrijk hierbij is om te onderkennen dat er verschillende niveaus of typen
+gebruik zijn. Onderscheid daarom -met de fases van ‘onboarding’ tot ‘in
+productie’ in het achterhoofd- minimaal de volgende persona’s:</p><ul>
+<li>een product manager / business developer: focus op het kunnen beoordelen van
+functionaliteit (“Is dit relevant voor mijn product / mijn doel?”)</li>
+<li>een architect: focus op het beoordelen van het informatiemodel (“Hoe
+integreert dit met de rest van onze software?”) en security- en privacy-aspecten.</li>
+<li>een technische developer: focus op het daadwerkelijk kunnen gebruiken (“Hoe
+krijg ik dit werkend?”).</li>
+</ul></section><section id="aanbeveling-2-analyseer-welke-api-s-je-aan-moet-bieden-welke-informatievragen-wil-je-beantwoorden"><h4 id="x2-4-2-aanbeveling-2-analyseer-welke-api-s-je-aan-moet-bieden-welke-informatievragen-wil-je-beantwoorden"><span class="secno">2.4.2 </span>Aanbeveling 2: analyseer welke API’s je aan moet bieden: welke informatievragen wil je beantwoorden?</h4><p>De ene API is de andere niet. In veel modellen worden API’s in drie categorieën
+onderverdeeld: de System API (die werkt op het niveau van de databron), de
+Process API (die doet aan <em>orchestration</em> door één of meerdere System API’s aan
+te roepen) en de Convenience of Experience API (die één specifieke
+gebruikersvraag beantwoord). Vraag je altijd af welke informatievragen de
+gebruiker heeft – in veel gevallen hangen deze vragen niet 1:1 samen met het
+datamodel.</p><p>Stel dat je de Basisregistratie Adressen en Gebouwen wil ontsluiten. De
+informatievraag “Geef me het volledige adres bij deze postcode” is alleen te
+beantwoorden door intern bij een Verblijfsobject de Openbare Ruimte naam,
+Nummeraanduiding en Woonplaats op te vragen en te combineren tot één
+adressering. Bij een System API moet je meerdere calls doen om dit adres op te
+bouwen, terwijl een Convenience API deze gangbare (maar complexe) vraag in één
+call kan beantwoorden. Het aanbieden van Convenience API’s naast System API’s is
+dus erg gebruiksvriendelijk: de 80% gebruikers die hiermee geholpen zijn,
+confronteer je met slechts 20% van de complexiteit. Vergelijk dit met de
+Toptaken-aanpak bij de websites van veel gemeenten: de meest aangevraagde
+producten (bijv. nieuw paspoort en rijbewijs) staan pontificaal op de homepage,
+terwijl de minder vaak gevraagde diensten op vervolgpagina’s staan. Zo reduceer
+je de complexiteit voor een zo groot mogelijk deel van je gebruikers.</p></section><section id="aanbeveling-3-documenteer-gericht-op-de-gebruiker-biedt-snel-inzicht-en-gebruik-oas-3"><h4 id="x2-4-3-aanbeveling-3-documenteer-gericht-op-de-gebruiker-biedt-snel-inzicht-en-gebruik-oas-3"><span class="secno">2.4.3 </span>Aanbeveling 3: documenteer gericht op de gebruiker, biedt snel inzicht en gebruik OAS 3</h4><p>Elk type gebruiker dat in aanbeveling 1 wordt genoemd (business developer,
+architect, technische developer) verdient zijn eigen ‘Getting started’
+documentatie, gericht op het snel kunnen beoordelen en/of toepassen.
+Documentatie is nooit een lijvig document (wanneer veel documentatie nodig
+lijkt, is de functionaliteit vermoedelijk te complex) én nooit een PDF: laat je
+gebruikers makkelijk klikken naar relevante onderdelen binnen én buiten de
+documentatie! Referentie-implementaties kunnen ook zinvol zijn om snel een
+indruk te bieden van functionaliteit. Voor de technische developer is de
+documentatie conform de Open API Specifiction 3.0 (OAS 3); deze staat in
+Nederland op de ‘Pas toe of leg uit-lijst’ van het Forum Standaardisatie.</p></section><section id="aanbeveling-4-minimaliseer-time-to-first-call-met-een-goede-sandbox"><h4 id="x2-4-4-aanbeveling-4-minimaliseer-time-to-first-call-met-een-goede-sandbox"><span class="secno">2.4.4 </span>Aanbeveling 4: minimaliseer Time to First Call met een goede Sandbox</h4><p>Zorg dat een developer snel een werkend voorbeeld heeft. Dit vraagt om een goed
+gedocumenteerde, realistische Sandbox: een experimenteeromgeving met testdata. Deze Sandbox dient alle aspecten van de
+API te ondersteunen en identiek gedrag aan de productieversie van de API te
+vertonen, bijvoorbeeld rond authenticatie. Daar waar mogelijk is het zeer
+wenselijk dat meerdere API’s dezelfde dataset bieden als Sandbox, zodat ook het
+samenspel tussen verschillende API’s getest kan worden.</p></section><section id="aanbeveling-5-borg-ontwikkeling-en-beheer"><h4 id="x2-4-5-aanbeveling-5-borg-ontwikkeling-en-beheer"><span class="secno">2.4.5 </span>Aanbeveling 5: borg ontwikkeling en beheer</h4><p>Ook al is een API nog zo goed ontwikkeld, wanneer doorontwikkeling en beheer
+niet goed geregeld is, zal die API niet succesvol zijn. Essentieel hierin is dat
+je gebruikers duidelijkheid biedt:</p><section id="aanbeveling-5-1-stel-een-sla-op"><h5 id="x2-4-5-1-aanbeveling-5-1-stel-een-sla-op"><span class="secno">2.4.5.1 </span>Aanbeveling 5.1 Stel een SLA op</h5><blockquote>
+<p>Maak duidelijk welke verwachtingen een gebruiker mag hebben qua uptime,
+service window, beprijzing etc.</p>
+</blockquote></section><section id="aanbeveling-5-2-biedt-een-roadmap-aan"><h5 id="x2-4-5-2-aanbeveling-5-2-biedt-een-roadmap-aan"><span class="secno">2.4.5.2 </span>Aanbeveling 5.2 Biedt een roadmap aan</h5><blockquote>
+<p>Maak duidelijk of en zo ja, wanneer er eventuele wijzigingen te verwachten
+zijn en hoe lang de API minimaal beschikbaar blijft.</p>
+</blockquote></section><section id="aanbeveling-5-3-doe-aan-versiebeheer"><h5 id="x2-4-5-3-aanbeveling-5-3-doe-aan-versiebeheer"><span class="secno">2.4.5.3 </span>Aanbeveling 5.3 Doe aan versiebeheer</h5><blockquote>
+<p>Borg dat de toepassing van de gebruiker blijft werken, door te zorgen voor
+backward compatability. Grotere updates kunnen als nieuwe versie worden
+uitgebracht, waarbij oudere versies nog een gegarandeerde periode
+beschikbaar blijven. Het versienummer kan in elke call staan, bijv. GET
+/api/v1.0/... En versiebeheer slaat niet alleen op de API zelf, maar ook op de bijbehorende documentatie, Sandbox, etc.</p>
+</blockquote></section><section id="aanbeveling-5-4-sluit-de-feedback-loop-betrek-de-community"><h5 id="x2-4-5-4-aanbeveling-5-4-sluit-de-feedback-loop-betrek-de-community"><span class="secno">2.4.5.4 </span>Aanbeveling 5.4 Sluit de feedback-loop: betrek de community</h5><blockquote>
+<p>Om echt van buiten naar binnen te kunnen werken, is het betrekken van de
+community van gebruikers onmisbaar. De community kan vertellen hoe de
+developer experience tot nu toe is, welke verbeteringen wenselijk zijn,
+welke gebruikersvragen er sterk leven, maar nog onvoldoende ondersteund
+worden, etc., etc. Daarnaast wil je de community ook actief informeren over
+voorgenomen wijzigingen e.d. Het gebruik van API keys is een manier om je
+gebruikers te kennen.</p>
+</blockquote></section></section><section id="aanbeveling-6-maak-duidelijk-wat-je-data-betekent"><h4 id="x2-4-6-aanbeveling-6-maak-duidelijk-wat-je-data-betekent"><span class="secno">2.4.6 </span>Aanbeveling 6: maak duidelijk wat je data betekent</h4><p>Wanneer je data openstelt voor derden, inclusief niet-specialisten, is het
+essentieel om eenduidig vast te leggen wat de data betekent, waarbij deze
+betekenis ook voor niet-specialisten begrijpelijk is. Het vastleggen van
+semantiek kan o.a. door definities en informatiemodellen goed online te ontsluiten (zoals bijvoorbeeld in de Stelselcatalogus Omgevingswet),
+maar ook door praktischere zaken als heldere naamgeving van variabelen etc.</p></section><section id="aanbeveling-7-wees-vindbaar-voor-developers"><h4 id="x2-4-7-aanbeveling-7-wees-vindbaar-voor-developers"><span class="secno">2.4.7 </span>Aanbeveling 7: wees vindbaar voor developers</h4><p>Een goede, gebruiksgerichte API, die bovendien actief wordt beheerd en
+doorontwikkeld, kan nog steeds weinig gebruikt worden wanneer deze API niet goed
+vindbaar is. Zorg daarom dat je een goed developersportaal hebt, nationaal idealiter bij developer.overheid.nl.
+Als een API een product is, hoort dat product ook in een goede winkel te staan. En in een succesvolle winkel is altijd goed nagedacht over productpresentatie: presenteer breed toepasbare API’s en
+datasets prominenter dan specifiekere API’s en obscure datasets, wederom te
+vergelijken met de toptaken-aanpak bij gemeentelijke websites. Een goed
+developersportaal informeert niet alleen over beschikbare API’s, maar inspireert
+en verleidt zelfs developers om bepaalde API’s te gebruiken. Het vullen van het
+developersportaal mag daarom nooit sluitpost van een project zijn.
+Formuleer hierbij ook goed het ambitieniveau:</p><ul>
+<li>API store: de one-stop-shop, waarin je niet alleen (het bestaan van) de API ontdekt, maar ook de documentatie vindt, de API kunt uitproberen, etc. Het runnen van een API store
+kan zelfs zover gaan, dat er centraal proxy's worden ontwikkeld op API's van andere aanbieders en documentatie geredigeerd, om zo voor de eigen gebruikers een zo uniform mogelijke gebruikerservaring te garanderen.</li>
+<li>API catalogus: uitsluitend gericht op het ontdekken van API's, waarna doorverwezen wordt naar de API store van de desbetreffende aanbieder.</li>
+<li>hybride oplossing: een combinatie van een catalogus en een store. Alle API's staan in de catalogus, een kleine subset (de high-value API's) wordt volledig aangeboden. Deze hybride oplossing zou
+een mooi ambitieniveau voor developer.overheid.nl kunnen zijn: alle overheids-API's zijn vindbaar en voor de meest generieke en populaire API's ben je direct op de juiste plaats.</li>
+</ul><p>Een bijzondere categorie die de overheid ook nodig gaat hebben, o.a. door de ontwikkelingen in Common Ground, is de API spec store: een plaats waarin API specificaties gepubliceerd kunnen worden. Leveranciers kunnen op basis van die specificaties zelf hun specificatie-conforme API's ontwikkelen, waarmee de interoperabiliteit van gegevens binnen het gemeentelijke applicatielandschap wordt vergroot.</p><p>In de context van API stores en API catalogi is het belangrijk om te realiseren dat developer experience niet alleen een externe focus heeft (gericht op laten ontdekken, evalueren, testen en gebruiken van API's), maar ook een interne focus, gericht op het activeren van potentiële API-aanbieders. Zij moeten getriggerd worden om API's te ontwikkelen, te ontsluiten in je API store of catalogus, te beschrijven conform bepaalde kwaliteitseisen, etc.</p></section><section id="aanbeveling-8-niet-alles-is-een-api"><h4 id="x2-4-8-aanbeveling-8-niet-alles-is-een-api"><span class="secno">2.4.8 </span>Aanbeveling 8: niet alles is een API!</h4><p>Bedenkt altijd goed of een API de juiste oplossing is. In sommige gevallen is
+een bulk download nog steeds praktischer voor een gebruiker. Wanneer een API
+zinvol is? Hoe hoger de mutatiefrequentie van de data, hoe zinvoller een API
+wordt. En bij hoge mutatiefrequenties, is een API die was-wordt leveringen kan
+bieden zinvol. Denk hierbij weer aan 'API als een product': ga niet blind data ontsluiten, maar begin bij de vraag welke propositie je neer wil zetten.</p></section></section></section>
+  
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

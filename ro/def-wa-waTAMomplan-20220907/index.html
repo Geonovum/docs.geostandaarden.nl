@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Werkafspraak TAM omgevingsplan</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <!--script src="js/config.js"></script-->
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "license": "cc-by-nd",
+  "publishDate": "2022-09-07",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "waTAMomplan",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum//ROST/",
+  "issueBase": "https://github.com/Geonovum//ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io//ROST/",
+  "publishISODate": "2022-09-07T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 07 september 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-wa-waTAMomplan-20220907/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Werkafspraak TAM omgevingsplan",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2022-09-07",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum//ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Werkafspraak TAM omgevingsplan</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-09-07">07 september 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-wa-waTAMomplan-20220907/">https://docs.geostandaarden.nl/ro/def-wa-waTAMomplan-20220907/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/waTAMomplan/">https://docs.geostandaarden.nl/ro/waTAMomplan/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/waTAMomplan/">https://geonovum.github.io/ROST/waTAMomplan/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum//ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum//ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum//ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum//ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#uitgangspunt"><span class="secno">2. </span>Uitgangspunt</a></li><li class="tocline"><a class="tocxref" href="#werkwijze"><span class="secno">3. </span>Werkwijze</a></li><li class="tocline"><a class="tocxref" href="#aandachtspunt"><span class="secno">4. </span>Aandachtspunt</a></li><li class="tocline"><a class="tocxref" href="#resultaat"><span class="secno">5. </span>Resultaat</a></li></ol></nav><section data-format="markdown" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>Deze werkafspraak heeft betrekking op de ontsluiting van de informatie van het Omgevingswet instrument <i>omgevingsplan</i> op basis van de RO Standaarden 2012, via Ruimtelijkeplannen.nl en de overbruggingsfunctie van het Informatiehuis Ruimte naar de landelijke voorziening Digitaal Stelsel Omgevingswet.
+</p><p>Aanleiding voor deze werkafspraak is de <a href="https://zoek.officielebekendmakingen.nl/kst-33118-CF.html" target="_blank">kamerbrief van 27 mei 2021</a>, waarin de minister de Tweede Kamer informeert over de inwerkingtredingsdatum van de Omgevingswet en mogelijke Tijdelijke Alternatieve Maatregelen (TAM). Deze tijdelijke alternatieve maatregelen maken inwerkingtreding van de Omgevingswet mede mogelijk. Ze bieden gemeenten naast de zogenaamde ‘hoofdroute’ een tijdelijk een alternatieve route wanneer voor het betreffende bevoegd gezag het realiseren van een mijlpaal zoals urgente gebiedsontwikkelingen, onder druk komt te staan.</p></section><section data-format="markdown" id="uitgangspunt"><!--OddPage--><h2 id="x2-uitgangspunt"><span class="secno">2. </span>Uitgangspunt</h2><p>Het gebruik van deze tijdelijke alternatieve maatregel (TAM) en dus van deze werkafspraak moet gezien worden als noodmaatregel. Deze noodmaatregel moet voorkomen dat gewenste ontwikkelingen (gebiedsontwikkeling ten behoeve van woningbouw, energietransitie e.d.) vertraging oplopen omdat deze planologisch niet goed geregeld kunnen worden door:</p><ul><li>hetzij een tekortschietende werking van het DSO;</li>
+<li>hetzij problemen bij gemeenten m.b.t. het werken met het DSO.
+</li>
+</ul><p>Het is zeker niet de bedoeling om deze methode als reguliere werkwijze toe te passen. Uitgangspunt is dat het hier geen compleet omgevingsplan betreft voor het totale grondgebied van de gemeente, maar om een projectgericht/gebiedsgerichte wijziging van het omgevingsplan om gebiedsontwikkelingen die anders stagneren mogelijk te maken.</p><p>Bij de uitwerking van deze werkafspraak hanteren we de volgende uitgangspunten.
+</p><ul><li>Deze werkafspraak geldt alleen voor de gemeentelijke bronhouders.</li>
+<li>Er wordt gebruikt gemaakt van het bestaande RO Standaarden 2012, waaronder het Informatiemodel Ruimtelijke Ordening (IMRO2012). De RO Standaarden worden niet aangepast.</li>
+<li>Er wordt gebruik gemaakt van het IMRO-plantype ‘bestemmingsplan’ voor het wijzigen van het omgevingsplan.</li>
+<li>Voor de publicatie wordt gebruik gemaakt van het Wro publicatie spoor op basis van de RO Standaarden 2012. Via Ruimtelijkeplannen.nl en de overbruggingsfunctie van het Informatiehuis Ruimte komt het plan beschikbaar in de landelijke voorziening Digitaal Stelsel Omgevingswet.</li>
+<li>De publicatie van de bekendmaking blijft het DROP spoor naar Overheid.nl volgen.</li>
+<li>Wro software wordt niet aangepast.</li>
+<li>De werkafspraak mag alleen toegepast worden als noodmaatregel om te voorkomen dat gewenste gebiedsontwikkelingen stil komen te liggen.
+</li>
+<li>De met de RO Standaarden opgestelde wijziging van het omgevingsplan moet uiteindelijk door de gemeente worden verwerkt in het omgevingsplan conform STOP/TPOD standaarden.</li>
+</ul></section><section data-format="markdown" id="werkwijze"><!--OddPage--><h2 id="x3-werkwijze"><span class="secno">3. </span>Werkwijze</h2><p>In technische opbouw lijkt het instrument ‘bestemmingsplan’ uit de Wro het meest op het omgevingsplan onder de Omgevingswet. Daarmee sluit het gebruik van het instrument bestemmingsplan ook goed aan op de al bekende werkwijze bij de gemeentelijke overheid. De inhoudelijke verplichtingen voor het toepassen van de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">Standaard Vergelijkbare Bestemmingsplannen</a> (SVBP2012) vervallen onder de Omgevingswet. Dat biedt de noodzakelijke uitbreidingsruimte voor het opstellen van een wijziging van het omgevingsplan.
+</p><p>Technisch dient deze wijziging van het omgevingsplan wel te voldoen aan de RO Standaarden 2012 om geaccepteerd te worden door de validator van Ruimtelijkeplannen.nl. In deze paragraaf geven we aan hoe het omgevingsplan technisch gemodelleerd kan worden met behulp van het instrument bestemmingsplan.</p><p>Een omgevingswetbesluit kent geen object ‘plangebied’. Voor de validatie is het wel noodzakelijk om een plangebied op te nemen. Voor de motivering van het wijzigingsbesluit kan gebruik gemaakt worden van het object ‘toelichting’. De toelichting, regels en eventuele bijlagen worden gekoppeld aan het plangebied. Hiermee kan voldaan worden aan de noodzakelijk onderdelen van de wijziging van het omgevingsplan en tevens aan de randvoorwaarden ten behoeve van de validatie.</p><p>Een wijziging van het omgevingsplan opgesteld op basis van deze TAM, moet herkenbaar zijn, Dit is belangrijk voor een goede validatie en ten behoeve van de overbruggingsfunctie naar het DSO. Daarom leggen we in deze werkafspraak de naamgeving vast:
+</p><p>Werkafspraak: de naam van het plan is ‘TAM-omgevingsplan[spatie][plannaam]’</p><p>In IMRO2012 kunnen binnen bepaalde randvoorwaarden eigen objecten met eigen benamingen worden toegevoegd. Bij het opstellen van Crisis- en herstelwet bestemmingsplannen is hier de afgelopen jaren al ervaring mee opgedaan (zie de werkafspraak ‘<a href="https://docs.geostandaarden.nl/ro/def-wa-waCHWbp-20160324/" target="_blank">Chw bestemmingsplannen digitaal beschikbaar stellen</a>’ uit 2016). Deze <i>manier</i> van werken kan ook toegepast worden bij het opstellen van het TAM-omgevingsplan. Daarmee kunnen in principe alle gewenste onderdelen van het omgevingsplan gemodelleerd worden met behulp van het instrument bestemmingsplan. Bij de naamgeving van eigen objecten moet wel strikt de technische voorschriften van de <a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf" target="_blank">SVBP2012</a> worden gevolgd. Het TAM-omgevingsplan wordt namelijk gepubliceerd via Ruimteljkeplannen.nl en via Informatiehuis Ruimte beschikbaar gesteld aan het DSO. Hiervoor moet het besluit technisch voldoen aan de validatie eisen die ook aan bestemmingsplannen worden gesteld. De standaard validatieservice van Ruimtelijkeplannen.nl blijft beschikbaar om het besluit vooraf hierop te toetsen.</p><p><b>Tabel 1 Specifieke waarden ‘bestemmingsplangebied’ bij een TAM-omgevingsplan</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 21.239242685025815%;" <col="" <="" colgroup="">
+</colgroup><thead valign="top"><tr><th align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #000000;"><b>attribuut</b>
+
+</th>
+<th align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #000000;"><b>waarde</b>
+
+</th>
+</tr>
+</thead>
+<tbody valign="top"><tr><td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">typePlan
+
+</td>
+<td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">bestemmingsplan
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">naam
+
+</td>
+<td align="left" style="border-top: 0.75pt solid #000000; border-left: 0.75pt solid #000000; border-bottom: 0.75pt solid #000000; border-right: 0.75pt solid #000000; background-color: #FFFFFF;">TAM-omgevingsplan[spatie][plannaam]
+
+</td>
+</tr>
+</tbody>
+</table><p>Het omgevingsplan kan met behulp van IMRO2012 alleen op objectniveau worden gemodelleerd. Er kunnen bijvoorbeeld geen annotaties worden opgenomen. Technisch blijft een omgevingsplan met IMRO2012 dan ook een bestemmingsplan in het tijdelijk deel van het omgevingsplan, met alle beperkingen van dien. Het met IMRO opgestelde omgevingsplan moet, net als de bestemmingsplannen, door de gemeente uiteindelijk worden verwerkt in het omgevingsplan op basis van de STOP/TPOD standaard. Juridisch gezien is het TAM-omgevingsplan een volwaardige wijziging van het omgevingsplan onder de Omgevingswet. Inhoudelijk moet deze wijziging van het omgevingsplan voldoen aan de eisen vanuit de Omgevingswet.</p><p>Aanvullend op deze werkafspraak is een korte handreiking beschikbaar. In deze handreiking wordt deze werkafspraak nader toegelicht en wordt aangeven op welke wijze de RO Standaarden wel of niet kunnen/moeten worden toegepast. De handreiking is te raadplegen via de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening#Werkafspraken">Geonovum website</a>.</p></section><section data-format="markdown" id="aandachtspunt"><!--OddPage--><h2 id="x4-aandachtspunt"><span class="secno">4. </span>Aandachtspunt</h2><p>Een TAM Omgevingsplan kan zelf niet van een pons voorzien worden waar dit bij een wijziging van het omgevingsplan opgesteld met STOP/TPOD wel mogelijk is. Dit betekent dat onderliggende (Wro)plannen niet weggeponst zullen worden.</p></section><section data-format="markdown" id="resultaat"><!--OddPage--><h2 id="x5-resultaat"><span class="secno">5. </span>Resultaat</h2><p>Een wijziging van het omgevingsplan op basis van de RO Standaarden 2012 dat via de overbruggingsfunctie wordt ontsloten in de landelijke voorziening Digitaal Stelsel Omgevingswet.</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

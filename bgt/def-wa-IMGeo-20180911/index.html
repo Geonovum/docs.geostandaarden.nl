@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 22.4.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Volgorde van aanmaken en versturen van berichten in het Geo-BOR berichtenverkeer</title>    
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "publishDate": "2018-09-11",
+  "editors": [
+    {
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "imgeo@geonovum.nl"
+    }
+  ],
+  "shortName": "IMGeo",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo",
+  "previousPublishDate": "2017-01-01",
+  "publishISODate": "2018-09-11T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 11 september 2018"
+}</script><meta name="description" content="Dit document beschrijft een werkafspraak voor het volgorde van aanmaken en verzenden van berichten in het Geo-BOR berichtenverkeer."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imgeo/def-wa-IMGeo-20180911/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Volgorde van aanmaken en versturen van berichten in het Geo-BOR berichtenverkeer",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2018-09-11",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/imgeo/def-wa-IMGeo-20170101/",
+  "description": "Dit document beschrijft een werkafspraak voor het volgorde van aanmaken en verzenden van berichten in het Geo-BOR berichtenverkeer.",
+  "editor": [
+    {
+      "type": "Person",
+      "foaf:mbox": "imgeo@geonovum.nl",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "http://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <body cz-shortcut-listen="true" class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo">
+      <img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg">
+  </a>
+  <h1 class="title p-name" id="title">Volgorde van aanmaken en versturen van berichten in het Geo-BOR berichtenverkeer</h1>
+  
+  <h2 id="geonovum-werkafspraak-vastgestelde-versie-11-september-2018">Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2018-09-11">11 september 2018</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/bgt/def-wa-IMGeo-20180911/">https://docs.geostandaarden.nl/bgt/def-wa-IMGeo-20180911/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://www.geonovum.nl/uploads/documents/20171208_geobor_werkafspraak_volgorde_aanmaken_versturen_berichten.pdf">https://www.geonovum.nl/uploads/documents/20171208_geobor_werkafspraak_volgorde_aanmaken_versturen_berichten.pdf</a></dd>
+ 
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn"></span>, <a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <a class="ed_mailto u-email email" href="mailto:imgeo@geonovum.nl">imgeo@geonovum.nl</a></dd>
+    
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/Geonovum/IMGeo">GitHub Geonovum/IMGeo</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" width="115" height="40" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2 id="abstract-0">Abstract</h2>
+      <p> 	      
+	      Dit document beschrijft een werkafspraak voor het volgorde van aanmaken en verzenden van berichten in het Geo-BOR berichtenverkeer. 
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document">Status of This Document</h2><p>
+   
+    Dit is de definitieve versie van de werkafspraak. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p><p>        
+      </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#aanleiding" class="tocxref"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a href="#werkafspraak" class="tocxref"><span class="secno">2. </span>Werkafspraak</a></li><li class="tocline"><a href="#impact" class="tocxref"><span class="secno">3. </span>Impact</a></li><li class="tocline"><a href="#registratie" class="tocxref"><span class="secno">4. </span>Registratie</a></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>In §2.8.4 van de specificaties van het <a href="https://www.geonovum.nl/geo-standaarden/bgt-imgeo/geo-bor-berichtenverkeer-v11">Geo-BOR
+berichtenverkeer</a>
+staat dat:</p><blockquote>
+<p>  <em>“In Geo-BOR berichtenverkeer kunnen berichten in willekeurige volgorde
+  worden verzonden. De verwerking van een wachtrij van ontvangen berichten
+  geschiedt op volgorde van tijdstipBericht conform de StUF-standaard (bron:
+  [StUF]).”</em></p>
+</blockquote><p>De StUF-standaard stelt wel als randvoorwaarde dat het tijdstipBericht van een
+bericht groter is dan het tijdstipBericht van alle eerder door een systeem
+aangemaakte berichten. De specificaties van het Geo-BOR berichtenverkeer geven
+onduidelijkheid in relatie tot deze StUF-eis, vooral wanneer latere kleine
+berichten, eerder verstuurde grote berichten inhalen.</p><p>De juiste wijze van aanmaken en verzenden is daarom als volgt:</p><ol>
+<li><p>bericht aanmaken,</p>
+</li>
+<li><p>bericht verzenden,</p>
+</li>
+<li><p>wachten op synchrone bevestiging (Bv03 of Fo03) en</p>
+</li>
+<li><p>dan volgend bericht aanmaken met nieuw/later tijdstipBericht.</p>
+</li>
+</ol><p>Als deze wijze van aanmaken en verzenden niet wordt gevolgd, loopt de
+verzendende applicatie het risico dat de ontvangende applicatie een (logistieke)
+fout teruggeeft: StUF019 TijdstipBericht niet groter dan voorgaand
+TijdstipBericht van zender.</p><p>Er blijft gelden dat BOR de berichten verwerkt op basis van tijdstipBericht c.q.
+mutaties in berichten o.b.v. tijdstipRegistratie om berichten met latere
+mutaties niet eerder te verwerken bij inhalen van berichten.</p></section>
+   <section data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="werkafspraak"><span class="secno">2. </span>Werkafspraak</h2><p>De volgende werkafspraak geldt voor het Geo-BOR berichtenverkeer met nadere
+eisen aan de volgorde van aanmaken en versturen van berichten:</p><blockquote>
+<p>  <em>“Een volgend bericht wordt pas aangemaakt en verstuurd na ontvangst van een
+  bevestigingsbericht (Bv03) of foutbericht (Fo03) op het voorgaande
+  bericht.”</em></p>
+</blockquote><p>Voorts mag BOR enkel bij toevoegingskennisgevingen het IMGeo-identificatie
+(ofwel: lokaalID) leeg laten. Het berichtschema staat ook namelijk ook toe dat
+bij wijzigingskennisgevingen BOR geen IMGeo-identificatie invult. Echter, voor
+een juiste afhandeling van mutaties op door BOR-toegevoegde objecten heeft Geo
+de IMGeo-identificatie nodig.</p></section>
+   <section data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="impact"><span class="secno">3. </span>Impact</h2><p>Leveranciers dienen de applicatie aan te passen zodanig dat aan bovenstaande
+werkafspraak wordt voldaan.</p></section>
+   <section data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="registratie"><span class="secno">4. </span>Registratie</h2><p>Een melding over dit onderwerp is opgenomen in het registratiesysteem dat
+Geonovum voor het beheer van de BGT|IMGeo standaarden gebruikt. Het issue is
+geregistreerd als: <a href="https://github.com/Geonovum/IMGeo2018/issues/157">#157</a>.</p></section>
+     
+
+<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

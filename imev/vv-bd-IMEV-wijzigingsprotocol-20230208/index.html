@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Wijzigingsprotocol</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "subtitle": "Informatiemodel Externe Veiligheid",
+  "pubDomain": "imev",
+  "specStatus": "GN-VV",
+  "specType": "BD",
+  "license": "cc-by-nd",
+  "publishDate": "2023-02-08",
+  "authors": [
+    {
+      "name": "Tyora van der Meulen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "IMEV-wijzigingsprotocol",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/IMEV-Wijzigingsprotocol",
+  "issueBase": "https://github.com/Geonovum/IMEV-Wijzigingsprotocol/issues",
+  "edDraftURI": "https://geonovum.github.io/IMEV-wijzigingsprotocol/",
+  "generatedSubtitle": "Versie ter vaststelling 08 februari 2023",
+  "previousPublishDate": "2022-12-12",
+  "previousMaturity": "GN-CV",
+  "publishISODate": "2023-02-08T00:00:00.000Z"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imev/vv-bd-IMEV-wijzigingsprotocol-20230208/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Wijzigingsprotocol",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2023-02-08",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/IMEV-Wijzigingsprotocol/issues",
+  "alternativeHeadline": "Informatiemodel Externe Veiligheid",
+  "isBasedOn": "https://docs.geostandaarden.nl/imev/cv-bd-IMEV-wijzigingsprotocol-20221212/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Tyora van der Meulen",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Wijzigingsprotocol</h1>
+  <h2 id="subtitle">Informatiemodel Externe Veiligheid</h2>
+  <h2>Geonovum Beheerdocumentatie<br>
+  Versie ter vaststelling <time class="dt-published" datetime="2023-02-08">08 februari 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/imev/vv-bd-IMEV-wijzigingsprotocol-20230208/">https://docs.geostandaarden.nl/imev/vv-bd-IMEV-wijzigingsprotocol-20230208/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/">https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/imev/cv-bd-IMEV-wijzigingsprotocol-20221212/">https://docs.geostandaarden.nl/imev/cv-bd-IMEV-wijzigingsprotocol-20221212/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/IMEV-wijzigingsprotocol/">https://geonovum.github.io/IMEV-wijzigingsprotocol/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Tyora van der Meulen</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Monique van Scherpenzeel</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/IMEV-Wijzigingsprotocol/">GitHub Geonovum/IMEV-Wijzigingsprotocol</a>
+    </dd><dd>
+      <a href="mailto:imev@geonovum.nl?subject=Melding over IMEV">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMEV-Wijzigingsprotocol/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMEV-Wijzigingsprotocol/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/Geonovumstyle.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie"><span class="secno">1.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#waarom-een-wijzigingsprotocol"><span class="secno">1.2 </span>Waarom een wijzigingsprotocol</a></li><li class="tocline"><a class="tocxref" href="#begrippen"><span class="secno">1.3 </span>Begrippen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gebruik-van-het-wijzigingsprotocol"><span class="secno">2. </span>Gebruik van het wijzigingsprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#protocol-versus-proces"><span class="secno">2.1 </span>Protocol versus proces</a></li><li class="tocline"><a class="tocxref" href="#releasebeleid"><span class="secno">2.2 </span>Releasebeleid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nieuwe-versie-van-de-standaard"><span class="secno">2.2.1 </span>Nieuwe versie van de standaard</a></li><li class="tocline"><a class="tocxref" href="#oudere-versie-van-een-standaard"><span class="secno">2.2.2 </span>Oudere versie van een standaard</a></li></ol></li><li class="tocline"><a class="tocxref" href="#proces-varianten"><span class="secno">2.3 </span><span name="_Ref482110995" class="formerLink"></span>Proces varianten</a></li><li class="tocline"><a class="tocxref" href="#fasen-en-resultaten"><span class="secno">2.4 </span><span name="_Ref503261432" class="formerLink"></span>Fasen en resultaten</a></li><li class="tocline"><a class="tocxref" href="#betrokkenen"><span class="secno">2.5 </span>Betrokkenen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wijzigingsproces"><span class="secno">3. </span>Wijzigingsproces</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wijzigingenbeheer"><span class="secno">3.1 </span>Wijzigingenbeheer</a></li><li class="tocline"><a class="tocxref" href="#inzicht-in-het-wijzigingsproces"><span class="secno">3.2 </span>Inzicht in het wijzigingsproces</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tussentijdse-werkafspraken"><span class="secno">4. </span><span name="_Ref479668423" class="formerLink"></span>Tussentijdse werkafspraken</a></li><li class="tocline"><a class="tocxref" href="#implementatie-ondersteuning"><span class="secno">5. </span>Implementatie ondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#technische-bestanden"><span class="secno">5.1 </span>Technische bestanden</a></li><li class="tocline"><a class="tocxref" href="#validatie-en-certificatie"><span class="secno">5.2 </span>Validatie en certificatie</a></li><li class="tocline"><a class="tocxref" href="#opleiding"><span class="secno">5.3 </span>Opleiding</a></li><li class="tocline"><a class="tocxref" href="#communicatie"><span class="secno">5.4 </span>Communicatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#escalatie-en-klachtenprocedure"><span class="secno">6. </span>Escalatie- en klachtenprocedure</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#sturende-principes-bij-escalatie"><span class="secno">6.1 </span>Sturende principes bij escalatie</a></li><li class="tocline"><a class="tocxref" href="#klachtenafhandeling"><span class="secno">6.2 </span>Klachtenafhandeling</a></li></ol></li><li class="tocline"><a class="tocxref" href="#overzicht-status-van-wijzigingsverzoeken"><span class="secno">7. </span>Overzicht status van wijzigingsverzoeken</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="introductie"><h3 id="x1-1-introductie"><span class="secno">1.1 </span>Introductie</h3><p>Geonovum ontwikkelt en beheert het Informatiemodel Externe Veiligheid (IMEV) in opdracht van het minsiterie van Infrastructuur en Waterstaat. Mensen die in de praktijk gebruik maken van dit informatiemodel hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen er spelen, en hebben mogelijk suggesties voor aanpassingen van het informatiemodel.
+Het opstellen en gebruik van het protocol is onderdeel van het beheerproces van een standaard. Geonovum voert het beheer en de doorontwikkeling van standaarden, waaronder het Informatiemodel Externe Veiligheid, uit conform het beheer- en ontwikkelmodel voor open standaarden: <a href="https://www.logius.nl/diensten/bomos" target="_blank">BOMOS</a>.
+Wijzigingen in het Informatiemodel Externe Veiligheid worden niet zomaar doorgevoerd; voor de ene gebruiker van het model zal de wijzing gering zijn, voor de ander kan het grote gevolgen hebben. Daar houden wij rekening mee. De gebruikersgroepen van de standaarden en andere betrokkenen in het wijzigingsproces zijn vastgelegd, evenals de belangrijkste taken en verantwoordelijkheden en de momenten waarop zij betrokken zijn in dit proces.</p></section><section id="waarom-een-wijzigingsprotocol"><h3 id="x1-2-waarom-een-wijzigingsprotocol"><span class="secno">1.2 </span>Waarom een wijzigingsprotocol</h3><p>In dit wijzigingsprotocol staan de sturende principes achter het wijzigingsproces voor deze standaard die Geonovum: de manier waarop wijzigingen in het Informatiemodel Externe Veiligheid plaatsvinden. Met het protocol wordt elke wijziging van het informatiemodel een voorspelbaar proces voor de ketenpartners en gebruikers van het informatiemodel. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies verstaan wordt, en wanneer deze nieuwe versie(s) verwacht mogen worden.</p></section><section id="begrippen"><h3 id="x1-3-begrippen"><span class="secno">1.3 </span>Begrippen</h3><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 28.25374531835206%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Adviesgroep</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Doel van de adviesgroep is het controleren van het tot zover doorlopen wijzigingsproces, het wijzigingsvoorstel van advies te voorzien (al dan niet doorvoeren van de wijzigingen en opleveren van een nieuwe versie van IMEV) en dit advies aan de opdrachtgever voor te leggen. De opdrachtgever besluit of de wijzigingen worden doorgevoerd op het IMEV.  
+
+
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Expert- en gebruikersgroepen</b>
+
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">De Expert- en gebruikersgroepen leveren input voor de de impactanalyses van de wijzigingsverzoeken aan het beheerteam van IMEV (Geonovum).
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>IMEV en beheerobjecten</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Informatiemodel Externe Veiligheid voor de gegevensuitwisseling met het Register Externe Veiligheid (REV)
+
+<ul><li><i>Lijst extra modelregels over relatie activiteiten en contouren</i> <i>(Excel)</i></li>
+<li><i>De JSON voorbeeldbestanden</i></li>
+<li><i>De JSON-schema’s</i></li>
+<li><i>Het EAP-bestand met UML diagrammen</i></li>
+<li><i>Validatieregels als onderdeel van de specificaties van de validator</i><i>.</i> </li>
+</ul>
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Wijzigingsprotocol</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Hiermee wordt het geheel van vastgelegde regels en afspraken voor het wijzigen van de standaard en de bijkomende beheerobjecten vastgelegd.
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Wijzigingsproces</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Het wijzigingsproces is de daadwerkelijke wijziging van het IMEV en/of een van de overige beheerobjecten, op een bepaald moment. Het volledige wijzigingsproces doorloopt de fasen van het wijzigingsprotocol met een datum van inwerkingtreding van de nieuwe versie van het IMEV en haar onderdelen. 
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Wijzigingsverzoek</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Wijzigingsverzoeken zijn wensen of eisen voor aanpassing van de standaard. Een wijzigingsverzoek wordt door een gebruiker van de standaard ingediend bij de helpdesk van IMEV bij Geonovum. Volgens de gebruiker moet het Informatiemodel op een bepaald onderdeel met reden worden aangepast of aangevuld voor een betere werking van de standaard. Het wijzigingsverzoek wordt door de helpdesk medewerker beoordeeld, ingeschat en aan de wensen- en eisenlijst toegevoegd, die inclusief status inzichtelijk is via de <a href="https://www.geonovum.nl/geo-standaarden/meldingen" target="_blank">Geonovum website</a>. Een wijzigingsverzoek dat niet wordt ingewilligd, wordt beargumenteerd afgewezen.
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Wijzigingsvoorstel</b> 
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">In het wijzigingsproces worden meerdere wijzigingsverzoeken gebundeld tot één wijzigingsvoorstel voor het wijzigen van de standaard en de bijkomende beheerobjecten. 
+
+</td>
+</tr>
+</tbody>
+</table></section></section><section data-format="markdown" id="gebruik-van-het-wijzigingsprotocol"><!--OddPage--><h2 id="x2-gebruik-van-het-wijzigingsprotocol"><span class="secno">2. </span>Gebruik van het wijzigingsprotocol</h2><p>Het protocol schrijft een vast stramien voor het wijzigen van de standaard voor. Het protocol benoemt de fasen en de op te leveren resultaten. Belangrijk zijn de randvoorwaarden en uitgangspunten. De gebruikers van het informatiemodel Externe Veiligheid betrekken wij bij het wijzigen van het model. We zetten op en rij welke betrokkenen er zijn.</p><section id="protocol-versus-proces"><h3 id="x2-1-protocol-versus-proces"><span class="secno">2.1 </span>Protocol versus proces</h3><p>De titel van dit document geeft aan dat het hier om een protocol gaat. Toch wordt in dit document ook gesproken over processen. Een <b>wijzigingsprotocol </b>beschrijft de <i>manier waarop</i> wijzigingen in het Informatiemodel Externe Veiligheid plaatsvinden: het <b>wijzigingsproces</b>. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies verstaan wordt en wanneer deze verwacht mogen worden. De daadwerkelijke planning van een nieuwe versie wordt in overleg met de opdrachtgever en eigenaar van de standaard, het ministerie van Infrastructuur en Waterstaat, en de beheerder van de Register Externe Veiligheid (REV) jaarlijks opgestelt.</p><p>Met behulp van een wijzigingsprotocol voor het Informatiemodel Externe Veiligheid geeft Geonovum:</p><ul><li>inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>inzicht in de wijzigingsverzoeken;</li>
+<li>inzicht in een voorgestelde wijziging van de standaard;</li>
+<li>stabiliteit aan de standaard;</li>
+<li>continuïteit aan de standaard;</li>
+<li>een eenduidige aanpak.</li>
+</ul></section><section id="releasebeleid"><h3 id="x2-2-releasebeleid"><span class="secno">2.2 </span>Releasebeleid</h3><section id="nieuwe-versie-van-de-standaard"><h4 id="x2-2-1-nieuwe-versie-van-de-standaard"><span class="secno">2.2.1 </span>Nieuwe versie van de standaard</h4><p>Een release van een standaard is een nieuwe uitgave van de standaard. De nieuwe release kenmerkt zich ten opzichte van de oude versie door een hoger versienummer. Een release betreft 1 product van een standaard of is een bundel van meerdere producten van de betreffende standaard. Bij de release is ieder product is voorzien een nieuw versienummer conform X.Y.Z schrijfwijze (zie hierna) en een status.</p><p>Bij een standaard in beheer horen ook afspraken over het versiebeheer. Versies van een standaard zijn er in verschillende gradaties die elk een relatie hebben met een voorgaande versie. De wijzigingen documenteren wij en leggen wij vast in een apart document bij de uitgebrachte versie van de standaard. De gebruiker kan zo nagaan op welke plaatsen de betreffende standaard gewijzigd is.</p><p>Elk product van onze standaarden voorzien wij van een versienummer. Dit doen wij conform Semantic Versioning (SemVer). Elk product heeft zijn eigen versienummer conform X.Y.Z schrijfwijze, bijvoorbeeld versie 2.1.0 (=X.Y.Z):</p><ul><li><b>X-wijzigingen</b> Deze wijzigingen veranderen de structuur van de standaard. Hierdoor zijn X-wijzigingen niet backwards compatible. Frequentie: in overleg met de opdrachtgever.</li></ul><ul><li><b>Y-wijzigingen</b> Dit zijn wijzigingen die niet de structuur veranderen. Dit kunnen bijvoorbeeld updates zijn of inhoudelijke aanpassingen aan objecten, attributen of waarde lijsten of de reikwijdte van de standaard. Deze wijzigingen zijn backwards compatible. Frequentie: in overleg met de opdrachtgever.</li>
+</ul><ul><li><b>Z-wijzigingen</b> Dit zijn in feite oplossingen van technische fouten of verbeteringen van technische aard. Deze wijzigingen zijn backwards compatible. Frequentie: zo spoedig mogelijk na constatering.</li>
+</ul></section><section id="oudere-versie-van-een-standaard"><h4 id="x2-2-2-oudere-versie-van-een-standaard"><span class="secno">2.2.2 </span>Oudere versie van een standaard</h4><p>Na het uitbrengen van een nieuwe versie van een bij Geonovum in beheer zijnde standaard blijven oudere versies beschikbaar en zijn vindbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a> en de registers (de <a href="https://definities.geostandaarden.nl" target="_blank">conceptenbibliotheek</a>, het <a href="https://register.geostandaarden.nl" target="_blank">technisch register</a> en het <a href="https://docs.geostandaarden.nl" target="_blank">documentenregister</a>). Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk, bij ministeriële regeling) bepaald. Na het uitbrengen van de nieuwe versie van een standaard wordt de ontwikkeling van de oude versie stopgezet.</p><p>De SemVer-methodiek schrijft backwards compatibility voor op het Y-niveau. Na het uitbrengen van een nieuwe versie van een bij Geonovum in beheer zijnde standaard blijven oudere versies beschikbaar en zijn vindbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a>. Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk) bepaald. Na het uitbrengen van de nieuwe versie van een standaard wordt de ontwikkeling van de oude versie stop gezet.</p><p>Voor het onderhoud en de ondersteuning van een oude versie van een standaard gelden de volgende uitgangspunten:</p><ul><li>Aan een oude versie worden geen nieuwe features toegevoegd, geen aanpassingen gedaan op X en Y niveau na het uitbrengen van een nieuwe versie. Verzoeken om aanpassing en wijziging voor nieuwe functionaliteit worden niet meer voor de oude standaard in behandeling genomen maar doorgegeven aan het ontwikkelteam. Correcties (Z-wijzigingen) worden wel uitgevoerd op de vorige versies zolang deze nog ondersteund worden.</li>
+<li>Bij oplevering van een nieuwe versie wordt de voorgaande versie nog een van te voren vastgestelde periode ondersteund. De duur van de overgangsperiode wordt mede bepaald door de omvang van de wijzigingen (X, Y en Z wijzigingen op de vorige versies), de staat van ontwikkeling van de standaard, en of de standaard in voorlopig dan wel permanent beheer is.</li>
+<li>De duur van de ondersteuningsperiode voor de diverse soorten versies moet nog worden vastgesteld. Tot aan inwerkingtreden van de Omgevingswet, waar de Informatiemodel Externe Veiligheidsrisico's ook onder valt, zal naar verwachting de ondersteuningsperiode van verschillende versies anders zijn, dan in de periode van permanent beheer zonder dat daarnaast nog grootschalige ontwikkeling van de standaard plaatsvindt.</li>
+</ul></section></section><section id="proces-varianten"><h3 id="x2-3-proces-varianten"><span class="secno">2.3 </span><a name="_Ref482110995"></a>Proces varianten</h3><p>In paragraaf <a href="#releasebeleid">2.2</a><a></a> zijn de X, Y en Z wijzigingen uitgelegd. Voor wijzigingen kent Geonovum twee proces varianten. Eén voor X en Y wijzigingen en één voor Z wijzigingen.</p><p><b>Proces voor X en Y wijzigingen</b></p><p>Deze vergen volledige afstemming en het doorlopen van alle in paragraaf <a href="#fasen-en-resultaten">2.4</a><a></a> beschreven fasen: Inhoud, Toetsing, Besluitvorming en Implementatie. Voor de inhoudelijke fase wordt een werkgroep gestart met daarin vertegenwoordiging van belangrijke stakeholders/gebruikers. Het resultaat van de werkgroep wordt tijdens het overleg van de Adviesgroep besproken. De Adviesgroep adviseert de opdrachtgever. Besluitvorming over vaststelling van een nieuwe versie van het model vindt plaats door IenW.
+</p><p><b>Proces voor Z wijzigingen</b></p><p>Dit betreft kleine wijzigingen die in de volgende release worden opgenomen. De inhoudelijke fase wordt door het beheerteam IMEV van Geonovum gedaan. Toetsing vindt plaats door middel van werksessies met de werkgroep. Besluitvorming vindt plaats in afstemming met het ministerie van IenW. Implementatie vindt plaats door het publiceren van de wijziging op de Geonovum website.</p></section><section id="fasen-en-resultaten"><h3 id="x2-4-fasen-en-resultaten"><span class="secno">2.4 </span><a name="_Ref503261432"></a>Fasen en resultaten</h3><p>Het volledige wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie, zoals weergegeven in <a href="#_Ref503260625">Figuur 1</a><a></a>.</p><figure style="width: 35%;" id="fig-fasen-wijzigingsproces"><p><a name="_Ref503260625"></a><img src="media/image3.png" alt="media/image3.png"></p>
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title"><a name="_Ref503260625"></a>Fasen wijzigingsproces</span></figcaption></figure><b>Inhoud</b><p>In de fase inhoud wordt voor iedere melding bepaald of deze wordt opgenomen in de nieuwe versie van de standaard of niet. Dit wordt door Geonovum intern vastgelegd in Jira en is raadpleegbaar op de <a href="(https://www.geonovum.nl/geo-standaarden/meldingen)" target="_blank">Geonovum website</a>. Voor meldingen die worden meegenomen in de nieuwe versie van de standaard, worden oplossingen uitgewerkt, op basis waarvan vervolgens de specificatie wordt aangepast. Dit gebeurt door Geonovum in samenwerking met inhoudelijke experts in de werkgroep. Afhankelijk van de omvang van de wijziging ten opzichte van de voorgaande versie is de groep van experts evenredig groter of kleiner.</p><p><b>Toetsing</b></p><p>De fase Toetsing vormt een brug tussen de inhoud, besluitvorming en de implementatie. In deze fase wordt eenieder (in het geval van een X of Y wijziging) of een beperkte groep belanghebbenden (in het geval van een Z wijziging) uitgenodigd om zijn visie te geven op het wijzigingsvoorstel voor de nieuwe versie van het IMEV. Met deze consultaties vragen wij de gebruikers van de standaard actief hun reactie te geven op het wijzigingsvoorstel. Het wijzigingsvoorstel inclusief de terugkoppeling uit de consultatie wordt verwerkt als release candidate van het informatiemodel externe veiligheid.</p><p><b>Besluitvorming</b></p><p>Bij Besluitvorming wordt besloten om de gewijzigde specificatie vast te stellen en te publiceren. Afhankelijk van het type wijziging (X, Y of Z, zie paragraaf <a href="#proces-varianten">2.3</a><a></a>), besluit het ministerie van IenW.</p><p><b>Implementatie</b></p><p>Het in gebruik nemen van het Informatiemodel in de praktijk staat centraal in deze fase. Hiervoor leveren we verschillende technische bestanden op, zoals implementatiebestanden, voorbeeldbestanden en voorbeeldberichten. Deze bestanden ondersteunen softwareleveranciers bij de implementatie van de standaard in hun software. Beheerders van de voorziening/ het register e.d. nemen het informatiemodel in gebruik. Wij ondersteunen de implementatie bovendien door de werking van het informatiemodel toe te lichten op bijvoorbeeld tijdens bijeenkomsten en bijvoorbeeld ‘inloopspreekuren’ voor de softwareleveranciers. Resultaat van deze fase is dat de gebruikers data kunnen maken en uitwisselen conform de nieuwe standaard. In <a href="#implementatie-ondersteuning">Hoofdstuk 5</a><a></a> lichten we de implementatie verder toe.</p></section><section id="betrokkenen"><h3 id="x2-5-betrokkenen"><span class="secno">2.5 </span>Betrokkenen</h3><p>De volgende groepen en instanties (actoren) zijn betrokken bij het wijzigingsproces van het Informatiemodel:</p><ul><li>Aviesgroep</li>
+<li>Expert- en gebruikersgroepen</li>
+<li>Softwareleveranciers</li>
+<li>Geonovum</li>
+<li>Rijkswaterstaat</li>
+<li>Ministerie van Infrastructuur en Waterstaat</li>
+</ul><p>Nieuwe versies van het informatiemodel bereidt Geonovum voor in samenwerking met de beheerder van het REV (Rijkswaterstaat), expert- en gebruikersgroepen en softwareleveranciers. We streven naar een unanieme instemming met de standaard. Dit versterkt het draagvlak en zorgt voor een betere implementatie van het informatiemodel in het werkveld. 
+Het wijzigingsvoorstel (de bundeling van wijzigingsverzoeken) leggen wij voor aan de Adviesgroep IMEV. In de adviesgroep wordt niet meer de inhoud van het wijzigingsvoorstel besproken; dit ligt bij het beheerteam IMEV van Geonovum die het wijzigingsvoorstel voorbereidt. De adviesgroep toetst het proces, waaronder dat het wijzigingsvoorstel langs het in de bronhouders- en softwareleveranciers overleggen is toegelicht en feedback is opgehaald. Het wijzigingsvoorstel wordt altijd voorzien van een oplegnotitie zoals dat nu het geval is,
+inclusief of er aandachtspunten zijn.
+</p></section></section><section data-format="markdown" id="wijzigingsproces"><!--OddPage--><h2 id="x3-wijzigingsproces"><span class="secno">3. </span>Wijzigingsproces</h2><p>De aanleiding voor een wijzigingsproces is gebaseerd op meldingen: de wensen en gevonden fouten in het informatiemodel externe Veiligheid, die aanleiding zijn om de standaard te vernieuwen. Samen vormen zij het wijzigingsvoorstel. Geonovum neemt als beheerder het initiatief om een wijzigingsproces te starten, de stappen in het proces zijn conform het wijzigingsprotocol.</p><section id="wijzigingenbeheer"><h3 id="x3-1-wijzigingenbeheer"><span class="secno">3.1 </span>Wijzigingenbeheer</h3><p>Belanghebbenden kunnen meldingen (wijzigingsverzoeken), variërend van wensen tot aanpassing van en fouten in het informatiemodel, indienen via de <a href="mailto:imev@geonovum.nl" target="_blank">helpdesk bij Geonovum</a>. Wij geven inzicht in de ontvangen wijzigingsverzoeken en de status van de wijzigingsverzoeken via de <a href="https://www.geonovum.nl/geo-standaarden/meldingen" target="_blank">Geonovum website</a>. In het geval we een wijzigingsproces starten voor een nieuwe versie van de standaard, bundelen de verzoeken tot een wijzigingsvoorstel. Het wijzigingsprotocol beschrijft het wijzigingsproces en daarmee ook de procedure die het wijzigingsvoorstel doorloopt. 
+In <a href="#overzicht-status-van-wijzigingsverzoeken">hoofdstuk 7</a><a></a> is een overzicht van de statussen van wijzigingsverzoeken.
+</p><p>Voor inzicht in de ontwikkeling, wijzigingsverzoeken en bijeenkomsten rondom van het Informatiemodel Externe Veiligheidsrisico's zetten we <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a> in.</p><p>Ontwikkelingen in de standaarden kunnen om verschillende redenen gewenst zijn, waaronder:</p><ul><li>geconstateerde fout in de standaard;</li>
+<li>wens tot wijziging, uitbreiding of vereenvoudiging uit de praktijk;</li>
+<li>aanpassing van de standaard door internationale ontwikkelingen.</li>
+</ul><p>Met behulp van het wijzigingsprotocol wordt de geplande wijziging van het informatiemodel uitgevoerd. In de aanloop naar een wijziging van de standaarden bundelt Geonovum de meldingen, verzoeken tot wijziging, in een wijzigingsvoorstel. Het wijzigingsvoorstel vormt de basis om een nieuwe versie van een standaard op te stellen. Het beheerteam IMEV werkt daarvoor nauw samen met experts uit de praktijk. Met behulp van onder andere een publieke consultatie via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a> leggen wij het voorstel voor de nieuwe versie van een standaard voor aan de gebruikers van de standaard en vragen hun feedback. Het definitieve voorstel leggen wij voor aan de adviesgroep voor besluitvorming.
+</p></section><section id="inzicht-in-het-wijzigingsproces"><h3 id="x3-2-inzicht-in-het-wijzigingsproces"><span class="secno">3.2 </span>Inzicht in het wijzigingsproces</h3><p>De meldingen en wijzigingsverzoeken alsook (inter)nationale ontwikkelingen geven aanleiding tot de verdere ontwikkeling voor een standaard. Zij worden gebundeld in een wijzigingsvoorstel. Het wijzigingsprotocol geeft richting aan het wijzigingsproces dat dit wijzigingsvoorstel doorloopt. Het ministerie van IenW, besluit na advies van de adviesgroep over het wijzigingsvoorstel. Z-wijzigingen worden door Geonovum zelf besloten en uitgevoerd. <a name="_Ref396391640"></a><b><br></b></p></section></section><section data-format="markdown" id="tussentijdse-werkafspraken"><!--OddPage--><h2 id="x4-tussentijdse-werkafspraken"><span class="secno">4. </span><a name="_Ref479668423"></a>Tussentijdse werkafspraken</h2><p>Het toepassen van het Informatiemodel Externe Veiligheid roept soms vragen op. Bij onduidelijkheden, discrepanties of fouten in de standaard kan de praktijk vragen hoe zij de standaard – in afwachting van een formele wijziging– moet toepassen. Met name bij X wijziging van de standaard, die een grote impact op toepassing in de praktijk heeft, zullen geconstateerde fouten of gewenste wijzigingen in de regel niet heel snel worden doorgevoerd. Een tussentijds gebruiksadvies noemen we een werkafspraak. In dit hoofdstuk lichten we de werkwijze van werkafspraken toe.
+</p><p>Als er een fout of probleem wordt geconstateerd, zal er altijd geruime tijd overheen gaan voordat dit wordt hersteld in de formele standaard. Typische voorbeelden van dit soort fouten zijn in algemene zin:</p><ul><li>De ene standaard hanteert voor een bepaalde aanduiding een andere spelling dan een andere standaard, waardoor je plan formeel nooit aan alle standaarden kan voldoen;</li>
+<li>In de standaarden zijn bepaalde technische vrijheden mogelijk die op grond van een goede praktijk niet zouden moeten worden benut;</li>
+<li>In de standaarden is iets wel mogelijk, maar niet verplicht, terwijl dit wel sterk gewenst is.</li>
+</ul><p>In dit soort gevallen zal Geonovum na consultatie van softwareleveranciers, gebruikersgroep en ketenoverleg een werkafspraak publiceren over hoe er in afwachting van formele reparatie moet worden omgegaan met een geconstateerd probleem. Zo’n werkafspraak heeft de formele status van een advies van Geonovum aan de gebruikers van het IMEV. De werkafspraak vervangt niet de <i>in</i>
+<i>gebruik</i> zijnde versie van IMEV, maar geldt wel als werkwijze in afwachting van reparatie van een onderdeel van het reguliere beheer.</p><p>Voor bovengenoemde voorbeelden zouden de werkafspraken er resp. als volgt uit kunnen zien:</p><ul><li>Hanteer altijd de spelling volgens standaard A;</li>
+<li>Gebruik nooit de mogelijkheid B die de standaarden bieden;</li>
+<li>Doe het altijd op manier C.</li>
+</ul><p>De status van deze werkafspraken is als volgt:</p><ol><li>de werkafspraken zijn van toepassing totdat de wijzigingen in werking zijn getreden, daarna zijn ze niet meer van toepassing;</li>
+<li>indien mogelijk zijn de werkafspraken altijd een directe voorloper van de wijzigingen zelf die zullen worden doorgevoerd. Vaak zal een werkafspraak een keuze bevatten. Deze zal goed beredeneerd zijn, maar toch anders kunnen uitvallen als het daadwerkelijke wijzigingsproces wordt ingezet;</li>
+<li>binnen het wijzigingsbeheer worden er alleen werkafspraken gemaakt die vooruitlopen op aanstaande wijzigingen. Er worden binnen dit kader geen permanente werkafspraken gemaakt die niet verankerd zullen worden in de IMEV standaard;</li>
+<li>het toepassen van de werkafspraken is (van rechtswege) niet verplicht, maar geeft voor duidelijkheid en richting bij implementatie door softwareleveranciers;</li>
+<li>het toepassen van de werkafspraken vergemakkelijkt de implementatie van wijzigingen, omdat het een al een voorbereidende werkwijze is voor het ander;</li>
+<li>waar van toepassing zullen de werkafspraken niet leiden tot afkeuring van plannen die hier niet aan voldoen door de Validator. Eventueel kan wel een waarschuwing of andersoortige melding worden gegeven over de geconstateerde afwijking van de werkafspraak.</li>
+</ol></section><section data-format="markdown" id="implementatie-ondersteuning"><!--OddPage--><h2 id="x5-implementatie-ondersteuning"><span class="secno">5. </span>Implementatie ondersteuning</h2><p>Het in gebruik nemen van (een volgende versie van ) een standaard staat centraal in deze fase. Hiervoor kunnen we de verschillende implementatiebestanden opleveren. Wij ondersteunen de implementatie met onder meer een helpdesk.</p><section id="technische-bestanden"><h3 id="x5-1-technische-bestanden"><span class="secno">5.1 </span>Technische bestanden</h3><p>Om de beheerders van het Register Externe Veiligheidsrisico's (REV), de softwareleveranciers en andere gebruikers van de standaard te ondersteunen bij de implementatie van een nieuwe versie van de standaard, leveren wij verschillende bestanden en documentatie op:</p><ul><li>Implementatiebestanden;</li>
+<li>Voorbeeldbestanden;</li>
+<li>Voorbeeldberichten.</li>
+</ul><p>Schema’s en Schematron (validatieregels) zijn voorbeelden van implementatiebestanden die als onderdeel van standaarden door Geonovum worden opgeleverd. Het kan hier ook gaan om implementatiebestanden voor visualisatieregels en iconen. Voorbeeldbestanden en voorbeeldberichten kunnen worden gebruikt voor het testen van applicaties.</p></section><section id="validatie-en-certificatie"><h3 id="x5-2-validatie-en-certificatie"><span class="secno">5.2 </span>Validatie en certificatie</h3><p>Na het opleveren van de nieuwe standaard inclusief de verschillende onderdelen, richten wij ons op de ondersteuning van de standaard door softwareleveranciers, beheerders van voorzieningen/ registers. Bij deze groep gebruikers is de ondersteuning vooral technisch van aard. De validator is het hulpmiddel bij uitstek hierbij.</p><p>Soms zetten we conformiteitstoetsing in. In dat geval wordt een testprotocol voor een conformiteitstoets beschikbaar gesteld, waarmee (handmatig) kan worden gecontroleerd of een implementatie aan de norm voldoet.</p><p>Ook certificering van applicaties is mogelijk. Certificering van applicaties ondersteunt niet zozeer de (kwaliteit van de) implementatie van de standaarden, als wel de (snelheid van) adoptie ervan. Zodra het werkveld voldoende volwassen is en certificering niet meer nodig is om adoptie te versnellen, kan certificering komen te vervallen.</p></section><section id="opleiding"><h3 id="x5-3-opleiding"><span class="secno">5.3 </span>Opleiding</h3><p>Per standaard, en nieuwe versie van de standaard, bekijken we in hoeverre opleiding en advies van toegevoegde waarde zijn voor ondersteuning van de gebruikers bij implementatie van de standaard. De Geonovum wiki zetten we bijvoorbeeld in bij grote wijzigingen van de standaard. Tijdens bijeenkomsten verzorgen wij workshops en presentaties. In de verschillende vakbladen publiceren wij artikelen.</p></section><section id="communicatie"><h3 id="x5-4-communicatie"><span class="secno">5.4 </span>Communicatie</h3><p>Het hele wijzigingsproces staat of valt met een goede communicatie. Onder goede communicatie wordt verstaan het tijdig leveren van de juiste informatie aan de juiste belanghebbenden. Dit betreft de proceskant alsook de producten die er worden opgeleverd.</p><p><i>Website</i><i>(s)</i></p><p>De actuele vigerende versie van het Informatiemodel is via het <a href="https://docs.geostandaarden.nl/imev/imev/" target="_blank">documentenregister van Geonovum</a> beschikbaar.</p><p><i>Consultatie</i></p><p>Bij X-wijzigingen zal Geonovum de aanpassingen in het model in een publieke consultatie aan eenieder voorleggen.</p><p><i>Werkafspraken</i></p><p>De werkafspraken die bepalen hoe er in de tussentijd moet worden omgegaan met geconstateerde fouten en problemen (zie <a href="#tussentijdse-werkafspraken">Hoofdstuk 5</a><a></a>). De werkafspraken publiceren wij via de Geonovum website. Door middel van nieuwsberichten op de website en het versturen van de nieuwsbrief in samenwerking met RWS (beheerder van het Register Externe Veiligheidsrisico's) en het ministerie van Infrastructuur en Waterstaat informeren wij het werkveld over de nieuwe dan wel aangepaste werkafspraak.</p><p><i>Nieuwe producten inclusief releasenotes</i></p><p>Wijzigingen in het model worden bekendgemaakt op de Geonovum website en in de nieuwsbrief van het REV. Ook zijn ze raadplegen als releasenotes in het <a href="https://docs.geostandaarden.nl/imev/imev/#bijlage-1-release-notes" target="_blank">informatiemodel</a>.</p></section></section><section data-format="markdown" id="escalatie-en-klachtenprocedure"><!--OddPage--><h2 id="x6-escalatie-en-klachtenprocedure"><span class="secno">6. </span>Escalatie- en klachtenprocedure</h2><p>In voorgaande hoofdstukken gaat het protocol ervan uit dat er wijzigingen "in vrijheid" worden doorgevoerd. In het primaire beheerproces wordt geen rekening gehouden met noodzakelijke wijzigingen die met spoed of onder druk van bijvoorbeeld (externe) nieuwe wet- en regelgeving moeten worden doorgevoerd. Hiervoor hanteren we een escalatieprocedure. In het geval een escalatie- en/of klachtenprocedure zicht heeft voorgedaan, vindt rapportage hierover plaats via de kwartaalrapportage van Geonovum aan het ministerie van IenW.
+</p><section id="sturende-principes-bij-escalatie"><h3 id="x6-1-sturende-principes-bij-escalatie"><span class="secno">6.1 </span>Sturende principes bij escalatie</h3><p>We doorlopen een escalatieprocedure als er een wijziging noodzakelijk is die niet in het reguliere wijzigingsproces doorgevoerd kan worden, omdat dit te lang duurt. Een uitputtende lijst met situaties en criteria wanneer dit van toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke wijziging leidt tot onaanvaardbare risico's voor de uitvoeringspraktijk of het onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van werkzaamheden.</p><p>De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door te kunnen voeren. Er wordt geen vast proces gegeven om de escalatieprocedure te doorlopen, omdat verschillende situaties wellicht tot een verschillende wijze van handelen moeten leiden. In plaats daarvan zijn onderstaande sturende principes leidend om verantwoordelijkheden te duiden.</p><p><b>Signalering</b>
+Uit het werkveld kunnen signalen ontstaan dat er met spoed iets gewijzigd zou moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden zullen ontstaan. Het is wel van belang om de rol van Geonovum te onderkennen als antennefunctie voor het werkveld. In ieder geval zullen deze signalen op enig moment de opdrachtgever of Geonovum bereiken, en op dat moment zal er overleg gevoerd worden over deze signalen.
+</p><p><b>Overleg</b>
+Bij de besluitvorming binnen de escalatieprocedure wordt er in principe overleg gevoerd tussen Geonovum en IenW. Beide partijen raadplegen de betrokkenen daar waar nodig.</p><p><b>Besluitvorming</b>
+De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de voorzitter van het gremium dat de beheeropdracht monitort, dan wel de contactpersoon bij de opdrachtgever van IenW. Ook het besluit welke wijzigingen er precies doorgevoerd moeten worden en op welke manier, wordt genomen door dezelfde persoon.</p><p><b>Coördinatie</b>
+De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de voorzitter van het gremium dat de beheeropdracht monitort, dan wel de contactpersoon bij de opdrachtgever.
+</p><p><b>Communicatie met het werkveld</b>
+De communicatie met het werkveld wordt uitgevoerd door Geonovum. Als beheerder van de betreffende standaard wordt verwacht dat Geonovum de meest directe contacten heeft met het werkveld.</p></section><section id="klachtenafhandeling"><h3 id="x6-2-klachtenafhandeling"><span class="secno">6.2 </span>Klachtenafhandeling</h3><p>Het garanderen van het serieus nemen van klachten kan alleen, door deze volgens een zorgvuldige procedure te behandelen. Klachten kunnen ook beschouwd worden als verbetersuggestie. We onderscheiden daarom twee verschillende type klachten met betrekking tot de standaarden:</p><ul><li>Klachten over de toepassingsmogelijkheid van de standaard;</li>
+<li>Klachten over het beheer van de standaard.</li>
+</ul><p>In het eerste geval is het feitelijk geen klacht maar een wens of eis tot het aanpassen van de standaard. De beheerders van de betreffende standaard nemen dit in behandeling en vastgelegd als wijzigingsverzoek en niet als klacht. In dit geval doet Geonovum haar werk goed.
+</p><p>In het tweede geval is er sprake van ontevredenheid over de uitvoering van het beheerproces van de standaard en betreft niet de inhoud, de standaard zelf. De indiener is van mening dat Geonovum, het beheerteam van de betreffende standaard, dan wel een persoon het werk niet naar behoren uitvoert. In dat geval wordt de klacht doorgezet naar opdrachtgever van het beheer van de standaard.
+</p><p>De route van indienen van klachten is bij Geonovum in principe via de helpdesk van de betreffende standaard. Dit is de manier om met Geonovum in contact te komen, vragen te stellen en wensen en eisen met betrekking tot de standaard kenbaar te maken. Door het via een helpdesk te laten verlopen, wordt ook het type van de issues geregistreerd. De helpdesk route voor zowel vragen, wijzigingsverzoeken, klachten en incidenten geeft een zo compleet mogelijk overzicht in het contact met de gebruikers van de standaarden, over de standaarden.</p></section></section><section data-format="markdown" id="overzicht-status-van-wijzigingsverzoeken"><!--OddPage--><h2 id="x7-overzicht-status-van-wijzigingsverzoeken"><span class="secno">7. </span>Overzicht status van wijzigingsverzoeken</h2><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 23.57512953367876%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Status voorstel</b>
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;"><b>Beschrijving activiteiten</b>
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">NIEUW
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Als een gebruiker een melding indient krijgt deze de status “nieuw”.
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">TERUGKOPPELING
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">De actiehouder van de melding controleert of de melding volledig en helder is. Bij een fout gaat hij/zij in de standaard na of dit inderdaad het geval is. Hij/zij kan informatie opvragen of een onderzoek uitvoeren.
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">ERKEND
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Deze melding is helder beschreven en is of een wens voor het aanpassen van de standaard, dan wel een gevonden fout. Ook is de melding geen duplicaat van een reeds ingevoerde melding. De melding is hiermee formeel opgenomen in het meldingen systeem. 
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">BEVESTIGD
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">Geonovum neemt deze melding mee in het wijzigingsproces van de standaard. 
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">TOEGEWEZEN
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">De melding is toegewezen aan een actiehouder en gekoppeld aan een nieuwe versie van de standaard. 
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">OPGELOST
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">De melding is opgelost als de melding onderdeel is van de nieuwe versie van de standaard.
+
+</td>
+</tr>
+<tr><td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">AFGESLOTEN
+
+</td>
+<td align="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;">De melding wordt afgesloten in de volgende situaties:<a name="_Hlk500331000"></a>
+
+<ul><li>wanneer de melding is opgenomen in de nieuwe versie van de standaard;</li>
+</ul>
+
+<ul><li>wanneer de wens niet wordt gehonoreerd in de nieuwe versie van de standaard;</li>
+<li>wanneer de fout niet meer relevant wordt geacht voor de standaard.</li>
+</ul>
+
+<p>De precieze informatie hierover staat in de melding onder het attribuut ‘oplossing’. Indien een melding uiteindelijk niet is meegenomen in de nieuwe versie van de standaard maar wel een fout/ wens blijft, wordt de status teruggezet op erkend. </p>
+</td>
+</tr>
+</tbody>
+</table></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

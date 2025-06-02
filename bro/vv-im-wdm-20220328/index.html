@@ -1,0 +1,2564 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+      <link rel="stylesheet" type="text/css" href="https://docs.geostandaarden.nl/bro/gen/localstyle.css">
+      <title>Basisregistratie Ondergrond Catalogus Model grondwaterspiegeldiepte</title>
+      
+      
+   <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-VV",
+  "specType": "IM",
+  "publishDate": "2022-03-28",
+  "logos": [
+    {
+      "src": "https://docs.geostandaarden.nl/bro/gen/logo_minbzk.png",
+      "href": "https://www.geobasisregistraties.nl/basisregistraties/ondergrond",
+      "alt": "Ministerie BZK",
+      "width": 776,
+      "height": 163,
+      "id": "logo_minbzk"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Geonovum",
+      "mailto": "support@broservicedesk.nl",
+      "note": "088 – 8664 999",
+      "companyURL": "http://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Geonovum",
+      "mailto": "support@broservicedesk.nl",
+      "note": "088 – 8664 999",
+      "companyURL": "http://www.geonovum.nl"
+    }
+  ],
+  "shortName": "wdm",
+  "pubDomain": "bro",
+  "github": "https://github.com/BROprogramma/WDM",
+  "previousPublishDate": "2021-07-01",
+  "previousStatus": "GN-VV",
+  "localBiblio": {
+    "Bouwmans1990": {
+      "href": "",
+      "title": "Achtergrond en toepassing van de TCGB-tabel: een methode voor het bepalen van de opbrengstdepressie van grasland op zandgrond als gevolg van een grondwaterstandsverlaging",
+      "authors": [
+        "J. Bouwmans"
+      ],
+      "date": "1990",
+      "publisher": "Technische Commissie Grondwaterbeheer,Utrecht"
+    },
+    "Finke2002": {
+      "href": "",
+      "title": "Klimaatsrepresentatieve grondwaterspiegeldiepte in Waterschap Peel en Maasvallei",
+      "authors": [
+        "P.A Finke",
+        "M.F.P. Bierkens",
+        "D.J. Brus",
+        "J.W.J. van der Gaast",
+        "T. Hoogland",
+        "M. Knotters",
+        "F. de Vries"
+      ],
+      "date": "2002",
+      "publisher": "Wageningen, Alterra-rapport 383"
+    },
+    "Finke2004": {
+      "href": "",
+      "title": "Mapping groundwater dynamics using multiple sources of exhaustive high resolution data",
+      "authors": [
+        "P.A Finke",
+        "D.J. Brus, M.F.P. Bierkens",
+        "T. Hoogland",
+        "M. Knotters",
+        "F. de Vries"
+      ],
+      "date": "2004",
+      "publisher": "Geoderma 123: 23-39"
+    },
+    "Hoogland2014": {
+      "href": "",
+      "title": "Actualisatie van de grondwatertrappenkaart van holoceen Nederland",
+      "authors": [
+        "T. Hoogland",
+        "M. Knotters",
+        "M. Pleijter",
+        "D.J.J. Walvoort"
+      ],
+      "date": "2014",
+      "publisher": "Wageningen, Alterra-rapport 2612"
+    },
+    "Ritzema2012": {
+      "href": "",
+      "title": "Meten en interpreteren van grondwaterstanden. Analyse van methodieken en nauwkeurigheid",
+      "authors": [
+        "H.P. Ritzema",
+        "G.B.M. Heuvelink",
+        "M. Heinen",
+        "P.W. Bogaart",
+        "F.J.E. van der Bolt",
+        "M.J.D. Hack-ten Broeke",
+        "T. Hoogland",
+        "M. Knotters",
+        "H.T.L. Massop",
+        "H.R.J. Vroon"
+      ],
+      "date": "2012",
+      "publisher": "Wageningen, Alterra-rapport 2345"
+    },
+    "Runhaar2014": {
+      "href": "",
+      "title": "Hydrologische Randvoorwaarden Natuur Versie 3; Gebruikershandleiding",
+      "authors": [
+        "H. Runhaar",
+        "S. Hennekens"
+      ],
+      "date": "2014",
+      "publisher": "Wageningen, Nieuwegein, Utrecht, Alterra Wageningen UR, KWR Watercycle Research Institute, STOWA"
+    },
+    "Stuyt2018": {
+      "href": "",
+      "title": "Basisregistratie Ondergrond - Gd-kartering Laag-Nederland 2018; Provincie Flevoland",
+      "authors": [
+        "L.C.P.M. Stuyt",
+        "M. Knotters",
+        "D.J.J. Walvoort",
+        "F. Brouwer",
+        "H.T.L. Massop"
+      ],
+      "date": "2018",
+      "publisher": "Wageningen, Wettelijke Onderzoekstaken (WOt) Natuur & Milieu. WOt-technical report 145"
+    },
+    "WHT1987": {
+      "href": "",
+      "title": "De invloed van de waterhuishouding op de landbouwkundige produktie",
+      "authors": [
+        "Werkgroep HELP-tabel"
+      ],
+      "date": "1987",
+      "publisher": "Mededelingen Landinrichtingsdienst 176, Utrecht"
+    }
+  },
+  "publishISODate": "2022-03-28T00:00:00.000Z",
+  "generatedSubtitle": "Versie ter vaststelling 28 maart 2022"
+}</script><meta name="description" content="Dit is de werkversie voor de catalogus van registratieobject Model grondwaterspiegeldiepte."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/bro/vv-im-wdm-20220328/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Basisregistratie Ondergrond Catalogus Model grondwaterspiegeldiepte",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-03-28",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/BROprogramma/WDM/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/bro/def-im-wdm-20210701/",
+  "description": "Dit is de werkversie voor de catalogus van registratieobject Model grondwaterspiegeldiepte.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "foaf:mbox": "support@broservicedesk.nl",
+      "worksFor": {
+        "url": "http://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "foaf:mbox": "support@broservicedesk.nl",
+      "worksFor": {
+        "url": "http://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="" class="logo"><img id="logo_minbzk" alt="Ministerie BZK" width="776" height="163" src="https://docs.geostandaarden.nl/bro/gen/logo_minbzk.png"></a>
+  <h1 class="title p-name" id="title">Basisregistratie Ondergrond Catalogus Model grondwaterspiegeldiepte</h1>
+  
+  <h2>Geonovum Informatiemodel<br>
+  Versie ter vaststelling <time class="dt-published" datetime="2022-03-28">28 maart 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/bro/vv-im-wdm-20220328/">https://docs.geostandaarden.nl/bro/vv-im-wdm-20220328/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/bro/wdm/">https://docs.geostandaarden.nl/bro/wdm/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/bro/def-im-wdm-20210701/">https://docs.geostandaarden.nl/bro/def-im-wdm-20210701/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://broprogramma.github.io/WDM/">https://broprogramma.github.io/WDM/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="ed_mailto u-email email" href="mailto:support@broservicedesk.nl">support@broservicedesk.nl</a> (088 – 8664 999)</dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="ed_mailto u-email email" href="mailto:support@broservicedesk.nl">support@broservicedesk.nl</a> (088 – 8664 999)</dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/BROprogramma/WDM/">GitHub BROprogramma/WDM</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/WDM/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/WDM/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/WDM/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+      <section id="abstract" class="introductory"><h2>Samenvatting</h2>
+         <p>
+	  Dit is de werkversie voor de catalogus van registratieobject Model grondwaterspiegeldiepte.
+	  </p>
+      </section>
+      <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+  Dit is een definitief concept van de nieuwe versie van het informatiemodel. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+</p>
+    
+  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</a></li><li class="tocline"><a class="tocxref" href="#totstandkoming"><span class="secno">1.2 </span>Totstandkoming</a></li><li class="tocline"><a class="tocxref" href="#beheer"><span class="secno">1.3 </span>Beheer</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.4 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opzet-van-het-systeem"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</a></li><li class="tocline"><a class="tocxref" href="#registratieobject"><span class="secno">2.2 </span>Registratieobject</a></li><li class="tocline"><a class="tocxref" href="#registratiedomein"><span class="secno">2.3 </span>Registratiedomein</a></li><li class="tocline"><a class="tocxref" href="#kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</a></li><li class="tocline"><a class="tocxref" href="#formele-en-materiële-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</a></li><li class="tocline"><a class="tocxref" href="#coördinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</a></li><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</a></li><li class="tocline"><a class="tocxref" href="#authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</a></li></ol></li><li class="tocline"><a class="tocxref" href="#intro-gegevensdefinitie"><span class="secno">3. </span>De inhoud van de catalogus</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#type-formaten"><span class="secno">3.1 </span>Domeinen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aantal"><span class="secno">3.1.1 </span>Aantal</a></li><li class="tocline"><a class="tocxref" href="#code"><span class="secno">3.1.2 </span>Code</a></li><li class="tocline"><a class="tocxref" href="#datumtijd"><span class="secno">3.1.3 </span>Tijdstip</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#datum"><span class="secno">3.1.3.1 </span>Datum</a></li><li class="tocline"><a class="tocxref" href="#datumTijd"><span class="secno">3.1.3.2 </span>DatumTijd</a></li><li class="tocline"><a class="tocxref" href="#onvolledigedatum"><span class="secno">3.1.3.3 </span>OnvolledigeDatum</a></li></ol></li><li class="tocline"><a class="tocxref" href="#meetwaarde"><span class="secno">3.1.4 </span>Meetwaarde</a></li><li class="tocline"><a class="tocxref" href="#tekst"><span class="secno">3.1.5 </span>Tekst</a></li><li class="tocline"><a class="tocxref" href="#enumeratie"><span class="secno">3.1.6 </span>Waardelijst niet-uitbreidbaar</a></li><li class="tocline"><a class="tocxref" href="#codelijst"><span class="secno">3.1.7 </span>Waardelijst uitbreidbaar</a></li><li class="tocline"><a class="tocxref" href="#organisatie"><span class="secno">3.1.8 </span>Organisatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-domeinmodel"><span class="secno">3.2 </span>Het domeinmodel</a></li><li class="tocline"><a class="tocxref" href="#verplichte-gegevens-waarden"><span class="secno">3.3 </span>Verplichte gegevens, verplichte waarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevensdefinitie"><span class="secno">4. </span>Gegevensdefinitie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Registratieobject"><span class="secno">4.1 </span>   Registratieobject</a></li><li class="tocline"><a class="tocxref" href="#het-domeinmodel-0"><span class="secno">4.2 </span>Het domeinmodel   </a></li><li class="tocline"><a class="tocxref" href="#entiteiten-en-attributen"><span class="secno">4.3 </span>Entiteiten en attributen   </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte"><span class="secno">4.3.1 </span>   Model grondwaterspiegeldiepte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdGrid"><span class="secno">4.3.1.1 </span>  gerelateerdGrid</a></li><li class="tocline"><a class="tocxref" href="#detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdeMeting"><span class="secno">4.3.1.2 </span>  gerelateerdeMeting</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting"><span class="secno">4.3.2 </span>   Grondwaterspiegeldieptemeting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_diepte"><span class="secno">4.3.2.1 </span>  diepte</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_typewaarneming"><span class="secno">4.3.2.2 </span>  type waarneming</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_datum"><span class="secno">4.3.2.3 </span>  datum</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_opmerking"><span class="secno">4.3.2.4 </span>  opmerking</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_geometrie"><span class="secno">4.3.2.5 </span>  geometrie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptegrid"><span class="secno">4.3.3 </span>   Grondwaterspiegeldieptegrid</a></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Gridcel"><span class="secno">4.3.4 </span>   Gridcel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_association_ModelGrondwaterspiegeldiepteWDM_Gridcel_gerelateerdGrid"><span class="secno">4.3.4.1 </span>  gerelateerdGrid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Bereik"><span class="secno">4.3.5 </span>   Bereik</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Bereik_totstandkoming"><span class="secno">4.3.5.1 </span>  totstandkoming</a></li><li class="tocline"><a class="tocxref" href="#detail_d16423e3258"><span class="secno">4.3.5.2 </span>  GLG</a></li><li class="tocline"><a class="tocxref" href="#detail_d16423e3425"><span class="secno">4.3.5.3 </span>  GHG</a></li><li class="tocline"><a class="tocxref" href="#detail_d16423e3592"><span class="secno">4.3.5.4 </span>  GVG</a></li><li class="tocline"><a class="tocxref" href="#detail_d16423e3759"><span class="secno">4.3.5.5 </span>  Gt</a></li><li class="tocline"><a class="tocxref" href="#detail_association_ModelGrondwaterspiegeldiepteWDM_Bereik_gerelateerdGridcel"><span class="secno">4.3.5.6 </span>  gerelateerdGridcel</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Domein"><span class="secno">4.3.6 </span>   Domein</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Domein_geometrie"><span class="secno">4.3.6.1 </span>  geometrie</a></li><li class="tocline"><a class="tocxref" href="#detail_association_ModelGrondwaterspiegeldiepteWDM_Domein_gerelateerdeGridcel"><span class="secno">4.3.6.2 </span>  gerelateerdeGridcel</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte"><span class="secno">4.3.7 </span>   Grondwaterspiegeldiepte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_diepte"><span class="secno">4.3.7.1 </span>  diepte</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_realisatiesvandiepte"><span class="secno">4.3.7.2 </span>  realisaties van diepte</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap"><span class="secno">4.3.8 </span>   Grondwatertrap</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_klasse"><span class="secno">4.3.8.1 </span>  klasse</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_realisatiesvanklasse"><span class="secno">4.3.8.2 </span>  realisaties van klasse</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_ModelGrondwaterspiegeldiepteWDM_CV_Coverage"><span class="secno">4.3.9 </span>   CV_Coverage</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#uitbreidbare-waardelijsten"><span class="secno">5. </span>Uitbreidbare waardelijsten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_class_ModelGrondwaterspiegeldiepteWDM_TypeWaarneming"><span class="secno">5.1 </span>Enumeratie details  TypeWaarneming</a></li><li class="tocline"><a class="tocxref" href="#detail_class_ModelGrondwaterspiegeldiepteWDM_Grondwatertrapklasse"><span class="secno">5.2 </span>Enumeratie details  Grondwatertrapklasse</a></li><li class="tocline"><a class="tocxref" href="#detail_class_ModelGrondwaterspiegeldiepteWDM_Opmerking"><span class="secno">5.3 </span>Enumeratie details  Opmerking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#model-grondwaterspiegeldiepte-nl"><span class="secno">6. </span>Beschrijving</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#definitie-van-het-model-grondwaterspiegeldiepte"><span class="secno">6.1 </span>Definitie van het model grondwaterspiegeldiepte</a></li><li class="tocline"><a class="tocxref" href="#karakteristieken-van-de-grondwaterspiegeldiepte"><span class="secno">6.2 </span>Karakteristieken van de grondwaterspiegeldiepte</a></li><li class="tocline"><a class="tocxref" href="#grondwaterspiegeldiepte-metingen"><span class="secno">6.3 </span>Grondwaterspiegeldiepte metingen</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-informatie-over-de-grondwaterspiegeldiepte"><span class="secno">6.4 </span>Nauwkeurigheid van informatie over de grondwaterspiegeldiepte</a></li><li class="tocline"><a class="tocxref" href="#afhankelijkheid-met-andere-registratieobjecten"><span class="secno">6.5 </span>Afhankelijkheid met andere registratieobjecten</a></li><li class="tocline"><a class="tocxref" href="#referenties"><span class="secno">6.6 </span>Referenties</a></li></ol></li></ol></nav>
+      <!-- hoofdstuk 1 -->
+      <section id="inleiding">
+         <!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2>
+         <section id="doel-en-doelgroep" class="generic">  <h3 id="x1-1-doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</h3>
+  <p>In de basisregistratie ondergrond (BRO) wordt een aantal typen gegevens geregistreerd, de <i>registratieobjecten</i>.</p>
+  <p>Een catalogus is de gegevensdefinitie van een registratieobject en beschrijft welke gegevens van het object in de BRO zijn opgeslagen. 
+    Het document is bedoeld voor alle gebruikers van de BRO en moet duidelijk maken welke gegevens er precies in het systeem zitten. 
+    Aan aanleverende partijen moet het vertellen welke gegevens in de basisregistratie ondergrond moeten komen en aan welke eisen die moeten
+    voldoen, en aan afnemende partijen welke gegevens zij in de basisregistratie ondergrond mogen verwachten.
+    Het document is voor een breed publiek bedoeld en de informatie moet naast precies ook begrijpelijk zijn.</p>
+</section>
+         <section id="totstandkoming" class="generic"><h3 id="x1-2-totstandkoming"><span class="secno">1.2 </span>Totstandkoming</h3>
+<p>Een catalogus is het resultaat van een proces van standaardisatie dat geruime tijd in beslag kan nemen. De standaardisatie is een open proces waarin de belanghebbende partijen actief betrokken worden. Het eindresultaat wordt door de wetgever vastgesteld in een ministeriële regeling.</p>
+<p>In bepaalde gevallen is de verscheidenheid aan gegevens van een object zo groot, dat er eerst deelverzamelingen worden gedefinieerd. Het standaardisatieproces wordt dan per deelverzameling doorlopen. De deelverzamelingen worden zo gekozen dat de gegevens die in de bijbehorende catalogus worden beschreven, direct na vaststelling aan de BRO kunnen worden aangeleverd. Wanneer er deelverzamelingen worden onderscheiden, komt de catalogus van het registratieobject dus gefaseerd tot stand. Omdat inzichten in de loop van de tijd kunnen wijzigen kan het aan het eind van het hele proces nodig blijken revisies door te voeren om ongewenste verschillen tussen deelverzamelingen weg te nemen.</p>
+</section>
+         <section id="beheer" class="generic"><h3 id="x1-3-beheer"><span class="secno">1.3 </span>Beheer</h3>
+<p>Een vastgestelde catalogus (zoals op wetten.nl gepubliceerd) wordt met het daarbij horende deel van het systeem van de basisregistratie ondergrond in gebruik genomen. De eerste formeel vastgestelde catalogus (zoals op wetten.nl gepubliceerd) krijgt het versienummer 1.0. Verwacht mag worden dat er na enige tijd behoefte gaat ontstaan aan gegevens die nog niet in de catalogus zijn opgenomen.</p>
+<p>De beheerder hanteert drie typen versies voor een wijziging van een standaard. Bijvoorbeeld: versie 2.1.0 (=X.Y.Z):</p>
+<ul>
+<li>X-wijzigingen Deze wijzigingen veranderen de structuur van de standaard. Hierdoor zijn X-wijzigingen niet backwards compatible.
+<br>Frequentie: maximaal 1 keer per 2 jaar.</li>
+<li>Y-wijzigingen Dit zijn wijzigingen die niet de structuur veranderen. Dit kunnen bijvoorbeeld updates zijn of inhoudelijke aanpassingen aan objecten, attributen of waardelijsten of de reikwijdte van de standaard. Deze wijzigingen zijn backwards compatible.
+<br>Frequentie: maximaal 1 keer per jaar.</li>
+<li>Z-wijzigingen Dit zijn in feite oplossingen van fouten of verbeteringen van technische aard. Deze wijzigingen zijn backwards compatible.
+<br>Frequentie: maximaal 2 keer per jaar.</li>
+</ul>
+ 
+<p>In een jaar waarin een X-wijziging plaats vindt zullen er op hetzelfde registratieobject geen y-wijzigingen plaatsvinden.  Als er een X- of een Y-wijziging in een jaar aan de orde is, wordt er geen z-wijziging gepland.
+De versie van de catalogus met inleiding (zoals hier gepubliceerd) volgt voor de normatieve stukken volledig de versie op wetten.nl. Wijzigingen aan niet normatieve teksten in dit document vallen altijd onder Z-wijzigingen en zullen maximaal 2 keer per jaar plaatsvinden.</p></section>
+         <div id="inleiding-specifiek">
+            <p>Deze documenten hangen samen zoals hieronder afgebeeld.</p>
+            <figure id="image001">
+               <img src="media/fig1wdm.png" width="600" style="mix-blend-mode: multiply;">
+               <figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Samenhang tussen documentatie
+        </span></figcaption>
+            </figure>
+            <p>Het Ministerie van Landbouw, Natuur en Voedselkwaliteit (LNV) is de bronhouder, 
+en Wageningen Environmental Research (WENR) is de dataleverancier van het grondwaterspiegeldieptemodel (WDM).
+    </p>
+         </div>
+         <section id="leeswijzer">
+            <h3 id="x1-4-leeswijzer"><span class="secno">1.4 </span>Leeswijzer</h3>
+            <p><a href="#inleiding">Hoofdstuk 1</a> geeft het doel en de doelgroep van een catalogus.</p>
+            <p><a href="#algemene-kenmerken-en-begrippen">Hoofdstuk 2</a> behandelt enkele algemene aspecten van het BRO-systeem en begrippen van algemene aard.</p>
+            <p><a href="#intro-gegevensdefinitie">Hoofdstuk 3</a> vertelt hoe de catalogus is opgebouwd en welke aspecten van de gegevens daarin worden beschreven.</p>
+            <p><a href="#gegevensdefinitie">Hoofdstuk 4 en 5</a> beschrijft de entiteiten van het grondwaterspiegeldiepte model.</p>
+            <p><a href="#bodemkundig-model-nl">Hoofdstuk 6</a> geeft een toelichting op het grondwaterspiegeldiepte model.</p>
+         </section>
+      </section>
+      <!-- hoofdstuk 2 -->
+      <section id="algemene-kenmerken-en-begrippen" class="generic"><!--OddPage--><h2 id="x2-algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</h2>
+<section id="opzet-van-het-systeem">
+    <h3 id="x2-1-opzet-van-de-landelijke-voorziening"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</h3>
+    <p>De landelijke voorziening van de basisregistratie ondergrond is een systeem dat een schakel vormt in een informatieketen. Aan het begin van de keten staan bestuursorganen die opdracht geven tot de productie van gegevens, of zelf gegevens produceren. Die bestuursorganen worden <i>bronhouders</i> genoemd. De geproduceerde gegevens worden door een <i>dataleverancier</i> geleverd aan de beheerder van het systeem, de <i>registerbeheerder</i>. De bronhouder is verantwoordelijk voor de levering van gegevens. Hij kan besluiten zelf dataleverancier te zijn of andere partijen een machtiging voor levering te verlenen. De beheerder van de landelijke voorziening van de BRO registreert de aangeleverde gegevens en levert ze voor (her)gebruik door aan allerlei afnemers.</p>
+    <p>De opzet van het systeem moet begrepen worden vanuit de verantwoordelijkheden die in de keten zijn belegd. De aangeleverde gegevens vallen onder de verantwoordelijkheid van de bronhouder en de registerbeheerder mag die gegevens niet veranderen. De registerbeheerder moet echter wel gegevens toevoegen om het systeem te kunnen beheren en hij kan gegevens toevoegen om de afnemers goed van dienst te kunnen zijn.</p>
+    <p>Bij wet is geregeld dat de basisregistratie ondergrond zo wordt opgezet dat er onderscheid bestaat tussen de gegevens die aan de registerbeheerder zijn aangeleverd en de gegevens die de registerbeheerder aan de afnemers verstrekt. Het systeem valt uiteen in twee grote deelsystemen, het register <i>brondocumenten ondergrond</i> en de <i>registratie
+          ondergrond</i> (<a href="#image001" class="fig-ref" title="De twee grote deelsystemen van de landelijke voorziening van de BRO.">Figuur <span class="figno">2</span></a>).</p>
+
+    <p>Een geheel van gegevens dat door of onder verantwoordelijkheid van een bronhouder wordt aangeleverd, wordt een <i>brondocument</i> genoemd. De brondocumenten worden in het <i>register brondocumenten ondergrond</i> opgeslagen. De gegevens uit de brondocumenten worden samen met de gegevens die de registerbeheerder toevoegt in de <i>registratie ondergrond</i> vastgelegd. De <i>registratie ondergrond</i> is het deelsysteem dat gebruikt wordt voor uitgifte.</p>
+    
+        <figure id="image001"><img src="https://docs.geostandaarden.nl/bro/gen/media/image002.png" width="350">
+        <figcaption>Figuur <span class="figno">2</span> <span class="fig-title">De twee grote deelsystemen van de landelijke voorziening van de BRO.
+        </span></figcaption>
+    </figure>
+    
+    <p>Met deze opzet verkrijgt het systeem de nodige flexibiliteit. Zo kan een object in de registratie ondergrond gegevens bevatten die uit meer dan één brondocument afkomstig zijn en bij uitgifte kunnen gegevens van verschillende objecten met elkaar gecombineerd worden. Ook is het mogelijk met het brondocument gegevens op te slaan die alleen voor de bronhouder en de aanleverende partij van belang zijn.</p>
+    <p>De catalogus dekt alle gegevens die opgenomen zijn in de registratie ondergrond. Verreweg de meeste gegevens komen uit de brondocumenten die de dataleverancier aanlevert en een paar gegevens komen voort uit de overdracht van een brondocument aan de registerbeheerder. Aan de aangeleverde gegevens worden enkele gegevens door de registerbeheerder toegevoegd. Als een gegeven is toegevoegd door de BRO wordt dat in de beschrijving expliciet vermeld.</p>
+    <p>Alle gegevens in de registratie ondergrond worden uitgegeven, maar niet alle afnemers kunnen alle gegevens geleverd krijgen. De gegevens die niet aan alle afnemers worden uitgeleverd zijn de gegevens die alleen nodig zijn in de communicatie tussen de registerbeheerder enerzijds en de dataleveranciers en bronhouders anderzijds.</p>
+</section>
+<section id="registratieobject">
+    <h3 id="x2-2-registratieobject"><span class="secno">2.2 </span>Registratieobject</h3>
+    <p>Het <i>registratieobject</i> is dé eenheid in de data-architectuur van de basisregistratie ondergrond. Voor de registerbeheerder is het de elementaire bouwsteen van het systeem dat hij moet beheren.</p>
+    <p>Een <i>registratieobject</i> verwijst naar een eenheid van informatie die onder de verantwoordelijkheid van één bronhouder valt en die met een bepaald doel is of wordt gemaakt. Het is in directe of indirecte zin gedefinieerd in de ruimte en dat wil zeggen dat een registratieobject een plaats op het aardoppervlak heeft of dat het gekoppeld is aan een ander type registratieobject met een plaats op het aardoppervlak.</p>
+    <p>Een <i>registratieobject</i> is niet alleen in de ruimte maar ook in de tijd gedefinieerd. Het leven van een registratieobject begint op het moment dat de gegevens zijn geregistreerd en dat is zo kort mogelijk nadat de gegevens zijn geproduceerd. De levensduur van een registratieobject, en de veranderlijkheid van de gegevens verschilt van object tot object. Een grondwatermonitoringput kan tientallen jaren gebruikt worden voor het meten van grondwaterstanden en in de periode kunnen er nieuwe gegevens ontstaan. Dat betekent dat de gegevens van de put in de registratie ondergrond gedurende zijn hele levensduur bijgewerkt moeten kunnen worden. Aan de andere kant van het spectrum staan de objecten waarvan alle gegevens in een keer worden vastgelegd. Geotechnisch sondeeronderzoek is daar een voorbeeld van. Sondeeronderzoek is eenmalig onderzoek en het resultaat ervan kan al na een of enkele dagen aan de bronhouder worden overhandigd.</p>
+</section>
+<section id="registratiedomein">
+    <h3 id="x2-3-registratiedomein"><span class="secno">2.3 </span>Registratiedomein</h3>
+    <p>Registratieobjecten worden in de basisregistratie ondergrond gegroepeerd in domeinen. Vooralsnog worden zes domeinen onderscheiden:
+        </p><ul>
+            <li>bodem- en grondonderzoek</li>
+            <li>bodemkwaliteit</li>
+            <li>grondwatermonitoring</li>
+            <li>grondwatergebruik</li>
+            <li>mijnbouwwet</li>
+            <li>modellen.</li>
+        </ul>
+    <p></p>
+    <p>De domeinen zijn vanuit het oogpunt van beheer van belang voor de ordening van het systeem. Daarnaast zijn zij nuttig in de communicatie met de partijen die bij de realisatie van het systeem betrokken zijn.</p>
+</section>
+<section id="kwaliteitsregime">
+    <h3 id="x2-4-kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</h3>
+    <p>In de basisregistratie ondergrond worden niet alleen gegevens geregistreerd die dateren van na de datum waarop de wet van kracht is geworden. Ook oudere gegevens zullen in de basisregistratie ondergrond worden opgenomen. De noodzaak daartoe ligt in de wet verankerd. Die schrijft voor dat de gegevens uit de eerder bestaande systemen DINO en BIS zo veel mogelijk naar de BRO moeten worden overgezet. Verder staat de wet toe dat bronhouders tot vijf jaar na de inwerkingtreding van de wet historische gegevens ter registratie mogen aanbieden.
+    </p>
+    <p>Historische gegevens kunnen niet altijd voldoen aan de strikte regels die de BRO stelt. Zo kan het voorkomen dat voor gegevens die volgens de strikte regels van de BRO verplicht zijn, geen waarde bekend is. Om de verwerking van de twee categorieën gegevens naast elkaar mogelijk te maken, worden twee kwaliteitsregimes gehanteerd. Voor de aanlevering van gegevens volgens de strikte regels geldt het IMBRO-regime. Bij de aanlevering van historische gegevens wordt geaccepteerd dat een aantal formeel verplichte gegevens geen waarde heeft. Voor deze gegevens wordt het IMBRO/A-regime gehanteerd en dat kent dus minder strikte regels.</p>
+    <p>De introductie van de twee kwaliteitsregimes geeft de bronhouder gedurende een bepaalde periode een zekere mate van vrijheid. Het kan bijvoorbeeld praktisch blijken het IMBRO/A-regime te hanteren voor gegevens die weliswaar pas na de datum waarop de wet in werking is getreden zijn geproduceerd maar die voortkomen uit opdrachten die al voor die datum zijn gegeven. Ook kan het voorkomen dat historische gegevens wel aan alle strikte voorwaarden voldoen en dan is het wenselijk de gegevens onder IMBRO-regime aan te leveren.
+    </p>
+    <p>De periode waarin de bronhouders die vrijheid hebben wordt de <i>transitieperiode</i> genoemd. Over de duur van de transitieperiode zijn nog geen afspraken gemaakt. Na afloop van de transitieperiode kan alleen onder het strikte IMBRO-regime worden aangeleverd.
+    </p>
+</section>
+<section id="formele-en-materiële-geschiedenis">
+    <h3 id="x2-5-formele-en-materiele-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</h3>
+    <p>De basisregistratie ondergrond maakt deel uit van een stelsel van basisregistraties. Binnen het stelsel maakt men onderscheid tussen de materiële geschiedenis en de formele geschiedenis van een object.</p>
+    <p>Het begrip <i>materiële geschiedenis</i> wordt gebruikt om de veranderingen van eigenschappen van een object in de werkelijkheid aan te duiden. De materiële geschiedenis van een object wordt, voor zover relevant, in de registratie ondergrond vastgelegd. Niet alle registratieobjecten hebben een materiële geschiedenis, alleen de objecten met een levensduur, zoals de grondwatermonitoringput. </p>
+    <p>Het begrip <i>formele geschiedenis</i> wordt gebruikt voor de veranderingen van eigenschappen van een object in de registratie zelf. De meeste van die veranderingen gaan terug op een verandering van eigenschappen in de werkelijkheid, en de formele geschiedenis geeft aan wanneer de veranderingen in het systeem geregistreerd zijn. De formele geschiedenis kent ook gebeurtenissen die niet het gevolg zijn van een verandering in de werkelijke eigenschappen van een object. Die gebeurtenissen hebben betrekking op correcties. Het kan gebeuren dat een bronhouder erachter komt dat er een onjuiste waarde was geregistreerd en dan zorgt hij ervoor dat die verbeterd wordt. De registratie van de verbetering is een formele gebeurtenis.
+    </p>
+    <p>Alle registratieobjecten hebben een formele geschiedenis en die wordt in de registratie ondergrond globaal vastgelegd in de <i>registratiegeschiedenis</i> van het object. Globaal wil zeggen dat de registratie ondergrond alleen een overzicht van de formele geschiedenis geeft. Voor de details moet het register brondocumenten ondergrond worden geraadpleegd.</p>
+    <p>Bij correctie wordt het betreffende gegeven in de registratie ondergrond overschreven en is de oude waarde van het gegeven niet meer direct beschikbaar voor de afnemers.
+Zou een afnemer toch willen weten wat de eerdere foute waarde was, dan moet hij het register brondocumenten ondergrond raadplegen.
+</p>
+</section>
+
+<section id="coördinaten-en-referentiestelsels">
+    <h3 id="x2-6-coordinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</h3>
+    <p>De registratieobjecten van de basisregistratie ondergrond zijn gedefinieerd in de ruimte en dat wil zeggen dat een object zelf een plaats op het aardoppervlak, een locatie, heeft, of dat het gekoppeld is aan een ander type registratieobject met een locatie. Afhankelijk van het type registratieobject, wordt de locatie geregistreerd als een punt, een lijn of een vlak.</p>
+    <p>De locatie is de horizontale positie van een object. Voor bepaalde objecten is het voldoende dat alleen die horizontale positie wordt vastgelegd, maar voor veel objecten is ook de verticale positie van belang.</p>
+    <p>Posities worden vastgelegd in coördinaten en die zijn gedefinieerd in een bepaald referentiestelsel.</p>
+    <p>Er zijn verschillende typen referentiestelsels. Zo spreekt men van horizontale referentiestelsels (2D), verticale referentiestelsels (1D), gecombineerde referentiestelsels (2D, 1D) en werkelijke 3D referentiestelsels. In Nederland worden de horizontale en de verticale component van een positie in een afzonderlijk stelsel uitgedrukt. Het is vandaag de dag mogelijk met gps een positie in een 3D-referentiestelsel vast te leggen, maar de wens over te stappen op het gebruik van 3D is nog door geen van de partijen die betrokken zijn bij de basisregistratie ondergrond naar voren gebracht.</p>
+    
+    <section id="referentiestelsels-voor-de-horizontale-positie">
+        <h4 id="x2-6-1-referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</h4>
+        <p>In Nederland zijn traditioneel verschillende referentiestelsels voor de horizontale positie in gebruik. In 2009, bij de eerste voorbereidingen voor de totstandkoming van de basisregistratie ondergrond, is al vastgesteld dat de verscheidenheid aan referentiestelsels de basisregistratie ondergrond voor problemen stelt omdat de registratie dan niet gemakkelijk op een eenduidige manier bevraagd kan worden. In de registratie ondergrond worden namelijk zowel gegevens met een locatie op land als gegevens met een locatie op zee geregistreerd. In de toenmalige praktijk werden op land en op zee verschillende stelsels gebruikt. Op land werd RD gebruikt en op zee waren verschillende stelsels in gebruik, waarvan WGS84 de belangrijkste was.</p>
+        <p>In 2009 was ook al bekend dat de Europese kaderrichtlijn INSPIRE de lidstaten vraagt de gegevens in Europa in één referentiestelsel uit te gaan wisselen, te weten in ETRS89. Met dat in gedachten, is het besluit genomen het BRO-systeem zo in te richten dat de registratie bevraagd gaat worden in ETRS89.</p>
+        <p>Het besluit wordt ondersteund door ontwikkelingen in Nederland. Sinds 2013 wordt er door de drie belangrijkste autoriteiten in Nederland op het gebied van referentiestelsels, het Kadaster, de Dienst der Hydrografie en Rijkswaterstaat, gewerkt aan de totstandkoming van nieuwe afspraken. Die afspraken moeten in lijn zijn met Europese afspraken en leiden tot heldere en eenduidige transformatieprocedures tussen referentiestelsels. Concreet betekent dit dat in Nederland op termijn het ETRS89-stelsel als standaard zal worden gehanteerd voor het uitwisselen van geo-informatie.
+        </p>
+        <p>Het besluit betekent niet dat de gegevens ook in ETRS89 aangeleverd moeten worden. De basisregistratie ondergrond voorziet een periode van transitie waarin de aanleverende partijen zelf bepalen wanneer zij overstappen op ETRS89. Die periode zal naar verwachting jaren duren. Om de transitie te ondersteunen hanteert de basisregistratie ondergrond de volgende spelregels: 
+            </p><ul>
+                <li>Gegevens mogen in een beperkt aantal referentiestelsels worden aangeleverd (RD, WGS84 en ETRS89).
+                    <ul>
+                        <li>Voor locaties op land wordt alleen RD of ETRS89 toegestaan.</li>
+                        <li>Voor locaties op zee wordt alleen WGS84 of ETRS89 toegestaan.</li>
+                    </ul>
+                </li>
+                <li>De aangeleverde coördinaten worden in de registratie opgeslagen.</li>
+                <li>De aangeleverde coördinaten worden door de basisregistratie ondergrond getransformeerd naar
+                    het ETRS89 referentiestelsel.</li>
+                <li>De getransformeerde coördinaten worden naast de aangeleverde coördinaten opgeslagen.
+                </li>
+                <li>Bij de getransformeerde coördinaten wordt ook een identificatie van de gebruikte transformatiemethode opgeslagen.
+                </li>
+                <li>Als de coördinaten in ETRS89 zijn aangeleverd, dan staat bij aangeleverde en getransformeerde positie dezelfde
+                    informatie. Voor de locatie worden de getransformeerde coördinaten en de aangeleverde coördinaten beide
+                    aan de afnemers verstrekt.
+                </li>
+            </ul>
+        <p></p>
+    </section>
+    <section id="referentiestelsels-voor-de-verticale-positie">
+        <h4 id="x2-6-2-referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</h4>
+        <p>In Nederland zijn voor verticale posities op land en zee verschillende referentiestelsels in gebruik. Op land wordt NAP gebruikt. Op zee is het in de voor de BRO relevante werkvelden gebruikelijk posities uit te drukken t.o.v. het gemiddeld zeeniveau (MSL, Mean Sea Level), maar posities t.o.v. LAT komen ook voor (Lowest Astronomical Tide). Dit laatstgenoemde stelsel wordt in de kaderrichtlijn INSPIRE genoemd als het stelsel van voorkeur voor het uitdrukken van verticale posities op zee. De basisregistratie ondergrond staat daarom op zee het gebruik van LAT naast MSL toe. Aangeleverde verticale posities worden door de BRO niet getransformeerd.</p>
+    </section>
+</section>
+<section id="gegevens-op-land-en-op-zee">
+    <h3 id="x2-7-gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</h3>
+    <p>De basisregistratie ondergrond bevat gegevens over de ondergrond van Nederland en zijn zgn. Exclusieve Economische Zone (EEZ). De EEZ is het gebied op de Noordzee waar Nederland economische rechten heeft. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het van belang te weten of de locatie van een object op zee of op land ligt.
+    </p>
+    <p>Als scheidingslijn tussen land en zee wordt in de basisregistratie ondergrond de UNCLOS-basislijn gehanteerd. Het beheer van de basislijn valt onder de verantwoordelijkheid van de Dienst der Hydrografie van het ministerie van Defensie. Deze dienst voert die taak uit op basis van het Zeerechtverdrag van de Verenigde Naties uit 1982, dat in het Engels de United Nations Convention on the Law of the Sea (UNCLOS) heet. 
+De basislijn is opgebouwd uit de nulmeterdieptelijn zoals weergegeven op de zeekaarten en enkele rechte basislijnen die onder meer de monding van de Westerschelde en de wateren tussen de Waddeneilanden afsluiten.
+</p>
+    <p>De grens tussen land en zee is veranderlijk. De Dienst der Hydrografie stelt de grens opnieuw vast wanneer daartoe voldoende aanleiding is. De BRO hanteert bij inname de meest recente versie van de UNCLOS-basislijn en controleert daarmee of de juiste referentiestelsels gebruikt worden.</p>
+    <p>Tussen het moment waarop de locatie van een object wordt bepaald en het moment waarop het gegeven in de basisregistratie ondergrond wordt vastgelegd verloopt enige tijd. In die periode kan de positie van de UNCLOS-basislijn opnieuw zijn vastgesteld, en dan ontstaat er een discrepantie die bij het aanleveren van gegevens tot problemen kan leiden. Wanneer een dergelijk probleem zich voordoet, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Een soortgelijk probleem doet zich voor met betrekking tot de begrenzing van Nederland, met name van het Nederlands territoir. De grenzen van Nederland worden ieder jaar op 1 januari vastgesteld door het Kadaster en vastgelegd in de basisregistratie kadaster. De BRO controleert bij inname of een object in het gebied ligt dat Nederland en zijn Exclusieve Economische Zone omvat, en hanteert daarbij de actuele grenzen. Ook bij problemen die te herleiden zijn tot een verandering in de begrenzing van Nederland, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Binnen het domein Mijnbouwwet wordt de scheidingslijn tussen land en zee niet bepaald door de UNCLOS-basislijn, maar door een over zee lopende lijn die is vastgelegd in een bijlage bij de Mijnbouwwet. In de registratie ondergrond wordt deze lijn aangeduid als mijnbouwgrens. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het binnen het domein Mijnbouwwet van belang te weten of de locatie van een object aan landzijde of aan zeezijde van de mijnbouwgrens ligt. Waar in voorgaande paragrafen ‘op land’ en ‘op zee’ is genoemd, houdt dat binnen het domein Mijnbouwwet in: aan landzijde respectievelijk aan zeezijde van de mijnbouwgrens.</p>
+</section>
+<section id="nauwkeurigheid-van-meetwaarden">
+    <h3 id="x2-8-nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</h3>
+    <p>Voor zinvol gebruik van gegevens met een gemeten, berekende of anderszins bepaalde waarde is het noodzakelijk dat de nauwkeurigheid van die gegevens bekend is.
+    </p>
+    <p>Het begrip nauwkeurigheid laat zich in deze context het best omschrijven als de juistheid van een gemeten of berekende waarde. In de meeste processen waarin de waarde van een gegeven wordt bepaald, kan de afwijking van de daadwerkelijke waarde slechts via een kalibratie- of statistisch proces worden verkregen. Het resultaat omvat dan niet alleen een van de mogelijke realisaties van een meetwaarde maar ook informatie over de mogelijke spreiding van de meetwaarden.</p>
+    <p>De basisregistratie ondergrond gaat ervan uit dat de producenten van gegevens de metingen en berekeningen uitvoeren binnen een stelsel van afspraken dat binnen het desbetreffende werkveld is vastgelegd. Uitgangspunt is dat ook de eisen waaraan de gegevens op het gebied van nauwkeurigheid moeten voldoen in afspraken zijn vastgelegd. Dat kunnen praktische werkafspraken zijn, maar ook afspraken die vertaald zijn naar ISO- en NEN-normen. In de catalogus wordt in beginsel verwezen naar die normen. Waar deze normen niet voorzien in afspraken over de nauwkeurigheid, stelt de basisregistratie ondergrond hieraan specifieke eisen. Deze zijn dan vermeld in de catalogus.
+    </p>
+</section>
+<section id="authentiek-gegeven">
+    <h3 id="x2-9-authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</h3>
+    <p>In de wet is een aantal gegevens expliciet als authentiek aangeduid. Dit wordt in de catalogus nader uitgewerkt; verreweg de meeste gegevens zijn authentiek.</p>
+    <p>Met de aanduiding <i>authentiek</i> wordt, zoals geformuleerd in de memorie van toelichting op de wet, tot uitdrukking gebracht dat:
+        </p><ol type="a">
+            <li>Het gegeven in samenhang met andere gegevens door een groot aantal bestuursorganen in verschillende processen wordt gebruikt en derhalve bestemd is voor informatie-uitwisseling tussen bestuursorganen;</li>
+            <li>de verantwoordelijkheid voor betrouwbaarheid van het gegeven eenduidig geregeld is;
+            </li>
+            <li>het gegeven onderworpen is aan intern en extern kwaliteitsonderzoek, en</li>
+            <li>het gegeven zich leent voor verplicht gebruik door bestuursorganen en eenmalige verstrekking door burgers en bedrijven aan de overheid.</li>
+        </ol>
+    <p></p>
+    <p>In de praktijk mag een gebruiker van de gegevens ervan uitgaan dat alle gegevens correct zijn. De catalogus moet de gebruiker alle informatie geven die voor een goed begrip daarvan nodig is.
+        Heeft een gebruiker echter gerede twijfel over de juistheid van een <i>authentiek</i> gegeven dan wordt verwacht dat hij de registerbeheerder daarvan op de hoogte brengt. Bestuursorganen zijn, bij gerede twijfel over de juistheid van een authentiek gegeven (of het ontbreken ervan), zelfs verplicht daarvan melding te maken. 
+
+</p>
+<p>Voor alle gegevens is aangegeven of ze authentiek zijn. Ook is voor alle gegevens aangegeven of ze aanwezig moeten zijn en een waarde moeten hebben. Dat laat zien dat er gegevens kunnen zijn die authentiek zijn maar geen waarde hoeven te hebben. Juist omdat er verplichtingen gelden t.a.v. authentieke gegevens, vraagt dit om een korte toelichting. 
+Wanneer een authentiek gegeven geen waarde heeft moet de gebruiker ervan uitgaan dat het gegeven niet is geproduceerd. Dat geval kan zich uiteraard alleen voordoen wanneer er vrijheid van beslissen bestaat bij de bronhouder of de producent. 
+Voor de duidelijkheid, als er wel een waarde is dan moet die ook in de BRO worden opgenomen. Bij gerede twijfel over het ontbreken van een waarde, moet een bestuursorgaan dat melden. </p>
+</section>
+</section>
+      <!-- hoofdstuk 3 -->
+      <section id="intro-gegevensdefinitie">
+         <!--OddPage--><h2 id="x3-de-inhoud-van-de-catalogus"><span class="secno">3. </span>De inhoud van de catalogus</h2>
+         <div id="intro-cat-inleiding" class="generic"><h2 id="de-gegevensdefinitie">De gegevensdefinitie</h2>
+<p>De gegevensdefinitie vormt het hart van de catalogus en geeft een beschrijving van alle gegevens van het registratieobject. Eerst wordt de definitie van het registratieobject gegeven inclusief de plaatjes van het zgn. <i>domeinmodel</i>, en vervolgens de definities van de <i>entiteiten</i> waaruit het object is opgebouwd met de eigenschappen van die entiteiten, de <i>attributen</i>. De entiteiten worden op volgorde van de nummers in het domeinmodel behandeld. De volgende aspecten van de gegevens worden vastgelegd:</p>
+<ul>
+    	<li>De Nederlandse naam van het gegeven.</li>
+    	<li>Of het gegeven van het type entiteit of het type attribuut is, met in het laatste geval van welke entiteit het een attribuut is.</li>
+    	<li>Eventueel de herkomst van het gegeven, in het uitzonderlijke geval de herkomst anders is dan de BRO.</li>
+    	<li>De definitie van het gegeven.</li>
+    	<li>Eventueel de herkomst van de definitie, in het uitzonderlijke geval de definitie een andere herkomst heeft dan de BRO.</li>
+	<li>De kardinaliteit van een attribuut, en dat geeft aan hoe vaak het attribuut voorkomt.</li>
+	<li>De aanduiding of een attribuut al dan niet authentiek is (juridische status).</li>
+	<li>De naam van het domein voor de waarden van het attribuut, met afhankelijk van het type domein nadere informatie over de waarden.</li>
+	<li>Eventueel de naam van het domein van het attribuut voor IMBRO/A, wanneer het uitzonderlijke geval zich voordoet dat er voor IMBRO/A een ander domein geldt dan voor IMBRO.</li>
+    	<li>Eventueel de regels die in aanvulling op de kardinaliteit en de bepalingen van het domein gelden en door de basisregistratie ondergrond in controles zijn opgenomen, bijvoorbeeld om de consistentie van de inhoud van een brondocument vast te stellen.</li>
+    	<li>Eventueel de regels die voor IMBRO/A gelden, wanneer het uitzonderlijke geval zich voordoet dat er voor IMBRO/A aanvullende regels gelden.</li>
+    	<li>Eventueel de aanduiding dat de waarde van het attribuut mag ontbreken, wanneer het uitzonderlijke geval zich voordoet dat de waarde van het attribuut mag ontbreken.
+	</li><li>Van attributen waarvan de waarde mag ontbreken de omschrijving van de reden waarom de waarde mag ontbreken.
+	</li><li>Eventueel de aanduiding dat het gegeven wordt afgeleid door de basisregistratie ondergrond, in het uitzonderlijke geval het gegeven wordt afgeleid.
+	</li><li>Eventueel een toelichting om aanvullende informatie te geven over de betekenis van het gegeven of de reden waarom het is opgenomen.</li>
+    	<li>Van attributen van objecten met een materiële geschiedenis de aanduiding of het attribuut al dan niet een materiële geschiedenis kan hebben.</li>
+</ul>
+<p>De gegevensdefinitie dekt de beide kwaliteitsregimes die worden onderscheiden, IMBRO en IMBRO/A. Het kwaliteitsregime IMBRO is leidend en bij het opstellen van de gegevensdefinitie is geprobeerd de verschillen tussen de twee regimes zo klein te houden. Het streven is een object altijd in termen van dezelfde gegevens te beschrijven en voor IMBRO/A alleen aanvullende regels te formuleren en extra waarden toe te staan. Bij uitzondering kan het echter nodig zijn gebleken voor IMBRO/A aparte entiteiten, attributen of domeinen te definiëren.</p>
+</div>
+         <section id="type-formaten">
+            <h3 id="x3-1-domeinen"><span class="secno">3.1 </span>Domeinen</h3>
+            <!-- hier alleen de domeinuitleg includeren voor domeinen die in het registratieobject gebruikt worden -->
+            <p>Een domein beschrijft welke waarden een attribuut mag hebben. Domeinen zijn van een bepaald type en de typen die in de catalogus worden gebruikt worden hieronder toegelicht. Sommige domeinen zijn samengesteld en die worden als laatste besproken.</p>
+            <section id="aantal" class="generic"><h4 id="x3-1-1-aantal"><span class="secno">3.1.1 </span>Aantal</h4>
+<p>Het domein <i>Aantal</i> wordt gebruikt voor een telbare hoeveelheid. Het is een natuurlijk getal met een bepaalde maximale lengte. 
+<br>Het domein wordt volledig gespecificeerd door met de aanduiding aantal ook de maximale lengte mee te (Aantal N). Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren. In het domeinmodel wordt volstaan met de algemene aanduiding <i>Aantal</i>.</p>
+</section>
+            <section id="code" class="generic"><h4 id="x3-1-2-code"><span class="secno">3.1.2 </span>Code</h4>
+<p>Een code is een opeenvolging van cijfers, van letters of van cijfers en letters met een bepaalde opbouw en met een specifieke betekenis. Een code heeft gewoonlijk een betekenis die ook buiten de basisregistratie ondergrond geldt. Een code wordt uitgegeven door een verantwoordelijke instantie. Om de opbouw van een code weer te geven wordt gebruik gemaakt van de letters C en N. De letter C staat voor character (Eng.) en duidt een letter aan, de letter N staat voor number (Eng.) en duidt een cijfer aan. Een code heeft een bepaalde naam.
+<br>Het domein wordt volledig gespecificeerd door met de naam van de code ook de opbouw mee te geven. Uit de definitie van het attribuut zelf moet blijken wat de specifieke betekenis is van de code. In het domeinmodel wordt het domein aangeduid met zijn naam.</p>
+</section>
+            <section id="datumtijd" class="generic"><h4 id="x3-1-3-tijdstip"><span class="secno">3.1.3 </span>Tijdstip</h4> 
+<p>Voor gegevens die over tijdstippen gaan worden twee domeinen gebruikt. Een voor een tijdstip tot op de seconde nauwkeurig (DatumTijd) en een voor een tijdstip tot op de dag nauwkeurig (Datum).</p>
+<p>In ieder domein gaat het om de datum gemeten volgens de Gregoriaanse kalender. Bij het domein DatumTijd wordt de tijd gemeten volgens UTC en moet de tijdzone worden meegegeven. UTC is de mondiaal geaccepteerde standaardtijd en de opvolger van GMT (Greenwich Mean Time); de drie letters staan voor Coordinated Universal Time. Door de tijdzone mee te geven kan lokale tijd worden omgezet naar UTC.</p>
+<p>De opbouw van de twee domeinen volgt dezelfde conventies, conform ISO 8601. Het eerste element in de opbouw staat voor het jaar, dan volgt de maand, enz., en het laatste element staat voor de tijdzone. Om de verschillende elementen aan te geven worden letters gebruikt: jaar (J), maand (M), dag (D), uur (U), minuut (M)en seconde (S), gevolgd door de tijdzone. Het aantal letters geeft de lengte aan.</p>
+<p>Voor de meest uitgebreide variant van de opbouw, die van DatumTijd, wordt dit JJJJ-MM-DDTUU:MM:SS+UU:MM. De T is het teken dat de datum en het tijdstip op die datum scheidt. De + is het scheidingteken tussen het tijdstip en de tijdzone. Zoals uit de opbouw blijkt wordt de tijdzone in uren en minuten gegeven. De meeste tijdzones zijn overigens uitgedrukt in gehele uren (UU:00). In Nederland geldt Centraal Europese Tijd (UTC+1:00) of Centraal Europese Zomertijd (UTC+2.00).</p>
+	
+    	<section id="datum"><h5 id="x3-1-3-1-datum"><span class="secno">3.1.3.1 </span>Datum</h5>
+	<p>Het domein <i>Datum</i> wordt gebruikt om een datum volgens de Gregoriaanse kalender tot op de dag nauwkeurig aan te geven. De opbouw is JJJJ-MM-DD. 
+	<br>Bij het domein Datum is het voldoende de naam te geven, omdat de opbouw altijd hetzelfde is. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren.</p> 
+	</section>
+	
+	<section id="datumTijd"><h5 id="x3-1-3-2-datumtijd"><span class="secno">3.1.3.2 </span>DatumTijd</h5>
+	<p>Het domein <i>DatumTijd</i> wordt gebruikt om een tijdstip volgens de Gregoriaanse kalender tot op de seconde nauwkeurig aan te geven. De opbouw is JJJJ-MM-DDTUU:MM:SS+UU:MM. 
+	<br>Bij het domein DatumTijd is het voldoende de naam te geven, omdat de opbouw altijd hetzelfde is. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren.</p> 
+	</section>
+	
+	<section id="onvolledigedatum"><h5 id="x3-1-3-3-onvolledigedatum"><span class="secno">3.1.3.3 </span>OnvolledigeDatum</h5>
+	<p>Voor gegevens die onder het kwaliteitsregime IMBRO/A aangeleverd worden, geldt een derde domein met vier keuzemogelijkheden.</p><p>
+	</p><ul>
+	<li>De datum tot op de dag nauwkeurig, met als opbouw JJJJ-MM-DD</li>
+	<li>De datum tot op de maand nauwkeurig, met als opbouw JJJJ-MM</li>
+	<li>De datum tot op het jaar nauwkeurig, met als opbouw JJJJ</li>
+	<li>Geen datum bekend, met als vaste waarde <i>onbekend</i>.</li>
+	</ul>
+	<p>De keuze die gemaakt wordt is gebaseerd op de beschikbaarheid van gegevens. De gebruiker moet ervan uit gaan dat de informatie zo nauwkeurig mogelijk is opgenomen. Bij het domein OnvolledigeDatum is het voldoende de naam te geven, omdat de vier keuzen en de opbouw altijd hetzelfde zijn.</p>
+</section></section>
+            <section id="meetwaarde" class="generic"><h4 id="x3-1-4-meetwaarde"><span class="secno">3.1.4 </span>Meetwaarde</h4>
+<p>Het domein <i>Meetwaarde</i> wordt gebruikt wanneer de nauwkeurigheid van de waarde altijd hetzelfde is.
+<br>Het is een rationaal getal met een bepaalde opbouw. Het aantal cijfers voor het scheidingsteken is variabel maar begrensd. Het aantal cijfers achter het scheidingsteken ligt vast.
+</p><p>Het domein wordt volledig gespecificeerd door met de aanduiding meetwaarde ook de opbouw (Meetwaarde N.N) en de eenheid mee te geven. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren. In het domeinmodel wordt volstaan met de algemene aanduiding <i>Meetwaarde</i>.</p>
+</section>
+            <section id="tekst" class="generic"><h4 id="x3-1-5-tekst"><span class="secno">3.1.5 </span>Tekst</h4>
+<p>Het domein <i>Tekst</i> bestaat uit een stuk tekst van een bepaalde maximale lengte. De tekst mag alleen bestaan uit de tekens die voorkomen in de MES-1 set. De MES-1 set omvat 335 tekens en wordt gebruikt binnen de landen van de Europese Unie die een Latijns schrift kennen. 
+<br>Het domein wordt volledig gespecificeerd door met de aanduiding tekst ook de maximale lengte mee te (Tekst N). In het domeinmodel wordt volstaan met de algemene aanduiding <i>Tekst</i>.</p>
+</section>
+            <section id="enumeratie" class="generic"><h4 id="x3-1-6-waardelijst-niet-uitbreidbaar"><span class="secno">3.1.6 </span>Waardelijst niet-uitbreidbaar</h4>
+<p>Een niet-uitbreidbare waardelijst wordt gebruikt wanneer uitbreiding niet mogelijk is. Alle waarden van de lijst staan vast. 
+<br>Bij een niet-uitbreidbare waardelijst is het voldoende de naam te geven, omdat de inhoud altijd hetzelfde is. In de basisregistratie ondergrond worden drie niet-uitbreidbare waardelijsten gebruikt.</p>  
+		
+		<h5 id="indicatiejanee">IndicatieJaNee</h5>
+		<table style="width: 50%;">
+                  <tbody><tr>
+                     <th>Waarde</th>
+                  </tr>
+                  <tr>
+                     <th>ja</th>
+                  </tr>
+                  <tr>
+                     <th>nee</th>
+                  </tr>
+		</tbody></table>
+						
+			<h5 id="indicatiejaneeonbekend">IndicatieJaNeeOnbekend</h5>
+			<table style="width:50%">
+			  <tbody><tr>
+				<th>Waarde</th>
+			  </tr>
+			  <tr>
+				<td>ja</td>
+			  </tr>
+			  <tr>
+				<td>nee</td>
+			  </tr>
+				<tr>
+				<td>onbekend</td>
+			  </tr>
+			</tbody></table>
+			
+			<h5 id="kwaliteitsregime-0">Kwaliteitsregime</h5>
+			<table style="width:50%">
+			  <tbody><tr>
+				<th>Waarde</th>
+			  </tr>
+			  <tr>
+				<td>IMBRO</td>
+			  </tr>
+			  <tr>
+				<td>IMBRO/A</td>
+			  </tr>
+			</tbody></table>
+</section>
+            <section id="codelijst" class="generic"><h4 id="x3-1-7-waardelijst-uitbreidbaar"><span class="secno">3.1.7 </span>Waardelijst uitbreidbaar</h4>
+<p>Een uitbreidbare waardelijst wordt gebruikt wanneer uitbreiding mogelijk moet zijn. Iedere waarde van de lijst heeft een specifieke betekenis (omschrijving) en geldt voor een bepaald kwaliteitsregime, IMBRO en/of IMBRO/A. Eventueel worden andere aspecten van de waarde vastgelegd. 
+<br>Bij een uitbreidbare waardelijst wordt de naam van de lijst geven. De inhoud van de lijst is in een apart hoofdstuk van de gegevensdefinitie opgenomen.</p>
+</section>
+            <section id="organisatie" class="generic"><h4 id="x3-1-8-organisatie"><span class="secno">3.1.8 </span>Organisatie</h4>
+<p>Het domein <i>Organisatie</i> wordt gebruikt om de organisaties die een rol hebben in de basisregistratie ondergrond te identificeren. De invulling van het domein hangt af van waar de organisatie gevestigd is en voor de basisregistratie ondergrond gaat het daarbij om Nederland of een andere lidstaat van de Europese Unie.</p>
+<p>In het geval de organisatie in Nederland gevestigd is, wordt het domein ingevuld met het gegeven dat een onderneming of de maatschappelijke activiteit van een rechtspersoon in het Handelsregister identificeert, het KvK-nummer. Het <i>KvK-nummer</i> is van het type code en de opbouw is NNNNNNNN.</p> 
+<p>Voor organisaties buiten Nederland wordt het domein ingevuld met het equivalent van het KvK-nummer in een handelsregister van een andere lidstaat van de Europese Unie dan Nederland, het <i>EuropeesHandelsnummer</i>. Het Europees handelsnummer, de zogenaamde EUID, is geïntroduceerd ten behoeve van de koppeling van handelsregisters. De code is gebaseerd op ISO 6523 en is opgebouwd uit een landcode, registeridentificatiecode, inschrijvingsnummer en controlegetal. De landcode is de 2-letterige code van ISO3166, de registeridentificatiecode is de identificatie van het nationale register omdat in sommige landen meerdere handelsregisters bestaan en het inschrijvingsnummer is het nummer waaronder de onderneming is ingeschreven in het betreffende register. Het controlegetal ter voorkomen van identificatiefouten wordt nog niet gebruikt. De opbouw per element is variabel en daarom is het Europees Handelsnummer in de BRO als domein Tekst 40 opgenomen.</p>
+<p>Bij het domein Organisatie is het voldoende de naam te geven, omdat de twee keuzen en de opbouw altijd hetzelfde zijn.</p>
+</section>
+         </section>
+         <section class="generic" id="het-domeinmodel"><h3 id="x3-2-het-domeinmodel"><span class="secno">3.2 </span>Het domeinmodel</h3>
+<p>Het domeinmodel geeft een overzicht van de gegevens van het registratieobject en laat de onderlinge samenhang zien. Modellering van informatie kent verschillende invalshoeken. In de catalogus is het inhoudelijke perspectief gekozen omdat dat de meeste waarde heeft voor de mensen die de informatie moeten begrijpen. Een dergelijk model wordt in de basisregistratie ondergrond een domeinmodel genoemd. Uit het domeinmodel wordt een technisch model afgeleid dat meeweegt dat informatiesystemen efficiënt met elkaar moeten kunnen spreken. Voor het domeinmodel wordt de UML-notatie gebruikt. Met kennis van de gebruikte symbolen is het gemakkelijk te lezen.</p>
+<p>Het domeinmodel kent een aantal vaste elementen die bij ieder registratieobject terugkomen. Een begrip van deze elementen vergroot de leesbaarheid van het domeinmodel en de  catalogus. De elementen zijn: entiteiten, attributen, gegevensgroepen en relaties. Een entiteit is een onderscheidend geheel van eigenschappen die gezamenlijk betekenis hebben. Een entiteit heeft altijd een naam en een definitie. In het domeinmodel zijn de entiteiten te herkennen aan het begrip Objecttype.</p>
+<p>In de entiteiten staan de namen opgesomd van de attributen, de eigenschappen van de entiteiten, met daarachter de naam van de bijbehorende waardenverzameling (domein) en de kardinaliteit. Bij attributen is de kardinaliteit alleen opgenomen wanneer die ongelijk is aan 1. Overigens moet de kardinaliteit altijd in samenhang met de regels die in de definitie van het gegeven zijn opgenomen worden begrepen. De kardinaliteit en de regels bepalen samen of een gegeven al dan niet aanwezig is. De figuren laten ook zien welke attributen alleen aan de dataleverancier en de bronhouder worden uitgeleverd. In het domeinmodel zijn de attributen te herkennen aan het begrip Attribuutsoort.</p>
+<p>Soms zijn een aantal attributen gegroepeerd in een groep, aangeduid als gegevensgroep. Het blijven attributen van de entiteit, maar de inhoudelijke definiëring van de gegevensgroep staat elders. Gegevensgroepen kunnen bij meerdere entiteiten terugkomen.</p>
+<p>Het domeinmodel laat daarnaast ook zien hoe entiteiten aan elkaar gerelateerd zijn. Een beschrijving van deze relatie is opgenomen bij de bron-entiteit van de relatie. Een relatie heeft altijd een richting en in de meeste gevallen loopt deze van bron naar doel. In het plaatje van een domeinmodel heeft de relatie een naam en een kardinaliteit. Om de leesbaarheid te vergroten staat de kardinaliteit bij de doelentiteit.</p> 
+<img src="https://docs.geostandaarden.nl/bro/gen/media/domeinmodel-intro-class-model.png">
+<p>Bovenstaand voorbeeld is te lezen als: de entiteit Bepaling bevat één of meerdere metingen. Een meting bestaat uit een meetwaarde en meetconfiguratie-gegevens. De meetconfiguratie bestaat uit twee parameters.</p>
+</section>
+         <section id="verplichte-gegevens-waarden" class="generic"><h3 id="x3-3-verplichte-gegevens-verplichte-waarden"><span class="secno">3.3 </span>Verplichte gegevens, verplichte waarden</h3>
+<p>De kardinaliteit en de regels bepalen samen of een gegeven
+al dan niet aanwezig is. Voor een goed begrip van de
+gegevensdefinitie is dat nog niet zorgvuldig genoeg
+geformuleerd. In de praktijk van gegevensuitwisseling is het
+namelijk mogelijk een attribuut op te nemen zonder waarde.
+Verbijzonderd voor attributen is de juiste formulering daarom
+dat de kardinaliteit en de regels samen bepalen of een attribuut
+al dan niet aanwezig is en of een attribuut al dan niet een
+waarde heeft.
+</p>
+<p>Uitgangspunt is dat een attribuut dat aanwezig is een waarde
+heeft. Een attribuut wordt alleen bij uitzondering zonder waarde
+in de berichten opgenomen. Het onderstaande overzicht geeft
+de vier mogelijkheden die voorkomen.
+</p>
+<ul>
+    <li>De kardinaliteit= [1] en er is geen aanvullende regel opgenomen. Dit betekent dat het gegeven altijd aanwezig is en altijd een waarde heeft.</li>
+    <li>De kardinaliteit= [1] en er is een aanvullende regel opgenomen die aangeeft waarom een waarde toch mag ontbreken. Dit betekent dat het gegeven altijd aanwezig is maar bij uitzondering en om een specifieke reden geen waarde kan hebben.</li>
+    <li>De kardinaliteit= [0..1] en er zijn 1 of meer aanvullende regels opgenomen. Dit betekent dat de regels bepalen of het gegeven wel of niet voorkomt en bepalen of het gegeven wel of geen waarde heeft.</li>
+    <li>De kardinaliteit= [0..1] en er is geen aanvullende regel opgenomen. Dit betekent dat het gegeven alleen aanwezig is als het een waarde heeft.</li>
+</ul>
+<p>Voor de kardinaliteiten [0..*]  en [1..*] geldt in essentie hetzelfde.</p>
+</section>
+      </section>
+      <!-- MODEL -->
+      <section id="gegevensdefinitie">
+   <!--OddPage--><h2 id="x4-gegevensdefinitie"><span class="secno">4. </span>Gegevensdefinitie</h2>
+   <section id="global_class_ModelGrondwaterspiegeldiepteWDM_Registratieobject">
+      <h3 id="x4-1-registratieobject"><span class="secno">4.1 </span>   Registratieobject</h3>
+      
+      <table style="width: 100%;">
+         <colgroup style="width: 30%;"></colgroup>
+         <colgroup style="width: 70%;"></colgroup>
+         <tbody>
+            <tr>
+               <th>Naam</th>
+               <td></td>
+            </tr>
+            <tr>
+               <th>Code</th>
+               <td></td>
+            </tr>
+            <tr>
+               <th>Definitie</th>
+               <td>
+                  
+                  <p>Een entititeit met het geheel van generieke gegevens die voorkomen bij alle verschillende
+                     soorten registratieobjecten in de basisregistratie ondergrond (BRO).</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="het-domeinmodel-0">
+      <h3 id="x4-2-het-domeinmodel"><span class="secno">4.2 </span>Het domeinmodel   </h3>
+      <div class="imageinfo overview"><img src="data/Images/EAID_32DF32C8_5066_4b21_A5D5_EE7F2DB49F77.png" usemap="#imagemap-EAID_32DF32C8_5066_4b21_A5D5_EE7F2DB49F77" alt="Diagram "><map name="imagemap-EAID_32DF32C8_5066_4b21_A5D5_EE7F2DB49F77"><area shape="rect" alt="Domein" coords="551,540,705,616" href="#graph_EAID_E3897485_3C5F_43f3_9182_9E6E754D984F"><area shape="rect" alt="Gridcel" coords="453,417,575,456" href="#graph_EAID_D0A6330A_6492_45f1_980C_0E417377CA37"><area shape="rect" alt="Grondwaterspiegeldiepte" coords="35,525,192,614" href="#graph_EAID_F09743D7_6B95_4243_A403_BEC64D04F7FF"><area shape="rect" alt="Grondwaterspiegeldieptegrid" coords="423,318,604,353" href="#graph_EAID_330757FF_F73A_4c69_AFB0_B255971A3DF7"><area shape="rect" alt="Grondwatertrap" coords="35,629,248,718" href="#graph_EAID_58AEC090_D83F_4707_B418_3D9C79CC58CE"><area shape="rect" alt="Bereik" coords="276,525,453,670" href="#graph_EAID_C0D21A75_9A6A_446d_8157_B61183B58A48"><area shape="rect" alt="Grondwaterspiegeldieptemeting" coords="106,318,301,446" href="#graph_EAID_BEAD8A51_C8E2_4fb6_8DF2_52ED4E1FB678"><area shape="rect" alt="Registratieobject" coords="323,46,487,174" href="#graph_EAID_3A7AEE32_4ECA_4822_9009_121A0679605E"><area shape="rect" alt="Model grondwaterspiegeldiepte" coords="106,215,705,256" href="#graph_EAID_FCE5BAFD_33CD_4c9b_878F_04A61B1ED0BE"><area shape="rect" alt="CV_Coverage" coords="736,295,836,375" href="#graph_EAID_EDBFC5D1_0314_4d8e_A1FD_91D56A01B776"></map><p><b>Model grondwaterspiegeldiepte (WDM)</b></p>
+      </div>
+   </section>
+   <section id="entiteiten-en-attributen">
+      <h3 id="x4-3-entiteiten-en-attributen"><span class="secno">4.3 </span>Entiteiten en attributen   </h3><a class="anchor" id="graph_EAID_FCE5BAFD_33CD_4c9b_878F_04A61B1ED0BE"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte">
+         <h4 id="x4-3-1-model-grondwaterspiegeldiepte"><span class="secno">4.3.1 </span>   Model grondwaterspiegeldiepte</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Het model grondwaterspiegeldiepte (water table depth model, WDM) is de landsdekkende
+                        verzameling berekende en in grids gediscretiseerde statistieken bestaande uit de gemiddeld
+                        hoogste grondwaterstand (GHG), de gemiddeld laagste grondwaterstand (GLG), de gemiddelde
+                        voorjaars grondwaterstand (GVG) en de grondwatertrap (Gt) die de grondwaterspiegeldiepte
+                        in Nederland karakteriseren.</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>GHG, GLG en GVG samen worden ook wel aangeduid als GxG.</td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdGrid"></a><section id="detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdGrid">
+            <h5 id="x4-3-1-1-gerelateerdgrid"><span class="secno">4.3.1.1 </span>  gerelateerdGrid</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Model grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Unieke verwijzing naar één Grondwaterspiegeldieptegrid, waar het Model grondwaterspiegeldiepte
+                           uit bestaat.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>bestaat uit</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdGrid</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Model grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldieptegrid
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdeMeting"></a><section id="detail_association_ModelGrondwaterspiegeldiepteWDM_Modelgrondwaterspiegeldiepte_gerelateerdeMeting">
+            <h5 id="x4-3-1-2-gerelateerdemeting"><span class="secno">4.3.1.2 </span>  gerelateerdeMeting</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Model grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Unieke verwijzing naar één of meer Grondwaterspiegeldieptemetingen, waar het Model
+                           grondwaterspiegeldiepte uit bestaat.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1..*</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>bestaat uit</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdeMeting</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Model grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldieptemeting
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_BEAD8A51_C8E2_4fb6_8DF2_52ED4E1FB678"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting">
+         <h4 id="x4-3-2-grondwaterspiegeldieptemeting"><span class="secno">4.3.2 </span>   Grondwaterspiegeldieptemeting</h4>
+         <div class="imageinfo "><img src="data/Images/EAID_4D62B844_470F_4ecc_AEAD_827EE6B7D24F.png" usemap="#imagemap-EAID_4D62B844_470F_4ecc_AEAD_827EE6B7D24F" alt="Diagram "><map name="imagemap-EAID_4D62B844_470F_4ecc_AEAD_827EE6B7D24F"><area shape="rect" alt="Grondwaterspiegeldieptemeting" coords="35,46,209,174" href="#graph_EAID_BEAD8A51_C8E2_4fb6_8DF2_52ED4E1FB678"></map><p><b></b></p>
+         </div>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Meting (<em>gerichte opname</em>) van de grondwaterspiegeldiepte op een bepaalde locatie en tijdstip.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_diepte"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_diepte">
+            <h5 id="x4-3-2-1-diepte"><span class="secno">4.3.2.1 </span>  diepte</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldieptemeting</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Gemeten diepte van de grondwaterspiegel ten opzichte van het maaiveld. </p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Meetwaarde 
+                        Geheel getal groter dan 0</td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Eenheid</th>
+                     <td>centimeters</td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Waardebereik</th>
+                     <td> vanaf 0</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_typewaarneming"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_typewaarneming">
+            <h5 id="x4-3-2-2-type-waarneming"><span class="secno">4.3.2.2 </span>  type waarneming</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldieptemeting</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Aanduiding voor het type waarneming.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>TypeWaarneming</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_datum"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_datum">
+            <h5 id="x4-3-2-3-datum"><span class="secno">4.3.2.3 </span>  datum</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldieptemeting</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Datum van de meting.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Datum</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_opmerking"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_opmerking">
+            <h5 id="x4-3-2-4-opmerking"><span class="secno">4.3.2.4 </span>  opmerking</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldieptemeting</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Kanttekening bij de meting.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Opmerking</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_geometrie"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptemeting_geometrie">
+            <h5 id="x4-3-2-5-geometrie"><span class="secno">4.3.2.5 </span>  geometrie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldieptemeting</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Puntlocatie van de meting.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>GM_Point</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_330757FF_F73A_4c69_AFB0_B255971A3DF7"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptegrid"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldieptegrid">
+         <h4 id="x4-3-3-grondwaterspiegeldieptegrid"><span class="secno">4.3.3 </span>   Grondwaterspiegeldieptegrid</h4>
+         <div class="imageinfo "><img src="data/Images/EAID_47D04D0A_E4CE_44bb_A11D_CBE7537534FA.png" usemap="#imagemap-EAID_47D04D0A_E4CE_44bb_A11D_CBE7537534FA" alt="Diagram "><map name="imagemap-EAID_47D04D0A_E4CE_44bb_A11D_CBE7537534FA"><area shape="rect" alt="Domein" coords="401,310,555,386" href="#graph_EAID_E3897485_3C5F_43f3_9182_9E6E754D984F"><area shape="rect" alt="Gridcel" coords="279,187,401,226" href="#graph_EAID_D0A6330A_6492_45f1_980C_0E417377CA37"><area shape="rect" alt="Grondwaterspiegeldiepte" coords="43,87,200,176" href="#graph_EAID_F09743D7_6B95_4243_A403_BEC64D04F7FF"><area shape="rect" alt="Grondwaterspiegeldieptegrid" coords="250,88,431,123" href="#graph_EAID_330757FF_F73A_4c69_AFB0_B255971A3DF7"><area shape="rect" alt="Grondwatertrap" coords="35,187,248,276" href="#graph_EAID_58AEC090_D83F_4707_B418_3D9C79CC58CE"><area shape="rect" alt="Bereik" coords="102,295,279,440" href="#graph_EAID_C0D21A75_9A6A_446d_8157_B61183B58A48"><area shape="rect" alt="CV_Coverage" coords="562,65,662,145" href="#graph_EAID_EDBFC5D1_0314_4d8e_A1FD_91D56A01B776"></map><p><b></b></p>
+         </div>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Een grid (coverage) met gegevens over de hoogste, laagste en voorjaars grondwaterspiegeldiepten,
+                        de classificatie van de grondwatertrappen , de realisaties op basis waarvan deze statistieken
+                        tot stand zijn gekomen, en de toelichting op de totstandkoming van (de onderdelen
+                        van) het grid.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table>
+      </section><a class="anchor" id="graph_EAID_D0A6330A_6492_45f1_980C_0E417377CA37"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Gridcel"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Gridcel">
+         <h4 id="x4-3-4-gridcel"><span class="secno">4.3.4 </span>   Gridcel</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Cel met gegevens over de GHG, GLG, GVG, Gt en totstandkoming per ruimtelijke domein.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_association_ModelGrondwaterspiegeldiepteWDM_Gridcel_gerelateerdGrid"></a><section id="detail_association_ModelGrondwaterspiegeldiepteWDM_Gridcel_gerelateerdGrid">
+            <h5 id="x4-3-4-1-gerelateerdgrid"><span class="secno">4.3.4.1 </span>  gerelateerdGrid</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Gridcel</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>bestaat uit</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdGrid</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Gridcel</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldieptegrid
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_C0D21A75_9A6A_446d_8157_B61183B58A48"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Bereik"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Bereik">
+         <h4 id="x4-3-5-bereik"><span class="secno">4.3.5 </span>   Bereik</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Waardeverzameling van een gridcel bestaande uit de GxG, Gt en totstandkoming.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Bereik_totstandkoming"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Bereik_totstandkoming">
+            <h5 id="x4-3-5-1-totstandkoming"><span class="secno">4.3.5.1 </span>  totstandkoming</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Toelichting op de totstandkoming.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>CI_Citation</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_d16423e3258"></a><section id="detail_d16423e3258">
+            <h5 id="x4-3-5-2-glg"><span class="secno">4.3.5.2 </span>  GLG</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Gemiddelde van de LG3 over een periode van 30 jaar onder gegeven klimatologische en
+                           waterhuishoudkundige omstandigheden.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldiepte
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_d16423e3425"></a><section id="detail_d16423e3425">
+            <h5 id="x4-3-5-3-ghg"><span class="secno">4.3.5.3 </span>  GHG</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Gemiddelde van de HG3 over een periode van 30 jaar onder gegeven klimatologische en
+                           waterhuishoudkundige omstandigheden.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldiepte
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_d16423e3592"></a><section id="detail_d16423e3592">
+            <h5 id="x4-3-5-4-gvg"><span class="secno">4.3.5.4 </span>  GVG</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Gemiddelde van de VG3 over een periode van 30 jaar onder gegeven klimatologische en
+                           waterhuishoudkundige omstandigheden.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwaterspiegeldiepte
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_d16423e3759"></a><section id="detail_d16423e3759">
+            <h5 id="x4-3-5-5-gt"><span class="secno">4.3.5.5 </span>  Gt</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Typische combinatie van GHG- en GLG-klassen die op thematische kaarten kan worden
+                           weergegeven.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Grondwatertrap
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_association_ModelGrondwaterspiegeldiepteWDM_Bereik_gerelateerdGridcel"></a><section id="detail_association_ModelGrondwaterspiegeldiepteWDM_Bereik_gerelateerdGridcel">
+            <h5 id="x4-3-5-6-gerelateerdgridcel"><span class="secno">4.3.5.6 </span>  gerelateerdGridcel</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>heeft</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdGridcel</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Bereik</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Gridcel
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_E3897485_3C5F_43f3_9182_9E6E754D984F"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Domein"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Domein">
+         <h4 id="x4-3-6-domein"><span class="secno">4.3.6 </span>   Domein</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Ruimtelijke afbakening van een gridcel.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Domein_geometrie"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Domein_geometrie">
+            <h5 id="x4-3-6-1-geometrie"><span class="secno">4.3.6.1 </span>  geometrie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Domein</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>2D geometrie.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>CV_GridCell</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_association_ModelGrondwaterspiegeldiepteWDM_Domein_gerelateerdeGridcel"></a><section id="detail_association_ModelGrondwaterspiegeldiepteWDM_Domein_gerelateerdeGridcel">
+            <h5 id="x4-3-6-2-gerelateerdegridcel"><span class="secno">4.3.6.2 </span>  gerelateerdeGridcel</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Domein</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>heeft</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdeGridcel</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Domein</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Gridcel
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_F09743D7_6B95_4243_A403_BEC64D04F7FF"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte">
+         <h4 id="x4-3-7-grondwaterspiegeldiepte"><span class="secno">4.3.7 </span>   Grondwaterspiegeldiepte</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>De mediane waarde van de grondwaterspiegeldiepte, en de realisaties waaruit deze berekend
+                        is.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_diepte"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_diepte">
+            <h5 id="x4-3-7-1-diepte"><span class="secno">4.3.7.1 </span>  diepte</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Mediane waarde van de berekende grondwaterspiegeldiepte.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Grondwatertrapklasse</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_realisatiesvandiepte"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwaterspiegeldiepte_realisatiesvandiepte">
+            <h5 id="x4-3-7-2-realisaties-van-diepte"><span class="secno">4.3.7.2 </span>  realisaties van diepte</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwaterspiegeldiepte</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Realisaties (trekkingen) van grondwaterspiegeldiepten.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>DataArray</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_58AEC090_D83F_4707_B418_3D9C79CC58CE"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap">
+         <h4 id="x4-3-8-grondwatertrap"><span class="secno">4.3.8 </span>   Grondwatertrap</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>De meest voorkomende klasse van de grondwatertrap en de realisaties waaruit deze berekend
+                        is </p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>Grondwatertrap geeft een classificatie/indicatie van de gemiddelde hoogste grondwaterstand
+                     (GHG) en de gemiddeld laagste grondwaterstand (GLG). 
+                     Ofwel: de GHG en GLG realiseren de classificatie van de grondwatertrap (Gt).</td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_klasse"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_klasse">
+            <h5 id="x4-3-8-1-klasse"><span class="secno">4.3.8.1 </span>  klasse</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwatertrap</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Classificatie van de grondwatertrap.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Grondwatertrapklasse</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_realisatiesvanklasse"></a><section id="detail_attribute_ModelGrondwaterspiegeldiepteWDM_Grondwatertrap_realisatiesvanklasse">
+            <h5 id="x4-3-8-2-realisaties-van-klasse"><span class="secno">4.3.8.2 </span>  realisaties van klasse</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Grondwatertrap</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Realisaties (trekkingen) van de classificatie van de grondwatertrap.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>DataArray</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_EDBFC5D1_0314_4d8e_A1FD_91D56A01B776"></a><a class="anchor" id="global_class_ModelGrondwaterspiegeldiepteWDM_CV_Coverage"></a><section id="global_class_ModelGrondwaterspiegeldiepteWDM_CV_Coverage">
+         <h4 id="x4-3-9-cv_coverage"><span class="secno">4.3.9 </span>   CV_Coverage</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Herkomst</th>
+                  <td>ISO19123:2018</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>CV_Coverage uit ISO19123.</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Herkomst definitie</th>
+                  <td>ISO19123:2018</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+   </section>
+</section><section id="uitbreidbare-waardelijsten">
+   <!--OddPage--><h2 id="x5-uitbreidbare-waardelijsten"><span class="secno">5. </span>Uitbreidbare waardelijsten</h2>
+   <section id="detail_class_ModelGrondwaterspiegeldiepteWDM_TypeWaarneming">
+      <h3 id="x5-1-enumeratie-details-typewaarneming"><span class="secno">5.1 </span>Enumeratie details  TypeWaarneming</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Lijst met aanduidingen voor het type waarneming.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>dieper dan</td>
+               <td>
+                  
+                  <p>De grondwaterspiegeldiepte is <em>dieper dan</em> de waargenomen diepte.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>gelijk aan</td>
+               <td>
+                  
+                  <p>De grondwaterspiegeldiepte is <em>gelijk aan</em> de waargenomen diepte.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_ModelGrondwaterspiegeldiepteWDM_Grondwatertrapklasse">
+      <h3 id="x5-2-enumeratie-details-grondwatertrapklasse"><span class="secno">5.2 </span>Enumeratie details  Grondwatertrapklasse</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Lijst met classificaties van de grondwatertrap.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>Ia</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &lt; 50</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Ic</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &lt; 50</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IIa</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 50 - 80</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IIb</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 25 - 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 50 - 80</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IIc</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 50 - 80</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IIIa</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 80 - 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IIIb</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 25 - 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 80 - 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IVu</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 40 - 80; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 80 - 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>IVc</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 80; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 80 - 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Va</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Vao</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 120 - 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Vad</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &lt; 25; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Vb</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 25 - 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Vbo</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 25 - 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 120 - 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>Vbd</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 25 - 40; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VI</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 40 - 80; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIo</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 40 - 80; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 120 - 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VId</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 40 - 80; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VII</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 80 - 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIIo</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 80 - 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 120 - 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIId</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: 80 - 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIII</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 120</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIIIo</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: 120 - 180</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>VIIId</td>
+               <td>
+                  
+                  <p>Gemiddeld Hoogste Grondwaterstand (GHG) in cm-mv: &gt; 140; Gemiddeld Laagste Grondwaterstand
+                     (GLG) in cm-mv: &gt; 180</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_ModelGrondwaterspiegeldiepteWDM_Opmerking">
+      <h3 id="x5-3-enumeratie-details-opmerking"><span class="secno">5.3 </span>Enumeratie details  Opmerking</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Lijst met standaardwaarden voor opmerking bij grondwaterspiegeldieptemeting.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>geen grondwaterspiegel en droog</td>
+               <td>
+                  
+                  <p>De bodem aan de onderkant van het boorgat is droog en er is geen vrij water in het
+                     boorgat.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>geen grondwaterspiegel en nat</td>
+               <td>
+                  
+                  <p>De bodem aan de onderkant van het boorgat is vochtig maar er is geen vrij water in
+                     het boorgat.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>grondwaterspiegel in het boorgat</td>
+               <td>
+                  
+                  <p>Er staat vrij water in het boorgat.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>grondwaterspiegel bovenaan in het boorgat</td>
+               <td>
+                  
+                  <p>Een volgelopen boorgat, dat niet ‘onder water’ staat, dus volgestroomd vanuit de bodem
+                     niet van bovenaf. Dit is een dan grondwaterspiegeldiepte van 0 cm.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>boorgat staat onder water</td>
+               <td>
+                  
+                  <p>Grondwaterspiegelmeting is niet mogelijk.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>schijngrondwaterspiegel</td>
+               <td>
+                  
+                  <p>Een grondwaterspiegel die ontstaan is doordat grondwater stagneert op een slecht doorlatende
+                     laag zoals een laag keileem, een kleilaag, etc.. Deze grondwaterspiegel kan tijdelijk
+                     optreden. Bij aantreffen moet ook een tweede, diepere boring worden uitgevoerd tot
+                     in het grondwater dat zich onder de bovenkant van de stagnerende laag bevindt.</p>
+                  </td>
+            </tr>
+            <tr>
+               <td>insteltijd te kort voor grondwaterspiegelmeting</td>
+               <td>
+                  
+                  <p>Binnen de tijd zoals voorgeschreven in het meetprotocol is nog geen evenwicht bereikt
+                     voor de grondwaterspiegel en daarom is de meting van de grondwaterspiegeldiepte niet
+                     bruikbaar.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+</section>
+      <section id="model-grondwaterspiegeldiepte-nl" data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="x6-beschrijving"><span class="secno">6. </span>Beschrijving</h2><p>Het model grondwaterspiegeldiepte is een registratieobject in het domein
+modellen. Het gaat in dit domein om schattingen of voorspellingen van de opbouw
+en eigenschappen van de bodem of ondergrond in twee of drie dimensies. Met
+‘schatten’ wordt schatten in statistische zin bedoeld en niet schatten zoals in
+spreektaal. Schatten in statistische zin is het berekenen van
+populatieparameters op basis van beschikbare gegevens. Het is dus een
+berekening. Vaak wordt daarbij tevens de nauwkeurigheid geoptimaliseerd en
+gekwantificeerd. Modellen zijn sterk afhankelijk van de hoeveelheid en kwaliteit
+van de beschikbare gegevens zoals metingen van de diepte tot de
+grondwaterspiegel. De kwaliteit van de modellen zal daarom toenemen naarmate er
+meer metingen in de BRO beschikbaar komen. Het model grondwaterspiegeldiepte is
+een tweedimensionaal model van de diepte tot de grondwaterspiegel, met een
+resolutie van 50 bij 50 meter, en geeft informatie over de dieptes waartussen de
+grondwaterspiegel jaarlijks gemiddeld fluctueert.</p><p>Het grondwater bevindt zich in Nederland meestal tot op geringe diepte, en is
+daarom van invloed op gewasgroei, ecosystemen, uitspoeling van nutriënten,
+funderingen, maaivelddaling, berijdbaarheid en dergelijke. Informatie over de
+grondwaterspiegeldiepte, het grensvlak tussen de verzadigde en onverzadigde
+zone, wordt onder meer gebruikt bij het berekenen van schade-uitkeringen aan
+agrariërs in waterwingebieden, bij het schatten van de nitraatuitspoeling naar
+het grondwater voor onderbouwing van het mestbeleid en bij de voorbereiding van
+civieltechnische werken. Veel toepassingen vragen om uniforme en actuele
+gegevens over grondwaterkarakteristieken die de diepte waarop de
+grondwaterspiegel jaarlijks fluctueert beschrijven.</p><p>Aanvankelijk is bij de totstandkoming van de bodemkaart van Nederland 1:50.000
+de grondwaterspiegeldiepte simultaan met de bodem gekarteerd, en als
+grondwatertrappen (Gt’s) op de kaart weergegeven. Gt’s geven per kaartvlak met
+klassen aan tussen welke grenzen de grondwaterspiegeldiepte jaarlijks gemiddeld
+genomen fluctueert. Deze Gt-informatie op de landsdekkende kaart is nu echter
+niet meer uniform, want gedurende een periode van circa 40 jaar is sprake
+geweest van regionale aanpassingen en van verbeteringen en verfijningen van de
+Gt-kaart. Gaandeweg zijn ook de klassenindeling en de legenda aangepast.
+Bovendien is door ingrepen in de waterhuishouding die sinds de karteringen
+hebben plaatsgevonden de Gt-informatie voor verschillende gebieden niet meer
+actueel. Vanaf 2002 is daarom een nieuwe methodiek toegepast om karakteristieken
+voor de seizoensfluctuatie van de grondwaterspiegel in kaart te brengen. Gt’s
+zijn hiervan af te leiden.</p><p>Met de nieuwe methodiek is eerst de grondwaterspiegeldiepte van hoog Nederland
+in kaart gebracht, namelijk tussen 1997 en 2004, onder meer ter ondersteuning
+van het mestbeleid. Vervolgens is de Gt-kaart voor laag Nederland geactualiseerd
+(Hoogland e.a., 2014), waarbij de actuele inhoud van de kaarteenheden van de
+Gt-kaart, schaal 1 : 50.000, middels een kanssteekproef is beschreven. In 2018
+is een start gemaakt met de kartering van de grondwaterspiegeldiepte in laag
+Nederland (Stuyt e.a., 2018). Hierbij werd de benadering die in hoog Nederland
+is gevolgd aangepast aan de hydrologische situatie in laag Nederland. Denk
+daarbij aan de invloed van peilbeheer op de grondwaterspiegeldiepte, de variatie
+in grondwaterspiegeldiepte binnen percelen en weinig of geen samenhang tussen
+grondwaterspiegeldiepte en maaiveldshoogte. Met hoog en laag Nederland ontstaat
+daarmee een landsdekkend beeld van de grondwaterspiegeldiepte. Hierbij dient
+opgemerkt te worden dat gebieden waar grondwater zo diep zit dat geen aanvulling
+van grondwater naar het bodemprofiel plaatsvindt niet op de kaart zijn ingevuld
+(de ‘witte’ gebieden).</p><section id="definitie-van-het-model-grondwaterspiegeldiepte"><h3 id="x6-1-definitie-van-het-model-grondwaterspiegeldiepte"><span class="secno">6.1 </span>Definitie van het model grondwaterspiegeldiepte</h3><p><strong>Model Grondwaterspiegeldiepte</strong>. Voor dit registratie-object is het niveau van
+de (freatische) grondwaterspiegel bedoeld ten opzichte van maaiveld en niet ten
+opzichte van een vast referentieniveau (meestal NAP). De term
+‘Grondwaterspiegeldiepte’ geeft aan dat het referentieniveau maaiveld is. Voor
+de term&nbsp;<em>grondwaterspiegeldiepte</em>&nbsp;is gekozen omdat deze taalkundig beter is dan
+de term grondwaterstandsdiepte en beter aansluit bij de term&nbsp;<em>water table
+depth</em>&nbsp;die in de internationale literatuur wordt gebruikt. Het registratieobject
+‘Model Grondwaterspiegeldiepte’[^1] is landsdekkend en heeft op dit moment
+betrekking op het niet-verharde, niet-bebouwde deel van Nederland. Het model
+grondwaterspiegeldiepte is gebaseerd op gemeten grondwaterspiegeldieptes en
+gebiedsdekkende hulpinformatie zoals hoogtemodellen van het maaiveld. Opgenomen
+zijn verschillende, statistisch berekende karakteristieken van de dynamiek
+(seizoensfluctuatie) van de grondwaterspiegeldiepte in Nederland.</p><p>[^1]: De Engelse benaming van het registratieobject is: Water Table Depth Model
+(afkorting gebruikt binnen het BRO programma is: WDM)</p><p>We spreken over een model van de grondwaterspiegeldiepte omdat het
+gebiedsdekkende voorspellingen (interpolaties) betreft, die met statistische
+methoden zijn berekend uit waargenomen grondwaterspiegeldieptes en daarmee
+samenhangende informatie uit verschillende gegevensbronnen. Het is dus geen
+model dat fysische processen beschrijft.</p><p>De belangrijkste dynamische karakteristieken zijn de gemiddeld hoogste en
+gemiddeld laagste grondwaterspiegeldiepte (GHG en GLG) die weer worden gebruikt
+voor een classificatie in Grondwatertrappen (Gt’s) zoals we die in Nederland
+kennen.</p><p>De nauwkeurigheid van de grondwaterspiegeldieptekarakteristieken is eveneens
+onderdeel van het model, in de vorm van een groot aantal (300 of meer)
+realisaties (trekkingen) uit de kansverdelingen van deze karakteristieken. (zie
+figuur 1.) Door realisaties (trekkingen) uit de kansverdeling op te nemen in het
+model hoeft de BRO-gebruiker van het model grondwaterspiegeldiepte geen
+veronderstellingen te doen over de vorm van de kansverdeling.</p><p><img src="media/797e151dd13b961092a5ea537045cdc3.png" alt=""></p><p>Figuur 1. Samenhang tussen realisaties en best estimate van GxG en Gt.</p><p>Het model grondwaterspiegeldiepte verschilt van voorspellingen die met
+fysisch-mechanistische modellen kunnen worden gemaakt van de
+grondwaterspiegeldiepte (of karakteristieken daarvan), zoals het Landelijk
+Hydrologisch Model (LHM). Het verschil uit zich in de volgende punten:</p><ol>
+<li><p>Resolutie (50x50 m bij het model grondwaterspiegeldiepte, 250x250 m bij het
+LHM;</p>
+</li>
+<li><p>Het model grondwaterspiegeldiepte is een ruimtelijk model dat is gebaseerd
+op circa één waarneming per km\². Modelveronderstellingen hebben
+betrekking op de ruimtelijke correlatiestructuur (ruimtelijke patroon) van
+deze waarnemingen. Het LHM is een fysisch-mechanistisch model dat is
+gebaseerd op een beschrijving van processen van grondwaterstroming.
+Modelveronderstellingen hebben betrekking op deze processen.</p>
+</li>
+<li><p>Het model grondwaterspiegeldiepte is statistisch gebaseerd en geeft daardoor
+een kwantitatieve indicatie van de nauwkeurigheid van de ruimtelijk
+voorspelde GHG’s en GLG’s. Het LHM is fysisch gebaseerd en een kwantitatieve
+indicatie van de nauwkeurigheid van GHG’s en GLG’s die met het LHM zijn
+voorspeld is alleen achteraf door validatie te geven.</p>
+</li>
+</ol></section><section id="karakteristieken-van-de-grondwaterspiegeldiepte"><h3 id="x6-2-karakteristieken-van-de-grondwaterspiegeldiepte"><span class="secno">6.2 </span>Karakteristieken van de grondwaterspiegeldiepte</h3><p>De term ‘Grondwaterdynamiek’ is in 2002 geïntroduceerd door Finke e.a. (2002)
+[5] als een verzamelterm voor een aantal karakteristieken die de diepte beneden
+maaiveld karakteriseren waarbinnen jaarlijks de freatische grondwaterspiegel
+fluctueert: GHG, GLG, GVG, Gt, duurlijn, regimecurve en kwelklasse. De
+afkortingen worden hieronder verklaard. Ritzema e.a. (2012) geven definities van
+de GxG (GxG is een verzamelterm voor GHG, GLG en GVG). Waar in deze definities
+sprake is van ‘grondwaterstand’ wordt de grondwaterspiegeldiepte ten opzichte
+van maaiveld bedoeld. Deze wordt uitgedrukt in centimeters. Het teken van de GxG
+is positief voor standen beneden maaiveld.</p><p>Gemiddelde Hoogste Grondwaterstand (GHG): Gemiddelde van de HG3 over een periode
+van 30 jaar onder gegeven klimatologische en waterhuishoudkundige
+omstandigheden.</p><ul>
+<li><p>HG3: gemiddelde van de drie hoogste grondwaterstanden in een hydrologisch
+jaar (1 april t/m 31 maart) bij een meetfrequentie van tweemaal per maand
+(rond de 14e en 28e).<br>Gemiddelde Laagste Grondwaterstand (GLG): Gemiddelde van de LG3 over een
+periode van 30 jaar onder gegeven klimatologische en waterhuishoudkundige
+omstandigheden.</p>
+</li>
+<li><p>LG3: gemiddelde van de drie laagste grondwaterstanden in een hydrologisch
+jaar (1 april t/m 31 maart) bij een meetfrequentie van tweemaal per maand
+(rond de 14e en 28e).<br>Gemiddelde Voorjaars Grondwaterstand (GVG): Gemiddelde van de VG3 over een
+periode van 30 jaar onder gegeven klimatologische en waterhuishoudkundige
+omstandigheden.</p>
+</li>
+<li><p>VG3: gemiddelde van de grondwaterstanden op 14 maart, 28 maart en 14 april
+in een bepaald kalenderjaar.</p>
+</li>
+</ul><p>De Gt, grondwatertrap, is een typische combinatie van GHG- en GLG-klassen die op
+thematische kaarten kan worden weergegeven. In de loop van de tijd is deze
+classificatie aangepast en uitgebreid, zie Tabel 1 voor een overzicht.</p><p>Tabel 1 Grondwatertrappenindelingen voor de Bodemkaart van Nederland, schaal 1 :
+50 000, met kwalitatieve toevoegingen</p><table>
+<thead>
+<tr>
+<th><strong>Gt-klassen (1966)</strong></th>
+<th><strong>Klassegrenzen in cm. – maaiveld (1977)</strong></th>
+<th><strong>Kwalitatieve toevoegingen (sinds 1988)</strong></th>
+<th><strong>GHG in cm</strong></th>
+<th><strong>GLG in cm</strong></th>
+<th><strong>Kwantitatieve toevoegingen</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>- (0-20)1</td>
+<td>&amp;lt;50</td>
+<td>w</td>
+</tr>
+<tr>
+<td>II</td>
+<td>II</td>
+<td>II</td>
+<td>- (0-30)1</td>
+<td>50-80</td>
+<td>b, w</td>
+</tr>
+<tr>
+<td></td>
+<td>II*</td>
+<td>IIb</td>
+<td>25-40</td>
+<td>50-80</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>IIc</td>
+<td>&gt;40</td>
+<td>50-80</td>
+<td></td>
+</tr>
+<tr>
+<td>III</td>
+<td>III</td>
+<td>III</td>
+<td>&amp;lt;40</td>
+<td>80-120</td>
+<td>b, w</td>
+</tr>
+<tr>
+<td></td>
+<td>III*</td>
+<td>IIIb</td>
+<td>25-40</td>
+<td>80-120</td>
+<td></td>
+</tr>
+<tr>
+<td>IV</td>
+<td>IV</td>
+<td>IV</td>
+<td>40-80</td>
+<td>80-120</td>
+<td>b</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>IVc</td>
+<td>&gt;80</td>
+<td>80-120</td>
+<td></td>
+</tr>
+<tr>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>&amp;lt;40</td>
+<td>&gt;120</td>
+<td>b, s, w</td>
+</tr>
+<tr>
+<td></td>
+<td>V*</td>
+<td>Vb</td>
+<td>25-40</td>
+<td>&gt;120</td>
+<td></td>
+</tr>
+<tr>
+<td>VI</td>
+<td>VI</td>
+<td>VI</td>
+<td>40-80</td>
+<td>&gt;120</td>
+<td>b, s</td>
+</tr>
+<tr>
+<td>VII</td>
+<td>VII</td>
+<td>VII</td>
+<td>80-140</td>
+<td>&gt;120</td>
+<td>b, s</td>
+</tr>
+<tr>
+<td></td>
+<td>VII*</td>
+<td>VIII</td>
+<td>&gt;140</td>
+<td>&gt;120 (&gt;160)1</td>
+<td></td>
+</tr>
+</tbody></table><p>1(...) meest voorkomende waarden binnen een groter GHG- of GLG-traject</p><p>Verklaring:</p><p>Kwantitatieve toevoegingen Gt (sinds 1988):</p><p>...b = GHG tussen 25 en 40 cm – maaiveld</p><p>...c = constant; geringe fluctuatie</p><p>Kwalitatieve toevoegingen (sinds 1988):</p><p>b... = buiten de hoofdwaterkering gelegen gronden; periodiek overstroomd</p><p>s... = schijnspiegels; bij gronden met een grondwaterstandsfluctuatie (GLG-GHG)
+van meer dan 120 cm</p><p>w... = water boven maaiveld; aaneengesloten periode van meer dan één maand
+tijdens de winterperiode (alleen bij binnen de hoofdwaterkering gelegen gronden)</p><p>Sinds 2002 heeft de praktijk uitgewezen dat vooral informatie over GHG, GLG, en
+Gt wordt gebruikt. Ook het gebruik van de GVG lijkt zinvol al wordt daar minder
+vaak naar gevraagd. De definitie (en daarmee ook gegevensinhoud) van dit
+registratie-object beperkt zich daarom nu tot deze parameters.</p><p>Grondwaterdynamiek versus Grondwaterspiegeldiepte Bij WENR, waar ooit de term
+grondwaterdynamiek is ontstaan (Finke e.a., 2002, 2004) is indertijd een
+methodiek ontwikkeld waarvoor de term dynamiek passend was. De praktijk van de
+laatste ca. 20 jaar heeft echter uitgewezen dat vooral (of uitsluitend) om GHG,
+GLG en Gt wordt gevraagd, en bij natuurtoepassingen ook om GVG. Een deel van de
+destijds ontwikkelde methodiek bleef daardoor onbenut. In de toekomst kan de
+behoefte aan informatie wijzigen. Een oorzaak hiervoor zou kunnen zijn dat
+grondwaterstanden op steeds meer locaties met hoge frequentie (bijvoorbeeld
+dagelijks) worden geregistreerd, terwijl GHG, GLG en Gt nog op halfmaandelijks
+waargenomen grondwaterspiegeldieptes zijn gebaseerd. Modellen en tabellen voor
+landevaluatie en natuurbeheer zijn echter gebaseerd op GHG’s, GLG’s en daarvan
+afgeleide gemiddelde voorjaarsgrondwaterstanden (GVG’s): HELP-tabellen
+(Werkgroep HELP-tabel, 1987), TCGB-tabellen (Bouwmans, 1990), Waterwijzer
+Landbouw, Hydrologische Randvoorwaarden Natuur (Runhaar en Hennekens, 2014).</p></section><section id="grondwaterspiegeldiepte-metingen"><h3 id="x6-3-grondwaterspiegeldiepte-metingen"><span class="secno">6.3 </span>Grondwaterspiegeldiepte metingen</h3><p>Een belangrijk onderdeel van de methodiek voor het model grondwaterspiegeldiepte
+vormen de zogeheten gerichte opnames van grondwaterspiegeldieptes, die ‘gericht’
+in het voorjaar en najaar worden uitgevoerd en die we hier verder
+grondwaterspiegeldieptemetingen zullen noemen. Deze vinden plaats in aanvulling
+op de grondwaterstanden uit de BRO (grondwaterstandonderzoek) en gegevens uit
+andere bronnen, met als doel het meetnet van grondwaterstanden te verdichten.
+Gerichte opnames van de grondwaterspiegeldieptemetingen worden in het veld
+uitgevoerd op daartoe geselecteerde locaties. Op die locaties wordt de
+grondwaterspiegeldiepte twee keer in een open boorgat gemeten: één keer aan het
+einde van het zomerseizoen (GLG) en één keer aan het einde van het winterseizoen
+(GHG). Deze metingen worden ook wel ‘gerichte opnames’ genoemd, namelijk gericht
+op het in kaart brengen van de GLG en de GHG.</p></section><section id="nauwkeurigheid-van-informatie-over-de-grondwaterspiegeldiepte"><h3 id="x6-4-nauwkeurigheid-van-informatie-over-de-grondwaterspiegeldiepte"><span class="secno">6.4 </span>Nauwkeurigheid van informatie over de grondwaterspiegeldiepte</h3><p><strong>Werkelijkheid en Model</strong>. Elk model benadert een deel van de werkelijkheid in
+een bepaalde mate en elk model heeft dus een bepaalde mate van nauwkeurigheid
+(is mate van overeenstemming met de werkelijkheid), die direct in onzekerheid
+over die werkelijkheid is te vertalen. Als bij een model de nauwkeurigheid niet
+is gekwantificeerd, dan maakt dit zo'n model niet nauwkeuriger dan een model
+waarbij dit wel is gebeurd, zoals het model grondwaterspiegeldiepte. Feitelijk
+is de kwaliteit van een model waarbij de nauwkeurigheid niet is gekwantificeerd
+lager dan wanneer dit wel is gebeurd: bijvoorbeeld omdat zo'n model niet
+geschikt is voor onzekerheidsanalyses heeft het minder toepassingsmogelijkheden.
+Omdat je de nauwkeurigheid niet kent is het ook niet duidelijk voor welke
+toepassingen zo’n model geschikt is en voor welke niet.</p><p>De gebiedsdekkende voorspellingen van GHG en GLG voor 50x50m-gridcellen, die
+tezamen het model grondwaterspiegeldiepte vormen, hebben een bepaalde
+nauwkeurigheid. Deze nauwkeurigheid kan het meest compleet worden beschreven met
+een kansverdeling, die voor elke 50x50m-gridcel aangeeft welk niveau van GHG of
+GLG daar met welke waarschijnlijkheid wordt over- of onderschreden. Deze
+kansverdeling kwantificeert meerdere foutenbronnen, zoals die t.g.v. de gerichte
+opnames (bijv. meetmoment) en t.g.v. ruimtelijke-interpolatie. Finke e.a. (2004)
+vatten deze kansverdeling samen in 300 realisaties of trekkingen uit de
+kansverdeling van GHG en GLG-kaarten. Deze 300 realisaties kunnen bijvoorbeeld
+worden gebruikt als invoer in niet-lineaire modellen en voor
+onzekerheidsanalyses.</p><p>Het registratieobject model grondwaterspiegeldiepte geeft naast&nbsp;<em>best
+estimates</em>&nbsp;van GHG, GLG en Gt informatie over nauwkeurigheid. Evenals bij Finke
+e.a. (2004) worden 300 realisaties opgeslagen, waaruit parameters van de
+kansverdeling kunnen worden geschat naar keuze van de gebruiker. Als&nbsp;<em>best
+estimate</em>&nbsp;voor de GHG en de GLG kan de gebruiker bijvoorbeeld kiezen tussen het
+gemiddelde en de mediaan. Als indicatie van de nauwkeurigheid kan de gebruiker
+bijvoorbeeld kiezen voor de standaardafwijking of voor percentielen en een
+percentielafstand, bijvoorbeeld de afstand tussen het 5de en 95ste percentiel,
+i.e. een 90%-voorspellingsinterval.</p></section><section id="afhankelijkheid-met-andere-registratieobjecten"><h3 id="x6-5-afhankelijkheid-met-andere-registratieobjecten"><span class="secno">6.5 </span>Afhankelijkheid met andere registratieobjecten</h3><p>Binnen het registratieobject model grondwaterspiegeldiepte zijn meerdere
+relevante ‘objecten’ die een samenhang kennen die hieronder geschetst is (figuur
+2). Deze relevante objecten zijn de grondwaterspiegeldiepte, de gerichte opnames
+(‘open gat grondwaterspiegeldiepte’ in onderstaande figuur) die worden gedaan
+voor de bepaling van de GLG en GHG en de trekkingen of realisatie om de
+kansverdeling te bepalen en vormen onderdeel van dit registratieobject.</p><p><img src="media/6b797e6f82f8d53605c0114d1e502c09.png" alt=""></p><p>Figuur 2 ‘Objecten’ binnen dit Registratieobject</p><p>Het model grondwaterspiegeldiepte hangt niet direct samen met andere
+registratieobjecten uit de BRO, maar wel indirect, omdat bij de modellering van
+de grondwaterspiegeldiepte gebruik wordt gemaakt van informatie die elders in de
+BRO is opgeslagen, zoals bodemkundige informatie, tijdreeksen van
+grondwaterstanden en hydrogeologische informatie. Figuur 3 geeft deze indirecte
+samenhang met andere registratieobjecten in de BRO aan. Deze indirecte samenhang
+is geen onderdeel van dit registratieobject en is ook niet gegevens-inhoudelijk
+direct te koppelen.</p><p><img src="media/4afb57605a80a816d1cf5c2ce1453d29.png" alt=""></p><p>Figuur 3 ‘indirecte samenhang met andere registratieobjecten in de BRO</p><ol>
+<li><p>Het model grondwaterspiegeldiepte hangt samen met de bodemkaart (SGM), omdat
+de combinatie van beide kaarten wordt toegepast bij landevaluatie (berekenen
+van gewasopbrengsten en bepalen van standplaatscondities). Eerder waren Gt’s
+geometrisch direct gekoppeld aan de bodemkaartvlakken.</p>
+</li>
+<li><p>Het model grondwaterspiegeldiepte zal ook in de toekomst samenhangen met de
+bodemkaart (SGM) en kan ook mogelijk samenhangen met het Hydrogeologische
+registratieobject (HGM/REGIS), wanneer blijkt dat er samenhang is van GHG en
+GLG met gebiedsdekkende hulpinformatie uit het hydrogeologische landelijke
+ondergrondmodel.</p>
+</li>
+<li><p>Het model grondwaterspiegeldiepte hangt samen met grondwaterstandsonderzoek
+(GLD). Bij de totstandkoming van het model worden tijdreeksen uit DINO
+gebruikt. Voorzien is dat deze gegevens onder het RO GLD in de BRO
+geregistreerd gaan worden.</p>
+</li>
+</ol><p>Het model grondwaterspiegeldiepte is een registratieobject in het domein
+modellen. Het gaat in dit domein om schattingen of voorspellingen van de opbouw
+en eigenschappen van de bodem of ondergrond in twee of drie dimensies. Modellen
+zijn sterk afhankelijk van de hoeveelheid en kwaliteit van de beschikbare
+gegevens zoals metingen van de diepte tot de grondwaterspiegel. De kwaliteit van
+de modellen zal daarom toenemen naarmate er meer metingen in de BRO beschikbaar
+komen. Het model grondwaterspiegeldiepte is een tweedimensionaal model van de
+diepte tot de grondwaterspiegel, met een resolutie van 50 bij 50 meter, en geeft
+informatie over de dieptes waartussen de grondwaterspiegel jaarlijks gemiddeld
+fluctueert.</p><p>Het grondwater bevindt zich in Nederland meestal tot op geringe diepte, en is
+daarom van invloed op gewasgroei, ecosystemen, uitspoeling van nutriënten,
+funderingen, maaivelddaling, berijdbaarheid en dergelijke. Informatie over de
+grondwaterspiegeldiepte, het grensvlak tussen de verzadigde en onverzadigde
+zone, wordt onder meer gebruikt bij het berekenen van schade-uitkeringen aan
+agrariërs in waterwingebieden, bij het schatten van de nitraatuitspoeling naar
+het grondwater voor onderbouwing van het mestbeleid en bij de voorbereiding van
+civieltechnische werken. Veel toepassingen vragen om uniforme en actuele
+gegevens over grondwaterkarakteristieken die de diepte waarop de
+grondwaterspiegel jaarlijks fluctueert beschrijven.</p><p>Aanvankelijk is bij de totstandkoming van de bodemkaart van Nederland 1:50.000
+de grondwaterspiegeldiepte simultaan met de bodem gekarteerd, en als
+grondwatertrappen (Gt’s) op de kaart weergegeven. Gt’s geven per kaartvlak met
+klassen aan tussen welke grenzen de grondwaterspiegeldiepte jaarlijks gemiddeld
+genomen fluctueert. Deze Gt-informatie op de landsdekkende kaart is nu echter
+niet meer uniform, want gedurende een periode van circa 40 jaar is sprake
+geweest van regionale aanpassingen en van verbeteringen en verfijningen van de
+Gt-kaart. Gaandeweg zijn ook de klassenindeling en de legenda aangepast.
+Bovendien is door ingrepen in de waterhuishouding die sinds de karteringen
+hebben plaatsgevonden de Gt-informatie voor verschillende gebieden niet meer
+actueel. Vanaf 2002 is daarom een nieuwe methodiek toegepast om karakteristieken
+voor de seizoensfluctuatie van de grondwaterspiegel in kaart te brengen. Gt’s
+zijn hiervan af te leiden.</p><p>Met de nieuwe methodiek is eerst de grondwaterspiegeldiepte van hoog Nederland
+in kaart gebracht, namelijk tussen 1997 en 2004, onder meer ter ondersteuning
+van het mestbeleid. Vervolgens is de Gt-kaart voor laag Nederland geactualiseerd
+(Hoogland e.a., 2014), waarbij de actuele inhoud van de kaarteenheden van de
+Gt-kaart, schaal 1 : 50.000, middels een kanssteekproef is beschreven. In 2018
+is een start gemaakt met de kartering van de grondwaterspiegeldiepte in laag
+Nederland (Stuyt e.a., 2018). Hierbij werd de benadering die in hoog Nederland
+is gevolgd aangepast aan de hydrologische situatie in laag Nederland. Denk
+daarbij aan de invloed van peilbeheer op de grondwaterspiegeldiepte, de variatie
+in grondwaterspiegeldiepte binnen percelen en weinig of geen samenhang tussen
+grondwaterspiegeldiepte en maaiveldshoogte. Met hoog en laag Nederland ontstaat
+daarmee een landsdekkend beeld van de grondwaterspiegeldiepte. Hierbij dient
+opgemerkt te worden dat gebieden waar grondwater zo diep zit dat geen aanvulling
+van grondwater naar het bodemprofiel plaatsvindt niet op de kaart zijn ingevuld
+(de ‘witte’ gebieden).</p></section><section id="referenties"><h3 id="x6-6-referenties"><span class="secno">6.6 </span>Referenties</h3><p>Bouwmans, J., 1990. <em>Achtergrond en toepassing van de TCGB-tabel: een methode
+voor het bepalen van de opbrengstdepressie van grasland op zandgrond als gevolg
+van een grondwaterstandsverlaging.</em> Technische Commissie Grondwaterbeheer,
+Utrecht.</p><p>Finke, P.A., M.F.P. Bierkens, D.J. Brus, J.W.J. van der Gaast, T. Hoogland, M.
+Knotters en F. de Vries, 2002. <em>Klimaatsrepresentatieve grondwaterspiegeldiepte
+in Waterschap Peel en Maasvallei.</em> Wageningen, Alterra-rapport 383.</p><p>Finke, P.A., D.J. Brus, M.F.P. Bierkens, T. Hoogland, M. Knotters en F. de
+Vries, 2004. <em>Mapping groundwater dynamics using multiple sources of exhaustive
+high resolution data.</em> Geoderma 123: 23-39.</p><p>Hoogland, T., M. Knotters, M. Pleijter en D.J.J. Walvoort, 2014. <em>Actualisatie
+van de grondwatertrappenkaart van holoceen Nederland.</em> Wageningen,
+Alterra-rapport 2612.</p><p>Ritzema, H.P., G.B.M. Heuvelink, M. Heinen, P.W. Bogaart, F.J.E. van der Bolt,
+M.J.D. Hack-ten Broeke, T. Hoogland, M. Knotters, H.T.L. Massop en H.R.J. Vroon,</p><ol start="2012">
+<li><em>Meten en interpreteren van grondwaterstanden. Analyse van methodieken en
+nauwkeurigheid.</em> Wageningen, Alterra-rapport 2345.</li>
+</ol><p>Runhaar, H. en S. Hennekens, 2014. <em>Hydrologische Randvoorwaarden Natuur Versie
+3; Gebruikershandleiding.</em> Wageningen, Nieuwegein, Utrecht, Alterra Wageningen
+UR, KWR Watercycle Research Institute, STOWA.</p><p>Stuyt, L.C.P.M., M. Knotters, D.J.J. Walvoort, F. Brouwer en H.T.L. Massop,</p><ol start="2018">
+<li><em>Basisregistratie Ondergrond - Gd-kartering Laag-Nederland 2018; Provincie
+Flevoland.</em> Wageningen, Wettelijke Onderzoekstaken (WOt) Natuur &amp; Milieu.
+WOt-technical report 145.</li>
+</ol><p>Werkgroep HELP-tabel, 1987. <em>De invloed van de waterhuishouding op de
+landbouwkundige produktie.</em> Mededelingen Landinrichtingsdienst 176, Utrecht.</p></section></section>
+   
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

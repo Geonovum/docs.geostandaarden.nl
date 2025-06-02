@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#" lang="nl">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="dc:language" content="en" lang="">
+    <style>
+        /* --- ISSUES/NOTES --- */
+
+        div.issue-title,
+        div.note-title,
+        div.ednote-title,
+        div.warning-title {
+            padding-right: 1em;
+            min-width: 7.5em;
+            color: #b9ab2d;
+        }
+
+        div.issue-title {
+            color: #e05252;
+        }
+
+        div.note-title,
+        div.ednote-title {
+            color: #2b2;
+        }
+
+        div.warning-title {
+            color: #f22;
+        }
+
+        div.issue-title span,
+        div.note-title span,
+        div.ednote-title span,
+        div.warning-title span {
+            text-transform: uppercase;
+        }
+
+        div.note,
+        div.issue,
+        div.ednote,
+        div.warning {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        .note>p:first-child,
+        .ednote>p:first-child,
+        .issue>p:first-child,
+        .warning>p:first-child {
+            margin-top: 0
+        }
+
+        .issue,
+        .note,
+        .ednote,
+        .warning {
+            padding: .5em;
+            border-left-width: .5em;
+            border-left-style: solid;
+        }
+
+        div.issue,
+        div.note,
+        div.ednote,
+        div.warning {
+            padding: 1em 1.2em 0.5em;
+            margin: 1em 0;
+            position: relative;
+            clear: both;
+        }
+
+        span.note,
+        span.ednote,
+        span.issue,
+        span.warning {
+            padding: .1em .5em .15em;
+        }
+
+        .issue {
+            border-color: #e05252;
+            background: #fbe9e9;
+        }
+
+        .note,
+        .ednote {
+            border-color: #52e052;
+            background: #e9fbe9;
+        }
+
+        .warning {
+            border-color: #f11;
+            border-width: .2em;
+            border-style: solid;
+            background: #fbe9e9;
+        }
+
+        .warning-title:before {
+            content: "⚠";
+            /*U+26A0 WARNING SIGN*/
+            font-size: 3em;
+            float: left;
+            height: 100%;
+            padding-right: .3em;
+            vertical-align: top;
+            margin-top: -0.5em;
+        }
+
+        li.task-list-item {
+            list-style: none;
+        }
+
+        input.task-list-item-checkbox {
+            margin: 0 0.35em 0.25em -1.6em;
+            vertical-align: middle;
+        }
+    </style>
+
+
+
+    <title>Whitepaper Geo-standaarden</title>
+
+
+    <style id="respec-mainstyle">
+        /*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+        /* Override code highlighter background */
+
+        .hljs {
+            background: transparent !important;
+        }
+        /* --- INLINES --- */
+
+        em.rfc2119 {
+            text-transform: lowercase;
+            font-style: normal;
+            color: #900;
+        }
+
+        h1 abbr,
+        h2 abbr,
+        h3 abbr,
+        h4 abbr,
+        h5 abbr,
+        h6 abbr,
+        a abbr {
+            border: none;
+        }
+
+        dfn {
+            font-weight: bold;
+        }
+
+        a.internalDFN {
+            color: inherit;
+            border-bottom: 1px solid #99c;
+            text-decoration: none;
+        }
+
+        a.externalDFN {
+            color: inherit;
+            border-bottom: 1px dotted #ccc;
+            text-decoration: none;
+        }
+
+        a.bibref {
+            text-decoration: none;
+        }
+
+        cite .bibref {
+            font-style: normal;
+        }
+
+        code {
+            color: #C83500;
+        }
+
+        th code {
+            color: inherit;
+        }
+        /* --- TOC --- */
+
+        .toc a,
+        .tof a {
+            text-decoration: none;
+        }
+
+        a .secno,
+        a .figno {
+            color: #000;
+        }
+
+        ul.tof,
+        ol.tof {
+            list-style: none outside none;
+        }
+
+        .caption {
+            margin-top: 0.5em;
+            font-style: italic;
+        }
+        /* --- TABLE --- */
+
+        table.simple {
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-bottom: 3px solid #005a9c;
+        }
+
+        .simple th {
+            background: #005a9c;
+            color: #fff;
+            padding: 3px 5px;
+            text-align: left;
+        }
+
+        .simple th[scope="row"] {
+            background: inherit;
+            color: inherit;
+            border-top: 1px solid #ddd;
+        }
+
+        .simple td {
+            padding: 3px 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .simple tr:nth-child(even) {
+            background: #f0f6ff;
+        }
+        /* --- DL --- */
+
+        .section dd>p:first-child {
+            margin-top: 0;
+        }
+
+        .section dd>p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section dd {
+            margin-bottom: 1em;
+        }
+
+        .section dl.attrs dd,
+        .section dl.eldef dd {
+            margin-bottom: 0;
+        }
+
+        #issue-summary>ul,
+        .respec-dfn-list {
+            column-count: 2;
+        }
+
+        #issue-summary li,
+        .respec-dfn-list li {
+            list-style: none;
+        }
+
+        @media print {
+            .removeOnSave {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        /*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em;
+            color: #333;
+            background: #f8f8f8;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #998;
+            font-style: italic;
+        }
+
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-subst {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .hljs-number,
+        .hljs-literal,
+        .hljs-variable,
+        .hljs-template-variable,
+        .hljs-tag .hljs-attr {
+            color: #008080;
+        }
+
+        .hljs-string,
+        .hljs-doctag {
+            color: #d14;
+        }
+
+        .hljs-title,
+        .hljs-section,
+        .hljs-selector-id {
+            color: #900;
+            font-weight: bold;
+        }
+
+        .hljs-subst {
+            font-weight: normal;
+        }
+
+        .hljs-type,
+        .hljs-class .hljs-title {
+            color: #458;
+            font-weight: bold;
+        }
+
+        .hljs-tag,
+        .hljs-name,
+        .hljs-attribute {
+            color: #000080;
+            font-weight: normal;
+        }
+
+        .hljs-regexp,
+        .hljs-link {
+            color: #009926;
+        }
+
+        .hljs-symbol,
+        .hljs-bullet {
+            color: #990073;
+        }
+
+        .hljs-built_in,
+        .hljs-builtin-name {
+            color: #0086b3;
+        }
+
+        .hljs-meta {
+            color: #999;
+            font-weight: bold;
+        }
+
+        .hljs-deletion {
+            background: #fdd;
+        }
+
+        .hljs-addition {
+            background: #dfd;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-BASIS.css">
+    <meta name="generator" content="ReSpec 15.4.1">
+    <script id="initialUserConfig" type="application/json">
+        {
+            "specStatus": "GN-BASIS",
+            "specType": "IM",
+            "pubDomain": "etc",
+            "publishDate": "2017-05-31",
+            "editors": [{
+                    "name": "Friso Penninga",
+                    "company": "Geonovum",
+                    "url": "http://www.geonovum.nl/"
+                },
+                {
+                    "name": "Linda van den Brink",
+                    "company": "Geonovum",
+                    "url": "http://www.geonovum.nl/"
+                }
+            ],
+            "shortName": "whitepaper-standaarden",
+            "subtitle": "Consultatieversie",
+            "github": "https://github.com/Geonovum/whitepaper-standaarden",
+            "issueBase": "https://github.com/Geonovum/whitepaper-standaarden/issues/"
+        }
+    </script>
+</head>
+
+<body aria-busy="false" class="h-entry" id="respecDocument">
+    <div class="head" role="contentinfo" id="respecHeader">
+        <p><a class="logo" href="http://www.geonovum.nl/"><img src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM" width="132" height="67"></a></p>
+        <p></p>
+        <h1 class="title p-name" id="title" property="dcterms:title">Whitepaper Geo-standaarden</h1>
+        <h2 property="bibo:subtitle" id="subtitle">Consultatieversie</h2>
+        <h2 id="geonovum-document-31-mei-2017">Geonovum Document
+            <time property="dcterms:issued" class="dt-published" datetime="">
+      31 mei 2017
+    </time>
+        </h2>
+        <dl>
+            <dt>Deze versie:</dt>
+            <dd><a class="u-url" href="https://docs.geostandaarden.nl/wp/basis-hr-wpgs-20170531/">https://docs.geostandaarden.nl/wp/basis-hr-wpgs-20170531/</a></dd>
+            <dt>Laatst gepubliceerde versie:</dt>
+            <dd><a href="https://docs.geostandaarden.nl/wp/wpgs/">https://docs.geostandaarden.nl/wp/wpgs/</a></dd>
+            <dt>Laatste werkversie:</dt>
+            <dd><a href="https://geonovum.github.io/whitepaper-standaarden/">https://geonovum.github.io/whitepaper-standaarden/</a></dd>
+            <dt>
+      Redacteurs:
+    </dt>
+            <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Friso Penninga"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.geonovum.nl/">Friso Penninga</a>, Geonovum</span>
+                <span property="rdf:rest" resource="_:editor1"></span>
+            </dd>
+            <dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Linda van den Brink"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.geonovum.nl/">Linda van den Brink</a>, Geonovum</span>
+                <span property="rdf:rest" resource="rdf:nil"></span>
+            </dd>
+
+            <dt>Doe mee:</dt>
+
+            <dd>
+                <a href="https://github.com/Geonovum/whitepaper-standaarden">
+                      GitHub Geonovum/whitepaper-standaarden
+                    </a>
+            </dd>
+
+            <dd>
+                <a href="https://github.com/Geonovum/whitepaper-standaarden/issues/">
+                      Dien een melding in
+                    </a>
+            </dd>
+
+            <dd>
+                <a href="https://github.com/Geonovum/whitepaper-standaarden/commits/gh-pages">
+                      Revisiehistorie
+                    </a>
+            </dd>
+
+            <dt>Rechtenbeleid:</dt>
+            <div class="copyright" style="margin: 0.25em 0;">
+                <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+                <div style="display:inline-block; vertical-align:top">
+                    <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+                </div>
+            </div>
+        </dl>
+        <hr title="Separator for header">
+    </div>
+    <section id="abstract" class="introductory" property="dc:abstract">
+        <h2 id="samenvatting" resource="#samenvatting"><span property="xhv:role" resource="xhv:heading">Samenvatting</span></h2>
+        <p>In deze White paper kijken we terug op 10 jaar standaarden ontwikkelen en beheren. Hierbij richten we ons specifiek op de set Geostandaarden van de Pas toe of leg uit-lijst van het Forum Standaardisatie. Deze set vormt de ruggengraat van de Nederlandse
+            spatial data infrastructure (SDI). Op basis van trends en technologische ontwikkelingen proberen we 5 jaar vooruit te kijken en de vraag te beantwoorden of de huidige set standaarden nog volledig voldoet. In hoeverre zijn innovaties en ontwikkelingen
+            zo volwassen geworden, dat ze weerslag hebben op de standaarden die we nu beheren? </p>
+    </section>
+    <section id="sotd" class="introductory">
+        <h2 id="status-van-dit-document" resource="#status-van-dit-document"><span property="xhv:role" resource="xhv:heading">Status van dit document</span></h2>
+        <p>
+            <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="http://www.geonovum.nl/wegwijzer/standaarden">http://www.geonovum.nl/wegwijzer/standaarden</a></em>
+        </p>
+
+        <p>
+            Dit is een document zonder officiële status.
+        </p>
+    </section>
+    <nav id="toc">
+        <h2 class="introductory" id="inhoudsopgave" resource="#inhoudsopgave"><span property="xhv:role" resource="xhv:heading">Inhoudsopgave</span></h2>
+        <ol class="toc" role="directory">
+            <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Inleiding</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#scope" class="tocxref"><span class="secno">1.1 </span>Scope</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#relevantetrends" class="tocxref"><span class="secno">2. </span>Relevante trends</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#3D" class="tocxref"><span class="secno">2.1 </span>Meer 3D geo-informatie</a></li>
+                    <li class="tocline"><a href="#linkeddata" class="tocxref"><span class="secno">2.2 </span>Meer linked data</a></li>
+                    <li class="tocline"><a href="#sensoren" class="tocxref"><span class="secno">2.3 </span>Meer sensoren</a></li>
+                    <li class="tocline"><a href="#web" class="tocxref"><span class="secno">2.4 </span>Meer gebruikers: Geo &amp; World Wide Web</a></li>
+                    <li class="tocline"><a href="#platform" class="tocxref"><span class="secno">2.5 </span>Meer kanalen: platformgedachte</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#impactstandaarden" class="tocxref"><span class="secno">3. </span>Impact op Pas toe of leg uit-standaarden</a>
+                <ol class="toc">
+                    <li class="tocline"><a href="#informatiemodellen" class="tocxref"><span class="secno">3.1 </span>Informatiemodel</a></li>
+                    <li class="tocline"><a href="#uitwisselformaat" class="tocxref"><span class="secno">3.2 </span>Uitwisselformaat</a></li>
+                    <li class="tocline"><a href="#ontsluiting" class="tocxref"><span class="secno">3.3 </span>Ontsluiting</a></li>
+                    <li class="tocline"><a href="#vindbaarheid" class="tocxref"><span class="secno">3.4 </span>Vindbaarheid / metadata</a></li>
+                </ol>
+            </li>
+            <li class="tocline"><a href="#discussie" class="tocxref"><span class="secno">4. </span>Discussie</a></li>
+        </ol>
+    </nav>
+    <div class="note">
+        <div class="note-title marker" aria-level="2" role="heading" id="h-note1"><span>Noot</span></div>
+        <div class="">
+            <p>Tijdens de consultatie vragen we reacties op deze hele white paper, maar op een aantal punten zijn we expliciet op zoek naar de mening van het werkveld. Deze punten zijn als Issue gemarkeerd in deze white paper.
+            </p>
+        </div>
+    </div>
+    <section id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="x1.-inleiding" resource="#x1.-inleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Inleiding</span>
+        </h2>
+        <p>Terugkijkend op tien jaar standaarden ontwikkelen en beheren, kunnen we vaststellen dat we in Nederland inmiddels een volwassen set standaarden kennen, die fungeert als de ruggengraat van de nationale spatial data infrastructure (SDI). Deze set
+            standaarden is opgenomen op de Pas toe of leg uit-lijst van het Forum Standaardisatie. Geonovum beheert -als hoeder van deze ruggengraat- deze set en is van de meeste afzonderlijke standaarden ook de beheerder. De set geostandaarden bevat
+            het Basismodel Geo-informatie (NEN3610), het 'moedermodel' van veel informatiemodellen waarmee semantiek van datasets éénduidig wordt vastgelegd, en een aantal standaarden die vastleggen hoe we deze datasets kunnen uitwisselen (GML), ontsluiten
+            (Nederlandse profielen op WMS en WFS) en vindbaar maken (Nederlandse metadataprofielen). </p>
+        <p>Hoewel de huidige SDI met de INSPIRE richtlijn, de datasets van geo-basisregistraties, en voorzieningen als PDOK niet meer weg te denken is uit de dagelijkse praktijk van het geo-informatiewerkveld, is een SDI nooit uitontwikkeld. Technologische
+            ontwikkelingen volgen elkaar in hoog tempo op en de maatschappelijke vragen evolueren. Waar de SDI oorspronkelijk alleen op de geo-professional gericht was, verwachten we tegenwoordig dat de SDI toegankelijk wordt voor een veel bredere gebruikersgroep,
+            waaronder de web-ontwikkelaars. Deze beoogde verbreding komt voort uit de toegenomen aandacht voor (her)bruikbaarheid van data, waar oorspronkelijk de focus meer lag op de ontsluiting zelf. Deze verschoven focus zien we nu ook onder de noemer
+            'van open data naar FAIR data', een concept oorspronkelijk bedacht voor wetenschappelijke (onderzoeks)data. Essentie hiervan: data dient niet alleen open te zijn, maar ook vindbaar, toegankelijk, interoperabel en herbruikbaar. </p>
+        <p></p>
+        <figure id="fig-generatedID"><img src="https://www.dtls.nl/wp-content/uploads/2015/11/Schermafbeelding-2016-04-01-om-14.22.46.png" height="250"></figure>
+        <p></p>
+        <p> In de toekomst verwachten we meer samenhang (en consistentie) tussen individuele datasets, meer detail in datasets (overgang van 2D naar 3D) en vormen van toegang tot data die aansluiten bij de gebruikerswensen van de veel bredere gebruikersgroep
+            van de Nederlandse SDI. </p>
+        <p>De Nederlandse SDI kan alleen succesvol meegaan in deze ontwikkeling, wanneer de onderliggende set standaarden dit afdoende ondersteunt. Daarom stellen we ons in deze white paper de vraag of de huidige set standaarden nog volledig voldoet. In
+            hoeverre zijn innovaties en ontwikkelingen zo volwassen geworden, dat ze weerslag hebben op de standaarden die we nu beheren? Langs de lijn van de geostandaarden die op de Pas toe leg uit-lijst staan, schetsen we welke updates van deze standaarden
+            er de komende 5 jaar mogelijk gaan komen. Input hiervoor komt uit ontwikkelingen die Geonovum de afgelopen jaren heeft verkend en gevolgd in de innovatieplatforms rond 3D, Linked Data, Sensoren en het Web en in internationale context. Op sommige
+            punten kunnen we al aanbevelingen geven, op andere zijn er nog open vragen. </p>
+        <section id="scope" typeof="bibo:Chapter" resource="#scope" property="bibo:hasPart">
+            <h3 id="x1.1-scope" resource="#x1.1-scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Scope</span>
+            </h3>
+            <p>De scope van deze white paper beperkt zich tot de set geostandaarden die op de Pas toe of leg uit-lijst staat van het Forum Standaardisatie. Deze standaarden vormen gezamenlijk de ruggengraat van de Nederlandse SDI. Door vooruit te kijken
+                naar de ontwikkelingen rond deze set standaarden, schetsen we hiermee automatisch de toekomstige ontwikkelingen van de Nederlandse SDI. Het is overigens goed denkbaar dat over vijf jaar de Nederlandse SDI minder herkenbaar is als afzonderlijke
+                infrastructuur, maar eerder gezien kan worden als de ruimtelijke component van de generieke digitale infrastructuur. </p>
+            <div class="issue" id="issue-4">
+                <div class="issue-title marker" aria-level="4" role="heading" id="h-issue1"><a href="https://github.com/Geonovum/whitepaper-standaarden/issues/4"><span>Issue 4</span></a><span style="text-transform: none">: Scope issue</span></div>
+                <aside class="">
+                    <p>De scope van de huidige set geostandaarden lijkt impliciet beperkt tot vectordata. In hoeverre moet deze scope verbreed worden naar andere typen data, zoals raster / voxel data en pointcloud data, zowel qua scope van de set geostandaarden
+                        als van deze white paper?
+                    </p>
+                </aside>
+            </div>
+        </section>
+    </section>
+    <section id="relevantetrends" typeof="bibo:Chapter" resource="#relevantetrends" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="x2.-relevante-trends" resource="#x2.-relevante-trends"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Relevante trends</span>
+        </h2>
+        <section id="3D" typeof="bibo:Chapter" resource="#3D" property="bibo:hasPart">
+            <h3 id="x2.1-meer-3d-geo-informatie" resource="#x2.1-meer-3d-geo-informatie"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Meer 3D geo-informatie</span>
+            </h3>
+            <p>Hoewel de steeds realistischer ogende visualisaties, inclusief tools als de Oculus Rift VR bril en de Hololens AR bril tot de verbeelding spreken, schuilt in de opkomst van deze gadgets niet de reden dat SDI's steeds meer richting 3D gaan.
+                De stap van 2D naar 3D is ook de stap van een grover naar een gedetailleerder model. En die gedetailleerdere modellen zijn steeds harder nodig, omdat de maatschappij steeds gedetailleerdere ruimtelijke vragen stelt, bijvoorbeeld over de
+                fysieke leefomgeving en de kwaliteit daarvan. “Hoeveel geluidsbelasting ondervind ik na realisatie van die nieuwe weg?”, “Zit ik straks met een slagschaduw in mijn tuin, wanneer die windmolen daadwerkelijk geplaatst wordt?”. Tegelijk wordt
+                ook de wereld waarover die vragen worden gesteld, steeds complexer. Om gedetailleerdere vragen over een complexere wereld te kunnen beantwoorden, moeten modellen die werkelijkheid beter benaderen. 3D is daardoor steeds noodzakelijker om
+                antwoorden op maatschappelijke vragen te kunnen geven.</p>
+            <p>Naast de toenemende vraag zien we ook een aantal technologische doorbraken, die het mogelijk maken om tegen acceptabele kosten te voldoen aan die vraag naar actuele 3D modellen. In de komende jaren zullen landsdekkende 3D modellen beschikbaar
+                gaan komen, op een schaalniveau vergelijkbaar met de BGT. De Nederlandse SDI zal dergelijke modellen aan moeten kunnen.</p>
+        </section>
+        <section id="linkeddata" typeof="bibo:Chapter" resource="#linkeddata" property="bibo:hasPart">
+            <h3 id="x2.2-meer-linked-data" resource="#x2.2-meer-linked-data"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Meer linked data</span>
+            </h3>
+            <p></p>
+            <p>In het <a href="http://www.pldn.nl">Platform Linked Data Nederland</a>, voorheen PiLOD, heeft Geonovum de afgelopen vier jaar samen met een actieve community onderzocht wat linked data is, hoe je het toepast, wat je eraan hebt, en hoe je geodata
+                als linked data kunt publiceren en gebruiken. Ook het <a href="https://github.com/Geonovum/geo4web-testbed">#geo4web
+            testbed</a> heeft inzichten hierover opgeleverd. Inmiddels hebben de eerste serieuze Nederlandse geo linked datasets het licht gezien, dankzij het Kadaster (<a href="https://brk.basisregistraties.overheid.nl">Kadastrale
+            percelen (BRK)</a> en <a href="https://brt.basisregistraties.overheid.nl">Topografie
+            (BRT)</a>).</p>
+            <p>Er zal de komende vijf jaar veel (overheids) linked geodata gepubliceerd worden. Naast Nederland hebben onder andere Ierland, Schotland, UK, Vlaanderen, Zwitserland en Finland al linked geodata gepubliceerd of zijn hier mee bezig. Linked data
+                is belangrijk voor het publiceren van overheidsdata op een zo rijk mogelijke manier. Het maakt het mogelijk om de betekenis, de semantiek van de data direct aan de data zelf te koppelen, en om tot op een hoge granulariteit links&nbsp;tussen
+                verschillende datasets te leggen. Kortom, linked data is belangrijk voor semantische interoperabiliteit en data integratie. </p>
+            <p>Linked data blijft naar onze verwachting ook de komende jaren wel enigszins een niche technologie. Voor het merendeel van de web developers blijft het te complex. Het blijft echter toch relevant, omdat het de meest rijke en krachtige manier
+                is om data beschikbaar te stellen. In de context van open data is dat belangrijk. Daarnaast kan de data, ofwel door de data-eigenaar zelf, of door derden, op meer gangbare manieren beschikbaar gesteld worden. Overigens, "linked data" is
+                niet per sé "Linked Data": wél elk object op het web met een eigen URI en links tussen de objecten; maar niet per sé met RDF, triple stores en SPARQL endpoints. </p>
+            <p></p>
+            <p>In 2017 verschijnt de <a href="https://www.w3.org/TR/sdw-bp/">W3C/OGC
+            Spatial Data on the Web Best Practice</a>. Dit document, waaraan wij mee schreven, gaat niet exclusief over linked data, maar bevat er veel aanbevelingen over uit de huidige praktijk en kan als leidraad dienen voor het publiceren van linked
+                geo data in Nederland. Op een aantal punten is er volgens de Best Practice nog geen duidelijke, goede praktijk te ontwaren. Er moet de komende jaren bijvoorbeeld nog aan gewerkt worden aan een gestandaardiseerde vocabulaire voor geo-data
+                én eentje voor geo-metadata. </p>
+            In het verlengde van linked data ligt het semantic web. Langzaam maar zeker werken we hier naar toe. We denken daarbij aan semantische harmonisatie. Zonder de hele geowereld te willen harmoniseren, want dit zou een enorme klus zijn waarvan het praktisch
+            nut niet vaststaat. Wel blijven we gericht, daar waar semantische harmonisatie leidt tot nieuwe mogelijkheden om data te hergebruiken en processen te optimaliseren, linked data principes toepassen om te komen tot een Web van data waarin niet
+            langer overbodig data gekopieerd wordt. </section>
+        <section id="sensoren" typeof="bibo:Chapter" resource="#sensoren" property="bibo:hasPart">
+            <h3 id="x2.3-meer-sensoren" resource="#x2.3-meer-sensoren"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Meer sensoren</span>
+            </h3>
+            <p>Het gebruik van sensoren in de openbare ruimte neemt een enorme vlucht. Zo spreken de toepassingen voor openbare orde en veiligheid in het Living Lab Stratumseind tot de verbeelding, maar zien we ook tal van toepassingen op milieugebied (o.a.
+                rond het meten van luchtkwaliteit), bereikbaarheid (o.a. rond doorstroming en beschikbare parkeerplekken) en de zelfrijdende auto. Veel toepassingen komen tot stand binnen Smart City-initiatieven of experimenten rond het Internet of Things.
+                Met deze enorme groei in toepassingen, neemt ook het aantal standaardisatie-initiatieven snel toe. Internationale organisaties als OGC, W3C en IEEE werken allen aan standaarden op dit vlak. Deze standaarden richten zich zowel op het vastleggen
+                van gegevens over sensoren als op het ontsluiten van door de sensoren ingewonnen gegevens. Hoewel het INSPIRE framework voorziet in standaarden voor het ontsluiten van sensordata, zijn er nog nauwelijks concrete toepassingen op dit vlak.
+                In vergelijking met trends als meer 3D en meer linked data, is de sensortrend nog nieuwer en minder volwassen. Wel is een trend te zien naar lichtere standaarden, mede met het oog op het minimaliseren van dataverkeer (wat zeker bij LoRa
+                van groot belang is) en het maximaliseren van batterijduur van bepaalde sensoren.</p>
+        </section>
+        <section id="web" typeof="bibo:Chapter" resource="#web" property="bibo:hasPart">
+            <h3 id="x2.4-meer-gebruikers:-geo-&amp;-world-wide-web" resource="#x2.4-meer-gebruikers:-geo-&amp;-world-wide-web"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.4 </span>Meer gebruikers: Geo &amp; World Wide Web</span>
+            </h3>
+            <p>Via de Nederlandse SDI wordt een schat aan geo-informatie ontsloten, die voor het overgrote deel als open data wordt aangeboden. Toch beperkt het gebruik zich nu vaak tot het traditionele werkveld van de geo-informatie, terwijl juist de basisinformatie
+                bruikbaar zou moeten zijn voor een veel bredere groep gebruikers. De intermediair tussen de data-aanbieder en de eindgebruiker is tegenwoordig steeds vaker een webontwikkelaar. Deze webontwikkelaars gebruiken nu echter slechts mondjesmaat
+                de kwalitatief hoogwaardige geo-informatie via de Nederlandse SDI. Veel vaker kiezen ze voor platforms als Google Maps of Open Streetmap. Dit wordt veroorzaakt door een combinatie van factoren: deels komt dit voort uit onbekendheid met
+                het bestaan en de opbouw van geo-informatie, deels uit het gegeven dat geo-informatie slecht vindbaar is via zoekmachines en deels uit het gebruik van specifieke geo-standaarden, die buiten het geo-domein veel onbekender zijn en daardoor
+                een drempel voor web-ontwikkelaars. Uiteindelijk zorgt dit ervoor dat het hergebruik van open data slechts beperkt plaats vindt, waardoor niet het volledige potentieel aan maatschappelijke impact gerealiseerd kan worden. Webontwikkelaars
+                spelen zeker in commerciële en op burgers gerichte toepassingen een belangrijke rol.</p>
+            <p>In een aantal recente initiatieven (o.a. het testbed Spatial data on the web en de gezamenlijke OGC en W3C-werkgroep Spatial data on the web) wordt gezocht naar mogelijkheden om de doelgroep van de Nederlandse SDI nadrukkelijk te verbreden
+                tot buiten het traditionele geo-informatie domein. De wereld van de webontwikkelaar inclusief de in die wereld gangbare standaarden staat centraal. Oplossingsrichtingen schuilen onder andere in het gebruik van lichtere datastandaarden
+                en het aanbieden van API's, codevoorbeelden en andere coördinaatsystemen. Ook wordt gewerkt aan het verbeteren van de vindbaarheid in zoekmachines. De <a href="https://www.w3.org/TR/dwbp/">Data
+            on the Web Best Practices</a> en mede door Geonovum geschreven <a href="https://www.w3.org/TR/sdw-bp">Spatial
+            Data on the Web Best Practices</a> vormen een goed uitgangspunt.</p>
+        </section>
+        <section id="platform" typeof="bibo:Chapter" resource="#platform" property="bibo:hasPart">
+            <h3 id="x2.5-meer-kanalen:-platformgedachte" resource="#x2.5-meer-kanalen:-platformgedachte"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.5 </span>Meer kanalen: platformgedachte</span>
+            </h3>
+            <p>Alle hierboven beschreven ontwikkelingen roepen wellicht de vraag op of de huidige SDI nog wel zinvol is, en daarmee ook of de onderliggende set standaarden op de Pas toe of leg uit-lijst nog wel zinvol is. Om die vraag te kunnen beantwoorden,
+                is een laatste ontwikkeling zeer relevant om te duiden: de opkomst van het platform. Dataplatformen kenmerken zich door de veelheid aan manieren waarop de data kan worden afgenomen: via downloads, via services, via API's of via SPARQL
+                endpoints. De onderliggende reden voor deze veelheid is de erkenning van het gegeven dat er veel verschillende doelgroepen bestaan, met elk hun eigen toepassingen, die daarom ook elk hun data op een andere manier willen afnemen. De opkomst
+                van platformen illustreert dat er niet langer naar een uniforme <i>one size fits all</i> aanpak wordt gestreefd, maar naar een <i>multichannel</i> aanpak, meer <i>fit for purpose</i>. Deze doelgroepspecifieke benadering is het gevolg van
+                de focusverschuiving van ontsluiting van data naar (her)bruikbaarheid van data. </p>
+            <p> Met de opkomst van platformen, komt ook de vraag naar voren in hoeverre de huidige SDI al als platform beschouwd kan worden. Op dit moment lijkt de SDI primair gericht op de geoprofessional, inclusief standaarden uit de geowereld (OGC). Andere
+                doelgroepen, zoals de webontwikkelaars, worden duidelijk minder goed ondersteund. Een platformbenadering zou passend zijn voor de SDI, waarmee de set standaarden uitgebreid kan worden met standaarden die lichter zijn en beter aansluiten
+                bij de praktijk op het web. Mogelijk gaan dergelijke standaarden ook voor de geoprofessional steeds belangrijker worden, maar op korte termijn hebben de verschillende doelgroepen ook allemaal hun eigen behoeften. </p>
+        </section>
+    </section>
+    <section id="impactstandaarden" typeof="bibo:Chapter" resource="#impactstandaarden" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="x3.-impact-op-pas-toe-of-leg-uit-standaarden" resource="#x3.-impact-op-pas-toe-of-leg-uit-standaarden"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Impact op Pas toe of leg uit-standaarden</span>
+        </h2>
+        <section id="informatiemodellen" typeof="bibo:Chapter" resource="#informatiemodellen" property="bibo:hasPart">
+            <h3 id="x3.1-informatiemodel" resource="#x3.1-informatiemodel"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Informatiemodel</span>
+            </h3>
+            <p>NEN3610 fungeert niet alleen als moedermodel voor alle sectorale informatiemodellen, maar vormt ook een werkwijze voor het stelsel van sectorale informatiemodellen. Op beide aspecten zal NEN3610 zich de komende jaren verder ontwikkelen. Met
+                de opkomst van Linked Data zien we dat steeds meer sectorale datasets 'verlinkt' worden. Op dit moment gebeurt dit op het niveau van individuele informatiemodellen. Het risico hiervan is dat we de samenhang, die nu bestaat tussen de verschillende
+                informatiemodellen in de UML-wereld, verliezen in de Linked Data wereld. Daarom ontstaat de behoefte aan een Linked Data-profiel op NEN3610. Een dergelijk profiel zou alle begrippen moeten vastleggen in SKOS (Simple Knowlegde Organization
+                System - W3C standaard, staat ook op de Pas toe of leg uit-lijst), de klassen en eigenschappen vastleggen in OWL (Web Ontology Language - W3C standaard), een set aanvullende modelleerrichtlijnen vastleggen en relaties specificeren met
+                andere, gangbare vocabulaires. Met dit profiel geven we niet alleen richting aan het 'verlinken' van afzonderlijke informatiemodellen, maar bieden we ook meer context door de begrippen zoveel mogelijk te relateren aan breed gebruikte vocabulaires,
+                zoals <a href="http://schema.org">schema.org</a>. Met beiden beogen we de 'linkbaarheid' van gegevens in de Nederlandse SDI zo groot mogelijk te maken, omdat dit zowel het gebruik (door betere vindbaarheid) als de bruikbaarheid (door beter
+                begrip van de betekenis) vergroot.</p>
+            <div class="issue" id="issue-5">
+                <div class="issue-title marker" aria-level="4" role="heading" id="h-issue2"><a href="https://github.com/Geonovum/whitepaper-standaarden/issues/5"><span>Issue 5</span></a><span style="text-transform: none">: Open world assumption</span></div>
+                <div class="">
+                    <p>Op het semantisch web is het gebruikelijk om uit te gaan van de 'open world assumption'. Is het wenselijk / noodzakelijk om dit als uitgangspunt bij NEN3610 in te brengen, of is het wenselijker om uit te blijven gaan van de closed
+                        world assumption?</p>
+                </div>
+            </div>
+            <p>Vanuit Linked Data-perspectief is het beter vastleggen van relaties tussen begrippen een aandachtspunt voor de komende jaren, maar dit is zeker niet de enige drijfveer hiervoor. We zien dat met het verder volwassen worden van de SDI het aanbod
+                aan datasets steeds verder toeneemt. En deze verschillende datasets bevatten ook steeds vaker gegevens over (schijnbaar) dezelfde objecten. Neem bijvoorbeeld wegen: steeds vaker wordt de vraag gesteld waarom de populaties van het NWB (Nationaal
+                Wegenbestand), BGT (Basisregistratie Grootschalige Topografie) en BAG (Basisregistratie Adressen en Gebouwen) nu eigenlijk van elkaar verschillen. Experts uit het geodomein zijn vaak vertrouwd met dergelijke verschillen en kennen veelal
+                de oorzaken, maar met het steeds bredere gebruik buiten het traditionele werkveld, neemt het aantal gebruikers dat dergelijke verschillen niet kan duiden steeds verder toe. Om hier mee om te kunnen gaan, is het noodzakelijk om inzicht
+                te krijgen in de onderlinge relaties. Soms zal inzicht in de onderlinge relatie leiden tot begrip (bijvoorbeeld verschillende definities, die elk gerechtvaardigd zijn binnen hun eigen context), in andere gevallen kan dit reden zijn om
+                bepaalde datasets te gaan harmoniseren. De definities van en onderlinge relaties tussen begrippen dienen centraal in conceptenregisters ontsloten te worden. </p>
+        </section>
+        <section id="uitwisselformaat" typeof="bibo:Chapter" resource="#uitwisselformaat" property="bibo:hasPart">
+            <h3 id="x3.2-uitwisselformaat" resource="#x3.2-uitwisselformaat"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Uitwisselformaat</span>
+            </h3>
+            <p>De Geography Markup Language (GML) staat als uitwisselformaat op de Pas toe of leg uit-lijst. GML wordt echter breder gebruikt binnen de SDI, bijvoorbeeld ook als formaat waarin een Web Feature Service (WFS) data terug kan geven. Uitspraken
+                over toekomstige ontwikkelingen rond uitwisselstandaarden gelden daarom niet automatisch voor alle toepassingen van GML. Voordat we dergelijke uitspraken doen, is het goed om eerst de eisen die we vanuit de geosector stellen aan een uitwisselstandaard
+                op een rij te zetten:</p>
+            <ul>
+                <li>Ondersteuning van de geometrietypen uit het Simple Feature profile, aangevuld met cirkelbogen</li>
+                <li>Ondersteuning van verschillende relevante coördinaatsystemen</li>
+                <li>Ondersteuning van 3D geo-informatie</li>
+                <li>Ondersteuning voor het vastleggen van de in een informatiemodel gedefinieerde structuur in een schema</li>
+            </ul>
+            <p> GML is nog steeds de enige open standaard die aan al deze criteria voldoet. Lichtere uitwisselstandaarden, waaronder GeoJSON, voldoen niet aan al deze criteria. GeoJSON gebruikt bijvoorbeeld alleen WGS'84 als coördinaatsysteem en ondersteunt
+                niet alle geometrietypen (en sluit het uitbreiden met extra typen expliciet uit). Dit leidt ertoe dat de positie van GML als uitwisselformaat (bijvoorbeeld tussen bronhouders en landelijke voorzieningen) niet ter discussie staat. Daar
+                waar lichtere formaten als mogelijke alternatieven worden genoemd, heeft dit eerder betrekking op het gebruik van GML bij ontsluiting van de data. Met de opkomst van 3D geo-informatie zou het overigens goed denkbaar zijn dat CityGML (als
+                specifieke 3D aanscherping / uitbreiding op GML) toegevoegd zal worden aan de set geostandaarden op de Pas toe of leg uit-lijst. </p>
+            <p>Op de wat langere termijn zal het voorgaande statement over de positie van GML zijn geldigheid kunnen verliezen. Bij het <a href="http://www.opengeospatial.org">Open
+            Geospatial Consortium</a> gaan stemmen op om een GeoJSON-achtige standaard te ontwikkelen die wel aan de eisen van de geo-sector voldoet. Ook verdere adoptie van linked data zou de zaken kunnen veranderen. Immers, met de opkomst van linked
+                data is er geen strikte scheiding meer tussen het informatiemodel (de semantiek) en het uitwisselformaat (in de zin van het schema, waarmee de implementatie van een informatiemodel wordt vastgelegd). Met OWL (Web Ontology Language) leg
+                je in de linked data wereld eigenlijk zowel het informatiemodel als het schema vast. Overigens is de term 'uitwisselen' sowieso niet langer van toepassing, omdat bij linked data data niet uitgewisseld (gekopieerd) wordt, maar je toegang
+                krijgt tot data die beschikbaar is op het web. </p>
+        </section>
+        <section id="ontsluiting" typeof="bibo:Chapter" resource="#ontsluiting" property="bibo:hasPart">
+            <h3 id="x3.3-ontsluiting" resource="#x3.3-ontsluiting"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Ontsluiting</span>
+            </h3>
+            <p>Op het vlak van ontsluiting zijn de komende jaren de meeste ontwikkelingen te verwachten. Inzet van deze ontwikkelingen zijn het vergroten van het gebruik en de gebruiksvriendelijkheid van de SDI. Hiertoe zal het aanbod aan ontsluitingsmechanismen
+                verbreden, waarbij -conform de platformgedachte- er voor verschillende doelgroepen ook verschillende ontsluitingen ondersteund zullen worden. Een professionele geo-gebruiker zal wellicht een volledige, op de centimeter nauwkeurige dataset
+                willen krijgen als uitgangspunt voor ruimtelijke analyses, terwijl een webontwikkelaar behoefte kan hebben aan de globale locaties van oplaadpalen in een zo licht mogelijk formaat, zodat zijn app optimaal presteert. </p>
+            <p>Een categorie ontsluitingen die sterk in populariteit zal toenemen, wordt gevormd door de REST API's. REST API's verkleinen de hoeveelheid werk die een gebruiker (vaak een ontwikkelaar) moet verzetten om data daadwerkelijk binnen te krijgen,
+                doordat REST API's geen service-specifieke bevragingen kennen, maar gebruik maken van het HTTP protocol. Om bijvoorbeeld een WFS te bevragen, zal een ontwikkelaar moeten snappen hoe een request opgebouwd moet worden, om succesvol data
+                te verkrijgen. Dit vereist kennis (de ontwikkelaar dient de relevante (geo)standaard te begrijpen) en een implementatie-inspanning (om de standaard aan client-zijde te implementeren). Voor een ontwikkelaar die vertrouwd is met het geodomein
+                vormt dit een drempel, voor ontwikkelaars van buiten het domein zal dit vaak een horde vormen die men niet kan of wil nemen. REST API's vereenvoudigen dataontsluiting niet alleen, maar zullen data vaak ook in lichtere formaten teruggeven
+                en veel meer <i>fit for purpose</i> zijn: kleine 'convenience API's' die voor een specifiek doel precies de gewenste data teruggeven, in plaats van grote, generieke API's waarmee je elke mogelijke vraag zou kunnen stellen aan een dataset.
+                Dit voorziet ook in de specifieke vragen die veel gebruikers stellen: lang niet iedereen wil 'de BGT', maar men wil bomen, parkeervakken of lichtmasten.
+            </p>
+            <p>De vraag is nu in hoeverre de opkomst van REST API's vraagt om uitbreiding van de huidige set geostandaarden op de Pas toe of leg uit-lijst. Voor zover het gaat om internationale, generieke standaarden (OGC, ISO, W3C), kunnen we stellen dat
+                REST API's geen geospecifieke standaarden kennen of vragen. Hiermee is aanpassing van de set geostandaarden niet aan de orde, hoogstens kunnen generieke standaarden aan de Pas toe of leg uit-lijst worden toegevoegd. Zo volgt bijvoorbeeld
+                uit analyse in het <a href="https://www.forumstandaardisatie.nl/sites/bfs/files/atoms/files/Discussie%20document%20RESTful%20APIs%20binnen%20de%20overheid%20-%20versie%201.1_1.pdf">discussiedocument
+            'RESTful APIs binnen de overheid'</a> van het Forum Standaardisatie dat OAuth als authenticatiestandaard een wenselijke aanvulling vormt op de lijst. Ook de <a href="https://www.w3.org/TR/dwbp/">Data on the
+            Web Best Practices</a>, die veel algemene richtlijnen voor API's bevat, is een mogelijke kandidaat. Op dit niveau ligt aanpassing van de set geostandaarden dus niet voor de hand. De set geostandaarden bevat niet alleen internationale standaarden,
+                maar ook een aantal Nederlandse profielen waarin dergelijke standaarden worden aangescherpt (de set bevat Nederlandse profielen voor WFS, WMS en metadata van datasets en services). Op dat niveau zou de opkomst van REST API's mogelijk wel
+                om aanpassing van de set Geostandaarden vragen. </p>
+            <div class="issue" id="issue-6">
+                <div class="issue-title marker" aria-level="4" role="heading" id="h-issue3"><a href="https://github.com/Geonovum/whitepaper-standaarden/issues/6"><span>Issue 6</span></a><span style="text-transform: none">: Noodzaak voor generieke API-strategie m.b.t. geo</span></div>
+                <div class="">
+                    <p>In concepten van API-strategieën zien we aanvullende eisen voor het omgaan met geometrie. Voorbeelden hiervan zijn het voorschrijven van GeoJSON als formaat en methoden om met verschillende coördinaatsystemen om te gaan (iets wat niet
+                        standaard door GeoJSON wordt ondersteund). Heeft Nederland er baat bij wanneer dergelijke geo-aspecten uniform worden voorgeschreven in een Nederlands profiel voor geo in REST API's?</p>
+                </div>
+            </div>
+            <p>Wat betekent de opkomst van de REST API's voor de huidige OGC webservice standaarden? Nemen we -met het toenemende gebruik van generieke webstandaarden- afscheid van de geospecifieke standaarden? Dat zien we voorlopig niet gebeuren. Want in
+                bijvoorbeeld het gemeentelijke applicatielandschap zien we een toenemend aantal applicaties dat via webservices een achtergrondkaart of luchtfoto ter referentie aanbiedt. En in Europese context zien we met INSPIRE ook een (wettelijk verankerde)
+                toepassing van een op OGC-standaarden gebaseerde infrastructuur. Een andere indicator dat OGC webservices nog wel even deel blijven uitmaken van de Nederlandse SDI, zien we in sommige praktijkvoorbeelden waarbij de eerste stap richting
+                API's wordt gezet door een interface aan te bieden die onder water de bestaande webservices bevraagd. Samengevat: we voorzien geen radicale overgang van OGC webservices naar API's. Tegelijk zien we wel mogelijkheden voor deze standaarden
+                en profielen erop om door te ontwikkelen, om zo mee te evolueren met de veranderende vragen die aan de SDI gesteld worden. Op standaardniveau zien we dat de XML-requests behoorlijk zwaar zijn; het zou mooi zijn als dat lichter kan worden.
+                Maar ook op het niveau van output zien we evolutie: het is wenselijk om meer keuze te bieden in outputformaten, inclusief lichtere formaten zoals GeoJSON daar waar dat past. Voor view services zien we evolutie richting vector tiling, waarmee
+                de output van een WMS meer aanpassingsmogelijkheden voor styling biedt. Op het niveau van de Nederlandse profielen is zeker ook ruimte voor evolutie. Vanuit het oogpunt van bredere bruikbaarheid (inclusief voor het web) is het denkbaar
+                om meer coördinaatsystemen voor te schrijven (bijv. niet alleen RD maar ook Web Mercator) en voor WFS meer outputformaten (bijv. minimaal GML en GeoJSON). </p>
+            <p>Op het punt van ontsluiting van 3D data zullen de standaarden zich nog verder moeten bewijzen. Mogelijk gaan OGC 3D portrayal services hier een rol in spelen, aangevuld met (nu nog kandidaat-) OGC Community Standards als 3D Tiling (o.b.v.
+                Cesium) of I3S. De specifieke uitdaging van 3D data schuilt in het datavolume: zowel bij visualisatie- als downloadvoorzieningen moet nadrukkelijk rekening gehouden worden met performance en benodigde geheugencapaciteit en rekenkracht.
+            </p>
+            <p>Voor de ontsluiting van Linked Data zullen API's een belangrijke rol spelen, maar zullen we meer SPARQL endpoints gaan zien. Deze endpoints maken het bevragen van Linked Data in RDF-structuur mogelijk. Het tempo waarin dergelijke endpoints
+                gemeengoed gaan worden, zal mede afhangen van de snelheid waarmee triple stores gemeengoed worden. Op termijn is het goed denkbaar dat GeoSPARQL toegevoegd zal worden aan de set Geostandaarden op de Pas toe of leg uit-lijst. </p>
+            <div class="issue" id="issue-7">
+                <div class="issue-title marker" aria-level="4" role="heading" id="h-issue4"><a href="https://github.com/Geonovum/whitepaper-standaarden/issues/7"><span>Issue 7</span></a><span style="text-transform: none">: NL-profiel op GeoSPARQL?</span></div>
+                <div class="">
+                    <p>Voor ontsluiting via webservices worden aanvullende eisen gesteld in Nederlandse profielen op WMS en WFS. Voor aanbieders van API's zien we (via API strategieën) een vergelijkbare tendens. Dat roept de vraag op in hoeverre het noodzakelijk
+                        of wenselijk is om te komen met een Nederlands profiel op GeoSPARQL?</p>
+                </div>
+            </div>
+            <div class="issue" id="issue-8">
+                <div class="issue-title marker" aria-level="4" role="heading" id="h-issue5"><a href="https://github.com/Geonovum/whitepaper-standaarden/issues/8"><span>Issue 8</span></a><span style="text-transform: none">: Ontsluiting van sensordata</span></div>
+                <div class="">
+                    <p>Voor het ontsluiten van sensordata zijn op verschillende plaatsen standaarden in ontwikkeling. Zo wordt er gewerkt aan OGC standaarden (SOS, SensorThings API), maar ook aan W3C standaarden (o.a. SSN). Voor deze standaarden geldt dat
+                        ze -voor zover ze voldoende gereed zijn- nog maar zeer beperkt toegepast worden. Hiermee is het voor ons nu nog te vroeg om een uitspraak te doen over de wenselijke richting van standaarden voor het ontsluiten van sensordata.</p>
+                </div>
+            </div>
+            <div class="note">
+                <div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Noot</span></div>
+                <div class="">
+                    <p>Om ontsluiting van data te optimaliseren, zijn de aanbevelingen uit de W3C Data on the web en OGC/W3C Spatial data on the web Best Practices zeer waardevol. Om het effect van de aanbevelingen te maximaliseren, bekijkt Geonovum hoe
+                        deze aanbevelingen verder geformaliseerd kunnen worden. Er zijn meerdere opties denkbaar:</p>
+                    <ul>
+                        <li>De W3C <a href="https://www.w3.org/TR/dwbp/">Data on the Web
+                Best Practices</a> heeft de status van W3C recommendation, hiermee zou die kunnen worden toegevoegd aan de Pas toe of leg uit-lijst (evt. in het optionele deel)</li>
+                        <li>Mogelijk kunnen beide Best practices aan de set Geostandaarden worden toegevoegd. Deze optie zal met het Forum Standaardisatie verder verkend moeten worden.</li>
+                        <li>De relevante aanbevelingen kunnen opgenomen worden in de verschillende Nederlandse profielen.</li>
+                        <li>Als er meer Nederlandse profielen voor ontsluiting komen (naast webservices bijv. ook voor API's en GeoSPARQL), is het ook mogelijk om één Nederlands profiel voor ontsluiting op te stellen, waarbinnen de Best practices in het generieke
+                            deel kunnen worden opgenomen.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="vindbaarheid" typeof="bibo:Chapter" resource="#vindbaarheid" property="bibo:hasPart">
+            <h3 id="x3.4-vindbaarheid-/-metadata" resource="#x3.4-vindbaarheid-/-metadata"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Vindbaarheid / metadata</span>
+            </h3>
+            <p>Goede vindbaarheid van data is een cruciale voorwaarde voor verdere groei van het gebruik van geo-informatie en van de SDI. In de huidige SDI leunt vindbaarheid sterk op het concept van een metadata catalogus. Deze catalogus is als front-end
+                zelf doorzoekbaar (o.a. op trefwoorden, categorieën, aanbieder en locatie) en ook ontsloten via een OGC catalogue service. Achilleshiel van deze aanpak is dat de zoekende partij de catalogus moet weten te vinden, of in elk geval een catalogus
+                die gesynchroniseerd wordt met de geocatalogus, in Nederland het Nationaal Georegister. De mate waarin een gebruiker succesvol data kan vinden, wordt dus bepaald door het kennisniveau van de gebruiker (wat effectief neerkomt op de mate
+                waarin de gebruiker vertrouwd is met het geodomein). </p>
+            <p>De vindbaarheid van geo-informatie kan aanzienlijk vergroot worden, wanneer zoekmachines de beschikbare data ook gaan indexeren. Metadata moet crawlable en machine readable worden. Tot nu toe wordt metadata in catalogi niet of nauwelijks geïndexeerd.
+                Op dit moment lijkt de meest effectieve workaround het gebruik van landing pages voor data, een concept dat sowieso past in de huidige trend naar data platforms. Als voorbeeld kun je denken aan een nieuwe, volledig datagebaseerde website
+                voor PDOK, waar je voor de BAG op een landing page terecht komt. Op zo'n centrale BAG pagina vind je idealiter de beschrijvende elementen (metadata), uitleg over de BAG (die nu verspreid staat over verschillende webpagina's), links naar
+                alle vormen waarin de BAG wordt ontsloten (view- en downloadservices, APIs, linked data, BAG extract, ...) , ondersteuning in de vorm van helpdesk en forum (community) en een viewer om direct een indruk van de data te krijgen. In deze
+                vorm krijgt metadata wellicht een minder herkenbare (afzonderlijke) front-end, maar wordt de catalogus meer een backend om metadata eenmalig en eenduidig vast te leggen. Op basis van deze backend kan ook nog steeds een OGC catalogue service
+                draaien, die bijvoorbeeld voor INSPIRE verplicht is. De tendens voor de komende jaren rond metadata is hiermee vergelijkbaar met die rond OGC webservices voor ontsluiting: we verwachten de komende jaren een evolutie, gericht op betere
+                aansluiting op het web. Richting Linked Data is de ontsluiting van metadata in RDF via het GeoDCAT applicatieprofiel een goed voorbeeld van een dergelijke evolutie: op deze wijze kan ISO-conforme metadata ook ontsloten worden richting
+                andere open data portalen. Het verlaten van ISO-standaarden is op dit moment niet aan de orde: GeoDCAT-AP is een aanvullende ontsluiting van metadata richting de generieke open data wereld, maar geen vervanger. Bovendien zal INSPIRE ook
+                ISO-conforme metadata blijven vragen.</p>
+            <p>Een ander belangrijk doel van metadata is om gebruikers te laten beoordelen of data bruikbaar is voor hun toepassing. Met een toenemend aantal gebruikers van buiten het geodomein, wordt deze functie van metadata alleen maar belangrijker. Het
+                gaat hierbij niet alleen om inzicht in het 'wat' (waar heeft de dataset betrekking op), maar ook om het 'wie' (van wie is de dataset en belangrijker: wat zegt mij dat over de kwaliteit). Dit inzicht in de herkomst van data (de term provenance
+                wordt hiervoor steeds gangbaarder) vormt een belangrijk argument om data wel of niet te gaan gebruiken.</p>
+        </section>
+    </section>
+
+    <section id="discussie" typeof="bibo:Chapter" resource="#discussie" property="bibo:hasPart">
+        <!--OddPage-->
+        <h2 id="x4.-discussie" resource="#x4.-discussie"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Discussie</span>
+        </h2>
+        <p>In deze white paper vragen we ons af of de huidige set geostandaarden toekomstvast is en schetsen we de ontwikkelingen van de komende vijf jaar. Deze schets is primair bedoeld om houvast te bieden bij stappen die leiden tot de doorontwikkeling
+            van de Nederlandse SDI, maar secundair ook om inzicht te geven in de onderlinge relaties tussen innovatie- en beheerprojecten die Geonovum de afgelopen tien jaar heeft uitgevoerd. Inmiddels worden technieken uit een aantal innovatietrajecten
+            dusdanig volwassen, dat ze impact gaan krijgen op de inrichting van de Nederlandse SDI.</p>
+        <p>Samenvattend kunnen we stellen dat de huidige SDI volwassen is, maar tegelijk zal moeten blijven ontwikkelen om duurzaam in te kunnen spelen op technologische en maatschappelijke ontwikkelingen. De opkomst van nieuwe technieken als Linked Data
+            en de methoden van het web lijken niet disruptief te zijn: juist vanuit de doelgroepspecifieke benadering (niet langer <i>one size fits all</i>) en de platformgedachte zullen de huidige en toekomstige standaarden voorlopig parallel toegepast
+            worden. Bovendien zien we huidige standaarden langzaam doorevolueren in de richting van de nieuwe technieken en standaarden, waardoor verschillen minder fundamenteel worden. Gebruikers van de Nederlandse SDI zullen hierdoor ook niet met radicale
+            breuken op technologisch vlak worden geconfronteerd.</p>
+        <p>Het ontwikkelperspectief geeft globaal richting aan de doorontwikkeling van de standaarden die de ruggengraat van de Nederlandse SDI vormen, maar werpt tegelijk ook een aantal strategische keuzes op:</p>
+        <ul>
+            <li><em>Doorontwikkeling OGC webservices voor ontsluiting</em>: internationaal gaan de eerste stemmen op om te proberen deze services geleidelijk richting REST-like API's door te ontwikkelen. Stel dat de standaarden zo aangepast worden dat de
+                requests aan services ook lichter kunnen worden (JSON i.p.v. XML) en meer gebruik maken van de mogelijkheden van het HTTP protocol, dan worden de meest genoemde zwaktes van deze standaarden aangepakt. Deze aanpak is er één van evolutie
+                in plaats van revolutie, waarmee SDI's een radicale breuk qua technologie bespaard kan blijven. Een belangrijke strategische keuze is in hoeverre we ons als Geonovum hier hard voor willen maken. Het zou passen bij onze rol t.o.v. de standaarden
+                voor de Nederlandse SDI en bij onze positie binnen het Open Geospatial Consortium. </li>
+            <li><em>Uitgangspunten semantische modellering</em>: voorlopig wordt weliswaar gedacht aan een linked data-profiel op NEN3610, maar we blijven de onderliggende sectormodellen in UML en volgens de <i>closed
+            world assumption</i> ontwikkelen. Dat kan de linkbaarheid en daarmee potentieel het gebruik en de bruikbaarheid van de volgens die modellen gestructureerde data beperken. Dit roept de vraag op of we met NEN3610 en de onderliggende modellen
+                over moeten stappen naar de <i>open
+            world assumption</i> en onze begrippen en modellen met SKOS en OWL moeten gaan vastleggen. Op dit moment hebben we nog onvoldoende inzicht in de precieze betekenis en consequenties van deze keuze.</li>
+            <li><em>Alternatief voor GML als uitwisselstandaard</em>: aan de hand van de set criteria die we hanteren voor een uitwisselstandaard in het geodomein, hebben we geconcludeerd dat er momenteel geen alternatief is voor GML dat aan al die criteria
+                voldoet. Daarom houden we nu vast aan GML als uitwisselstandaard (voor ontsluiting zien we meer lichtere alternatieven ontstaan). Deze situatie roept de vraag op of Geonovum actief zou moeten inzetten op een goed alternatief, bijvoorbeeld
+                een volwaardige JSON-variant van GML. GeoJSON is expliciet als lichtgewicht oplossing voor eenvoudige toepassingen bedoeld. Een volwaardige JSON-variant van GML is niet binnen GeoJSON mogelijk, maar zou ergens tussen GeoJSON en GML in
+                komen te liggen qua zwaarte en complexiteit.
+            </li>
+            <li><em>Linked geo data</em>: uit ervaringen met het opslaan van grote geografische datasets in triple stores blijkt dat linked data voor het geodomein nog geen volwassen techniek is. In hoeverre moet Geonovum zich inzetten om dit te bevorderen?
+                Om die vraag te beantwoorden, zullen we moeten kijken naar de meerwaarde van de verschillende gradaties van linked data voor het geodomein. Want als we vooral begrippen willen kunnen linken en voor elk object op het web met een eigen URI
+                en links tussen de objecten willen hebben; maar niet per sé met RDF, triple stores en SPARQL endpoints, dan ligt het ambitieniveau meer op "linked data" dan op "Linked Data".</li>
+            <li><em>Formaliseren best practices</em>: de inzichten uit bijvoorbeeld de W3C <a href="https://www.w3.org/TR/dwbp/">Data on the Web Best
+            Practices</a> en OGC / W3C <a href="https://www.w3.org/TR/sdw-bp/">Spatial
+            Data on the Web Best Practices</a> zijn zeer waardevol en kunnen in hoge mate bijdragen aan het succes van de Nederlandse SDI. Hetzelfde geldt voor bijvoorbeeld API- en URI-richtlijnen. Maar hoe kan Geonovum als standaardenorganisatie gewicht
+                geven aan dergelijke richtlijnen? Of, in andere woorden, hoe maximaliseer je de impact van zulke richtlijnen? Het instrumentarium van Geonovum beperkt zich nu tot het voordragen voor opname op de Pas toe of leg uit-lijst of het borgen
+                via een wettelijke (sectorale) basis. </li>
+        </ul>
+    </section>
+
+
+
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+    <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+</body>
+
+</html>

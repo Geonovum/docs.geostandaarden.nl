@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 19.0.1"><meta lang="" property="dc:language" content="en">
+    
+    <title>Samenhang in bijhouding NWB en BGT</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: .3em;
+  background-color: white;
+  padding-bottom: .5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-WV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-WV",
+  "specType": "HR",
+  "publishDate": "2018-02-01",
+  "editors": [
+    {
+      "name": "Dick Krijtenburg",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "d.krijtenburg@geonovum.nl",
+      "note": ""
+    },
+    {
+      "name": "Arnoud de Boer",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "a.deboer@geonovum.nl",
+      "note": ""
+    }
+  ],
+  "shortName": "NWB-BGT",
+  "pubDomain": "NWB-BGT",
+  "github": "https://github.com/Geonovum/NWB-BGT",
+  "previousPublishDate": "2017-01-01"
+}</script><meta name="description" content="Deze handreiking is een hulpmiddel voor gemeenten, provincies, waterschappen en Rijkswaterstaat om de werkprocessen rondom de bijhouding van het Nationaal Wegenbestand (NWB) en de Basisregistratie Grootschalige Topografie (BGT) verder te optimaliseren.
+       Middels een checklist van activiteiten wordt inzichtelijk gemaakt hoe gebeurtenissen van invloed kunnen zijn op zowel NWB als BGT, en hoe deze signalen bij beide partijen kunnen aankomen."></head>
+  <body aria-busy="false" class="h-entry" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p><a class="logo" href="http://www.geonovum.nl/"><img width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" alt="GNVM"></a></p>
+  <p><!--_hyper: -528518615;--></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Samenhang in bijhouding NWB en BGT</h1>
+  <h2 id="geonovum-handreikingwerkversie-01-februari-2018">Geonovum Handreiking<br>Werkversie
+    <time property="dcterms:issued" class="dt-published" datetime="">
+      01 februari 2018
+    </time>
+  </h2>
+  <dl>
+    <dt>This version:</dt>
+    <dd><a class="u-url" href="https://geonovum.github.io/NWB-BGT/">https://geonovum.github.io/NWB-BGT/</a></dd>
+    <dt>Latest published version:</dt>
+    <dd><a href="https://docs.geostandaarden.nl/nwb-bgt/NWB-BGT/">https://docs.geostandaarden.nl/nwb-bgt/NWB-BGT/</a></dd>
+     
+    <dt>Latest editor's draft:</dt>
+    <dd><a href="https://geonovum.github.io/NWB-BGT/">https://geonovum.github.io/NWB-BGT/</a></dd>
+         <dt>
+      Editors:
+    </dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Dick Krijtenburg</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:d.krijtenburg@geonovum.nl">d.krijtenburg@geonovum.nl</a></span></span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Arnoud de Boer</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:a.deboer@geonovum.nl">a.deboer@geonovum.nl</a></span></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+    
+    <dt>Participate:</dt>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/NWB-BGT">
+                      GitHub Geonovum/NWB-BGT
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/NWB-BGT/issues/">
+                      File a bug
+                    </a>
+    </dd>
+      
+    <dd>
+      <a href="https://github.com/Geonovum/NWB-BGT/commits/gh-pages">
+                      Commit history
+                    </a>
+    </dd>
+         
+    <dt>Rechtenbeleid:</dt>
+    <div class="copyright" style="margin: 0.25em 0;">
+      <abbr title="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland">
+      <a href="https://creativecommons.org/licenses/by-nd/3.0/nl/">
+        <img src="https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg" alt="Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland" width="115px" height="40px">
+      </a>
+    </abbr>
+      <div style="display:inline-block; vertical-align:top">
+        <p style="font-size: small;">Naamsvermelding-GeenAfgeleideWerken 3.0 Nederland<br>(CC BY-ND 3.0)</p>
+      </div>
+    </div>
+  </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="abstract-0" resource="#abstract-0"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+      <p>              
+       Deze handreiking is een hulpmiddel voor gemeenten, provincies, waterschappen en Rijkswaterstaat om de werkprocessen rondom de bijhouding van het Nationaal Wegenbestand (NWB) en de Basisregistratie Grootschalige Topografie (BGT) verder te optimaliseren.
+       Middels een checklist van activiteiten wordt inzichtelijk gemaakt hoe gebeurtenissen van invloed kunnen zijn op zowel NWB als BGT, en hoe deze signalen bij beide partijen kunnen aankomen.
+	    	      
+	      
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document" resource="#status-of-this-document"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+<p>
+  <em></em>
+</p>
+  
+<p>
+  Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen
+  door de werkgroep goedgekeurde consultatieversie.
+</p>
+     
+      <p>        
+      </p>
+     </section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ol class="toc" role="directory"><li class="tocline"><a href="#inleiding" class="tocxref"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a href="#aanleiding" class="tocxref"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a href="#doel" class="tocxref"><span class="secno">1.2 </span>Doel</a></li><li class="tocline"><a href="#afbakening" class="tocxref"><span class="secno">1.3 </span>Afbakening</a></li></ol></li><li class="tocline"><a href="#bijhouding-van-nwb-en-bgt" class="tocxref"><span class="secno">2. </span>Bijhouding van NWB en BGT</a><ol class="toc"><li class="tocline"><a href="#variatie-in-organisaties" class="tocxref"><span class="secno">2.1 </span>Variatie in organisaties</a></li><li class="tocline"><a href="#aanleveren-en-verwerken-van-gegevens" class="tocxref"><span class="secno">2.2 </span>Aanleveren en verwerken van gegevens</a></li><li class="tocline"><a href="#aandachtspunten" class="tocxref"><span class="secno">2.3 </span>Aandachtspunten</a></li></ol></li><li class="tocline"><a href="#gebeurtenissen" class="tocxref"><span class="secno">3. </span>Gebeurtenissen</a><ol class="toc"><li class="tocline"><a href="#activiteiten" class="tocxref"><span class="secno">3.1 </span>Activiteiten</a></li><li class="tocline"><a href="#checklist" class="tocxref"><span class="secno">3.2 </span>Checklist</a></li></ol></li><li class="tocline"><a href="#signalen" class="tocxref"><span class="secno">4. </span>Signalen</a><ol class="toc"><li class="tocline"><a href="#mutaties-van-en-meldingen-naar-nwb" class="tocxref"><span class="secno">4.1 </span>Mutaties van en meldingen naar NWB</a></li><li class="tocline"><a href="#mutaties-van-en-meldingen-naar-bgt" class="tocxref"><span class="secno">4.2 </span>Mutaties van en meldingen naar BGT</a></li><li class="tocline"><a href="#relevante-mutaties" class="tocxref"><span class="secno">4.3 </span>Relevante mutaties</a></li></ol></li><li class="tocline"><a href="#bijlage-mapping-nwb-wegvak-en-bgt-wegdeel" class="tocxref"><span class="secno">5. </span>Bijlage Mapping NWB wegvak en BGT Wegdeel</a></li><li class="tocline"><a href="#bijlage-betrokkenen-bij-het-opstellen-van-het-model" class="tocxref"><span class="secno">6. </span>Bijlage Betrokkenen bij het opstellen van het model</a></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#inleiding" property="bibo:hasPart"><!--OddPage--><h2 id="inleiding" resource="#inleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Inleiding</span></h2><section typeof="bibo:Chapter" resource="#aanleiding" property="bibo:hasPart"><h3 id="aanleiding" resource="#aanleiding"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Aanleiding</span></h3><p>Het Programma Samenwerking Nationaal Wegen Bestand heeft aan Geonovum opdracht gegeven om een oplossing te ontwerpen waarmee voor de korte termijn de samenhang in de bijhouding tussen NWB en BGT kan worden verbeterd. Dat uit zich in het verbeteren van de datakwaliteit van het NWB doordat het NWB beter gebruik maakt van de BGT en de totale populatie van wegbeheerders van betrokken overheidslagen (gemeenten, provincies, waterschappen en Rijkwaterstaat zelf) de gegevens in een uniforme vorm aanbiedt aan het NWB.</p><p>Ons beeld is dat NWB en de BGT binnen een organisatie door verschillende personen en afdelingen wordt bijgehouden. Een gevolg hiervan is dat het NWB en BGT niet altijd op elkaar afgestemd zijn. Het is belangrijk dat het NWB en BGT actueel en consistent met elkaar zijn. Beide spelen een belangrijke rol in de geo-informatie infrastructuur van Nederland.</p></section><section typeof="bibo:Chapter" resource="#doel" property="bibo:hasPart"><h3 id="doel" resource="#doel"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Doel</span></h3><p>Dit document is bedoeld om gemeenten, provincies, waterschappen en Rijkswaterstaat te helpen bij het verder optimaliseren van de activiteiten en processen rondom de bijhouding van het NWB en BGT. We beschrijven het huidige proces en betrokkenen rond de bijhouding van Nationaal Wegenbestand (NWB) en de Basisregistratie Grootschalige Topografie (BGT). We stellen een checklist met gebeurtenissen en activiteiten die leiden tot wijzigingen in NWB en/of BGT ter beschikking waarmee organisaties hun eigen werkprocessen kunnen analyseren en indien nodig verbeteren. Tenslotte schetsen we de mogelijkheden om elkaar aan beide kanten op de hoogte houden door het sturen of oppikken van signalen en het uitwisselen van relevante gegevens.</p></section><section typeof="bibo:Chapter" resource="#afbakening" property="bibo:hasPart"><h3 id="afbakening" resource="#afbakening"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.3 </span>Afbakening</span></h3><p>Dit document richt zich op de samenhang in bijhouding van gegevens met betrekking tot wegen in het NWB en de BGT. Spoorwegen en vaarwegen worden buiten beschouwing gelaten.</p><p>Dit document richt zich op het zo goed mogelijk aan elkaar doorgeven van signalen van wijzigingen in de registraties en het aangeven van signaleringen als in de andere registratie een onvolledige of onjuiste weergave van de werkelijkheid wordt geconstateerd.</p></section></section>
+	  <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijhouding-van-nwb-en-bgt" property="bibo:hasPart"><!--OddPage--><h2 id="bijhouding-van-nwb-en-bgt" resource="#bijhouding-van-nwb-en-bgt"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Bijhouding van NWB en BGT</span></h2><p>De term <strong>wegbeheerder</strong> wordt gebruikt voor de instantie of rechtspersoon die een (deel van de) weg beheert en hierover gegevens bijhoudt en aanlevert aan het NWB. Het NWB kent de volgende wegbeheerders: gemeenten, provincies, waterschappen, en Rijkswaterstaat.</p><p>De term <strong>bronhouder</strong> wordt gebruikt voor de instantie of rechtspersoon, die gegevens over topografische objecten bijhoudt en aanlevert in het kader van de BGT. De BGT kent de volgende bronhouders: gemeenten, provincies, waterschappen, Rijkswaterstaat, Prorail, Defensie en Rijksdienst voor Ondernemend Nederland.</p><section typeof="bibo:Chapter" resource="#variatie-in-organisaties" property="bibo:hasPart"><h3 id="variatie-in-organisaties" resource="#variatie-in-organisaties"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Variatie in organisaties</span></h3><p>Bij gemeenten, provincies, waterschappen en Rijkswaterstaat houdt men dus zowel gegevens bij in het kader van het NWB als de BGT. Binnen deze organisaties kan het proces van bijhouding als volgt zijn georganiseerd:</p><ol>
+<li>Bijhouding vindt in <strong>hetzelfde proces</strong> plaats (het vastleggen van zowel vlak-gegevens als hartlijn-gegevens) en worden daarbij vanuit hetzelfde proces aangeleverd aan zowel de Landelijke Voorziening BGT als het NWB-loket van Rijkswaterstaat.  </li>
+<li>Bijhouding vindt <strong>in gescheiden processen</strong> bij andere organisaties of afdelingen plaats, waarbij (veelal) bij de vastlegging van de hartlijnen niet de BGT wordt gebruikt als basis. Bijvoorbeeld separaat wordt bijgehouden bij de afdeling BGT en de afdeling Verkeer.</li>
+<li>Bijhouding ten behoeve van het NWB <strong>vindt niet plaats</strong>.</li>
+</ol><p>De mate waarin een organisatie haar processen kan inrichten en optimaliseren, hangt nauw samen met de mate van invloed die zij op die processen kan uitoefenen. Een <em>organisatie die het werk zelf uitvoert</em>, kan invloed uitoefenen op alle aspecten van deze uitvoering. Een <em>organisatie die taken uitbesteedt</em>, bijvoorbeeld aan een een verkeerskundig adviesbureau of ingenieursbureau, kan veelal alleen invloed uitoefenen op de input en de output van de werkzaamheden, niet op de uitvoering zelf. Dit is van invloed op de mate waarin processen daadwerkelijk kunnen worden geoptimaliseerd.</p><p>Ook als de werkzaamheden ‘in huis’ worden uitgevoerd, is er sprake van variatie bij de inrichting van de betreffende processen. Deze
+kunnen bij één afdeling zijn belegd, of verdeeld zijn over meerdere organisatieonderdelen. Dit heeft invloed op de mate van optimalisatie die kan worden bereikt. Sommige organisaties zijn dermate groot, dat het verdelen van werkzaamheden over meerdere afdelingen hetzelfde effect kan hebben als het uitbesteden aan een derde partij.</p></section><section typeof="bibo:Chapter" resource="#aanleveren-en-verwerken-van-gegevens" property="bibo:hasPart"><h3 id="aanleveren-en-verwerken-van-gegevens" resource="#aanleveren-en-verwerken-van-gegevens"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Aanleveren en verwerken van gegevens</span></h3><p>Het aanleveren van gegevens voor het <strong>NWB kent geen wettelijke verplichting</strong>: wegbeheerders leveren op vrijwillige basis in een niet-gestandaardiseerd formaat de weggegevens aan het NWB-loket. In de praktijk komt dit er op neer dat ongeveer 2/3 van de gemeentelijke wegbeheerders gegevens <em>niet</em> levert voor het NWB; wegbeheerders van provincies en Rijkswaterstaat leveren de gegevens wel aan.</p><p>Het aanleveren van gegevens voor de <strong>BGT is een wettelijke verplichting</strong>: bronhouders dienen volgens de gestelde eisen voor kwaliteit,  actualiteit en uitwisseling in de BGT|IMGeo standaarden de gegevens aan te leveren aan de Landelijke Voorziening BGT. </p><p>Het verwerken van gegegvens in het NWB gaat als volgt: </p><ol>
+<li>Verwerking van leveringen van een deel van de wegbeheerders. De gegevens uit de bron worden integraal overgenomen. De gegevens worden in verschillende formaten aangeleverd </li>
+<li>Van het overig areaal worden door het NWB-loket zelf signalen verzameld vanuit diverse bronnen (google, BRT, politie) in verschillende formaten en verwerkt in het NWB.</li>
+</ol><p>Het verwerken van gegevens van bronhouders in de Landelijke Voorziening BGT gaat via een geautomatiseerd proces waarbij gegevens na controle worden overgenomen in de centrale registraties en beschikbaar gesteld aan afnemers via PDOK.</p></section><section typeof="bibo:Chapter" resource="#aandachtspunten" property="bibo:hasPart"><h3 id="aandachtspunten" resource="#aandachtspunten"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Aandachtspunten</span></h3><ol>
+<li>NWB kent verschillende informatiebehoeften :
+–    Structureel : Waar een weg voor is ontworpen (oa voor modellen/berekeningen)
+–    Korte termijn : Voor onder meer verkeersmanagement is snel inzicht in de nieuwe / gewijzigde situatie gewenst</li>
+<li>Tijdelijke wegen (als ze korter dan 6 maanden bestaan) komen niet in de BGT; wel nodig voor NWB (als ze langer dan 6 weken bestaan ). </li>
+<li>Actualiteit NWB : maandelijks, daarom moet 6 weken (mogelijk naar 8 weken) voor openstelling weg gegevens aangeleverd zijn. Deze actualiteit is vooral van belang voor  verkeersmanagement en hulpdiensten.</li>
+<li>Actualiteit BGT : werkt op basis van de gerealiseerde situatie die binnen 6 maanden verwerkt moeten zijn.</li>
+<li>Plantopografie is in BGT niet aanwezig, maar voor NWB-wegen juist waardevol .</li>
+<li>Ten behoeve van signaleringen wordt ook het gebruik van informatie uit navigatiesystemen aanbevolen omdat daarin aan de hand van het verkeer inzichtelijk wordt dat er ergens een wegwijziging of vernadering van rijrichting heeft plaatsgevonden. </li>
+</ol><p><strong>Wensen voor het NWB</strong></p><ol>
+<li>Stimuleren / verplichten aanlevering door álle bronhouders, om de informatievoorziening te verbeteren om tot een gezamenlijke landelijke dataset te komen met een regime wat tegen de basisregistraties aanligt. Ook gemeenten zelf hebben hier voordeel bij voor de interne ionformatievoorziening en naar burgers, alsmede terugdringen door opwerken lokale datasets door marktpartijen die dit in ‘india’ laten opwerken.</li>
+<li>Actualiteit NWB ivm verkeersmanagement en hulpdiensten (meldkamer en administratieve processen) zo hoog mogelijk – hoogste actualiteitseis bij hoofdwegennet (ca 20.000 km)</li>
+<li>Korte termijn  : NWB voor actuele situatie baseren op BGT<br>–    voordeel : landsdekkend dezelfde gegevens 
+–    voor hoofdwegennet is deze actualiteit niet hoog genoeg, voor het ‘lagere’ wegennet is dat wel acceptabel.</li>
+<li>3D –z-coordinaat of relatieve hoogte om onder meer vast te leggen dat wegen elkaar ongelijkvloers kruisen</li>
+<li>Aanbrengen van gradatie in acualiteitseisen naar gelang het belang van de weg</li>
+<li>Idee :  Gebruik ‘Verbeter de Kaart’ om ook afwijkingen in NWB door te geven</li>
+<li>Geautomatiseerd overnemen door NWB-loket RWS, waardoor werkproces bij RWS sterk wordt vereenvoudigd. Terugbrengen van aanlevering aan NWB-loket RWS van verschillende formaten tot één uniform formaat.</li>
+</ol><p><strong>Wensen voor de BGT</strong></p><ol>
+<li>Lange(re) termijn : Uitbreiden van BGT (verplichte deel van IMGeo) met de hartlijn (vooral plantopografie als ook realisatiefase). Deze gegevens zijn beschikbaar bij bronhouder.</li>
+<li>Ook datum meegeven bij plantopografie wanneer weg open gaat. Daardoor extra wenselijke tussenstap tussen plantopografieb en definitieve inmeting BGT : ook zsm inzicht dat nieuwe/gewijzigde situatie operationeel is</li>
+</ol><p><strong>Samenhang NWB en BGT</strong></p><ol>
+<li>Bijhouding NWB en BGT bij gemeente/provincie-bronhouder vanuit één proces. </li>
+</ol><p><strong>Overige wensen</strong></p><ol>
+<li>In een latere stap de BAG er bij betrekken omdat hier vanuit gemeenten mogelijkheden worden</li>
+<li>Ook in een later stadium BOR er bij betrekken omdat daar ook aanknopingspunten met gegevens voor het NWB zitten (en vice versa)</li>
+</ol></section></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#gebeurtenissen" property="bibo:hasPart"><!--OddPage--><h2 id="gebeurtenissen" resource="#gebeurtenissen"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Gebeurtenissen</span></h2><p>Gebeurtenissen zijn voorvallen die plaatsvinden die tot veranderingen kunnen leiden in de registraties van NWB en BGT. </p><p>De trigger kan zijn een fysieke verandering aan de weg, of een administratieve wijziging van een kenmerk van een weg.</p><p>Voor NWB en BGT worden de volgende gebeurtenissen relevant geacht:</p><ol>
+<li><strong>Aanleg nieuwe weg</strong> een compleet nieuwe weg, meestal onderdeel van een groter plan</li>
+<li><strong>Openstelling weg</strong>    het moment waarop de weg voor verkeer wordt opengesteld</li>
+<li><strong>Herstructurering weg</strong>    een (omvangrijke) wijziging van de weg qua ligging en/of functie</li>
+<li><strong>Dagelijks onderhoud</strong>    wijzigingen aan het materiaal van de weg</li>
+<li><strong>Constateringen weg</strong>    signaleringen dat de beschrijving van de  weg in een gegevensverzameling niet overeenkomt met de fysieke werkelijkheid </li>
+<li><strong>Naamgeving openbare ruimte</strong>    Het besluit van het bevoegde gemeentelijke orgaan van toekenning van een naam aan een door als zodanig aangewezen  buitenruimte die binnen één woon­plaats is gelegen</li>
+<li><strong>Huisnummerbesluit</strong>    Het besluit van het bevoegde gemeentelijke orgaan van toekenning van een aanduiding van een verblijfsobject, een standplaats of een ligplaats</li>
+<li><strong>Wegafsluiting/-omleiding</strong> i.v.m. langdurige bouwactiviteiten    een wegdeel is voor een langere periode afgesloten voor verkeer vanwege aanpalende bouwactiviteiten</li>
+<li><strong>Corrigeren van gegevens</strong>    Het aanpassen van de gegevensverzameling vanwege geconstateerde onjuiste vastlegging van de fysieke werkelijkheid</li>
+<li><strong>Overdracht naar andere beheerder</strong>    een object wordt in beheer overgedragen aan een andereweg beheerder</li>
+<li><strong>Gemeentegrens wijziging</strong>    </li>
+<li><strong>Verkeersbesluit</strong></li>
+<li><strong>Grenswijziging (provincie, kom)</strong>    </li>
+</ol><section typeof="bibo:Chapter" resource="#activiteiten" property="bibo:hasPart"><h3 id="activiteiten" resource="#activiteiten"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Activiteiten</span></h3><p>Gebeurtenissen leiden tot <strong>activiteiten</strong> aan de kant van ofwel de wegbeheerder ofwel de bronhouder van de BGT. </p><p>Bij sommige gebeurtenissen bijvoorbeeld dagelijks onderhoud) hoeft een wegbeheerder of bronhouder niks te doen aan de registraties omdat er geen fysieke veranderingen of administratieve wijzigingen optreden.</p></section><section typeof="bibo:Chapter" resource="#checklist" property="bibo:hasPart"><h3 id="checklist" resource="#checklist"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Checklist</span></h3><p><img src="media/8f6168ed9cc250493f09a171476481e3.png" alt=""></p></section></section>
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#signalen" property="bibo:hasPart"><!--OddPage--><h2 id="signalen" resource="#signalen"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Signalen</span></h2><p>Activiteiten uit gebeurtenissen leiden tot het wijzigen van gegevens in de registraties van NWB en/of BGT. Als de ene partij aanpast, zal de andere partij mee moeten aanpassen om beide registraties actueel en consistent met elkaar te houden. Dat betekent dat als de BGT wordt aangepast er op de ene of andere manier een signaal van bronhouder naar wegbeheerder moet gaan, en vice versa, zodanig dat wijzigingen die relevant zijn voor de andere partij worden opgemerkt.</p><p>In dit kader onderscheiden we twee typen signalen:</p><ol>
+<li>Met een <strong>mutatie</strong> bedoelen we een signaal in de vorm van een gegevensbestand in een vast uitwisselformaat waarin de wijziging (was-wordt) van één of meer kenmerken van het object exact wordt doorgegeven. Software kan deze wijziging veelal automatisch overnemen in registraties.</li>
+<li>Met een <strong>melding</strong> bedoelen we een signaal dat er een wijziging in een bepaald gebied heeft plaatsgevonden, waarin wordt beschreven (toelichtende tekst) op welke manier gegevens zijn gewijzigd of geconstateerd zijn dat deze gegevens afwijken. De ontvanger van een melding zal zelf onderzoek moeten doen op welke manier deze gegevens al dan niet overgenomen moeten worden in registraties. Veelal worden meldingen achteraf verstuurd door gebruikers die een wijziging of onjuistheid in de gegevens hebben geconstateerd (=signalering).</li>
+</ol><p>Hierna zullen we een aantal bestaande kanalen schetsen waarin meldingen en mutaties voor NWB en BGT worden uitgewisseld. Organisaties kunnen hier voor hun eigen bijhoudingsproces op aansluiten. Welk kanaal een organisatie kiest, laten we graag over aan de bronhouder en wegbeheerder van een organisatie.</p><section typeof="bibo:Chapter" resource="#mutaties-van-en-meldingen-naar-nwb" property="bibo:hasPart"><h3 id="mutaties-van-en-meldingen-naar-nwb" resource="#mutaties-van-en-meldingen-naar-nwb"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Mutaties van en meldingen naar NWB</span></h3><p>Gegevens van het NWB zijn beschikbaar in verschillende producten als downloads via Rijkswaterstaat [<a href="https://www.rijkswaterstaat.nl/apps/geoservices/geodata/dmc/nwb-wegen/">https://www.rijkswaterstaat.nl/apps/geoservices/geodata/dmc/nwb-wegen/</a>]: o.a. een volledig bestand NWB-Wegen, en een bestand met wijzigingen in het netwerk tussen twee peildatums, zijnde <strong>NWB-wegen mutaties</strong>. Met een mutatiecode wordt aangegeven of een wegvak in die periode is vervallen, gewijzigd of ontstaan. Deze mutaties worden beschikbaar gesteld in de uitleverformaten Geographic Data Files (GDF) en Shape , Arc Info Coverage (AIC) of Arc Info Export (AIE).  </p><p>Een melding met een geconstateerde wijzigingen en/of opmerkingen betreffende het NWB kunnen via <strong>het NWB-loket</strong> op emailadres nwb@rws.nl ingediend worden.</p></section><section typeof="bibo:Chapter" resource="#mutaties-van-en-meldingen-naar-bgt" property="bibo:hasPart"><h3 id="mutaties-van-en-meldingen-naar-bgt" resource="#mutaties-van-en-meldingen-naar-bgt"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Mutaties van en meldingen naar BGT</span></h3><p>Mutaties van en meldingen op BGT-gegevens kunnen via verschillende kanalen worden afgenomen of doorgegeven. Onderstaande figuur toont de uitwisseling van mutaties en meldingen in de BGT-keten.</p><p><img src="media/bgt_referentiemodel.png" alt=""></p><p>Mutaties op BGT objecten worden op drie plekken in de BGT keten uitgewisseld:</p><ol>
+<li>Via <strong>PDOK</strong> worden de gegevens in de Landelijke Voorziening verstrekt aan afnemers via <strong>web service (WMTS) en GML en StUF-Geo IMGeo downloads</strong> van totaalstanden. Op dit moment (februari 2018) werkt PDOK aan een generiek XML/GML-uitwisselformaat voor levering van mutaties in verschillende basisregistraties (BGT, BRK, BAG) aan afnemers.</li>
+<li>Via <strong>BRAVO</strong> worden <strong>via een abonnementenservice de mutaties</strong> door andere bronhouders verstuurd naar geraakte bronhouders. De mutaties worden uitgewisseld in een StUF-Geo IMGeo mutatiebericht.</li>
+<li>In het <strong>Geo-BOR koppelvlak</strong> worden <strong>mutaties op BGT-objecten</strong> door de Geo-afdeling in een organisatie verstuurd naar de afdeling Beheer Openbare Ruimte (BOR), die deze gegevens nodig heeft voor groenbeheer, wegbeheer e.d. Een BOR-beheerder kan ook bij een voorgenomen of geconstateerde wijziging op de eigen beheerobjecten (bijvoorbeeld groenvoorzieningen of wegen) een verzoek met wijziging van gegevens aan Geo sturen. De mutaties worden uitgewisseld in een StUF-Geo IMGeo mutatiebericht of mutatieverzoek.</li>
+</ol><p>Meldingen over geconstateerde wijzigingen/onjuistheden van BGT-gegevens worden op drie plekken in de BGT keten doorgegeven aan bronhouders:</p><ol>
+<li>Via <strong>Verbeterdekaart</strong> kan een gebruiker van BGT-gegevens een <strong>terugmelding</strong> doen, door het prikken van een puntlocatie op een interactieve kaart en een toelichting te geven over de geconstateerde afwijking tussen kaart en werkelijkheid. Verbeterdekaart is het offciële terugmeldsysteem (TMS) voor de BGT.</li>
+<li>Via het <strong>MutatieMeldSysteem</strong> (MMS) van het SVB-BGT kunnen bronhouders de interne werkvoorraad met openstaande meldingen op BGT-gegevens en in-te-meten gebieden bijhouden. </li>
+<li>In het <strong>Geo-BOR koppelvlak</strong> kan een BOR-beheerder een verzoek doen aan de Geo-afdeling om een bepaald gebied te onderzoeken en evt. opnieuw in te meten. Dit verzoek wordt uitgewisseld in een StUF-Geo IMGeo exploratieverzoek.</li>
+</ol></section><section typeof="bibo:Chapter" resource="#relevante-mutaties" property="bibo:hasPart"><h3 id="relevante-mutaties" resource="#relevante-mutaties"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>Relevante mutaties</span></h3><p>Niet alle wijzigingen in de registraties van NWB en BGT zijn van belang voor de de andere partij. Bijvoorbeeld het wijzigen van een wegbeheerdercode in het NWB heeft geen vloed op de gegevens van een wegdeel in de BGT, en het wijzigen van het type verharding van een wegdeel in de BGT is niet van belang voor het wegvak in het NWB. Daarom schetsen we hierna welke gegevens in NWB en BGT een relatie hebben met elkaar (mapping). </p><p><strong>Objecten</strong></p><p>...</p><p><strong>Geometrie</strong></p><p>...</p><p><strong>Attributen</strong></p><p>In bijlage xx.xx. staat een tabel met een mapping van de gegevens tussen het NWB wegvak en objecten in de BGT</p></section></section> 
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-mapping-nwb-wegvak-en-bgt-wegdeel" property="bibo:hasPart"><!--OddPage--><h2 id="bijlage-mapping-nwb-wegvak-en-bgt-wegdeel" resource="#bijlage-mapping-nwb-wegvak-en-bgt-wegdeel"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Bijlage Mapping NWB wegvak en BGT Wegdeel</span></h2><p>In onderstaande tabel wordt een mapping gemaakt tussen gegevens in het NWB en de
+BGT.</p><p><img src="media/838539f2cf4a92ad360d030e694b8ab5.png" alt=""></p></section> 
+   <section data-format="markdown" aria-busy="false" typeof="bibo:Chapter" resource="#bijlage-betrokkenen-bij-het-opstellen-van-het-model" property="bibo:hasPart"><!--OddPage--><h2 id="bijlage-betrokkenen-bij-het-opstellen-van-het-model" resource="#bijlage-betrokkenen-bij-het-opstellen-van-het-model"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Bijlage Betrokkenen bij het opstellen van het model</span></h2><p><strong>Opdrachtgever</strong></p><p>Eric van der Ster (Rijkswaterstaat)</p><p>Dirk Simon Beerda (Rijkswaterstaat)</p><p><strong>Auteurs</strong></p><p>Dick Krijtenburg (Geonovum)</p><p>Arnoud de Boer (Geonovum)</p><p><strong>Kerngroep</strong></p><p>Bram Schiltmans (Rijkswaterstaat)</p><p>Linda Bannink (provincie Noord-Holland)</p><p>Stefan van Gerwen (provincie Noord-Brabant)</p><p>Bram Schiltmans (Rijkswaterstaat)</p><p><strong>Klankbordsessie 25 januari 2018</strong></p><p>Adrie de Jong (Bedrijfsvoeringsorganisatie West-Betuwe)</p><p>Bob Rijsman (gemeente Hellendoorn)</p><p>Dyonne de Mari (Transfer Solutions)</p><p>Erik van Ooijen (provincie Zuid-Holland)</p><p>Henk Bosma (gemeente Lelystad)</p><p>Jan Dorrestijn (gemeente Amersfoort)</p><p>Jan Hilhorst (Meerinzicht)</p><p>Joop Voortman (gemeente Rijssen-Holten)</p><p>Jort Dijkers (Rijkswaterstaat)</p><p>Leon Baanders (Bureau Kragten)</p><p>Lucas Broekema (Bureau Kragten)</p><p>Patrick Meeuwisse (ARCADIS)</p><p>Remco in ’t Hout (Rijkswaterstaat)</p><p>Remco Mennegat (gemeente Hellendoorn)</p><p>Richard Wittmer (Kadaster)</p><p>Rob van der Schoot (Rijkswaterstaat)</p><p><strong>Klankbordsessie 8 februari 2018</strong></p></section> 
+  
+
+<p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

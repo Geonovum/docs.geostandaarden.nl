@@ -1,0 +1,784 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style>
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  <link rel="stylesheet" type="text/css" href="media/localstyle.css">
+  <title>DisGeo Demo Lessons Learned</title>
+  
+  
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "AL",
+  "publishDate": "2020-02-19",
+  "maxTocLevel": 3,
+  "editors": [
+    {
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Bart van Leeuwen",
+      "url": "https://www.netage.nl"
+    },
+    {
+      "name": "Dick Krijtenburg",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Nicky van Oorschot",
+      "url": "https://www.netage.nl"
+    }
+  ],
+  "shortName": "dll",
+  "pubDomain": "disgeo",
+  "github": "https://github.com/geonovum/disgeo-demo",
+  "format": "markdown",
+  "localBiblio": {
+    "NLURIStrategie": {
+      "href": "http://www.pilod.nl/wiki/Boek/URI-strategie",
+      "publisher": "PLDN",
+      "authors": [
+        "Hans Overbeek",
+        "Linda van den Brink"
+      ],
+      "title": "Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid",
+      "id": "nluristrategie"
+    },
+    "NLAPIStrategie": {
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie",
+      "publisher": "Geonovum",
+      "authors": [
+        "Frank Terpstra",
+        "Jan van Gelder"
+      ],
+      "title": "API strategie voor de Nederlandse overheid",
+      "id": "nlapistrategie"
+    }
+  },
+  "publishISODate": "2020-02-19T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 19 februari 2020"
+}</script><meta name="description" content="This document describes the insights gained during the development of a demonstrator in the context of the Dutch governmental project &quot;Doorontwikkeling in Samenhang&quot; (Continued Development in Cohesion, DiSGeo), concerning the integration of the base registries. With this process, the Ministry of the Interior and Kingdom Relations aims to achieve more coherence in the system of geospatial base registries, with a focus on semantic harmonization of registries and information models, and alternative methods of data exchange and updating (more central, less copying). The aim of this demonstrator was to test and show to a wide audience how geospatial data can be published in cohesion on the web."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/disgeo/def-al-dll-20200219/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "DisGeo Demo Lessons Learned",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-02-19",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/disgeo-demo/issues/",
+  "alternativeHeadline": "",
+  "description": "This document describes the insights gained during the development of a demonstrator in the context of the Dutch governmental project \"Doorontwikkeling in Samenhang\" (Continued Development in Cohesion, DiSGeo), concerning the integration of the base registries. With this process, the Ministry of the Interior and Kingdom Relations aims to achieve more coherence in the system of geospatial base registries, with a focus on semantic harmonization of registries and information models, and alternative methods of data exchange and updating (more central, less copying). The aim of this demonstrator was to test and show to a wide audience how geospatial data can be published in cohesion on the web.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Bart van Leeuwen",
+      "url": "https://www.netage.nl"
+    },
+    {
+      "type": "Person",
+      "name": "Dick Krijtenburg",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "type": "Person",
+      "name": "Nicky van Oorschot",
+      "url": "https://www.netage.nl"
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://docs.geostandaarden.nl/api/API-Strategie",
+      "type": "TechArticle",
+      "name": "API strategie voor de Nederlandse overheid",
+      "url": "https://docs.geostandaarden.nl/api/API-Strategie"
+    },
+    {
+      "id": "http://www.pilod.nl/wiki/Boek/URI-strategie",
+      "type": "TechArticle",
+      "name": "Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid",
+      "url": "http://www.pilod.nl/wiki/Boek/URI-strategie"
+    },
+    {
+      "id": "https://www.w3.org/TR/json-ld/",
+      "type": "TechArticle",
+      "name": "JSON-LD 1.0",
+      "url": "https://www.w3.org/TR/json-ld/"
+    },
+    {
+      "id": "https://www.w3.org/TR/dwbp/",
+      "type": "TechArticle",
+      "name": "Data on the Web Best Practices",
+      "url": "https://www.w3.org/TR/dwbp/"
+    },
+    {
+      "id": "https://www.w3.org/TR/sdw-bp/",
+      "type": "TechArticle",
+      "name": "Spatial Data on the Web Best Practices",
+      "url": "https://www.w3.org/TR/sdw-bp/"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/geosparql",
+      "type": "TechArticle",
+      "name": "GeoSPARQL - A Geographic Query Language for RDF Data",
+      "url": "http://www.opengeospatial.org/standards/geosparql"
+    },
+    {
+      "id": "https://www.w3.org/TR/rdf-sparql-query/",
+      "type": "TechArticle",
+      "name": "SPARQL Query Language for RDF",
+      "url": "https://www.w3.org/TR/rdf-sparql-query/"
+    }
+  ]
+}</script></head>
+
+<body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">DisGeo Demo Lessons Learned</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Vastgestelde versie <time class="dt-published" datetime="2020-02-19">19 februari 2020</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/disgeo/def-al-dll-20200219/">https://docs.geostandaarden.nl/disgeo/def-al-dll-20200219/</a></dd><dt>Latest published version:</dt><dd><a href="https://docs.geostandaarden.nl/disgeo/dll/">https://docs.geostandaarden.nl/disgeo/dll/</a></dd>
+    
+    
+    <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/disgeo-demo/">https://geonovum.github.io/disgeo-demo/</a></dd>
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Linda van den Brink</a></dd>
+    <dt>Authors:</dt><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.netage.nl">Bart van Leeuwen</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Dick Krijtenburg</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.netage.nl">Nicky van Oorschot</a></dd>
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/geonovum/disgeo-demo/">GitHub geonovum/disgeo-demo</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/disgeo-demo/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/disgeo-demo/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/disgeo-demo/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" class="introductory"><h2>Abstract</h2><p>This document describes the insights gained during the development of a demonstrator in the context of the Dutch governmental project "Doorontwikkeling in Samenhang" (Continued Development in Cohesion, DiSGeo), concerning the integration of the base registries. With this process, the Ministry of the Interior and Kingdom Relations aims to achieve more coherence in the system of geospatial base registries, with a focus on semantic harmonization of registries and information models, and alternative methods of data exchange and updating (more central, less copying). The aim of this demonstrator was to test and show to a wide audience how geospatial data can be published in cohesion on the web.</p></section><section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+    <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current Geonovum publications and the latest revision of this document can be found via <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>(in Dutch).</em>
+  </p><p>
+
+    Dit is de definitieve versie van de algemeen. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p><p>This is the final version of the Lessons Learned document published following the first phase of the DisGeo demonstrator. It is not an officially consulted standard, but a report written jointly by those involved in the demo. These individuals have all been named as editors or authors of this document.</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Preface</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#purpose-of-the-demonstrator"><span class="secno">1.1 </span>Purpose of the demonstrator</a></li><li class="tocline"><a class="tocxref" href="#purpose-of-this-document"><span class="secno">1.2 </span>Purpose of this document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#samenvatting"><span class="secno">2. </span>Resume</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#apis-are-the-new-silos"><span class="secno">2.1 </span>APIs are the new silos…</a></li><li class="tocline"><a class="tocxref" href="#silos-in-conjunction"><span class="secno">2.2 </span>Silos in conjunction?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#semantic-layer"><span class="secno">2.2.1 </span>Semantic layer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#consistency-at-data-level"><span class="secno">2.3 </span>Consistency at data level</a></li><li class="tocline"><a class="tocxref" href="#ownership-of-data"><span class="secno">2.4 </span>Ownership of data</a></li><li class="tocline"><a class="tocxref" href="#governance-at-the-cutting-edge"><span class="secno">2.5 </span>Governance at the cutting edge</a></li><li class="tocline"><a class="tocxref" href="#the-5-star-model-for-open-data"><span class="secno">2.6 </span>The 5-Star model for Open Data</a></li><li class="tocline"><a class="tocxref" href="#conclusions-and-recommendations"><span class="secno">2.7 </span>Conclusions and recommendations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#api-versus-knowledge-graph"><span class="secno">2.7.1 </span>API versus knowledge graph</a></li><li class="tocline"><a class="tocxref" href="#consistency-between-objects"><span class="secno">2.7.2 </span>Consistency between objects</a></li><li class="tocline"><a class="tocxref" href="#best-practices-for-data-publication"><span class="secno">2.7.3 </span>Best Practices for Data Publication</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#onderzoek"><span class="secno">3. </span>Research</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#global-architecture"><span class="secno">3.1 </span>Global architecture</a></li><li class="tocline"><a class="tocxref" href="#user-stories"><span class="secno">3.2 </span>User Stories</a></li><li class="tocline"><a class="tocxref" href="#demonstrator"><span class="secno">3.3 </span>Demonstrator</a></li><li class="tocline"><a class="tocxref" href="#data-sources"><span class="secno">3.4 </span>Data sources</a></li><li class="tocline"><a class="tocxref" href="#cooperation-land-registry-regarding-knowledge-graph"><span class="secno">3.5 </span>Cooperation Land Registry regarding Knowledge Graph</a></li></ol></li><li class="tocline"><a class="tocxref" href="#lessonslearned"><span class="secno">4. </span>Lessons learned from the DisGeo linked data demonstrator</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#api-availability-api-usability-and-api-completeness"><span class="secno">4.1 </span>API availability, API usability and API completeness</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#availabilty"><span class="secno">4.1.1 </span>Availabilty</a></li><li class="tocline"><a class="tocxref" href="#usability"><span class="secno">4.1.2 </span>Usability</a></li><li class="tocline"><a class="tocxref" href="#completeness"><span class="secno">4.1.3 </span>Completeness</a></li><li class="tocline"><a class="tocxref" href="#maturity"><span class="secno">4.1.4 </span>Maturity</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#considerations-for-follow-up-and-api-strategy"><span class="secno">4.1.5 </span><em>Considerations for follow-up and API strategy</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#apis-and-data-silos"><span class="secno">4.2 </span>APIs and data silos</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#underlying-problem-missing-connections-in-the-data"><span class="secno">4.2.1 </span>Underlying problem: missing connections in the data</a></li><li class="tocline"><a class="tocxref" href="#considerations-for-follow-up-or-inclusion-in-api-strategy"><span class="secno">4.2.2 </span><em>Considerations for follow-up or inclusion in API strategy</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#one-and-two-sided-references-and-deviations"><span class="secno">4.3 </span>One and two-sided references and deviations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#considerations-for-next-steps"><span class="secno">4.3.1 </span><em>Considerations for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#structure-of-the-api-result"><span class="secno">4.4 </span>Structure of the API result</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consideration-for-follow-up-or-inclusion-in-api-strategy"><span class="secno">4.4.1 </span><em>Consideration for follow-up or inclusion in API strategy</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#address-details-incomparable"><span class="secno">4.5 </span>Address details incomparable</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consideration-for-next-steps"><span class="secno">4.5.1 </span><em>Consideration for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-definition-catalog-of-the-base-registries-not-related-to-source"><span class="secno">4.6 </span>data definition catalog of the base registries not related to source</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consideration-for-next-steps-0"><span class="secno">4.6.1 </span><em>Consideration for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#what-if-data-comes-from-multiple-sources"><span class="secno">4.7 </span>What if data comes from multiple sources?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consideration-for-next-steps-1"><span class="secno">4.7.1 </span><em>Consideration for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#origin-of-data"><span class="secno">4.8 </span>Origin of data</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#considerations-for-follow-up-or-inclusion-in-api-strategy-0"><span class="secno">4.8.1 </span><em>Considerations for follow-up or inclusion in API strategy</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#configuration-load"><span class="secno">4.9 </span>Configuration load</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#considerations-for-next-steps-0"><span class="secno">4.9.1 </span><em>Considerations for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#geospatial-querying-is-characterized-by-missing-relationship-and-what-to-look-for"><span class="secno">4.10 </span>Geospatial querying is characterized by missing relationship (and what to look for)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#considerations-for-next-steps-1"><span class="secno">4.10.1 </span><em>Considerations for next steps</em></a></li></ol></li><li class="tocline"><a class="tocxref" href="#geospatial-relationship-based-on-geosparql"><span class="secno">4.11 </span>Geospatial relationship based on GeoSPARQl</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consideration-for-next-steps-2"><span class="secno">4.11.1 </span><em>Consideration for next steps</em></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><span class="secno">A.1 </span>Normative references</a></li></ol></li></ol></nav><section id="inleiding"><!--OddPage--><h2 id="x1-preface"><span class="secno">1. </span>Preface</h2><section id="purpose-of-the-demonstrator"><h3 id="x1-1-purpose-of-the-demonstrator"><span class="secno">1.1 </span>Purpose of the demonstrator</h3><p>The Ministry of the Interior and Kingdom Relations started the project "Doorontwikkeling in Samenhang" (Continued Development in Cohesion, DiSGeo) with the aim to improve the coherence of the system of geospatial base registries, with a focus on semantic harmonization of registries and information models, and alternative methods of data exchange and updating (more central, less copying of data).
+<img src="media/samenhangendeobjectenregistratieinformatiekundig.png" alt="samenhangende objectenregistratie informatiekundig"></p><p>After all, users usually do not think in data sets, but in data that is related to each other in various ways. In Dutch geospatial information models (all compliant to NEN3610, the Dutch standard for geo-information) and the system of base registries, data sets have been the principal focus so far. Information models are in a sense silos that only standardize the semantics of a particular sector, but are not modeled in conjunction with the information of other sectors. However, in reality this connection is actually there. Linked data is an extremely suitable technique for capturing this semantic coherence so that the data itself can also be integrated.</p><p>Once semantics have been (sufficiently) aligned, the next step is to publish the data in coherence, in a manner that is suitable for wide use. Searchable via search engines, usable for data users - the intermediaries: web/app developers, data scientists, data journalists etc. For end users, the data can be published in a suitable, accessible web viewer.</p><p>Geonovum carries out various activities in the context of the further development of the geospatial (base) registries, which are mainly aimed at semantic harmonization. One of these is the development of a demonstrator, showing the semantic connection of data and semantics in geospatial (base) registries using Linked Data for the themes of Buildings and Roads. Development takes place in a <a href="https://github.com/Geonovum/disgeo-demo">github repository</a>.</p><p>The aim of this demonstrator is to test and show to a wide audience how geospatial data can be published in an integrated way on the web. The demonstrator shows how additional information can be tied to general base registry objects, using semantic coherence. This allows information to be linked smartly - by recording that the information is, for example, about the same building, regardless of whether the information objects have the same geometry.</p></section><section id="purpose-of-this-document"><h3 id="x1-2-purpose-of-this-document"><span class="secno">1.2 </span>Purpose of this document</h3><p>During the development of the demonstrator, a lot of experience was gained with data from base registries and other government registries, with APIs and other web services, with semantics and cross-references between datasets. Before the system of government registries can be used and questioned together, there are still many steps to be taken.</p><p>The demonstrator's development has yielded valuable insights into issues concerning technology, semantics and governance, which are summarized in this Lessons Learned document. Chapter 2 summarizes the most important insights. Chapter 3 describes the design of the research in which the demonstrator was developed. Finally, Chapter 4 gives the complete overview of the lessons learned.</p></section></section><section id="samenvatting"><!--OddPage--><h2 id="x2-resume"><span class="secno">2. </span>Resume</h2><section id="apis-are-the-new-silos"><h3 id="x2-1-apis-are-the-new-silos"><span class="secno">2.1 </span>APIs are the new silos…</h3><p>APIs (and in this document we mean more specifically the current REST APIs, as defined in the [<cite><a class="bibref" href="#bib-nlapistrategie">NLAPIStrategie</a></cite>]) are intended for asking frequently asked questions or carrying out frequently requested actions on data. They are therefore by definition limited in data model and functionality. This is useful in many cases, because the API is focused on dealing with common questions quickly and easily.</p><p>But...</p><ul>
+<li>What if you don't have a frequently asked question, but a less common one?</li>
+<li>What if the data in the answer doesn't contain the one property you need?</li>
+<li>What if the data does not support geospatial questions, while you want to know which other objects are close to an object?</li>
+</ul><p>The data in APIs often has no links to data in other APIs. Each API is basically a silo, which is limited to answering questions about a single data set.</p><aside class="example" id="example-1"><div class="marker">
+      <a class="self-link" href="#example-1">Example 1</a>
+    </div><p>The Cultural Heritage Agency of the Netherlands (RCE) has no direct link to the BAG (the buildings and addresses base registry) , but each monument contains an address. However, the address details are difficult to compare:</p>
+<ul>
+<li>The BAG describes a <code>houseletter</code>  and a <code>housenumberaddition</code>.</li>
+<li>The RCE only has an <code>addition</code>, which often does not correspond to one of the two BAG fields.</li>
+</ul>
+</aside></section><section id="silos-in-conjunction"><h3 id="x2-2-silos-in-conjunction"><span class="secno">2.2 </span>Silos in conjunction?</h3><p>How do you ask coherent questions across this multitude of silo APIs?</p><p>It is possible, as the developed demonstrator shows, to build a semantic layer across multiple APIs, but it requires specific code per API and maintenance for each API change.</p><p>We can expect the amount of APIs to become very large. Moreover, there is increasing complexity per added API (no 2 APIs are the same).</p><section id="semantic-layer"><h4 id="x2-2-1-semantic-layer"><span class="secno">2.2.1 </span>Semantic layer</h4><p>The semantic layer must contain all the knowledge you want to question. If you want to ask a broader question, you first have to add a bit to the semantic layer.</p><p>In this case "the whole of knowledge" consists of</p><ul>
+<li>base registries</li>
+<li>Other government datasets</li>
+<li>Free datasets</li>
+</ul><p>So… an <strong>open world</strong>. Describing the whole of knowledge is not possible! The semantic orchestration layer must therefore be <strong>expandable</strong>.</p><p>The semantic layer describes how the data in the system relates to each other. This description contains both the meaning of the data and its coherence with other data, as well as the knowledge about which data is in which API and how you approach that API.</p><p>The data definition catalog of the base registries could theoretically be used for this, provided it is integrated with the actual definitions of semantic models such as that of the BAG, which is available as linked data.</p></section></section><section id="consistency-at-data-level"><h3 id="x2-3-consistency-at-data-level"><span class="secno">2.3 </span>Consistency at data level</h3><p>The data in APIs often has no links to data in other APIs. This is a problem of the underlying data: the references between individual objects, from different datasets, are still missing.</p><p>In order to query the system (via APIs) in conjunction, it is necessary that</p><ol>
+<li>References <em>between</em> datasets are created,</li>
+<li>APIs can also return identifiers from associated base registries.</li>
+</ol><p>For example: asking questions to an NHR API based on a BAG residency object identifier.</p><aside class="example" id="example-2"><div class="marker">
+      <a class="self-link" href="#example-2">Example 2</a>
+    </div><p><strong>Question</strong>: Which company is located at this address?</p>
+<p><strong>Translated</strong>: API, give me the NHR (the base registry containing chamber of commerce data) object with [BAG residence object id] as address.</p>
+</aside><p>Thus, references, <strong>links</strong>, must be made at the data instance level - from one object to another, where the objects are in different registries.</p><p>These links can best be expressed in the form of URIs, in accordance with a national agreement such as the URI strategy [<cite><a class="bibref" href="#bib-nluristrategie">NLURIStrategie</a></cite>]; based on identifiers from the base registries.</p><p>Also in APIs links should be expressed in a uniform manner. A rule for this can be included in the API strategy for the Dutch government [<cite><a class="bibref" href="#bib-nlapistrategie">NLAPIStrategie</a></cite>].</p></section><section id="ownership-of-data"><h3 id="x2-4-ownership-of-data"><span class="secno">2.4 </span>Ownership of data</h3><p>How can you see from an API / the data from an API from whom the data comes?
+Due to the lack of a semantic layer [<cite><a class="bibref" href="#bib-json-ld">JSON-LD</a></cite>] on most APIs, it is not clear after data retrieval what the data means and who owns it. For questions answered by aggregating results from different APIs, the answer does not identify who owns which part of the answer.</p><aside class="example" id="example-3"><div class="marker">
+      <a class="self-link" href="#example-3">Example 3</a>
+    </div><p><strong>Question</strong>: Which Monument has the largest surface</p>
+<p><strong>Answer</strong>: Monument Status comes from 1 dataset, the surface from another. This cannot be derived from the current API answers.</p>
+</aside></section><section id="governance-at-the-cutting-edge"><h3 id="x2-5-governance-at-the-cutting-edge"><span class="secno">2.5 </span>Governance at the cutting edge</h3><p>Earlier we wrote that technical agreements have to be made for the creation of references or <strong>links</strong> at the data instance level, from one object to another, also between objects from different registries.</p><p>Apart from the technology, there is also an essential organizational question here:</p><p>"<strong>Who is responsible for adding and managing the links between datasets</strong>?"</p><p>These links are a basic condition for coherence. However, this responsibility for creating and managing it is not yet felt and the links have often not yet been added. This can be traced directly to the assignment that the different data owners have, even within organizations. For example, there is no formal link between parcels and buildings, as the relevant departments within Kadaster do not have the task of maintaining this link, and therefore do not have the time and budget available to realize this. The management of these links must therefore be supported with policy, and therefore budget. Although there is already a <em>duty</em> to <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/gegevens/naar-een-gegevenslandschap/themas/twaalf-eisen-stelsel-van-basisregistraties/">ensure the correctness of that data when using data from the base registries</a> it is not monitored.</p><p>An important element of this governance is that the level at which these links are maintained warrants careful consideration. It is recommended that this be as close as possible to the data owner. For example, let municipalities ensure the correct link between new buildings and cadastral parcels. Although the final data is published by the land registry, the maintenance is then carried out close to the origin of the links.</p><p>In addition to the actual creation of the links, the semantic interpretation of this link is also an important subject that must be addressed. The current modeling of data within the <em>own silo</em> provides a certain freedom in modeling. However, when reference is made to data from other registries, governance about the meaning of this reference is also necessary.</p><p>There is currently no uniform way to have external data refer to an object in base registries. If, for example, reference is made to a BAG property when publishing a dataset, there is no indication of how this link should be labeled. As a result, it is now difficult with the external dataset to directly understand which dataset they are referring to.</p><p>A possible solution for this is a standardized name for the reference, for example, <code>relatedBAGBuilding</code>.</p></section><section id="the-5-star-model-for-open-data"><h3 id="x2-6-the-5-star-model-for-open-data"><span class="secno">2.6 </span>The 5-Star model for Open Data</h3><p>A step-by-step plan to address some of the aforementioned issues is the <strong>5 star Open Data</strong> model, with each addition of attributes assigned to the published data.</p><ol>
+<li>Available on the web, with an open license</li>
+<li>Data is machine readable and contains an open license</li>
+<li>The dataset is available in an open file format</li>
+<li>The above + use open standards of the W3C [<cite><a class="bibref" href="#bib-json-ld">JSON-LD</a></cite>] to identify objects in the data so that others can refer to those objects.</li>
+<li>The above + link your data to data of others, this creates coherence between data sets.</li>
+</ol><p>Considering this, current APIs are no more than 3 star data - the data is available on the web with an open license, is machine-readable, and is available in an open format. The only Dutch open government (geo) data that has four stars is Kadaster Linked Data via PDOK. Five star geospatial data is not there yet!</p></section><section id="conclusions-and-recommendations"><h3 id="x2-7-conclusions-and-recommendations"><span class="secno">2.7 </span>Conclusions and recommendations</h3><p>The starting point of the research was to build a demonstrator on top of APIs. But it turns out there are some problems.</p><section id="api-versus-knowledge-graph"><h4 id="x2-7-1-api-versus-knowledge-graph"><span class="secno">2.7.1 </span>API versus knowledge graph</h4><p>The majority of open geospatial data is made available as a map layer, which cannot be used as an API. There was only one API that scored well enough on the [maturity checklist](# maturity) to be useful. The rest of the data used in the demonstrator was published in its own API during the project.</p><p><em>Recommendation</em>: Replace the Dutch profiles of WMS 1.3 and WFS 2.0 on the Open Standards List with the new OGC API standards. WFS 2.0 can already be replaced by <a href="https://www.opengeospatial.org/standards/ogcapi-features">OGC API - Features</a>. These new OGC API standards ensure a good score on maturity.</p><p><em>Recommendation</em>: Add a checklist API maturity to the [<cite><a class="bibref" href="#bib-nlapistrategie">NLAPIStrategie</a></cite>] and make sure that APIs meet this as much as possible.</p><p>A set of standalone APIs can be made suitable for coherent querying across the APIs by implementing a semantic orchestration layer on top. This would be easier if we had a set of APIs that score well on maturity. However, this semantic orchestration layer requires a lot of extra code and maintenance. It would be better to have an infrastructure of one or more “knowledge graphs” in which the data is available and queryable in conjunction. The coherence is then regulated in the data layer. In addition, APIs can act as easy access to the data. For the more advanced applications and questions where coherence is essential, the knowledge graph can be directly accessed via SPARQL.</p><p><em>Recommendation</em>: Make sure APIs meet the maturity check. In addition, do not bet fully on APIs alone. To achieve the goals of DisGeo, work towards an infrastructure of one or more “knowledge graphs” (linked data).</p></section><section id="consistency-between-objects"><h4 id="x2-7-2-consistency-between-objects"><span class="secno">2.7.2 </span>Consistency between objects</h4><p>Data sets are usually not linked in current practice. For example, many registries, instead of a BAG identifier, still contain fields where addresses are included as text. These addresses do not match 100% with the BAG.</p><p>In order to be able to query the object registries in a coherent manner, it is a <em>basic condition</em> that the data sets at the level of individual objects are linked together using identifiers. Preferably these are included in the form of URIs.</p><p><em>Recommendation</em>: Arrange governance for the one-time creation and subsequent management of these links - this costs time and money.</p><p><em>Recommendation</em>: Arrange governance over the semantics of the connections.</p><p><em>Recommendation</em>: Establish agreements on the formation and management of URIs in a national URI strategy or broader linked data strategy, based on the [<cite><a class="bibref" href="#bib-nluristrategie">NLURIStrategie</a></cite>] that already provides a starting point for this.</p><p><em>Recommendation</em>: Require APIs to refer to identifiers from the related object registry if those relationships exist. In these cases, have the URIs included in the related object registration in Linked Data.</p></section><section id="best-practices-for-data-publication"><h4 id="x2-7-3-best-practices-for-data-publication"><span class="secno">2.7.3 </span>Best Practices for Data Publication</h4><p>Internationally, mostly supported by the EU, a lot of work has already been done on drawing up and documenting Best Practices for data publication [<cite><a class="bibref" href="#bib-dwbp">DWBP</a></cite>] [<cite><a class="bibref" href="#bib-sdw-bp">SDW-BP</a></cite>], the maturity table in chapter 4 is based on this . The [<cite><a class="bibref" href="#bib-nlapistrategie">NLAPIStrategie</a></cite>] also refers explicitly to this. The use of these Best Practices saves a lot of work in setting new standards and agreements.</p><p><em>Recommendation</em>: Copy the available Best Practices into relevant documents.</p><p><em>Recommendation</em>: Take as a starting point in a system of related registries <strong>5 Star Open Data</strong>. The absence of the 5th star automatically implies the lack of coherence.</p></section></section></section><section id="onderzoek"><!--OddPage--><h2 id="x3-research"><span class="secno">3. </span>Research</h2><section id="global-architecture"><h3 id="x3-1-global-architecture"><span class="secno">3.1 </span>Global architecture</h3><p>When conducting the research around the demonstrator, a conceptual framework has been defined in which the elaboration of the demonstrator has been tackled.
+A number of principles have been identified:</p><ul>
+<li>The application layer is completely separate from the data sources.</li>
+<li>The data is always accessed via an API. If a data source is not accessible via an API, a copy of the data source that does have an API is created in the demo environment.</li>
+<li>A data source ideally has a semantic layer API (JSON-LD). If not, it will not necessarily be solved in the demo environment, but noted as "lesson learned"</li>
+<li>If questions are asked about APIs, a provision will be created in an orchestration layer where necessary to serve these questions.</li>
+<li>When implementing a user story, at least one object from the base registries is used.</li>
+</ul><p><img src="media/architectuur.png" alt="demonstrator_architectuur"></p></section><section id="user-stories"><h3 id="x3-2-user-stories"><span class="secno">3.2 </span>User Stories</h3><p>A number of user stories have been defined focusing on the themes of Buildings and Roads. These user stories are divided into three categories with an increase in complexity:</p><ol>
+<li>Administrative relationship - Request data about a specific object across a number of data sets.</li>
+<li>Spatial relationship - Request data about objects in the vicinity of a specific object.</li>
+<li>Analysis - Request data based on multiple variables.</li>
+</ol><p>The user stories are described in the table below. They are listed in order of increasing complexity. In the demonstrator's research, these were implemented and the possibilities of current technologies were investigated.</p><table>
+<thead>
+<tr>
+<th></th>
+<th>Buildings</th>
+<th>Roads</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Category 1: administrative relationships</td>
+<td><em>As an <strong>energy advisor</strong> I want</em> data about e.g. the surface area, age / building year, functions, monumental status, value, maintenance status of a building, <em>so that I</em> can give good advice about making this building more sustainable.</td>
+<td><em>As a <strong>planner of heavy transport</strong> I want</em> data about e.g. vehicle type, travel direction, clearance height and width, the maximum load, speed and laws and regulations of this part of the road, <em>so that I</em> know whether I can plan my route with this vehicle along this part of the road.</td>
+</tr>
+<tr>
+<td>Category 2: spatial relationships</td>
+<td><em>As a <strong>potential buyer of a home</strong>, I want</em> information about noise pollution, public green spaces, parking spaces, shops, risk objects, schools, coffee shops, <em>so that I</em> know whether the surroundings of this home suit me.</td>
+<td><em>As an <strong>emergency service</strong>, I want</em> information about (surface) water, schools, childcare locations, vital infrastructure in the vicinity of an incident on public roads with a dangerous substance, <em>so that I</em> know which organizations I should warn.</td>
+</tr>
+<tr>
+<td>Category 3: analysis</td>
+<td><em>As an <strong>advisor for the living environment / spatial planning</strong>, I want</em> information about the accessibility / distance of basic facilities (public transport, schools, shops, health care) in a certain area or relative to the number of households and the age structure, <em>so that I</em> know in which places I have to make which investments.</td>
+<td><em>As a <strong>day tourist</strong> with an electric car, I want</em> to know where I can charge my car along my route and eat outside and specify my restaurant preferences (for example eating in a monumental building, eating with children) so that I can continue my route fully charged and with new energy.</td>
+</tr>
+</tbody></table></section><section id="demonstrator"><h3 id="x3-3-demonstrator"><span class="secno">3.3 </span>Demonstrator</h3><p>The demonstrator uses the data definition catalog of the base registries of base registries. This describes the relationships between the various objects within the base registries. The demonstrator finds related objects based on SKOS.
+Datasets that are not described in the data definition catalog of the base registries are added to a so-called extension. This extension contains the data that is not in the data definition catalog of the base registries, but follows the same structure.</p><p>Which objects from the data definition catalog of the base registries are supplied by which API is described in a configuration file. The configuration also describes how to convert the results of an API to [<cite><a class="bibref" href="#bib-json-ld">JSON-LD</a></cite>], a semantically rich format. CARML is used for this, developed partly by the Land Registry.</p><p>Web services for buildings (residency objects) and roads have been added to the demonstrator. As input to the process, the URI is given for the type as it is in the data definition catalog of the base registries (ie, the semantic definition). This is followed by the relationships to other objects and based on the configuration can be searched from API to API.</p><p>Geospatial searching is done in a slightly different but comparable way. Geospatial search creates a circle with a radius of 500 meters at the selected location or based on the location of an object. Geospatial relationships in the extension to the data definition catalog of the base registries determine which objects may be related geographically. This is done on the basis of geof:relate, a [<cite><a class="bibref" href="#bib-geosparql">geosparql</a></cite>] property. This prevents all objects within this radius from being searched. Ultimately, this would render the demonstrator unusable. The returned objects are converted into linked data and linked to the start object with a geof:nearby relationship.</p></section><section id="data-sources"><h3 id="x3-4-data-sources"><span class="secno">3.4 </span>Data sources</h3><p>A number of data sources have been used for the user stories, which are shown in the picture below:</p><p><img src="media/databronnen.png" alt="databronnen"></p></section><section id="cooperation-land-registry-regarding-knowledge-graph"><h3 id="x3-5-cooperation-land-registry-regarding-knowledge-graph"><span class="secno">3.5 </span>Cooperation Land Registry regarding Knowledge Graph</h3><p>In the context of this investigation, there was also collaboration with Kadaster. Kadaster is innovating and is researching new technologies to query data from Kadaster's data collections. One of those technologies is the development of a knowledge graph, which can be queried by means of a chatbot. Kadaster has developed a knowledge graph for the user story 'energy advisor'.</p><p><img src="media/samenwerkingkadaster.png" alt="samenwerking_Kadaster"></p></section></section><section id="lessonslearned"><!--OddPage--><h2 id="x4-lessons-learned-from-the-disgeo-linked-data-demonstrator"><span class="secno">4. </span>Lessons learned from the DisGeo linked data demonstrator</h2><p>This chapter describes the lessons learned from the research. While the demonstrator was being developed, we registered the issues we ran into as <a href="https://github.com/Geonovum/disgeo-demo/issues">issues in github</a>. The lessons are listed one by one in this chapter as we came across them. Read for the summary and conclusions [chapter 2](# summary).</p><section id="api-availability-api-usability-and-api-completeness"><h3 id="x4-1-api-availability-api-usability-and-api-completeness"><span class="secno">4.1 </span>API availability, API usability and API completeness</h3><section id="availabilty"><h4 id="x4-1-1-availabilty"><span class="secno">4.1.1 </span>Availabilty</h4><p>Initially, the idea at the start of the project was that a wide availability of APIs would ensure a wide availability of data. Combining this data correctly would provide a wealth of information.</p><p>However, practice shows that APIs are not (yet) widely available in the Netherlands. The BAG has a well-designed API that offers both relational and geographical data. The BAG API distinguishes itself with this.</p></section><section id="usability"><h4 id="x4-1-2-usability"><span class="secno">4.1.2 </span>Usability</h4><p>More than 80% of the data used is made available as a map layer (i.e. WMS (T) or WFS old style, or a non-standardized variant of this), which cannot be used as an API. The BAG API is the only API that can be queried geographically.</p></section><section id="completeness"><h4 id="x4-1-3-completeness"><span class="secno">4.1.3 </span>Completeness</h4><p>In addition, an API does not necessarily make <em>all</em> data available. For example, the BAG API does not make the function of a residence object available through the API.</p></section><section id="maturity"><h4 id="x4-1-4-maturity"><span class="secno">4.1.4 </span>Maturity</h4><p>Many APIs do not score well on (all) of these points:</p><section id="checklist-api-maturity"><h5 id="x4-1-4-1-checklist-api-maturity"><span class="secno">4.1.4.1 </span>Checklist API Maturity</h5><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>Referral API Strategy</th>
+<th>Reference (Spatial) Data on the Web Best Practices</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td><strong>Documentation</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Is documentation available with an API?</td>
+<td>[7.1.14] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-16-use-oas-3-0-for-documentation">1</a></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Is there reference from the API description and results to the documentation?</td>
+<td>[7.1.49] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-51-publish-oas-at-the-base-uri-in-json-format">2</a></td>
+<td>[Metadata 8.2] <a href="https://www.w3.org/TR/dwbp/#metadata">3</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Does the documentation refer to data definition catalog of the base registries or other datasets?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Is there information about the change and origin of data?</td>
+<td></td>
+<td>[Data provenance 8.4] <a href="https://www.w3.org/TR/dwbp/#provenance">4</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>API definition</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Can you provide query parameters to filter?</td>
+<td>[7.1.28] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-30-use-query-parameters-corresponding-to-the-queryable-fields">5</a></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Do identifiers from other datasets provide an entry into the API?</td>
+<td></td>
+<td>[Data identifiers 8.7] <a href="https://www.w3.org/TR/dwbp/#DataIdentifiers">6</a>, [Spatial data identifiers 12.1.1] <a href="https://www.w3.org/TR/sdw-bp/#bp-identifiers">7</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Does the API contain all necessary data / is the data complete?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Can you ask spatial questions?</td>
+<td>[7.1.34] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-36-provide-a-post-endpoint-for-geo-queries">8</a></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Does the API communicate the CRS of its spatial data?</td>
+<td>[7.1.37] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-39-use-etrs89-as-the-preferred-coordinate-reference-system-crs">9</a></td>
+<td>[Geometries and coordinate reference systems 12.2.2] <a href="https://www.w3.org/TR/sdw-bp/#geometry-and-crs">10</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Is geospatial data offered as GEOJSON?</td>
+<td>[7.1.32] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-34-support-geojson-for-geo-apis">11</a>, [7.1.33] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-35-include-geojson-as-part-of-the-embedded-resource-in-the-json-response">12</a></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Are open standards used to describe the API?</td>
+<td>[7.1.14] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-16-use-oas-3-0-for-documentation">1</a></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Is a data model available?</td>
+<td></td>
+<td>[Data Vocabularies 8.9] <a href="https://www.w3.org/TR/dwbp/#dataVocabularies">13</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Return format</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Is the return format self-descriptive?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Does the return format provide references to other datasets?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Are open standards for the return format and data used?</td>
+<td>[7.1.26] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-28-send-a-json-response-without-enclosing-envelope">14</a></td>
+<td>[Data Formats 8.8] <a href="https://www.w3.org/TR/dwbp/#dataFormats">15</a>, [Spatial data encoding 12.2.1] <a href="https://www.w3.org/TR/sdw-bp/#bp-expressing-spatial">16</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>API Use</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Does the API set terms of use?</td>
+<td></td>
+<td>[Data licenses 8.3] <a href="https://www.w3.org/TR/dwbp/#licenses">17</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>Does the API offer caching?</td>
+<td>[7.1.41] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-43-apply-caching-to-improve-performance">18</a></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>Does the API impose restrictions on use?</td>
+<td>[7.1.42] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-44-apply-rate-limiting">19</a>, [7.1.43] <a href="https://docs.geostandaarden.nl/api/API-Strategie/#api-45-provide-rate-limiting-information">20</a></td>
+<td></td>
+</tr>
+</tbody></table></section></section><section id="considerations-for-follow-up-and-api-strategy"><h4 id="x4-1-5-considerations-for-follow-up-and-api-strategy"><span class="secno">4.1.5 </span><em>Considerations for follow-up and API strategy</em></h4><ul>
+<li>The current [apply-or-explain-list-list](<a href="https://www.forumstandaardisatie.nl/open-standaarden/lijst/ver">https://www.forumstandaardisatie.nl/open-standaarden/lijst/ver</a> obligation) of Forum Standardization now contains the Dutch profiles of WMS 1.3 and WFS 2.0 . This "obligation" stands in the way of further development. The solution lies in replacing these standards on the Open Standards List with the new OGC API standards. WFS 2.0 can already be replaced by OGC API - Features. These new OGC API standards ensure a good score on maturity.</li>
+<li>The checklist for API maturity would be a good addition to the Dutch API strategy [<cite><a class="bibref" href="#bib-nlapistrategie">NLAPIStrategie</a></cite>].</li>
+</ul></section></section><section id="apis-and-data-silos"><h3 id="x4-2-apis-and-data-silos"><span class="secno">4.2 </span>APIs and data silos</h3><p>Certain data is returned based on an API query. In a system of data that is to be used in conjunction, it is necessary that the data make references to other objects based on a unique and persistent identifier. Based on this principle, we can come up with a generic solution.</p><p>One observation with regard to APIs seems to be that, at least in the APIs we have examined, an API can be seen as a data silo. The API shares data from one silo and usually does not contain any relationships to data (or a dataset) outside the API.</p><p>It seems common, that if an API offers multiple requests, the response from one request refers to another request within the same API. For example, the data about a residence object refers to the request within the same API to request associated property data.</p><aside class="example" id="example-4"><div class="marker">
+      <a class="self-link" href="#example-4">Example 4</a>
+    </div><p>Example: querying a specific property in the BAG API.</p>
+<p>Expected answer:</p>
+<p><code>"RelatedBuilding":"1895100000022868",</code></p>
+<p>Actual answer:</p>
+<p><code>"relatedBuilding" : "https://bag.basicregistries.overheid.nl/api/v1/verblijfsobjecten?pandrelatering=1895100000022868&amp;valigOp=2019-10-22 ","</code></p>
+</aside><p>This is useful on the one hand, but if you want to query a <em>different</em> registration on the basis of the BAG Building id obtained, in order to retrieve more information about that property, you as a programmer must obtain the id from the API URL by parsing it, which requires knowledge of the specific URL structure of this API. It is not possible to generically obtain an ID from a URL.</p><p>Moreover, in order to query the system in conjunction via APIs, an API must also be able to answer questions based on identifiers from other related data sets.</p><aside class="example" id="example-5"><div class="marker">
+      <a class="self-link" href="#example-5">Example 5</a>
+    </div><p>For example: asking questions to an NHR API (NHR is a base registry containing chamber of commerce data) based on a BAG residence identifier.</p>
+<ul>
+<li>Question: Which companies are located at this address?</li>
+<li>Translated: API, give me all <code>[NHR object]</code> and with this <code>[BAG residence object id]</code> as address.</li>
+</ul>
+</aside><section id="underlying-problem-missing-connections-in-the-data"><h4 id="x4-2-1-underlying-problem-missing-connections-in-the-data"><span class="secno">4.2.1 </span>Underlying problem: missing connections in the data</h4><p>Of course, an API cannot offer more than the data source it provides. If the source data contains no links between objects from this dataset and objects from other datasets, then the API cannot provide such connections.</p><p>The underlying problem is therefore that the datasets do not record and manage these links structurally. If datasets did, the APIs on top of them could be improved to offer links between individual objects and make them searchable in a useful way.</p></section><section id="considerations-for-follow-up-or-inclusion-in-api-strategy"><h4 id="x4-2-2-considerations-for-follow-up-or-inclusion-in-api-strategy"><span class="secno">4.2.2 </span><em>Considerations for follow-up or inclusion in API strategy</em></h4><ul>
+<li>In order to make data from the data silo available in conjunction, reference should be made to identifiers. This allows generic handling of data from different APIs.</li>
+<li>In addition, APIs should refer to identifiers of objects from other APIs. For example, the data from the National Cultural Heritage Agency (RCE) describes addresses on monuments, but these have been literally introduced instead of linked to the BAG and are therefore difficult to compare. This involves gross margins of error. Ideally, the RCE API should (also) refer to an address identifier available within the BAG.</li>
+<li>In order to query the system and related data collections in conjunction, APIs must refer to identifiers from the related object registry if those relationships exist. This is a problem that originates from the underlying data, the API is only an access to this.</li>
+<li>It must also be clear what the meaning of that relationship is. Sometimes, for example, an address is linked to an object for findability, while in that object several residential objects with addresses can occur. It cannot be concluded from this that only that one address is relevant.</li>
+<li>Organizing (establishing and managing) those relationships requires governance and budget!</li>
+</ul></section></section><section id="one-and-two-sided-references-and-deviations"><h3 id="x4-3-one-and-two-sided-references-and-deviations"><span class="secno">4.3 </span>One and two-sided references and deviations</h3><p>Data models impose limitations. For example, the BAG data model records that a residential object refers to a property (e.g. a building or building part), but a property does not refer to a residential object. However, the API does do this and therefore deviates from the data model. This makes the use of an API very specific.</p><section id="considerations-for-next-steps"><h4 id="x4-3-1-considerations-for-next-steps"><span class="secno">4.3.1 </span><em>Considerations for next steps</em></h4><ul>
+<li>A relationship between two objects must always be retrievable in two directions.</li>
+<li>The semantic model must be so robust that any orchestration layer across APIs is kept as compact as possible.</li>
+</ul></section></section><section id="structure-of-the-api-result"><h3 id="x4-4-structure-of-the-api-result"><span class="secno">4.4 </span>Structure of the API result</h3><p>An API can return results in a structure that is different if the results are different. A concrete example of this is that if the result contains one instance, it is returned directly in the results, while a result with multiple instances is bundled by the same API in, for example, a JSON array. This creates a different structure.</p><p>Normally this is not necessarily a problem, but it was problematic when building the demonstrator. The results of an API are converted to a semantic format. This is done by means of a mapping. How the instances are bundled, i.e. how the result of an API is structured, must be processed in the mapping, otherwise it cannot be executed properly. If this structure can differ, this means a more extensive mapping.</p><section id="consideration-for-follow-up-or-inclusion-in-api-strategy"><h4 id="x4-4-1-consideration-for-follow-up-or-inclusion-in-api-strategy"><span class="secno">4.4.1 </span><em>Consideration for follow-up or inclusion in API strategy</em></h4><ul>
+<li>It may be considered to include in the API strategy that an answer that may contain one or more results is always bundled, even if a specific question only yields one result. This keeps the semantic orchestration layer small and compact.</li>
+</ul></section></section><section id="address-details-incomparable"><h3 id="x4-5-address-details-incomparable"><span class="secno">4.5 </span>Address details incomparable</h3><p>Address data is in theory a promising linking pin for relating objects to each other, but this often proves difficult in practice. Address data is often used in the various data sets used in the demonstrator, but these are difficult to compare. Assuming that Kadaster uses the most complex model on address data (the BAG), this also seems to be the most accurate and therefore the most useful. An address consists of a number of facets (city, street, house number, house letter, addition). However, a large part of the datasets / APIs handle this data interchangeably. This makes it difficult to compare address data.</p><aside class="example" id="example-6"><div class="marker">
+      <a class="self-link" href="#example-6">Example 6</a>
+    </div><p>The Cultural Heritage Agency of the Netherlands has no direct link with the BAG. Each monument contains an address. These address details can only partly be matched with the BAG. One cause of this is:</p>
+<ul>
+<li>The BAG describes a house letter and a house number addition.</li>
+<li>The RCE only has an addition, which often does not correspond to one of the two BAG fields.</li>
+</ul>
+</aside><section id="consideration-for-next-steps"><h4 id="x4-5-1-consideration-for-next-steps"><span class="secno">4.5.1 </span><em>Consideration for next steps</em></h4><ul>
+<li>In order to be able to query the system and related data collections in conjunction, objects in data sets must refer to identifiers from the related object registration if those relationships exist. Relationships based on descriptive elements such as a typed address should be excluded.</li>
+</ul></section></section><section id="data-definition-catalog-of-the-base-registries-not-related-to-source"><h3 id="x4-6-data-definition-catalog-of-the-base-registries-not-related-to-source"><span class="secno">4.6 </span>data definition catalog of the base registries not related to source</h3><p>To discover the semantic relationship between the data of the different APIs, it is necessary to define in the semantic orchestration layer how data relates to each other. This is well done by the already existing data definition catalog of the base registries.</p><p>Some of the data from base registries is also already available as semantic data at the source, i.e. Linked Data, including a semantic model. However, there is no relationship between the elements of the semantic model at the source and the equivalent elements in the data definition catalog of the base registries. This makes it impossible to use the already existing data definition catalog of the base registries as the basis for the orchestration layer and to request the already available semantic data and add it to the demonstrator. If this semantic 'bridge' between the data definition catalog of the base registries and already published semantic data had already been present, this could have considerably simplified the building of the demonstrator.</p><section id="consideration-for-next-steps-0"><h4 id="x4-6-1-consideration-for-next-steps"><span class="secno">4.6.1 </span><em>Consideration for next steps</em></h4><ul>
+<li>The semantic relations of the coherent object registration (successor to the data definition catalog of the base registries, at least for the geo-base registries) must always be related to the semantic model of the data sets. This is a relatively easy step to take to help keep the orchestration layer compact and manageable.</li>
+</ul></section></section><section id="what-if-data-comes-from-multiple-sources"><h3 id="x4-7-what-if-data-comes-from-multiple-sources"><span class="secno">4.7 </span>What if data comes from multiple sources?</h3><p>During the development of the DisGeo demonstrator, it was assumed that data about one object is provided by a single API. Data about a residence object will always come from the land registry. When this assumption becomes invalid, the problem arises that it is almost impossible to find out where a specific object has to be requested.</p><section id="consideration-for-next-steps-1"><h4 id="x4-7-1-consideration-for-next-steps"><span class="secno">4.7.1 </span><em>Consideration for next steps</em></h4><ul>
+<li>Base registry data should only be retrieved from the related object registration. This remains a general rule!</li>
+</ul></section></section><section id="origin-of-data"><h3 id="x4-8-origin-of-data"><span class="secno">4.8 </span>Origin of data</h3><p>In no case does an API provide metadata about the object. It is therefore impossible to validate the origin, timeliness, accuracy and reliability of data.</p><section id="considerations-for-follow-up-or-inclusion-in-api-strategy-0"><h4 id="x4-8-1-considerations-for-follow-up-or-inclusion-in-api-strategy"><span class="secno">4.8.1 </span><em>Considerations for follow-up or inclusion in API strategy</em></h4><ul>
+<li>It must be investigated whether APIs can be made suitable for this.</li>
+<li>Linked data offers good opportunities for this.</li>
+</ul></section></section><section id="configuration-load"><h3 id="x4-9-configuration-load"><span class="secno">4.9 </span>Configuration load</h3><p>In order to be able to relate the APIs to each other, to convert the results of an API into a semantic format and to describe the API configuration, a huge configuration load is unavoidable. The limited APIs currently require more than 4000 rules of configuration. Maintenance of this configuration will also incur a significant burden.</p><p>We can expect the amount of APIs to become very large. In addition, there is increasing complexity per added API (no two APIs are the same).</p><p>Another drawback is that a semantic layer that you build in this way contains your own interpretation: after all, the semantics of the data in the API itself is often unknown, because it is not published.</p><p>The semantic layer must contain all the knowledge you want to question. This layer describes how the data in the system relates to each other; this is linked to which data is contained in which API. If you want to ask a broader question than the semantic layer covers, you must first add a piece to the semantic layer.</p><p>“The whole of knowledge” in this case consists of</p><ul>
+<li>Base registrations</li>
+<li>Other government datasets</li>
+<li>Open datasets</li>
+</ul><p>So ... an open world. Describing the whole of knowledge is not possible! The semantic orchestration layer must therefore be expandable.</p><section id="considerations-for-next-steps-0"><h4 id="x4-9-1-considerations-for-next-steps"><span class="secno">4.9.1 </span><em>Considerations for next steps</em></h4><ul>
+<li>This strenghens the argument for keeping the orchestration layer as compact as possible.</li>
+<li>The orchestration layer must be expandable.</li>
+<li>Linked data makes having an orchestration layer largely or completely unnecessary. Long term, this is the better option.</li>
+</ul></section></section><section id="geospatial-querying-is-characterized-by-missing-relationship-and-what-to-look-for"><h3 id="x4-10-geospatial-querying-is-characterized-by-missing-relationship-and-what-to-look-for"><span class="secno">4.10 </span>Geospatial querying is characterized by missing relationship (and what to look for)</h3><p>For questions with a geospatial component, the demonstrator searches for objects that have no administrative relationship to each other: these objects must be within a certain radius of each other. This would be possible on all objects defined in the data definition catalog of the base registries, whose defined API supports geospatial queries.</p><p>However, with a growing number of APIs, this would put a significant burden on performance. Requesting all properties within a certain radius, for example, also potentially yields a great deal of data, which in many cases is unlikely to answer the user's question. At this time, it has been decided to define in the configuration which specific object types must be considered in a geospatial query from a specific starting object. This allows control to take place.</p><section id="considerations-for-next-steps-1"><h4 id="x4-10-1-considerations-for-next-steps"><span class="secno">4.10.1 </span><em>Considerations for next steps</em></h4><ul>
+<li>Further research is needed into the balance between being able to search for everything and keeping the number of results manageable.</li>
+<li>Possible solutions include built-in targeted search patterns, filters or other ways to channel the number of search directions.</li>
+</ul></section></section><section id="geospatial-relationship-based-on-geosparql"><h3 id="x4-11-geospatial-relationship-based-on-geosparql"><span class="secno">4.11 </span>Geospatial relationship based on GeoSPARQl</h3><p>Geospatial data can easily be used in conjunction. Geographic data is in all cases offered in a geo-standard in the context of this demonstrator. This allows various tools and software libraries to easily handle geographic data. Tools that work semantically can also handle this data well because semantic (i.e. linked data-based) geostandards such as GeoSPARQL[<cite><a class="bibref" href="#bib-geosparql">geosparql</a></cite>] have been applied.</p><p>GeoSPARQL is an OGC standard that describes an extension of SPARQL [<cite><a class="bibref" href="#bib-rdf-sparql-query">rdf-sparql-query</a></cite>], the default query language for Linked Data. GeoSPARQL also defines a basic vocabulary for geospatial data and can be used to indicate that an object is a geospatial object and to establish topological relationships between geospatial objects.</p><section id="consideration-for-next-steps-2"><h4 id="x4-11-1-consideration-for-next-steps"><span class="secno">4.11.1 </span><em>Consideration for next steps</em></h4><ul>
+<li>That geographic data is provided in a geo standard is valuable, continue this way.</li>
+<li>Use GeoSPARQL when offering geospatial data as linked data.</li>
+<li>In order for the geospatial base registers to function in conjunction, it is necessary to progress to Linked Data. The growth path to this must be mapped out.</li>
+</ul></section></section></section><section id="references" class="appendix">
+      <!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References</h2>
+      
+    <section id="normative-references">
+        <h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references</h3>
+      <dl class="bibliography">
+        <dt id="bib-dwbp">[DWBP]</dt><dd><a href="https://www.w3.org/TR/dwbp/"><cite>Data on the Web Best Practices</cite></a>. Bernadette Farias Loscio; Caroline Burle; Newton Calegari. W3C. 31 January 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/dwbp/">https://www.w3.org/TR/dwbp/</a></dd><dt id="bib-geosparql">[geosparql]</dt><dd><a href="http://www.opengeospatial.org/standards/geosparql"><cite>GeoSPARQL - A Geographic Query Language for RDF Data</cite></a>. Matthew Perry; John Herring. OGC. 10 September 2012. URL: <a href="http://www.opengeospatial.org/standards/geosparql">http://www.opengeospatial.org/standards/geosparql</a></dd><dt id="bib-json-ld">[JSON-LD]</dt><dd><a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a></dd><dt id="bib-nlapistrategie">[NLAPIStrategie]</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie"><cite>API strategie voor de Nederlandse overheid</cite></a>. Frank Terpstra; Jan van Gelder. Geonovum. URL: <a href="https://docs.geostandaarden.nl/api/API-Strategie">https://docs.geostandaarden.nl/api/API-Strategie</a></dd><dt id="bib-nluristrategie">[NLURIStrategie]</dt><dd><a href="http://www.pilod.nl/wiki/Boek/URI-strategie"><cite>Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid</cite></a>. Hans Overbeek; Linda van den Brink. PLDN. URL: <a href="http://www.pilod.nl/wiki/Boek/URI-strategie">http://www.pilod.nl/wiki/Boek/URI-strategie</a></dd><dt id="bib-rdf-sparql-query">[rdf-sparql-query]</dt><dd><a href="https://www.w3.org/TR/rdf-sparql-query/"><cite>SPARQL Query Language for RDF</cite></a>. Eric Prud'hommeaux; Andy Seaborne. W3C. 15 January 2008. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-sparql-query/">https://www.w3.org/TR/rdf-sparql-query/</a></dd><dt id="bib-sdw-bp">[SDW-BP]</dt><dd><a href="https://www.w3.org/TR/sdw-bp/"><cite>Spatial Data on the Web Best Practices</cite></a>. Jeremy Tandy; Linda van den Brink; Payam Barnaghi. W3C. 28 September 2017. W3C Note. URL: <a href="https://www.w3.org/TR/sdw-bp/">https://www.w3.org/TR/sdw-bp/</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

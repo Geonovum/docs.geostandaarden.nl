@@ -1,0 +1,565 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><title>Verkenning Metadata van de Toekomst</title><script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><script src="js/config.js"></script><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "vtm",
+  "specStatus": "GN-CV",
+  "specType": "al",
+  "license": "cc-by-nd",
+  "publishDate": "2021-11-25",
+  "previousMaturity": "geen",
+  "authors": [
+    {
+      "name": "Jan Skornsek",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Ine de Visser",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Jan van Gelder",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "vrk",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/VTM",
+  "issueBase": "https://github.com/Geonovum/VTM/issues",
+  "edDraftURI": "https://Geonovum.github.io/VTM",
+  "publishISODate": "2021-11-25T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 25 november 2021"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/vtm/cv-al-vrk-20211125/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Verkenning Metadata van de Toekomst",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2021-11-25",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/VTM/issues",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Jan van Gelder",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Jan Skornsek",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Ine de Visser",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head><body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Verkenning Metadata van de Toekomst</h1>
+  
+  <h2>Geonovum Algemeen<br>
+  Consultatieversie <time class="dt-published" datetime="2021-11-25">25 november 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/vtm/cv-al-vrk-20211125/">https://docs.geostandaarden.nl/vtm/cv-al-vrk-20211125/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/vtm/vrk/">https://docs.geostandaarden.nl/vtm/vrk/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/VTM">https://Geonovum.github.io/VTM</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Jan van Gelder</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Jan Skornsek</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Ine de Visser</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/VTM/">GitHub Geonovum/VTM</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/VTM/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/VTM/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/VTM/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e9"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e16"><span class="secno">1.1 </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#d1e108"><span class="secno">1.2 </span>Aanpak</a></li><li class="tocline"><a class="tocxref" href="#d1e222"><span class="secno">1.3 </span>Scope</a></li><li class="tocline"><a class="tocxref" href="#d1e278"><span class="secno">1.4 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e408"><span class="secno">2. </span>Het belang van metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e415"><span class="secno">2.1 </span>Beleid</a></li><li class="tocline"><a class="tocxref" href="#d1e1523"><span class="secno">2.2 </span>Wat is metadata?</a></li><li class="tocline"><a class="tocxref" href="#d1e1667"><span class="secno">2.3 </span>Waarom metadata en wat kan ik ermee?</a></li><li class="tocline"><a class="tocxref" href="#d1e1837"><span class="secno">2.4 </span>Metadata ontsluiten</a></li><li class="tocline"><a class="tocxref" href="#d1e1926"><span class="secno">2.5 </span>Scope metadata in deze verkenning</a></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e2079"><span class="secno">3. </span>Waar staan we nu</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e2095"><span class="secno">3.1 </span>Beleid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e2101"><span class="secno">3.1.1 </span>Europa</a></li><li class="tocline"><a class="tocxref" href="#d1e2321"><span class="secno">3.1.2 </span>Nederland</a></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e3421"><span class="secno">3.2 </span>Catalogi - Portalen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e3427"><span class="secno">3.2.1 </span>Soorten Catalogi</a></li><li class="tocline"><a class="tocxref" href="#d1e3552"><span class="secno">3.2.2 </span>Technologieën</a></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e4230"><span class="secno">3.3 </span>Metadata standaarden.</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e4236"><span class="secno">3.3.1 </span>De geo  specifieke metadata standaarden  (ISO-OGC)</a></li><li class="tocline"><a class="tocxref" href="#d1e4426"><span class="secno">3.3.2 </span>De Non spatial  metadata standaarden  (W3C-OGC)</a></li><li class="tocline"><a class="tocxref" href="#d1e4794"><span class="secno">3.3.3 </span>Voor het web (Schema.org)</a></li><li class="tocline"><a class="tocxref" href="#d1e4841"><span class="secno">3.3.4 </span>Begrippen</a></li><li class="tocline"><a class="tocxref" href="#d1e4925"><span class="secno">3.3.5 </span>Kwaliteit</a></li><li class="tocline"><a class="tocxref" href="#d1e5161"><span class="secno">3.3.6 </span>Informatiemodellen</a></li><li class="tocline"><a class="tocxref" href="#d1e5381"><span class="secno">3.3.7 </span>Wettelijke verplichtingen</a></li><li class="tocline"><a class="tocxref" href="#d1e5509"><span class="secno">3.3.8 </span>Ontwikkelingen</a></li><li class="tocline"><a class="tocxref" href="#d1e5695"><span class="secno">3.3.9 </span>Archivering standaard</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e5758"><span class="secno">4. </span>Toekomstbeelden  metadata uit het werkveld</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#d1e5995"><span class="secno">4.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#d1e7929"><span class="secno">4.2 </span>Standaarden</a></li><li class="tocline"><a class="tocxref" href="#d1e8522"><span class="secno">4.3 </span>Catalogi</a></li><li class="tocline"><a class="tocxref" href="#d1e9667"><span class="secno">4.4 </span>Granulariteit</a></li><li class="tocline"><a class="tocxref" href="#d1e10125"><span class="secno">4.5 </span>Vindbaarheid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#d1e10297"><span class="secno">5. </span>Toekomst perspectief metadata</a></li><li class="tocline"><a class="tocxref" href="#d1e11326"><span class="secno">6. </span>Bijlage</a></li></ol></nav><section id="d1e9"><!--OddPage--><h2 id="x1-d1e9"><span class="secno">1. </span>Inleiding</h2><section id="d1e16"><h3 id="x1-1-d1e16"><span class="secno">1.1 </span>Aanleiding</h3><p>Het Ministerie van BZK en&nbsp;PDOK heeft Geonovum&nbsp;gevraagd om een verkenning uit te voeren naar toekomstige ontwikkelingen  rondom metadata. Vervolg op deze verkenning is om te bepalen welke invloed deze ontwikkelingen hebben op  het Nationaal Georegister.</p></section><section id="d1e108"><h3 id="x1-2-d1e108"><span class="secno">1.2 </span>Aanpak</h3><p>De eerste stap van deze verkenning is om een beeld te schetsen van de rol van Metadata in de toekomst. Dit is gedaan&nbsp;door het uitvoeren van desktop research en interviews. In de 2<sup>e</sup> stap wordt gekeken in hoeverre het huidige NGR al voldoet aan dit beeld, en in stap 3&nbsp;zal een handelingsperspectief geschreven worden voor de opdrachtgever.  Dit document dat ter consultatie ligt beschrijft de opgehaalde beelden van stap 1.</p></section><section id="d1e222"><h3 id="x1-3-d1e222"><span class="secno">1.3 </span>Scope</h3><p>De focus ligt primair op metadata voor geodata. Gekeken is  m.n naar ontwikkelingen op de onderwerpen: standaarden, granulariteit, datacatalogi en vindbaarheid.</p></section><section id="d1e278"><h3 id="x1-4-d1e278"><span class="secno">1.4 </span>Leeswijzer</h3><p class="space-after">In hoofdstuk 2 wordt het belang en enkele concepten rondom metadata toegelicht. Vervolgens wordt in hoofdstuk 3 de huidige stand van zaken en ontwikkelingen rondom beleid, standaarden en  catalogi  beschreven. Hoofdstuk 4 beschrijft de beelden zoals die zijn opgehaald in het werkveld. Tot slot beschrijft hoofdstuk 5  het toekomst perspectief van metadata in hoofdlijnen.</p></section></section><section id="d1e408"><!--OddPage--><h2 id="x2-d1e408"><span class="secno">2. </span>Het belang van metadata</h2><section id="d1e415"><h3 id="x2-1-d1e415"><span class="secno">2.1 </span>Beleid</h3><p>De Nederlands overheid is een grote speler in het produceren, verzamelen, verwerken en beschikbaar stellen van data.  Het belang van deze rol wordt onderstreept in de Nederlandse Digitaliseringsstrategie (NDS) en o.a. uitgewerkt in de NL DIGITAAL: data agenda overheid. Deze agenda zet in op:</p><p class="space-after"><i>‘</i><i>het oplossen van maatschappelijke problemen met data, het stimuleren van</i>
+<i>datagedreven</i>
+<i>werken door overheidsorganisaties, het beschikbaar stellen van overheidsdata (data delen) en het verbeteren van de kwaliteit van overheidsdata. Aandacht voor wetgeving en publieke waarden als transparantie rond datagebruik is daarbij van belang</i><i>.</i><i>’</i></p><p>Het belang om data beter te benutten voor oplossen van maatschappelijke vraagstukken wordt verder vorm gegeven in o.a de Interbestuurlijke Datastrategie, de Datastrategie Rijksoverheid, de Datastrategie van de verschillende provincies en gemeenten,  en eerder al in het <a href="https://data.overheid.nl/ondersteuning/open-data/beleid" target="_blank">Open Data Beleid</a>. Zo spreekt de Interbestuurlijke Datastrategie over’ <i>willen we als overheden voortbouwen op elkaars oplossingen en gedeelde uitdagingen samen aanpakken. Zo moet data beter uitwisselbaar worden en moeten zorgvuldige afwegingen gemaakt worden tussen wat er kan, wat er mag en wat wenselijk is bij datagebruik voor maatschappelijke opgaven’</i> . Tevens wordt gesproken over het belang van goed vindbare en herbruikbare data. Het betreft hier zowel de interne data die overheden zelf produceren, de data die ze gebruiken van anderen als ook de data die ze als open data beschikbaar stellen voor publiek hergebruik. Meer datagedreven werken wordt gestimuleerd.</p><p>Deze beelden zijn ook  terug te vinden in de digitale- en data strategie die door de Europese commissie ontwikkeld is. In de Europese datastrategie benadrukt de Europese Commissie o.a. het belang van datadelen tussen sectoren.&nbsp;Het doel is dat data binnen de hele Europese Unie en binnen/tussen alle sectoren vrij kan bewegen.  Deze strategie in combinatie met de ambities van de GreenDeal  worden concreet vorm gegeven in de ontwikkeling naar de zgn ‘Green Deal data space’.</p><p class="space-after">Voor het behalen van bovengenoemde ambities speelt metadata een belangrijke rol. Als je  immers niet weet dat bepaalde data überhaupt bestaan, zullen anderen ze nooit kunnen gebruiken.  <b>Vindbaarheid</b> van data is dus van essentieel.  Als je de data dan éénmaal gevonden heeft, wil je zo snel mogelijk weten of je <b>geschik</b><b>t</b> zijn voor het beoogde doel of de mate waarin gegevens relevant voor de gebruikerscontext (begrijpelijkheid / mate antwoord geeft op vraag / betekenisvol)  . Daarvoor wil je weten wat de data betekenen. En tot slot wil je de data gaan gebruiken, en wil je <b>toegang</b>  krijgen tot de data. Al deze stappen worden gefacilieerd door het gestructureerd opslaan en aanbieden van  metadata.</p></section><section id="d1e1523"><h3 id="x2-2-d1e1523"><span class="secno">2.2 </span>Wat is metadata?</h3><p>Meta-informatie is een breed begrip dat door Wikipedia als volgt wordt omschreven: "Meta-informatie bevat alle informatie die ertoe bijdraagt gegevens tot informatie te verheffen. Anders gezegd: omdat meta-informatie gegevens in een bepaalde context zet, is meta-informatie de factor die gegevens tot informatie verheft.</p><p class="space-after">Onder meta-informatie kan zowel de expliciet beschrijvende als de impliciet aanwezige informatie van datasets, dataset series, services  /  API’s  en  objecten over structuur, betekenis, onderlinge relaties, locatie, status, eigenaarschap, enz. van gegevens worden verstaan. Ook alle informatie over de applicaties en processen die de gegevens manipuleren, valt onder de noemer meta-informatie.</p></section><section id="d1e1667"><h3 id="x2-3-d1e1667"><span class="secno">2.3 </span>Waarom metadata en wat kan ik ermee?</h3><p class="space-after">Waarom metadata zo belangrijk zijn, wat je er allemaal me kunt, waar je metadata vindt, en welke standaarden in het geo-domein gebruikt worden staat goed beschreven in de ‘<a href="https://geonovum.github.io/Metadata-handreiking" target="_blank">Handreiking Nederlandse metadata profielen</a>’.  In het hoofdstuk ‘Wat-is-metadata’. Graag verwijzen we daarnaar.</p></section><section id="d1e1837"><h3 id="x2-4-d1e1837"><span class="secno">2.4 </span>Metadata ontsluiten</h3><p class="space-after"><span style="color: #auto;">Metadata kan je ontsluiten via een register of catalogus. Dit kan binnen een organisatie, maar ook nationaal of internationaal. Zo maak je het mogelijk om de metadata doorzoekbaar te maken en de data eventueel te tonen in een portaal. Een voorbeeld van een register is het</span>
+<span style="color: #auto;">Nationaal</span>
+<span style="color: #auto;">Georegister</span><span style="color: #auto;">. Hierin is metadata van verschillende organisaties in Nederland opgenomen. Via het</span>
+<span style="color: #auto;">Nationaal</span>
+<span style="color: #auto;">Georegister</span>
+<span style="color: #auto;">kan iemand data zoeken, raadplegen en in een de meeste gevallen ook direct verkrijgen</span><span style="color: #auto;">.</span></p></section><section id="d1e1926"><h3 id="x2-5-d1e1926"><span class="secno">2.5 </span>Scope metadata in deze verkenning</h3><p class="space-after">In deze verkenning richten we ons op metadata van locatie gebonden  data. Daarbij wordt gekeken naar de bijhorende standaarden, de granulariteit, datacatalogi en de vindbaarheid.</p></section></section><section id="d1e2079"><!--OddPage--><h2 id="x3-d1e2079"><span class="secno">3. </span>Waar staan we nu</h2><section id="d1e2095"><h3 id="x3-1-d1e2095"><span class="secno">3.1 </span>Beleid</h3><section id="d1e2101"><h4 id="x3-1-1-d1e2101"><span class="secno">3.1.1 </span>Europa</h4><p>De Europese Commissie heeft meerdere wetsvoorstellen m.b.t. digitalisering en data gedaan die de komende jaren vorm krijgen. De uitgangspunten hiervan zijn vastgelegd in  de Europese digitale strategie en een Europese datastrategie (Data Governance ACT, de Open Data Directive met daarin opgenomen de High Value Data lijst, en het concept van European Data Spaces). Zie ook de <a href="https://geonovum.github.io/eu_regelingen_datastrategie" target="_blank">Handreiking EU Informatie m.b.t. digitale en data-strategie</a> In de paragraaf over ‘Europese  data  strategie’.</p><p>Deze strategische positionering van Europe heeft zeker invloed op hoe we in NL onze data infra structuren verder willen vormgeven. Zo zijn de Europese  ambities meegenomen in de Interbestuurlijke Datastrategie Nederland. Daarnaast zal de Nederlandse Open Datastrategie  verder uitgewerkt moeten worden aan de hand van de Open Data  Directive met de High Value Data lijst.</p></section><section id="d1e2321"><h4 id="x3-1-2-d1e2321"><span class="secno">3.1.2 </span>Nederland</h4><p class="space-after"><span style="color: #auto;">Het Nederlands bel</span><span style="color: #auto;">e</span><span style="color: #auto;">id ro</span><span style="color: #auto;">ndom</span>
+<span style="color: #auto;">data</span>
+<span style="color: #auto;">is</span>
+<span style="color: #auto;">gebaseerd op een</span>
+<span style="color: #auto;">groot aantal documenten</span>
+<span style="color: #auto;">en ontwikkelingen</span><span style="color: #auto;">,</span>
+<span style="color: #auto;">zoals de EU-datastrategie, het Actieplan voor AI,</span>
+<span style="color: #auto;">Open Data Beleid,</span>
+<span style="color: #auto;">de doorontwikkeling en vernieuwing van de Generieke Digitale Infrastructuur (GDI)</span><span style="color: #auto;">,</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">de Nederlandse Digitaliseringsstrategie (NDS)</span>
+<span style="color: #auto;">en de uitwerking daarvan in de Agenda Digitale Overheid</span>
+<span style="color: #auto;">en</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">de Data Agenda Overheid</span><span style="color: #auto;">.</span></p><p><span style="color: #auto;">Het is</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">relevant</span>
+<span style="color: #auto;">om te kijken naar de</span>
+<span style="color: #auto;">recent verschenen</span>
+<span style="color: #auto;">Interbestuurlijke datastrat</span><span style="color: #auto;">egie</span>
+<span style="color: #auto;">(IDS)</span><span style="color: #auto;">. Deze is</span>
+<span style="color: #auto;">immers vooral</span>
+<span style="color: #auto;">gebaseerd</span>
+<span style="color: #auto;">op de hierboven genoemde documenten.</span>
+<span style="color: #auto;">Daarbij zijn o</span><span style="color: #auto;">.a. o</span><span style="color: #auto;">nderstaande onderwe</span><span style="color: #auto;">r</span><span style="color: #auto;">pen en ambities</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">terug te vinden die (indirect) een</span>
+<span style="color: #auto;">relatie</span>
+<span style="color: #auto;">hebben</span>
+<span style="color: #auto;">met</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">metada</span><span style="color: #auto;">ta</span><span style="color: #auto;">.</span></p><ul><li><p><b><span style="color: #auto;">Beter vindbaar</span></b>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">maken van data.</span>
+<span style="color: #auto;">Zowel de</span>
+<span style="color: #auto;">Data</span>
+<span style="color: #auto;">Governance</span>
+<span style="color: #auto;">Act als Interbestuurlijke</span>
+<span style="color: #auto;">da</span><span style="color: #auto;">tastrategie duiden op het belang</span>
+<span style="color: #auto;">van goed vindbare en herbruikbare data</span><span style="color: #auto;">.</span> Hoe meer potentiële gebruikers weten dat ontsloten data bestaat en waar toegang kan worden verkregen, hoe meer ontsloten data daadwerkelijk kan worden (her)gebruikt.  <span style="color: #auto;">De IDS</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">streeft</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">bijv.</span>
+<span style="color: #auto;">naar</span>
+<span style="color: #auto;">gedeelde datacatalogus om data beter</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">vindbaar te maken</span><span style="color: #auto;">.</span>
+<span style="color: #auto;"></span> ‘<span style="color: #auto;">De metadata van, en relaties tussen databronnen wordt consequent vastgelegd en deze wordt ontsloten via een centraal publicatiepunt, zodat voor iedereen duidelijk is welke data beschikbaar is en hoe deze</span>
+<span style="color: #auto;">samenhangt</span><span style="color: #auto;">’</span><span style="color: #auto;">. Heel concreet wordt genoemd het</span> aansluiten catalogi Gemeenten, CBS, stelselcatalogus op publicatiepunt data.overheid.nl.</p></li><li><p><span style="color: #auto;">To</span><span style="color: #auto;">ewerken naar een groeiend</span>
+<b><span style="color: #auto;">federatief datastelsel</span></b>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">dat voortbouwt op de basisregistraties, waarin data over silo’s en organisaties heen toegankelijk, legitiem en begrijpelijk wordt ontsloten middels collectieve, verplichtende afspraken</span></p></li><li><p class="space-after"><span style="color: #auto;">Bij de ontwikkeling van het federatieve datastelsel draagt een</span>
+<b><span style="color: #auto;">interbestuurlijke dataorganisatie</span></b>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">zorg voor gegevensmanagement, de herbruikbaarheid van dataontsluitingen, semantiek, API-strategie, architectuur voor ‘regie op gegevens’, en onderhoud en curatie van het centrale publicatiepunt voor datakennis.</span></p></li></ul><p><span style="color: #auto;">Daarnaast beschrijft de</span>
+<span style="color: #auto;"></span>
+<a href="https://www.digitaleoverheid.nl/document/i-strategie-rijk-2021-2025/" target="_blank">i-strategie van het Rijk</a>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">enkele ontwikkelingen die gaande zijn</span>
+<span style="color: #auto;">om overheidsdata</span>
+<span style="color: #auto;">kwalitie</span><span style="color: #auto;">f</span>
+<span style="color: #auto;">te verbeteren en beter te benutten</span><span style="color: #auto;">.</span>
+<span style="color: #auto;">Ter ondersteuning van de deze ontwikkelingen</span><span style="color: #auto;">, zijn metadata van belang.</span></p><ul><li><p>Steeds vaker willen overheidsorganisaties overheidsdata hergebruiken voor data-analyses, om beter inzicht te krijgen of om dienstverlening te verbeteren.</p></li><li><p>Als we de kansen van&nbsp;datagedreven&nbsp;werken willen benutten bij de aanpak van de maatschappelijke opgaven, is een essentiële randvoorwaarde dat data van&nbsp;voldoende kwaliteit&nbsp;is, kan worden gedeeld en hergebruikt.</p></li><li><p>Vaak zien we dat de kwaliteitseisen die gesteld worden aan data voor hergebruik hoger zijn dan nodig is voor het oorspronkelijke doel.</p></li><li><p>De hoeveelheid data, de diversiteit in vormen en de verspreiding ervan over de vele informatiesystemen van de overheid blijft bovendien toenemen.</p></li><li><p class="space-after">Tegelijkertijd worden de wettelijke kwaliteitseisen aan openbaarheid, informatiebeveiliging, bescherming van persoonsgegevens, duurzame toegankelijkheid, regie op gegevens en hergebruik in snel tempo opgeschroefd.</p></li></ul><p class="space-after"><span style="color: #auto;">Bovenstaande ontwikkelingen benadrukken alleen maar</span>
+<span style="color: #auto;">het</span>
+<span style="color: #auto;">groeiende de belang van</span>
+<span style="color: #auto;">beschikbare en kwalitatief</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">goede metadata.</span></p></section></section><section id="d1e3421"><h3 id="x3-2-d1e3421"><span class="secno">3.2 </span>Catalogi - Portalen</h3><section id="d1e3427"><h4 id="x3-2-1-d1e3427"><span class="secno">3.2.1 </span>Soorten Catalogi</h4><p class="space-after">Er zijn verschillende soorten catalogi te onderscheiden. Zo zijn er catalogi voor datasets en voor services (NGR, data.overheid.nl) of  API’s (developer.overheid.nl), en voor begrippen (Aquolex , INSPIRE register, etc). Een ‘stelselcatalogus’  maakt het digitale stelsel van data, metadata, en betekenis en hun samenhang inzichtelijk. De stelselcatalogus Basisregistraties en de stelselcatalogus Omgevingswet zijn daar voorbeelden van.  Daarnaast ontstaan ook catalogi gedreven door technologische ontwikkelingen (linkeddata.overheid.nl)  dan wel door bepaalde communicaties (FAIR datapoint).</p></section><section id="d1e3552"><h4 id="x3-2-2-d1e3552"><span class="secno">3.2.2 </span>Technologieën</h4><p class="space-after"><span style="color: #auto;">In principe zijn er aantal technologieën om m</span><span style="color: #auto;">etadata</span>
+<span style="color: #auto;">vindbaar en toegankelijk te maken.</span></p><p><span style="color: #auto;">De</span>
+<span style="color: #auto;">eerste</span>
+<span style="color: #auto;">technologie is de</span>
+<b><span style="color: #auto;">data catalogus</span></b><span style="color: #auto;">. Een data catalogus is een metadata managementtool voor het gestructureerd</span>
+<span style="color: #auto;">documenteren</span>
+<span style="color: #auto;">en organiseren van data in een systeem. En dergelijk catalogus wordt gebruikt binnen een organisatie, per domein, nationaal of internationaal. De metadata in de catalogus kunnen vervolgens worden gepubliceerd in data portalen. Voorbeelden zijn het</span>
+<span style="color: #auto;">Nationaal</span>
+<span style="color: #auto;">Georegister</span><span style="color: #auto;">,</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">data.overheid.nl</span>
+<span style="color: #auto;">en</span>
+<span style="color: #auto;">data.eindhoven.nl.</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">Naast deze meer (open)data catalogi kennen we in Nederland ook de stelselcatalogus voor de basisregistraties, en de stelselcatalogus voor de omgevingswet.</span>
+<span style="color: #auto;"></span>
+<span style="color: #auto;">Ook catalogi, maar de nadruk ligt daar meer op het beschrijven van begrippen en hun onderlinge relaties.</span></p><p>“A data catalog maintains an inventory of data assets through the discovery, description, and organization of datasets. The catalog provides context to enable data analysts, data scientists, data stewards, and other data consumers to find and understand a relevant dataset for the purpose of extracting business value.” <i></i>
+<i>(</i><a href="https://www.gartner.com/doc/3837968/data-catalogs-new-black-data" target="_blank"><i>– Data Catalogs are the New Black in Data Management and Analytics (Gartner, 2018)</i></a></p><p>Daarnaast hebben we de reguliere <b>search engines</b>, zoals google. Deze search engines zijn vooral geoptimaliseerd voor de ‘bedrijfsprocessen’, denk daarbij bijvoorbeeld aan de e-commerce diensten van Amazon of Bol. Waarbij er geen invloed kan worden uitgeoefend op de manier en frequentie van het indexeren van de data.  Metadata uit data catalogi en de daarbij behorende datasets zijn daardoor niet zomaar,  goed vindbaar in deze searchengines, ook al zijn de datasets beschreven met schema.org en is er search optimalisation toegepast.</p><p>Met de <b>Linked</b>
+<b></b>
+<b>D</b><b>ata</b> benadering voor het publiceren van data, waarbij voor de gegevens representatie gebruik wordt gemaakt van identificeren en koppelen van objecten met een URL, kunnen de ruimtelijke dingen net zo beschreven worden als webpagina's. Door die links te volgen kan er meer informatie gevonden worden.  Door metadata ook als Linked Data aan te bieden zal de vindbaarheid in de standaard searchengines verbeterd worden</p><p class="space-after">Tot slot zijn er ook technologische ontwikkelingen o.a. op het vlak van ‘machine learning’. De verwachting is dat machine learning zal helpen bij het automatiseren en verbeteren van de vindbaarheid, categoriseren, verrijken en identificeren van relaties tussen datasets in data catalogi. Gartner spreekt in dat kader over een zgn. ‘<b>augmented</b><b>‘ data catalogus</b>.</p></section></section><section id="d1e4230"><h3 id="x3-3-d1e4230"><span class="secno">3.3 </span>Metadata standaarden.</h3><section id="d1e4236"><h4 id="x3-3-1-d1e4236"><span class="secno">3.3.1 </span>De geo  specifieke metadata standaarden  (ISO-OGC)</h4><p>De metadata-standaarden in het geo domein bestaan al relatief lang hebben hun oorsprong in ISO. Voor metadata betreft dat de ISO 19115 (geografie) en 19119 (services) standaarden met de bijbehorende ISO 19139 voor de encoding. Daarnaast worden er met <span style="color: #000000;">ISO 19110</span>
+<span style="color: #000000;">ook</span>
+<span style="color: #000000;"></span>
+<span style="color: #000000;">feautures</span>
+<span style="color: #000000;"></span>
+<span style="color: #000000;">beschreven</span>
+<span style="color: #000000;">en gepubliceerd in de catalogus</span><span style="color: #000000;">.</span>  Voor de Catalogus zelf wordt de OGC: CSW standaard gebruikt. De INSPIRE technische specificaties voor metadata zijn ook op deze standaarden gebaseerd. In Nederland zijn de metadata profielen (<a href="https://docs.geostandaarden.nl/md/mdprofiel-iso19115/" target="_blank">Het NL profiel op ISO 19115</a> en <a href="https://docs.geostandaarden.nl/md/mdprofiel-iso19119/" target="_blank">Het NL profiel op ISO 19119</a>) op deze standaarden ontwikkeld waarmee ook aan de INSPIRE vereisten kan worden voldaan. Deze standaarden vorm de basis van het NGR.</p></section><section id="d1e4426"><h4 id="x3-3-2-d1e4426"><span class="secno">3.3.2 </span>De Non spatial  metadata standaarden  (W3C-OGC)</h4><p>De meest gebruikte standaard in open data catalogi is de <a href="https://www.w3.org/TR/vocab-dcat-2/" target="_blank">Data Catalogus Vocabulary</a> (DCAT), ontwikkeld door W3C. DCAT is een RDF-vocabulaire die is ontworpen om de interoperabiliteit tussen op het web gepubliceerde catalogi te vergemakkelijken. Daarmee kan metadata uit verschillende domeinen, worden geaggregeerd en uitgewisseld. Op deze W3C standaard is ook een Europees applicatie profiel ontwikkeld. Met DCAT  wordt de data catalogus zelf, en ook  de inhoud,  de metadata van datasets en API's / services beschreven. Door de mogelijkheid in DCAT 2.0 om ook API's/services te beschrijven maakt de standaard breed toepasbaar.</p><p>Specifiek voor het data.overheid.nl open data portaal, werkt  KOOP momenteel aan een nieuwe versie van DCAT-AP-DO gebaseerd op DCAT 2.0 en houdt daarbij de mogelijkheid open om het data overheid profiel door te ontwikkelen naar toepassingsproefiel voor Nederland (DCAT-AP-NL-2). Naast nationale profielen, zijn er ook meer domein specifieke profielen. Zoals GeoDCAT-AP of StatDCAT-AP.</p><p><a href="https://semiceu.github.io/GeoDCAT-AP/releases/" target="_blank">GeoDCAT-AP</a> is een uitbreiding van het DCAT-toepassingsprofiel voor dataportalen in Europa (DCAT-AP) voor het beschrijven van geo datasets, datasetseries en services. GeoDCAT-AP is op Europees niveau ontwikkeld om metadata uit het geodomein en specifiek de INSPIRE metadata beter te kunnen ontsluiten voor een bredere doelgroep/andere domeien in algemene dataportalen. Voor dit doel biedt GeoDCAT-AP een RDF-vocabulaire en de bijbehorende RDF-syntaxisbinding voor de metadata-elementen van ISO 19115:2003 die voor INSPIRE vereist zijn.</p><p>Voor het ontsluiten van de catalogi is <a href="https://github.com/opengeospatial/ogcapi-records" target="_blank">OGC API - Records</a> in ontwikkeling, als opvolger van OGC:CSW.  Een record geeft een beschrijving (d.w.z. metadata) over een bron (bijv. datasets, services, modellen, enz.) die de aanbieder van de bron vindbaar wil maken. OGC API - Records geeft toegang tot de metadata en biedt de mogelijkheid om die metadata te doorzoeken. De vindbaarheid door reguliere zoekmachines wordt hiermee sterkt verbeterd. Nadat een record is gevonden dat een bron beschrijft, geeft de informatie die daarin is opgenomen toegang tot de  bron.  OGC API records is één van de OGC modulaire API-bouwstenen om web-API's op een consistente manier te maken. OpenAPI wordt gebruikt om de herbruikbare API-bouwstenen te definiëren.  De specificatie verplicht geen specifieke codering voor een record, maar conformiteitsklassen zijn gedefinieerd voor het coderen van records als GeoJSON-functie en HTML.</p></section><section id="d1e4794"><h4 id="x3-3-3-d1e4794"><span class="secno">3.3.3 </span>Voor het web (Schema.org)</h4><p><a href="https://schema.org/" target="_blank">Schema.org</a> is een vocabulaire die het mogelijk maakt om data gestructureerd op internet aan te bieden, via een uitgebreid gegevensmodel van objecten die vaak op internet worden geadverteerd.  Schema.org-vocabulaire kan worden gebruikt met veel verschillende coderingen, waaronder RDFa, Microdata en JSON-LD. Deze vocabulaires hebben betrekking op entiteiten, relaties tussen entiteiten en acties. Niet alle OGC-functietypen en -eigenschappen kunnen worden getransformeerd zonder verlies van informatie naar schema.org.</p></section><section id="d1e4841"><h4 id="x3-3-4-d1e4841"><span class="secno">3.3.4 </span>Begrippen</h4><p>ISO 19135 specificeert procedures die moeten worden gevolgd bij het opzetten, onderhouden en publiceren van registers van unieke, ondubbelzinnige en permanente identificatiegegevens en betekenissen die worden toegewezen aan items met geografische informatie. Om dit doel te bereiken, specificeert ISO 19135-1:2015 elementen die nodig zijn om de registratie van deze items te beheren. Het INSPIRE register past deze standaard toe.</p><p><a href="http://www.w3.org/TR/skos-reference/" target="_blank">SKOS</a>  is een W3C- standaard voor thesauri.  SKOS wordt gebruikt om kennis over de betekenissen en samenhang van de onderliggende begrippen te ordenen en toegankelijk te maken voor het semantisch web. SKOS is gebouwd op RDF en RDFS.  SKOS wordt gebruikt voor de geo basisregistraties.</p></section><section id="d1e4925"><h4 id="x3-3-5-d1e4925"><span class="secno">3.3.5 </span>Kwaliteit</h4><p>ISO 19157 is de standaard die de data kwaliteitseigenschappen van geo-data beschrijft, uitgaande van datasetniveau maar kan  ook op informatieobjecten worden toegepast. De kwaliteitseigenschappen zijn compleetheid, logische consistentie, positionele nauwkeurigheid, thematische nauwkeurigheid, en temporele kwaliteit. Enkele van deze kwaliteitsaspecten zijn in het NL profiel op 19115 opgenomen. <br></p><p><a href="https://www.w3.org/TR/vocab-dqv/" target="_blank"><b>Data</b> <b>quality</b> <b></b> <b>vocabulary</b></a> (<b>DQV )</b>
+<b></b> is een RDF vocabulaire voor het beschrijven van datakwaliteit. Komt voort uit het werk van de Data on the web Best Practices. Het is geen geo-data specifieke standaard. De vocabulaire geeft elementen voor het beschrijven van kwaliteitsaspecten. Je kunt zelf definiëren welke metrics dit zijn en hoe je de kwaliteit daarvan uitdrukt. Ook bevat het elementen om aan te geven aan welke standaard of policy de data voldoet, om te linken naar certificaten, om kwaliteits  feedback op te nemen, etc.</p></section><section id="d1e5161"><h4 id="x3-3-6-d1e5161"><span class="secno">3.3.6 </span>Informatiemodellen</h4><p>NEN 3610 geeft regels voor het eenduidig beschrijven, uitwisselen en op het web publiceren van geo-informatie. Een geo-informatie-infrastructuur is hierbij het grotere concept van aan elkaar gekoppelde, vindbare en bevraagbare informatiebronnen. NEN 3610 bekijkt deze infrastructuur vanuit het informatieperspectief door middel van informatiemodellen.</p><p>Het doel daarbij is het vergroten van interoperabiliteit in de uitwisseling en het gebruik van geo-informatie. Bij deze norm ligt de focus op semantisch interoperabiliteit. Semantische interoperabiliteit wordt gerealiseerd door het harmoniseren van termen en definities gehanteerd door verschillende sectoren en door een gemeenschappelijke reeks van regels, concepten en modelleerpatronen voor het modelleren van de geografische werkelijkheid. NEN 3610 biedt een basis voor verdere uitwerking in sectorale modellen waardoor interoperabiliteit mogelijk wordt voor uitwisseling van geo-informatie binnen en tussen sectoren.</p><p>In het <a href="https://docs.geostandaarden.nl/mim/mim/" target="_blank">Metamodel voor informatiemodellering</a> (MIM)  staan metadata aspecten voor de elementen uit informatiemodellen gespecificeerd. Met deze specificatie is er een gemeenschappelijk vertrekpunt voor het opstellen van informatiemodellen. Het voorziet enerzijds in duidelijke afspraken die over meerdere bestuurslagen heen gaan over het vastleggen van gegevensspecificaties en biedt anderzijds ruimte aan de verschillende niveaus van modellering.</p><p>Versie 1.1 van MIM biedt naast het al bestaande uitdrukken van het metamodel in UML ook de mogelijkheid om het metamodel uit te drukken in Linked Data.</p><figure id="d1e5319"><p><img src="media/image1.png" alt="media/image1.png" style="width: 100;"></p><figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Figuur 1 Samenhang Standaarden</span></figcaption>
+</figure></section><section id="d1e5381"><h4 id="x3-3-7-d1e5381"><span class="secno">3.3.7 </span>Wettelijke verplichtingen</h4><p>ISO-normen ondersteunen de totstandkoming van de pan-Europese data-infrastructuur zoals gedefinieerd door de INSPIRE-richtlijn. Ze worden op grote schaal gebruikt als basis voor de  INSPIRE Technische documenten, voornamelijk op het gebied van data en metadata.</p><p>Daarnaast worden voor de pan-Europese data-infrastructuur de OGC standaarden gebruikt voor de specificatie van  services. Daarbij is in deze context de OGS:CSW van belang voor de metadata catalogi.</p><p>De Technische documenten waar deze standaarden worden toegepast zijn weliswaar niet juridisch bindend, maar de implementatie van de juridisch bindende regels met andere standaarden is lastig.</p><p>In Nederland is het Nationaal Georegister (NGR) aangewezen als toegangspunt voor INSPIRE. Het NGR moet daarmee voldoen aan de juridisch bindende vereisten voor discovery services en de mogelijkheid moeten bieden aan alle aangemerkte INSPIRE organisaties, om daarmee INSPIRE conforme metadata te publiceren.</p></section><section id="d1e5509"><h4 id="x3-3-8-d1e5509"><span class="secno">3.3.8 </span>Ontwikkelingen</h4><p>In de Open Data Directive, die onderdeel is van het Europese databeleid, is het geregeld dat <span style="color: #000000;">data die is opgenomen op de</span>
+<span style="color: #000000;">'EU High Value Data' lijst, aan alle Lidstaten een verplichting tot publiceren van data oplegt</span><span style="color: #000000;">. De data zal</span>
+<span style="color: #000000;">als open data worden en ontsloten via</span>
+<span style="color: #000000;">APIs</span><span style="color: #000000;">. In de High Value Data lijst</span>
+<span style="color: #000000;">(nog niet</span>
+<span style="color: #000000;">gepubliceerd</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">wordt DCAT genoemd als standaard voor het</span>
+<span style="color: #000000;">uitwisselen van metadata</span><span style="color: #000000;">.</span></p><p><span style="color: #000000;">De verplichtingen voor</span>
+<span style="color: #000000;">geo</span><span style="color: #000000;">-data en aardobservatie/milieu voegen naar verwachting een open data verplichting ( en dus ook metadata conform DCAT) toe aan een reeks</span>
+<a href="https://geonovum.github.io/eu_regelingen_datastrategie" target="_blank">INSPIRE</a>
+<span style="color: #000000;">thema's</span><span style="color: #000000;">. zie de paragraaf ‘I</span><span style="color: #000000;">nspire</span>
+<span style="color: #000000;"></span>
+<span style="color: #000000;">richtlijn</span><span style="color: #000000;">’.</span></p></section><section id="d1e5695"><h4 id="x3-3-9-d1e5695"><span class="secno">3.3.9 </span>Archivering standaard</h4><p class="space-after"><a href="https://www.nationaalarchief.nl/archiveren/mdto" target="_blank">MDTO</a> is een nieuwe norm voor het vastleggen en uitwisselen van eenduidige metagegevens om de duurzame toegankelijkheid (archivering) van overheidsinformatie mogelijk te maken. Daarbij vallen domein specifieke toepassingen buiten de scope. Bij het archiveren van data kan zoveel mogelijk gebruik gemaakt worden van de metadata die al eerder is vastgelegd. Daarvoor is een eenduidige mapping naar deze standaard  nodig.</p></section></section></section><section id="d1e5758"><!--OddPage--><h2 id="x4-d1e5758"><span class="secno">4. </span>Toekomstbeelden  metadata uit het werkveld</h2><p>In het kader van deze verkenning zijn zo’n 20 - 25 open gesprekken gevoerd met personen die op een af andere manier betrokken zijn bij het onderwerp metadata. Onder de geïnterviewde personen zijn  aanbieders  en gebruikers van data en API’s / services,  beheerders en productowners van dataportalen, beheerders van de metadata standaarden en profielen, beleidsmedewerkers, leveranciers van diensten rondom metadata, metadata experts, en onderzoekers. Ook is gekeken naar de ontwikkelingen in Vlaanderen.  Uit deze gesprekken komen onderstaande beelden naar voren.  Daarbij komen eerst enkele algemene beelden aan bod,  daarna  beelden omtrent de standaarden, catalogi, granulariteit en vindbaarheid.</p><section id="d1e5995"><h3 id="x4-1-d1e5995"><span class="secno">4.1 </span>Algemeen</h3><ul><li><p><b>Geen</b>
+<b>duidelijke regie</b>
+<b>vanuit beleid.</b> De sturing vanuit beleid is versnipperd en wordt niet als gecoördineerd ervaren. Beeld is dat er veel verschillende initiatieven gaande zijn, echter weinig samenhang, het overkoepelende beeld ontbreekt.  Er is bijv. geen sprake van een integrale sturing op de  positionering en samenhang tussen data-catalogi en bijhorende standaarden, zoals dat in Vlaanderen wel lijkt te gebeuren<i>.</i>  Ontwikkelingen worden in principe overgelaten aan de verschillende uitvoeringsorganisaties. Sommigen verwachten dat een dergelijk versnipperde aanpak op termijn niet meer houdbaar is, al is het maar vanuit een kostenperspectief.</p></li><li><p><b>Verschil in volwassenheid organisatie.</b> Er is een groot verschil in volwassenheid op het vlak van metadata bij organisaties. Respecteer dat, en geef eenieder de ruimte.</p></li><li><p><b>Datagedreven</b>
+<b></b>
+<b>werken</b>
+<b>.</b> Een enkele organisatie  geeft aan meer datagedreven te willen werken.  En daarvoor o.a. intern hun metadata beter te willen organiseren en vindbaar te maken. Zodra dat op orde is voorziet men – voor zover mogelijk- de metadata ook publiekelijk te willen publiceren.</p></li><li><p><b>Eenvoudiger</b><b>.</b> Metadata zouden ‘simpeler’  moeten. Dat geldt zowel voor het aantal in te vullen kenmerken van de metadata als voor de  standaarden. En zowel voor de aanbieder als de gebruikers.</p><ul><li><p><b>Van simpel naar</b>
+<b>gedetailleerd</b><b>.</b> Metadata moeten in principe simpel, laagdrempelig en begrijpelijk zijn. Voor bepaalde doelgroepen staat er soms te  veel informatie in. Biedt in principe eerst metadata aan waar de meeste behoefte aan is en het makkelijkst aan te maken is. Geef daarna pas details. Bouw het modulair op.</p></li><li><p>K<b>ost veel tijd en complex.</b>  De aanbieder moet veel metadata invullen en  de standaarden  (de ISO standaarden, maar ook DCAT) worden vaak als complex ervaren. Het invullen van metadata wordt vaak als een last ervaren en kost veel tijd. Voor het goed invullen van metadata is enige training noodzakelijk. Voor personen / organisaties die slechts sporadisch (meta)data  publiceren,  is het publiceren van metadata te complex.  Metadata bij voorkeur zoveel mogelijk automatisch invullen, ook de trefwoorden (In NGR gebeurt dat nu handmatig)</p></li><li><p>Biedt metadata aan <b>via verschillende kanalen,</b> de  verschillende doelgroepen zoeken anders en hebben een andere informatie behoefte.</p></li><li><p><b>Ontwikkelaars</b><b>.</b>
+<b>Zo e</b><b>envoudig</b>
+<b>mogelijk</b>
+<b>en breed gebruikte</b>
+<b></b>
+<b>technische</b>
+<b>standaarden</b>. Software ontwikkelaars willen nog eenvoudiger. Geen complexe formaten zoals XML maar liefst bijv.  JSON, en goed beschreven  API’s.</p></li></ul></li><li><p><b>Verschil</b>
+<b>in</b>
+<b>informatiebehoefte</b>
+<b>metadata</b>. Aan de ene kant heb je toepassingen waar de kwalitatieve aspecten van data belangrijk zijn, zoals herleidbaarheid en voor bepaalde registraties ook de (juridische) bestendigheid van gegevens. Hier worden bepaalde ETL processen ingericht om de bedrijfsprocessen te ondersteunen. Standaarden zijn juist hier van belang. Denk aan basis- of andere landelijk registraties, of aan datasets t.b.v. van Europese verplichtingen (INSPIRE, Milieu rapportages, ect. Aan de andere kant heb je toepassingen  waarvoor de beschikbaarheid van data het belangrijkste is. De afnemer is dan vooral op zoek naar data die bruikbaar zijn voor zijn toepassingsdoel.</p></li><li><p><b>In de</b>
+<b>standaarden rekening</b> houden met verschillende gebruiksgroepen en informatie behoefte.  Dit opvangen door conditionele/optionele elementen.</p></li><li><p><b>Kwaliteit van data</b> Er is in een aantal gevallen behoefte om meer informatie over de kwaliteit van de data in de metadata op te nemen. Het belang van kwaliteit is afhankelijk van het type datasets. De kwaliteitseisen die gesteld worden aan  een basis- of landelijke registratie is anders dan aan een eenmalige dataset die als open data beschikbaar wordt gesteld. Het opnemen van extra kwaliteitskenmerken levert een spanningsveld op met de wens om eenvoudigere metadata.</p></li><li><p><b>Kwaliteit</b>
+<b>van metadata</b><b>.</b> Is belangrijk, het moet goed, vanuit gebruikers perspectief ingevuld zijn. <b></b> Bepaalde organisatie willen meer aandacht / controle op de kwaliteit van de metagegevens.</p></li><li><p><b>Gebruikersvriendelijkheid van</b>
+<b>tooling</b><b>.</b>
+<b></b> Metadata moet makkelijk ingevuld en beheerd kunnen worden door databeheerders. De beschikbaarheid van goede tools blijft nog wel achter op de wens om data te kunnen zoeken  en invoeren.</p></li><li><p><b>Populariteit</b>
+<b>dataset</b><b>.</b>
+<b></b> Het gebruik <b></b> bepaald mede hoeveel energie er wordt gestoken in het  volledig beschrijven van een dataset. Focus op wat bruikbaar is voor anderen en doe dat goed.</p></li><li><p><b>Aanbod</b>
+<b>vs.</b>
+<b>vraag</b>
+<b>gericht.</b> Huidige insteek is bij metadata is vooral aanbodgericht, o.a. ingegeven door beleid (INSPIRE, Open Data, etc..). Wie de afnemers van de data is on veel niet bekend. Hier zou meer aandacht voor moeten zijn.</p><ul><li><p><b>Doelgroep.</b> Het blijkt lastig om te achterhalen wie nu de afnemers zijn van metadata. De afnemers zijn immers anoniem. Het is daarom ook lastig te achterhalen welke metadata behoefte er is bij de deze afnemers. Globaal worden volgende groepen onderscheiden (bewuste) burgers, Geo-specialisten, developers. Daarnaast worden bepaalde datasets (INSPIRE) nu eenmaal aangeboden omdat het NGR de rol vervult van INSPIRE Discovery Service voor Nederland.</p></li><li><p><b>Luister naar de gebruiker</b><b>.</b> Zorg voor een <u>goede gebruikerservaring</u> en een <u>hoge adaptiegraad</u>. Dat kan door uitwerken van de customer journey die de gebruiker (verschillende typen gebruikers) doorloopt, en te onderzoeken welke behoeften daarbij. Wat betekent dat voor de functionaliteit van de applicatie, en wat voor de onderliggende standaarden en het gebruik daarvan.  Een beleidsmedewerker of burger wil vooral basisinformatie zoals: wie is de eigenaar van de dataset, en wat zijn de contactgegevens; wat mag ik met de dataset (gebruikerslicenties); is de dataset betrouwbaar?  Een dergelijk customer journey juist NIET laten uitvoeren door het geodomein. Doel is immers te achterhalen wat de behoefte is van een niet-geoprofessional.</p></li></ul></li><li><p><b>Moeten</b>
+<b>vs.</b>
+<b>willen.</b>
+<b></b> Veelal is het beschikbaar stellen van metadata een ‘moetje’ geworden, een doel op zicht, het moet nu eenmaal voldoen aan de standaard. Zou mooi zijn als data aanbieders terug gaan naar 'willen’ i.p.v. ‘moeten’.  Metadata worden gepubliceerd, omdat we data willen delen, hergebruik willen stimuleren, datagedreven willen werken, en vooral  maatschappelijke vraagstukken willen oplossen. Een dergelijk insteek vraagt om continue aandacht van de organisatie, processen en leidinggevenden.</p></li><li><p>
+<b></b>
+<b>I</b><b>n de organisatie</b></p><ul><li><p>
+<b><u>Onderscheid</u></b>
+<b>rollen</b>  en ondersteun  de <u>verschillende rollen bij het invullen metadata.</u> Inhoud / technisch<b>.</b> Ondersteun in de tooling een proces dat meerdere mensen de metadata kunnen invullen, nu is dat vaak één persoon. Terwijl de kennis over de inhoudelijke aspecten van een dataset en de technische aspecten van een dataset veelal bij verschillende personen ligt.</p></li><li><p><b>K</b><b>opi</b><b>e</b><b>ën</b>
+<b>van data en ve</b><b>r</b><b>trouwen.</b> Bij sommige  organisaties  worden datasets gekopieerd om te gebruiken voor andere toepassingen. Inhoudelijke eigenaren voelen zich verantwoordelijk voor de kwaliteit van de data, maar weten niet altijd precies wat er met ‘hun’ data gebeurt. De inhoudelijke data eigenaren willen  het liefst zelf bepalen wat er met hun data gebeurt.</p></li><li><p>Binnen organisaties is metadata vaak <b>versnipperd;</b> meerdere tools; meerdere werelden; meerdere definities metadata.</p></li><li><p><b>Creëer en beheer</b> metadata zo dicht mogelijk bij de data.</p></li><li><p>Maak het beheren van metadata onderdeel van de <b>reguliere processen.</b></p></li><li><p><b>Genereer</b>
+<b>metadata</b> zoveel mogelijk automatisch uit de data.</p></li><li><p>Data bij de bron, begrippen bij de bron, API / Services bij de bron</p></li><li><p><b>Meer relatie</b>  tussen metadata, data, API’s / services, begrippen, informatiemodellen.</p></li><li><p><b>Begrippen</b>
+<b>opnemen</b> in de metadata ten behoeve van de doorzoekbaarheid</p></li><li><p><b>Vanuit</b>
+<b>de</b><b>zelfde metadata</b> zowel de geo als de linked data wereld bedienen.</p></li></ul></li><li><p><b>Samenwerken</b>. Probeer het wiel niet opnieuw uit te vinden. Werk samen met anderen en deel kennis en ervaring. Ook vanuit een kostenoogpunt kan het aantrekkelijk zijn om samen ontwikkelingen op te pakken. Voor het NGR en DONL wordt specifiek Informatie Vlaanderen genoemd. Vlaanderen wordt gezien als één van de voorlopers binnen Europa. Informatie Vlaanderen deelt zijn opgedane kennis nu al, en staat open voor samenwerking met Nederland.</p></li><li><p><b>S</b><b>amenhang.</b> Trend  is richting <u>meer samenhang</u> data en metadata, <u>over catalogi heen</u>, en <u>over domeinen heen</u> kijken</p></li></ul></section><section id="d1e7929"><h3 id="x4-2-d1e7929"><span class="secno">4.2 </span>Standaarden</h3><ul><li><p><b>ISO</b><b>,</b>
+<b></b>
+<b>OGC</b>
+<b>en W3C</b>. Het is positieve ontwikkeling dat OGC en W3C standaarden steeds meer naar elkaar toegroeien. Uit de interviews komt steeds terug dat er al heel veel standaarden zijn. En je bij het ontwikkelen van een nieuws standaarden altijd eerst moet kijken wat er al is, niet het wiel opnieuw moet uitvinden, en vooral samenwerken, voor zover dat kan.</p></li><li><p>Aansluiten <b>op veel gebruikte (W3C) standaarden</b>  (DCAT) en die uitbreiden met geo-profielen / extensies.</p></li><li><p>De <b>DCAT</b>
+<b></b> standaard wordt veel genoemd. Het is een generiek standaard. De gebruikersgroep is groot, er zijn veel ontwikkelingen, en er wordt veel energie ervaren. Het gebruik van DCAT (rdfa) bevorderd ook de vindbaarheid in search engines, is flexibel, en te gebruiken in een Linkeddata context. Ook Europa / INSPIRE denk voorzichtig die kant op.</p></li><li><p><b>DQV</b>, voor het vastleggen van datakwaliteit wordt enkele keren genoemd in combinatie met DCAT, als generieke opvolger van ISO 19157.</p></li><li><p><b>SKOS</b> is voor begrippen bruikbaar. Nadeel is wel dat er veel ruimte voor interpretatie is m.n. bij het vocabulaire.</p></li><li><p>De <b>ISO standaarden</b> hebben een lange historie, worden als een <b>‘rijke’</b>  maar ook als <b>complexe</b>  standaard ervaren. De ISO standaarden spelen een belangrijke rol in het geo-domein en de opgebouwde kennis, ervaring, rijkdom aan metadata die bewaart moet blijven.</p></li><li><p>De ISO standaarden hoeven ook niet te verdwijnen. Ze zijn vooral bruikbaar voor specifieke gebruikers, de geo-professional / specialist. Sommigen vinden de ISO standaarden wel een beetje achterhaalden te veel gericht op de eigen geo-community. De INSPIRE technische specificaties zijn nog op de <b>ISO standaarden</b> gebaseerd, deze zal dus nog <b>blijven bestaan.</b></p></li><li><p>Mochten in de toekomst meerdere soortgelijke / overlappende standaarden (moeten) blijven bestaan, is het in ieder geval van belang dat ze goed <b>naar elkaar te vertalen</b> / op elkaar te mappen zijn. Sommigen vinden dat je voor metadata in de toekomst helemaal kunt overstappen op DCAT.</p></li><li><p><b>OGC API – records</b>
+<b></b> wordt genoemd <b></b> als mogelijke opvolger van OGC:CSW heeft als groot voordeel dat de vindbaarheid door zoekmachines verbeterd.  Op dit moment (de standaard is in ontwikkeling) is het echter nog niet goed mogelijk om de service binding goed te maken. Dit is essentieel voor het gebruik. Daarnaast  word er voor het vastleggen van de  metadata (nog) niet van een bestaande standaard, bijvoorbeeld DCAT uitgegaan.</p></li></ul></section><section id="d1e8522"><h3 id="x4-3-d1e8522"><span class="secno">4.3 </span>Catalogi</h3><ul><li><p><b>Samenhang tussen Catalogi</b>.  Er zijn veel verschillende catalogi voor zowel data, API’s en begrippen. Weinigen hebben het overzicht. Ontwikkelingen lijken gefragmenteerd, alleen voor een beperkte doelgroep te gebeuren, zowel binnen als tussen organisaties.</p></li><li><p><b>Eén centraal punt</b>
+<b></b> voor alle metadata van  overheid ’s data.  Velen zien dat als een optimaal beeld. De metadata die je daar  vind zijn simpel en eenvoudig te begrijpen, data zijn direct inzichtelijk (niet alleen beschrijving, maar ook  voorbeelden), en dit centrale punt zorgt voor optimale vindbaarheid in search engines. Dit punt is vooral voor de niet geo-professional, domein  specifieke geo metadata is hier niet beschikbaar.</p></li><li><p><b>Wel versus geen NGR</b><b>.</b> Door de meesten wordt het NGR, voor het zoeken naar  geo specifieke data als toegevoegde waarde ervaren naast het  generieke  (open) data portaal. Daar zou dan wel alle geodata in moeten zitten. In het NGR zitten zoekingangen die voor de geo-community meerwaarde hebben. De geo-wereld is ook meer gestandaardiseerd dan daarbuiten.  Het ontsluiten van metadata in NGR kan ook als een soort kwaliteitskenmerk worden gezien.  Doorzoekbaarheid en getoonde informatie zijn echter niet optimaal.  Sommigen geven aan dat in een de toekomst het NGR mogelijk geen eigen user interface meer nodig heeft, en dat  metadata over alle domeinen heen in één gebruiksvriendelijke dataportaal  te vinden is.</p><ul><li><p>Het zoeken op - en gebruiken van metadata in catalogi levert veel <b>management informatie</b> op. Deze informatie zou gedeeld moeten worden met de aanleverende partijen.</p></li></ul></li><li><p><b>Wel</b>
+<b>vs.</b>
+<b>geen eigen catalog</b><b>us</b>. Sommige, vooral grotere organisaties willen graag hun eigen Catalogus. Primair doel is dan vooral  data binnen de eigen organisatie vindbaar te maken en daarna relevante metadata publiekelijk beschikbaar te stellen.</p></li><li><p>Sommige organisaties vinden  het gebruik van duidelijke en <b>persistente</b>
+<b>URI</b> naamgeving conventies, die terug te leiden zijn naar hun eigen organisatie (Point of Origin), belangrijk. Voor anderen geldt dit minder.</p></li><li><p>Zij zouden liever gebruik willen maken van een ‘<b>Catalogus</b><b>-as-a-Service’</b>. Het beheren en up-to-date houden van de Catalogus software (incl. ondersteuning standaarden) vergt immers specifieke kennis en middelen die vaak niet voorhanden zijn. Deze organisaties kunnen hun metadata direct in NGR aanmaken via een centrale edit modus  en via NGR aanbieden, anderen gebruiken hiervoor producten van commerciële dienstverleners.</p></li><li><p><b>Zoekmachines</b>
+<b>vs.</b>
+<b>Catalogi:</b></p><ul><li><p>Catalogi blijven nog wel even bestaan. Intern in een organisatie is Google geen oplossing.</p></li><li><p>Internet is gestandaardiseerd Met Schema.org en RDFa, maar dit is  vooral geoptimaliseerd voor e-commerce. Nog niet echt voor datasets (mensen zoeken er niet of onvoldoende naar).  Schema.org heeft wel element voor datasets, echter nog niet geharmoniseerd met DCAT</p></li><li><p><b>Multi</b><b>-</b><b>chan</b><b>n</b><b>el</b><b>s</b>
+<b></b>
+<b>aanbieden</b><b>.</b> De <b></b> data op verschillende manieren vindbaar maken voor de verschillende doelgroepen. Naast catalogi ook via google vindbaar zijn.  Alleen in zoekmachines data vinden is te beperkt, data op meerder manieren vindbaar maken op basis van zelfde metadata.  Daarmee ook de (geo) API en linked data wereld bedienen.</p></li></ul></li><li><p><b>Federatief stelsel catalogi.</b> Zorg voor standaarden die de verschillende catalogi informatie kunnen uitwisselen.</p></li><li><p><b>Van gegevens naar kennis</b>. In één van de interviews wordt aangegeven dat we in toekomst meer gaan bewegen van gegevens naar informatie, en dan naar kennis.  Knowledge Graphs worden dan belangrijker.</p></li><li><p><b>Machine</b>
+<b>learning</b><b>.</b>
+<b></b> Op het gebied van <b></b> technologische ontwikkeling  wordt de verwachting geuit dat Machine Learning en Artificial  Intelligence  zal helpen bij het automatiseren en verbeteren van de vindbaarheid, categoriseren, verrijken en identificeren van relaties tussen datasets in data catalogi. Gartner spreek in één van zijn rapporten in dit geval over een zgn.  ‘augmented data catalog’.</p></li></ul></section><section id="d1e9667"><h3 id="x4-4-d1e9667"><span class="secno">4.4 </span>Granulariteit</h3><ul><li><p><b>Dataset</b>. Gedeeld beeld is dat er vooral op dataset niveau metadata vastgelegd moet worden.</p></li><li><p><b>Datasetserie</b> wordt soms gebruikt om meerdere samenhangende datasets voor de vindbaarheid  van gebruikers samen te ontsluiten.</p></li><li><p><b>Objectinformatie</b><b>.</b> Metadata over objecten is alleen zinvol als er op dat niveau echt verschillende info is. Dit is afhankelijk van de dataset.</p><ul><li><p>Objectinformatie opnemen in DCAT zou wel erg veel inspanning vergen. Informatie over objecten staat voor een deel beschreven in het Informatiemodel en uitgewerkt in een objectencatalogus  of gegevenscatalogus.</p></li><li><p>Bij basisregistraties of andere landelijke of domein specifieke registraties is een goede beschrijving van het object nodig, het is bijvoorbeeld voor sommige (juridische) toepassingen van belang te weten op welke datum een object gewijzigd is.</p></li><li><p>Basisregistraties staan niet op zich, en worden ook gebruikt om relatie te leggen met  andere basis- of landelijke registraties. Dan wil je weten welke definitie gehanteerd wordt voor bepaalde objecten, zoals bijvoorbeeld een weg. Voor kleinere datasets is dat veel minder van belang.</p></li></ul></li><li><p><b>Services en</b>
+<b>API’s</b><b>.</b> De overheid is volop bezig om meer API’s aan te bieden. API management wordt steeds belangrijker.</p></li><li><p>Het belang <b>van metadata over</b>
+<b>services en</b>
+<b>API’s</b> wordt onder ondersteund, mits dit extra informatie zoals over  het gebruik, de eigenaar/verstrekker en herzieningsfrequentie van de API/service bevat. Als dat niet het geval is voldoet het opnemen als distributie van een dataset.</p></li><li><p><b>Technische info</b> mist soms in de service metadata.</p></li><li><p><b>Datasets</b>
+<b></b>
+<b>vs.</b>
+<b>object gericht werken</b>.  Datasets blijven bestaan.</p></li><li><p><b>Linked</b>
+<b>data</b>. Mogelijk meer linked werken. Maar dan eerder op begrippen en objecten.</p></li></ul></section><section id="d1e10125"><h3 id="x4-5-d1e10125"><span class="secno">4.5 </span>Vindbaarheid</h3><p>Bij het zoeken naar gegevens zijn de volgende stappen van belang:</p><ul><li><p><b>Vindbaarheid voor burger.</b> Vergroot de vindbaarheid van de burger. Veelal is die niet bekend met specifieke catalogi en zoekt via de reguliere zoekmachines. Verbeter dus de vindbaarheid in zoekmachines.
+</p></li><li><p><b>Vindbaarheid over</b>
+<b>data</b><b>catalogi heen.</b> Er zijn inmiddels meer catalogi. Veelal per domein.  Maatschappelijk vraagstukken zijn veelal domein overstijgende vraagstukken, waarbij gegevens uit diverse domeinen nodig zijn om tot oplossingen te komen.</p></li><li><p><b>Vindbaarheid binnen</b>
+<b>data</b><b>catalogi.</b> De vindbaarheid binnen catalogi is nog sub-optimaal. Denk aan verbeteren doorzoekbaarheid van de data door een meer search engine achtige aanpak. Ook de begrippen en informatiemodellen zouden doorzoekbaar moeten zijn.</p></li><li><p class="space-after"><b>Vindbaarheid van</b>
+<b>API’s</b>
+<b>/ Services.</b> Ontwikkelaars van toepassingen hebben behoefte aan goed beschreven en vindbare API’s. In het NGR zijn de services al terug te vinden. Voor de hele overheid is nu Developer Overheid in ontwikkeling.</p></li></ul></section></section><section id="d1e10297"><!--OddPage--><h2 id="x5-d1e10297"><span class="secno">5. </span>Toekomst perspectief metadata</h2><ul><li><p class="space-after">Metadata wordt steeds belangrijker.  Het vormt de basis voor goed vindbare en herbruikbare data en daarmee ook voor meer datagedreven werken.</p></li></ul><ul><li><p class="space-after"><b>Ve</b><b>r</b><b>beter</b>
+<b>de</b>
+<b>vindbaarheid</b> van datasets,  bijhorend informatiemodel, begrippen en services / API’s. Niet alleen binnen een specifiek domein, maar bij voorkeur ook over domeinen heen.</p></li></ul><ul><li><p class="space-after"><b>Verbinden van werelden.</b> Door aansluiten bij generieke standaarden wordt het steeds beter mogelijk de geo-wereld en de web-wereld (W3C) met elkaar  te verbinden  en geodata  beter vindbaar te maken</p></li></ul><ul><li><p class="space-after">
+<b>Toegroeien naar één uitwisselstandaard voor datacatalogi.</b> Beeld is dat DCAT als uitwisselstandaard tussen de verschillende domein overstijgende datacatalogi  te gebruiken is.</p></li></ul><ul><li><p class="space-after"><b>DCAT</b> is als generieke standaard zeer geschikt, maakt geo data toegankelijker buiten het geo werkveld en wordt breed gesteund. DCAT heeft een hoge acceptatie graad en is breed toepasbaar. In het GeoDCAT-AP kun je het grootse deel van specifieke geo- metadata kwijt. Voor het uitwisselen in GeoDCAT is het noodzakelijk dat de ISO metadata standaarden vertaald (gemapt) worden. GeoDCAT fungeert in eerste instantie als een uitwisselstandaard naar andere datacatalogi. ISO standaarden spelen een belangrijke rol in het geo-domein en de opgebouwde kennis, ervaring, rijkdom aan metadata die op dit moment nog bewaart moet blijven. DCAT heeft ook zijn beperkingen. Op termijn zal blijken of er met één metadata  standaard  de vereisten en wensen zijn in te vullen.</p></li></ul><ul><li><p class="space-after">Er is een vraag naar <b>vereenvoudiging</b> van metadata maar <b>tegelijkertijd</b> wordt ook aangegeven dat <b>datakwaliteit belangrijker</b> wordt en informatie  daarover in de metadata opgenomen moet worden. Daarnaast ook behoefte aan meer relaties tussen data, modellen en begrippen. Dit maakt het metadateren niet eenvoudiger. Er is verschil in informatiebehoefte. Standaarden zullen daarop moeten anticiperen<b>.</b></p></li></ul><ul><li><p class="space-after">Er zijn  verschillende soorten catalogi onderscheiden zijn. Catalogi voor datasets, services en  API’s , en begrippen. Meer diepgang kan worden verkregen door samenhang (en een stap verder, integratie) te bewerkstelligen tussen metadata, API’s, data, datamodellen en begrippen door het <b>leggen van relaties</b> daartussen en het opnemen van die begrippen in de metadata.</p></li></ul><ul><li><p class="space-after">Voor het in samenhang kunnen representeren van metadata uit diverse catalogi en verschillende domeinen is een <b>federatief stelsel</b>
+<b>van datacatalogi</b>
+<b>nodig</b>.</p></li></ul><ul><li><p class="space-after"><b>NGR</b> heeft naast data overheid bestaansrecht.  Het heeft toegevoegde waarde voor de geo- community, met meer domein specifieke metadata en specifieke zoekingangen.  Daarnaast vervult het NGR de rol van INSPIRE Discovery Service voor Nederland.</p></li></ul><ul><li><p class="space-after"><b>R</b><b>elevante</b>  andere <b>standaarden</b>:  Voor begrippen wordt  vooral SKOS als standaard gehanteerd. Daarnaast kan de catalogus verbreed worden door ook het informatiemodel van de dataset te beschrijven. Het MIM (Metamodel voor Informatie  Modellen) is hiervoor een goede basis.</p></li></ul><ul><li><p class="space-after"><b>Integrale</b>
+<b>sturing</b><b>.</b>  Zorg voor meer samenhang en integratie bij de ontwikkelingen rondom standaarden en portalen. Borg die samenhang vanaf het begin. Stuur hierop vanuit beleid. Geef bijv. duidelijke ambities en kaders mee, en toets daar ook op.  Heel concreet. Zorg voor meer samenhang en integratie bij de doorontwikkeling van open data portalen, diverse catalogi, developers portalen (API’s)</p></li></ul><ul><li><p class="space-after"><b>Verbinden</b> van data <b>aanbieder</b> en <b>gebruiker</b><b>,</b> om vanuit gebruikersperspectief te kunnen werken.  <b>Luister naar de gebruiker.</b> Zorg voor een <u>goede gebruikerservaring</u> en een <u>hoge adaptiegraad</u>.  Focus op wat bruikbaar is voor anderen en doe dat goed.  Maak onderscheid tussen aanbod- en vraaggericht.</p></li></ul><ul><li><p class="space-after">Er is behoefte aan <b>s</b><b>limme</b>
+<b>tooling</b>
+<b></b> , voor het beheren van metadata, leggen van relaties met begrippen, datamodelllen en API’s. Bij voorkeur gebeurt dit zoveel mogelijk automatisch.</p></li></ul></section><section id="d1e11326"><!--OddPage--><h2 id="x6-d1e11326"><span class="secno">6. </span>Bijlage</h2><p><b>Lijst</b>
+<b>van</b>
+<b>geïnterviewden</b></p><p class="space-after">Danny Greefhorst (ArchiXL);  Marten Middeldorp (Atlas research);  Haye Hazenberg en Tim Faber (BZK);  Richard Zuijdam en Bas Vanmeulebrouk (Civity); Heidi vd Vloet en Celine Jansen (Gemeente Eindhoven);  Paul van Genuchten (Geocat);  Linda ten Brink (Geonovum);  Geraldine Nolf (Informatie Vlaanderen); Jasper Roes, Marcel Reuvers, Nicoline Jongerius, Lexi  Rowland, en Erwin Folmer (Kadaster);  Jelle Verburg, Jan Meijer en Hans Overbeek (KOOP);  Marco Brattinga (Ordina);  Cor Melse en Harm van Wijnen (RIVM);  Theo Heijn, Margot van Dorst en Mette van Essen (Rijkswaterstaat);  Jan Willem van Aalst (Spot-Info); Lia de Zoete en Robert Melkens (VNG).</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
