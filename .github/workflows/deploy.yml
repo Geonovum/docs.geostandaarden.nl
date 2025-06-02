@@ -25,6 +25,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+#      - name: Set up Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 23
+#
+#      - name: Run build script
+#        run: node build.js
+
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
@@ -32,10 +40,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-      - name: Copy `/docs` via rsync
+      - name: Copy `/dist` via rsync
         run: |
           rsync -avzP \
           --ignore-existing \
           -e "ssh -i ~/.ssh/id_rsa" \
-          docs/ \
+          / \
           "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
