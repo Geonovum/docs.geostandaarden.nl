@@ -75,8 +75,13 @@ async function buildIndex() {
     const pubDomains = await fetchPubDomains();
     const dirList = fs.readdirSync(".").filter((d) => {
         const full = path.join(".", d);
-        return fs.statSync(full).isDirectory() && !IGNORE_LIST.includes(d.toUpperCase());
+        return (
+            fs.statSync(full).isDirectory() &&
+            !d.startsWith(".") &&
+            !IGNORE_LIST.includes(d.toUpperCase())
+        );
     });
+
 
     let html = fs.readFileSync("header.html", "utf8");
 
@@ -104,9 +109,8 @@ async function buildIndex() {
         fs.mkdirSync(distDir, {recursive: true});
     }
 
-    fs.writeFileSync("dist/index.html", html);
-    fs.copyFileSync('style.css', 'dist/style.css');
-    console.log("✅ index.html gegenereerd in dist/ en style.css gekopieerd.");
+    fs.writeFileSync("index.html", html);
+    console.log("✅ index.html gegenereerd.");
 }
 
 buildIndex().catch((e) => {
