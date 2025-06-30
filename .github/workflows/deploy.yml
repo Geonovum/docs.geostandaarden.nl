@@ -5,9 +5,6 @@ on:
     branches:
       - main
       - develop
-  pull_request:
-  release:
-    types: [published]
   workflow_dispatch:
 
 jobs:
@@ -15,11 +12,12 @@ jobs:
     name: Deploy `/docs` via SCP
     runs-on: ubuntu-22.04
 
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
     env:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
       SSH_HOST:        ${{ secrets.SSH_HOST }}
       SSH_USER:        ${{ secrets.SSH_USER }}
-      SSH_TARGET_DIR:  ${{ secrets.SSH_TARGET_DIR }}
 
     steps:
       - name: Checkout repo
@@ -40,10 +38,19 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
+      - name: Set target path based on branch
+        id: path
+        run: |
+          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
+            echo "dir=${{ secrets.SSH_TARGET_DIR_PROD }}" >> $GITHUB_OUTPUT
+          else
+            echo "dir=${{ secrets.SSH_TARGET_DIR_DEV }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Copy `.` via rsync
         run: |
           rsync -avzP \
-          --ignore-existing \
-          -e "ssh -i ~/.ssh/id_rsa" \
-          . \
-          "${SSH_USER}@${SSH_HOST}:${SSH_TARGET_DIR}/"
+            --ignore-existing \
+            -e "ssh -i ~/.ssh/id_rsa" \
+            . \
+            "${SSH_USER}@${SSH_HOST}:${{ steps.path.outputs.dir }}/"
