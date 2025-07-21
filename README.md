@@ -43,6 +43,6 @@ Deze repository wordt **automatisch bijgewerkt** vanuit andere repositories die 
 
 ---
 
-## ❓ Vragen?
+## Vragen?
 
 Voor vragen over dit proces, neem contact op met: [Linda van den Brink](mailto:l.vandenbrink@geonovum.nl) of [Wilko Quak](mailto:w.quak@geonovum.nl)
