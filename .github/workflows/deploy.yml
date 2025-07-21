@@ -54,6 +54,9 @@ jobs:
       - name: Copy `.` via rsync
         run: |
           rsync -avzP \
+            --exclude='.*' \
+            --exclude='css/' \
+            --exclude='img/' \
             --ignore-existing \
             -e "ssh -i ~/.ssh/id_rsa" \
             . \
