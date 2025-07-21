@@ -41,10 +41,6 @@ Deze repository wordt **automatisch bijgewerkt** vanuit andere repositories die 
 - **Merge de PR alleen als alles klopt**.
   - Na merge wordt automatisch gedeployed naar **productie**.
 
-- **Bij problemen met testpublicaties (`develop`)**:
-  - Controleer of er commits zijn gedaan op `develop`.
-  - Publicaties worden bij een pre-release **automatisch** toegevoegd aan `develop`.
-
 ---
 
 ## ❓ Vragen?
