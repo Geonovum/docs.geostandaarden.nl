@@ -18,8 +18,7 @@
 $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronderzoek',
 														   'BHR-GT' => 'Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse',
 														   'bhr-p' => 'Bodemkundig Booronderzoek',
-														   'CPT' => 'Geotechnisch sondeeronderzoek',
-														   'sfr' => 'Wandonderzoek - bodemkunde',														   
+														   'sfr' => 'Wandonderzoek - bodemkunde',
 														   ),
 				'Domein Grondwatergebruik' => array( 'guf' => 'Grondwatergebruiksysteem',
 													 'gpd' => 'Grondwaterproductiedossier',
@@ -27,7 +26,6 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
 													),
 				'Domein Grondwatermonitoring' => array('FRD' => 'Formatieweerstand onderzoek',
 													   'gmn' => 'Grondwatermonitoringnet',
-													   'gmw' => 'Grondwatermonitoringput',
 													   'gar' => 'Grondwatersamenstellingsonderzoek',
 													   'gld' => 'Grondwaterstandonderzoek',
 													   
@@ -44,11 +42,6 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
 								'HGM' => 'REGIS II',				
 								
 							 ),
-				'Milieukwaliteit' => array(
-								'sad' => 'Milieuhygiënisch bodemonderzoek',			
-								'sld' => 'Overheidsbesluit bodemverontreiniging',	
-								
-							 ),			 
 				);
 
 ?>
@@ -167,7 +160,7 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
       <img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Home">
       <h1>Basisregistratie Ondergrond (BRO): standaarden en technische documentatie</h1>
       <p>Op <a href="https://docs.geostandaarden.nl/bro">https://docs.geostandaarden.nl/bro</a> publiceert Geonovum de standaarden en technische documenten voor de Basisregistratie Ondergrond (BRO).</p>
-      <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.bro-productomgeving.nl/bpo/latest/">BRO Productomgeving</a> voor toelichting op de documentatie.</p>
+      <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl/bro">website van Geonovum</a> voor toelichting op de documentatie.</p>
       <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
      
 	  
