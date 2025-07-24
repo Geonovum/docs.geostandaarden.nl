@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Discrepantie STRI2012 norm en XML Schema</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "WA",
+  "license": "cc-by-nd",
+  "publishDate": "2013-06-11",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "waSTRIxml",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2013-06-11T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 11 juni 2013"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-wa-waSTRIxml-20130611/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Discrepantie STRI2012 norm en XML Schema",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2013-06-11",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Discrepantie STRI2012 norm en XML Schema</h1>
+  
+  <h2>Geonovum Werkafspraak<br>
+  Vastgestelde versie <time class="dt-published" datetime="2013-06-11">11 juni 2013</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-wa-waSTRIxml-20130611/">https://docs.geostandaarden.nl/ro/def-wa-waSTRIxml-20130611/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/waSTRIxml/">https://docs.geostandaarden.nl/ro/waSTRIxml/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleiding"><span class="secno">1. </span>Aanleiding</a></li><li class="tocline"><a class="tocxref" href="#business-case"><span class="secno">2. </span>Business case</a></li><li class="tocline"><a class="tocxref" href="#werkafspraak-tot-inwerkingtreding-wijziging-ro-standaarden"><span class="secno">3. </span>Werkafspraak tot inwerkingtreding wijziging RO Standaarden</a></li><li class="tocline"><a class="tocxref" href="#impact-werkafspraak"><span class="secno">4. </span>Impact werkafspraak</a></li><li class="tocline"><a class="tocxref" href="#wijzigingsvoorstel"><span class="secno">5. </span>Wijzigingsvoorstel</a></li></ol></nav><section data-format="markdown" id="aanleiding"><!--OddPage--><h2 id="x1-aanleiding"><span class="secno">1. </span>Aanleiding</h2><p>Er is een discrepantie geconstateerd tussen de <a href="http://ro-standaarden.geonovum.nl/2012/STRI/1.1/STRI2012-v1.1.pdf">STRI2012 norm</a> en het bijbehorende <a href="http://ro-standaarden.geonovum.nl/2012/STRI/1.0/STRI2012-v1.0.zip">XML Schema</a>. In de norm wordt in paragraaf 5.3 de opbouw van een geleideformulier beschreven. Het geleideformulier beschrijft de eigenschappen en bestandsmatige opbouw van een ruimtelijk instrument en is daar ook een verplicht onderdeel van. In het geleideformulier wordt een aantal eigenschappen van het instrument opgenomen. De verplichte eigenschappen zijn de naam, het type, de status, de datum, de IMRO-versie en de versie van de praktijkrichtlijn die is gehanteerd bij het coderen. Verder is er een optionele eigenschap “versiePlantekst”. Het was de bedoeling om deze eigenschap toe te voegen als de planteksten zijn gecodeerd conform <a href="http://ro-standaarden.geonovum.nl/2012/IMROPT/1.1/IMROPT2012-v1.1.pdf">IMROPT</a> (objectgerichte planteksten). De “versiePlantekst” zou in dat geval het versienummer van het IMROPT normdocument moeten geven, vergelijkbaar met de IMRO verwijzingnorm in het GML bestand, die bij de RO Standaarden 2012 de vaste waarde “IMRO2012” heeft. In het STRI2012 XML Schema ontbreekt dit element echter, zodat het niet mogelijk is om deze eigenschap op te nemen in het geleideformulier.</p></section><section data-format="markdown" id="business-case"><!--OddPage--><h2 id="x2-business-case"><span class="secno">2. </span>Business case</h2><p>Het gebruik van de RO Standaarden 2012 is conform de <a href="https://zoek.officielebekendmakingen.nl/stcrt-2012-14821.html">Regeling standaarden ruimtelijke ordening 2012</a> verplicht vanaf 1 juli 2013
+Alle ruimtelijke instrumenten die na 1 juli 2013 worden opgesteld en in procedure worden gebracht, moeten voldoen aan de RO Standaarden 2012. De RO Standaarden 2008 mogen na 1 juli niet meer worden gebruikt voor nieuw in procedure te brengen ruimtelijke instrumenten. Als gevolg daarvan moeten ook de geleideformulieren van beschikbaar gestelde instrumenten voldoen aan de STRI2012. Bij het gebruik van objectgerichte teksten conform IMROPT2012  kan dit voor verwarring zorgen: in de norm wordt voorgeschreven dat er een “versiePlantekst” opgenomen <i>mag</i> worden, maar dit blijkt technisch niet mogelijk, omdat het geleideformulier dan niet valide is bij toetsing tegen het STRI2012 XML Schema. Dit wordt opgelost door het attribuut “versiePlantekst” in de STRI2012 norm niet te gebruiken.
+</p><p>Kosten: aanpassing van software die zich uitsluitend heeft gericht op de STRI2012 norm.</p><p>Baten: eenduidige vastlegging hoe er met deze discrepantie omgegaan moet worden.</p></section><section data-format="markdown" id="werkafspraak-tot-inwerkingtreding-wijziging-ro-standaarden"><!--OddPage--><h2 id="x3-werkafspraak-tot-inwerkingtreding-wijziging-ro-standaarden"><span class="secno">3. </span>Werkafspraak tot inwerkingtreding wijziging RO Standaarden</h2><p>Vanaf publicatie van deze werkafspraak tot het tijdstip van inwerkingtreden van vernieuwde RO Standaarden of omgevingstandaarden dan wel nader bericht van de beheerder van de RO Standaarden geldt de volgende werkafspraak.</p><p>Het attribuut “versiePlantekst” in de STRI2012 norm wordt niet gebruikt.</p></section><section data-format="markdown" id="impact-werkafspraak"><!--OddPage--><h2 id="x4-impact-werkafspraak"><span class="secno">4. </span>Impact werkafspraak</h2><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 24.388092613009924%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">RO Standaarden
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Uiteindelijk zal deze werkafspraak mogelijk leiden tot aanpassing van het Schema behorende bij STRI2012. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Wet- en regelgeving
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Het betreft geen aanpassing van norm STRI2012. Doordat de norm niet wordt aangepast, is het ook niet nodig dat wet- en regelgeving (Regeling standaarden ruimtelijke ordening) wordt aangepast. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Validator
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Er is een mogelijke impact met betrekking tot de detectie van de gehanteerde IMROPT versie van het plantekstenbestand<a name="_Ref352055971"></a><span class="noot">[*]<span class="noottekst"> Dit versienummer kan niet bepaald worden aan de hand van het geleideformulier, maar dient uit de XML Namespace van het plantekstenbestand zelf bepaald te worden.<br></span></span> bij validatie vanuit het manifest. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">RO-Online
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Er is een mogelijke impact met betrekking tot de detectie van de gehanteerde IMROPT versie van het plantekstenbestand<sup></sup><sup></sup><sup></sup><sup></sup><sup>5</sup><sup></sup>.
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Bronhouders software
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Mogelijk aanpassen van de software die geleideformulieren produceert. 
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Afnemers software
+
+</td>
+<td style="border-top: 0.5pt solid #BFBFBF; border-left: 0.5pt solid #BFBFBF; border-bottom: 0.5pt solid #BFBFBF; border-right: 0.5pt solid #BFBFBF; background-color: none;" align="left">Er is een mogelijke impact met betrekking tot de detectie van de gehanteerde IMROPT versie van het plantekstenbestand<sup></sup><sup></sup><sup></sup><sup></sup><sup>5</sup><sup></sup>.
+
+</td>
+</tr>
+</tbody>
+</table><p>N.B. Er is hier boven op een aantal plaatsen sprake van “mogelijke” impact, omdat deze afhankelijk is van de wijze waarop de detectie van de versie van de planteksten is geïmplementeerd. Mogelijk wordt de versie bepaald aan de hand van de XML namespace van het plantekstenbestand zelf, al dan niet in combinatie met de constatering (door de software) of er in het geleideformulier een element <planteksten>voorkomt. In dat geval is de impact nul. Maar er is toch “mogelijk” impact, namelijk in het geval dat er software is gebouwd die het normdocument leidend heeft genomen en er op dit moment al vanuit gaat dat er mogelijk geleideformulieren zullen worden gepubliceerd met dit element. In dat geval zal het detectiemechanisme moeten worden gewijzigd.
+</planteksten></p></section><section data-format="markdown" id="wijzigingsvoorstel"><!--OddPage--><h2 id="x5-wijzigingsvoorstel"><span class="secno">5. </span>Wijzigingsvoorstel</h2><p>Om deze werkafspraak te kunnen meenemen als wijziging in de RO Standaarden is dit wijzigingsvoorstel opgenomen in het registratiesysteem dat Geonovum voor de RO Standaarden gebruikt. Het wijzigingsvoorstel is bekend onder: Mantis 4074. (Dit registratiesysteem is inmiddels niet meer via Internet toegankelijk).</p></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

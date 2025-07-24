@@ -1,0 +1,2789 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  <link rel="stylesheet" type="text/css" href="https://docs.geostandaarden.nl/bro/gen/localstyle.css">
+  <title>Basisregistratie Ondergrond Catalogus Geomorfologische kaart</title>
+  
+  
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-VV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-VV",
+  "specType": "IM",
+  "subtitle": "BRO gegevenscatalogus",
+  "publishDate": "2023-05-04",
+  "logos": [
+    {
+      "src": "https://docs.geostandaarden.nl/bro/gen/logo_minbzk.png",
+      "href": "https://www.geobasisregistraties.nl/basisregistraties/ondergrond",
+      "alt": "Ministerie BZK",
+      "width": 776,
+      "height": 163,
+      "id": "logo_minbzk"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/bro-basisregistratie-ondergrond"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/bro-basisregistratie-ondergrond"
+    }
+  ],
+  "localBiblio": {
+    "Maas2017": {
+      "title": "Toelichting op de legenda van de Geomorfologische kaart van Nederland 1:50 000 ",
+      "authors": [
+        "Maas, G.J."
+      ],
+      "date": "2017",
+      "href": "http://legendageomorfologie.wur.nl/"
+    },
+    "Koomen-Maas2004": {
+      "title": "Geomorfologische Kaart Nederland, Achtergronddocument bij het landsdekkende digitale bestand. ",
+      "authors": [
+        "Koomen, A.J.M.",
+        "Maas, G.J"
+      ],
+      "date": "2004",
+      "publisher": "Alterra Wageningen UR",
+      "id": "Rapport 1039"
+    }
+  },
+  "shortName": "GMM",
+  "pubDomain": "bro",
+  "github": "https://github.com/BROprogramma/GMM",
+  "previousPublishDate": "2023-02-01",
+  "previousStatus": "GN-CV",
+  "publishISODate": "2023-05-04T00:00:00.000Z",
+  "generatedSubtitle": "Versie ter vaststelling 04 mei 2023"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/bro/vv-im-GMM-20230504/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Basisregistratie Ondergrond Catalogus Geomorfologische kaart",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2023-05-04",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/BROprogramma/GMM/issues/",
+  "alternativeHeadline": "BRO gegevenscatalogus",
+  "isBasedOn": "https://docs.geostandaarden.nl/bro/cv-im-GMM-20230201/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "url": "https://www.geonovum.nl/geo-standaarden/bro-basisregistratie-ondergrond"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "url": "https://www.geonovum.nl/geo-standaarden/bro-basisregistratie-ondergrond"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+<body class="h-entry"><div class="head">
+  <a href="" class="logo"><img id="logo_minbzk" alt="Ministerie BZK" width="776" height="163" src="https://docs.geostandaarden.nl/bro/gen/logo_minbzk.png"></a>
+  <h1 class="title p-name" id="title">Basisregistratie Ondergrond Catalogus Geomorfologische kaart</h1>  
+  <h2>Geonovum Informatiemodel<br>
+  Versie ter vaststelling <time class="dt-published" datetime="2023-05-04">04 mei 2023</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/bro/vv-im-GMM-20230504/">https://docs.geostandaarden.nl/bro/vv-im-GMM-20230504/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/bro/GMM/">https://docs.geostandaarden.nl/bro/GMM/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/bro/cv-im-GMM-20230201/">https://docs.geostandaarden.nl/bro/cv-im-GMM-20230201/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://broprogramma.github.io/GMM/">https://broprogramma.github.io/GMM/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/BROprogramma/GMM/">GitHub BROprogramma/GMM</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/GMM/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/BROprogramma/GMM/pulls/">Pull requests</a>
+    </dd>
+  <dt>Contact:</dt>
+    <dd><a href="https://basisregistratieondergrond.nl/servicepagina/">BRO Servicedesk</a></dd>
+    <dd><a href="mailto:support@broservicedesk.nl">support@broservicedesk.nl</a></dd>
+    <dd>088 – 8664 999</dd>
+<dt><img align="right" id="logo_bro" alt="Basisregistratie Ondergrond" width="223" height="115" src="https://docs.geostandaarden.nl/bro/gen/logo_bro.png">
+Algemeen contact:</dt>
+    <dd>Programmabureau BRO</dd>
+    <dd>Directoraat-Generaal Bestuur, Wonen en Ruimte</dd>
+    <dd>Turfmarkt 147 Den Haag</dd>
+    <dd><a href="mailto:bro@minbzk.nl">bro@minbzk.nl</a></dd>
+  </dl>
+  
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2>
+    <!--p>Het <i>Model geomorfologie</i> is een van de registratieobjecten in het domein van <i>bodem- en grondonderzoek</i>. Het
+      is erop gericht om gegevens te produceren over de vorm van het aardoppervlak. Het is nodig de vormen en eigenschappen
+      van het aardoppervlak te kennen voor ruimtelijke planvorming, voor realisatie en onderhoud van infrastructuur, voor
+      onderzoek en advies m.b.t. vegetatie- en habitattypen, archeologische onderzoek.</p>
+    <p>Dit model is gebaseerd op de situatie van gegevensverstrekking voor de omzetting naar een informatiemodel/catalogus voor de Basisregistratie Ondergrond (BRO). De situatie is 'as-is' opgenomen zonder aanpassingen en verbetering, en zonder harmonisatie met andere BRO informatiemodellen.</p-->
+  </section>
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+
+  Dit is een definitief concept van de nieuwe versie van het informatiemodel. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+</p>
+    <!--p>Het voorliggende document is nog niet vastgesteld door het Ministerie van Infrastructuur en Milieu. Op 7 juli 2017 is
+      de conceptversie verstuurd naar Geonovum. Die conceptversie is, behoudens kleine redactionele verschillen, gelijk aan
+      dit document.</p-->
+  </section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</a></li><li class="tocline"><a class="tocxref" href="#totstandkoming"><span class="secno">1.2 </span>Totstandkoming</a></li><li class="tocline"><a class="tocxref" href="#beheer"><span class="secno">1.3 </span>Beheer</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.4 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opzet-van-het-systeem"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</a></li><li class="tocline"><a class="tocxref" href="#registratieobject"><span class="secno">2.2 </span>Registratieobject</a></li><li class="tocline"><a class="tocxref" href="#registratiedomein"><span class="secno">2.3 </span>Registratiedomein</a></li><li class="tocline"><a class="tocxref" href="#kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</a></li><li class="tocline"><a class="tocxref" href="#formele-en-materiële-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</a></li><li class="tocline"><a class="tocxref" href="#coördinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</a></li><li class="tocline"><a class="tocxref" href="#referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</a></li><li class="tocline"><a class="tocxref" href="#authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</a></li></ol></li><li class="tocline"><a class="tocxref" href="#intro-gegevensdefinitie"><span class="secno">3. </span>Introductie van de gegevensdefinitie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#intro-cat-inleiding"><span class="secno">3.1 </span>De gegevensdefinitie</a></li><li class="tocline"><a class="tocxref" href="#type-formaten"><span class="secno">3.2 </span>Domeinen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aantal"><span class="secno">3.2.1 </span>Aantal</a></li><li class="tocline"><a class="tocxref" href="#code"><span class="secno">3.2.2 </span>Code</a></li><li class="tocline"><a class="tocxref" href="#datumtijd"><span class="secno">3.2.3 </span>Tijdstip</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#datum"><span class="secno">3.2.3.1 </span>Datum</a></li><li class="tocline"><a class="tocxref" href="#datumTijd"><span class="secno">3.2.3.2 </span>DatumTijd</a></li><li class="tocline"><a class="tocxref" href="#onvolledigedatum"><span class="secno">3.2.3.3 </span>OnvolledigeDatum</a></li></ol></li><li class="tocline"><a class="tocxref" href="#meetwaarde"><span class="secno">3.2.4 </span>Meetwaarde</a></li><li class="tocline"><a class="tocxref" href="#tekst"><span class="secno">3.2.5 </span>Tekst</a></li><li class="tocline"><a class="tocxref" href="#enumeratie"><span class="secno">3.2.6 </span>Waardelijst niet-uitbreidbaar</a></li><li class="tocline"><a class="tocxref" href="#codelijst"><span class="secno">3.2.7 </span>Waardelijst uitbreidbaar</a></li><li class="tocline"><a class="tocxref" href="#organisatie"><span class="secno">3.2.8 </span>Organisatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#het-domeinmodel"><span class="secno">3.3 </span>Het domeinmodel</a></li><li class="tocline"><a class="tocxref" href="#verplichte-gegevens-waarden"><span class="secno">3.4 </span>Verplichte gegevens, verplichte waarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gegevensdefinitie"><span class="secno">4. </span>Gegevensdefinitie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Registratieobject"><span class="secno">4.1 </span>   Registratieobject</a></li><li class="tocline"><a class="tocxref" href="#het-domeinmodel-0"><span class="secno">4.2 </span>Het domeinmodel   </a></li><li class="tocline"><a class="tocxref" href="#entiteittypen-en-attributen"><span class="secno">4.3 </span>Entiteittypen en attributen   </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Geomorfologischekaart"><span class="secno">4.3.1 </span>   Geomorfologische kaart</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_naam"><span class="secno">4.3.1.1 </span>  naam</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_citation"><span class="secno">4.3.1.2 </span>  citation</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_schaal"><span class="secno">4.3.1.3 </span>  schaal</a></li><li class="tocline"><a class="tocxref" href="#detail_association_GeomorfologischeKaartGMM_Geomorfologischekaart_gerelateerdeVlakcollectie"><span class="secno">4.3.1.4 </span>  gerelateerdeVlakcollectie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie"><span class="secno">4.3.2 </span>   Geomorfologische vlakcollectie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_identificatie"><span class="secno">4.3.2.1 </span>  identificatie</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_soort"><span class="secno">4.3.2.2 </span>  soort</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_bereik"><span class="secno">4.3.2.3 </span>  bereik</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_citation"><span class="secno">4.3.2.4 </span>  citation</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_inventarisatiemethode"><span class="secno">4.3.2.5 </span>  inventarisatiemethode</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_beginlevensduur"><span class="secno">4.3.2.6 </span>  begin levensduur</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_eindelevensduur"><span class="secno">4.3.2.7 </span>  einde levensduur</a></li><li class="tocline"><a class="tocxref" href="#detail_d22600e3026"><span class="secno">4.3.2.8 </span>  bron</a></li><li class="tocline"><a class="tocxref" href="#detail_association_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_gerelateerdKaartvlak"><span class="secno">4.3.2.9 </span>  gerelateerdKaartvlak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Kaartvlak"><span class="secno">4.3.3 </span>   Kaartvlak</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Kaartvlak_identificatie"><span class="secno">4.3.3.1 </span>  identificatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang"><span class="secno">4.3.4 </span>   Vlak van geomorfologisch belang</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang_geomorfologischbelang"><span class="secno">4.3.4.1 </span>  geomorfologisch belang</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Geomorfologischvlak"><span class="secno">4.3.5 </span>   Geomorfologisch vlak</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_d22600e3821"><span class="secno">4.3.5.1 </span>  landvormeenheid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Bestand"><span class="secno">4.3.6 </span>   Bestand</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Bestand_naam"><span class="secno">4.3.6.1 </span>  naam</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Bestand_versie"><span class="secno">4.3.6.2 </span>  versie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Landvormeenheid"><span class="secno">4.3.7 </span>   Landvormeenheid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingrelif"><span class="secno">4.3.7.1 </span>  toevoeging reliëf</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_actiefproces"><span class="secno">4.3.7.2 </span>  actief proces</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingbedekking"><span class="secno">4.3.7.3 </span>  toevoeging bedekking</a></li><li class="tocline"><a class="tocxref" href="#detail_d22600e4976"><span class="secno">4.3.7.4 </span>  reliëf</a></li><li class="tocline"><a class="tocxref" href="#detail_d22600e5143"><span class="secno">4.3.7.5 </span>  landvorm subgroep</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_LandvormSubgroepType"><span class="secno">4.3.8 </span>   LandvormSubgroepType</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_identificatie"><span class="secno">4.3.8.1 </span>  identificatie</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_landvormgroep"><span class="secno">4.3.8.2 </span>  landvormgroep</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_genese"><span class="secno">4.3.8.3 </span>  genese</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_RelifType"><span class="secno">4.3.9 </span>   ReliëfType</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_RelifType_relifcode"><span class="secno">4.3.9.1 </span>  reliëfcode</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_RelifType_relifklasse"><span class="secno">4.3.9.2 </span>  reliëfklasse</a></li></ol></li><li class="tocline"><a class="tocxref" href="#global_class_GeomorfologischeKaartGMM_Relifcode"><span class="secno">4.3.10 </span>   Reliëfcode</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeDalWaarde"><span class="secno">4.3.10.1 </span>  reliëfCodeDalWaarde</a></li><li class="tocline"><a class="tocxref" href="#detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeNietDalWaarde"><span class="secno">4.3.10.2 </span>  reliëfCodeNietDalWaarde</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#uitbreidbare-waardelijsten"><span class="secno">5. </span>Uitbreidbare waardelijsten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_Genese"><span class="secno">5.1 </span>  Genese</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_RelifCodeDal"><span class="secno">5.2 </span>  ReliëfCodeDal</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_RelifCodeNietDal"><span class="secno">5.3 </span>  ReliëfCodeNietDal</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_ToevoegingRelif"><span class="secno">5.4 </span>  ToevoegingReliëf</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_GeomorfologischBelang"><span class="secno">5.5 </span>  GeomorfologischBelang</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_Inventarisatiemethode"><span class="secno">5.6 </span>  Inventarisatiemethode</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_Landvormgroep"><span class="secno">5.7 </span>  Landvormgroep</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_RelifKlasse"><span class="secno">5.8 </span>  ReliëfKlasse</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_ToevoegingBedekking"><span class="secno">5.9 </span>  ToevoegingBedekking</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_NaamBestand"><span class="secno">5.10 </span>Enumeratie details  NaamBestand</a></li><li class="tocline"><a class="tocxref" href="#detail_class_GeomorfologischeKaartGMM_Soort"><span class="secno">5.11 </span>Enumeratie details  Soort</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geomorfologie"><span class="secno">6. </span>Toelichting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#geomorfologisch-onderzoek-en-kartering"><span class="secno">6.1 </span>Geomorfologisch onderzoek en -kartering</a></li><li class="tocline"><a class="tocxref" href="#gebruikersperspectief"><span class="secno">6.2 </span>Gebruikersperspectief</a></li><li class="tocline"><a class="tocxref" href="#classificatie-legenda-en-geomorfologische-karteringen"><span class="secno">6.3 </span>Classificatie, legenda en geomorfologische karteringen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#versiebeheer"><span class="secno">6.3.1 </span>Versiebeheer</a></li><li class="tocline"><a class="tocxref" href="#vormgroep"><span class="secno">6.3.2 </span>Vormgroep</a></li><li class="tocline"><a class="tocxref" href="#relief"><span class="secno">6.3.3 </span>Reliëf</a></li><li class="tocline"><a class="tocxref" href="#genese-de-ontstaanswijze-van-landvormen"><span class="secno">6.3.4 </span>Genese: de ontstaanswijze van landvormen</a></li><li class="tocline"><a class="tocxref" href="#landvormsubgroep"><span class="secno">6.3.5 </span>Landvormsubgroep</a></li><li class="tocline"><a class="tocxref" href="#toevoeging-bovengrond"><span class="secno">6.3.6 </span>Toevoeging ‘Bovengrond’</a></li><li class="tocline"><a class="tocxref" href="#actieve-processen"><span class="secno">6.3.7 </span>Actieve processen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#dijken-van-geomorfologisch-belang"><span class="secno">6.4 </span>Dijken van geomorfologisch belang</a></li><li class="tocline"><a class="tocxref" href="#inventarisatiemethoden"><span class="secno">6.5 </span>Inventarisatiemethoden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kartering-oude-stijl-1960-1990"><span class="secno">6.5.1 </span>Kartering ‘oude stijl’ (1960-1990)</a></li><li class="tocline"><a class="tocxref" href="#kartering-nieuwe-stijl-1998-heden"><span class="secno">6.5.2 </span>Kartering ‘nieuwe stijl’ (1998 - heden)</a></li><li class="tocline"><a class="tocxref" href="#de-kaartschaal"><span class="secno">6.5.3 </span>De kaartschaal</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inspire"><span class="secno">6.6 </span>INSPIRE</a></li></ol></li></ol></nav>
+  <!-- hoofdstuk 1 -->
+  <section id="inleiding">
+    <!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2>
+    <section id="doel-en-doelgroep" class="generic">  <h3 id="x1-1-doel-en-doelgroep"><span class="secno">1.1 </span>Doel en doelgroep</h3>
+  <p>In de basisregistratie ondergrond (BRO) wordt een aantal typen gegevens geregistreerd, de <i>registratieobjecten</i>.</p>
+  <p>Een catalogus is de gegevensdefinitie van een registratieobject en beschrijft welke gegevens van het object in de BRO zijn opgeslagen. 
+    Het document is bedoeld voor alle gebruikers van de BRO en moet duidelijk maken welke gegevens er precies in het systeem zitten. 
+    Aan aanleverende partijen moet het vertellen welke gegevens in de basisregistratie ondergrond moeten komen en aan welke eisen die moeten
+    voldoen, en aan afnemende partijen welke gegevens zij in de basisregistratie ondergrond mogen verwachten.
+    Het document is voor een breed publiek bedoeld en de informatie moet naast precies ook begrijpelijk zijn.</p>
+</section>
+    <section id="totstandkoming" class="generic"><h3 id="x1-2-totstandkoming"><span class="secno">1.2 </span>Totstandkoming</h3>
+<p>Een catalogus is het resultaat van een proces van standaardisatie dat geruime tijd in beslag kan nemen. De standaardisatie is een open proces waarin de belanghebbende partijen actief betrokken worden. Het eindresultaat wordt door de wetgever vastgesteld in een ministeriële regeling.</p>
+<p>In bepaalde gevallen is de verscheidenheid aan gegevens van een object zo groot, dat er eerst deelverzamelingen worden gedefinieerd. Het standaardisatieproces wordt dan per deelverzameling doorlopen. De deelverzamelingen worden zo gekozen dat de gegevens die in de bijbehorende catalogus worden beschreven, direct na vaststelling aan de BRO kunnen worden aangeleverd. Wanneer er deelverzamelingen worden onderscheiden, komt de catalogus van het registratieobject dus gefaseerd tot stand. Omdat inzichten in de loop van de tijd kunnen wijzigen kan het aan het eind van het hele proces nodig blijken revisies door te voeren om ongewenste verschillen tussen deelverzamelingen weg te nemen.</p>
+</section>
+    <section id="beheer" class="generic"><h3 id="x1-3-beheer"><span class="secno">1.3 </span>Beheer</h3>
+<p>Een vastgestelde catalogus (zoals op wetten.nl gepubliceerd) wordt met het daarbij horende deel van het systeem van de basisregistratie ondergrond in gebruik genomen. De eerste formeel vastgestelde catalogus (zoals op wetten.nl gepubliceerd) krijgt het versienummer 1.0. Verwacht mag worden dat er na enige tijd behoefte gaat ontstaan aan gegevens die nog niet in de catalogus zijn opgenomen.</p>
+<p>De beheerder hanteert drie typen versies voor een wijziging van een standaard. Bijvoorbeeld: versie 2.1.0 (=X.Y.Z):</p>
+<ul>
+<li>X-wijzigingen Deze wijzigingen veranderen de structuur van de standaard. Hierdoor zijn X-wijzigingen niet backwards compatible.
+<br>Frequentie: maximaal 1 keer per 2 jaar.</li>
+<li>Y-wijzigingen Dit zijn wijzigingen die niet de structuur veranderen. Dit kunnen bijvoorbeeld updates zijn of inhoudelijke aanpassingen aan objecten, attributen of waardelijsten of de reikwijdte van de standaard. Deze wijzigingen zijn backwards compatible.
+<br>Frequentie: maximaal 1 keer per jaar.</li>
+<li>Z-wijzigingen Dit zijn in feite oplossingen van fouten of verbeteringen van technische aard. Deze wijzigingen zijn backwards compatible.
+<br>Frequentie: maximaal 2 keer per jaar.</li>
+</ul>
+ 
+<p>In een jaar waarin een X-wijziging plaats vindt zullen er op hetzelfde registratieobject geen y-wijzigingen plaatsvinden.  Als er een X- of een Y-wijziging in een jaar aan de orde is, wordt er geen z-wijziging gepland.
+De versie van de catalogus met inleiding (zoals hier gepubliceerd) volgt voor de normatieve stukken volledig de versie op wetten.nl. Wijzigingen aan niet normatieve teksten in dit document vallen altijd onder Z-wijzigingen en zullen maximaal 2 keer per jaar plaatsvinden.</p></section>
+    <div id="inleiding-specifiek" class="generic">
+	<p>Deze documenten hangen samen zoals hieronder afgebeeld.</p>
+      <figure id="image001"><img src="media/fig1.svg" width="600" style="mix-blend-mode: multiply;">
+        <figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Samenhang tussen documentatie
+        </span></figcaption>
+      </figure>
+	    <p>Het Ministerie van Landbouw, Natuur en Voedselkwaliteit (LNV) is de bronhouder,
+en Wageningen Environmental Research (WENR) is de dataleverancier van het
+geomorfologische kaart model (GMM).
+	    </p>
+    </div>
+    <section id="leeswijzer" class="generic">
+    <h3 id="x1-4-leeswijzer"><span class="secno">1.4 </span>Leeswijzer</h3>
+	    <p><a href="#inleiding">Hoofdstuk 1</a> geeft het doel en de doelgroep van een catalogus.</p>
+	    <p><a href="#algemene-kenmerken-en-begrippen">Hoofdstuk 2</a> behandelt enkele algemene aspecten van het BRO-systeem en begrippen van algemene aard.</p>
+	    <p><a href="#id">Hoofdstuk 3</a> plaatst het object in de gegevenssystematiek van de basisregistratie ondergrond en vertelt wat de benadering is geweest bij het opstellen van de <a href="#cat">gegevensdefinitie</a>.</p>
+	    <p><a href="#intro-gegevensdefinitie">Hoofdstuk 4</a> vertelt hoe de catalogus is opgebouwd en welke aspecten van de gegevens daarin worden beschreven.</p>
+    </section>
+  </section>
+  <section id="algemene-kenmerken-en-begrippen" class="generic"><!--OddPage--><h2 id="x2-algemene-kenmerken-en-begrippen"><span class="secno">2. </span>Algemene kenmerken en begrippen</h2>
+<section id="opzet-van-het-systeem">
+    <h3 id="x2-1-opzet-van-de-landelijke-voorziening"><span class="secno">2.1 </span>Opzet van de landelijke voorziening</h3>
+    <p>De landelijke voorziening van de basisregistratie ondergrond is een systeem dat een schakel vormt in een informatieketen. Aan het begin van de keten staan bestuursorganen die opdracht geven tot de productie van gegevens, of zelf gegevens produceren. Die bestuursorganen worden <i>bronhouders</i> genoemd. De geproduceerde gegevens worden door een <i>dataleverancier</i> geleverd aan de beheerder van het systeem, de <i>registerbeheerder</i>. De bronhouder is verantwoordelijk voor de levering van gegevens. Hij kan besluiten zelf dataleverancier te zijn of andere partijen een machtiging voor levering te verlenen. De beheerder van de landelijke voorziening van de BRO registreert de aangeleverde gegevens en levert ze voor (her)gebruik door aan allerlei afnemers.</p>
+    <p>De opzet van het systeem moet begrepen worden vanuit de verantwoordelijkheden die in de keten zijn belegd. De aangeleverde gegevens vallen onder de verantwoordelijkheid van de bronhouder en de registerbeheerder mag die gegevens niet veranderen. De registerbeheerder moet echter wel gegevens toevoegen om het systeem te kunnen beheren en hij kan gegevens toevoegen om de afnemers goed van dienst te kunnen zijn.</p>
+    <p>Bij wet is geregeld dat de basisregistratie ondergrond zo wordt opgezet dat er onderscheid bestaat tussen de gegevens die aan de registerbeheerder zijn aangeleverd en de gegevens die de registerbeheerder aan de afnemers verstrekt. Het systeem valt uiteen in twee grote deelsystemen, het register <i>brondocumenten ondergrond</i> en de <i>registratie
+          ondergrond</i> (<a href="#image001" class="fig-ref" title="De twee grote deelsystemen van de landelijke voorziening van de BRO.">Figuur <span class="figno">2</span></a>).</p>
+
+    <p>Een geheel van gegevens dat door of onder verantwoordelijkheid van een bronhouder wordt aangeleverd, wordt een <i>brondocument</i> genoemd. De brondocumenten worden in het <i>register brondocumenten ondergrond</i> opgeslagen. De gegevens uit de brondocumenten worden samen met de gegevens die de registerbeheerder toevoegt in de <i>registratie ondergrond</i> vastgelegd. De <i>registratie ondergrond</i> is het deelsysteem dat gebruikt wordt voor uitgifte.</p>
+    
+        <figure id="image001"><img src="https://docs.geostandaarden.nl/bro/gen/media/image002.png" width="350">
+        <figcaption>Figuur <span class="figno">2</span> <span class="fig-title">De twee grote deelsystemen van de landelijke voorziening van de BRO.
+        </span></figcaption>
+    </figure>
+    
+    <p>Met deze opzet verkrijgt het systeem de nodige flexibiliteit. Zo kan een object in de registratie ondergrond gegevens bevatten die uit meer dan één brondocument afkomstig zijn en bij uitgifte kunnen gegevens van verschillende objecten met elkaar gecombineerd worden. Ook is het mogelijk met het brondocument gegevens op te slaan die alleen voor de bronhouder en de aanleverende partij van belang zijn.</p>
+    <p>De catalogus dekt alle gegevens die opgenomen zijn in de registratie ondergrond. Verreweg de meeste gegevens komen uit de brondocumenten die de dataleverancier aanlevert en een paar gegevens komen voort uit de overdracht van een brondocument aan de registerbeheerder. Aan de aangeleverde gegevens worden enkele gegevens door de registerbeheerder toegevoegd. Als een gegeven is toegevoegd door de BRO wordt dat in de beschrijving expliciet vermeld.</p>
+    <p>Alle gegevens in de registratie ondergrond worden uitgegeven, maar niet alle afnemers kunnen alle gegevens geleverd krijgen. De gegevens die niet aan alle afnemers worden uitgeleverd zijn de gegevens die alleen nodig zijn in de communicatie tussen de registerbeheerder enerzijds en de dataleveranciers en bronhouders anderzijds.</p>
+</section>
+<section id="registratieobject">
+    <h3 id="x2-2-registratieobject"><span class="secno">2.2 </span>Registratieobject</h3>
+    <p>Het <i>registratieobject</i> is dé eenheid in de data-architectuur van de basisregistratie ondergrond. Voor de registerbeheerder is het de elementaire bouwsteen van het systeem dat hij moet beheren.</p>
+    <p>Een <i>registratieobject</i> verwijst naar een eenheid van informatie die onder de verantwoordelijkheid van één bronhouder valt en die met een bepaald doel is of wordt gemaakt. Het is in directe of indirecte zin gedefinieerd in de ruimte en dat wil zeggen dat een registratieobject een plaats op het aardoppervlak heeft of dat het gekoppeld is aan een ander type registratieobject met een plaats op het aardoppervlak.</p>
+    <p>Een <i>registratieobject</i> is niet alleen in de ruimte maar ook in de tijd gedefinieerd. Het leven van een registratieobject begint op het moment dat de gegevens zijn geregistreerd en dat is zo kort mogelijk nadat de gegevens zijn geproduceerd. De levensduur van een registratieobject, en de veranderlijkheid van de gegevens verschilt van object tot object. Een grondwatermonitoringput kan tientallen jaren gebruikt worden voor het meten van grondwaterstanden en in de periode kunnen er nieuwe gegevens ontstaan. Dat betekent dat de gegevens van de put in de registratie ondergrond gedurende zijn hele levensduur bijgewerkt moeten kunnen worden. Aan de andere kant van het spectrum staan de objecten waarvan alle gegevens in een keer worden vastgelegd. Geotechnisch sondeeronderzoek is daar een voorbeeld van. Sondeeronderzoek is eenmalig onderzoek en het resultaat ervan kan al na een of enkele dagen aan de bronhouder worden overhandigd.</p>
+</section>
+<section id="registratiedomein">
+    <h3 id="x2-3-registratiedomein"><span class="secno">2.3 </span>Registratiedomein</h3>
+    <p>Registratieobjecten worden in de basisregistratie ondergrond gegroepeerd in domeinen. Vooralsnog worden zes domeinen onderscheiden:
+        </p><ul>
+            <li>bodem- en grondonderzoek</li>
+            <li>bodemkwaliteit</li>
+            <li>grondwatermonitoring</li>
+            <li>grondwatergebruik</li>
+            <li>mijnbouwwet</li>
+            <li>modellen.</li>
+        </ul>
+    <p></p>
+    <p>De domeinen zijn vanuit het oogpunt van beheer van belang voor de ordening van het systeem. Daarnaast zijn zij nuttig in de communicatie met de partijen die bij de realisatie van het systeem betrokken zijn.</p>
+</section>
+<section id="kwaliteitsregime">
+    <h3 id="x2-4-kwaliteitsregime"><span class="secno">2.4 </span>Kwaliteitsregime</h3>
+    <p>In de basisregistratie ondergrond worden niet alleen gegevens geregistreerd die dateren van na de datum waarop de wet van kracht is geworden. Ook oudere gegevens zullen in de basisregistratie ondergrond worden opgenomen. De noodzaak daartoe ligt in de wet verankerd. Die schrijft voor dat de gegevens uit de eerder bestaande systemen DINO en BIS zo veel mogelijk naar de BRO moeten worden overgezet. Verder staat de wet toe dat bronhouders tot vijf jaar na de inwerkingtreding van de wet historische gegevens ter registratie mogen aanbieden.
+    </p>
+    <p>Historische gegevens kunnen niet altijd voldoen aan de strikte regels die de BRO stelt. Zo kan het voorkomen dat voor gegevens die volgens de strikte regels van de BRO verplicht zijn, geen waarde bekend is. Om de verwerking van de twee categorieën gegevens naast elkaar mogelijk te maken, worden twee kwaliteitsregimes gehanteerd. Voor de aanlevering van gegevens volgens de strikte regels geldt het IMBRO-regime. Bij de aanlevering van historische gegevens wordt geaccepteerd dat een aantal formeel verplichte gegevens geen waarde heeft. Voor deze gegevens wordt het IMBRO/A-regime gehanteerd en dat kent dus minder strikte regels.</p>
+    <p>De introductie van de twee kwaliteitsregimes geeft de bronhouder gedurende een bepaalde periode een zekere mate van vrijheid. Het kan bijvoorbeeld praktisch blijken het IMBRO/A-regime te hanteren voor gegevens die weliswaar pas na de datum waarop de wet in werking is getreden zijn geproduceerd maar die voortkomen uit opdrachten die al voor die datum zijn gegeven. Ook kan het voorkomen dat historische gegevens wel aan alle strikte voorwaarden voldoen en dan is het wenselijk de gegevens onder IMBRO-regime aan te leveren.
+    </p>
+    <p>De periode waarin de bronhouders die vrijheid hebben wordt de <i>transitieperiode</i> genoemd. Over de duur van de transitieperiode zijn nog geen afspraken gemaakt. Na afloop van de transitieperiode kan alleen onder het strikte IMBRO-regime worden aangeleverd.
+    </p>
+</section>
+<section id="formele-en-materiële-geschiedenis">
+    <h3 id="x2-5-formele-en-materiele-geschiedenis"><span class="secno">2.5 </span>Formele en materiële geschiedenis</h3>
+    <p>De basisregistratie ondergrond maakt deel uit van een stelsel van basisregistraties. Binnen het stelsel maakt men onderscheid tussen de materiële geschiedenis en de formele geschiedenis van een object.</p>
+    <p>Het begrip <i>materiële geschiedenis</i> wordt gebruikt om de veranderingen van eigenschappen van een object in de werkelijkheid aan te duiden. De materiële geschiedenis van een object wordt, voor zover relevant, in de registratie ondergrond vastgelegd. Niet alle registratieobjecten hebben een materiële geschiedenis, alleen de objecten met een levensduur, zoals de grondwatermonitoringput. </p>
+    <p>Het begrip <i>formele geschiedenis</i> wordt gebruikt voor de veranderingen van eigenschappen van een object in de registratie zelf. De meeste van die veranderingen gaan terug op een verandering van eigenschappen in de werkelijkheid, en de formele geschiedenis geeft aan wanneer de veranderingen in het systeem geregistreerd zijn. De formele geschiedenis kent ook gebeurtenissen die niet het gevolg zijn van een verandering in de werkelijke eigenschappen van een object. Die gebeurtenissen hebben betrekking op correcties. Het kan gebeuren dat een bronhouder erachter komt dat er een onjuiste waarde was geregistreerd en dan zorgt hij ervoor dat die verbeterd wordt. De registratie van de verbetering is een formele gebeurtenis.
+    </p>
+    <p>Alle registratieobjecten hebben een formele geschiedenis en die wordt in de registratie ondergrond globaal vastgelegd in de <i>registratiegeschiedenis</i> van het object. Globaal wil zeggen dat de registratie ondergrond alleen een overzicht van de formele geschiedenis geeft. Voor de details moet het register brondocumenten ondergrond worden geraadpleegd.</p>
+    <p>Bij correctie wordt het betreffende gegeven in de registratie ondergrond overschreven en is de oude waarde van het gegeven niet meer direct beschikbaar voor de afnemers.
+Zou een afnemer toch willen weten wat de eerdere foute waarde was, dan moet hij het register brondocumenten ondergrond raadplegen.
+</p>
+</section>
+
+<section id="coördinaten-en-referentiestelsels">
+    <h3 id="x2-6-coordinaten-en-referentiestelsels"><span class="secno">2.6 </span>Coördinaten en referentiestelsels</h3>
+    <p>De registratieobjecten van de basisregistratie ondergrond zijn gedefinieerd in de ruimte en dat wil zeggen dat een object zelf een plaats op het aardoppervlak, een locatie, heeft, of dat het gekoppeld is aan een ander type registratieobject met een locatie. Afhankelijk van het type registratieobject, wordt de locatie geregistreerd als een punt, een lijn of een vlak.</p>
+    <p>De locatie is de horizontale positie van een object. Voor bepaalde objecten is het voldoende dat alleen die horizontale positie wordt vastgelegd, maar voor veel objecten is ook de verticale positie van belang.</p>
+    <p>Posities worden vastgelegd in coördinaten en die zijn gedefinieerd in een bepaald referentiestelsel.</p>
+    <p>Er zijn verschillende typen referentiestelsels. Zo spreekt men van horizontale referentiestelsels (2D), verticale referentiestelsels (1D), gecombineerde referentiestelsels (2D, 1D) en werkelijke 3D referentiestelsels. In Nederland worden de horizontale en de verticale component van een positie in een afzonderlijk stelsel uitgedrukt. Het is vandaag de dag mogelijk met gps een positie in een 3D-referentiestelsel vast te leggen, maar de wens over te stappen op het gebruik van 3D is nog door geen van de partijen die betrokken zijn bij de basisregistratie ondergrond naar voren gebracht.</p>
+    
+    <section id="referentiestelsels-voor-de-horizontale-positie">
+        <h4 id="x2-6-1-referentiestelsels-voor-de-horizontale-positie"><span class="secno">2.6.1 </span>Referentiestelsels voor de horizontale positie</h4>
+        <p>In Nederland zijn traditioneel verschillende referentiestelsels voor de horizontale positie in gebruik. In 2009, bij de eerste voorbereidingen voor de totstandkoming van de basisregistratie ondergrond, is al vastgesteld dat de verscheidenheid aan referentiestelsels de basisregistratie ondergrond voor problemen stelt omdat de registratie dan niet gemakkelijk op een eenduidige manier bevraagd kan worden. In de registratie ondergrond worden namelijk zowel gegevens met een locatie op land als gegevens met een locatie op zee geregistreerd. In de toenmalige praktijk werden op land en op zee verschillende stelsels gebruikt. Op land werd RD gebruikt en op zee waren verschillende stelsels in gebruik, waarvan WGS84 de belangrijkste was.</p>
+        <p>In 2009 was ook al bekend dat de Europese kaderrichtlijn INSPIRE de lidstaten vraagt de gegevens in Europa in één referentiestelsel uit te gaan wisselen, te weten in ETRS89. Met dat in gedachten, is het besluit genomen het BRO-systeem zo in te richten dat de registratie bevraagd gaat worden in ETRS89.</p>
+        <p>Het besluit wordt ondersteund door ontwikkelingen in Nederland. Sinds 2013 wordt er door de drie belangrijkste autoriteiten in Nederland op het gebied van referentiestelsels, het Kadaster, de Dienst der Hydrografie en Rijkswaterstaat, gewerkt aan de totstandkoming van nieuwe afspraken. Die afspraken moeten in lijn zijn met Europese afspraken en leiden tot heldere en eenduidige transformatieprocedures tussen referentiestelsels. Concreet betekent dit dat in Nederland op termijn het ETRS89-stelsel als standaard zal worden gehanteerd voor het uitwisselen van geo-informatie.
+        </p>
+        <p>Het besluit betekent niet dat de gegevens ook in ETRS89 aangeleverd moeten worden. De basisregistratie ondergrond voorziet een periode van transitie waarin de aanleverende partijen zelf bepalen wanneer zij overstappen op ETRS89. Die periode zal naar verwachting jaren duren. Om de transitie te ondersteunen hanteert de basisregistratie ondergrond de volgende spelregels: 
+            </p><ul>
+                <li>Gegevens mogen in een beperkt aantal referentiestelsels worden aangeleverd (RD, WGS84 en ETRS89).
+                    <ul>
+                        <li>Voor locaties op land wordt alleen RD of ETRS89 toegestaan.</li>
+                        <li>Voor locaties op zee wordt alleen WGS84 of ETRS89 toegestaan.</li>
+                    </ul>
+                </li>
+                <li>De aangeleverde coördinaten worden in de registratie opgeslagen.</li>
+                <li>De aangeleverde coördinaten worden door de basisregistratie ondergrond getransformeerd naar
+                    het ETRS89 referentiestelsel.</li>
+                <li>De getransformeerde coördinaten worden naast de aangeleverde coördinaten opgeslagen.
+                </li>
+                <li>Bij de getransformeerde coördinaten wordt ook een identificatie van de gebruikte transformatiemethode opgeslagen.
+                </li>
+                <li>Als de coördinaten in ETRS89 zijn aangeleverd, dan staat bij aangeleverde en getransformeerde positie dezelfde
+                    informatie. Voor de locatie worden de getransformeerde coördinaten en de aangeleverde coördinaten beide
+                    aan de afnemers verstrekt.
+                </li>
+            </ul>
+        <p></p>
+    </section>
+    <section id="referentiestelsels-voor-de-verticale-positie">
+        <h4 id="x2-6-2-referentiestelsels-voor-de-verticale-positie"><span class="secno">2.6.2 </span>Referentiestelsels voor de verticale positie</h4>
+        <p>In Nederland zijn voor verticale posities op land en zee verschillende referentiestelsels in gebruik. Op land wordt NAP gebruikt. Op zee is het in de voor de BRO relevante werkvelden gebruikelijk posities uit te drukken t.o.v. het gemiddeld zeeniveau (MSL, Mean Sea Level), maar posities t.o.v. LAT komen ook voor (Lowest Astronomical Tide). Dit laatstgenoemde stelsel wordt in de kaderrichtlijn INSPIRE genoemd als het stelsel van voorkeur voor het uitdrukken van verticale posities op zee. De basisregistratie ondergrond staat daarom op zee het gebruik van LAT naast MSL toe. Aangeleverde verticale posities worden door de BRO niet getransformeerd.</p>
+    </section>
+</section>
+<section id="gegevens-op-land-en-op-zee">
+    <h3 id="x2-7-gegevens-op-land-en-op-zee"><span class="secno">2.7 </span>Gegevens op land en op zee</h3>
+    <p>De basisregistratie ondergrond bevat gegevens over de ondergrond van Nederland en zijn zgn. Exclusieve Economische Zone (EEZ). De EEZ is het gebied op de Noordzee waar Nederland economische rechten heeft. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het van belang te weten of de locatie van een object op zee of op land ligt.
+    </p>
+    <p>Als scheidingslijn tussen land en zee wordt in de basisregistratie ondergrond de UNCLOS-basislijn gehanteerd. Het beheer van de basislijn valt onder de verantwoordelijkheid van de Dienst der Hydrografie van het ministerie van Defensie. Deze dienst voert die taak uit op basis van het Zeerechtverdrag van de Verenigde Naties uit 1982, dat in het Engels de United Nations Convention on the Law of the Sea (UNCLOS) heet. 
+De basislijn is opgebouwd uit de nulmeterdieptelijn zoals weergegeven op de zeekaarten en enkele rechte basislijnen die onder meer de monding van de Westerschelde en de wateren tussen de Waddeneilanden afsluiten.
+</p>
+    <p>De grens tussen land en zee is veranderlijk. De Dienst der Hydrografie stelt de grens opnieuw vast wanneer daartoe voldoende aanleiding is. De BRO hanteert bij inname de meest recente versie van de UNCLOS-basislijn en controleert daarmee of de juiste referentiestelsels gebruikt worden.</p>
+    <p>Tussen het moment waarop de locatie van een object wordt bepaald en het moment waarop het gegeven in de basisregistratie ondergrond wordt vastgelegd verloopt enige tijd. In die periode kan de positie van de UNCLOS-basislijn opnieuw zijn vastgesteld, en dan ontstaat er een discrepantie die bij het aanleveren van gegevens tot problemen kan leiden. Wanneer een dergelijk probleem zich voordoet, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Een soortgelijk probleem doet zich voor met betrekking tot de begrenzing van Nederland, met name van het Nederlands territoir. De grenzen van Nederland worden ieder jaar op 1 januari vastgesteld door het Kadaster en vastgelegd in de basisregistratie kadaster. De BRO controleert bij inname of een object in het gebied ligt dat Nederland en zijn Exclusieve Economische Zone omvat, en hanteert daarbij de actuele grenzen. Ook bij problemen die te herleiden zijn tot een verandering in de begrenzing van Nederland, wordt de dataleverancier gevraagd contact op te nemen met de registratiebeheerder om gezamenlijk tot een oplossing te komen.</p>
+    <p>Binnen het domein Mijnbouwwet wordt de scheidingslijn tussen land en zee niet bepaald door de UNCLOS-basislijn, maar door een over zee lopende lijn die is vastgelegd in een bijlage bij de Mijnbouwwet. In de registratie ondergrond wordt deze lijn aangeduid als mijnbouwgrens. Voor de referentiestelsels die bij aanlevering worden toegestaan, is het binnen het domein Mijnbouwwet van belang te weten of de locatie van een object aan landzijde of aan zeezijde van de mijnbouwgrens ligt. Waar in voorgaande paragrafen ‘op land’ en ‘op zee’ is genoemd, houdt dat binnen het domein Mijnbouwwet in: aan landzijde respectievelijk aan zeezijde van de mijnbouwgrens.</p>
+</section>
+<section id="nauwkeurigheid-van-meetwaarden">
+    <h3 id="x2-8-nauwkeurigheid-van-meetwaarden"><span class="secno">2.8 </span>Nauwkeurigheid van meetwaarden</h3>
+    <p>Voor zinvol gebruik van gegevens met een gemeten, berekende of anderszins bepaalde waarde is het noodzakelijk dat de nauwkeurigheid van die gegevens bekend is.
+    </p>
+    <p>Het begrip nauwkeurigheid laat zich in deze context het best omschrijven als de juistheid van een gemeten of berekende waarde. In de meeste processen waarin de waarde van een gegeven wordt bepaald, kan de afwijking van de daadwerkelijke waarde slechts via een kalibratie- of statistisch proces worden verkregen. Het resultaat omvat dan niet alleen een van de mogelijke realisaties van een meetwaarde maar ook informatie over de mogelijke spreiding van de meetwaarden.</p>
+    <p>De basisregistratie ondergrond gaat ervan uit dat de producenten van gegevens de metingen en berekeningen uitvoeren binnen een stelsel van afspraken dat binnen het desbetreffende werkveld is vastgelegd. Uitgangspunt is dat ook de eisen waaraan de gegevens op het gebied van nauwkeurigheid moeten voldoen in afspraken zijn vastgelegd. Dat kunnen praktische werkafspraken zijn, maar ook afspraken die vertaald zijn naar ISO- en NEN-normen. In de catalogus wordt in beginsel verwezen naar die normen. Waar deze normen niet voorzien in afspraken over de nauwkeurigheid, stelt de basisregistratie ondergrond hieraan specifieke eisen. Deze zijn dan vermeld in de catalogus.
+    </p>
+</section>
+<section id="authentiek-gegeven">
+    <h3 id="x2-9-authentiek-gegeven"><span class="secno">2.9 </span>Authentiek gegeven</h3>
+    <p>In de wet is een aantal gegevens expliciet als authentiek aangeduid. Dit wordt in de catalogus nader uitgewerkt; verreweg de meeste gegevens zijn authentiek.</p>
+    <p>Met de aanduiding <i>authentiek</i> wordt, zoals geformuleerd in de memorie van toelichting op de wet, tot uitdrukking gebracht dat:
+        </p><ol type="a">
+            <li>Het gegeven in samenhang met andere gegevens door een groot aantal bestuursorganen in verschillende processen wordt gebruikt en derhalve bestemd is voor informatie-uitwisseling tussen bestuursorganen;</li>
+            <li>de verantwoordelijkheid voor betrouwbaarheid van het gegeven eenduidig geregeld is;
+            </li>
+            <li>het gegeven onderworpen is aan intern en extern kwaliteitsonderzoek, en</li>
+            <li>het gegeven zich leent voor verplicht gebruik door bestuursorganen en eenmalige verstrekking door burgers en bedrijven aan de overheid.</li>
+        </ol>
+    <p></p>
+    <p>In de praktijk mag een gebruiker van de gegevens ervan uitgaan dat alle gegevens correct zijn. De catalogus moet de gebruiker alle informatie geven die voor een goed begrip daarvan nodig is.
+        Heeft een gebruiker echter gerede twijfel over de juistheid van een <i>authentiek</i> gegeven dan wordt verwacht dat hij de registerbeheerder daarvan op de hoogte brengt. Bestuursorganen zijn, bij gerede twijfel over de juistheid van een authentiek gegeven (of het ontbreken ervan), zelfs verplicht daarvan melding te maken. 
+
+</p>
+<p>Voor alle gegevens is aangegeven of ze authentiek zijn. Ook is voor alle gegevens aangegeven of ze aanwezig moeten zijn en een waarde moeten hebben. Dat laat zien dat er gegevens kunnen zijn die authentiek zijn maar geen waarde hoeven te hebben. Juist omdat er verplichtingen gelden t.a.v. authentieke gegevens, vraagt dit om een korte toelichting. 
+Wanneer een authentiek gegeven geen waarde heeft moet de gebruiker ervan uitgaan dat het gegeven niet is geproduceerd. Dat geval kan zich uiteraard alleen voordoen wanneer er vrijheid van beslissen bestaat bij de bronhouder of de producent. 
+Voor de duidelijkheid, als er wel een waarde is dan moet die ook in de BRO worden opgenomen. Bij gerede twijfel over het ontbreken van een waarde, moet een bestuursorgaan dat melden. </p>
+</section>
+</section>
+<section id="intro-gegevensdefinitie">
+     <!--OddPage--><h2 id="x3-introductie-van-de-gegevensdefinitie"><span class="secno">3. </span>Introductie van de gegevensdefinitie</h2>
+     <section id="intro-cat-inleiding" class="generic"><h3 id="x3-1-de-gegevensdefinitie"><span class="secno">3.1 </span>De gegevensdefinitie</h3>
+<p>De gegevensdefinitie vormt het hart van de catalogus en geeft een beschrijving van alle gegevens van het registratieobject. Eerst wordt de definitie van het registratieobject gegeven inclusief de plaatjes van het zgn. <i>domeinmodel</i>, en vervolgens de definities van de <i>entiteiten</i> waaruit het object is opgebouwd met de eigenschappen van die entiteiten, de <i>attributen</i>. De entiteiten worden op volgorde van de nummers in het domeinmodel behandeld. De volgende aspecten van de gegevens worden vastgelegd:</p>
+<ul>
+    	<li>De Nederlandse naam van het gegeven.</li>
+    	<li>Of het gegeven van het type entiteit of het type attribuut is, met in het laatste geval van welke entiteit het een attribuut is.</li>
+    	<li>Eventueel de herkomst van het gegeven, in het uitzonderlijke geval de herkomst anders is dan de BRO.</li>
+    	<li>De definitie van het gegeven.</li>
+    	<li>Eventueel de herkomst van de definitie, in het uitzonderlijke geval de definitie een andere herkomst heeft dan de BRO.</li>
+	<li>De kardinaliteit van een attribuut, en dat geeft aan hoe vaak het attribuut voorkomt.</li>
+	<li>De aanduiding of een attribuut al dan niet authentiek is (juridische status).</li>
+	<li>De naam van het domein voor de waarden van het attribuut, met afhankelijk van het type domein nadere informatie over de waarden.</li>
+	<li>Eventueel de naam van het domein van het attribuut voor IMBRO/A, wanneer het uitzonderlijke geval zich voordoet dat er voor IMBRO/A een ander domein geldt dan voor IMBRO.</li>
+    	<li>Eventueel de regels die in aanvulling op de kardinaliteit en de bepalingen van het domein gelden en door de basisregistratie ondergrond in controles zijn opgenomen, bijvoorbeeld om de consistentie van de inhoud van een brondocument vast te stellen.</li>
+    	<li>Eventueel de regels die voor IMBRO/A gelden, wanneer het uitzonderlijke geval zich voordoet dat er voor IMBRO/A aanvullende regels gelden.</li>
+    	<li>Eventueel de aanduiding dat de waarde van het attribuut mag ontbreken, wanneer het uitzonderlijke geval zich voordoet dat de waarde van het attribuut mag ontbreken.
+	</li><li>Van attributen waarvan de waarde mag ontbreken de omschrijving van de reden waarom de waarde mag ontbreken.
+	</li><li>Eventueel de aanduiding dat het gegeven wordt afgeleid door de basisregistratie ondergrond, in het uitzonderlijke geval het gegeven wordt afgeleid.
+	</li><li>Eventueel een toelichting om aanvullende informatie te geven over de betekenis van het gegeven of de reden waarom het is opgenomen.</li>
+    	<li>Van attributen van objecten met een materiële geschiedenis de aanduiding of het attribuut al dan niet een materiële geschiedenis kan hebben.</li>
+</ul>
+<p>De gegevensdefinitie dekt de beide kwaliteitsregimes die worden onderscheiden, IMBRO en IMBRO/A. Het kwaliteitsregime IMBRO is leidend en bij het opstellen van de gegevensdefinitie is geprobeerd de verschillen tussen de twee regimes zo klein te houden. Het streven is een object altijd in termen van dezelfde gegevens te beschrijven en voor IMBRO/A alleen aanvullende regels te formuleren en extra waarden toe te staan. Bij uitzondering kan het echter nodig zijn gebleken voor IMBRO/A aparte entiteiten, attributen of domeinen te definiëren.</p>
+</section>
+     <section id="type-formaten">
+      <h3 id="x3-2-domeinen"><span class="secno">3.2 </span>Domeinen</h3>
+      <!-- hier alleen de domeinuitleg includeren voor domeinen die in het registratieobject gebruikt worden -->
+      <p>Een domein beschrijft welke waarden een attribuut mag hebben. Domeinen zijn van een bepaald type en de typen die in de catalogus worden gebruikt worden hieronder toegelicht. Sommige domeinen zijn samengesteld en die worden als laatste besproken.</p>
+      <section id="aantal" class="generic"><h4 id="x3-2-1-aantal"><span class="secno">3.2.1 </span>Aantal</h4>
+<p>Het domein <i>Aantal</i> wordt gebruikt voor een telbare hoeveelheid. Het is een natuurlijk getal met een bepaalde maximale lengte. 
+<br>Het domein wordt volledig gespecificeerd door met de aanduiding aantal ook de maximale lengte mee te (Aantal N). Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren. In het domeinmodel wordt volstaan met de algemene aanduiding <i>Aantal</i>.</p>
+</section>
+      <section id="code" class="generic"><h4 id="x3-2-2-code"><span class="secno">3.2.2 </span>Code</h4>
+<p>Een code is een opeenvolging van cijfers, van letters of van cijfers en letters met een bepaalde opbouw en met een specifieke betekenis. Een code heeft gewoonlijk een betekenis die ook buiten de basisregistratie ondergrond geldt. Een code wordt uitgegeven door een verantwoordelijke instantie. Om de opbouw van een code weer te geven wordt gebruik gemaakt van de letters C en N. De letter C staat voor character (Eng.) en duidt een letter aan, de letter N staat voor number (Eng.) en duidt een cijfer aan. Een code heeft een bepaalde naam.
+<br>Het domein wordt volledig gespecificeerd door met de naam van de code ook de opbouw mee te geven. Uit de definitie van het attribuut zelf moet blijken wat de specifieke betekenis is van de code. In het domeinmodel wordt het domein aangeduid met zijn naam.</p>
+</section>
+      <section id="datumtijd" class="generic"><h4 id="x3-2-3-tijdstip"><span class="secno">3.2.3 </span>Tijdstip</h4> 
+<p>Voor gegevens die over tijdstippen gaan worden twee domeinen gebruikt. Een voor een tijdstip tot op de seconde nauwkeurig (DatumTijd) en een voor een tijdstip tot op de dag nauwkeurig (Datum).</p>
+<p>In ieder domein gaat het om de datum gemeten volgens de Gregoriaanse kalender. Bij het domein DatumTijd wordt de tijd gemeten volgens UTC en moet de tijdzone worden meegegeven. UTC is de mondiaal geaccepteerde standaardtijd en de opvolger van GMT (Greenwich Mean Time); de drie letters staan voor Coordinated Universal Time. Door de tijdzone mee te geven kan lokale tijd worden omgezet naar UTC.</p>
+<p>De opbouw van de twee domeinen volgt dezelfde conventies, conform ISO 8601. Het eerste element in de opbouw staat voor het jaar, dan volgt de maand, enz., en het laatste element staat voor de tijdzone. Om de verschillende elementen aan te geven worden letters gebruikt: jaar (J), maand (M), dag (D), uur (U), minuut (M)en seconde (S), gevolgd door de tijdzone. Het aantal letters geeft de lengte aan.</p>
+<p>Voor de meest uitgebreide variant van de opbouw, die van DatumTijd, wordt dit JJJJ-MM-DDTUU:MM:SS+UU:MM. De T is het teken dat de datum en het tijdstip op die datum scheidt. De + is het scheidingteken tussen het tijdstip en de tijdzone. Zoals uit de opbouw blijkt wordt de tijdzone in uren en minuten gegeven. De meeste tijdzones zijn overigens uitgedrukt in gehele uren (UU:00). In Nederland geldt Centraal Europese Tijd (UTC+1:00) of Centraal Europese Zomertijd (UTC+2.00).</p>
+	
+    	<section id="datum"><h5 id="x3-2-3-1-datum"><span class="secno">3.2.3.1 </span>Datum</h5>
+	<p>Het domein <i>Datum</i> wordt gebruikt om een datum volgens de Gregoriaanse kalender tot op de dag nauwkeurig aan te geven. De opbouw is JJJJ-MM-DD. 
+	<br>Bij het domein Datum is het voldoende de naam te geven, omdat de opbouw altijd hetzelfde is. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren.</p> 
+	</section>
+	
+	<section id="datumTijd"><h5 id="x3-2-3-2-datumtijd"><span class="secno">3.2.3.2 </span>DatumTijd</h5>
+	<p>Het domein <i>DatumTijd</i> wordt gebruikt om een tijdstip volgens de Gregoriaanse kalender tot op de seconde nauwkeurig aan te geven. De opbouw is JJJJ-MM-DDTUU:MM:SS+UU:MM. 
+	<br>Bij het domein DatumTijd is het voldoende de naam te geven, omdat de opbouw altijd hetzelfde is. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren.</p> 
+	</section>
+	
+	<section id="onvolledigedatum"><h5 id="x3-2-3-3-onvolledigedatum"><span class="secno">3.2.3.3 </span>OnvolledigeDatum</h5>
+	<p>Voor gegevens die onder het kwaliteitsregime IMBRO/A aangeleverd worden, geldt een derde domein met vier keuzemogelijkheden.</p><p>
+	</p><ul>
+	<li>De datum tot op de dag nauwkeurig, met als opbouw JJJJ-MM-DD</li>
+	<li>De datum tot op de maand nauwkeurig, met als opbouw JJJJ-MM</li>
+	<li>De datum tot op het jaar nauwkeurig, met als opbouw JJJJ</li>
+	<li>Geen datum bekend, met als vaste waarde <i>onbekend</i>.</li>
+	</ul>
+	<p>De keuze die gemaakt wordt is gebaseerd op de beschikbaarheid van gegevens. De gebruiker moet ervan uit gaan dat de informatie zo nauwkeurig mogelijk is opgenomen. Bij het domein OnvolledigeDatum is het voldoende de naam te geven, omdat de vier keuzen en de opbouw altijd hetzelfde zijn.</p>
+</section></section>
+      <section id="meetwaarde" class="generic"><h4 id="x3-2-4-meetwaarde"><span class="secno">3.2.4 </span>Meetwaarde</h4>
+<p>Het domein <i>Meetwaarde</i> wordt gebruikt wanneer de nauwkeurigheid van de waarde altijd hetzelfde is.
+<br>Het is een rationaal getal met een bepaalde opbouw. Het aantal cijfers voor het scheidingsteken is variabel maar begrensd. Het aantal cijfers achter het scheidingsteken ligt vast.
+</p><p>Het domein wordt volledig gespecificeerd door met de aanduiding meetwaarde ook de opbouw (Meetwaarde N.N) en de eenheid mee te geven. Gewoonlijk wordt de waardeverzameling verder ingeperkt door een bereik te specificeren. In het domeinmodel wordt volstaan met de algemene aanduiding <i>Meetwaarde</i>.</p>
+</section>
+      <section id="tekst" class="generic"><h4 id="x3-2-5-tekst"><span class="secno">3.2.5 </span>Tekst</h4>
+<p>Het domein <i>Tekst</i> bestaat uit een stuk tekst van een bepaalde maximale lengte. De tekst mag alleen bestaan uit de tekens die voorkomen in de MES-1 set. De MES-1 set omvat 335 tekens en wordt gebruikt binnen de landen van de Europese Unie die een Latijns schrift kennen. 
+<br>Het domein wordt volledig gespecificeerd door met de aanduiding tekst ook de maximale lengte mee te (Tekst N). In het domeinmodel wordt volstaan met de algemene aanduiding <i>Tekst</i>.</p>
+</section>
+      <section id="enumeratie" class="generic"><h4 id="x3-2-6-waardelijst-niet-uitbreidbaar"><span class="secno">3.2.6 </span>Waardelijst niet-uitbreidbaar</h4>
+<p>Een niet-uitbreidbare waardelijst wordt gebruikt wanneer uitbreiding niet mogelijk is. Alle waarden van de lijst staan vast. 
+<br>Bij een niet-uitbreidbare waardelijst is het voldoende de naam te geven, omdat de inhoud altijd hetzelfde is. In de basisregistratie ondergrond worden drie niet-uitbreidbare waardelijsten gebruikt.</p>  
+		
+		<h5 id="indicatiejanee">IndicatieJaNee</h5>
+		<table style="width: 50%;">
+                  <tbody><tr>
+                     <th>Waarde</th>
+                  </tr>
+                  <tr>
+                     <th>ja</th>
+                  </tr>
+                  <tr>
+                     <th>nee</th>
+                  </tr>
+		</tbody></table>
+						
+			<h5 id="indicatiejaneeonbekend">IndicatieJaNeeOnbekend</h5>
+			<table style="width:50%">
+			  <tbody><tr>
+				<th>Waarde</th>
+			  </tr>
+			  <tr>
+				<td>ja</td>
+			  </tr>
+			  <tr>
+				<td>nee</td>
+			  </tr>
+				<tr>
+				<td>onbekend</td>
+			  </tr>
+			</tbody></table>
+			
+			<h5 id="kwaliteitsregime-0">Kwaliteitsregime</h5>
+			<table style="width:50%">
+			  <tbody><tr>
+				<th>Waarde</th>
+			  </tr>
+			  <tr>
+				<td>IMBRO</td>
+			  </tr>
+			  <tr>
+				<td>IMBRO/A</td>
+			  </tr>
+			</tbody></table>
+</section>
+      <section id="codelijst" class="generic"><h4 id="x3-2-7-waardelijst-uitbreidbaar"><span class="secno">3.2.7 </span>Waardelijst uitbreidbaar</h4>
+<p>Een uitbreidbare waardelijst wordt gebruikt wanneer uitbreiding mogelijk moet zijn. Iedere waarde van de lijst heeft een specifieke betekenis (omschrijving) en geldt voor een bepaald kwaliteitsregime, IMBRO en/of IMBRO/A. Eventueel worden andere aspecten van de waarde vastgelegd. 
+<br>Bij een uitbreidbare waardelijst wordt de naam van de lijst geven. De inhoud van de lijst is in een apart hoofdstuk van de gegevensdefinitie opgenomen.</p>
+</section>
+      <section id="organisatie" class="generic"><h4 id="x3-2-8-organisatie"><span class="secno">3.2.8 </span>Organisatie</h4>
+<p>Het domein <i>Organisatie</i> wordt gebruikt om de organisaties die een rol hebben in de basisregistratie ondergrond te identificeren. De invulling van het domein hangt af van waar de organisatie gevestigd is en voor de basisregistratie ondergrond gaat het daarbij om Nederland of een andere lidstaat van de Europese Unie.</p>
+<p>In het geval de organisatie in Nederland gevestigd is, wordt het domein ingevuld met het gegeven dat een onderneming of de maatschappelijke activiteit van een rechtspersoon in het Handelsregister identificeert, het KvK-nummer. Het <i>KvK-nummer</i> is van het type code en de opbouw is NNNNNNNN.</p> 
+<p>Voor organisaties buiten Nederland wordt het domein ingevuld met het equivalent van het KvK-nummer in een handelsregister van een andere lidstaat van de Europese Unie dan Nederland, het <i>EuropeesHandelsnummer</i>. Het Europees handelsnummer, de zogenaamde EUID, is geïntroduceerd ten behoeve van de koppeling van handelsregisters. De code is gebaseerd op ISO 6523 en is opgebouwd uit een landcode, registeridentificatiecode, inschrijvingsnummer en controlegetal. De landcode is de 2-letterige code van ISO3166, de registeridentificatiecode is de identificatie van het nationale register omdat in sommige landen meerdere handelsregisters bestaan en het inschrijvingsnummer is het nummer waaronder de onderneming is ingeschreven in het betreffende register. Het controlegetal ter voorkomen van identificatiefouten wordt nog niet gebruikt. De opbouw per element is variabel en daarom is het Europees Handelsnummer in de BRO als domein Tekst 40 opgenomen.</p>
+<p>Bij het domein Organisatie is het voldoende de naam te geven, omdat de twee keuzen en de opbouw altijd hetzelfde zijn.</p>
+</section>    
+    </section>
+    <section class="generic" id="het-domeinmodel"><h3 id="x3-3-het-domeinmodel"><span class="secno">3.3 </span>Het domeinmodel</h3>
+<p>Het domeinmodel geeft een overzicht van de gegevens van het registratieobject en laat de onderlinge samenhang zien. Modellering van informatie kent verschillende invalshoeken. In de catalogus is het inhoudelijke perspectief gekozen omdat dat de meeste waarde heeft voor de mensen die de informatie moeten begrijpen. Een dergelijk model wordt in de basisregistratie ondergrond een domeinmodel genoemd. Uit het domeinmodel wordt een technisch model afgeleid dat meeweegt dat informatiesystemen efficiënt met elkaar moeten kunnen spreken. Voor het domeinmodel wordt de UML-notatie gebruikt. Met kennis van de gebruikte symbolen is het gemakkelijk te lezen.</p>
+<p>Het domeinmodel kent een aantal vaste elementen die bij ieder registratieobject terugkomen. Een begrip van deze elementen vergroot de leesbaarheid van het domeinmodel en de  catalogus. De elementen zijn: entiteiten, attributen, gegevensgroepen en relaties. Een entiteit is een onderscheidend geheel van eigenschappen die gezamenlijk betekenis hebben. Een entiteit heeft altijd een naam en een definitie. In het domeinmodel zijn de entiteiten te herkennen aan het begrip Objecttype.</p>
+<p>In de entiteiten staan de namen opgesomd van de attributen, de eigenschappen van de entiteiten, met daarachter de naam van de bijbehorende waardenverzameling (domein) en de kardinaliteit. Bij attributen is de kardinaliteit alleen opgenomen wanneer die ongelijk is aan 1. Overigens moet de kardinaliteit altijd in samenhang met de regels die in de definitie van het gegeven zijn opgenomen worden begrepen. De kardinaliteit en de regels bepalen samen of een gegeven al dan niet aanwezig is. De figuren laten ook zien welke attributen alleen aan de dataleverancier en de bronhouder worden uitgeleverd. In het domeinmodel zijn de attributen te herkennen aan het begrip Attribuutsoort.</p>
+<p>Soms zijn een aantal attributen gegroepeerd in een groep, aangeduid als gegevensgroep. Het blijven attributen van de entiteit, maar de inhoudelijke definiëring van de gegevensgroep staat elders. Gegevensgroepen kunnen bij meerdere entiteiten terugkomen.</p>
+<p>Het domeinmodel laat daarnaast ook zien hoe entiteiten aan elkaar gerelateerd zijn. Een beschrijving van deze relatie is opgenomen bij de bron-entiteit van de relatie. Een relatie heeft altijd een richting en in de meeste gevallen loopt deze van bron naar doel. In het plaatje van een domeinmodel heeft de relatie een naam en een kardinaliteit. Om de leesbaarheid te vergroten staat de kardinaliteit bij de doelentiteit.</p> 
+<img src="https://docs.geostandaarden.nl/bro/gen/media/domeinmodel-intro-class-model.png">
+<p>Bovenstaand voorbeeld is te lezen als: de entiteit Bepaling bevat één of meerdere metingen. Een meting bestaat uit een meetwaarde en meetconfiguratie-gegevens. De meetconfiguratie bestaat uit twee parameters.</p>
+</section>
+    <section id="verplichte-gegevens-waarden" class="generic"><h3 id="x3-4-verplichte-gegevens-verplichte-waarden"><span class="secno">3.4 </span>Verplichte gegevens, verplichte waarden</h3>
+<p>De kardinaliteit en de regels bepalen samen of een gegeven
+al dan niet aanwezig is. Voor een goed begrip van de
+gegevensdefinitie is dat nog niet zorgvuldig genoeg
+geformuleerd. In de praktijk van gegevensuitwisseling is het
+namelijk mogelijk een attribuut op te nemen zonder waarde.
+Verbijzonderd voor attributen is de juiste formulering daarom
+dat de kardinaliteit en de regels samen bepalen of een attribuut
+al dan niet aanwezig is en of een attribuut al dan niet een
+waarde heeft.
+</p>
+<p>Uitgangspunt is dat een attribuut dat aanwezig is een waarde
+heeft. Een attribuut wordt alleen bij uitzondering zonder waarde
+in de berichten opgenomen. Het onderstaande overzicht geeft
+de vier mogelijkheden die voorkomen.
+</p>
+<ul>
+    <li>De kardinaliteit= [1] en er is geen aanvullende regel opgenomen. Dit betekent dat het gegeven altijd aanwezig is en altijd een waarde heeft.</li>
+    <li>De kardinaliteit= [1] en er is een aanvullende regel opgenomen die aangeeft waarom een waarde toch mag ontbreken. Dit betekent dat het gegeven altijd aanwezig is maar bij uitzondering en om een specifieke reden geen waarde kan hebben.</li>
+    <li>De kardinaliteit= [0..1] en er zijn 1 of meer aanvullende regels opgenomen. Dit betekent dat de regels bepalen of het gegeven wel of niet voorkomt en bepalen of het gegeven wel of geen waarde heeft.</li>
+    <li>De kardinaliteit= [0..1] en er is geen aanvullende regel opgenomen. Dit betekent dat het gegeven alleen aanwezig is als het een waarde heeft.</li>
+</ul>
+<p>Voor de kardinaliteiten [0..*]  en [1..*] geldt in essentie hetzelfde.</p>
+</section>
+</section>
+	 <section id="gegevensdefinitie">
+   <!--OddPage--><h2 id="x4-gegevensdefinitie"><span class="secno">4. </span>Gegevensdefinitie</h2>
+   <section id="global_class_GeomorfologischeKaartGMM_Registratieobject">
+      <h3 id="x4-1-registratieobject"><span class="secno">4.1 </span>   Registratieobject</h3>
+      
+      <table style="width: 100%;">
+         <colgroup style="width: 30%;"></colgroup>
+         <colgroup style="width: 70%;"></colgroup>
+         <tbody>
+            <tr>
+               <th>Naam</th>
+               <td></td>
+            </tr>
+            <tr>
+               <th>Code</th>
+               <td></td>
+            </tr>
+            <tr>
+               <th>Definitie</th>
+               <td>
+                  
+                  <p>Een entititeit met het geheel van generieke gegevens die voorkomen bij alle verschillende
+                     soorten registratieobjecten in de basisregistratie ondergrond (BRO).</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="het-domeinmodel-0">
+      <h3 id="x4-2-het-domeinmodel"><span class="secno">4.2 </span>Het domeinmodel   </h3>
+      <div class="imageinfo overview"><img src="data/Images/EAID_160626A1_CCDD_4032_B4D5_D30FF8FE4847.png" usemap="#imagemap-EAID_160626A1_CCDD_4032_B4D5_D30FF8FE4847" alt="Diagram 
+                        Ontwerp conceptueel model voor de Geomorfologische kaart, ten behoeve van de Basisregistratie Ondergrond (BRO).
+                     " height="3726" width="3218"><map name="imagemap-EAID_160626A1_CCDD_4032_B4D5_D30FF8FE4847"><area shape="rect" alt="Kaartvlak" coords="239,455,368,535" href="#graph_EAID_CFBCB46A_F32F_4bfd_9F15_443916D13E11"><area shape="rect" alt="Geomorfologische vlakcollectie" coords="196,206,409,390" href="#graph_EAID_3FA1BFB8_009A_44b8_906A_6D4188D73EAE"><area shape="rect" alt="Registratieobject" coords="532,46,696,174" href="#graph_EAID_9C4A219D_7AF2_4b3a_A169_62458D7D8E93"><area shape="rect" alt="Reliëfcode" coords="745,870,981,959" href="#graph_EAID_BFEEA89D_0D4C_4c95_BC1D_762A18EB6F9B"><area shape="rect" alt="ReliëfType" coords="585,861,720,967" href="#graph_EAID_CF085D60_ACA5_422f_A726_C21B2D6549C3"><area shape="rect" alt="LandvormSubgroepType" coords="573,729,799,844" href="#graph_EAID_F5CF0FBC_08E7_49d2_8E14_D592AE2EAC26"><area shape="rect" alt="Landvormeenheid" coords="311,723,556,868" href="#graph_EAID_F1A1F858_8446_411b_A110_BA4C54C97740"><area shape="rect" alt="Bestand" coords="55,239,172,367" href="#graph_EAID_855C49C9_52D4_4f86_89D7_DFADF4760977"><area shape="rect" alt="Vlak van geomorfologisch belang" coords="35,596,256,685" href="#graph_EAID_843FBABD_EBF0_4f1a_B37D_3D27CF51E1E4"><area shape="rect" alt="Geomorfologisch vlak" coords="305,588,525,694" href="#graph_EAID_79B1980D_BA7A_45db_8EF1_F9DCFF6B5389"><area shape="rect" alt="Geomorfologische kaart" coords="532,248,745,347" href="#graph_EAID_6153A93B_5EF8_4e22_8EEC_7CF612ACE3D6"></map><p><b>Geomorfologische Kaart</b>
+            
+            </p><p>Ontwerp conceptueel model voor de Geomorfologische kaart, ten behoeve van de Basisregistratie
+               Ondergrond (BRO).</p>
+            <p></p>
+      </div>
+   </section>
+   <section id="entiteittypen-en-attributen">
+      <h3 id="x4-3-entiteittypen-en-attributen"><span class="secno">4.3 </span>Entiteittypen en attributen   </h3><a class="anchor" id="graph_EAID_6153A93B_5EF8_4e22_8EEC_7CF612ACE3D6"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Geomorfologischekaart"></a><section id="global_class_GeomorfologischeKaartGMM_Geomorfologischekaart">
+         <h4 id="x4-3-1-geomorfologische-kaart"><span class="secno">4.3.1 </span>   Geomorfologische kaart</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Model (kaart) met informatie over de geomorfologie in Nederland op schaal 1:50.000.</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>geomorfologie</td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_naam"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_naam">
+            <h5 id="x4-3-1-1-naam"><span class="secno">4.3.1.1 </span>  naam</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische kaart</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De naam van de verzameling.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>CHARACTERSTRING</td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>de unieke identificatie van een deelverzameling van het model (kaart) bijvoorbeeld
+                        het kaartbladnummer of de naam van het project.</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_citation"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_citation">
+            <h5 id="x4-3-1-2-citation"><span class="secno">4.3.1.2 </span>  citation</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische kaart</td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        CI_Citation
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_schaal"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischekaart_schaal">
+            <h5 id="x4-3-1-3-schaal"><span class="secno">4.3.1.3 </span>  schaal</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische kaart</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De schaal waarop de gegevens zijn ingewonnen.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Integer</td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>
+                        
+                        <p>De kaartschaal van de geomorfologische kaart is 1:50.000, waarop de karteermethode
+                           en nauwkeurigheid (detaillering van de gebruikte classificatie) is afgestemd</p>
+                        
+                        <p></p>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_association_GeomorfologischeKaartGMM_Geomorfologischekaart_gerelateerdeVlakcollectie"></a><section id="detail_association_GeomorfologischeKaartGMM_Geomorfologischekaart_gerelateerdeVlakcollectie">
+            <h5 id="x4-3-1-4-gerelateerdevlakcollectie"><span class="secno">4.3.1.4 </span>  gerelateerdeVlakcollectie</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Geomorfologische kaart</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De unieke aanduiding van elke Geomorfologisch vlakcollectie waaruit de Geomorfologische
+                           kaart bestaat.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1..*</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>bestaat uit</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdeVlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Geomorfologische kaart</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Geomorfologische vlakcollectie
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_3FA1BFB8_009A_44b8_906A_6D4188D73EAE"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie"></a><section id="global_class_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie">
+         <h4 id="x4-3-2-geomorfologische-vlakcollectie"><span class="secno">4.3.2 </span>   Geomorfologische vlakcollectie</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Een verzameling van één of meer bij elkaar horende geomorfologische vlakken, met een
+                        geomorfologische beschrijving, en vlakken van geomorfologische belang, zonder een
+                        geomorfologische beschrijving.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_identificatie"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_identificatie">
+            <h5 id="x4-3-2-1-identificatie"><span class="secno">4.3.2.1 </span>  identificatie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De unieke aanduiding van de geomorfologische kaart.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Identifier
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Identificerend</th>
+                     <td>Ja</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_soort"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_soort">
+            <h5 id="x4-3-2-2-soort"><span class="secno">4.3.2.2 </span>  soort</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De soort verzameling van het model.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Soort
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>de documentatie van een verzameling bij elkaar horende geomorfologische kaartvlakken.
+                        Bijvoorbeeld in de vorm van beschrijvende rapportage bij actualisaties</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_bereik"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_bereik">
+            <h5 id="x4-3-2-3-bereik"><span class="secno">4.3.2.3 </span>  bereik</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Herkomst</th>
+                     <td>ISO 19115:2006 Metadata (Corrigendum)</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De omhullende begrenzing van het gebied waar het model geheel binnen valt.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Herkomst definitie</th>
+                     <td>ISO 19115:2006</td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        EX_Extent
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>De begrenzing is aangegeven door een rechthoek met de linker bovenhoek en rechter
+                        onderhoek.</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_citation"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_citation">
+            <h5 id="x4-3-2-4-citation"><span class="secno">4.3.2.4 </span>  citation</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        CI_Citation
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_inventarisatiemethode"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_inventarisatiemethode">
+            <h5 id="x4-3-2-5-inventarisatiemethode"><span class="secno">4.3.2.5 </span>  inventarisatiemethode</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De inventarisatiemethode die is gebruikt.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Inventarisatiemethode
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>
+                        
+                        <p>Als kartering oude stijl is dan is de hoogtepunten kaart (schaal 1:10 000) gebruikt
+                           niet vastgelegd is welke versie, dus het attribuut versie is voidable.</p>
+                        
+                        <p></p>
+                        
+                        <p>De naam en versie van het bestand met hoogte informatie dat, binnen een Geomorfologisch
+                           vlakcollectie, is gebruikt bij het afbakenen en classificeren van de Geomorfologische
+                           vlakken.</p>
+                        
+                        <p></p>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_beginlevensduur"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_beginlevensduur">
+            <h5 id="x4-3-2-6-begin-levensduur"><span class="secno">4.3.2.6 </span>  begin levensduur</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Date and time at which this version of the spatial object was inserted or changed
+                           in the spatial data set.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>DatumTijd</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_eindelevensduur"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_eindelevensduur">
+            <h5 id="x4-3-2-7-einde-levensduur"><span class="secno">4.3.2.7 </span>  einde levensduur</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Date and time at which this version of the spatial object was superseded or retired
+                           in the spatial data set.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>0..1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>DatumTijd</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_d22600e3026"></a><section id="detail_d22600e3026">
+            <h5 id="x4-3-2-8-bron"><span class="secno">4.3.2.8 </span>  bron</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De typering van de hoogte informatie.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Gegevensgroeptype</th>
+                     <td>
+                        <a class="link" href="#global_class_GeomorfologischeKaartGMM_Bestand">Bestand</a>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_association_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_gerelateerdKaartvlak"></a><section id="detail_association_GeomorfologischeKaartGMM_Geomorfologischevlakcollectie_gerelateerdKaartvlak">
+            <h5 id="x4-3-2-9-gerelateerdkaartvlak"><span class="secno">4.3.2.9 </span>  gerelateerdKaartvlak</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Associatie van Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De unieke aanduiding van elk Kaartvlak waaruit de Geomorfologische kaart bestaat.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1..*</td>
+                  </tr>
+                  <tr>
+                     <th>Relatiesoort naam</th>
+                     <td>bestaat uit</td>
+                  </tr>
+                  <tr>
+                     <th>Relatierol naam</th>
+                     <td>gerelateerdKaartvlak</td>
+                  </tr>
+                  <tr>
+                     <th>Bron</th>
+                     <td>Geomorfologische vlakcollectie</td>
+                  </tr>
+                  <tr>
+                     <th>Doel</th>
+                     <td>
+                        Kaartvlak
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_CFBCB46A_F32F_4bfd_9F15_443916D13E11"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Kaartvlak"></a><section id="global_class_GeomorfologischeKaartGMM_Kaartvlak">
+         <h4 id="x4-3-3-kaartvlak"><span class="secno">4.3.3 </span>   Kaartvlak</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Abstract objecttype voor het definiëren van de gemeenschappelijke kenmerken voor Vlak
+                        van geomorfologisch belang en Geomorfologisch vlak.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Kaartvlak_identificatie"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Kaartvlak_identificatie">
+            <h5 id="x4-3-3-1-identificatie"><span class="secno">4.3.3.1 </span>  identificatie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Kaartvlak</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De unieke aanduiding van een Kaartvlak.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Identifier
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Toelichting</th>
+                     <td>Een externe object-ID is een unieke object-identifier die door de verantwoordelijke
+                        instantie is gepubliceerd en die door externe toepassingen kan worden gebruikt om
+                        naar het ruimtelijke object te verwijzen. De identifier is een identifier van het
+                        ruimtelijke object en niet een identifier van het fenomeen in de echte wereld.</td>
+                  </tr>
+                  <tr>
+                     <th>Identificerend</th>
+                     <td>Ja</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_843FBABD_EBF0_4f1a_B37D_3D27CF51E1E4"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang"></a><section id="global_class_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang">
+         <h4 id="x4-3-4-vlak-van-geomorfologisch-belang"><span class="secno">4.3.4 </span>   Vlak van geomorfologisch belang</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Vlak van geomorfologisch belang.</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>Primaire waterkerende dijken en dijken (bijvoorbeeld in Zeeland) die van belang/invloed
+                     zijn (geweest) op de vorming van landvormen. Scheiding tussen landvormen die wel en
+                     niet onderhevig zijn aan dynamische -&gt; rivier- en getijde-invloeden.</td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang_geomorfologischbelang"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Vlakvangeomorfologischbelang_geomorfologischbelang">
+            <h5 id="x4-3-4-1-geomorfologisch-belang"><span class="secno">4.3.4.1 </span>  geomorfologisch belang</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Vlak van geomorfologisch belang</td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        GeomorfologischBelang
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_79B1980D_BA7A_45db_8EF1_F9DCFF6B5389"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Geomorfologischvlak"></a><section id="global_class_GeomorfologischeKaartGMM_Geomorfologischvlak">
+         <h4 id="x4-3-5-geomorfologisch-vlak"><span class="secno">4.3.5 </span>   Geomorfologisch vlak</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Een begrensd gebied met overeenkomstige geomorfologische kenmerken</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>de begrenzing is de 2D afbeelding van het 3D lichaam (landvorm) op het aardoppervlak
+                     (maaiveld), zodat het als kaart is te gebruiken</td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_d22600e3821"></a><section id="detail_d22600e3821">
+            <h5 id="x4-3-5-1-landvormeenheid"><span class="secno">4.3.5.1 </span>  landvormeenheid</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Geomorfologisch vlak</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Een landvormeenheid geclassificeerd aan de hand van 7 geomorfologische kenmerken.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Gegevensgroeptype</th>
+                     <td>
+                        <a class="link" href="#global_class_GeomorfologischeKaartGMM_Landvormeenheid">Landvormeenheid</a>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_855C49C9_52D4_4f86_89D7_DFADF4760977"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Bestand"></a><section id="global_class_GeomorfologischeKaartGMM_Bestand">
+         <h4 id="x4-3-6-bestand"><span class="secno">4.3.6 </span>   Bestand</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>De typering van de hoogte informatie.</p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>
+                     
+                     <p>De naam en versie van het bestand met hoogte informatie dat, binnen een GeomorfologischVlakCollectie,
+                        is gebruikt bij het afbakenen en classificeren van de GeomorfologischeVlakken.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Bestand_naam"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Bestand_naam">
+            <h5 id="x4-3-6-1-naam"><span class="secno">4.3.6.1 </span>  naam</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Bestand</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De naam of beschrijving van het bestand met hoogte informatie.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        NaamBestand
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Bestand_versie"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Bestand_versie">
+            <h5 id="x4-3-6-2-versie"><span class="secno">4.3.6.2 </span>  versie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Bestand</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De versie van het bestand met hoogte informatie.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>CHARACTERSTRING</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_F1A1F858_8446_411b_A110_BA4C54C97740"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Landvormeenheid"></a><section id="global_class_GeomorfologischeKaartGMM_Landvormeenheid">
+         <h4 id="x4-3-7-landvormeenheid"><span class="secno">4.3.7 </span>   Landvormeenheid</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Een landvormeenheid geclassificeerd aan de hand van 7 geomorfologische kenmerken.
+                        </p>
+                     </td>
+               </tr>
+               <tr>
+                  <th>Toelichting</th>
+                  <td>
+                     
+                     <p>Deze 7 kenmerken zijn als eigenschappen toegevoegd aan dit object.</p>
+                     
+                     <p>EXAMPLE 22R21dl
+                        De reliëfcode 22 staat voor ondiepe dalen, met zeer gering verhang (&lt;1°) en een
+                        zeer geringe hoogteverschillen binnen de landvorm (¼ tot ½m). De R in de code
+                        staat voor de vormgroep dalen. Code 2 in het onderdeel genese geeft aan dat het een
+                        dal is dat hoofdzakelijk is ontstaan door erosie onder periglaciale omstandigheden,
+                        waarbij de ondergrond permanent bevroren was (permafrost), en periodiek overvloedige
+                        hoeveelheden sneeuwsmeltwater afstroomden. De landvormcode 1 geeft in combinatie met
+                        de vormgroep- en genesecode aan dat het de landvorm droogdal betreft. De lettercombinatie
+                        dl in het onderdeel toevoeging geeft weer dat de landvorm bedekt of (gedeeltelijk)
+                        opgevuld is met dekzand of (zandige)löss. Er is bij deze landvorm geen morfologisch
+                        proces actief.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingrelif"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingrelif">
+            <h5 id="x4-3-7-1-toevoeging-relief"><span class="secno">4.3.7.1 </span>  toevoeging reliëf</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Landvormeenheid</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Nadere typering van het reliëf en/of typering van de (relatieve) hoogteligging van
+                           de landvormeenheid.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>0..2</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        ToevoegingReliëf
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_actiefproces"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_actiefproces">
+            <h5 id="x4-3-7-2-actief-proces"><span class="secno">4.3.7.2 </span>  actief proces</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Landvormeenheid</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Onderverdeling van landvormeenheden naar het wel of niet onderhevig zijn aan een actief
+                           vormingsproces.  Indien er geomorfologische processen actief op een landvorm inwerken
+                           wordt dit in dit attribuut aangegeven.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>Boolean</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingbedekking"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Landvormeenheid_toevoegingbedekking">
+            <h5 id="x4-3-7-3-toevoeging-bedekking"><span class="secno">4.3.7.3 </span>  toevoeging bedekking</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van Landvormeenheid</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Typering van de landvormsubgroep bedekkende laag.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>0..3</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        ToevoegingBedekking
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_d22600e4976"></a><section id="detail_d22600e4976">
+            <h5 id="x4-3-7-4-relief"><span class="secno">4.3.7.4 </span>  reliëf</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Landvormeenheid</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Typering van de verticale dimensie van de landvormeenheid.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Gegevensgroeptype</th>
+                     <td>
+                        <a class="link" href="#global_class_GeomorfologischeKaartGMM_RelifType">ReliëfType</a>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section><a class="anchor" id="detail_d22600e5143"></a><section id="detail_d22600e5143">
+            <h5 id="x4-3-7-5-landvorm-subgroep"><span class="secno">4.3.7.5 </span>  landvorm subgroep</h5>
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Gegevensgroep van Landvormeenheid</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Vormen binnen de landvormgroep en dezelfde genese, maar met andere specifieke vormkenmerken.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Gegevensgroeptype</th>
+                     <td>
+                        <a class="link" href="#global_class_GeomorfologischeKaartGMM_LandvormSubgroepType">LandvormSubgroepType</a>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
+      </section><a class="anchor" id="graph_EAID_F5CF0FBC_08E7_49d2_8E14_D592AE2EAC26"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_LandvormSubgroepType"></a><section id="global_class_GeomorfologischeKaartGMM_LandvormSubgroepType">
+         <h4 id="x4-3-8-landvormsubgroeptype"><span class="secno">4.3.8 </span>   LandvormSubgroepType</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Vormen binnen de landvormgroep en dezelfde genese, maar met andere specifieke vormkenmerken.
+                        Landvormgroepen worden op basis van genese onderverdeeld. Er zijn 10 genetische processen
+                        die van invloed kunnen zijn op de landvorm.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_identificatie"></a><section id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_identificatie">
+            <h5 id="x4-3-8-1-identificatie"><span class="secno">4.3.8.1 </span>  identificatie</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van LandvormSubgroepType</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De unieke aanduiding van een landvormsubgroep.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Identifier
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_landvormgroep"></a><section id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_landvormgroep">
+            <h5 id="x4-3-8-2-landvormgroep"><span class="secno">4.3.8.2 </span>  landvormgroep</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van LandvormSubgroepType</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Een groep van landvormen die in hun uiterlijke gedaante bepaalde geomorfologische
+                           kenmerken gemeenschappelijk hebben.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Landvormgroep
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_genese"></a><section id="detail_attribute_GeomorfologischeKaartGMM_LandvormSubgroepType_genese">
+            <h5 id="x4-3-8-3-genese"><span class="secno">4.3.8.3 </span>  genese</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van LandvormSubgroepType</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>De ontstaanswijze van landvormen.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Genese
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_CF085D60_ACA5_422f_A726_C21B2D6549C3"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_RelifType"></a><section id="global_class_GeomorfologischeKaartGMM_RelifType">
+         <h4 id="x4-3-9-relieftype"><span class="secno">4.3.9 </span>   ReliëfType</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Entiteit</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Typering van de verticale dimensie van de landvormeenheid.</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_RelifType_relifcode"></a><section id="detail_attribute_GeomorfologischeKaartGMM_RelifType_relifcode">
+            <h5 id="x4-3-9-1-reliefcode"><span class="secno">4.3.9.1 </span>  reliëfcode</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van ReliëfType</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Code van reliëf.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        Reliëfcode
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_RelifType_relifklasse"></a><section id="detail_attribute_GeomorfologischeKaartGMM_RelifType_relifklasse">
+            <h5 id="x4-3-9-2-reliefklasse"><span class="secno">4.3.9.2 </span>  reliëfklasse</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Attribuut van ReliëfType</td>
+                  </tr>
+                  <tr>
+                     <th>Definitie</th>
+                     <td>
+                        
+                        <p>Klasse van reliëf.</p>
+                        </td>
+                  </tr>
+                  <tr>
+                     <th>Juridische status</th>
+                     <td>Authentiek</td>
+                  </tr>
+                  <tr>
+                     <th>Kardinaliteit</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Domein</th>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <th>&nbsp;&nbsp;Naam</th>
+                     <td>
+                        ReliëfKlasse
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section><a class="anchor" id="graph_EAID_BFEEA89D_0D4C_4c95_BC1D_762A18EB6F9B"></a><a class="anchor" id="global_class_GeomorfologischeKaartGMM_Relifcode"></a><section id="global_class_GeomorfologischeKaartGMM_Relifcode">
+         <h4 id="x4-3-10-reliefcode"><span class="secno">4.3.10 </span>   Reliëfcode</h4>
+         <table style="width: 100%;">
+            <colgroup style="width: 30%;"></colgroup>
+            <colgroup style="width: 70%;"></colgroup>
+            <tbody>
+               <tr>
+                  <th>Type gegeven</th>
+                  <td>Keuze</td>
+               </tr>
+               <tr>
+                  <th>Definitie</th>
+                  <td>
+                     
+                     <p>Een samengestelde waardes voor reliefcode waarbij een gekeuze gemaakt moet worden
+                        tussen dalwaarde (ReliefCodeDalWaarde) en niet-dalwaarde (ReliefCodeNietDalWaarde).</p>
+                     </td>
+               </tr>
+            </tbody>
+         </table><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeDalWaarde"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeDalWaarde">
+            <h5 id="x4-3-10-1-reliefcodedalwaarde"><span class="secno">4.3.10.1 </span>  reliëfCodeDalWaarde</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Keuze element van Reliëfcode</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section><a class="anchor" id="detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeNietDalWaarde"></a><section id="detail_attribute_GeomorfologischeKaartGMM_Relifcode_relifCodeNietDalWaarde">
+            <h5 id="x4-3-10-2-reliefcodenietdalwaarde"><span class="secno">4.3.10.2 </span>  reliëfCodeNietDalWaarde</h5>
+            
+            <table style="width: 100%;">
+               <colgroup style="width: 30%;"></colgroup>
+               <colgroup style="width: 70%;"></colgroup>
+               <tbody>
+                  <tr>
+                     <th>Type gegeven</th>
+                     <td>Keuze element van Reliëfcode</td>
+                  </tr>
+               </tbody>
+            </table>
+            </section>
+      </section>
+   </section>
+</section><section id="uitbreidbare-waardelijsten">
+   <!--OddPage--><h2 id="x5-uitbreidbare-waardelijsten"><span class="secno">5. </span>Uitbreidbare waardelijsten</h2>
+   <section id="detail_class_GeomorfologischeKaartGMM_Genese">
+      <h3 id="x5-1-genese"><span class="secno">5.1 </span>  Genese</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  
+                  <p>Aanduiding voor soort Genese.</p>
+                  
+                  
+                  
+                  <ol>
+                     
+                     <li>
+                        <b>code</b>: Code van genese.</li>
+                     
+                     <li>
+                        <b>vormbepalende factoren</b>: Vormbepalende factoren van genese.</li>
+                     </ol>
+                  
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>code</th>
+               <th>vormbepalende factoren</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_RelifCodeDal">
+      <h3 id="x5-2-reliefcodedal"><span class="secno">5.2 </span>  ReliëfCodeDal</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  
+                  <p>Aanduiding voor soort ReliefCodeDal.</p>
+                  
+                  
+                  
+                  <ol>
+                     
+                     <li>
+                        <b>diepte</b>: Diepte t.o.v. omgeving in meter.</li>
+                     
+                     <li>
+                        <b>steilste verhang</b>: Steilste verhang</li>
+                     
+                     <li>
+                        <b>maximaal hoogteverschil</b>: Maximaal hoogteverschil binnen de vorm in meters.</li>
+                     
+                     <li>
+                        <b>maximaal verval</b>: Maximaal verval in meters.</li>
+                     
+                     <li>
+                        <b>code</b>: Code van relief dal.</li>
+                     </ol>
+                  
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>diepte</th>
+               <th>steilste verhang</th>
+               <th>maximaal hoogteverschil</th>
+               <th>maximaal verval</th>
+               <th>code</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_RelifCodeNietDal">
+      <h3 id="x5-3-reliefcodenietdal"><span class="secno">5.3 </span>  ReliëfCodeNietDal</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  
+                  <p>Aanduiding voor soort ReliëfCodeNietDal.</p>
+                  
+                  
+                  
+                  <ol>
+                     
+                     <li>
+                        <b>reliëf</b>: Relief.</li>
+                     
+                     <li>
+                        <b>helling</b>: Helling.</li>
+                     
+                     <li>
+                        <b>lokaal maximaal hoogteverschil</b>: Lokaal maximaal hoogteverschil in meters.</li>
+                     
+                     <li>
+                        <b>code</b>: Code van relief niet-dal.</li>
+                     </ol>
+                  
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>reliëf</th>
+               <th>helling</th>
+               <th>lokaal maximaal hoogteverschil</th>
+               <th>code</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_ToevoegingRelif">
+      <h3 id="x5-4-toevoegingrelief"><span class="secno">5.4 </span>  ToevoegingReliëf</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  
+                  <p>Aanduiding voor soort ToevoegingRelief.</p>
+                  
+                  
+                  
+                  <ol>
+                     
+                     <li>
+                        <b>code</b>: Code van toevoeging relief.</li>
+                     
+                     <li>
+                        <b>omschrijving</b>: Omschrijving van toevoeging relief.</li>
+                     </ol>
+                  
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>code</th>
+               <th>omschrijving</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_GeomorfologischBelang">
+      <h3 id="x5-5-geomorfologischbelang"><span class="secno">5.5 </span>  GeomorfologischBelang</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>Dijk</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>Water</td>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_Inventarisatiemethode">
+      <h3 id="x5-6-inventarisatiemethode"><span class="secno">5.6 </span>  Inventarisatiemethode</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor soort Inventarisatiemethode</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_Landvormgroep">
+      <h3 id="x5-7-landvormgroep"><span class="secno">5.7 </span>  Landvormgroep</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor soort Landvormgroep.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_RelifKlasse">
+      <h3 id="x5-8-reliefklasse"><span class="secno">5.8 </span>  ReliëfKlasse</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor soort ReliëfKlasse.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>Kartering oude stijl</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>Kartering nieuwe stijl</td>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_ToevoegingBedekking">
+      <h3 id="x5-9-toevoegingbedekking"><span class="secno">5.9 </span>  ToevoegingBedekking</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor soort ToevoegingBedekking.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;">
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_NaamBestand">
+      <h3 id="x5-10-enumeratie-details-naambestand"><span class="secno">5.10 </span>Enumeratie details  NaamBestand</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor naam van een bestand.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>AHN</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>Topografische hoogtelijnenkaart</td>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+   <section id="detail_class_GeomorfologischeKaartGMM_Soort">
+      <h3 id="x5-11-enumeratie-details-soort"><span class="secno">5.11 </span>Enumeratie details  Soort</h3>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <td>
+                  
+                  <p>Aanduiding voor soort Bestand.</p>
+                  </td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table style="width: 100%;" class="list">
+         <colgroup style="width: 50%;"></colgroup>
+         <colgroup></colgroup>
+         <tbody>
+            <tr>
+               <th>Waarde</th>
+               <th>Omschrijving</th>
+            </tr>
+            <tr>
+               <td>kaartblad</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>onderzoeksgebied</td>
+               <td></td>
+            </tr>
+         </tbody>
+      </table>
+      </section>
+</section>
+
+	<section id="geomorfologie" data-format="markdown" aria-busy="false"><!--OddPage--><h2 id="x6-toelichting"><span class="secno">6. </span>Toelichting</h2><p>Het&nbsp;<em>Model geomorfologie</em>&nbsp;is een van de registratieobjecten in het domein
+van&nbsp;<em>bodem- en grondonderzoek</em>. Het is erop gericht om gegevens te produceren
+over de vorm van het aardoppervlak. Het is nodig de vormen en eigenschappen van
+het aardoppervlak te kennen voor ruimtelijke planvorming, voor realisatie en
+onderhoud van infrastructuur, voor onderwijs, onderzoek en advies m.b.t. natuur,
+landschap en archeologie.</p><p>De Geomorfologische kaart is een van de registratieobjecten in de BRO, en wordt
+aangeduid als een ‘model’. Voor de Geomorfologische kaart betekent dit dat de
+kaart zelf het ‘model’ is dat tot stand gekomen is via een interpretatie van het
+Actuele Hoogtebestand Nederland (AHN) en de Bodemkaart 1: 50:000. Deze laatste
+is ook als registratieobject in de BRO is opgenomen.</p><p>Geomorfologie is de wetenschap die zich bezig houdt met het bestuderen van de
+vormen van het aardoppervlak en de processen die bij het ontstaan daarvan een
+rol spelen of hebben gespeeld. De geomorfologische kaart (het ‘model’) is het
+product van een kartering van reliefpatronen op basis van hoogtegegevens van het
+aardoppervlak, gecombineerd met hulpinformatie over de opbouw en samenstelling
+van de bodem en de ondergrond en actuele- en historische landgebruiksdata.
+Daarnaast vindt in het veld een controle van de kartering plaats waarbij op
+basis van visuele waarnemingen waar nodig wijzigingen in de begrenzing landvorm
+worden aangebracht.</p><section id="geomorfologisch-onderzoek-en-kartering"><h3 id="x6-1-geomorfologisch-onderzoek-en-kartering"><span class="secno">6.1 </span>Geomorfologisch onderzoek en -kartering</h3><p>Geomorfologisch onderzoek is gericht op het produceren van gegevens over de
+vormen en patronen van het aardoppervlak en de invloed daarvan op het
+landgebruik en de ruimtelijke inrichting. Vaak wordt het onderzoek uitgevoerd
+omdat men de opbouw van het landschap moet kennen voor:</p><ul>
+<li><p>Beheer en ontwikkeling van natuur en landschap (Kwakernaak et al., 2015)</p>
+</li>
+<li><p>Ruimtelijk planning en duurzame ruimtelijke ontwikkeling ten behoeve van
+grootschalige infrastructurele projecten en ruimtelijke klimaatadaptatie ()</p>
+</li>
+<li><p>Aardkundige waarden; waarbij het landschap van een waardering wordt voorzien
+[<a href="https://broprogramma.github.io/GMM/#bib-koomen-maas2004">Koomen-Maas2004</a>].</p>
+</li>
+<li><p>Monitoring; het volgen van veranderingen van het landschap en het reliëf
+[<a href="https://broprogramma.github.io/GMM/#bib-koomen-maas2004">Koomen-Maas2004</a>].</p>
+</li>
+<li><p>Archeologie; de gaafheid van de geomorfologie speelt mee bij het bepalen de
+archeologische verwachting
+[<a href="https://broprogramma.github.io/GMM/#bib-koomen-maas2004">Koomen-Maas2004</a>].</p>
+</li>
+</ul><p>Onderzoek en educatie; de geomorfologische kaart en kennis van de geomorfologie
+is belangrijk bij environmental science studies en onderzoeken in dat vakgebied
+[<a href="https://broprogramma.github.io/GMM/#bib-koomen-maas2004">Koomen-Maas2004</a>].</p></section><section id="gebruikersperspectief"><h3 id="x6-2-gebruikersperspectief"><span class="secno">6.2 </span>Gebruikersperspectief</h3><p>De informatie op de Geomorfologische Kaart van Nederland 1 : 50 000, die de
+basis vormt voor het geomorfologisch model in de Basisregistratie Ondergrond,
+heeft betrekking op reliëf, genese en ouderdom van het landschap. Er wordt
+continu gewerkt aan actualisatie en verdere detaillering. De kaart geeft veelal
+nog geen informatie over de stedelijke gebieden. De geomorfologische kaart is
+geschikt voor het vaststellen van aardkundige waarden, monitoring van
+veranderingen in het landschap, het maken van Omdat informatie in het stedelijk
+gebied ontbreekt is de geomorfologische kaart niet geschikt is voor het oplossen
+van stedelijke vraagstukken. De beoordeling of het geleverde informatieniveau
+nog bruikbaar is voor de specifieke vraagstelling is ter beoordeling aan de
+gebruiker.</p><p>De geomorfologische kaart is geschikt voor het afleiden van thematische kaarten
+ten behoeve van bovengenoemde toepassingen. Deze thematische kaarten vallen
+echter niet binnen de verantwoordelijkheid van de Basisregistratie Ondergrond.
+In het gebruik voor nationale, regionale en lokale toepassingen geldt dat de
+informatiebehoefte per oppervlakte-eenheid toeneemt naarmate het probleem
+grootschaliger (lokaler) wordt. De opnameschaal van de data is 1:50.000 en geeft
+op dat schaalniveau het bijbehorende detail. De beoordeling of het geleverde
+informatieniveau overeenkomt met de informatiebehoefte voor de specifieke
+vraagstelling is ter beoordeling aan de gebruiker.</p></section><section id="classificatie-legenda-en-geomorfologische-karteringen"><h3 id="x6-3-classificatie-legenda-en-geomorfologische-karteringen"><span class="secno">6.3 </span>Classificatie, legenda en geomorfologische karteringen</h3><p>Met ingang van 2017 heeft de Geomorfologische kaart van Nederland 1:50.000 een
+nieuwe opzet, is de terminologie aangepast en is de gebruikte classificatie
+herzien.</p><p>De klassen die we op de geomorfologische kaart onderscheiden noemen we
+landvormen. Voor de classificatie van de landvormen worden drie niveaus
+gehanteerd. Op het hoogste niveau worden 11 landvormgroepen onderscheiden die in
+hun uiterlijke gedaante bepaalde kenmerken gemeenschappelijk hebben zoals
+bijvoorbeeld terrassen, dalen en vlakten. Landvormgroepen worden op basis van
+hun genese verder onderverdeeld in subgroepen voor de landvorm; de landvormgroep
+‘vlakte’ wordt onderverdeeld in bijvoorbeeld dekzandvlakten, vlakten van
+getij-afzettingen en rivierkomvlakten. Het laagste indelingsniveau is dat van de
+‘landvormeenheid’, waarbij de subgroepen worden onderverdeeld naar reliëf, de
+aanwezigheid van afwijkende geologische afzettingen in de bovengrond en of
+sprake is van een actief morfologisch proces.</p><p>De klassen voor geomorfologische eenheden vormen de brug tussen waarneming en
+model. Het is een in klasse gevatte karakteristiek van de landvorm. Bestond de
+oude classificatie nog uit drie onderdelen, in de nieuwe opzet bestaat deze voor
+een geomorfologische eenheid uit 7 onderdelen :</p><ul>
+<li><p><a href="https://broprogramma.github.io/GMM/#vormgroep">Vormgroep</a></p>
+</li>
+<li><p><a href="https://broprogramma.github.io/GMM/#relief">reliëf</a></p>
+</li>
+<li><p><a href="https://broprogramma.github.io/GMM/#genese">Genese: de ontstaanswijze van
+landvormen</a></p>
+</li>
+<li><p><a href="https://broprogramma.github.io/GMM/#landvormsubgroep">Landvormsubgroep</a></p>
+</li>
+<li><p><a href="https://broprogramma.github.io/GMM/#toevoeging-bovengrond">Toevoeging
+bovengrond</a></p>
+</li>
+<li><p>Toevoeging lokale reliëfaspecten</p>
+</li>
+<li><p>Toevoeging dynamiek</p>
+</li>
+</ul><p>NOOT</p><p>Een&nbsp;<a href="http://legendageomorfologie.wur.nl/">uitgebreide toelichting op de legenda van de Geomorfologische kaart van
+Nederland 1:50 000</a>&nbsp;is online beschikbaar
+[<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>].</p><section id="versiebeheer"><h4 id="x6-3-1-versiebeheer"><span class="secno">6.3.1 </span>Versiebeheer</h4><p>De beheerder van een model maakt zijn waardenlijsten (codelijsten en/of
+referentielijsten) bekend op een algemeen bekend formaat (PDF en als
+downloadable bestand) en maakt deze toegankelijk via
+<a href="http://www.basisregistratieondergrond.nl">www.basisregistratieondergrond.nl</a>. De waardenlijsten worden meegeleverd bij de
+modellevering.</p><p>Als er wijzigingen zijn in een waardelijst, wordt er uiterlijk twee maanden vóór
+inwerkingtreding een notificatie op die website gezet, zodat gebruikers nog tijd
+hebben om hun eigen omgeving op de wijzigingen aan te passen.</p></section><section id="vormgroep"><h4 id="x6-3-2-vormgroep"><span class="secno">6.3.2 </span>Vormgroep</h4><p>Tot een vormgroep behoren landvormen die in hun uiterlijke gedaante bepaalde
+kenmerken gemeenschappelijk hebben. Binnen de landvormen worden 11 vormgroepen
+onderscheiden. De vormgroepen zijn individueel te onderscheiden landvormen en
+gerangschikt naar de sterkte van het reliëf. Van (sterk) boven hun omgeving
+uitstekend naar (sterk) beneden hun omgeving liggend. Niet alle landvormen Als
+zijn als gevolg van de kaartschaal 1:50.000 zijn niet overal alle landvormen
+overal individueel te karteren. In die gevallen zijn de Geomorfologische
+patronen die meerdere landvormen omvatten worden landvormen die er voorkomen
+samengevoegd in de zogenaamde worden tot de vormgroep complexe landvormen in één
+vormgroep gerekend. Voor elke landvormgroep gelden specifieke reliëfklassen.
+[<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>]</p></section><section id="relief"><h4 id="x6-3-3-relief"><span class="secno">6.3.3 </span>Reliëf</h4><p>Reliëf is de verticale dimensie van het landschap; het geheel van hoogtes en
+laagtes in het landschap. De reliëfcode die gebruikt wordt in de codering van de
+geomorfologische eenheden is een classificatie op basis van een aantal
+reliëfkenmerken. Voor de niet-dalvormige landvormgroepen geldt de indeling
+waarbij het reliëf uit twee onderscheidende kenmerken bestaat:</p><ul>
+<li><p>het lokaal maximaal hoogteverschil</p>
+</li>
+<li><p>de hoek van de steilste helling van de vorm.</p>
+</li>
+</ul><p>Alleen voor de vormgroep dalvormige laagten (dalen) geldt een classificatie,
+waarbij vier reliëfkenmerken onderscheidend zijn:</p><ul>
+<li><p>diepte van de dalinsnijding,</p>
+</li>
+<li><p>het maximaal verhang,</p>
+</li>
+<li><p>het lokaal maximaal reliëfverschil binnen de vormeenheid</p>
+</li>
+<li><p>het maximaal verval.</p>
+</li>
+</ul><p>Relief in de geomorfologische kaart is een relatieve maat. De hoogteklassen
+geven de hoogte van de landvorm weer ten opzichte van de voor die specifieke
+landvorm relevante omgeving. De afstand tot het referentiepunt is afhankelijk
+van de grootte van de geomorfologische eenheid.</p><p>De toevoeging reliëf geeft aanvullende informatie over het reliëf. Er zijn 5
+verschillende reliëf-toevoegingen onderscheiden. In een aantal gevallen komen
+reliëfverschillen voor die niet onderscheidend zijn qua vormgroep en
+reliëfklasse, maar wel relevante informatie bevatten voor het
+kaartbeeld.[<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>]</p></section><section id="genese-de-ontstaanswijze-van-landvormen"><h4 id="x6-3-4-genese-de-ontstaanswijze-van-landvormen"><span class="secno">6.3.4 </span>Genese: de ontstaanswijze van landvormen</h4><p>Het buitenste deel van het de aardkorst is onderhevig aan de inwerking van
+allerlei fysische, chemische en biologische processen. Door deze processen,
+waarvan sommige nauwelijks waarneembaar zijn, en andere zich catastrofaal snel
+voltrekken, verandert de vorm van het aardoppervlak en ontstaan de landvormen.</p><p>De landschapsvormen in Nederland zijn vooral ontstaan onder invloed van landijs
+(stuwwallen en smeltwaterdalen), wind (dekzandruggen, dekzandvlaktes, zandduinen
+en lössvlaktes), rivieren (stroomruggen en kommen), de zee (op- en aanwasvlaktes
+en geulen) en veenvorming (veenvlaktes). In Zuid-Nederland is tektoniek van
+invloed geweest op het ontstaan van hoogtes en laagtes. En in de recente tijd is
+door allerlei ingrepen van de mens het reliëf vervlakt of juist versterkt. Er
+zijn 10 vormbepalende factoren onderscheiden.
+[<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>]</p></section><section id="landvormsubgroep"><h4 id="x6-3-5-landvormsubgroep"><span class="secno">6.3.5 </span>Landvormsubgroep</h4><p>Vormen binnen de vormgroep en met dezelfde genese, maar met andere specifieke
+vormkenmerken. [<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>]</p></section><section id="toevoeging-bovengrond"><h4 id="x6-3-6-toevoeging-bovengrond"><span class="secno">6.3.6 </span>Toevoeging ‘Bovengrond’</h4><p>Met deze toevoeging wordt aanvullende informatie geven over afwijkende
+sedimentpakketten die van invloed zijn op de uiterlijke reliëfkenmerken van de
+landvorm. Alleen in die gevallen waar de landvorm qua reliëf afwijkt door een
+min of meer lokaal voorkomende bedekking met een afwijkend sediment (textuur)
+wordt deze toevoeging toegepast. Niet bij alle landvormen wordt informatie
+gegeven over afdekkende lagen, omdat die niet van invloed is op het reliëf.
+Daarvoor is de Bodemkaart van Nederland 1:50.000 beschikbaar.</p><p>Omdat tijdens het karteren niet altijd duidelijk was of de toevoeging van
+toepassing was op het gehele kaartvlak is de indicatie 'al dan niet' (y)
+geïntroduceerd. Deze indicatie kan in combinatie met alle toevoegingen worden
+gebruikt. Bijvoorbeeld de toevoeging 'ya' betekent: al dan niet met
+oud-bouwlanddek. Oude-bouwlanddekken komen op bepaalde landvormsubgroepen
+veelvuldig voor, maar het is onzeker of dit fenomeen op alle onderscheiden
+kaarteenheden van deze landvormsubgroep in een bepaalde regio voorkomt. Is het
+zeker dat een oud-bouwlanddek op een bepaalde kaarteenheid voorkomt, dan wordt
+de toevoeging 'a' zonder 'y' weergegeven. Voor de codering van de toevoegingen
+wordt een kleine letter gebruikt.
+[<a href="https://broprogramma.github.io/GMM/#bib-maas2017">Maas2017</a>]</p></section><section id="actieve-processen"><h4 id="x6-3-7-actieve-processen"><span class="secno">6.3.7 </span>Actieve processen</h4><p>Indien er geomorfologische processen actief op een landvorm inwerken krijgt de
+landvorm de aanduiding dynamiek. De aanduiding dynamiek is een aanvulling op het
+onderdeel genese van de vormeenheid en sluit aan bij de vormbepalende factor die
+van toepassing is. Er zijn 5 vormbepalende factoren die in combinatie met de
+aanduiding dynamiek kunnen voorkomen.</p><ol>
+<li><p>Fluviatiel - buitendijks rivierengebied en beekdalen</p>
+</li>
+<li><p>Marien - buitendijks kustgebied onder invloed van getij</p>
+</li>
+<li><p>Eolisch - kustduinen en stuifzandduinen</p>
+</li>
+<li><p>Denudatie - hellingerosie stuwwallen, wanden en dalen</p>
+</li>
+<li><p>Organogeen - veengroei in dalen en terreindepressies</p>
+</li>
+</ol><p>Overige processen zoals glaciale-, en periglaciale processen komen in Nederland
+onder de huidige klimatologische omstandigheden niet voor. Tectonische en
+lacustriene processen doen zich wel actief voor in Nederland, maar deze leiden
+niet tot karteerbare 'nieuwe' vormeenheden op de kaart. Bij landvormen die door
+de mens gevormd zijn wordt niet aangegeven of het vormbepalend proces nog gaande
+is of niet. Actieve antropogene processen spelen zich af op een andere
+tijdschaal dan de Geomofologische kaart van Nederland omvat.</p></section></section><section id="dijken-van-geomorfologisch-belang"><h3 id="x6-4-dijken-van-geomorfologisch-belang"><span class="secno">6.4 </span>Dijken van geomorfologisch belang</h3><p>Of een landvorm onderhevig is aan actieve fluviatiele of mariene processen is
+afhankelijk van het feit of de vormen binnen- of buitendijks liggen. Voor de
+karakterisering van de landvorm is dat essentieel. (Primaire) dijken vormen de
+scheiding tussen actieve en niet-actieve landvormen.</p></section><section id="inventarisatiemethoden"><h3 id="x6-5-inventarisatiemethoden"><span class="secno">6.5 </span>Inventarisatiemethoden</h3><section id="kartering-oude-stijl-1960-1990"><h4 id="x6-5-1-kartering-oude-stijl-1960-1990"><span class="secno">6.5.1 </span>Kartering ‘oude stijl’ (1960-1990)</h4><p>Het proces van opnemen en vervaardigen van de geomorfologische kaart bestond uit
+verschillende stappen. Eerst werd hulpinformatie aangemaakt. Dit gebeurde per
+deelgebied, een zogenaamd kaartblad. Op basis van de hoogtepunten kaart (schaal
+1:10 000) werd een gedetailleerde hoogtelijnenkaart vervaardigd, met een
+minimaal hoogteverschil van 0,25 meter. Op basis van deze hoogtelijnenkaart en
+indien beschikbaar de bodemkaart en geologische informatie werd een eerste
+zogenaamde geomorfologische ‘schetskaart’ (schaal 1:25 000) vervaardigd. Met
+deze ‘schetskaart’ gingen karteerders het veld in. Deze ‘schetskaart’ werd in
+het veld gecontroleerd, aangepast en aangevuld. Indien nodig voerden karteerders
+aanvullend booronderzoek van het type bodemkundig boormonster beschrijving en
+bodemkundig boormonsteronderzoek uit.</p><p>Deze verbeterde ‘schetskaarten’ werden op de topografische kaart (1:50 000)
+gelegd waaruit infrastructuur werd overgenomen en werden de vlakken voorzien van
+de codes voor reliëf en de geomorfologische subgroep en eventuele toevoegingen.
+Vervolgens vond op het resultaat (kaartblad) een eindcontrole plaats waarbij het
+gehele blad met verschillende inhoudelijk deskundigen werd bekeken, besproken en
+eventueel nog werd aangepast. Daarna werd het geomorfologische kaartblad (schaal
+1:50 000) in kleur afgedrukt en de toelichting op het kaartblad uitgegeven. De
+kaartschaal bepaalt mede de mate van detail en minimale grote van landvormen die
+op de kaart kan worden weergegeven. Om druktechnische redenen en vanwege de
+leesbaarheid waren de afmetingen van kaartvlakken aan minimumgrenzen
+gebonden.Voor die delen van Nederland die volgens deze methode zijn gekarteerd
+geldt een kaartschaal van 1 : 50 000 en daarvoor geldt dat de afmeting van de
+kleinst weergegeven landvormen ca. 10 ha. is (1 cm2 op de kaart = 25 ha. in het
+terrein).</p><p>Tussen 1990 en 1998 vonden geen karteringen plaats.</p></section><section id="kartering-nieuwe-stijl-1998-heden"><h4 id="x6-5-2-kartering-nieuwe-stijl-1998-heden"><span class="secno">6.5.2 </span>Kartering ‘nieuwe stijl’ (1998 - heden)</h4><p>Inmiddels is er meer c.q. gedetailleerdere (hulp)informatie beschikbaar, zoals
+het Actueel Hoogtebestand Nederland (AHN), luchtfoto’s, de bodemkaart van
+Nederland 1:50 000 en bodemkundige detailkarteringen. Het AHN vormt de basis van
+de digitale kartering van aardvormen en patronen. In combinatie met de
+(hulp)informatie worden landvormen geclassificeerd en definitief begrensd.
+Daarnaast vindt onderzoek in het veld plaats. Een veldonderzoek bestaat uit
+controle van de ‘digitale’ kartering, het inwinnen van aanvullende informatie en
+op basis daarvan en van waarnemingen in het veld het opnemen en/of wijzigen van
+landvormgrenzen.</p></section><section id="de-kaartschaal"><h4 id="x6-5-3-de-kaartschaal"><span class="secno">6.5.3 </span>De kaartschaal</h4><p>De kaartschaal bepaalt mede de mate van detail waarmee de bodemgesteldheid kan
+worden weergegeven. In het verleden waren, om druktechnische redenen en vanwege
+de leesbaarheid van de analoge kaart, de afmetingen van kaartvlakken aan
+minimumgrenzen gebonden. Voor de kaartschaal 1:50 000 waren de kleinste vlakken
+die werden opgenomen, vlakken die ca. 10 ha. representeerden (1 cm2 op de kaart
+= 25 ha. in het terrein). Tegenwoordig worden veel kleinere kaartvlakken
+gekarteerd. De mate van detail van de huidige geomorfologische kaart komt
+dichterbij de 1 : 25 000 en voor sommige gebieden zelfs 1 : 10 000.</p></section></section><section id="inspire"><h3 id="x6-6-inspire"><span class="secno">6.6 </span>INSPIRE</h3><p>De modellering van de Geomorfologisch Kaart is geënt op INSPIRE. In de
+gegevensdefinitie van GMM wordt verwezen naar een entiteiten die worden
+gedefinieerd in de gegevensdefinitie van INSPIRE.</p><p>Het abstracte objecttype Kaartvlak in GMM is een specialisatie van het
+INSPIRE-object <a href="https://inspire.ec.europa.eu/featureconcept/MappedFeature">Mapped
+Feature</a>, d.w.z.
+Kaartvlak overerft de eigenschappen van MappedFeature. MappedFeature in INSPIRE
+is een specialisatie van INSPIRE GeologicFeature.</p></section></section>
+
+
+
+<p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

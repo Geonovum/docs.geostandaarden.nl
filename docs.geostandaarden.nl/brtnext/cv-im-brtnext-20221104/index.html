@@ -1,0 +1,5293 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        
+        <title>Wijzigingsvoorstel BRT.Next</title>    
+
+
+        <link rel="stylesheet" type="text/css" href="./media/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+			
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "IM",
+  "format": "markdown",
+  "publishDate": "2022-11-04",
+  "github": "https://github.com/geonovum/brt-next-cv",
+  "issueBase": "https://github.com/geonovum/brt-cv/issues",
+  "edDraftURI": "https://github/geonovum/brt-next-cv",
+  "editors": [
+    {
+      "name": "Geonovum",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Geonovum",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Kadaster",
+      "company": "Kadaster",
+      "companyURL": "https://www.kadaster.nl/zakelijk/registraties/basisregistraties/brt"
+    }
+  ],
+  "shortName": "brtnext",
+  "pubDomain": "brtnext",
+  "licence": "cc-by",
+  "localBiblio": {},
+  "postProcess": [
+    null
+  ],
+  "previousPublishDate": "2022-06-28",
+  "previousMaturity": "GN-CV",
+  "emailComments": "brt@geonovum.nl",
+  "maxTocLevel": 2,
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "href": "https://www.geonovum.nl/",
+      "alt": "Geonovum",
+      "width": 132,
+      "height": 67,
+      "id": "logo_geonovum"
+    },
+    {
+      "src": "https://github.com/kadaster/imbrt/blob/master/docs/images/logo.jpeg?raw=true",
+      "alt": "Kadaster",
+      "id": "logo_kadaster",
+      "height": 122,
+      "width": 146,
+      "url": "https://www.kadaster.nl/zakelijk/registraties/basisregistraties/brt"
+    }
+  ],
+  "publishISODate": "2022-11-04T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 04 november 2022"
+}</script><meta name="description" content="Reacties op dit wijzigingsvoorstel kunt u tot en met 4 december 2022 indienen via het reactieformulier: https://fd10.formdesk.com/geonovum/brtnext."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20221107/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Wijzigingsvoorstel BRT.Next",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2022-11-04",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/brt-cv/issues",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20220628/",
+  "description": "Reacties op dit wijzigingsvoorstel kunt u tot en met 4 december 2022 indienen via het reactieformulier: https://fd10.formdesk.com/geonovum/brtnext.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Kadaster",
+      "worksFor": {
+        "name": "Kadaster",
+        "url": "https://www.kadaster.nl/zakelijk/registraties/basisregistraties/brt"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   
+    <body class="h-entry"><div class="head">
+  <a href="" class="logo"><img id="logo_geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a><a href="https://www.kadaster.nl/zakelijk/registraties/basisregistraties/brt" class="logo"><img id="logo_kadaster" alt="Kadaster" width="146" height="122" src="https://github.com/kadaster/imbrt/blob/master/docs/images/logo.jpeg?raw=true"></a>
+  <h1 class="title p-name" id="title">Wijzigingsvoorstel BRT.Next</h1>
+  
+  <h2>Geonovum Informatiemodel<br>
+  Consultatieversie <time class="dt-published" datetime="2022-11-04">04 november 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20221104/">https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20221104/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/brtnext/">https://docs.geostandaarden.nl/brtnext/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20220628/">https://docs.geostandaarden.nl/brtnext/cv-im-brtnext-20220628/</a></dd>
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/brt-next-cv">https://geonovum.github.iobrt-next-cv</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Kadaster</span>, <a class="p-org org h-org h-card" href="https://www.kadaster.nl/zakelijk/registraties/basisregistraties/brt">Kadaster</a></dd>
+   <dd>
+      <a href="https://github.com/geonovum/brt-next-cv/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/brt-next-cv/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/brt-next-cv/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><div class="submitComment" onclick="window.open('https://fd10.formdesk.com/geonovum/brtnext', '_blank')" ;=""><p><button id="respec-pill" aria-controls="respec-menu" aria-expanded="false" aria-haspopup="true" aria-label="ReSpec Menu">Reactie indienen</button></p>
+</div><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. De laatste gepubliceerde versie van dit document is te vinden op <a href="https://docs.geostandaarden.nl/brtnext/">https://docs.geostandaarden.nl/brtnext/</a>.</em>
+  </p><p>
+
+ Dit is de consultatieversie van het wijzigingsvoorstel voor de nieuwe BRT: BRT.Next. Dit document heeft als doel om de wijzigingen in de TOP10NL onder het werkveld te consulteren. Reacties op dit wijzigingsvoorstel kunt u tot en met 4 december 2022 indienen via het reactieformulier: <a href="https://fd10.formdesk.com/geonovum/brtnext" target="_blank">https://fd10.formdesk.com/geonovum/brtnext</a>.
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#consultatie"><span class="secno">1.1 </span>Consultatie</a></li><li class="tocline"><a class="tocxref" href="#periode-consultatie"><span class="secno">1.2 </span>Periode consultatie</a></li><li class="tocline"><a class="tocxref" href="#reacties-indienen"><span class="secno">1.3 </span>Reacties indienen</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.4 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wegdeel"><span class="secno">2. </span>Wegdeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht"><span class="secno">2.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen"><span class="secno">2.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden"><span class="secno">2.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen"><span class="secno">2.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden"><span class="secno">2.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen"><span class="secno">2.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden"><span class="secno">2.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#spoor"><span class="secno">3. </span>Spoor</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-0"><span class="secno">3.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-0"><span class="secno">3.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-0"><span class="secno">3.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-0"><span class="secno">3.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-0"><span class="secno">3.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-0"><span class="secno">3.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-0"><span class="secno">3.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#waterdeel"><span class="secno">4. </span>Waterdeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-1"><span class="secno">4.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-1"><span class="secno">4.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-1"><span class="secno">4.3 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-1"><span class="secno">4.4 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-1"><span class="secno">4.5 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-1"><span class="secno">4.6 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#terrein"><span class="secno">5. </span>Terrein</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-2"><span class="secno">5.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-2"><span class="secno">5.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-2"><span class="secno">5.3 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-2"><span class="secno">5.4 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-2"><span class="secno">5.5 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-2"><span class="secno">5.6 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gebouw"><span class="secno">6. </span>Gebouw</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-3"><span class="secno">6.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-3"><span class="secno">6.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-1"><span class="secno">6.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-3"><span class="secno">6.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-3"><span class="secno">6.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-3"><span class="secno">6.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-3"><span class="secno">6.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inrichtingselement"><span class="secno">7. </span>Inrichtingselement</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-4"><span class="secno">7.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-4"><span class="secno">7.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-2"><span class="secno">7.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-4"><span class="secno">7.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-4"><span class="secno">7.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-4"><span class="secno">7.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-4"><span class="secno">7.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#relief"><span class="secno">8. </span>Relief</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-5"><span class="secno">8.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-5"><span class="secno">8.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-3"><span class="secno">8.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-5"><span class="secno">8.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-5"><span class="secno">8.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-5"><span class="secno">8.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-5"><span class="secno">8.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hoogte"><span class="secno">9. </span>Hoogte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-6"><span class="secno">9.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-6"><span class="secno">9.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-4"><span class="secno">9.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-6"><span class="secno">9.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-6"><span class="secno">9.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-6"><span class="secno">9.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-6"><span class="secno">9.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#registratief-gebied"><span class="secno">10. </span>Registratief gebied</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-7"><span class="secno">10.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-7"><span class="secno">10.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-5"><span class="secno">10.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-7"><span class="secno">10.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-7"><span class="secno">10.5 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geografisch-gebied"><span class="secno">11. </span>Geografisch gebied</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-8"><span class="secno">11.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-8"><span class="secno">11.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-6"><span class="secno">11.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-8"><span class="secno">11.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-7"><span class="secno">11.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-7"><span class="secno">11.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-8"><span class="secno">11.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#plaats"><span class="secno">12. </span>Plaats</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-9"><span class="secno">12.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-9"><span class="secno">12.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-7"><span class="secno">12.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-9"><span class="secno">12.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-8"><span class="secno">12.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-8"><span class="secno">12.6 </span>Toevoegen attributen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#functioneel-gebied"><span class="secno">13. </span>Functioneel gebied</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-10"><span class="secno">13.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#wijzigen-attributen-10"><span class="secno">13.2 </span>Wijzigen attributen</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#wijzigen-attribuutwaarden-8"><span class="secno">13.3 </span>Wijzigen attribuutwaarden</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-10"><span class="secno">13.4 </span>Vervallen attributen</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attribuutwaarden-9"><span class="secno">13.5 </span>Vervallen attribuutwaarden</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attributen-9"><span class="secno">13.6 </span>Toevoegen attributen</a></li><li class="tocline"><a class="tocxref" href="#toevoegen-attribuutwaarden-9"><span class="secno">13.7 </span>Toevoegen attribuutwaarden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#plantopografie"><span class="secno">14. </span>Plantopografie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overzicht-11"><span class="secno">14.1 </span>Overzicht</a></li><li class="tocline"><a class="tocxref" href="#vervallen-attributen-11"><span class="secno">14.2 </span>Vervallen attributen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-wijzigingen-t-o-v-consultatieversie-28-juni-2022"><span class="secno">15. </span>Bijlage: Wijzigingen t.o.v. consultatieversie 28 juni 2022</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-0"><span class="secno">15.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#wegdeel-0"><span class="secno">15.2 </span>Wegdeel</a></li><li class="tocline"><a class="tocxref" href="#spoor-0"><span class="secno">15.3 </span>Spoor</a></li><li class="tocline"><a class="tocxref" href="#waterdeel-0"><span class="secno">15.4 </span>Waterdeel</a></li><li class="tocline"><a class="tocxref" href="#terrein-0"><span class="secno">15.5 </span>Terrein</a></li><li class="tocline"><a class="tocxref" href="#gebouw-0"><span class="secno">15.6 </span>Gebouw</a></li><li class="tocline"><a class="tocxref" href="#inrichtingselement-0"><span class="secno">15.7 </span>Inrichtingselement</a></li><li class="tocline"><a class="tocxref" href="#relief-0"><span class="secno">15.8 </span>Relief</a></li><li class="tocline"><a class="tocxref" href="#hoogte-0"><span class="secno">15.9 </span>Hoogte</a></li><li class="tocline"><a class="tocxref" href="#registratief-gebied-0"><span class="secno">15.10 </span>Registratief gebied</a></li><li class="tocline"><a class="tocxref" href="#geografisch-gebied-0"><span class="secno">15.11 </span>Geografisch gebied</a></li><li class="tocline"><a class="tocxref" href="#plaats-0"><span class="secno">15.12 </span>Plaats</a></li><li class="tocline"><a class="tocxref" href="#functioneel-gebied-0"><span class="secno">15.13 </span>Functioneel gebied</a></li><li class="tocline"><a class="tocxref" href="#plantopografie-0"><span class="secno">15.14 </span>Plantopografie</a></li></ol></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>In opdracht van het ministerie van BZK werkt het Kadaster aan een
+doorontwikkeling van de BRT. Deze “BRT.Next” zal zijn gebaseerd op de BGT, de
+BAG, andere bestaande bronnen en eigen inwinning. De BRT.Next wordt in
+samenwerking met DiS-Geo ontwikkeld, waarbij afstemming wordt gezocht met de
+landelijke Samenhangende Objectenregistratie. Het productieproces van de diverse
+(toekomstige) producten wordt geoptimaliseerd door gebruik te maken van
+algoritmes voor automatische objectvorming en generalisatie.</p><p>Er zijn gebruikerssessies gehouden waarin de bevindingen tijdens de ontwerpfase
+van de nieuwe BRT.Next met gebruikers gedeeld zijn. Ook was er de mogelijkheid
+om een reactie te geven op een eerste opzet van het nieuwe datamodel voor
+BRT.Next.</p><p>De ervaringen uit deze gebruikerssessies en consultatie zijn de afgelopen
+periode gebruikt bij het samenstellen van een nieuw informatiemodel voor
+BRT.Next. Ieder object en iedere eigenschap uit het informatiemodel van TOP10NL
+is geanalyseerd, vergeleken met de andere basisregistraties en vanuit meerdere
+aspecten bekeken. Is het bijvoorbeeld topografie, cartografie of informatie, wat
+is het gebruik en het bijhoud-proces van dit object of deze eigenschap. Op basis
+van deze analyse is voor ieder object en iedere eigenschap één van onderstaande
+keuzes gemaakt in het nieuwe informatiemodel:
+</p><ul>
+<li>Harmoniseren vanwege andere registraties (BGT, BAG, “SOR”, …)  </li>
+<li>Behouden in BRT.Next
+</li>
+<li>Op een andere manier opnemen in BRT.Next
+</li>
+<li>Vervallen, want werd (nog) niet bijgehouden in de BRT
+</li>
+<li>Vervallen, want niet (meer) relevant voor de nieuwe BRT.Next-producten (bv.
+niet op kaart)
+</li>
+<li>Vervallen, want niet passend bij BRT.Next  </li>
+<li>Toegevoegd aan BRT.Next</li>
+</ul><p>In deze consultatie wil het Kadaster dit nieuwe informatiemodel voorleggen aan
+de gebruikers van de BRT. Het is belangrijk om te beseffen dat de datamodellen
+van de BAG en de BGT hiervoor het uitgangspunt zijn. Daar waar mogelijk is de
+inhoud daarvan 1 op 1 overgenomen.</p><section id="consultatie"><h3 id="x1-1-consultatie"><span class="secno">1.1 </span>Consultatie</h3><p>Deze versie van het informatiemodel BRT.Next is gemaakt voor het BRT.Next
+product op schaal 1:10.000 en beschrijft welke objecten en eigenschappen er
+vastgelegd worden in BRT.Next. Algemene objectkenmerken, zoals de identificatie,
+attributen voor de levensloop van een object en visualisatiecode, zijn nu nog
+niet opgenomen in deze consultatie. Voor deze attributen wil het Kadaster zo
+veel mogelijk aansluiten bij de standaarden en bij TOP10NL.</p><p>Deze tweede consultatie is een vervolg op de eerste consultatie, die gehouden is
+van 28 juni tot en met 22 augustus 2022. Als aftrap van deze tweede consultatie
+is een DiS-online sessie gehouden. De sheets en opnamen van deze sessie zijn
+terug te zien op 
+<a href="https://www.geobasisregistraties.nl/basisregistraties/documenten/publicatie/2022/11/01/presentatie-dis-online">de pagina van DiS-online</a>. 
+Opmerkingen uit de eerste consultatie zijn zo mogelijk verwerkt in deze
+consultatie. In de bijlage, onderaan deze webpagina, zijn deze wijzigingen ten
+opzichte van de eerste consultatie weergegeven.
+</p><p>Gedurende deze consultatie zijn er twee interactiemomenten gepland waar vragen
+over deze consultatie door het Kadaster toegelicht kunnen worden. Deze momenten
+zijn:  </p><ul>
+<li>fysieke bijeenkomst: donderdag 17 november 2022, 9:30 – 12:30, kantoor
+Kadaster Zwolle
+</li>
+<li>online vragenuurtje: donderdag 24 november 2022, 9:30 – 11:00, online via
+Teams<br>U kunt zich aanmelden voor deze interactiemomenten door u op te geven via het aanmeldformulier in het nieuwsbericht:
+<a href="https://www.kadaster.nl/-/wat-vindt-u-van-het-nieuwe-informatiemodel-brt.next-" target="_blank">https://www.kadaster.nl/-/wat-vindt-u-van-het-nieuwe-informatiemodel-brt.next-</a>.</li>
+</ul><p>Het informatiemodel kan tijdens het realiseren van het product nog licht
+aangepast worden doordat op dit moment het hele proces nog niet&nbsp;bekend is. Als
+voorbeeld is het generalisatieproces van o.a. de BGT en BAG op schaal 1:1.000
+naar de BRT.Next op schaal 1:10.000 nog niet ontwikkeld. Hierover zal het
+Kadaster u blijven informeren.</p></section><section id="periode-consultatie"><h3 id="x1-2-periode-consultatie"><span class="secno">1.2 </span>Periode consultatie</h3><p>Reactie op deze consultatie kunnen gegeven worden van 4 november tot en met 4
+december 2022 (4 weken). Aansluitend zal het Kadaster samen met Geonovum de
+ontvangen reacties beoordelen en zo mogelijk verwerken in een nieuwe versie van
+het informatiemodel voor BRT.Next. In januari 2023 vindt een derde consultatie
+plaats (gedurende 2 weken), waarin de wijzigingen ten opzichte van de huidige
+consultatieversie voorgelegd worden.</p><p>Het Kadaster is benieuwd naar uw reacties en dankt u bij voorbaat voor uw input!</p></section><section id="reacties-indienen"><h3 id="x1-3-reacties-indienen"><span class="secno">1.3 </span>Reacties indienen</h3><p>In dit wijzigingsvoorstel worden alle wijzigingen beschreven van de huidige
+TOP10NL (WAS) naar de nieuwe BRT.Next (WORDT). Alle wijzigingen zijn
+voorstellen, en worden met dit wijzigingsvoorstel geconsulteerd onder het
+werkveld.</p><p>U kunt uw reacties op dit wijzigingsvoorstel indienen via <a href="https://fd10.formdesk.com/geonovum/brtnext">dit
+reactieformulier</a>. U vindt een link
+naar het reactieformulier ook midden onderaan deze pagina (knop “Reactie indienen”).</p><p>Geef bij uw reactie uw feedback en verbetersuggestie inclusief motivatie op: Wat
+gebeurt er als het Kadaster dit voorstel doorvoert? Wat is het voordeel van uw
+verbetervoorstel?</p><p>Al uw vragen of opmerkingen over de consultatie van BRT.Next stelt u per email
+aan&nbsp;<a href="mailto:brt@kadaster.nl?subject=BRT.Next Vraag of opmerking over consultatie">brt@kadaster.nl</a>.</p></section><section id="leeswijzer"><h3 id="x1-4-leeswijzer"><span class="secno">1.4 </span>Leeswijzer</h3><p>De voorgestelde wijzigingen in de BRT.Next t.o.v. TOP10NL zijn in dit document
+gemarkeerd:&nbsp;&nbsp;komt te vervallen,&nbsp;<strong>tekst met deze</strong>&nbsp;opmaak wordt toegevoegd.</p><p>In de desktopversie van het wijzigingsvoorstel wordt een schakelknop in het
+venster rechts onderin getoond, waarmee u de wijzigingen aan (zichtbaar) of uit
+(verborgen) kunt zetten.</p><p>De wijzigingen worden in een vaste structuur gepresenteerd. Elk objecttype
+begint met een tabel met de attributen en attribuutwaarden voor dit object na
+het doorvoeren van de wijzigingen. Vervolgens wordt per objecttype beschreven
+welke attributen en attribuutwaarden wijzigen, vervallen of worden toegevoegd.</p><p>We hanteren in dit document de term ‘attribuut’ voor een kenmerk of eigenschap
+van een object; de term ‘attribuutwaarde’ voor het type of de waarde dat een
+attribuut kan aannemen.</p><p>Een attribuut of attribuutwaarde kan op drie manieren wijzigen:</p><ol>
+<li><p>de naam van het attribuut of attribuutwaarde wijzigt; de definitie wijzigt
+niet.</p>
+</li>
+<li><p>de definitie van het attribuut of attribuutwaarde wijzigt; de naam wijzigt
+niet.</p>
+</li>
+<li><p>de naam en definitie van het attribuut of de attribuutwaarde wijzigen.</p>
+</li>
+</ol><p>Als twee attribuutwaarden worden samengevoegd tot één nieuwe attribuutwaarde
+wordt dit in het document beschreven als het laten vervallen van twee
+attribuutwaarden en het toevoegen van een nieuwe attribuutwaarde, met in de
+toelichting (voetnoot) dat er sprake is van een samenvoeging.</p><p>Bij meerdere objectklassen is de modellering van ‘de naam van een object’
+aangepast. Waar er in TOP10NL meerdere naam-attributen waren (bijvoorbeeld:
+Naam_Nederlands, Naam_Fries en Naam_officieel) worden in BRT.Next de taal, de
+herkomst en de aanduiding of een naam officieel is per naam aangegeven. Hiervoor
+zijn de attributen “naam: taal”, “naam: herkomst” en “naam: officieel” in het
+model opgenomen en die attributen beschrijven de eigenschappen van een naam van
+een object.</p></section></section><section data-format="markdown" id="wegdeel"><!--OddPage--><h2 id="x2-wegdeel"><span class="secno">2. </span>Wegdeel</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Wegdeel in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht"><h3 id="x2-1-overzicht"><span class="secno">2.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Wegdeel in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1 -1</td>
+</tr>
+<tr>
+<td></td>
+<td>«lijn»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>rijbaan autosnelweg</td>
+<td>vlak</td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan autoweg</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan hoofdweg</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan regionale weg</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan lokale weg</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan straat</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rijbaan overig</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>parkeervlak</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>OV-baan</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>fietspad</td>
+<td>vlak, lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>voetpad</td>
+<td>vlak, lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>voetgangersgebied</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>startbaan, landingsbaan</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rolbaan, platform</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>veerdienst, pontveer</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>fietsveer</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>voetveer</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td>ligging</td>
+<td>op vast deel van brug</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>op beweegbaar deel van brug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>op rotonde</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>op oprit / afrit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>op knooppuntverbinding</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>op overweg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>in tunnel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>verhardingsbreedteklasse</td>
+<td>&gt; 7 meter</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>4 – 7 meter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>2 – 4 meter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&lt; 2 meter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>verhardingstype</td>
+<td>verhard</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>half verhard</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onverhard</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onbekend</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9;9]»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>status</td>
+<td>bestaand</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>naam: herkomst</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>A-wegnummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>N-wegnummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>E-wegnummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>S-wegnummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>afritnummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>afritnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>knooppuntnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>brugnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>tunnelnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen"><h3 id="x2-2-wijzigen-attributen"><span class="secno">2.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam"><h4 id="x2-2-1-naam"><span class="secno">2.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Weg</del></td>
+<td>type</td>
+</tr>
+<tr>
+<td><del>fysiekVoorkomen</del></td>
+<td><strong>ligging</strong></td>
+</tr>
+<tr>
+<td><del>hoofdG</del>eometrie</td>
+<td><strong>g</strong>eometrie</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="5"><span>Noot</span></div><details class="">
+Aan geometrie wordt de volgende regel toegevoegd: *“Een smalle berm (\&lt;
+6m) is geen onderdeel van het wegvlak."*
+</details></div></section><section id="definitie"><h4 id="x2-2-2-definitie"><span class="secno">2.2.2 </span>Definitie</h4><p>Onderstaande attributen wijzigen van definitie in BRT.Next. De naam wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL | BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>status</td>
+<td><del>De staat waarin het</del> object <del>zich bevindt.</del></td>
+<td><strong>De status gekoppeld aan de levenscyclus van een geo-</strong>object<strong>.</strong></td>
+</tr>
+</tbody></table></section><section id="naam-definitie"><h4 id="x2-2-3-naam-definitie"><span class="secno">2.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het ~</del>hoogte<del>niveau</del>van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Noot</span></div><details class="">
+Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9..
+</details></div></section></section><section id="wijzigen-attribuutwaarden"><h3 id="x2-3-wijzigen-attribuutwaarden"><span class="secno">2.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-0"><h4 id="x2-3-1-naam"><span class="secno">2.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><p><em>Attribuut TOP10NL:typeWeg |BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>overig</td>
+<td><strong>rijbaan</strong> overig</td>
+</tr>
+<tr>
+<td>veer<del>verbinding</del></td>
+<td>veer<strong>dienst, pontveer</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-0"><h4 id="x2-3-2-definitie"><span class="secno">2.3.2 </span>Definitie</h4><p>Onderstaande attribuutwaarden wijzigen van definitie in BRT.Next. De naam wordt
+niet aangepast.</p><p><em>Attribuut TOP10NL:typeWeg |BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL | BRT.Next:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>startbaan, landingsbaan</td>
+<td><del>Strook grond waar</del> vlieg<del>tuigen kunnen</del> opstijgen en/of landen.</td>
+<td><strong>Wegdeel uitsluitend bedoeld voor</strong> vlieg<strong>verkeer ten behoeve van het</strong> opstijgen en/of landen van <strong>vliegtuigen</strong>.</td>
+</tr>
+<tr>
+<td>rolbaan, platform</td>
+<td><del>Afgebakende taxibaan op een vliegveld (rolbaan). / Terrein voor geparkeerd staande</del> vliegtuigen <del>(platform)</del>.</td>
+<td><strong>Wegdeel uitsluitend bedoeld voor vliegverkeer ten behoeve van het taxiën van vliegtuigen of het parkeren van</strong> vliegtuigen<strong>.</strong></td>
+</tr>
+</tbody></table></section><section id="naam-definitie-0"><h4 id="x2-3-3-naam-definitie"><span class="secno">2.3.3 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeWeg / BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>autosnelweg</td>
+<td>Wegdeel dat onderdeel is van een weg uitsluitend bestemd voor snelverkeer <del>en met gescheiden rijbanen en ongelijkvloerse kruisingen</del>, daartoe aangeduid met het betreffende verkeersbord.</td>
+<td><strong>rijbaan</strong> autosnelweg</td>
+<td>Wegdeel dat onderdeel is van een weg uitsluitend bestemd voor snelverkeer, daartoe aangeduid met het betreffende verkeersbord.</td>
+</tr>
+<tr>
+<td><del>hoofdweg</del></td>
+<td><del>Verharde weg die</del> is aangeduid met een E-nummer, maar niet met een A-nummer, of verharde weg die onderdeel is van een verbindingsroute tussen grotere plaatsen, wat blijkt uit blauwe ANWB-borden, dan wel onderdeel is van een route om eindigende A of E-routes tot een gesloten netwerk te completeren.</td>
+<td><strong>rijbaan</strong> hoofdweg</td>
+<td>Wegdeel, <strong>niet zijnde een autosnelweg of autoweg,</strong> dat is aangeduid met een E-nummer, maar niet met een A-nummer, of verharde weg die onderdeel is van een verbindingsroute tussen grotere plaatsen, wat blijkt uit blauwe ANWB-borden, dan wel onderdeel is van een route om eindigende A of E-routes tot een gesloten netwerk te completeren.</td>
+</tr>
+<tr>
+<td>regionale weg</td>
+<td><del>Verharde</del> weg die een verbinding vormt tussen bewoonde oorden of <del>grote stads</del>wijken <del>en daartoe van twee kanten bewegwijzerd zijn met blauwe ANWB-richtingsborden voor autoverkeer</del>.</td>
+<td><strong>rijbaan</strong> regionale weg</td>
+<td><strong>Wegdeel dat onderdeel is van een</strong> weg die een verbinding vormt tussen bewoonde oorden of tussen wijken <strong>binnen een dorp of stad</strong>.</td>
+</tr>
+<tr>
+<td>lokale weg</td>
+<td>Weg van lokaal belang <del>tussen bewegwijzerde routes</del>.</td>
+<td><strong>rijbaan</strong> lokale weg</td>
+<td><strong>Wegdeel dat onderdeel is van een</strong> weg van lokaal belang.</td>
+</tr>
+<tr>
+<td>straat</td>
+<td>Weg van zeer plaatselijk belang, gelegen binnen bebouwd gebied.</td>
+<td><strong>rijbaan</strong> straat</td>
+<td><strong>Wegdeel dat onderdeel is van een</strong> weg van zeer plaatselijk belang, gelegen binnen bebouwd gebied.</td>
+</tr>
+<tr>
+<td>parkeer<del>plaats</del></td>
+<td><del>Parkeergelegenheid voor meerdere</del> voertuigen <del>in de openlucht.</del></td>
+<td>parkeer<strong>vak</strong></td>
+<td><strong>Wegdeel bestemd voor het parkeren van motor</strong>voertuigen.</td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen"><h3 id="x2-4-vervallen-attributen"><span class="secno">2.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:waarde of «type»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hartGeometrie</del></td>
+<td><del>«punt»</del>; <del>«lijn»</del></td>
+</tr>
+<tr>
+<td><del>typeInfrastructuur</del></td>
+<td><del>verbinding</del>; <del>kruising</del>; <del>overig verkeersgebied</del></td>
+</tr>
+<tr>
+<td><del>hoofdverkeersgebruik</del></td>
+<td><del>vliegverkeer</del>; <del>snelverkeer</del>; <del>gemengd verkeer</del>; <del>busverkeer</del>; <del>fietsers</del>, <del>bromfietsers</del>; <del>voetgangers</del>; <del>ruiters</del>; <del>overig</del></td>
+</tr>
+<tr>
+<td><del>gescheidenRijbaan</del></td>
+<td><del>ja</del>; <del>nee</del></td>
+</tr>
+<tr>
+<td><del>aantalRijstroken</del></td>
+<td><del>«geheel getal»</del></td>
+</tr>
+<tr>
+<td><del>isBAGnaam</del></td>
+<td><del>ja</del>; <del>nee</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden"><h3 id="x2-5-vervallen-attribuutwaarden"><span class="secno">2.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:waarde of «type»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td><del>«punt»</del></td>
+</tr>
+<tr>
+<td>typeWeg | type</td>
+<td><del>spoorbaanlichaam</del>; <del>parkeerplaats: carpool</del>; <del>parkeerplaats: P+R</del></td>
+</tr>
+<tr>
+<td>fysiekVoorkomen | ligging</td>
+<td><del>overkluisd</del></td>
+</tr>
+<tr>
+<td>status</td>
+<td><del>in uitvoering</del>; <del>in gebruik</del>; <del>buiten gebruik</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Noot</span></div><details class="">
+Type ‘spoorbaanlichaam’ verplaatst naar type ‘spoorbaan’ van objecttype
+Spoor.
+</details></div><div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Noot</span></div><details class="">
+status ‘in uitvoering’ en ‘in gebruik’ worden samengevoegd tot status
+‘bestaand’.
+</details></div></section><section id="toevoegen-attributen"><h3 id="x2-6-toevoegen-attributen"><span class="secno">2.6 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Domein</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam:herkomst</strong></td>
+<td><strong>De herkomst van de naam van het wegdeel.</strong></td>
+<td><strong>Optioneel [0 of meer]</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attribuutwaarden"><h3 id="x2-7-toevoegen-attribuutwaarden"><span class="secno">2.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>rijbaan autoweg</strong></td>
+<td><strong>Wegdeel dat onderdeel is van een weg uitsluitend bestemd voor snelverkeer, daartoe aangeduid met het betreffende verkeersbord.</strong></td>
+</tr>
+<tr>
+<td><strong>OV-baan</strong></td>
+<td><strong>Wegdeel dat uitsluitend is bestemd en gemarkeerd voor openbaar vervoer en afgescheiden is van de andere wegdelen niet uitsluitend door markering.</strong></td>
+</tr>
+<tr>
+<td><strong>fietspad</strong></td>
+<td><strong>Wegdeel met name bestemd voor fietsers en, indien toegestaan, bromfietsers en dat afgescheiden is van de andere wegdelen niet uitsluitend door markering.</strong></td>
+</tr>
+<tr>
+<td><strong>voetpad</strong></td>
+<td><strong>Wegdeel waar voetgangers gebruik van moeten maken.</strong></td>
+</tr>
+<tr>
+<td><strong>voetgangersgebied</strong></td>
+<td><strong>Wegdeel alleen voor het gebruik door voetgangers, waarbij het door voetgangers te gebruiken gebied de volle breedte van de weg beslaat en het gebied een nadrukkelijk openbaar karakter heeft.</strong></td>
+</tr>
+<tr>
+<td><strong>fietsveer</strong></td>
+<td><strong>Vastgelegde route over water om fietsers en voetgangers over te zetten al dan niet op basis van een vaste dienstregeling.</strong></td>
+</tr>
+<tr>
+<td><strong>voetveer</strong></td>
+<td><strong>Vastgelegde route over water om voetgangers over te zetten al dan niet op basis van een vaste dienstregeling.</strong></td>
+</tr>
+</tbody></table><p><strong>Attribuut BRT.Next:ligging</strong></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>op overweg</strong></td>
+<td><strong>Een gelijkvloerse kruising van een wegdeel en een wegdeel type ov-baan met spoor type trein of sneltram.</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>bestaand</strong></td>
+<td><strong>Situatie waarin het object wordt / kan worden gebruikt voor het doel waarvoor het is gebouwd / aangelegd.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="spoor"><!--OddPage--><h2 id="x3-spoor"><span class="secno">3. </span>Spoor</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Spoor in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-0"><h3 id="x3-1-overzicht"><span class="secno">3.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Spoor in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«lijn»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«vlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>trein</td>
+<td>lijn</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>tram</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sneltram</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>metro</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gemengd</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>spoorbaan</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>aantalSporen</td>
+<td>enkelvoudig</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>meervoudig</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>elektrificatie</td>
+<td>ja</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>nee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ligging</td>
+<td>op vast deel van brug</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>op beweegbaar deel van brug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>in tunnel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>status</td>
+<td>bestaand</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>brugnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>tunnelnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Noot</span></div><details class="">
+attribuut ‘aantalSporen’ en ‘elektrificatie’ is alleen verplicht voor
+objecten Spoor met lijngeometrie.
+</details></div></section><section id="wijzigen-attributen-0"><h3 id="x3-2-wijzigen-attributen"><span class="secno">3.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-1"><h4 id="x3-2-1-naam"><span class="secno">3.2.1 </span>Naam</h4><p>De volgende attributen wijzigen van naam, of wijzigen van naam en definitie in
+BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Spoorbaan</del></td>
+<td>type</td>
+</tr>
+<tr>
+<td><del>fysiekVoorkomen</del></td>
+<td><strong>ligging</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-1"><h4 id="x3-2-2-definitie"><span class="secno">3.2.2 </span>Definitie</h4><p>Onderstaande attributen wijzigen van definitie in BRT.Next. De naam wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL | BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aantalSporen</td>
+<td><del>Het aantal sporen van</del> het spoorbaandeel.</td>
+<td><strong>Aanduiding of</strong> het spoorbaandeel <strong>enkelvoudig of meervoudig is.</strong></td>
+</tr>
+<tr>
+<td>status</td>
+<td><del>De staat waarin het</del> object <del>zich bevindt.</del></td>
+<td><strong>De status gekoppeld aan de levenscyclus van een geo-</strong>object<strong>.</strong></td>
+</tr>
+</tbody></table></section><section id="naam-definitie-1"><h4 id="x3-2-3-naam-definitie"><span class="secno">3.2.3 </span>Naam+definitie</h4><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het ~</del>hoogte<del>niveau</del>van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="5"><span>Noot</span></div><details class="">
+Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9.
+</details></div></section></section><section id="wijzigen-attribuutwaarden-0"><h3 id="x3-3-wijzigen-attribuutwaarden"><span class="secno">3.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-2"><h4 id="x3-3-1-naam"><span class="secno">3.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><p><em>Attribuut TOP10NL:aantalSporen | BRT.Next:aantalSporen</em></p><table>
+<thead>
+<tr>
+<th>TOP10NL:waarde</th>
+<th>BRT.Next:waarde</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>enkel</td>
+<td>enkel<strong>voudig</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-2"><h4 id="x3-3-2-definitie"><span class="secno">3.3.2 </span>Definitie</h4><p>Geen.</p></section><section id="naam-definitie-2"><h4 id="x3-3-3-naam-definitie"><span class="secno">3.3.3 </span>Naam+definitie</h4><table>
+<thead>
+<tr>
+<th>Geen.</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table></section></section><section id="vervallen-attributen-0"><h3 id="x3-4-vervallen-attributen"><span class="secno">3.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>typeInfrastructuur</del></td>
+<td><del>verbinding</del>; <del>~ kruising</del></td>
+</tr>
+<tr>
+<td><del>spoorbreedte</del></td>
+<td><del>normaalspoor</del>; <del>smalspoor</del></td>
+</tr>
+<tr>
+<td><del>vervoerfunctie</del></td>
+<td><del>gemengd gebruik</del>; <del>personenvervoer</del>; <del>~ goederenvervoer</del>; <del>museumlijn</del></td>
+</tr>
+<tr>
+<td><del>baanvaknaam</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-0"><h3 id="x3-5-vervallen-attribuutwaarden"><span class="secno">3.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td><del>«punt»</del></td>
+</tr>
+<tr>
+<td>fysiekVoorkomen | ligging</td>
+<td><del>overkluisd</del></td>
+</tr>
+<tr>
+<td>aantalSporen</td>
+<td><del>dubbel</del></td>
+</tr>
+<tr>
+<td>status</td>
+<td><del>in uitvoering</del>; <del>in gebruik</del>; <del>buiten gebruik</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Noot</span></div><details class="">
+status ‘in uitvoering’ en ‘in gebruik’ worden samengevoegd tot status
+‘bestaand’.
+</details></div></section><section id="toevoegen-attributen-0"><h3 id="x3-6-toevoegen-attributen"><span class="secno">3.6 </span>Toevoegen attributen</h3><p>Geen.</p></section><section id="toevoegen-attribuutwaarden-0"><h3 id="x3-7-toevoegen-attribuutwaarden"><span class="secno">3.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:geometrie</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>vlak</strong></td>
+<td><strong>De vlakgeometrie van een spoorbaandeel object.</strong></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Noot</span></div><details class="">regel: vlakgeometrie alleen bij Spoor van het type ‘spoorbaan’
+</details></div><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>spoorbaan</strong><del>lichaam</del></td>
+<td><strong>Gebaand gedeelte voor het verkeer over rails.</strong></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="4"><span>Noot</span></div><details class="">type ‘spoorbaan’ verplaatst van objecttype Terrein naar objecttype Spoor.
+</details></div><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>bestaand</strong></td>
+<td><strong>Situatie waarin het object wordt / kan worden gebruikt voor het doel waarvoor het is gebouwd / aangelegd.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="waterdeel"><!--OddPage--><h2 id="x4-waterdeel"><span class="secno">4. </span>Waterdeel</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Waterdeel in BRT.Next
+ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-1"><h3 id="x4-1-overzicht"><span class="secno">4.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Waterdeel in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of &lt;type&gt;</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«lijn»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>«punt»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>waterloop</td>
+<td>lijn, vlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>watervlakte</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>greppel, droge sloot</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zee</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>droogvallend</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>droogvallend (LAT)</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>bron</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>water met riet</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>breedteklasse</td>
+<td>0,5 - 3 meter</td>
+<td>lijn</td>
+<td>0..1</td>
+</tr>
+<tr>
+<td></td>
+<td>3 - 6 meter</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>6 - 12 meter</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>12 - 50 meter</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>50 - 125 meter</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 125 meter</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>ligging</td>
+<td>in sluis</td>
+<td>lijn, vlak</td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>op brug</td>
+<td>lijn, vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9; 9]»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>status</td>
+<td>bestaand</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>naam: herkomst</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>naam:officieel</td>
+<td>ja</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>nee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>naam: taal</td>
+<td>Nederlands</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>Fries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onbekend / VoidReason</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sluisnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>brugnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-1"><h3 id="x4-2-wijzigen-attributen"><span class="secno">4.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-3"><h4 id="x4-2-1-naam"><span class="secno">4.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Water</del></td>
+<td><strong>type</strong></td>
+</tr>
+<tr>
+<td><del>fysiekVoorkomen</del></td>
+<td><strong>ligging</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-3"><h4 id="x4-2-2-definitie"><span class="secno">4.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-3"><h4 id="x4-2-3-naam-definitie"><span class="secno">4.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het</del> hoogte <del>niveau</del> van het object.~~</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve hoogte van het object.</strong></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="5"><span>Noot</span></div><details class="">Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9.
+</details></div></section><section id="naam-4"><h4 id="x4-2-4-naam"><span class="secno">4.2.4 </span>Naam</h4><p><em>Attribuut TOP10NL:typeWater | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th>TOP10NL:waarde</th>
+<th>BRT.Next:waarde</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bron<del>, wel</del></td>
+<td>bron</td>
+</tr>
+</tbody></table></section><section id="definitie-4"><h4 id="x4-2-5-definitie"><span class="secno">4.2.5 </span>Definitie</h4><p>Onderstaande attribuutwaarden wijzigen van definitie in BRT.Next. De naam
+(waarde) wordt niet aangepast.</p><p><em>Attribuut TOP10NL:typeWater | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>waterloop</td>
+<td><del>Langgerekt waterdeel in de vorm van een sloot,</del> rivier, kanaal, <del>enz.</del></td>
+<td><strong>Een voor de waterbeheersing bestemde geul die meestal permanent water bevat (zoals</strong> rivier, kanaal, <strong>beek, sloot, gracht).</strong></td>
+</tr>
+<tr>
+<td>greppel, droge sloot</td>
+<td><del>Een in het algemeen niet watervoerende sloot.</del></td>
+<td><strong>Een ten behoeve van de waterbeheersing gegraven geul die al dan niet met water bedekt is.</strong></td>
+</tr>
+<tr>
+<td>zee</td>
+<td>Uitgestrekt oppervlak zout water <del>dat het grootste deel van de aarde bedekt.</del></td>
+<td>Uitgestrekt oppervlak zout water.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="naam-definitie-4"><h4 id="x4-2-6-naam-definitie"><span class="secno">4.2.6 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeWater / BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>meer,plas</del></td>
+<td>Water <del>(meestal) niet gelegen in een waterloop.</del></td>
+<td><strong>watervlakte</strong></td>
+<td><strong>Alle oppervlakken die vrij permanent met zoet</strong> water <strong>zijn bedekt. (zoals meer, plas, ven, vijver).</strong></td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen-1"><h3 id="x4-3-vervallen-attributen"><span class="secno">4.3 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>voorkomen</del></td>
+<td><del>met riet</del></td>
+</tr>
+<tr>
+<td><del>functie</del></td>
+<td><del>drinkwaterbekken</del>; <del>haven</del>; <del>natuurbad</del>; <del>viskwekerij</del>; <del>vistrap</del>; <del>vloeiveld</del>; <del>waterval</del>; <del>waterzuivering</del>; <del>zwembad</del>; <del>overig</del></td>
+</tr>
+<tr>
+<td><del>getijdeInvloed</del></td>
+<td><del>ja; nee</del></td>
+</tr>
+<tr>
+<td><del>vaarwegklasse</del></td>
+<td><del>I</del>; <del>II</del>; <del>III</del>; <del>IV</del>; <del>Va</del>; <del>Vb</del>; <del>VIa</del>; <del>VIb</del>; <del>VIc</del>; <del>VII</del></td>
+</tr>
+<tr>
+<td><del>naamOfficieel</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamNL</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamFries</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>isBAGnaam</del></td>
+<td><del>ja</del>; <del>nee</del></td>
+</tr>
+<tr>
+<td><del>hoofdafwatering</del></td>
+<td><del>ja</del>; <del>nee</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-9" aria-level="4"><span>Noot</span></div><details class="">voorkomen ‘met riet’ wordt opgenomen als type ‘water met riet’ in
+BRT.Next.
+</details></div><div class="note" role="note" id="issue-container-generatedID-10"><div role="heading" class="note-title marker" id="h-note-10" aria-level="4"><span>Noot</span></div><details class="">naamOfficieel vervalt, een nieuw attribuut ‘naam: officieel’ met waarden
+ja/nee wordt toegevoegd.
+</details></div></section><section id="vervallen-attribuutwaarden-1"><h3 id="x4-4-vervallen-attribuutwaarden"><span class="secno">4.4 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeWater</td>
+<td><del>overig</del></td>
+</tr>
+<tr>
+<td>fysiekVoorkomen | ligging</td>
+<td><del>in duiker</del>, <del>in afsluitbare duiker</del>; <del>in grondduiker</del>; <del>in afsluitbare grondduiker</del>; <del>overkluisd</del></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attributen-1"><h3 id="x4-5-toevoegen-attributen"><span class="secno">4.5 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>status</strong></td>
+<td><strong>De status gekoppeld aan de levenscyclus van een geo-object.</strong></td>
+<td><strong>Verplicht, 1</strong></td>
+<td><strong>bestaand</strong></td>
+</tr>
+<tr>
+<td><strong>naam</strong></td>
+<td><strong>De naam van het waterdeel</strong></td>
+<td><strong>Optioneel, 0 of meer</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td><strong>naam: taal</strong></td>
+<td><strong>De taal van de naam van het waterdeel.</strong></td>
+<td><strong>Optioneel, 0 of meer</strong></td>
+<td><strong>Nederlands; Fries; onbekend/ VoidReason</strong></td>
+</tr>
+<tr>
+<td><strong>naam: officieel</strong></td>
+<td><strong>Aanduiding of de naam een officiële naam betreft.</strong></td>
+<td><strong>Optioneel, 0 of meer</strong></td>
+<td><strong>ja / nee</strong></td>
+</tr>
+<tr>
+<td><strong>naam: herkomst</strong></td>
+<td><strong>De herkomst van de naam van het waterdeel.</strong></td>
+<td><strong>Optioneel, 0 of meer</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-11"><div role="heading" class="note-title marker" id="h-note-11" aria-level="4"><span>Noot</span></div><details class="">regel: ‘naam: herkomst’, ‘naam: officieel’ en ‘naam:taal’ zijn verplicht
+als naam is gevuld.
+</details></div></section><section id="toevoegen-attribuutwaarden-1"><h3 id="x4-6-toevoegen-attribuutwaarden"><span class="secno">4.6 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>water met riet</strong></td>
+<td><strong>Alle oppervlakken die vrij permanent met zoet water zijn bedekt en begroeid zijn met riet.</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>bestaand</strong></td>
+<td><strong>Situatie waarin het object wordt / kan worden gebruikt voor het doel waarvoor het is gebouwd / aangelegd.</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:naam:taal</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nederlands</td>
+<td><strong>Nederlandse taal.</strong></td>
+</tr>
+<tr>
+<td>Fries</td>
+<td><strong>Friese taal.</strong></td>
+</tr>
+<tr>
+<td>onbekend/ VoidReason</td>
+<td><strong>Taal is onbekend.</strong></td>
+</tr>
+<tr>
+<td>&lt;/type&gt;</td>
+<td></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="terrein"><!--OddPage--><h2 id="x5-terrein"><span class="secno">5. </span>Terrein</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Terrein in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-2"><h3 id="x5-1-overzicht"><span class="secno">5.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Terrein in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>type</td>
+<td>akkerland</td>
+<td>vlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>basaltblokken, steenglooiing</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>boomgaard</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>boomkwekerij</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>braakliggend</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>duin</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>fruitteelt</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gemengd bos</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grasland agrarisch</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grasland overig</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>griend en hakhout</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>heide</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>houtwal</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kwelder</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>loofbos</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>naaldbos</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>struiken</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zand</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overig</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>erf</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>rietland</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>moeras</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>ligging</td>
+<td>in tunnel</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td></td>
+<td>op brug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9; 9]»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>brugnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-2"><h3 id="x5-2-wijzigen-attributen"><span class="secno">5.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-5"><h4 id="x5-2-1-naam"><span class="secno">5.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Landgebruik</del></td>
+<td><strong>type</strong></td>
+</tr>
+<tr>
+<td><del>fysiekVoorkomen</del></td>
+<td><strong>ligging</strong></td>
+</tr>
+<tr>
+<td><del>voorkomen</del></td>
+<td><strong>type</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-5"><h4 id="x5-2-2-definitie"><span class="secno">5.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-5"><h4 id="x5-2-3-naam-definitie"><span class="secno">5.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het</del> hoogte<del>niveau</del> van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-12"><div role="heading" class="note-title marker" id="h-note-12" aria-level="5"><span>Noot</span></div><details class="">Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9.
+</details></div><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p></section><section id="naam-6"><h4 id="x5-2-4-naam"><span class="secno">5.2.4 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><p><em>Attribuut TOP10NL:fysiekVoorkomen | BRT.Next:ligging</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>op <del>vast deel van</del> brug</td>
+<td>op brug</td>
+</tr>
+</tbody></table></section><section id="definitie-6"><h4 id="x5-2-5-definitie"><span class="secno">5.2.5 </span>Definitie</h4><p>Onderstaande attribuutwaarden wijzigen van definitie in BRT.Next. De naam wordt
+niet aangepast.</p><p><em>Attribuut TOP10NL:typeLandgebruik | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>akkerland</td>
+<td>Terrein <del>waar landbouwproducten worden verbouwd.</del></td>
+<td>Terrein<strong>deel in gebruik als akker, met gewassen die in een teelt roulatieschema zijn opgenomen. Kan tijdelijk zonder gewas zijn of braak liggen.</strong></td>
+</tr>
+<tr>
+<td>boomgaard</td>
+<td>Terrein met hoogstam<del>mige ~</del>fruitbomen.</td>
+<td>Terrein <strong>begroeid</strong> met hoogstamfruitbomen.</td>
+</tr>
+<tr>
+<td>braakliggend</td>
+<td><del>Een stuk grond dat geen functie vervult of niet wordt onderhouden, met uitzondering van landbouwgrond.</del></td>
+<td><strong>Terreindeel waar geen verharding of aaneengesloten vegetatie aanwezig is, niet zijnde zand. Braakliggend valt hier wel onder.</strong></td>
+</tr>
+<tr>
+<td>duin</td>
+<td><del>Terrein met grondsoort</del> zand <del>, langs de kust als natuurlijke kustverdediging, eventueel begroeid met helmgras of lage struiken.</del></td>
+<td><strong>Verhoging of heuvel van</strong> zand <strong>of fijne losse aarde en verpulverd gesteente opgeworpen door wind of door stromend water.</strong></td>
+</tr>
+<tr>
+<td>fruitkwekerij</td>
+<td>Terrein met laagstam<del>mige ~</del>fruitbomen <del>en struiken waarvan de vruchten worden geoogst (zoals: rozenbottels,</del> bessen<del>,</del> frambozen <del>, druiven, etc.)</del>.</td>
+<td>Terrein <strong>begroeid</strong> met laagstamfruitbomen, <strong>druivenstokken of begroeid met heesters voor zachtfruit zoals</strong> bessen <strong>of</strong> frambozen.</td>
+</tr>
+<tr>
+<td>heide</td>
+<td>Terrein, overwegend begroeid met heidevegetatie <del>en wilde grassoorten.</del></td>
+<td>Terrein<strong>deel</strong> overwegend begroeid met heide <strong>en heideachtige</strong> vegetatie<strong>s</strong>.</td>
+</tr>
+<tr>
+<td>zand</td>
+<td>Terrein, <del>grondsoort</del> zand, <del>van nature zonder enige begroeiing.</del></td>
+<td>Terrein<strong>deel dat grotendeels bedekt is met</strong> zand.</td>
+</tr>
+</tbody></table></section><section id="naam-definitie-6"><h4 id="x5-2-6-naam-definitie"><span class="secno">5.2.6 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeWeg | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>bos:</del> gemengd bos</td>
+<td><del>Oppervlak</del> begroeid met een dusdanige aantal naald- en loofbomen dat <del>de kruinen</del> een min of meer gesloten geheel vormen of, na volgroeiing van de bomen, zullen vormen.</td>
+<td>gemengd bos</td>
+<td><strong>Terreindeel</strong> begroeid met een dusdanige aantal naald- en loofbomen dat <strong>deze</strong> een min of meer gesloten geheel vormen of, na volgroeiing van de bomen, zullen vormen.</td>
+</tr>
+<tr>
+<td>grasland</td>
+<td>Terrein, <del>overwegend begroeid</del> met een <del>grasachtige</del> vegetatie.</td>
+<td>grasland <strong>agrarisch</strong></td>
+<td>Terrein<strong>deel</strong> met een vegetatie <strong>bestaande uit grassen en of grasachtigen, en met de in graslanden voorkomende kruiden, zijnde cultuurgrasland dat in gebruik is voor de veeteelt, bijvoorbeeld als weiland of als hooiland.</strong></td>
+</tr>
+<tr>
+<td>grasland</td>
+<td>Terrein, <del>overwegend begroeid</del> met een <del>grasachtige</del> vegetatie.</td>
+<td>grasland <strong>overig</strong></td>
+<td>Terrein<strong>deel</strong> met een vegetatie <strong>bestaande uit grassen en of grasachtigen, en met de in graslanden voorkomende kruiden, dat niet in gebruik is voor agrarische doeleinden.</strong></td>
+</tr>
+<tr>
+<td><del>bos:</del> griend</td>
+<td><del>In of aan het water gelegen</del> terrein<del>, ~</del>begroei<del>d met laagafgeknot wilgenhout t.b.v. de productie van rijshout.</del></td>
+<td>griend <strong>en hakhout</strong></td>
+<td>Terrein<strong>deel met opgaande</strong> begroei<strong>ing van loofbomen, in een dicht groeiverband, en die periodiek wordt afgezet.</strong></td>
+</tr>
+<tr>
+<td><del>bos:</del> loofbos</td>
+<td><del>Oppervlak</del> begroeid met een dusdanige aantal loofbomen dat de kruinen een min of meer gesloten geheel vormen of, na volgroeiing van de bomen, zullen vormen.</td>
+<td>loofbos</td>
+<td><strong>Terreindeel</strong> begroeid met een dusdanige aantal loofbomen dat deze een min of meer gesloten geheel vormen of, na volgroeiing van de bomen, zullen vormen.</td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen-2"><h3 id="x5-3-vervallen-attributen"><span class="secno">5.3 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>voorkomen</del></td>
+<td><del>met riet</del>; <del>dras, moerassig</del></td>
+</tr>
+<tr>
+<td><del>naam</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-13"><div role="heading" class="note-title marker" id="h-note-13" aria-level="4"><span>Noot</span></div><details class="">voorkomen ‘met riet’ en ‘dras, moerassig’ worden verplaatst naar
+respectievelijk typen ‘rietland’ en ‘moeras’.
+</details></div></section><section id="vervallen-attribuutwaarden-2"><h3 id="x5-4-vervallen-attribuutwaarden"><span class="secno">5.4 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL/BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeLandgebruik | type</td>
+<td><del>aanlegsteiger</del>; <del>bebouwd gebied</del>; <del>dodenakker</del>; <del>dodenakker met bos</del>; <del>populieren</del>; <del>spoorbaanlichaam</del></td>
+</tr>
+<tr>
+<td>fysiekVoorkomen | ligging</td>
+<td><del>overkluisd</del>, <del>op beweegbaar deel van brug</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-14"><div role="heading" class="note-title marker" id="h-note-14" aria-level="4"><span>Noot</span></div><details class="">type ‘aanlegsteiger’ verplaatst van object Terrein naar type ‘steiger’ van
+object Inrichtingselement.
+</details></div><div class="note" role="note" id="issue-container-generatedID-15"><div role="heading" class="note-title marker" id="h-note-15" aria-level="4"><span>Noot</span></div><details class="">type ‘spoorbaanlichaam’ verplaatst van Terrein naar type ‘spoorbaan’ van
+object Spoor.
+</details></div></section><section id="toevoegen-attributen-2"><h3 id="x5-5-toevoegen-attributen"><span class="secno">5.5 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>brugnaam</strong></td>
+<td><strong>De naam van de brug.</strong></td>
+<td><strong>Optioneel, 0..1</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attribuutwaarden-2"><h3 id="x5-6-toevoegen-attribuutwaarden"><span class="secno">5.6 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden (waarden) worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>houtwal</strong></td>
+<td><strong>Terreindeel zijnde een afscheiding met beperkte breedte en beplant met bomen of struiken.</strong></td>
+</tr>
+<tr>
+<td><strong>kwelder</strong></td>
+<td><strong>Buitendijks gelegen aangeslibd land van een wad, dat bij gewone vloed niet meer onder loopt.</strong></td>
+</tr>
+<tr>
+<td><strong>struiken</strong></td>
+<td><strong>Terreindeel bedekt met niet-gecultiveerde (natuurlijke), lage, houtachtige, overblijvende planten gekenmerkt door verschillende vertakkingen dicht bij de wortel en afwezigheid van opvallende stammen.</strong></td>
+</tr>
+<tr>
+<td><strong>erf</strong></td>
+<td><strong>Terreindeel dat bij een pand of overig bouwwerk hoort, en dat bestaat uit een mengvorm van begroeiing, verharding, en/of water.</strong></td>
+</tr>
+<tr>
+<td><strong>rietland</strong></td>
+<td><strong>Terreindeel overwegend begroeid met rietvegetatie.</strong></td>
+</tr>
+<tr>
+<td><strong>moeras</strong></td>
+<td><strong>Terreindeel met moerasvegetatie in stilstaand water van geringe diepte zonder merkbare toe- of afvloeiing.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="gebouw"><!--OddPage--><h2 id="x6-gebouw"><span class="secno">6. </span>Gebouw</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Gebouw in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-3"><h3 id="x6-1-overzicht"><span class="secno">6.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Gebouw in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«Vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«Punt»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>bunker</td>
+<td>vlak</td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>kapel</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kas</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kasteel</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kerk</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kernreactor</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>klokkentoren</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>klooster, abdij</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>koeltoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>koepel</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>moskee</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>opslagtank</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overig religieus gebouw</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>parkeergarage</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>radiotoren, televisietoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ruïne</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>schoorsteen</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>silo</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>synagoge</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>stadion</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>telecommunicatietoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>toren</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>uitzichttoren</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>verkeerstoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vuurtoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>waterradmolen</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>watertoren</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>waterwoning</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>windmolen</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>windturbine</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>botenhuis</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>open loods</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overkapping</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overig</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>functie</td>
+<td>brandweerkazerne</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>crematorium</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>elektriciteitscentrale</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gemaal</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gemeentehuis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gevangenis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kunstijsbaan</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>observatorium</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>paleis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>parkeren</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>politiebureau</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>psychiatrisch ziekenhuis, psychiatrisch centrum</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>radarstation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>religie</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>schaapskooi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>school</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sporthal</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>stadskantoor, hulpsecretarie</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>universiteit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ziekenhuis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zwembad</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ligging</td>
+<td>ondergronds</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>hoogte</td>
+<td>«decimaal getal»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9; 9]»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>status</td>
+<td>bestaand</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>soortnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-3"><h3 id="x6-2-wijzigen-attributen"><span class="secno">6.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-7"><h4 id="x6-2-1-naam"><span class="secno">6.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>fysiekVoorkomen</del></td>
+<td><strong>ligging</strong></td>
+</tr>
+</tbody></table><p>.</p></section><section id="definitie-7"><h4 id="x6-2-2-definitie"><span class="secno">6.2.2 </span>Definitie</h4><p>Onderstaande attributen wijzigen van definitie in BRT.Next. De naam wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL | BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>status</td>
+<td><del>De staat waarin het</del> object <del>zich bevindt.</del></td>
+<td><strong>De status gekoppeld aan de levenscyclus van een geo-</strong>object<strong>.</strong></td>
+</tr>
+</tbody></table></section><section id="naam-definitie-7"><h4 id="x6-2-3-naam-definitie"><span class="secno">6.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Gebouw</del></td>
+<td>Het type gebouw, <del>het doel waarvoor de bebouwing gebruikt wordt (gaat worden / werd).</del></td>
+<td><strong>type</strong></td>
+<td>Het type gebouw <strong>gebaseerd op de uiterlijke kenmerken van het gebouw.</strong></td>
+</tr>
+<tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het</del> hoogte<del>niveau</del>van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-16"><div role="heading" class="note-title marker" id="h-note-16" aria-level="5"><span>Noot</span></div><details class="">
+typeGebouw wordt gesplitst in twee attributen: ‘type’ (uiterlijke
+verschijningsvorm) en ‘functie’(gebruik). De attribuutwaarden die verplaatsen
+van typeGebouw naar functie worden als vervallen bij typeGebouw opgenomen, en
+als toegevoegde attribuutwaarden bij het nieuwe attribuut ‘functie’.
+</details></div><div class="note" role="note" id="issue-container-generatedID-17"><div role="heading" class="note-title marker" id="h-note-17" aria-level="5"><span>Noot</span></div><details class="">Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9..
+</details></div></section></section><section id="wijzigen-attribuutwaarden-1"><h3 id="x6-3-wijzigen-attribuutwaarden"><span class="secno">6.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-8"><h4 id="x6-3-1-naam"><span class="secno">6.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><p><em>Attribuut TOP10NL:typeGebouw | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>kas<del>, warenhuis</del></td>
+<td>kas</td>
+</tr>
+<tr>
+<td>tank</td>
+<td><strong>opslag</strong>tank</td>
+</tr>
+<tr>
+<td><del>parkeerdak, parkeerdek, ~</del>parkeergarage</td>
+<td>parkeergarage</td>
+</tr>
+</tbody></table></section><section id="definitie-8"><h4 id="x6-3-2-definitie"><span class="secno">6.3.2 </span>Definitie</h4><p>Onderstaande attribuutwaarden wijzigen van definitie in BRT.Next. De naam wordt
+niet aangepast.</p><p><em>Attribuut TOP10NL:typeGebouw | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>windmolen</td>
+<td>Bebouwing t.b.v. het verrichten van arbeid (m.u.v. het opwekken van elektrische energie<del>, het malen van granen en het opvijzelen van water</del>), waarvoor de energie geleverd wordt door wind en opgenomen door middel van wieken.</td>
+<td>Bebouwing t.b.v. het verrichten van arbeid (m.u.v. het opwekken van elektrische energie) waarvoor de energie geleverd wordt door wind en opgenomen door middel van wieken.</td>
+</tr>
+<tr>
+<td>windturbine</td>
+<td><del>Bebouwing t.b.v. het opwekken van elektrische</del> energie<del>, waarvoor de energie geleverd wordt door ~</del>wind <del>en opgenomen wordt door middel van wieken.</del></td>
+<td><strong>Turbine waarin</strong> wind<strong>druk omgezet wordt in mechanische</strong> energie.</td>
+</tr>
+</tbody></table></section><section id="naam-definitie-8"><h4 id="x6-3-3-naam-definitie"><span class="secno">6.3.3 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:status | BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>kerncentrale</del>, kernreactor</td>
+<td><del>Centrale die met kernenergie elektriciteit opwekt (kerncentrale) /</del> Installatie voor het splijten of fuseren van atoomkernen, atoomreactor <del>(kernreactor)</del>.</td>
+<td>kernreactor</td>
+<td>Installatie voor het splijten of fuseren van atoomkernen.</td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen-3"><h3 id="x6-4-vervallen-attributen"><span class="secno">6.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteklasse</del></td>
+<td><del>laagbouw</del>; <del>hoogbouw</del></td>
+</tr>
+<tr>
+<td><del>gebruiksdoel</del></td>
+<td><del>bijeenkomstfunctie</del>; <del>celfunctie</del>; <del>gezondheidszorgfunctie</del>; <del>industriefunctie</del>; <del>kantoorfunctie</del>; <del>logiesfunctie</del>; <del>onderwijsfunctie</del>; <del>sportfunctie</del>; <del>winkelfunctie</del>; <del>woonfunctie</del>; <del>overige gebruiksfunctie</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-3"><h3 id="x6-5-vervallen-attribuutwaarden"><span class="secno">6.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeGebouw | type</td>
+<td><em>verplaatsen van type naar functie:</em> <del>brandweerkazerne</del>; <del>crematorium</del>; <del>elektriciteitscentrale</del>; <del>gemaal</del>; <del>gemeentehuis</del>; <del>kerncentrale, kernreactor</del>; <del>kunstijsbaan</del>; <del>observatorium</del>; <del>paleis</del>; <del>politiebureau</del>; <del>psychiatrisch ziekenhuis, psychiatrisch centrum</del>; <del>radarpost</del>; <del>schaapskooi</del>; <del>school</del>; <del>sporthal</del>; <del>stadskantoor, hulpsecretarie</del>; <del>universiteit</del>; <del>ziekenhuis</del>; <del>zwembad</del></td>
+</tr>
+<tr>
+<td>typeGebouw | type</td>
+<td><em>verplaatsen van type naar ander objecttype:</em> <del>dok</del>,<del>~ tankstation</del></td>
+</tr>
+<tr>
+<td>typeGebouw | type</td>
+<td><del>bezoekerscentrum</del>; <del>boortoren</del>~,<del>brandtoren</del>;;<del>fabriek</del>; <del>fort</del>; <del>gevangenis</del>; <del>hotel</del>; <del>huizenblok</del>; <del>kliniek, inrichting, sanatorium</del>; <del>lichttoren</del>; <del>luchtwachttoren</del>; <del>markant gebouw</del>; <del>manege</del>; <del>militair gebouw</del>; <del>museum</del>; <del>peilmeetstation</del>; <del>pompstation</del>;;<del>postkantoor</del>; <del>radartoren</del>; <del>recreatiecentrum</del>; <del>reddingboothuisje</del>; <del>remise</del>; <del>stationsgebouw</del>; <del>tankstation</del>; <del>tol</del>; <del>transformatorstation</del>; <del>veiling</del>; <del>wegrestaurant</del>; <del>werf</del>; <del>windmolen: korenmolen</del>; <del>windmolen: watermolen</del>; <del>zendtoren</del>;</td>
+</tr>
+<tr>
+<td>fysiekVoorkomen | ligging</td>
+<td><del>overkluisd</del></td>
+</tr>
+<tr>
+<td>status</td>
+<td><del>in gebruik</del>; <del>buiten gebruik</del>; <del>in uitvoering</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-18"><div role="heading" class="note-title marker" id="h-note-18" aria-level="4"><span>Noot</span></div><details class="">
+de attribuutwaarden ‘brandweerkazerne’, ‘crematorium’, …, ‘zwembad’
+verplaatsen van attribuut typeGebouw\|type naar attribuut functie.
+</details></div><div class="note" role="note" id="issue-container-generatedID-19"><div role="heading" class="note-title marker" id="h-note-19" aria-level="4"><span>Noot</span></div><details class="">
+type ‘tankstation’ verplaatst naar objecttype FunctioneelGebied; type
+‘dok’ verplaatst naar objecttype Inrichtingselement
+</details></div><div class="note" role="note" id="issue-container-generatedID-20"><div role="heading" class="note-title marker" id="h-note-20" aria-level="4"><span>Noot</span></div><details class="">
+status ‘in gebruik’ en ‘buiten gebruik’ worden samengevoegd tot status
+‘bestaand’.
+</details></div></section><section id="toevoegen-attributen-3"><h3 id="x6-6-toevoegen-attributen"><span class="secno">6.6 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>functie</strong></td>
+<td><strong>De functie van het gebouw, de functie waarvoor het gebouw gebruikt wordt.</strong></td>
+<td><strong>optioneel, 0 of meer</strong></td>
+<td><em>zie tabel attribuut BRT.Next:functie in Toevoegen attribuutwaarden</em></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attribuutwaarden-3"><h3 id="x6-7-toevoegen-attribuutwaarden"><span class="secno">6.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>botenhuis</strong></td>
+<td><strong>Gebouw boven water voor de opslag van boten.</strong></td>
+</tr>
+<tr>
+<td><strong>open loods</strong></td>
+<td><strong>Niet verplaatsbaar licht gebouw met een open gevel, bestemd als berg- of werkplaats of als tijdelijk onderdak voor andere doeleinden.</strong></td>
+</tr>
+<tr>
+<td><strong>overkapping</strong></td>
+<td><strong>Een afzonderlijk staande overdekking rustend op kolommen.</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:functie</em></p><p>attribuutwaarden van BRT.Next:functie zijn overgenomen van
+TOP10NL:typeGebouw; m.u.v. waarde ‘religie’: deze classificatie is nieuw
+toegevoegd aan BRT.Next</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>brandweerkazerne</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>crematorium</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>elektriciteitscentrale</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>gemaal</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>gemeentehuis</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>gevangenis</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>kerncentrale, kernreactor</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>kunstijsbaan</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>observatorium</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>paleis</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>parkeren</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>politiebureau</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>psychiatrisch ziekenhuis, psychiatrisch centrum</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>radarstation</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>religie</strong></td>
+<td><strong>Gebouw in gebruik voor geloofsuitoefening.</strong></td>
+</tr>
+<tr>
+<td><strong>schaapskooi</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>school</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>sporthal</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>stadskantoor, hulpsecretarie</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>universiteit</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>waterwoning</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>ziekenhuis</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+<tr>
+<td><strong>zwembad</strong></td>
+<td><em>definitie TOP10NL 1.2</em></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>bestaand</strong></td>
+<td><strong>Situatie waarin het object wordt / kan worden gebruikt voor het doel waarvoor het is gebouwd / aangelegd.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="inrichtingselement"><!--OddPage--><h2 id="x7-inrichtingselement"><span class="secno">7. </span>Inrichtingselement</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Inrichtingselement in
+BRT.Next ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-4"><h3 id="x7-1-overzicht"><span class="secno">7.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Inrichtingselement in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«punt»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«lijn»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>«vlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;type</td>
+<td>baken</td>
+<td>punt</td>
+<td>1-1&nbsp;</td>
+</tr>
+<tr>
+<td></td>
+<td>bomenrij</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>boom</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>botenhelling</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>busstation</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>calamiteitendoorgang</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gedenkteken, monument</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>geluidsscherm</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>GNSS kernnetpunt</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grenspunt</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>heg, haag</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hek</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hoogspanningsleiding</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hoogspanningsmast</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hunebed</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kabelbaan</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kabelbaanmast</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kilometerpaal weg</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kilometerpaal spoorweg</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kilometerpaal water</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>klokkenstoel</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kruis</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>luchtvaartlicht</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>markant object</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>metrostation</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>muur</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>paal</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>paalwerk</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>peilschaal</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>pijler</td>
+<td>vlak, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>plaatsnaambord</td>
+<td>lijn, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>radiotelescoop</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>scheepvaartlicht</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sluisdeur</td>
+<td>lijn, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sneltramhalte</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>steiger</td>
+<td>lijn, vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>stormvloedkering</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>strandpaal</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>strekdam</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>stuw</td>
+<td>lijn, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>treinstation</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>uitzichtpunt</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vlampijp</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vliedberg</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>wegafsluiting</td>
+<td>lijn, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>wegwijzer</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>windmolentje</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zendmast</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overig</td>
+<td>lijn, punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>dok</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zwembad</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>bezinkbak</td>
+<td>vlak</td>
+<td></td>
+</tr>
+<tr>
+<td>hoogte</td>
+<td>«decimaal getal»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9; 9]»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>status</td>
+<td>bestaand</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>soortnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td>nummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-4"><h3 id="x7-2-wijzigen-attributen"><span class="secno">7.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-9"><h4 id="x7-2-1-naam"><span class="secno">7.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Inrichtingselement</del></td>
+<td><strong>type</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-9"><h4 id="x7-2-2-definitie"><span class="secno">7.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-9"><h4 id="x7-2-3-naam-definitie"><span class="secno">7.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het</del> hoogte<del>niveau</del>van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-21"><div role="heading" class="note-title marker" id="h-note-21" aria-level="5"><span>Noot</span></div><details class="">
+Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9..
+</details></div></section></section><section id="wijzigen-attribuutwaarden-2"><h3 id="x7-3-wijzigen-attribuutwaarden"><span class="secno">7.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-10"><h4 id="x7-3-1-naam"><span class="secno">7.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><p><em>Attribuut TOP10NL:typeInrichtingselement | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>baak</del></td>
+<td><strong>baken</strong></td>
+</tr>
+<tr>
+<td><del>kaap</del></td>
+<td><strong>baken</strong></td>
+</tr>
+<tr>
+<td>kilometerpaal</td>
+<td>kilometerpaal <strong>weg</strong></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-22"><div role="heading" class="note-title marker" id="h-note-22" aria-level="5"><span>Noot</span></div><details class="">
+TOP10NL-typen ‘baak’ en ‘kaap’ worden samengevoegd tot ‘baken’ in BRT.Next
+</details></div></section><section id="definitie-10"><h4 id="x7-3-2-definitie"><span class="secno">7.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-10"><h4 id="x7-3-3-naam-definitie"><span class="secno">7.3.3 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeWeg | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geluids<del>wering</del></td>
+<td><del>Constructie ten behoeve van het terugdringen van geluidsoverlast.</del></td>
+<td>geluids<strong>scherm</strong></td>
+<td><strong>Een scheiding bedoeld om geluidshinder in de buitenlucht te verminderen.</strong></td>
+</tr>
+<tr>
+<td><del>GPS</del> kernnetpunt</td>
+<td>Punt geschikt voor <del>GPS</del> metingen. (Kan een steen of bout zijn).</td>
+<td><strong>GNSS</strong> kernnetpunt</td>
+<td>Punt geschikt voor <strong>GNSS</strong> metingen. (Kan een steen of bout zijn).</td>
+</tr>
+<tr>
+<td>hek<del>werk</del></td>
+<td><del>Begrenzing van een terrein in de vorm van een afrastering.</del></td>
+<td>hek</td>
+<td><strong>Een hekwerk of schutting, typisch ten behoeve van erfafscheiding.</strong></td>
+</tr>
+<tr>
+<td><del>aanleg</del>steiger</td>
+<td><del>In het water uitstekende brug of pier, smaller dan 2 meter, gebruikt om personen en goederen aan</del> wal <del>te brengen.</del></td>
+<td>steiger</td>
+<td><strong>Vaste (niet drijvende) waterbouwkundige constructie voor het aanleggen van schepen en bedoeld om deze schepen vanaf de</strong> wal <strong>te laden en te lossen.</strong></td>
+</tr>
+<tr>
+<td>strekdam<del>, krib, golfbreker</del></td>
+<td><del>Dam in de richting van de loop van de rivier of kanaal, ter beveiliging van de</del> oever<del>s of brugpijlers of tot beperking van de rivier tot een bepaalde breedte (strekdam). Golfslagbreker of stroombreker langs de kust en in rivieren, staat loodrecht op de oever/kust (krib). Een uit steenglooiing of stortsteen bestaand object bedoelt voor oeverbescherming (golfbreker).</del></td>
+<td>strekdam</td>
+<td><strong>Constructie in het water ter verdediging van de kust/</strong>oever.</td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen-4"><h3 id="x7-4-vervallen-attributen"><span class="secno">7.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>breedte</del></td>
+<td><del>«decimaal getal»</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-4"><h3 id="x7-5-vervallen-attribuutwaarden"><span class="secno">7.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeInrichtingselement | type</td>
+<td><del>dukdalf</del>; <del>gaswinning</del>; <del>golfmeetpaal</del>; <del>havenhoofd</del>; <del>helikopterlandingsplatform</del>; <del>kilometerraaibord</del>; <del>kilometerraaipaal</del>; <del>koedam</del>; <del>kogelvanger schietbaan</del>; <del>kraan</del>; <del>leiding</del>; <del>oliepompinstallatie</del>; <del>radiobaken</del>; <del>RD punt</del>; <del>schietbaan</del>; <del>seinmast</del>; <del>tol</del>; <del>verkeersgeleider</del>; <del>vliedberg</del>; <del>zichtbaar wrak</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-23"><div role="heading" class="note-title marker" id="h-note-23" aria-level="4"><span>Noot</span></div><details class="">
+type ‘vliedberg’ verplaatst naar objecttype Functioneel gebied.
+</details></div></section><section id="toevoegen-attributen-4"><h3 id="x7-6-toevoegen-attributen"><span class="secno">7.6 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>status</strong></td>
+<td><strong>De status gekoppeld aan de levenscyclus van een geo-object.</strong></td>
+<td><strong>verplicht, 1</strong></td>
+<td><strong>bestaand</strong></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attribuutwaarden-4"><h3 id="x7-7-toevoegen-attribuutwaarden"><span class="secno">7.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:geometrie</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>«vlak»</strong></td>
+<td><strong>Vlakgeometrie</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>dok</strong></td>
+<td><strong>Constructie bedoeld om schepen uit het water te halen en vervolgens weer in het water te laten.</strong></td>
+</tr>
+<tr>
+<td><strong>zwembad</strong></td>
+<td><strong>Constructie in de vorm van een bassin bedoeld om in te zwemmen</strong></td>
+</tr>
+<tr>
+<td><strong>bezinkbak</strong></td>
+<td><strong>Een gesloten reservoir waarin het afvalwater tijdelijk wordt opgevangen met een slibreinigende voorziening.</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:status</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:status</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>bestaand</strong></td>
+<td><strong>Situatie waarin het object wordt / kan worden gebruikt voor het doel waarvoor het is gebouwd / aangelegd.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="relief"><!--OddPage--><h2 id="x8-relief"><span class="secno">8. </span>Relief</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Relief in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-5"><h3 id="x8-1-overzicht"><span class="secno">8.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Relief in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1..1</td>
+</tr>
+<tr>
+<td></td>
+<td>«lijn»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>«hoge en lage zijde»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>dijk</td>
+<td>vlak, lijn</td>
+<td>1..1</td>
+</tr>
+<tr>
+<td></td>
+<td>wal</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>steile rand, aardrand</td>
+<td>hoge en lage zijde</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>talud, hoogteverschil</td>
+<td>hoge en lage zijde</td>
+<td></td>
+</tr>
+<tr>
+<td>hoogteklasse</td>
+<td>&lt; 1 meter</td>
+<td></td>
+<td>1..1</td>
+</tr>
+<tr>
+<td></td>
+<td>1 – 2,5 meter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 2,5 meter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>relatieveHoogteligging</td>
+<td>«geheel getal [-9; 9]»</td>
+<td></td>
+<td>1..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-5"><h3 id="x8-2-wijzigen-attributen"><span class="secno">8.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-11"><h4 id="x8-2-1-naam"><span class="secno">8.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Relief</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-11"><h4 id="x8-2-2-definitie"><span class="secno">8.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-11"><h4 id="x8-2-3-naam-definitie"><span class="secno">8.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>hoogteniveau</del></td>
+<td><del>Het</del> hoogte<del>niveau</del>van het object.</td>
+<td><strong>relatieveHoogteligging</strong></td>
+<td><strong>Aanduiding voor de relatieve</strong> hoogte van het object.</td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-24"><div role="heading" class="note-title marker" id="h-note-24" aria-level="5"><span>Noot</span></div><details class="">
+Het bereik van hoogteniveau\|relatieveHoogteligging wijzigt van een geheel
+getal kleiner of gelijk aan 0 naar geheel getal van -9 tot en met 9.
+</details></div></section></section><section id="wijzigen-attribuutwaarden-3"><h3 id="x8-3-wijzigen-attribuutwaarden"><span class="secno">8.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-12"><h4 id="x8-3-1-naam"><span class="secno">8.3.1 </span>Naam</h4><p><em>Geen.</em></p></section><section id="definitie-12"><h4 id="x8-3-2-definitie"><span class="secno">8.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-12"><h4 id="x8-3-3-naam-definitie"><span class="secno">8.3.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="vervallen-attributen-5"><h3 id="x8-4-vervallen-attributen"><span class="secno">8.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>functie</del></td>
+<td><del>geluid weren</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-5"><h3 id="x8-5-vervallen-attribuutwaarden"><span class="secno">8.5 </span>Vervallen attribuutwaarden</h3><p><em>Geen.</em></p></section><section id="toevoegen-attributen-5"><h3 id="x8-6-toevoegen-attributen"><span class="secno">8.6 </span>Toevoegen attributen</h3><p><em>Geen.</em></p></section><section id="toevoegen-attribuutwaarden-5"><h3 id="x8-7-toevoegen-attribuutwaarden"><span class="secno">8.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden (waarden) worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:geometrie</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>«vlak»</strong></td>
+<td><strong>Vlakgeometrie</strong></td>
+</tr>
+</tbody></table><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>dijk</strong></td>
+<td><strong>Aangelegde waterkering van grond, die het achterliggende land beschermt tegen overstromingen, met een hoogte groter dan 1,00 meter.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="hoogte"><!--OddPage--><h2 id="x9-hoogte"><span class="secno">9. </span>Hoogte</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Hoogte in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-6"><h3 id="x9-1-overzicht"><span class="secno">9.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Hoogte in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«lijn»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«punt»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>dieptelijn</td>
+<td>lijn</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>dieptepunt</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hoogtelijn</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hoogtepunt</td>
+<td>punt</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>hoogwaterlijn</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>laagwaterlijn</td>
+<td>lijn</td>
+<td></td>
+</tr>
+<tr>
+<td>hoogte</td>
+<td>«decimaal getal»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>referentievlak</td>
+<td>NAP</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>LAT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>GHW</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-6"><h3 id="x9-2-wijzigen-attributen"><span class="secno">9.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-13"><h4 id="x9-2-1-naam"><span class="secno">9.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th>TOP10NL:attribuutnaam</th>
+<th>BRT.Next:attribuutnaam</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Hoogte</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-13"><h4 id="x9-2-2-definitie"><span class="secno">9.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-13"><h4 id="x9-2-3-naam-definitie"><span class="secno">9.2.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="wijzigen-attribuutwaarden-4"><h3 id="x9-3-wijzigen-attribuutwaarden"><span class="secno">9.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-14"><h4 id="x9-3-1-naam"><span class="secno">9.3.1 </span>Naam</h4><p><em>Geen.</em></p></section><section id="definitie-14"><h4 id="x9-3-2-definitie"><span class="secno">9.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-14"><h4 id="x9-3-3-naam-definitie"><span class="secno">9.3.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="vervallen-attributen-6"><h3 id="x9-4-vervallen-attributen"><span class="secno">9.4 </span>Vervallen attributen</h3><p>Geen.</p></section><section id="vervallen-attribuutwaarden-6"><h3 id="x9-5-vervallen-attribuutwaarden"><span class="secno">9.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeHoogte|type</td>
+<td><del>peil</del>; <del>peil: zomerpeil</del>; <del>peil winterpeil:</del></td>
+</tr>
+<tr>
+<td>referentievlak</td>
+<td><del>OLW</del></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attributen-6"><h3 id="x9-6-toevoegen-attributen"><span class="secno">9.6 </span>Toevoegen attributen</h3><p><em>Geen.</em></p></section><section id="toevoegen-attribuutwaarden-6"><h3 id="x9-7-toevoegen-attribuutwaarden"><span class="secno">9.7 </span>Toevoegen attribuutwaarden</h3><p><em>Geen.</em></p></section></section><section data-format="markdown" id="registratief-gebied"><!--OddPage--><h2 id="x10-registratief-gebied"><span class="secno">10. </span>Registratief gebied</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Registratief gebied in
+BRT.Next ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-7"><h3 id="x10-1-overzicht"><span class="secno">10.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Registratief gebied in
+BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«multivlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>rijk</td>
+<td>vlak, multivlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>provincie</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gemeente</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>maritieme zone</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>naam: taal</td>
+<td>Nederlands</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>Fries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onbekend / VoidReason</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>naam: herkomst</td>
+<td>«tekst»</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td>naam: officieel</td>
+<td>ja</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>nee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>nummer</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..1</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-7"><h3 id="x10-2-wijzigen-attributen"><span class="secno">10.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-15"><h4 id="x10-2-1-naam"><span class="secno">10.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>RegistratiefGebied</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-15"><h4 id="x10-2-2-definitie"><span class="secno">10.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-15"><h4 id="x10-2-3-naam-definitie"><span class="secno">10.2.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="wijzigen-attribuutwaarden-5"><h3 id="x10-3-wijzigen-attribuutwaarden"><span class="secno">10.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-16"><h4 id="x10-3-1-naam"><span class="secno">10.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>land</del></td>
+<td><strong>rijk</strong></td>
+</tr>
+</tbody></table></section><section id="definitie-16"><h4 id="x10-3-2-definitie"><span class="secno">10.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-16"><h4 id="x10-3-3-naam-definitie"><span class="secno">10.3.3 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeRegistratiefGebied | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>territoriale zee</del></td>
+<td><del>Een</del> zee<del>strook, grenzend aan het landgebied van Nederland waarover de soevereiniteit van Nederland zich uitstrekt.</del></td>
+<td><strong>maritieme zone</strong></td>
+<td><strong>Een bestuurlijk gebied op</strong> zee<strong>, vastgesteld oor de Dienst der Hydrografie van het Ministerie van Defensie.</strong></td>
+</tr>
+</tbody></table></section></section><section id="vervallen-attributen-7"><h3 id="x10-4-vervallen-attributen"><span class="secno">10.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>naamOfficieel</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamNL</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamFries</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table><details class="note>
+naamOfficieel vervalt, een nieuw attribuut ‘naam: officieel’ met waarden
+ja/nee wordt toegevoegd.
+</details>
+
+<h2>Vervallen attribuutwaarden</h2>
+<p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p>
+<table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td><del>«punt»</del></td>
+</tr>
+<tr>
+<td>typeRegistratiefGebied|type</td>
+<td><del>waterschap</del></td>
+</tr>
+</tbody></table>
+<h2>Toevoegen attributen</h2>
+<p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p>
+<table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam</strong></td>
+<td><strong>De naam van het registratief gebied</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td><strong>naam: herkomst</strong></td>
+<td><strong>De taal van de naam van het registratief gebied.</strong></td>
+<td><strong>De herkomst van de naam van het registratief gebied.</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td><strong>naam: officieel</strong></td>
+<td><strong>Aanduiding of de naam een officiële naam betreft.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>ja/nee</strong></td>
+</tr>
+<tr>
+<td><strong>naam: taal</strong></td>
+<td><strong>De taal van de naam van het registratief gebied.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>Nederlands; Fries; onbekend / VoidReason</strong></td>
+</tr>
+</tbody></table>
+<details class=" note="">regel: ‘naam: herkomst’, ‘naam: officieel’ en ‘naam:taal’ zijn verplicht
+als naam is gevuld.
+</details></section><section id="toevoegen-attribuutwaarden-7"><h3 id="x10-5-toevoegen-attribuutwaarden"><span class="secno">10.5 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:naam:taal</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Nederlands</strong></td>
+<td><strong>Nederlandse taal.</strong></td>
+</tr>
+<tr>
+<td><strong>Fries</strong></td>
+<td><strong>Friese taal.</strong></td>
+</tr>
+<tr>
+<td><strong>onbekend / VoidReason</strong></td>
+<td><strong>Taal is onbekend.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="geografisch-gebied"><!--OddPage--><h2 id="x11-geografisch-gebied"><span class="secno">11. </span>Geografisch gebied</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Geografisch gebied in
+BRT.Next ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-8"><h3 id="x11-1-overzicht"><span class="secno">11.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Geografisch gebied in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«multivlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>bank, ondiepte, plaat</td>
+<td>vlak, multivlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>bosgebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>duingebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>eiland</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>geul, vaargeul</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>heidegebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>heuvel, berg</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kaap, hoek</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>polder</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>streek, veld</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>terp, wierde</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>wad</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>watergebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zee</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zeegat, zeearm</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td>naam</td>
+<td>“tekst”</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>naam: taal</td>
+<td>Nederlands</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td></td>
+<td>Fries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onbekend / VoidReason</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-8"><h3 id="x11-2-wijzigen-attributen"><span class="secno">11.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-17"><h4 id="x11-2-1-naam"><span class="secno">11.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>GeografischGebied</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-17"><h4 id="x11-2-2-definitie"><span class="secno">11.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-17"><h4 id="x11-2-3-naam-definitie"><span class="secno">11.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>naam<del>NL</del></td>
+<td>De <del>Nederlandse</del> naam van het geografisch gebied.</td>
+<td>naam</td>
+<td>De naam van het geografisch gebied.</td>
+</tr>
+</tbody></table></section></section><section id="wijzigen-attribuutwaarden-6"><h3 id="x11-3-wijzigen-attribuutwaarden"><span class="secno">11.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-18"><h4 id="x11-3-1-naam"><span class="secno">11.3.1 </span>Naam</h4><p><em>Geen.</em></p></section><section id="definitie-18"><h4 id="x11-3-2-definitie"><span class="secno">11.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-18"><h4 id="x11-3-3-naam-definitie"><span class="secno">11.3.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="vervallen-attributen-8"><h3 id="x11-4-vervallen-attributen"><span class="secno">11.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>naamFries</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-7"><h3 id="x11-5-vervallen-attribuutwaarden"><span class="secno">11.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td><del>«punt»</del></td>
+</tr>
+<tr>
+<td>typeGeografischGebied|type</td>
+<td><del>overig</del></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attributen-7"><h3 id="x11-6-toevoegen-attributen"><span class="secno">11.6 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam: taal</strong></td>
+<td><strong>De taal van de naam van het geografisch gebied.</strong></td>
+<td><strong>Verplicht, 0 of meer</strong></td>
+<td><strong>Nederlands; Fries; onbekend / VoidReason</strong></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attribuutwaarden-8"><h3 id="x11-7-toevoegen-attribuutwaarden"><span class="secno">11.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:naam:taal</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Nederlands</strong></td>
+<td><strong>Nederlandse taal.</strong></td>
+</tr>
+<tr>
+<td><strong>Fries</strong></td>
+<td><strong>Friese taal.</strong></td>
+</tr>
+<tr>
+<td><strong>onbekend / VoidReason</strong></td>
+<td><strong>Taal is onbekend.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="plaats"><!--OddPage--><h2 id="x12-plaats"><span class="secno">12. </span>Plaats</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Plaats in BRT.Next ten
+opzichte van de huidige versie TOP10NL.</p><section id="overzicht-9"><h3 id="x12-1-overzicht"><span class="secno">12.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Plaats in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«multivlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>woonkern</td>
+<td>vlak, multivlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>industriekern</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>recreatiekern</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gehucht</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>buurtschap</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>historische bebouwingskern</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td>bebouwdeKom</td>
+<td>ja</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>nee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>aantalIwoners</td>
+<td>«geheel getal»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td>naam: herkomst</td>
+<td>«taal»</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td>naam: officieel</td>
+<td>ja</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>nee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>naam: taal</td>
+<td>Nederlands</td>
+<td></td>
+<td>1..n</td>
+</tr>
+<tr>
+<td></td>
+<td>Fries</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>onbekend / VoidReason</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-9"><h3 id="x12-2-wijzigen-attributen"><span class="secno">12.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-19"><h4 id="x12-2-1-naam"><span class="secno">12.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>Gebied</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-19"><h4 id="x12-2-2-definitie"><span class="secno">12.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-19"><h4 id="x12-2-3-naam-definitie"><span class="secno">12.2.3 </span>Naam+definitie</h4><p>Geen.</p></section></section><section id="wijzigen-attribuutwaarden-7"><h3 id="x12-3-wijzigen-attribuutwaarden"><span class="secno">12.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-20"><h4 id="x12-3-1-naam"><span class="secno">12.3.1 </span>Naam</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) in BRT.Next. De
+definitie wordt niet aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>BRT.Next:waarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>deel</del>kern</td>
+<td><strong>historische bebouwings</strong>kern</td>
+</tr>
+</tbody></table></section><section id="definitie-20"><h4 id="x12-3-2-definitie"><span class="secno">12.3.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-20"><h4 id="x12-3-3-naam-definitie"><span class="secno">12.3.3 </span>Naam+definitie</h4><p><em>Geen.</em></p></section></section><section id="vervallen-attributen-9"><h3 id="x12-4-vervallen-attributen"><span class="secno">12.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>isBAGwoonplaats</del></td>
+<td><del>ja</del>; <del>nee</del></td>
+</tr>
+<tr>
+<td><del>naamOfficieel</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamNL</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>naamFries</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table><details class="note>naamOfficieel vervalt, een nieuw attribuut ‘naam: officieel’ met waarden
+ja/nee wordt toegevoegd.
+</details>
+
+<details class=" note="">TOP10NL-attributen naamNL en naamFries met datatype «tekst» worden
+vervangen door attribuut naam:taal met attribuutwaarden ‘Nederlands’; ‘Fries’;
+‘onbekend / VoidReason’ in BRT.Next.
+</details></section><section id="vervallen-attribuutwaarden-8"><h3 id="x12-5-vervallen-attribuutwaarden"><span class="secno">12.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td><del>«punt»</del></td>
+</tr>
+<tr>
+<td>typeGebied|type</td>
+<td><del>stadsdeel</del>; <del>wijk</del>; <del>buurt</del></td>
+</tr>
+</tbody></table></section><section id="toevoegen-attributen-8"><h3 id="x12-6-toevoegen-attributen"><span class="secno">12.6 </span>Toevoegen attributen</h3><p>Onderstaande attributen worden toegevoegd aan BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:Attribuutnaam</em></th>
+<th><em>Definitie</em></th>
+<th><em>Verplicht/optioneel</em></th>
+<th><em>Attribuutwaarde</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam</strong></td>
+<td><strong>De naam van de plaats.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td><strong>naam: herkomst</strong></td>
+<td><strong>De herkomst van de naam van de plaats.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>«tekst»</strong></td>
+</tr>
+<tr>
+<td><strong>naam: officieel</strong></td>
+<td><strong>Aanduiding of de naam een officiële naam betreft.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>ja/nee</strong></td>
+</tr>
+<tr>
+<td><strong>naam: taal</strong></td>
+<td><strong>De taal van de naam van de plaats.</strong></td>
+<td><strong>Verplicht, 1 of meer</strong></td>
+<td><strong>Nederlands; Fries; onbekend / VoidReason</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="functioneel-gebied"><!--OddPage--><h2 id="x13-functioneel-gebied"><span class="secno">13. </span>Functioneel gebied</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Functioneel gebied in
+BRT.Next ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-10"><h3 id="x13-1-overzicht"><span class="secno">13.1 </span>Overzicht</h3><p><em>Overzicht attributen en waarden/type van object Functioneel gebied in BRT.Next</em></p><table>
+<thead>
+<tr>
+<th>Attribuutnaam</th>
+<th>Waarde of «type»</th>
+<th>Geometrietype</th>
+<th>Kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>geometrie</td>
+<td>«vlak»</td>
+<td></td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>«multivlak»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>«punt»</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>attractiepark</td>
+<td>vlak, multivlak</td>
+<td>1-1</td>
+</tr>
+<tr>
+<td></td>
+<td>bedrijventerrein</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>begraafplaats</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>boswachterij</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>botanische tuin</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>bungalowpark</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>camping, kampeerterrein</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>circuit</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>crossbaan</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>dierentuin, safaripark</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>eendenkooi</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>emplacement</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>erebegraafplaats</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gaswinning, oliewinning</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gebied voor radioastronomie</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>golfterrein</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grafheuvel</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grindwinning, zandwinning</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>groeve</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>haven</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>helikopterlandingsplaats</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>jachthaven</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kassengebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>mijn</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>militair oefengebied, schietterrein</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>kazerne, legerplaats, vliegbasis</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>nationaal park</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>natuurgebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>openluchtmuseum</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>park</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>recreatiegebied</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>renbaan</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>skibaan</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sluizencomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>sportterrein, sportcomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>stortplaats</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>transformatorstation</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vakantiepark</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>verdedigingswerk</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>verzorgingsplaats</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vliegveld, luchthaven</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>volkstuinen</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>waterkering</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>wildwissel</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>woonwagencentrum</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ijsbaan</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zonnepark</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ziekenhuiscomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zuiveringsinstallatie</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zweefvliegveldterrein</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>zwembadcomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>overig</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>gevangeniscomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>psychiatrisch ziekenhuiscomplex</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>tankstation</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>vliedberg</td>
+<td>vlak, multivlak</td>
+<td></td>
+</tr>
+<tr>
+<td>naam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+<tr>
+<td>soortnaam</td>
+<td>«tekst»</td>
+<td></td>
+<td>0..n</td>
+</tr>
+</tbody></table></section><section id="wijzigen-attributen-10"><h3 id="x13-2-wijzigen-attributen"><span class="secno">13.2 </span>Wijzigen attributen</h3><p>De attributen in deze paragraaf wijzigen van naam, wijzigen van definitie, of
+wijzigen van naam en definitie in BRT.Next.</p><section id="naam-21"><h4 id="x13-2-1-naam"><span class="secno">13.2.1 </span>Naam</h4><p>Onderstaande attributen wijzigen van naam in BRT.Next. De definitie wordt niet
+aangepast.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type<del>FunctioneelGebied</del></td>
+<td>type</td>
+</tr>
+</tbody></table></section><section id="definitie-21"><h4 id="x13-2-2-definitie"><span class="secno">13.2.2 </span>Definitie</h4><p><em>Geen.</em></p></section><section id="naam-definitie-21"><h4 id="x13-2-3-naam-definitie"><span class="secno">13.2.3 </span>Naam+definitie</h4><p>Onderstaande attributen wijzigen van naam en definitie in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:attribuutnaam</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>naam<del>NL</del></td>
+<td>De <del>Nederlandse</del> naam van het functionele gebied.</td>
+<td>naam</td>
+<td>De naam van het functionele gebied.</td>
+</tr>
+</tbody></table></section></section><section id="wijzigen-attribuutwaarden-8"><h3 id="x13-3-wijzigen-attribuutwaarden"><span class="secno">13.3 </span>Wijzigen attribuutwaarden</h3><p>De attribuutwaarden in deze paragraaf wijzigen van naam (waarde), wijzigen van
+definitie, of wijzigen van naam (waarde) en definitie in BRT.Next</p><section id="naam-22"><h4 id="x13-3-1-naam"><span class="secno">13.3.1 </span>Naam</h4><p><em>Geen.</em></p></section><section id="definitie-22"><h4 id="x13-3-2-definitie"><span class="secno">13.3.2 </span>Definitie</h4><p>Onderstaande attribuutwaarden wijzigen van definitie in BRT.Next. De naam wordt
+niet aangepast.</p><p><em>Attribuut TOP10NL:typeFunctioneelGebiedandgebruik | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>militair oefengebied, schietterrein</td>
+<td><del>Militair kamp voor het houden van schietoefeningen met zware vuurwapens (artillerie schietkamp). / Terrein ingericht voor het schieten op doelen (schietkamp). /</del> Terrein waar militairen oefenen <del>(militair oefenterrein).</del></td>
+<td><strong>Gebied</strong> waar militairen oefenen, <strong>gebied voor het houden van schietoefeningen</strong> met zware vuurwapens.</td>
+</tr>
+</tbody></table></section><section id="naam-definitie-22"><h4 id="x13-3-3-naam-definitie"><span class="secno">13.3.3 </span>Naam+definitie</h4><p>Onderstaande attribuutwaarden wijzigen van naam (waarde) en definitie in
+BRT.Next</p><p><em>Attribuut TOP10NL:typeFunctioneelGebied | BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:waarde</em></th>
+<th><em>TOP10NL:definitie</em></th>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>helikopterlandingsterrein</td>
+<td><del>Terrein</del> dat als landings- en <del>vertrek</del>plaats dient voor helikopters.</td>
+<td><strong>helikopterlandingsplaats</strong></td>
+<td>Gebied dat <strong>dient</strong> als landings- en <strong>opstijg</strong>plaats voor helikopters.</td>
+</tr>
+</tbody></table><p>| kazerne, legerplaats      | Gebouw<del>(-encomplex) bestemd tot huisvesting van soldaten.</del>                   | kazerne, legerplaats, <strong>vliegbasis</strong> | <strong>Terrein met militaire</strong> gebouw<strong>en en infrastructuur.</strong>                 |</p></section></section><section id="vervallen-attributen-10"><h3 id="x13-4-vervallen-attributen"><span class="secno">13.4 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>naamFries</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+</tbody></table></section><section id="vervallen-attribuutwaarden-9"><h3 id="x13-5-vervallen-attribuutwaarden"><span class="secno">13.5 </span>Vervallen attribuutwaarden</h3><p>Onderstaande attribuutwaarden of datatypen vervallen bij een attribuut in
+BRT.Next. Het attribuut blijft wel bestaan.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL|BRT.Next:attribuutnaam</em></th>
+<th><em>TOP10NL:attribuutwaarden of «datatype»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>typeFunctioneelGebied|type</td>
+<td><del>gaswinning</del>; <del>oliewinning</del>; <del>grindwinning</del>; <del>zandwinning</del></td>
+</tr>
+<tr>
+<td>typeFunctioneelGebied|type</td>
+<td><del>campus</del>; <del>caravanpark</del>; <del>kartingbaan</del>; <del>gebied met hoge objecten</del>; <del>gebouwencomplex</del>; <del>heemtuin</del>; <del>infiltratiegebied</del>; <del>landgoed</del>; <del>milieustraat</del>; <del>mosselbank</del>; <del>openluchttheater</del>; <del>plantsoen</del>; <del>productie-installatie</del>; <del>slipschool</del>; <del>tennispark</del>; <del>tuincentrum</del>; <del>viskwekerij</del>; <del>visvijvercomplex</del>; <del>werf</del>; <del>windturbinepark</del>; <del>zenderpark</del>; <del>zoutwinning</del></td>
+</tr>
+</tbody></table><div class="note" role="note" id="issue-container-generatedID-25"><div role="heading" class="note-title marker" id="h-note-25" aria-level="4"><span>Noot</span></div><details class="">
+typen ‘gaswinning’ en ‘oliewinning’ worden samengevoegd tot ‘gaswinning,
+oliewinning’; ‘grindwinning’ en ‘zandwinning’ tot ‘grindwinning, zandwinning’.
+</details></div></section><section id="toevoegen-attributen-9"><h3 id="x13-6-toevoegen-attributen"><span class="secno">13.6 </span>Toevoegen attributen</h3><p>Geen.</p></section><section id="toevoegen-attribuutwaarden-9"><h3 id="x13-7-toevoegen-attribuutwaarden"><span class="secno">13.7 </span>Toevoegen attribuutwaarden</h3><p>Onderstaande attribuutwaarden worden toegevoegd aan BRT.Next.</p><p><em>Attribuut BRT.Next:type</em></p><table>
+<thead>
+<tr>
+<th><em>BRT.Next:waarde</em></th>
+<th><em>BRT.Next:definitie</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>gaswinning, oliewinning</strong></td>
+<td><strong>Gebied met installatie(s) t.b.v. de winning of transport van aardgas en / of aardolie.</strong></td>
+</tr>
+<tr>
+<td><strong>grindwinning, zandwinning</strong></td>
+<td><strong>Gebied waar winning van grind en/ of zand plaatsvind (in dagbouw of d.m.v. zuigen).</strong></td>
+</tr>
+<tr>
+<td><strong>gevangeniscomplex</strong></td>
+<td><strong>Een terrein met voorzieningen waar personen in verzekerde bewaring worden gesteld.</strong></td>
+</tr>
+<tr>
+<td><strong>psychiatrisch ziekenhuiscomplex</strong></td>
+<td><strong>Het geheel van gebouwen die tezamen een psychiatrisch ziekenhuiscomplex vormen.</strong></td>
+</tr>
+<tr>
+<td><strong>tankstation</strong></td>
+<td><strong>Een terrein met voorzieningen waar motorbrandstof, olie, lucht en koelwater kunnen worden verkregen en / of elektrische voertuigen kunnen worden opgeladen.</strong></td>
+</tr>
+<tr>
+<td><strong>vliedberg</strong></td>
+<td><strong>Kunstmatige heuvel waarop men bij overstromingen kan vluchten.</strong></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="plantopografie"><!--OddPage--><h2 id="x14-plantopografie"><span class="secno">14. </span>Plantopografie</h2><p>Dit hoofdstuk beschrijft de wijzigingen voor het object Plantopografie in
+BRT.Next ten opzichte van de huidige versie TOP10NL.</p><section id="overzicht-11"><h3 id="x14-1-overzicht"><span class="secno">14.1 </span>Overzicht</h3><p>Geen, object Plantopografie vervalt in zijn geheel.</p></section><section id="vervallen-attributen-11"><h3 id="x14-2-vervallen-attributen"><span class="secno">14.2 </span>Vervallen attributen</h3><p>Onderstaande attributen en bijbehorende attribuutwaarden of datatypen vervallen
+in BRT.Next.</p><table>
+<thead>
+<tr>
+<th><em>TOP10NL:attribuutnaam</em></th>
+<th><em>TOP10NL:waarde of «type»</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>typeObject</del></td>
+<td><del>spoorbaan</del>; <del>water</del>; <del>weg</del>; <del>overig</del></td>
+</tr>
+<tr>
+<td><del>naam</del></td>
+<td><del>«tekst»</del></td>
+</tr>
+<tr>
+<td><del>geometrie</del></td>
+<td><del>«punt»</del>; <del>«lijn»</del>; <del>«vlak»</del></td>
+</tr>
+</tbody></table></section></section><section data-format="markdown" id="bijlage-wijzigingen-t-o-v-consultatieversie-28-juni-2022"><!--OddPage--><h2 id="x15-bijlage-wijzigingen-t-o-v-consultatieversie-28-juni-2022"><span class="secno">15. </span>Bijlage: Wijzigingen t.o.v. consultatieversie 28 juni 2022</h2><section id="inleiding-0"><h3 id="x15-1-inleiding"><span class="secno">15.1 </span>Inleiding</h3><ul>
+<li>Aangepast aan de nieuwe consultatieperiode, inclusief
+aankondiging/uitnodiging samenwerkbijeenkomst en vragenuur.</li>
+</ul></section><section id="wegdeel-0"><h3 id="x15-2-wegdeel"><span class="secno">15.2 </span>Wegdeel</h3><ul>
+<li><p>Schrappen van type ‘hoofdweg’ is teruggedraaid, opgenomen als type ‘rijbaan
+hoofdweg’, definitie is aangepast.</p>
+</li>
+<li><p>Type ‘spoorbaanlichaam’ is verplaatst naar type ‘spoorbaan’ van objecttype
+Spoor</p>
+</li>
+<li><p>Definitie van ligging ‘op overweg’ is gewijzigd.</p>
+</li>
+<li><p>Schrappen van attribuut ‘verhardingsbreedteklasse’ is teruggedraaid.</p>
+</li>
+<li><p>Type van nieuw attribuut 'naam:herkomst' is gewijzigd van een waardenlijst
+naar vrij tekstveld.</p>
+</li>
+<li><p>Onjuiste vervallen attribuutwaarde ‘overig parkeergebied’ is gecorrigeerd
+naar ‘overig verkeersgebied’</p>
+</li>
+</ul></section><section id="spoor-0"><h3 id="x15-3-spoor"><span class="secno">15.3 </span>Spoor</h3><ul>
+<li><p>Schrappen van type ‘metro’ is teruggedraaid.</p>
+</li>
+<li><p>Type ‘spoorbaan’(lichaam) is verplaatst van objecttype Terrein naar Spoor.</p>
+</li>
+<li><p>Geometrietype ‘vlak’ is toegevoegd voor type ‘spoorbaan’</p>
+</li>
+<li><p>Regel is toegevoegd dat attribuut aantalSporen alleen voorkomt bij
+lijngeometrie.</p>
+</li>
+<li><p>Schrappen van attribuut ‘elektrificatie’ is teruggedraaid.</p>
+</li>
+</ul></section><section id="waterdeel-0"><h3 id="x15-4-waterdeel"><span class="secno">15.4 </span>Waterdeel</h3><ul>
+<li><p>Schrappen van geometrietype «punt» is teruggedraaid.</p>
+</li>
+<li><p>Schrappen van type ‘bron, wel’ is teruggedraaid, hernoemd naar ‘bron’.</p>
+</li>
+<li><p>geometrietype ‘vlak’ van type ‘water’ is gespecificeerd.</p>
+</li>
+<li><p>Schrappen van breedteklasse ‘6 - 12 meter’, ‘12 - 50 meter’, ‘50 - 125
+meter’, ‘&gt; 125 meter’ is teruggedraaid.</p>
+</li>
+<li><p>ligging ‘in duiker’ is geschrapt.</p>
+</li>
+<li><p>Type van nieuw attribuut 'naam:herkomst' is gewijzigd van een waardenlijst
+naar vrij tekstveld.</p>
+</li>
+<li><p>naam:taal ‘overig’ is hernoemd naar ‘onbekend/ VoidReason’, definitie is
+aangepast.</p>
+</li>
+<li><p>Regel toegevoegd dat naam: herkomst, naam:officieel en naam:taal verplicht
+attributen zijn als naam gevuld is.</p>
+</li>
+</ul></section><section id="terrein-0"><h3 id="x15-5-terrein"><span class="secno">15.5 </span>Terrein</h3><ul>
+<li><p>Hernoemen van type ‘akkerland’ naar ‘bouwland’ (definitie wel aangepast naar
+BGT), type ‘boomkwekerij’ naar ‘boomteelt’, type ‘fruitkwekerij’ naar
+‘fruitteelt’ (definitie wel minimaal aangepast) is teruggedraaid.</p>
+</li>
+<li><p>Schrappen van type ‘boomgaard’ is teruggedraaid, definitie is minimaal
+aangepast.</p>
+</li>
+<li><p>geometrie ‘vlak’ van type ‘struiken’ is gespecificeerd.</p>
+</li>
+<li><p>zinsnede ‘dat niet nader wordt ingewonnen’ in definitie van type ‘erf’ is
+geschrapt.</p>
+</li>
+<li><p>Optioneel attribuut ‘brugnaam’ is toegevoegd.</p>
+</li>
+<li><p>Voetnoot is aangepast: Spoorbaanlichaam verplaatst niet van objecttype
+Terrein naar objecttype Wegdeel, maar van objecttype Terrein naar objecttype
+Spoor.</p>
+</li>
+</ul></section><section id="gebouw-0"><h3 id="x15-6-gebouw"><span class="secno">15.6 </span>Gebouw</h3><ul>
+<li><p>type ‘boortoren’ is geschrapt (komt niet voor).</p>
+</li>
+<li><p>geometrietype ‘punt’ is toegevoegd aan type ‘bunker’</p>
+</li>
+<li><p>verplaatsen van type ‘tank’ naar Inrichtingselement is teruggedraaid,
+hernoemd naar ‘opslagtank’ met BGT definitie.</p>
+</li>
+<li><p>wijzigen naam van type ‘parkeerdak, parkeerdek, parkeergarage’ is
+teruggedraaid, type is hernoemd naar ‘parkeergarage’, definitie is
+aangepast, en geometrietype ‘punt’ is toegevoegd voor dit type.</p>
+</li>
+<li><p>schrappen type ‘synagoge’ is teruggedraaid</p>
+</li>
+<li><p>definitie van type ‘windmolen’ is gewijzigd</p>
+</li>
+<li><p>schrappen van type ‘windturbine’ is teruggedraaid, definitie is aangepast
+aan BGT.</p>
+</li>
+<li><p>typen ‘botenhuis’, ‘open loods’ en ‘overkapping’ zijn toegevoegd.</p>
+</li>
+<li><p>schrappen van typen ‘gevangenis’, ‘psychiatrisch ziekenhuis, psychiatrisch
+centrum’, en ‘ziekenhuis’ is teruggedraaid, typen zijn opgenomen bij
+attribuut ‘functie’</p>
+</li>
+<li><p>functie ‘parkeerdak, parkeerdek, parkeergarage’ is hernoemd naar ‘parkeren’,
+‘radarpost’ is hernoemd naar ‘radarstation’.</p>
+</li>
+<li><p>attribuut ‘fysiekVoorkomen’ is hernoemd naar ‘ligging’</p>
+</li>
+</ul></section><section id="inrichtingselement-0"><h3 id="x15-7-inrichtingselement"><span class="secno">15.7 </span>Inrichtingselement</h3><ul>
+<li><p>schrappen van type ‘metrostation’ is teruggedraaid.</p>
+</li>
+<li><p>type ‘bassin’ is vervangen door type ‘dok’ en type ‘zwembad’</p>
+</li>
+<li><p>typen ‘open loods, ‘overkapping’, ‘opslagtank’, ‘windturbine’ en ‘botenhuis’
+zijn verplaatst naar Gebouw</p>
+</li>
+<li><p>definitie van GNSS kernnetpunt is minimaal aangepast.</p>
+</li>
+</ul></section><section id="relief-0"><h3 id="x15-8-relief"><span class="secno">15.8 </span>Relief</h3><ul>
+<li>definitie van nieuw type ‘dijk’ is aangepast.</li>
+</ul></section><section id="hoogte-0"><h3 id="x15-9-hoogte"><span class="secno">15.9 </span>Hoogte</h3><p>Geen</p></section><section id="registratief-gebied-0"><h3 id="x15-10-registratief-gebied"><span class="secno">15.10 </span>Registratief gebied</h3><ul>
+<li><p>Kardinaliteit van attribuut ‘naam:herkomst’ en ‘naam: taal’ is gewijzigd
+naar ‘1 of meer’ (1..*)</p>
+</li>
+<li><p>Attribuut ‘naam: officieel’ is toegevoegd met kardinaliteit ‘1 of meer’
+(1..*), type aangepast naar waardenlijst ja/nee.</p>
+</li>
+<li><p>naam:taal ‘overig’ is hernoemd naar ‘onbekend/ VoidReason’, definitie is mee
+aangepast.</p>
+</li>
+<li><p>Type van nieuw attribuut 'naam:herkomst' is gewijzigd van een waardenlijst
+naar vrij tekstveld.</p>
+</li>
+</ul></section><section id="geografisch-gebied-0"><h3 id="x15-11-geografisch-gebied"><span class="secno">15.11 </span>Geografisch gebied</h3><ul>
+<li><p>Toevoegen attribuut ‘naamKartografisch’ is teruggedraaid.</p>
+</li>
+<li><p>Attribuut ‘naam: taal’ is toegevoegd</p>
+</li>
+</ul></section><section id="plaats-0"><h3 id="x15-12-plaats"><span class="secno">15.12 </span>Plaats</h3><ul>
+<li><p>type ‘woonkern historisch’ is gewijzigd naar ‘historische bebouwingskern’.</p>
+</li>
+<li><p>schrappen van attribuut ‘bebouwdeKom’ en ‘aantalInwoners’ is teruggedraaid.</p>
+</li>
+<li><p>Kardinaliteit van attribuut ‘naam:herkomst’ en ‘naam: taal’ is gewijzigd
+naar ‘1 of meer’ (1..*)</p>
+</li>
+<li><p>Attribuut ‘naam: officieel’ is toegevoegd met kardinaliteit ‘1 of meer’
+(1..*), type aangepast naar waardenlijst ja/nee.</p>
+</li>
+<li><p>naam:taal ‘overig’ is hernoemd naar ‘onbekend/ VoidReason’, definitie is mee
+aangepast.</p>
+</li>
+<li><p>Type van nieuw attribuut 'naam:herkomst' is gewijzigd van een waardenlijst
+naar vrij tekstveld.</p>
+</li>
+</ul></section><section id="functioneel-gebied-0"><h3 id="x15-13-functioneel-gebied"><span class="secno">15.13 </span>Functioneel gebied</h3><ul>
+<li><p>Definitie van type ‘helikopterlandingsplaats’ is gewijzigd.</p>
+</li>
+<li><p>Wijzigen naam van type ‘militair oefengebied, schietterrein’ is
+teruggedraaid, definitie is aangepast.</p>
+</li>
+<li><p>Hernoemen van type ‘kazerne, legerplaats’ naar ‘militair terrein’ is
+teruggedraaid, ‘kazerne, legerplaats’ is hernoemd naar ‘kazerne,
+legerplaats, vliegbasis’ met aangepast definitie.</p>
+</li>
+<li><p>type ‘gevangenis’ is hernoemd naar ‘gevangeniscomplex’.</p>
+</li>
+<li><p>Definitie van ‘psychiatrisch ziekenhuiscomplex’ en ‘tankstation’ is
+aangepast.</p>
+</li>
+<li><p>Type ‘vliedberg’ is toegevoegd.</p>
+</li>
+</ul></section><section id="plantopografie-0"><h3 id="x15-14-plantopografie"><span class="secno">15.14 </span>Plantopografie</h3><p>Geen</p></section></section><div class="trackChanges"><label class="switch" onclick="toggleTrackChanges();">
+              <input id="toggleTrackChanges" type="checkbox" checked="checked">
+              <span class="slider round"></span>
+            </label>
+<span class="textTrackChanges">WIJZIGINGEN AAN</span><br>
+<span style="color: red;
+    text-decoration: line-through;">WAS</span> = vervallen tekst<br>
+<span style="color: green; font-weight: bold">WORDT</span> = nieuwe tekst
+</div><script>            
+        var toggleTrackChanges = function() {
+
+<pre><code>        let marks = document.getElementsByTagName(&quot;strong&quot;);
+        let strikes = document.getElementsByTagName(&quot;del&quot;);
+
+            if (document.getElementById(&#39;toggleTrackChanges&#39;).checked == false) {
+
+                for (var i=1; i&lt;marks.length; i++) {
+                    console.log(marks[i]);
+                    marks[i].style.fontWeight = &quot;normal&quot;;
+                    marks[i].style.color = &quot;black&quot;;
+                }        
+                for (var i=1; i&lt;strikes.length; i++) {
+                    strikes[i].style.color = &quot;black&quot;;
+                    strikes[i].style.textDecoration = &quot;none&quot;;
+                }        
+                document.getElementsByClassName(&quot;textTrackChanges&quot;)[0].style.color = &quot;#cccccc&quot;;
+                document.getElementsByClassName(&quot;textTrackChanges&quot;)[0].innerHTML = &quot;WIJZINGINGEN UIT&quot;;
+
+            }
+            else {
+                for (var i=1; i&lt;marks.length; i++) {
+                    marks[i].style.color = &quot;green&quot;;
+                    marks[i].style.fontWeight = &quot;bold&quot;;                        
+                }
+                for (var i=1; i&lt;strikes.length; i++) {
+                    strikes[i].style.color = &quot;red&quot;;
+                    strikes[i].style.textDecoration = &quot;line-through&quot;;
+                }
+                document.getElementsByClassName(&quot;textTrackChanges&quot;)[0].style.color = &quot;#0000ff&quot;;
+                document.getElementsByClassName(&quot;textTrackChanges&quot;)[0].innerHTML = &quot;WIJZINGINGEN AAN&quot;;
+            }
+    }
+    &lt;/script&gt;</code></pre></script><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

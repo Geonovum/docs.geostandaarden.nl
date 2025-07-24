@@ -1,0 +1,1656 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  <link rel="stylesheet" type="text/css" href="./media/localstyle.css">
+  <title>Geometrie in model en GML</title>
+  
+  
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "subtitle": "Webversie als herpublicatie van het origineel: versie 1.0, 1 maart 2012",
+  "publishDate": "2021-03-26",
+  "maxTocLevel": 3,
+  "editors": [
+    {
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Paul Janssen",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Wilko Quak",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "gimeg",
+  "pubDomain": "nen3610",
+  "github": "https://github.com/geonovum/gimeg",
+  "format": "markdown",
+  "localBiblio": {
+    "HGMG": {
+      "href": "https://www.geonovum.nl/uploads/documents/Geometrieinmodelengml_1.0.pdf",
+      "title": "Handreiking Geometrie in model en GML",
+      "authors": [
+        "Linda van den Brink",
+        "Paul Janssen",
+        "Wilko Quak"
+      ],
+      "date": "1 maart 2012",
+      "publisher": "Geonovum"
+    },
+    "GML-SF": {
+      "href": "http://www.opengeospatial.org/standards/gml",
+      "title": "Geography Markup Language (GML) simple features profile",
+      "authors": [
+        "Linda van den Brink",
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "date": "5 April 2012",
+      "publisher": "Open Geospatial Consortium",
+      "id": "gml-sf"
+    },
+    "CityGML20": {
+      "href": "https://portal.opengeospatial.org/files/?artifact_id=47842",
+      "title": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "authors": [
+        "Gerhard Gröger",
+        "Thomas H. Kolbe",
+        "Claus Nagel",
+        "Karl-Heinz Häfele"
+      ],
+      "date": "4 April 2012",
+      "publisher": "Open Geospatial Consortium"
+    },
+    "OAPIF": {
+      "href": "http://docs.opengeospatial.org/is/17-069r3/17-069r3.html",
+      "title": "OGC API - Features - Part 1: Core",
+      "authors": [
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos",
+        "Charles Heazel"
+      ],
+      "date": "14 oktober 2019",
+      "publisher": "Open Geospatial Consortium"
+    },
+    "NEN3610": {
+      "id": "NEN 3610:2011 nl",
+      "title": "NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "href": "https://www.nen.nl/nen-3610-2011-nl-156811",
+      "status": "Definitief",
+      "publisher": "NEN",
+      "date": "2011-03-01"
+    }
+  },
+  "publishISODate": "2021-03-26T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 26 maart 2021"
+}</script><meta name="description" content="Deze handreiking beschrijft de toepassing van geometrie in informatiemodellering en de implementatie daarvan in GML. Het is daarmee een ondersteuning voor de toepassing van de norm NEN 3610:2011 - Basismodel geo-informatie [NEN3610]. Deze handreiking is een webversie bedoeld als herpublicatie van het origineel gepubliceerd op 1 maart 2012: Handreiking Geometrie in model en GML, versie 1.0, 1 maart 2012. Deze versie is niet aangepast aan alle ontwikkelingen sinds 2012. De versie is wel nog steeds bruikbaar voor begrip en toepassing van geometrie."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/nen3610/def-hr-gimeg-20210326/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Geometrie in model en GML",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-03-26",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/gimeg/issues/",
+  "alternativeHeadline": "Webversie als herpublicatie van het origineel: versie 1.0, 1 maart 2012",
+  "description": "Deze handreiking beschrijft de toepassing van geometrie in informatiemodellering en de implementatie daarvan in GML. Het is daarmee een ondersteuning voor de toepassing van de norm NEN 3610:2011 - Basismodel geo-informatie [NEN3610]. Deze handreiking is een webversie bedoeld als herpublicatie van het origineel gepubliceerd op 1 maart 2012: Handreiking Geometrie in model en GML, versie 1.0, 1 maart 2012. Deze versie is niet aangepast aan alle ontwikkelingen sinds 2012. De versie is wel nog steeds bruikbaar voor begrip en toepassing van geometrie.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "type": "Person",
+      "name": "Paul Janssen",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "type": "Person",
+      "name": "Wilko Quak",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://www.nen.nl/nen-3610-2011-nl-156811",
+      "type": "TechArticle",
+      "name": "NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "url": "https://www.nen.nl/nen-3610-2011-nl-156811"
+    },
+    {
+      "id": "https://www.iso.org/standard/26012.html",
+      "type": "TechArticle",
+      "name": "Geographic information -- Spatial schema",
+      "url": "https://www.iso.org/standard/26012.html"
+    },
+    {
+      "id": "https://www.iso.org/standard/32554.html",
+      "type": "TechArticle",
+      "name": "Geographic information -- Geography Markup Language (GML)",
+      "url": "https://www.iso.org/standard/32554.html"
+    },
+    {
+      "id": "https://www.iso.org/standard/40114.html",
+      "type": "TechArticle",
+      "name": "Geographic information -- Simple feature access -- Part 1: Common architecture",
+      "url": "https://www.iso.org/standard/40114.html"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/gml",
+      "type": "TechArticle",
+      "name": "Geography Markup Language (GML) Encoding Standard",
+      "url": "http://www.opengeospatial.org/standards/gml"
+    },
+    {
+      "id": "https://www.w3.org/TR/xmlschema-0/",
+      "type": "TechArticle",
+      "name": "XML Schema Part 0: Primer Second Edition",
+      "url": "https://www.w3.org/TR/xmlschema-0/"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/gml",
+      "type": "TechArticle",
+      "name": "Geography Markup Language (GML) simple features profile",
+      "url": "http://www.opengeospatial.org/standards/gml"
+    }
+  ]
+}</script></head>
+
+<body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Geometrie in model en GML</h1>
+  <h2 id="subtitle">Webversie als herpublicatie van het origineel: versie 1.0, 1 maart 2012</h2>
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2021-03-26">26 maart 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/nen3610/def-hr-gimeg-20210326/">https://docs.geostandaarden.nl/nen3610/def-hr-gimeg-20210326/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/nen3610/gimeg/">https://docs.geostandaarden.nl/nen3610/gimeg/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/gimeg/">https://geonovum.github.io/gimeg/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Linda van den Brink</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Linda van den Brink</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Paul Janssen</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Wilko Quak</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/gimeg/">GitHub geonovum/gimeg</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/gimeg/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/gimeg/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/gimeg/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+<div id="extwaiokist" style="display:none" v="pdbbg" q="87be75a1" c="238.9" i="245" u="2.072" s="03252116" d="1" w="false" e="" m="BMe=" vn="1gtra"><div id="extwaigglbit" style="display:none" v="pdbbg" q="87be75a1" c="238.9" i="245" u="2.072" s="03252116" d="1" w="false" e="" m="BMe="></div></div></div><section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Deze handreiking beschrijft de toepassing van geometrie in informatiemodellering en de implementatie daarvan in GML. Het is daarmee een ondersteuning voor de toepassing van de norm NEN 3610:2011 - Basismodel geo-informatie [<cite><a class="bibref" href="#bib-nen3610">NEN3610</a></cite>]. Deze handreiking is een webversie bedoeld als herpublicatie van het origineel gepubliceerd op 1 maart 2012: Handreiking Geometrie in model en GML, versie 1.0, 1 maart 2012. Deze versie is niet aangepast aan alle ontwikkelingen sinds 2012. De versie is wel nog steeds bruikbaar voor begrip en toepassing van geometrie.</p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p><p>Dit document is een herpublicatie van het origineel gepubliceerd op 1 maart 2012, en is niet aangepast aan alle ontwikkelingen sinds 2012.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inhoud-van-de-handreiking"><span class="secno">1.1 </span>Inhoud van de handreiking</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.2 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#model"><span class="secno">2. </span>Geometrie in model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ruimtelijk-schema-van-iso-19107"><span class="secno">2.1 </span>Ruimtelijk schema van ISO 19107</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gm_object"><span class="secno">2.1.1 </span>GM_Object</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geometrische-primitieven"><span class="secno">2.2 </span>Geometrische primitieven</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gm_point"><span class="secno">2.2.1 </span>GM_Point</a></li><li class="tocline"><a class="tocxref" href="#gm_curve"><span class="secno">2.2.2 </span>GM_Curve</a></li><li class="tocline"><a class="tocxref" href="#gm_surface"><span class="secno">2.2.3 </span>GM_Surface</a></li><li class="tocline"><a class="tocxref" href="#gm_solid"><span class="secno">2.2.4 </span>GM_Solid</a></li><li class="tocline"><a class="tocxref" href="#interpolatie"><span class="secno">2.2.5 </span>Interpolatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geometrische-aggregaties"><span class="secno">2.3 </span>Geometrische aggregaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gm_multipoint"><span class="secno">2.3.1 </span>GM_MultiPoint</a></li><li class="tocline"><a class="tocxref" href="#gm_multicurve"><span class="secno">2.3.2 </span>GM_MultiCurve</a></li><li class="tocline"><a class="tocxref" href="#gm_multisurface"><span class="secno">2.3.3 </span>GM_MultiSurface</a></li><li class="tocline"><a class="tocxref" href="#gm_multisolid"><span class="secno">2.3.4 </span>GM_MultiSolid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#definities-van-2-2-5-en-3d"><span class="secno">2.4 </span>Definities van 2, 2.5 en 3D</a></li><li class="tocline"><a class="tocxref" href="#nederlands-profiel-op-iso-19107"><span class="secno">2.5 </span>Nederlands profiel op ISO 19107</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gml"><span class="secno">3. </span>Geometrie in GML - Nederlands profiel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#totstandkoming-sf2-als-nederlands-profiel-op-gml"><span class="secno">3.1 </span>Totstandkoming SF2 als Nederlands profiel op GML</a></li><li class="tocline"><a class="tocxref" href="#gml-simple-features-profielen-en-data-complexiteit"><span class="secno">3.2 </span>GML Simple Features profielen en data complexiteit</a></li><li class="tocline"><a class="tocxref" href="#regels-voor-alle-simple-features-profile-levels"><span class="secno">3.3 </span>Regels voor alle Simple Features profile levels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inhoud-sf-niveau-s"><span class="secno">3.3.1 </span>Inhoud SF niveau’s</a></li><li class="tocline"><a class="tocxref" href="#feature-collecties"><span class="secno">3.3.2 </span>Feature collecties</a></li><li class="tocline"><a class="tocxref" href="#geometrietypen"><span class="secno">3.3.3 </span>Geometrietypen</a></li><li class="tocline"><a class="tocxref" href="#coordinaatreferentiesysteem"><span class="secno">3.3.4 </span>Coördinaatreferentiesysteem</a></li><li class="tocline"><a class="tocxref" href="#container-elementen-voor-samengestelde-geometrietypen"><span class="secno">3.3.5 </span>Container elementen voor samengestelde geometrietypen</a></li><li class="tocline"><a class="tocxref" href="#lijninterpolaties"><span class="secno">3.3.6 </span>Lijninterpolaties</a></li></ol></li><li class="tocline"><a class="tocxref" href="#simple-features-profile-0-sf0"><span class="secno">3.4 </span>Simple features profile 0 (SF0)</a></li><li class="tocline"><a class="tocxref" href="#simple-features-profile-1-sf1"><span class="secno">3.5 </span>Simple features profile 1 (SF1)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#zelf-ontwikkelde-datatypen-geneste-inhoud"><span class="secno">3.5.1 </span>Zelf ontwikkelde datatypen: geneste inhoud.</a></li></ol></li><li class="tocline"><a class="tocxref" href="#simple-features-profile-2-sf2"><span class="secno">3.6 </span>Simple features profile 2 (SF2)</a></li><li class="tocline"><a class="tocxref" href="#schema-compliance-data-levering-data-ontvangen"><span class="secno">3.7 </span>Schema compliance: data levering – data ontvangen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gmlsf2"><span class="secno">4. </span>GML SF2: Nederlands profiel op GML 3.2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie-schematron"><span class="secno">4.1 </span>Introductie Schematron</a></li><li class="tocline"><a class="tocxref" href="#schematron-business-rules-voor-nederlands-profiel"><span class="secno">4.2 </span>Schematron business rules voor Nederlands profiel</a></li></ol></li><li class="tocline"><a class="tocxref" href="#sf2tosf0"><span class="secno">5. </span>Basisregels voor transformatie van een SF2 naar een SF0 model.</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-0"><span class="secno">5.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#verschil-sf0-en-sf2"><span class="secno">5.2 </span>Verschil SF0 en SF2</a></li><li class="tocline"><a class="tocxref" href="#normalisatieregels"><span class="secno">5.3 </span>Normalisatieregels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#meervoudig-attribuut"><span class="secno">5.3.1 </span>Meervoudig attribuut</a></li><li class="tocline"><a class="tocxref" href="#zelfgemaakte-datatypen"><span class="secno">5.3.2 </span>Zelfgemaakte datatypen</a></li><li class="tocline"><a class="tocxref" href="#associaties"><span class="secno">5.3.3 </span>Associaties</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#coderingsregels"><span class="secno">A. </span>Algemene coderingsregels GML</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#van-uml-naar-gml"><span class="secno">A.1 </span>Van UML naar GML</a></li><li class="tocline"><a class="tocxref" href="#gml-encoding-rules"><span class="secno">A.2 </span>GML encoding rules</a></li></ol></li><li class="tocline"><a class="tocxref" href="#voorbeeld"><span class="secno">B. </span>Uitgewerkt voorbeeld</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#imgolf-model-in-uml"><span class="secno">B.1 </span>IMGolf model in UML</a></li><li class="tocline"><a class="tocxref" href="#imgolf-feature-catalogus"><span class="secno">B.2 </span>IMGolf Feature Catalogus</a></li><li class="tocline"><a class="tocxref" href="#imgolf-xml-applicatie-schema"><span class="secno">B.3 </span>IMGolf XML applicatie schema</a></li><li class="tocline"><a class="tocxref" href="#imgolf-gml-document"><span class="secno">B.4 </span>IMGolf GML document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gmlversieverschillen"><span class="secno">C. </span>GML 3.2.1 en GML 3.1.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding-1"><span class="secno">C.1 </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#waar-iedereen-mee-te-maken-krijgt"><span class="secno">C.2 </span>Waar iedereen mee te maken krijgt</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#importeren-van-het-gml-schema-en-gml-profielen"><span class="secno">C.2.1 </span>Importeren van het GML schema en GML profielen</a></li><li class="tocline"><a class="tocxref" href="#xml-namespace"><span class="secno">C.2.2 </span>XML namespace</a></li><li class="tocline"><a class="tocxref" href="#abstracte-elementen-hernoemd"><span class="secno">C.2.3 </span>Abstracte elementen hernoemd</a></li><li class="tocline"><a class="tocxref" href="#gml-id-verplicht"><span class="secno">C.2.4 </span>gml:id verplicht</a></li><li class="tocline"><a class="tocxref" href="#feature-collection-en-andere-collection-types-geschrapt"><span class="secno">C.2.5 </span>Feature collection en andere collection types geschrapt</a></li></ol></li><li class="tocline"><a class="tocxref" href="#andere-verschillen-met-mogelijke-gevolgen"><span class="secno">C.3 </span>Andere verschillen met mogelijke gevolgen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normatieve-referenties-naar-andere-standaarden"><span class="secno">C.3.1 </span>Normatieve referenties naar andere standaarden</a></li><li class="tocline"><a class="tocxref" href="#metadata-eigenschappen"><span class="secno">C.3.2 </span>Metadata eigenschappen</a></li><li class="tocline"><a class="tocxref" href="#hernoemde-vervangen-eigenschappen"><span class="secno">C.3.3 </span>Hernoemde / vervangen eigenschappen</a></li><li class="tocline"><a class="tocxref" href="#wijzigingen-in-geometrietypen"><span class="secno">C.3.4 </span>Wijzigingen in geometrietypen</a></li><li class="tocline"><a class="tocxref" href="#wijziging-in-coordinate-reference-system-dictionaries"><span class="secno">C.3.5 </span>Wijziging in coordinate reference system dictionaries</a></li><li class="tocline"><a class="tocxref" href="#ondersteuning-voor-void-iso-iec-11404"><span class="secno">C.3.6 </span>Ondersteuning voor Void (ISO/IEC 11404)</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">D. </span>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normatieve-referenties"><span class="secno">D.1 </span>Normatieve referenties</a></li></ol></li></ol></nav><section id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Deze handreiking beschrijft de toepassing van geometrie in informatiemodellering en de
+implementatie daarvan in GML. Het is daarmee een ondersteuning voor de toepassing van de
+norm NEN 3610:2011 – Basismodel geo-informatie [<cite><a class="bibref" href="#bib-nen3610">NEN3610</a></cite>]. NEN 3610 gaat hierin niet verder dan
+verwijzing naar de relevante geo-informatie (ISO) normen. Voor het werkveld zijn deze normen
+niet toegankelijk genoeg om te kunnen toepassen. Middels deze handreiking wordt de brug
+gelegd. Dit document kan als een zelfstandig document worden gelezen. De inhoud is
+grotendeels gebaseerd op originele normen. Voor de toegankelijkheid is de tekst vertaald naar
+het Nederlands en bovendien vereenvoudigd. Deze handreiking kan daarom niet de normen
+vervangen, maar bijvoorbeeld als introductie worden gebruikt. Voor de normatieve referentie
+wordt in alle gevallen naar de originele documenten verwezen.
+</p><section id="inhoud-van-de-handreiking"><h3 id="x1-1-inhoud-van-de-handreiking"><span class="secno">1.1 </span>Inhoud van de handreiking</h3><p>In eerste instantie komt geometrie voor in informatiemodellen in de vorm van geometrietypen populair
+bekend als punten, lijnen, vlakken. ISO 19107 [<cite><a class="bibref" href="#bib-iso-19107-2003">iso-19107-2003</a></cite>] beschrijft middels een ruimtelijk schema (spatial schema)
+deze geometrische primitieven, de uitbreidingen daarop en de relaties daartussen. De toepassing in dat
+ruimtelijk schema is ook bepalend voor toepassing in informatiemodellen. De relatie tussen het ruimtelijk
+schema en de toepassing in informatiemodellen wordt beschreven.</p><p>Het ruimtelijk schema kent geometrietypen met een toenemende complexiteit. Niet alle typen zijn
+gegeven de stand van techniek even inter-operabel toepasbaar. Er is daarom een keuze gemaakt tot
+welke typen we ons in Nederland (in de regel) beperken. Deze inperking wordt beschreven in een profiel.</p><p>Uitwisseling van geo-informatie (bestanden) gebeurt middels GML [<cite><a class="bibref" href="#bib-iso-19136-2007">iso-19136-2007</a></cite>]. Dat betekent dat de conceptuele
+informatiemodellen toegepast worden in GML. Beschreven wordt hoe het ruimtelijke schema vertaald
+wordt naar de GML implementatie omgeving. Ook hier wordt er uitgegaan van een Nederlands profiel op
+de complete GML implementatie. Afgesproken is dat het Nederlands profiel het GML Simple Features
+profile level 2 volgt. Dit profiel wordt in de annex door middel van business rules in schematron
+vastgelegd. Met de schematron regels is een GML bestand te controleren op conformiteit met het
+Nederlandse profiel.</p><p>Voor de implementatie in services is het soms nodig om vanwege de interoperabiliteit de complexiteit van
+het GML bestand te reduceren tot Simple Features profile 0. Dat betekent dat het informatiemodel ook
+gesimplificeerd moet worden. In hoofdstuk 5 zijn een aantal basisregels opgenomen voor het
+transformeren van een SF2 model naar een SF0 model.</p></section><section id="leeswijzer"><h3 id="x1-2-leeswijzer"><span class="secno">1.2 </span>Leeswijzer</h3><p><a href="#model">Hoofdstuk 2</a> van dit document bevat een uitleg van het ruimtelijk schema zoals beschreven in ISO 19107
+en gehanteerd in de GML standaard.</p><p><a href="#gml">Hoofdstuk 3</a> bevat een uitleg van het Simple Features profile for GML.</p><p><a href="#gmlsf2">Hoofdstuk 4</a> beschrijft de Nederlandse toepassing van GML en het Simple Features profile en de regels die
+daaruit voortvloeien.</p><p>In <a href="#sf2tosf0">Hoofdstuk 5</a> wordt tenslotte uitgelegd hoe, indien nodig, een aan Simple features level 2 voldoend
+informatiemodel kan worden omgezet naar een vereenvoudigd model dat voldoet aan level 0.</p><p>De belangrijkste algemene GML coderingsregels staan beschreven in <a href="#coderingsregels">Appendix 1</a>, een uitgewerkt
+voorbeeld van de in dit document beschreven regels en werkwijze in <a href="#voorbeeld">Appendix 2</a>, en een overzicht van de
+verschillen tussen GML 3.1.1 en 3.2.1 in <a href="#gmlversieverschillen">Appendix 3</a>.</p></section></section><section id="model"><!--OddPage--><h2 id="x2-geometrie-in-model"><span class="secno">2. </span>Geometrie in model</h2><p>Dit hoofdstuk beschrijft de definitie van de geometrietypen zoals die zijn gedefinieerd in ISO 19107: Geographic information -- Spatial schema [<cite><a class="bibref" href="#bib-iso-19107-2003">iso-19107-2003</a></cite>] en in informatiemodellen worden toegepast. Alleen het geometrie gedeelte van het ruimtelijke schema is in deze handreiking opgenomen; het topologie gedeelte wordt niet besproken.</p><section id="ruimtelijk-schema-van-iso-19107"><h3 id="x2-1-ruimtelijk-schema-van-iso-19107"><span class="secno">2.1 </span>Ruimtelijk schema van ISO 19107</h3><p>NEN 3610 beschrijft de regels voor het modelleren van geo-informatie. Belangrijk in de definitie van een geografisch object is dat het locatie eigenschappen heeft. Eén van die locatie eigenschappen is de directe locatie die middels coördinaten is beschreven. Door middel van attributen wordt de directe locatie en geometrie door coördinaten gerepresenteerd. De waarden van die attributen zijn coördinaten of coördinaatreeksen die een geometrie representeren. We noemen dit geometrietypen. In ISO 19107 is een klassediagram, het ruimtelijk schema, opgenomen met de geometrietypen en hun onderlinge relaties. De geometrietypen uit dit diagram worden gebruikt om de geometrietypen in geo-informatiemodellen te specificeren.</p><p>Voor de geometrietypen zijn er verschillende niveau´s van complexiteit van structuur en dimensionaliteit. Voor de complexiteit van structuur is er een verdeling in de geometrisch primitieven punt, lijn, vlak en volume en de geometrische complexen. Complexen hebben een complexe datastructuur en zijn opgebouwd uit een verzameling geometrische primitieven.</p><ul>
+<li>Geometrische primitieven</li>
+<li>Geometrische complexen</li>
+</ul><p>Dimensionaliteit is het tweede criterium bij het definiëren van geometrietypen.</p><ul>
+<li>0 dimensies</li>
+<li>1 dimensie</li>
+<li>2 dimensies</li>
+<li>3 dimensies</li>
+</ul><p>Het ISO 19107 ruimtelijk schema is geconstrueerd rond die twee criteria van data complexiteit en dimensionaliteit. Er is nog een derde criterium, functionaliteit (operaties), dat echter voor de indeling van de geometrietypen in het ruimtelijk schema geen gevolgen heeft. ISO 19125-1 Simple feature access [<cite><a class="bibref" href="#bib-iso-19125-1-2004">iso-19125-1-2004</a></cite>] definieert een model voor 2 dimensionale geometrietypen. Zie hiervoor ook het OGC origineel <a href="http://www.opengeospatial.org/standards/sfa">OpenGIS® Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture</a>. In dit 2D geometriemodel zijn restricties opgenomen die van een algemene geometrie een simpele geometrie maken. De term simple feature staat daarin voor features beperkt tot 2 dimensionale geometrie.</p><p>Figuur 1 beeldt het ruimtelijk schema af en is overgenomen uit het INSPIRE
+consolidated UML model. Dat is weer gebaseerd op het model voor geometrische
+basistypen uit de ISO 19107.</p><figure id="fig-ruimtelijk-schema-van-iso-19107"><img src="media/86bee1823dfd4f2ae0112c0462d2ccec.png" width="400">
+<figcaption>Figuur <span class="figno">1</span> <span class="fig-title">Ruimtelijk schema van ISO 19107</span></figcaption>
+</figure><p>Uit dit schema worden alleen de geometrietypen toegelicht die voor deze handreiking van toepassing zijn. De toelichting is beperkt en omvat alleen de informatie die voor de toepassing van dit document relevant is. Voor de volledige beschrijving wordt verwezen naar ISO 19107. Voor simple features (2D) gelden er restricties die apart worden aangegeven.</p><section id="gm_object"><h4 id="x2-1-1-gm_object"><span class="secno">2.1.1 </span>GM_Object</h4><p>De superklasse van alle geometrietypen. Deze klasse beschrijft de eigenschappen die alle geometrie types in ISO 19107 delen. Operaties die voor de klasse GM_Object beschreven zijn zullen dus voor ieder geometrietype geïmplementeerd zijn. Als in een model de geometrie van een object beschreven moet worden terwijl er niets bekend is over het mogelijke voorkomen van die geometrie dan kan GM_Object worden gekozen.</p><p>Ook als een klasse meerdere geometrietypen toestaat (bijvoorbeeld: een inrichtingselement kan een punt of een lijn zijn) kan GM_Object worden gebruikt, waarbij dit met een constraint wordt ingeperkt tot GM_Point en GM_Curve.</p></section></section><section id="geometrische-primitieven"><h3 id="x2-2-geometrische-primitieven"><span class="secno">2.2 </span>Geometrische primitieven</h3><section id="gm_point"><h4 id="x2-2-1-gm_point"><span class="secno">2.2.1 </span>GM_Point</h4><p>Punt. 0-dimensionale geometrie.</p></section><section id="gm_curve"><h4 id="x2-2-2-gm_curve"><span class="secno">2.2.2 </span>GM_Curve</h4><p>Lijn. 1-dimensionale geometrie.</p><p>Een curve is simple indien er geen zelfintersectie optreedt.</p><figure id="fig-lijngeometrie"><img src="media/0b8de24f040db37781eaeb14a30bbc5b.png" width="200">
+<figcaption>Figuur <span class="figno">2</span> <span class="fig-title">Lijngeometrie</span></figcaption>
+</figure><p>Lijnen zijn continu en hebben een meetbare lengte in een coördinaten systeem. Lijnen bestaan uit een of meer lijnsegmenten waarbij de lijnsegmenten verschillende interpolatiemethoden kunnen gebruiken. Lijnsegmenten zijn aan elkaar verbonden waarbij het eindpunt van elk segment, behalve de laatste, verbonden is aan het beginpunt van het volgende. Wanneer het begin- en eindpunt van een lijn met elkaar verbonden zijn is de lijn gesloten en spreken we ook wel van een Ring.</p></section><section id="gm_surface"><h4 id="x2-2-3-gm_surface"><span class="secno">2.2.3 </span>GM_Surface</h4><p>Vlak. 2-dimensionale geometrie.</p><figure id="fig-vlakgeometrie-a-en-vlakgeometrie-met-binnengrens-b"><img src="media/2surfaces.png" width="200">
+<figcaption>Figuur <span class="figno">3</span> <span class="fig-title">Vlakgeometrie (a) en vlakgeometrie met binnengrens (b)</span></figcaption>
+</figure><p>Een vlak heeft een oriëntatie, dat wil zeggen, een boven en onderzijde. De bovenzijde is gedefinieerd als de kant vanaf welke de begrenzing tegen de klok in (anti clock wise) is gedigitaliseerd. Een vlak bestaat uit een of meer ‘surface patches’. Indien er meerdere zijn dan vormen die samen een aaneengesloten vlak.</p><p>Een vlak is simple indien een vlak bestaat uit één surface patch.</p><p>Een vlak heeft normaal gesproken in ieder geval in 2D situaties een buitenkant, de exterior. Daarnaast kan een vlak ook nog 0 of meer interne begrenzingen hebben, de interior. De buitenkant heeft, zoals hierboven beschreven, van bovenaf gezien een richting tegen de klok in. De binnenkant wordt met de klok mee vastgelegd.</p></section><section id="gm_solid"><h4 id="x2-2-4-gm_solid"><span class="secno">2.2.4 </span>GM_Solid</h4><p>Volume. 3-dimensionaal geometrietype.</p><figure id="fig-volume-geometrie"><img src="media/103dc38214592182fb03b6a35f93730e.png" width="200">
+<figcaption>Figuur <span class="figno">4</span> <span class="fig-title">Volume geometrie</span></figcaption>
+</figure><p>De geometrie van een GM_Solid is opgebouwd uit GM_SolidBoundaries (grenzen) die elk weer een GM_Surface zijn. Deze zijn naar buiten toe georiënteerd: de bovenkant van elk vlak is aan de buitenkant van het volume object te zien.</p></section><section id="interpolatie"><h4 id="x2-2-5-interpolatie"><span class="secno">2.2.5 </span>Interpolatie</h4><p>Lijnen zijn opgebouwd uit lijnsegmenten. Lijnsegmenten kunnen verschillende interpolatiemethoden voor de interpretatie van de coördinaten hebben. In de regel worden in Nederland (zie Nederlands profiel) alleen de lineaire en ‘circular arc by three points’ gebruikt.</p><p>De volgende interpolatiemethoden zijn gespecificeerd. In de lijst hieronder zijn de Engelse ISO 19107 termen weergegeven. Alleen de meest gebruikte typen worden uitgelegd.</p><ul>
+<li>Linear: rechte lijn tussen twee opeenvolgende punten</li>
+<li>Geodesic</li>
+<li>Circular arc by three points: elke set van drie punten vormt een cirkelvormige boog (arc) die begint bij het eerste punt, door het tweede punt gaat en eindigt bij het derde punt. Als de drie punten op één lijn liggen ontstaat er een rechte lijn.</li>
+<li>Circular arc by two points</li>
+<li>Circular arc by two points and bulge factor</li>
+<li>Elliptical arc</li>
+<li>Clothoid</li>
+<li>Conic arc</li>
+<li>Polynominal spline</li>
+<li>Cubic spline</li>
+<li>Rational spline</li>
+</ul></section></section><section id="geometrische-aggregaties"><h3 id="x2-3-geometrische-aggregaties"><span class="secno">2.3 </span>Geometrische aggregaties</h3><p>Het is mogelijk om samenstellingen van geometrietypen te aggregeren in nieuwe geometrie typen. Hiervoor is het aggregatiepakket ontwikkeld. Aggregaties hebben verder geen regels over de inhoudelijke structuur; in algemeenheid zijn er geen
+regels over of de geometrische primitieven elkaar moeten/mogen raken, overlappen enzovoort. Voor simple features (2D) gelden er wel restricties. Deze worden apart aangegeven.</p><p>Geometrische complexen oftewel composites zijn ook samenstellingen van geometrische primitieven, maar hierbij gelden wel aanvullende regels. Deze composites worden verder niet besproken. Ze zijn geen onderdeel van het Simple Features profile (zie <a href="#gml" class="sec-ref"><span class="secno">§&nbsp;3.</span> <span class="sec-title">Geometrie in GML - Nederlands profiel</span></a>).</p><section id="gm_multipoint"><h4 id="x2-3-1-gm_multipoint"><span class="secno">2.3.1 </span>GM_MultiPoint</h4><p>Multipunt. Verzameling van punten die gezamenlijk één object vormen. (instanties van GM_Point). Een multipoint is simple indien er geen punten met dezelfde coördinaten voorkomen.</p><figure id="fig-multipunt-geometrie"><img src="media/030ba8517c101a644e03ff2e09a9c0c2.png" width="200">
+<figcaption>Figuur <span class="figno">5</span> <span class="fig-title">Multipunt geometrie</span></figcaption>
+</figure></section><section id="gm_multicurve"><h4 id="x2-3-2-gm_multicurve"><span class="secno">2.3.2 </span>GM_MultiCurve</h4><p>Multilijn. Verzameling van lijnen die gezamenlijk één object vormen (instanties van GM_Curve).</p><p>Een multicurve is simple indien de samenstellende delen simple zijn en de enige intersecties tussen delen zich bevinden in punten aan de buitenkant van die objecten (geen kruising wel vertakking).</p><figure id="fig-multilijn-geometrie"><img src="media/b333117b913e2db1f94da7471a783bc0.png" width="200">
+<figcaption>Figuur <span class="figno">6</span> <span class="fig-title">Multilijn geometrie</span></figcaption>
+</figure></section><section id="gm_multisurface"><h4 id="x2-3-3-gm_multisurface"><span class="secno">2.3.3 </span>GM_MultiSurface</h4><p>Multivlak. Verzameling van vlakken die gezamenlijk één object vormen (instanties van GM_Surface).</p><p>Vlakken in een multisurface mogen elkaar niet overlappen. In een simple multisurface mogen vlakken elkaar alleen raken in een eindig aantal punten (wel punten maar geen grenzen gemeenschappelijk)</p><figure id="fig-multivlak-geometrie"><img src="media/eee827e9f6bcfa3e14c887ac4a13de25.png" width="200">
+<figcaption>Figuur <span class="figno">7</span> <span class="fig-title">Multivlak geometrie</span></figcaption>
+</figure></section><section id="gm_multisolid"><h4 id="x2-3-4-gm_multisolid"><span class="secno">2.3.4 </span>GM_MultiSolid</h4><p>Multivolume. Verzameling van volumes die gezamenlijk één object vormen (instanties van GM_Solid).</p><figure id="fig-multivolume-geometrie"><img src="media/c477d607a99392edcfe168576d395292.png" width="200">
+<figcaption>Figuur <span class="figno">8</span> <span class="fig-title">Multivolume geometrie</span></figcaption>
+</figure></section></section><section id="definities-van-2-2-5-en-3d"><h3 id="x2-4-definities-van-2-2-5-en-3d"><span class="secno">2.4 </span>Definities van 2, 2.5 en 3D</h3><p>Voor het representeren van geometrieën is de dimensionaliteit van groot belang. Voor 2 en 3 dimensionale representatie lijkt voor de hand te liggen wat daar mee bedoeld wordt. In de praktijk wordt er ook nog over 2.5 D gesproken. Het is daarom goed om bruikbare definities te hanteren.</p><p>2D: Objecten bestaan uit punten, lijnen of vlakken. Coördinaten zijn een x en een y-waarde.</p><p>2,5D: Punten, lijnen of vlakken. Coördinaten zijn een x,y en z waarde. Bij elk x,y-locatie is er maximaal één z-waarde beschikbaar. Dat betekent dat 2D geometrien zich in een 3D ruimte (x,y,z) bevinden maar dat de geometrien zichzelf of elkaar niet mogen overlappen in de horizontale projectie.</p><p>3D: Volume eenheden oftewel ‘solids’ zijn onderdeel van de mogelijke geometrietypen. Bij elke x,y-locatie zijn er meerdere z-waarden mogelijk.</p></section><section id="nederlands-profiel-op-iso-19107"><h3 id="x2-5-nederlands-profiel-op-iso-19107"><span class="secno">2.5 </span>Nederlands profiel op ISO 19107</h3><p>Het ruimtelijk schema in al zijn complexiteit is geschikt om zeer gevarieerde representaties van geometrieën te definiëren. Bij het kiezen van geometrietypen ter implementatie in een softwareomgeving is het van belang eisen ten aanzien van interoperabiliteit mee te nemen. In het kader van het Nederlands profiel op ISO 19107 is er gekeken naar GML als implementatieomgeving. Daarin is geëvalueerd welke subset van geometrietypen uit het ruimtelijke schema tot een basisset, een profiel, moeten behoren. Er is daarmee een directe link tussen het Nederlandse profiel op GML en het profiel op ISO 19107.</p></section></section><section id="gml"><!--OddPage--><h2 id="x3-geometrie-in-gml-nederlands-profiel"><span class="secno">3. </span>Geometrie in GML - Nederlands profiel</h2><p>Het Nederlands Basismodel Geo-informatie (NEN 3610) specificeert in overeenstemming met de ISO-geo-informatiestandaarden GML (Geography Markup Language) als uitwisselingsformaat voor geo-informatie. De actuele standaard voor GML [<cite><a class="bibref" href="#bib-gml">gml</a></cite>] wordt gehanteerd. Op dit moment is dat GML 3.2.1, waarbij ook GML 3.1.1 nog ondersteund wordt. Omdat GML 3.2.1 een zeer uitgebreide standaard is wordt er een profiel, een subset gehanteerd.</p><p>GML 3.2.1 is een uitgebreide standaard, ontwikkeld door het Open Geospatial Consortium (OGC) en biedt oplossingen voor een groot aantal situaties en variaties voor het uitwisselen van geo-informatie. Variaties zijn er in geometrietypen maar ook in complexiteit van datastructuren. Om verschillende niveaus van toepassing van GML 3.2.1 mogelijk te maken zijn er door OGC zogenaamde profielen gemaakt. De ontwikkeling van de profielen is voortgekomen uit een behoefte van onder meer softwareleveranciers om verschillende niveaus van complexiteit te ondersteunen. Operabiliteit kan daarmee beter gegarandeerd worden. De profielen omvatten elk een subset van de totale GML 3.2.1 standaard. De standaardprofielen zijn Simple Features Profile 0, Simple Features Profile 1 en Simple Features Profile 2 (afgekort tot respectievelijk SF0, SF1, en SF2). Deze profielen hebben een toenemende complexiteit en bieden ook een toenemende functionaliteit. SF0 is dus het eenvoudigst, en SF2 het meest uitgebreid. Het OGC Simple Features profile moet niet verward worden met de ISO 19125 - Simple feature access standaard. De eerste gaat over implementatie van geometrie in GML de tweede over definities van 2 dimensionale geometrietypen.</p><p>Een profiel dat meer complexiteit en functionaliteit toestaat, biedt meer mogelijkheden voor datamodellering of geometriebeschrijvingen, maar is ook moeilijker toe te passen in software. Deze complexiteit kan de uitwisseling tussen verschillende softwareplatforms bemoeilijken. Een eenvoudig profiel daarentegen biedt minder mogelijkheden voor datamodellering maar is wel eenvoudiger toe te passen in generieke software. Het is daarom van belang voor- en nadelen tegen elkaar af te wegen.
+</p><p>In Nederland is het SF2 profiel op GML van toepassing verklaard.</p><section id="totstandkoming-sf2-als-nederlands-profiel-op-gml"><h3 id="x3-1-totstandkoming-sf2-als-nederlands-profiel-op-gml"><span class="secno">3.1 </span>Totstandkoming SF2 als Nederlands profiel op GML</h3><p>Bij het tot stand komen van het Nederlandse GML profiel zijn een aantal beginselen leidend geweest:</p><ul>
+<li>het profiel moet de eisen van het geo-informatie werkveld weerspiegelen;</li>
+<li>het profiel is gekoppeld aan (toepassingen van) NEN 3610;</li>
+<li>het profiel is een basisprofiel dat basiseisen die door de sectorale informatiemodellen gesteld worden omvat;</li>
+<li>een sectoraal informatiemodel kan uitbreidingen op het basisprofiel formuleren;</li>
+<li>het profiel moet afgestemd zijn op de actuele technische mogelijkheden die software biedt.</li>
+</ul><p>Door deze beginselen geeft het profiel voldoende richting voor standaardisering van algemene functionaliteit maar ook flexibiliteit voor toepassingen die specifieke oplossingen nodig hebben. Het profiel geeft richting aan de aanbodkant van geo-informatie en aan de modelleurs van informatiemodellen voor de oplossingen en mogelijkheden voor datamodellering. Voor softwaretoepassingen biedt het profiel een basis waar functionaliteit en toepassingen op afgestemd kunnen worden.</p><p>Om een uitspraak te kunnen doen over de eisen die in Nederland gesteld worden aan GML als uitwisselingsstandaard is een enquête gehouden onder de beheerders van aan NEN 3610 gerelateerde informatiemodellen. De volgende informatiemodellen en hun respectievelijke sectoren zijn hier bij betrokken: BAG (adressen en gebouwen), IMGeo (geografie), IMWA, UM Aquo-m, UM Aquo-krw (water), TOP10NL/IMTOP (topografie), GBR (grootschalig weg, water en waterwegen), IMWE (welstand), IMRO (ruimtelijke ordening), IMKICH (cultuurhistorie), IMKAD (kadaster), IMKL, BMKL (kabels en leidingen), IMBOD (bodem). Op basis van deze eisen is een eerste concept profiel voor GML ontwikkeld.</p><p>Het conceptprofiel is gepresenteerd aan en voor commentaar uitgebracht naar het hele geo-informatie werkveld. Een belangrijke rol was hierin voor softwareleveranciers en –ontwikkelaars om eisen vanuit de toepassingen in het profiel te verwerken. Het conceptprofiel is gepubliceerd onder de werknaam gml4nl en was op het moment van publicatie gebaseerd op GML 3.1.1.</p><p>Bij de ISO publicatie van GML 3.2.1 is ook het Nederlandse profiel vernieuwd. Het Nederlandse profiel bleek daarbij zo weinig van het GML SF2 profiel te verschillen dat besloten is om geen apart Nederlands profiel te publiceren maar SF2 als officieel Nederlandse profiel op GML 3.2.1 te volgen. Belangrijk was daarin dat het huidige SF2 profiel, in tegenstelling tot 3.1.1 SF2, ook cirkels en bogen opgenomen heeft als geometrievormen.</p></section><section id="gml-simple-features-profielen-en-data-complexiteit"><h3 id="x3-2-gml-simple-features-profielen-en-data-complexiteit"><span class="secno">3.2 </span>GML Simple Features profielen en data complexiteit</h3><p>De GML standaard is een omvangrijke verzameling van XML elementen en attributen waarmee van alles mogelijk is. De GML standaard bevat bijvoorbeeld definities voor dynamische (voortdurend veranderende) objecten, topologie, complexe geometrische typen, en rasters. Dit maakt GML tot een rijke standaard die veel te bieden heeft, maar maakt het ook moeilijker voor software aanbieders om de hele standaard te ondersteunen.</p><p>Om dit probleem te adresseren zijn er verschillende profielen op GML gedefinieerd door de OGC. Een GML profiel is een subset van de complete GML set. De subset is wel zodanig dat het profiel niet in tegenspraak is met de complete set. Voor GML 3.2.1 zijn er drie profielen met toenemende complexiteit, de zogenaamde Simple Features profielen. Softwareleveranciers kunnen ervoor kiezen hun ondersteuning van GML te beperken tot een van deze profielen, of uiteraard om de hele standaard te ondersteunen.</p><p>Wat is nu een “simple feature”? Een feature is in de context van GML een equivalent van een instantie van een objecttype zoals bijvoorbeeld een gebouw, een boom, een persoon, een ding. Deze instanties hoeven niet noodzakelijkerwijs een geometrie, of locatie-informatie te hebben. Met ‘simple’ wordt in deze context bedoeld dat de features:</p><ul>
+<li><p>Een eenvoudige datastructuur hebben.</p>
+</li>
+<li><p>Als het ruimtelijke objecten zijn, een eenvoudige geometrische vorm hebben.</p>
+</li>
+</ul><p>De GML standaard is gebaseerd op de algemene XML standaard XML Schema [<cite><a class="bibref" href="#bib-xmlschema-0">xmlschema-0</a></cite>]. Een deel van de regels uit de simple features profielen hebben hier betrekking op. SF0 beperkt bijvoorbeeld de datatypen uit XML Schema die gebruikt mogen worden
+(string, boolean, etc) en definieert daarmee in feite ook een subset van XML Schema. Dit geldt voor de meeste regels die betrekking hebben op de eenvoud van de datastructuur.</p><p>Wat er precies wordt beschouwd als ‘eenvoudig’, oftewel wat er wel en niet is toegestaan, wordt gespecificeerd in de GML Simple Features Profile standaard [<cite><a class="bibref" href="#bib-gml-sf">GML-SF</a></cite>].</p></section><section id="regels-voor-alle-simple-features-profile-levels"><h3 id="x3-3-regels-voor-alle-simple-features-profile-levels"><span class="secno">3.3 </span>Regels voor alle Simple Features profile levels</h3><p>De volgende tabel uit het OGC document Geography Markup Language (GML) simple
+features profile, geeft een overzicht van de inhoud van de verschillende
+profielen.</p><section id="inhoud-sf-niveau-s"><h4 id="x3-3-1-inhoud-sf-niveau-s"><span class="secno">3.3.1 </span>Inhoud SF niveau’s</h4><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>SF-0</strong></th>
+<th><strong>SF-1</strong></th>
+<th><strong>SF-2</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Beperkte set van ingebouwde niet ruimtelijke typen</td>
+<td>String, integer, measurement, date, real, binary, boolean, URI</td>
+<td>String, integer, measurement, date, real, binary, boolean, URI</td>
+<td>Geen beperking</td>
+</tr>
+<tr>
+<td>Beperkte set van geometrietypen[^3]</td>
+<td>(multi)Punt, (multi)lijn, (multi)vlak,(multi) geometry</td>
+<td>(multi)Punt, (multi)lijn, (multi)vlak,(multi) geometry</td>
+<td>(multi)Punt, (multi)lijn, (multi)vlak,(multi) geometry</td>
+</tr>
+<tr>
+<td>Zelf ontwikkelde datatypen</td>
+<td>nee</td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>Gebruik van nillable en xsi:nil</td>
+<td>nee</td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>Cardinaliteit(multipliciteit)</td>
+<td>0 of 1</td>
+<td>0 tot onbeperkt</td>
+<td>0 tot onbeperkt</td>
+</tr>
+<tr>
+<td>Niet-ruimtelijke referenties</td>
+<td>Ja, Alleen by reference (<code>gml:ReferenceType</code>)</td>
+<td>Ja By reference (<code>gml:ReferenceType</code>) of inline</td>
+<td>Ja By reference en inline in combinatie is mogelijk.</td>
+</tr>
+<tr>
+<td>Ruimtelijke referenties</td>
+<td>Ja, Alleen by reference (<code>gml:ReferenceType</code>)</td>
+<td>Ja Alleen by reference (<code>gml:ReferenceType</code>)</td>
+<td>Ja By reference en inline in combinatie is mogelijk.</td>
+</tr>
+</tbody></table><p><a href="#geometrietypen">Tabel 2</a> geeft meer detail over de toegestane geometrietypen.</p><p>Het is toegestaan samengestelde (geaggregeerde) geometrie te gebruiken, te weten MultiPoint, MultiCurve, MultiSurface, en MultiGeometry. Hierbinnen geldt dat alleen de enkelvoudige container elementen mogen worden gebruikt. Dus wel: <code>gml:pointMember</code> maar niet: <code>gml:pointMembers</code> enzovoort.</p><p>Voor <strong>alle niveau’s (SF0, SF1 en SF2)</strong> geldt bovendien dat de volgende GML onderdelen in het Simple Features profile <strong>niet</strong> worden ondersteund:</p><ul>
+<li>Rasters (coverages)</li>
+<li>Topologie</li>
+<li>Tijd en dynamische features</li>
+<li>Observaties/metingen</li>
+</ul><p>Verder geldt:</p><ul>
+<li>Het gebruik van <code>gml:metadataProperty</code> is niet toegestaan. Men moet indien nodig zelf metadata elementen definiëren in een GML application schema.</li>
+<li>In het GML application schema moet het compliance level op de voorgeschreven manier (zie <a href="#schema-compliance-data-levering-data-ontvangen" class="sec-ref"><span class="secno">§&nbsp;3.7</span> <span class="sec-title">Schema compliance: data levering – data ontvangen</span></a>) worden aangegeven.</li>
+<li>In het GML application schema moet het volledige GML schema geïmporteerd worden (gml.xsd).</li>
+<li>Een GML application schema mag maximaal één feature collection op de voorgeschreven manier (zie <a href="#feature-collecties" class="sec-ref"><span class="secno">§&nbsp;3.3.2</span> <span class="sec-title">Feature collecties</span></a> definiëren.</li>
+</ul></section><section id="feature-collecties"><h4 id="x3-3-2-feature-collecties"><span class="secno">3.3.2 </span>Feature collecties</h4><p>Een GML document is gedefinieerd als één feature collectie, een verzameling van geo-objecten. Deze collectie krijgt een eigen naam gedefinieerd in het XML-Schema. Een GML document begint met de declaratie van deze collectie in het root element. Er wordt geen gebruik gemaakt van de container <code>gml:featureMembers</code> en de individuele <code>gml:featureMember</code>. Deze elementen zijn komen te vervallen vanaf GML versie 3.2.</p><p>Voorbeeld XSD fragment:</p><div class="example" id="example-1">
+          <div class="marker">
+      <a class="self-link" href="#example-1">Voorbeeld 1</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FeatureCollectionIMRO"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"imro:FeatureCollectionIMROType"</span> 
+            <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractGML"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FeatureCollectionIMROType"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"featureMember"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureMemberType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AbstractFeature"</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+</code></pre>
+        </div><p>Voorbeeld GML fragment:</p><div class="example" id="example-2">
+          <div class="marker">
+      <a class="self-link" href="#example-2">Voorbeeld 2</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">imro:FeatureCollectionIMRO</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"Collectie"</span>
+    <span class="hljs-attr">xmlns:imro</span>=<span class="hljs-string">"http://www.geonovum.nl/imro2012"</span>  
+    <span class="hljs-attr">xmlns:xlink</span>=<span class="hljs-string">xmlns:gml</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>  
+    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>  
+    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.geonovum.nl/imro2012 IMRO2012.xsd"</span>\&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">imro:featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">imro:Bestemmingsplangebied</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"NL.IMRO.0999.BP2008000001-0005"</span>&gt;</span>
+         ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">imro:Bestemmingsplangebied</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">imro:featureMember</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">imro:featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">imro:Enkelbestemming</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"NL.IMRO.135"</span>&gt;</span>
+         ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">imro:Enkelbestemming</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">imro:featureMember</span>&gt;</span>
+  ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">imro:FeatureCollectionIMRO</span>&gt;</span>
+</code></pre>
+        </div></section><section id="geometrietypen"><h4 id="x3-3-3-geometrietypen"><span class="secno">3.3.3 </span>Geometrietypen</h4><p>GML Simple Feature Profile staat een beperkte subset van geometrietypen uit GML toe. Deze subset is voor SF0, SF1, en SF2 gelijk.</p><p><em>Tabel 2: Geometrietypen</em>. Van elk type is ook het equivalent in UML gegeven (Spatial Schema):</p><table>
+<thead>
+<tr>
+<th><strong>In GML</strong></th>
+<th><strong>UML equivalent</strong></th>
+<th><strong>Restricties</strong></th>
+<th><strong>Welk GML Schema document</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gml:Point</code></td>
+<td>GM_Point</td>
+<td>geen</td>
+<td>geometryBasic0d1d.xsd</td>
+</tr>
+<tr>
+<td><code>gml:Curve</code></td>
+<td>GM_Curve</td>
+<td><code>gml:LineString</code> of <code>gml:Curve</code> met <code>gml:LineStringSegment</code>, <code>gml:Arc</code>, <code>gml:Circle</code> of <code>gml:CircleByCenterPoint</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>gml:Surface</code></td>
+<td>GM_Surface</td>
+<td>ondersteund wordt: <code>gml:Polygon</code> of <code>gml:Surface</code> met <code>gml:PolygonPatch</code> patches. Surface grenzen kunnen beschreven worden met <code>gml:LinearRing</code> of <code>gml:Ring</code> met enkele <code>gml:Curve</code> met <code>gml:LineStringSegment</code>, <code>gml:Arc</code>, <code>gml:Circle</code> of <code>gml:CircleByCenterPoint</code></td>
+<td>geometryBasic0d1d.xsd geometryPrimitives.xsd</td>
+</tr>
+<tr>
+<td><code>gml:Geometry</code></td>
+<td></td>
+<td>ondersteund wordt: <code>gml:Point</code>, <code>gml:LineString</code>, <code>gml:Curve</code>, <code>gml:Polygon</code>, <code>gml:Surface</code>, <code>gml:MultiPoint</code>, <code>gml:MultiCurve</code>, <code>gml:MultiSurface</code></td>
+<td>geometryBasic0d1d.xsd</td>
+</tr>
+<tr>
+<td><code>gml:MultiPoint</code></td>
+<td></td>
+<td>geen</td>
+<td>geometryAggregates.xsd</td>
+</tr>
+<tr>
+<td><code>gml:MultiCurve</code></td>
+<td></td>
+<td>zelfde als <code>gml:Curve</code></td>
+<td>geometryAggregates.xsd</td>
+</tr>
+<tr>
+<td><code>gml:MultiSurface</code></td>
+<td></td>
+<td>zelfde als <code>gml:Surface</code></td>
+<td>geometryAggregates.xsd</td>
+</tr>
+<tr>
+<td><code>gml:MultiGeometry</code></td>
+<td></td>
+<td>zelfde als <code>gml:Geometry</code></td>
+<td>geometryAggregates.xsd</td>
+</tr>
+</tbody></table><p>Specificatie van coördinaten:</p><p>Voor <code>gml:point</code> en <code>gml:CircleByCenterPoint</code> is dit middels het <code>gml:pos</code> element. Voor alle ander typen is het de <code>gml:posList</code>.</p></section><section id="coordinaatreferentiesysteem"><h4 id="x3-3-4-coordinaatreferentiesysteem"><span class="secno">3.3.4 </span>Coördinaatreferentiesysteem</h4><p>In het Simple Features profiel wordt aanbevolen om het coördinaatreferentiesysteem (CRS) van de in een GML document aanwezige
+coördinaten in het GML document op te nemen. In clausule 9 van NEN 3610:2011 wordt dit zelfs verplicht gesteld.</p><p>In het GML bestand dient het coördinaatreferentiesysteem opgenomen te worden als waarde van het in GML gedefinieerde attribuut <code>srsName</code>. Aangeraden wordt om dit zo generiek mogelijk te doen. Als alle coördinaten in het document hetzelfde CRS hebben, zou het <code>srsName</code> attribuut op het niveau van de feature collection moeten worden opgenomen. Anders kan <code>srsName</code> worden opgenomen op feature member niveau of op geometrie niveau.</p><p>Voor het definiëren van het coördinaatreferentiesysteem kunnen <a href="http://www.epsg.org/">EPSG (European Petroleum Survey Group)</a> codes worden gebruikt.</p><div class="example" id="example-3">
+          <div class="marker">
+      <a class="self-link" href="#example-3">Voorbeeld 3</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">wfs:FeatureCollection</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">gml:Envelope</span> <span class="hljs-attr">srsName</span>=<span class="hljs-string">"urn:opengis:def:crs:EPSG::28992"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">gml:Envelope</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- feature instances go here --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">wfs:member</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">myns:MyFeature</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Envelope</span> <span class="hljs-attr">srsName</span>=<span class="hljs-string">"..."</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">gml:Envelope</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- zero or more property values go here --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">myns:geomProperty</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">srsName</span>=<span class="hljs-string">"..."</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">myns:geomProperty</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- zero or more property values go here --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">myns:MyFeature</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">wfs:member</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- more feature instances go here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">wfs:FeatureCollection</span>&gt;</span>
+</code></pre>
+        </div></section><section id="container-elementen-voor-samengestelde-geometrietypen"><h4 id="x3-3-5-container-elementen-voor-samengestelde-geometrietypen"><span class="secno">3.3.5 </span>Container elementen voor samengestelde geometrietypen</h4><p>Geometrietypen die zijn samengesteld fungeren als een container (aggregatie) voor de verschillende individuele geometrie elementen. De volgende container elementen zijn toegestaan.</p><p><em>Tabel 3: Samengestelde geometrietypen</em></p><table>
+<thead>
+<tr>
+<th>Samengesteld geometrie type</th>
+<th>Container element</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gml:MultiPoint</code></td>
+<td><code>gml:pointMember</code></td>
+</tr>
+<tr>
+<td><code>gml:MultiCurve</code></td>
+<td><code>gml:curveMember</code></td>
+</tr>
+<tr>
+<td><code>gml:MultiSurface</code></td>
+<td><code>gml:surfaceMember</code></td>
+</tr>
+<tr>
+<td><code>gml:MultiGeometry</code></td>
+<td><code>gml:geometryMember</code></td>
+</tr>
+</tbody></table></section><section id="lijninterpolaties"><h4 id="x3-3-6-lijninterpolaties"><span class="secno">3.3.6 </span>Lijninterpolaties</h4><p>Het type lijninterpolatie beschrijft hoe de verbinding tussen twee coördinaatparen (punten) is beschreven. In de GML standaard is hiervoor een uitgebreid aantal mogelijkheden. Het Simple Features profiel ondersteunt hiervan maar twee:lineaire interpolatie en interpolatie door middel van cirkelbogen. Deze laatste niet lineaire interpolatie was geen onderdeel van het SF profiel van de vorige GML versie (3.1). Vanwege het toegenomen gebruik in applicaties zijn ze nu wel toegevoegd.</p><p>In de tabel in paragraaf 3.3.2 is precies te zien welke typen lijninterpolatie zijn toegestaan door te kijken naar de restricties bij <code>gml:Curve</code> en <code>gml:Surface</code>. Toegestaan voor het opnemen van rechte lijnen zijn alleen gml:LineString en <code>gml:Curve</code> met <code>gml:lineStringSegments</code>. Voor het opnemen van bogen zijn alleen <code>gml:Arc</code>, <code>gml:Circle</code> en <code>gml:CircleByCenterPoint</code> toegestaan. <code>gml:Arc</code> is de GML implementatie van de cirulaire boog met drie punten (beginpunt, eindpunt en punt waar de boog doorheen loopt).</p><p>De overige typen lijninterpolatie, zoals <code>gml:CubicSpline</code>, <code>gml:ArcByBulge</code>, etc, zijn niet toegestaan.</p></section></section><section id="simple-features-profile-0-sf0"><h3 id="x3-4-simple-features-profile-0-sf0"><span class="secno">3.4 </span>Simple features profile 0 (SF0)</h3><p>SF0 is het meest eenvoudige profiel op GML, m.a.w. het profiel met de meeste restricties op GML en XML Schema.</p><p>Regels:</p><ul>
+<li>Waarden van een eigenschap mogen inline (genest) of door verwijzing worden opgenomen. Er moet wel een keuze gemaakt worden voor éen van de twee manieren: het is niet toegestaan om in een SF0 GML document de ene keer een waarde inline op te nemen en een andere keer te verwijzen. Verwijzingen mogen alleen opgenomen worden met <code>gml:ReferenceType</code>. Het <code>gml:ReferenceType</code> is de simpele GML implementatie van in UML als associaties gemodelleerde koppelingen tussen objecttypen. De naam van de gekoppelde bron (objecttype) wordt opgenomen in een appinfo element, zodat te zien is naar wat voor soort ding er gerefereerd wordt. De daadwerkelijke verwijzing naar een object instantie wordt met <code>xlink:href</code> gedaan.</li>
+<li>Beperkte set van ingebouwde niet-geometrische typen. Andere eenvoudige of samengestelde typen uit XML Schema of zelf gedefinieerd, zijn niet toegestaan, alleen de volgende:
+<ol>
+<li>String:
+<ol>
+<li>Een element dat een alfanumerieke waarde heeft moet zijn van het XML Schema type <code>string</code> of een restrictie  daarvan. De <code>maxLength</code> of <code>length</code> mogen worden gebruikt om de string verder in te perken.</li>
+<li>Een element dat een alfanumerieke waarde heeft waarvan de taal moet worden aangegeven, moet hiervoor gebruik maken van het <code>xml:lang</code> attribuut waarin de taalcode is opgegeven.</li>
+</ol>
+</li>
+<li>Integer: Een element met een integer waarde moet zijn van het XML Schema-type <code>integer</code> of een restrictie daarvan. In het <code>totalDigits</code> element kan worden aangegeven hoe lang het getal mag zijn.</li>
+<li>Measurement: Een element dat een meting als waarde heeft moet van het type <code>gml:MeasureType</code> zijn of zijn afgeleid.</li>
+<li>Date: Een element dat een datum als waarde heeft, moet zijn van een van de XML Schema typen <code>date</code> of <code>dateTime</code> of een restrictie daarvan.</li>
+<li>Real: Een element dat een real waarde moet bevatten, moet zijn van een van de XML Schema typen <code>double</code> of <code>decimal</code> of een restrictie daarvan. Bij een decimal mogen de facetten <code>totalDigits</code> en <code>fractionDigits</code> worden opgegeven, bij een double niet. Meestal zullen elementen met real waarden overigens metingen zijn en dus met een <code>gml:MeasureType</code> worden opgenomen.</li>
+<li>binary: Een element dat een binaire inhoud heeft, moet dit ofwel inline in het GML bestand coderen met het XML Schema type <code>base64Binary</code> of <code>hexBinary</code>; of ernaar verwijzen met een URL. In elk geval is het opnemen van de <code>mimeType</code> verplicht.</li>
+<li>boolean: Een element dat een boolean (ja/nee) waarde heeft, moet van het XML Schema type <code>boolean</code> zijn.</li>
+<li>URI: een element dat een URI als waarde heeft, moet van het XML Schema type <code>anyURI</code> zijn.</li>
+</ol>
+</li>
+<li>De niet geometrische typen mogen qua waarde verder alleen ingeperkt worden met de XML Schema facetten <code>minInclusive</code>, <code>minExclusive</code>, <code>maxInclusive</code>, <code>maxExclusive</code>, en <code>enumeration</code>. Hiermee kan men de minimale en maximale waarden van getallen inperken en enumeraties definiëren.</li>
+<li>Een element eigenschap mag niet meerdere keren voorkomen; de kardinaliteit die mag worden opgegeven is beperkt tot 0 of 1.</li>
+<li>Het XML Schema attribuut <code>nillable</code> mag niet gebruikt worden.</li>
+<li>Het aantal toegestane GML geometrie typen is ingeperkt. Dit is dezelfde subset voor SF0, SF1, en SF2; zie <a href="#geometrietypen" class="sec-ref"><span class="secno">§&nbsp;3.3.3</span> <span class="sec-title">Geometrietypen</span></a>.</li>
+<li>Features mogen meerdere geometrische eigenschappen hebben.</li>
+</ul></section><section id="simple-features-profile-1-sf1"><h3 id="x3-5-simple-features-profile-1-sf1"><span class="secno">3.5 </span>Simple features profile 1 (SF1)</h3><p>SF1 kent minder restricties dan SF0 en is dan ook iets complexer.</p><p>SF1 neemt de regels van SF0 over, met uitzondering van het volgende:</p><ul>
+<li>Het is toegestaan om eigen datatypen te maken met een eenvoudige waarde, maar wel gebaseerd op de set van toegestane niet-geometrische typen uit SF0.</li>
+<li>Het is toegestaan om samengestelde datatypen te maken die een eigen, geneste structuur hebben.</li>
+<li>Eigenschappen mogen meerdere keren voorkomen.</li>
+<li>Het XML Schema attribuut <code>nillable</code> mag gebruikt worden.</li>
+</ul><section id="zelf-ontwikkelde-datatypen-geneste-inhoud"><h4 id="x3-5-1-zelf-ontwikkelde-datatypen-geneste-inhoud"><span class="secno">3.5.1 </span>Zelf ontwikkelde datatypen: geneste inhoud.</h4><p>In SF1 en SF2 kan een geneste structuur van attributen toegepast worden. Attributen kunnen daarbij samengesteld worden uit een verzameling attributen. We noemen deze constructie het samengesteld attribuut.</p><p>Een voorbeeld is een attribuut met de naam ‘identificatie’ en een datatype ‘identifier’. Het datatype bestaat vervolgens uit drie attributen ‘identificatiecode’, ‘organisatie’, ‘versie’. Het attribuut ‘identificatie’ is in dit geval samengesteld uit drie andere attributen, verenigd in het zelfgemaakte datatype ‘identifier’.</p><p>In een GML application schema ziet die constructie als volgt uit:</p><div class="example" id="example-4">
+          <div class="marker">
+      <a class="self-link" href="#example-4">Voorbeeld 4</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"IdentifierPropertyType"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"fw:Identifier"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Identifier"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatiecode"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"organisatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"1"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"versie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"1"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+</code></pre>
+        </div></section></section><section id="simple-features-profile-2-sf2"><h3 id="x3-6-simple-features-profile-2-sf2"><span class="secno">3.6 </span>Simple features profile 2 (SF2)</h3><p>SF2 is het minst restrictieve niveau in het profiel en is geschikt voor geavanceerde informatiemodellen. Vergeleken met SF1 vervallen in SF2 alle regels over het definiëren van niet-geometrische eigenschappen. D.w.z. alle typen uit de XML Schema standaard mogen gebruikt worden, eigen eenvoudige en samengestelde typen mogen worden gedefinieerd, er zijn geen restricties op kardinaliteit, etc.</p><p>Waarden van een eigenschap mogen in SF2 inline (genest) of door verwijzing worden opgenomen. Een mix van beide mag gebruikt worden en gebruik van <code>gml:ReferenceType</code> is niet verplicht.</p><p>Wel blijft de restrictie op de toegestane geometrietypen gelden, net als de regel over het definiëren van feature collecties.</p></section><section id="schema-compliance-data-levering-data-ontvangen"><h3 id="x3-7-schema-compliance-data-levering-data-ontvangen"><span class="secno">3.7 </span>Schema compliance: data levering – data ontvangen</h3><p>Het Simple Features profile van GML 3.1 was in technisch opzicht een gestripte versie van de volledige GML XSD. Dit bleek echter bij veel validatietools problemen op te leveren. De gestripte XSD had dezelfde namespace als de volledige GML XSD waardoor conflicten konden optreden.</p><p>Bij het Simple Features profile van GML 3.2 is daarom een andere werkwijze gekozen. Een GML applicatieschema dat voldoet aan een bepaald level van het Simple Features profile, moet hoewel de GML standaard niet volledig hoeft te worden ondersteund, de volledige GML XSD en de gmlsfLevels.xsd importeren en in de header aangeven welk SF level is toegepast. Dit dient te gebeuren door een annotation op te nemen binnen het schema element:</p><div class="example" id="example-5">
+          <div class="marker">
+      <a class="self-link" href="#example-5">Voorbeeld 5</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>
+        <span class="hljs-attr">xmlns:gmlsf</span>=<span class="hljs-string">"http://www.opengis.net/gmlsf/2.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>
+          <span class="hljs-attr">schemaLocation</span>=<span class="hljs-string">"http://schemas.opengis.net/gml/3.2.1/gml.xsd"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"http://www.opengis.net/gmlsf/2.0"</span>
+          <span class="hljs-attr">schemaLocation</span>=<span class="hljs-string">"http://schemas.opengis.net/gmlsfProfile/2.0/gmlsfLevels.xsd"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"http://schemas.opengis.net/gmlsfProfile/2.0/gmlsfLevels.xsd"</span>&gt;</span>
+      <span class="hljs-comment">&lt;!--hier een 0, 1 of 2 invullen--&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">gmlsf:ComplianceLevel</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">gmlsf:ComplianceLevel</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+  ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
+</code></pre>
+        </div><p>In plaats van een absolute URL naar de locatie van de schema’s in de schema repository van de OGC, is het ook toegestaan een absolute of relatieve URL naar een andere locatie te gebruiken, zolang het schema maar opgehaald kan worden.</p><p>Het is toegestaan om andere application schema’s te importeren, maar alleen als die voldoen aan hetzelfde Simple Features profile niveau of een lager niveau (en dus minder complex zijn) en dit op de voorgeschreven manier aangeven in de header.</p><p>Om te controleren of een GML bestand voldoet aan de regels van het Simple Features profile, kan de GML xsd niet worden gebruikt omdat er geen gestripte versie meer beschikbaar is. In plaats daarvan wordt aangeraden om een <a href="http://www.schematron.com/">Schematron</a> validatie te gebruiken. Voor SF2 is een document met Schematron regels beschikbaar in Annex E van het Simple Features profile for GML. Deze regels zijn beschreven in het volgende hoofdstuk, en zijn als validatie ook <a href="http://schemas.opengis.net/gmlsfProfile/2.0/gmlsfL2.sch">beschikbaar in de schema repository van de OGC</a> en de <a href="http://validatie.geostandaarden.nl">online validator van Geonovum</a>.</p></section></section><section id="gmlsf2"><!--OddPage--><h2 id="x4-gml-sf2-nederlands-profiel-op-gml-3-2"><span class="secno">4. </span>GML SF2: Nederlands profiel op GML 3.2</h2><p>Vanwege de voordelen van voldoen aan internationale conventies en omdat het GML Simple Features profile level 2(SF2) bijna voldoet aan de eisen die er in Nederland gesteld worden is er besloten om SF2 als Nederlandse standaard voor de implementatie van GML 3.2.1 te nemen. In het vorige hoofdstuk is de inhoud van dat profiel toegelicht. In dit hoofdstuk wordt het profiel beschreven middels businessrules die van toepassing zijn op een GML document dat voldoet aan SF 2. De businessrules zijn opgesteld in Schematron, een taal ontwikkeld voor het valideren van XML documenten.</p><section id="introductie-schematron"><h3 id="x4-1-introductie-schematron"><span class="secno">4.1 </span>Introductie Schematron</h3><p>Schematron gaat in tegenstelling tot XML Schema niet uit van een definitie van de complete XML structuur van een set documenten, maar stelt in staat om regels op te stellen voor specifieke onderdelen van XML documenten. Schematron kan daardoor gebruikt worden om heel gericht enkele regels te controleren. Voor het opstellen van de regels zijn er veel mogelijkheden, waaronder het toetsen van onderlinge afhankelijkheden tussen onderdelen van de XML structuur, wat met XML Schema niet mogelijk is. Terwijl XML Schema te vergelijken is met UML, is Schematron verwant aan de Object Constraint Language (OCL). Beide zijn de implementatie van hun meer conceptuele equivalent.</p><p>De in Schematron opgestelde regels kunnen voor validatie van XML (GML) documenten worden gebruikt. Een deel van de bekende XML editors kan validaties tegen Schematron regels uitvoeren of de Schematron controle kan worden uitgevoerd als XSLT transformatie. Validatie tegen de Schematron implementatie van SF2 kan ook <a href="http://validatie.geostandaarden.nl/etf-webapp/testruns/create-direct?testProjectId=8089ca7a-8722-3119-9ec9-661205a743f4">via de Geonovum validator</a> worden uitgevoerd.</p><p>De nu volgende paragraaf geeft de Schematron regels die voor het valideren tegen GML SF2 zijn opgesteld. Door de toelichting bij elke regel wordt duidelijk gemaakt hoe op dat bepaalde onderwerp SF2 verschilt van de complete GML standaard.</p></section><section id="schematron-business-rules-voor-nederlands-profiel"><h3 id="x4-2-schematron-business-rules-voor-nederlands-profiel"><span class="secno">4.2 </span>Schematron business rules voor Nederlands profiel</h3><p>De hieronder weergegeven business rules omvatten alleen de SF2 regels. De controle beperkt zich tot met name de restricties met betrekking tot geometrietypen. De restricties op XML Schema, die voor SF0 en SF1 gelden, zijn niet opgenomen. Deze Schematron regels kunnen echter wel gebruikt worden om tenminste de geometrie restricties voor een SF0 of SF1 bestand te valideren. Deze zijn immers voor SF0, SF1 en SF2 gelijk.</p><p>Deze schematron regels zijn ontleend aan het OGC Simple Feature Profile for GML. De nieuwste versie is te vinden op
+<a href="http://schemas.opengis.net/gmlsfProfile/2.0/">http://schemas.opengis.net/gmlsfProfile/2.0/</a>.</p><p><strong>Geen gebruik van gml:metaDataProperty.</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(gml:metaDataProperty)"</span>&gt;</span>
+    This profile prohibits use of gml:metaDataProperty elements for referencing metadata 
+    in instance documents.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Geen topologie elementen</strong></p><p>Geen voorkomens van <code>Node</code>, <code>Edge</code>, <code>Face</code>, <code>TopoSolid</code>, <code>TopoPoint</code>, <code>TopoCurve</code>, <code>TopoSurface</code>, <code>TopoVolume</code>, or <code>TopoComplex</code>.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(
+    self::gml:Node|self::gml:Edge|self::gml:Face|self::gml:TopoSolid |self::gml:TopoPoint|
+    self::gml:TopoCurve|self::gml:TopoSurface |self::gml:TopoVolume|self::gml:TopoComplex)"</span>&gt;</span>
+        Spatial properties are limited to the set of geometric types consisting of point,
+        curve with linear and/or circular arc interpolation, planar surface, or aggregates
+        thereof. Spatial topology is excluded.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Interpolatie van curve segmenten</strong></p><p>Toegestaan binnen een <code>gml:Curve</code> zijn <code>LineStringSegment</code>, <code>Arc</code>, <code>Circle</code>, or <code>CircleByCenterPoint</code></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(
+    self::gml:Curve) or self::gml:Curve/gml:segments[gml:LineStringSegment|gml:Arc|gml:Circle|
+    gml:CircleByCenterPoint]"</span>&gt;</span>
+        Curves (standalone or within surfaces) must have linear and/or circular arc interpolation 
+        (LineString, Curve with Arc, Circle or CircleByCenterpoint segments)
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Surface is Polygon of Surface.</strong></p><p>Geen voorkomens van <code>OrientableSurface</code>, <code>CompositeSurface</code>, <code>PolyhedralSurface</code>, <code>Tin</code>, of <code>TriangulatedSurface</code>.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(
+    self::gml:OrientableSurface|self::gml:CompositeSurface|self::gml:PolyhedralSurface|
+    self::gml:Tin|self::gml:TriangulatedSurface)"</span>&gt;</span>
+        Planar surface types are restricted to Polygon or Surface elements.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Beperkt aantal geometrytypen.</strong></p><p>Geen <code>Solid</code>, <code>MultiSolid</code>, <code>CompositeSolid</code>, <code>CompositeCurve</code> of <code>Grid</code>.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(
+    self::gml:Solid|self::gml:MultiSolid|self::gml:CompositeSolid|self::gml:CompositeCurve|
+    self::gml:Grid)"</span>&gt;</span>
+        Supported geometry types are restricted to point, curve with linear and/or circular arc 
+        interpolation, planar surface, or aggregates thereof.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Punt coordinaten met gml:pos element.</strong></p><p>Binnen een <code>gml:Point</code> moeten de coordinaten zijn opgenomen in een <code>gml:pos</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(self::gml:Point/gml:pos) = count(self::gml:Point/*)"</span>&gt;</span>
+    Geometry coordinates shall only be specified using the gml:pos element for gml:Point.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Gml:CircleByCenterPoint gebruikt gml:pos element.</strong></p><p>Binnen een <code>gml:CircleByCenterPoint</code> moeten de coordinaten zijn opgenomen in een <code>gml:pos</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:CircleByCenterPoint/gml:pos|self::gml:CircleByCenterPoint/gml:radius) =
+    count(self::gml:CircleByCenterPoint/*)"</span>&gt;</span>
+        Geometry coordinates shall only be specified using the gml:pos element
+        for gml:CircleByCenterPoint.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Gml:posList element voor coordinaten in andere dan punt geometrien.</strong></p><p><strong>Gml:LineString:</strong></p><p>Binnen een <code>gml:LineString</code> moeten de coordinaten zijn opgenomen in een <code>gml:posList</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:LineStringSegment/gml:posList) = count(self::gml:LineStringSegment/*)"</span>&gt;</span>
+        Geometry coordinates shall only be specified using the gml:posList element 
+        for gml:LineStringSegment.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Gml:LinearRing</strong></p><p>Binnen een <code>gml:LinearRing</code> moeten de coordinaten zijn opgenomen in een <code>gml:posList</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:LinearRing/gml:posList) = count(self::gml:LinearRing/*)"</span>&gt;</span>
+    Geometry coordinates shall only be specified using the gml:posList element for gml:LinearRing.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Gml:Arc</strong></p><p>Binnen een <code>gml:Arc</code> moeten de coordinaten zijn opgenomen in een <code>gml:posList</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:Arc/gml:posList) = count(self::gml:Arc/*)"</span>&gt;</span>
+        Geometry coordinates shall only be specified using the gml:posList element for 
+        gml:Arc.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>gml:Circle</strong></p><p>Binnen een <code>gml:Circle</code> moeten de coordinaten zijn opgenomen in een <code>gml:posList</code> element.</p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:Circle/gml:posList) = count(self::gml:Circle/*)"</span>&gt;</span>
+        Geometry coordinates shall only be specified using the gml:posList element for 
+        gml:Circle.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Toegestane container elementen:</strong></p><p><strong>gml:pointMember</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(self::gml:MultiPoint/gml:pointMembers)"</span>&gt;</span>
+    This profile restricts instance documents to using the property container gml:pointMember
+    for the MultiPoint geometry type.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>gml:curveMember</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(self::gml:MultiCurve/gml:curveMembers)"</span>&gt;</span>
+    This profile restricts instance documents to using the property container gml:curveMember 
+    for the MultiCurve geometry type.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>gml:surfaceMember</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(self::gml:MultiSurface/gml:surfaceMembers)"</span>&gt;</span>
+    This profile restricts instance documents to using the property container gml:surfaceMember 
+    for the MultiSurface geometry type.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>gml:geometryMember</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(self::gml:MultiGeometry/gml:geometryMembers)"</span>&gt;</span>
+    This profile restricts instance documents to using the property container gml:geometryMember 
+    for the MultiGeometry geometry type.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>Surface elementen zijn altijd gml:PolygonPatch</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"count(
+    self::gml:Surface/gml:patches/gml:PolygonPatch) = count(self::gml:Surface/gml:patches/*)"</span>&gt;</span>
+        The content of gml:Surface elements is restricted to gml:PolygonPatch patches.
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre><p><strong>De dimensie van het coordinaatreferentiesysteem is 1, 2 of 3</strong></p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sch:assert</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"not(self::*/@srsDimension &gt; 3)"</span>&gt;</span>
+    coordinate reference systems may have 1, 2 or 3 dimensions
+<span class="hljs-tag">&lt;/<span class="hljs-name">sch:assert</span>&gt;</span>
+</code></pre></section></section><section id="sf2tosf0"><!--OddPage--><h2 id="x5-basisregels-voor-transformatie-van-een-sf2-naar-een-sf0-model"><span class="secno">5. </span>Basisregels voor transformatie van een SF2 naar een SF0 model.</h2><p>SF2 is de standaard voor informatiemodellen in Nederland. Toch is het in sommige gevallen gewenst om te werken met een eenvoudiger informatiemodel, dat met name voor software die de complexere zaken in SF2 niet ondersteunt, te begrijpen is.</p><section id="inleiding-0"><h3 id="x5-1-inleiding"><span class="secno">5.1 </span>Inleiding</h3><p>De beperkingen die SF0 oplegt aan de GML structuur op het gebied van datastructurering en datatypen maken dit niveau het meest verwant aan een gangbare databasestructuur. Dit kan bijvoorbeeld het importeren van een GML bestand of het serveren van GML data in een web service sterk vereenvoudigen.</p><p>Als het voor een implementatie nodig is dat de GML bestanden aan SF0 voldoen in plaats van het in Nederland algemeen geldende SF2, kan er naast het conceptuele informatiemodel, dat voldoet aan SF2, een afgeleide versie worden gemaakt die
+voldoet aan SF0. Dit brengt een aantal wijzigingen in het informatiemodel met zich mee, die in dit hoofdstuk besproken worden.</p><p>De in dit hoofdstuk opgenomen voorbeelden zijn fictief en hebben geen relatie met een actueel model.</p></section><section id="verschil-sf0-en-sf2"><h3 id="x5-2-verschil-sf0-en-sf2"><span class="secno">5.2 </span>Verschil SF0 en SF2</h3><p>Wie een informatiemodel moet omzetten dat voldoet aan SF2 naar een variant die voldoet aan het strengere SF0, moet met de volgende aspecten rekening houden:</p><ul>
+<li>Van de XML Schema typen mogen alleen <code>string</code>, <code>integer</code>, <code>date</code>, <code>real</code>, <code>binary</code>, <code>boolean</code>, en <code>URI</code> gebruikt worden, plus het GML type <code>measurement</code>.</li>
+<li>Eigen, eenvoudige of samengestelde datatypen zijn niet toegestaan.</li>
+<li>Eigenschappen mogen geen meervoudige kardinaliteit hebben.</li>
+<li>Verwijzingen moeten met <code>gml:ReferenceType</code> worden vastgelegd.</li>
+<li>XML Schema <code>nillable</code> functionaliteit mag niet gebruikt worden.</li>
+</ul></section><section id="normalisatieregels"><h3 id="x5-3-normalisatieregels"><span class="secno">5.3 </span>Normalisatieregels</h3><p>Om een informatiemodel volgens SF0 te implementeren op basis van een SF2 informatiemodel kunnen de volgende normalisatieregels gevolgd worden.</p><section id="meervoudig-attribuut"><h4 id="x5-3-1-meervoudig-attribuut"><span class="secno">5.3.1 </span>Meervoudig attribuut</h4><p>In SF2 is het toegestaan om attributen (eigenschappen van features) meerdere keren te laten voorkomen. In SF0 mag elk attribuut maar één keer voorkomen.</p><p>Er zijn twee oplossingen waaruit gekozen kan worden:</p><ol>
+<li>Beperk het aantal toegestane voorkomens van het attribuut tot één, en neem indien er meerdere waarden aanwezig zijn, deze op in het attribuut, met een scheidingsteken (bijvoorbeeld ‘;’) tussen elke twee waarden. Het voordeel hiervan is dat men onbeperkt waarden kan opnemen. Het nadeel is dat er geen enumeratie of ander datatype anders dan een (alfanumerieke) string kan worden toegekend aan het attribuut. Ook is er extra moeite nodig om eventueel de individuele waarden weer uit te lezen.</li>
+<li>Neem voor het attribuut zoveel voorkomens op als redelijkerwijs nodig is. Als een attribuut bijvoorbeeld in de praktijk niet meer dan 3 keer voorkomt, kan men hiervoor drie attributen opnemen in het informatiemodel (bijvoorbeeld: naam1, naam2 en naam3). De attributen moeten altijd beginnen met dezelfde inhoudelijke naam en eindigen met een cijferaanduiding.</li>
+</ol></section><section id="zelfgemaakte-datatypen"><h4 id="x5-3-2-zelfgemaakte-datatypen"><span class="secno">5.3.2 </span>Zelfgemaakte datatypen</h4><p>Complexe datatypen, oftewel samengestelde attributen, met eigen geneste structuur, zijn in SF2 wel toegestaan, maar in SF0 niet.</p><figure id="fig-klasse-met-zelfgemaakt-complex-datatype-identificatie-in-sf2-model"><img src="media/a33c233d3be4783c1c37a2d849ddbd19.png" alt="complex datatype">
+<figcaption>Figuur <span class="figno">9</span> <span class="fig-title">Klasse met zelfgemaakt, complex datatype ‘identificatie’ in SF2 model</span></figcaption>
+</figure><p>Samengestelde attributen worden in een aan SF0 voldoend informatiemodel opgenomen als losse attributen. Met een gelijknamig stereotype dat bij elk van de attributen die bij het samengestelde attribuut horen wordt opgenomen, wordt in het UML informatiemodel aangegeven dat de attributen bij elkaar horen. Het stereotype wordt in de UML klasse weergegeven boven de attributen die het gemeenschappelijk hebben tussen &lt;&lt; &gt;&gt;.</p><p>Daarnaast krijgen deze attributen een gemeenschappelijke prefix, die aangeeft dat ze een groep vormen. Zo zijn ze in een GML bestand ook te herkennen als bij elkaar horende groep.</p><figure id="fig-klasse-met-samengesteld-attribuut-in-sf0-model"><img src="media/3243c10ad958deea893ca30dc5dd4907.png" alt="SF0 samengesteld attribuut">
+<figcaption>Figuur <span class="figno">10</span> <span class="fig-title">Klasse met samengesteld attribuut in SF0 model</span></figcaption>
+</figure></section><section id="associaties"><h4 id="x5-3-3-associaties"><span class="secno">5.3.3 </span>Associaties</h4><figure id="fig-associatie-in-een-sf2-uml-model"><img src="media/885e67a41910ec35ff1f7de13c29b9a4.png" alt="associatie">
+<figcaption>Figuur <span class="figno">11</span> <span class="fig-title">Associatie in een SF2 UML model</span></figcaption>
+</figure><p>Ook associaties zijn in een SF2 informatiemodel wel toegestaan, maar in een SF0 model niet. Associaties worden in een GML bestand gecodeerd als ofwel een geneste structuur, ofwel een link. In SF0 zijn geneste structuren niet toegestaan (zie de vorige paragraaf) en mogelijk links/verwijzingen alleen worden uitgedrukt met behulp van het <code>gml:ReferenceType</code>.</p><p>Om het zo eenvoudig mogelijk te houden geldt voor de vertaling van associaties uit een SF2 model naar een SF0 model dat deze in plaats van als associaties tussen klassen in het model worden opgenomen als attributen:</p><ul>
+<li>met het stereotype <code>&lt;&lt;objectverwijzing&gt;&gt;</code>,</li>
+<li>en met een suffix <code>Ref</code>.</li>
+</ul><p>Als de associatie meerdere keren mag voorkomen, wordt dit op de zelfde manier opgelost als bij meervoudige attributen.</p><p>In het attribuut wordt de identificatie opgenomen van het object waarnaar
+verwezen wordt.</p><figure id="fig-klasse-in-sf0-model-met-objectverwijzingen"><img src="media/75285cecf93111fe4f07f9e08dcb82a2.png" alt="SF0 klasse met verwijzingen">
+<figcaption>Figuur <span class="figno">12</span> <span class="fig-title">Klasse in SF0 model met objectVerwijzingen</span></figcaption>
+</figure></section></section></section><section id="coderingsregels" class="appendix"><!--OddPage--><h2 id="a-algemene-coderingsregels-gml"><span class="secno">A. </span>Algemene coderingsregels GML</h2><p>Hoe uit een UML informatiemodel uiteindelijk een XML Schema wordt gemaakt is aan regels gebonden die in ISO 19118 en in annex E van de OGC standaard GML beschreven zijn. Dit hoofdstuk geeft een overzicht van de belangrijkste van deze regels.</p><section id="van-uml-naar-gml"><h3 id="a-1-van-uml-naar-gml"><span class="secno">A.1 </span>Van UML naar GML</h3><p>In ISO/TC 211 en OGC en daarom ook in NEN3610, wordt het semantisch model in UML vastgelegd. Vervolgens wordt via een geautomatiseerde procedure een XML/GML Schema uit het UML model gegenereerd. Op deze wijze wordt geborgd dat er geen verschillen ontstaan tussen het semantisch model in UML en het technisch model in het uitwisselformaat XML/GML. Het is ook toegestaan om handmatig een GML-conform XML Schema te maken.</p><p>Het semantisch model, vastgelegd in UML, wordt een UML Application Schema genoemd. Het bijbehorende XML Schema wordt een GML Application Schema genoemd. De term 'application' duidt er daarbij op dat het om een <em>toepassing</em> van GML gaat voor een specifiek domein/sector.</p><p>Het informatiemodel wordt gemodelleerd middels één of meer UML klassendiagrammen. De klassen worden gegroepeerd in UML packages, één voor elk te genereren schema bestand. Aan de packages en klassen kan extra informatie worden toegekend die gebruikt wordt om het genereren van het schema te sturen. Dit wordt gedaan door een stereotype toe te kennen aan het package of de klasse. GML definieert een standaard set aan stereotypen (GML 3.2.1 Annex E).</p><p>Bij een package kan bijvoorbeeld worden aangegeven dat het van het stereotype <code>&lt;&lt;applicationschema&gt;&gt;</code> is waarna kan worden aangegeven wat de gewenste target namespace, namespace prefix en bestandsnaam zijn van het te genereren XML Schema. Bij een klasse kan men aangeven dat het een <code>&lt;&lt;featuretype&gt;&gt;</code> is (geo-object) waarna bij de klasse metadata specifiek voor FeatureTypes kan worden ingevuld. Een klasse kan echter ook bijvoorbeeld van het stereotype <code>&lt;&lt;union&gt;&gt;</code> zijn.</p><p>Een klasse waarvan is aangegeven dat het een FeatureType is, zal volgens de GML encoding rules voor Features worden opgenomen in het te genereren XML Schema als een globaal XML element in de substitutionGroup van <code>gml:AbstractFeature</code> met een
+globaal complexType dat een extensie is van <code>gml:AbstractFeatureType</code>. Een klasse waarvan is aangegeven dat het een Union is, zal heel anders naar het XML Schema vertaald worden, namelijk als een <code>complexType</code> met een <code>choice</code>.</p><p>Voor het genereren van het XML Schema wordt een tool gebruikt, <a href="https://shapechange.net">ShapeChange</a> van interactive instruments, die op basis van een UML model een of meer GML Application Schema's genereert volgens de door de GML standaard gestelde eisen. Wie deze tool gebruikt voor het genereren van het GML application schema hoeft zich dus geen zorgen meer te maken over de GML encoding rules.</p></section><section id="gml-encoding-rules"><h3 id="a-2-gml-encoding-rules"><span class="secno">A.2 </span>GML encoding rules</h3><p>Het XML Schema moet voldoen aan de eisen die GML eraan stelt (GML 3.2.1 clause 21 en delen van clause 7), en, indien uit UML gegenereerd, aan de eisen die GML stelt aan het vertalen van UML model naar XML Schema (GML 3.2.1 Annex E, ISO 19118).</p><p>Het GML XML Schema bevat abstracte typen, die in een GML Application Schema worden uitgebreid, en concrete typen die direct kunnen worden gebruikt.</p><p>De belangrijkste eisen aan GML Application schema's zijn:</p><ul>
+<li>Clause 21.2.2: Het GML application schema definieert eigen uitbreidingen op het GML XML Schema in een eigen targetNamespace.</li>
+<li>Clause 21.2.3: Het GML application schema importeert het GML XML Schema.</li>
+<li>Clause 21.3.3:
+<ul><li>Voor elke klasse die een geo-object vertegenwoordigt moet een globaal complexType en een globaal element gedefinieerd zijn.</li>
+<li>Elk complexType voor een geo-object moet direct of indirect een extensie zijn van het type <code>gml:AbstractFeatureType</code>. <code>gml:AbstractFeatureType</code> is op zijn beurt een extensie van <code>gml:AbstractFeatureType</code>. Van dit type erven alle objecten het verplichte <code>gml:id</code> attribuut.</li>
+<li>Elk element in het schema voor een geo-object moet lid zijn van de substitutionGroup voor het element <code>gml:AbstractFeature</code> (dat wil zeggen: moet zich direct of indirect in de <code>substitutionGroup=”gml:AbstractFeature”</code> bevinden).</li>
+<li>Elk identificeerbaar object dat geen geo-object is, moet lid zijn van de substitutionGroup voor het element <code>gml:AbstractGML</code>.</li></ul></li>
+<li>Clause 21.3.4: Alle eigenschappen van een entiteit en alle relaties naar andere entiteiten worden opgenomen als child XML element.</li>
+<li>Clause 21.2.7: Als de waarde van een eigenschap een enkelvoudige waarde is, moet deze als literal value worden opgenomen in het eigenschap element zonder verdere markup. Zie ook 7.2.3.10.
+<div class="example" id="example-6">
+          <div class="marker">
+      <a class="self-link" href="#example-6">Voorbeeld 6</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs javascript">GOED:  
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">gml:Integer</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">gml:Integer</span>&gt;</span></span>
+FOUT:
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">gml:Integer</span>&gt;</span>  
+<span class="hljs-tag">&lt;<span class="hljs-name">gml:value</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">gml:value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">gml:Integer</span>&gt;</span></span>
+  </code></pre>
+        </div>
+</li>
+<li>Clause 21.2.6: Het object property model moet gevolgd worden. Toelichting: GML is een objectenmodel. Dat wil zeggen dat alles is gemodelleerd als ofwel een object, ofwel een eigenschap van een object. Een relatie naar een ander object wordt ook gezien als eigenschap. Een object kan niet direct een ander object bevatten, maar een eigenschap kan wel een object bevatten. Dit wordt het object-property model genoemd. Als een eigenschap dus een complexe waarde heeft (structuur bezit) moet deze complexe waarde als apart object worden gedefinieerd. Een eigenschap mag zelf geen verdere structuur hebben. Het eigenschap element kan een verwijzing naar dit object bevatten of kan het als geneste structuur opnemen. Zie ook Clause 7.2.3.</li>
+<li>Clause 21.2.1/21.3.4: Het gebruik van XML attributen is toegestaan (maar niet voor het opnemen van eigenschappen van objecten). Attributen worden niet in een namespace gedeclareerd met uitzondering van <code>gml:id</code>. Zie ook clause 7.1.3.</li>
+</ul></section></section><section id="voorbeeld" class="appendix"><!--OddPage--><h2 id="b-uitgewerkt-voorbeeld"><span class="secno">B. </span>Uitgewerkt voorbeeld</h2><p>In deze bijlage wordt aan de hand van een eenvoudig model de relatie tussen een UML een
+daarvan afgeleid XML Schema en een concreet GML document weergegeven.</p><section id="imgolf-model-in-uml"><h3 id="b-1-imgolf-model-in-uml"><span class="secno">B.1 </span>IMGolf model in UML</h3><figure id="fig-imgolf-klassediagram"><img src="media/imgolfdiagram.png" width="200">
+<figcaption>Figuur <span class="figno">13</span> <span class="fig-title">IMGolf klassediagram</span></figcaption>
+</figure><figure id="fig-enumeraties-van-im-golf-model"><img src="media/imgolfenums.png" width="200">
+<figcaption>Figuur <span class="figno">14</span> <span class="fig-title">Enumeraties van IM Golf model</span></figcaption>
+</figure></section><section id="imgolf-feature-catalogus"><h3 id="b-2-imgolf-feature-catalogus"><span class="secno">B.2 </span>IMGolf Feature Catalogus</h3><div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><span>Issue 1</span></div><aside class=""><p>Feature Catalogus nog opnemen.</p>
+</aside></div></section><section id="imgolf-xml-applicatie-schema"><h3 id="b-3-imgolf-xml-applicatie-schema"><span class="secno">B.3 </span>IMGolf XML applicatie schema</h3><div class="issue" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue 2</span></div><aside class=""><p>Hier staan XML Schema en XML instance voorbeelden maar deze worden niet goed als voorbeeld getoond.</p>
+</aside></div><div class="example" id="example-7">
+          <div class="marker">
+      <a class="self-link" href="#example-7">Voorbeeld 7</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>
+    <span class="hljs-attr">xmlns:IMGolf</span>=<span class="hljs-string">"http://www.geonovum.nl/IMGolf"</span>
+    <span class="hljs-attr">xmlns:gml</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>
+    <span class="hljs-attr">xmlns:gmlsf</span>=<span class="hljs-string">"http://www.opengis.net/gmlsf/2.0"</span>
+    <span class="hljs-attr">elementFormDefault</span>=<span class="hljs-string">"qualified"</span> <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://www.geonovum.nl/IMGolf"</span>
+    <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>
+        <span class="hljs-attr">schemaLocation</span>=<span class="hljs-string">"http://schemas.opengis.net/gml/3.2.1/gml.xsd"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"http://www.opengis.net/gmlsf/2.0"</span>
+        <span class="hljs-attr">schemaLocation</span>=<span class="hljs-string">"http://schemas.opengis.net/gmlsfProfile/2.0/gmlsfLevels.xsd"</span>/&gt;</span>
+    <span class="hljs-comment">&lt;!--GML Applicatie Schema voor voorbeeld van NEN3610 Versie 1.0 datum 2012-02-20--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span> <span class="hljs-attr">source</span>=<span class="hljs-string">"http://schemas.opengis.net/gmlsfProfile/2.0/gmlsfLevels.xsd"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">gmlsf:ComplianceLevel</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">gmlsf:ComplianceLevel</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FeatureCollectionIMGolf"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:FeatureCollectionIMGolfType"</span>
+        <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractGML"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FeatureCollectionIMGolfType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"featureMember"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureMemberType"</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AbstractFeature"</span>/&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Hole"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:HoleType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"HoleType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometrie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:PointPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"beginGeldigheid"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dateTime"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"eindGeldigheid"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dateTime"</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"HolePropertyType"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- &lt;sequence minOccurs="0"&gt;
+&lt;element ref="IMGolf:Hole"/&gt;
+ &lt;/sequence&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">simpleType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TypeHindernisType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">restriction</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"string"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"waterpartij"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"bunker"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">restriction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">simpleType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ToegangGolfbaan"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractObject"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ToegangGolfbaanType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ToegangGolfbaanType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"alleenVoorLeden"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"boolean"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"vereisten"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"etiquette"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ToegangGolfbaanPropertyType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"IMGolf:ToegangGolfbaan"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">simpleType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TypeGolfbaanType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">restriction</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"string"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"linksbaan"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"bosbaan"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"parkbaan"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">restriction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">simpleType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Parcours"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ParcoursType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ParcoursType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"nummer"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometry"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:MultiSurfacePropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"par"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"afslagplaats"</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:TeePropertyType"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">targetElement</span>
+                                    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>&gt;</span>IMGolf:Tee<span class="hljs-tag">&lt;/<span class="hljs-name">targetElement</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"parcoursDeel"</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ParcoursDeelPropertyType"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">targetElement</span>
+                                    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>&gt;</span>IMGolf:ParcoursDeel<span class="hljs-tag">&lt;/<span class="hljs-name">targetElement</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hindernis"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:HindernisPropertyType"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">targetElement</span>
+                                    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>&gt;</span>IMGolf:Hindernis<span class="hljs-tag">&lt;/<span class="hljs-name">targetElement</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ParcoursPropertyType"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--&lt;sequence minOccurs="0"&gt;
+ &lt;element ref="IMGolf:Parcours"/&gt;
+ &lt;/sequence&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ParcoursDeel"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ParcoursDeelType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ParcoursDeelType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometry"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:SurfacePropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TypeParcoursDeel"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:TypeParcoursDeelType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hole"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:HolePropertyType"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">targetElement</span>
+                                    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>&gt;</span>IMGolf:Hole<span class="hljs-tag">&lt;/<span class="hljs-name">targetElement</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ParcoursDeelPropertyType"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- &lt;sequence minOccurs="0"&gt;
+ &lt;element ref="IMGolf:ParcoursDeel"/&gt;
+ &lt;/sequence&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Tee"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:TeeType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TeeType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometry"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:SurfacePropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TeePropertyType"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- &lt;sequence minOccurs="0"&gt;
+ &lt;element ref="IMGolf:Tee"/&gt;
+ &lt;/sequence&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"NEN3610ID"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractObject"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"NEN3610IDType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"namespace"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"lokaalID"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"versie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"NEN3610IDPropertyType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"IMGolf:NEN3610ID"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">simpleType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TypeParcoursDeelType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">restriction</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"string"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"fairway"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"green"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"rough"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">enumeration</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"semi-rough"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">restriction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">simpleType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Hindernis"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:HindernisType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"HindernisType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometrie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:SurfacePropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"typeHindernis"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:TypeHindernisType"</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"HindernisPropertyType"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- &lt;sequence minOccurs="0"&gt;
+ &lt;element ref="IMGolf:Hindernis"/&gt;
+ &lt;/sequence&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Golfbaan"</span> <span class="hljs-attr">substitutionGroup</span>=<span class="hljs-string">"gml:AbstractFeature"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:GolfbaanType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"GolfbaanType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">complexContent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">extension</span> <span class="hljs-attr">base</span>=<span class="hljs-string">"gml:AbstractFeatureType"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"geometry"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"gml:MultiSurfacePropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"naam"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"typeGolfbaan"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:TypeGolfbaanType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toegang"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ToegangGolfbaanPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"identificatie"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:NEN3610IDPropertyType"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hole"</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">"IMGolf:ParcoursPropertyType"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">annotation</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">appinfo</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">targetElement</span>
+                                    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>&gt;</span>IMGolf:Parcours<span class="hljs-tag">&lt;/<span class="hljs-name">targetElement</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">appinfo</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">annotation</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">complexContent</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"GolfbaanPropertyType"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:AssociationAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">attributeGroup</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"gml:OwnershipAttributeGroup"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"IMGolf:Golfbaan"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
+
+</code></pre>
+        </div></section><section id="imgolf-gml-document"><h3 id="b-4-imgolf-gml-document"><span class="secno">B.4 </span>IMGolf GML document</h3><div class="example" id="example-8">
+          <div class="marker">
+      <a class="self-link" href="#example-8">Voorbeeld 8</a>
+    </div>
+          <pre aria-busy="false"><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">FeatureCollectionIMGolf</span> <span class="hljs-attr">xmlns:xlink</span>=<span class="hljs-string">"http://www.w3.org/1999/xlink"</span>
+    <span class="hljs-attr">xmlns:gml</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>
+    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.geonovum.nl/IMGolf"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchemainstance"</span>
+    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.geonovum.nl/IMGolf IMGolf.xsd"</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"ID001"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Envelope</span> <span class="hljs-attr">srsDimension</span>=<span class="hljs-string">"2"</span> <span class="hljs-attr">srsName</span>=<span class="hljs-string">"urn:opengis:def:crs:EPSG::xxxxx"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">gml:lowerCorner</span>&gt;</span>10 10<span class="hljs-tag">&lt;/<span class="hljs-name">gml:lowerCorner</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">gml:upperCorner</span>&gt;</span>20 20<span class="hljs-tag">&lt;/<span class="hljs-name">gml:upperCorner</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Envelope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Golfbaan</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"G11"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometry</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:MultiSurface</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x00"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x2"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>10 10 20 10 20 20 10 20 10 10<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:MultiSurface</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">naam</span>&gt;</span>Openbare golfbaan Westlaren<span class="hljs-tag">&lt;/<span class="hljs-name">naam</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">typeGolfbaan</span>&gt;</span>bosbaan<span class="hljs-tag">&lt;/<span class="hljs-name">typeGolfbaan</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">toegang</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ToegangGolfbaan</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">alleenVoorLeden</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">alleenVoorLeden</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ToegangGolfbaan</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">toegang</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>G1<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">hole</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#Hin1v1"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Golfbaan</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Parcours</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"Hin1v1"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>Hin1<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">versie</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">versie</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nummer</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">nummer</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometry</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:MultiSurface</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x01"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x3"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>11 11 15 11 15 19 11 19 11 11<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:MultiSurface</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">par</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">par</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">afslagplaats</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#t01"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">parcoursDeel</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#pd01"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">parcoursDeel</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"pd02"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Parcours</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tee</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"t01"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometry</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x4"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>12 12 14 12 14 13 12 13 12 12<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>t01<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Tee</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ParcoursDeel</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"pd01"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometry</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x06"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>12 13 14 13 14 17 12 17 12 13<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>pd01<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">TypeParcoursDeel</span>&gt;</span>fairway<span class="hljs-tag">&lt;/<span class="hljs-name">TypeParcoursDeel</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ParcoursDeel</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ParcoursDeel</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"pd02"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometry</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x07"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>12 17 14 17 14 18.5 12 18.5 12 17<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>pd01<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">TypeParcoursDeel</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-name">TypeParcoursDeel</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">hole</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#h01"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ParcoursDeel</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Hole</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"h01"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">geometrie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:Point</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"x5"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:pos</span>&gt;</span>13 18<span class="hljs-tag">&lt;/<span class="hljs-name">gml:pos</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Point</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">geometrie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">identificatie</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">NEN3610ID</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">namespace</span>&gt;</span>NL.IMGOLF<span class="hljs-tag">&lt;/<span class="hljs-name">namespace</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">lokaalID</span>&gt;</span>h01<span class="hljs-tag">&lt;/<span class="hljs-name">lokaalID</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">NEN3610ID</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">identificatie</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">beginGeldigheid</span>&gt;</span>2011-12-01T00:00:00<span class="hljs-tag">&lt;/<span class="hljs-name">beginGeldigheid</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Hole</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">FeatureCollectionIMGolf</span>&gt;</span>
+
+</code></pre>
+        </div></section></section><section id="gmlversieverschillen" class="appendix"><!--OddPage--><h2 id="c-gml-3-2-1-en-gml-3-1-1"><span class="secno">C. </span>GML 3.2.1 en GML 3.1.1</h2><p>In deze bijlage wordt ingegaan op de verschillen tussen de GML versies 3.2.1 en 3.1.1.</p><section id="inleiding-1"><h3 id="c-1-inleiding"><span class="secno">C.1 </span>Inleiding</h3><p>In de praktijk zijn er momenteel drie versies van GML in gebruik:</p><ul>
+<li>GML 2.1.2 (2002)</li>
+<li>GML 3.1.1 (2004/2005)</li>
+<li>GML 3.2.1 (2007)</li>
+</ul><p>GML 3.3 is op het moment van schrijven net uitgekomen (begin 2012). Deze versie is volledig backwards compatible met GML 3.2.1 en bestaat uit enkele uitbreidingen die in nieuwe namespaces zijn gedefinieerd. GML 3.3 wordt hier verder buiten beschouwing gelaten.</p><p>In Nederland is tot nu toe met name gestandaardiseerd op GML 3.1.1. De  overstap naar GML 3.2.1 wordt pas de laatste tijd gemaakt, omdat eerder deze versie nog niet altijd ondersteund werd door software applicaties. Sommige nieuwe standaarden maken nog steeds gebruik van GML 3.1.1: dit geldt bijvoorbeeld voor IMGeo 2.0 vanwege de aansluiting met <a href="http://www.opengeospatial.org/standards/citygml">CityGML</a> (een OGC standaard voor 3D geo-informatie), waarin een afhankelijkheid met GML 3.1.1 zit.</p><p>Dit appendix beschrijft de verschillen tussen 3.1.1 en 3.2.1, zodat:</p><ul>
+<li>De afweging tussen beide versies goed gemaakt kan worden;</li>
+<li>De impact duidelijk wordt voor zij die de overstap van 3.1.1 naar 3.2.1 overwegen;</li>
+<li>Gebruikers van GML 3.1.1 de standaard zo kunnen toepassen dat de stap naar 3.2.1 als het moment daar is zo klein mogelijk wordt.</li>
+</ul><p>Alleen de verschillen die GML onderdelen raken die in Nederland waarschijnlijk of mogelijk gebruikt worden, zijn hier opgesomd. Een volledige beschrijving van de verschillen is te vinden in de officiële <a href="http://portal.opengeospatial.org/files/?artifact_id=26765">Revision Notes voor GML 3.2.1</a> (OGC documentnummer 07-061) , of in het hierop gebaseerde document Analysis of changes between GML 3.1.1 and GML 3.2.1, te vinden op de website van Geonovum.</p><p>Hieronder volgt een opsomming en beschrijving van de belangrijkste verschillen.</p></section><section id="waar-iedereen-mee-te-maken-krijgt"><h3 id="c-2-waar-iedereen-mee-te-maken-krijgt"><span class="secno">C.2 </span>Waar iedereen mee te maken krijgt</h3><section id="importeren-van-het-gml-schema-en-gml-profielen"><h4 id="c-2-1-importeren-van-het-gml-schema-en-gml-profielen"><span class="secno">C.2.1 </span>Importeren van het GML schema en GML profielen</h4><p>Vanaf GML 3.2.1 moet een GML application schema het volledige GML schema importeren. In GML 3.1.1 was het nog toegestaan een gestript GML schema te importeren. Dit onderwerp  is al behandeld in paragraaf 3.7.</p></section><section id="xml-namespace"><h4 id="c-2-2-xml-namespace"><span class="secno">C.2.2 </span>XML namespace</h4><p>De XML namespace van het GML schema ("<code>http://www.opengis.net/gml</code>") is gewijzigd naar "<code>http://www.opengis.net/gml/3.2</code>".</p><p>Dit betekent dat alle componenten van GML nu in een andere namespace staan en dus andere componenten zijn.</p><ul>
+<li>Dit heeft een kleine of grote impact op software applicaties die GML 3.1.1 ondersteunen, afhankelijk van de wijze van implementeren.</li>
+<li>GML bestanden in 3.1.1 kunnen eenvoudig handmatig worden aangepast als de namespace declaratie op één plek in de header staat. Als de wijziging op meer plekken moet worden doorgevoerd kan dit geautomatiseerd gebeuren.</li>
+<li>GML application schemas moeten (uiteraard) het GML 3.2.1 schema met de nieuwe namespace importeren in plaats van het GML 3.1.1 schema met de oude namespace. Dit heeft alleen impact op de header van het schema.</li>
+</ul></section><section id="abstracte-elementen-hernoemd"><h4 id="c-2-3-abstracte-elementen-hernoemd"><span class="secno">C.2.3 </span>Abstracte elementen hernoemd</h4><p>De "_" (underscore) in element namen om aan te geven dat ze abstract zijn, is vervangen door het beginnen van de naam met "Abstract".</p><p>Dit betekent dat bijvoorbeeld het GML element <code>_Feature</code> is hernoemd naar <code>AbstractFeature</code>.</p><ul>
+<li>In GML application schemas die handmatig van 3.1.1 naar 3.2.1 gemigreerd worden, moet bij alle elementen die afgeleid zijn van een abstract GML element, de naam van het abstracte GML element worden gewijzigd.</li>
+<li>Kan impact hebben op software.</li>
+<li>Geen impact op GML documenten.</li>
+</ul></section><section id="gml-id-verplicht"><h4 id="c-2-4-gml-id-verplicht"><span class="secno">C.2.4 </span>gml:id verplicht</h4><p>GML objecten hebben identiteit en daarom is het attribuut <code>gml:id</code> verplicht geworden. Ook geometrieën zoals <code>gml:Point</code>, <code>gml:Curve</code> en <code>gml:Surface</code> worden in GML gezien als objecten en krijgen nu een verplicht <code>gml:id</code>.</p><p>Gevolgen:</p><ul>
+<li>Software die wordt gebruikt om GML documenten te maken, moet nu een <code>gml:id</code> aanmaken, met een binnen het document unieke waarde, voor elk GML object. In GML 3.1.1 hoefde dit niet en vaak werd dit dan ook niet gedaan voor objecten waarnaar niet werd verwezen, bijvoorbeeld voor een geometrie object binnen een feature.</li>
+<li>GML documenten die van 3.1.1 naar 3.2.1 worden gemigreerd, moeten bij elk object dat nog geen <code>gml:id</code> had, er een toevoegen met een unieke waarde. Dit kan geautomatiseerd gedaan worden.</li>
+<li>Geen gevolgen voor GML application schemas.</li>
+</ul><p><strong>Aanbeveling</strong>: wie nu nog GML 3.1.1 gebruikt maar binnen afzienbare tijd naar GML 3.2.1 (of GML 3.3) wil overstappen, kan het beste vast beginnen het <code>gml:id</code> overal op te nemen waar dit in GML 3.2.1 verplicht wordt. </p></section><section id="feature-collection-en-andere-collection-types-geschrapt"><h4 id="c-2-5-feature-collection-en-andere-collection-types-geschrapt"><span class="secno">C.2.5 </span>Feature collection en andere collection types geschrapt</h4><p>Alle in GML 3.1.1 aanwezige collection typen, inclusief die voor feature collections, zijn geschrapt. Het is nu de bedoeling date en GML application schema zelf een collection definieert als dit nodig is, met als basis de nieuwe typen <code>gml:AbstractMemberType</code> en <code>gml:AbstractFeatureMemberType</code>.
+</p><p>Dit heeft gevolgen voor alle GML toepassingen die collecties gebruiken. Zowel de software die collecties maakt of leest, als het GML applicatie schema en GML documenten moeten worden aangepast.</p></section></section><section id="andere-verschillen-met-mogelijke-gevolgen"><h3 id="c-3-andere-verschillen-met-mogelijke-gevolgen"><span class="secno">C.3 </span>Andere verschillen met mogelijke gevolgen</h3><section id="normatieve-referenties-naar-andere-standaarden"><h4 id="c-3-1-normatieve-referenties-naar-andere-standaarden"><span class="secno">C.3.1 </span>Normatieve referenties naar andere standaarden</h4><p>Een aantal van de normatieve verwijzingen naar aan GML gerelateerde standaard documenten verwijzen nu naar een nieuwere versie daarvan. Hiervan zijn er slechts drie mogelijk relevant voor NEN 3610 gebruikers:</p><ul>
+<li>ISO 19111:2007, Geographic Information — Spatial referencing by coordinates. De 2007 revisie van deze standaard is significant gewijzigd.</li>
+<li>ISO/TS 19139:2007, Geographic Information — Metadata — XML schema implementation: Metadata elementen uit ISO 19115 worden nu geïmplementeerd door gebruik te maken van ISO/TS 19139.</li>
+<li>ISO/IEC 19757-3:2006, Document Schema Definition Languages (DSDL) — Part 3: Rule-based validation — Schematron. Er zijn verschillen tussen de hiervoor gebruikte versie en de in GML 3.2.1 gebruikte door ISO goedgekeurde versie.</li>
+</ul></section><section id="metadata-eigenschappen"><h4 id="c-3-2-metadata-eigenschappen"><span class="secno">C.3.2 </span>Metadata eigenschappen</h4><p><code>gml:_MetaData</code> en <code>gml:metaDataProperty</code> zijn geschrapt en vervangen door een abstract property type als basis waarop men eigen metadata eigenschappen kan definiëren. Men kan nu daardoor in het eigen GML applicatie schema afdwingen dat metadata wordt ingevuld. Door het eigen metadata element af te leiden van het daarvoor bestemde abstracte GML element kan software de metadata herkennen.</p><p>Gevolgen als deze GML 3.1.1 elementen gebruikt werden:</p><ul>
+<li>GML applicatie schema moet worden aangepast door het definiëren van een eigen metadata element dat volgens de GML 3.2.1 voorschriften is afgeleid van het abstracte GML type;</li>
+<li>De GML 3.1.1 metadata property moet waar deze is gebruikt in GML documenten worden vervangen door het zelf gedefinieerde metadata element;</li>
+<li>Software die van het GML 3.1.1 metadata element gebruik maakte moet gewijzigd worden om het zelf gedefinieerde metadata element te ondersteunen.</li>
+</ul></section><section id="hernoemde-vervangen-eigenschappen"><h4 id="c-3-3-hernoemde-vervangen-eigenschappen"><span class="secno">C.3.3 </span>Hernoemde / vervangen eigenschappen</h4><ul>
+<li>Alle “*Name” elementen in het coordinate reference system schema zijn vervangen door <code>gml:name</code> en gebruiken nu dus <code>gml:CodeType</code> als type.<ul>
+<li><code>gml:axisName</code> &gt; <code>gml:axisLabel</code></li>
+<li><code>gml:fileName</code> &gt; <code>gml:fileReference</code></li>
+<li><code>gml:SequenceRulesNames</code> &gt; <code>gml:SequenceRuleEnumeration</code>.</li>
+</ul>
+</li>
+<li><code>gml:StringOrRefType</code> is geschrapt. Eigenschappen die een string of een verwijzing als inhoud hebben worden nu gecodeerd als twee aparte eigenschappen in plaats van één.</li>
+</ul></section><section id="wijzigingen-in-geometrietypen"><h4 id="c-3-4-wijzigingen-in-geometrietypen"><span class="secno">C.3.4 </span>Wijzigingen in geometrietypen</h4><ul>
+<li>Een aantal technische correcties zijn uitgevoerd op geometrietypen. Deze kunnen mogelijk gevolgen hebben voor software:</li>
+<li><code>Gml:Envelope</code> is expliciet gedefinieerd als zijnde geen geometrie door het in de substitutionGroup <code>AbstractObject</code> te zetten.</li>
+<li><code>gml:CircleByCenterPointType</code> is nu gedefinieerd als een restriction van
+<code>ArcByCenterPointType</code>.</li>
+<li><code>gml:Shell</code> is toegevoegd als implementatie van ISO geometrietype <code>GM_Shell</code>.</li>
+<li>Het <code>interpolationType</code> attribuut ontbrak op sommige segment typen en is daar toegevoegd.</li>
+</ul></section><section id="wijziging-in-coordinate-reference-system-dictionaries"><h4 id="c-3-5-wijziging-in-coordinate-reference-system-dictionaries"><span class="secno">C.3.5 </span>Wijziging in coordinate reference system dictionaries</h4><p>De verwijzing in GML naar het gebruikte coördinaatreferentiesysteem (CRS) wordt meestal gedaan door de URN of EPSG code te gebruiken waaronder het bekend staat. Het is echter ook mogelijk de CRS expliciet te definiëren in een GML dictionary. Wie dit in GML 3.1.1 heeft gedaan, krijgt te maken met een wijziging die niet backwards compatible is.</p><p>De encoding is ingrijpend gewijzigd om te voldoen aan ISO 19111:2007 en de GML coderingsconventies.</p></section><section id="ondersteuning-voor-void-iso-iec-11404"><h4 id="c-3-6-ondersteuning-voor-void-iso-iec-11404"><span class="secno">C.3.6 </span>Ondersteuning voor Void (ISO/IEC 11404)</h4><p>Het weglaten van een kenmerk (middels <code>minOccurs=”0”</code> in het schema) is niet hetzelfde als Void zoals gedefinieerd in ISO/IEC 11404:1996. GML 3.2.1 is aangepast om Void correct te implementeren:</p><ul>
+<li>GML 3.2.1 is uitgebreid met een uitleg hoe <code>xsi:nil</code> moet worden gebruikt als implementatie van Void.</li>
+<li><code>Gml:Null</code> is geschrapt.</li>
+<li>Het type <code>gml:NilReasonType</code> is toegevoegd voor het kunnen opnemen van metadata over de reden van een ontbrekende waarde.</li>
+</ul><p>Dit heeft gevolgen voor GML application schemas die gebruik maakten van <code>gml:Null</code> of een eigen implementatie van Void hanteerden. Het GML application schema, GML documenten en software die het GML application schema ondersteunt, moeten aangepast worden.</p></section></section></section><section id="references" class="appendix">
+      <!--OddPage--><h2 id="d-referenties"><span class="secno">D. </span>Referenties</h2>
+      
+    <section id="normatieve-referenties">
+        <h3 id="d-1-normatieve-referenties"><span class="secno">D.1 </span>Normatieve referenties</h3>
+      <dl class="bibliography">
+        <dt id="bib-gml">[gml]</dt><dd><a href="http://www.opengeospatial.org/standards/gml"><cite>Geography Markup Language (GML) Encoding Standard</cite></a>.  Open Geospatial Consortium Inc. URL: <a href="http://www.opengeospatial.org/standards/gml">http://www.opengeospatial.org/standards/gml</a></dd><dt id="bib-gml-sf">[GML-SF]</dt><dd><a href="http://www.opengeospatial.org/standards/gml"><cite>Geography Markup Language (GML) simple features profile</cite></a>. Linda van den Brink; Clemens Portele; Panagiotis (Peter) A. Vretanos. Open Geospatial Consortium. 5 April 2012. URL: <a href="http://www.opengeospatial.org/standards/gml">http://www.opengeospatial.org/standards/gml</a></dd><dt id="bib-iso-19107-2003">[iso-19107-2003]</dt><dd><a href="https://www.iso.org/standard/26012.html"><cite>Geographic information -- Spatial schema</cite></a>. ISO/TC 211. ISO. 2003. International Standard. URL: <a href="https://www.iso.org/standard/26012.html">https://www.iso.org/standard/26012.html</a></dd><dt id="bib-iso-19125-1-2004">[iso-19125-1-2004]</dt><dd><a href="https://www.iso.org/standard/40114.html"><cite>Geographic information -- Simple feature access -- Part 1: Common architecture</cite></a>. ISO/TC 211. ISO. 2004. International Standard. URL: <a href="https://www.iso.org/standard/40114.html">https://www.iso.org/standard/40114.html</a></dd><dt id="bib-iso-19136-2007">[iso-19136-2007]</dt><dd><a href="https://www.iso.org/standard/32554.html"><cite>Geographic information -- Geography Markup Language (GML)</cite></a>. ISO/TC 211. ISO. 2007. International Standard. URL: <a href="https://www.iso.org/standard/32554.html">https://www.iso.org/standard/32554.html</a></dd><dt id="bib-nen3610">[NEN3610]</dt><dd><a href="https://www.nen.nl/nen-3610-2011-nl-156811"><cite>NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten</cite></a>.  NEN. 2011-03-01. Definitief. URL: <a href="https://www.nen.nl/nen-3610-2011-nl-156811">https://www.nen.nl/nen-3610-2011-nl-156811</a></dd><dt id="bib-xmlschema-0">[xmlschema-0]</dt><dd><a href="https://www.w3.org/TR/xmlschema-0/"><cite>XML Schema Part 0: Primer Second Edition</cite></a>. David Fallside; Priscilla Walmsley. W3C. 28 October 2004. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema-0/">https://www.w3.org/TR/xmlschema-0/</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

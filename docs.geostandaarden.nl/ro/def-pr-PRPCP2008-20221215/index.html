@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Praktijkrichtlijn Plancontour en PDF 2008 (PRPCP2008) v1.2.3</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "license": "cc-by-nd",
+  "publishDate": "2022-12-15",
+  "authors": [
+    {
+      "name": "Geonovum",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerteam DRO",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "shortName": "PRPCP2008",
+  "format": "markdown",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2022-12-15T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 15 december 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-pr-PRPCP2008-20221215/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Praktijkrichtlijn Plancontour en PDF 2008 (PRPCP2008) v1.2.3",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2022-12-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerteam DRO",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Praktijkrichtlijn Plancontour en PDF 2008 (PRPCP2008) v1.2.3</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-12-15">15 december 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-pr-PRPCP2008-20221215/">https://docs.geostandaarden.nl/ro/def-pr-PRPCP2008-20221215/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/PRPCP2008/">https://docs.geostandaarden.nl/ro/PRPCP2008/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerteam DRO</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#doelstelling"><span class="secno">2. </span>Doelstelling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope"><span class="secno">2.1 </span>Scope</a></li><li class="tocline"><a class="tocxref" href="#nationale-doelstelling"><span class="secno">2.2 </span>Nationale doelstelling</a></li><li class="tocline"><a class="tocxref" href="#gebruik"><span class="secno">2.3 </span>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#status-van-dit-document"><span class="secno">2.4 </span>Status van dit document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#adviezen-en-normering"><span class="secno">3. </span>Adviezen en normering</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normen-voor-beschikbaarstelling"><span class="secno">3.1 </span>Normen voor beschikbaarstelling</a></li><li class="tocline"><a class="tocxref" href="#adviezen-met-betrekking-tot-scannen"><span class="secno">3.2 </span>Adviezen met betrekking tot scannen</a></li><li class="tocline"><a class="tocxref" href="#alternatieven-voor-scannen"><span class="secno">3.3 </span>Alternatieven voor scannen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#plancontour-en-pdf-in-relatie-tot-andere-standaarden"><span class="secno">4. </span>Plancontour en PDF in relatie tot andere standaarden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ro-standaarden-2008"><span class="secno">4.1 </span>RO Standaarden 2008</a></li><li class="tocline"><a class="tocxref" href="#stri2006"><span class="secno">4.2 </span>STRI2006</a></li></ol></li><li class="tocline"><a class="tocxref" href="#planobject-en-attributen"><span class="secno">5. </span>Planobject en attributen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#codering-plangebied-plancontour-pdf"><span class="secno">5.1 </span>Codering plangebied plancontour &amp; PDF</a></li></ol></li><li class="tocline"><a class="tocxref" href="#domeintabellen"><span class="secno">6. </span>Domeintabellen</a></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p><strong>Het planproces in de ruimtelijke ordening is conform de Wet ruimtelijke ordening volledig digitaal. Om uitwisseling van bestanden mogelijk te maken, zijn afspraken gemaakt: RO Standaarden. Iedereen die ruimtelijke plannen maakt, is tot inwerkingtreden van de Omgevingswet verplicht deze standaarden toe te passen.</strong></p><p>De RO Standaarden zijn wettelijk verankerd in de <a href="http://wetten.overheid.nl/BWBR0020449" target="_blank">Wet ruimtelijke ordening</a>. Al sinds 2010 geldt dat digitale plannen de juridisch bindende plannen zijn. Met de inwerkingtreding van het <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening</a> (Bro) en de ministeriële <a href="http://wetten.overheid.nl/BWBR0031829" target="_blank">Regeling standaarden ruimtelijke ordening 2012</a>, is het toepassen van de RO Standaarden 2012 verplicht voor alle plannen die op of na 1 juli 2013 in procedure zijn gegaan. Daarnaast is ook in de <a href="http://wetten.overheid.nl/BWBR0024779" target="_blank">Wabo</a> en in de <a href="http://wetten.overheid.nl/BWBR0027431" target="_blank">Crisis- en herstelwet</a> deels verplicht gebruik van de RO Standaarden opgenomen.&nbsp;De RO Standaarden bestaan uit afspraken die ervoor zorgen dat makers van plannen in heel Nederland dezelfde termen en kleuren toepassen. Ook zijn er technische afspraken gemaakt die ervoor zorgen dat plannen digitaal uitgewisseld kunnen worden. De landelijke voorziening Ruimtelijkplannen.nl zorgt dat de ruimtelijke instrumenten bij gemeenten, provincies en departementen via één landelijk loket toegankelijk en raadpleegbaar zijn: <a href="http://www.ruimtelijkeplannen.nl" target="_blank">www.ruimtelijkeplannen.nl</a>.
+</p><p>Met ingang van 1 juli 2018 is de actualiseringsplicht van 10 jaar voor bestemmingsplannen komen te vervallen. Daarmee is het anno 2022 nog steeds zo dat niet heel Nederland afgedekt is met objectgerichte plannen. </p><p>Uiteraard kunnen gemeenten de onder de oude (papieren) WRO (en nog) vigerende ruimtelijke instrumenten digitaal en objectgericht maken. Dat heet ‘achteraf IMRO-coderen’. Het op basis van de objectgerichte plancontour toegang hebben tot de gescande planonderdelen wordt gezien als een alternatief. Dit alternatief wordt kortweg ook wel geduid als ‘Plancontour &amp; PDF’ en geldt als facultatieve praktijkrichtlijn. Het op deze manier digitaliseren van de ruimtelijke instrumenten van gemeenten, provincies en rijk, zijn hierdoor via Ruimtelijkeplannen.nl ‘plat’ digitaal beschikbaar en te benaderen vanuit de geografische correcte ligging van het plangebied.</p><p>Door het vervallen van de actualiseringsverplichting bevat Ruimtelijkeplannen.nl ook voor een deel Plancontour &amp; PDF-plannen die kunnen vallen onder zowel de oude WRO als de overgangsregeling van de Wro.
+</p></section><section data-format="markdown" id="doelstelling"><!--OddPage--><h2 id="x2-doelstelling"><span class="secno">2. </span>Doelstelling</h2><section id="scope"><h3 id="x2-1-scope"><span class="secno">2.1 </span>Scope</h3><p>De scope van Plancontour &amp; PDF (PRCP2008) betreft die ruimtelijke plannen, visies en besluiten die de gemeenten, provincies en het Rijk (kort: de bronhouder) digitaal beschikbaar wil stellen. Dit wil zeggen de papieren plannen te scannen en aan een contour te verbinden. De bronhouder is niet verplicht alle ruimtelijke instrumenten overeenkomstig de oude Wet Ruimtelijke Ordening (WRO) te digitaliseren en beschikbaar te stellen.
+</p></section><section id="nationale-doelstelling"><h3 id="x2-2-nationale-doelstelling"><span class="secno">2.2 </span>Nationale doelstelling</h3><p>Digitale inzage in de verschillende ruimtelijke instrumenten resulteert in een betere informatievoorziening door de overheid. Ruimtelijkplannen.nl is tot inwerkingtreden van de Omgevingswet het nationale loket voor ruimtelijke instrumenten. Burgers, bedrijfsleven maar ook de RO-professional heeft hiermee één loket die de daadwerkelijke en effectieve toegang tot ruimtelijke instrumenten in Nederland. Andere eOverheid-voorzieningen kunnen de ruimtelijke instrumenten van alle bronhouders via deze toegangspoort benaderen. De beschikking over Plancontouren &amp; PDF van vigerende ruimtelijke instrumenten onder de oude WRO, kan de ‘witte vlekken’ wegwerken in Ruimtelijkeplannen.nl en daarmee deze eOverheid dienstverlening voor de ruimtelijke ordening een ‘boost’ geven. De nationale doelstelling van de beschikbaarheid van gemeentelijke ruimtelijke instrumenten in ‘Plancontour &amp; PDF’ is dan ook de eOverheid dienstverlening voor ruimtelijke ordening.</p></section><section id="gebruik"><h3 id="x2-3-gebruik"><span class="secno">2.3 </span>Gebruik</h3><p>Uit de hoeveelheid te raadplegen plancontouren op Ruimtelijkeplannen.nl blijkt dat er nog steeds gebruik gemaakt wordt van plancontouren. Met PRPCP2008 is het mogelijk om oude WRO plannen (bestemmingsplan art. 10, wijzigingsplan art. 11, uitwerkingsplan art. 11 en voorbereidingsbesluit ) beschikbaar te stellen, van zowel gemeenten, provincies als het Rijk.
+</p><p>Vanuit het oogpunt van goede ruimtelijke ordening is het belangrijk om te weten waar welke planologische regelingen gelden. Er gelden veel verschillende regelingen die vaak nog vooral analoog beschikbaar zijn. Het georganiseerd en digitaal beschikbaar hebben van alle planologische regelingen is van grote waarde voor de dagelijkse RO-praktijk binnen een gemeente.</p><p>Voorwaarde voor het scannen is het op orde hebben van de analoge dossiers. Indien dat niet het geval is, zal dat alsnog moeten gebeuren. Maar deze inspanning is ook dringend voor het voeren van een goede gemeentelijke ruimtelijke ordening. Daarbij zullen eventuele ‘juridische fouten’ blijken. Kortom een noodzakelijke kwaliteitsverbeteringslag.</p></section><section id="status-van-dit-document"><h3 id="x2-4-status-van-dit-document"><span class="secno">2.4 </span>Status van dit document</h3><p>Deze praktijkrichtlijn kent geen wettelijke verankering. Het toepassen van deze praktijkrichtlijn vindt plaats op basis van het creëren van meerwaarde voor de eigen organisatie, en zorgt tevens voor een betere dienstverlening door het bevoegd gezag.</p><p>Het beheer van deze praktijkrichtlijn is ondergebracht bij Geonovum in het reguliere beheerproces van de RO Standaarden. Daarmee wordt een blijvende samenhang beoogd tussen deze praktijkrichtlijn en de overige RO Standaarden.</p></section></section><section data-format="markdown" id="adviezen-en-normering"><!--OddPage--><h2 id="x3-adviezen-en-normering"><span class="secno">3. </span>Adviezen en normering</h2><p><strong>Voor het maken van plancontouren zijn normen opgesteld. De normen zijn er ten behoeve van de leesbaarheid en de interoperabiliteit van de plancontouren. Daarnaast wordt in dit hoofdstuk advies gegeven met betrekking tot het digitaliseren. De adviezen hebben betrekking op het scannen zelf.</strong></p><section id="normen-voor-beschikbaarstelling"><h3 id="x3-1-normen-voor-beschikbaarstelling"><span class="secno">3.1 </span>Normen voor beschikbaarstelling</h3><p>Er gelden de volgende normen voor gescande documenten:</p><ul><li>Voor beschikbaarstelling wordt een lage scanresolutie van maximaal 96 ppi gebruikt, dat geschikt is voor beeldgebruik. Immers hoge resoluties betekent grote bestanden die zo groot kunnen zijn, dat gebruik door eindgebruikers over een normale internetverbinding te traag zo niet onmogelijk wordt;</li>
+<li>Scanning in kleur, bitdiepte maximaal 24 bits of zwart-wit bitdiepte maximaal 16-bits</li>
+<li>In de PDF worden de gescande afbeeldingen gecomprimeerd;</li>
+<li>Gamma-instelling 2,2;</li>
+<li>Kleurruimte sRGB.</li>
+</ul></section><section id="adviezen-met-betrekking-tot-scannen"><h3 id="x3-2-adviezen-met-betrekking-tot-scannen"><span class="secno">3.2 </span>Adviezen met betrekking tot scannen</h3><p>Er geldt een aantal adviezen:</p><ul><li>De digitale afbeeldingen van de moederkopie zijn van een zo hoog mogelijke kwaliteit, waarvan ten behoeve van interne of externe beschikbaarstelling kopieën in een ander formaat vervaardigd kunnen worden;</li>
+<li>De moederkopie is een zo getrouw mogelijke kopie van het fysieke origineel;</li>
+<li>Voor negatieven geldt dat de moederkopie een zo goed mogelijk positieve weergave van het originele beeld is;</li>
+<li>Maximale bestandsgrootte: 5 MB;</li>
+<li>De kaartelementen moeten scherp zijn. Het kleinste betekenisvolle detail is zichtbaar en er is niet teveel verscherpt (geen zichtbare ‘haloing’ rond contrastrijke elementen in de kaart);</li>
+<li>De PDF-plankaart moeten zoveel mogelijk de tonale waarden of kleuren van het origineel representeren;</li>
+<li>De PDF-plankaart is niet te donker of te licht en details in de donkere en lichte delen van de PDF-plankaart zijn zichtbaar. Bij kleurenscanning is er geen sprake van kleurenzweem of andere kleurafwijkingen;</li>
+<li>De PDF-plankaart is niet vervormd en niet gespiegeld;</li>
+<li>De PDF-plankaart moet recht staan;</li>
+<li>De PDF-plankaart moet vrij zijn van verstoringen (zoals ruis, moiré-effect, Newtonringen, stof, draadjes, krassen, ongelijke uitlichting) en scannerfouten (zoals verspringing, strepen, magnetische velden, kleurmisregistratie, at-random-verstoringen);</li>
+<li>Voor het scannen wordt een lage scanresolutie van 96 ppi aanbevolen. Immers hoge resoluties betekent grote bestanden die zo groot kunnen zijn, dat gebruik door eindgebruikers over een normale internetverbinding te traag zo niet onmogelijk wordt;</li>
+<li>Voor interne archiveringsdoeleinden wordt een scanresolutie van 200dpi aanbevolen.</li>
+</ul></section><section id="alternatieven-voor-scannen"><h3 id="x3-3-alternatieven-voor-scannen"><span class="secno">3.3 </span>Alternatieven voor scannen</h3><p>In deze praktijkrichtlijn wordt gesproken van scannen. Het is echter heel goed mogelijk om een PDF van de plankaart, voorschriften/regels of toelichtingen te vervaarden op basis van de software waarin deze opgesteld worden. Bijvoorbeeld middels Open Office, Word of de codeersoftware (CAD/GIS) voor de plankaart.</p></section></section><section data-format="markdown" id="plancontour-en-pdf-in-relatie-tot-andere-standaarden"><!--OddPage--><h2 id="x4-plancontour-en-pdf-in-relatie-tot-andere-standaarden"><span class="secno">4. </span>Plancontour en PDF in relatie tot andere standaarden</h2><p><strong>Plancontour &amp; PDF kent geen wettelijke verplichting. De PRPCP2008 is een facultatieve praktijkrichtlijn als onderdeel van de RO Standaarden in beheer bij Geonovum.</strong></p><section id="ro-standaarden-2008"><h3 id="x4-1-ro-standaarden-2008"><span class="secno">4.1 </span>RO Standaarden 2008</h3><p>Plancontour &amp; PDF is gebaseerd op de objectmodellering van de RO Standaarden 2008. Reden is dat de periode rondom inwerkingtreden van de Wro (2008-2010) waarin het digitaliseren of inscannen van papieren veel werd gedaan. Hiervoor is de praktijkrichtlijn Plancontour &amp; PDF ontwikkeld. Plancontour &amp; PDF sluit aan bij de nieuwe objectmodellering van de RO Standaarden 2008.
+</p><p><b>Noot</b>: Met de inwerkingtreding van het <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening</a> (Bro) en de ministeriële <a href="http://wetten.overheid.nl/BWBR0031829" target="_blank">Regeling standaarden ruimtelijke ordening 2012</a>, is het toepassen van de RO Standaarden 2012 verplicht voor alle plannen die op of na 1 juli 2013 in procedure zijn gegaan.</p><p>Er geldt wel een uitzondering voor de objectmodellering conform de RO Standaarden 2008. De opbouw van de identificatie (IDN) met de PRPCP2008 is in overeenstemming met de IMRO2006 standaard. Reden is dat de planvorm, zoals hieronder aangegeven, kenbaar gemaakt wordt middels het STRI2006 manifest.</p><p>Indien de planvormen uitgewisseld worden op basis van hun plancontour gelden er andere formaten voor de planonderdelen dan voor echt objectgerichte digitale plannen. Immers alle planonderdelen zelf zijn als ‘PDF’ beschikbaar, die allen gekoppeld zijn aan één object. Die van de plancontour.</p><p>Ondanks de aansluiting bij RO Standaarden 2008, kunnen met de PRPCP2008 alleen de ruimtelijke instrumenten die onder de oude WRO en alle ruimtelijke instrumenten tussen 1 juli 2008 en 1 januari 2010 overeenkomstig de Wro (niet oude WRO) analoog in procedure zijn geweest, worden gemaakt en beschikbaar gesteld.
+</p></section><section id="stri2006"><h3 id="x4-2-stri2006"><span class="secno">4.2 </span>STRI2006</h3><p>De wijze van beschikbaar stellen van ‘Plancontouren &amp; PDF’ sluit aan bij IMRO2006 plannen. Dat wil zeggen dat de op deze wijze beschikbare plannen opgenomen moeten worden in het STRI2006 manifest. Reden is dat het STRI2008 schema conform de wettelijk verankerde RO Standaarden (2008 dan wel 2012) is. Plancontour &amp; PDF valt niet onder de wettelijke standaarden en komt dan ook niet voor als planvorm in deze standaard.</p><p>In overeenstemming met de oude DURP Standaarden 2006 en RO Standaarden 2008, worden alle afzonderlijke plannen een samenhangende set bestanden beschikbaar gesteld. Waarbij alle, bij het betreffende plan behorende bestanden, binnen 1 virtuele directory gepubliceerd (plancontour-GML en PDF’en).</p><p>Voor Plancontour &amp; PDF plannen, zowel op basis van de WRO als onder (de overgangsregeling van) de Wro, geldt dat het geen authentieke plannen zijn. Het analoge exemplaar prevaleert in geval van afwijkingen. Om die reden (evenals voor plannen volgens de IMRO2006 standaard) zijn er daarom ook geen aanvullende waarborgen getroffen in de vorm van een elektronische handtekening. Het STRI2006 manifest wordt dus niet voorzien van een waarmerk zoals dat wel het geval is bij ruimtelijke instrumenten conform de RO Standaarden 2008 en 2012.</p></section></section><section data-format="markdown" id="planobject-en-attributen"><!--OddPage--><h2 id="x5-planobject-en-attributen"><span class="secno">5. </span>Planobject en attributen</h2><p><strong>Er is maar één object, namelijk ‘plangebied’. Dit object heeft informatie over het ruimtelijk plan en de plancontour en de tekst(en) zijn gekoppeld.</strong></p><section id="codering-plangebied-plancontour-pdf"><h3 id="x5-1-codering-plangebied-plancontour-pdf"><span class="secno">5.1 </span>Codering plangebied plancontour &amp; PDF</h3><p>Elk ruimtelijk plan, visie en besluit van gemeente, provincie of het Rijk onder de oude Wet Ruimtelijke Ordening (WRO) wordt apart als contour beschikbaar gesteld. Ook ruimtelijke plannen, visies en besluiten die tussen 1 juli 2008 en 1 januari 2010 overeenkomstig de huidige Wet ruimtelijke ordeningen (Wro) analoog in procedure zijn geweest kunnen als plancontour met dit plan type beschikbaar worden gesteld.</p><p>De planonderdelen van dat ruimtelijk plan, visie of besluit worden als PDF ‘toegevoegd’ aan het plangebied. Onder planonderdelen wordt verstaan:</p><ul><li>plankaart;</li>
+<li>voorschriften/regels;</li>
+<li>toelichting;
+</li>
+<li>bijlage bij voorschriften/regels;
+</li>
+<li>bijlage bij toelichting;</li>
+<li>besluitdocument;</li>
+<li>beleidsdocument.</li>
+</ul><p>Voor de vereisten van beschikbaarstelling van een plancontour &amp; PDF wordt verwezen naar STRI2006.</p><p>In <a href="#_Ref300579421">Tabel 1</a><a></a> worden de attributen behorend bij de plancontour benoemd, de waarden aangegeven die deze attributen moeten bevatten en wordt aangegeven of het gebruik van attribuut verplicht is en of het attribuut meerdere malen mag worden gebruikt. Na de tabel wordt per attribuut een nadere toelichting gegeven.
+</p><p><img src="media/PRPCP_tabel1.png" alt="Tabel 1 Plangebied_PCP">
+</p><p>Hierna wordt per attribuut een nadere toelichting gegeven.
+</p><p><b>identificatie</b> (verplicht)</p><p>De identificatie van de plancontour wordt opgebouwd conform IMRO2006:</p><p>"NL.IMRO.", vervolgens wordt het CBS-nummer van de bronhouder opgenomen en aansluitend een uniek plannummer, door de bronhouder te bepalen.</p><p>De identificatiecode heeft daardoor de volgende opbouw: NL.IMRO.,CBSnummer van de bronhouder (4 cijfers), in het geval een gemeente facultatief aangevuld met het CBS-nummer voor buurt en wijk of anders aangevuld met 4 nullen; totaal derhalve altijd 8 posities lang. Het daarop volgende plannummer heeft een maximale lengte van 15 posities en mag ook bestaan uit letters. Het laatste teken is altijd een koppelstreepje, ascii 45 (-). De totale lengte bedraagt dan maximaal 32 tekens. De identificatie wordt daardoor: NL.IMRO.xxxxxxxxyyy….- Voorbeeld: NL.IMRO.1282000026B-.
+</p><p><b>typePlan</b> (verplicht)</p><p>voor het attribuut <i>typePlan</i> wordt het domein <i>RuimtelijkPlanOfBesluit_PCP</i> gebruikt. Voor de waarde zijn er verschillende mogelijkheden zoals genoemd in <a href="#_Ref300562362">Tabel 2</a><a></a>.
+</p><p>Voor alle ruimtelijke instrumenten die overeenkomstig de oude Wet Ruimtelijke Ordening (WRO) in procedure zijn geweest kunnen met behulp van plancontour &amp; PDF door de bronhouder beschikbaar worden gesteld. </p><p>Dit geldt voor gemeenten, provincies en het rijk. Plannen die eveneens door deze overheden beschikbaar kunnen worden gesteld met van plancontour &amp; PDF zijn die plannen die 1 juli 2008 en 1 januari 2010 overeenkomstig de huidige Wet ruimtelijke ordeningen (Wro) analoog in procedure zijn geweest. Wanneer een dergelijk plan conform IMRO2008 is opgesteld, is/ wordt deze met behulp van RO Standaarden 2008 door de bronhouder beschikbaar gesteld, indien gewenst. In het geval van dit analoge plan geen digitale versie is gemaakt kan dit plan met behulp van PRPCP2008/ STRI2006 alsnog door de bronhouder beschikbaar worden gesteld.
+</p><p>Voor het digitaal beschikbaar stellen van een voorbereidingsbesluit conform de huidige Wet ruimtelijke ordeningen (Wro) dient de huidig geldende RO Standaarden (2008 of later) te worden gebruikt. Dit geldt ook voor de ruimtelijke instrumenten die vanaf 1 januari 2010 in procedure zijn gegaan/ nu nog gaan. </p><p><a name="_Ref300562362"></a><strong>Tabel 2 Type ruimtelijke instrumenten als plancontour</strong></p><img src="media/image1.png" alt="media/image1.png" style="width: 100%;"><b>beleidsmatigVerantwoordelijkeOverheid</b><p>Hier wordt de overheid die beleidsmatig verantwoordelijk is voor het opstellen van het plan opgenomen uit het domein <i>Overheden_BP.</i> In dit geval een van de volgende vaste waarden:
+</p><ul><li>gemeentelijke overheid;</li>
+<li>deelgemeente/stadsdeel;
+</li>
+<li>provinciale overheid of</li>
+<li>nationale overheid.
+</li>
+</ul><b>naamOverheid</b><p>Hier wordt de naam van de beleidsmatig verantwoordelijke overheid opgenomen, in de vorm van de tekst “gemeente …….”, “deelgemeente ……”, "stadsdeel ……", “provincie …….” of “ministerie …….”.</p><p><b>overheidsCode</b> (verplicht)</p><p>Teneinde kenbaar te maken van welke beleidsmatig verantwoordelijke overheid het gebiedsgerichte besluit is, wordt hier het viercijferige CBS-nummer van die overheid opgenomen. Voor deelgemeenten/stadsdelen wordt het nummer gebruikt van de gemeente waartoe zij behoren. Voor de provincies worden, voorafgaand aan het CBS-nummer van de provincie, twee voorloopnegens geplaatst, zodat de totale lengte 4 posities bedraagt. Voor het Rijk wordt het nummer "0000" gebruikt.</p><p><b>naam</b> (verplicht)</p><p>In het waardeveld van het attribuut <i>naam</i> dient de naam van het ruimtelijke instrument te worden opgenomen zoals deze volgens de aanhaaltitel in het plan, visie besluit wordt genoemd. De volledige naam wordt gebruikt, inclusief het eventuele voorafgaande woord "bestemmingsplan", "inpassingsplan", "Rijksbestemmingsplan" enz.</p><p><b><i>planstatusInfo</i></b> (verplicht)</p><p>Dit attribuut is noodzakelijk om de plangegevens te kunnen plaatsen naar tijd en belang. Het samengesteld attribuut <i>planstatus</i> verwijst naar het object <i>Planstatus</i><i>En</i><i>Datum</i>, bestaande uit de attributen:</p><p><b>planstatus</b> (verplicht)</p><p>Het domein <i>Planstatus_</i><i>PCP</i> geeft de toegestane waarden voor het attribuut <i>planstatus</i> waaruit er één moet worden gekozen. De waarde van dit attribuut geeft de planstatus weer.</p><p><b>datum</b> (verplicht)</p><p>Het attribuut <i>datum</i> is bedoeld om de proceduredatum van het plan op te nemen. De in het waardeveld op te nemen datum dient overeenkomstig het binnen het IMRO afgesproken datumformaat te worden genoteerd: jjjj-mm-dd.
+</p><p><b><i>verwijzingNaarTekstInfo</i></b> (verplicht)</p><p>Het samengestelde attribuut <i>verwijzingNaarTekstInfo</i> bestaat uit de attributen <i>verwijzingNaarTekst</i> en <i>typeTekst</i>. Teneinde een zo beperkt mogelijk aantal verwijzingen naar teksten te verkrijgen is het aantal keren dat het attribuut <i>verwijzingNaarTekstInfo</i> mag worden gebruikt beperkt. De raadpleger van de plannen heeft daar baat bij, omdat hij dan niet direct geconfronteerd wordt met een mogelijk lange lijst van verwijzingen. Daarom moet er maximaal één verwijzing zijn naar de plankaart en maximaal één naar de bijbehorende tekst uit het domein <i>Teksttype_PCP</i>. Daarnaast mag er maximaal één verwijzing zijn naar alle eventuele bijlagen.
+</p><p><b>verwijzingNaarTekst</b> (verplicht)    </p><p>Dit attribuut is bedoeld om (hyper)links te kunnen opnemen. Hier dient een (hyper)link naar het soort document dat is aangegeven bij het attribuut <i>typeTekst</i> te worden opgenomen. Het format dient overeenkomstig de afspraak over de bestandsnaamconventies conform de STRI2006 te zijn.</p><p><b>typeTekst</b> (verplicht)</p><p>Hiermee wordt aangegeven om wat voor type tekst het gaat of het de plankaart betreft. Per verwijzing naar tekst (kaart) dient gekozen te worden uit een van de volgende waarden van het domein <i>TeksttypePG_PCP</i>:</p><ul><li>plankaart;</li>
+<li>voorschriften/regels;</li>
+<li>toelichting;</li>
+<li>bijlage bij regels;</li>
+<li>bijlage bij toelichting;</li>
+<li>besluitdocument;
+</li>
+<li>beleidsdocument.</li>
+</ul><b>verwijzingNorm</b><p>Teneinde de zekerheid te hebben welke technische status de data hebben, is het noodzakelijk dat wordt aangegeven aan welke IMRO versie de gegevensset voldoet. Tevens moet een verwijzing worden opgenomen naar de gebruikte versie van de praktijkrichtlijn. Het attribuut <i>verwijzingNorm</i> dient dus twee keer te worden opgenomen met de verwijzing naar de betreffende versies in het waardeveld. Dit zijn de vaste waarden IMROPCP2008 en PRPCP2008.</p><p><b>geometrie</b> (verplicht)</p><p>Een plancontour kent uitsluitend de geometrie van een vlak of multivlak (multipolygoon). Dit attribuut kent daarom coördinaten in een vastgesteld format (gml) en kan door een applicatie automatisch worden gegenereerd.</p></section></section><section data-format="markdown" id="domeintabellen"><!--OddPage--><h2 id="x6-domeintabellen"><span class="secno">6. </span>Domeintabellen</h2><img src="media/image2.png" alt="media/image2.png" style="width: 100%;"><img src="media/image3.png" alt="media/image3.png" style="width: 100%;"><img src="media/image4.png" alt="media/image4.png" style="width: 100%;"><img src="media/image5.png" alt="media/image5.png" style="width: 100%;"></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

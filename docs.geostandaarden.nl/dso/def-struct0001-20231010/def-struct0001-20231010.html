@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico">
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/geen/style.css">
+<title>Whitepaper Structureren Omgevingsdocumenten 1.0.0</title>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/geen/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Whitepaper Structureren Omgevingsdocumenten",
+  "shortName": "struct0001",
+  "pubDomain": "dso",
+  "specStatus": "def",
+  "specType": "al",
+  "license": "cc-by-nd",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/dso/struct0001/"
+  ],
+  "publishDate": "2023-10-10",
+  "publishVersion": "1.0.0",
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/dso/def-al-struct0001-20231010/"
+  ],
+  "edDraftURI": "https://geonovum.github.io/dso-struct0001/",
+  "authors": [
+    {
+      "name": "Mirella van de Velde",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Wilko Quak",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/geen/base.css"></head><body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Whitepaper Structureren Omgevingsdocumenten 1.0.0</h1>
+    
+    <h2>
+      Geonovum Algemeen<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-10-10">10 oktober 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/dso/def-al-struct0001-20231010/">https://docs.geostandaarden.nl/dso/def-al-struct0001-20231010/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/dso/struct0001/">https://docs.geostandaarden.nl/dso/struct0001/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/dso-struct0001/">https://geonovum.github.io/dso-struct0001/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Wilko Quak</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Mirella van de Velde</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+        </p>
+    <hr title="Separator for header">
+  </div><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-6B0E2E55"><bdi class="secno">1. </bdi>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#x2-2F3A6955"><bdi class="secno">2. </bdi>Hoe werkt het digitale stelsel?</a></li><li class="tocline"><a class="tocxref" href="#x3-5713C4BA"><bdi class="secno">3. </bdi>Wat heeft die functionele structuur met je dienstverlening te maken?</a></li><li class="tocline"><a class="tocxref" href="#x4-6E095AF7"><bdi class="secno">4. </bdi>Het belang van annotaties</a></li><li class="tocline"><a class="tocxref" href="#x5-75168E79"><bdi class="secno">5. </bdi>Het belang van het ordenen van je activiteiten</a></li></ol></nav><section id="6B0E2E55" class="chapter"><h2 id="x1-6B0E2E55"><bdi class="secno">1. </bdi>Inleiding</h2><p id="734C9E83" class="space-after">Graag nemen we je mee in het belang van de manier waarop je je omgevingsdocument opstelt en structureert – en waarom dat voor andere onderdelen van je dienstverlening consequenties heeft. Of het nu gaat om het instellen van een behandeldienst, het bieden van het juiste aanvraagformulier aan de bezoeker van het Omgevingsloket of het vinden van precies die regels die gelden in je eigen achtertuin, de manier waarop je je omgevingsdocument structureert heeft daar invloed op.</p><p id="0AB3425E" class="space-after">Ingewikkelde materie, die we proberen zo inzichtelijk mogelijk te maken door vanuit de nieuwe wet en de nieuwe werkstructuren een doorkijkje te geven in een stukje van de werking van het Digitaal Stelsel Omgevingswet en daaruit via een aantal voorbeelden te komen tot een aantal zaken waaraan je kunt denken om je omgevingsdocument zo ondersteunend mogelijk op te stellen.</p><p id="67A00F86"><b>Nieuwe manieren van werken</b></p><p id="4455DD3F">De invoering van de Omgevingswet: een grote operatie. Een nieuw digitaal stelsel dat deze wet ondersteunt, veel aanpassingen in de manier van werken voor een gemeente, provincie, waterschap, die soms ook andere competenties van ambtenaren vergt, communicatie, participatie, een andere <i>mindset</i>. Waarbij we alles proberen eenvoudiger en begrijpelijker voor de burger te maken. Maar waarbij ook veel meer onderlinge samenhang wordt vereist. Het lastige daarbij is, dat het één op het ander ingrijpt. Bij het opstellen van een omgevingsdocument moet je rekening houden met de manier waarop onderdelen van dat document in het stelsel opereren, wat een gebruiker van het loket straks te zien krijgt of hoe je kunt zorgen dat de dienstverlening die je levert past bij je ambitieniveau.</p></section><section id="2F3A6955" class="chapter"><h2 id="x2-2F3A6955"><bdi class="secno">2. </bdi>Hoe werkt het digitale stelsel?</h2><p id="79E07B3B">De keuzes die je maakt hebben consequenties voor andere onderdelen van je dienstverlening. Om daar gevoel bij te krijgen, leggen we eerst heel kort een stukje van het digitale stelsel uit.</p><figure id="fig-generatedID"><img src="media/image2.png" alt="" style="width: 100%;"><figcaption><a class="self-link" href="#fig-generatedID">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="7DAE8111" class="space-after">Hierboven zie je een schematisch overzicht van de samenhang tussen een aantal onderdelen van het digitale stelsel. Bij het opstellen van een omgevingsdocument, zoals bijvoorbeeld een omgevingsplan, stel je juridische regels op. Bij het opstellen van die regels beschrijf je onder andere activiteiten<span class="noot">[1]<span class="noottekst"> Een activiteit: ieder menselijk handelen (of nalaten) waarbij, of waardoor een verandering of effect in de fysieke leefomgeving wordt of kan worden bewerkstelligd.<br></span></span>. Als je activiteiten in een omgevingsdocument beschrijft en als zodanig annoteert geef je ook altijd de bovenliggende activiteit aan. Zo vinden ze automatisch een plekje binnen de functionele structuur.</p><p id="54C977D0" class="space-after">Die functionele structuur bevat een taxonomie die is opgebouwd uit activiteiten en de kapstok is voor toepasbare regels, en daarmee randvoorwaardelijk voor het aanbieden van toepasbare regels. Toepasbare regels ontsluiten de juridische regels uit omgevingsdocumenten door middel van vragenbomen in gewone mensentaal.&nbsp;Er zit dus een harde koppeling tussen juridische en toepasbare regels met behulp van de activiteit. Wat juridisch gezien bij elkaar hoort, hoort dan ook in de wereld van toepasbare regels bij elkaar.</p><p id="60D6BCFC">Die koppeling tussen juridische en toepasbare regels doe je door het koppelen van één of meerdere werkzaamheden aan een activiteit. Juridische activiteiten zijn vaak niet één op één over te zetten in begrijpelijke werkzaamheden voor het Omgevingsloket. In de praktijk leiden soms meerdere werkzaamheden tot één juridische activiteit of leidt één werkzaamheid tot meerdere activiteiten. Zo bepaal je welke werkzaamheden bij de juiste juridische activiteit uitkomt in het Omgevingsloket.</p><figure id="fig-generatedID-0"><img src="media/image3.png" alt="" style="width: 71.23354927410055%;"><figcaption><a class="self-link" href="#fig-generatedID-0">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="6E05C67D" class="space-after">Je bepaalt zelf voor welke activiteiten je regels maakt, maar de werkzaamheden en trefwoorden worden centraal beheerd. Houd daarnaast rekening met hoe andere overheden hun activiteiten aan een werkzaamheid koppelen.</p></section><section id="5713C4BA" class="chapter"><h2 id="x3-5713C4BA"><bdi class="secno">3. </bdi>Wat heeft die functionele structuur met je dienstverlening te maken?</h2><p id="2808C18F" class="space-after">Nu lijkt de functionele structuur misschien een stukje “binnenkant” van het stelsel, waar je als bevoegd gezag niet veel mee te maken hebt. Maar de functionele structuur is de kapstok voor andere functionaliteiten van het Omgevingsloket, waaronder toepasbare regels. Vanuit de functionele structuur wordt een aantal zaken geregeld, waarmee je uiteindelijk bepaalt wat het niveau van je dienstverlening is. Voor we het annoteren van activiteiten en locaties nog wat verder uitdiepen, noemen we hier een paar voorbeelden.</p><p id="1F471A01"><b>Het juiste aanvraagformulier</b></p><p id="387D47D2" class="space-after">Afhankelijk van het type activiteit krijgt een loketgebruiker een vragenformulier. Als de activiteit goed is “opgehangen” aan de bovenliggende activiteit, krijgt die gebruiker alleen relevante vragen voorgelegd. Als je als waterschap een activiteit rondom het Beweiden van vee benoemt, moet je zorgen dat deze niet Aanbouw bij een woning als bovenliggende activiteit kent. De loketgebruiker zal dan vragen krijgen rondom de omvang van zijn veestapel terwijl hij een dakkapel wil bouwen.</p><p id="2D7BFA81"><b>Vragenbomen bij het checken</b></p><p id="7869E83A" class="space-after">Vanuit het stellen van regels is het annoteren met een locatie vaak nodig. Maar ook voor het tonen van de juiste vragenbomen is het belangrijk dat je een goede keuze maakt rondom het annoteren met een locatie. Bij het checken in het Omgevingsloket komen vragen rondom het aanleggen van een provinciale weg vreemd over als je locatie midden in een natuurgebied ligt. De locatie (of locaties) die je toevoegt aan een activiteit is dus ook relevant.</p><p id="7B7B5B26" class="space-after">Uiteindelijk komen deze voorbeelden neer op het efficiënt ophangen van activiteiten in je functionele structuur en daar komt het annoteren van activiteit en van locatieaanduiding om de hoek kijken. </p><p id="434CED7F"><b>Het instellen van de behandeldienst</b></p><p id="79400551" class="space-after">Voor iedere activiteit in de functionele structuur kan de behandeldienst worden ingesteld: de organisatie die namens het bevoegd gezag vergunningaanvragen, meldingen en dergelijke behandelt, zoals een regionale uitvoeringsdienst. Als de behandeldienst is ingesteld stuurt het Omgevingsloket iedere aanvraag of melding direct door naar die behandeldienst. Het instellen van de behandeldienst werkt door naar de onderliggende niveaus in de functionele structuur. Als voor jouw organisatie alle milieubelastende activiteiten worden behandeld door de regionale uitvoeringsdienst en je de behandeldienst alleen op het laagste niveau in de functionele structuur instelt, moet je die behandeldienst voor iedere activiteit apart aangeven. Het is dan veel makkelijker, en minder werk, om de behandeldienst in te stellen op het niveau daarboven, namelijk op het niveau van de milieubelastende activiteit. Die werkt dan door naar alle onderliggende activiteiten.</p><p id="6360AA1D" class="space-after">Bij het annoteren met activiteiten moet je, zoals gezegd, de bovenliggende activiteit aangeven. Als je daar een logische indeling kiest, is bij de toepasbare regels één routeringsregel voldoende. Alle ingediende aanvragen en meldingen die onder die bovenliggende activiteiten vallen, gaan dan direct naar die behandeldienst.</p></section><section id="6E095AF7" class="chapter"><h2 id="x4-6E095AF7"><bdi class="secno">4. </bdi>Het belang van annotaties</h2><p id="590830E2" class="space-after">Het annoteren is dus belangrijk voor allerlei onderdelen van je dienstverlening. Daarom gaan we ook wat dieper in op het annoteren van met name activiteiten en locaties.</p><p id="06E82681" class="space-after">Nog even terug: annoteren, wat is dat ook alweer? Annoteren is het toevoegen van gegevens aan (onderdelen van) besluiten en regelingen, het “labelen” van (onderdelen) van je omgevingsdocument of van je regels, waardoor die besluiten machineleesbaar worden.</p><p id="614D898C" class="space-after">Annoteren zorgt ervoor dat:</p><ol><li><p id="2A9AC741">Het omgevingsdocument gestructureerd wordt waardoor het makkelijker wordt om te filteren op voor de gebruiker relevante onderdelen.</p></li><li><p id="0597F357">Locaties waarover de tekst gaat herkenbaar op de kaart worden weergegeven.</p></li><li><p id="0FA74979" class="space-after">Je juridische regels verbindt aan de toepasbare regels - oftewel vragenbomen.</p></li></ol><p id="1ACC7195"><b>Het annoteren van activiteiten</b></p><p id="7EA838F2" class="space-after">Bij het opstellen van je omgevingsdocument stel je onder andere regels over activiteiten. Regels over activiteiten kun je annoteren met locaties. Dat zorgt ervoor dat de locaties waar die regels gelden in een viewer op de kaart goed te herkennen zijn. Ook kun je in die viewer zoeken op een bepaalde activiteit, waarna de viewer alle artikelen laat zien die met die activiteit geannoteerd zijn.</p><p id="70693980" class="space-after">Belangrijk is dat het annoteren niet alleen in de viewer helpt. Diezelfde geannoteerde activiteiten uit dat omgevingsdocument vinden namelijk ook een plekje binnen de functionele structuur. Die functionele structuur bevat, zoals eerder gezegd, een hiërarchische structuur van activiteiten.</p><p id="685E9E30">Een voorbeeld: De activiteit van het hoogste niveau is ‘activiteit gereguleerd in het omgevingsplan gemeente X’. De activiteit van het niveau daaronder is de generieke ‘milieubelastende activiteit’. Op het laagste niveau staan de concrete activiteiten zoals ‘beton uitwassen’.</p><figure id="fig-generatedID-1"><img src="media/image4.png" alt="" style="width: 64.5274979891861%;"><figcaption><a class="self-link" href="#fig-generatedID-1">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="08C28F61" class="space-after">Om de functionele structuur te kunnen opbouwen, moet je bij het annoteren van het omgevingsdocument met activiteiten, van iedere activiteit aangeven wat de bovenliggende activiteit is.<b> </b>Door deze bovenliggende-activiteitrelaties vormen alle activiteiten in het Digitaal Stelsel Omgevingswet samen een boomstructuur met een relatie met de opzet van de wet- en regelgeving. De activiteit genaamd ‘Activiteit met gevolgen voor de fysieke leefomgeving’ is te zien als de stam van de activiteitenboom voor heel Nederland.</p><figure id="fig-generatedID-2"><img src="media/image5.png" alt="" style="width: 59.993352537115%;"><figcaption><a class="self-link" href="#fig-generatedID-2">Figuur <bdi class="figno">4</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="5936E0E5" class="space-after">Om de actieve activiteiten per bestuursorgaan eenvoudig terug te kunnen vinden in de boomstructuur is per bestuurslaag een hoofdtak gemaakt, met daarbinnen weer een hoofdtak voor elke individuele gemeente, provincie en waterschap.</p><p id="372CFD7F">Activiteiten kunnen specifiek geannoteerd worden (zoals “graven in het archeologisch gebied”), maar ook algemener (“graven”). Dat is een beleidskeuze.</p><figure id="fig-generatedID-3"><img src="media/image6.png" alt="" style="width: 47.77142498224727%;"><figcaption><a class="self-link" href="#fig-generatedID-3">Figuur <bdi class="figno">5</bdi></a> <span class="fig-title"></span></figcaption></figure><p id="26921870"><b>Maar wat is nu een goede structuur?</b></p><p id="68FBAB12" class="space-after">Om je te helpen tot een goede structuur te komen werken verschillende bestuurslagen aan een basishiërarchie. Voor de gemeentes wordt in het Casco en de Bruidsschat al een voorzet gedaan; en ook voor de waterschappen is daartoe een aanzet gedaan in het kader van TROWA. Vanuit dit startpunt kun je zelf voortbouwen, waarbij je de structuur aanpast aan de activiteiten die bij jou voorkomen.</p><p id="5415DA62"><b>Het annoteren van locaties</b></p><p id="653B5D5D" class="space-after">In een voorbeeld hierboven zagen we ook het belang van het koppelen van een specifieke locatie aan een activiteit. Wanneer een regel over een activiteit alleen maar relevant is op een specifieke locatie, dan wordt de activiteit-annotatie aan deze locatie gekoppeld. Bijvoorbeeld “Graven in een archeologisch gebied” is een activiteit die alleen maar in de locatie “archeologisch gebied” wordt gereguleerd.</p><p id="67685049" class="space-after">De regels die voor een activiteit gelden kunnen locatie gebonden zijn en dat kan ook in de toepasbare regels zo uitgewerkt worden. De regel voor de activiteit is dan alleen maar relevant als het initiatief zich afspeelt binnen de locatie van die regel (dus in het “archeologisch gebied”). Buiten die locatie gelden die regels dan niet.</p></section><section id="75168E79" class="chapter"><h2 id="x5-75168E79"><bdi class="secno">5. </bdi>Het belang van het ordenen van je activiteiten</h2><p id="5F12FA54" class="space-after">Beheerbaarheid is een belangrijk doel: een goede indeling van activiteiten dient als kapstok om toepasbare regels aan te kunnen koppelen. Zo kun je snel de toepasbare regels vinden die voor een activiteit zijn opgesteld. In de uitvoering van toepasbare regels is een structuur ook nodig. Niet alleen voor het kunnen samenstellen van verzoeken is een structuur nodig, maar ook voor het bepalen van bevoegd gezag, de behandeldienst en (straks) het omgevingsoverleg. Hiervoor kunnen bijvoorbeeld op een hoger niveau (bijv. op het niveau Activiteit gereguleerd in het omgevingsplan van de gemeente X) instellingen gedaan worden, die voor alle activiteiten die daaronder hangen gelden. Een bovenliggende activiteit kun je dus gebruiken om generieke configuraties te maken. Zou je geen structuur hebben, dan zou je instellingen steeds per activiteit moeten doen.</p><p id="368BEA51" class="space-after">Het mooiste voorbeeld is de bouwaanvraag. Een ontwikkelaar van een groot bouwproject wil niet voor iedere dakkapel, schuurtje, woning of schutting een aparte bouwaanvraag indienen. Die wil de aanvraag indienen voor het gehele bouwproject. Dus één aanvraag voor diverse bouwactiviteiten. Een burger wil echter wel graag een check uitvoeren voor het plaatsen van een dakkapel. Dit is dus op een niveau lager in de hiërarchie dan het indienen van de aanvraag van dat grote bouwproject. De activiteitenstructuur en de daarbij vastgelegde eigenschappen maken dit mogelijk.</p><p id="273F863B" class="space-after">Een functionele indeling helpt hier dan ook om activiteiten – en dus de toepasbare regels – die bij elkaar horen ook bij elkaar te houden. De Bruidsschat helpt de waterschappen en de gemeenten al met een eerste indeling, maar in je eigen omgevingsdocument kun je dat naar eigen wens aanpassen.</p><p id="02B54817" class="space-after">Concluderend: waar moet je aan denken bij het schrijven van je omgevingsdocument om de loketgebruiker of de behandelaar te faciliteren?</p><ul><li><p id="3AE7F6AC">Zorg dat je tijdens het schrijven van een omgevingsdocument in elk geval annoteert op activiteit en op locatie.</p></li><li><p id="478A8BCD">Denk hierbij na over de indeling van je activiteiten. Zorg dat je activiteiten die bij elkaar horen, ook op die manier annoteert: geef bij elke activiteit de juiste en logische bovenliggende activiteit aan.</p></li><li><p id="5ABF0677">Dit leidt tot:</p><ul><li><p id="23F4EB2B">Een meer beheerbare situatie voor je activiteiten in de functionele structuur (immers, je hoeft niet altijd elke individuele activiteit los te beheren) en</p></li><li><p id="2C82EB6A">gebruikersgemak voor initiatiefnemer (relevante vragenlijsten bij het checken, relevante aanvraagformulieren, indienen van aanvragen op het gewenste niveau) en</p></li><li><p id="74FF8281" class="space-after">de mogelijkheid om snel de juridische regel te vinden die hoort bij de toepasbare regel over een bepaalde activiteit.</p></li></ul></li></ul></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Algemeen - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

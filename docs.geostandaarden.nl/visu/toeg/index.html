@@ -1,0 +1,1229 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=utf-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+        
+        
+        <title>Handreiking digitaal toegankelijke locatiedata</title>
+
+        <link rel="stylesheet" type="text/css" href="./media/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+        
+        
+    <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "format": "markdown",
+  "publishDate": "2021-08-02",
+  "github": "https://github.com/geonovum/toegankelijke-locatiedata",
+  "editors": [
+    {
+      "name": "Theo Overduin",
+      "company": "Geonovum",
+      "companyURL": "https://geonovum.nl"
+    },
+    {
+      "name": "Thijs Brentjens",
+      "company": "Brentjens Geo-ICT",
+      "companyURL": "https://brentjensgeoict.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Edward Mac Gillavry",
+      "company": "Webmapper",
+      "companyURL": "https://webmapper.net"
+    },
+    {
+      "name": "Sjors Slaats",
+      "company": "Tactico",
+      "companyURL": "http://www.tactico.nl/"
+    },
+    {
+      "name": "Theo Overduin",
+      "company": "Geonovum",
+      "companyURL": "https://geonovum.nl"
+    },
+    {
+      "name": "Thijs Brentjens",
+      "company": "Brentjens Geo-ICT",
+      "companyURL": "https://brentjensgeoict.nl"
+    },
+    {
+      "name": "Victor Zuydweg",
+      "company": "ICTU",
+      "companyURL": "https://www.ictu.nl"
+    }
+  ],
+  "shortName": "toeg",
+  "pubDomain": "visu",
+  "issueBase": "https://github.com/geonovum/toegankelijke-locatiedata/issues",
+  "license": "cc-by",
+  "localBiblio": {
+    "webgeo2": {
+      "title": "Webrichtlijnen en geo 2.0 bèta",
+      "href": "https://www.geonovum.nl/geo-standaarden/geo-op-het-web/webrichtlijnen-en-geo-20-beta",
+      "status": "V2.0 beta",
+      "publisher": "Geonovum",
+      "company": "Geonovum",
+      "id": "webgeo2"
+    }
+  },
+  "publishISODate": "2021-08-02T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 02 augustus 2021"
+}</script><meta name="description" content="Het publiceren van geo-informatie op een overheidswebsite en tegelijkertijd voldoen aan de
+webrichtlijnen is zeker mogelijk. De principes, vuistregels en tips hieronder helpen u om dit in
+de praktijk te brengen. In Bijlage D Afbeeldingen is een afbeelding opgenomen met deze principes en vuistregels."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/visu/def-hr-toeg-20210802/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Handreiking digitaal toegankelijke locatiedata",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-08-02",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/toegankelijke-locatiedata/issues",
+  "alternativeHeadline": "",
+  "description": "Het publiceren van geo-informatie op een overheidswebsite en tegelijkertijd voldoen aan de\nwebrichtlijnen is zeker mogelijk. De principes, vuistregels en tips hieronder helpen u om dit in\nde praktijk te brengen. In Bijlage D Afbeeldingen is een afbeelding opgenomen met deze principes en vuistregels.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Theo Overduin",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Thijs Brentjens",
+      "worksFor": {
+        "name": "Brentjens Geo-ICT",
+        "url": "https://brentjensgeoict.nl"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Edward Mac Gillavry",
+      "worksFor": {
+        "name": "Webmapper",
+        "url": "https://webmapper.net"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Sjors Slaats",
+      "worksFor": {
+        "name": "Tactico",
+        "url": "http://www.tactico.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Theo Overduin",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://geonovum.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Thijs Brentjens",
+      "worksFor": {
+        "name": "Brentjens Geo-ICT",
+        "url": "https://brentjensgeoict.nl"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Victor Zuydweg",
+      "worksFor": {
+        "name": "ICTU",
+        "url": "https://www.ictu.nl"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+
+    <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Handreiking digitaal toegankelijke locatiedata</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2021-08-02">02 augustus 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/visu/def-hr-toeg-20210802/">https://docs.geostandaarden.nl/visu/def-hr-toeg-20210802/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/visu/toeg/">https://docs.geostandaarden.nl/visu/toeg/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/toegankelijke-locatiedata/">https://geonovum.github.io/toegankelijke-locatiedata/</a></dd>
+    <dt>Redacteurs:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Theo Overduin</span>, <a class="p-org org h-org h-card" href="https://geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Thijs Brentjens</span>, <a class="p-org org h-org h-card" href="https://brentjensgeoict.nl">Brentjens Geo-ICT</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Edward Mac Gillavry</span>, <a class="p-org org h-org h-card" href="https://webmapper.net">Webmapper</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Sjors Slaats</span>, <a class="p-org org h-org h-card" href="http://www.tactico.nl/">Tactico</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Theo Overduin</span>, <a class="p-org org h-org h-card" href="https://geonovum.nl">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Thijs Brentjens</span>, <a class="p-org org h-org h-card" href="https://brentjensgeoict.nl">Brentjens Geo-ICT</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Victor Zuydweg</span>, <a class="p-org org h-org h-card" href="https://www.ictu.nl">ICTU</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/toegankelijke-locatiedata/">GitHub geonovum/toegankelijke-locatiedata</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/toegankelijke-locatiedata/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/toegankelijke-locatiedata/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/toegankelijke-locatiedata/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" data-format="markdown" class="introductory"><h2>Samenvatting</h2><section><h3 id="principes-vuistregels-en-adviezen">Principes, vuistregels en adviezen</h3><p>Het publiceren van geo-informatie op een overheidswebsite en tegelijkertijd voldoen aan de
+webrichtlijnen is zeker mogelijk. De principes, vuistregels en tips hieronder helpen u om dit in
+de praktijk te brengen. In <a href="#B04">Bijlage D Afbeeldingen</a> is een afbeelding opgenomen met deze principes en vuistregels.</p><section><h4 id="basisprincipes">Basisprincipes</h4><p>De belangrijkste <strong>basisprincipes</strong> voor het publiceren van geo-informatie volgens de webrichtlijnen zijn:</p><ul>
+<li>Stel de gebruikersvraag centraal.</li>
+<li>Ontwikkel voor de eindgebruiker.</li>
+<li>Ontwikkel voor het web.</li>
+</ul></section><section><h4 id="vuistregels-en-adviezen">Vuistregels en adviezen</h4><p>De onderstaande vuistregels en tips zijn een concrete uitwerking van de principes.</p><ul>
+<li><strong>Hou het zo begrijpelijk en simpel mogelijk</strong>. Dit geldt voor informatie, functionaliteit en
+presentatie. Beperk de communicatie waar mogelijk tot één thema en tot de essentiële
+functionaliteiten voor het beantwoorden van de gebruikersvraag. Minder complexiteit betekent ook
+minder werk voor ontwikkeling en beheer.</li>
+<li><strong>De kaart is geen doel op zich</strong>. Onderzoek de beste tekstuele oplossing om de locatiegebonden
+gegevens te gebruiken. Deze handreiking beschrijft daarvoor verschillende opties. Bekijk hoe geo-
+informatie kan helpen bij het beantwoorden van de vragen van de eindgebruiker. Daarbij is de
+kaart een ondersteunend middel.</li>
+<li><strong>Gebruik en conformeer aan standaarden en technologie van het web</strong>.</li>
+<li><strong>Zorg ervoor dat in een projectteam voldoende kennis aanwezig is van communicatie, webtechnologie en geo-informatie</strong>. Deze kennis is zelden gebundeld in één persoon.</li>
+<li><strong>Test op conformiteit aan (web)standaarden</strong>. Dat kan met webbrowsers en online testtools.
+Test vanaf het begin van het ontwikkelwerk en doe vroegtijdig een webrichtlijnen-toets. Test met
+meerdere apparaten, op meerdere platformen.</li>
+<li>Onthoud dat de eindgebruiker meestal niet dezelfde kennis en ervaring heeft als de ontwikkelaar
+en de specialist.</li>
+</ul><p>In de volgende hoofdstukken werken we deze principes en vuistregels verder uit.</p><p><strong>Let op</strong>: Voor het publiceren van geo-informatie volgens de webrichtlijnen bestaat geen universeel
+toepasbare aanpak. Daarvoor zijn er te veel verschillende onderwerpen, systemen, platformen en
+gebruikers.</p></section></section></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#H01"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.1 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H02"><span class="secno">2. </span>De richtlijnen toegelicht voor geo</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#universeel"><span class="secno">2.1 </span>Universeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gelaagd-bouwen"><span class="secno">2.1.1 </span>Gelaagd bouwen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie"><span class="secno">2.1.1.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossing"><span class="secno">2.1.1.2 </span>Mogelijke oplossing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#foutmeldingen"><span class="secno">2.1.2 </span>Foutmeldingen</a></li><li class="tocline"><a class="tocxref" href="#invoer-formulier-om-locatie-in-te-tekenen"><span class="secno">2.1.3 </span>Invoer: formulier om locatie in te tekenen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-0"><span class="secno">2.1.3.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen"><span class="secno">2.1.3.2 </span>Mogelijke oplossingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#iframes-en-kaarten"><span class="secno">2.1.4 </span>iFrames en kaarten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-1"><span class="secno">2.1.4.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen-0"><span class="secno">2.1.4.2 </span>Mogelijke oplossingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#openheid-open-specificaties"><span class="secno">2.1.5 </span>Openheid, open specificaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-2"><span class="secno">2.1.5.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossing-0"><span class="secno">2.1.5.2 </span>Mogelijke oplossing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#toegankelijke-uri-s"><span class="secno">2.1.6 </span>Toegankelijke URI's</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-3"><span class="secno">2.1.6.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen-1"><span class="secno">2.1.6.2 </span>Mogelijke oplossingen</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#waarneembaar"><span class="secno">2.2 </span>Waarneembaar</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#tekstalternatieven"><span class="secno">2.2.1 </span>Tekstalternatieven</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-4"><span class="secno">2.2.1.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen-2"><span class="secno">2.2.1.2 </span>Mogelijke oplossingen</a></li><li class="tocline"><a class="tocxref" href="#wat-is-de-primaire-informatie"><span class="secno">2.2.1.3 </span>Wat is de primaire informatie?</a></li><li class="tocline"><a class="tocxref" href="#wat-de-kaart-toont-is-niet-altijd-logisch"><span class="secno">2.2.1.4 </span>Wat de kaart toont is niet altijd logisch</a></li></ol></li><li class="tocline"><a class="tocxref" href="#op-tijd-gebaseerde-media"><span class="secno">2.2.2 </span>Op tijd gebaseerde media</a></li><li class="tocline"><a class="tocxref" href="#onderscheidbaar"><span class="secno">2.2.3 </span>Onderscheidbaar</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-5"><span class="secno">2.2.3.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen-3"><span class="secno">2.2.3.2 </span>Mogelijke oplossingen</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#bedienbaar"><span class="secno">2.3 </span>Bedienbaar</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#toetsenbordbediening"><span class="secno">2.3.1 </span>Toetsenbordbediening</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-6"><span class="secno">2.3.1.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossingen-4"><span class="secno">2.3.1.2 </span>Mogelijke oplossingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#genoeg-tijd"><span class="secno">2.3.2 </span>Genoeg tijd</a></li><li class="tocline"><a class="tocxref" href="#toevallen"><span class="secno">2.3.3 </span>Toevallen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#begrijpelijk"><span class="secno">2.4 </span>Begrijpelijk</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#leesbaarheid-en-leesniveau"><span class="secno">2.4.1 </span>Leesbaarheid en leesniveau</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kwestie-7"><span class="secno">2.4.1.1 </span>Kwestie</a></li><li class="tocline"><a class="tocxref" href="#mogelijke-oplossing-1"><span class="secno">2.4.1.2 </span>Mogelijke oplossing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#assistentie-bij-invoer"><span class="secno">2.4.2 </span>Assistentie bij invoer</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H03"><span class="secno">3. </span>De gebruikersvraag centraal</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#het-aanbod-centraal"><span class="secno">3.1 </span>Het aanbod centraal</a></li><li class="tocline"><a class="tocxref" href="#de-vraag-centraal"><span class="secno">3.2 </span>De vraag centraal</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H04"><span class="secno">4. </span>Handvatten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#geo-informatie-presenteren"><span class="secno">4.1 </span>Geo-informatie presenteren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#statische-afbeeldingen"><span class="secno">4.1.1 </span>Statische afbeeldingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kaarten-ter-illustratie"><span class="secno">4.1.1.1 </span>Kaarten ter illustratie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak"><span class="secno">4.1.1.1.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wegenkaart-luchtfoto-s-en-satellietbeelden-achtergrond-ter-orientatie"><span class="secno">4.1.1.2 </span>Wegenkaart, luchtfoto's en satellietbeelden: achtergrond ter oriëntatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-0"><span class="secno">4.1.1.2.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#metingen-en-modelresultaten"><span class="secno">4.1.1.3 </span>Metingen en modelresultaten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-1"><span class="secno">4.1.1.3.1 </span>Aanpak</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#animaties"><span class="secno">4.1.2 </span>Animaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-2"><span class="secno">4.1.2.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#objecten"><span class="secno">4.1.3 </span>Objecten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-3"><span class="secno">4.1.3.1 </span>Aanpak</a></li><li class="tocline"><a class="tocxref" href="#objecten-zonder-adres"><span class="secno">4.1.3.2 </span>Objecten zonder adres</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-4"><span class="secno">4.1.3.2.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#sorteren-groeperen-en-filteren"><span class="secno">4.1.3.3 </span>Sorteren, groeperen en filteren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-5"><span class="secno">4.1.3.3.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pagina-met-locatiespecifieke-informatie"><span class="secno">4.1.3.4 </span>Pagina met locatiespecifieke informatie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#invoer-van-locatie"><span class="secno">4.2 </span>Invoer van locatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-locatieinvoer-voor-een-adres-of-plaatsnaam"><span class="secno">4.2.1 </span>Aanpak: locatieinvoer voor een adres of plaatsnaam</a></li><li class="tocline"><a class="tocxref" href="#adres-of-plaatsnaam-is-niet-voldoende-aanvullende-gegevens-nodig"><span class="secno">4.2.2 </span>Adres of plaatsnaam is niet voldoende: aanvullende gegevens nodig</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-6"><span class="secno">4.2.2.1 </span>Aanpak</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#generieke-kaartfunctionaliteit"><span class="secno">4.3 </span>Generieke kaartfunctionaliteit</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#pannen-en-zoomen"><span class="secno">4.3.1 </span>Pannen en zoomen</a></li><li class="tocline"><a class="tocxref" href="#cartografie"><span class="secno">4.3.2 </span>Cartografie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kleurgebruik"><span class="secno">4.3.2.1 </span>Kleurgebruik</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanpak-7"><span class="secno">4.3.2.1.1 </span>Aanpak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#contrast"><span class="secno">4.3.2.2 </span>Contrast</a></li></ol></li><li class="tocline"><a class="tocxref" href="#download"><span class="secno">4.3.3 </span>Download</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H05"><span class="secno">5. </span>Wat zijn webrichtlijnen?</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#modern-landschap-van-gebruik"><span class="secno">5.1 </span>Modern landschap van gebruik</a></li><li class="tocline"><a class="tocxref" href="#webrichtlijnen"><span class="secno">5.2 </span>Webrichtlijnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#webrichtlijnen-versie-1-en-2"><span class="secno">5.2.1 </span>Webrichtlijnen versie 1 en 2</a></li><li class="tocline"><a class="tocxref" href="#waarmerk-drempelvrij-nl"><span class="secno">5.2.2 </span>Waarmerk drempelvrij.nl</a></li><li class="tocline"><a class="tocxref" href="#het-pas-toe-of-leg-uit-principe"><span class="secno">5.2.3 </span>Het pas-toe-of-leg-uit-principe</a></li></ol></li><li class="tocline"><a class="tocxref" href="#locatiegebonden-gegevens-gemeengoed"><span class="secno">5.3 </span>Locatiegebonden gegevens: gemeengoed</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H06"><span class="secno">6. </span>De voordelen van webrichtlijnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gebruiksvriendelijkheid-en-bereik"><span class="secno">6.1 </span>Gebruiksvriendelijkheid en bereik</a></li><li class="tocline"><a class="tocxref" href="#vindbaarheid"><span class="secno">6.2 </span>Vindbaarheid</a></li><li class="tocline"><a class="tocxref" href="#compatibiliteit"><span class="secno">6.3 </span>Compatibiliteit</a></li><li class="tocline"><a class="tocxref" href="#kwaliteit"><span class="secno">6.4 </span>Kwaliteit</a></li><li class="tocline"><a class="tocxref" href="#duurzaamheid"><span class="secno">6.5 </span>Duurzaamheid</a></li><li class="tocline"><a class="tocxref" href="#kostenbesparing-helpdesk"><span class="secno">6.6 </span>Kostenbesparing helpdesk</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H07"><span class="secno">7. </span>Verantwoording</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#opdracht-en-doelstelling"><span class="secno">7.1 </span>Opdracht en doelstelling</a></li><li class="tocline"><a class="tocxref" href="#afbakening"><span class="secno">7.2 </span>Afbakening</a></li></ol></li><li class="tocline"><a class="tocxref" href="#B01"><span class="secno">A. </span>Vermeldingen gebruikte materialen</a></li><li class="tocline"><a class="tocxref" href="#B02"><span class="secno">B. </span>Praktijkvoorbeelden</a></li><li class="tocline"><a class="tocxref" href="#B03"><span class="secno">C. </span>Tools, validators en hulpmiddelen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#webrichtlijnen-versie-2"><span class="secno">C.1 </span>Webrichtlijnen versie 2</a></li><li class="tocline"><a class="tocxref" href="#webrichtlijnen-quickscan"><span class="secno">C.2 </span>Webrichtlijnen QuickScan</a></li><li class="tocline"><a class="tocxref" href="#tools-op-accessibility-nl"><span class="secno">C.3 </span>Tools op accessibility.nl</a></li><li class="tocline"><a class="tocxref" href="#w3c-validators"><span class="secno">C.4 </span>W3C validators</a></li><li class="tocline"><a class="tocxref" href="#webplatform-org"><span class="secno">C.5 </span>Webplatform.org</a></li><li class="tocline"><a class="tocxref" href="#color-oracle"><span class="secno">C.6 </span>Color Oracle</a></li></ol></li><li class="tocline"><a class="tocxref" href="#B04"><span class="secno">D. </span>Afbeeldingen</a></li></ol></nav><section id="H01" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><div class="warning" id="issue-container-generatedID"><div role="heading" class="warning-title marker" id="h-warning" aria-level="3"><span>Waarschuwing</span><span class="issue-label">: Verouderd document</span></div><p class="">
+<em>[Update 2 augustus 2021]</em> Dit document is de webversie van <a href="https://www.geonovum.nl/uploads/standards/downloads/20140112_HandreikingWRGEO2.0Beta.pdf">het PDF bestand van Webrichtlijnen en geo 2.0 bèta</a>, gepubliceerd op 15 januari 2015, wat gebaseerd is op WCAG 2.0. Dit document is een directe omzetting van het genoemde PDF bestand. Waar nodig zijn alleen kleine aanpassingen aan de tekst en opmaak gedaan (bijvoorbeeld nummering en kopjes van paragrafen aangepast), de inhoud is niet veranderd. Er zijn al enige tijd <a href="https://www.digitoegankelijk.nl/">vernieuwde toegankelijkheidseisen en wetgeving over digitale toegankelijkheid</a>, gebaseerd op WCAG 2.1. Dit document is hier nog niet op aangepast.
+</p></div><p>Eind 2013 publiceerde Geonovum in samenwerking met ICTU de eerste versie van de Handreiking Geo-
+informatie en Webrichtlijnen. Vragen over dit onderwerp vanuit het werkveld waren hiervoor de aanleiding.
+Continue ontwikkelingen in het domein van webrichtlijnen en geo-informatie maakten een update van de
+oorspronkelijke handreiking gewenst. Deze ligt nu voor u.</p><p>Grootste verschillen met de eerdere versie zijn: de actualisatie van onderdelen en het verwerken van
+opmerkingen, het toevoegen van praktijk- en code-voorbeelden en de versterkte samenwerking met de
+ontwikkelaars van het toepassingskader Webrichtlijnen (Toepassingskader: Toegankelijkheid voor iedereen,
+2014). De actualisatie is uitgevoerd door hetzelfde projectteam dat verantwoordelijk was voor de eerste
+Handreiking Geo-informatie en Webrichtlijnen. Met dit document hopen ICTU en Geonovum het toegankelijk
+publiceren van geo-informatie door overheidsorganisaties te vergemakkelijken voor alle geïnteresseerden.
+We horen graag of dit document u geholpen heeft en of u verbeteringen weet aan te dragen.</p><blockquote>
+<p>De kaart van de toekomst is geen kaart – het is ingekaderde informatie, die je wordt
+voorgeschoteld op basis van je locatie. Vroeger maakten veel gemeenten de fout om complexe
+WebGIS-systemen op te tuigen, die een onbegrijpelijke hoeveelheid geografische informatie in een
+klein scherm tonen. In plaats daarvan moet je betere manieren verzinnen om die informatie te
+presenteren die belangrijk is voor de persoon die de vraag stelt.</p>
+<p><em>- Ed Parsons Geo-ICT-er bij Google (Parsons, 2013)</em></p>
+</blockquote><blockquote>
+<p>Hoewel door sommigen de dood van de kaart wordt voorspeld, blijft de digitale kaart een van de beste manieren om geografische, ruimtelijke en lokale informatie te visualiseren. Zelfs als je nooit hebt leren kaartlezen, geeft een kaart je toch een vertrouwd gevoel en draaien we onszelf onwillekeurig naar een kaart toe.</p>
+<p><em>- Gary Gale (Gale, 2013)</em></p>
+</blockquote><section id="leeswijzer"><h3 id="x1-1-leeswijzer"><span class="secno">1.1 </span>Leeswijzer</h3><p>De belangrijkste principes, vuistregels en adviezen leest u in de <a href="#abstract">Samenvatting</a>. In <a href="#H02">Hoofdstuk 2</a> lichten we de belangrijke eisen uit de webrichtlijnen toe voor geo-informatie, inclusief toegankelijkheidskwesties en mogelijke oplossingen. <a href="#H03">Hoofdstuk 3</a> laat zien hoe het hanteren van een gebruikersperspectief helpt bij het publiceren van geo-informatie. <a href="#H04">Hoofdstuk 4</a> biedt handvatten voor toegankelijkheidsuitdagingen voor specifieke soorten geo-informatie: lijn- en vlakinformatie, rasterkaarten en animaties. In <a href="#H05">Hoofdstuk 5</a> leest u alles over de webrichtlijnen. Het gebruik van de webrichtlijnen levert veel voordelen op voor uw digitale communicatie. Welke dat zijn, leest u in <a href="#H06">Hoofdstuk 6</a>. Ten slotte biedt <a href="#H07">Hoofdstuk 7</a> een verantwoording voor dit document en het project.</p></section></section><section id="H02" data-format="markdown"><!--OddPage--><h2 id="x2-de-richtlijnen-toegelicht-voor-geo"><span class="secno">2. </span>De richtlijnen toegelicht voor geo</h2><p>In dit hoofdstuk beschrijven we de belangrijkste eisen uit de webrichtlijnen en lichten die toe voor geo-informatie. We doen dit aan de hand van de structuur van de webrichtlijnen versie 2: we houden de volgorde aan van de principes universeel, waarneembaar, bedienbaar en begrijpelijk. Van elk principe komen de belangrijkste eisen aan bod. Per eis belichten we aandachtspunten, veelvoorkomende toegankelijkheidskwesties en suggesties voor oplossingen. Wilt u meer weten over de webrichtlijnen? Lees dan Hoofdstuk 5 Wat zijn webrichtlijnen?</p><p>De webrichtlijnen kennen verschillende niveaus van conformiteit. Voor alle eisen en indelingen in niveaus kunt u terecht in het meest recente normdocument (Webrichtlijnen versie 2 Normdocument, 2014). Wij raden u aan om minimaal aan niveau AA te voldoen. Maar voor geo-toepassingen is de extra moeite die u moet doen om niveau AAA te behalen, minimaal. We beschrijven de richtlijnen hieronder voor niveau A of AA. Waar niveau AAA relevant is, noemen we dat expliciet.</p><section id="universeel"><h3 id="x2-1-universeel"><span class="secno">2.1 </span>Universeel</h3><p>In deze paragraaf worden verschillende uitwerkingen van het principe universeel uitgelegd.</p><section id="gelaagd-bouwen"><h4 id="x2-1-1-gelaagd-bouwen"><span class="secno">2.1.1 </span>Gelaagd bouwen</h4><blockquote>
+<p>Gebruik technologieën op zodanige wijze, dat de basiscontent en -functionaliteit die nodig zijn om een webpagina te kunnen gebruiken onder alle omstandigheden beschikbaar zijn.
+<em>Webrichtlijn I - Richtlijn U.3.1 (Webrichtlijnen versie 2 Normdocument, 2014)</em></p>
+</blockquote><p>Gelaagd bouwen betekent dat een website zodanig gelaagd is opgebouwd, dat iedereen gegarandeerd
+toegang heeft tot de basisinhoud en -functionaliteit van de site, met welk type browser of internetverbinding
+dan ook. Een gebruiker met een geavanceerde browser krijgt zo de optimale gebruikersbeleving, terwijl de
+content en functionaliteit ook toegankelijk blijven voor een ‘eenvoudige’ gebruiker. Overigens heeft gelaagd
+bouwen niet alleen voordelen voor gebruikers: voor zoekmachines biedt de basislaag de noodzakelijke
+informatie om de content succesvol te kunnen indexeren.</p><section id="kwestie"><h5 id="x2-1-1-1-kwestie"><span class="secno">2.1.1.1 </span>Kwestie</h5><p>Voor interactieve geografische webapplicaties kunnen browser plug-ins (zoals Macromedia Flash, Microsoft
+Silverlight en Adobe Reader) nodig zijn om de informatie te benaderen. Het is verleidelijk om hierbij het
+<code>&lt;canvas&gt;</code> element uit HTML5, WebGL of Scalable Vector Graphics (SVG) toe te passen. Maar lang niet
+iedereen beschikt over de laatste browserversies die deze nieuwe webtechnologieën ondersteunen. Voor
+interactieve kaartanimaties worden weer andere plug-ins gebruikt, zoals bijvoorbeeld QuickTime of MPEG.
+Ook hier zijn SVG en WebGL open alternatieven, die echter niet door alle gangbare browserversies worden
+ondersteund.</p></section><section id="mogelijke-oplossing"><h5 id="x2-1-1-2-mogelijke-oplossing"><span class="secno">2.1.1.2 </span>Mogelijke oplossing</h5><p>In al deze gevallen kan gelaagd bouwen helpen. Een voorbeeld van gelaagd bouwen met geo-informatie en
+kaarten is:</p><ol>
+<li>Zorg voor een duidelijke, tekstuele beschrijving van de informatie in de meest basale vorm.</li>
+<li>Gebruik een niet-interactieve kaart waarop de informatie van 1 staat gepositioneerd, bijvoorbeeld met behulp van CSS.</li>
+<li>Beschikt de gebruiker over technieken als JavaScript, en wilt u interactiviteit bieden? Gebruik dan JavaScript om de statische kaart van 2 te vervangen door een interactieve.</li>
+</ol><p>Een voorbeeld waarin gebruik wordt gemaakt van kaarten vindt u in <a href="http://bradfrost.com/blog/post/adaptive-maps/">een weblog van Brad Frost</a> over gelaagd
+bouwen (Adaptive Maps, 2012). In paragraaf 2.2.1 leest u meer over tekstalternatieven voor interactieve
+kaarten, en in paragraaf 2.2.2 vindt u informatie over alternatieven voor kaartanimaties.</p></section></section><section id="foutmeldingen"><h4 id="x2-1-2-foutmeldingen"><span class="secno">2.1.2 </span>Foutmeldingen</h4><blockquote>
+<p>Zorg voor bruikbare foutmeldingen.</p>
+<p><em>-Webrichtlijn II - Richtlijn U.4.1 (Webrichtlijnen versie 2 Normdocument, 2014)</em></p>
+</blockquote><blockquote>
+<p><code>(gui.layers.TilingLayer):Can't find the parent Map component.</code></p>
+<p>Voorbeeld Foutmelding gepresenteerd aan eindgebruiker door een geo-viewer</p>
+</blockquote><p>Het geven van bruikbare foutmeldingen is niet specifiek voor geo-informatie. Toch is dit ook belangrijk voor
+toepassingen die met geo-informatie werken. Denk bijvoorbeeld bij het zoeken van locaties via een formulier
+aan het geven van suggesties bij spelfouten (Bedoelde u...?), in plaats van het weergeven van ‘Geen
+resultaten’.</p><p>Ook het afvangen en omzetten van foutmeldingen van eventuele (externe) webservices is zinvol. Dan
+begrijpt de gebruiker wat er aan de hand is. Meer tips over foutmeldingen vindt u op de <a href="http://www.webrichtlijnen.nl/aan-de-slag/contingency-design">pagina over
+contingency design</a> op webrichtlijnen.nl (Webrichtlijnen.nl, 2014).</p></section><section id="invoer-formulier-om-locatie-in-te-tekenen"><h4 id="x2-1-3-invoer-formulier-om-locatie-in-te-tekenen"><span class="secno">2.1.3 </span>Invoer: formulier om locatie in te tekenen</h4><blockquote>
+<p>Maak formulieren optimaal bruikbaar.</p>
+<p>Webrichtlijn III - Richtlijn U.5.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Voor het zoeken van locaties op adres of plaatsnaam wordt vaak een formulier gebruikt. Daarbij is het
+belangrijk om de gebruiker goed naar het gewenste resultaat te begeleiden. Denk bijvoorbeeld aan het
+suggereren van andere schrijfwijzen van een plaatsnaam. Of het opnemen van de provincienaam bij een
+plaatsnaam, zodat de gebruiker de juiste plaats kan kiezen.</p><section id="kwestie-0"><h5 id="x2-1-3-1-kwestie"><span class="secno">2.1.3.1 </span>Kwestie</h5><p>Een gebruiker kan een locatie niet altijd tekstueel aanduiden. Bijvoorbeeld bij een plek ergens op straat,
+midden in een weiland of op het water. Voor een Melding Openbare Ruimte (MOR) wordt regelmatig gevraagd
+om de locatie van de melding aan te geven, en voor bepaalde vergunningaanvragen (bijvoorbeeld een
+Watervergunning) is een coördinatenpaar essentieel. Hoe zou de invoer van de locatie dan kunnen, op een
+toegankelijke manier?</p></section><section id="mogelijke-oplossingen"><h5 id="x2-1-3-2-mogelijke-oplossingen"><span class="secno">2.1.3.2 </span>Mogelijke oplossingen</h5><p>Het is lastig om dit generiek aan te geven. Oplossingen kunnen liggen in gebruik van extra tooling, zoals de
+JavaScript Geolocation API in HTML5. Een gebruiker met een apparaat dat GPS ondersteunt, kan hiermee
+op de plek zelf een locatie automatisch invoeren. Of de gebruiker voert de locatie bij benadering in: via een
+adres met een tekstuele beschrijving (of een straal en/of kaart) om de locatie te corrigeren. Deze manier
+van invoeren vraagt iets meer verwerking om tot een exacte locatie te komen. Toch kan het soms nuttig
+zijn om het op deze manier te doen.</p><p>Probeer in ieder geval te voorkomen dat locaties of gebieden opnieuw gedigitaliseerd worden. Achterhaal
+liever de gewenste geometrie uit bestaande registraties door administratieve eigenschappen (zoals adres en
+eigenaar) te koppelen. In plaats van het intekenen van een perceel om te bepalen of dit in een
+vogelrichtlijngebied ligt, kan de gebruiker ook een perceelnummer invoeren. Daarna kan het systeem de
+geometrie van zijn perceel uit de Basisregistratie Kadaster (BRK) ophalen, en de geometrie van het
+vogelrichtlijngebied uit Natura 2000. De webapplicatie doet zelf de geografische analyse van de twee
+geometrieën, en stelt daarmee de overlap vast. Op deze manier kunt u de vraag van de gebruiker vrij simpel
+beantwoorden.</p><p>In paragraaf 2.4.2 leest u meer over het bieden van hulp bij het invullen van formulieren om fouten te
+vermijden.</p></section></section><section id="iframes-en-kaarten"><h4 id="x2-1-4-iframes-en-kaarten"><span class="secno">2.1.4 </span>iFrames en kaarten</h4><blockquote>
+<p>Sluit niemand uit bij het aanbieden van content middels geneste weergavekaders.</p>
+<p>Webrichtlijn IV - Richtlijn U.7.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Geografische webapplicaties worden vaak als zelfstandige applicaties ontwikkeld, met eigen tooling en los
+van bestaande Content Management Systemen (CMS). Met als gevolg dat een iFrame nodig is om de
+geografische webapplicatie ‘in te lezen’ in het CMS. Met zo’n iFrame reserveert het CMS een vaste plek op
+de pagina voor invulling door de geografische webapplicatie. De eindgebruiker merkt hier vrijwel niets van.</p><blockquote>
+<p>Een voorbeeld hiervan is de Geluidskaart van de gemeente Nieuwegein (Geluidskaart Nieuwegein, 2014). Deze pagina roept met een iFrame de geografische webapplicatie aan van een andere URL. (GeoServer nieuwegein, 2014)</p>
+</blockquote><blockquote>
+<p>Ook <a href="http://kaart.pdok.nl/">PDOK Kaart</a> (PDOK Kaart, 2014) kan met de optie “Als URL” via een iFrame worden aangeroepen vanuit een CMS.</p>
+</blockquote><section id="kwestie-1"><h5 id="x2-1-4-1-kwestie"><span class="secno">2.1.4.1 </span>Kwestie</h5><p>Over het algemeen raden wij iFrames af. Gebruikers kunnen namelijk vast komen te zitten via een iFrame,
+of ze kunnen informatie niet in de juiste context vinden. (Om dit te omzeilen kunt u een link aanbieden
+buiten het iFrame, waarmee de gebruiker de geo-applicatie ook als aparte pagina kan laden. Maar dit is een
+noodscenario.)</p></section><section id="mogelijke-oplossingen-0"><h5 id="x2-1-4-2-mogelijke-oplossingen"><span class="secno">2.1.4.2 </span>Mogelijke oplossingen</h5><p>Er zijn ook andere manieren om geo-applicaties in te passen. Online kaartplatformen bieden vaak de
+mogelijkheid om via script kaarten in te bouwen in uw eigen systeem. Dat gaat bijvoorbeeld via Map API's
+(Javascript-bibliotheken). Of u kunt op het kaartplatform een stukje HTML-code genereren, dat u eenvoudig
+kopieert naar uw eigen systeem (zoals bij Google Maps en PDOK Kaart). Als u via script rechtstreeks een
+kaart inbouwt, hebt u bovendien de mogelijkheid om nog eigen wensen door te voeren: u kunt dan
+bijvoorbeeld bepalen hoe groot het zoomniveau is, of welke kaartlagen de applicatie laat zien.</p></section></section><section id="openheid-open-specificaties"><h4 id="x2-1-5-openheid-open-specificaties"><span class="secno">2.1.5 </span>Openheid, open specificaties</h4><blockquote>
+<p>Gebruik bij het aanbieden van content ten minste open, niet leverancier afhankelijke en voor webcontent bedoelde specificaties. En geef bij gelijke geschiktheid de voorkeur aan open standaarden.</p>
+<p>Webrichtlijn V - Richtlijn U.9.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Gebruikt u WebGIS-frameworks of JavaScript-bibliotheken om interactieve kaartapplicaties te publiceren?
+Dan is het goed om te weten dat die veel HTML-, CSS- en JavaScript-code bevatten en/of automatisch
+genereren.</p><section id="kwestie-2"><h5 id="x2-1-5-1-kwestie"><span class="secno">2.1.5.1 </span>Kwestie</h5><p>Het komt geregeld voor, dat deze code niet volledig voldoet aan webstandaarden. Daardoor is uw website
+niet optimaal toegankelijk.</p></section><section id="mogelijke-oplossing-0"><h5 id="x2-1-5-2-mogelijke-oplossing"><span class="secno">2.1.5.2 </span>Mogelijke oplossing</h5><p>Het is verstandig om uw website hierop te toetsen, bijvoorbeeld met online validators. In Bijlage 3 vindt u
+een aantal aanbevolen validators.</p></section></section><section id="toegankelijke-uri-s"><h4 id="x2-1-6-toegankelijke-uri-s"><span class="secno">2.1.6 </span>Toegankelijke URI's</h4><blockquote>
+<p>URI's dienen duidelijk, uniek en duurzaam te zijn.</p>
+<p>Webrichtlijn VI - Richtlijn U.10 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Is mogelijk om elke plek op een kaart met een unieke en leesbare URI te bereiken? Volgens de webrichtlijnen
+moet het adres van een webpagina duidelijk, uniek en duurzaam zijn. De URI van een webpagina is in de
+praktijk een URL. Technisch gezien zijn URL’s en URI’s echter niet exact hetzelfde. Deze <a href="http://nl.wikipedia.org/wiki/Uniform_Resource_Identifier">website over URI’s</a> geeft hier meer informatie over (Uniform Resource Identifier, Wikipedia, 2014).</p><section id="kwestie-3"><h5 id="x2-1-6-1-kwestie"><span class="secno">2.1.6.1 </span>Kwestie</h5><p>Duurzaam en uniek (niveau AAA) is geen probleem: een plek op een kaart is namelijk statisch. Over een
+jaar verwijst een set coördinaten nog steeds naar dezelfde plek. Het eerste criterium, duidelijkheid, is iets
+ingewikkelder.</p></section><section id="mogelijke-oplossingen-1"><h5 id="x2-1-6-2-mogelijke-oplossingen"><span class="secno">2.1.6.2 </span>Mogelijke oplossingen</h5><p>Er zijn methodes om URI’s duidelijk te houden. Een gebruiker navigeert naar een adres dat bijvoorbeeld als
+volgt is opgebouwd: <code>/den-haag/wilhelmina-van-pruisenweg/noord-133m/west-5m</code>. De URI toont zo niet
+alleen de exacte locatie, maar ook de context van waaruit de gebruiker werkt. Dit zorgt voor duidelijkheid.</p><p>Daarnaast: niet elke positie op een kaart hoeft bereikbaar te zijn. De kaart is een middel waarmee u
+informatie ontsluit. Het is deze informatie die bereikbaar moet zijn via URI's. Dat kunnen vlakken zijn
+(gebieden als een veiligheidsregio of gemeente), lijnen (zoals routes) of punten (een exacte locatie): die
+moeten afzonderlijk herkenbaar zijn. De onderliggende punten op de kaart zijn decoratief of geven context,
+en zijn geen primaire inhoud. Over primaire informatie leest u meer in paragraaf 2.2.1.</p></section></section></section><section id="waarneembaar"><h3 id="x2-2-waarneembaar"><span class="secno">2.2 </span>Waarneembaar</h3><p>In deze paragraaf worden verschillende uitwerkingen van het principe waarneembaar uitgelegd.</p><section id="tekstalternatieven"><h4 id="x2-2-1-tekstalternatieven"><span class="secno">2.2.1 </span>Tekstalternatieven</h4><blockquote>
+<p>Lever tekstalternatieven voor alle niet-tekstuele content”, behalve voor (o.a.) zintuiglijke of decoratieve content of “slechts voor visuele opmaak wordt gebruikt.</p>
+<p><em>Webrichtlijn VII - Richtlijn 1.1 (Webrichtlijnen versie 2 Normdocument, 2014)</em></p>
+</blockquote><p>Geografische webapplicaties zijn een middel om locatiegebonden informatie te publiceren. Met een kaart
+toont u informatie op een bepaalde locatie. Toegankelijkheid gaat erom, dat die informatie bereikbaar is
+voor de gebruiker.</p><section id="kwestie-4"><h5 id="x2-2-1-1-kwestie"><span class="secno">2.2.1.1 </span>Kwestie</h5><p>Veel locatiegebonden informatie wordt alleen in een afbeelding (een kaartlaag) gepresenteerd. Maar de
+boodschap van de informatie moet ook tekstueel beschikbaar te zijn, al dan niet via een zoekingang of
+filtermogelijkheid.</p></section><section id="mogelijke-oplossingen-2"><h5 id="x2-2-1-2-mogelijke-oplossingen"><span class="secno">2.2.1.2 </span>Mogelijke oplossingen</h5><p>U kunt dit bijvoorbeeld doen in een statische lijst, of door middel van een formulier dat op te vragen is als
+tekst. Hier zijn verschillende oplossingen voor. Welke oplossing u kiest, hangt onder meer af van het soort
+informatie en de toepassing. In deze sub paragraaf worden de verschillende oplossingen aangeboden om
+tot een tekst alternatief te komen. In Hoofdstuk 3 wordt dieper ingegaan op het bieden van een
+tekstalternatief door een andere aanpak voor te stellen, waarbij de gebruikersvraag centraal staat.</p></section><section id="wat-is-de-primaire-informatie"><h5 id="x2-2-1-3-wat-is-de-primaire-informatie"><span class="secno">2.2.1.3 </span>Wat is de primaire informatie?</h5><p>Bedenk wat de primaire informatie is, die u wilt overdragen. En presenteer die informatie ook als tekst. U
+hoeft namelijk niet alle beschikbare informatie in de geo-applicatie toegankelijk te maken. Bepaalde
+secundaire informatie (die wel visueel op de kaart aanwezig is) hoeft niet voor iedereen op elk apparaat
+zichtbaar te zijn. Voor de optocht van Sinterklaas zijn bijvoorbeeld alleen de locatie van het officiële onthaal
+en de straten van de aansluitende optocht de primaire informatie.</p><p>Een groot voordeel van een geografische webapplicatie is dat een gebruiker er zelf aanvullende informatie
+uit af kan leiden. Bij de Sinterklaasoptocht kan hij bijvoorbeeld meteen zien waar de dichtstbijzijnde OV-
+halte of parkeergelegenheid is.</p><p>Presenteert u deze aanvullende (en dus secundaire) informatie als primaire informatie? Dan moet u die ook
+toegankelijk (bijvoorbeeld in tekst) aanbieden. Doet u dat niet, dan is deze afgeleide informatie ‘decoratief’.</p></section><section id="wat-de-kaart-toont-is-niet-altijd-logisch"><h5 id="x2-2-1-4-wat-de-kaart-toont-is-niet-altijd-logisch"><span class="secno">2.2.1.4 </span>Wat de kaart toont is niet altijd logisch</h5><p>Een kaart op internet laat niet altijd het meest intuïtieve stukje van de omgeving zien. De gebruiker navigeert
+altijd vanuit een bepaalde locatie (bijvoorbeeld het thuisadres). Alle apparaten die hij daarvoor kan
+gebruiken, hebben een rechthoekig scherm. Daardoor kan het gebeuren dat elementen die dichtbij zijn, niet
+op de kaart getoond worden. En dat elementen die verder weg zijn, wel zichtbaar zijn. In Figuur 1 ziet u
+hier een voorbeeld van.</p><p><img src="media/straal-kaart.png" alt="Punt 2 is dichterbij dan punt 3, maar wordt niet getoond op een normaal scherm"></p><p>Punt 2 is dichterbij dan punt 3, maar wordt niet getoond op een normaal scherm</p><p>Bij het maken van een tekstuele variant van een visuele kaart is het goed om hier rekening mee te houden.
+Leg dus niet uit wat er op de rechthoekige kaart staat, maar geef de informatie logisch weer, geredeneerd
+vanuit de cirkelvormige straal. Dat kan betekenen dat een tekstuele beschrijving andere resultaten geeft
+dan de visuele variant.</p><blockquote>
+<p>Een <em>rond</em> radarscherm is het beste om vanuit een locatie te denken.
+Voorbeeld - Radar</p>
+</blockquote><blockquote>
+<p>Bij GEOZET wordt de functionaliteit in twee lagen aangeboden: een core en enhanced versie. De core is een formulier waarin locatie gevraagd wordt, met zoekresultaten gesorteerd op afstand. Hoe dichterbij het zoekresultaat, hoe hoger het in de lijst staat. De enhanced versie is een volledig interactieve kaart. De functionaliteiten zijn niet hetzelfde, zo kun je in de core zoomen terwijl in de enhanced versie er een straal opgegeven kan worden. Het effect is gelijkwaardig, maar de uitvraag aan de gebruiker verschilt</p>
+<p>Geaccepteerde uitgangspunten van GEOZET:</p>
+<ul>
+<li>Er kan een gering onderscheid zijn tussen de zoekresultaten die – bij opgave van eenzelfde adres - getoond worden in de core-versie en in de enhanced-versie.</li>
+<li>Bepaalde secundaire informatie, die niet direct bijdraagt aan het beantwoorden van de geformuleerde zoekvraag, kan worden getoond in de enhanced-versie en niet in de core-versie.</li>
+<li>De enhanced-versie kan secundaire informatie bevatten die niet volledig voldoet aan de webrichtlijnen en de toegankelijkheidsrichtlijnen.</li>
+</ul>
+<p>Voorbeeld - Geozet</p>
+</blockquote></section></section><section id="op-tijd-gebaseerde-media"><h4 id="x2-2-2-op-tijd-gebaseerde-media"><span class="secno">2.2.2 </span>Op tijd gebaseerde media</h4><blockquote>
+<p>Lever alternatieven voor op tijd gebaseerde media</p>
+<p>Webrichtlijn VIII - Richtlijn 1.2 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Wanneer de webrichtlijnen spreken over tijd gebaseerde media, dan gaat het meestal over online
+gepubliceerd videomateriaal. In de context van geo-informatie zijn de webrichtlijnen met betrekking tot tijd
+gebaseerde media vooral van belang voor kaartanimaties. Kaartanimaties zijn meestal zonder geluid. In
+veel gevallen zijn het ‘vooraf opgenomen’ animaties, zoals de geografische verspreiding van een
+griepepidemie door de tijd. Een voorbeeld van een ‘live’ kaartanimatie is weerinformatie, waarbij gebruikers
+kunnen zien of er buien aankomen.</p><p>Een tekstuele transcriptie van een kaartanimatie geeft, in correcte volgorde, tekstbeschrijvingen van de
+visuele informatie. Het is een beproefd en effectief middel om welke kaartanimatie dan ook optimaal
+toegankelijk te maken.</p></section><section id="onderscheidbaar"><h4 id="x2-2-3-onderscheidbaar"><span class="secno">2.2.3 </span>Onderscheidbaar</h4><blockquote>
+<p>Kleur wordt niet als het enige visuele middel gebruikt om informatie over te brengen, een actie aan te geven, tot een reactie op te roepen of een visueel element te onderscheiden.</p>
+<p>Webrichtlijn IX - Richtlijn 1.4.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Maak het voor gebruikers gemakkelijker om voorgrondinformatie te scheiden van de achtergrond.
+Presenteert u visuele informatie boven op een achtergrond? Zorg er dan voor dat die informatie dan
+voldoende met de achtergrond contrasteert.</p><section id="kwestie-5"><h5 id="x2-2-3-1-kwestie"><span class="secno">2.2.3.1 </span>Kwestie</h5><p>Veel kaarten gebruiken kleuren om primaire informatie weer te geven. Maar alleen kleur is niet toegankelijk
+genoeg. Een gebruiker die kleurenblind is, kan hier namelijk niet mee uit de voeten.</p></section><section id="mogelijke-oplossingen-3"><h5 id="x2-2-3-2-mogelijke-oplossingen"><span class="secno">2.2.3.2 </span>Mogelijke oplossingen</h5><p>Gebruik naast kleur ook vorm. Bijvoorbeeld bij symbolen op een kaart. Zorg, in plaats van alleen rode en
+groene cirkels, ook voor een andere vorm: gebruik rode cirkels en groene vierkantjes. Zorg ervoor dat de
+belangrijkste informatie (dus de informatie die door de kaart ontsloten wordt, en niet de kaart zelf) goed
+leesbaar is qua contrast.</p><blockquote>
+<p>De visuele weergave van tekst en afbeeldingen van tekst heeft een contrastverhouding van ten
+minste 4,5:1”, behalve als: ”Tekst of afbeeldingen van tekst die deel zijn van een inactieve
+component van de gebruikersinterface, die puur decoratief zijn, die voor niemand zichtbaar zijn, of
+die onderdeel zijn van een afbeelding die significant andere visuele content bevat, hebben geen
+contrasteis.</p>
+<p>Webrichtlijn X - Richtlijn 1.4.3 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>De eis over kleurcontrast gaat over de primaire content. Voor een achtergrondkaart heeft de contrast-eis
+vrijwel geen gevolgen. De meeste kaartachtergronden hebben tussen bijvoorbeeld straatnamen en
+straatondergrond al genoeg contrast. Tussen kleurvlakken onderling geldt geen eis.</p><p><img src="media/kleur-en-vorm.png" alt="Punten, Vorm, Kleur, Gebruik"></p><p>Figuur – Punten, Vorm, Kleur, Gebruik</p><p>Onderscheid maken met alleen kleur, kan zorgen voor problemen bij kleurenblindheid. De voorbeelden in
+Figuur 2 laten zien dat het gebruik van vorm (in aanvulling op kleur) kan helpen. Het onderscheid in
+categorieën is in deze voorbeelden te maken via kleur en vorm. Links toont wat iemand ziet als alleen kleur
+gebruikt wordt voor het onderscheid, rechts als ook vorm gebruikt wordt. De bovenste afbeeldingen zijn de
+normale kleurweergaves, de onderste simuleren een bepaald soort kleurenblindheid (zogenaamde
+Deuteranopia). De iconen die kleur en vorm gebruiken zijn ook met kleurenblindheid te onderscheiden. Voor
+vlak-informatie kan in plaats van alleen kleur ook met arcering en/of symbolen gewerkt worden.</p><p><img src="media/kleur-en-vorm-vlakken.png" alt="Kleur en vorm voor vlak-informatie"></p><p>Figuur – Kleur en vorm voor vlak-informatie</p><p>De bovenste helft toont onderscheid door kleur en vorm voor vlak-informatie. In de onderste helft is een
+bepaald soort kleurenblindheid (zogenaamde Deuteranopia) gesimuleerd. Het onderscheid in kleur is bijna
+weggevallen, maar door ook vorm te gebruiken is wel degelijk onderscheid te maken.</p></section></section></section><section id="bedienbaar"><h3 id="x2-3-bedienbaar"><span class="secno">2.3 </span>Bedienbaar</h3><p>In deze paragraaf worden verschillende uitwerkingen van het principe bedienbaar uitgelegd.</p><section id="toetsenbordbediening"><h4 id="x2-3-1-toetsenbordbediening"><span class="secno">2.3.1 </span>Toetsenbordbediening</h4><blockquote>
+<p><em>Nota bene oorspronkelijke eis mist in document</em></p>
+<p>Webrichtlijn XI - Richtlijn 2.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>De muis is een vanzelfsprekend middel voor de bediening van kaartfunctionaliteit. Maar niet iedereen kan
+op elk apparaat gebruikmaken van een muis. Voor een goede toegankelijkheid van een website is volledige
+toetsenbordbediening essentieel. Daarom vraagt dit onderwerp om extra aandacht.</p><section id="kwestie-6"><h5 id="x2-3-1-1-kwestie"><span class="secno">2.3.1.1 </span>Kwestie</h5><p>Vaak biedt een website functionaliteit (knoppen), waarmee de gebruiker de applicatie kan besturen en
+gegevens kan opvragen. Helaas is deze functionaliteit vaak niet (of niet volledig) te bedienen met het
+toetsenbord.</p><blockquote>
+<p>De <a href="http://nederland.risicokaart.nl/risicokaart.html">Risicokaart</a> is een voorbeeld van een kaart die helemaal niet te bedienen is met het toetsenbord
+(Risicokaart van Nederland, 2014)</p>
+<p>Voorbeeld - Risicokaart</p>
+</blockquote><blockquote>
+<p><a href="https://www.ruimtelijkeplannen.nl/viewer/">Ruimtelijke Plannen</a> is een voorbeeld van een webapplicatie waarvan de het formulier en kaart maar beperkt te bedienen zijn met het toetsenbord (Webapplicatie van ruimtelijke plannen, 2014).</p>
+</blockquote></section><section id="mogelijke-oplossingen-4"><h5 id="x2-3-1-2-mogelijke-oplossingen"><span class="secno">2.3.1.2 </span>Mogelijke oplossingen</h5><p>Met het toetsenbord moet de gebruiker zowel door de kaart zelf als door alle informatie-elementen kunnen
+navigeren. Dus als er informatie in pop-ups staat, dan moeten die pop-ups te openen zijn via het
+toetsenbord.</p><p>Dat kan via voorgeprogrammeerde access keys: bijvoorbeeld de pijltjestoetsen om de kaart te bewegen, of
+de plus- en min-toetsen voor in- en uitzoomen. De navigatietools die vaak linksboven in de kaart staan om
+de kaart te verplaatsen en in te zoomen, kunt u hiermee ook bereikbaar maken. Een voorbeeld hiervan is
+de kaart Bekendmakingen op Overheid.nl (zie ).</p><p>De mogelijkheid van access keys hoeft u overigens niet altijd zelf te implementeren: soms maakt deze
+functionaliteit standaard deel uit van softwarebibliotheken.</p><p>Besteed dus aandacht aan toetsenbordbediening, ook bij het testen. Laat overbodige functionaliteit weg;
+dat scheelt ook werk met het toegankelijk maken.</p><blockquote>
+<p>De bibliotheken OpenLayers en LeafletJS bieden navigatie via het toetsenbord. Echter, het bekijken van gegevens op een kaart, bijvoorbeeld via informatie-ballonnen, is vaak lastig met alleen het toetsenbord. Ondersteuning hiervoor is slechts in enkele gevallen aanwezig. Bij de keuze voor een toolbox en bij het realiseren verdient toetsenbordbediening daarom extra aandacht.</p>
+<p>Voorbeeld - Navigatie via het toetsenbord</p>
+</blockquote></section></section><section id="genoeg-tijd"><h4 id="x2-3-2-genoeg-tijd"><span class="secno">2.3.2 </span>Genoeg tijd</h4><blockquote>
+<p>Geef gebruikers genoeg tijd om content te lezen en te gebruiken.</p>
+<p>Webrichtlijn XII - Richtlijn 2.2 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Bij kaartanimaties is het belangrijk, dat de gebruiker de timing kan aanpassen en de animatie kan pauzeren,
+stoppen en verbergen. In paragraaf 2.2.2 leest u meer over kaartanimaties.</p></section><section id="toevallen"><h4 id="x2-3-3-toevallen"><span class="secno">2.3.3 </span>Toevallen</h4><blockquote>
+<p>Ontwerp content niet op een manier waarvan bekend is dat die toevallen veroorzaakt.</p>
+<p>Webrichtlijn XIII - Richtlijn 2.3 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Zorg bij het automatisch afspelen van kaartanimaties ervoor, dat vlakken niet sneller veranderen dan 3 keer
+per seconde. Animeer kleine geografische eenheden en gebruik andere signaalkleuren dan de kleur rood.
+Accessibility besteedt op haar <a href="https://www.accessibility.nl/kennisbank/webrichtlijnen2#algemene-flits-en-rodeflitsdrempelwaarden">website</a> aandacht aan algemene flits en rodeflitsdrempelwaarden
+(Webrichtlijnen 2 - Principes, richtlijnen en succescriteria (<a href="http://www.accessibility.nl">www.accessibility.nl</a>), 2014). Over kaartanimaties
+staat meer informatie in paragraaf 2.2.2.</p></section></section><section id="begrijpelijk"><h3 id="x2-4-begrijpelijk"><span class="secno">2.4 </span>Begrijpelijk</h3><p>In deze paragraaf worden verschillende uitwerkingen van het principe universeel uitgelegd.</p><section id="leesbaarheid-en-leesniveau"><h4 id="x2-4-1-leesbaarheid-en-leesniveau"><span class="secno">2.4.1 </span>Leesbaarheid en leesniveau</h4><blockquote>
+<p>Maak tekstcontent leesbaar en begrijpelijk.</p>
+<p>Webrichtlijn XIV - Richtlijn 3.1 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><blockquote>
+<p>Als tekst, nadat eigennamen en titels verwijderd zijn, een leesvaardigheid vereist die hoger is dan het niveau van drie jaar middelbaar onderwijs, dan is aanvullende content beschikbaar, of er is een versie beschikbaar die geen leesvaardigheid vereist die hoger is dan van drie jaar middelbaar onderwijs.</p>
+<p>Webrichtlijn XV - Richtlijn 3.1.5 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><section id="kwestie-7"><h5 id="x2-4-1-1-kwestie"><span class="secno">2.4.1.1 </span>Kwestie</h5><p>Soms staat in deze ballonnen per ongeluk nog technische informatie, zoals identifiers, codes of afkortingen.
+Maar het kunnen ook (interne) beschrijvingen zijn, die niet begrijpelijk of relevant zijn voor de algemene
+gebruiker.</p></section><section id="mogelijke-oplossing-1"><h5 id="x2-4-1-2-mogelijke-oplossing"><span class="secno">2.4.1.2 </span>Mogelijke oplossing</h5><p>Verwijder overbodige informatie als technische details of beschrijvingen voor intern gebruik. Besteed hier
+aandacht aan.</p></section></section><section id="assistentie-bij-invoer"><h4 id="x2-4-2-assistentie-bij-invoer"><span class="secno">2.4.2 </span>Assistentie bij invoer</h4><blockquote>
+<p>Help gebruikers om fouten te vermijden en ze te verbeteren</p>
+<p>Webrichtlijn XVI - Richtlijn 3.3 (Webrichtlijnen versie 2 Normdocument, 2014)</p>
+</blockquote><p>Vraagt u een gebruiker om een adres in te voeren? Voorkom dan dat een onjuiste combinatie (van
+bijvoorbeeld straatnaam, woonplaats en postcode) een foutmelding oplevert. Als een woonplaats in
+meerdere gemeenten valt, dan kan de webapplicatie de gemeentenaam of provincienaam suggereren. Dit
+helpt de gebruiker om de juiste woonplaats te identificeren. Zie ook paragraaf 2.1.3.</p><blockquote>
+<p>Als een invoerfout automatisch ontdekt wordt en suggesties voor verbetering bekend zijn, dan worden de suggesties aan de gebruiker geleverd, tenzij dit de beveiliging of het doel van de content in gevaar zou brengen.</p>
+<p>Webrichtlijn XVII - Richtlijn 3.3.3 (Webrichtlijnen versie 2 Normdocument, 2014)
+</p>
+</blockquote></section></section></section><section id="H03" data-format="markdown"><!--OddPage--><h2 id="x3-de-gebruikersvraag-centraal"><span class="secno">3. </span>De gebruikersvraag centraal</h2><p>Suggesties voor een andere aanpak bij het ontsluiten van locatiegebonden informatie.</p><p>Locatiegebonden informatie toegankelijk maken voor iedereen kan een lastige opgave zijn. Een
+hele werkbare aanpak is de vraaggerichte aanpak: stel de gebruikersvraag centraal, probeer die
+(tekstueel) te beantwoorden en beslis daarna pas welk middel het meest geschikt is om de
+gevraagde informatie te presenteren. Beperk de informatie en functionaliteit tot wat nodig is om
+de vraag te beantwoorden.</p><p>Welke functionaliteit u het beste kunt gebruiken hangt af van veel factoren, zoals het doel van de toepassing,
+de te beantwoorden vragen, de complexiteit, de benodigde (en beschikbare) gegevens en de gewenste
+presentatievorm en mate van interactiviteit. Daarnaast spelen factoren als budget, tijd en capaciteit
+uiteraard ook een rol.</p><blockquote>
+<p>I suppose it is tempting, if the only tool you have is a hammer, to treat everything as if it were a nail.</p>
+<p><em>- Abraham Maslow</em></p>
+</blockquote><section id="het-aanbod-centraal"><h3 id="x3-1-het-aanbod-centraal"><span class="secno">3.1 </span>Het aanbod centraal</h3><p>Een geografische webapplicatie met een interactieve kaart is voor veel overheidsorganisaties dé manier om
+locatie informatie online te publiceren. De kaart vormt een visueel aantrekkelijke manier om zoveel gegevens
+aan te bieden. Deze geografische webapplicaties bieden gebruikers bovendien veel mogelijkheden om de
+kaart aan te passen. De rijkdom aan functionaliteit maakt het lastig en kostbaar om een toegankelijk
+alternatief te maken, dat aan de webrichtlijnen voldoet. Hierdoor ontstaat het beeld dat webrichtlijnen en
+geo-informatie onverenigbaar zijn.</p><blockquote>
+<p>Waarom zou een gebruiker geïnteresseerd zijn in een kaart met allerlei datasets door elkaar heen? De praktijk toont aan dat specifieke themakaarten meer bezoekers krijgen dan kaartportals. Volgens dit voorbeeld worden in Denver thematische kaarten bijvoorbeeld drie keer meer bezocht dan portals (bron: <a href="http://mapbrief.com/2012/08/01/how-the-public-actually-uses-local-government-web-maps-metrics-from-denver/">How the Public Actually Uses Local Government Web Maps: Metrics from Denver, 2012</a>). De meeste bezoekers blijven kort op de website en willen slechts antwoord op hun ene vraag en verdwijnen weer van de pagina <a href="http://mapbrief.com/2013/02/05/why-map-portals-dont-work-part-i/">Why Map Portals Don’t Work, 2013</a>.</p>
+</blockquote><p>Deze aanbodgerichte aanpak is begrijpelijk. Het sluit aan bij de gangbare en beschikbare middelen om geo-
+informatie online te publiceren. Door alle gegevens in één keer op een kaart af te beelden, denkt de
+organisatie wellicht, dat zij daarmee aan bepaalde wettelijke eisen of transparantie doelstellingen voldoet.
+De gebruikers kunnen immers bij de gegevens: zij kunnen uitzoeken wat zij nodig hebben.</p><p>Op deze manier publiceer je een soort ‘digitale atlas’. De verwachting daarbij is, dat gebruikers deze rustig
+doorbladeren, op zoek naar dat ene gegeven. Zo wordt het web niet primair gebruikt: zo'n geografische
+webapplicatie sluit niet aan bij de diversiteit van gebruikers en middelen. Denk alleen al aan alle mogelijke
+apparaten en momenten waarop gebruikers informatie online opzoeken. Wie kan bijvoorbeeld op zijn
+mobiele telefoon zo'n applicatie snel en volledig laden, laat staan gebruiken? Heeft iedereen altijd wel een
+muis tot zijn beschikking? Dit zijn allemaal kwesties op het gebied van toegankelijkheid. Ten slotte rijst de
+vraag, hoeveel van deze geografische informatie daadwerkelijk wordt geraadpleegd en gebruikt.</p><blockquote>
+<p>De beste manier om een boom te verstoppen, is in het bos.</p>
+<p><em>-Jan Terlouw</em></p>
+</blockquote></section><section id="de-vraag-centraal"><h3 id="x3-2-de-vraag-centraal"><span class="secno">3.2 </span>De vraag centraal</h3><p>Tegenover de aanbodgerichte aanpak die we hierboven beschreven, staat de vraaggerichte aanpak. Waarom
+willen gebruikers bepaalde digitale dienstverlening of informatie op het web eigenlijk gebruiken? Met welke
+vraag komen zij naar de website? Welk antwoord moet je daarop geven? En: is dat ook het antwoord waar
+die gebruiker op zat te wachten?</p><p>Gebruikers komen naar een website voor een bepaalde taak: om informatie op te vragen of een aanvraag
+te doen. Om de gebruiker te helpen, bieden overheden op hun websites gegevens en functionaliteit aan. In
+een - voor de gebruiker - ideale situatie zijn die gegevens zo bewerkt, dat ze naadloos aansluiten bij zijn
+behoefte. Zodat hij zo snel mogelijk het juiste antwoord heeft op zijn vraag. Dat is een vraaggerichte
+ontsluiting: het zo simpel en direct mogelijk geven van het juiste antwoord op de vraag van de gebruiker.
+Niet meer en niet minder!</p><p>Het is belangrijk om de top-5 taken waarom gebruikers een website bezoeken te bepalen, aldus de “Long
+Neck”-theorie van Gerry McGovern. Deze 5 taken staan voor 25 procent van de aandacht en
+klanttevredenheid. Door de website te richten op deze zogenaamde top-taken krijg je een meer klantgerichte
+website en creëer je een positieve gebruikerservaring.</p><p>Geo-informatie moet gebruik maken van deze wetenschap en aansluiten bij de gebruikersvraag In veel
+gevallen is een atlas niet de echte gebruikersvraag. Veel vragen over locatiegebonden informatie gaan over
+de locatie van de gebruiker. In het algemeen is het huisadres van een burger of het vestigingsadres van een
+bedrijf dus een goed startpunt en handige (zoek)ingang. Daarbij is het in de meeste gevallen handig om
+naar één thema tegelijk te kijken. De volgende voorbeelden illustreren dit.</p><p><img src="media/in-mijn-buurt.png" alt="Veelvoorkomende gebruikersvraag: wat gebeurt er bij mij in de buurt?"></p><p>Figuur – Veelvoorkomende gebruikersvraag: wat gebeurt er bij mij in de buurt?</p><blockquote>
+<p>Voorbeeld - Bestemmingsplannen</p>
+<p>Bestemmingsplannen worden gepubliceerd, zodat een gebruiker kan zien wat wel en wat niet mag
+op plekken die hij/zij interessant vindt. Kijkend naar de belevingswereld van de gebruiker, is de
+vraag waarschijnlijk alleen niet om alle bestemmingsplannen in zijn/haar gemeente of buurt te
+kunnen zien op een kaart (wat het antwoord van de aanbieder lijkt te zijn), maar veel specifieker:
+wat mag ik wel/niet doen bij mijn huis (of op locatie X)? Of: mag ik hier mijn bedrijf uitbouwen?</p>
+</blockquote><blockquote>
+<p>Voorbeeld - Afvalinzameling</p>
+<p>Vraag: Waar zijn de glasbakken bij mij in de buurt te vinden?
+Antwoord: Een lijst met dichtstbijzijnde glasbakken en de straatnaam erbij (“straat X, bij Winkelcentrum Y”)</p>
+</blockquote><blockquote>
+<p>Voorbeeld - Vergunningsaanvragen</p>
+<p>Vraag: Welke aanvragen zijn bij mij in de buurt gedaan? (En zal ik daar hinder van ondervinden?)
+Antwoord: Een lijst met aanvragen in de buurt van het opgegeven adres, gesorteerd op afstand van het opgegeven adres. GEOZET beantwoordt de vraag: “Welke lokale bekendmakingen zijn er recent bij mij in de buurt gedaan?”</p>
+</blockquote><blockquote>
+<p>Voorbeeld - Zonne-energie</p>
+<p>Vragen: Wat zou ik kunnen besparen met zonne-energie? Is mijn dak geschikt voor zonne-energie?
+Antwoord: Een simpel ja of nee of “zeer geschikt” tot “niet geschikt”. Eventueel met een indicatie van de te verwachten opbrengst.</p>
+<p><img src="media/zonatlas.png" alt="Zonatlas">
+Figuur – Zonatlas</p>
+<p>De Zonatlas gebruikt als zoekingang een adres, daarna verschijnt de rest, met een antwoord in hoeverre een dak geschikt is voor zonne-energie. Zie bijvoorbeeld <a href="https://www.zonatlas.nl/amsterdam/">www.zonatlas.nl/amsterdam/</a>. Dit is een voorbeeld van een vraaggerichte benadering, ondersteund door geo-informatie.</p>
+</blockquote><blockquote>
+<p>Voorbeeld - Luchtkwaliteit</p>
+<p>Vragen: Is de lucht bij mij thuis schoon? (“Zijn we veilig?”) Hoe verhoudt zicht dat tot de omgeving, landelijk, ...?</p>
+<p>Antwoord: Een simpele classificatie: vervuild, schoon, boven/onder gemiddeld.</p>
+</blockquote><blockquote>
+<p>Voorbeeld - Handelsmissies</p>
+<p>Vragen: Vragen: Waar gaan de volgende handelsmissies van de Minister van Buitenlandse zaken heen? Wanneer is de volgende handelsmissie naar Land X?</p>
+<p>Antwoord: Een alfabetische lijst met bestemmingen.</p>
+</blockquote><p>De antwoorden bij alle bovenstaande voorbeelden zijn uitstekend tekstueel te geven. Deze antwoorden zijn
+goed toegankelijk in een kaart te presenteren als ondersteuning bij de tekst. Deze kaarten vereisen weinig
+functionaliteit of visualisatie. Het is ook goed te realiseren dat naast kleurenblindheid niet iedereen overweg
+kan met kaartlezen of een kaart volledig begrijpt (Figuur - Niet iedereen begrijpt een kaart).</p><p><img src="media/kaartbegrip.png" alt="Niet iedereen begrijpt een kaart"></p><p>Niet iedereen begrijpt een kaart</p></section></section><section id="H04" data-format="markdown"><!--OddPage--><h2 id="x4-handvatten"><span class="secno">4. </span>Handvatten</h2><p>Presentatie van geo-informatie, locatie-invoer en kaartfunctionaliteit</p><p>Dit hoofdstuk biedt praktische oplossingsrichtingen om geo-informatie op een toegankelijke
+manier in te zetten in de online communicatie en transacties tussen overheden en burgers en het
+bedrijfsleven. Door de bijbehorende beslisboom te doorlopen wordt de keuze voor een specifieke
+oplossingsrichting gemaakt. De vraaggerichte aanpak die in Hoofdstuk 3 is gepresenteerd vormt
+hierbij de belangrijkste invalshoek voor het doorlopen van de beslisboom(In de eerste stap van
+de beslisboom stel je vast wie de centrale bron of hoofdrolspeler in de uitwisseling van geo-
+informatie is. Wil een organisatie enerzijds geografische informatie online presenteren of moet
+een burger of bedrijf een geografische locatie invoeren om een transactie met een organisatie
+uit te voeren.</p><p><img src="media/beslisboom.png" alt="Beslisboom"></p><p>Beslisboom</p><p>In paragraaf 4.1 wordt ingegaan op de oplossingsrichtingen om als
+organisatie geografische informatie te presenteren. In paragraaf 4.2 staat het invoeren van een geografische
+locatie centraal. Ten slotte biedt paragraaf 4.3 een aantal handvatten om een interactieve kaart op een
+toegankelijke manier aan te bieden. De paragrafen bevatten verwijzingen naar code voorbeelden. Alle
+voorbeelden zijn online te vinden op de <a href="https://github.com/Geonovum/Webrichtlijnen-Geo">Github pagina van Geonovum met Code voorbeelden Webrichtlijnen en
+Geo-informatie, 2014</a>.</p><section id="geo-informatie-presenteren"><h3 id="x4-1-geo-informatie-presenteren"><span class="secno">4.1 </span>Geo-informatie presenteren</h3><p>Nadat is vastgesteld, dat de organisatie, die geografische informatie online wil presenteren de hoofdrolspeler
+is, is het van belang om de aard van geografische informatie te bepalen. Wat wil je presenteren?</p><p>In paragraaf 4.1.1 worden toegankelijke oplossingsrichtingen geboden voor afbeeldingen zoals luchtfoto's,
+(historische) topografische kaarten, maar ook voor resultaten van modelanalyses zoals
+geluidscontourkaarten. Naast statische afbeeldingen worden ook animaties gebruikt om ontwikkelingen over
+ruimte en tijd te kunnen weergeven. In paragraaf 4.1.2 staan animaties centraal. In paragraaf 4.1.3 worden
+toegankelijke oplossingsrichtingen geboden voor het presenteren van (een verzameling van) individuele
+geografische objecten zoals locaties, trajecten, routes, regio's en gebieden.</p><section id="statische-afbeeldingen"><h4 id="x4-1-1-statische-afbeeldingen"><span class="secno">4.1.1 </span>Statische afbeeldingen</h4><section id="kaarten-ter-illustratie"><h5 id="x4-1-1-1-kaarten-ter-illustratie"><span class="secno">4.1.1.1 </span>Kaarten ter illustratie</h5><p>Sommige geo-informatie is alleen als een afbeelding beschikbaar en bevat het de primaire informatielaag.
+Een voorbeeld is een gedigitaliseerde, (ingescande) <a href="http://kaart.nijmegen.nl/historie/">historische kaart</a> ( (Historische Atlas Nijmegen, 2014).
+In dat geval moet u een toegankelijk alternatief aanbieden. Maar het is ondoenlijk om de volledige inhoud
+van zo’n kaart in een tekstvorm te gieten.</p><section id="aanpak"><h6 id="x4-1-1-1-1-aanpak"><span class="secno">4.1.1.1.1 </span>Aanpak</h6><ul>
+<li>Beschrijf het gebied dat is afgebeeld, wie de maker is en wanneer de kaart is gepubliceerd.</li>
+<li>Beschrijf de algemene boodschap of het ruimtelijke patroon van de kaart.</li>
+<li>Let op toegankelijke kaartnavigatie (paragraaf 4.3.1).</li>
+<li>(Let op toegankelijke cartografie (paragraaf 4.3.2).</li>
+</ul><p>De <a href="http://www.zorgatlas.nl/gezondheid-en-ziekte/ziekten-en-aandoeningen/infectieziekten/mazelen-2013/">Nationale Atlas Volksgezondheid</a> past deze aanpak toe (Mazelen 2013-2014, 2014). De beschrijving
+naast de kaart vertelt de boodschap die in kaart geografisch wordt gepresenteerd.</p></section></section><section id="wegenkaart-luchtfoto-s-en-satellietbeelden-achtergrond-ter-orientatie"><h5 id="x4-1-1-2-wegenkaart-luchtfoto-s-en-satellietbeelden-achtergrond-ter-orientatie"><span class="secno">4.1.1.2 </span>Wegenkaart, luchtfoto's en satellietbeelden: achtergrond ter oriëntatie</h5><p>Interactieve kaartviewers gebruiken vaak een wegenkaart, luchtfoto of satellietbeeld als een van de
+achtergronden waarop bezoekers allerlei locaties kunnen zien en aanklikken. De wegenkaart, luchtfoto of
+satellietbeeld is <em>niet de primaire informatielaag</em>, maar fungeert slechts ter oriëntatie.</p><section id="aanpak-0"><h6 id="x4-1-1-2-1-aanpak"><span class="secno">4.1.1.2.1 </span>Aanpak</h6><ul>
+<li>Presenteer de locaties die bovenop de afbeeldingen zijn gepositioneerd wel op een toegankelijke manier (paragraaf 4.1.2).</li>
+<li>Let op toegankelijke kaartnavigatie (paragraaf 4.3.1).</li>
+<li>Let op toegankelijke cartografie (paragraaf 4.3.2). Hoewel de wegenkaart, luchtfoto of satellietbeeld niet de primaire informatielaag is, kan het de informatieoverdracht vergemakkelijken.</li>
+</ul></section></section><section id="metingen-en-modelresultaten"><h5 id="x4-1-1-3-metingen-en-modelresultaten"><span class="secno">4.1.1.3 </span>Metingen en modelresultaten</h5><p>Sommige afbeeldingen bevatten onderliggende informatie die bijvoorbeeld door verschillende kleurcodes
+worden gevisualiseerd. Voorbeelden van dergelijke kaarten zijn fijnstofconcentratie kaarten,
+geluidscontourkaarten, weerkaarten, de Indicatieve Kaart Archeologische Waarden of het Actueel
+Hoogtebestand Nederland. Iedere plek in zo'n afbeelding bevat een waarde van een meting of een
+modelanalyse.</p><section id="aanpak-1"><h6 id="x4-1-1-3-1-aanpak"><span class="secno">4.1.1.3.1 </span>Aanpak</h6><ul>
+<li>Presenteer een webformulier, waar bezoekers een adres (van hun woning of bedrijfslocatie) kunnen invullen (paragraaf 4.2) en vervolgens de informatie op dat punt terugkrijgen.</li>
+</ul><p>Websites als weeronline.nl (Weeronline, 2014) en buienradar.nl (Buienradar, 2014) geven bijvoorbeeld niet
+alleen een neerslagradar, maar ook een tekstuele indicatie of er neerslag gaat vallen op een bepaalde plaats,
+wanneer ongeveer en hoeveel.</p></section></section></section><section id="animaties"><h4 id="x4-1-2-animaties"><span class="secno">4.1.2 </span>Animaties</h4><p>Animaties zijn een krachtige en aantrekkelijke manier om veranderingen in ruimtelijke patronen te laten
+zien. Dat geldt ook voor animaties met locatiegebonden gegevens. De televisieserie <a href="http://www.vpro.nl/nederland-van-boven/alle-datavisualisaties.html">Nederland van boven</a>
+(datavisualisaties Nederland van Boven, 2014) maakt bijvoorbeeld veel gebruik van animaties om bepaalde
+verschijnselen inzichtelijk te maken. Vaak gaat het bij animaties om visualisatie van grote hoeveelheden
+gegevens.</p><section id="aanpak-2"><h5 id="x4-1-2-1-aanpak"><span class="secno">4.1.2.1 </span>Aanpak</h5><ul>
+<li>Beschrijf de algemene boodschap of het ruimtelijke patroon van de kaart en de ontwikkeling door de tijd of een audiodescriptie. Hierover vindt u meer informatie in de webrichtlijnen (Webrichtlijnen versie 2 - alternatief voor op tijd gebaseerde media, 2014).</li>
+<li>Houd rekening met de richtlijnen voor genoeg tijd (paragraaf 2.3.2)</li>
+<li>Houd rekening met de richtlijnen voor het voorkomen van toevallen (paragraaf 2.3.3).</li>
+</ul><p>Een nadeel is dat u zo’n alternatieve beschrijving van tevoren moet meegeven. Dat is niet altijd mogelijk,
+bijvoorbeeld als de gebruiker de animatie zelf op maat maakt (door eerst in te zoomen op een kaart en
+daarna een animatie te genereren). Maar vaak is de onderliggende informatie wel beschikbaar; de animatie
+wordt daar namelijk mee gemaakt. U kunt die onderliggende informatie dan ook tekstueel tonen. Bezoekers
+kunnen bijvoorbeeld de bevolkingsontwikkeling per gemeente in Nederland per jaar als kaartanimatie
+raadplegen. Presenteer bovendien een lijst met de gemeenten met een filter op jaar. Orden de gemeenten
+alfabetisch. Bezoekers kunnen bovendien het eindjaar selecteren om zo de bevolkingsontwikkeling tussen
+nu en het eindjaar te zien.</p></section></section><section id="objecten"><h4 id="x4-1-3-objecten"><span class="secno">4.1.3 </span>Objecten</h4><p>Veel organisaties willen locaties die een vestigingsadres hebben online presenteren, zoals bijvoorbeeld de
+vestigingen van de openbare bibliotheken, de wijkkantoren van de gemeente of tijdelijke wegopbrekingen.
+Bedenk, dat bezoekers meestal niet geïnteresseerd zijn in de wegopbrekingen zelf, maar in een alternatieve
+route, die de wegopbrekingen omzeilt!</p><p><em>Voorbeelden</em></p><p>Overzicht locaties ministeries via HTML en CSS:</p><ul>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/overzichtministeries-CSS">Code voor tonen locaties via HTML en CSS</a> (Overzichtministeries-CSS, 2014)</li>
+<li><a href="https://rawgit.com/Geonovum/Webrichtlijnen-Geo/master/overzichtministeries-CSS/index.html">Werkend voorbeeld voor tonen locaties via HTML en CSS</a> (Overzicht ministeries, 2014)</li>
+</ul><p>Overzicht locaties ministeries via HTML lijst, data attributen en interactieve kaart:</p><ul>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/overzichtministeries-HTMAPL">Code voor tonen locaties via HTML lijst, data attributen</a> (Overzichtministeries-HTMAPL, 2014)</li>
+<li><a href="https://rawgit.com/Geonovum/Webrichtlijnen-Geo/master/overzichtministeries-HTMAPL/index.html">Werkend voorbeeld voor tonen locaties via HTML lijst, data attributen</a> (Overzicht ministeries (met HTMAPL), 2014)</li>
+</ul><p>Openbare toiletten:</p><ul>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/blob/master/openbaretoiletten/toiletten.html">Code voor tonen locaties uit gegevensbestand op een lijst en op een interactieve kaart via Javascript</a> (Openbaretoiletten - toiletten.html, 2014)</li>
+<li><a href="https://rawgit.com/Geonovum/Webrichtlijnen-Geo/master/openbaretoiletten/toiletten.html">Werkend voorbeeld voor tonen locaties uit gegevensbestand op een lijst en op een interactieve kaart via Javascript</a> (Voorbeeld Openbare toiletten Nijmegen - toegankelijke informatie en kaart, 2014)</li>
+</ul><p>Ontwikkelingen in de infrastructuur, de bereikbaarheid en doorstroming zijn thema's die zich door hun vaak
+tijdelijke karakter voor lenen om online over te communiceren. Denk hierbij aan strooiroutes, de route van
+de intocht van Sinterklaas, of de Staande Mastroute voor zeilen van Vlissingen tot Delfzijl. Bedenk, dat
+bezoekers meestal niet zozeer geïnteresseerd zijn in de daadwerkelijke route van de strooiwagens bij
+gladheid, maar in een route die zoveel mogelijk gebruik maakt van gestrooide wegvakken.</p><ul>
+<li>Voorbeeld: Carnavalsoptocht uit een GeoJSON bestand</li>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/carnavalsoptocht">Code voor route</a> (carnavalsoptocht, 2014)</li>
+<li><a href="https://rawgit.com/Geonovum/Webrichtlijnen-Geo/master/carnavalsoptocht/index.html">Werkend voorbeeld voor route</a> (Carnavalsoptocht, 2014)</li>
+</ul><p>Kaarten tonen vaak informatie over regio's zoals buurten, wijken, gemeenten, waterschappen of GGD-
+regio's, die een duidelijke naam en begrenzing hebben. De tekstuele benaming ervan volstaat ('Het is
+vandaag 18 graden en zonnig op de Waddeneilanden) óf een simpel ja/nee-antwoord op de gebruikersvraag
+('Ja, u mag dit perceel verbouwen, want het valt net buiten het UNESCO Werelderfgoed gebied'). De
+ruimtelijke analyse wordt door een online GIS-systeem uitgevoerd, zodat de bezoekers niet zelf de
+interpretatie uitvoeren.</p><p>Voorbeeld: Provinciegrenzen met daaraan gekoppelde gegevens</p><ul>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/nederland-areamap">Code voor provinciegrenzen met daaraan gekoppelde gegevens via een HTML areamap</a> (Nederland-areamap, 2014)</li>
+<li><a href="https://rawgit.com/Geonovum/Webrichtlijnen-Geo/master/nederland-areamap/index.html">Werkend voorbeeld voor provinciegrenzen met daaraan gekoppelde gegevens via een HTML areamap</a> (Nederland, 2014)</li>
+</ul><p>Voorbeeld: Natura2000, antwoorden of een locatie in een bepaald gebied valt of niet (tekstueel
+beantwoorden)</p><ul>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/natura2000">Code voor antwoorden of een locatie in een bepaald gebied valt of niet (tekstueel beantwoorden geografische vraag)</a> (Natura2000, 2014)</li>
+</ul><section id="aanpak-3"><h5 id="x4-1-3-1-aanpak"><span class="secno">4.1.3.1 </span>Aanpak</h5><ul>
+<li>Tot 10 locaties, routes of gebieden: presenteer een lijst</li>
+<li>Meer dan 10: filter de lijst</li>
+<li>Gedeelten van infrastructuur: geef dan aan tussen welke kruisingen (bruggen) of ter hoogte van welk adres wordt begonnen of gestopt</li>
+<li>Sorteer de lijst alfabetisch op naam, niet geografisch</li>
+<li>Een kaart met de locaties, routes of regio's kan ter oriëntatie worden toegevoegd.</li>
+</ul></section><section id="objecten-zonder-adres"><h5 id="x4-1-3-2-objecten-zonder-adres"><span class="secno">4.1.3.2 </span>Objecten zonder adres</h5><p>Niet alle objecten hebben een duidelijk vestigingsadres. Denk bijvoorbeeld aan oplaadpunten voor elektrisch
+rijden, de hondenuitlaatstroken in uw gemeente of de verschillende tariefzones voor betaald parkeren.
+Bedenk, dat deze objecten als je ter plaatse bent, markant genoeg zijn, zodat deze objecten in de meeste
+gevallen vanaf het dichtstbijzijnde adres, straat of gebied (bijvoorbeeld in een park) te vinden is. Een kaart
+met de exacte locaties kan als extra informatie worden toegevoegd.</p><section id="aanpak-4"><h6 id="x4-1-3-2-1-aanpak"><span class="secno">4.1.3.2.1 </span>Aanpak</h6><ul>
+<li>De afdeling Geo-informatie koppelt de objecten vooraf aan de dichtstbijzijnde adressen, straatnamen of veldnamen</li>
+<li>Bezoekers gebruiken het adres, straatnaam, wegnummer of veldnaam als zoekingang</li>
+</ul></section></section><section id="sorteren-groeperen-en-filteren"><h5 id="x4-1-3-3-sorteren-groeperen-en-filteren"><span class="secno">4.1.3.3 </span>Sorteren, groeperen en filteren</h5><p>Sorteren, groeperen en filteren zijn handige manieren om lange lijsten met veel zoekresultaten beter
+hanteerbaar te maken. Een sortering moet logisch zijn voor de gebruiker. Sorteer bijvoorbeeld eerst op
+plaatsnaam en dan op straatnaam. Komt een plaatsnaam meerdere keren voor? Geef dan ook duidelijk de
+gemeente en/of provincie aan. Bijvoorbeeld de plaats Hengelo, gemeente Bronckhorst, provincie Gelderland
+en de plaats Hengelo, gemeente Hengelo, provincie Overijssel.</p><p>Als het om een grote lijst gaat, is het verstandig om niet alleen te sorteren, maar om de gegevens ook te
+groeperen, al dan niet op aparte pagina's. Kies dan ook weer een indeling die logisch is voor de gebruiker.
+Gegevens die zich lenen voor een groepering zijn bijvoorbeeld statistische gegevens per woonplaats of
+inbraakcijfers per wijk (Hoeveel wordt er ingebroken in mijn wijk?). Gebruik hiervoor geen organisatie-
+specifieke indelingen (bijvoorbeeld op veiligheidsregio of werkdistrict), maar administratieve indelingen die
+logisch en bekend zijn voor de gebruiker (wijk, woonplaats, gemeente, provincie).</p><p>De gebruiker kan het aantal zoekresultaten verkleinen door ze te filteren. Bied dus filtermogelijkheden aan
+(bijvoorbeeld met een pull down menu of met radio buttons) en kies een filtering die logisch is voor de
+gebruiker, bijvoorbeeld op categorieën of op tijd. Een gebruiker wil bijvoorbeeld weten waar de afvalpunten
+zijn binnen zijn gemeente. Het is dan zinvol om hem te laten filteren op type afvalpunt, zoals locaties waar
+hij bruin glas, klein chemisch afval of puin kwijt kan.</p><section id="aanpak-5"><h6 id="x4-1-3-3-1-aanpak"><span class="secno">4.1.3.3.1 </span>Aanpak</h6><ul>
+<li>Sorteer de lijst alfabetisch, niet geografisch</li>
+<li>Gebruik duidelijk herkenbare namen: maak woonplaatsnamen en gemeentenamen uniek en gebruik geen organisatie-specifieke indelingen</li>
+<li>Filter op eigenschappen van de locaties</li>
+</ul><p>Voor het sorteren en filteren is ruimtelijke functionaliteit dus niet altijd nodig. Desalniettemin is het handig
+om een lijst op afstand te sorteren: van dichtbij naar veraf. De gebruiker moet hiervoor wel zijn locatie
+opgeven (zie paragraaf 4.2). Filteren op locatie (bijvoorbeeld: Wat is het dichtstbijzijnde station?) kan ook:
+dat kunt u doen met geocoderen en een zoekopdracht.</p><blockquote>
+<p>Diverse websites maken gebruik van ruimtelijk sorteren. Een voorbeeld vindt u de website <a href="http://www.supermarktindebuurt.nl/">supermarktindebuurt.nl</a> (Supermarkt in de buurt, 2014).</p>
+</blockquote></section></section><section id="pagina-met-locatiespecifieke-informatie"><h5 id="x4-1-3-4-pagina-met-locatiespecifieke-informatie"><span class="secno">4.1.3.4 </span>Pagina met locatiespecifieke informatie</h5><p>Geef informatie over de afzonderlijke objecten die in een lijst worden gepresenteerd en ter oriëntatie op een
+kaart worden getoond op een aparte pagina, waarop één van de afzonderlijke objecten centraal staat. Een
+goed voorbeeld is de halte-informatie op 9292OV: <a href="http://9292.nl/zaandijk/bushalte-guisweg-zaanse-schans">http://9292.nl/zaandijk/bushalte-guisweg-zaanse-schans</a>). Hiermee vergroot u niet alleen het gebruiksgemak en toegankelijkheid van de informatie, maar
+vergroot u bovendien de vindbaarheid van de informatie door zoekmachines.</p></section></section></section><section id="invoer-van-locatie"><h3 id="x4-2-invoer-van-locatie"><span class="secno">4.2 </span>Invoer van locatie</h3><p>Het zoeken van een locatie via een adres of plaatsnaam is vaak belangrijk. Deze manier van locaties zoeken
+heet ook wel geocoding. Door Google Maps zijn gebruikers gewend dat dit op een slimme manier gebeurt,
+rekening houdend met spelfouten en alternatieve schrijfwijzen. Online kaartplatformen bieden (via hun
+API's) geocoding aan. PDOK heeft een geocoder die gebruik maakt van de Basisregistratie Adressen en
+gebouwen (BAG Geocodeerservice, 2014). Deze geocoder kan ook met alternatieve schrijfwijzen omgaan
+en suggesties teruggeven bij spelfouten. Met geocoderen kunt u dus via tekstuele invoer de locatie bepalen
+waarin de gebruiker geïnteresseerd is.</p><p>De vraag: ‘Wat is waar?’ is in twee stappen tekstueel te beantwoorden met geocoderen:</p><ol>
+<li><strong>Bepaal het punt van interesse van de gebruiker met een invoerveld en geocoderen.</strong> Gebruik het liefst een zoekveld waarmee de gebruiker vrij kan zoeken. Let erop dat de gebruiker geen exacte zoekterm hoeft in te voeren: suggereer voor ‘Den Haag’ bijvoorbeeld ook ‘’s-Gravenhage’. Eventueel kan de gebruiker een straal opgeven om het zoekgebied te beperken. Of voeg een aanvullende filtermogelijkheid toe. Soms is een locatie niet goed tekstueel te beschrijven voor invoer.</li>
+<li>Voer met de gevonden locatie een ruimtelijke zoekopdracht uit op de punt/lijn/vlakinformatie. Bijvoorbeeld: zoek de dichtstbijzijnde punten, zoek alle informatie in een bepaalde straal rondom een locatie, zoek de vlakken waar de invoerlocatie in valt of bepaal de afstanden tot bepaalde lijnen of vlakken. De zoekresultaten bevatten vrijwel altijd meer informatie dan de geometrie alleen. Dat is logisch: de geometrie hoort bij een object dat meer informatie bevat. Vaak is dit informatie die de gebruiker ook interessant vindt.</li>
+</ol><p>In deze tweetrapsraket gebruikt u de geo-informatie <em>in de onderliggende logica en zoekmethode</em>, en niet (alleen) in de presentatie.</p><p>Een kleine kanttekening: er zijn natuurlijk nog meer geschikte zoekingangen dan een locatie: bijvoorbeeld
+tijd of thema. De exacte adreslocatie van de gebruiker als invoerparameter is niet altijd nodig. Soms sluit
+bijvoorbeeld het aggregatieniveau van een administratieve indeling (een buurt, wijk of woonplaats) beter
+aan bij de vraag van de gebruiker.</p><section id="aanpak-locatieinvoer-voor-een-adres-of-plaatsnaam"><h4 id="x4-2-1-aanpak-locatieinvoer-voor-een-adres-of-plaatsnaam"><span class="secno">4.2.1 </span>Aanpak: locatieinvoer voor een adres of plaatsnaam</h4><ol>
+<li>Presenteer een webformulier, waar bezoekers het vestigingsadres (van hun woning of bedrijfslocatie) invullen.</li>
+<li>Met behulp van een geocodeerservice wordt vervolgens de locatie bij het adres gezocht</li>
+<li>De meest voorkomende meetwaarde of modelwaarde op de gevonden locatie wordt als tekst gepresenteerd.</li>
+</ol><ul>
+<li>Voorbeeld: Natura2000 gebied</li>
+<li><a href="https://github.com/Geonovum/Webrichtlijnen-Geo/tree/master/natura2000">Code voor antwoorden of een locatie in een bepaald gebied valt of niet (tekstueel beantwoorden)</a></li>
+</ul></section><section id="adres-of-plaatsnaam-is-niet-voldoende-aanvullende-gegevens-nodig"><h4 id="x4-2-2-adres-of-plaatsnaam-is-niet-voldoende-aanvullende-gegevens-nodig"><span class="secno">4.2.2 </span>Adres of plaatsnaam is niet voldoende: aanvullende gegevens nodig</h4><p>Indien een adres niet voldoende is voor een bepaalde toepassing, geef dan een extra invoerveld in het webformulier, waar bezoekers de locatie nader kunnen toelichten. Omdat gebruikers steeds meer mobiel uw website benaderen en ter plaatse direct een melding willen doen, kunt u gebruikers ook vragen, of de locatie van de smartphone gebruikt mag worden. Een kaart kan hierbij goed helpen ter bevestiging van het adres, dat bezoekers hebben ingevuld. Als extra functionaliteit kunnen bezoekers de locatie-indicator verslepen om de locatie nog preciezer aan te duiden. Door daarnaast gebruik te maken van de contactgegevens die bezoekers hebben ingevuld, kan alsnog meer informatie over de locatie worden achterhaald mocht de locatie onvoldoende duidelijk zijn.</p><section id="aanpak-6"><h5 id="x4-2-2-1-aanpak"><span class="secno">4.2.2.1 </span>Aanpak</h5><ul>
+<li>Extra invoerveld voor locatie-omschrijving</li>
+<li>Vraag toegang tot locatie van smartphone</li>
+<li>Locatie onduidelijk? Gebruik contactgegevens uit webformulier!</li>
+</ul></section></section></section><section id="generieke-kaartfunctionaliteit"><h3 id="x4-3-generieke-kaartfunctionaliteit"><span class="secno">4.3 </span>Generieke kaartfunctionaliteit</h3><p>Vaak heeft een kaart toegevoegde waarde bij de presentatie van zoekresultaten. Maar u kunt veel
+toegankelijkheidsproblemen voorkomen door eerst de gebruikersvraag (tekstueel) te beantwoorden en dan
+pas aandacht aan de kaart te besteden.</p><p>De kaart kan dan op verschillende manieren een goede aanvulling zijn op de presentatie van zoekresultaten:</p><ol>
+<li><strong>Statisch.</strong> De kaart is dan een extra presentatiemiddel voor de informatie [Alternatieve tekst: grafieken en plattegronden] (<a href="http://www.webrichtlijnen.nl/aan-de-slag/alternatieve-grafieken-plattegronden#plattegronden">http://www.webrichtlijnen.nl/aan-de-slag/alternatieve-grafieken-plattegronden#plattegronden</a>). De meeste online kaartplatformen kunnen zo'n statische kaart eenvoudig genereren. Ook met bepaalde webservices (bijvoorbeeld een Web Map Service) kunt u een relatief simpel kaartje als afbeelding opvragen.</li>
+<li><strong>Afbeelding met beperkte functionaliteit.</strong> Een lijst met zoekresultaten kunt u vaak afbeelden op een 'klikbare' kaart, bijvoorbeeld met HTML en CSS. Waterschap Zuiderzeeland beeldt zo informatie over projecten af op een statische kaart.</li>
+<li><strong>Een interactieve kaart, met in/uitzoomen</strong>, verschuiven en selectie/filtering van gegevens via de kaart. Veel gebruikers vinden dit een aantrekkelijke manier van presenteren. Zij kunnen zo'n kaart vaak ook intuïtief goed bedienen. De gebruiker filtert zelf de gegevens door in- en uit te zoomen, of door de kaart te verschuiven. De resultaten worden dan steeds aangepast aan het zichtbare gebied op de kaart. Dit kan handig zijn als meerdere resultaten dicht bij elkaar liggen. Een voorbeeld van deze aanpak is de publicatie van lokale bekendmakingen op Overheid.nl (Voorbeeld 23 – Overheid.nl – Bekendmakingen).</li>
+</ol><section id="pannen-en-zoomen"><h4 id="x4-3-1-pannen-en-zoomen"><span class="secno">4.3.1 </span>Pannen en zoomen</h4><p>De kaart verschuiven (pannen) en verschalen (zoomen) zijn de basishandelingen bij een interactieve kaart.
+Naast de gebruikelijke buttons in de interface, de muisbewegingen en het scroll-wheel is het voor de
+toegankelijkheid nodig om te zorgen voor alternatieven. De basishandelingen moeten ook met het
+toetsenbord kunnen worden uitgevoerd. Daarnaast is het van belang om te zorgen, dat deze
+basishandelingen ook kunnen worden uitgevoerd op een tablet of smartphone door middel van touch en
+swipe gestures.</p></section><section id="cartografie"><h4 id="x4-3-2-cartografie"><span class="secno">4.3.2 </span>Cartografie</h4><p>In deze paragraaf worden kleurgebruik en contrast in relatie tot webrichtlijnen en geo-informatie toegepast.</p><section id="kleurgebruik"><h5 id="x4-3-2-1-kleurgebruik"><span class="secno">4.3.2.1 </span>Kleurgebruik</h5><p>Door kaarten op een toegankelijke manier te ontwerpen kunnen gebruikers toegang krijgen tot die geo-
+informatie die in de kaart wordt overgebracht door kleurverschillen. Als de informatie wordt overgebracht
+door kleurverschillen in een kaart, dan wordt die informatie mogelijk niet gezien door gebruikers met
+kleurenzwakte. In dit geval zorgt het aanbieden van de informatie die door kleur wordt overgebracht door
+middel van een andere visueel medium ervoor dat gebruikers die geen kleuren kunnen zien evengoed de
+informatie kunnen waarnemen.</p><p>Sommige gebruikers hebben echter moeilijkheden met kleurperceptie. Veel mensen met gedeeltelijk zicht
+kunnen slechts beperkt kleur zien en veel oudere gebruikers zien kleuren niet goed. Bovendien krijgen
+mensen die tekst-, beperkte kleuren- of monochroom schermen en browsers gebruiken geen toegang tot
+informatie die alleen in kleur wordt gepresenteerd. Dit zou het gebruik van kleur in een kaart, of
+kleurcodering, niet moeten ontmoedigen, als ze aanvullend zijn op andere visuele aanwijzingen.</p><section id="aanpak-7"><h6 id="x4-3-2-1-1-aanpak"><span class="secno">4.3.2.1.1 </span>Aanpak</h6><ul>
+<li>Garandeer dat informatie die door kleurverschillen wordt overgebracht ook beschikbaar is in tekst</li>
+<li>Gebruik zowel kleur als patroon</li>
+</ul></section></section><section id="contrast"><h5 id="x4-3-2-2-contrast"><span class="secno">4.3.2.2 </span>Contrast</h5><p>De visuele weergave van tekst en afbeeldingen van tekst heeft een contrastverhouding van ten minste 4,5:1.
+Dit succescriterium gaat in eerste instantie over het contrast tussen voorgrondkleuren en
+achtergrondkleuren op een pagina, maar is ook toepasbaar op kaarten. Met voorgrondkleuren en
+achtergrondkleuren bedoelen we bijvoorbeeld een zwarte letter op een witte achtergrond. Doordat deze
+kleuren een groot contrast hebben is dit voor iedereen goed leesbaar. Een lichtgrijze letter op een witte
+achtergrond heeft een veel lager contrast. Een lager contrast kan beperkingen opleveren voor slechtzienden
+en kleurenblinden, maar ook voor gebruikers op een computer met een ouder beeldscherm. Oudere
+beeldschermen zijn over het algemeen slechter in het weergeven van kleur. Een mogelijk gevolg is dan dat
+lichtgrijze tekst of gebieden in de kaart helemaal niet meer zichtbaar zijn.</p><p>Je kunt de contrastwaarde zelf berekenen met behulp van een contrastwaarde hulpmiddel. De simpelste
+versie is <a href="http://leaverou.github.com/contrast-ratio/">contrast ratio op Github</a> (Contrast ratio, 2014). In dit hulpmiddel kun je twee kleuren opgeven. Je krijgt dan direct de contrastwaarde te zien.</p></section></section><section id="download"><h4 id="x4-3-3-download"><span class="secno">4.3.3 </span>Download</h4><p>Bied de geografische gegevens als download service / downloadbaar bestand aan. Uw huidige online GIS-viewer is erg moeilijk 1-
+op-1 en voor 100% toegankelijk te maken. Een vergelijkbare ervaring en rijkdom aan functionaliteit
+toegankelijk aanbieden is te kostbaar. Daarnaast kan uw organisatie nooit anticiperen op alle ruimtelijke
+vragen van bezoekers. Door de geografische gegevens als download aan te bieden kunnen bezoekers zelf
+de gegevens analyseren, bevragen en vormgeven.</p></section></section></section><section id="H05" data-format="markdown"><!--OddPage--><h2 id="x5-wat-zijn-webrichtlijnen"><span class="secno">5. </span>Wat zijn webrichtlijnen?</h2><p>In dit hoofdstuk wordt kort ingegaan op het huidige web, de wereld van webrichtlijnen en de
+relevantie voor geo-informatie.</p><section id="modern-landschap-van-gebruik"><h3 id="x5-1-modern-landschap-van-gebruik"><span class="secno">5.1 </span>Modern landschap van gebruik</h3><p>Met mobiele telefoons, tablets, notebooks, laptops, desktops en tv’s kan iedereen overal en altijd online
+informatie opzoeken. Op elk apparaat is de grootte en verhouding van het display weer anders, ze worden
+allemaal anders bediend en hebben allemaal andere software (browser én besturingssysteem). Zeker van
+browsers worden regelmatig nieuwe versies uitgebracht.</p><p><img src="media/het-web-van-nu.png" alt="Het web van vroeger en het web van nu"></p><p>Daarnaast staat de ontwikkeling van webstandaarden niet stil. De webstandaarden HTML en CSS
+bijvoorbeeld nemen steeds meer technieken over die eerst alleen mogelijk waren met Javascript en Flash.
+De verschillende browsers ondersteunen deze standaarden steeds beter. Daardoor is het mogelijk om met
+alleen de basis webstandaarden websites te maken die erg rijk zijn aan functionaliteit.</p></section><section id="webrichtlijnen"><h3 id="x5-2-webrichtlijnen"><span class="secno">5.2 </span>Webrichtlijnen</h3><p>Voor alle digitale dienstverlening en informatieverstrekking hebben (semi-)overheden zich gecommitteerd
+aan de webrichtlijnen. De webrichtlijnen garanderen de beschikbaarheid van digitale informatie voor iedere
+gebruiker. Ze zijn gebaseerd op internationale open standaarden.</p><p>De webrichtlijnen zijn een set regels voor het ontwerp, de bouw en het beheer van alle digitale
+dienstverlening en informatieverstrekking. Zij zijn een kwaliteitsinstrument: zij zorgen voor (een deel van)
+de kwaliteit van een web toepassing, namelijk de toegankelijkheid. Door te voldoen aan de webrichtlijnen is
+de informatie voor iedereen - onafhankelijk van het soort apparaat waarmee de site bekeken wordt -
+beschikbaar.</p><p>De huidige webrichtlijnen (versie 2) bestaan uit twee onderdelen:</p><ol>
+<li><em>De Web Content Accessibility Guidelines 2.0</em> (kortweg WCAG 2.0): de internationale toegankelijkheidsrichtlijnen van het World Wide Web Consortium (W3C) uit 2008. Deze bestaan uit 4 principes: Waarneembaar, Bedienbaar, Begrijpelijk en Robuust.</li>
+<li>Aan die 4 principes heeft de Nederlandse overheid een vijfde principe toegevoegd: het principe Universeel. Dit principe ondersteunt de WCAG 2.0-standaard op het gebied van bouwkwaliteit, gebruiksvriendelijkheid en vindbaarheid. Het is opgesteld door de Nederlandse overheid, en is alleen in Nederland van kracht.</li>
+</ol><p>De 5 principes bevatten samen 22 richtlijnen, die weer zijn onderverdeeld in succescriteria. Meer informatie
+over de webrichtlijnen vindt u op <a href="http://www.drempelvrij.nl/waarmerk-2/wcag-20/over-wcag-20">de website drempelvrij</a> (Over WCAG 2.0 / Webrichtlijnen 2, 2014).</p><section id="webrichtlijnen-versie-1-en-2"><h4 id="x5-2-1-webrichtlijnen-versie-1-en-2"><span class="secno">5.2.1 </span>Webrichtlijnen versie 1 en 2</h4><p>Versie 1 van de webrichtlijnen is opgesteld in 2004. Deze versie is uitgegroeid tot de kwaliteitsnorm voor
+Nederlandse overheidswebsites. In 2011 is versie 2 gepubliceerd, als gevolg van wijzigingen in de
+internationale richtlijnen voor toegankelijkheid van websites (van WCAG 1.0 naar WCAG 2.0). Op 1 januari
+2015 vervalt versie 1 van de webrichtlijnen. Tot die datum bestaan versie 1 en versie 2 naast elkaar.</p><p>Als overheidsorganisatie bepaalt u zelf welke versie u gebruikt. Gaat uw organisatie voor het eerst met de
+webrichtlijnen aan de slag? Kies dan voor versie 2. Gebruikt uw organisatie al versie 1? Dan kan het soms
+praktischer zijn om de overstap naar versie 2 nu nog niet te maken.</p></section><section id="waarmerk-drempelvrij-nl"><h4 id="x5-2-2-waarmerk-drempelvrij-nl"><span class="secno">5.2.2 </span>Waarmerk drempelvrij.nl</h4><p>Het <a href="http://www.drempelvrij.nl/">Waarmerk drempelvrij.nl</a> (Waarmerk drempelvrij.nl, 2014) van de gelijknamige stichting is bedoeld voor
+iedereen die zijn website aantoonbaar toegankelijk wil maken. Het waarmerk mag alleen worden gevoerd
+na onderzoek door een onafhankelijke en deskundige inspectie-instelling. De waarmerkregeling kent drie
+niveaus, die herkenbaar zijn aan een logo met één, twee of drie sterren. Voor de (semi-)overheid is het
+derde niveau verplicht: het niveau van de webrichtlijnen. Krijgt een website drie sterren? Dan is die website
+optimaal toegankelijk. Bovendien voldoet de website dan aan extra eisen op het gebied van kwaliteit en
+gebruiksvriendelijkheid.</p></section><section id="het-pas-toe-of-leg-uit-principe"><h4 id="x5-2-3-het-pas-toe-of-leg-uit-principe"><span class="secno">5.2.3 </span>Het pas-toe-of-leg-uit-principe</h4><p>De webrichtlijnen zijn geplaatst op de lijst met open standaarden van de overheid waarvoor het zogenoemde
+pas-toe-of-leg-uit-principe geldt. Overheidsorganisaties zijn verplicht om de standaarden op deze lijst toe
+te passen ('pas toe'). Is dit om zwaarwegende redenen niet (volledig) mogelijk, dan moeten zij dit op
+transparante wijze verantwoorden ('leg uit'). Slechts bij zogenaamde 'redenen van bijzonder gewicht' kan
+worden afgeweken. Deze redenen kunnen zijn gelegen in onvoldoende aanbod, onvoldoende veiligheid of
+onvoldoende zekerheid bij het functioneren. In dat geval dienen overheden nota bene in hun jaarverslag de
+verantwoording voor het niet voldoen aan de webrichtlijnen vast te leggen. Dit ontslaat overheden niet van
+de plicht om alsnog aan de webrichtlijnen te voldoen. In het jaarverslag moet namelijk worden opgenomen
+welke maatregelen zijn of worden genomen om alsnog aan de webrichtlijnen te kunnen voldoen. Bovendien
+moet worden vastgelegd op welke termijn de maatregelen zullen zijn geïmplementeerd.</p></section></section><section id="locatiegebonden-gegevens-gemeengoed"><h3 id="x5-3-locatiegebonden-gegevens-gemeengoed"><span class="secno">5.3 </span>Locatiegebonden gegevens: gemeengoed</h3><p>Locatiegebonden gegevens van overheden komen steeds meer beschikbaar op het web. Geo-informatie
+wordt vaak in kaartvorm gepresenteerd. In de digitale dienstverlening en informatieverstrekking van
+overheden heeft de digitale kaart meerwaarde. Een goede kaart is herkenbaar en kan veel informatie
+overzichtelijk en in haar ruimtelijke context tonen. De interactieve functionaliteit houdt de aandacht van
+gebruikers vast en nodigt uit tot meer, want kaarten zijn – voor veel mensen – een intuïtieve manier van
+informatieverwerking.</p><blockquote>
+<p>In 2012 was: “Maps” de meest gebruikte applicatie op de iPhone. Op Android-toestellen was: “Google Maps” de meest gebruikte applicatie na “Google Search”, “Gmail” en “Facebook”.</p>
+<p><a href="http://www.nielsen.com/us/en/insights/news/2012/nielsen-tops-of-2012-digital.html">Nielsen Tops of 2020</a></p>
+</blockquote></section></section><section id="H06" data-format="markdown"><!--OddPage--><h2 id="x6-de-voordelen-van-webrichtlijnen"><span class="secno">6. </span>De voordelen van webrichtlijnen</h2><p>Het voldoen aan de webrichtlijnen gaat niet over het mogen plaatsen van het logo op een website.
+Het gebruik van de webrichtlijnen geeft u de mogelijkheid om een website van hoge kwaliteit te
+(laten) bouwen, wat veel voordelen oplevert voor uw digitale communicatie. Deze voordelen
+gelden ook – en misschien wel meer – voor locatiegebonden informatie.</p><section id="gebruiksvriendelijkheid-en-bereik"><h3 id="x6-1-gebruiksvriendelijkheid-en-bereik"><span class="secno">6.1 </span>Gebruiksvriendelijkheid en bereik</h3><p>Door het toepassen van de webrichtlijnen in uw digitale communicatie (inclusief geo-informatie) bereikt u
+een zo groot mogelijke doelgroep. Zelfs voor gebruikers met een beperking of mensen die verouderde
+technologie gebruiken, is uw informatie dan toegankelijk. Hierbij gaat het niet alleen om de compatibiliteit
+met diverse browsers en besturingssystemen, maar ook met diverse apparaten zoals mobiele telefoons of
+tablet computers. Op deze manier kan bestaande geo-informatie via geografische webapplicaties veel breder
+benut worden.</p></section><section id="vindbaarheid"><h3 id="x6-2-vindbaarheid"><span class="secno">6.2 </span>Vindbaarheid</h3><blockquote>
+<p>Veel bezoekers zullen op een webpagina terechtkomen via een zoekmachine. Zij zijn op zoek naar specifieke informatie en verwachten deze te vinden op een of meer pagina’s die de zoekmachine aan hen presenteert. Om deze bezoekers van dienst te zijn, is het belangrijk dat zoek-spiders de website zo effectief en correct mogelijk kunnen indexeren.</p>
+<p><a href="http://www.webrichtlijnen.nl/aan-de-slag/optimalisatie-zoekmachines">webrichtlijnen.nl</a></p>
+</blockquote><p>Door het toepassen van de webrichtlijnen wordt geo-informatie op een gestructureerde manier digitaal
+aangeboden. Als een gebruiker in Google een adres intikt, dan verschijnen er verwijzingen naar
+kaartapplicaties in de zoekresultaten, met bijvoorbeeld afgegeven vergunningen (op Overheid.nl), WOZ-
+waarde (te ontwikkelen WOZ-viewer) of de verkoopprijs. Het voldoen aan de webrichtlijnen vergroot niet
+alleen de vindbaarheid van geo-informatie voor zoekmachines, maar ook voor mensen met een beperking
+die bijvoorbeeld een screenreader gebruiken (een hulpprogramma dat teksten van het web voorleest).</p><blockquote>
+<p>De bekendmakingen op Overheid.nl op een specifieke locatie worden geïndexeerd door zoekmachines.</p>
+</blockquote></section><section id="compatibiliteit"><h3 id="x6-3-compatibiliteit"><span class="secno">6.3 </span>Compatibiliteit</h3><p>Éénmalig ontwikkelen, meervoudig gebruiken en meervoudig benaderen is het devies - in plaats van
+specifiek ontwikkelen voor verschillende platformen. Want ontwikkelen voor specifieke apparaten is duur:
+er is een uitgebreid aanbod van apparaten, versies en technieken.</p><p>Voor mobiele apparaten is een mobiele website een optie: een aparte website (vaak onder het m.-sub
+domein), waarop een deel van de content in een aangepaste vormgeving en met weinig functionaliteit te
+zien is. Toch zitten hier een aantal nadelen aan. Niet alleen is de gebruikerservaring verschillend (wat
+uitwisseling tussen beide domeinen lastig maakt), maar er is ook nog eens dubbel beheer nodig. Als uw
+website aan de webrichtlijnen voldoet, is zo’n mobiele site niet nodig.</p><p>Het gebruik van standaarden als de webrichtlijnen levert op verschillende manieren voordelen op: enerzijds
+kan een website (met responsive design) zó worden gebouwd dat hij er op verschillende apparaten optimaal uitziet, zonder dat er aan functionaliteit gesleuteld hoeft te worden. Anderzijds kan dezelfde code hergebruikt
+worden in een apparaat specifieke app-technologie.</p><blockquote>
+<p>Door het gebruiken van standaarden worden de gebruikers goed bediend. De Britse overheid heeft dan ook een voorkeur om geen apps te bouwen. Bron: UK government apps: “We're not 'appy. Not 'appy at all.”</p>
+</blockquote></section><section id="kwaliteit"><h3 id="x6-4-kwaliteit"><span class="secno">6.4 </span>Kwaliteit</h3><p>Door aan de webrichtlijnen te voldoen, wordt de bouwkwaliteit van uw website aanzienlijk en meetbaar
+beter. In de beheerfase zijn problemen gemakkelijker op te sporen en op te lossen. Hierdoor blijven de
+kosten voor beheer, exploitatie en gebruikersondersteuning lager én beter beheersbaar. Tijdens de
+ontwikkelfase is het makkelijker om flexibel en robuust om te gaan met nieuwe functionaliteiten.</p></section><section id="duurzaamheid"><h3 id="x6-5-duurzaamheid"><span class="secno">6.5 </span>Duurzaamheid</h3><blockquote>
+<p>Een printfunctie is bij geo-applicaties een veelgevraagde functionaliteit. Door het gebruik van print stylesheets bij de ontwikkeling van Geozet was dit snel en met weinig code gerealiseerd. De gebruiker kan via de gewone printfunctie van de eigen browser de kaart printen, inclusief relevante informatie als de titel en de geselecteerde gegevens erop. Het was niet nodig aparte printservices te ontwikkelen, wat bij veel interactieve kaarten wel het geval is en vaak tot hoge kosten leidt.</p>
+</blockquote><p>Elke webpagina is onder te verdelen in een aantal aspecten. De vormgeving (lettertypes, witruimtes,
+kleuren) bepaalt hoe de pagina eruit ziet. De structuur zegt iets over de opmaak van het document, of iets
+een titel is, een opsomming of een paragraaf. De content is de werkelijke inhoud van de pagina, inclusief
+afbeeldingen of andere media.</p><p>Door vormgeving, structuur en content niet met elkaar te vermengen wordt uw website beter te beheren –
+wat vermindering van kosten op beheer en doorontwikkeling betekent. Als de huisstijl verandert, hoeft u
+hiervoor niet de hele website aan te passen. Dit kunt u eenvoudig op één plek doen. Bij de invoering van
+nieuwe technieken die niet op alle aspecten impact hebben, hoeft ook niet de hele website op de schop.
+Gaat u bijvoorbeeld over op responsive design? Dan hoeft u alleen de vormgeving aan te passen.</p><blockquote>
+<p>Een huisstijl is belangrijk voor het uitdragen van de identiteit, zorgen voor een betrouwbaar afzenderschap en een vertrouwde omgeving. Voor het gebruik van geo-applicaties geldt dat ook.
+De bekendmakingen op Overheid.nl zijn te bekijken in de Geozet-viewer. Door het juiste gebruik van stylesheets is de informatie op de kaart in de huisstijl van de website te bekijken. Op het domein van Operatie NUP is dezelfde viewer gebruikt, nu in de huisstijl van dit domein.</p>
+</blockquote><p>Webrichtlijnen schrijven het gebruik van webstandaarden (als HTML en CSS) voor en stellen kwaliteitseisen
+aan code, zoals een bepaalde structuur. Deze webstandaarden en conventies zijn voor iedereen toegankelijk.
+Daarnaast is de code beter te begrijpen voor (andere) ontwikkelaars en beheerders. Dit maakt een overgang
+naar een ander CMS (Content Management Systeem) of een andere beheerorganisatie eenvoudiger.</p></section><section id="kostenbesparing-helpdesk"><h3 id="x6-6-kostenbesparing-helpdesk"><span class="secno">6.6 </span>Kostenbesparing helpdesk</h3><blockquote>
+<p>Bij de ontwikkeling van Borger.dk, een Deens overheidsportaal voor het regelen van zaken met de overheid – waren de geschatte extra kosten van onduidelijke taal voor de helpdesk reden om een set richtlijnen te ontwikkelen die verplicht werden gesteld in de realisatie van de website.</p>
+</blockquote><p>Onduidelijkheid op de website kost geld. Is de informatie niet duidelijk? Dan doen gebruikers een beroep op
+uw (telefonische) helpdesk. Door de gebruiker aan te spreken op het juiste taalniveau en door op de juiste
+momenten feedback te geven (bijvoorbeeld bij foutmeldingen), krijgt u minder gebruikersvragen.</p></section></section><section id="H07" data-format="markdown"><!--OddPage--><h2 id="x7-verantwoording"><span class="secno">7. </span>Verantwoording</h2><p>Wij hebben de eerste handreiking (2013) samengesteld omdat veel overheidsorganisaties
+knelpunten tegenkomen bij het publiceren van geo-informatie volgens de webrichtlijnen.
+Daarnaast maken het web en het medialandschap (met de opkomst van smartphones en tablets)
+grote veranderingen door. Deze argumenten zijn nog steeds valide en wij hebben daarom
+besloten om een geüpdatete versie uit te brengen.</p><p>Deze versie van de handreiking (2.0 Bèta) is grotendeels gebaseerd op de eerste versie. De grootste
+verschillen ten opzichte van de handreiking uit 2013 zijn:</p><ul>
+<li>Op een aantal punten zijn opmerkingen uit het veld verwerkt en zijn zaken geactualiseerd;</li>
+<li>Deze handreiking heeft een nog praktischere insteek met onder andere handvatten en codevoorbeelden;</li>
+<li>Deze handreiking is verder gebracht in nauwe samenwerkingen met betrokkenen bij het toepassingskader (Toepassingskader: Toegankelijkheid voor iedereen, 2014) om zo beter aan te sluiten bij de praktijk en in de toekomst integratie mogelijk te maken.</li>
+</ul><section id="opdracht-en-doelstelling"><h3 id="x7-1-opdracht-en-doelstelling"><span class="secno">7.1 </span>Opdracht en doelstelling</h3><p>In het najaar van 2012 kreeg Geonovum van een aantal overheidspartijen de vraag of zij onderzoek wilde
+doen naar de praktische problemen van de toepassing van de webrichtlijnen bij het publiceren van geo-
+informatie. Doel was het publiceren van een aantal praktijkgerichte conclusies, aanbevelingen en
+handvatten. Samen met ICTU startte Geonovum daarom met het project 'Handreiking webrichtlijnen &amp; Geo-
+informatie'. Het projectteam bestond uit Theo Overduin (projectleider), Victor Zuydweg, Thijs Brentjens,
+Sjors Slaats en Edward Mac Gillavry. Hetzelfde team is verantwoordelijk voor deze versie.</p><p><strong>Theo Overduin</strong> is senior projectleider / adviseur bij Geonovum. Eén van zijn drijfveren is excellente
+dienstverlening door overheden aan burgers en bedrijven en het toepassen hierbij van geo-informatie. Theo
+is in de afgelopen jaren vanuit Geonovum betrokken geweest bij projecten als Gideon, ProGideon, PDOK en
+Inspire.</p><p><strong>Victor Zuydweg</strong> is interaction designer bij Stichting ICTU en één van de auteurs van de handreiking. Hij is
+gespecialiseerd in het ontwerpen van interactieve en toegankelijke webapplicaties. Hij heeft onder andere
+meegewerkt aan de GEOZET, een toegankelijke kaart voor de overheid.</p><p><strong>Thijs Brentjens</strong> werkt als zelfstandig geo-ICT-expert vanuit zijn bedrijf Brentjens GEO-ICT. Thijs is o.a.
+expert op het gebied van open geo-standaarden, Inspire en realisatie van geo-ICT-toepassingen. Hij heeft
+verscheidene overheden inhoudelijk geadviseerd over webrichtlijnen en geo-informatie.</p><p><strong>Sjors Slaats</strong> is via Geonovum betrokken bij meerdere geo-ICT trajecten, zoals rondom GeoSamen. Als
+bestuurskundige is hij bij uitstek in staat om beleid, informatie en technologie in samenhang te brengen.
+Tegenwoordig werkt Sjors als zelfstandig adviseur vanuit zijn bedrijf Tactico.</p><p><strong>Edward Mac Gillavry</strong> is cartograaf bij Webmapper. Hij ontwikkelt geografische applicaties voor het
+(mobiele) Web, ook in overheidsprojecten waarbij de webrichtlijnen voorop staan. Bij Geonovum was hij
+eerder betrokken bij de handreiking Web cartografie.</p></section><section id="afbakening"><h3 id="x7-2-afbakening"><span class="secno">7.2 </span>Afbakening</h3><p>Deze handreiking biedt praktische aanwijzingen voor digitale overheidscommunicatie die voldoet aan de
+webrichtlijnen en tegelijkertijd de mogelijkheden van geo-informatie optimaal benut.</p><p>Het gaat hierbij om webdiensten die:</p><ul>
+<li>beheerd worden door (semi-)overheden;</li>
+<li>ontsloten worden via de website van een (semi-) overheidsinstantie;</li>
+<li>zich richten op communicatie tussen overheden en burgers/bedrijven.</li>
+</ul><p>De vraaggerichte aanpak die we beschrijven, biedt niet altijd een oplossing om geo-informatie in te zetten
+en tegelijk te voldoen aan de webrichtlijnen. Maar met deze handreiking maken we deze ‘witte vlekken’ wel
+inzichtelijk.</p><p>Om geo-informatie op overheidswebsites te publiceren, werken vakinhoudelijke, communicatie- en geo-
+informatieafdelingen vaak samen. Dat betekent dat GIS-medewerkers, webredacteuren en beleidsadviseurs
+de doelgroepen van deze handreiking zijn.</p><p>De lezer die verwacht in deze handreiking een rechtstreeks advies te vinden voor een bepaalde applicatie
+van een bepaalde leverancier, moeten wij helaas teleurstellen. Een advies om viewer X van merk Y te kopen
+zodat u vervolgens automatisch het keurmerk ‘Drempelvrij’ kunt gaan voeren, is niet alleen onmogelijk,
+maar ook onzinnig. In de praktijk zijn er vele goede oplossingen denkbaar die u met tal van verschillende
+producten en tools kunt realiseren. Belangrijker dan het gereedschap zelf is het idee wat u ermee wilt gaan
+doen en welk doel u daarmee hoopt te bereiken. Daar gaat deze handreiking uitgebreid op in.</p></section></section><section id="B01" class="appendix" data-format="markdown"><!--OddPage--><h2 id="a-vermeldingen-gebruikte-materialen"><span class="secno">A. </span>Vermeldingen gebruikte materialen</h2><p>Rechten vrije stockfoto's van <a href="https://www.scx.hu/">stock.xchng / sxc.hu</a>:</p><ul>
+<li>'Folded map' van yirsh</li>
+<li>'Monitor 3' van sundesigns</li>
+<li>'Porcelain Houses' van tlobker</li>
+<li>'Eiffel Tower 1' van mordoc</li>
+<li>'Levitation 3' van bizior</li>
+<li>'chalk board' van ilk</li>
+</ul><p>Verschillende iconen van <a href="https://www.thenounproject.com">The Noun Project</a></p></section><section id="B02" class="appendix" data-format="markdown"><!--OddPage--><h2 id="b-praktijkvoorbeelden"><span class="secno">B. </span>Praktijkvoorbeelden</h2><p>Deze bijlage geeft een inventarisatie van websites die geo-informatie publiceren en in enige mate
+voldoen aan de webrichtlijnen. Al deze websites staan op de lijst van waarmerkdragers op
+Drempelvrij.nl (Waarmerk behaald hele website, 2014) en zijn gekeurd door gecertificeerde
+keuringsinstellingen.</p><p>Bij de voorbeelden wordt met sterren aangegeven welk niveau drempelvrij deze keuringsinstellingen hebben
+toegewezen aan de hele website. De voorbeelden geven een overzicht van verschillende oplossingsrichtingen
+en diverse soorten organisaties</p><blockquote>
+<p>Actuele bekendmakingen worden in gemeente Alphen aan den Rijn getoond op kaart. Het gaat hier over bouw- of kapvergunning. De bekendmaking gaat gepaard met een tekstuele omschrijving van de bekendmaking, de locatie en de status. De website maakt gebruik van Google Maps.</p>
+<p>Versie webrichtlijnen: Versie 1
+Niveau drempelvrij: *** (webrichtlijnen)
+Website: <a href="http://www.alphenaandenrijn.nl/Gemeente/Publicaties/Bekendmakingen">www.alphenaandenrijn.nl/Gemeente/Publicaties/Bekendmakingen</a></p>
+</blockquote><blockquote>
+<p>Deze overheidsbrede website toont aangevraagde vergunningen (bouwvergunningen, kapvergunningen, besluiten over bestemmingsplannen etc.) op de kaart voor heel Nederland. Hiervoor maakt de website gebruik van de Geografische zoek- en toondienst (Geozet). De bezoeker kan door bekendmakingen zoeken op basis van postcode of plaatsnaam. De website is voor alle Nederlandse overheden gemaakt door Logius in opdracht van het ministerie van BZK.</p>
+<p>Versie webrichtlijnen: Versie 1
+Niveau drempelvrij: * (Toegankelijkheid prioriteit 1)
+Website: <a href="http://www.overheid.nl/overheidsinformatie/bekendmakingen">www.overheid.nl/overheidsinformatie/bekendmakingen</a></p>
+</blockquote><blockquote>
+<p>Actuele bekendmakingen worden op de website van de gemeente Elburg op de kaart getoond. Het betreft een breed scala aan verschillende bekendmakingen; van verkeersbesluiten tot evenementen.De bekendmaking gaat gepaard met een tekstuele omschrijving van de bekendmaking, de locatie en de status. De website maakt gebruik van Google Maps.</p>
+<p>Versie webrichtlijnen: Versie 1
+Niveau drempelvrij: *** (webrichtlijnen)
+Website: <a href="http://www.elburg.nl/Actueel/Bekendmakingen_Elburg">www.elburg.nl/Actueel/Bekendmakingen_Elburg</a></p>
+</blockquote></section><section id="B03" class="appendix" data-format="markdown"><!--OddPage--><h2 id="c-tools-validators-en-hulpmiddelen"><span class="secno">C. </span>Tools, validators en hulpmiddelen</h2><p>Om de verschillende elementen van toegankelijkheid te controleren, zijn er online hulpmiddelen. Deze
+kunnen problemen opsporen en suggesties geven hoe ze te verbeteren.</p><p>Let op: Er is geen enkele tool die een pagina op alle toegankelijkheidseisen kan controleren. Een aantal
+eisen moet u altijd handmatig doen, omdat daarbij inzicht in inhoud of context nodig is.</p><section id="webrichtlijnen-versie-2"><h3 id="c-1-webrichtlijnen-versie-2"><span class="secno">C.1 </span>Webrichtlijnen versie 2</h3><p>Informatie over webrichtlijnen versie 2, van achtergrond tot aan technische uitwerking.
+versie2.webrichtlijnen.nl/</p></section><section id="webrichtlijnen-quickscan"><h3 id="c-2-webrichtlijnen-quickscan"><span class="secno">C.2 </span>Webrichtlijnen QuickScan</h3><p>Met de webrichtlijnen Quickscan kunt u controleren of een webpagina voldoet aan een deel van de
+webrichtlijnen versie 1.
+versie1.webrichtlijnen.nl/toetsen/</p></section><section id="tools-op-accessibility-nl"><h3 id="c-3-tools-op-accessibility-nl"><span class="secno">C.3 </span>Tools op accessibility.nl</h3><p>Verschillende hulpmiddelen: van controle van het leesniveau tot het meten van kleurcontrast.
+<a href="http://www.accessibility.nl/kennisbank/tools/">www.accessibility.nl/kennisbank/tools/</a></p></section><section id="w3c-validators"><h3 id="c-4-w3c-validators"><span class="secno">C.4 </span>W3C validators</h3><p>Online validators voor het controleren van CSS en HTML.
+CSS validator: jigsaw.w3.org/css-validator/
+HTML validator: validator.w3.org/</p></section><section id="webplatform-org"><h3 id="c-5-webplatform-org"><span class="secno">C.5 </span>Webplatform.org</h3><p>Een verzameling van accurate en up-to-date referenties en voorbeelden voor elk deel van client-side
+ontwikkeling en design. Het platform is een initiatief van het W3C.
+<a href="http://www.webplatform.org/">www.webplatform.org/</a></p></section><section id="color-oracle"><h3 id="c-6-color-oracle"><span class="secno">C.6 </span>Color Oracle</h3><p>Design for the Color Impaired
+colororacle.org/</p></section></section><section id="B04" class="appendix" data-format="markdown"><!--OddPage--><h2 id="d-afbeeldingen"><span class="secno">D. </span>Afbeeldingen</h2><p>De onderstaande afbeeldingen zijn een grafische weergave van de principes en adviezen en van fabels en feiten.</p><p><img src="media/infographic-principes.png" alt="Samenvatting van principes en adviezen"></p><p>Samenvatting van principes en adviezen</p><p><img src="media/infographic-fabels-feiten.png" alt="Fabels en feiten en valkuilen bij toegankelijk maken van locatiedata"></p><p>Fabels en feiten en valkuilen bij toegankelijk maken van locatiedata</p></section><span class="px-viewport-dimensions px-viewport-dimensions--hidden tr"></span><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

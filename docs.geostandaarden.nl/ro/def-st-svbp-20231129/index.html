@@ -1,0 +1,1080 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+    
+    
+    
+    
+    
+    
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+    
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico">
+    
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/ro/style.css">
+    
+<title>Standaard Vergelijkbare Bestemmingsplannen (SVBP2012) 1.3.2</title>
+  
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/ro/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Standaard Vergelijkbare Bestemmingsplannen (SVBP2012) versie 1.3.2",
+  "shortName": "svbp",
+  "pubDomain": "ro",
+  "specStatus": "def",
+  "specType": "st",
+  "license": "cc-by-nd",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/ro/svbp/"
+  ],
+  "publishDate": "2023-11-29",
+  "publishVersion": "1.3.2",
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/ro/def-st-svbp-20231129/"
+  ],
+  "previousPublishDate": "2013-10-29",
+  "previousPublishVersion": "1.3.1",
+  "prevVersion": [
+    "https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf"
+  ],
+  "previousMaturity": "def",
+  "github": "https://github.com/geonovum/svbp/",
+  "issueBase": "ro-standaarden@geonovum.nl",
+  "authors": [
+    {
+      "name": "Rudolf Jekel",
+      "company": "Sonsbeek Adviseurs",
+      "companyURL": "https://www.sonsbeek.nl/"
+    },
+    {
+      "name": "Fokke Plantinga",
+      "company": "Buro Vijn bv",
+      "companyURL": "https://www.burovijn.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/ro/base.css"></head>
+  <body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Standaard Vergelijkbare Bestemmingsplannen (SVBP2012) 1.3.2</h1>
+    
+    <h2>
+      Geonovum Standaard<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-11-29">29 november 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/ro/def-st-svbp-20231129/">https://docs.geostandaarden.nl/ro/def-st-svbp-20231129/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/ro/svbp/">https://docs.geostandaarden.nl/ro/svbp/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/svbp/">https://geonovum.github.io/svbp/</a></dd>
+      
+      
+      
+      <dt>Vorige versie:</dt><dd><a href="https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf">https://ro-standaarden.geonovum.nl/2012/SVBP/1.3/SVBP2012-v1.3.1.pdf</a></dd>
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteurs:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Rudolf Jekel</span> (<a class="p-org org h-org" href="https://www.sonsbeek.nl/">Sonsbeek Adviseurs</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Fokke Plantinga</span> (<a class="p-org org h-org" href="https://www.burovijn.nl/">Buro Vijn bv</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/geonovum/svbp/">GitHub geonovum/svbp</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/svbp/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/svbp/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/svbp/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+        </p>
+    <hr title="Separator for header">
+  </div>
+    
+    <nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#39E6A8C6"><bdi class="secno">1. </bdi>Vergelijkbare bestemmingsplannen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#656E0E81"><bdi class="secno">1.1 </bdi>Grondslagen in Wro, Bro en Regeling standaarden ruimtelijke ordening</a></li><li class="tocline"><a class="tocxref" href="#2DE689F8"><bdi class="secno">1.2 </bdi>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#2DE68A05"><bdi class="secno">2. </bdi>Het bestemmingsplan</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#625F0276"><bdi class="secno">2.1 </bdi>Opbouw van het bestemmingsplan</a></li><li class="tocline"><a class="tocxref" href="#2DE68A12"><bdi class="secno">2.2 </bdi>Digitale verbeelding van het bestemmingsplan</a></li></ol></li><li class="tocline"><a class="tocxref" href="#6461A652"><bdi class="secno">3. </bdi>Bestemmingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2DE68A28"><bdi class="secno">3.1 </bdi>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#2DE68A2B"><bdi class="secno">3.2 </bdi>Hoofdgroepen van bestemmingen</a></li><li class="tocline"><a class="tocxref" href="#2DE68AA3"><bdi class="secno">3.3 </bdi>Naam van een bestemming</a></li><li class="tocline"><a class="tocxref" href="#2DE68ACB"><bdi class="secno">3.4 </bdi>Naam van een voorlopige bestemming</a></li><li class="tocline"><a class="tocxref" href="#2DE68AD8"><bdi class="secno">3.5 </bdi>Naam van een uit te werken bestemming</a></li><li class="tocline"><a class="tocxref" href="#2DE68AE5"><bdi class="secno">3.6 </bdi>Vermelding van bestemmingen in de planregels</a></li></ol></li><li class="tocline"><a class="tocxref" href="#3859D477"><bdi class="secno">4. </bdi>Dubbelbestemmingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2DE68AF6"><bdi class="secno">4.1 </bdi>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#3B7E85C8"><bdi class="secno">4.2 </bdi>Hoofdgroepen van dubbelbestemmingen</a></li><li class="tocline"><a class="tocxref" href="#2DE68B13"><bdi class="secno">4.3 </bdi>Naam van een dubbelbestemming</a></li><li class="tocline"><a class="tocxref" href="#4F01D73A"><bdi class="secno">4.4 </bdi>Vermelding van dubbelbestemmingen in de planregels</a></li></ol></li><li class="tocline"><a class="tocxref" href="#42FA4C1B"><bdi class="secno">5. </bdi>Aanduidingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2DE68B27"><bdi class="secno">5.1 </bdi>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#6C0EEE84"><bdi class="secno">5.2 </bdi>Bouwvlak</a></li><li class="tocline"><a class="tocxref" href="#45B24E21"><bdi class="secno">5.3 </bdi>Functieaanduiding</a></li><li class="tocline"><a class="tocxref" href="#2DE68B69"><bdi class="secno">5.4 </bdi>Bouwaanduiding</a></li><li class="tocline"><a class="tocxref" href="#2DE68B9E"><bdi class="secno">5.5 </bdi>Maatvoering</a></li><li class="tocline"><a class="tocxref" href="#2DE68BF4"><bdi class="secno">5.6 </bdi>Figuur</a></li><li class="tocline"><a class="tocxref" href="#2DE68C30"><bdi class="secno">5.7 </bdi>Gebiedsaanduiding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#6241A230"><bdi class="secno">6. </bdi>Planregels</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2DE68CA2"><bdi class="secno">6.1 </bdi>Indeling hoofdstukken</a></li><li class="tocline"><a class="tocxref" href="#2DE68CC3"><bdi class="secno">6.2 </bdi>Indeling bestemmingsregels</a></li><li class="tocline"><a class="tocxref" href="#2DE68CFF"><bdi class="secno">6.3 </bdi>Aanduidingen</a></li><li class="tocline"><a class="tocxref" href="#2DE68D07"><bdi class="secno">6.4 </bdi>Begrippen</a></li><li class="tocline"><a class="tocxref" href="#2DE68D25"><bdi class="secno">6.5 </bdi>Nummering</a></li><li class="tocline"><a class="tocxref" href="#2DE68D34"><bdi class="secno">6.6 </bdi>Slotregel</a></li></ol></li></ol></nav>
+    <section data-type="markdown" id="vergelijkbare-bestemmingsplannen"><h2 id="39E6A8C6"><bdi class="secno">1. </bdi>Vergelijkbare bestemmingsplannen</h2><p>De Standaard Vergelijkbare Bestemmingsplannen bevat de normen die van toepassing zijn op de vormgeving en inrichting van bestemmingsplannen, inpassingsplannen en rijksbestemmingsplannen onder de Wet ruimtelijke ordening, met het doel om deze op vergelijkbare wijze op te bouwen en weer te geven. Dit hoofdstuk vormt een inleiding op de standaard.<br></p>
+<section id="grondslagen-in-wro-bro-en-regeling-standaarden-ruimtelijke-ordening"><h3 id="656E0E81"><bdi class="secno">1.1 </bdi>Grondslagen in Wro, Bro en Regeling standaarden ruimtelijke ordening</h3><p>Deze standaard is van toepassing op bestemmingsplannen, wijzigingsplannen, uitwerkingsplannen, provinciale inpassingsplannen, rijksinpassingsplannen en rijksbestemmingsplannen. Omwille van de leesbaarheid worden deze typen instrumenten in dit document samen aangehaald met de term bestemmingsplan, tenzij hier expliciet van wordt afgeweken.</p>
+<p>In de <a href="http://wetten.overheid.nl/BWBR0020449" target="_blank">Wet ruimtelijke ordening</a> (hierna Wro) met bijbehorend <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening</a> (hierna Bro) heeft het bestemmingsplan een belangrijke rol als normstellend instrument voor het ruimtelijk beleid van gemeenten, provincies en het rijk. In de ministeriële <a href="http://wetten.overheid.nl/BWBR0031829" target="_blank">Regeling standaarden ruimtelijke ordening</a> (hierna Rsro) is vastgelegd dat de Standaard Vergelijkbare Bestemmingsplannen (hierna SVBP2012) de norm is voor de vergelijkbaarheid van bestemmingsplannen. Naast de SVBP2012 zijn ook het Informatiemodel Ruimtelijke Ordening (hierna IMRO2012) en de Standaard Toegankelijkheid Ruimtelijke Instrumenten (hierna STRI2012) normerend bij het vastleggen en beschikbaar stellen van bestemmingsplannen.</p>
+<p>Conform Wro en Bro wordt een bestemmingsplan met de daarbij behorende toelichting in digitale geautoriseerde bronbestanden vastgelegd en in die vorm vastgesteld. Daarnaast kent de Wro een papieren versie van (hetzelfde) bestemmingsplan.  Indien de inhoud van digitale stukken tot een andere uitleg leidt dan de stukken op papier, dan is de digitale inhoud beslissend. Het bestemmingsplan is daarmee een digitaal juridisch authentiek document. De informatie die is vastgelegd in het plan moet in elektronische vorm volledig toegankelijk en raadpleegbaar zijn. Dit wordt de digitale verbeelding genoemd.</p>
+<p>De SVBP2012 geeft normen voor de  opbouw van de planregels en voor de digitale verbeelding van het bestemmingsplan. De standaard heeft geen betrekking op de toelichting van het bestemmingsplan. Er worden geen normen gesteld omtrent de vormgeving en inrichting van de analoge weergave van het bestemmingsplan. De SVBP2012 heeft ook geen betrekking op de totstandkoming van de inhoud van een bestemmingsplan. Dit is de verantwoordelijkheid van het bevoegde gezag. In de SVBP2012 is wel aangegeven hoe de inhoud van een bestemmingsplan digitaal moet worden weergegeven.<br></p>
+</section><section id="leeswijzer"><h3 id="2DE689F8"><bdi class="secno">1.2 </bdi>Leeswijzer</h3><p>In de volgende hoofdstukken zijn de normen voor de opbouw en de digitale verbeelding van het bestemmingsplan beschreven. <a href="#2DE68A05">Hoofdstuk 2</a> bevat de normen die van toepassing zijn op het bestemmingsplan als geheel, <a href="#6461A652">Hoofdstuk 3</a> de normen voor de in het plan voorkomende bestemmingen, <a href="#3859D477">Hoofdstuk 4</a> de normen voor dubbelbestemmingen en <a href="#42FA4C1B">Hoofdstuk 5</a> de normen voor aanduidingen. Tot slot is in <a href="#6241A230">Hoofdstuk 6</a> vastgelegd op welke wijze planregels worden opgebouwd.</p>
+<p>In dit document worden de volgende aanduidingen gehanteerd:</p>
+<p>specificatie tussen &lt;&gt; haakjes : de gespecificeerde waarde wordt bepaald door de bronhouder;<br>
+specificatie tussen &lt;&lt;&gt;&gt; haakjes : de gespecificeerde waarde wordt gekozen uit een lijst;<br>
+specificatie tussen [] haakjes : de gespecificeerde waarde wordt letterlijk opgenomen;<br>
+[spatie] : er wordt een enkele spatie opgenomen;<br>
+rgb(x,y,z) : een kleurcodering. De codering is opgebouwd uit drie primaire additieve kleuren rood, groen en blauw. De hoeveelheid van een kleur loopt van 0 (niets van die kleur) tot en met 255 (alles van die kleur). Het eerste cijfer (x) geeft de hoeveelheid van de kleur rood aan, het tweede twee cijfer (y) geeft de hoeveelheid van de kleur groen aan, het derde cijfer (z) geeft de hoeveelheid van de kleur blauw aan.</p>
+</section></section>
+    <section data-type="markdown" id="het-bestemmingsplan"><h2 id="2DE68A05"><bdi class="secno">2. </bdi>Het bestemmingsplan</h2><p>Dit hoofdstuk bevat de normen die van toepassing zijn op de vormgeving, inrichting en toegankelijkheid van het bestemmingsplan als geheel.<br></p>
+<section id="opbouw-van-het-bestemmingsplan"><h3 id="625F0276"><bdi class="secno">2.1 </bdi>Opbouw van het bestemmingsplan</h3><p>Het centrale onderdeel van een bestemmingsplan wordt gevormd door de bestemmingen, die altijd betrekking hebben op geometrisch bepaalde vlakken. Aan het in het plan begrepen grondgebied worden bestemmingen toegewezen met bijbehorende regels. De regels gekoppeld aan bestemmingen betreffen het gebruik (in ruime zin) van het in het plan begrepen grondgebied en van de zich daar bevindende bouwwerken. Kenmerk van bestemmingsplannen is dat het gehele plangebied bedekt is met bestemmingen. Bij inpassingsplannen die alleen iets toevoegen aan of verwijderen uit de vigerende bestemmingen en/of bijbehorende regels is de vereiste van een door bestemming vlakdekkend plangebied niet van toepassing. Ook bij een wijzigingsplan hoeft het plangebied niet volledig te worden bedekt door bestemmingen.</p>
+<p>Een bestemmingsplan kan ook dubbelbestemmingen bevatten. Ook deze hebben altijd betrekking op geometrisch bepaalde vlakken. Dubbelbestemmingen overlappen bestemmingen en geven eigen regels, waarbij sprake is van een rangorde tussen de bestemmingen en de dubbelbestemmingen. De dubbelbestemmingen hoeven niet het gehele plangebied te bedekken.</p>
+<p>Een bestemmingsplan kan ook aanduidingen bevatten om bepaalde zaken binnen een bestemming of dubbelbestemming nader of specifieker te regelen. Het gaat hierbij om specificaties met betrekking tot gebruik- of bouwmogelijkheden. De bestemmingen en aanduidingen hebben juridische betekenis en moeten altijd in de regels van het bestemmingsplan voorkomen.</p>
+<p>Verklaringen hebben geen juridische betekenis en zijn om die reden geen onderdeel van het bestemmingsplan.</p>
+<p>Ingeval sprake is van een gemeentelijk bestemmingsplan, waarvan het onderwerp gemeentegrens overschrijdend is, wordt dit plan voor elk van de betreffende gemeenten apart vastgesteld voor zover het haar eigen grondgebied betreft. Voor provinciegrensoverschrijdende plannen geldt dat eveneens, voor zover deze door meerdere provincies worden opgesteld.<br></p>
+</section><section id="digitale-verbeelding-van-het-bestemmingsplan"><h3 id="2DE68A12"><bdi class="secno">2.2 </bdi>Digitale verbeelding van het bestemmingsplan</h3><p>De informatie die is vastgelegd in het plan moet in elektronische vorm volledig toegankelijk en raadpleegbaar zijn. Dit wordt de digitale verbeelding genoemd. De digitale verbeelding is de verbeelding van het bestemmingsplan in een interactieve raadpleegomgeving, waarin alle relevante bestemmingsplaninformatie wordt getoond: de combinatie van (plan)kaart en regels met de toelichting. Een raadpleger van het bestemmingsplan moet alle relevante bestemmingsplaninformatie op eenvoudige wijze voor ogen kunnen krijgen.</p>
+<p>De relevante bestemmingsplaninformatie heeft betrekking op de bestemmingen, dubbelbestemmingen en aanduidingen met bijbehorende regels in het bestemmingsplan. Voor zowel bestemmingen als aanduidingen geldt, dat deze zonder interactie zichtbaar moeten zijn in de digitale verbeelding. Uit interactie met de digitale verbeelding blijkt dan de inhoud van de bestemming en/of aanduiding.</p>
+<p>Bestemmingen, dubbelbestemmingen en aanduidingen moeten in alle interactieve raadpleegomgevingen op dezelfde en in deze standaard aangegeven wijze digitaal worden verbeeld door middel van kleuren en symboliek. De digitale verbeelding kent geen vaste indeling van de legenda. De wijze waarop de planregels in beeld worden gebracht, kunnen worden opgevraagd en gecombineerd, is niet aan regels gebonden. Bij het raadplegen van een digitale verbeelding moet het mogelijk zijn om te kunnen meten.</p>
+<p>In een bestemmingsplanprocedure wordt gebruik gemaakt van een topografische ondergrond. Deze ondergrond maakt geen deel uit van het bestemmingsplan zelf. In de digitale verbeelding kunnen andere (topografische) ondergronden worden gebruikt dan de ondergronden die gebruikt zijn tijdens de procedure en bij de vaststelling.</p>
+<p>In de digitale verbeelding wordt de begrenzing van het plangebied weergegeven met een ononderbroken bolletjeslijn, conform de specificatie in .<br></p>
+<figure id="fig-verbeelding-plangebied"><img src="media/plangebied.png" alt="Afbeelding vlak met zwarte lijn onderbroken door zwarte bollen, transparante achtergrond." style="width: 36.29961257151792%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-plangebied">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Verbeelding plangebied</span></figcaption></figure></section></section>
+    <section data-type="markdown" id="bestemmingen"><h2 id="6461A652"><bdi class="secno">3. </bdi>Bestemmingen</h2><p>Dit hoofdstuk bevat de normen die van toepassing zijn op de vormgeving en inrichting van de bestemmingen in een bestemmingsplan.<br></p>
+<section id="algemeen"><h3 id="2DE68A28"><bdi class="secno">3.1 </bdi>Algemeen</h3><p>Dit hoofdstuk is van toepassing op bestemmingen die ingevolge artikel 3.1 Wro aan gronden worden toegekend. Met een bestemming wordt tot uitdrukking gebracht welke gebruiksdoelen of functies, met het oog op een goede ruimtelijke ordening, aan de in het plan begrepen gronden zijn toegekend. Niet iedere functie leent zich voor een eigen bestemming. Of dit zo is, hangt af van de ruimtelijke relevantie, of wel van de mate waarin de betrokken functie invloed heeft op zijn omgeving of daaraan eisen stelt. Behalve om functies gaat het bij bestemmingen altijd om concreet ruimtegebruik of om fysiek aanwezige ruimtelijke objecten. Een bestemming heeft altijd betrekking op een geometrisch bepaald vlak. Bestemmingen in de vorm van een lijn of een punt komen niet voor.<br></p>
+</section><section id="hoofdgroepen-van-bestemmingen"><h3 id="2DE68A2B"><bdi class="secno">3.2 </bdi>Hoofdgroepen van bestemmingen</h3><p>Ten behoeve van de eenduidigheid in de naamgeving en digitale verbeelding van bestemmingen is er een bindende lijst met  hoofdgroepen van bestemmingen opgesteld. Als hoofdgroepen van bestemmingen zijn aangemerkt en mogen worden gebruikt:</p>
+<ul><li>Agrarisch;</li>
+<li>Agrarisch met waarden;</li>
+<li>Bedrijf;</li>
+<li>Bedrijventerrein;</li>
+<li>Bos;</li>
+<li>Centrum;</li>
+<li>Cultuur en ontspanning;</li>
+<li>Detailhandel;</li>
+<li>Dienstverlening;</li>
+<li>Gemengd;</li>
+<li>Groen;</li>
+<li>Horeca;</li>
+<li>Kantoor;</li>
+<li>Maatschappelijk;</li>
+<li>Natuur;</li>
+<li>Recreatie;</li>
+<li>Sport;</li>
+<li>Tuin;</li>
+<li>Verkeer;</li>
+<li>Water;</li>
+<li>Wonen;</li>
+<li>Woongebied;</li>
+<li>Overig.</li>
+</ul>
+
+<p>Van iedere specifieke bestemming, voorlopige bestemming en uit te werken bestemming wordt door de bronhouder vastgelegd onder welke hoofdgroep deze valt. In de digitale verbeelding krijgen alle geometrisch bepaalde vlakken waar de bestemmingen, voorlopige bestemmingen en uit te werken bestemmingen betrekking op hebben, de kleur van de hoofdgroep waar deze onder valt, conform de specificatie in . De begrenzing van deze vlakken wordt weergegeven door een ononderbroken lijn. Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-hoofdgroepen-van-bestemmingen"><img src="media/hoofdgroepen_enkelbestemmingen.png" alt="Afbeelding met hoofdgroepen enkelbestemmingen vlakken met zwarte lijn, iedere hoofdgroen voorzien van naam en eigen kleur en rgb waarden." style="width: 73.56906898990432%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-hoofdgroepen-van-bestemmingen">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Verbeelding hoofdgroepen van bestemmingen</span></figcaption></figure>
+
+</section><section id="naam-van-een-bestemming"><h3 id="2DE68AA3"><bdi class="secno">3.3 </bdi>Naam van een bestemming</h3><p>Iedere bestemming heeft een naam. Voor de naam van een bestemming zijn vier varianten mogelijk:</p>
+<p><b>Variant 1 - naam van de hoofdgroep hanteren</b><br>
+De naam van de bestemming begint met een hoofdletter en is verder gelijk aan de naam van de hoofdgroep. De naam van de bestemming wordt als volgt opgenomen:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt;<br>
+<i>Voorbeeld: Agrarisch</i></p>
+<p><b>Variant 2 - specifieke bestemmingsbenaming gebruiken</b><br>
+Nadere specificatie van een bestemming is mogelijk door achter de naam van de hoofdgroep een specifieke bestemmingsbenaming te zetten. Hierdoor ontstaat een aparte bestemming met eigen regels. Van deze mogelijkheid wordt gebruik gemaakt wanneer zich binnen dezelfde hoofdgroep functies voordoen die qua ruimtelijke kenmerken en effecten grote verschillen vertonen en het niet wenselijk is al die functies op een bepaalde plaats toe te laten. De naam van de gespecificeerde bestemming bestaat uit de naam van de hoofdgroep gevolgd door de naam van de specificatie.</p>
+<p>Ten behoeve van de eenduidigheid in de naamgeving en digitale verbeelding van bestemmingen is een functielijst opgesteld die als separate bijlage naast deze standaard van toepassing is. In deze lijst wordt voor een aantal functies een vaste hoofdgroep voorgeschreven. Voor de functies in de functielijst zijn geen definities of voorwaarden met betrekking tot inhoud opgesteld. Als een specifieke bestemmingsbenaming wordt gekozen waarbij de specificatie op de functielijst voorkomt, dan moet de in de functielijst gegeven hoofdgroep worden gebruikt. Komt de specificatie niet voor op de lijst of is er geen hoofdgroep bij de functie gegeven, dan kiest de bronhouder zelf de hoofdgroep die het meest van toepassing is. In afwijking van de hoofdgroep zoals vastgelegd in deze functielijst kunnen in alle gevallen ook de hoofdgroepen Centrum of Gemengd gespecificeerd worden.<br>
+Een functie kan ook als functieaanduiding in elke gewenste bestemming worden gebruikt (zie paragraaf <a href="#45B24E21">5.3</a>).</p>
+<p>De naam van een gespecificeerde bestemming wordt als volgt opgenomen, waarbij de eerste letter van de hoofdgroep en de eerste letter van de specificatie beginnen met een hoofdletter:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;Specificatie van de bestemming&gt;<br>
+<i>Voorbeeld: Agrarisch – Akkerbouw</i></p>
+<p><b>Variant 3 - Bestemming splitsen</b><br>
+Splitsing van bestemmingen wordt gebruikt wanneer zich binnen dezelfde bestemming geheel verschillende stedenbouwkundige situaties voordoen die om heel verschillende bouwregels vragen. Daarnaast wordt splitsing gebruikt wanneer binnen dezelfde hoofdgroep diverse pakketten aan functies zijn te onderscheiden en er zonder splitsing een opeenhoping aan functieaanduidingen zou ontstaan. Bij splitsing van bestemmingen wordt altijd van Arabische cijfers gebruik gemaakt. De eerste letter van de hoofdgroep begint met een hoofdletter. De naam van een gesplitste bestemming wordt als volgt opgenomen, waarbij de eerste letter van de hoofdgroep begint met een hoofdletter:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;cijfer&gt;<br>
+<i>Voorbeeld : Gemengd – 1</i></p>
+<p>In het geval dat een bestemming wordt gesplitst waarvoor een specifieke bestemmingsbenaming is gespecificeerd, wordt de naam van de bestemming als volgt opgenomen, waarbij de eerste letter van de hoofdgroep en de eerste letter van de specificatie beginnen met een hoofdletter:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;Specificatie van de bestemming&gt; [spatie] &lt;cijfer&gt;<br>
+<i>Voorbeeld 1: Water – Vaarwegen 1</i><br>
+<i>Voorbeeld 2: Water – Vaarwegen 2</i></p>
+<p><b>Variant 4 - Bestemming onder de hoofdgroep Overig</b><br>
+Het kan in bijzondere situaties voorkomen dat een bestemming echt niet onder een hoofdgroep is te plaatsen anders dan onder de hoofdgroep Overig. In dat geval mag gebruik gemaakt worden van deze hoofdgroep, mits dit in de toelichting van het bestemmingsplan wordt gemotiveerd.</p>
+<p>Deze laatste variant is alleen van toepassing op bestemmingen die onder de hoofdgroep Overig vallen. De overige varianten zijn niet van toepassing op bestemmingen die onder de hoofdgroep Overig vallen.  De naam een bestemming onder de hoofdgroep Overig begint altijd met een hoofdletter en wordt opgenomen zonder naar de naam van de hoofdgroep te verwijzen, als volgt:</p>
+<p>&lt;Specificatie van de bestemming&gt;<br>
+<i>Voorbeeld : Enclave</i><br></p>
+</section><section id="naam-van-een-voorlopige-bestemming"><h3 id="2DE68ACB"><bdi class="secno">3.4 </bdi>Naam van een voorlopige bestemming</h3><p>Iedere voorlopige bestemming heeft een naam. De naam van een voorlopige bestemming wordt als volgt opgenomen:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] [Voorlopig]<br>
+<i>Voorbeeld: Agrarisch – Voorlopig</i></p>
+<p>In het geval dat een voorlopige bestemming wordt gesplitst, wordt de naam van de bestemming als volgt opgenomen, waarbij de eerste letter van de hoofdgroep en de eerste letter van de specificatie beginnen met een hoofdletter:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;Specificatie van de bestemming&gt; [spatie] [Voorlopig]<br>
+<i>Voorbeeld: Agrarisch – Grondgebonden Voorlopig</i><br>
+&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] [Voorlopig] [spatie] &lt;cijfer&gt;<br>
+<i>Voorbeeld: Agrarisch – Voorlopig 1</i><br></p>
+</section><section id="naam-van-een-uit-te-werken-bestemming"><h3 id="2DE68AD8"><bdi class="secno">3.5 </bdi>Naam van een uit te werken bestemming</h3><p>Iedere uit te werken bestemming heeft een naam. De naam van een uit te werken bestemming wordt als volgt in het bestemmingsplan opgenomen:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] [Uit te werken]<br>
+<i>Voorbeeld: Agrarisch – Uit te werken</i></p>
+<p>In het geval dat een uit te werken bestemming wordt gesplitst, wordt de naam van de bestemming als volgt opgenomen, waarbij de eerste letter van de hoofdgroep en de eerste letter van de specificatie beginnen met een hoofdletter:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;Specificatie van de bestemming&gt; [spatie] [Uit te werken]<br>
+<i>Voorbeeld: Agrarisch – Grondgebonden Uit te werken</i><br>
+&lt;&lt;Naam hoofdgroep&gt;&gt; [spatie] [-] [spatie] [Uit te werken] [spatie] &lt;cijfer&gt;<br>
+<i>Voorbeeld: Agrarisch – Uit te werken 1</i><br></p>
+</section><section id="vermelding-van-bestemmingen-in-de-planregels"><h3 id="2DE68AE5"><bdi class="secno">3.6 </bdi>Vermelding van bestemmingen in de planregels</h3><p>Een bestemming wordt als volgt in de bestemmingsomschrijving in de planregels opgenomen:</p>
+<p>[De voor ] [‘] &lt;Naam bestemming&gt; [’] [ aangewezen gronden zijn bestemd voor ]<br>
+<i>Voorbeeld: De voor ‘Agrarisch’ aangewezen gronden zijn bestemd voor ...</i></p>
+<p>In overige gevallen wordt de bestemming als volgt in de planregels opgenomen:</p>
+<p>[‘] &lt;Naam bestemming&gt; [’]<br>
+<i>Voorbeeld: ‘Agrarisch’</i></p>
+<p>Bij het opnemen van bestemmingen wordt in de planregels geen gebruik gemaakt van lettercodes.<br></p>
+</section></section>
+    <section data-type="markdown" id="dubbelbestemmingen"><h2 id="3859D477"><bdi class="secno">4. </bdi>Dubbelbestemmingen</h2><p>Dit hoofdstuk bevat de normen die van toepassing zijn op de vormgeving en inrichting van de dubbelbestemmingen in een bestemmingsplan.<br></p>
+<section id="algemeen-0"><h3 id="2DE68AF6"><bdi class="secno">4.1 </bdi>Algemeen</h3><p>Er is sprake van een dubbelbestemming indien op een stuk grond twee of meer onafhankelijk van elkaar voorkomende bestemmingen voorkomen, waarbij er sprake is van een rangorde tussen de dubbelbestemming en de daarmee samenvallende bestemming. In de planregels wordt de verhouding tussen de functies van beide bestemmingen aangegeven.</p>
+<p>De specifieke kenmerken van dubbelbestemmingen brengen met zich mee dat deze een willekeurig gebied ten opzicht van bestemmingen beslaan; soms meerdere bestemmingen deels of geheel overlappend, soms binnen een bestemming. Een dubbelbestemming heeft altijd betrekking op een geometrisch bepaald vlak. Dubbelbestemmingen in de vorm van een lijn of een punt komen niet voor.<br></p>
+</section><section id="hoofdgroepen-van-dubbelbestemmingen"><h3 id="3B7E85C8"><bdi class="secno">4.2 </bdi>Hoofdgroepen van dubbelbestemmingen</h3><p>Ten behoeve van de eenduidigheid in de naamgeving en digitale verbeelding van dubbelbestemmingen is er een bindende lijst met  hoofdgroepen van dubbelbestemmingen opgesteld. Als hoofdgroepen van dubbelbestemmingen zijn aangemerkt en mogen worden gebruikt:</p>
+<ul><li>Leiding;</li>
+<li>Waarde;</li>
+<li>Waterstaat.</li>
+</ul>
+
+<p>Van iedere specifieke dubbelbestemming is door de bronhouder vastgelegd onder welke hoofdgroep deze valt.</p>
+<p>In de digitale verbeelding worden alle geometrisch bepaalde vlakken waar de dubbelbestemmingen betrekking op hebben, weergegeven door zwarte vlakpatronen, conform de specificatie in . De begrenzing van deze vlakken wordt weergegeven door een ononderbroken lijn. In verband met de raadpleegbaarheid is het mogelijk in de kolom- en rijafstanden van de patronen te variëren. Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-hoofdgroepen-van-dubbelbestemmingen"><img src="media/hoofdgroepen_dubbelbestemmingen.png" alt="Afbeelding met hoofdgroepen dubbelbestemmingenbestemmingen vlakken met zwarte lijn, iedere hoofdgroen voorzien van naam en eigen kleur en rgb waarden." style="width: 36.02252212123912%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-hoofdgroepen-van-dubbelbestemmingen">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title">Verbeelding hoofdgroepen van dubbelbestemmingen</span></figcaption></figure>
+
+</section><section id="naam-van-een-dubbelbestemming"><h3 id="2DE68B13"><bdi class="secno">4.3 </bdi>Naam van een dubbelbestemming</h3><p>Iedere dubbelbestemming heeft een naam. Voor de specificatie van de naam van een dubbelbestemming is paragraaf <a href="#2DE68AA3">3.3</a> van toepassing.<br></p>
+</section><section id="vermelding-van-dubbelbestemmingen-in-de-planregels"><h3 id="4F01D73A"><bdi class="secno">4.4 </bdi>Vermelding van dubbelbestemmingen in de planregels</h3><p>Een dubbelbestemming wordt als volgt in de bestemmingsomschrijving in de planregels opgenomen:</p>
+<p>[De voor ] [‘] &lt;Naam dubbelbestemming&gt; [’] [ aangewezen gronden zijn, behalve voor de andere daar voorkomende bestemming(en), mede bestemd voor]<br>
+<i>Voorbeeld: De voor ‘Waterstaat - Waterberging’ aangewezen gronden zijn, behalve voor de andere daar voorkomende bestemming(en), mede bestemd voor ...</i></p>
+<p>In overige gevallen wordt de dubbelbestemming als volgt in de planregels opgenomen:</p>
+<p>[‘] &lt;Naam dubbelbestemming&gt; [’]<br>
+<i>Voorbeeld : ‘Waterstaat - Waterberging’</i></p>
+<p>Bij het opnemen van dubbelbestemmingen wordt in de planregels geen gebruik gemaakt van lettercodes.<br></p>
+</section></section>
+    <section data-type="markdown" id="aanduidingen"><h2 id="42FA4C1B"><bdi class="secno">5. </bdi>Aanduidingen</h2><p>Dit hoofdstuk bevat de normen die van toepassing zijn op de vormgeving en inrichting van de aanduidingen in een bestemmingsplan.<br></p>
+<section id="algemeen-1"><h3 id="2DE68B27"><bdi class="secno">5.1 </bdi>Algemeen</h3><p>Behalve bestemmingen en dubbelbestemmingen zijn binnen het bestemmingsplan aanduidingen te onderscheiden. Aanduidingen bevatten specificaties van bestemmingen en dubbelbestemmingen met betrekking tot gebruik of bouwen. Aanduidingen hebben altijd juridische betekenis waardoor zij niet alleen voorkomen in de digitale verbeelding van een bestemmingsplan, maar ook in de planregels.<br>
+Er zijn zes soorten aanduidingen te onderscheiden:<br></p>
+<ul><li>bouwvlak;</li>
+<li>functieaanduiding;</li>
+<li>bouwaanduiding;</li>
+<li>maatvoering;</li>
+<li>figuur;</li>
+<li>gebiedsaanduiding.</li>
+</ul>
+
+<p>Met uitzondering van de aanduiding figuur zijn de hiervoor genoemde aanduidingen geometrisch begrensd en hebben zij altijd betrekking op een vlak. Een figuur bestaat altijd uit lijnstukken.<br></p>
+</section><section id="bouwvlak"><h3 id="6C0EEE84"><bdi class="secno">5.2 </bdi>Bouwvlak</h3><p>Een bouwvlak is een aanduiding waarvan er slechts één soort is. De naam van het bouwvlak wordt met kleine letters geschreven en wordt als volgt opgenomen:</p>
+<p>[bouwvlak]<br>
+<i>Voorbeeld: bouwvlak</i></p>
+<p>In de digitale verbeelding wordt de begrenzing van een bouwvlak weergegeven met een dikke ononderbroken lijn, conform de specificatie in . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-bouwvlakken"><img src="media/bouwvlak.png" alt="Afbeelding vlak met zwarte lijn, transparante achtergrond." style="width: 50.29298029041683%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-bouwvlakken">Figuur <bdi class="figno">4</bdi></a> <span class="fig-title">Verbeelding bouwvlakken</span></figcaption></figure>
+
+</section><section id="functieaanduiding"><h3 id="45B24E21"><bdi class="secno">5.3 </bdi>Functieaanduiding</h3><p>Een functieaanduiding wordt gebruikt om de gebruiksmogelijkheden binnen een bestemmingsvlak of een gedeelte daarvan nader te specificeren. Zo kan worden aangegeven dat ter plaatse alleen een bepaalde, met name genoemde functie is toegestaan of juist is uitgesloten. Functieaanduidingen kunnen ook worden gebruikt om op een bepaalde locatie een specifieke, niet bij de bestemming passende, functie toe te laten of om functies binnen een bestemming in boven elkaar gestapelde lagen mogelijk te maken.</p>
+<p>Iedere functieaanduiding heeft een naam. De naam van een functieaanduiding wordt geschreven met kleine letters. Voor de naam van een functieaanduiding zijn twee varianten mogelijk:</p>
+<p><b>Variant 1 - aanduiding uit de functielijst opnemen</b><br>
+Er is een functielijst opgesteld die als separate bijlage naast deze standaard van toepassing is. Indien er gebruik wordt gemaakt van een functie wordt die voorkomt op deze lijst, dan wordt de naam van de functieaanduiding als volgt opgenomen:</p>
+<p>&lt;&lt;functieaanduiding&gt;&gt;<br>
+<i>Voorbeeld: bedrijfswoning</i></p>
+<p>In het geval dat een functie die voorkomt op de functielijst niet is toegestaan op een locatie in het bestemmingsplan, wordt deze negatieve functieaanduiding als volgt opgenomen:</p>
+<p>&lt;functieaanduiding&gt; [spatie] [uitgesloten]<br>
+<i>Voorbeeld: bedrijfswoning uitgesloten</i></p>
+<p><b>Variant 2 - specifieke functie opnemen</b><br>
+Naast het werken met functies van de functielijst mag er als dat nodig is voor een goede ruimtelijke ordening ook gewerkt worden met specifieke functies. Een specifieke functie is een functie die niet voorkomt op de functielijst. De specificatie bestaat uit een of meer toepasselijke woorden of een Arabisch cijfer. De naam van een specifieke functie wordt geheel met kleine letters geschreven en wordt als volgt opgenomen:</p>
+<p>[specifieke vorm van] [spatie] &lt;&lt;hoofdgroep &gt;&gt; [spatie] [-] [spatie] &lt;specificatie&gt;<br>
+<i>Voorbeeld 1: specifieke vorm van agrarisch </i>–<i> kalvermesterij</i><br>
+<i>Voorbeeld 2: specifieke vorm van maatschappelijk – 1</i></p>
+<p>Voor de &lt;&lt;hoofdgroep&gt;&gt; wordt gekozen uit een van de hoofdgroepen die gehanteerd worden bij bestemmingen en dubbelbestemmingen, behalve de hoofdgroep ‘overig’. Hierbij wordt de hoofdgroep gekozen die hoort bij de specifieke functie, ook al ligt deze in een vlak met een bestemming van een andere hoofdgroep.  De gegeven specificatie of het cijfer moet corresponderen met in de planregels genoemde functies.</p>
+<p>In het geval dat een specifieke functie niet is toegestaan op een locatie in het bestemmingsplan, wordt deze uitgesloten functie als volgt opgenomen:</p>
+<p>[specifieke vorm van] [spatie] &lt;&lt;hoofdgroep&gt;&gt; [spatie] [uitgesloten] [spatie] [-] [spatie] &lt;specificatie&gt;<br>
+<i>Voorbeeld: specifieke vorm van recreatie uitgesloten - groepsverblijf</i></p>
+<p>In de digitale verbeelding wordt de begrenzing van een functieaanduiding weergegeven met een onderbroken lijn, conform de specificatie in . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-functieaanduidingen"><img src="media/functieaanduiding.png" alt="Afbeelding vlak met onderbroken zwarte lijn, transparante achtergrond." style="width: 36.71525733723368%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-functieaanduidingen">Figuur <bdi class="figno">5</bdi></a> <span class="fig-title">Verbeelding functieaanduidingen</span></figcaption></figure>
+
+</section><section id="bouwaanduiding"><h3 id="2DE68B69"><bdi class="secno">5.4 </bdi>Bouwaanduiding</h3><p>Bouwaanduidingen zijn alle in het bestemmingsplan aanwezige aanduidingen met betrekking tot de wijze van bouwen en de verschijningsvorm van bouwwerken. De volgende bouwaanduidingen mogen worden gebruikt:<br></p>
+<ul><li>aaneengebouwd;</li>
+<li>antennemast;</li>
+<li>bijgebouwen;</li>
+<li>gestapeld;</li>
+<li>kap;</li>
+<li>karakteristiek;</li>
+<li>nokrichting;</li>
+<li>onderdoorgang;</li>
+<li>plat dak;</li>
+<li>twee-aaneen;</li>
+<li>vrijstaand;</li>
+<li>specifieke bouwaanduiding.</li>
+</ul>
+
+<p>De naam van de bouwaanduiding wordt met kleine letters geschreven. Voor de naam van een bouwaanduiding zijn twee varianten mogelijk:</p>
+<p><b>Variant 1 – bouwaanduiding uit de lijst opnemen</b><br>
+In deze variant wordt de bouwaanduiding als volgt opgenomen:</p>
+<p>&lt;&lt;bouwaanduiding&gt;&gt;<br>
+<i>Voorbeeld: aaneengebouwd</i></p>
+<p>In het geval dat een bepaalde bouwaanduiding niet is toegestaan op een locatie in het bestemmingsplan, wordt gebruik gemaakt van een negatieve bouwaanduiding. De naam van de negatieve bouwaanduiding wordt met kleine letters geschreven en wordt als volgt opgenomen:</p>
+<p>&lt;&lt;bouwaanduiding&gt;&gt; [spatie] [uitgesloten]<br>
+<i>Voorbeeld: aaneengebouwd uitgesloten</i></p>
+<p><b>Variant 2 - specifieke bouwaanduiding opnemen</b></p>
+<p>Naast het werken met bouwaanduidingen uit bovenstaande lijst mag er met het oog op een goede ruimtelijke ordening ook gewerkt worden met specifieke bouwaanduidingen. Een specifieke aanduiding is een bouwaanduiding die niet voorkomt op de bovenstaande lijst. De specificatie bestaat uit een of meer toepasselijke woorden of een Arabisch cijfer. De naam van een specifieke aanduiding wordt met kleine letters geschreven en wordt als volgt opgenomen:</p>
+<p>[specifieke bouwaanduiding] [spatie] [-] [spatie] &lt;specificatie&gt;</p>
+<p><i>Voorbeeld 1: specifieke bouwaanduiding – stolp</i><br>
+<i>Voorbeeld 2: specifieke bouwaanduiding – 1</i></p>
+<p>De gegeven specificatie of het cijfer moeten corresponderen met een in de planregels opgenomen regel inzake de wijze van bouwen of de verschijningsvorm daarvan, zo nodig per bestemming, dubbelbestemming, gebiedsaanduiding of functieaanduiding.</p>
+<p>In het geval dat een bepaalde bouwwijze of verschijningsvorm niet is toegestaan op een locatie in het bestemmingsplan, wordt gebruik gemaakt van een negatieve specifieke aanduiding. De naam van de negatieve verzamelaanduiding wordt met kleine letters geschreven en wordt als volgt opgenomen:</p>
+<p>[specifieke bouwaanduiding uitgesloten] [spatie] [-] [spatie] &lt;specificatie&gt;<br>
+<i>Voorbeeld 1: specifieke bouwaanduiding uitgesloten – stolp</i><br>
+<i>Voorbeeld 2: specifieke bouwaanduiding uitgesloten – 1</i></p>
+<p>In de digitale verbeelding wordt de begrenzing van een bouwaanduiding weergegeven met een onderbroken lijn, conform de specificatie in . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-bouwaanduidingen"><img src="media/bouwaanduiding.png" alt="Afbeelding vlak met onderbroken zwarte lijn, transparante achtergrond." style="width: 34.91412395893367%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-bouwaanduidingen">Figuur <bdi class="figno">6</bdi></a> <span class="fig-title">Verbeelding bouwaanduidingen</span></figcaption></figure>
+
+</section><section id="maatvoering"><h3 id="2DE68B9E"><bdi class="secno">5.5 </bdi>Maatvoering</h3><p>Maatvoeringsaanduidingen zijn alle aanduidingen die betrekking hebben op afmetingen, percentages, oppervlakten, hellingshoeken en aantallen, zowel ten aanzien van het bouwen als ten aanzien van het gebruik. De volgende aanduidingen mogen, al dan niet in combinatie, worden gebruikt:</p>
+<ul><li>aantal;</li>
+<li>aantal aaneen te bouwen wooneenheden;</li>
+<li>aantal bedrijven;</li>
+<li>aantal bezoekers;</li>
+<li>aantal bouwlagen;</li>
+<li>aantal gebouwen;</li>
+<li>aantal parkeerplaatsen;</li>
+<li>aantal rijstroken;</li>
+<li>aantal sporen;</li>
+<li>aantal winkels;</li>
+<li>aantal wooneenheden;</li>
+<li>bebouwd oppervlak (m2);</li>
+<li>bebouwingspercentage (%);</li>
+<li>bouwhoogte (m);</li>
+<li>breedte (m);</li>
+<li>dakhelling (graden);</li>
+<li>diepte (m);</li>
+<li>goothoogte (m);</li>
+<li>hoogte (m);</li>
+<li>hoogteligging vlak (m);</li>
+<li>lengte (m);</li>
+<li>maatvoering;</li>
+<li>oppervlakte (m2);</li>
+<li>verticale bouwdiepte (m);</li>
+<li>vloeroppervlakte (m2);</li>
+<li>vloeroppervlakte; bruto (m2);</li>
+<li>vloeroppervlakte; bvo (m2);</li>
+<li>vloeroppervlakte; netto (m2);</li>
+<li>vloeroppervlakte; vvo (m2);</li>
+<li>volume (m3).</li>
+</ul>
+
+<p>De naam van de maatvoeringsaanduiding wordt met kleine letters geschreven. Voor de naam van een maatvoeringsaanduiding zijn drie varianten mogelijk:</p>
+<p><b>Variant 1 - maatvoering uit de lijst gebruiken</b><br>
+In deze variant wordt een maatvoeringsaanduiding uit bovenstaande lijst gebruikt. Bij iedere aanduiding behalve bij de aanduidingen ‘aantal’ en ‘maatvoering’ kan de aanduiding voorafgegaan worden door het voorvoegsel [minimum] of [maximum]. De naam van deze aanduidingen wordt als volgt opgenomen:</p>
+<p>&lt;&lt;maatvoeringsaanduiding&gt;&gt;<br>
+<i>Voorbeeld: bouwhoogte (m)</i><br>
+of<br>
+[minimum] [spatie] &lt;&lt;maatvoeringsaanduiding&gt;&gt;<br>
+<i>Voorbeeld: minimum bouwhoogte (m)</i><br>
+of<br>
+[maximum] [spatie] &lt;&lt;maatvoeringsaanduiding&gt;&gt;<br>
+<i>Voorbeeld: maximum bouwhoogte (m)</i></p>
+<p><b>Variant 2 - specifieke maatvoeringsaanduiding gebruiken</b><br>
+Naast het werken met maatvoeringsaanduidingen uit bovenstaande lijst mogen als dat wenselijk is voor een goede ruimtelijke ordening de volgende specifieke maatvoeringsaanduidingen in een bestemmingsplan gebruikt worden:<br></p>
+<ul><li>maximaal drie maatvoeringsaanduidingen die niet in bovenstaande lijst voorkomen en die beginnen met het voorvoegsel [minimum];</li>
+<li>maximaal drie maatvoeringsaanduidingen die niet in bovenstaande lijst voorkomen en die beginnen met het voorvoegsel [maximum];</li>
+<li>maximaal drie maatvoeringsaanduidingen die niet in bovenstaande lijst voorkomen en die niet beginnen met een van beide voorvoegsels.</li>
+</ul>
+
+<p>De naam van deze aanduidingen wordt als volgt opgenomen:</p>
+<p>&lt;maatvoeringsaanduiding&gt;<br>
+<i>Voorbeeld: aantal bedrijfswoningen</i></p>
+<p>of<br>
+[minimum] [spatie] &lt;maatvoeringsaanduiding&gt;<br>
+<i>Voorbeeld: minimum aantal bedrijfswoningen</i></p>
+<p>of<br>
+[maximum] [spatie] &lt;maatvoeringsaanduiding&gt;<br>
+<i>Voorbeeld: maximum aantal bedrijfswoningen</i></p>
+<p><b>Variant 3 - gecombineerde maatvoeringsaanduiding gebruiken</b><br>
+In deze variant worden maatvoeringsaanduidingen conform variant 1 en/of 2 gecombineerd opgenomen. Alle combinaties die wenselijk zijn voor een goede ruimtelijke ordening zijn daarbij toegestaan. De naam van de gecombineerde aanduiding wordt opgenomen door de aanduidingen achter elkaar te plaatsen, gescheiden met een komma en een spatie:</p>
+<p>&lt;eerste maatvoeringsaanduiding&gt; [,] [spatie] [...] &lt;laatste maatvoeringsaanduiding&gt;<br>
+met [...] een mogelijke herhaling van &lt;maatvoeringsaanduiding&gt; [,] [spatie], indien de aanduiding uit meer dan 2 maatvoeringen bestaat.<br>
+<i>Voorbeeld 1: goothoogte (m), bouwhoogte (m)</i><br>
+<i>Voorbeeld 2: maximum goothoogte (m), maximum bouwhoogte (m)</i><br>
+<i>Voorbeeld 3: minimum aantal bedrijfswoningen, maximum aantal bedrijfswoningen</i></p>
+<p><i>Voorbeeld 4: maximum bouwhoogte (m), minimum aantal bedrijfswoningen</i><br>
+<i>Voorbeeld 5: minimum goothoogte (m), minimum bouwhoogte (m), dakhelling (graden), maximum bebouwingspercentage (%)</i></p>
+<p>In de digitale verbeelding wordt de begrenzing van een maatvoering weergegeven met een onderbroken lijn, conform de specificatie in . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes of symbolen.<br></p>
+<figure id="fig-verbeelding-maatvoeringen"><img src="media/maatvoering.png" alt="Afbeelding vlak met onderbroken zwarte lijn, transparante achtergrond." style="width: 30.480585851497267%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-maatvoeringen">Figuur <bdi class="figno">7</bdi></a> <span class="fig-title">Verbeelding maatvoeringen</span></figcaption></figure>
+
+</section><section id="figuur"><h3 id="2DE68BF4"><bdi class="secno">5.6 </bdi>Figuur</h3><p>Er zijn in de praktijk aanduidingen die voor een goede planologische regeling van belang kunnen zijn, maar die niet zijn op te nemen als gebiedsaanduiding, functieaanduiding, bouwvlak, bouwaanduiding of maatvoeringaanduiding. In die gevallen wordt gebruik gemaakt van een figuur. De volgende figuren mogen worden gebruikt:<br></p>
+<ul><li>as van de weg;</li>
+<li>dwarsprofiel;</li>
+<li>gevellijn;</li>
+<li>hartlijn leiding;</li>
+<li>hartlijn leiding - brandstof;</li>
+<li>hartlijn leiding - gas;</li>
+<li>hartlijn leiding - hoogspanning;</li>
+<li>hartlijn leiding - hoogspanningsverbinding;</li>
+<li>hartlijn leiding - olie;</li>
+<li>hartlijn leiding - riool;</li>
+<li>hartlijn leiding - water;</li>
+<li>relatie.</li>
+</ul>
+
+<p>De naam van een figuur wordt geschreven met kleine letters en kan op twee manieren worden opgenomen:</p>
+<p><b>Variant 1 – naam figuur gebruiken</b><br>
+In deze variant wordt de naam gehanteerd zoals deze voorkomt in bovenstaande lijst, als volgt:</p>
+<p>&lt;&lt;figuur&gt;&gt;<br>
+<i>Voorbeeld 1: dwarsprofiel;</i><br>
+<i>Voorbeeld 2: hartlijn leiding – brandstof.</i></p>
+<p><b>Variant 2 – ander leidingtype specificeren</b><br>
+Naast het werken met figuren uit bovenstaande lijst mogen met het oog op een goede ruimtelijke ordening ook figuren gespecificeerd worden van het type hartlijn leiding met een andere leidingsoort. De naam van dit type figuur wordt als volgt opgenomen:</p>
+<p>[hartlijn leiding] [spatie] [-] [spatie] &lt;specificatie van het type leiding&gt;<br>
+<i>Voorbeeld: hartlijn leiding – rivierwatertransport</i></p>
+<p>In de digitale verbeelding worden figuren weergegeven conform . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-figuren"><img src="media/figuren.png" alt="Afbeelding per figuur een eigen type lijn in kleur, voorzien van naam en rgb waarden." style="width: 40.31750591323856%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-figuren">Figuur <bdi class="figno">8</bdi></a> <span class="fig-title">Verbeelding figuren</span></figcaption></figure>
+
+</section><section id="gebiedsaanduiding"><h3 id="2DE68C30"><bdi class="secno">5.7 </bdi>Gebiedsaanduiding</h3><p>Een gebiedsaanduiding is een aanduiding die verwijst naar een gebied waarvoor specifieke regels gelden of waar nadere afwegingen moeten worden gemaakt. In alle gevallen gaan gebiedsaanduidingen vergezeld van een daarop betrekking hebbende regeling in de planregels.</p>
+<p>Ten behoeve van de eenduidigheid in de naamgeving en digitale verbeelding van gebiedsaanduidingen is er een bindende lijst met hoofdgroepen van gebiedsaanduidingen opgesteld. Als hoofdgroepen van gebiedsaanduidingen zijn aangemerkt en mogen worden gebruikt:</p>
+<ul><li>geluidzone;</li>
+<li>luchtvaartverkeerzone;</li>
+<li>milieuzone;</li>
+<li>reconstructiewetzone;</li>
+<li>veiligheidszone;</li>
+<li>vrijwaringszone;</li>
+<li>wetgevingzone;</li>
+<li>overige zone.</li>
+</ul>
+
+<p>Van iedere specifieke gebiedsaanduiding is door de bronhouder vastgelegd onder welke hoofdgroep deze valt. Gebiedsaanduidingen die door de bronhouder niet te plaatsen zijn onder een van de andere gebiedsaanduidinggroepen vallen onder de hoofdgroep ‘overige zone’.</p>
+<p>Voor de naam van een gebiedsaanduiding zijn twee varianten mogelijk:</p>
+<p><b>Variant 1 - naam van de hoofdgroep hanteren</b><br>
+De naam van de gebiedsaanduiding begint met een kleine letter en is verder gelijk aan de naam van de hoofdgroep. De naam van de gebiedsaanduiding wordt als volgt opgenomen:</p>
+<p>&lt;&lt;Naam hoofdgroep&gt;&gt;<br>
+<i>Voorbeeld: geluidzone</i></p>
+<p><b>Variant 2 - specificieke gebiedsaanduiding gebruiken</b><br>
+In deze variant wordt de gebiedsaanduiding als volgt opgenomen:</p>
+<p>&lt;&lt;hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;specificatie van de aanduiding&gt;<br>
+<i>Voorbeeld: wetgevingzone - afwijkingsgebied</i></p>
+<p>Als het voor een goede ruimtelijke ordening wenselijk is om meerdere varianten van dezelfde specifieke gebiedsaanduiding te gebruiken, dan kunnen deze nader gespecificeerd worden met een nadere tekstuele aanduiding in de vorm van een woord of een Arabisch cijfer, als volgt:</p>
+<p>&lt;&lt;hoofdgroep&gt;&gt; [spatie] [-] [spatie] &lt;specificatie van de aanduiding&gt; [spatie] &lt;nadere aanduiding&gt;<br>
+<i>Voorbeeld 1: wetgevingzone - afwijkingsgebied milieu</i><br>
+<i>Voorbeeld 2: wetgevingzone - afwijkingsgebied 1</i></p>
+<p>Ten behoeve van de vergelijkbaarheid worden hier onder extra voorbeelden gegeven die de toepasbaarheid van de hoofdgroepen illustreren.</p>
+<p><i>Voorbeeld 1: geluidzone - industrie</i><br>
+<i>Voorbeeld 2: geluidzone - spoor</i><br>
+<i>Voorbeeld 3: geluidzone - weg</i><br>
+<i>Voorbeeld 4: milieuzone - bodembeschermingsgebied</i><br>
+<i>Voorbeeld 5: milieuzone - geluidsgevoelige functie</i><br>
+<i>Voorbeeld 6: milieuzone - geurzone</i><br>
+<i>Voorbeeld 7: milieuzone - grondwaterbeschermingsgebied</i><br>
+<i>Voorbeeld 8: milieuzone - stiltegebied</i><br>
+<i>Voorbeeld 9: milieuzone - waterwingebied</i><br>
+<i>Voorbeeld 10: milieuzone - zones wet milieubeheer</i><br>
+<i>Voorbeeld 11: reconstructiewetzone - extensiveringsgebied</i><br>
+<i>Voorbeeld 12: reconstructiewetzone - landbouwontwikkelingsgebied</i><br>
+<i>Voorbeeld 13: reconstructiewetzone - verwevingsgebied</i><br>
+<i>Voorbeeld 14: veiligheidszone - bevi</i><br>
+<i>Voorbeeld 15: veiligheidszone - leiding</i><br>
+<i>Voorbeeld 16: veiligheidszone - lpg</i><br>
+<i>Voorbeeld 17: veiligheidszone - munitie</i><br>
+<i>Voorbeeld 18: veiligheidszone - vervoer gevaarlijke stoffen</i><br>
+<i>Voorbeeld 19: veiligheidszone - vuurwerk</i><br>
+<i>Voorbeeld 20: veiligheidszone - windturbine</i><br>
+<i>Voorbeeld 21: vrijwaringszone - buisleidingenstraat</i><br>
+<i>Voorbeeld 22: vrijwaringszone - dijk</i><br>
+<i>Voorbeeld 23: vrijwaringszone - duin</i><br>
+<i>Voorbeeld 24: vrijwaringszone - molenbiotoop</i><br>
+<i>Voorbeeld 25: vrijwaringszone - radar</i><br>
+<i>Voorbeeld 26: vrijwaringszone - spoor</i><br>
+<i>Voorbeeld 27: vrijwaringszone - straalpad</i><br>
+<i>Voorbeeld 28: vrijwaringszone - vaarweg</i><br>
+<i>Voorbeeld 29: vrijwaringszone - weg</i><br>
+<i>Voorbeeld 30: wetgevingzone - afwijkingsgebied</i><br>
+<i>Voorbeeld 31: wetgevingzone - moderniseringsgebied</i><br>
+<i>Voorbeeld 32: wetgevingzone - natura 2000</i><br>
+<i>Voorbeeld 33: wetgevingzone - tracéwet</i><br>
+<i>Voorbeeld 34: wetgevingzone - verwezenlijking in naaste toekomst</i><br>
+<i>Voorbeeld 35: wetgevingzone – waterwet</i><br>
+<i>Voorbeeld 36: wetgevingzone - wet geluidhinder</i><br>
+<i>Voorbeeld 37: wetgevingzone - wijzigingsgebied</i></p>
+<p>In de digitale verbeelding wordt de begrenzing van de gebiedsaanduidingen weergegeven. De kleur en opmaak van de begrenzing komt overeen met de kleur van de hoofdgroep waar deze onder valt, conform de specificatie in . Er wordt in de digitale verbeelding geen gebruik gemaakt van lettercodes.<br></p>
+<figure id="fig-verbeelding-gebiedsaanduidingen"><img src="media/gebiedsaanduidingen.png" alt="Afbeelding per gebiedsaanduiding een lijn met aan de bovenzijde haaientanden, voorzien van naam en rgb waarden." style="width: 48.21475646183803%;">
+<figcaption><a class="self-link" href="#fig-verbeelding-gebiedsaanduidingen">Figuur <bdi class="figno">9</bdi></a> <span class="fig-title">Verbeelding gebiedsaanduidingen</span></figcaption></figure></section></section>
+    <section data-type="markdown" id="planregels"><h2 id="6241A230"><bdi class="secno">6. </bdi>Planregels</h2><p>Dit hoofdstuk bevat de normen die van toepassing zijn op de inrichting van de regels in een bestemmingsplan. Dit betreft de indeling van de regels, de wijze waarop een bestemmingsartikel is opgebouwd, de opname van vaste elementen en de wijze van nummering.<br></p>
+<section id="indeling-hoofdstukken"><h3 id="2DE68CA2"><bdi class="secno">6.1 </bdi>Indeling hoofdstukken</h3><p>De planregels moeten in hoofdstukken worden geplaatst. Daarbij wordt een vaste volgorde aangehouden, te weten:</p>
+<ul><li>Hoofdstuk 1 Inleidende regels<ul><li>Begrippen</li>
+<li>Wijze van meten</li>
+</ul>
+
+</li>
+<li>Hoofdstuk 2 Bestemmingsregels<ul><li>Bestemmingen</li>
+<li>Voorlopige bestemmingen</li>
+<li>Uit te werken bestemmingen</li>
+<li>Dubbelbestemmingen</li>
+</ul>
+
+</li>
+<li>Hoofdstuk 3 Algemene regels<ul><li>Anti-dubbeltelregel</li>
+<li>Algemene bouwregels</li>
+<li>Algemene gebruiksregels</li>
+<li>Algemene aanduidingsregels</li>
+<li>Algemene afwijkingsregels</li>
+<li>Algemene wijzigingsregels</li>
+<li>Verwezenlijking in de naaste toekomst</li>
+<li>Algemene procedureregels</li>
+<li>Overige regels</li>
+</ul>
+
+</li>
+<li>Hoofdstuk 4 Overgangs- en slotregels<ul><li>Overgangsrecht</li>
+<li>Slotregel</li>
+</ul>
+
+</li>
+</ul>
+
+<p>De planregels hoeven niet alle elementen te bevatten. In hoofdstuk 2 van de planregels worden de bestemmingsartikelen in alfabetische volgorde geplaatst. Datzelfde geldt voor achtereenvolgens de voorlopige bestemmingen, de uit te werken bestemmingen en de dubbelbestemmingen.</p>
+<p>De in hoofdstuk 3 op te nemen algemene regels kunnen in één artikel worden opgenomen of kunnen per onderwerp een eigen artikel krijgen, indien dit de leesbaarheid en de raadpleegbaarheid ten goede komt. In hoofdstuk 3, onder algemene aanduidingsregels kunnen zo nodig ook de regels met betrekking tot een of meer gebiedsaanduidingen een plaats krijgen. Per gebiedsaanduiding wordt deze in een artikel opgenomen. Onder overige regels in hoofdstuk 3 kunnen die regels worden geplaatst die niet onder een andere regel zijn te vatten.</p>
+<p>Het Bro stelt de verplichting het overgangsrecht en de anti-dubbeltelregel over te nemen in het bestemmingsplan. Dit wordt in hoofdstuk  3 respectievelijk 4 van de planregels opgenomen. Het overgangsrecht mag in één artikel worden opgenomen, maar ook worden gesplitst in een artikel 'Overgangsrecht bouwwerken' en een artikel 'Overgangsrecht gebruik'.</p>
+<p>De Wet algemene bepalingen omgevingsrecht (hierna Wabo) bevat een algemeen verbod om de gronden en bebouwing in strijd met het bestemmingsplan te gebruiken. Dit hoeft dus niet in de planregels te worden opgenomen. Indien het plan is vastgesteld na inwerkingtreding van de Wabo, geldt hetzelfde voor de strafbepaling.<br></p>
+</section><section id="indeling-bestemmingsregels"><h3 id="2DE68CC3"><bdi class="secno">6.2 </bdi>Indeling bestemmingsregels</h3><p>In een bestemmingsregel wordt aangegeven waarvoor en, zo nodig, hoe de betreffende gronden mogen worden gebruikt en bebouwd. Bij de bestemmingen moet in de bestemmingsomschrijving aangegeven zijn welke functies toelaatbaar zijn. Een vast indeling van de bestemmingsregels is een vereiste. Voor zover voor het betrokken bestemmingsplan van toepassing, geldt dit voor alle soorten bestemmingen: bestemmingen, voorlopige bestemmingen, uit te werken bestemmingen en dubbelbestemmingen.</p>
+<p><b>Bestemming</b><br>
+De regels van een bestemmingsartikel worden als volgt opgebouwd en benoemd:</p>
+<ul><li>Bestemmingsomschrijving;</li>
+<li>Bouwregels;</li>
+<li>Nadere eisen;</li>
+<li>Afwijken van de bouwregels;</li>
+<li>Specifieke gebruiksregels;</li>
+<li>Afwijken van de gebruiksregels;</li>
+<li>Omgevingsvergunning voor het uitvoeren van een werk, geen bouwwerk zijnde, of van werkzaamheden;</li>
+<li>Omgevingsvergunning voor het slopen van een bouwwerk;</li>
+<li>Wijzigingsbevoegdheid.</li>
+</ul>
+
+<p>Een bestemmingsartikel hoeft niet alle elementen te bevatten. Dit kan per bestemming verschillen.</p>
+<p><b>Voorlopige bestemming</b><br>
+De regels van een voorlopige (en definitieve) bestemming zijn als volgt opgebouwd en luiden als volgt:</p>
+<ul><li>Voorlopige bestemming;<ul><li>Bestemmingsomschrijving;</li>
+<li>Bouwregels;</li>
+<li>Nadere eisen;</li>
+<li>Afwijken van de bouwregels;</li>
+<li>Specifieke gebruiksregels;</li>
+<li>Afwijken van de gebruiksregels;</li>
+<li>Omgevingsvergunning voor het uitvoeren van een werk, geen bouwwerk zijnde, of van werkzaamheden;</li>
+<li>Omgevingsvergunning voor het slopen van een bouwwerk;</li>
+<li>Wijzigingsbevoegdheid;</li>
+</ul>
+
+</li>
+<li>Geldigheidstermijn van de voorlopige bestemming;</li>
+<li>Definitieve bestemming;<ul><li>Bestemmingsomschrijving;</li>
+<li>Bouwregels;</li>
+<li>Nadere eisen;</li>
+<li>Afwijken van de bouwregels;</li>
+<li>Specifieke gebruiksregels;</li>
+<li>Afwijken van de gebruiksregels;</li>
+<li>Omgevingsvergunning voor het uitvoeren van een werk, geen bouwwerk zijnde, of van werkzaamheden;</li>
+<li>Omgevingsvergunning voor het slopen van een bouwwerk;</li>
+<li>Wijzigingsbevoegdheid.</li>
+</ul>
+
+</li>
+</ul>
+
+<p>Een artikel voor een voorlopige bestemming hoeft niet alle elementen te bevatten. Dit kan per voorlopige bestemming verschillen.</p>
+<p><b>Uit te werken bestemming</b><br>
+De regels van een uit te werken bestemming worden als volgt opgebouwd en benoemd:</p>
+<ul><li>Bestemmingsomschrijving;</li>
+<li>Uitwerkingsregels;</li>
+<li>Bouwregels;</li>
+<li>Afwijken van de bouwregels;</li>
+<li>Omgevingsvergunning voor het uitvoeren van een werk, geen bouwwerk zijnde, of van werkzaamheden.</li>
+</ul>
+
+<p>Het bij uit te werken bestemmingen gebruikelijke voorlopige bouwverbod (in afwachting van de uitwerking) moet in de bouwregels worden opgenomen. De daarbij behorende anticipatiemogelijkheid moet worden geplaatst onder het ‘afwijken van de bouwregels’.</p>
+<p>Een artikel voor een uit te werken bestemming hoeft niet alle elementen te bevatten. Dit kan per uit te werken bestemming verschillen.</p>
+<p><b>Dubbelbestemming</b><br>
+Voor de bestemmingsregels behorend bij een dubbelbestemming gelden, voor zover voor de betrokken dubbelbestemming relevant, dezelfde opbouw en kopjes als voor bestemmingen. Een regel voor een dubbelbestemming hoeft niet alle elementen te bevatten. Dit kan per dubbelbestemming verschillen.</p>
+<p>Er wordt in de regels geen gebruik gemaakt van lettercodes, tenzij anders voorgeschreven bij de specificatie van de naam (zie <a href="#6461A652">Hoofdstuk 3</a> en <a href="#3859D477">Hoofdstuk 4</a>).<br></p>
+</section><section id="aanduidingen-0"><h3 id="2DE68CFF"><bdi class="secno">6.3 </bdi>Aanduidingen</h3><p>Functieaanduidingen, bouwaanduidingen, gebiedsaanduidingen, maatvoeringsaanduidingen en figuren worden met de volgende woorden in de planregels opgenomen:</p>
+<p>[ter plaatse van de aanduiding ] [‘] &lt;naam aanduiding&gt; [’]<br>
+<i>Voorbeeld:ter plaatse van de aanduiding 'grondgebonden'…</i></p>
+<p>Er wordt de regels geen gebruik gemaakt van lettercodes tenzij anders voorgeschreven bij de specificatie van de naam (zie <a href="#42FA4C1B">Hoofdstuk 5</a>).<br></p>
+</section><section id="begrippen"><h3 id="2DE68D07"><bdi class="secno">6.4 </bdi>Begrippen</h3><p>In hoofdstuk 1 van de planregels worden begrippen verklaard die in de planregels voorkomen en die een nadere omschrijving behoeven. De begrippen die het bestemmingsplan en de type objecten benoemen, komen in ieder bestemmingsplan voor. Deze standaardbegrippen en bijbehorende definities worden hierna gegeven. Deze begrippen moeten worden overgenomen.<br>
+Het is toegestaan een standaardbegrip aan te vullen, op voorwaarde dat de aanvulling het voorgaande niet tegenspreekt. Het toevoegen van begrippen aan een bestemmingsplan, anders dan genoemd in deze paragraaf, is toegestaan. Bij de schrijfwijze van het standaardbegrip en de verklarende zin wordt het gebruik van hoofdletters en kleine letters vrij gelaten.</p>
+<p>Voor andere begrippen dan de in deze paragraaf genoemde begrippen wordt verwezen naar relevante wet- en regelgeving.</p>
+<p>De standaard begrippen zijn als volgt:</p>
+<p><b>plan</b><br>
+[Het bestemmingsplan ] &lt;plannaam&gt; [ met identificatienummer ] &lt;idn&gt; [ van de gemeente ] &lt;..&gt;</p>
+<p><i>De term bestemmingsplan kan vervangen worden door inpassingsplan of rijksbestemmingsplan indien van toepassing. Bij &lt;plannaam&gt; wordt de aanhaaltitel van het bestemmingsplan ingevuld zoals aangegeven in de slotregel. Bij &lt;idn&gt; wordt het identificatienummer van het plan ingevuld in het formaat zoals vastgelegd in STRI2012.</i></p>
+<p><b>bestemmingsplan</b><br>
+De geometrisch bepaalde planobjecten met de bijbehorende regels en de daarbij behorende bijlagen</p>
+<p><i>Indien er geen bijlagen bij de regels zijn, wordt de zinsnede "en de daarbij behorende bijlagen" weggelaten.</i></p>
+<p><b>aanduiding</b><br>
+Een geometrisch bepaald vlak of figuur, waarmee gronden zijn aangeduid, waar ingevolge de regels regels worden gesteld ten aanzien van het gebruik en/of het bebouwen van deze gronden.</p>
+<p><b>aanduidingsgrens</b><br>
+De grens van een aanduiding indien het een vlak betreft.</p>
+<p><b>bestemmingsgrens</b><br>
+De grens van een bestemmingsvlak.</p>
+<p><b>bestemmingsvlak</b><br>
+Een geometrisch bepaald vlak met eenzelfde bestemming.<br></p>
+</section><section id="nummering"><h3 id="2DE68D25"><bdi class="secno">6.5 </bdi>Nummering</h3><p>De regels van een bestemmingsplan moeten worden genummerd. De wijze van nummering luidt als volgt:<br></p>
+<ul><li>De hoofdstukken worden doorgenummerd en krijgen een nummering zoals in paragraaf <a href="#2DE68CA2">6.1</a> is vastgelegd;</li>
+<li>De artikelen worden van het begin tot het einde doorgenummerd;</li>
+<li>De leden binnen een artikel worden doorgenummerd met een getal dat achter de nummering van het artikel wordt geplaatst en dat daarvan door een punt wordt gescheiden.</li>
+</ul>
+
+<p><i>Voorbeeld:</i><br>
+<i>2.1 Bestemmingsomschrijving</i><br>
+<i>2.2 Bouwregels</i><br>
+<i>2.3 Nadere eisen</i><br></p>
+<ul><li>Indien verdere onderverdelingen gewenst is, mag er nog een derde getal achter het lidnummer worden geplaatst, daarvan door een punt gescheiden.</li>
+</ul>
+
+<p><i>Voorbeeld: 2.1.1</i><br></p>
+<ul><li>Het aantal getallen bedraagt nooit meer dan drie. Als dit om praktische redenen wenselijk is, kan een getal gevolgd worden door een letter.</li>
+</ul>
+
+<p><i>Voorbeeld: 2a of 2.3a of 2.3.1a.</i><br></p>
+<ul><li>Bij opsommingen wordt alleen van letters gebruik gemaakt.</li>
+</ul>
+
+</section><section id="slotregel"><h3 id="2DE68D34"><bdi class="secno">6.6 </bdi>Slotregel</h3><p>In de regels van het bestemmingsplan wordt in de slotregel aangegeven op welke wijze de regels van het bestemmingsplan kunnen worden aangehaald. De tekst van de slotregel dient als volgt te luiden:</p>
+<p>[Deze regels worden aangehaald als: Regels van het bestemmingsplan ] [‘] &lt;volledige naam van het bestemmingsplan&gt; [’]</p>
+<p>De volledige naam is de aanhaaltitel.</p>
+</section></section>
+  
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Standaard - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

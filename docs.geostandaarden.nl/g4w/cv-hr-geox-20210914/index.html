@@ -1,0 +1,1623 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+  
+  <title>Geometrie in uitwisselingsformaten</title>
+  <link rel="stylesheet" type="text/css" href="localstyle.css">
+  <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
+  
+  <link rel="stylesheet" type="text/css" href="tab-style.css">
+  <script>
+
+    function tabs() {
+      // store tabs variable
+      var theTabs = document.querySelectorAll("ul.nav-tabs > li");
+
+      function theTabClicks(tabClickEvent) {
+          var clickedTab = tabClickEvent.currentTarget;
+          var tabParent = tabClickEvent.currentTarget.parentNode.parentNode.parentNode;
+          var theTabs = tabParent.querySelectorAll("ul.nav-tabs > li");
+          for (var i = 0; i < theTabs.length; i++) {
+              theTabs[i].classList.remove("active");
+          }
+
+          clickedTab.classList.add("active");
+          tabClickEvent.preventDefault();
+          var contentPanes = tabParent.querySelectorAll(".tab-pane");
+          for (i = 0; i < contentPanes.length; i++) {
+              contentPanes[i].classList.remove("active");
+          }
+          var anchorReference = tabClickEvent.target;
+          var activePaneId = anchorReference.getAttribute("href");
+          var activePane = tabParent.querySelector(activePaneId);
+          activePane.classList.add("active");
+      }
+      for (i = 0; i < theTabs.length; i++) {
+          theTabs[i].addEventListener("click", theTabClicks)
+      }
+    }
+    if (window.addEventListener) {
+      window.addEventListener("load", tabs, false);
+    } else {
+      window.attachEvent('onload', tabs);
+    }
+  </script>
+  <script type="text/javascript">
+
+    (function()
+    {
+      if( window.localStorage )
+      {
+        if( !localStorage.getItem('firstLoad') )
+        {
+          localStorage['firstLoad'] = true;
+          window.location.reload();
+        }
+        else
+          localStorage.removeItem('firstLoad');
+      }
+    })();
+
+    </script>
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-CV.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-CV",
+  "specType": "HR",
+  "publishDate": "2021-09-14",
+  "maxTocLevel": 3,
+  "editors": [
+    {
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Gabriella Wiersma",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "shortName": "geox",
+  "pubDomain": "g4w",
+  "github": "https://github.com/geonovum/geox",
+  "format": "markdown",
+  "localBiblio": {
+    "GML-SF": {
+      "href": "http://www.opengeospatial.org/standards/gml",
+      "title": "Geography Markup Language (GML) simple features profile",
+      "authors": [
+        "Linda van den Brink",
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "date": "5 April 2012",
+      "publisher": "Open Geospatial Consortium"
+    },
+    "CityGML20": {
+      "href": "https://portal.opengeospatial.org/files/?artifact_id=47842",
+      "title": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "authors": [
+        "Gerhard Gröger",
+        "Thomas H. Kolbe",
+        "Claus Nagel",
+        "Karl-Heinz Häfele"
+      ],
+      "date": "4 April 2012",
+      "publisher": "Open Geospatial Consortium",
+      "id": "citygml20"
+    },
+    "OAPIF": {
+      "href": "http://docs.opengeospatial.org/is/17-069r3/17-069r3.html",
+      "title": "OGC API - Features - Part 1: Core",
+      "authors": [
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos",
+        "Charles Heazel"
+      ],
+      "date": "14 oktober 2019",
+      "publisher": "Open Geospatial Consortium",
+      "id": "oapif"
+    },
+    "nen3610-linkeddata": {
+      "href": "https://docs.geostandaarden.nl/nen3610/nldp/",
+      "title": "NEN 3610 - Linked Data",
+      "editors": "Paul Janssen",
+      "authors": [
+        "Linda van den Brink",
+        "Marco Brattinga",
+        "Marinus Vonhof",
+        " Niels Hoffmann",
+        "Pano Maria",
+        "Hans Schevers",
+        " Ronald van Lanen",
+        "Joep van Genuchten"
+      ],
+      "date": "23 maart 2020",
+      "publisher": "Geonovum",
+      "id": "nen3610-linkeddata"
+    },
+    "NLURIStrategie": {
+      "href": "http://www.pilod.nl/wiki/Boek/URI-strategie",
+      "publisher": "Platform Linked Data Nederland",
+      "authors": [
+        "Hans Overbeek",
+        "Linda van den Brink"
+      ],
+      "title": "Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid",
+      "id": "nluristrategie"
+    },
+    "gimeg": {
+      "href": "https://docs.geostandaarden.nl/nen3610/gimeg",
+      "publisher": "Geonovum",
+      "authors": [
+        "Linda van den Brink",
+        "Paul Janssen",
+        "Wilko Quak"
+      ],
+      "title": "Geometrie in model en GML",
+      "id": "gimeg"
+    },
+    "NEN3610": {
+      "id": "NEN 3610:2011 nl",
+      "title": "NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "href": "https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm",
+      "status": "Definitief",
+      "publisher": "NEN",
+      "date": "2011-03-01"
+    },
+    "iso-19107-2019": {
+      "title": "Geographic information — Spatial schema",
+      "href": "https://www.iso.org/standard/66175.html",
+      "status": "Definitief",
+      "publisher": "ISO",
+      "date": "2019-12",
+      "id": "iso-19107-2019"
+    },
+    "iso-13249-3": {
+      "title": "Information technology — Database languages — SQL multimedia and application packages — Part 3: Spatial",
+      "href": "https://www.iso.org/standard/60343.html",
+      "status": "Definitief",
+      "publisher": "ISO",
+      "date": "2016-01",
+      "id": "iso-13249-3"
+    }
+  },
+  "publishISODate": "2021-09-14T00:00:00.000Z",
+  "generatedSubtitle": "Consultatieversie 14 september 2021"
+}</script><meta name="description" content="Dit document is een handreiking over het uitwisselen van geometrie. Het geeft een overzicht van de verschillende bestandsformaten die je hiervoor kunt gebruiken, geeft handvaten voor het kiezen van het juiste formaat voor de juiste situatie, en geeft in afzonderlijke hoofdstukken gedetaileerde informatie over het uitwisselen van geometrie in HTML, GML, JSON, GeoPackage en RDF."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/g4w/cv-hr-geox-20210914/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Geometrie in uitwisselingsformaten",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2021-09-14",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/geox/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document is een handreiking over het uitwisselen van geometrie. Het geeft een overzicht van de verschillende bestandsformaten die je hiervoor kunt gebruiken, geeft handvaten voor het kiezen van het juiste formaat voor de juiste situatie, en geeft in afzonderlijke hoofdstukken gedetaileerde informatie over het uitwisselen van geometrie in HTML, GML, JSON, GeoPackage en RDF.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "url": "https://www.geonovum.nl"
+    },
+    {
+      "type": "Person",
+      "name": "Gabriella Wiersma",
+      "url": "https://www.geonovum.nl"
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm",
+      "type": "TechArticle",
+      "name": "NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "url": "https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm"
+    },
+    {
+      "id": "https://www.iso.org/standard/66175.html",
+      "type": "TechArticle",
+      "name": "Geographic information — Spatial schema",
+      "url": "https://www.iso.org/standard/66175.html"
+    },
+    {
+      "id": "https://www.iso.org/standard/40114.html",
+      "type": "TechArticle",
+      "name": "Geographic information -- Simple feature access -- Part 1: Common architecture",
+      "url": "https://www.iso.org/standard/40114.html"
+    },
+    {
+      "id": "https://docs.geostandaarden.nl/nen3610/gimeg",
+      "type": "TechArticle",
+      "name": "Geometrie in model en GML",
+      "url": "https://docs.geostandaarden.nl/nen3610/gimeg"
+    },
+    {
+      "id": "https://www.w3.org/TR/html5/",
+      "type": "TechArticle",
+      "name": "HTML5",
+      "url": "https://www.w3.org/TR/html5/"
+    },
+    {
+      "id": "http://docs.opengeospatial.org/is/17-069r3/17-069r3.html",
+      "type": "TechArticle",
+      "name": "OGC API - Features - Part 1: Core",
+      "url": "http://docs.opengeospatial.org/is/17-069r3/17-069r3.html"
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc8259",
+      "type": "TechArticle",
+      "name": "The JavaScript Object Notation (JSON) Data Interchange Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259"
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc7946",
+      "type": "TechArticle",
+      "name": "The GeoJSON Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc7946"
+    },
+    {
+      "id": "https://www.iso.org/standard/60343.html",
+      "type": "TechArticle",
+      "name": "Information technology — Database languages — SQL multimedia and application packages — Part 3: Spatial",
+      "url": "https://www.iso.org/standard/60343.html"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/gml",
+      "type": "TechArticle",
+      "name": "Geography Markup Language (GML) Encoding Standard",
+      "url": "http://www.opengeospatial.org/standards/gml"
+    },
+    {
+      "id": "https://www.iso.org/standard/32554.html",
+      "type": "TechArticle",
+      "name": "Geographic information -- Geography Markup Language (GML)",
+      "url": "https://www.iso.org/standard/32554.html"
+    },
+    {
+      "id": "https://portal.opengeospatial.org/files/?artifact_id=47842",
+      "type": "TechArticle",
+      "name": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "url": "https://portal.opengeospatial.org/files/?artifact_id=47842"
+    },
+    {
+      "id": "https://www.w3.org/TR/rdf11-concepts/",
+      "type": "TechArticle",
+      "name": "RDF 1.1 Concepts and Abstract Syntax",
+      "url": "https://www.w3.org/TR/rdf11-concepts/"
+    },
+    {
+      "id": "https://www.w3.org/TR/rdf-syntax-grammar/",
+      "type": "TechArticle",
+      "name": "RDF 1.1 XML Syntax",
+      "url": "https://www.w3.org/TR/rdf-syntax-grammar/"
+    },
+    {
+      "id": "https://www.w3.org/TR/turtle/",
+      "type": "TechArticle",
+      "name": "RDF 1.1 Turtle",
+      "url": "https://www.w3.org/TR/turtle/"
+    },
+    {
+      "id": "http://www.opengeospatial.org/standards/geosparql",
+      "type": "TechArticle",
+      "name": "GeoSPARQL - A Geographic Query Language for RDF Data",
+      "url": "http://www.opengeospatial.org/standards/geosparql"
+    },
+    {
+      "id": "https://www.w3.org/TR/shacl/",
+      "type": "TechArticle",
+      "name": "Shapes Constraint Language (SHACL)",
+      "url": "https://www.w3.org/TR/shacl/"
+    },
+    {
+      "id": "http://www.pilod.nl/wiki/Boek/URI-strategie",
+      "type": "TechArticle",
+      "name": "Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid",
+      "url": "http://www.pilod.nl/wiki/Boek/URI-strategie"
+    },
+    {
+      "id": "https://docs.geostandaarden.nl/nen3610/nldp/",
+      "type": "TechArticle",
+      "name": "NEN 3610 - Linked Data",
+      "url": "https://docs.geostandaarden.nl/nen3610/nldp/"
+    }
+  ]
+}</script></head>
+
+<body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Geometrie in uitwisselingsformaten</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Consultatieversie <time class="dt-published" datetime="2021-09-14">14 september 2021</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/g4w/cv-hr-geox-20210914/">https://docs.geostandaarden.nl/g4w/cv-hr-geox-20210914/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/g4w/geox/">https://docs.geostandaarden.nl/g4w/geox/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/geox/">https://geonovum.github.io/geox/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Linda van den Brink</a></dd>
+    <dt>Auteurs:</dt><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Linda van den Brink</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.geonovum.nl">Gabriella Wiersma</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/geox/">GitHub geonovum/geox</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/geox/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/geox/commits/gh-pages">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/geox/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Dit document is een handreiking over het uitwisselen van geometrie. Het geeft een overzicht van de verschillende bestandsformaten die je hiervoor kunt gebruiken, geeft handvaten voor het kiezen van het juiste formaat voor de juiste situatie, en geeft in afzonderlijke hoofdstukken gedetaileerde informatie over het uitwisselen van geometrie in HTML, GML, JSON, GeoPackage en RDF.</p></section><section id="sotd" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+
+
+    Dit is een door de werkgroep goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar
+    <a href="mailto:geo-standaarden@geonovum.nl">
+        geo-standaarden@geonovum.nl</a>.
+
+
+
+
+
+
+</p><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Noot</span></div><aside class=""><p>Reageren tijdens de consultatie op deze white paper? Dat kan open en transparant door issues aan te maken op <a href="https://github.com/Geonovum/geox/issues">GitHub</a>. Geen fan van of toegang tot GitHub? Reageer dan via de <a href="https://www.geonovum.nl/">Geonovum website</a>.</p>
+</aside></div></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope-en-doelgroep"><span class="secno">1.1 </span>Scope en doelgroep</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.2 </span>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#standaarden"><span class="secno">2. </span>Standaarden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nen-3610"><span class="secno">2.1 </span>NEN 3610</a></li><li class="tocline"><a class="tocxref" href="#iso-19107-2019"><span class="secno">2.2 </span>ISO 19107:2019</a></li><li class="tocline"><a class="tocxref" href="#iso-19125-2004"><span class="secno">2.3 </span>ISO 19125:2004</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nederlands-profiel-op-iso-19107"><span class="secno">2.3.1 </span>Nederlands profiel op ISO 19107</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#kieswijzer"><span class="secno">3. </span>Keuzehulp bestandsformaten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aspecten-die-een-rol-spelen-bij-de-keuze"><span class="secno">3.1 </span>Aspecten die een rol spelen bij de keuze</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanleveren-versus-uitleveren-van-data"><span class="secno">3.1.1 </span>Aanleveren versus uitleveren van data</a></li><li class="tocline"><a class="tocxref" href="#bekende-versus-onbekende-gebruiker"><span class="secno">3.1.2 </span>Bekende versus onbekende gebruiker</a></li><li class="tocline"><a class="tocxref" href="#gis-gebruikers-of-andere-gebruikers"><span class="secno">3.1.3 </span>GIS-gebruikers of andere gebruikers</a></li><li class="tocline"><a class="tocxref" href="#archivering-versus-direct-gebruik"><span class="secno">3.1.4 </span>Archivering versus direct gebruik</a></li><li class="tocline"><a class="tocxref" href="#ondersteuning-in-algemene-tooling"><span class="secno">3.1.5 </span>Ondersteuning in algemene tooling</a></li><li class="tocline"><a class="tocxref" href="#validatie"><span class="secno">3.1.6 </span>Validatie</a></li><li class="tocline"><a class="tocxref" href="#uitleveren-van-schema-s"><span class="secno">3.1.7 </span>Uitleveren van schema's</a></li><li class="tocline"><a class="tocxref" href="#nauwkeurige-data"><span class="secno">3.1.8 </span>Nauwkeurige data</a></li><li class="tocline"><a class="tocxref" href="#simpele-geometrie"><span class="secno">3.1.9 </span>Simpele geometrie</a></li><li class="tocline"><a class="tocxref" href="#bogen-en-volumes"><span class="secno">3.1.10 </span>Bogen en volumes</a></li><li class="tocline"><a class="tocxref" href="#datavolume"><span class="secno">3.1.11 </span>Datavolume</a></li><li class="tocline"><a class="tocxref" href="#semantiek"><span class="secno">3.1.12 </span>Semantiek</a></li><li class="tocline"><a class="tocxref" href="#gestructureerde-semantiek"><span class="secno">3.1.13 </span>Gestructureerde semantiek</a></li><li class="tocline"><a class="tocxref" href="#samenvatting-de-aspecten-in-samenhang"><span class="secno">3.1.14 </span>Samenvatting: de aspecten in samenhang</a></li></ol></li><li class="tocline"><a class="tocxref" href="#keuzehulp-voor-generieke-toepassingen"><span class="secno">3.2 </span>Keuzehulp voor generieke toepassingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#html"><span class="secno">4. </span>HTML</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie"><span class="secno">4.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#voorbeelden"><span class="secno">4.2 </span>Voorbeelden</a></li><li class="tocline"><a class="tocxref" href="#keuze-aspecten"><span class="secno">4.3 </span>Keuze-aspecten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#geojson"><span class="secno">5. </span>GeoJSON</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie-0"><span class="secno">5.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#voorbeelden-0"><span class="secno">5.2 </span>Voorbeelden</a></li><li class="tocline"><a class="tocxref" href="#keuze-aspecten-0"><span class="secno">5.3 </span>Keuze-aspecten</a></li><li class="tocline"><a class="tocxref" href="#afspraken"><span class="secno">5.4 </span>Afspraken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3d-geometrie"><span class="secno">5.4.1 </span>3D geometrie</a></li><li class="tocline"><a class="tocxref" href="#naamgeving"><span class="secno">5.4.2 </span>Naamgeving</a></li><li class="tocline"><a class="tocxref" href="#aantal-decimalen"><span class="secno">5.4.3 </span>Aantal decimalen</a></li><li class="tocline"><a class="tocxref" href="#gebruik-in-uitwisseling"><span class="secno">5.4.4 </span>Gebruik in uitwisseling</a></li><li class="tocline"><a class="tocxref" href="#uris-in-geojson"><span class="secno">5.4.5 </span>URIs in GeoJSON</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#geopackage"><span class="secno">6. </span>GeoPackage</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie-1"><span class="secno">6.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#keuze-aspecten-1"><span class="secno">6.2 </span>Keuze-aspecten</a></li><li class="tocline"><a class="tocxref" href="#afspraken-0"><span class="secno">6.3 </span>Afspraken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#naamgeving-0"><span class="secno">6.3.1 </span>Naamgeving</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#gml"><span class="secno">7. </span>Geography Markup Language (GML)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie-2"><span class="secno">7.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#voorbeelden-1"><span class="secno">7.2 </span>Voorbeelden</a></li><li class="tocline"><a class="tocxref" href="#keuze-aspecten-2"><span class="secno">7.3 </span>Keuze-aspecten</a></li><li class="tocline"><a class="tocxref" href="#afspraken-1"><span class="secno">7.4 </span>Afspraken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#naamgeving-1"><span class="secno">7.4.1 </span>Naamgeving</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#rdf"><span class="secno">8. </span>RDF</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#introductie-3"><span class="secno">8.1 </span>Introductie</a></li><li class="tocline"><a class="tocxref" href="#voorbeelden-2"><span class="secno">8.2 </span>Voorbeelden</a></li><li class="tocline"><a class="tocxref" href="#keuze-aspecten-3"><span class="secno">8.3 </span>Keuze-aspecten</a></li><li class="tocline"><a class="tocxref" href="#afspraken-2"><span class="secno">8.4 </span>Afspraken</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#geometrie-encodings"><span class="secno">8.4.1 </span>Geometrie encodings</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><span class="secno">A. </span>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normatieve-referenties"><span class="secno">A.1 </span>Normatieve referenties</a></li></ol></li></ol></nav><section id="inleiding" data-format="markdown"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Hoewel Geography Markup Language (GML) nog steeds een van de belangrijkste gestandaardiseerde uitwisselformaten is, zijn er in de laatste jaren een aantal alternatieven in opkomst. GML is een hele volledige, maar ook vrij complexe standaard, en daardoor niet geschikt voor alle toepassingen. Deze handreiking geeft daarom een overzicht van de meest populaire alternatieven voor het uitwisselen en publiceren van vectordata - volgens open standaarden. Het gaat hierbij om 'lichtere bestandsformaten', in tegenstelling tot het allesomvattende (maar daardoor ook complexere) GML formaat.
+</p><p>Voor het uitwisselen van geodata kan men tegenwoordig dus kiezen uit verschillende bestandsformaten. Wat het beste formaat is voor een toepassing, is afhankelijk van meerdere aspecten. In het bij de data behorende informatiemodel kunnen deze aspecten al naar voren komen - bijvoorbeeld de geometrietypes die worden vastgelegd, het gebruikte modelleerparadigma, etc. Echter kun je vanuit één informatiemodel ook weer meerdere implementaties in uitwisselingsformaten afleiden - beslissingen in het model sluiten dit niet per sé uit.  </p><p>Het is dan ook niet mogelijk om een opsomming te geven van álle relevante aspecten die een rol kunnen spelen bij het kiezen van een passend formaat. Wel zet deze handreiking de belangrijkste aspecten op een rijtje en brengt deze in verband met gangbare toepassingen. De toepassing bepaalt namelijk wat de eisen aan de geometrieën zijn (zijn complexe types nodig? Is een hoge nauwkeurigheid van belang?), en welke verplichtingen aan de orde zijn in de keuze voor standaarden. De antwoorden op deze vragen kunnen al een indicatie geven van de geschiktheid van de formaten.
+</p><p>Daarnaast is het van belang om inzicht te hebben in de behoeften van gebruikers: is ondersteuning in bepaalde tools/frameworks van belang? Moeten de bestanden leesbaar zijn voor mensen, en gemakkelijk te vinden? Hoe belangrijk is de semantiek van de data? Deze handreiking geeft daarom handvaten voor het kiezen van het juiste formaat voor de juiste situatie, en geeft in afzonderlijke hoofdstukken gedetailleerde informatie over het uitwisselen van geometrie in GML, HTML, JSON, GeoPackage en RDF.</p><section id="scope-en-doelgroep"><h3 id="x1-1-scope-en-doelgroep"><span class="secno">1.1 </span>Scope en doelgroep</h3><p>Het doel van dit document is om handvaten te geven voor het gebruiken van lichtere bestandsformaten voor geodata, en beperkt zich tot de uitwisseling van data waarbij vector geometrieën toegepast worden. Het document richt zich op formaten waarmee 2D data wordt uitgewisseld, aangezien de aspecten die van belang zijn bij het ontsluiten van 3D data meer aandacht vereisen - een uitgebreid overzicht hiervan is dus buiten scope. Met digitale toegankelijkheid voor ogen, ligt de focus hier op formaten waarvan de onderliggende standaarden open zijn. De tekst is daarom gericht op aanbieders van geo-informatie die graag meer willen weten over de afwegingen die je moet maken bij het kiezen van een formaat. Het is niet mogelijk om alle afwegingen in kaart te brengen en bij elke combinatie van antwoorden een formaat aan te raden. Om deze reden neemt de handreiking een aantal gangbare use cases als uitgangspunt.</p></section><section id="leeswijzer"><h3 id="x1-2-leeswijzer"><span class="secno">1.2 </span>Leeswijzer</h3><p>De handreiking is vormgegeven met het idee dat mensen hun weg erin moeten kunnen vinden ongeacht hun kennis. <a href="#Standaarden">Hoofdstuk 2</a> geeft achtergrondinformatie over een aantal relevante standaarden. In <a href="#Keuzehulpbestandsformaten">Hoofdstuk 3</a> worden belangrijke aspecten bij het kiezen van een formaat toegelicht aan de hand van vijf gangbare, generieke toepassingen. Vervolgens worden alle formaten afzonderlijk in <a href="#html">Hoofdstuk 4</a>, <a href="#geojson">Hoofdstuk 5</a>, <a href="#geopackage">Hoofdstuk 6</a>, <a href="#gml">Hoofdstuk 7</a>, en <a href="#rdf">Hoofdstuk 8</a> geïntroduceerd en beoordeeld op hun geschiktheid. De lezer kan met behulp van de 'keuze-aspect' tabellen bepalen welk formaat het meest geschikt is voor zijn of haar situatie, en zelf de belangrijkste aspecten daarvoor meewegen in de beslissing. In het document worden voorbeelden  gebruikt om het uitdrukken van de geometrie, de semantiek van achterliggende modellen en het gebruik van de bestandsformaten te illustreren.</p></section></section><section id="standaarden" data-format="markdown"><!--OddPage--><h2 id="x2-standaarden"><span class="secno">2. </span>Standaarden</h2><p>Naast de encoding standaarden zelf zijn er een aantal andere standaarden die ook aandacht verdienen, omdat ze relevant zijn voor het representeren van geometrieën in modellen of omdat ze invloed kunnen hebben op de geschiktheid en toepasbaarheid van de encodings.</p><section id="nen-3610"><h3 id="x2-1-nen-3610"><span class="secno">2.1 </span>NEN 3610</h3><p>Het Nederlands Basismodel Geo-informatie [<cite><a class="bibref" href="#bib-nen3610">NEN3610</a></cite>] geeft regels voor het eenduidig beschrijven, uitwisselen en op het web publiceren van geo-informatie.
+</p><p>Relevant voor deze handreiking is dat NEN 3610 de regels beschrijft voor het modelleren van geo-informatie. Belangrijk in de definitie van een geografisch object is dat het locatie eigenschappen heeft. Eén van die locatie eigenschappen is de directe locatie die middels coördinaten is beschreven. Door middel van attributen wordt de directe locatie en geometrie door coördinaten gerepresenteerd. De waarden van die attributen zijn coördinaten of coördinaatreeksen die een geometrie representeren. We noemen dit geometrietypen.</p></section><section id="iso-19107-2019"><h3 id="x2-2-iso-19107-2019"><span class="secno">2.2 </span>ISO 19107:2019</h3><p>De standaard Geographic information - Spatial Schema [<cite><a class="bibref" href="#bib-iso-19107-2019">iso-19107-2019</a></cite>] definieert het ruimtelijk schema: het informatiemodel van geometrieën. In ISO 19107 zijn de geometrietypen, hun eigenschappen en hun onderlinge relaties opgenomen. De geometrietypen uit deze standaard, zoals <code>GM_Point</code>, <code>GM_Curve</code>, en <code>GM_Surface</code> worden gebruikt om de geometrietypen in geo-informatiemodellen te specificeren.
+</p></section><section id="iso-19125-2004"><h3 id="x2-3-iso-19125-2004"><span class="secno">2.3 </span>ISO 19125:2004</h3><p>ISO 19125-1 Simple feature access [<cite><a class="bibref" href="#bib-iso-19125-1-2004">iso-19125-1-2004</a></cite>] definieert een model voor 2 dimensionale geometrietypen. De daarin opgenomen geometrietypen zijn een selectie uit ISO 19107. De term simple feature staat voor features beperkt tot <strong>2 dimensionale geometrie</strong> en <strong>lineaire interpolatie</strong> (alleen rechte lijnen tussen punten).
+</p><p>De simpele geometrietypen zijn: </p><ul>
+<li><strong>Punt</strong> en <strong>multi-punt</strong></li>
+<li><strong>Lijn</strong> en <strong>multi-lijn</strong></li>
+<li><strong>Vlak</strong> en <strong>multi-vlak</strong></li>
+<li>Een generiek geometrietype <strong>Geometry</strong> dat één van bovenstaande kan zijn</li>
+</ul><section id="nederlands-profiel-op-iso-19107"><h4 id="x2-3-1-nederlands-profiel-op-iso-19107"><span class="secno">2.3.1 </span>Nederlands profiel op ISO 19107</h4><p>Het ISO 19107 ruimtelijk schema in al zijn complexiteit is geschikt om zeer gevarieerde representaties van geometrieën te definiëren. Bij het kiezen van geometrietypen ter implementatie in een softwareomgeving is het van belang eisen ten aanzien van interoperabiliteit mee te nemen. Hiervoor is Simple Features een goed uitgangspunt: het is een selectie van de meest eenvoudige en gangbare geometrietypen, die breed worden ondersteund. In het kader van het Nederlands profiel op ISO 19107, dat jaren geleden is opgesteld, is er naast Simple Features gekeken naar GML als implementatieomgeving. Op basis daarvan is geëvalueerd welke subset van geometrietypen uit het ruimtelijke schema tot de Nederlandse basisset, het profiel, moeten behoren.
+</p><p>Voor GML 3.2 zijn er drie profielen met toenemende complexiteit, de zogenaamde Simple Features "levels" 0, 1, en 2. Softwareleveranciers kunnen ervoor kiezen hun ondersteuning van GML te beperken tot een van deze levels, of uiteraard om de hele standaard te ondersteunen.</p><p>Simple Features Profile level 2 is de standaard voor informatiemodellen in Nederland. Het profiel is een subset van het complete GML 3.2. Toch is het in sommige gevallen gewenst om te werken met een nog eenvoudiger informatiemodel, dat met name voor software die de complexere zaken in SF2 niet ondersteunt, te begrijpen is -  hier is SF0 voor. Meer informatie over deze profielen is te vinden in de Handreiking Geometrie in model en GML [<cite><a class="bibref" href="#bib-gimeg">gimeg</a></cite>].</p><p>Het Nederlands profiel kent dezelfde geometrietypen als ISO 19125: (multi)Punt, (multi)lijn, (multi)vlak, (multi) geometry. Hierbij is voor Nederland afgesproken dat naast lineaire interpolatie, ook interpolatie door middel van cirkelbogen mag worden gebruikt.</p></section></section></section><section id="kieswijzer" data-format="markdown"><!--OddPage--><h2 id="x3-keuzehulp-bestandsformaten"><span class="secno">3. </span>Keuzehulp bestandsformaten</h2><p>Stel, je bent een overheidsorganisatie, en je bezit geo-data die je wilt publiceren als open data, of die je wilt uitwisselen met andere partijen. Welk formaat moet je dan kiezen? Vroeger was het antwoord van Geonovum altijd: "GML". Maar tegenwoordig zijn er meerdere formaten waaruit je kunt kiezen.</p><p>Bij de keuze voor het juiste uitwisselformaat speelt de beoogde toepassing, of toepassingen, een belangrijke rol. Wat willen gebruikers ermee: willen ze de data kunnen visualiseren in een webapplicatie, of gaan ze de data bijvoordbeeld gebruiken voor GIS analyses? Wordt de data gepubliceerd op het web, of rechtstreeks uitgewisseld tussen systemen waarbij validatie van toepassing is?
+</p><p>Aspecten van de geometrische data zelf spelen ook een rol bij de keuze voor een formaat. Is 3D data nodig? Is nauwkeurigheid van belang? Worden complexe geometrietypes gebruikt? 
+Daarnaast is het belangrijk om te kijken naar de voorkeuren, behoeftes en de tools die gebruikt worden door afnemers - ondersteunen deze de formaten ook? Er is niet één enkel uitwisselformaat voor geometrische data dat het antwoord op alles is. Dit betekent dat de beste oplossing kan variëren, en afhankelijk is van overwegingen die de data-eigenaar zal moeten maken.
+</p><p>De belangrijkste aspecten, die invloed kunnen hebben op de keuze voor een format, lichten we hieronder kort toe. Na deze toelichting vatten we de aspecten samen en brengen ze met elkaar in verband. </p><section id="aspecten-die-een-rol-spelen-bij-de-keuze"><h3 id="x3-1-aspecten-die-een-rol-spelen-bij-de-keuze"><span class="secno">3.1 </span>Aspecten die een rol spelen bij de keuze</h3><section id="aanleveren-versus-uitleveren-van-data"><h4 id="x3-1-1-aanleveren-versus-uitleveren-van-data"><span class="secno">3.1.1 </span>Aanleveren versus uitleveren van data</h4><p>Bij het kiezen van het juiste formaat, maakt het veel verschil of de data wordt uitgewisseld tussen softwaresystemen in een keten, bijvoorbeeld bij het aanleveren aan een landelijke voorziening voor data; of dat de data wordt aangeboden aan gebruikers. In een keten heb je altijd te maken met bekende gebruikers, en vaste afspraken die binnen de keten voor gegevensuitwisseling zijn gemaakt. Een partij die binnen een keten acteert heeft doorgaans een langdurig belang en zal dus meer bereid zijn tot het doen van een investering in tijd en/of geld om de data te kunnen uitwisselen. Het kan dan gerechtvaardigd zijn om een wat moeilijker te hanteren formaat te kiezen, als dat opweegt tegen voordelen die dat specifieke formaat heeft. Bij het aanbieden van data aan gebruikers, vaak als open data, is dit veel minder het geval. Datagebruikers hebben vaak beperkt tijd om met een bestand aan de slag te gaan.
+</p></section><section id="bekende-versus-onbekende-gebruiker"><h4 id="x3-1-2-bekende-versus-onbekende-gebruiker"><span class="secno">3.1.2 </span>Bekende versus onbekende gebruiker</h4><p>Bij het aanleveren van data aan een landelijke voorziening heb je per definitie een bekende gebruiker: er zijn afspraken tussen verzender en ontvanger van de data. Bij het uitleveren van data is dit niet per definitie het geval. Er kan sprake zijn van bekende gebruikers: partijen die bijvoorbeeld een abonnement op de data hebben of waarvan bekend is dat ze de data afnemen. Maar het kan ook zijn dat de data voor iedereen beschikbaar is zonder verder contact met de data aanbieder. In dat geval kunnen er gebruikers zijn met allerlei verschillende kennisniveau's, applicaties en behoeftes. Denk hierbij bijvoorbeeld aan web developers (applicatiebouwers), data scientists en data journalisten. Om breed gebruik van data te bevorderen is het dan verstandig om de data zo laagdrempelig mogelijk aan te bieden, dus in algemeen gangbare dataformaten waarvoor brede ondersteuning in tooling bestaat.</p></section><section id="gis-gebruikers-of-andere-gebruikers"><h4 id="x3-1-3-gis-gebruikers-of-andere-gebruikers"><span class="secno">3.1.3 </span>GIS-gebruikers of andere gebruikers</h4><p>Nog een aspect dat met gebruikers te maken heeft, is de vraag of het om GIS gebruikers gaat. De huidige GIS systemen kunnen niet alle lichte formaten, die we in deze handreiking beschrijven, aan. Als (een deel van) het publiek van de gepubliceerde data wel de behoefte heeft om data in een GIS in te lezen, om bijvoorbeeld ruimtelijke analyses te kunnen doen, moet hier rekening mee gehouden worden.
+</p></section><section id="archivering-versus-direct-gebruik"><h4 id="x3-1-4-archivering-versus-direct-gebruik"><span class="secno">3.1.4 </span>Archivering versus direct gebruik</h4><p>Bij archivering is een belangrijk basisconcept dat vorm, inhoud en structuur van archiefbescheiden behouden moeten blijven of tenminste reproduceerbaar zijn. Voor data die gearchiveerd moeten worden zijn daarom afwegingen zoals langdurige ondersteuning, gedocumenteerde standaarden en open formaten van extra belang. Mogelijk moet er ook voldaan worden aan de Archiefwet.</p></section><section id="ondersteuning-in-algemene-tooling"><h4 id="x3-1-5-ondersteuning-in-algemene-tooling"><span class="secno">3.1.5 </span>Ondersteuning in algemene tooling</h4><p>Als het gaat om de aanleverkant in een keten, is er meestal specifieke ondersteuning voor het gekozen uitwisselformaat in de keten geimplementeerd. Soms kan er echter toch behoefte zijn aan ondersteuning in tooling, die niet onderdeel van de keten is maar wel toegevoegde waarde heeft in het werkproces van de zender of de ontvanger van de data.
+</p></section><section id="validatie"><h4 id="x3-1-6-validatie"><span class="secno">3.1.6 </span>Validatie</h4><p>Validatie, het controleren van de datastructuur en -inhoud tegen vooraf afgesproken regels, is vooral belangrijk bij het direct uitwisselen tussen systemen, bijvoorbeeld aan de aanleverkant van landelijke datavoorzieningen of bij het leveren van data van een uitvoerder aan een opdrachtgever. Men wil immers de kwaliteit borgen van de aangeleverde data, en zorgen dat alleen correcte data wordt ingelezen in het ontvangende systeem. Maar er zijn ook andere situaties denkbaar waarin validatie belangrijk is.
+</p><p>Validatie kan zich richten op verschillende aspecten:</p><ul>
+<li>Validatie van een vooraf afgesproken datastructuur (dat meestal is vastgelegd in een informatiemodel)</li>
+<li>Validatie van business rules (regels over de inhoud en afhankelijkheden tussen onderdelen van de data)</li>
+<li>Validatie van geometrieën
+</li>
+</ul><p>Al deze validatie-aspecten worden in wisselende mate ondersteund door de verschillende formaten. Als je een dataset wilt valideren kun je dit altijd uitprogrammeren, maar vaak biedt het voordelen om zonder programmeerwerk te kunnen valideren. Dit is bijvoorbeeld bij op XML gebaseerde formaten mogelijk omdat het uitdrukken van dataschema's een goed geïmplementeerd onderdeel van de standaard is.
+</p></section><section id="uitleveren-van-schema-s"><h4 id="x3-1-7-uitleveren-van-schema-s"><span class="secno">3.1.7 </span>Uitleveren van schema's</h4><p>In sommige situaties is het gewenst om de afspraken over datastructuur en -inhoud (ook wel: <em>schema's</em>) vast te leggen in machine-leesbare vorm en dit machine-leesbare schema te delen met de ontvangers van data. Dit is niet bij alle lichte formaten mogelijk.
+</p></section><section id="nauwkeurige-data"><h4 id="x3-1-8-nauwkeurige-data"><span class="secno">3.1.8 </span>Nauwkeurige data</h4><p>Als er sprake is van nauwkeurige geometrische data, kan dit gevolgen hebben voor de formaatkeuze. Dit hangt samen met coördinaatreferentiesystemen. Sommige formaten ondersteunen alleen het WGS-84 coördinaatstelsel, waarmee het niet mogelijk is om coordinaten in Nederland net zo nauwkeurig uit te drukken als bijvoorbeeld in het Rijksdriehoekstelsel.
+</p><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Noot</span></div><aside class=""><p>De data aanbieder zou goed moeten nadenken of het ook nodig is om de data zo nauwkeurig als mogelijk te publiceren. Dit hangt af van de gebruikersbehoefte. Ontwikkelaars die met de data in web viewers aan de slag gaan, werken over het algemeen met Web Mercator (een projectie van WGS84). Bezoekers van hun websites willen bijvoorbeeld weten 'of er een pinautomaat in de buurt is' en hebben daarbij geen last van een afwijking van een paar meter. Niet-geo-experts weten vaak niet eens dat er verschillende coordinaatreferentiesystemen zijn en waarom. Voor de meeste use cases hebben zij deze kennis - en nauwkeurige geodata - ook niet nodig.</p>
+</aside></div></section><section id="simpele-geometrie"><h4 id="x3-1-9-simpele-geometrie"><span class="secno">3.1.9 </span>Simpele geometrie</h4><p>GIS standaarden en (in mindere mate) -tooling ondersteunen niet alleen rechttoe rechtaan 0, 1 of 2 dimensionale geometrie in de vorm van punten, lijnen en vlakken maar soms ook exotischere vormen zoals kromme lijnen (splines, cirkels, bogen, ellipses), driehoeken, 3D volumes, etc. In Nederland hanteren we het Simple Feature profiel plus een eenvoudige vorm van bogen, (zie [<cite><a class="bibref" href="#bib-gimeg">gimeg</a></cite>] hoofdstuk 3), maar ondersteuning van andere kromme lijnen en 3D volumes is voor sommige use cases wel nodig. In lichte formaten is over het algemeen beperkte ondersteuning: soms alleen punten, soms ook lijnen en vlakken, en in een enkel geval ook bogen en/of volumes.
+</p></section><section id="bogen-en-volumes"><h4 id="x3-1-10-bogen-en-volumes"><span class="secno">3.1.10 </span>Bogen en volumes</h4><p>Als de toepassing het nodig maakt om bogen en/of 3D volumes in de data uit te wisselen, moet er extra gelet worden op ondersteuning hiervoor bij de keuze van het uitwisselformaat.
+</p><div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Noot</span></div><aside class=""><p>Bij de ondersteuning van 3D geometrie zijn er meerdere aspecten die aandacht vergen - en andere formaten die van toepassing zijn. Deze aspecten worden niet uitgewerkt in de handreiking, zoals vermeld in <a href="#scope-en-doelgroep">de scope</a>. Wel wordt een indicatie gegeven van de mogelijkheden wat betreft het representeren van 3D volumes (in de formaten die hier behandeld worden).</p>
+</aside></div></section><section id="datavolume"><h4 id="x3-1-11-datavolume"><span class="secno">3.1.11 </span>Datavolume</h4><p>Bij geodata kan men te maken hebben met grote datavolumes. Het woord "groot" is hierbij lastig te kwantificeren, en wat een groot bestand gevonden wordt kan ook veranderen in de loop der jaren. Maar een bestand van bijvoorbeeld 500MB of 1GB kan momenteel toch wel 'groot' genoemd worden en in de keuze van het meest geschikte uitwisselformaat speelt dit een rol.</p><aside class="example" id="example-1"><div class="marker">
+      <a class="self-link" href="#example-1">Voorbeeld 1</a>
+    </div><p>Een BGT GML bestand van één gemeente kan al gauw 1 of 2 GB groot zijn. Zie bijvoorbeeld het <a href="https://www.geonovum.nl/uploads/documents/Amersfoort_GML_20132211.zip">voorbeeldbestand Amersfoort</a>.</p>
+</aside><p>Het ene formaat is geschikter voor grote datavolumes dan het andere. Het tegenovergestelde geldt ook: sommige formaten hebben relatief veel overhead en zijn daarom minder geschikt voor het uitwisselen van een klein bestandje via een API.
+</p></section><section id="semantiek"><h4 id="x3-1-12-semantiek"><span class="secno">3.1.12 </span>Semantiek</h4><p>Het vastleggen en uitwisselen van informatie over de betekenis (semantiek) van de data wordt in wisselende mate ondersteund door de verschillende formaten. Of het van belang is hangt af van de situatie; bij data uitwisseling tussen partijen die elkaar kennen speelt dit niet zo, omdat deze kennis bij de ontvanger op de een of andere manier al aanwezig is. Voor onbekende gebruikers is het vaak belangrijker om de betekenis te kunnen achterhalen. Afkortingen of jargon zijn voor hen lastig te doorgronden. Ook voor vindbaarheid in zoekmachines is semantiek belangrijk: zoekmachines nemen dit mee in hun indexering zodat zoektermen die gebruikers invoeren betekenisvolle resultaten opleveren.</p></section><section id="gestructureerde-semantiek"><h4 id="x3-1-13-gestructureerde-semantiek"><span class="secno">3.1.13 </span>Gestructureerde semantiek</h4><p>Informatie over de betekenis, ofwel semantiek, kan op verschillende manieren worden vastgelegd. Dit kan een simpel PDF document of excel bestand zijn, of een website met uitleg; er zijn ook machineleesbare formaten zoals RDFS en SKOS. In de meeste formaten is er weinig of geen ondersteuning voor het gestructureerd vastleggen van semantiek.</p></section><section id="samenvatting-de-aspecten-in-samenhang"><h4 id="x3-1-14-samenvatting-de-aspecten-in-samenhang"><span class="secno">3.1.14 </span>Samenvatting: de aspecten in samenhang</h4><p>De hierboven uitgelegde aspecten zijn samen te vatten in de volgende vragen, waarbij ook de afhankelijkheden tussen de vragen zijn meegenomen:</p><div id="keuze-vragen"><p><strong>1. Gaat het om het aanleveren van data (in ‘keten of tussen systemen), of het uitleveren van data aan eindgebruikers?</strong></p>
+<ul>
+<li><p>In geval van uitleveren:</p>
+</li>
+<li><ul>
+<li><strong>Is de gebruiker bekend of onbekend?</strong>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>In geval van bekend:</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><strong>Gaat het om GISers of niet-geo developers?</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>In geval van aanleveren:</p>
+</li>
+<li><ul>
+<li><strong>Wordt de data (door de andere partij) gearchiveerd of direct gebruikt?</strong></li>
+</ul>
+</li>
+<li><ul>
+<li>In geval van direct gebruikt:</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><strong>Heeft de partij behoefte aan ondersteuning in algemenere tooling?</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Is validatie erg belangrijk?</strong></p>
+<ul>
+<li>Zo ja:</li>
+<li><ul>
+<li><strong>Is het belangrijk om schema’s te kunnen leveren aan partijen / gebruikers?</strong></li>
+</ul>
+</li>
+<li><ul>
+<li><strong>Is het belangrijk om out-of-the-box te kunnen valideren tegen het schema?</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Is de nauwkeurigheid van de data belangrijk?</strong></p>
+<p><strong>4. Welke geometriesoorten worden uitgewisseld – alleen simple features of ook andere ISO 19107 types?</strong></p>
+<ul>
+<li>In geval andere ISO 19107 types:
+</li>
+<li><ul>
+<li><strong>Zijn bogen of 3D geometrieën aanwezig?</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>5. Gaat het om grote of kleine datahoeveelheden?</strong></p>
+<p><strong>6. Is semantiek belangrijk (gaat het om meer dan de uitwisseling van geometrieën)?</strong></p>
+<ul>
+<li>Zo ja:</li>
+<li><ul>
+<li><strong>Moet de semantiek op gestructureerde wijze worden vastgelegd?</strong></li>
+</ul>
+</li>
+</ul>
+</div><p>Welk formaat, of welke formaten, de beste keuze zijn, hangt af van de antwoorden op deze vragen. Ze geven inzicht in welke aspecten een belangrijke rol spelen voor de beoogde toepassing. Met deze informatie kan de lezer de tabellen in hoofdstuk 4-8 nagaan, en op basis daarvan een afweging maken over welke formaten het beste aansluiten op de behoeften die uit de antwoorden naar voren zijn gekomen. </p><p>Let wel op dat dit geen allesomvattende vragenlijst is. In een praktische situatie kunnen er zaken een rol spelen die niet in de vragenlijst zijn meegenomen. Maar met behulp van de vragenlijst krijgt de lezer in ieder geval een goede indicatie.</p></section></section><section id="keuzehulp-voor-generieke-toepassingen"><h3 id="x3-2-keuzehulp-voor-generieke-toepassingen"><span class="secno">3.2 </span>Keuzehulp voor generieke toepassingen</h3><p>Hoewel elke toepassing tot andere antwoorden kan leiden (en dus andere keuzes), zijn er een aantal generieke toepassingen waarvoor een specifiek uitwisselformaat het meest geschikt is. Om de lezer te helpen bieden we een visuele keuzehulp aan die voor een aantal generieke toepassingen laat zien welk uitwisselformaat daar het beste bij past, aan de hand van de daarbij relevante aspecten.</p><p>De generieke toepassingen zijn:</p><ul>
+<li>Web pagina's waarop mensen informatie kunnen vinden over geo-objecten</li>
+<li>Kaarten of andere visualisaties van geodata die gepubliceerd worden op het web</li>
+<li>Data integratie - het combineren van geodata met andere data</li>
+<li>Ruimtelijke analyses - het ontdekken van betekenisvolle patronen in geodata</li>
+<li>Uitwisselen van geodata tussen systemen</li>
+</ul><div style="position: relative;"><p><img src="media/diagram-keuzehulp.png" style="width: 100%; height: auto;"><a class="image-link sec-ref" href="#html" title="HTML-keuze"><span class="secno">§&nbsp;4.</span> <span class="sec-title">HTML</span></a></p><div style="position: absolute; left: 6.7%; top: 59%; width: 14%; height: 19%; background-color: transparent;" target="_self"></div><a class="image-link sec-ref" href="#geojson" title="GeoJSON-keuze"><div style="position: absolute; left: 24%; top: 59%; width: 14%; height: 10%; background-color: transparent;"></div><span class="secno">§&nbsp;5.</span> <span class="sec-title">GeoJSON</span></a><a class="image-link sec-ref" href="#rdf" title="RDF-keuze"><div style="position: absolute; left: 49%; top: 59%; width: 14%; height: 21%; background-color: transparent;"></div><span class="secno">§&nbsp;8.</span> <span class="sec-title">RDF</span></a><a class="image-link sec-ref" href="#geopackage" title="GeoPackage-keuze"><div style="position: absolute; left: 65%; top: 59%; width: 13.5%; height: 29%; background-color: transparent;"></div><span class="secno">§&nbsp;6.</span> <span class="sec-title">GeoPackage</span></a><a class="image-link sec-ref" href="#gml" title="GML-keuze"><div style="position: absolute; left: 80%; top: 59%; width: 14%; height: 27%; background-color: transparent;"></div><span class="secno">§&nbsp;7.</span> <span class="sec-title">Geography Markup Language (GML)</span></a>
+</div></section></section><section id="html" data-format="markdown"><!--OddPage--><h2 id="x4-html"><span class="secno">4. </span>HTML</h2><section id="introductie"><h3 id="x4-1-introductie"><span class="secno">4.1 </span>Introductie</h3><p>HTML is een specificatie van het W3C [<cite><a class="bibref" href="#bib-html5">html5</a></cite>] om gegevens gestructureerd aan te bieden, voor ontsluiting op het web. HTML is vooral bekend als de standaard voor webpagina's. Zoekmachines kunnen HTML goed indexeren.</p><p>Geodata in HTML kan op verschillende manieren gepubliceerd worden. Een HTML pagina kan de geometrie zelf bevatten en visualiseren. Dit wordt gedaan met de hulp van (gestandaardiseerde) webtechnologie als CSS, JavaScript, SVG / web canvas. Hiermee kan de onderliggende data op dynamische wijze geladen en bekeken worden op een web pagina. En steeds meer APIs leveren ook HTML representaties van geo-objecten op. Zo is in de core van OGC API Features [<cite><a class="bibref" href="#bib-oapif">OAPIF</a></cite>] <a href="http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_requirements_class_html">HTML een aanbevolen formaat</a> voor representatie van geodata. Aangezien HTML zelf geen ondersteuning biedt voor geodata (het kent geen aparte elementen voor geometrieën), zal de data via libraries en tools van tevoren verwerkt moeten worden voor visualisatie doeleinden.
+</p><p>Het is echter wel mogelijk om de geometrie gestructureerd op te nemen in een HTML pagina, door middel van een zogenaamde annotatie. Met een annotatie beschrijf je de geodata op zo'n manier dat het zoekmachines toestaat de data op de pagina te indexeren en mogelijk te combineren met andere data. Om de betekenis van de data te kunnen interpreteren worden vocabulaires gebruikt. Annotaties in HTML zijn vaak volgens het begrippenkader van <a href="https://schema.org/">Schema.org</a> opgesteld, een populair vocabulair waarmee zoekmachines goed overweg kunnen. Slechts enkele eenvoudige geometrietypen kunnen worden beschreven met Schema.org: </p><ul>
+<li>punt: <code>schema:GeoCoordinates</code> (met properties <code>schema:latitude</code> en <code>schema:longitude</code>)</li>
+<li>lijnen: <code>schema:GeoShape</code> (met property <code>schema:line</code>)
+</li>
+<li>vlak: <code>schema:GeoCircle</code> of <code>schema:GeoShape</code> (met property <code>schema:box</code>, <code>schema:circle</code> of <code>schema:line</code>)</li>
+</ul><p>Het is ook mogelijk om een hoogtegetal op te nemen - zowel voor de geometrieën als voor deze <code>elevation</code> geldt dat het in WGS84 moet worden geleverd. De geometrie wordt meestal beschouwd als een vorm van metadata van de HTML pagina. De annotaties die hiervoor nodig zijn kunnen op verschillende manieren verwerkt worden in de HTML. De annotaties kunnen direct verbonden worden met de content die getoont wordt op de pagina (middels microdata of RDFa), of de geodata kunnen apart opgenomen worden in een JSON of JSON-LD fragment.</p><p>In HTML kunnen eenvoudig relaties gelegd worden met andere bronnen zoals begrippenkaders of gerelateerde geo-objecten. Als deze geo-objecten op dezelfde manier ook relaties leggen naar andere bronnen, kan dit nieuwe inzichten opleveren.
+</p></section><section id="voorbeelden"><h3 id="x4-2-voorbeelden"><span class="secno">4.2 </span>Voorbeelden</h3><aside class="example ds-selector-tabs" id="example-2-voorbeelden-van-geometrie-voor-html"><div class="marker">
+      <a class="self-link" href="#example-2-voorbeelden-van-geometrie-voor-html">Voorbeeld 2</a><span class="example-title">: Voorbeelden van geometrie voor HTML</span>
+    </div><div class="container--tabs" style="height"><p><span>De voorbeelden hieronder tonen aan hoe je met geodata om kan gaan in HTML. Het Schema.org vocabulair wordt aangeraden wanneer men data in HTML wil annoteren, omdat de data op deze manier indexeerbaar is door zoekmachines. Echter sluit dit het gebruik van andere vocabulaires niet uit. Wanneer de RDFa of JSON-LD serialisaties worden toegepast, is het ook mogelijk uit de geanoteerde HTML Linked Data te extraheren (zie hier een visualisatie van de data uit de onderstaande voorbeelden). </span></p>
+<div class="selectors"><ul class="nav nav-tabs">
+<li class="tabs active"><a href="#html-geoshapes">HTML met RDFa (GeoShape) </a></li>
+<li class="tabs"><a href="#html-jsonld">HTML met JSON-LD (GeoShape) </a></li>
+<li class="tabs"><a href="#html-text">Visualisatie</a></li>
+</ul>
+<div class="tab-content"><div id="html-text" class="tab-pane"><p><span>Je zou de volgende text kunnen bekijken wanneer je de HTML met RDFa annotaties in een browser probeert te renderen (hoe de text er precies uit komt te zien is afhankelijk van de styling regels die worden toegepast).</span></p>
+<div class="figure" style="float:left"><p><img src="media/html-ex.png"></p>
+</div>
+</div>
+<div id="html-geoshapes" class="tab-pane active"><p><span>Dit voorbeeld toont geodata volgens het Schema.org vocabulair, zoals je het in een HTML zou kunnen verwerken (met annotaties in RDFa).</span></p>
+<pre aria-busy="false"><code class="hljs javascript">&lt;div vocab=<span class="hljs-string">"http://schema.org/"</span> 
+<span class="hljs-keyword">typeof</span>=<span class="hljs-string">"LandmarksOrHistoricalBuildings"</span> 
+about=<span class="hljs-string">"http://www.ldproxy.net/bag/inspireadressen/inspireadressen.3329155"</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"name"</span>&gt;</span>Anne Frank's House 
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.ldproxy.net/bag/inspireadressen/inspireadressen.3329155"</span>&gt;</span>(INSPIRE object 3329155)
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"description"</span>&gt;</span> Museum house where Anne Frank &amp; her family hid from the Nazis in a secret annex, during WWII.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>The postal address of this building is:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"location"</span> <span class="hljs-attr">typeof</span>=<span class="hljs-string">"Place"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">typeof</span>=<span class="hljs-string">"PostalAddress"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"postalCode"</span>&gt;</span>1016GV<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"streetAddress"</span>&gt;</span>Prinsengracht 267<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"addressLocality"</span>&gt;</span>Amsterdam<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"geo"</span> <span class="hljs-attr">typeof</span>=<span class="hljs-string">"GeoShape"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"polygon"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"52.375108,4.884235 52.375153,4.884276 
+                      52.375159,4.884257 52.375254,4.883981 
+                      52.375109,4.883850 52.375075,4.883819 
+                      52.374979,4.884104 52.374965,4.884143 
+                      52.375035,4.884207 52.375016,4.884263 
+                      52.374996,4.884320 52.374926,4.884255 
+                      52.374901,4.884329 52.375034,4.884451 
+                      52.375108,4.884235"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">meta</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    </span></code></pre>
+</div>
+<div id="html-jsonld" class="tab-pane"><p><span>Wanneer je de data liever niet vermengd met de inhoud van de HTML, dan kun je het ook met de JSON-LD serialisatie opnemen, in een script tag. Het voordeel van deze benadering is dat het gebruik maakt van een format waar ontwikkelaars vaker ervaring mee hebben. Wel is het belangrijk om rekening te houden met best practices: <a href="https://www.w3.org/TR/sdw-bp/#bp-indexable">Spatial Data on the Web Best Practice 2</a> raadt aan om HTML representaties van geodata begrijpbaar te maken voor gebruikers, en dus niet alleen voor zoekmachines.</span></p>
+<pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/ld+json"</span>&gt;</span><span class="javascript">         
+{
+  <span class="hljs-string">"@context"</span>: [
+  <span class="hljs-string">"https://schema.org/"</span>,
+   {<span class="hljs-string">"gsp"</span>: <span class="hljs-string">"http://www.opengeospatial.org/standards/geosparql/"</span>,
+  <span class="hljs-string">"geojson"</span>: <span class="hljs-string">"https://purl.org/geojson/vocab#"</span>,
+  <span class="hljs-string">"coordinates"</span>: {
+    <span class="hljs-string">"@container"</span>: <span class="hljs-string">"@list"</span>,
+    <span class="hljs-string">"@id"</span>: <span class="hljs-string">"geojson:coordinates"</span>
+      }
+     }
+  ],
+  <span class="hljs-string">"@type"</span>: <span class="hljs-string">"LandmarksOrHistoricalBuildings"</span>,
+   <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://www.ldproxy.net/bag/inspireadressen/inspireadressen.3329155"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Anne Frank's House"</span>,
+  <span class="hljs-string">"description"</span>: <span class="hljs-string">"Museum house where Anne Frank &amp; her family hid from the Nazis in a secret annex, during WWII."</span>,
+  <span class="hljs-string">"location"</span>: {
+    <span class="hljs-string">"@type"</span>: <span class="hljs-string">"Place"</span>,  
+    <span class="hljs-string">"address"</span>: {
+      <span class="hljs-string">"@type"</span>: <span class="hljs-string">"PostalAddress"</span>,
+      <span class="hljs-string">"streetAddress"</span>: <span class="hljs-string">"Prinsengracht 267"</span>,
+      <span class="hljs-string">"addressLocality"</span>: <span class="hljs-string">"Amsterdam"</span>,
+      <span class="hljs-string">"postalCode"</span>: <span class="hljs-string">"1016GV"</span>
+    },
+    <span class="hljs-string">"geo"</span>: {
+      <span class="hljs-string">"@type"</span>: <span class="hljs-string">"GeoShape"</span>,
+      <span class="hljs-string">"polygon"</span>: <span class="hljs-string">"52.375108,4.884235 52.375153,4.884276 52.375159,4.884257 52.375254,4.883981 52.375109,4.883850 52.375075,4.883819 52.374979,4.884104 52.374965,4.884143 52.375035,4.884207 52.375016,4.884263 52.374996,4.884320 52.374926,4.884255 52.374901,4.884329 52.375034,4.884451 52.375108,4.884235"</span>
+    }
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    </code></pre>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section id="keuze-aspecten"><h3 id="x4-3-keuze-aspecten"><span class="secno">4.3 </span>Keuze-aspecten</h3><p>De volgende tabel geeft aan hoe HTML scoort op de aspecten die een rol spelen bij de keuze voor een bestandsformaat.</p><table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is het format geospecifiek?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format gebaseerd op algemene ict standaarden?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, HTML is de standaard voor Web pagina's.</td>
+</tr>
+<tr>
+<td>Wordt het format ondersteund in GIS software?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Wanneer we het hebben over HTML voor de uitwisseling van data wordt een dataset (meestal) niet in één webpage gepubliceerd, maar krijgt elk object een eigen pagina. Dit betekent dat verwerking van meer dan één object in een ander systeem (bijvoorbeeld in een GIS of inlezen in een database), lastig is.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format het uitdrukken van schema's, en validatie tegen dat schema?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format meerdere coordinaatsystemen?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Nee, maar voor het gestructureerd opnemen van geometrie / CRSen kunnen annotaties gebruikt worden, deze worden gedefinieerd in een begrippenkader. <a href="https://schema.org/">Schema.org</a> is een gangbare begrippenkader voor HTML annotaties, en ondersteunt alleen WGS-84. Het is niet de enige mogelijkheid, maar het voordeel van Schema.org annotaties is dat zoekmachines makkelijker met deze informatie overweg kunnen.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format 3D?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Nee, maar voor het gestructureerd opnemen van geometrie / CRSen kunnen annotaties vanuit een begrippenkader gebruikt worden. <a href="https://schema.org/">Schema.org</a> is een gangbare begrippenkader, alleen ondersteunt deze geen 3D.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format alle simple features geometrieen?</td>
+<td><span id="tilde">～</span></td>
+<td>Nee, HTML ondersteunt geen geometrietypes vanzelf. Via een begrippenkader zou je een geometrie echter wel op gestructureerde wijze kunnen opnemen. <a href="https://schema.org/">Schema.org</a> ondersteunt het gebruik van coördinaten (zie <a href="https://schema.org/GeoCoordinates">GeoCoordinates</a>) en een beperkt aantal geometrietypen (zie <a href="https://schema.org/GeoShape">GeoShape</a>).</td>
+</tr>
+<tr>
+<td>Ondersteunt het format andere ISO 19107 geometrie types?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format geschikt voor grote volumes?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format geschikt om semantiek aan te koppelen / in uit te drukken?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Het is eenvoudig om gestructureerde data te combineren met tekst en en men kan linken aan begrippenkaders (zie <a href="https://www.w3.org/TR/rdfa-primer/">RDFa Primer</a> voor meer informatie)</td>
+</tr>
+</tbody></table></section></section><section id="geojson" data-format="markdown"><!--OddPage--><h2 id="x5-geojson"><span class="secno">5. </span>GeoJSON</h2><section id="introductie-0"><h3 id="x5-1-introductie"><span class="secno">5.1 </span>Introductie</h3><p>JSON [<cite><a class="bibref" href="#bib-rfc8259">RFC8259</a></cite>] is een codering voor gegevens in een op JavaScript gebaseerd formaat. Vaak wordt JSON als alternatief voor XML gebruikt om gestructureerde gegevens te coderen en uit te wisselen.</p><p>GeoJSON [<cite><a class="bibref" href="#bib-rfc7946">RFC7946</a></cite>] gebruikt JSON om geografische gegevens te coderen. Het is bedoeld om simpele geografische objecten te representeren inclusief hun ruimtelijke en niet-ruimtelijke eigenschappen. GeoJSON ondersteunt de volgende geometrische objecten:
+</p><ul>
+<li>punten: <code>Point</code> en <code>MuliPoint</code></li>
+<li>lijnen: <code>LineString</code> en <code>MultiLineString</code></li>
+<li>vlakken: <code>Polygon</code> en <code>MultiPolygon</code></li>
+<li>multigeometrie: <code>GeometryCollection</code> waarin een mix van de bovenstaande geometrietypen kan voorkomen.
+</li>
+</ul><p>Een GeoJSON object representeert ofwel een losse geometrie, een <code>Geometry</code>; ofwel een enkel geo-object, een <code>Feature</code>; of een lijst van geo-objecten, een <code>FeatureCollection</code> met daarin meerdere features. Elk <code>Feature</code> bevat een <code>geometry</code> eigenschap waarin de geometrie is opgenomen; en een <code>properties</code> eigenschap waarin de niet-geometrische eigenschappen staan.
+</p><p>GeoJSON is ontstaan als informele community standaard, opgesteld in een internet werkgroep. Inmiddels is het een <a href="https://www.ietf.org/">IETF</a> standaard. Ondersteuning voor GeoJSON is er in sommige geografische databases en GIS softwarepakketten, en is breed aanwezig in web mapping libraries en APIs van bijvoorbeeld Google, Yahoo en Twitter.</p><p>GeoJSON is een prima formaat voor de meeste toepassingen - zeker in web toepassingen - bijvoorbeeld om iconen of polygonen bovenop een kaart op het web weer te geven. De browser toont dan een basiskaart, haalt de daar bovenop weer te geven geodata op, en combineert deze met de basiskaart met behulp van een JavaScript library.</p><p>Een voordeel van dit formaat is dat het te lezen is in een tekst editor, in tegenstelling tot GeoPackage bestanden die binair zijn. Dit maakt GeoJSON wat eenvoudiger in gebruik. JSON is heel geschikt voor web toepassingen, bijvoorbeeld voor publicatie van data in een API of voor visualisatie op het web. Omdat JSON gebaseerd is op JavaScript, is het direct te gebruiken in web toepassingen, zonder dat het eerst geparseerd of geconverteerd moet worden. Het heeft weinig overhead waardoor het goed toepasbaar is binnen een API. Er zijn bovendien veel tools beschikbaar om ermee te werken. Deze voordelen maken GeoJSON goed bruikbaar voor niet-geo experts, die JSON vaak al kennen.
+</p><p>GeoJSON schrijft WGS-84 voor; dit maakt het geschikt voor visualisatie op het web. Een nadeel van WGS-84 is de lagere nauwkeurigheid in vergelijking met RD; maar voor veel toepassingen is data met hoge nauwkeurigheid niet nodig. Op het <a href="https://geoforum.nl/">Geoforum</a> wordt er bijvoorbeeld zelden gevraagd om data met hoge nauwkeurigheid. De <a href="https://www.w3.org/TR/sdw-bp/#bp-crs-choice">Spatial Data on the Web Best Practice</a> raadt aan om geodata, zodra je het aanbiedt op het web, in ieder geval altijd in WGS-84 te publiceren, en daarnaast in andere CRS als daar expliciete behoefte aan is. </p><p>De OGC API Features kan in combinatie met zowel GeoJSON als GML worden gebruikt. Dit laatste is alleen nog interessant als er behoefte is aan nauwkeurigere geometrieën of aan bogen of volumes (die in GeoJSON niet worden ondersteund).
+</p></section><section id="voorbeelden-0"><h3 id="x5-2-voorbeelden"><span class="secno">5.2 </span>Voorbeelden</h3><aside class="example ds-selector-tabs" style="overflow-x: hidden;" id="example-3-voorbeelden-van-geometrie-voor-geojson"><div class="marker">
+      <a class="self-link" href="#example-3-voorbeelden-van-geometrie-voor-geojson">Voorbeeld 3</a><span class="example-title">: Voorbeelden van geometrie voor GeoJSON</span>
+    </div><div class="container--tabs"><div class="selectors"><ul class="nav nav-tabs">
+<li class="tabs active"><a href="#geojson-polygoon">GeoJSON (Polygon)</a></li>
+<li class="tabs"><a href="#geojson-3d">GeoJSON (3D)</a></li>
+</ul>
+<div class="tab-content"><p><span>GeoJSON features en collections kunnen eenvoudig gebruikt worden in web toepassingen. Met Leaflet of Mapbox kun je bijvoorbeeld al snel interactieve kaarten ter beschikking stellen. Ook zijn er een meerdere visualisatie en validatie tools beschikbaar (zoals <a href="https://geojsonlint.com/">GeoJSONLint</a> en <a href="https://geojson.io">GeoJSON.io</a>).</span></p>
+<div id="geojson-3d" class="tab-pane"><pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Feature"</span>,
+  <span class="hljs-attr">"geometry"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"MultiPolygon"</span>,
+    <span class="hljs-attr">"coordinates"</span>: [           
+            [
+                [
+                    [<span class="hljs-number">4.884067</span>, <span class="hljs-number">52.375343</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">4.883980</span>, <span class="hljs-number">52.375252</span>, <span class="hljs-number">5</span>],
+                    [<span class="hljs-number">4.884259</span>, <span class="hljs-number">52.375159</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">4.884299</span>, <span class="hljs-number">52.375205</span>, <span class="hljs-number">5</span>],
+                    [<span class="hljs-number">4.884336</span>, <span class="hljs-number">52.375191</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">4.884375</span>,<span class="hljs-number">52.3752393</span>, <span class="hljs-number">5</span>],
+                    [<span class="hljs-number">4.884067</span>, <span class="hljs-number">52.375343</span>, <span class="hljs-number">5</span>]
+                ]
+           ],
+           [
+               [
+                   [<span class="hljs-number">4.884196</span>, <span class="hljs-number">52.375238</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">4.884169</span>, <span class="hljs-number">52.375212</span>, <span class="hljs-number">5</span>], 
+                   [<span class="hljs-number">4.884214</span>, <span class="hljs-number">52.375198</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">4.884238</span>, <span class="hljs-number">52.375223</span>, <span class="hljs-number">5</span>], 
+                   [<span class="hljs-number">4.884196</span>, <span class="hljs-number">52.375238</span>, <span class="hljs-number">5</span>]
+               ]
+           ]
+         ]
+  },
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Anne Frank's House"</span>
+  }
+}
+      </code></pre>
+</div>
+<div id="geojson-polygoon" class="tab-pane active"><p>(<em>Bron: Spatial Data on the Web Best Practice, <a href="https://www.w3.org/TR/sdw-bp/#ex-crs-geojson">Coordinates encoded using GeoJSON</a></em>)</p>
+<pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Feature"</span>,
+  <span class="hljs-attr">"geometry"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Polygon"</span>,
+    <span class="hljs-attr">"coordinates"</span>: [
+      [ [<span class="hljs-number">4.884235</span>, <span class="hljs-number">52.375108</span>], [<span class="hljs-number">4.884276</span>, <span class="hljs-number">52.375153</span>], 
+        [<span class="hljs-number">4.884257</span>, <span class="hljs-number">52.375159</span>], [<span class="hljs-number">4.883981</span>, <span class="hljs-number">52.375254</span>], 
+        [<span class="hljs-number">4.883850</span>, <span class="hljs-number">52.375109</span>], [<span class="hljs-number">4.883819</span>, <span class="hljs-number">52.375075</span>], 
+        [<span class="hljs-number">4.884104</span>, <span class="hljs-number">52.374979</span>], [<span class="hljs-number">4.884143</span>, <span class="hljs-number">52.374965</span>], 
+        [<span class="hljs-number">4.884207</span>, <span class="hljs-number">52.375035</span>], [<span class="hljs-number">4.884263</span>, <span class="hljs-number">52.375016</span>], 
+        [<span class="hljs-number">4.884320</span>, <span class="hljs-number">52.374996</span>], [<span class="hljs-number">4.884255</span>, <span class="hljs-number">52.374926</span>], 
+        [<span class="hljs-number">4.884329</span>, <span class="hljs-number">52.374901</span>], [<span class="hljs-number">4.884451</span>, <span class="hljs-number">52.375034</span>], 
+        [<span class="hljs-number">4.884235</span>, <span class="hljs-number">52.375108</span>] ]
+      ]
+  },
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Anne Frank's House"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Museum house where Anne Frank &amp; her family hid from the Nazis in a secret annex, during WWII."</span>
+  }
+}
+      </code></pre>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section id="keuze-aspecten-0"><h3 id="x5-3-keuze-aspecten"><span class="secno">5.3 </span>Keuze-aspecten</h3><p>De volgende tabel geeft aan hoe GeoJSON scoort op de aspecten die een rol spelen bij de keuze voor een bestandsformaat.</p><table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is het format geospecifiek?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format gebaseerd op algemene ict standaarden?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Gebaseerd op JSON (Javascript Object Notation), waardoor het heel eenvoudig is om er native (i.e. zonder te hoeven parsen of converteren) mee te werken in web browsers en veel programmeertalen (in tegenstelling tot XML/GML). Praktische voordelen: het is voor mensen te lezen in een tekst editor, er zijn veel tools en bibliotheken voor beschikbaar en er bestaat een grote community die ermee werkt.</td>
+</tr>
+<tr>
+<td>Wordt het format ondersteund in GIS software?</td>
+<td><span id="tilde">～</span></td>
+<td>GeoJSON wordt deels ondersteund, niet in alle pakketten. In QGIS wordt GeoJSON goed ondersteund, vanuit ArcGIS is vorafgaand een convertie nodig (hier is wel een geoprocessing tool voor ontwikkeld).</td>
+</tr>
+<tr>
+<td>Ondersteunt het format het uitdrukken van schema's, en validatie tegen dat schema?</td>
+<td><span id="vinkje">✓</span></td>
+<td>JSON heeft een eigen schema formaat, <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">JSON Schema</a>. Daarnaast zijn er YAML definities beschikbaar.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format meerdere coordinaatsystemen?</td>
+<td><span id="tilde">～</span></td>
+<td>Formeel niet, hoewel er een loophole in de standaard zit en dit in de praktijk wel door tooling ondersteund wordt: als er door alle aanbiedende en gebruikende partijen een afspraak over is, kan GeoJSON in combinatie met een andere CRS gebruikt worden.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format 3D?</td>
+<td><span id="tilde">～</span></td>
+<td>Hoewel GeoJSON 3D geometrieën niet direct ondersteunt, is het wel mogelijk om een hoogtecoordinaat (altitude) op te nemen bij punten, lijnen en vlakken. Hiermee zou je 2D polygonen kunnen optrekken naar 3D.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format alle simple features geometrieën?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, GeoJSON ondersteunt alle 7 geometrietypes vanuit Simple Features. <!-- Echter maakt het format niet gebruik van een feature model - dit betekent dat de features verschillende hoeveelheden (en types) attributen kunnen bezitten, waardoor uitwisseling van data conform het General Feature Model lastig is. --></td>
+</tr>
+<tr>
+<td>Ondersteunt het format andere ISO 19107 geometrie types?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Geen ondersteuning voor bogen, volumes of andere niet-simpele geometrietypen.</td>
+</tr>
+<tr>
+<td>Is het format geschikt voor grote volumes?</td>
+<td><span id="tilde">～</span></td>
+<td>Het zit een beetje tussen andere formaten in, maar is beter geschikt voor kleine volumes.</td>
+</tr>
+<tr>
+<td>Is het format geschikt om semantiek aan te koppelen / in uit te drukken?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Het is mogelijk om GeoJSON met linked data te combineren door gebruik te maken van <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1</a>.</td>
+</tr>
+</tbody></table></section><section id="afspraken"><h3 id="x5-4-afspraken"><span class="secno">5.4 </span>Afspraken</h3><section id="x3d-geometrie"><h4 id="x5-4-1-3d-geometrie"><span class="secno">5.4.1 </span>3D geometrie</h4><p>Uit de GeoJSON standaard:</p><blockquote>
+<p>A position is an array of numbers.  There MUST be two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers.  Altitude or elevation MAY be included as an optional third element.</p>
+</blockquote><blockquote>
+<p>An OPTIONAL third-position element SHALL be the height in meters above or below the WGS 84 reference ellipsoid. </p>
+</blockquote><p>Hierboven wordt een voorbeeld gegeven van een polygoon waarbij de 3D conventie is toegepast. Het representeren van 3D geometrieën beperkt zich daarom tot gevallen waarbij het voldoende is om extrusies te gebruiken van 2D geometrieën (2.5D). Daarnaast wordt er in de praktijk wel eens afgeweken van deze conventie - zo scrhijft <a href="https://docs.mapbox.com/mapbox-gl-js/api/">MapBox GL </a> voor om een property  <code>height</code> op te nemen in GeoJSON, voor het weergeven van 3D geometrieën in interactieve kaarten.
+</p></section><section id="naamgeving"><h4 id="x5-4-2-naamgeving"><span class="secno">5.4.2 </span>Naamgeving</h4><p>GeoJSON heeft geen specifieke naamgevingsconventies, echter kunnen de conventies van JSON gebruikt worden:</p><ul>
+<li><p>Attribuut namen dienen betekenisvol te zijn, met duidelijke semantiek.</p>
+</li>
+<li><p>Attribuut namen dienen camel-cased (ie, wordWordWord) ASCII strings te zijn.</p>
+</li>
+<li><p>Het eerste teken dien een letter, een underscore (_) of een dollarteken ($) te zijn. Navolgende tekens kunnen letters, cijfers, underscore of dollartekens zijn. Gereserveerde JavaScript keywords moeten vermeden worden.
+Bron: <a href="https://google.github.io/styleguide/jsoncstyleguide.xml">https://google.github.io/styleguide/jsoncstyleguide.xml</a></p>
+</li>
+<li><p>Member namen dienen camel-cased te zijn.</p>
+</li>
+<li><p>Member namen dienen te beginnen en te eindigen met “a-z” (U+0061 tot U+007A)</p>
+</li>
+<li><p>Member namen dienen alleen ASCII alphanumerieke tekens te zijn (i.e., “a-z”, “A-Z”, and “0-9”)
+Bron: <a href="https://jsonapi.org/recommendations/">https://jsonapi.org/recommendations/</a></p>
+</li>
+</ul></section><section id="aantal-decimalen"><h4 id="x5-4-3-aantal-decimalen"><span class="secno">5.4.3 </span>Aantal decimalen</h4><p>Uit de GeoJSON standaard:
+</p><blockquote>
+<p>The size of a GeoJSON text in bytes is a major interoperability consideration, and precision of coordinate values has a large impact on the size of texts. A GeoJSON text containing many detailed Polygons can be inflated almost by a factor of two by increasing coordinate precision from 6 to 15 decimal places.  For geographic coordinates with units of degrees, 6 decimal places (a default common in, e.g., sprintf) amounts to about 10 centimeters, a precision well within that of current GPS systems.  Implementations should consider the cost of using a greater precision than necessary.</p>
+</blockquote><blockquote>
+<p>Furthermore, the WGS 84 datum is a relatively coarse approximation of the geoid, with the height varying by up to 5 m (but generally between 2 and 3 meters) higher or lower relative to a surface parallel to Earth's mean sea level.</p>
+</blockquote></section><section id="gebruik-in-uitwisseling"><h4 id="x5-4-4-gebruik-in-uitwisseling"><span class="secno">5.4.4 </span>Gebruik in uitwisseling</h4><p>De OGC heeft een set templates voor YAML schema’s die horen bij de OGC Feature API standaard, waarin ook GeoJSON geometrie beschreven is. YAML is een serialisatie format waarmee men OpenAPI definities vastlegt. Deze definities worden gebruikt om APIs op een eenduidige manier de beschrijven en te documenteren, zodat gebruikers begrijpen hoe ze de APIs kunnen bevragen. De templates van OGC zijn handig te gebruiken in API's waarmee geo-objecten gepubliceerd worden. De templates voor het definiëren van de schema's voor GeoJSON bevragingen zijn te vinden op <a href="http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureCollectionGeoJSON.yaml">featureCollectionGeoJSON.yaml</a> en <a href="http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureGeoJSON.yaml">featureGeoJSON.yaml</a>. Uiteraard bevatten deze templates alleen de generieke informatie die van toepassing is voor het definiëren van de geometrie. Specifieke informatie over typeringen en attributen zullen aanbieders zelf moeten toevoegen.
+</p></section><section id="uris-in-geojson"><h4 id="x5-4-5-uris-in-geojson"><span class="secno">5.4.5 </span>URIs in GeoJSON</h4><p>JSON (en daarbij GeoJSON) staat maar een beperkt aantal primitieve datatypes toe. Om deze reden worden URIs geregistreerd als strings. Om de URIs alsnog te kunnen interpreteren zijn conventies nodig. Echter is het vanuit GeoJSON niet mogelijk om zulke conventies vast te leggen. Daarom is het belangrijk om informatie over je GeoJSON bestanden (bijvoorbeeld: details over object types, definities, etc) te registreren in de documentatie. Dit wordt verder beschreven in <a href="https://www.w3.org/TR/sdw-bp/#entity-level-links">[Spatial Data on the Web Best Practice] 10</a>).</p></section></section></section><section id="geopackage" data-format="markdown"><!--OddPage--><h2 id="x6-geopackage"><span class="secno">6. </span>GeoPackage</h2><section id="introductie-1"><h3 id="x6-1-introductie"><span class="secno">6.1 </span>Introductie</h3><p>GeoPackage is een <a href="https://www.opengeospatial.org">OGC</a> standaard voor de uitwisseling van geodata die gebaseerd is op <a href="https://www.sqlite.org/">SQLLite</a>. Het wordt wel gezien als vervanger van Shapefiles. GeoPackage is in 2019 <a href="https://www.geonovum.nl/over-geonovum/actueel/geopackage-aanmelden-voor-pas-toe-of-leg-uit-lijst">aangemeld voor de pas-toe-of-leg-uit lijst</a> (PTOLU) en is inmiddels aan die lijst toegevoegd. Dit format vervangt GML op de PTOLU niet, maar bij het aanbieden van een download moeten Nederlandse overheidsorganisaties naast GML ook GeoPackage kunnen leveren.</p><p>GeoPackage is een “licht” formaat om geografische informatie uit te wisselen. Veel geografische software ondersteunt de GeoPackage standaard al, waaronder ook een paar populaire pakketten die moeite hebben met de verwerking van GML. GeoPackage is een binair formaat, en dus niet in een tekst editor te openen. Het ondersteunt een subset van de geometrie types zoals gedefinieerd in [<cite><a class="bibref" href="#bib-iso-13249-3">iso-13249-3</a></cite>] - dit is een uitbreiding op het Simple Features data model van [<cite><a class="bibref" href="#bib-iso-19125-1-2004">iso-19125-1-2004</a></cite>], welke het opnemen van circulaire interpolaties mogelijk maakt. In de GeoPackage documentatie wordt een overzicht gegeven van de <a href="http://www.geopackage.org/spec/#geometry_types">ondersteunde geometrie types</a>.
+</p><p>Moderne datasets zoals de Basisregistratie Grootschalige Topografie zijn zó gedetailleerd, dat bestandsomvang een probleem gaat vormen bij het importeren van data in softwaresystemen. GeoPackage is een geschikt formaat voor het uitwisselen van geodatasets met een grote omvang, bijvoorbeeld wanneer gebruikers een grote dataset of subset daarvan willen downloaden om in hun lokale (GIS) systeem te gebruiken voor ruimtelijke analyses. </p><p>Daarnaast biedt GeoPackage ook een voordeel voor nieuwe gebruikers. Doordat GeoPackage gebaseerd is op generiekere ICT-oplossingen als SQLite, wordt geografische informatie beter toegankelijk voor gebruikers buiten het geo-domein.
+</p><p>Veel uitwisseling in het geo-informatiedomein verloopt nu in ketens van bronhouders naar een Landelijke Voorziening, van die Landelijke Voorziening naar een service provider en van de service provider naar een gebruiker. In de levering van bronhouder naar landelijke voorziening is het van belang dat het uitwisselformaat validatie mogelijk maakt. Zo kan je controleren of de informatiemodellen correct zijn toegepast, of de geometrie klopt etc. Daar is GML het meest geschikt voor. In de stap van serviceprovider naar gebruiker is validatie minder van belang dan zaken als performance, bestandsgrootte en ondersteuning in software. In die stap is GeoPackage, net als GeoJSON, een goed formaat om naast GML aan te bieden.</p><p>Een ander voordeel van GeoPackage is dat het formaat ook functionaliteit bevat voor visualisatie (in een extensie van de standaard), schema, tiling, metadata etc. Al deze informatie kun je in één GeoPackage bestand bundelen. De overstap van shapefiles naar GeoPackage is niet lastig. Je kan er ook niet-geo data in opslaan. De ETL straat van organisaties kan door gebruik van GeoPackage korter worden; er is goede ondersteuning voor GeoPackage in veel GIS software.
+</p><p>Bestanden worden soms zelfs in GeoPackage wel erg groot, bijvoorbeeld de landelijke set van BGT wegdelen was in een test tijdens de WFS-3 werkweek meer dan 60GB.  </p><p>GeoPackage werkt doorgaans met platte datastructuren, de vaak complexe informatiemodellen van bijvoorbeeld basisregistraties moeten dus worden 'platgeslagen' zoals beschreven in <a href="https://docs.geostandaarden.nl/nen3610/gimeg#sf2tosf0">de basisregels voor transformatie van een SF2 naar een SF0 model</a> [<cite><a class="bibref" href="#bib-gimeg">gimeg</a></cite>].</p><p>GeoPackage werkt standaard met numerieke ID's. Dit geeft problemen met ID's van basisregistraties, die niet altijd numeriek zijn. Tijdens de WFS-3 werkweek bleek dat de applicatie moest worden aangepast om GeoPackage bestanden te kunnen doorzoeken op basis van het lokaal ID van basisregistraties in plaats van het standaard, numerieke ID.</p></section><section id="keuze-aspecten-1"><h3 id="x6-2-keuze-aspecten"><span class="secno">6.2 </span>Keuze-aspecten</h3><p>De volgende tabel geeft aan hoe GeoPackage scoort op de aspecten die een rol spelen bij de keuze voor een bestandsformaat.</p><table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is het format geospecifiek?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format gebaseerd op algemene ict standaarden?</td>
+<td><span id="vinkje">✓</span></td>
+<td>GeoPackage is gebaseerd op SQLite, en is daardoor toegankelijk voor een grotere doelgroep datagebruikers</td>
+</tr>
+<tr>
+<td>Wordt het format ondersteund in GIS software?</td>
+<td><span id="vinkje">✓</span></td>
+<td>In veelgebruikte GIS software (QGIS en ArcGIS pro) werkt het importeren en exporteren van GeoPackage prima - in QGIS is ondersteuning al beschikbaar sinds versie 2.10.1.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format het uitdrukken van schema's, en validatie tegen dat schema?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Validatie wordt niet ondersteund. Een praktische oplossing hiervoor is om voor validatie het bestand te converteren naar GML en dat te valideren. Een GeoPackage bestand bevat genoeg informatie om dat mogelijk te maken.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format meerdere coordinaatsystemen?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format 3D?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Volumes worden niet ondersteund, wel bestaan er een aantal <a href="https://www.geopackage.org/extensions.html">Community extensions voor GeoPackage</a>, waaronder een voor 3D - echter zijn dit geen officiële GeoPackage extensies</td>
+</tr>
+<tr>
+<td>Ondersteunt het format alle simple features geometrieen?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format andere ISO 19107 geometrie types?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format geschikt voor grote volumes?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format geschikt om semantiek aan te koppelen / in uit te drukken?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="afspraken-0"><h3 id="x6-3-afspraken"><span class="secno">6.3 </span>Afspraken</h3><section id="naamgeving-0"><h4 id="x6-3-1-naamgeving"><span class="secno">6.3.1 </span>Naamgeving</h4><p>Voor GeoPackage wordt het gebruik van snake_case aangeraden. Om de interoperabiliteit te stimuleren kunnen de database identifiers (tabel namen, kolom namen, etc.) met lowercase tekens worden opgenomen. Het is in ieder geval handig om alleen lowercase tekens, cijfers en underscores(_) te gebruiken.
+</p></section></section></section><section id="gml" data-format="markdown"><!--OddPage--><h2 id="x7-geography-markup-language-gml"><span class="secno">7. </span>Geography Markup Language (GML)</h2><section id="introductie-2"><h3 id="x7-1-introductie"><span class="secno">7.1 </span>Introductie</h3><p>Geography Markup Language [<cite><a class="bibref" href="#bib-gml">gml</a></cite>] is een uitwisselingsformaat voor geografische bestanden met een omvangrijke verzameling XML elementen voor het beschrijven van geografische data. Deze standaard is opgenomen in de <a href="https://www.forumstandaardisatie.nl/open-standaarden/geo-standaarden">pas-toe-of-leg-uit lijst van het Forum Standaardisatie</a>. Het definieert XML-codering voor het overbrengen en opslaan van allerlei geo-informatie, zoals geometrie, topografie, coverages en sensordata. GML kan worden gebruikt voor bestandsuitwisseling tussen systemen maar ook binnen webservices zoals WFS.</p><p>GML is een uitgebreide standaard die oplossingen biedt voor uiteenlopende situaties en variaties in het uitwisselen van geo-informatie. Variaties zijn er bijvoorbeeld in geometrietypen, maar ook in complexiteit van datastructuren. Om op verschillende complexiteitsniveaus met GML te werken, heeft het OGC profielen gemaakt. Deze profielen omschrijven elk een subset van de totale GML-set. De standaardprofielen zijn GML Simple Feature Profile level 0, 1 en 2. Hoe hoger het level, hoe meer je ermee kan. Maar ook: hoe complexer en minder generiek het model wordt. Het is daarom altijd van belang voor- en nadelen van het te gebruiken profiel tegen elkaar af te wegen. De Handreiking Geometrie in model en GML beschrijft de <a href="https://docs.geostandaarden.nl/nen3610/gimeg/#inhoud-sf-niveau-s">toegestane geometrieen voor elk profiel</a> in detail.
+</p><p>GML is gestandaardiseerd bij het OGC en, omdat OGC en ISO met elkaar samenwerken, ook gestandaardiseerd als ISO 19136:2007 [<cite><a class="bibref" href="#bib-iso-19136-2007">iso-19136-2007</a></cite>]. Inhoudelijk is dit dezelfde standaard. De ISO variant is opgenomen als nationale standaard in de Pas-toe-of-leg-uit-lijst van het Forum Standaardisatie. In Nederland wordt dus GML 3.2.2 gehanteerd, en GML 3.3 (dit is een uitbreiding op GML 3.2). De diverse onderdelen uit de 3.3 versie zijn modulair toe te passen en backwards compatible met versie 3.2. In Nederland wordt GML 3.1.1 ook nog ondersteund, omdat CityGML 2.0 [<cite><a class="bibref" href="#bib-citygml20">CityGML20</a></cite>] er gebruik van maakt en daarmee het BGT|IMGeo model. Omdat GML 3.2 een zeer uitgebreide standaard is wordt in Nederland met het <a href="https://docs.geostandaarden.nl/nen3610/gimeg/#simple-features-profile-2-sf2">Simple Feature Profile level 2</a> gewerkt. </p><p>GML is een uitgebreide standaard, die veel use cases aan kan:</p><ul>
+<li>Ondersteunt 3D geometrieën, inclusief volumes (solids).</li>
+<li>Ondersteunt bogen (ook in het simple features profiel).</li>
+<li>Zeer uitgebreide mogelijkheden voor validatie.</li>
+<li>Geen beperking wat betreft coordinaatreferentiesystemen.</li>
+</ul><p>Juist de uitgebreidheid van GML geeft problemen bij de toepassing; het is een flinke taak om een goede en volledige implementatie van de standaard te maken. Ook het feit dat GML gebaseerd is op XML is soms een handicap. Tijdens de implementatie kan men tegen de volgende zaken aanlopen:</p><ul>
+<li>Hoewel complexe datastructuren mogelijk zijn in GML, is het in de praktijk, vanwege gebrekkige support hiervoor, vaak toch nodig om de structuur 'plat te slaan' zoals beschreven in <a href="https://docs.geostandaarden.nl/nen3610/gimeg/#sf2tosf0">Basisregels voor transformatie van een SF2 naar een SF0 model</a>.
+</li>
+<li>De support voor GML in (GIS en andere) software is beperkt. Meestal is een conversiestraat (ETL) nodig om GML in te kunnen lezen.</li>
+<li>Bij grote datavolumes niet geschikt vanwege de verbositeit van XML.</li>
+<li>Minder geschikt voor publicatie op het web vanwege de complexiteit van XML.</li>
+</ul></section><section id="voorbeelden-1"><h3 id="x7-2-voorbeelden"><span class="secno">7.2 </span>Voorbeelden</h3><aside class="example ds-selector-tabs" style="overflow-x: hidden;" id="example-4-voorbeelden-van-geometrie-voor-geojson"><div class="marker">
+      <a class="self-link" href="#example-4-voorbeelden-van-geometrie-voor-geojson">Voorbeeld 4</a><span class="example-title">: Voorbeelden van geometrie voor GeoJSON</span>
+    </div><div class="container--tabs"><div class="selectors"><ul class="nav nav-tabs">
+<li class="tabs active"><a href="#gml-polygoon">GML - Voorbeeld 1</a></li>
+<li class="tabs"><a href="#gml-punt">GML - Voorbeeld 2</a></li>
+</ul>
+<div class="tab-content"><div id="gml-punt" class="tab-pane"><p>Dit voorbeeld toont een fragment GML data in 3D, conform het [<cite><a class="bibref" href="#bib-citygml20">CityGML20</a></cite>] model.
+</p><pre aria-busy="false"><code class="hljs xml">(Bron: Open datasets created with 3dfier)
+<span class="hljs-tag">&lt;<span class="hljs-name">CityModel</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.opengis.net/citygml/2.0"</span>
+<span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="hljs-attr">xmlns:gml</span>=<span class="hljs-string">"http://www.opengis.net/gml"</span>
+<span class="hljs-attr">xmlns:wtr</span>=<span class="hljs-string">"http://www.opengis.net/citygml/waterbody/2.0"</span>
+<span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.opengis.net/citygml/2.0 ./CityGML_2.0/CityGML.xsd"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">gml:name</span>&gt;</span>my 3dfied map<span class="hljs-tag">&lt;/<span class="hljs-name">gml:name</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">gml:Envelope</span> <span class="hljs-attr">srsDimension</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">srsName</span>=<span class="hljs-string">"urn:ogc:def:crs:EPSG::7415"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">gml:lowerCorner</span>&gt;</span>84122.824 446278.566 0<span class="hljs-tag">&lt;/<span class="hljs-name">gml:lowerCorner</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">gml:upperCorner</span>&gt;</span>85999.614 447862.988 100<span class="hljs-tag">&lt;/<span class="hljs-name">gml:upperCorner</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Envelope</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">cityObjectMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">wtr:WaterBody</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"be551d510-0324-11e6-b420-2bdcc4ab5d7f"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wtr:lod1MultiSurface</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">gml:MultiSurface</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:pos</span>&gt;</span>85530.000 446588.709 -0.010<span class="hljs-tag">&lt;/<span class="hljs-name">gml:pos</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:pos</span>&gt;</span>85531.832 446605.616 -0.010<span class="hljs-tag">&lt;/<span class="hljs-name">gml:pos</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:pos</span>&gt;</span>85478.851 446567.507 -0.010<span class="hljs-tag">&lt;/<span class="hljs-name">gml:pos</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">gml:pos</span>&gt;</span>85530.000 446588.709 -0.010<span class="hljs-tag">&lt;/<span class="hljs-name">gml:pos</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:surfaceMember</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">gml:MultiSurface</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">wtr:lod1MultiSurface</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">wtr:WaterBody</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">cityObjectMember</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">CityModel</span>&gt;</span>
+</code></pre>
+</div>
+<div id="gml-polygoon" class="tab-pane active"><p>Een fragment GML voor het voorbeeld uit de andere secties (<a href="#HTML">HTML</a>, <a href="#GeoJSON">GeoJSON</a>, <a href="#RDF">RDF</a>), conform model 'ex'.
+    </p><pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">FeatureCollection</span> <span class="hljs-attr">xmlns:gml</span>=<span class="hljs-string">"http://www.opengis.net/gml/3.2"</span>
+<span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.geonovum.nl/IMVoorbeeld"</span>
+<span class="hljs-attr">xmlns:ex</span>=<span class="hljs-string">"http://www.example.com/ex"</span>
+<span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+  &lt;gml:EnvelopesrsDimension="2"srsName="urn:opengis:def:crs:EPSG::4326"&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">gml:lowerCorner</span>&gt;</span>4.884235 52.375108<span class="hljs-tag">&lt;/<span class="hljs-name">gml:lowerCorner</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">gml:upperCorner</span>&gt;</span>4.884451 52.375034 4.884235<span class="hljs-tag">&lt;/<span class="hljs-name">gml:upperCorner</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Envelope</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">gml:boundedBy</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">featureMember</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ex:Gebouw</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"H10"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">ex:naam</span>&gt;</span>Anne Frank's Huis<span class="hljs-tag">&lt;/<span class="hljs-name">ex:naam</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">ex:geometrie</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span> <span class="hljs-attr">gml:id</span>=<span class="hljs-string">"geom2"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>4.884235 52.375108 4.884276 52.375153 4.884257 52.375159 4.883981 52.375254 4.883850 52.375109 4.883819 52.375075 4.884104 52.374979 4.884143 52.374965 4.884207 52.375035 4.884263 52.375016 4.884320 52.374996 4.884255 52.374926 4.884329 52.374901 4.884451 52.375034 4.884235 52.375108<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-name">ex:geometrie</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ex:Gebouw</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">featureMember</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">FeatureCollection</span>&gt;</span>
+      </code></pre>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section id="keuze-aspecten-2"><h3 id="x7-3-keuze-aspecten"><span class="secno">7.3 </span>Keuze-aspecten</h3><p>De volgende tabel geeft aan hoe GML scoort op de aspecten die een rol spelen bij de keuze voor een bestandsformaat.</p><table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is het format geospecifiek?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, maar de uitgebreidheid van GML geeft problemen bij de toepassing; het is een flinke taak om een goede en volledige implementatie van de standaard te maken.</td>
+</tr>
+<tr>
+<td>Is het format gebaseerd op algemene ict standaarden?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, GML is gebaseerd op XML (wat ook een nadeel kan zijn vanwege de complexiteit van XML)</td>
+</tr>
+<tr>
+<td>Wordt het format ondersteund in GIS software?</td>
+<td><span id="tilde">～</span></td>
+<td>De support voor GML in (GIS en andere) software is beperkt. Over het algemeen is een conversiestraat (ETL) nodig om GML in te kunnen lezen.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format het uitdrukken van schema's, en validatie tegen dat schema?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Er zijn zeer uitgebreide mogelijkheden voor validatie vanwege de XML basis.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format meerdere coordinaatsystemen?</td>
+<td><span id="vinkje">✓</span></td>
+<td>In GML kan de definitie van een CRS via een URI worden meegegeven, als waarde van het attribuut <code>srsName</code>. Er is dus geen beperking wat betreft coordinaatreferentiesystemen.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format 3D?</td>
+<td><span id="vinkje">✓</span></td>
+<td>GML ondersteunt 3D geometrieën, inclusief volumes (solids).</td>
+</tr>
+<tr>
+<td>Ondersteunt het format alle simple features geometrieen?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Het format ondersteunt alle simple features geometrieën, inclusief bogen.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format andere ISO 19107 geometrie types?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Is het format geschikt voor grote volumes?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Bij grote datavolumes niet geschikt vanwege de verbositeit van XML.</td>
+</tr>
+<tr>
+<td>Is het format geschikt om semantiek aan te koppelen / in uit te drukken?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Semantiek kan op impliciete wijze worden toegevoegd door het schema af te leiden uit een informatiemodel en eventueel door in annotaties te linken naar een begrippenkader of tekstuele definities in het schema op te nemen.</td>
+</tr>
+</tbody></table></section><section id="afspraken-1"><h3 id="x7-4-afspraken"><span class="secno">7.4 </span>Afspraken</h3><section id="naamgeving-1"><h4 id="x7-4-1-naamgeving"><span class="secno">7.4.1 </span>Naamgeving</h4><p>Voor XML elementen geldt dat de naam moet beginnen met een letter of underscore, en dat deze naam nooit mag beginnen met 'xml'. Element namen zijn hoofdlettergevoelig en mogen geen spaties bevatten. Voor GML geldt daarnaast dat UpperCamelCase wordt gebruikt voor XML element namen die betrekking hebben op Objects of Feature Types, en lowerCamelCase voor XML element namen die attributen of relaties representeren.  Verder zijn er ook conventies voor GML schema's met als doel de leesbaarheid van deze documenten te verbeteren:
+</p><ul>
+<li>abstracte elementen hebben een prefix 'Abstract' (voor Objects) of 'abstract' (voor attributen) gekoppeld aan hun naam.</li>
+<li>de namen van XML Schema complex types zijn in UpperCamelCase, en eindigen op het woord 'Type'. Daarnaast begint een abstracte XML Schema complex type met de prefix 'Abstract'.</li>
+</ul></section></section></section><section id="rdf" data-format="markdown"><!--OddPage--><h2 id="x8-rdf"><span class="secno">8. </span>RDF</h2><section id="introductie-3"><h3 id="x8-1-introductie"><span class="secno">8.1 </span>Introductie</h3><p>RDF wordt steeds meer gebruikt als uitwissel- en publicatiemechanisme voor geo-informatie op basis van Linked Data. RDF vormt de basis voor een set standaarden die bijdragen aan het gebruik en de publicatie van Linked Data. De afkorting RDF [<cite><a class="bibref" href="#bib-rdf11-concepts">rdf11-concepts</a></cite>] staat voor Resource Description Framework en is een standaard voor het representeren van informatie op het web als linked data, zodanig dat deze beschikbaar gemaakt kunnen worden in machineleesbare vorm op het web, niet als download maar als web pagina's, en daardoor ook beter bruikbaar zijn over sectorale grenzen heen. Het is dus niet een encoding maar een manier om hergebruik van data bij de bron te stimuleren, door koppelingen via persistente URI’s te ondersteunen. Stukjes data uit verschillende bronnen kunnen dan op een eenduidige manier met elkaar worden verbonden - zo'n koppeling wordt ook wel een 'triple' genoemd. Om het visueler te maken: de structuur die onstaat bij het koppelen van triples is dat van een graaf, waarbij de lijnen relaties beschrijven tussen twee dingen (waarvan minstens één een URI heeft).
+</p><p>Er zijn meerdere technische RDF encodings zoals bijvoorbeeld RDF-XML [<cite><a class="bibref" href="#bib-rdf-syntax-grammar">rdf-syntax-grammar</a></cite>] en [<cite><a class="bibref" href="#bib-turtle">turtle</a></cite>]. Naast deze encodings is ook mogelijk om RDF triples op andere manieren uit te drukken - zoals via JSON-LD of RDFa, bijvoorbeeld. RDFa wordt gebruikt om HTML uit te breiden met annotaties, welke ook als RDF data kan worden geïnterpreteerd. Met JSON-LD kan JSON worden omgezet naar triples middels de toevoeging van een <code>@context</code> tag (waarmee een JSON-LD parser de JSON als Linked Data kan interpreteren). Wanneer een gebruiker data uit verschillende bronnen wil afnemen en combineren kan dit van nut zijn - alle informatie is dan concreet gedefinieerd en vindbaar. En als dit niet nodig is, kan de <code>@context</code> tag genegeerd worden. </p><p>Hoe geometrie in RDF moet worden uitgedrukt is beschreven in vocabulaires. De OGC GeoSPARQL standaard [<cite><a class="bibref" href="#bib-geosparql">geosparql</a></cite>], zoals de naam al doet vermoeden, specificeert een extensie op de SPARQL query language, zodat gebruikers geodata in RDF kunnen bevragen. Het bevat ook een beknopte vocabulaire voor geo-objecten en geometrie.
+</p></section><section id="voorbeelden-2"><h3 id="x8-2-voorbeelden"><span class="secno">8.2 </span>Voorbeelden</h3><aside class="example ds-selector-tabs" style="overflow-x: hidden;" id="example-5-voorbeelden-van-geometrie-voor-html"><div class="marker">
+      <a class="self-link" href="#example-5-voorbeelden-van-geometrie-voor-html">Voorbeeld 5</a><span class="example-title">: Voorbeelden van geometrie voor HTML</span>
+    </div><div class="container--tabs"><div class="selectors"><ul class="nav nav-tabs">
+<li class="tabs active"><a href="#rdf-turtle">RDF in Turtle (GeoSPARQL)</a></li>
+<li class="tabs"><a href="#rdf-jsonld">RDF in JSON-LD (GeoSPARQL)</a></li>
+<li class="tabs"><a href="#rdf-visual">visualisatie</a></li>
+</ul>
+<div class="tab-content"><div id="rdf-jsonld" class="tab-pane"><p><span>Voorbeeld van een JSON-LD fragment met geometrie conform het GeoSPARQL vocabulair - in zowel WKT als GML, beide worden ondersteund in GeoSPARQL 1.0.
+</span></p>
+<pre aria-busy="false"><code class="hljs xml">{
+  "@context" : {
+    "@vocab" : "http://schema.org/",
+    "geosparql": "http://www.opengis.net/ont/geosparql#"
+  },
+    "@type" : "Place",
+      "@id" : "http://www.ldproxy.net/bag/inspireadressen/inspireadressen.3329155",
+    "name" : "Anne Frank's House",
+    "geosparql:hasGeometry" : {
+      "@type": "http://www.opengis.net/ont/sf#Polygon",
+      "geosparql:asWKT": {
+          "@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+          "@value": "POLYGON((52.375108 4.884235, 52.375153 4.884276, 52.375159 4.884257, 52.375254 4.883981, 52.375109 4.883850, 52.375075 4.883819, 52.374979 4.884104, 52.374965 4.884143, 52.375035 4.884207, 52.375016 4.884263, 52.374996 4.884320, 52.374926 4.884255, 52.374901 4.884329, 52.375034 4.884451, 52.375108 4.884235))"
+          },
+      "geo:asGML": {
+          "@type": "http://www.opengis.net/ont/geosparql#gmlLiteral",
+          "@value": "
+            <span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span>&gt;</span>
+               <span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+                     <span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>
+                        52.375108 4.884235, 52.375153 4.884276, 52.375159 4.884257, 52.375254 4.883981, 52.375109 4.883850, 52.375075 4.883819, 52.374979 4.884104, 52.374965 4.884143, 52.375035 4.884207, 52.375016 4.884263, 52.374996 4.884320, 52.374926 4.884255, 52.374901 4.884329, 52.375034 4.884451, 52.375108 4.884235
+                      <span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span>
+               <span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>"
+          },
+      "geosparql:crs": {
+            "@id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+        }  
+  },
+  "description": "Museum house where Anne Frank &amp; her family hid from the Nazis in a secret annex, during WWII.",
+    "address" : {
+      "@type" : "PostalAddress",
+      "streetAddress" : "Prinsengracht 267",
+      "addressLocality" : "Amsterdam",
+      "postalCode" : "1016GV"
+    }          
+}
+</code></pre>
+</div>
+<div id="rdf-visual" class="tab-pane"><p><span>De grafische representatie van de data uit de gebruikte voorbeelden. Voor een interactieve versie kan de data bekeken worden in <a href="https://tinyurl.com/p2t3pnt2">de JSON-LD playground</a></span></p>
+<div class="figure" style="float:left"><p><img src="media/rdf-ex.png" width="500"></p>
+</div>
+</div>
+<div id="rdf-turtle" class="tab-pane active"><p><span>Dezelfde data zoals getoond in  <a href="rdf-jsonld">het JSON-LD voorbeeld</a>, maar dan volgens het veelgebruikte Terse RDF Triple Language (Turtle) formaat.</span></p>
+<pre aria-busy="false"><code class="hljs xml">@prefix schema: &lt;http://schema.org/&gt; .
+@prefix geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+&lt;http://www.ldproxy.net/bag/inspireadressen/inspireadressen.3329155&gt;
+  a schema:Place ;
+  schema:address [
+    a schema:PostalAddress ;
+    schema:addressLocality "Amsterdam"^^xsd:string ;
+    schema:postalCode "1016GV"^^xsd:string ;
+    schema:streetAddress "Prinsengracht 267"^^xsd:string
+  ] ;
+  schema:description "Museum house where Anne Frank &amp; her family hid from the Nazis in a secret annex, during WWII."^^xsd:string ;
+  geosparql:hasGeometry [ a &lt;http://www.opengis.net/ont/sf#Polygon&gt; ;
+            geosparql:asGML "<span class="hljs-tag">&lt;<span class="hljs-name">gml:Polygon</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">gml:exterior</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">gml:LinearRing</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">gml:posList</span>&gt;</span>52.375108 4.884235, 52.375153 4.884276, 52.375159 4.884257, 52.375254 4.883981, 52.375109 4.883850, 52.375075 4.883819, 52.374979 4.884104, 52.374965 4.884143, 52.375035 4.884207, 52.375016 4.884263, 52.374996 4.884320, 52.374926 4.884255, 52.374901 4.884329, 52.375034 4.884451, 52.375108 4.884235<span class="hljs-tag">&lt;/<span class="hljs-name">gml:posList</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gml:LinearRing</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gml:exterior</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gml:Polygon</span>&gt;</span>"^^geosparql:gmlLiteral ;
+            geosparql:asWKT "POLYGON((52.375108 4.884235, 52.375153 4.884276, 52.375159 4.884257, 52.375254 4.883981, 52.375109 4.883850, 52.375075 4.883819, 52.374979 4.884104, 52.374965 4.884143, 52.375035 4.884207, 52.375016 4.884263, 52.374996 4.884320, 52.374926 4.884255, 52.374901 4.884329, 52.375034 4.884451, 52.375108 4.884235))"^^geosparql:wktLiteral ;
+            geosparql:crs &lt;http://www.opengis.net/def/crs/OGC/1.3/CRS84&gt; ] ;
+  schema:name "Anne Franks House"^^xsd:string .
+        </code></pre>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section id="keuze-aspecten-3"><h3 id="x8-3-keuze-aspecten"><span class="secno">8.3 </span>Keuze-aspecten</h3><p>De volgende tabel geeft aan hoe RDF scoort op de aspecten die een rol spelen bij de keuze voor een bestandsformaat.</p><table>
+<thead>
+<tr>
+<th>Vraag</th>
+<th>Antwoord</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is het format geospecifiek?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Het is een algemene Webstandaard. In combinatie met de GeoSPARQL vocabulaire is er wel ondersteuning voor geo-informatie.</td>
+</tr>
+<tr>
+<td>Is het format gebaseerd op algemene ict standaarden?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, het is gebaseerd op W3C Linked Data standaarden</td>
+</tr>
+<tr>
+<td>Wordt het format ondersteund in GIS software?</td>
+<td><span id="kruisje">✕</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format het uitdrukken van schema's, en validatie tegen dat schema?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, via [<cite><a class="bibref" href="#bib-shacl">shacl</a></cite>] shape expressions</td>
+</tr>
+<tr>
+<td>Ondersteunt het format meerdere coordinaatsystemen?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format 3D?</td>
+<td><span id="kruisje">✕</span></td>
+<td>Je kunt op zich 3D geometrie opnemen in de data, maar GeoSPARQL ondersteunt geen 3D bij ruimtelijke vragen.</td>
+</tr>
+<tr>
+<td>Ondersteunt het format alle simple features geometrieen?</td>
+<td><span id="vinkje">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Ondersteunt het format andere ISO 19107 geometrie types?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Ja, als je de GeoSPARQL GML serialisatie gebruikt</td>
+</tr>
+<tr>
+<td>Is het format geschikt voor grote volumes?</td>
+<td><span id="tilde">～</span></td>
+<td>In triple stores is goede ondersteuning voor grote hoeveelheden geometrieën in de data, maar bij het uitwisselen is een RDF bestand geen heel geschikt format vanwege verbositeit</td>
+</tr>
+<tr>
+<td>Is het format geschikt om semantiek aan te koppelen / in uit te drukken?</td>
+<td><span id="vinkje">✓</span></td>
+<td>Bij uitstek geschikt. Gebruik van RDF voor het publiceren van gestructureerde gegevens op het web maakt het mogelijk dat data over de grenzen van sectoren heen gekoppeld en geïntegreerd worden.</td>
+</tr>
+</tbody></table></section><section id="afspraken-2"><h3 id="x8-4-afspraken"><span class="secno">8.4 </span>Afspraken</h3><p>In Nederland zijn er geen normatieve regels over het gebruik van RDF voor het uitwisselen van geometrie.
+</p><p>Wel zijn er de volgende handvaten:</p><ul>
+<li>RDF staat op de lijst met <a href="https://forumstandaardisatie.nl/open-standaarden/aanbevolen">aanbevolen standaarden</a>.</li>
+<li>De Aanzet tot een Nationale  URI-strategie [<cite><a class="bibref" href="#bib-nluristrategie">NLURIStrategie</a></cite>] beschrijft het in Nederland gehanteerde URI patroon.</li>
+<li>Het Linked Data profiel op NEN 3610 [<cite><a class="bibref" href="#bib-nen3610-linkeddata">nen3610-linkeddata</a></cite>] beschrijft hoe een linked data model van een NEN 3610 conform informatiemodel kan worden afgeleid.</li>
+<li>Voor het uitdrukken van geometrie in RDF gebruiken we de OGC GeoSPARQL Linked Data vocabulaire [<cite><a class="bibref" href="#bib-geosparql">geosparql</a></cite>].
+</li>
+</ul><section id="geometrie-encodings"><h4 id="x8-4-1-geometrie-encodings"><span class="secno">8.4.1 </span>Geometrie encodings</h4><p>Aangezien Linked Data op basis van vocabulaires werkt, kunnen geometrieën op verschillende wijzen worden vastgelegd, zo lang er maar een vocabulair voor is. Uiteraard is de beste oplossing afhankelijk van de toepassing. Schema.org wordt vaak gebruikt voor annotaties en indexatie van data door zoekmachines. GeoSPARQL daarentegendeel is geschikter wanneer ruimtelijke bevragingen gewenst zijn, WGS84 niet voldoet, of verschillende en gestandaardiseerde geometrietypes gebruikt worden (GeoSPARQL wordt ondersteund in een aantal RDF Triplestores). Om deze reden wordt OGC GeoSPARQL aangeraden voor gebruik bij het uitwisselen van geometrie in RDF. De geometrie kan volgens GeoSPARQL op twee manieren worden geserialiseerd:</p><ul>
+<li>Als WKT, waarbij de Simple Feature geometrietypen uit ISO 19125 gebruikt kunnen worden (daardoor beperkt: geen 3D, geen bogen etc);</li>
+<li>Als GML, waarbij de ISO 19107 geometrietypen gebruikt kunnen worden.</li>
+</ul><p>JSON-LD kan wordt gebruikt als RDF encoding door de JSON data te voorzien van een context tag, waarmee RDF data kan worden afgeleid. Echter is er een beperking wanneer je geometrie in JSON opneemt, zoals het geval is met GeoJSON. De JSON-LD 1.0 specificatie staat het namelijk niet toe om 'list of lists' om te zetten naar Linked Data (zie <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/#h_note_8">deze note</a>), en deze heb je om bepaalde geometrieën uit te drukken wel nodig. Om deze reden zal een processor conform JSON-LD 1.0 zulke geometrieën overslaan.
+</p><p>Deze beperking is niet meer aanwezig in JSON-LD 1.1 (zie <a href="https://www.w3.org/TR/json-ld11/#example-82-specifying-that-a-collection-is-ordered-in-the-context">dit voorbeeld</a>). Echter, JSON-LD 1.1 processors worden nog niet overal ondersteund.</p></section></section></section><section id="references" class="appendix">
+      <!--OddPage--><h2 id="a-referenties"><span class="secno">A. </span>Referenties</h2>
+      
+    <section id="normatieve-referenties">
+        <h3 id="a-1-normatieve-referenties"><span class="secno">A.1 </span>Normatieve referenties</h3>
+      <dl class="bibliography">
+        <dt id="bib-citygml20">[CityGML20]</dt><dd><a href="https://portal.opengeospatial.org/files/?artifact_id=47842"><cite>OGC City Geography Markup Language (CityGML) Encoding Standard</cite></a>. Gerhard Gröger; Thomas H. Kolbe; Claus Nagel; Karl-Heinz Häfele. Open Geospatial Consortium. 4 April 2012. URL: <a href="https://portal.opengeospatial.org/files/?artifact_id=47842">https://portal.opengeospatial.org/files/?artifact_id=47842</a></dd><dt id="bib-geosparql">[geosparql]</dt><dd><a href="http://www.opengeospatial.org/standards/geosparql"><cite>GeoSPARQL - A Geographic Query Language for RDF Data</cite></a>. Matthew Perry; John Herring. OGC. 10 September 2012. URL: <a href="http://www.opengeospatial.org/standards/geosparql">http://www.opengeospatial.org/standards/geosparql</a></dd><dt id="bib-gimeg">[gimeg]</dt><dd><a href="https://docs.geostandaarden.nl/nen3610/gimeg"><cite>Geometrie in model en GML</cite></a>. Linda van den Brink; Paul Janssen; Wilko Quak. Geonovum. URL: <a href="https://docs.geostandaarden.nl/nen3610/gimeg">https://docs.geostandaarden.nl/nen3610/gimeg</a></dd><dt id="bib-gml">[gml]</dt><dd><a href="http://www.opengeospatial.org/standards/gml"><cite>Geography Markup Language (GML) Encoding Standard</cite></a>.  Open Geospatial Consortium Inc. URL: <a href="http://www.opengeospatial.org/standards/gml">http://www.opengeospatial.org/standards/gml</a></dd><dt id="bib-html5">[html5]</dt><dd><a href="https://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Theresa O'Connor; Silvia Pfeiffer. W3C. 27 March 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/">https://www.w3.org/TR/html5/</a></dd><dt id="bib-iso-13249-3">[iso-13249-3]</dt><dd><a href="https://www.iso.org/standard/60343.html"><cite>Information technology — Database languages — SQL multimedia and application packages — Part 3: Spatial</cite></a>.  ISO. 2016-01. Definitief. URL: <a href="https://www.iso.org/standard/60343.html">https://www.iso.org/standard/60343.html</a></dd><dt id="bib-iso-19107-2019">[iso-19107-2019]</dt><dd><a href="https://www.iso.org/standard/66175.html"><cite>Geographic information — Spatial schema</cite></a>.  ISO. 2019-12. Definitief. URL: <a href="https://www.iso.org/standard/66175.html">https://www.iso.org/standard/66175.html</a></dd><dt id="bib-iso-19125-1-2004">[iso-19125-1-2004]</dt><dd><a href="https://www.iso.org/standard/40114.html"><cite>Geographic information -- Simple feature access -- Part 1: Common architecture</cite></a>. ISO/TC 211. ISO. 2004. International Standard. URL: <a href="https://www.iso.org/standard/40114.html">https://www.iso.org/standard/40114.html</a></dd><dt id="bib-iso-19136-2007">[iso-19136-2007]</dt><dd><a href="https://www.iso.org/standard/32554.html"><cite>Geographic information -- Geography Markup Language (GML)</cite></a>. ISO/TC 211. ISO. 2007. International Standard. URL: <a href="https://www.iso.org/standard/32554.html">https://www.iso.org/standard/32554.html</a></dd><dt id="bib-nen3610">[NEN3610]</dt><dd><a href="https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm"><cite>NEN 3610:2011 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten</cite></a>.  NEN. 2011-03-01. Definitief. URL: <a href="https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm">https://www.nen.nl/NEN-Shop/Norm/NEN-36102011-nl.htm</a></dd><dt id="bib-nen3610-linkeddata">[nen3610-linkeddata]</dt><dd><a href="https://docs.geostandaarden.nl/nen3610/nldp/"><cite>NEN 3610 - Linked Data</cite></a>. Linda van den Brink; Marco Brattinga; Marinus Vonhof;  Niels Hoffmann; Pano Maria; Hans Schevers;  Ronald van Lanen; Joep van Genuchten. Geonovum. 23 maart 2020. URL: <a href="https://docs.geostandaarden.nl/nen3610/nldp/">https://docs.geostandaarden.nl/nen3610/nldp/</a></dd><dt id="bib-nluristrategie">[NLURIStrategie]</dt><dd><a href="http://www.pilod.nl/wiki/Boek/URI-strategie"><cite>Aanzet tot een nationale URI-Strategie voor Linked Data van de Nederlandse overheid</cite></a>. Hans Overbeek; Linda van den Brink. Platform Linked Data Nederland. URL: <a href="http://www.pilod.nl/wiki/Boek/URI-strategie">http://www.pilod.nl/wiki/Boek/URI-strategie</a></dd><dt id="bib-oapif">[OAPIF]</dt><dd><a href="http://docs.opengeospatial.org/is/17-069r3/17-069r3.html"><cite>OGC API - Features - Part 1: Core</cite></a>. Clemens Portele; Panagiotis (Peter) A. Vretanos; Charles Heazel. Open Geospatial Consortium. 14 oktober 2019. URL: <a href="http://docs.opengeospatial.org/is/17-069r3/17-069r3.html">http://docs.opengeospatial.org/is/17-069r3/17-069r3.html</a></dd><dt id="bib-rdf-syntax-grammar">[rdf-syntax-grammar]</dt><dd><a href="https://www.w3.org/TR/rdf-syntax-grammar/"><cite>RDF 1.1 XML Syntax</cite></a>. Fabien Gandon; Guus Schreiber. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-syntax-grammar/">https://www.w3.org/TR/rdf-syntax-grammar/</a></dd><dt id="bib-rdf11-concepts">[rdf11-concepts]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-rfc7946">[RFC7946]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub. IETF. August 2016. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7946">https://www.rfc-editor.org/rfc/rfc7946</a></dd><dt id="bib-rfc8259">[RFC8259]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8259"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. T. Bray, Ed.. IETF. December 2017. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc8259">https://www.rfc-editor.org/rfc/rfc8259</a></dd><dt id="bib-shacl">[shacl]</dt><dd><a href="https://www.w3.org/TR/shacl/"><cite>Shapes Constraint Language (SHACL)</cite></a>. Holger Knublauch; Dimitris Kontokostas. W3C. 20 July 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></dd><dt id="bib-turtle">[turtle]</dt><dd><a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

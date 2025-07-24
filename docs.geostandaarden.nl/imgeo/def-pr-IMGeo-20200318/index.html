@@ -1,0 +1,2588 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Uitwisseling IMBOR-classificaties in Geo-BOR berichtenverkeer</title>   
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    
+      
+    <link rel="stylesheet" type="text/css" href="media/style.css">
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "publishDate": "2020-03-18",
+  "editors": [
+    {
+      "name": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/",
+      "mailto": "imgeo@geonovum.nl"
+    }
+  ],
+  "shortName": "IMGeo",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo",
+  "publishISODate": "2020-03-18T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 18 maart 2020"
+}</script><meta name="description" content="Dit document beschrijft een praktijkrichtlijn voor de toepassing van de werkafspraak 'Uitbreiding attributen en domeinwaarden' voor de uitwisseling van IMBOR-classificaties in het Geo-BOR berichtenverkeer."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imgeo/def-pr-IMGeo-20200318/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Uitwisseling IMBOR-classificaties in Geo-BOR berichtenverkeer",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2020-03-18",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/IMGeo/issues/",
+  "alternativeHeadline": "",
+  "description": "Dit document beschrijft een praktijkrichtlijn voor de toepassing van de werkafspraak 'Uitbreiding attributen en domeinwaarden' voor de uitwisseling van IMBOR-classificaties in het Geo-BOR berichtenverkeer.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Geonovum",
+      "foaf:mbox": "imgeo@geonovum.nl",
+      "worksFor": {
+        "url": "http://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <body class="h-entry toc-inline"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">Uitwisseling IMBOR-classificaties in Geo-BOR berichtenverkeer</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2020-03-18">18 maart 2020</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/imgeo/def-pr-IMGeo-20200318/">https://docs.geostandaarden.nl/imgeo/def-pr-IMGeo-20200318/</a></dd><dt>Latest published version:</dt><dd><a href="https://docs.geostandaarden.nl/imgeo/IMGeo/">https://docs.geostandaarden.nl/imgeo/IMGeo/</a></dd>
+    
+    
+    <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/IMGeo/">https://geonovum.github.io/IMGeo/</a></dd>
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Geonovum</span>, <a class="ed_mailto u-email email" href="mailto:imgeo@geonovum.nl">imgeo@geonovum.nl</a></dd>
+    
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/Geonovum/IMGeo/">GitHub Geonovum/IMGeo</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p> 	      
+	      Dit document beschrijft een praktijkrichtlijn voor de toepassing van de werkafspraak <a href="https://www.geonovum.nl/over-geonovum/actueel/werkafspraak-uitbreiding-domeinwaarden-en-attributen-geo-bor-berichtenverkeer" target="_blank">'Uitbreiding attributen en domeinwaarden'</a> voor de uitwisseling van IMBOR-classificaties in het Geo-BOR berichtenverkeer. 
+      </p>
+    </section>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+    <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current Geonovum publications and the latest revision of this document can be found via <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>(in Dutch).</em>
+  </p><p>
+
+    Dit is de definitieve versie van de praktijkrichtlijn. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+ Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product dat informatie geeft, vaak met een technisch karakter, dat nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p>
+      <p>        
+      </p>
+    </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a></li><li class="tocline"><a class="tocxref" href="#toepassing"><span class="secno">2. </span>Toepassing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mapping-van-imbor-op-imgeo"><span class="secno">2.1 </span>Mapping van IMBOR op IMGeo</a></li><li class="tocline"><a class="tocxref" href="#attributen"><span class="secno">2.2 </span>Attributen</a></li><li class="tocline"><a class="tocxref" href="#waardelijsten"><span class="secno">2.3 </span>Waardelijsten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-imbor-waardenlijsten"><span class="secno">3. </span>Bijlage IMBOR waardenlijsten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#imbor-classificaties-zonder-imgeo-supertype"><span class="secno">3.1 </span>IMBOR-classificaties zonder IMGeo-supertype</a></li><li class="tocline"><a class="tocxref" href="#imbor-classificaties-met-imgeo-supertype"><span class="secno">3.2 </span>IMBOR-classificaties met IMGeo-supertype</a></li></ol></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><p>Het Informatiemodel Beheer Openbare Ruimte (IMBOR) 2020 sluit aan op de
+bestaande versie van IMGeo, 2.1.1. In IMGeo 2.1.1 ontbreken bepaalde
+subclassificaties van objecten die wel in IMBOR voorkomen. Om
+IMBOR-classificaties zonder gegevensverlies te kunnen uitwisselen tussen Geo- en
+BOR-afdeling binnen een organisatie middels het StUF-Geo BOR berichtenverkeer
+kan de werkafspraak ‘Uitbreiding domeinwaarden en attributen’ worden toegepast.</p><p>Deze werkafspraak beschrijft hoe met het mechanisme van
+StUF:aanvullendeElementen extra attributen en domeinwaarden aan IMGeo-objecten
+kunnen worden toegevoegd in de uitwisseling. Bijvoorbeeld bij een Wegdeel kan
+naast de IMGeo-classificaties ‘gesloten verharding’ en ‘asfalt’ het soort asfalt
+(bijv. ZOAB) of datum van laatste onderhoud uit de BOR-registratie worden
+opgenomen. Of bij een VegetatieObject van het type ‘boom’ kan het soort boom
+(bijv. ‘beuk’) of het plantjaar worden opgenomen.</p><p><img src="media/070bccf44b513593e9fc176a56a02cc0.png" alt="" height="852" width="1582"></p><p>In de IMGeo catalogus paragraaf 1.4 staat beschreven dat het opnemen van een
+nadere classificatie van een objecttype optioneel is. Zo kan men ervoor kiezen
+alle borden op te nemen, maar niet nader te classificeren om wat voor soort bord
+het gaat. Deze objecten mogen zonder IMGeo-classificaties worden uitgewisseld
+met de LV-BGT.</p><p>Dit betekent voor de uitwisseling van IMBOR-classificaties middels het Geo-BOR
+berichtenverkeer dat de IMGeo-classificaties leeg mogen zijn, als er geen
+passende IMGeo-classificatie is voor een IMBOR-classificatie. Dit geldt onder
+meer voor een Paal van het BOR-type ‘vlaggenmast’, Straatmeubilair van het
+BOR-type ‘informatiezuil’ of Kunstwerkdeel van het bor-type
+‘groeiplaatsinrichting’.</p></section>
+   <section data-format="markdown" aria-busy="false" id="toepassing"><!--OddPage--><h2 id="x2-toepassing"><span class="secno">2. </span>Toepassing</h2><section id="mapping-van-imbor-op-imgeo"><h3 id="x2-1-mapping-van-imbor-op-imgeo"><span class="secno">2.1 </span>Mapping van IMBOR op IMGeo</h3><p>Het IMBOR wordt door CROW beheerd en gepubliceerd als Access-database. In deze
+database is de uitwisseling met IMGeo 2.1.1 op objecttypeniveau te raadplegen in
+het tabblad ‘Definities’ van het formulier ‘Objecttypes’. Zie hieronder voor
+twee voorbeelden. Boom in IMBOR is te vertalen naar VegetatieObject van het type
+boom in IMGeo 2.1.1, en klimplant is te vertalen naar VegetatieObject zonder
+IMGeo-classificatie (‘klimplant’ is geen geldige type van VegetatieObject in
+IMGeo 2.1.1).</p><p><img src="media/8965ba5c495664010edbcd4b0843ab34.png" alt="" height="137" width="1099"></p><p><img src="media/0ae5da40aed5ff7296cf20743f650b9e.png" alt="" height="690" width="1695"></p><p><img src="media/520e85f2e2f5bf38317515bf587686dc.png" alt="" height="692" width="1689"></p><p>Bij de vier vlakobjecten (Groenobject, Verhardingsobject, Terreindeel en
+Waterobject) is de uitwisseling met IMGeo 2.1.1 complexer en zijn er meer regels
+nodig voor het definiëren van de uitwisseling. Deze informatie is in het
+formulier in een apart tabblad opgenomen. Hieronder het voorbeeld van het
+tabblad Verhardingsobject.</p><p>Vanuit het hoofdmenu van IMBOR is de complete uitwisseling tussen IMBOR en IMGeo
+2.1.1 raadpleegbaar. Deze uitwisseling is vastgelegd in de tabel
+ObjecttypeRelaties.</p><p>Bij de werkafspraak ‘Uitbreiding domeinwaarden en attributen’ is een
+berichtschema beschikbaar gesteld met een aantal extra attributen die voor de
+meeste organisatie toereikend zullen zijn. Organisaties kunnen er voor kiezen om
+dit berichtschema samen met hun leverancier aan te passen of uit te breiden naar
+hun eigen behoefte.</p></section><section id="attributen"><h3 id="x2-2-attributen"><span class="secno">2.2 </span>Attributen</h3><p>Voor de uitwisseling van IMBOR-classificaties zijn echter de volgende attributen
+afdoende:</p><ul>
+<li><p><em>bor-fysiekVoorkomen</em>: voor het registreren en uitwisselen van fysiek
+voorkomens die wel in de openbare ruimte voorkomen, maar nog niet opgenomen
+zijn in IMGeo. Denk hier bijvoorbeeld aan: hout, metaal, basalt en
+kunststof. </p>
+</li>
+<li><p><em>bor-functie</em>: voor het registreren van extra functies. Op deze manier kunnen nu 
+alle wegfuncties binnen IMBOR tussen de BOR-omgeving en de Geovoorziening uitgewisseld worden. </p>
+</li>
+</ul><ul>
+<li><em>bor-type</em>: voor het registreren en uitwisselen van extra types.
+Op deze manier kan de geometrie van ongeveer 200 IMBOR-objecttypes uitgewisseld
+worden. </li>
+</ul><p>In de bijlage zijn de IMBOR-classificaties voor bor-fysiekVoorkomen, bor-functie en bor-type opgenomen
+die binnen het Geo-BOR berichtenverkeer uitgewisseld kunnen worden.</p><p><img src="media/ebd2a3e6b8089d4f21a53489f2cf81e6.png" alt="" height="905" width="1124"></p></section><section id="waardelijsten"><h3 id="x2-3-waardelijsten"><span class="secno">2.3 </span>Waardelijsten</h3><p>In het StUF-Geo IMGeo berichtenverkeer wordt in de XML-elementen voor
+fysiekVoorkomen, functie en bor-type verwezen naar een waardelijst (ookwel
+codelist) in het XML-attribuut codeSpace. Bijvoorbeeld voor plus-functie van een
+Wegdeel:</p><p>&lt;stuf-geo:plus-functie codespace="<a href="http://www.geostandaarden.nl/imgeo/def/2.1#FunctieWegPlus&quot;>">http://www.geostandaarden.nl/imgeo/def/2.1#FunctieWegPlus"&gt;</a>
+verkeersdrempel
+</p><p>Deze waardenlijsten zijn voor IMGeo in RDF-formaat beschikbaar in het <a href="https://register.geostandaarden.nl/waardelijst/imgeo/">technisch
+register van Geonovum</a>.</p><p>Voor de aanvullende elementen van IMBOR-classificaties wordt hetzelfde principe
+gehanteerd: in de XML-elementen van bor-fysiekVoorkomen, bor-functie, en
+bor-type wordt verwezen naar de bijbehorende BOR-waardelijst in het attribuut,
+bijvoorbeeld:</p><p>&lt;geo-bor:bor-functie codespace="<a href="http://register.geostandaarden.nl/geobor/2020/id/waarde/FunctieWegBOR&quot;>">http://register.geostandaarden.nl/geobor/2020/id/waarde/FunctieWegBOR"&gt;</a>
+woonstraat
+</p><p>De waardenlijsten voor de IMBOR-classificaties die uitgewisseld kunnen worden in
+de aanvullende elementen bor-fysiekvoorkomen, bor-functie en bor-type zijn
+beschikbaar in het <a href="https://register.geostandaarden.nl/waardelijst/geobor/">technisch
+register van Geonovum</a>.</p></section></section>
+   <section data-format="markdown" aria-busy="false" id="bijlage-imbor-waardenlijsten"><!--OddPage--><h2 id="x3-bijlage-imbor-waardenlijsten"><span class="secno">3. </span>Bijlage IMBOR waardenlijsten</h2><section id="imbor-classificaties-zonder-imgeo-supertype"><h3 id="x3-1-imbor-classificaties-zonder-imgeo-supertype"><span class="secno">3.1 </span>IMBOR-classificaties zonder IMGeo-supertype</h3><table>
+<thead>
+<tr>
+<th><strong>OBJECTTYPE</strong></th>
+<th><strong>ATTRIBUUT</strong></th>
+<th><strong>CODELIST</strong></th>
+<th><strong>VALUE</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bak</td>
+<td>bor-type</td>
+<td>TypeBakBOR</td>
+<td>asbak</td>
+</tr>
+<tr>
+<td>Bak</td>
+<td>bor-type</td>
+<td>TypeBakBOR</td>
+<td>bladkorf</td>
+</tr>
+<tr>
+<td>Bak</td>
+<td>bor-type</td>
+<td>TypeBakBOR</td>
+<td>zandkist</td>
+</tr>
+<tr>
+<td>Bak</td>
+<td>bor-type</td>
+<td>TypeBakBOR</td>
+<td>zoutbak</td>
+</tr>
+<tr>
+<td>BegroeidTerreindeel</td>
+<td>bor-type</td>
+<td>TypeBegroeidTerreindeelBOR</td>
+<td>graft</td>
+</tr>
+<tr>
+<td>BegroeidTerreindeel</td>
+<td>bor-type</td>
+<td>TypeBegroeidTerreindeelBOR</td>
+<td>steilwand</td>
+</tr>
+<tr>
+<td>Bord</td>
+<td>bor-type</td>
+<td>TypeBordBOR</td>
+<td>APV-bord</td>
+</tr>
+<tr>
+<td>Bord</td>
+<td>bor-type</td>
+<td>TypeBordBOR</td>
+<td>informatiepaneel</td>
+</tr>
+<tr>
+<td>Bord</td>
+<td>bor-type</td>
+<td>TypeBordBOR</td>
+<td>klok</td>
+</tr>
+<tr>
+<td>Bord</td>
+<td>bor-type</td>
+<td>TypeBordBOR</td>
+<td>paddenstoel</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>aansluiting</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>belangenstrook</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>centrumgebied</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>compartiment</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>deelsportcomplex</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>fietspad</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>grondsoort</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>haven</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>knooppunt</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>kruispunt</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>laadplein</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>ligplaats</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>multifunctioneel gebied</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>opvangzone</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>OV-voorziening</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>parkeervoorziening</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>project</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>rijbaan</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>snellaadstation</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>sportveld</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>stiltegebied</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>strook</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>transferium</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>veer</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>verkeerseiland</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>verzamelplaats</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>voetpad</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>waterbeheergebied</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>weg</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>wegberm</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>wegvak</td>
+</tr>
+<tr>
+<td>FunctioneelGebied</td>
+<td>bor-type</td>
+<td>TypeFunctioneelGebiedBOR</td>
+<td>zone</td>
+</tr>
+<tr>
+<td>GebouwInstallatie</td>
+<td>bor-type</td>
+<td>TypeGebouwInstallatieBOR</td>
+<td>lift</td>
+</tr>
+<tr>
+<td>GebouwInstallatie</td>
+<td>bor-type</td>
+<td>TypeGebouwInstallatieBOR</td>
+<td>loopdek</td>
+</tr>
+<tr>
+<td>GebouwInstallatie</td>
+<td>bor-type</td>
+<td>TypeGebouwInstallatieBOR</td>
+<td>parkeerdek</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>aansluitvoorziening</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>beregeningsinstallatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>bilgepompinstallatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>brandblusinstallatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>drukknop</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>energieaansluiting</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>groep</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>hoofdpost</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>hydrant</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>pigging-installatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>toegangshekinstallatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>toeritdoseerinstallatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>tunnelventilatie</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>vuilwaterinnamestation</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>vulpunt</td>
+</tr>
+<tr>
+<td>Installatie</td>
+<td>bor-type</td>
+<td>TypeInstallatieBOR</td>
+<td>wachttijdvoorspeller</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>beregeningskast</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>buitenopstellingskast</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>geluidskast</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>hulppost</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>PLC-kast</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>pompkast</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>verkeersteller</td>
+</tr>
+<tr>
+<td>Kast</td>
+<td>bor-type</td>
+<td>TypeKastBOR</td>
+<td>waterkast</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>aanleginrichting</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>drinkwaterinlaat</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>grindkoffer</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>groeiplaatsinrichting</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>inlaatconstructie</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>onderdeel</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>roltrap</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>trap</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>uitlaatconstructie</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>vlonder</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>waterval</td>
+</tr>
+<tr>
+<td>Kunstwerkdeel</td>
+<td>bor-type</td>
+<td>TypeKunstwerkdeelBOR</td>
+<td>windmolen</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>aansluitleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>aardolieleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>beregeningsleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>drain</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>effluentleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>gasleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>kabel</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>kabeldraagsysteem</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>kabelgeul</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>kooldioxideleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>loze leiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>mantelbuis</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>ontluchtingsleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>pendelstuk</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>rioolleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>spandraad</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>stadsverwarming</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>transportleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>waterleiding</td>
+</tr>
+<tr>
+<td>Leiding</td>
+<td>bor-type</td>
+<td>TypeLeidingBOR</td>
+<td>zoutwaterleiding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekvoorkomenOnbegroeidTerreindeelBOR</td>
+<td>mulchlaag</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-functie</td>
+<td>FunctieOndersteunendWegdeelBOR</td>
+<td>boomspiegel</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>bergbezinkbassin</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>dugout</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>infiltratiebassin</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>reservoir</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>tribune</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>uitkijktoren</td>
+</tr>
+<tr>
+<td>OverigBouwwerk</td>
+<td>bor-type</td>
+<td>TypeOverigBouwwerkBOR</td>
+<td>zuiveringsreservoir</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>dispenser</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>fietspomp</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>hoogtebegrenzer</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>meldpaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>rookpaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>routepaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>schoolzonepaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>sensorpaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>strandoriëntatiepaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>strandpaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>uithouder</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>voorzieningenpaal</td>
+</tr>
+<tr>
+<td>Paal</td>
+<td>bor-type</td>
+<td>TypePaalBOR</td>
+<td>zweepmast</td>
+</tr>
+<tr>
+<td>Pand</td>
+<td>bor-type</td>
+<td>TypePandBOR</td>
+<td>kleedgebouw</td>
+</tr>
+<tr>
+<td>Pand</td>
+<td>bor-type</td>
+<td>TypePandBOR</td>
+<td>lokethuisje</td>
+</tr>
+<tr>
+<td>Pand</td>
+<td>bor-type</td>
+<td>TypePandBOR</td>
+<td>glasvezelstation</td>
+</tr>
+<tr>
+<td>Pand</td>
+<td>bor-type</td>
+<td>TypePandBOR</td>
+<td>SV-station</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>aansluitput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>beerput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>beregeningsput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>brandput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>doorvoergat</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>fauna-inspectieput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>filterput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>infiltratieput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>loze put</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>onttrekkingsput</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>slokop</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>vacuümopslagtank</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>bor-type</td>
+<td>TypePutBOR</td>
+<td>watermeterput</td>
+</tr>
+<tr>
+<td>RegistratiefGebied</td>
+<td>bor-type</td>
+<td>TypeRegistratiefGebiedBOR</td>
+<td>gemeente</td>
+</tr>
+<tr>
+<td>RegistratiefGebied</td>
+<td>bor-type</td>
+<td>TypeRegistratiefGebiedBOR</td>
+<td>postcode</td>
+</tr>
+<tr>
+<td>RegistratiefGebied</td>
+<td>bor-type</td>
+<td>TypeRegistratiefGebiedBOR</td>
+<td>provincie</td>
+</tr>
+<tr>
+<td>RegistratiefGebied</td>
+<td>bor-type</td>
+<td>TypeRegistratiefGebiedBOR</td>
+<td>waterschap</td>
+</tr>
+<tr>
+<td>RegistratiefGebied</td>
+<td>bor-type</td>
+<td>TypeRegistratiefGebiedBOR</td>
+<td>woonplaats</td>
+</tr>
+<tr>
+<td>Scheiding</td>
+<td>bor-type</td>
+<td>TypeScheidingBOR</td>
+<td>kwelscherm</td>
+</tr>
+<tr>
+<td>Scheiding</td>
+<td>bor-type</td>
+<td>TypeScheidingBOR</td>
+<td>luchtscherm</td>
+</tr>
+<tr>
+<td>Scheiding</td>
+<td>bor-type</td>
+<td>TypeScheidingBOR</td>
+<td>profiellijn</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>detector</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>drukmeter</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>kwaliteitssensor</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>luchtkwaliteitssensor</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>meetbuis</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>overstortmeter</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>peilbuis</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>referentiemicrofoon</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>regenmeter</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>weegpunt</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>wifi-antenne</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>wildsignalering</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>bor-type</td>
+<td>TypeSensorBOR</td>
+<td>zichtmeter</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>achtergrondschild</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>antivandalismevoorziening</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>armatuur</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>beugel</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>blok</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>boombeschermer</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>boomrooster</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>boomstam</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>douche</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>drinkwaterpunt</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>faunameubilair</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>faunaverblijfplaats</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>fietsparkeervoorziening</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>graf</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>grafvoorziening</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>informatiezuil</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>kathodische beschermingspaal</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>klimijzer</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>laadbrug</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>lamp</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>leuning</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>luidspreker</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>ophangconstructie</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>oplaadpaal</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>opslagcontainer</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>opzetstuk</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>overstap</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>parkeerautomaat</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>parkeermeubilair</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>pergola</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>raaipaal</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>sportmeubilair</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>sporttoestel</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>sproeikop</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>stapsteen</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>stormanker</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>veiligheidsvoorziening</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>verkeerslantaarn</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>verkeersspiegel</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>verzinkbare piramide</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>vitrinekast</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>wandarm</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>windzak</td>
+</tr>
+<tr>
+<td>Straatmeubilair</td>
+<td>bor-type</td>
+<td>TypeStraatmeubilairBOR</td>
+<td>zitelement</td>
+</tr>
+<tr>
+<td>Tunneldeel</td>
+<td>bor-type</td>
+<td>TypeTunneldeelBOR</td>
+<td>onderdoorgang</td>
+</tr>
+<tr>
+<td>Vegetatieobject</td>
+<td>bor-type</td>
+<td>TypeVegetatieobjectBOR</td>
+<td>vegetatiedak</td>
+</tr>
+<tr>
+<td>VegetatieObject</td>
+<td>bor-type</td>
+<td>TypeVegetatieObjectBOR</td>
+<td>gevelgroen</td>
+</tr>
+<tr>
+<td>VegetatieObject</td>
+<td>bor-type</td>
+<td>TypeVegetatieObjectBOR</td>
+<td>haagas</td>
+</tr>
+<tr>
+<td>VegetatieObject</td>
+<td>bor-type</td>
+<td>TypeVegetatieObjectBOR</td>
+<td>klimplant</td>
+</tr>
+<tr>
+<td>VegetatieObject</td>
+<td>bor-type</td>
+<td>TypeVegetatieObjectBOR</td>
+<td>solitaire plant</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>drijfvuilnet</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>drijvende oever</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>lichtbaken</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>meerstoel</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>mistbaken</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>wachtplaatsvoorziening</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>waterloopas</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>watertrap</td>
+</tr>
+<tr>
+<td>Waterinrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWaterinrichtingselementBOR</td>
+<td>wrijfgording</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>achterpad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>busbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>busperron</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>bussluis</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>busstrook</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>dynamische busbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>gehandicaptenparkeerplaats</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>halte eiland</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>halte voetpad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>haltekom</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>haltekom</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>haltekom</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>haltekom informatiehalte</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>haltekom OV</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>hellingbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>kraanbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>loswal</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>metrobaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>onverplicht fietspad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>oversteekplaats</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parallelweg</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeerstrook</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeerterrein</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeervak</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeervak fietsen</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeervak scooters</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeren op rijbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>parkeren op rijbaan: langsparkeren op rijbaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>rabatstrook</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>rammelstrook</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>recreatief voetpad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>rotonde</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>schouwpad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>trailerhelling</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>trambaan</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>tramheuvel</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>utilitair fietspad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>utilitair voetpad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>verbindingsweg - afrit</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>verbindingsweg - toerit</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>verkeersdruppel</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>verplicht fiets-/bromfietspad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>verplicht fietspad</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>winkelerf</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>woonerfparkeervak</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-functie</td>
+<td>FunctieWegdeelBOR</td>
+<td>woonstraat</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>as fietspad</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>as rijbaan</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>as rijstrook</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>as voetpad</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>as weg</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>band</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>bijzondere tegel</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>gootstrook</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>obstakelbeveiliger</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>veldbelijning</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>verkeersdrempel</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>voegovergang</td>
+</tr>
+<tr>
+<td>Weginrichtingselement</td>
+<td>bor-type</td>
+<td>TypeWeginrichtingselementBOR</td>
+<td>wegas</td>
+</tr>
+</tbody></table></section><section id="imbor-classificaties-met-imgeo-supertype"><h3 id="x3-2-imbor-classificaties-met-imgeo-supertype"><span class="secno">3.2 </span>IMBOR-classificaties met IMGeo-supertype</h3><table>
+<thead>
+<tr>
+<th><strong>OBJECTTYPE</strong></th>
+<th><strong>ATTRIBUUT</strong></th>
+<th><strong>CODELIST</strong></th>
+<th><strong>VALUE</strong></th>
+<th><strong>BROADER (=SUPERTYPE)</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenBegroeidTerreindeelBOR</td>
+<td>haagvak</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>groenvoorziening</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>basalt</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>natuursteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>hout</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>metaal</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>steenslag</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>rubbersnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>mijnsteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>grindgazon</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>bewerkte houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>gralux</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>leemdek</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>gralux</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>bewerkte houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>grindgazon</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>mijnsteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>rubbersnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>steenslag</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>kunststof</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>gesloten verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>kunststof</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>gesloten verharding</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>mulchlaag</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>gralux</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>bewerkte houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>grindgazon</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>mijnsteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>rubbersnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OnbegroeidTerreindeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOnbegroeidTerreindeelBOR</td>
+<td>steenslag</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>natuursteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>hout</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>hout</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>metaal</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>metaal</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>leemdek</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>gralux</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>half verhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>bewerkte houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>grindgazon</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>mijnsteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>rubbersnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>steenslag</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>houtsnippers</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>onverhard</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>natuursteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>metaal</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>hout</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>OndersteunendWegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenOndersteunendWegdeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>Waterdeel</td>
+<td>bor-type</td>
+<td>TypeWaterdeelBOR</td>
+<td>poel</td>
+<td>bgt-type</td>
+<td>watervlakte</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>hout</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>metaal</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>kunststof</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>gesloten verharding</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>natuursteen</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+<tr>
+<td>Wegdeel</td>
+<td>bor-fysiekVoorkomen</td>
+<td>FysiekVoorkomenWegdeelBOR</td>
+<td>glas</td>
+<td>bgt-fysiekVoorkomen</td>
+<td>open verharding</td>
+</tr>
+</tbody></table></section></section>  
+     
+
+<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

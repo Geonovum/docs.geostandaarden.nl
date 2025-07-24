@@ -1,0 +1,1162 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.5.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>BGT|IMGeo Visualisatieregels 2.3</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+    <link rel="stylesheet" type="text/css" href="media/style.css">    
+    
+          
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "GN-DEF",
+  "specType": "HR",
+  "publishDate": "2018-10-15",
+  "editors": [
+    {
+      "name": "Edward Mac Gillavry",
+      "company": "Webmapper|Geonovum"
+    },
+    {
+      "name": "Linda van den Brink",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/"
+    },
+    {
+      "name": "Arnoud de Boer",
+      "company": "Geonovum",
+      "companyURL": "http://www.geonovum.nl/"
+    }
+  ],
+  "shortName": "visualisatie",
+  "pubDomain": "IMGeo",
+  "github": "https://github.com/Geonovum/IMGeo/visualisatie",
+  "previousPublishDate": "2017-01-01",
+  "publishISODate": "2018-10-15T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 15 oktober 2018"
+}</script><meta name="description" content="De handreiking BGT|IMGeo Visualisatieregels beschrijft hoe BGT/IMGeo objecten op een kaart weergegeven kunnen worden.
+	In deze versie 2.3 van de Handreiking is de Achtergrondvisualisatie bijgewerkt."><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/bgt/def-hr-visualisatie-20181015/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "BGT|IMGeo Visualisatieregels 2.3",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "datePublished": "2018-10-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/IMGeo/visualisatie/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/bgt/vv-hr-visualisatie-20180906/",
+  "description": "De handreiking BGT|IMGeo Visualisatieregels beschrijft hoe BGT/IMGeo objecten op een kaart weergegeven kunnen worden.\n\tIn deze versie 2.3 van de Handreiking is de Achtergrondvisualisatie bijgewerkt.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Edward Mac Gillavry",
+      "worksFor": {
+        "name": "Webmapper|Geonovum"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Linda van den Brink",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "http://www.geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Arnoud de Boer",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "http://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+  <body cz-shortcut-listen="true" class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" width="132" height="67" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg"></a>
+  <h1 class="title p-name" id="title">BGT|IMGeo Visualisatieregels 2.3</h1>
+  
+  <h2>Geonovum Handreiking<br>
+  Vastgestelde versie <time class="dt-published" datetime="2018-10-15">15 oktober 2018</time></h2>
+  <dl>
+    <dt>This version:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/bgt/def-hr-visualisatie-20181015/">https://docs.geostandaarden.nl/bgt/def-hr-visualisatie-20181015/</a></dd><dt>Latest published version:</dt><dd><a href="https://docs.geostandaarden.nl/bgt/visualisatie/">https://docs.geostandaarden.nl/bgt/visualisatie/</a></dd>
+    
+    <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/bgt/vv-hr-visualisatie-20180906/">https://docs.geostandaarden.nl/bgt/vv-hr-visualisatie-20180906/</a></dd>
+    <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/IMGeo/visualisatie/2.3/documentatie/">https://geonovum.github.io/IMGeo/visualisatie/2.3/documentatie/</a></dd>
+    <dt>Editors:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Edward Mac Gillavry</span>, Webmapper|Geonovum</dd><dd class="p-author h-card vcard"><span class="p-name fn">Linda van den Brink</span>, <a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a></dd><dd class="p-author h-card vcard"><span class="p-name fn">Arnoud de Boer</span>, <a class="p-org org h-org h-card" href="http://www.geonovum.nl/">Geonovum</a></dd>
+    
+    <dt>Participate:</dt><dd>
+      <a href="https://github.com/Geonovum/IMGeo/">GitHub Geonovum/IMGeo</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/commits/">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/Geonovum/IMGeo/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Attribution 4.0 International Public License">
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img width="115" height="40" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Creative Commons Attribution 4.0 International Public License"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Attribution 4.0 International Public License<br>(CC-BY)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p>              
+        De handreiking BGT|IMGeo Visualisatieregels beschrijft hoe BGT/IMGeo objecten op een kaart weergegeven kunnen worden.
+	In deze versie 2.3 van de Handreiking is de Achtergrondvisualisatie bijgewerkt.	      
+      </p>
+	    <p>Vragen en opmerkingen over deze handreiking kunt u indienen bij de <a href="mailto:imgeo@geonovum.nl">IMGeo helpdesk</a> van Geonovum.
+	    </p>
+    </section>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+    <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current Geonovum publications and the latest revision of this document can be found via <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>(in Dutch).</em>
+  </p><p>
+
+    Dit is de definitieve versie van de handreiking. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+
+</p>
+      <p>        
+      </p>
+    </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visualisatieregels-voor-de-bgt"><span class="secno">1.1 </span>Visualisatieregels voor de BGT</a></li><li class="tocline"><a class="tocxref" href="#inbedding"><span class="secno">1.2 </span>Inbedding</a></li><li class="tocline"><a class="tocxref" href="#de-verschillende-bgt-visualisaties"><span class="secno">1.3 </span>De verschillende BGT-visualisaties</a></li><li class="tocline"><a class="tocxref" href="#visualisatieregels"><span class="secno">1.4 </span>Visualisatieregels</a></li><li class="tocline"><a class="tocxref" href="#technische-bestanden"><span class="secno">1.5 </span>Technische bestanden</a></li></ol></li><li class="tocline"><a class="tocxref" href="#visualisatie-van-de-objecttypen"><span class="secno">2. </span>Visualisatie van de objecttypen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#transport"><span class="secno">2.1 </span>Transport</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#wegdeel"><span class="secno">2.1.1 </span>Wegdeel</a></li><li class="tocline"><a class="tocxref" href="#ondersteunendwegdeel"><span class="secno">2.1.2 </span>OndersteunendWegdeel</a></li><li class="tocline"><a class="tocxref" href="#spoor"><span class="secno">2.1.3 </span>Spoor</a></li></ol></li><li class="tocline"><a class="tocxref" href="#terreindeel"><span class="secno">2.2 </span>Terreindeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onbegroeidterreindeel"><span class="secno">2.2.1 </span>OnbegroeidTerreindeel</a></li><li class="tocline"><a class="tocxref" href="#begroeid-terreindeel"><span class="secno">2.2.2 </span>Begroeid Terreindeel</a></li></ol></li><li class="tocline"><a class="tocxref" href="#water"><span class="secno">2.3 </span>Water</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#waterdeel-en-ondersteunend-waterdeel"><span class="secno">2.3.1 </span>Waterdeel en Ondersteunend Waterdeel</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bouwwerk"><span class="secno">2.4 </span>Bouwwerk</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#pand"><span class="secno">2.4.1 </span>Pand</a></li><li class="tocline"><a class="tocxref" href="#overigbouwwerk"><span class="secno">2.4.2 </span>OverigBouwwerk</a></li><li class="tocline"><a class="tocxref" href="#kunstwerk"><span class="secno">2.4.3 </span>Kunstwerk</a></li><li class="tocline"><a class="tocxref" href="#scheiding-en-overige-scheiding"><span class="secno">2.4.4 </span>Scheiding en Overige Scheiding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#functioneel-gebied"><span class="secno">2.5 </span>Functioneel gebied</a></li><li class="tocline"><a class="tocxref" href="#registratief-gebied"><span class="secno">2.6 </span>Registratief gebied</a></li><li class="tocline"><a class="tocxref" href="#openbare-ruimte"><span class="secno">2.7 </span>Openbare ruimte</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#buurt"><span class="secno">2.7.1 </span>Buurt</a></li><li class="tocline"><a class="tocxref" href="#stadsdeel"><span class="secno">2.7.2 </span>Stadsdeel</a></li><li class="tocline"><a class="tocxref" href="#wijk"><span class="secno">2.7.3 </span>Wijk</a></li><li class="tocline"><a class="tocxref" href="#waterschap"><span class="secno">2.7.4 </span>Waterschap</a></li><li class="tocline"><a class="tocxref" href="#vegetatie-object"><span class="secno">2.7.5 </span>Vegetatie-object</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#kaartbeschrifting"><span class="secno">3. </span>Kaartbeschrifting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#openbareruimtelabel"><span class="secno">3.1 </span>OpenbareRuimteLabel</a></li><li class="tocline"><a class="tocxref" href="#nummeraanduidingreeks"><span class="secno">3.2 </span>Nummeraanduidingreeks</a></li></ol></li><li class="tocline"><a class="tocxref" href="#inrichtingselementen"><span class="secno">4. </span>Inrichtingselementen</a></li><li class="tocline"><a class="tocxref" href="#kaartsamenstelling"><span class="secno">5. </span>Kaartsamenstelling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#specifieke-tekeninstructies"><span class="secno">5.1 </span>Specifieke tekeninstructies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#achtergrondvisualisatie"><span class="secno">5.1.1 </span>Achtergrondvisualisatie</a></li><li class="tocline"><a class="tocxref" href="#icoonvisualisatie"><span class="secno">5.1.2 </span>Icoonvisualisatie</a></li><li class="tocline"><a class="tocxref" href="#pastelvisualisatie"><span class="secno">5.1.3 </span>Pastelvisualisatie</a></li><li class="tocline"><a class="tocxref" href="#kruinlijnen"><span class="secno">5.1.4 </span>Kruinlijnen</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#verklarende-woordenlijst"><span class="secno">6. </span>Verklarende woordenlijst</a></li></ol></nav>  
+   <section data-format="markdown" aria-busy="false" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="visualisatieregels-voor-de-bgt"><h3 id="x1-1-visualisatieregels-voor-de-bgt"><span class="secno">1.1 </span>Visualisatieregels voor de BGT</h3><p>Om de BGT op een eenduidige manier te presenteren aan gebruikers, zijn er
+visualisatieregels gedefinieerd. Denk hierbij bijvoorbeeld aan (kleuren van)
+vlakvullingen, lijnstijlen, symbologie, etc. Deze visualisatieregels worden
+vastgelegd in deze handreiking en implementatiebestanden, en kunnen worden
+toegepast in een view service.</p><p>De visualisatie is geen onderdeel van een informatiemodel, maar is een apart
+aspect. De gegevenscatalogus bevat de objectdefinities; de visualisatie van deze
+objecten wordt buiten de gegevenscatalogus beschreven in visualisatieregels, die
+zijn vastgelegd in de bijlagen. In elke visualisatieregel is ook vastgelegd van
+welke selectie van objecten dit de visualisatie is.</p><p>Alleen met betrekking tot de visualisatie van teksten wordt in de
+gegevenscatalogus iets gezegd. Dit is nodig omdat deze zaken al door de
+bronhouders in acht moeten worden genomen wil uiteindelijk een te genereren
+kaartbeeld van de BGT landelijk op een uniforme wijze worden gepresenteerd.</p><p>Er is bij het vaststellen van de visualisatie geen onderscheid gemaakt tussen
+verplichte objecten die zijn vastgelegd in de <a href="https://www.geonovum.nl/geo-standaarden/bgt-imgeo/gegevenscatalogus-bgt-111">Basisregistratie Grootschalige
+Topografie
+(BGT)</a>
+en de overige objecten die zijn vastgelegd in het <a href="https://www.geonovum.nl/geo-standaarden/bgt-imgeo/gegevenscatalogus-imgeo-versie-211">Informatiemodel Geografie
+(IMGeo)</a>.</p></section><section id="inbedding"><h3 id="x1-2-inbedding"><span class="secno">1.2 </span>Inbedding</h3><p>De visualisatie van de Basisregistratie Grootschalige Topografie (BGT) die hier
+wordt gepresenteerd sluit aan bij het <a href="https://www.rijkshuisstijl.nl/communicatiemiddelen/cartografie/print-en-drukwerk">Huisstijlhandboek Cartografie voor te
+drukken en printen
+media</a>
+v.3 van 1 Logo en de <a href="https://www.geonovum.nl/geo-standaarden/geo-voor-web/webcartografie-handreiking">Handreiking
+Webcartografie</a>
+van Geonovum.</p></section><section id="de-verschillende-bgt-visualisaties"><h3 id="x1-3-de-verschillende-bgt-visualisaties"><span class="secno">1.3 </span>De verschillende BGT-visualisaties</h3><p>Deze handreiking beschrijft de visualisatieregels voor zeven verschillende
+presentaties van BGT|IMGeo gegevens, elk met hun eigen doel en gebruik:</p><ol>
+<li><p><strong>Standaardvisualisatie</strong>: een visualisatie voor het gebruik van de
+BGT/IMGeo-inhoud als hoofdthema, die aansluit bij de visualisatie van de
+Basisregistratie Topografie (BRT). In de standaardvisualisatie worden alleen
+de puntsymbolen voor CADO, verkeersdrempel en kering toegepast. Omwille van
+de visuele hiërarchie wordt met klem geadviseerd om de icoonvisualisatie van
+IMGeo puntobjecten NIET af te beelden in combinatie met de
+standaardvisualisatie.</p>
+</li>
+<li><p><strong>Achtergrondvisualisatie</strong>: een visualisatie voor het gebruik van de
+BGT/IMGeo-inhoud als achtergrondkaart, die aansluit bij de visualisatie van
+de BRT-Achtergrondkaart zoals die is gerealiseerd voor Publieke
+Dienstverlening op de Kaart (PDOK).</p>
+</li>
+<li><p><strong>Icoonvisualisatie</strong>: een visualisatie van de puntsymbolen voor het gebruik
+van de IMGeo-inhoud, die aansluit bij de hiervoor genoemde
+achtergrondvisualisatie. Omwille van de visuele hiërarchie wordt met klem
+geadviseerd om de icoonvisualisatie NIET af te beelden in combinatie met de
+standaardvisualisatie.</p>
+</li>
+<li><p><strong>Lijngerichte visualisatie</strong>: een visualisatie voor het gebruik van de
+BGT/IMGeo-inhoud als hoofdthema, die aansluit bij de visualisatie van de
+Grootschalige Basiskaart Nederland (GBKN). Alle individuele objecten met
+dezelfde eigenschappen die aan elkaar grenzen worden aaneengesloten
+gevisualiseerd. De begrenzingen tussen de individuele objecten vallen
+hierbij weg om zo een rustiger kaartbeeld te realiseren. Hiervoor wordt wel
+een witte vlakvulling meegegeven aan de objecten.</p>
+</li>
+<li><p><strong>Omtrekgerichte visualisatie</strong>: een visualisatie voor het gebruik van de
+BGT/IMGeo-inhoud als hoofdthema, die aansluit bij de visualisatie van de
+Grootschalige Basiskaart Nederland (GBKN). Alle individuele objecten worden
+apart gevisualiseerd. De begrenzingen tussen de individuele objecten blijven
+gehandhaafd.</p>
+</li>
+<li><p><strong>Pastelvisualisatie</strong>: een visualisatie voor het gebruik van de
+BGT/IMGeo-inhoud als achtergrondkaart, die aansluit bij de behoefte van
+civiel-technische ingenieursbureaus en de kabels- en leidingenketen om
+informatie over haar bouwwerken, kunstwerken en infrastructuur af te beelden
+op de BGT/IMGeo-inhoud.</p>
+</li>
+<li><p><strong>Planvisualisatie:</strong> een visualisatie voor het gebruik van de
+planinformatie-inhoud.</p>
+</li>
+</ol></section><section id="visualisatieregels"><h3 id="x1-4-visualisatieregels"><span class="secno">1.4 </span>Visualisatieregels</h3><p>De visualisaties die zijn gerealiseerd zijn vastgelegd in een bepaalde,
+voorgeschreven vorm volgens de template visualisatie die Geonovum heeft
+opgesteld in combinatie met de Handreiking Visualisatie. Het template bevat
+bovendien een toelichting op de ingevulde velden.</p><p>De template bevat de volgende onderdelen:</p><ul>
+<li><p>Sheet 1: Omschrijving: Geeft een uitleg van alle eigenschappen van symbolen
+die in de template te vinden zijn. De uitleg bevat onder andere een
+Nederlandse vertaling van het begrip, een omschrijving, en een voorbeeld
+afbeelding.</p>
+</li>
+<li><p>Sheet 2: Vlaksymbolen: Het deel van de template waar je de
+visualisatieregels staan beschreven voor objecten die met een vlaksymbool
+worden gevisualiseerd.</p>
+</li>
+<li><p>Sheet 3: Lijnsymbolen: Idem voor lijnsymbolen</p>
+</li>
+<li><p>Sheet 4: Puntsymbolen: Idem voor puntsymbolen</p>
+</li>
+<li><p>Sheet 5: Tekstsymbolen: Idem voor tekstsymbolen</p>
+</li>
+<li><p>Sheet 6: Standaarden: Geeft een overzicht van symbool kenmerken in SLD, KML
+en SVG èn geeft aan welke symbool kenmerken (in bepaalde omstandigheden)
+worden afgeraden in het kader van de richtlijn voor goede webcartografie.</p>
+</li>
+</ul><p>Voor elke visualisatie is er een Excel bestand met daarin de visualisatieregels
+voor alle objecttypen. Bij elke regel is een voorbeeld opgenomen van hoe het
+object eruit komt te zien als het gevisualiseerd wordt.</p><p><img src="media/0b9a496ee75f595d6e047b06b8b1a9a8.png" alt=""></p><p><em>Figuur: Voorbeeld vlaksymbolen uit de template met visualisatieregels</em></p><p>Voor de visualisaties in deze handreiking zijn de volgende templates
+beschikbaar:</p><table>
+<thead>
+<tr>
+<th><strong>Visualisatie</strong></th>
+<th><strong>Template</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Standaardvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_standaardvisualisatie.xls">Visualisatieregels_IMGeo_BGT_standaardvisualisatie.xls</a></td>
+</tr>
+<tr>
+<td>Achtergrondvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_achtergrondvisualisatie.xls">Visualisatieregels_IMGeo_BGT_achtergrond.xls</a></td>
+</tr>
+<tr>
+<td>Icoonvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_icoonvisualisatie.xls">Visualisatieregels_IMGeo_BGT_icoon.xls</a></td>
+</tr>
+<tr>
+<td>Lijngerichte visualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_lijngerichtevisualisatie.xls">Visualisatieregels_IMGeo_BGT_lijngerichtevisualisatie.xls</a></td>
+</tr>
+<tr>
+<td>Omtrekgerichte visualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_omtrekgerichtevisualisatie.xls">Visualisatieregels_IMGeo_BGT_omtrekgerichtevisualisatie.xls</a></td>
+</tr>
+<tr>
+<td>Pastelvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_pastelvisualisatie.xls">Visualisatieregels_IMGeo_BGT_pastelvisualisatie.xls</a></td>
+</tr>
+<tr>
+<td>Planvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/visualisatieregels%20(XLS)/Visualisatieregels_IMGeo_BGT_planvisualisatie.xls">Visualisatieregels_IMGeo_BGT_planvisualisatie.xls</a></td>
+</tr>
+</tbody></table></section><section id="technische-bestanden"><h3 id="x1-5-technische-bestanden"><span class="secno">1.5 </span>Technische bestanden</h3><p>Naast de templates met de visualisatieregel zijn er technische bestanden, die
+direct ingelezen kunnen worden in geo-webservices en diverse GIS pakketten. Deze
+visulisatieregels zijn beschikbaar conform de <a href="http://www.opengeospatial.org/standards/sld">Styled Layer Descriptor
+(SLD)</a> 1.1. standaard van het Open
+Geospatial Consortium (OGC). Dit is een open standaard en wordt ondersteund door
+een breed scala aan geografische informatiesystemen (GIS) en services, waarmee
+kaarten op het Web kunnen worden gepubliceerd. Hierdoor is er geen
+afhankelijkheid van een specifieke softwareleverancier en wordt aangesloten bij
+internationale standaarden voor visualisatie.</p><p>De iconen zijn gepubliceerd in <a href="https://www.w3.org/TR/SVG2/">Scalable Vector Graphics
+(SVG)</a> formaat en zijn tevens in PNG formaat
+beschikbaar. Het kan zijn dat voor het visualiseren van een groep objecten
+meerdere symbolen gebruikt worden, bijvoorbeeld een vlak-, lijn- of puntsymbool
+in combinatie met een tekstsymbool. In deze gevallen wordt er op meerdere sheets
+een visualisatieregel opgenomen: één voor vlak, lijn, of punt, en één voor de
+tekst.</p><p>Voor de visualisaties in deze handreiking zijn de volgende technische bestanden
+beschikbaar:</p><table>
+<thead>
+<tr>
+<th><strong>Visualisatie</strong></th>
+<th><strong>Implementatiebestanden</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Standaardvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/standaardvisualisatie/sld-standaardvisualisatie.zip">sld-standaardvisualisatie.zip</a> <a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/patronen/png-svg-patronen.zip">png-svg-patronen.zip</a> <a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/symbolen/png-svg-symbolen.zip">png-svg-symbolen.zip</a></td>
+</tr>
+<tr>
+<td>Achtergrondvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/achtergrondvisualisatie/sld-achtergrondvisualisatie.zip">sld-achtergrondvisualisatie.zip</a></td>
+</tr>
+<tr>
+<td>Icoonvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/icoonvisualisatie/sld-icoonvisualisatie.zip">sld-icoonvisualisatie.zip</a> <a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/symbolen/png-svg-symbolen.zip">png-svg-symbolen.zip</a></td>
+</tr>
+<tr>
+<td>Lijngerichte visualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/lijngerichtevisualisatie/sld-lijngerichtevisualisatie.zip">sld-lijngerichtevisualisatie.zip</a></td>
+</tr>
+<tr>
+<td>Omtrekgerichte visualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/omtrekgerichtevisualisatie/sld-omtrekgerichtevisualisatie.zip">sld-omtrekgerichtevisualisatie.zip</a></td>
+</tr>
+<tr>
+<td>Pastelvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/pastelvisualisatie/sld-pastelvisualisatie.zip">sld-pastelvisualisatie.zip</a></td>
+</tr>
+<tr>
+<td>Planvisualisatie</td>
+<td><a href="https://github.com/Geonovum/IMGeo/raw/master/visualisatie/2.3/implementatiebestanden%20(SLD)/planvisualisatie/sld-planvisualisatie.zip">sld-planvisualisatie.zip</a></td>
+</tr>
+</tbody></table><p>Let op: de lettertypen die voor de teksten worden gebruikt in de SLD’s worden
+niet meegeleverd. Het gaat hierbij om 'Arial', 'RijksoverheidSansTextTT' en
+'RijksoverheidSansHeadingTT'. Het lettertype ‘Rijksoverheid Sans’ is te
+downloaden via de website over de
+<a href="https://www.rijkshuisstijl.nl/basiselementen/lettertype/rijksoverheid-sans">Rijkshuisstijl</a>.</p></section></section>
+   <section data-format="markdown" aria-busy="false" id="visualisatie-van-de-objecttypen"><!--OddPage--><h2 id="x2-visualisatie-van-de-objecttypen"><span class="secno">2. </span>Visualisatie van de objecttypen</h2><section id="transport"><h3 id="x2-1-transport"><span class="secno">2.1 </span>Transport</h3><section id="wegdeel"><h4 id="x2-1-1-wegdeel"><span class="secno">2.1.1 </span>Wegdeel</h4><p>Het objecttype “Wegdeel” wordt gevisualiseerd op basis van het attribuut
+“bgt-functie”. De verschillende rijbaandelen worden niet afgebakend door harde
+lijnen, waardoor een rustiger kaartbeeld ontstaat. Om deze visualisatie te
+realiseren, wordt de geometrie van het objecttype 2 maal in de visualisatie
+getekend:</p><ol>
+<li><p>De eerste keer voor de wegranden</p>
+</li>
+<li><p>De tweede keer voor de wegvulling</p>
+</li>
+</ol><p>Voor specifieke toepassingen kan het wenselijk zijn om de verschillende wegdelen
+over de standaard visualisatie af te beelden.</p><p><img src="media/a8fca65ceb2cea0b2f7df5062f20e114.png" alt="Figuur: Wegdelen gevisualiseerd op basis van het attribuut &quot;bgt-functie&quot;."></p><p><em>Figuur: Wegdelen gevisualiseerd op basis van het attribuut "bgt-functie"
+conform de regels van de standaardvisualisatie.</em></p></section><section id="ondersteunendwegdeel"><h4 id="x2-1-2-ondersteunendwegdeel"><span class="secno">2.1.2 </span>OndersteunendWegdeel</h4><p>Het objecttype “Ondersteunend Wegdeel” wordt gevisualiseerd op basis van het
+attribuut “bgt-functie”. De objecten krijgen ook een lijnsymbool mee in dezelfde
+kleur als het vlaksymbool om te voorkomen, dat er dunne, witte lijnen tussen de
+objecten blijven.</p></section><section id="spoor"><h4 id="x2-1-3-spoor"><span class="secno">2.1.3 </span>Spoor</h4><p>Het objecttype “Spoor” wordt gevisualiseerd op basis van het attribuut
+“bgt-functie” . Om deze visualisatie te realiseren, wordt de geometrie van het
+objecttype 2 maal in de visualisatie getekend:</p><ol>
+<li><p>De eerste keer voor het doorlopende lijnsymbool</p>
+</li>
+<li><p>De tweede keer voor het gestreepte lijnsymbool</p>
+</li>
+</ol><p>De visualisatie van het objecttype is gelijk voor de standaard- en
+achtergrondvisualisatie.</p></section></section><section id="terreindeel"><h3 id="x2-2-terreindeel"><span class="secno">2.2 </span>Terreindeel</h3><section id="onbegroeidterreindeel"><h4 id="x2-2-1-onbegroeidterreindeel"><span class="secno">2.2.1 </span>OnbegroeidTerreindeel</h4><p>Het objecttype “OnbegroeidTerreindeel” wordt gevisualiseerd op basis van het
+attribuut “bgt-fysiekvoorkomen”. De objecten met de attribuutwaarden “Erf”,
+“Gesloten verharding”, “Open verharding” en “Half verhard” worden twee maal
+afgebeeld: als lijnsymbool en als vlaksymbool.</p><p>De objecten met de attribuutwaarden “Onverhard” en “Zand” krijgen zowel een
+vlaksymbool als ook een lijnsymbool mee in dezelfde kleur als het vlaksymbool om
+te voorkomen, dat er dunne, witte lijnen tussen de objecten blijven.</p></section><section id="begroeid-terreindeel"><h4 id="x2-2-2-begroeid-terreindeel"><span class="secno">2.2.2 </span>Begroeid Terreindeel</h4><p><img src="media/9378e81640221db81370d6d182e4261b.png" alt=""></p><p><em>Figuur: Terreindelen gevisualiseerd: loofbos: gemengd bos, bouwland en grasland
+conform de regels van de standaardvisualisatie.</em></p><p>Het objecttype “Begroeid Terreindeel” wordt gevisualiseerd op basis van het
+attribuut “bgt-fysiekvoorkomen”. De objecten krijgen ook een lijnsymbool mee in
+dezelfde kleur als het vlaksymbool om te voorkomen, dat er dunne, witte lijnen
+tussen de objecten blijven.</p><p>De vlakpatronen voor de standaardvisualisatie worden meegeleverd als Scalable
+Vector Graphics (SVG) bestanden.</p></section></section><section id="water"><h3 id="x2-3-water"><span class="secno">2.3 </span>Water</h3><section id="waterdeel-en-ondersteunend-waterdeel"><h4 id="x2-3-1-waterdeel-en-ondersteunend-waterdeel"><span class="secno">2.3.1 </span>Waterdeel en Ondersteunend Waterdeel</h4><p>Het objecttype “Waterdeel” wordt gevisualiseerd op basis van het attribuut
+“bgt-type”. De objecten krijgen ook een lijnsymbool mee in dezelfde kleur als
+het vlaksymbool om te voorkomen, dat er dunne, witte lijnen tussen de objecten
+blijven.</p></section></section><section id="bouwwerk"><h3 id="x2-4-bouwwerk"><span class="secno">2.4 </span>Bouwwerk</h3><section id="pand"><h4 id="x2-4-1-pand"><span class="secno">2.4.1 </span>Pand</h4><p>Het objecttype “Pand” wordt gevisualiseerd in alle visualisaties. In de
+standaard visualisatie krijgen de objecten zowel een vlaksymbool als een
+lijnsymbool mee, waardoor de individuele panden kunnen worden onderscheiden.</p><p>In de achtergrondvisualisatie krijgen de objecten ook een lijnsymbool mee in
+dezelfde kleur als het vlaksymbool om te voorkomen, dat er dunne, witte lijnen
+tussen de objecten blijven. Hier kunnen de onafhankelijke panden niet worden
+onderscheiden.</p></section><section id="overigbouwwerk"><h4 id="x2-4-2-overigbouwwerk"><span class="secno">2.4.2 </span>OverigBouwwerk</h4><p>Het objecttype “OverigBouwwerk” wordt gevisualiseerd op basis van het attribuut
+“bgt-type” en “plus-type”.</p></section><section id="kunstwerk"><h4 id="x2-4-3-kunstwerk"><span class="secno">2.4.3 </span>Kunstwerk</h4><p>Het objecttype “Kunstwerkdeel” wordt gevisualiseerd op basis van het attribuut
+“bgt-type” en “plus-type”. De verschillende objecten met de attribuutwaarde
+“Perron” worden niet afgebakend door harde lijnen, waardoor een rustiger
+kaartbeeld ontstaat. Om deze visualisatie te realiseren, wordt de geometrie van
+het object 2 maal in de visualisatie getekend:</p><ol>
+<li><p>De eerste keer voor de wegranden</p>
+</li>
+<li><p>De tweede keer voor de wegvulling</p>
+</li>
+</ol><p>De Overbruggingsdelen en Tunneldelen worden wel gevisualiseerd, maar er wordt
+geen onderscheid gemaakt in het type Overbruggingdeel of type Tunneldeel.</p><p>Let op: voor de Pastelvisualisatie worden de Overbruggingsdelen twee maal
+getekend. Zo worden met name de pijlers duidelijk zichtbaar. Zie hoofdstuk 5
+voor meer informatie.</p></section><section id="scheiding-en-overige-scheiding"><h4 id="x2-4-4-scheiding-en-overige-scheiding"><span class="secno">2.4.4 </span>Scheiding en Overige Scheiding</h4><p>Het objecttype “Scheiding” wordt gevisualiseerd op basis van het attribuut
+“bgt-type” of “plus-type”. In de achtergrondvisualisatie wordt het objecttype
+niet gevisualiseerd.</p></section></section><section id="functioneel-gebied"><h3 id="x2-5-functioneel-gebied"><span class="secno">2.5 </span>Functioneel gebied</h3><p>Het objecttype “Functioneel gebied” is onderdeel van de standaardvisualisatie.
+Het objecttype “Functioneel gebied” wordt voor de standaardvisualisatie
+gevisualiseerd op basis van het attribuut “bgt-type” of “plus-type” door middel
+van een vlaksymbool (waarbij slechts de grens van het functioneel gebied wordt
+afgebeeld) en een puntsymbool. Een puntsymbool wordt getoond in het centrum van
+het deel van een polygoon, dat op het beeldscherm zichtbaar is. Een vlaksymbool
+zou objecten binnen een functioneel gebied overlappen. De puntsymbolen worden in
+een aparte SLD aangeboden, zodat zij bovenop alle andere lijn-, punt- en
+tekstsymbolen kunnen worden afgebeeld. Deze puntsymbolen zijn meegeleverd als
+Scalable Vector Graphics (SVG) bestanden.</p><p>De objecten met de attribuutwaarde “Waterbergingsgebied” en “Kering” hebben
+naast het doorgetrokken lijnsymbool van de grens ook een extra lijnsymbool. Dit
+wordt gerealiseerd op basis van een geometrische driehoek uit het Truetype
+lettertype “Symbol”.</p></section><section id="registratief-gebied"><h3 id="x2-6-registratief-gebied"><span class="secno">2.6 </span>Registratief gebied</h3></section><section id="openbare-ruimte"><h3 id="x2-7-openbare-ruimte"><span class="secno">2.7 </span>Openbare ruimte</h3><p>Het objecttype “Openbare Ruimte wordt gevisualiseerd zonder gebruik te maken van
+de verschillende attributen.</p><section id="buurt"><h4 id="x2-7-1-buurt"><span class="secno">2.7.1 </span>Buurt</h4><p>Het objecttype “Buurt” wordt gevisualiseerd zonder gebruik te maken van de
+verschillende attributen.</p></section><section id="stadsdeel"><h4 id="x2-7-2-stadsdeel"><span class="secno">2.7.2 </span>Stadsdeel</h4><p>Het objecttype “Stadsdeel” wordt gevisualiseerd zonder gebruik te maken van de
+verschillende attributen.</p></section><section id="wijk"><h4 id="x2-7-3-wijk"><span class="secno">2.7.3 </span>Wijk</h4><p>Het objecttype “Wijk” wordt gevisualiseerd zonder gebruik te maken van de
+verschillende attributen.</p></section><section id="waterschap"><h4 id="x2-7-4-waterschap"><span class="secno">2.7.4 </span>Waterschap</h4><p>Het objecttype “Waterschap” wordt gevisualiseerd zonder gebruik te maken van de
+verschillende attributen.</p></section><section id="vegetatie-object"><h4 id="x2-7-5-vegetatie-object"><span class="secno">2.7.5 </span>Vegetatie-object</h4><p>Het objecttype “Vegetatie-object” wordt alleen in de standaardvisualisatie
+gevisualiseerd op basis van het attribuut “plus-type”. De bomen krijgen een
+puntsymbool, de heggen een vlaksymbool of lijnsymbool.</p></section></section></section>
+   <section data-format="markdown" aria-busy="false" id="kaartbeschrifting"><!--OddPage--><h2 id="x3-kaartbeschrifting"><span class="secno">3. </span>Kaartbeschrifting</h2><p>In de BGT worden teksten opgenomen en gevisualiseerd ten behoeve van de
+oriëntatie. De teksten zijn opgenomen als individuele puntobjecten met als
+attributen de naam die op de betreffende locatie afgebeeld dient te worden en de
+rotatie, de hoek waaronder de tekst geplaatst dient te worden. Deze teksten
+betreffen namen van openbare ruimten en nummeraanduidingsreeks bij panden. Voor
+de teksten die betrekking hebben op openbare ruimten wordt ook het type openbare
+ruimte vastgelegd.</p><p>In de standaardvisualisatie, pastelvisualisatie en de objectgerichte
+visualisatie wordt gebruik gemaakt van het lettertype 'Arial'. In de
+achtergrondvisualisatie wordt gebruik gemaakt van het lettertype
+'RijksoverheidSansTextTT' en 'RijksoverheidSansHeadingTT'.</p><section id="openbareruimtelabel"><h3 id="x3-1-openbareruimtelabel"><span class="secno">3.1 </span>OpenbareRuimteLabel</h3><p>In de visualisatie van de BGT worden namen gepresenteerd van alle openbare
+ruimten</p><p>zoals gedefinieerd in de BAG. Dit is bedoeld ter oriëntatie. Een naam van een
+openbare</p><p>ruimte kan meerdere malen worden gepresenteerd.</p><p>De visualisatie van een openbare ruimtenaam vindt plaats door de coördinaten van
+het midden (centrum) van de tekst vast te leggen, als mede de rotatie van de
+tekst ten opzichte van de normale tekstrichting. De naam wordt geautomatiseerd
+uit de BAG overgenomen.</p><p>Op basis van de attribuut “plus-type” wordt bepaald, of het attribuut “Rotatie”
+wordt gebruikt voor de visualisatie. Alleen voor het visualiseren van objecten
+met de domeinwaarde “Weg”, “Spoorbaan”, “Water” voor het attribuut “plus-type”
+wordt het attribuut “Rotatie” meegenomen in de visualisatie. De domeinwaarden
+voor het attribuut “Rotatie” liggen tussen de –90 graden en +90 graden.</p><p>De locaties van de puntobjecten worden ingewonnen op schaal 1:2000.</p><p><img src="media/2a67e08159d0d0b32b43784bd15b544e.png" alt=""></p><p><em>Figuur: Straatnamen en waternamen gepresenteerd in de standaardvisualisatie.</em></p></section><section id="nummeraanduidingreeks"><h3 id="x3-2-nummeraanduidingreeks"><span class="secno">3.2 </span>Nummeraanduidingreeks</h3><p>In de visualisatie van de BGT worden nummeraanduidingen gepresenteerd behorend
+bij panden zoals gedefinieerd in de BAG voor de verblijfsobjecten in die panden.
+Dit is bedoeld ter oriëntatie. De nummeraanduidingen van verblijfsobjecten in
+een pand worden verzameld tot een nummeraanduidingreeks. Indien er slechts één
+huisnummer voorkomt wordt alleen deze getoond. Bij meerdere huisnummers worden
+het eerste en het laatste huisnummer getoond, gescheiden door een koppelteken,
+bijvoorbeeld '33-39'. Indien in een reeks ook huisletters voorkomen dan worden
+deze ook afgebeeld, bijvoorbeeld '33A-33Z' of '33A-39A'. Indien in een reeks ook
+toevoegingen voorkomen dan worden deze niet afgebeeld. Indien in een pand één en
+slechts één verblijfsobject voorkomt, dan wordt de nummeraanduiding hiervan
+volledig weergegeven, dus zowel het huisnummer als de eventueel aanwezige
+huisletter en/of de aanwezige toevoeging. Als een pand op de grens van twee of
+meer openbare ruimten is gelegen en nummeraanduidingen daarbinnen bij meerdere
+openbare ruimten horen, dan worden er meerdere (reeksen van) nummeraanduidingen
+afgebeeld overeenkomstig bovenstaande regels.</p><p><img src="media/76b08a1a00c0cd2271863edcaf4047d8.png" alt=""></p><p><em>Figuur: Nummeraanduidingsreeks wordt geplaatst, waarbij de rotatie ten opzichte
+van de normale tekstrichting minimaal is.</em></p><p>De visualisatie van een nummeraanduidingreeks vindt plaats door de coördinaten
+van het midden (centrum) van de tekst vast te leggen, alsmede de rotatie van de
+tekst ten opzichte van de normale tekstrichting. De nummeraanduidingreeks dient
+te worden geplaatst tegen de ‘straatzijde’ van het pand aan, met een minimale
+hoek ten opzichte van de normale tekstrichting.</p><p>De locaties van de puntobjecten worden ingewonnen op schaal 1:1000.</p></section></section>
+   <section data-format="markdown" aria-busy="false" id="inrichtingselementen"><!--OddPage--><h2 id="x4-inrichtingselementen"><span class="secno">4. </span>Inrichtingselementen</h2><p>De groepen inrichtingselementen worden onderscheiden door verschillende
+achtergrondkleuren van de iconen. Sommige groepen hebben een gezamenlijk
+puntsymbool, andere groepen hebben een puntsymbool voor de verschillende
+objecttypen. De puntsymbolen worden meegeleverd als Scalable Vector Graphics
+(SVG) bestanden en als TrueType-fontbestand.</p></section>
+   <section data-format="markdown" aria-busy="false" id="kaartsamenstelling"><!--OddPage--><h2 id="x5-kaartsamenstelling"><span class="secno">5. </span>Kaartsamenstelling</h2><p>Naast de beschrijving van visualisatie van de objecttypen geeft onderstaande
+tabel aan, hoe de objecttypen geordend moeten worden om een kaart te realiseren:</p><p><em>Tabel: Overzicht van de tekenvolgorde van de objecttypen voor de verschillende
+visualisaties.</em></p><table>
+<thead>
+<tr>
+<th>Teken- volgorde</th>
+<th>Objecttype</th>
+<th>Standaard</th>
+<th>Achtergrond</th>
+<th>Lijngericht</th>
+<th>Omtrekgericht</th>
+<th>Pastel</th>
+<th>Plan</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Ongeclassificeerd Object</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ondersteunend Waterdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Waterdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Onbegroeid Terreindeel</td>
+<td>x</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Begroeid Terreindeel</td>
+<td>x</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tunneldeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Overbruggingsdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ondersteunend Wegdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Wegdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Spoor</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Pand</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>12</td>
+<td>GebouwInstallatie</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Overigbouwwerk</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Kunstwerkdeel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Scheiding</td>
+<td>x</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>16</td>
+<td>OverigeScheiding</td>
+<td>-</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>17</td>
+<td>VegetatieObject</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Openbare ruimte</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Registratief gebied</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Nummeraanduidingreeks</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Openbareruimtelabel</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>-</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Functioneel gebied</td>
+<td>x</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table><p>De serie 1-17 wordt indien van toepassing voor de betreffende visualisatie
+herhaald voor iedere set objecten met dezelfde domeinwaarde voor het attribuut
+relatieveHoogteligging. Nadat deze objecten zijn gevisualiseerd worden ten
+slotte de overige lagen gevisualiseerd over de andere objecten heen in de
+volgorde zoals is aangegeven in de tabel.</p><section id="specifieke-tekeninstructies"><h3 id="x5-1-specifieke-tekeninstructies"><span class="secno">5.1 </span>Specifieke tekeninstructies</h3><section id="achtergrondvisualisatie"><h4 id="x5-1-1-achtergrondvisualisatie"><span class="secno">5.1.1 </span>Achtergrondvisualisatie</h4><p>Voor de achtergrondvisualisatie worden dezelfde SLD’s toegepast op meerdere
+kaartlagen:</p><table>
+<thead>
+<tr>
+<th>Tekenvolgorde</th>
+<th>Objecttype</th>
+<th>SLD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>Ondersteunend Waterdeel</td>
+<td>achtergrond_water_polygon.sld</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Waterdeel</td>
+<td>achtergrond_water_polygon.sld</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Onbegroeid Terreindeel</td>
+<td>achtergrond_landuse_polygon.sld</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Begroeid Terreindeel</td>
+<td>achtergrond_landuse_polygon.sld</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tunneldeel</td>
+<td>achtergrond_infra_extra_polygon.sld</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Overbruggingsdeel</td>
+<td>achtergrond_infra_extra_polygon.sld</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ondersteunend Wegdeel</td>
+<td>achtergrond_infra_side.sld</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Wegdeel</td>
+<td>achtergrond_infra.sld</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Spoor</td>
+<td>achtergrond_infra.sld</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Pand</td>
+<td>achtergrond_urban_polygon.sld</td>
+</tr>
+<tr>
+<td>12</td>
+<td>GebouwInstallatie</td>
+<td>achtergrond_urban_extra_polygon.sld</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Overigbouwwerk</td>
+<td>achtergrond_urban_extra_polygon.sld</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Kunstwerkdeel</td>
+<td>achtergrond_infra_extra_polygon.sld</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Scheiding</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Vlakgeometrie</td>
+<td>achtergrond_urban_extra_polygon.sld</td>
+</tr>
+<tr>
+<td></td>
+<td>Lijngeometrie</td>
+<td>achtergrond_barrier_line.sld</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Nummeraanduidingreeks</td>
+<td>achtergrond_labels_numbers.sld</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Openbareruimtelabel</td>
+<td>achtergrond_labels_names.sld</td>
+</tr>
+</tbody></table><p>In de SLD’s voor de Achtergrondvisualisatie wordt een voorbeeld getoond hoe
+gebruik gemaakt kan worden van GeoServer-specifieke SLD-regels om de
+tekenvolgorde van de elementen binnen een laag op basis van de domeinwaarde voor
+het attribuut relatieveHoogteligging af te dwingen:</p><p>&lt;vendoroption name="sortBy" =""&gt;relatievehoogteligging\</p><p>&lt;vendoroption name="sortByGroup" =""&gt;terrain\</p><p>Indien geen gebruik wordt gemaakt van GeoServer of een versie lager dan 2.9, dan
+dient de serie 1-17 te worden herhaald voor iedere set objecten met dezelfde
+domeinwaarde voor het attribuut relatieveHoogteligging.</p></section><section id="icoonvisualisatie"><h4 id="x5-1-2-icoonvisualisatie"><span class="secno">5.1.2 </span>Icoonvisualisatie</h4><p>De objecten in het objecttype Functioneel Gebied, die alleen IMGeo-inhoud zijn
+kunnen desgewenst worden meegenomen met de BGT-inhoud. De inrichtingselementen
+die alleen IMGeo-inhoud zijn, worden in een aparte icoonvisualisatie (met of
+zonder het Functioneel Gebied) verbeeld, apart van de overige 4 visualisaties.
+Onderstaande tabel geeft aan, hoe de inrichtingselementen geordend moeten worden
+om een kaart te realiseren:</p><table>
+<thead>
+<tr>
+<th>Tekenvolgorde</th>
+<th>Objecttype</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Waterinrichtingselement</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Weginrichtingselement</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Wegdeel</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Put</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bak</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bord</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Installatie</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kast</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Paal</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Sensor</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Straatmeubilair</td>
+</tr>
+<tr>
+<td>12</td>
+<td>VegetatieObject</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Mast</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Functioneel Gebied</td>
+</tr>
+</tbody></table></section><section id="pastelvisualisatie"><h4 id="x5-1-3-pastelvisualisatie"><span class="secno">5.1.3 </span>Pastelvisualisatie</h4><p>Voor de Pastelvisualisatie worden de Overbruggingsdelen twee maal getekend. De
+eerste maal worden de Overbruggingsdelen getekend in de hierboven aangegeven
+volgorde. De tweede maal worden de Overbruggingsdelen getekend bovenop alle
+andere objecten.</p></section><section id="kruinlijnen"><h4 id="x5-1-4-kruinlijnen"><span class="secno">5.1.4 </span>Kruinlijnen</h4><p>De kruinlijngeometrie van een object wordt door middel van een aparte SLD
+gevisualiseerd. Het maakt een integraal onderdeel uit van een object en is dus
+geen aparte laag in de visualisatie.
+
+</p></section></section></section>
+   <section data-format="markdown" aria-busy="false" id="verklarende-woordenlijst"><!--OddPage--><h2 id="x6-verklarende-woordenlijst"><span class="secno">6. </span>Verklarende woordenlijst</h2><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Uitleg</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BGT</td>
+<td>De Basisregistratie Grootschalige Topografie (BGT) legt alle objecten vast die in het terrein aanwezig zijn, zoals huizen, wegen en dijken. De BGT wordt een nieuwe basisregistratie, gebaseerd op de huidige Grootschalige Basiskaart Nederland (GBKN).</td>
+</tr>
+<tr>
+<td>IMGeo</td>
+<td>Het Informatiemodel Geografie (IMGeo) is opgezet om objectgericht grootschalige geometrie uit te kunnen wisselen tussen partijen via de landelijke GML-standaard. Geografische informatie van objecten als panden, wegdelen of waterdelen wordt inclusief administratieve kenmerken uitgewisseld.</td>
+</tr>
+<tr>
+<td>KML</td>
+<td>De Keyhole Markup Language (KML) beschrijft zowel visualisatie van kaartobjecten voor online kaarten en digitale globes als de navigatie binnen de online kaart of digitale globe. KML is ontwikkeld door Google en is een standaard van het Open Geospatial Consortium.</td>
+</tr>
+<tr>
+<td>OGC</td>
+<td>Het wereldwijd opererende Open Geospatial Consortium heeft als belangrijkste doel om de uitwisselbaarheid van geo-informatie binnen en tussen organisaties te verbeteren op basis van open standaarden. Ook bekend onder de oude naam Open GIS Consortium.</td>
+</tr>
+<tr>
+<td>SLD</td>
+<td>De Styled Layer Descriptor (SLD) Implementation Specification beschrijft hoe de Web Map Server (versie 1.0 &amp; 1.1) specificatie kan worden uitgebreid met als doel om gebruikersgedefinieerde symbolen voor object data toe te staan. In de WMS SLD specificatie wordt een XML syntax beschreven, die aanduidt hoe een OGC Web Map Server haar eigen data moet tonen.</td>
+</tr>
+<tr>
+<td>SVG</td>
+<td>De Scalable Vector Graphics (SVG) is een open specificatie van het World Wide Web Consortium (W3C) voor een bestandsformaat om tweedimensionale afbeeldingen mee te beschrijven. De bestanden kunnen worden bewerkt met behulp van tekenpakketten zoals Adobe Illustrator of Inkscape.</td>
+</tr>
+<tr>
+<td>WMS</td>
+<td>Web Map Service is een Open Geospatial Consortium (OGC) standaard voor het tonen van kaarten middels online diensten. Een Web Map Service (WMS) publiceert "kaarten" (dit betekent: een visuele voorstelling van de geografische en thematische data, niet de data zelf) op het Web. De WMS biedt een manier om gelijktijdig een visueel overzicht te krijgen van complexe en gedistribueerde geografische kaarten, met behulp van Internet technologie.</td>
+</tr>
+</tbody></table></section>    
+  
+
+<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

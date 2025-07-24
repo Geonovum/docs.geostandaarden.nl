@@ -1,0 +1,995 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+  
+  
+  
+  
+  
+<script>document.title = respecConfig.title</script>
+<title>Wijzigingsprotocol informatiemodel Geluid</title>
+  
+<title>Default</title>
+  
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
+  
+<link rel="stylesheet" type="text/css" href="./css/Geonovumstyle.css">
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<meta name="description" content="Gebruikers, die in de praktijk werken met het informatiemodel Geluid hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van het informatiemodel Geluid. Aanpasssingen of wijzigingen in het informatiemodel Geluid worden niet zomaar doorgevoerd; voor de ene gebruiker van het informatiemodel zal de wijziging gering zijn, voor de ander kan het grote gevolgen hebben. Dit wijzigingsprotocol geeft inzicht in het wijzigingsproces, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (stakeholders) bij het onderhouden en gebruiken van het informatiemodel Geluid. De stakeholders worden op diverse momenten betrokken in dit proces.">
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie. Commentaar over dit document kan gestuurd worden naar ",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment. Comments regarding this document may be sent to ",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    }
+  },
+  "title": "Wijzigingsprotocol informatiemodel Geluid",
+  "specStatus": "def",
+  "specType": "BD",
+  "pubDomain": "img",
+  "licence": "cc-by-nd",
+  "shortName": "IMG-wijzigingsprotocol",
+  "publishDate": "2023-06-08",
+  "editors": [
+    {
+      "name": "Michel Grothe",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Pieter Bresters",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Michel Grothe",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Thomas Hofman",
+      "company": "RIVM",
+      "companyURL": "https://www.rivm.nl/"
+    },
+    {
+      "name": "Tyora van der Meulen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Wilko Quak",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "github": "https://github.com/Geonovum/IMG-wijzigingsprotocol/"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/base.css"></head>
+
+<body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Wijzigingsprotocol informatiemodel Geluid</h1>
+    
+    <h2>
+      Geonovum Beheerdocumentatie<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2023-06-08">08 juni 2023</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/img/def-bd-img-wijzigingsprotocol-20230608">https://docs.geostandaarden.nl/img/def-bd-img-wijzigingsprotocol-20230608</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/img/img-wijzigingsprotocol/">https://docs.geostandaarden.nl/img/img-wijzigingsprotocol/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/IMG-wijzigingsprotocol/">https://geonovum.github.io/IMG-wijzigingsprotocol/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Michel Grothe</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteurs:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Pieter Bresters</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Michel Grothe</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Thomas Hofman</span> (<a class="p-org org h-org" href="https://www.rivm.nl/">RIVM</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Tyora van der Meulen</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Wilko Quak</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/IMG-wijzigingsprotocol/">GitHub Geonovum/IMG-wijzigingsprotocol</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMG-wijzigingsprotocol/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMG-wijzigingsprotocol/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMG-wijzigingsprotocol/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+          Dit document valt onder de volgende licentie: 
+          <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+        </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2>
+<p> Gebruikers, die in de praktijk werken met het informatiemodel Geluid hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van het informatiemodel Geluid. Aanpasssingen of wijzigingen in het informatiemodel Geluid worden niet zomaar doorgevoerd; voor de ene gebruiker van het informatiemodel zal de wijziging gering zijn, voor de ander kan het grote gevolgen hebben. Dit wijzigingsprotocol geeft inzicht in het wijzigingsproces, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (stakeholders) bij het onderhouden en gebruiken van het informatiemodel Geluid. De stakeholders worden op diverse momenten betrokken in dit proces.</p>
+</section>
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#inleiding"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#waarom-een-wijzigingsprotocol"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</a></li><li class="tocline"><a class="tocxref" href="#begrippen"><bdi class="secno">1.2 </bdi>Begrippen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gebruik-van-het-wijzigingsprotocol"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#releasebeleid"><bdi class="secno">2.1 </bdi><span name="_Ref503261397" class="formerLink" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn"></span><span name="_Ref503261402" class="formerLink" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-0"></span><span name="_Ref503261548" class="formerLink" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-1"></span>Releasebeleid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#nieuwe-versie-van-de-standaard"><bdi class="secno">2.1.1 </bdi>Nieuwe versie van de standaard</a></li><li class="tocline"><a class="tocxref" href="#oudere-versie-van-de-standaard"><bdi class="secno">2.1.2 </bdi>Oudere versie van de standaard</a></li></ol></li><li class="tocline"><a class="tocxref" href="#proces-varianten"><bdi class="secno">2.2 </bdi><span name="_Ref482110995" class="formerLink" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-2"></span>Proces varianten</a></li><li class="tocline"><a class="tocxref" href="#betrokkenen"><bdi class="secno">2.3 </bdi>Betrokkenen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#wijzigingsproces"><bdi class="secno">3. </bdi>Wijzigingsproces</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#fasen-in-het-wijzigingsproces"><bdi class="secno">3.1 </bdi><span name="_Ref503261432" class="formerLink" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-3"></span>Fasen in het wijzigingsproces</a></li><li class="tocline"><a class="tocxref" href="#het-wijzigingsproces-in-detail"><bdi class="secno">3.2 </bdi>Het wijzigingsproces in detail</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tussentijdse-werkafspraken"><bdi class="secno">4. </bdi>Tussentijdse werkafspraken</a></li><li class="tocline"><a class="tocxref" href="#implementatie-ondersteuning"><bdi class="secno">5. </bdi>Implementatie ondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#technische-bestanden"><bdi class="secno">5.1 </bdi>Technische bestanden</a></li><li class="tocline"><a class="tocxref" href="#validatie"><bdi class="secno">5.2 </bdi>Validatie</a></li><li class="tocline"><a class="tocxref" href="#opleiding-en-advies"><bdi class="secno">5.3 </bdi>Opleiding en advies</a></li><li class="tocline"><a class="tocxref" href="#communicatie"><bdi class="secno">5.4 </bdi>Communicatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#escalatieprocedure-en-klachtenafhandeling"><bdi class="secno">6. </bdi>Escalatieprocedure en klachtenafhandeling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#escalatieprocedure"><bdi class="secno">6.1 </bdi>Escalatieprocedure</a></li><li class="tocline"><a class="tocxref" href="#klachtenafhandeling"><bdi class="secno">6.2 </bdi>Klachtenafhandeling</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tof"><bdi class="secno">7. </bdi>Lijst met figuren</a></li></ol></nav>
+
+  
+      <section class="informative" id="inleiding"><div class="header-wrapper"><h2 id="x1-inleiding"><bdi class="secno">1. </bdi>Inleiding</h2><a class="self-link" href="#inleiding" aria-label="Permalink for Section 1."></a></div><p><em>Dit onderdeel is niet normatief.</em></p>
+<p>Gebruikers, die in de praktijk werken met het informatiemodel Geluid hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van het informatiemodel Geluid. Aanpasssingen of wijzigingen in het informatiemodel Geluid worden niet zomaar doorgevoerd; voor de ene gebruiker van het informatiemodel zal de wijziging gering zijn, voor de ander kan het grote gevolgen hebben. Dit wijzigingsprotocol geeft inzicht in het wijzigingsproces, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (stakeholders) bij het onderhouden en gebruiken van het informatiemodel Geluid. De stakeholders worden op diverse momenten betrokken in dit proces.</p>
+<section id="waarom-een-wijzigingsprotocol"><div class="header-wrapper"><h3 id="x1-1-waarom-een-wijzigingsprotocol"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</h3><a class="self-link" href="#waarom-een-wijzigingsprotocol" aria-label="Permalink for Section 1.1"></a></div>
+<p>In dit wijzigingsprotocol staan de sturende principes achter het wijzigingsproces voor het informatiemodel Geluid; de manier waarop wijzigingen in het informatiemodel Geluid plaatsvinden in afstemming met de stakeholders en gebruikers. Met het protocol wordt elke wijziging van het informatiemodel een voorspelbaar en transparant proces voor bronhouders, beheerders, software leveranciers en gebruikers van het informatiemodel. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies van de standaard verstaan wordt en wanneer deze nieuwe versie(s) verwacht mogen worden. Tevens is een processchema uitgewerkt, dat invulling geeft aan de stappen die de stakeholders met elkaar doorlopen om tot een wijziging van het informatiemodel Geluid te komen. </p>
+</section><section id="begrippen"><div class="header-wrapper"><h3 id="x1-2-begrippen"><bdi class="secno">1.2 </bdi>Begrippen</h3><a class="self-link" href="#begrippen" aria-label="Permalink for Section 1.2"></a></div>
+<table class="simple">
+  <colgroup>
+  <col style="width: 38%;">
+  <col style="width: 62%;">
+   </colgroup>
+  <thead>
+    <tr>
+      <th>Begrip </th>
+      <th>Uitleg </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Centrale Voorziening Geluidgegevens (CVGG)<b> </b></b></td>
+      <td>Het Rijk, provincies, gemeenten en waterschappen moeten verplicht conform de Omgevingswet geluidgegevens aanleveren aan de Centrale Voorziening Geluidgegevens (CVGG). De CVGG is het digitale systeem dat de geluidgegevens verzamelt. </td>
+     </tr>
+    <tr>
+      <td><b>Informatiemodel Geluid (IMG)<b> </b></b></td>
+      <td>Het Informatiemodel Geluid (IMG) beschrijft het informatiemodel voor de gegevensuitwisseling met de Centrale Voorziening Geluidgegevens en andere gebruikers. </td>
+     </tr>
+    <tr>
+      <td><b>Stuurgroep CVGG<b> </b></b></td>
+      <td>De Stuurgroep Centrale Voorziening Geluidgegevens bestaat uit vertegenwoordigers van de verschillende gebruikersgroepen van de CVGG. Het ministerie van IenW, de opdrachtgever voor het beheer van de CVGG, zit de stuurgroep voor. De opdrachtgever stemt de koers van het beheer CVGG via de stuurgroep CVGG af. De voorzitter van de stuurgroep CVGG stelt tevens een nieuwe versie van de IMG standaard vast, nadat de adviesgroep een advies over een wijzigingsvoorstel in de stuurgroep CVGG heeft ingebracht. </td>
+     </tr>
+    <tr>
+      <td><b>Adviesgroep<b> </b></b></td>
+      <td>De adviesgroep brengt advies uit aan de stuurgroep CVGG over een wijzigingsvoorstel. De adviesgroep bestaat uit vertegenwoordigers van de gebruikers, deskundigen, stakeholders en de beheerder van het informatiemodel. </td>
+     </tr>
+    <tr>
+      <td><b>Werkgroep<b> </b></b></td>
+      <td>Een werkgroep bestaande uit deskundigen (en belangrijke stakeholders) en de beheerders van het informatiemodel Geluid. De (ad hoc) werkgroep stelt een wijzigingsvoorstel op, dat ter toetsing aan de Adviesgroep wordt voorgelegd. </td>
+     </tr>
+    <tr>
+      <td><b>Beheeroverleg<b> </b></b></td>
+      <td>Het overleg tussen functioneel beheerder en technische beheerder van het informatiemodel Geluid. </td>
+     </tr>
+    <tr>
+      <td><b>Wijzigingsprotocol<b> </b></b></td>
+      <td>Hiermee wordt het geheel van vastgelegde regels en afspraken voor het wijzigen van de standaard vastgelegd. </td>
+     </tr>
+    <tr>
+      <td><b>Wijzigingsproces<b> </b></b></td>
+      <td>Het wijzigingsproces is de daadwerkelijke wijziging van het IMG op een bepaald moment. Het volledige wijzigingsproces doorloopt de fasen van het wijzigingsprotocol met een datum van inwerkingtreding van de nieuwe versie van het IMG. </td>
+     </tr>
+    <tr>
+      <td><b>Wijzigingsverzoek<b> </b></b></td>
+      <td>Wijzigingsverzoeken zijn wensen voor aanpassing van de standaard. Een wijzigingsverzoek doorloopt het wijzigingsproces en kan leiden tot een Wijzigingsvoorstel. </td>
+     </tr>
+    <tr>
+      <td><b>Wijzigingsvoorstel<b> </b></b></td>
+      <td>In het wijzigingsproces worden meerdere wijzigingsverzoeken meegenomen en gebundeld tot één wijzigingsvoorstel voor het wijzigen van de IMG standaard. </td>
+     </tr>
+  </tbody>
+</table></section></section>
+      <section id="gebruik-van-het-wijzigingsprotocol"><div class="header-wrapper"><h2 id="x2-gebruik-van-het-wijzigingsprotocol"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</h2><a class="self-link" href="#gebruik-van-het-wijzigingsprotocol" aria-label="Permalink for Section 2."></a></div>
+<p>Het wijzigingsprotocol schrijft een vast stramien voor het wijzigen van de IMG standaard voor. Het protocol benoemt de fasen en de op te leveren resultaten. Belangrijk zijn de randvoorwaarden en uitgangspunten. De gebruikers, deskundigen (experts) en andere stakeholders van het informatiemodel Geluid worden bij het wijzigen van het informatiemodel Geluid nauw betrokken. </p>
+<p>Het wijzigingsprotocol voor het Informatiemodel Geluid geeft: </p>
+<ul>
+
+<li>Inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>Inzicht in de wijzigingsverzoeken;</li>
+<li>Inzicht in een voorgestelde wijziging van de standaard;</li>
+<li>Stabiliteit aan de standaard;</li>
+<li>Continuïteit aan de standaard;</li>
+<li>Een eenduidige aanpak.</li>
+
+</ul>
+
+<section id="releasebeleid"><div class="header-wrapper"><h3 id="x2-1-releasebeleid"><bdi class="secno">2.1 </bdi><a name="_Ref503261397" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn"></a><a name="_Ref503261402" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-0"></a><a name="_Ref503261548" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-1"></a>Releasebeleid</h3><a class="self-link" href="#releasebeleid" aria-label="Permalink for Section 2.1"></a></div>
+<section id="nieuwe-versie-van-de-standaard"><div class="header-wrapper"><h4 id="x2-1-1-nieuwe-versie-van-de-standaard"><bdi class="secno">2.1.1 </bdi>Nieuwe versie van de standaard</h4><a class="self-link" href="#nieuwe-versie-van-de-standaard" aria-label="Permalink for Section 2.1.1"></a></div>
+<p>Een release van een standaard is een nieuwe uitgave van de standaard. De wijzigingen binnen een release wordt gedocumenteerd en vastgelegd in Bijlage A van het informatiemodel. De gebruiker kan zo nagaan op welke plaatsen de betreffende standaard gewijzigd is. De nieuwe release kenmerkt zich ten opzichte van de oude versie door een hoger versienummer. Bij de release is ieder product van de standaard voorzien van een nieuw versienummer conform Semantic Versioning (SemVer). Binnen SemVer heeft elk product zijn eigen versienummer conform de X.Y.Z schrijfwijze, bijvoorbeeld versie 2.1.0 (=X.Y.Z):</p>
+<ul>
+
+<li><b>X-wijzigingen</b> Alle wijzigingen die vragen om heraanlevering van gegevens (bestaande gegevens passen niet meer in het nieuwe XML schema) zijn X wijzigingen. De volgende wijzigingen zijn voorbeelden die vragen om een heraanlevering”.</li>
+
+<ul>
+<li>Het verwijderen van een objecttype of attribuut;</li>
+<li>Het toevoegen van een verplicht objecttype of attribuutsoort;</li>
+<li>Het wijzigen van de definitie of toelichting van een objecttype of attribuutsoort, zodanig dat het impact heeft op de aan te leveren gegevens*</li>
+</ul>
+<p>Frequentie: in overleg met de opdrachtgever.</p>
+</ul>
+
+<ul>
+
+<li><b>Y-wijzigingen</b> Dit zijn wijzigingen die geen heraanlevering van gegevens vragen. Bijvoorbeeld het toevoegen van optioneel objecttype of  attribuut. Of bijvoorbeeld als een attribuut een nieuwe naam krijgt die automatisch afleidbaar is. Dan is geen heraanlevering nodig. Deze wijzigingen zijn backwards compatible. Frequentie: in overleg met de opdrachtgever.</li>
+
+</ul>
+
+<ul>
+
+<li><b>Z-wijzigingen</b> Dit zijn bugs/fouten of aanvullingen in een definitie of toelichting, die geen impact hebben op de aan te leveren gegevens. Deze wijzigingen zijn backwards compatible. Frequentie: zo spoedig mogelijk na constatering.</li>
+
+</ul>
+
+<p>*Dit wordt vastgesteld door voorzitter van de stuurgroep CVGG.</p>
+<p>Na het uitbrengen van een nieuwe versie van een standaard is deze nieuwe versie beschikbaar en vindbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a> en de registers (de <a href="https://definities.geostandaarden.nl" target="_blank">conceptenbibliotheek</a>, het <a href="https://register.geostandaarden.nl" target="_blank">technisch register</a> en het <a href="https://docs.geostandaarden.nl" target="_blank">documentenregister</a>).</p>
+</section><section id="oudere-versie-van-de-standaard"><div class="header-wrapper"><h4 id="x2-1-2-oudere-versie-van-de-standaard"><bdi class="secno">2.1.2 </bdi>Oudere versie van de standaard</h4><a class="self-link" href="#oudere-versie-van-de-standaard" aria-label="Permalink for Section 2.1.2"></a></div>
+<p>De SemVer-methodiek schrijft backwards compatibility voor op het Y-niveau. Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk) bepaald. Na het uitbrengen van de nieuwe versie van een standaard wordt de ontwikkeling van de oude versie stop gezet.</p>
+<p>Voor het onderhoud en de ondersteuning van een oude versie van een standaard gelden de volgende uitgangspunten:</p>
+<ul>
+
+<li>Aan een oude versie worden geen nieuwe features toegevoegd, geen aanpassingen gedaan op X en Y niveau na het uitbrengen van een nieuwe versie. Verzoeken om aanpassing en wijziging voor nieuwe functionaliteit worden niet meer voor de oude standaard in behandeling genomen maar doorgegeven aan het ontwikkelteam. Correcties (Z-wijzigingen) worden wel uitgevoerd op de vorige versies zolang deze nog ondersteund worden.</li>
+
+<li>Bij oplevering van een nieuwe versie wordt de voorgaande versie nog een van te voren vastgestelde periode ondersteund. De duur van de overgangsperiode wordt mede bepaald door de omvang van de wijzigingen (X, Y en Z wijzigingen op de vorige versies), de staat van ontwikkeling van de standaard, en of de standaard in voorlopig dan wel permanent beheer is.</li>
+
+<li>De duur van de ondersteuningsperiode voor de diverse soorten versies moet nog worden vastgesteld. Tot aan inwerkingtreden van de Omgevingswet, waar de Informatiemodel Geluid ook onder valt, zal naar verwachting de ondersteuningsperiode van verschillende versies anders zijn, dan in de periode van permanent beheer zonder dat daarnaast nog grootschalige ontwikkeling van de standaard plaatsvindt.</li>
+
+<p>Na het uitbrengen van een nieuwe versie van een standaard blijven oudere versies beschikbaar en zijn vindbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a> en de registers (de <a href="https://definities.geostandaarden.nl" target="_blank">conceptenbibliotheek</a>, het <a href="https://register.geostandaarden.nl" target="_blank">technisch register</a> en het <a href="https://docs.geostandaarden.nl" target="_blank">documentenregister</a>).</p>
+</ul>
+
+</section></section><section id="proces-varianten"><div class="header-wrapper"><h3 id="x2-2-proces-varianten"><bdi class="secno">2.2 </bdi><a name="_Ref482110995" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-2"></a>Proces varianten</h3><a class="self-link" href="#proces-varianten" aria-label="Permalink for Section 2.2"></a></div>
+<p>In paragraaf <a href="#_Ref503261402">releasebeleid</a> zijn de X, Y en Z wijzigingen uitgelegd. Wijzigingen kennen drie procesvarianten: eén voor X wijzigingen, één voor Y wijzigingen en één voor Z wijzigingen.</p>
+<p>De start van het proces is voor alle varianten hetzelfde. Op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a> wordt een wijzigingsverzoek ingediend bij de IMG Helpdesk. De impact van deze wijziging wordt door het technisch beheer beoordeeld in samenwerking met het functioneel beheerd in een impactanalyse. Deze eerste impactanalyse beoordeelt tot welke SemVer categorie de wijziging hoort, welke betrokken partijen geraakt worden door de wijziging en wat de secundaire effecten van de wijziging zijn (bijvoorbeeld ontstaan extra validatieregels in het CVGG). Naast de impactanalyse wordt, indien mogelijk, een oplossing aangedragen voor het wijzigingsverzoek. </p>
+<p><b>Proces voor X en Y wijzigingen</b></p>
+<p>X en Y wijzigingen vergen volledige afstemming en het doorlopen van alle in paragraaf <a href="#fasen-en-resultaten">2.4</a> beschreven fasen: Inhoud, Toetsing, Besluitvorming en Implementatie. Voor de inhoudelijke fase wordt een (ad hoc) werkgroep gestart met daarin deskundigen (experts) vanuit vertegenwoordiging van de stakeholders die door de wijziging worden geraakt volgens de impactanalyse. Het resultaat van de werkgroep is een wijzigingsvoostel dat in het overleg van de Adviesgroep wordt besproken. X wijzigingen worden altijd voorgelegd aan de stuurgroep CVGG. De voorzitter van de stuurgroep CVGG stelt een nieuwe versie van de informatiemodel Geluid standaard vast. Y wijzigingen worden alleen voorgelegd aan de stuurgroep als de adviesgroep hier aanleiding toe geeft. Y wijzigingen kunnen zonder betrokkenheid van de stuurgroep door de voorzitter van de CVGG stuurgroep worden vastgesteld. Indien nodig wordt met software leveranciers een convenant afgesloten of een bestaand convenant uitgebreid, waarin wordt afgesproken dat software leveranciers (onderdelen van) de standaard gaan ondersteunen.</p>
+<p><b>Implementatie van X wijzigingen</b> </p>
+<p>De implementatiefase van X wijzigingen wijkt af van die van Y wijzigingen, de implementatie van X wijzigingen vraagt namelijk altijd om een heraanlevering van geluidgegevens door bronhouders. </p>
+<p><b>Proces voor Z wijzigingen</b></p>
+<p>In overleg met het functioneel beheer worden Z wijzigingen in de volgende release opgenomen. De inhoudelijke fase wordt door het technisch beheer van de standaard uitgevoerd. Besluitvorming vindt plaats in afstemming met de functioneel beheer. Implementatie vindt plaats door het publiceren van de wijziging op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a>.</p>
+</section><section id="betrokkenen"><div class="header-wrapper"><h3 id="x2-3-betrokkenen"><bdi class="secno">2.3 </bdi>Betrokkenen</h3><a class="self-link" href="#betrokkenen" aria-label="Permalink for Section 2.3"></a></div>
+<p>De volgende betrokkenen spelen een rol in het wijzigingsproces van het Informatiemodel Geluid:</p>
+<table class="simple">
+  <colgroup>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+   </colgroup>
+  <thead>
+    <tr>
+      <th> <strong>Rol<strong> </strong></strong></th>
+      <th> <strong>Stakeholder<strong> </strong></strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> Opdrachtgever (eigenaar) van het CVGG en het informatiemodel Geluid </td>
+      <td>Ministerie van Infrastructuur en Waterstaat (IenW) </td>
+     </tr>
+    <tr>
+      <td> Bronhouder van geluidgegevens </td>
+      <td>Rijksoverheden (Rijkswaterstaat, ProRail, IenW/DGLM), provincies, gemeenten, omgevingsdiensten, waterschappen </td>
+     </tr>
+    <tr>
+      <td> Functioneel beheer van het informatiemodel Geluid en beheer van het CVGG </td>
+      <td>Rijksinstituut voor Volksgezondheid en Milieu (RIVM) </td>
+     </tr>
+    <tr>
+      <td> Technisch beheer van het informatiemodel Geluid  </td>
+      <td>Geonovum </td>
+     </tr>
+    <tr>
+      <td> Software leverancier levert de software voor bronhouders voor het verwerken van geluidsgegevens conform het informatiemodel Geluid </td>
+      <td>Software bedrijven </td>
+     </tr>
+  </tbody>
+</table></section></section>
+      <section id="wijzigingsproces"><div class="header-wrapper"><h2 id="x3-wijzigingsproces"><bdi class="secno">3. </bdi>Wijzigingsproces</h2><a class="self-link" href="#wijzigingsproces" aria-label="Permalink for Section 3."></a></div>
+<p>De aanleiding voor een wijzigingsproces is gebaseerd op meldingen over de wensen en gevonden fouten in het informatiemodel Geluid. Dit zijn de wijzigingsverzoeken. Deze verzoeken worden door de Helpdesk in behandeling genomen en in samenwerking met de gebruikers en deskundigen (experts) en andere stakeholders verwerkt tot een wijzigingsvoorstel. De beheerder neemt het initiatief om een wijzigingsproces te starten, de stappen in het proces zijn conform het wijzigingsprotocol.</p>
+<section id="fasen-in-het-wijzigingsproces"><div class="header-wrapper"><h3 id="x3-1-fasen-in-het-wijzigingsproces"><bdi class="secno">3.1 </bdi><a name="_Ref503261432" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-3"></a>Fasen in het wijzigingsproces</h3><a class="self-link" href="#fasen-in-het-wijzigingsproces" aria-label="Permalink for Section 3.1"></a></div>
+<p>Het volledige wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie, zoals weergegeven in <a href="#_Ref503260625">Figuur 1</a>.</p>
+<figure style="width: 35%;" id="fig-fasen-wijzigingsproces">
+
+<p><a name="_Ref503260625" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-4"></a><img src="media/image3.png" alt="media/image3.png"></p>
+<figcaption><a class="self-link" href="#fig-fasen-wijzigingsproces">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Fasen wijzigingsproces</span></figcaption>
+
+</figure>
+
+<p><b>Inhoud</b></p>
+<p>In de fase inhoud wordt voor ieder wijzigingsverzoek bepaald of deze wordt opgenomen in de nieuwe versie van de standaard of niet. Dit wordt door de <strong>IMG helpdesk</strong> intern vastgelegd en is raadpleegbaar via de <a href="(https://www.geonovum.nl/geo-standaarden/meldingen)" target="_blank">website</a>. Voor ieder wijzigingsverzoek dat wordt meegenomen in de nieuwe versie van de standaard, wordt een impactanalyse uitgevoerd en oplossingen uitgewerkt. Deze eerste impactanalyse beoordeelt ook  tot welke SemVer categorie de wijziging hoort, welke betrokken partijen geraakt worden door de wijziging en wat de secundaire effecten van de wijziging zijn (e.g. er ontstaan extra validatieregels in het CVGG). </p>
+<p>Wanneer tijdens de eerste impactanalyse is vastgesteld dat het om een X of Y wijzigingverzoek gaat, wordt een <strong>IMG werkgroep</strong> ingepland met de deskundigen en stakeholders (indieners van het wijzigingsverzoek). Afhankelijk van de omvang van de wijziging ten opzichte van de voorgaande versie en afhankelijk van welke stakeholders geraakt worden door de wijziging, verandert de samenstelling van de <strong>IMG werkgroep</strong>. De werkgroep wordt vooraf geïnformeerd over het wijzigingsvoorstel en indien mogelijk wordt een eerste probleemschets en oplossing aangedragen voorafgaand aan de werkgroep door het technisch beheer. De resultaten van de werkgroep worden in een wijzigingsvoorstel voorgelegd aan de <strong>IMG adviesgroep</strong>.</p>
+<p><b>Toetsing</b></p>
+<p>De fase Toetsing vormt een brug tussen de inhoud en besluitvorming. In deze fase wordt voor een X of Y wijziging door de <strong>IMG adviesgroep</strong> het wijzigingsvoorstel getoetst en van een advies voorzien voor besluitvorming. Met deze consultatie vragen wij de gebruikers en stakeholders van de IMG standaard actief hun reactie te geven op het wijzigingsvoorstel. Het wijzigingsvoorstel inclusief de terugkoppeling uit een evt. publieke  consultatie wordt verwerkt als Release Candidate van het Informatiemodel Geluid.</p>
+<p><b>Besluitvorming</b></p>
+<p>Bij Besluitvorming wordt besloten om de gewijzigde IMG standaard vast te stellen en te publiceren. Afhankelijk van het type wijzigingsvoorstel (X, Y of Z, zie paragraaf <a href="#_Ref482110995">proces varianten</a>), besluit de voorzitter van de stuurgroep CVGG voor X en Y wijzigingen en het beheeroverleg voor de Z wijzigingen.</p>
+<p><b>Implementatie</b></p>
+<p>Het in gebruik nemen van de nieuwe IMG standaard in de praktijk staat centraal in deze fase. Hiervoor levert het technisch beheer verschillende technische bestanden op. De technische bestanden zijn bijvoorbeeld testbestanden. Deze bestanden ondersteunen bij de implementatie van de standaard in de software. Beheerders van de CVGG nemen het nieuwe informatiemodel Geluid in gebruik. Het functioneel en technisch beheer ondersteunt de implementatie bovendien door de werking van het informatiemodel toe te lichten tijdens bijvoorbeeld bijeenkomsten of 'inloopspreekuren' voor de gebruikers en software leveranciers. Resultaat van deze fase is dat de gebruikers geluidsgegevens kunnen maken en uitwisselen conform de nieuwe IMG standaard. In <a href="#tussentijdse-werkafspraken">Hoofdstuk 5</a> lichten we de implementatie verder toe.</p>
+</section><section id="het-wijzigingsproces-in-detail"><div class="header-wrapper"><h3 id="x3-2-het-wijzigingsproces-in-detail"><bdi class="secno">3.2 </bdi>Het wijzigingsproces in detail</h3><a class="self-link" href="#het-wijzigingsproces-in-detail" aria-label="Permalink for Section 3.2"></a></div>
+<p>De meldingen en wijzigingsverzoeken alsook (inter)nationale ontwikkelingen geven aanleiding tot de verdere ontwikkeling voor een standaard. Het wijzigingsproces dat dit wijzigingsvoorstel doorloopt bestaat uit tien stappen, die in onderstaande Figuur 2 in onderlinge samenhang zijn weergegeven. In deze figuur zijn processen, besluiten en de relevante actoren en actorgroepen en hun interacties opgenomen. Iedere processtap is vervolgens kort beschreven.</p>
+<figure id="Figuur_x"> 
+<a href="media/image9.svg" target="_blank"><img src="media/image9.svg" alt=""></a>
+<figcaption><a class="self-link" href="#Figuur_x">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Processchema wijzigingsbeheer IM Geluid</span></figcaption>
+</figure>
+
+<p><strong>Processtappen</strong></p>
+<p>De volgende processtappen worden doorlopen om te komen tot wijzigingen in de IMG standaard (zie figuur 2): </p>
+<ol>
+<li><p>Met een ‘melding’ begint het wijzigingsproces. Doorgaans zal de gebruiker van het informatiemodel een eis of wens indienen, maar het kan ook het functioneel of technisch beheer zijn in sommige gevallen (bijv. wanneer een onderliggende standaard is bijgesteld). Er zijn meerdere ‘triggers’, die kunnen leiden tot het indienen van een wijzigingsverzoek. Eisen en wensen, die kunnen leiden tot wijzigingen in het informatiemodel Geluid kunnen ontstaan ten gevolge van de volgende triggers: </p>
+<ul>
+<li>Aanpassing van business doelen van de opdrachtgever;</li>
+<li>Nieuwe of aangepaste wetgeving;</li>
+<li>Aanpassing van aspecten van (onderliggende) standaarden;</li>
+<li>Gewijzigde gebruikerswensen;</li>
+<li>Wijzigingen in technische voorzieningen;</li>
+<li>Wijzigingen in systemen waar mee gekoppeld wordt;</li>
+<li>Het herstellen van fouten/bugs;</li>
+<li>Het voor zijn van het optreden van fouten (preventief).</li>
+</ul>
+<p> De bovengenoemde aanleidingen kunnen leiden tot wijzigingsverzoeken in het informatiemodel Geluid, waarmee het wijzigingsproces in gang kan worden gezet. In het algemeen worden 4 typen meldingen onderscheiden:</p>
+<ul>
+<li>Een vraag;</li>
+<li>Een wijzigingsverzoek n.a.v. een verbetering of fout/bug;</li>
+<li>Een incident;</li>
+<li>Een klacht.</li>
+</ul>
+<p> De melding wordt per mail gestuurd aan de <a href="mailto:img@geonovum.nl" target="_blank">IMG Helpdesk</a>. Bij het aanmelden van meerdere wijzigingsverzoeken, geldt dat voor elk wijzigingsverzoek een aparte mail gestuurd moet worden.</p>
+</li>
+<li><p>De <strong>IMG helpdesk</strong> registreert het wijzigingsverzoek in het meldingen systeem. De helpdesk (technisch beheer) beoordeelt het wijzigingsverzoek. De helpdesk is de actiehouder van de melding en controleert of de melding volledig en helder is. Bij een fout onderzoekt de helpdesk of dit inderdaad het geval is. Ook kan de helpdesk verder informatie opvragen bij de indiener van de melding. Ook wordt gecontroleerd of de melding geen duplicaat van een reeds ingevoerde melding. Indien de melding helder is beschreven, en het betreft een wens voor het aanpassen van de standaard of een gevonden fout, dan kan melding worden erkend en wordt de melding formeel opgenomen in het meldingen systeem (Jira). Indien de melding de niet erkend wordt, zal de helpdesk via de mail contact opnemen met de indiener om de melding verder af te stemmen.   </p>
+</li>
+<li><p>De binnengekomen meldingen wordt besproken in het <strong>IMG beheeroverleg</strong>, het overleg tussen functioneel en technisch beheer van het IMG. Het <strong>IMG beheeroverleg</strong> stelt op basis van de binnengekomen heldpdesk meldingen een lijst op met potentiële wijzigingsverzoeken. De lijst met wijzigingsverzoeken wordt pas gemaakt als overeengekomen wordt, dat de binnen gekomen wijzigingsverzoeken naar een nieuwe release van de IMG standaard kan leiden. Tot dan is er alleen de registratie in het meldingen systeem (Jira) en op <a href="https://github.com/Geonovum/IMG/issues">Github</a>. Tevens wordt in deze stap door het beheer een eerste impactanalyse uitgevoerd voor de wijzigingsverzoeken. Dit werk voert het technisch beheer van IMG uit in samenwerking met het functioneel beheer van het IMG. De impactanalyse betreft de impact van de wijziging van de standaard op de gebruikers en de door hen gebruikte software, waaronder ook de CVGG. De resultaten van de impactanalyse worden gecommuniceerd op <a href="https://github.com/Geonovum/IMG/issues">Github</a>. 
+Indien een melding wordt afgewezen – dus niet in de lijst met wijzigingsverzoeken wordt opgenomen – wordt door de <strong>IMG helpdesk</strong> een bericht met de verklaring van de afwijzing van de melding aan de indiener gestuurd. </p>
+</li>
+<li><p>Indien het functioneel beheer het nodig acht om te komen tot een wijzigingsvoorstel voor de IMG standaard, wordt een <strong>IMG werkgroep</strong> in het leven geroepen bestaande uit m.n. deskundigen (experts) en belangrijke stakeholders en het beheer. Zij stellen een definitieve impactanalyse op voor de ingediende wijzigingsverzoeken in nauwe samenwerking en afstemming met de stakeholders en bepalen wat voor soort wijziging (X, Y of Z) aan de orde is (zie ook onderstaande noot). De uitnodiging voor de <strong>IMG werkgroep</strong> wordt gedeeld met alle leden van de <strong>IMG adviesgroep</strong>. De <strong>IMG werkgroep</strong> levert een wijzigingsvoorstel voor een nieuwe versie van de IMG standaard op voor de <strong>IMG adviesgroep</strong> in geval van een X of Y-wijziging. Dit is doorgaans ook het moment dat de registratie van de wijzigingsverzoeken ook breder gedeeld wordt en worden op de 'Wensen en Eisen LijsT' (WELT genaamd). Voordat een wijzigingsvoorstel naar de <strong>IMG adviesgroep</strong> gaat, wordt de 'Wensen en Eisen LijsT' bijgewerkt op basis van de laatste inzichten vanuit de besprekingen met de <strong>IMG werkgroep</strong>.  Publicatie van de wijzigingsverzoeken (uitgewerkt naar Aanleiding, Voorgestelde wijziging, Impact) op de <a href="https://www.geonovum.nl/geo-standaarden/meldingen">WELT website</a> is toegankelijker en minder technisch van aard dan publicatie van de wijzigingsverzoeken op Github dat door de deskundigen en het beheer wordt ingezet in de <strong>IMG werkgroep</strong>.</p>
+</li>
+</ol>
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><aside class="">Impactanalyse
+
+<p>Wijzigingen in het IMG kunnen gevolgen hebben voor alle stakeholders binnen het IMG. Bij het opstellen van een wijzigingsvoorstel is het van belang om alle gevolgen van een wijziging in kaart te hebben gebracht ter ondersteuning van de implementatie van de wijziging. Deze inventarisatie vindt plaats tijdens de impactanalyse. Hierbij worden de volgende gegevens van het wijzigingsverzoek geïnventariseerd:</p>
+<table class="simple">
+  <colgroup>
+  <col style="width: 33%;">
+  <col style="width: 67%;">
+   </colgroup>
+  <thead>
+    <tr>
+      <th>Categorie </th>
+      <th>Uitleg </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <b>Betrokken partijen <b> </b></b></td>
+      <td>Wie gaat er wat van merken? </td>
+     </tr>
+    <tr>
+      <td><b>Heraanlevering noodzakelijk<b> </b></b></td>
+      <td>Veranderen definities van objecten in de standaard zodanig dat de wijziging impact heeft op de uit te wisselen gegevens? </td>
+     </tr>
+    <tr>
+      <td><b>Schemawijziging<b> </b></b></td>
+      <td>Welke impact heeft het verzoek/voorstel op het xml-schema? </td>
+     </tr>
+    <tr>
+      <td><b>Schemavalidatie<b> </b></b></td>
+      <td>Is het backward compatible in de zin van validatie op het schema? waarom? </td>
+     </tr>
+    <tr>
+      <td><b>Wijziging validatieregels<b> </b></b></td>
+      <td>Welke impact heeft het verzoek/voorstel op de validatieregels van de CVGG? </td>
+     </tr><tr>
+    </tr><tr>
+      <td><b>Wijziging omgevingsregeling<b> </b></b></td>
+      <td>Welke impact heeft het verzoek/voorstel op de omgevingsregeling? </td>
+    </tr>
+      <tr><td><b>Classificering (X/Y/Z)<b> </b></b></td>
+      <td>Gaat het om een X, Y, of Z wijziging? </td>
+      </tr>
+  </tbody>
+</table>
+
+<p>Aan de hand van bovenstaande categorieën kan bepaald worden wie er worden geraakt door het wijzigingsverzoek en wat de verandering betekent; wat er verandert voor bronhouders, software leveranciers, CVGG en de omgevingsregeling. </p>
+</aside></div>
+
+
+<ol start="5">
+<li><p>Indien het wijzigingsvoorstel enkel Z-wijziging(en) betreft, neemt het <strong>IMG beheeroverleg</strong> een besluit en gaat (al dan niet) over tot implementatie van de Z-wijziging.</p>
+</li>
+<li><p>De <strong>IMG adviesgroep</strong> toetst het wijzigingsvoorstel. In de <strong>IMG adviesgroep</strong> hebben gebruikers, belangrijke stakeholders en het beheer  zitting. Indien nodig geacht door de <strong>IMG adviesgroep</strong>, wordt het wijzigingsvoorstel één maand ter publieke consultatie aangeboden op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid">website</a>. Dit is optioneel. De resultaten van de optionele publieke consultatie worden daarna getoetst door de  <strong>IMG adviesgroep</strong>.<br>Indien de <strong>IMG adviesgroep</strong> over het wijzigingsvoorstel positief adviseert, wordt het wijzigingsvoorstel aan <strong>IMG technisch beheer</strong> gestuurd om een Release Candidate van de IMG standaard op te stellen.<br>In geval de <strong>IMG adviesgroep</strong> het voorstel nog niet kan accorderen en eerst wijzigingen wil doorvoeren en het wijzigingsvoorstel wil laten bijstellen dan wel de impactanalyse wil bijstellen, dan gaat het voorstel terug naar de <strong>IMG Werkgroep</strong>. De <strong>IMG werkgroep</strong> stelt vervolgens het wijzigingsvoorstel bij en brengt het wijzigingsvoorstel opnieuw in bij de <strong>IMG adviesgroep</strong>. </p>
+</li>
+<li><p>Evt. na de publieke consultatie zorgt het <strong>IMG technisch beheer</strong>, dat de resultaten van de consultatie worden verwerkt in een Release Candidate. De Release Candidate wordt daarna ingebracht bij de <strong>IMG adviesgroep</strong> voor toetsing van de Release Candidate van IMG. Na toetsing wordt de Release Candidate van IMG met een advies gestuurd aan <strong>Stuurgroep CVGG</strong> voor een besluit.   </p>
+</li>
+<li><p>De voorzitter van de <strong>stuurgroep CVGG</strong> neemt een besluit over de implementatie van de Definitieve Release van IMG. Indien de voorzitter van de <strong>stuurgroep CVGG</strong> akkoord is, wordt de implementatie ondersteuning in gang gezet. Indien het besluit tot implementatie negatief is, wordt terugmelding gemaakt aan de gebruikers en stakeholders en op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid">website</a>.</p>
+</li>
+<li><p>De implementatie ondersteuning wordt uitgevoerd door het <strong>IMG technisch beheer</strong>, waarbij de technische documentatie en (validatie)regels worden bijgesteld en gepubliceerd. </p>
+</li>
+<li><p>Na afronding van de implementatie ondersteuning, vindt communicatie plaats over de nieuwe IMG standaard.</p>
+</li>
+</ol>
+</section></section>
+      <section id="tussentijdse-werkafspraken"><div class="header-wrapper"><h2 id="x4-tussentijdse-werkafspraken"><bdi class="secno">4. </bdi>Tussentijdse werkafspraken</h2><a class="self-link" href="#tussentijdse-werkafspraken" aria-label="Permalink for Section 4."></a></div>
+<p>Het toepassen van het informatiemodel Geluid roept soms vragen op. Bij onduidelijkheden, discrepanties of fouten in de standaard kunnen in de  praktijk vragen ontstaan over hoe de standaard – in afwachting van een formele wijziging– toe te passen. Met name bij een X wijziging van de standaard, die een grote impact op toepassing in de praktijk heeft, zullen geconstateerde fouten of gewenste wijzigingen in de regel niet heel snel worden doorgevoerd. Een tussentijds gebruiksadvies wordt dan opgesteld in de vorm van een <i>tussentijdse werkafspraak</i>. In dit hoofdstuk wordt het maken van   werkafspraken toegelicht.</p>
+<p>Als er een fout of probleem wordt geconstateerd, gaat er doorgaans altijd enige tijd overheen de fout of het probleem wordt hersteld in de nieuwe IMG standaard. Typische voorbeelden van dit soort fouten of problemen zijn in algemene zin:</p>
+<ul><li>In de IMG standaard zijn bepaalde technische vrijheden mogelijk die op grond van een goede praktijk niet zouden moeten worden benut;</li>
+<li>In de IMG standaard is iets wel mogelijk, maar niet verplicht, terwijl dit wel sterk gewenst is.</li>
+</ul>
+
+<p>In dit soort gevallen zal het beheer na consultatie een werkafspraak publiceren over hoe in afwachting van de wijziging (een reparatie) van de IMG standaard moet worden omgegaan met een geconstateerde fout of  probleem. Zo’n werkafspraak heeft de formele status van een advies van het beheer aan de gebruikers van het IMG. De tussentijdse werkafspraak vervangt niet de in gebruik zijnde versie van IMG (de vastgestelde versie), maar geldt wel als werkwijze in afwachting van de nieuwe IMG standaard (na reparatie).</p>
+<p>Voor bovengenoemde voorbeelden zouden de werkafspraken resp. als volgt kunnen zijn:</p>
+<ul><li>Gebruik nooit de mogelijkheid A die de standaarden bieden;</li>
+<li>Doe het altijd op manier B.</li>
+</ul>
+
+<p>De status van deze werkafspraken is als volgt:</p>
+<ol><li>De tussentijdse werkafspraken zijn van toepassing totdat de wijzigingen in werking zijn getreden, daarna zijn ze niet meer van toepassing;</li>
+<li>Indien mogelijk zijn de werkafspraken altijd een directe voorloper van de wijzigingen, zelf die zullen worden doorgevoerd;</li>
+<li>Binnen het wijzigingsbeheer worden alleen werkafspraken gemaakt, die vooruitlopen op daadwerkelijk aanstaande wijzigingen. Er worden binnen dit kader geen permanente werkafspraken gemaakt die niet verankerd zullen worden in het IMG;</li>
+<li>Het toepassen van de werkafspraken is (van rechtswege) niet verplicht, maar geeft duidelijkheid en richting bij implementatie door software leveranciers;</li>
+<li>Het toepassen van de werkafspraken vergemakkelijkt de implementatie van wijzigingen, omdat het een al een voorbereidende werkwijze is voor het ander;</li>
+<li>Gegevens, die niet voldoen aan de werkafspraken, zullen niet worden afgekeurd door de validator van het CVGG. Eventueel kan wel een waarschuwing of andersoortige melding worden gegeven over de geconstateerde afwijking van de werkafspraak.</li>
+</ol></section>
+      <section id="implementatie-ondersteuning"><div class="header-wrapper"><h2 id="x5-implementatie-ondersteuning"><bdi class="secno">5. </bdi>Implementatie ondersteuning</h2><a class="self-link" href="#implementatie-ondersteuning" aria-label="Permalink for Section 5."></a></div>
+<p>Het in gebruik nemen van (een nieuwe versie van) een IMG standaard staat centraal in deze fase. Tijdens de implementatie ondersteuning worden desgewenst verschillende activiteiten uitgevoerd worden:  </p>
+<ul><li>Het opleveren van technische bestanden;</li>
+<li>Het opleveren van de validatieregels;</li>
+<li>Het verzorgen van een opleiding;</li>
+<li>De communicatie.</li>
+</ul>
+
+<p>Tevens wordt de implementatie ondersteund door de <strong>IMG helpdesk</strong>.</p>
+<section id="technische-bestanden"><div class="header-wrapper"><h3 id="x5-1-technische-bestanden"><bdi class="secno">5.1 </bdi>Technische bestanden</h3><a class="self-link" href="#technische-bestanden" aria-label="Permalink for Section 5.1"></a></div>
+<p>Om software leveranciers en gebruikers te ondersteunen bij de implementatie van een nieuwe versie van de IMG standaard, worden door het <strong>technisch beheer</strong> verschillende bestanden en documentatie opgeleverd:</p>
+<ul><li>Implementatiebestanden;</li>
+<li>Voorbeeldbestanden;</li>
+<li>Voorbeeldberichten.</li>
+</ul>
+
+<p>Ook schema’s zijn voorbeelden van implementatiebestanden die als onderdeel van standaarden worden opgeleverd. Het kan hier ook gaan om implementatiebestanden voor visualisatieregels en iconen.</p>
+<p>Voorbeeldbestanden en voorbeeldberichten kunnen worden gebruikt voor het testen van applicaties.</p>
+</section><section id="validatie"><div class="header-wrapper"><h3 id="x5-2-validatie"><bdi class="secno">5.2 </bdi>Validatie</h3><a class="self-link" href="#validatie" aria-label="Permalink for Section 5.2"></a></div>
+<p>Na het opleveren van de nieuwe standaard inclusief de verschillende onderdelen, richt de implementatie ondersteuning van de IMG standaard zich specifiek op software leveranciers en het beheer van de CVGG. Bij deze groep gebruikers is de ondersteuning vooral technisch van aard. De validator van de CVGG is het hulpmiddel bij uitstek. Van het IMG is wel een schema beschikbaar voor validatie. Voor de implementatie van de regels is vooralsnog geen schematron validator beschikbaar. De regels beschreven in het IMG worden door de CVGG en software leveranciers geïmplementeerd.</p>
+</section><section id="opleiding-en-advies"><div class="header-wrapper"><h3 id="x5-3-opleiding-en-advies"><bdi class="secno">5.3 </bdi>Opleiding en advies</h3><a class="self-link" href="#opleiding-en-advies" aria-label="Permalink for Section 5.3"></a></div>
+<p>Opleiding en advies kunnen van toegevoegde waarde zijn voor implementatie ondersteuning van de gebruikers van de IMG standaard. Middelen als documentatie, bijeenkomsten en workshops worden ingezet om de kennis over de wijzigingen in nieuwe IMG standaard te delen en te ondersteunen bij de implementatie van de nieuwe versie van de standaard. Ook publicaties in vakbladen kunnen worden ingezet ter ondersteuning.</p>
+</section><section id="communicatie"><div class="header-wrapper"><h3 id="x5-4-communicatie"><bdi class="secno">5.4 </bdi>Communicatie</h3><a class="self-link" href="#communicatie" aria-label="Permalink for Section 5.4"></a></div>
+<p>Het hele wijzigingsproces staat of valt met een goede communicatie. Onder goede communicatie wordt verstaan het tijdig leveren van de juiste informatie aan de juiste belanghebbenden. Dit betreft de proceskant alsook de producten die er worden opgeleverd. </p>
+<p><i>Website</i><i>(s)</i></p>
+<p>De actuele vigerende versie van het informatiemodel Geluid is via het <a href="https://docs.geostandaarden.nl/cvgg/img/" target="_blank">documentenregister van Nederlandse geostandaarden</a> in te zien. </p>
+<p>Wijzigingen in het informatiemodel Geluid worden bekendgemaakt op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a>.</p>
+<p><i>CVGG Nieuwsbrief</i></p>
+<p>Wijzigingen in het informatiemodel Geluid worden bekendgemaakt in de nieuwsbrief van de CVGG.</p>
+<p><i>Publieke consultatie</i></p>
+<p>Bij X en Y-wijzigingen wordt in sommige gevallen een publieke consultatie in het wijzigingsproces gehouden. De wijzigingen in het informatiemodel wordt dan voor een bepaalde, afgesproken periode voor gelegd ter commentaar aan alle belanghebbenden en geintersseerden door middel van een publieke consultatie via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a> en de nieuwsbrief van de CVGG.</p>
+<p><i>Werkafspraken</i></p>
+<p>De tussentijdse werkafspraken die bepalen hoe er in de tussentijd moet worden omgegaan met geconstateerde fouten en problemen (zie <a href="#tussentijdse-werkafspraken">Hoofdstuk 4</a>) worden gepubliceerd via nieuwsberichten op de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-geluid" target="_blank">website</a> en door middel van  nieuwsbrief van de CVGG.</p>
+</section></section>
+      <section id="escalatieprocedure-en-klachtenafhandeling"><div class="header-wrapper"><h2 id="x6-escalatieprocedure-en-klachtenafhandeling"><bdi class="secno">6. </bdi>Escalatieprocedure en klachtenafhandeling</h2><a class="self-link" href="#escalatieprocedure-en-klachtenafhandeling" aria-label="Permalink for Section 6."></a></div>
+<p>In voorgaande hoofdstukken gaat het protocol ervan uit dat wijzigingen 'in vrijheid' worden doorgevoerd. In het beheerproces wordt geen rekening gehouden met noodzakelijke wijzigingen, die met spoed of onder druk van bijvoorbeeld (externe) nieuwe wet- en regelgeving moeten worden doorgevoerd. Hiervoor bestaat een escalatieprocedure.
+Daarnaast kunnen ook klachten ingediend worden over het beheerproces en zijn afspraken gemaakt over de klachtenafhandeling. </p>
+<section id="escalatieprocedure"><div class="header-wrapper"><h3 id="x6-1-escalatieprocedure"><bdi class="secno">6.1 </bdi>Escalatieprocedure</h3><a class="self-link" href="#escalatieprocedure" aria-label="Permalink for Section 6.1"></a></div>
+<p>Er is sprake van een escalatieprocedure als er een wijziging noodzakelijk is die niet in het reguliere wijzigingsproces doorgevoerd kan worden, omdat dit naar verwachting en inschatting te lang duurt. Een uitputtende lijst met situaties en criteria wanneer escalatie van toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke wijziging leidt tot onaanvaardbare risico's voor het werkveld of het onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van werkzaamheden.</p>
+<p>De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door te kunnen voeren. Er is geen vastgelegd proces om de escalatieprocedure te doorlopen, omdat verschillende situaties van escalatie wellicht tot een verschillende wijze van handelen moeten leiden. In plaats daarvan zijn onderstaande sturende principes leidend om verantwoordelijkheden te duiden.</p>
+<p><b>Signalering</b></p>
+<p>Uit het werkveld kunnen signalen ontstaan dat met spoed een wijziging doorgevoerd zou moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden zullen ontstaan. Het is wel van belang om in het beheer de rol te onderkennen om signalen op te vangen uit het werkveld (antennefunctie). In ieder geval zullen deze signalen op enig moment de opdrachtgever of beheer bereiken, en op dat moment zal er overleg gevoerd worden over deze signalen.</p>
+<p><b>Overleg</b></p>
+<p>Bij escalatie wordt in principe overleg gevoerd tussen het functioneel en operationeel beheer en de opdrachtgever. De partijen raadplegen de betrokkenen in het werkveld daar waar nodig.</p>
+<p><b>Besluitvorming</b></p>
+<p>De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de opdrachtgever. Ook het besluit welke wijzigingen doorgevoerd moeten worden tijdens een escalatie en op welke manier, wordt genomen door de opdrachtgever.</p>
+<p><b>Coördinatie</b></p>
+<p>De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de opdrachtgever. </p>
+<p><b>Communicatie met het werkveld</b></p>
+<p>De communicatie met het werkveld tijden een escalatie wordt uitgevoerd door het (functioneel en technisch) beheer.</p>
+</section><section id="klachtenafhandeling"><div class="header-wrapper"><h3 id="x6-2-klachtenafhandeling"><bdi class="secno">6.2 </bdi>Klachtenafhandeling</h3><a class="self-link" href="#klachtenafhandeling" aria-label="Permalink for Section 6.2"></a></div>
+<p>Het garanderen van het serieus nemen van klachten kan alleen door deze volgens een zorgvuldige procedure te behandelen. Klachten kunnen ook beschouwd worden als verbetersuggestie. Twee verschillende typen klachten met betrekking tot de IMG standaard worden onderscheiden:</p>
+<ul><li>Klachten over de toepassingsmogelijkheid van de standaard;</li>
+<li>Klachten over het beheer van de standaard.</li>
+</ul>
+
+<p>In het eerste geval is het feitelijk geen klacht maar een wens of eis tot het aanpassen van de standaard. Het beheer van de betreffende standaard neemt de klacht in behandeling en neemt de klacht op als wijzigingsverzoek en niet als klacht. </p>
+<p>In het tweede geval is er sprake van ontevredenheid over de uitvoering van het beheerproces van de IMG standaard en betreft de klacht niet de inhoud, de standaard zelf. De indiener is van mening dat het beheerteam van de IMG standaard, dan wel een beheerder het werk niet naar behoren uitvoert. In dat geval wordt de klacht doorgezet naar de opdrachtgever. </p>
+<p>Het indienen van klachten loopt in principe via de <strong>IMG Helpdesk</strong>. De helpdesk zet de klacht daarop door aan de opdrachtgever.</p>
+</section></section>
+
+  
+      <section id="tof"><div class="header-wrapper"><h2 id="x7-lijst-met-figuren"><bdi class="secno">7. </bdi>Lijst met figuren</h2><a class="self-link" href="#tof" aria-label="Permalink for Section 7."></a></div><ul class="tof">
+        <li class="tofline">
+    <a class="tocxref" href="#fig-fasen-wijzigingsproces"><span class="self-link">Figuur <bdi class="figno">1</bdi></span> <span class="fig-title">Fasen wijzigingsproces</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#Figuur_x"><span class="self-link">Figuur <bdi class="figno">2</bdi></span> <span class="fig-title">Processchema wijzigingsbeheer IM Geluid</span></a>
+  </li>
+      </ul></section>
+  
+      
+   
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Beheerdocumentatie - Vastgestelde versie</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html><html lang="nl"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta content="text/html; charset=UTF-8" http-equiv="content-type"><meta name="generator" content="ReSpec 24.5.2">
+      
+      
+      <title>Standaard Toegankelijkheid Ruimtelijke Instrumenten 2006 (STRI2006) v1.3.3</title>
+      <script src="https://tools.geostandaarden.nl/respec/builds/respec-geonovum.js"></script><style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+#references :target {
+  background: #eaf3ff;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd>p:first-child {
+  margin-top: 0;
+}
+
+.section dd>p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary>ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details>* {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open]>summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details>ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details>li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+      <script src="js/config.js"></script>
+   <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/GN-DEF.css"><link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico"><script id="initialUserConfig" type="application/json">{
+  "pubDomain": "ro",
+  "specStatus": "GN-DEF",
+  "specType": "PR",
+  "license": "cc-by-nd",
+  "publishDate": "2022-12-15",
+  "authors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Beheerder RO Standaarden",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "shortName": "STRI2006",
+  "format": "markdown",
+  "github": "https://github.com/geonovum/ROST",
+  "issueBase": "https://github.com/geonovum/ROST/issues/",
+  "edDraftURI": "https://Geonovum.github.io/ROST/",
+  "publishISODate": "2022-12-15T00:00:00.000Z",
+  "generatedSubtitle": "Vastgestelde versie 15 december 2022"
+}</script><script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/def-pr-STRI2006-20221215/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Standaard Toegankelijkheid Ruimtelijke Instrumenten 2006 (STRI2006) v1.3.3",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2022-12-15",
+  "copyrightHolder": {
+    "name": "Geonovum",
+    "url": "https://www.geonovum.nl/"
+  },
+  "discussionUrl": "https://github.com/geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Beheerder RO Standaarden",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script></head>
+   <body class="h-entry"><div class="head">
+  <a href="https://www.geonovum.nl/" class="logo"><img id="Geonovum" alt="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132" height="67"></a>
+  <h1 class="title p-name" id="title">Standaard Toegankelijkheid Ruimtelijke Instrumenten 2006 (STRI2006) v1.3.3</h1>
+  
+  <h2>Geonovum Praktijkrichtlijn<br>
+  Vastgestelde versie <time class="dt-published" datetime="2022-12-15">15 december 2022</time></h2>
+  <dl>
+    <dt>Deze versie:</dt><dd><a class="u-url" href="https://docs.geostandaarden.nl/ro/def-pr-STRI2006-20221215/">https://docs.geostandaarden.nl/ro/def-pr-STRI2006-20221215/</a></dd><dt>Laatst gepubliceerde versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/STRI2006/">https://docs.geostandaarden.nl/ro/STRI2006/</a></dd>
+    
+    
+    <dt>Laatste werkversie:</dt><dd><a href="https://Geonovum.github.io/ROST/">https://Geonovum.github.io/ROST/</a></dd>
+    <dt>Redacteur:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Auteur:</dt><dd class="p-author h-card vcard"><span class="p-name fn">Beheerder RO Standaarden</span>, <a class="p-org org h-org h-card" href="https://www.geonovum.nl/">Geonovum</a></dd>
+    <dt>Doe mee:</dt><dd>
+      <a href="https://github.com/geonovum/ROST/">GitHub geonovum/ROST</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/issues/">Dien een melding in</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/commits/">Revisiehistorie</a>
+    </dd><dd>
+      <a href="https://github.com/geonovum/ROST/pulls/">Pull requests</a>
+    </dd>
+  </dl>
+  
+  
+    <dl>
+          <dt>Rechtenbeleid:</dt>
+          <dd>
+            <div class="copyright" style="margin: 0.25em 0;">
+              <abbr title="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal">
+              <a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl"><img src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal" width="115" height="40"></a>
+            </abbr>
+              <div style="display:inline-block; vertical-align:top">
+                <p style="font-size: small;">Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal<br>(CC-BY-ND)</p>
+              </div>
+            </div>
+          </dd>
+        </dl>
+  <hr title="Separator for header">
+</div><link rel="stylesheet" type="text/css" href="css/style.css"><section id="sotd" <p="" class="introductory"><h2>Status van dit document</h2><p>
+    <em>Deze paragraaf beschrijft de status van dit document ten tijde van publicatie. Het is mogelijk dat er actuelere versies van dit document bestaan. Een lijst van Geonovum publicaties en de laatste gepubliceerde versie van dit document zijn te vinden op <a href="https://www.geonovum.nl/geo-standaarden/alle-standaarden">https://www.geonovum.nl/geo-standaarden/alle-standaarden</a>.</em>
+  </p><p>
+
+    Dit is de definitieve versie van de praktijkrichtlijn. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.
+
+
+
+
+
+
+
+ Dit is de definitieve versie van de praktijkrichtlijn. Een praktijkrichtlijn is een product dat informatie geeft, vaak met een technisch karakter, dat nodig is voor het toepassen van een standaard. Een praktijkrichtlijn hoort altijd bij een standaard/norm.
+</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#inleiding"><span class="secno">1. </span>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algemeen"><span class="secno">1.1 </span>Algemeen</a></li><li class="tocline"><a class="tocxref" href="#plancontour-pdf"><span class="secno">1.2 </span>Plancontour &amp; PDF</a></li><li class="tocline"><a class="tocxref" href="#leeswijzer"><span class="secno">1.3 </span>Leeswijzer</a></li><li class="tocline"><a class="tocxref" href="#status-van-dit-document"><span class="secno">1.4 </span>Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#stri2006-stri2008"><span class="secno">1.5 </span>STRI2006 &amp; STRI2008</a></li></ol></li><li class="tocline"><a class="tocxref" href="#richtlijnen"><span class="secno">2. </span>Richtlijnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onderdelen-van-de-imro2006-plannen"><span class="secno">2.1 </span>Onderdelen van de IMRO2006 plannen</a></li><li class="tocline"><a class="tocxref" href="#versies-van-bestandsformaten"><span class="secno">2.2 </span><span name="_Ref300235285" class="formerLink"></span>Versies van bestandsformaten</a></li><li class="tocline"><a class="tocxref" href="#bestandsnamen"><span class="secno">2.3 </span><span name="_Ref300235248" class="formerLink"></span>Bestandsnamen</a></li><li class="tocline"><a class="tocxref" href="#elektronische-publicatie-van-imro2006-plannen"><span class="secno">2.4 </span>Elektronische publicatie van IMRO2006 plannen</a></li><li class="tocline"><a class="tocxref" href="#elektronische-publicatie-van-plancontouren"><span class="secno">2.5 </span>Elektronische publicatie van plancontouren</a></li><li class="tocline"><a class="tocxref" href="#manifest-en-geleideformulier"><span class="secno">2.6 </span>Manifest en geleideformulier.</a></li><li class="tocline"><a class="tocxref" href="#authenticiteitskenmerken-en-beveiliging"><span class="secno">2.7 </span><span name="_Ref300236651" class="formerLink"></span>Authenticiteitskenmerken en beveiliging</a></li><li class="tocline"><a class="tocxref" href="#digitale-verbeelding"><span class="secno">2.8 </span>Digitale verbeelding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-1"><span class="secno">3. </span><span name="_Ref118732527" class="formerLink"></span><span name="_Ref300236610" class="formerLink"></span>Bijlage 1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#schema-manifest-en-geleideformulier"><span class="secno">3.1 </span>Schema Manifest en geleideformulier</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bijlage-2"><span class="secno">4. </span>Bijlage 2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#voorbeeld-manifest"><span class="secno">4.1 </span>Voorbeeld Manifest</a></li></ol></li></ol></nav><section data-format="markdown" id="inleiding"><!--OddPage--><h2 id="x1-inleiding"><span class="secno">1. </span>Inleiding</h2><section id="algemeen"><h3 id="x1-1-algemeen"><span class="secno">1.1 </span>Algemeen</h3><p>Onder de Wet ruimtelijke ordening (Wro) worden alle planologische visies, plannen, besluiten, verordeningen en algemene maatregelen van bestuur (Wro instrumenten) digitaal vervaardigd en op elektronische wijze beschikbaar gesteld. Om dit mogelijk te maken zijn de RO Standaarden 2008 (en later 2012) ontwikkeld. De landelijke voorziening Ruimtelijkeplannen.nl zorgt dat de ruimtelijke instrumenten bij gemeenten, provincies en departementen via één landelijk loket toegankelijk en raadpleegbaar zijn: <a href="http://www.ruimtelijkeplannen.nl" target="_blank">www.ruimtelijkeplannen.nl</a>.</p><p>De ambitie voor interoperabiliteit en beschikbaarheid via Ruimtelijkeplannen.nl geldt ook voor plannen die niet gebaseerd zijn op basis van de RO Standaarden 2008 of 2012. Dat wil zeggen voor plannen die tot stand zijn gekomen onder de ‘oude’ WRO. Daarnaast geldt er een overgangsregeling voor de digitale verplichtingen van de oude WRO naar de Wro. Van 1 juli 2008 tot 1 januari 2010 gold dat de bronhouders vanuit de nieuwe Wro verplicht waren om de ruimtelijke instrumenten elektronisch beschikbaar te stellen, echter zonder nadere technische vereisten. Dit kon conform IMRO2006, alsook met Plancontour en PDF.
+</p></section><section id="plancontour-pdf"><h3 id="x1-2-plancontour-pdf"><span class="secno">1.2 </span>Plancontour &amp; PDF</h3><p>Voor digitale plannen die opgesteld zijn conform IMRO2006 of ’Plancontour &amp; PDF’ is dit document opgesteld om ook deze bestaande plannen op uniforme wijze beschikbaar te stellen. Deze praktijkrichtlijn is nodig om drie redenen:</p><ol><li>waarborgen van de bruikbaarheid en interoperabiliteit van deze plannen door middel van het vaststellen van technische vormvereisten;</li>
+<li>waarborgen van de vindbaarheid en raadpleegbaarheid van deze plannen door middel van het vaststellen van regels rondom de elektronische beschikbaarstelling;</li>
+<li>waarborgen van zekerheid voor afnemers door middel van het vaststellen van vereiste volledigheid van deze plannen.</li>
+</ol></section><section id="leeswijzer"><h3 id="x1-3-leeswijzer"><span class="secno">1.3 </span>Leeswijzer</h3><p>Dit document bestaat uit twee delen, te weten:</p><ol><li>richtlijnen;
+</li>
+<li>een aantal bijlagen.</li>
+</ol><p>De richtlijnen van de STRI2006 zijn vooral bedoeld voor leveranciers van software en elektronische infrastructuur voor de ondersteuning van het RO proces, en voor ICT medewerkers van de bronhouders van (oude) WRO-plannen en Wro instrumenten, maar niet zo zeer voor de RO-medewerkers, de eindgebruikers van de RO Standaarden, zelf. In de praktijk van de ruimtelijke ordening zullen veel zaken die hier expliciet worden beschreven ingebed zijn in software of processen.</p></section><section id="status-van-dit-document"><h3 id="x1-4-status-van-dit-document"><span class="secno">1.4 </span>Status van dit document</h3><p>In tegenstelling tot de STRI2008/STRI2012 kent deze praktijkrichtlijn geen wettelijke verankering. Het is dus niet verplicht om de richtlijn te hanteren bij het beschikbaar stellen van de bestaande IMRO2006 plannen en Plancontour &amp; PDF.
+</p><p>Het toepassen van deze praktijkrichtlijn vindt plaats op basis van het creëren van meerwaarde voor de eigen organisatie, en zorgt tevens voor een betere dienstverlening.</p><p>Het beheer van deze praktijkrichtlijn is ondergebracht bij Geonovum in het reguliere beheerproces van de RO Standaarden. Daarmee wordt een blijvende samenhang beoogd tussen deze praktijkrichtlijn en de overige RO Standaarden.</p></section><section id="stri2006-stri2008"><h3 id="x1-5-stri2006-stri2008"><span class="secno">1.5 </span>STRI2006 &amp; STRI2008</h3><p>De STRI2006 Praktijkrichtlijn kent een nauwe samenhang met de STRI2008/ STRI2012 en IMRO2006. Waar dit van toepassing is wordt er steeds verwezen naar onderdelen uit deze documenten.</p><p>De titel ‘STRI2006’ is gekozen vanwege de nauwe samenhang met de STRI2008, de Standaard Toegankelijkheid Ruimtelijke Instrumenten, onderdeel van de RO Standaarden 2008. Beide bepalen infrastructuur voor het publiceren van ruimtelijke plannen. Het gebruik van de STRI2008 voor IMRO2006 en ‘Plancontour &amp; PDF’ is technisch niet mogelijk. Het gebruik van identificaties, bestandsnamen wijkt daarvoor te veel af in het IMRO2006 ten opzichte van RO Standaarden 2008.</p><p>De belangrijkste verschillen:</p><ul><li>De STRI2006 ondersteunt de oude WRO. De STRI2008/STRI2012 ondersteunt de nieuwe Wro instrumenten (digitale aspecten van de nieuwe Wro);</li>
+<li>De opbouw van de identificatie in IMRO2006 is anders dan in IMRO2008/IMRO2012. De identificatie wordt ook gebruikt voor de bestandsnamen van de planonderdelen. De STRI2008 handhaaft strikt de bestandsnaamconventie van de RO Standaarden. De STRI2006 past bij de (vrijere) bestandsnaamconventie van IMRO2006;</li>
+<li>In de RO Standaarden 2008 en 2012 is er een geleideformulier, in de vorm van een XML-schema, waardoor automatisch vastgesteld kan worden welke planonderdelen een plan omvat. Het is conform STRI2006 niet verplicht gebruik te maken van een geleideformulier. Wanneer wel gebruik wordt gemaakt van een geleideformulier kan dit of in PDF of XML formaat worden meegeleverd. Het manifest conform STRI2006 is wel op basis van XML;</li>
+<li>Er worden aan IMRO2006 plannen en plancontouren geen authenticiteit kenmerken meegegeven omdat digitale plannen die niet conform de RO Standaarden 2008 zijn opgesteld ook geen juridische authentieke stukken zijn.
+</li>
+</ul></section></section><section data-format="markdown" id="richtlijnen"><!--OddPage--><h2 id="x2-richtlijnen"><span class="secno">2. </span>Richtlijnen</h2><section id="onderdelen-van-de-imro2006-plannen"><h3 id="x2-1-onderdelen-van-de-imro2006-plannen"><span class="secno">2.1 </span>Onderdelen van de IMRO2006 plannen</h3><p>De planologische structuurvisies, streekplannen, omgevingsplannen, nota’s, PKB’s en bestemmingsplannen (WRO planvormen) worden gevormd door een samenhangende set bestanden. Voor verschillende WRO planvormen is dit een andere set, zoals gegeven in tabel 1. Deze tabellen zijn limitatief. Een WRO planvorm bestaat alleen uit de genoemde verplichte en optionele onderdelen. <a href="#_Ref300235010">Tabel 1</a><a></a> is geldig voor alle voorkomende IMRO2006 plannen</p><p><a name="_Ref300235010"></a><b>Tabel</b>
+<b></b><b></b><b></b><b>1</b><b></b>
+<b>Onderdelen van IMRO2006 plannen</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 37.71250144558807%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Onderdeel van het plan</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Naamconventie</b> <b><br>(excl. extensie)</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Bestandstype</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="center"><b>Aantal</b>
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Plankaart
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> [idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">GML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Voorschriften
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> v_[idn] als A=1
+
+<p> v_[idn] _[xxx] als A&gt;1</p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">HTML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..*
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Bijlage bij de voorschriften
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">vb_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Toelichting
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> t_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Bijlagen bij de toelichting
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">tb_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Beleidsdocument
+
+<p><i>(alleen bij beleidsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> d_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Bijlage bij beleidsdocument
+
+<p><i>(alleen bij beleidsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">db_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Beleidstekst
+
+<p><i>(alleen bij beleidsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> b_[idn] als A=1
+
+<p> b_[idn] _[xxx] als A&gt;1</p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF als A=1
+
+<p>HTML als A&gt;1</p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..*
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Besluitdocument
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">bd_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">HTML of PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Ondergrond
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" colspan="3" align="left">Dit onderdeel hoeft, in tegenstelling tot de Praktijkrichtlijnen 2006, niet te worden uitgewisseld
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Plotfile
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" colspan="3" align="left">Dit onderdeel hoeft, in tegenstelling tot de Praktijkrichtlijnen 2006, niet te worden uitgewisseld
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Geleideformulier*
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> g_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF of XML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+</tbody>
+</table><i>* Het betreft hier het geleideformulier zoals genoemd in de diverse praktijkrichtlijnen ‘2006’ en niet het geleideformulier zoals genoemd in de STRI2008. Het geleidformulier kan zowel in PDF als ook in XML opgeleverd worden, maar er is geen XML-schema voor opgesteld.</i><p><b>Verklaring bij Tabel 1:</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 21.243643088303283%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"><i>Bestandstype</i>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">bestandstype van het onderdeel; voor versies van de bestandsformaten, zie 2.2
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"><i>[idn]</i>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">identificatienummer van het werkingsgebied. Het identificatienummer is gedefinieerd in IMRO2006. Digitale ruimtelijke plannen hebben normaliter een identificatie van maximaal 32 tekens die eindigt op een koppelstreepje ‘-‘. De reguliere expressie voor het identificatienummer:
+
+<p>NL\.IMRO\.[0-9]{8}[ A-Za-z0-9_\-\.]{1,15}-</p>
+<p><i>In uitzonderlijke gevallen is er bij bestemmingsplannen sprake van meerdere bestanden die samen één plangebied omvatten. Elk bestand een identificatie krijgen die bestaat uit dezelfde eerste serie van (maximaal) 32 tekens, gevolgd door een uniek volgnummer per bestand van eveneens maximaal 32 tekens (zie PRBP2006 § 3.2). De reguliere expressie voor het identificatienummer van bestemmingsplannen die uit meerdere bestanden bestaan:</i></p>
+<p><i>NL\.IMRO\.[0-9]{8}[ A-Za-z0-9_\-\.]{1,15}-([A-Za-z0-9_\-\.]{1,32})?</i></p>
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"><i>[xxx]</i>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">tekstuele extensie als onderdeel van de bestandsnaam, zie 2.3
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"><i>Aantal (A)</i>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">1    het onderdeel komt altijd precies 1 keer voor en is daarmee dus verplicht
+
+<p>1..*    het onderdeel komt tenminste 1 keer voor en is daarmee dus verplicht</p>
+<p>0..1    het onderdeel komt 0 of 1 keer voor en is dus optioneel</p>
+<p>0..*    het onderdeel komt 0 of meer keer voor en is dus optioneel</p>
+</td>
+</tr>
+</tbody>
+</table></section><section id="versies-van-bestandsformaten"><h3 id="x2-2-versies-van-bestandsformaten"><span class="secno">2.2 </span><a name="_Ref300235285"></a>Versies van bestandsformaten</h3><p>Voor ieder onderdeel worden in <a href="#_Ref300235010">Tabel 1</a><a></a> eisen gesteld aan de mogelijke bestandstypen. Conform de praktijkrichtlijnen 2006 worden de exact toegestane versies van bestandsformaten verder niet gespecificeerd in deze praktijkrichtlijn.</p></section><section id="bestandsnamen"><h3 id="x2-3-bestandsnamen"><span class="secno">2.3 </span><a name="_Ref300235248"></a>Bestandsnamen</h3><p>Voor ieder onderdeel worden in tabel 1 eisen gesteld aan de bestandsnaam. De reguliere expressie waarmee de naam van een bestand wordt beschreven is als volgt:</p><blockquote>
+<p>((v|t|d|b|bd|p|vb|tb|db|g)_)?NL\.IMRO\.[0-9]{8}[A-Za-z0-9_\-\.]{1,15}-([A-Za-z0-9_\-\.]{1,62})?\.(html|htm|xhtml|xml|gml|pdf|png|jpg|jpeg|tif)</p>
+</blockquote><p>In Tabel 2 worden de onderdelen van deze reguliere expressie nader toegelicht.</p><p><a name="_Ref316546823"></a><b>Tabel</b>
+<b></b><b></b><b></b><b>2</b><b></b>
+<b>Onderdelen van de bestandsnaamvereisten</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 30.808372846073784%;" <col="" <="" colgroup="">
+</colgroup><thead valign="top"><tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Onderdeel</b>
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Betekenis</b>
+
+</th>
+</tr>
+<tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">((v|t|d|b|bd|p|vb|tb|db|g)_)?
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">het type onderdeel als 1 of twee letters en een underscore <b>_</b> ; is voor het GML bestand niet nodig en daarom optioneel; de beschrijving van de lettercodes is nader uitgewerkt bij de bestandsnaamconventies in de betreffende praktijkrichtlijn.
+
+</th>
+</tr>
+<tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">NL\\.IMRO\\.\[0-9\]\{8\}\[A-Za-z0-9_\\-\\.\]\{1,15\}-
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">dit betreft het idn van het WRO plan (niet de volledige idn). 
+
+<p>In het geval het plangebied van het bestemmingsplan uit meerdere bestanden bestaat, wordt de twee serie van (maximaal) 32 tekens</p>
+<p>afgevangen.</p>
+<p>Het optionele gedeelte na het verplichtte koppelteken (-), is alleen bedoeld voor eventuele hoofd- en detailkaarten aanduidingen van bestemmingsplannen (zie § 3.2 PRBP2006).</p>
+</th>
+</tr>
+<tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">(\[A-Za-z0-9_\\-\\.\]\{1,62\})?
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">nadere bestandsnaamaanduiding van minimaal 1 en maximaal 62 karakters, te bepalen door de bronhouder (zie § 3.2 en § 5.4 PRBP2006). Dit onderdeel van de reguliere expressie omvat 2 aspecten:
+
+<p>1.) de additionele 30 tekens (een underscore en een tekenreeks van maximaal 29 tekens) voor de bestandsnaamconventie voor voorschriften en beleidsteksten toe (zie § 5.4 PRBP2006)</p>
+<p>2.) in het geval het plangebied van het bestemmingsplan uit meerdere bestanden bestaat, wordt de twee serie van (maximaal) 32 tekens ook door dit deel van de reguliere expressie afgevangen (zie § 3.2 PRBP2006).</p>
+</th>
+</tr>
+<tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">\.
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">een punt <b>.</b>
+
+</th>
+</tr>
+<tr><th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">(html|htm|xhtml|xml|gml|pdf|png|jpg|jpeg|tif)
+
+</th>
+<th style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">de mogelijke bestandsextensies; de exacte relaties tussen onderdelen en bestandsformaten is nader uitgewerkt bij de bestandsnaamconventies in de betreffende praktijkrichtlijn. De bestandsextensies voor de ondergrond zijn bewust weggelaten.
+
+</th>
+</tr>
+</thead>
+</table></section><section id="elektronische-publicatie-van-imro2006-plannen"><h3 id="x2-4-elektronische-publicatie-van-imro2006-plannen"><span class="secno">2.4 </span>Elektronische publicatie van IMRO2006 plannen</h3><p>Ieder IMRO2006 plan wordt in zijn geheel gepubliceerd. Dit betekent dat alle (voorhanden zijnde) onderdelen zoals genoemd in <a href="#_Ref300235010">Tabel 1</a><a></a> beschikbaar worden gemaakt via het internet. Deze beschikbaarstelling moet voldoen aan een aantal eisen m.b.t. toegankelijkheid, beveiliging en gebruikte IT-standaarden. Deze eisen zijn <u>identiek</u> aan de eisen van <a href="https://ro-standaarden.geonovum.nl/2008/1.1/20081224-STRI2008.pdf" target="_blank">STRI2008</a>, paragraaf 2.6.
+</p></section><section id="elektronische-publicatie-van-plancontouren"><h3 id="x2-5-elektronische-publicatie-van-plancontouren"><span class="secno">2.5 </span>Elektronische publicatie van plancontouren</h3><p>Plancontour &amp; PDF is geen officiële verplichte standaard. Doel is de niet-digitale planvoorraad aan bestemmingsplannen en voorbereidingsplannen van gemeenten op een eenvoudige wijze ‘plat’ digitaal beschikbaar te hebben. Dat wil zeggen dat er vanuit de objectgerichte plancontour (in GML) verwezen wordt naar de plankaart, voorschriften en toelichting, die apart beschikbaar zijn in PDF. Indien de planvormen uitgewisseld worden op basis van hun plancontour gelden er andere formaten voor de planonderdelen. Immers alle planonderdelen zelf zijn als ‘PDF’ beschikbaar.</p><p>In overeenstemming met de gangbare wijze onder DURP Standaarden 2006 en RO Standaarden 2008 worden alle afzonderlijke plannen een samenhangende set bestanden beschikbaar gesteld. Waarbij alle bij het betreffende plan behorende bestanden binnen 1 virtuele directory gepubliceerd (plancontour en PDF’s). Aanbevelingen aan de bestandsformaten met betrekking tot Plancontour &amp; PDF zijn opgenomen in <a href="#_Ref300236819">Tabel 3</a><a></a>.</p><p><a name="_Ref300236819"></a><b>Tabel 3</b>
+<b>Richtlijnen voor bestandsformaten m.b.t. Plancontour &amp; PDF</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 16.795411985018728%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Bestandstype</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Formaat</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Extensie</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>MIME type</b>
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">GML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">GML3.1.1
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">.gml
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">application/xml
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF versie 1.4 of hoger
+
+<p>PDF/A-1 ISO 19005-1:20057</p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">.pdf
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">application/pdf
+
+</td>
+</tr>
+</tbody>
+</table><a href="#_Ref298925074">Tabel 4</a><a></a><p>Door middel van het boolean attribuut Contour in het element Plan in de GML wordt aangegeven of het een plancontour betreft.</p><p>Voor eisen en aanbevelingen met betrekking tot gescande documenten in PDF-formaat, zie de Praktijkrichtlijn Plancontour &amp; PDF (PRPCP2008).</p><p><a name="_Ref298925074"></a><b>Tabel 4</b>
+<b>Onderdelen</b>
+<b>ruimtelijke plannen conform</b>
+<b>Plancontour &amp; PDF</b></p><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col1" style="width: 37.71250144558807%;" <col="" <="" colgroup="">
+</colgroup><tbody valign="top"><tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Onderdeel van het plan</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Naamconventie</b> <b><br>(excl. extensie)</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="left"><b>Bestandstype</b>
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: #D9D9D9;" align="center"><b>Aantal</b>
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Plancontour
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> [idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">GML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Plankaart
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">p_ [idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Voorschriften/regels*
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">v_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Bijlage bij de voorschriften/ regels
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">vb_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Toelichting
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> t_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Bijlagen bij de toelichting
+
+<p><i>(alleen bestemmingsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">tb_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Besluitdocument
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">bd_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Beleidsdocument
+
+<p><i>(alleen bij beleidsplannen)</i></p>
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> d_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+<tr><td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">Geleideformulier**
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left"> g_[idn] 
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="left">PDF of XML
+
+</td>
+<td style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000; background-color: none;" align="center">0..1
+
+</td>
+</tr>
+</tbody>
+</table><ol><a name="_Ref300236901"></a>* Voorschriften behoren bij de planvormen onder de oude WRO en regels bij de instrumenten onder de nieuwe Wro. Beide worden echter met v_ aangeduid in het kader van plancontour &amp; PDF.
+</ol><p>** Het betreft hier het geleideformulier zoals genoemd in de diverse praktijkrichtlijnen ‘2006’ en niet het geleideformulier zoals genoemd in de STRI2008. Het geleidformulier kan zowel in PDF als ook in XML opgeleverd worden, maar er is geen XML-schema voor opgesteld.</p></section><section id="manifest-en-geleideformulier"><h3 id="x2-6-manifest-en-geleideformulier"><span class="secno">2.6 </span>Manifest en geleideformulier.</h3><p>Iedere bronhouder die IMRO2006 plannen beschikbaar wil stellen, stelt hiertoe een apart Manifest beschikbaar, los van het manifest voor (2008) Wro instrumenten. Een bronhouder heeft dus mogelijk twee manifesten:</p><ol><li>Manifest voor Wro instrumenten inzake STRI2008 (verplicht vanaf 1 januari 2010);</li>
+<li>Manifest voor IMRO2006 plannen en ‘Plancontour &amp; PDF’ inzake STRI2006.</li>
+</ol><p>De inhoud en betekenis van het manifest zijn identiek aan de <a href="https://ro-standaarden.geonovum.nl/2008/1.1/20081224-STRI2008.pdf" target="_blank">STRI2008</a>, paragraaf 2.7.
+</p><p>Het is conform STRI2006 niet verplicht gebruik te maken van een gestructureerde geleideformulier. Wanneer wel gebruik wordt gemaakt van een geleideformulier kan dit of in PDF of XML formaat worden meegeleverd. Indien er geleideformulieren (XML of PDF) zijn opgesteld bij het IMRO2006 plan kunnen deze worden gepubliceerd. Een voorbeeld van een geleideformulier en het exacte Manifest XML is gegeven in <a href="#bijlage-1">Bijlage 1</a> Schema manifest en geleideformulier.</p></section><section id="authenticiteitskenmerken-en-beveiliging"><h3 id="x2-7-authenticiteitskenmerken-en-beveiliging"><span class="secno">2.7 </span><a name="_Ref300236651"></a>Authenticiteitskenmerken en beveiliging</h3><p>Bij het beschikbaar stellen van IMRO2006 plannen en ‘Plancontour &amp; PDF’ worden geen authenticiteitkenmerken gehanteerd. Dit is een afwijking van de STRI2008/STRI2012, met als reden dat digitale IMRO2006 en "Plancontour &amp; PDF" plannen geen juridische authentieke stukken zijn, waardoor er ook geen procesmatig risico is bij het ontbreken van de elektronische handtekening.</p><p>Een bronhouder kan er optioneel in voorzien zijn weblocatie met HTTPS (SSL) te beveiligen. Op deze manier kan het gegevensverkeer tussen bronhouder en Ruimtelijkeplannen.nl beveiligd worden tegen wijzigingen. Gezien de beperkte gevolgrisico's verdient het de aanbeveling deze af te wegen tegen de kosten en verhoogde complexiteit van een dergelijke oplossing.</p></section><section id="digitale-verbeelding"><h3 id="x2-8-digitale-verbeelding"><span class="secno">2.8 </span>Digitale verbeelding</h3><p>Bij het beschikbaar stellen van de IMRO2006 plannen worden geen nadere eisen gesteld aan de digitale verbeelding (raadpleegomgeving) hiervan. Wel wordt er vanuit gegaan dat voor bestemmingsplannen de Standaard voor Vergelijkbaarheid 2006 (SVBP2006) gehanteerd wordt of dat er aangesloten wordt bij de Standaard voor Vergelijkbaarheid 2008/2012 (SVBP2008/SVBP 2012). Deze laatsten maakt duidelijk onderscheid tussen analoge en digitale verbeelding. Gebleken is dat in een digitale raadpleegomgeving het lastig voldaan kan worden aan de eisen van de ‘analoge’ SVBP2006. <a href="https://www.ruimtelijkeplannen.nl/">Ruimtelijkeplannen.nl</a>  sluit dan ook zoveel mogelijk aan bij de SVBP2008/2012 voor de verbeelding van IMRO2006 plannen.</p></section></section><section data-format="markdown" id="bijlage-1"><!--OddPage--><h2 id="x3-bijlage-1"><span class="secno">3. </span><a name="_Ref118732527"></a><a name="_Ref300236610"></a>Bijlage 1</h2><section id="schema-manifest-en-geleideformulier"><h3 id="x3-1-schema-manifest-en-geleideformulier"><span class="secno">3.1 </span>Schema Manifest en geleideformulier</h3><p><img src="media/Bijlage1-1.JPG" alt="">
+<img src="media/Bijlage1-2.JPG" alt="">
+<img src="media/Bijlage1-3.JPG" alt="">
+<img src="media/Bijlage1-4.JPG" alt="">
+<img src="media/Bijlage1-5.JPG" alt="">
+<img src="media/Bijlage1-6.JPG" alt="">
+<img src="media/Bijlage1-7.JPG" alt=""></p></section></section><section data-format="markdown" id="bijlage-2"><!--OddPage--><h2 id="x4-bijlage-2"><span class="secno">4. </span>Bijlage 2</h2><section id="voorbeeld-manifest"><h3 id="x4-1-voorbeeld-manifest"><span class="secno">4.1 </span>Voorbeeld Manifest</h3><p>Onderstaand voorbeeld is fictief: Een XML-manifest dat een IMRO2006 planvoorraad met 2 plannen beschrijft: 1 bestemmingsplan contourplan en 1 structuurplan.</p><p><img src="media/Bijlage2-1.JPG" alt="">
+<img src="media/Bijlage2-2.JPG" alt="">
+<img src="media/Bijlage2-3.JPG" alt=""></p></section></section><p role="navigation" id="back-to-top"><a href="#title">
+  <abbr title="Naar begin">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
