@@ -54,10 +54,14 @@ jobs:
       - name: Copy `.` via rsync
         run: |
           rsync -avzP \
-            --exclude='.*' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='.DS_Store' \
             --exclude='css/' \
             --exclude='img/' \
-            --exclude='README.md' \
+            --exclude='README.md/' \
             --ignore-existing \
             -e "ssh -i ~/.ssh/id_rsa" \
             . \
