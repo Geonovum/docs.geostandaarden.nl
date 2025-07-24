@@ -54,7 +54,11 @@ jobs:
       - name: Copy `.` via rsync
         run: |
           rsync -avzP \
-            --exclude='.*' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='.DS_Store' \
             --exclude='css/' \
             --exclude='img/' \
             --ignore-existing \
