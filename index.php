@@ -117,7 +117,7 @@
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['BRO', 'NWBBGT', '.GIT', 'BRTNEXT', 'SFR'];
+$ignoreList = ['NWBBGT', '.GIT', 'BRTNEXT', 'SFR'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
 $publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
