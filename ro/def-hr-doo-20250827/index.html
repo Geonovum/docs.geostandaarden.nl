@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.3.0">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+      
+      
+      
+<meta name="publisher" content="Geonovum">
+      
+<meta name="author" content="Monique van Scherpenzeel">
+      
+<meta name="author" content="Jan Cas Smit">
+      
+<meta name="date" content="2025-08-27">
+      
+      
+      
+      
+      
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+      
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico">
+      
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/ro/style.css">
+      
+<title>Ruimtelijke plannen op orde onder de Omgevingswet 3.0.0</title>
+   
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://docs.geostandaarden.nl/ro/doo/">
+<script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "w3p": "http://www.w3.org/2001/02pd/rec54#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/ro/doo/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Ruimtelijke plannen op orde onder de Omgevingswet 3.0.0",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2025-08-27",
+  "copyrightHolder": {
+    "name": "World Wide Web Consortium",
+    "url": "https://www.w3.org/"
+  },
+  "discussionUrl": "https://github.com/Geonovum/ROST/issues/",
+  "alternativeHeadline": "",
+  "isBasedOn": "https://docs.geostandaarden.nl/ro/def-hr-doo-20240403/",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Jan Cas Smit",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "doJsonLd": true,
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "ld": "Living document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "ld": "Levend document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "ld": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/ro/",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/ro/doo/"
+  ],
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/ro/def-hr-doo-20250827/"
+  ],
+  "prevVersion": [
+    "https://docs.geostandaarden.nl/ro/def-hr-doo-20240403/"
+  ],
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly.",
+      "cv": "This is a proposed recommendation. Comments can be submitted via the consultation procedure published as a news item on www.geonovum.nl.",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt.",
+      "cv": "Dit is een consultatieversie. Commentaar kan ingediend worden via de consultatieprocedure gepubliceerd als nieuwsbericht op www.geonovum.nl.",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Ruimtelijke plannen op orde onder de Omgevingswet",
+  "shortName": "Handreiking",
+  "pubDomain": "ro",
+  "specStatus": "def",
+  "specType": "hr",
+  "license": "cc-by-nd",
+  "publishDate": "2025-08-27",
+  "publishVersion": "3.0.0",
+  "previousPublishDate": "2024-04-03",
+  "previousPublishVersion": "2.0.1",
+  "previousMaturity": "def",
+  "github": "https://github.com/Geonovum/ROST/",
+  "issueBase": "https://github.com/Geonovum/ROST/issues/",
+  "edDraftURI": "https://geonovum.github.io/ROST/HRDoO/",
+  "canonicalURI": "https://docs.geostandaarden.nl/ro/doo/",
+  "authors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    },
+    {
+      "name": "Jan Cas Smit",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/ro/base.css"></head>
+   <body class="h-entry informative toc-inline"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/ro/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Ruimtelijke plannen op orde onder de Omgevingswet 3.0.0</h1>
+    
+    <h2>
+      Geonovum Handreiking<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2025-08-27">27 augustus 2025</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/ro/def-hr-doo-20250827/">https://docs.geostandaarden.nl/ro/def-hr-doo-20250827/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/ro/doo/">https://docs.geostandaarden.nl/ro/doo/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/ROST/HRDoO/">https://geonovum.github.io/ROST/HRDoO/</a></dd>
+      
+      
+      
+      <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/ro/def-hr-doo-20240403/">https://docs.geostandaarden.nl/ro/def-hr-doo-20240403/</a></dd>
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteurs:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Jan Cas Smit</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/ROST/">GitHub Geonovum/ROST</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/ROST/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/ROST/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/ROST/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+      
+      <nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#3FC96725"><bdi class="secno">1. </bdi>Inleiding </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#6A6A9823"><bdi class="secno">1.1 </bdi>Nieuwe spoor en oude spoor</a></li><li class="tocline"><a class="tocxref" href="#1CBF3ECC"><bdi class="secno">1.2 </bdi>Leeswijzer </a></li></ol></li><li class="tocline"><a class="tocxref" href="#324DBF6E"><bdi class="secno">2. </bdi>Beheer van de planvoorraad </a></li><li class="tocline"><a class="tocxref" href="#249F36AF"><bdi class="secno">3. </bdi>Omgevingsvisies </a></li><li class="tocline"><a class="tocxref" href="#62087022"><bdi class="secno">4. </bdi>Tijdelijk deel omgevingsplan </a></li><li class="tocline"><a class="tocxref" href="#55A7BEB0"><bdi class="secno">5. </bdi>Omgevingsvergunningen </a></li><li class="tocline"><a class="tocxref" href="#7D4FADDD"><bdi class="secno">6. </bdi>TAM voorbereidingsbesluit</a></li><li class="tocline"><a class="tocxref" href="#5221ABF7"><bdi class="secno">7. </bdi>TAM omgevingsplan </a></li><li class="tocline"><a class="tocxref" href="#1364DA20"><bdi class="secno">8. </bdi>Archiveren ruimtelijke plannen </a></li></ol></nav>
+      <section class="chapter" id="inleiding"><h2 id="3FC96725"><bdi class="secno">1. </bdi>Inleiding </h2><p><b>De Wro planvoorraad van gemeenten, provincies en het Rijk in Ruimtelijkeplannen.nl wordt sinds het inwerkingtreden van de Omgevingswet automatisch getoond in het Omgevingsloket samen met de nieuwe regels uit de omgevingsdocumenten. Voor de gebruiker van het Omgevingsloket kan er verwarring ontstaan als er meerdere versies van de regels beschikbaar zijn: welke regels gelden dan? Alleen het bevoegd gezag kan hierover duidelijkheid geven. Dit kan onder meer door het op orde houden van de Wro planvoorraad, ook onder de Omgevingswet. Dit kan alleen als de bronhouder met de eigen Wro-plansoftware, het manifestbeheer en de certificaten voor ondertekening tot 2032 behoudt en beheert. Deze handreiking is opgesteld voor gemeenten, en de organisaties die hen ondersteunen, die in de transitieperiode moeten werken met zowel Omgevingswet-software als Wro-plansoftware.</b></p>
+<section id="nieuwe-spoor-en-oude-spoor"><h3 id="6A6A9823"><bdi class="secno">1.1 </bdi>Nieuwe spoor en oude spoor</h3><p>In de transitieperiode van 1 januari 2024 tot 1 januari 2032 hebben gemeenten de tijd om één omgevingsplan voor de gehele gemeente te vormen conform de TPOD-standaarden en de oude planvoorraad te verwijderen van Ruimtelijkeplannen.nl. 
+In deze periode worden ook lopende Wro-planprocedures afgerond. Op grond van de tijdelijke alternatieve maatregelen (TAM) kunnen tot en met 2025 voorbereidingsbesluiten en wijzigingsbesluiten op het omgevingsplan worden gemaakt en beschikbaar gesteld via het <i>oude spoor</i>: het met de Wro-plansoftware via Ruimtelijkeplannen.nl beschikbaar stellen en bekend maken via de Decentrale Regelgeving en Officiële Publicaties (DROP). De planvoorraad van Ruimtelijkeplannen.nl wordt automatisch ontsloten in het <a href="https://omgevingswet.overheid.nl/home" target="_blank">Omgevingsloket</a>. In het <a href="https://wetten.overheid.nl/BWBR0045037/2025-01-01" target="_blank">Besluit elektronische publicaties, artikel 11 lid 1 onder 6</a> is geregeld dat uiterlijk tot 1 januari 2032 de landelijke voorziening Ruimtelijkeplannen.nl blijft functioneren.
+<br>
+<br>
+Op grond van de Omgevingswet werken gemeenten steeds meer via het <i>nieuwe spoor</i>: met de Omgevingswet-software via de Landelijke Voorziening Bekendmaken en Beschikbaarstellen (LVBB) worden de regels ontsloten in het Omgevingsloket. Omgevingsvergunningen op basis van de <a href="#55A7BEB0">Wabo</a> en regels van onder andere de WRO en Wro vervallen wanneer de gemeente de regels opneemt in het wijzigingsbesluit op het omgevingsplan. De oude regels vervallen niet alleen juridisch maar moeten ook technisch komen te vervallen. Dat is een onderdeel van het werkproces van de gemeente. Het actualiseren van het omgevingsplan leidt namelijk niet automatisch tot het verwijderen van het vervallen bestemmingsplan uit de planvoorraad van Ruimtelijkeplannen.nl. 
+<br>
+<br>
+Alleen als gemeenten onder de Omgevingswet ook hun planvoorraad op Ruimtelijkeplannen.nl onderhouden zal het voor de gebruiker van het Omgevingsloket duidelijk kunnen worden welke regels geldend zijn. Een niet goed onderhouden planvoorraad op Ruimtelijkeplannen.nl zal zeker leiden tot onduidelijkheid over geldende regels bij de gebruiker van het Omgevingsloket.
+<br>
+<br></p>
+<figure id="f75045"><img src="media/image3.png" alt="Tijdens de transitieperiode van 1 januari 2024 tot 1 januari 2032 wordt met nieuwe spoor gewerkt met de TPOD-standaarden en het oude spoor waarin wordt gewerkt met de RO Standaarden." style="width: 100%;">
+<figcaption><a class="self-link" href="#f75045">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Gelijktijdig werken in het het nieuwe spoor en het oude spoor.</span></figcaption></figure>
+
+</section><section id="leeswijzer"><h3 id="1CBF3ECC"><bdi class="secno">1.2 </bdi>Leeswijzer </h3><p>Er is veel documentatie te vinden op de websites van IPLO, Geonovum en de VNG. Naast de documentatie over de <a href="https://www.geonovum.nl/geo-standaarden/ro-standaarden-ruimtelijke-ordening/" target="_blank">RO Standaarden</a>, <a href="https://www.geonovum.nl/omgevingswet" target="_blank">TPOD-standaarden</a>, waaronder de <a href="https://www.wegwijzertpod.nl/" target="_blank">wegwijzer</a> en <a href="https://iplo.nl/regelgeving/instrumenten/" target="_blank">juridische toelichting</a>, is er ook <a href="https://omgevingswet.vng.nl/grip/" target="_blank">Grip op de transitie van de planketen</a> van de VNG.
+Deze handreiking richt zich op gemeenten en het gebruik van het oude spoor: <i>Ruimtelijke plannen op orde onder de Omgevingswet</i><b><i> </i></b><i>in de transitieperiode met behulp van de Wro-plansoftware.</i> 
+<br>
+<br>
+Hoofdstuk 2 gaat in op het beheer van de planvoorraad in Ruimtelijkeplannen.nl. In de daaropvolgende hoofdstukken wordt per onderwerp een toelichting gegeven. Alle hoofdstukken sluiten af met korte samenvatting: waar moet op worden gelet? Er wordt zoveel mogelijk verwezen naar bestaande documentatie waarin een uitgebreidere toelichting op de werkwijze is beschreven.
+<br>
+<br></p>
+<ul><li>Hoofdstuk 2 <a href="#1364DA20">Beheer van de planvoorraad</a></li>
+<li>Hoofdstuk 3 <a href="#324DBF6E">Omgevingsvisies</a></li>
+<li>Hoofdstuk 4 <a href="#62087022">Tijdelijk deel omgevingsplan</a></li>
+<li>Hoofdstuk 5 <a href="#55A7BEB0">Omgevingsvergunningen</a></li>
+<li>Hoofdstuk 6 <a href="#7D4FADDD">TAM voorbereidingsbesluit</a></li>
+<li>Hoofdstuk 7 <a href="#5221ABF7">TAM omgevingsplan</a></li>
+<li>Hoofdstuk 8 <a href="#1364DA20">Archiveren ruimtelijke plannen</a></li>
+</ul></section></section>
+      <section class="chapter" id="beheer-van-de-planvoorraad"><h2 id="324DBF6E"><bdi class="secno">2. </bdi>Beheer van de planvoorraad </h2><p>De planvoorraad van gemeenten die beschikbaar is via Ruimtelijkeplannen.nl is ook onder de Omgevingswet aan verandering onderhevig. Gemeenten ronden lopende Wro procedures af, stellen rechtelijke uitspraken en kennisgevingen van omgevingsvergunningen beschikbaar en plaatsen een wijzigingsbesluit op het omgevingsplan op basis van TAM op Ruimtelijkeplannen.nl. Deze planvoorraad wordt automatisch getoond in het Omgevingsloket in samenhang met de nieuwe regels uit de omgevingsdocumenten.
+<br>
+<br>
+Voor de gebruiker van het Omgevingsloket kan er verwarring ontstaan als er meerdere versies van de regels beschikbaar zijn: welke regels gelden? Alleen het bevoegd gezag kan daar duidelijkheid over geven. Naast meerdere versies van de regels komt het ook voor dat plannen niet of onjuist worden weergegeven in het Omgevingsloket als gevolg van technische fouten in de planvoorraad. Ook hier geldt dat het bevoegd gezag daarover duidelijkheid kan geven. Dit kan zij doen door de datakwaliteit van de planvoorraad op orde te houden:</p>
+<ol><li>door het blijven actualiseren van de planstatus en dossierstatus en</li>
+<li>het opschonen en afbouwen van de planvoorraad.</li>
+</ol>
+<br>
+<br>
+<figure id="d4e402"><img src="media/image1.png" alt="Deze figuur maakt duidelijk wat de gevolgen zijn van een onjuiste dossierstatus/ planstatus is wanneer de gebruiker op Ruimtelijkeplannen.nl zoekt op adres, perceel of een geselecteerd gebied in de viewer." style="width: 100%;">
+<figcaption><a class="self-link" href="#d4e402">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Gevolgen bij een onjuiste dossierstatus/ planstatus</span></figcaption></figure>
+<br>
+
+<p>De planstatus en dossierstatussen moeten worden aangepast door de gemeente. Voor geheel onherroepelijke bestemmingsplannen geldt dat concept-, voorontwerp- en ontwerpbestemmingsplan versies door de gemeente moeten worden verwijderd uit de planvoorraad. Dit proces van actualiseren en opruimen van de planvoorraad met behulp van de Wro-plansoftware doet de gemeente zolang zij nog plannen beschikbaar stelt op Ruimtelijkeplannen.nl. Uiterlijk eind 2031 dient de volledige gemeentelijke planvoorraad van Ruimtelijkeplannen.nl te zijn verwijderd. Het is dus van belang dat de gemeente blijft beschikken over Wro-plansoftware om de plannen te beheren en de daarbij behorende certificaten om de besluiten te ondertekenen.
+<br>
+<br>
+<b>Consistent gebruik planstatus en dossierstatus</b>
+Via het manifest van de bronhouder wordt de planvoorraad van de gemeente beschikbaar gesteld op <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">Ruimtelijkeplannen.nl</a>. In het manifest is ordening aangebracht met behulp van <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">dossiers</a>. In een dossier zijn één of meerdere ruimtelijke plannen opgenomen behorende bij dezelfde procedure. Ieder plan heeft een ‘<a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">planstatus</a>’, daarnaast heeft het dossier waarin het plan zich bevindt een zogenaamde ‘<a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">dossierstatus</a>’. Op basis van deze dossierstatus wordt bepaald in welke fase van de procedure een plan zich bevindt zoals bijvoorbeeld: ‘in voorbereiding’, ‘vastgesteld’ of ‘geheel onherroepelijk in werking’.
+De dossierstatus moet passend zijn met de <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">status van het plan</a> in het dossier. Voorbeeld: bevat een dossier uitsluitend een plan met de planstatus ‘concept’, ‘voorontwerp’ of ‘ontwerp’ dan is de dossierstatus ‘in voorbereiding’. Wijzigt de status van het plan in ‘vastgesteld’ dan zal door de bronhouder ook de status van het dossier moeten worden aangepast, eerst in ‘vastgesteld’, en vervolgens afhankelijk van het verloop van de procedure naar een volgende status. <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">Rechtelijk uitspraken</a> hebben ook invloed op de dossierstatus, maar dit <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verschilt per type ruimtelijk plan</a>.
+<br>
+<br>
+<b>Opschonen en afbouwen van de planvoorraad</b>
+Op het moment dat een ruimtelijk plan ‘geheel onherroepelijk in werking’ treed, dient de dossierstatus voor dat plan in het manifest door de gemeente aangepast te worden naar ‘geheel onherroepelijk in werking’. Op dat moment worden bij voorkeur ook alle voorgaande versies van dat plan (concept, voorontwerp, ontwerp) uit het dossier verwijdert. Blijven deze versies in de planvoorraad staan, dan kan er bij de gebruiker van het Omgevingsloket verwarring ontstaan welke regels geldend zijn.
+<br>
+<br>
+Plannen worden niet  automatisch uit de planvoorraad van Ruimtelijkeplannen.nl verwijderd: met de pons-functie in het Omgevingsloket worden plannen verborgen maar niet verwijderd. De gemeente moet zelf het betreffende plan met behulp van de Wro-plansoftware uit het manifest van Ruimtelijkeplanen.nl verwijderen. Verwijder het dossier en de onderliggende planversies en gebruik niet de dossierstatus ‘vervallen’. Een plan met de dossierstatus ‘vervallen’ is niet meer zichtbaar in de  viewer van Ruimtelijkeplannen.nl, maar het plan is nog wel zichtbaar in het Omgevingsloket. 
+<br>
+<br>
+Bestemmingsplannen, omgevingsvergunningen, plancontour en PDF-plannen, maar ook Crisis- en herstelwet plannen maken onderdeel uit van de gemeentelijke planvoorraad die is aangemerkt als het <a href="#62087022">tijdelijk deel van het omgevingsplan</a>. Gemeenten stellen deze plannen beschikbaar met behulp van de Wro-plansoftware via 2 soorten <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifesten</a>:</p>
+<ul><li>een STRI2006 manifest en</li>
+<li>een STRI2008/2012 manifest.</li>
+</ul>
+Alle gemeenten hebben een STRI2008/2012 manifest en een groot aantal heeft ook een STRI2006 manifest. In de transitieperiode tot 1 januari 2032 moeten gemeenten deze manifesten te beheren en actueel te houden.
+<br>
+<br>
+<b>Samengevat: </b>
+<ul><li>Verwarring, bij de gebruiker van het Omgevingsloket, over welke regels gelden kan worden voorkomen als de gemeente:<ul><li>de planstatus en dossierstatus van de planvoorraad consequent actualiseert en blijft actualiseren, en</li>
+<li>de planvoorraad opschoont en afbouwt door oude regels te verwijderen uit het gemeentelijke <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> en daardoor van Ruimtelijkeplannen.nl.</li>
+</ul>
+</li>
+<li>Gebruik voor het aanpassen van de dossierstatus het overzicht van <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">dossierstatus met overgangen</a> voor de juiste status en houdt in de gaten welke dossierstatus moet worden toegepast bij de <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">rechterlijke uitspraak</a>.</li>
+<li>Maak geen gebruik van de dossierstatus ‘vervallen’ maar verwijder het dossier en de onderliggende planversies in dat dossier uit het manifest met behulp van de Wro-plansoftware. Dossiers die al de dossierstatus ‘vervallen’ hebben kunnen meteen worden verwijderd.</li>
+<li>Is onduidelijk of er een 2006 manifest is, of welke plannen nog via Ruimtelijkeplannen.nl beschikbaar zijn?<ul><li>Ga naar de <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">index van Ruimtelijkeplannen.nl</a>,</li>
+<li>zoek op gemeente en</li>
+<li>klik op de link van de manifest locatie om te zien welke plannen in het manifest zijn opgenomen.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="omgevingsvisies"><h2 id="249F36AF"><bdi class="secno">3. </bdi>Omgevingsvisies </h2><p>Iedere gemeente moet op grond van de Omgevingswet uiterlijk op 1 januari 2027 een omgevingsvisie hebben. Deze datum is bij&nbsp;<a href="https://zoek.officielebekendmakingen.nl/stb-2023-267.html" target="_blank">Koninklijk Besluit</a>&nbsp;op grond van artikel 4.9, lid 1 Invoeringswet Omgevingswet bepaald. Dit houdt in dat gemeentelijke structuurvisies op basis van voormalige wet- en regelgeving uiterlijk op 1 januari 2027 komen te vervallen. Technisch gezien worden de Wro structuurvisies niet automatisch uit de landelijke voorziening Ruimtelijkeplannen.nl gehaald: de gemeente dient een dergelijke structuurvisie zelf, uiterlijk op 31 december 2026, te verwijderen uit het gemeentelijke manifest van Ruimtelijkeplannen.nl.
+<br>
+<br>
+Het is voorafgaand aan de invoering van de Omgevingswet enkele jaren <a href="https://iplo.nl/regelgeving/instrumenten/omgevingsvisie/bestaand-gemeentelijk-beleid/" target="_blank">mogelijk geweest</a> om op basis van de RO standaarden met de Wro-plansoftware een omgevingsvisie te maken die aan de <a href="https://omgevingswet.vng.nl/grip/omgevingsvisie/inhoud-omgevingsvisie/" target="_blank">regels van de Omgevingswet</a> voldoet. Voor een dergelijke omgevingsvisie, die technisch is gemaakt op basis van het plantype structuurvisie van de RO standaarden en die voldoet aan de juridische Omgevingswet vereisten, is de datum van 1 januari 2027 <i>niet</i> van toepassing. De gemeente dient zelf te <a href="https://vng.nl/artikelen/de-omgevingsvisie-transitietermijn-technische-standaard-en-publicatie" target="_blank">beoordelen</a> óf die omgevingsvisie voldoet aan de vereisten van de Omgevingswet en óf het verwijderen van de visie van Ruimtelijkeplannen.nl op uiterlijk 31 december 2031 noodzakelijk is.
+<br>
+<br>
+In het <a href="https://wetten.overheid.nl/BWBR0045037/2025-01-01" target="_blank">Besluit elektronische publicaties, artikel 11 lid 1 onder 6</a> is geregeld dat uiterlijk tot 1 januari 2032 de landelijke voorziening Ruimtelijkeplannen.nl blijft functioneren. Uiterlijk op die datum dienen alle gemeentelijke omgevingsvisies, die op basis van de RO standaarden zijn gemaakt met behulp van de Wro-plansoftware, te zijn verwijderd van de landelijke voorziening Ruimtelijkeplannen.nl en vervangen te zijn door een op de TPOD-standaarden gebaseerde actuele omgevingsvisie die gepubliceerd is via de Landelijke Voorziening Bekendmaken en Beschikbaarstellen (LVBB). 
+<br>
+<br>
+<b>Samengevat:</b></p>
+<ul><li>Heeft de gemeente een omgevingsvisie op Ruimtelijkeplannen.nl staan?<ul><li>zoek in de viewer van <a href="https://www.ruimtelijkeplannen.nl/view" target="_blank">Ruimtelijkeplannen.nl</a> onder ‘Zoek op kenmerken’, vul bij ‘eigenaar’ de naam van de bronhouder in en kies voor het ‘plantype’ structuurvisie om dit te controleren.</li>
+</ul>
+</li>
+<li>Voldoet deze omgevingsvisie aan de vereisten van de Omgevingswet?<ul><li>controleer dit met behulp van <a href="https://omgevingswet.vng.nl/grip/omgevingsvisie/inhoud-omgevingsvisie/" target="_blank">Grip op de transitie van de planketen</a> en/of </li>
+<li>gebruik de <a href="https://iplo.nl/regelgeving/instrumenten/omgevingsvisie/wegwijzer-omgevingsvisie/" target="_blank">wegwijzer omgevingsvisie</a>.</li>
+</ul>
+</li>
+<li>Uiterlijk 1 januari 2027 heeft de gemeente een omgevingsvisie die voldoet aan de vereisten van de Omgevingswet en bij voorkeur conform de <a href="https://docs.geostandaarden.nl/tpod/def-st-TPOD-OVI-20231215/" target="_blank">TPOD-standaarden</a>.</li>
+<li>Een omgevingsvisie opgesteld via de Wro-plansoftware is uiterlijk eind 2031:<ul><li>door de gemeente vervangen door een omgevingsvisie conform de <a href="https://docs.geostandaarden.nl/tpod/def-st-TPOD-OVI-20231215/" target="_blank">TPOD-standaarden</a>;</li>
+<li>door de gemeente uit het <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> en daardoor van Ruimtelijkeplannen.nl <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verwijderd</a>.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="tijdelijk-deel-omgevingsplan"><h2 id="62087022"><bdi class="secno">4. </bdi>Tijdelijk deel omgevingsplan </h2><p>Met het inwerkingtreden van de Omgevingswet zijn onder andere de bestemmingsplannen van gemeenten onderdeel geworden van <a href="https://iplo.nl/regelgeving/instrumenten/omgevingsplan/omgevingsplan-rechtswege/" target="_blank">het tijdelijk deel van het omgevingsplan</a>. Deze plannen blijven geldig totdat zij uiterlijk <a href="https://zoek.officielebekendmakingen.nl/stb-2023-267.html" target="_blank">1 januari 2032</a> zijn vervangen door middel van een wijzigingsbesluit op het omgevingsplan conform de TPOD-standaarden. De digitale ruimtelijke plannen van het tijdelijk deel van het omgevingsplan staan op de landelijke voorziening van Ruimtelijkeplannen.nl.
+<br>
+<br>
+Het tijdelijk deel van het omgevingsplan is ook onder de Omgevingswet aan verandering onderhevig. Gemeenten ronden lopende Wro procedures af, al dan niet met gerechtelijke uitspraken. Deze planvoorraad moet nog altijd door de gemeente worden <a href="#1364DA20">beheerd</a>: actualiseren van de planstatussen en dossierstatussen en het opschonen van de planvoorraad.
+<br>
+<br>
+De ruimtelijke plannen in de landelijke voorziening Ruimtelijkeplannen.nl worden automatisch en in samenhang met de Omgevingswet instrumenten ontsloten in het <a href="https://omgevingswet.overheid.nl/home" target="_blank">Omgevingsloket</a>. Wanneer ruimtelijke plannen zoals bestemmingsplannen en omgevingsvergunningen door de gemeente worden verwerkt in het omgevingsplan dienen ze door de gemeente verwijderd te worden uit de planvoorraad van Ruimtelijkeplannen.nl. Dit gaat niet automatisch.
+De ruimtelijke plannen blijven zichtbaar en vindbaar via Regels op de kaart van het Omgevingsloket zolang de bronhouder deze plannen niet zelf, handmatig verwijderd uit het manifest en daarmee van Ruimtelijkeplannen.nl. Niet verwijderde plannen kunnen bij de gebruiker van het Omgevingsloket voor verwarring zorgen omdat zowel het oude ruimtelijke plan als ook het nieuwe omgevingsplanbesluit als <i>geldig</i> worden getoond.
+<br>
+<br>
+<b>Gebiedsgericht wijzigen van het omgevingsplan </b>biedt de mogelijkheid om oude bestemmingsplan regelingen in zijn geheel in één keer te laten vervallen. Hierbij is het noodzakelijk dat de begrenzing van het wijzigingsbesluit op het omgevingplan overeenkomt met de plangrens van het oude bestemmingsplan. In het geval voor deze werkwijze wordt gekozen kan na de wijziging van dit deel van het omgevingsplan, het bestemmingsplan worden verwijderd uit het gemeentelijke manifest en daarmee van Ruimtelijkeplannen.nl.
+<br>
+<br>
+Mocht, bijvoorbeeld bij een concrete beperkte gebiedsontwikkeling, de gebiedsgerichte wijziging van het omgevingsplan kleiner zijn dan het onderliggende bestemmingsplan, dan kan de gemeente ook besluiten om voor dat deel waarvoor de wijziging wordt doorgevoerd, gebruik te maken van de “Pons”. De Pons zorgt ervoor dat de viewer Regels op de kaart na een klik binnen het ponsgebied alleen het STOP/TPOD-deel van het omgevingsplan en, indien aanwezig, TAM-IMRO omgevingsplan en/of TAM-IMRO voorbereidingsbesluit als resultaat in de documentenlijst teruggeeft. Op locaties buiten het ponsgebied blijven wel de daar geldende regels uit het STOP/TPOD-deel van het omgevingsplan en de regels uit de ruimtelijke plannen zichtbaar.
+<br>
+<br>
+<b>Themagericht wijzigen van het omgevingsplan</b> leidt ertoe dat de gemeente door middel van een wijzigingsbesluit een gedeelte van bijvoorbeeld een bestemmingsplan, dat onderdeel uitmaakt van het tijdelijk deel van het omgevingsplan, opneemt in het permanente deel van het omgevingsplan. Het bestemmingsplan komt daardoor nog niet te vervallen: immers de andere regels in dat bestemmingsplan blijven gelden. Het bestemmingsplan moet beschikbaar blijven via Ruimtelijkeplannen.nl totdat het gehele bestemmingsplan is verwerkt in het omgevingsplan conform de TPOD-standaarden. Pas op dat moment verwijdert de gemeente het oude bestemmingsplan uit het gemeentelijke manifest waardoor het van Ruimtelijkeplannen.nl wordt verwijderd. Uiterlijk eind 2031 dient de volledige gemeentelijke planvoorraad van Ruimtelijkeplannen.nl verwijderd te zijn. Lees hierover meer in het hoofdstuk over het <a href="#324DBF6E">beheer van de planvoorraad</a> op Ruimtelijkeplannen.nl.
+<br>
+<br>
+<b>Samengevat: </b></p>
+<ul><li>Het tijdelijk deel van het omgevingsplan blijft aan verandering onderhevig; het beheer daarvan door de gemeente blijft nodig; zie <a href="#324DBF6E">beheer van de planvoorraad</a>.</li>
+<li>Voor het uitvoeren van het beheer van de ruimtelijke plannen is het belangrijk dat de gemeente haar Wro-plansoftware tot 1 januari 2032 behoud en beschikt over geldende certificaten voor ondertekening.</li>
+<li>De regels van de ruimtelijke plannen vervallen juridisch wanneer zij met het wijzigingsbesluit op het omgevingsplan zijn verwerkt. Technisch vervallen de oude digitale ruimtelijke plannen niet automatisch:<ul><li>de gemeente <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verwijdert</a> zelf via de Wro-plansoftware de oude plannen uit het <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> en daardoor van Ruimtelijkeplannen.nl.</li>
+</ul>
+</li>
+<li>Wordt een bestemmingsplan door middel van ‘gebiedsgericht wijzigen’ van het omgevingsplan in zijn geheel verwerkt dan <ul><li>verwijdert de gemeente het bestemmingsplan uit het manifest op het moment de wijziging onherroepelijk is waardoor het van Ruimtelijkeplannen.nl wordt verwijderd.</li>
+</ul>
+</li>
+<li>Met ‘thematisch gericht wijzigen’ van het omgevingsplan moet de gemeente uiterlijk eind 2031:<ul><li>alle ruimtelijke plannen in het omgevingsplan hebben verwerkt en</li>
+<li>hebben verwijderd uit het manifest waardoor de gehele gemeentelijke planvoorraad van Ruimtelijkeplannen.nl is verwijderd.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="omgevingsvergunningen"><h2 id="55A7BEB0"><bdi class="secno">5. </bdi>Omgevingsvergunningen </h2><p>In het kader van <a href="https://iplo.nl/regelgeving/omgevingswet/overgangsrecht/overgangsrecht-per-wet/wet-algemene-bepalingen-omgevingsrecht/" target="_blank">overgangsrecht Wabo</a> lopen bij gemeenten nog veel procedures op grond van <a href="https://docs.geostandaarden.nl/ro/gb2012/" target="_blank">artikel 2.12, eerste lid, onderdeel a, onder 3 van de Wabo</a>. De kennisgeving van de verleende omgevingsvergunning wordt via DROP beschikbaar gesteld op officielebekendmakingen.nl en de planbestanden worden door de gemeente op basis van de RO Standaarden met de Wro-plansoftware beschikbaar gesteld via Ruimtelijkeplannen.nl. De omgevingsvergunning om af te wijken van een bestemmingsplan wordt automatisch ontsloten en in samenhang met de Omgevingswet instrumenten getoond in het Omgevingsloket.
+<br>
+<br>
+Omgevingsvergunningen die op Ruimtelijkeplannen.nl staan moeten door de gemeente uiterlijk eind 2031 in het permanente deel van het omgevingsplan zijn verwerkt en met behulp van de Wro-plansoftware zijn verwijderd uit het gemeentelijke manifest en daarmee van de landelijke voorziening Ruimtelijkeplannen.nl. Omgevingsvergunningen die al eerder verwerkt zijn in bijvoorbeeld een bestemmingsplan kunnen zondermeer van ruimtelijkeplannen.nl worden verwijderd.
+<br>
+<br>
+<b>Samengevat: </b></p>
+<ul><li>Heeft de gemeente verleende omgevingsvergunningen op Ruimtelijkeplannen.nl staan? <ul><li>zoek in de viewer van <a href="https://www.ruimtelijkeplannen.nl/view" target="_blank">Ruimtelijkeplannen.nl</a> onder ‘Zoek op kenmerken’ op ‘eigenaar’ en op ‘plantype’ omgevingsvergunning om dit te controleren.</li>
+<li>De controle kan ook worden gedaan met behulp van de Wro-plansoftware en het gemeentelijke manifest.</li>
+</ul>
+</li>
+<li>De regels van al deze vergunningen moeten uiterlijk eind 2031:<ul><li>door de gemeente opgenomen zijn in het permanente deel van het omgevingplan op basis van de TPOD-standaarden;</li>
+<li>de gemeente <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verwijdert</a> deze omgevingsvergunningen via de Wro-plansoftware uit het gemeentelijke <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> en daardoor van Ruimtelijkeplannen.nl.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="tam-voorbereidingsbesluit"><h2 id="7D4FADDD"><bdi class="secno">6. </bdi>TAM voorbereidingsbesluit</h2><p>Door gemeenten is in de eerste periode na het inwerkingtreden van de Omgevingswet gebruik gemaakt van de mogelijkheid een voorbereidingsbesluit te nemen en deze te publiceren met gebruikmaking van de <a href="https://docs.geostandaarden.nl/ro/waTAMvbbesluit/" target="_blank">werkafspraak TAM-voorbereidingsbesluit</a> en de Wro-plansoftware. Juridisch gezien moet dit voorbereidingsbesluit voldoen aan de Omgevingswet. Technisch wordt dit voorbereidingsbesluit via het oude spoor in Ruimtelijkeplannen.nl beschikbaar gesteld en vervolgens automatisch ontsloten in het <a href="https://omgevingswet.overheid.nl/home" target="_blank">Omgevingsloket</a>.
+<br>
+<br>
+Het is tot 1 januari 2026 mogelijk om op basis van <a href="https://wetten.overheid.nl/BWBR0045037/2025-01-01" target="_blank">artikel 11 lid 1 van het Besluit elektronische publicaties</a>, met behulp van de RO Standaarden, de landelijke voorziening Ruimtelijkplannen.nl en <a href="https://www.koopoverheid.nl/voor-overheden/gemeenten-provincies-en-waterschappen/drop" target="_blank">DROP</a> een voorbereidingsbesluit op basis van <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/tam" target="_blank">TAM</a> te publiceren. Voor het maken van een dergelijk  TAM-voorbereidingsbesluit wordt onder strikte voorwaarden gebruik gemaakt van de Wro planfiguur ‘voorbereidingsbesluit’ conform de RO Standaarden 2012. De naam van het wijzigingsbesluit moet op de volgende manier zijn geschreven:  <b>TAM-voorbereidingsbesluit [spatie][plannaam]</b>
+De werkwijze voor het maken van een TAM-voorbereidingsbesluit met behulp van de Wro-plansoftware is vastgelegd in een <a href="https://docs.geostandaarden.nl/ro/waTAMvbbesluit/" target="_blank"><span style="color: #0070C0;"><u>werkafspraak</u></span></a> en toegelicht in de <a href="https://vng.nl/artikelen/bijsluiter-tam-voorbereidingsbesluit" target="_blank">VNG Bijsluiter</a>.
+<br>
+<br>
+In de transitieperiode tot 1 januari 2032 neemt de gemeente op basis van het voorbereidingsbesluit het initiatief om het omgevingsplan te wijzigen. In de Omgevingswet is geregeld wanneer een voorbereidingsbesluit komt te vervallen. Op dat moment moet de gemeente het TAM-voorbereidingsbesluit verwijderen uit het gemeentelijke manifest en daarmee van de landelijke voorziening Ruimtelijkeplannen.nl. Het voorbereidingsbesluit is immers niet meer van toepassing en de aanwezigheid ervan kan voor de gebruiker van het Omgevingsloket tot verwarring leiden.
+<br>
+<br>
+<b>Samengevat: </b></p>
+<ul><li>Heeft de gemeente TAM-voorbereidingsbesluiten op Ruimtelijkeplannen.nl staan? <ul><li>zoek in de viewer van <a href="https://www.ruimtelijkeplannen.nl/view" target="_blank">Ruimtelijkeplannen.nl</a> onder ‘Zoek op kenmerken’ en </li>
+<li>vul bij ‘Eigenaar’ de naam van uw gemeente in en<ul><li>op ‘plantype’ voorbereidingsbesluit om dit te controleren.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Is een voorbereidingsbesluit door middel van wijzigingsbesluit op het omgevingsplan in zijn geheel verwerkt of is het van rechtswege vervallen dan<ul><li><a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verwijdert</a> de gemeente het TAM-voorbereidingsbesluit uit het gemeentelijke <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> waardoor het van Ruimtelijkeplannen.nl wordt verwijderd.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="tam-omgevingsplan"><h2 id="5221ABF7"><bdi class="secno">7. </bdi>TAM omgevingsplan </h2><p>Sinds het inwerkingtreden van de Omgevingswet zijn door gemeente zijn ook wijzigingsbesluiten op het omgevingsplan genomen met behulp van de <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/tam" target="_blank">tijdelijke alternatieve maatregelen</a>. Het omgevingsplan moet <a href="https://omgevingswet.vng.nl/grip/omgevingsplan/systematiek-en-structuur/" target="_blank">juridisch</a> voldoen aan de Omgevingswet. Technisch gezien worden deze wijzigingsbesluiten op het omgevingsplan via het oude spoor in Ruimtelijkeplannen.nl beschikbaar gesteld en vervolgens automatisch ontsloten in het <a href="https://omgevingswet.overheid.nl/home" target="_blank">Omgevingsloket</a>.</p>
+<figure id="d4e1745"><img src="media/image2.png" alt="Omgevingsplan conform TPOD-standaarden of TAM" style="width: 100%;">
+<figcaption><a class="self-link" href="#d4e1745">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title">Omgevingsplan conform TPOD-standaarden of TAM</span></figcaption></figure>
+<br>
+
+<p>Het is tot 1 januari 2026 mogelijk om op basis van <a href="https://wetten.overheid.nl/BWBR0045037/2025-01-01" target="_blank">artikel 11 lid 1 van het Besluit elektronische publicaties</a>, met behulp van de RO Standaarden, de landelijke voorziening Ruimtelijkplannen.nl en <a href="https://www.koopoverheid.nl/voor-overheden/gemeenten-provincies-en-waterschappen/drop" target="_blank">DROP</a> een ontwerp omgevingsplan wijziging op basis van <a href="https://www.geonovum.nl/geo-standaarden/omgevingswet/tam" target="_blank">TAM</a> te publiceren. Voor het maken van een dergelijk TAM-omgevingsplan wordt onder strikte voorwaarden gebruik gemaakt van de Wro planfiguur ‘bestemmingsplan’ conform de RO Standaarden 2012. De naam van het wijzigingsbesluit moet op de volgende manier zijn geschreven:  <b>TAM-omgevingsplan[spatie][plannaam]</b>
+De werkwijze voor het maken van een TAM-omgevingsplan met behulp van de Wro-plansoftware is vastgelegd in een <a href="https://docs.geostandaarden.nl/ro/waTAMomplan/" target="_blank"><span style="color: #0070C0;"><u>werkafspraak</u></span></a> en een <a href="https://docs.geostandaarden.nl/ro/HRTAMomplan/" target="_blank"><span style="color: #0070C0;"><u>technische handreiking</u></span></a>.
+<br>
+<br>
+Het TAM-omgevingsplan moet door de gemeente voor 1 januari 2032 technisch onderdeel worden van het omgevingsplan conform de TPOD-standaarden. Ook moet het TAM-omgevingsplan voor die datum zijn verwijderd van Ruimtelijkeplannen.nl.
+<br>
+<br>
+<b>Samengevat: </b></p>
+<ul><li>Heeft de gemeente TAM-omgevingsplannen op Ruimtelijkeplannen.nl staan?<ul><li>zoek in de viewer van <a href="https://www.ruimtelijkeplannen.nl/view" target="_blank">Ruimtelijkeplannen.nl</a> onder ‘Zoek op plannaam of -nummer’ en type TAM in,</li>
+<li>bij ‘Zoek op kenmerken’ op ‘eigenaar’ en</li>
+<li>op ‘plantype’ bestemmingsplan om dit te controleren.</li>
+</ul>
+</li>
+<li>Uiterlijk eind 2031 heeft de gemeente een omgevingsplan dat voldoet aan de vereisten van de Omgevingswet en dat is opgesteld en beschikbaar gesteld conform de <a href="https://docs.geostandaarden.nl/tpod/def-st-TPOD-OP-20231215/" target="_blank">TPOD-standaarden</a>.</li>
+<li>Alle TAM-omgevingsplannen die ontsloten zijn met behulp van de Wro-plansoftware zijn uiterlijk eind 2031:<ul><li>door de gemeente conform de <a href="https://docs.geostandaarden.nl/tpod/def-st-TPOD-OP-20231215/" target="_blank">TPOD-standaarden</a> opgenomen in het niet-tijdelijk deel van het omgevingsplan;</li>
+<li>door de gemeente uit het gemeentelijke <a href="https://www.ruimtelijkeplannen.nl/index" target="_blank">manifest</a> en daardoor van Ruimtelijkeplannen.nl <a href="https://docs.geostandaarden.nl/ro/tri2012/" target="_blank">verwijderd</a>.</li>
+</ul>
+</li>
+</ul></section>
+      <section class="chapter" id="archiveren-ruimtelijke-plannen"><h2 id="1364DA20"><bdi class="secno">8. </bdi>Archiveren ruimtelijke plannen </h2><p>Onder de <a href="http://wetten.overheid.nl/BWBR0020449" target="_blank">Wet ruimtelijke ordening</a> waren de digitale ruimtelijke plannen de authentieke plannen. Dit betekent dat een samenhangende set bronbestanden (dataset genoemd) conform de RO Standaarden door gemeenten, provincies en het Rijk geproduceerd, beschikbaar gesteld, vindbaar en toegankelijk gemaakt werd. Dit deden zij voor de ruimtelijke plannen genoemd in artikel 1.2.1 van het <a href="http://wetten.overheid.nl/BWBR0023798" target="_blank">Besluit ruimtelijke ordening</a>.
+De samenhangende set bronbestanden is naast alle analoge en digitale stukken, zoals de ondergrond, één van de onderdelen in de planprocedure. De bestuursorganen zijn tevens verplicht conform de Archiefwet de ruimtelijke plannen te archiveren met als doel de plannen in goede, geordende en toegankelijke staat te brengen en daarmee duurzaam toegankelijk te houden, ook na inwerkingtreden van de Omgevingswet. Dit regelt het bestuursorgaan, namens de gemeente is het College van Burgemeester en Wethouders zorgdrager, in de eigen organisatie. De landelijke voorziening Ruimtelijkeplannen.nl heeft geen archieffunctie en kan hier door niet voor worden ingezet.
+In het <a href="https://wetten.overheid.nl/BWBR0045037/2025-01-01" target="_blank">Besluit elektronische publicaties, artikel 11 lid 1 onder 6</a> is geregeld dat uiterlijk tot 1 januari 2032 de landelijke voorziening Ruimtelijkeplannen.nl blijft functioneren. In deze overgangsperiode  <a href="#1364DA20">beheert de gemeente de planvoorraad</a> met behulp van de Wro-plansoftware en zorgt dat uiterlijk eind 2031 de planvoorraad van Ruimtelijkeplannen.nl is verwijderd.
+<br>
+<br>
+<b>Samengevat: </b></p>
+<ul><li>De gemeente is, conform de Archiefwet, verplicht de digitale ruimtelijke plannen te archiveren met als doel de plannen in goede, geordende en toegankelijke staat te brengen en daarmee duurzaam toegankelijk te houden, ook na inwerkingtreden van de Omgevingswet.</li>
+<li>De landelijke voorziening Ruimtelijkeplannen.nl heeft geen archieffunctie en kan hier door niet voor worden ingezet.</li>
+</ul></section>
+   
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Handreiking - Vastgestelde versie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
