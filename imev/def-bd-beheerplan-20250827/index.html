@@ -1,0 +1,1982 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.3.0">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+      
+      
+      
+      
+      
+      
+      
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+      
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/imev/Geonovum.ico">
+      
+      
+<title>Beheerplan Informatiemodel Externe Veiligheid 1.1.0</title>
+   
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css">
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://docs.geostandaarden.nl/imev/beheerplan/">
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/imev/beheerplan/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by-nd",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie.",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment.",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    },
+    "MIM12": {
+      "id": "MIM12",
+      "title": "MIM - Metamodel Informatie Modellering (Versie 1.2)",
+      "href": "https://docs.geostandaarden.nl/mim/def-st-mim-20240613/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2024-06-13"
+    },
+    "3DTILES": {
+      "title": "3D Tiles Specification 1.0",
+      "href": "http://docs.opengeospatial.org/cs/18-053r2/18-053r2.html",
+      "status": "Approved for public release",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Patrick Cozzi",
+        "Sean Lilley",
+        "Gabby Getz"
+      ],
+      "date": "2019-01-31",
+      "id": "3DTILES"
+    },
+    "adr-mod-geo": {
+      "title": "API Design rules Module: Geospatial",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie-mod-geo/",
+      "status": "Consultatieversie",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink"
+      ],
+      "authors": [
+        "Pieter Bresters",
+        "Linda van den Brink",
+        "Paul van Genuchten",
+        "George Mathijssen",
+        "Mark Strijker"
+      ],
+      "date": "2022-09-30",
+      "id": "adr-mod-geo"
+    },
+    "CIS10": {
+      "title": "ISO 19123-2:2018 Geographic information — Schema for coverage geometry and functions — Part 2: Coverage implementation schema",
+      "href": "https://www.iso.org/standard/70948.html",
+      "status": "Published",
+      "publisher": "ISD",
+      "date": "2018-10-01",
+      "id": "CIS10"
+    },
+    "CityGML2": {
+      "title": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "href": "https://portal.ogc.org/files/?artifact_id=47842",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Gerhard Gröger",
+        "Thomas H. Kolbe",
+        "Claus Nagel",
+        "Karl-Heinz Häfele"
+      ],
+      "date": "2012-04-04",
+      "id": "CityGML2"
+    },
+    "CityGML3": {
+      "title": "OGC City Geography Markup Language (CityGML) Part 1: Conceptual Model Standard v3.0",
+      "href": "https://docs.ogc.org/is/20-010/20-010.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Thomas H. Kolbe",
+        "Tatjana Kutzner",
+        "Carl Stephen Smyth",
+        "Claus Nagel",
+        "Carsten Roensdorf",
+        "Charles Heazel"
+      ],
+      "date": "2021-09-13",
+      "id": "CityGML3"
+    },
+    "CityJSON": {
+      "title": "CityJSON Community Standard 1.0",
+      "href": "https://docs.ogc.org/cs/20-072r2/20-072r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Hugo Ledoux"
+      ],
+      "date": "2021-08-13",
+      "id": "CityJSON"
+    },
+    "COVJSON": {
+      "title": "OGC CoverageJSON Community Standard 1.0-draft_0.2.2",
+      "href": "https://portal.ogc.org/files/102051",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Chris Little",
+        "Jon Blower",
+        "Maik Riechert"
+      ],
+      "id": "COVJSON"
+    },
+    "CSW2APISO": {
+      "title": "OpenGIS Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=21460",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "Open Geospatial Consortium",
+      "id": "CSW2APISO"
+    },
+    "CSWISOAP": {
+      "title": "OGC 07-045r2: OGC Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile: Corrigendum, version 1.0.2",
+      "href": "https://portal.ogc.org/files/80534",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Uwe Voges",
+        "Kristian Senkler"
+      ],
+      "date": "2020-11-19",
+      "id": "CSWISOAP"
+    },
+    "DCAT-AP-2.1.1": {
+      "title": "DCAT Application Profile for data portals in Europe 2.1.1",
+      "href": "https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/releases",
+      "publisher": "European Commission",
+      "date": "2022-06-24",
+      "id": "DCAT-AP-2.1.1"
+    },
+    "epsg": {
+      "title": "EPSG Geodetic Parameter Dataset",
+      "href": "https://epsg.org/home.html",
+      "status": "Published",
+      "publisher": "Geodesy Subcommittee of the IOGP Geomatics Committee",
+      "id": "epsg"
+    },
+    "FE20": {
+      "title": "OGC 09-026r2: OGC Filter Encoding 2.0 Encoding Standard - With Corrigendum, Version 2.0.3",
+      "href": "http://docs.opengeospatial.org/is/09-026r2/09-026r2.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis (Peter) A. Vretanos",
+      "date": "2014-08-18",
+      "id": "FE20"
+    },
+    "GeoPackage": {
+      "title": "OGC GeoPackage Encoding Standard - with Corrigendum, v1.3.1",
+      "href": "https://www.geopackage.org/spec131/",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Jeff Yutzler"
+      ],
+      "date": "2021-11-16",
+      "id": "GeoPackage"
+    },
+    "GEOSPARQL11": {
+      "title": "OGC GeoSPARQL - A Geographic Query Language for RDF Data",
+      "href": "https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Nicholas J. Car",
+        "Timo Homburg",
+        "Matthew Perry",
+        "John Herring",
+        "Frans Knibbe",
+        "Simon J.D. Cox",
+        "Joseph Abhayaratna",
+        "Mathias Bonduel"
+      ],
+      "date": "2022",
+      "id": "GEOSPARQL11"
+    },
+    "GeoTIFF": {
+      "title": "OGC GeoTIFF standard v1.1",
+      "href": "http://docs.opengeospatial.org/is/19-008r4/19-008r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Emmanuel Devys",
+        "Ted Habermann",
+        "Chuck Heazel",
+        "Roger Lott",
+        "Even Rouault"
+      ],
+      "date": "2019-09-14",
+      "id": "GeoTIFF"
+    },
+    "GIMEG": {
+      "href": "https://docs.geostandaarden.nl/nen3610/gimeg",
+      "publisher": "Geonovum",
+      "status": "Vastgesteld",
+      "authors": [
+        "Linda van den Brink",
+        "Paul Janssen",
+        "Wilko Quak"
+      ],
+      "title": "Geometrie in model en GML",
+      "date": "2021-03-26",
+      "id": "GIMEG"
+    },
+    "GML31": {
+      "title": "OpenGIS® Geography Markup Language (GML) Implementation Specification, v3.1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=4700",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox",
+        "Paul Daisey",
+        "Ron Lake",
+        "Clemens Portele",
+        "Arliss Whiteside"
+      ],
+      "date": "2004-02-07",
+      "id": "GML31"
+    },
+    "GML33": {
+      "title": "OGC® Geography Markup Language (GML) — Extended schemas and encoding rules, v3.3",
+      "href": "https://portal.ogc.org/files/?artifact_id=46568",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele"
+      ],
+      "date": "2012-02-07",
+      "id": "GML33"
+    },
+    "GMLJPEG2000": {
+      "title": "OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core v.2.1",
+      "href": "http://docs.opengeospatial.org/is/08-085r8/08-085r8.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Lucio Colaiacomo",
+        "Joan Masó",
+        "Emmanuel Devys",
+        "Eric Hirschorn"
+      ],
+      "date": "2018-08-27",
+      "id": "GMLJPEG2000"
+    },
+    "GMLSF": {
+      "title": "Geography Markup Language (GML) simple features profile (with Corrigendum) (2.0)",
+      "href": "https://portal.ogc.org/files/?artifact_id=42729",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Linda van den Brink",
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "date": "2012-04-05",
+      "id": "GMLSF"
+    },
+    "HDF5": {
+      "title": "OGC Hierarchical Data Format Version 5 (HDF5®) Core Standard",
+      "href": "http://docs.opengeospatial.org/is/18-043r3/18-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Aleksandar Jelenak",
+        "Ted Habermann",
+        "Gerd Heber"
+      ],
+      "date": "2019-03-27",
+      "id": "HDF5"
+    },
+    "HDFEOS": {
+      "title": "HDF-EOS5 Data Model, File Format and Library (v1.1)",
+      "href": "https://www.earthdata.nasa.gov/sites/default/files/imported/ESDS-RFC-008-v1.1.pdf",
+      "status": "Recommended",
+      "publisher": "NASA",
+      "editors": [
+        "Larry Klein",
+        "Abe Taaheri"
+      ],
+      "date": "2016-05-01",
+      "id": "HDFEOS"
+    },
+    "HRCRS": {
+      "title": "Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie",
+      "href": "https://docs.geostandaarden.nl/crs/crs/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Friso Penninga",
+        "Lennard Huisman"
+      ],
+      "date": "2022-03-14",
+      "id": "HRCRS"
+    },
+    "HRLFG": {
+      "title": "Geometrie in uitwisselingsformaten",
+      "href": "https://docs.geostandaarden.nl/g4w/geox/#inleiding",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink",
+        "Gabriella Wiersma"
+      ],
+      "date": "2022-02-04",
+      "id": "HRLFG"
+    },
+    "HRTOEG": {
+      "title": "Handreiking digitaal toegankelijk locatiedata",
+      "href": "https://docs.geostandaarden.nl/visu/toeg/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Edward Mac Gillavry",
+        "Sjors Slaats",
+        "Theo OVerduin",
+        "Thijs Brentjens",
+        "Victor Zuydweg"
+      ],
+      "date": "2021-08-02",
+      "id": "HRTOEG"
+    },
+    "HRWC": {
+      "title": "Handreiking webcartografie",
+      "href": "https://www.geonovum.nl/uploads/standards/downloads/handreiking%20webcartografie%201.0.1_0.pdf",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2010-11-18",
+      "id": "HRWC"
+    },
+    "I3S": {
+      "title": "OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Community Standard Version 1.2",
+      "href": "http://docs.opengeospatial.org/cs/17-014r8/17-014r8.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Carl Reed",
+        "Tamrat Belayneh"
+      ],
+      "date": "2021-05-11",
+      "id": "I3S"
+    },
+    "IMMetingen": {
+      "title": "Informatiemodel Metingen",
+      "href": "https://www.sikb.nl/datastandaarden/richtlijnen/sikb0101",
+      "status": "Vastgesteld",
+      "publisher": "SIKB en IHW",
+      "id": "IMMetingen"
+    },
+    "INSGPGeopackage": {
+      "title": "GeoPackage encoding of INSPIRE datasets. INSPIRE good practise",
+      "href": "https://inspire.ec.europa.eu/good-practice/geopackage-encoding-inspire-datasets",
+      "status": "Candidate",
+      "publisher": "INSPIRE",
+      "id": "INSGPGeopackage"
+    },
+    "INSGPOAPIF": {
+      "title": "OGC API - Features as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-api-%E2%80%93-features-inspire-download-service",
+      "status": "Endorsed Good Practice",
+      "publisher": "IOC TF",
+      "id": "INSGPOAPIF"
+    },
+    "INSGPSTA": {
+      "title": "OGC SensorThings API as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-sensorthings-api-inspire-download-service",
+      "status": "Endorsed good practice",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "id": "INSGPSTA"
+    },
+    "inspire-19115-19119": {
+      "title": "INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119",
+      "href": "http://inspire.ec.europa.eu/documents/Metadata/INSPIRE_MD_IR_and_ISO_v1_2_20100616.pdf",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2007-10-26",
+      "id": "inspire-19115-19119"
+    },
+    "inspire-cirmd": {
+      "title": "Corrigendum to INSPIRE Metadata Regulation",
+      "href": "https://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=CELEX:32008R1205R(02)&from=EN",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2010-01-15",
+      "id": "inspire-cirmd"
+    },
+    "inspire-crs": {
+      "title": "INSPIRE Data Specification on Coordinate Reference Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/rs",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-crs"
+    },
+    "inspire-gcm": {
+      "title": "Generic Conceptual Model of the INSPIRE data specifications",
+      "href": "https://inspire.ec.europa.eu/documents/inspire-generic-conceptual-model",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-07",
+      "id": "inspire-gcm"
+    },
+    "inspire-gen": {
+      "title": "Guidelines for the encoding of spatial data",
+      "href": "https://inspire.ec.europa.eu/documents/guidelines-encoding-spatial-data",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-08",
+      "id": "inspire-gen"
+    },
+    "inspire-ggs": {
+      "title": "Guidelines INSPIRE Data Specification on Geographical Grid Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/gg",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-ggs"
+    },
+    "inspire-irmd": {
+      "title": "Implementing Rules for Metadata",
+      "href": "http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32008R1205",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2008-12-03",
+      "id": "inspire-irmd"
+    },
+    "inspire-mds": {
+      "title": "Methodology for the development of data specifications: baseline version (D 2.6, Version 3.0)",
+      "href": "https://inspire.ec.europa.eu/documents/methodology-development-data-specifications-baseline-version-d-26-version-30",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2008-04-06",
+      "id": "inspire-mds"
+    },
+    "inspire-TG-metadata": {
+      "title": "Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007",
+      "href": "https://github.com/INSPIRE-MIF/technical-guidelines/blob/2022.2/metadata/metadata-iso19139/metadata-iso19139.adoc",
+      "status": [
+        "Tehnical Guidance"
+      ],
+      "authors": [
+        "Temporary MIWP 2021-2024 sub-group 2.3.1"
+      ],
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2022-08-01",
+      "id": "inspire-TG-metadata"
+    },
+    "INSTGDiS": {
+      "title": "Technical Guidance for the implementation of Inspire Discovery Service, version 3.1",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-discovery-services-0",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2011-11-07",
+      "id": "INSTGDiS"
+    },
+    "INSTGDS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2013-08-09",
+      "id": "INSTGDS"
+    },
+    "INSTGDSSOS": {
+      "title": "Technical Guidance for implementing download services using the OGC Sensor Observation Service and ISO 19143 Filter Encoding, version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-sos",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSSOS"
+    },
+    "INSTGDSWCS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services using Web Coverage Services (WCS), version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-wcs",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSWCS"
+    },
+    "INSTGVS": {
+      "title": "Technical Guidance for the implementation of Inspire View Service",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-view-services-1",
+      "status": "Definitief",
+      "publisher": "IOC TF",
+      "date": "2022-08-01",
+      "id": "INSTGVS"
+    },
+    "ISO15836": {
+      "title": "ISO 15836: 2004, Information and documentation - The Dublin Core metadata element set",
+      "href": "https://www.iso.org/standard/37629.htm",
+      "publisher": "International Organization for Standardization",
+      "date": "2004",
+      "id": "ISO15836"
+    },
+    "ISO19101": {
+      "title": "ISO 19101-1:2014 Geographic information — Reference model — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/59164.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2014-11-01",
+      "id": "ISO19101"
+    },
+    "ISO19103": {
+      "title": "ISO 19103:2015 Geographic information — Conceptual schema language",
+      "href": "https://www.iso.org/standard/56734.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19103"
+    },
+    "ISO19107": {
+      "title": "ISO 19107:2019 Geographic information — Spatial schema",
+      "href": "https://www.iso.org/standard/66175.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-12-01",
+      "id": "ISO19107"
+    },
+    "ISO19108": {
+      "title": "ISO 19108:2002 Geographic information — Temporal schema",
+      "href": "https://www.iso.org/standard/26013.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-08",
+      "id": "ISO19108"
+    },
+    "ISO19109": {
+      "title": "ISO 19109:2015 Geographic information — Rules for application schema",
+      "href": "https://www.iso.org/standard/59193.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19109"
+    },
+    "ISO19110": {
+      "title": "ISO 19110:2016 Geographic information — Methodology for feature cataloguing",
+      "href": "https://www.iso.org/standard/57303.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2016-12-01",
+      "id": "ISO19110"
+    },
+    "ISO19111": {
+      "title": "ISO 19111:2019 Geographic information — Referencing by coordinates",
+      "href": "https://www.iso.org/standard/74039.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-01-01",
+      "id": "ISO19111"
+    },
+    "ISO19115-2003": {
+      "title": "ISO 19115:2003  Geographic information -- Metadata",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2003-05-01",
+      "id": "ISO19115-2003"
+    },
+    "ISO19115-2006": {
+      "title": "ISO 19115:2003/Cor 1:2006 Geographic information — Metadata — Technical Corrigendum 1",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2006-06-01",
+      "id": "ISO19115-2006"
+    },
+    "ISO19115-2009": {
+      "title": "ISO 19115-2:2009 Geographic information — Metadata — Part 2: Extensions for imagery and gridded data",
+      "href": "https://www.iso.org/standard/39229.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2009-02-01",
+      "id": "ISO19115-2009"
+    },
+    "ISO19115-2014": {
+      "title": "ISO 19115-1:2014 Geographic information — Metadata — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/53798.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2014-04-01",
+      "id": "ISO19115-2014"
+    },
+    "ISO19117": {
+      "title": "ISO 19117:2012 Geographic Information - Portrayal",
+      "href": "https://www.iso.org/standard/46226.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-01",
+      "id": "ISO19117"
+    },
+    "ISO19118": {
+      "title": "ISO 19118:2011 Geographic information — Encoding",
+      "href": "https://www.iso.org/standard/44212.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2011-10-01",
+      "id": "ISO19118"
+    },
+    "ISO19119": {
+      "title": "Geographic information - Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119"
+    },
+    "ISO19119-2005": {
+      "title": "ISO 19119:2005 Geographic information — Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119-2005"
+    },
+    "ISO19119-2008": {
+      "title": "ISO 19119:2005/Amd 1:2008 Geographic information — Services — Amendment 1: Extensions of the service metadata model",
+      "href": "https://www.iso.org/standard/44268.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2008-05-01",
+      "id": "ISO19119-2008"
+    },
+    "ISO19126-2009": {
+      "title": "ISO 19126:2009 Geographic information - Feature concept dictionaries and registers",
+      "href": "https://www.iso.org/standard/44875.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2009-11-01",
+      "id": "ISO19126-2009"
+    },
+    "ISO19131": {
+      "title": "ISO 19131:2022 Geographic information — Data product specifications",
+      "href": "https://www.iso.org/standard/85092.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-11-01",
+      "id": "ISO19131"
+    },
+    "ISO19136": {
+      "title": "ISO 19136-1:2020 Geographic information — Geography Markup Language (GML) — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/75676.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2020-01-01",
+      "id": "ISO19136"
+    },
+    "ISO19139": {
+      "title": "ISO/TS 19139:2007 Geographic information - Metadata - XML schema implementation",
+      "href": "https://www.iso.org/standard/32557.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2007-04-01",
+      "id": "ISO19139"
+    },
+    "ISO6709": {
+      "title": "ISO 6709:2022 Standard representation of geographic point location by coordinates",
+      "href": "https://www.iso.org/standard/75147.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-09-01",
+      "id": "ISO6709"
+    },
+    "ISOJPEG2000": {
+      "title": "ISO/IEC 15444-1:2019 Information technology — JPEG 2000 image coding system — Part 1: Core coding system",
+      "href": "https://www.iso.org/standard/78321.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-10-01",
+      "id": "ISOJPEG2000"
+    },
+    "ISOts19127": {
+      "title": "ISO/TS 19127 Geographic Information - Geodetic codes and parameters",
+      "href": "https://www.iso.org/standard/41784.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2005-06-01",
+      "id": "ISOts19127"
+    },
+    "JSON-FG": {
+      "title": "OGC Features and Geometries JSON - Part 1: Core",
+      "href": "https://docs.ogc.org/DRAFTS/21-045.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "id": "JSON-FG"
+    },
+    "MBS": {
+      "title": "Mapbox GL JS Style Specification",
+      "href": "https://docs.mapbox.com/mapbox-gl-js/style-spec/",
+      "status": "Unofficial",
+      "publisher": "Mapbox",
+      "id": "MBS"
+    },
+    "MIM": {
+      "title": "MIM - Metamodel Informatie Modellering",
+      "href": "https://docs.geostandaarden.nl/mim/mim/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Dick Krijtenburg",
+        "Paul Janssen",
+        "Lennart van Bergen"
+      ],
+      "authors": [
+        "Lennart van Bergen",
+        "Thies Mesdag",
+        "Marco Brattinga",
+        "Paul Janssen",
+        "Pano Maria",
+        "Johan Boer"
+      ],
+      "date": "2022-02-17",
+      "id": "MIM"
+    },
+    "NEN3610": {
+      "title": "NEN 3610:2022 nl - BBasismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "href": "https://www.nen.nl/nen-3610-2022-nl-296137",
+      "status": "Definitief",
+      "publisher": "NEN",
+      "date": "2022-05-31",
+      "id": "NEN3610"
+    },
+    "NETCDF": {
+      "title": "OGC Network Common Data Form (NetCDF) Core Encoding Standard version 1.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=43732",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Ben Domenico"
+      ],
+      "date": "2011-04-05",
+      "id": "NETCDF"
+    },
+    "NLAPIS": {
+      "title": "API Strategie Algemeen (Nederlandse API Strategie I)",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2022-03-09",
+      "id": "NLAPIS"
+    },
+    "NLDP": {
+      "title": "NEN 3610 - Linked Data",
+      "href": "https://docs.geostandaarden.nl/nen3610/nldp/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Paul Janssen"
+      ],
+      "authors": [
+        "Linda van den Brink",
+        "Marco Brattinga",
+        "Marinus Vonhof",
+        "Niels Hoffmann",
+        "Pano Maria",
+        "Hans Schevers",
+        "Ronald van Lanen",
+        "Joep van Genuchten"
+      ],
+      "date": "2020-03-23",
+      "id": "NLDP"
+    },
+    "NLISO19115": {
+      "title": "Nederlands metadata profiel op ISO 19115 voor geografie versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19115/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19115"
+    },
+    "NLISO19119": {
+      "title": "Nederlands metadata profiel op ISO 19119 voor services versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19119/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19119"
+    },
+    "NLWFS": {
+      "title": "Nederlands profiel op ISO 19142 Geographic information — Web Feature Service, Versie 1.1",
+      "href": "https://www.geonovum.nl/geo-standaarden/services/nederlands-wfs-profiel-11-op-iso-19142-voor-web-feature-services-20",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWFS"
+    },
+    "NLWMS": {
+      "title": "Nederlands profiel op ISO 19128 Geographic information — Web Map Server Interface",
+      "href": "https://www.geonovum.nl/uploads/documents/nederlands_profiel_op_iso_19128_wms_1.3_-_versie_1.0.pdf",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWMS"
+    },
+    "OaMt1": {
+      "title": "OGC Timeseries Profile of Observations and Measurements v1.0",
+      "href": "http://docs.opengeospatial.org/is/15-043r3/15-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "James Tomkins",
+        "Dominic Lowe"
+      ],
+      "id": "OaMt1"
+    },
+    "OaMx2": {
+      "title": "Observations and Measurements - XML Implementation v2.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=41510",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox"
+      ],
+      "id": "OaMx2"
+    },
+    "OAPIC": {
+      "title": "OGC 19-087: OGC API - Coverages - Part 1: Core, version 0.0.6",
+      "href": "http://docs.ogc.org/DRAFTS/19-087.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Charles Heazel",
+        "Jerome St-Louis"
+      ],
+      "id": "OAPIC"
+    },
+    "OAPIEDR": {
+      "title": "OGC 19-086r5: OGC API - Environmental Data Retrieval Standard, Version 1.0.1",
+      "href": "https://docs.ogc.org/is/19-086r5/19-086r5.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Mark Burgoyne",
+        "David Blodgett",
+        "Charles Heazel",
+        "Chris Little"
+      ],
+      "date": "2022-08-05",
+      "id": "OAPIEDR"
+    },
+    "OAPIF1": {
+      "title": "OGC 17-069r4: OGC API - Features - Part 1: Core corrigendum, Version 1.0.1",
+      "href": "https://docs.opengeospatial.org/is/17-069r4/17-069r4.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele",
+        "Charles Heazel"
+      ],
+      "date": "2022-05-11",
+      "id": "OAPIF1"
+    },
+    "OAPIF2": {
+      "title": "OGC 18-058: OGC API - Features - Part 2: Coordinate Reference Systems by Reference, Version 1.0",
+      "href": "https://docs.opengeospatial.org/is/18-058r1/18-058r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "date": "2020-11-02",
+      "id": "OAPIF2"
+    },
+    "OAPIF3": {
+      "title": "OGC 19-079r1: OGC API - Features - Part 3: Filtering, Version 1.0.0-rc1",
+      "href": "http://docs.ogc.org/DRAFTS/19-079r1.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF3"
+    },
+    "OAPIF4": {
+      "title": "OGC 20-002: OGC API - Features - Part 4: Create, Replace, Update and Delete, Version 1.0.0 snapshot (editor's draft",
+      "href": "http://docs.ogc.org/DRAFTS/20-002.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF4"
+    },
+    "OAPIMAPS": {
+      "title": "OGC 20-058: OGC API - Maps - Part 1: Core, Version 0.1.0",
+      "href": "http://docs.ogc.org/DRAFTS/20-058.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Joan Masó",
+      "date": "2022-06-06",
+      "id": "OAPIMAPS"
+    },
+    "OAPIRECORDS1": {
+      "title": "OGC 20-224: OGC API - Records - Part 1: Core",
+      "href": "http://docs.ogc.org/DRAFTS/20-004.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Tom Kralidis",
+        "Charles Heazel"
+      ],
+      "date": "2020-01-13",
+      "id": "OAPIRECORDS1"
+    },
+    "OAPISTYLES": {
+      "title": "OGC 20-009: OGC API Styles",
+      "href": "http://docs.opengeospatial.org/DRAFTS/20-009.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "C. Portele",
+      "id": "OAPISTYLES"
+    },
+    "OAPITILES1": {
+      "title": "OGC 20-057: OGC API - Tiles - Part 1: Core",
+      "href": "https://docs.ogc.org/is/20-057/20-057.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Joan Masó",
+        "Jérôme St-Louis"
+      ],
+      "date": "26-08-2022",
+      "id": "OAPITILES1"
+    },
+    "OMS3": {
+      "title": "OGC Abstract Specification Topic 20: Observations, measurements and samples v3.0.0",
+      "href": "https://docs.ogc.org/as/20-082r4/20-082r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Katharina Schleidt",
+        "Ilkka Rinne"
+      ],
+      "date": "2023-05-26",
+      "id": "OMS3"
+    },
+    "OREFCO": {
+      "title": "OGC Abstract Specification Topic 2: Referencing by coordinates",
+      "href": "http://docs.opengeospatial.org/as/18-005r4/18-005r4.html",
+      "status": "OGC® Publicly Available Standard",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Roger Lott"
+      ],
+      "date": "2019-02-08",
+      "id": "OREFCO"
+    },
+    "SE11": {
+      "title": "OGC 05-077r4: OpenGIS Symbology Encoding Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=16700",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2006-07-21",
+      "id": "SE11"
+    },
+    "SensorML": {
+      "title": "OGC SensorML: Model and XML Encoding Standard v2.1",
+      "href": "http://docs.ogc.org/is/12-000r2/12-000r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Mike Botts",
+        "Alexandre Robin",
+        "Eric Hirschorn"
+      ],
+      "date": "2020-08-10",
+      "id": "SensorML"
+    },
+    "SLD11": {
+      "title": "OGC 05-078r4: Styled Layer Descriptor profile of the Web Map Service Implementation Specification, Version 1.1",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=22364",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2007-06-29",
+      "id": "SLD11"
+    },
+    "STAS": {
+      "title": "OGC 18-088: OGC SensorThings API Part 1 - Sensing, Version 1.1",
+      "href": "https://docs.ogc.org/is/18-088/18-088.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi",
+        "Hylke van der Schaaf"
+      ],
+      "date": "2021-08-04",
+      "id": "STAS"
+    },
+    "STAT": {
+      "title": "OGC 17-079r1: OGC SensorThings API Part 1 - Tasking Core, Version 1.0",
+      "href": "http://docs.opengeospatial.org/is/17-079r1/17-079r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi"
+      ],
+      "date": "2019-01-08",
+      "id": "STAT"
+    },
+    "WCS21": {
+      "title": "OGC 17-089r1: OGC Web Coverage Service (WCS) 2.1 Interface Standard - Core",
+      "href": "http://docs.opengeospatial.org/is/17-089r1/17-089r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2018-08-16",
+      "id": "WCS21"
+    },
+    "WFS11": {
+      "title": "Web Feature Service Implementation Specification with Corrigendum, Version 1.1.3",
+      "href": "http://docs.opengeospatial.org/is/04-094r1/04-094r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis A. Vretanos",
+      "date": "2016-10-26",
+      "id": "WFS11"
+    },
+    "WMC11": {
+      "title": "OpenGIS 05-005: Web Map Context Documents Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=8618",
+      "status": "Adopted specification",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "J. Sonnet",
+      "date": "2005-01-19",
+      "id": "WMC11"
+    },
+    "WMCC11": {
+      "title": "OpenGIS 08-050: Corrigendum for OpenGIS Implementation Standard Web Map Context Documents - Corrigendum 1",
+      "href": "https://portal.ogc.org/files/?artifact_id=27286",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "T. Kralidis",
+      "date": "2008-03-14",
+      "id": "WMCC11"
+    }
+  },
+  "title": "Beheerplan Informatiemodel Externe Veiligheid",
+  "shortName": "beheerplan",
+  "pubDomain": "imev",
+  "specStatus": "def",
+  "specType": "bd",
+  "publishDate": "2025-08-27",
+  "publishVersion": "1.1.0",
+  "github": "https://github.com/geonovum/imev-beheerplan/",
+  "issueBase": "https://github.com/geonovum/imev-beheerplan/issues/",
+  "edDraftURI": "https://geonovum.github.io/imev-beheerplan/",
+  "canonicalURI": "https://docs.geostandaarden.nl/imev/beheerplan/",
+  "authors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid-imev/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid-imev/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
+   <body class="h-entry informative toc-inline"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Beheerplan Informatiemodel Externe Veiligheid 1.1.0</h1>
+    
+    <h2>
+      Geonovum Beheerdocumentatie<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2025-08-27">27 augustus 2025</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/imev/def-bd-beheerplan-20250827">https://docs.geostandaarden.nl/imev/def-bd-beheerplan-20250827</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/imev/beheerplan/">https://docs.geostandaarden.nl/imev/beheerplan/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/imev-beheerplan/">https://geonovum.github.io/imev-beheerplan/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid-imev/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid-imev/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/geonovum/imev-beheerplan/">GitHub geonovum/imev-beheerplan</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-beheerplan/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-beheerplan/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-beheerplan/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+      
+      <nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#47B5C444">Versiebeheer</a></li><li class="tocline"><a class="tocxref" href="#43941D42"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#24334864"><bdi class="secno">1.1 </bdi>Introductie </a></li><li class="tocline"><a class="tocxref" href="#34787AAB"><bdi class="secno">1.2 </bdi>Ontwikkelen en beheren van standaarden </a></li><li class="tocline"><a class="tocxref" href="#6981FF72"><bdi class="secno">1.3 </bdi>Leeswijzer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#491B6E78"><bdi class="secno">2. </bdi>Strategie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#3F808C16"><bdi class="secno">2.1 </bdi>Governance</a></li><li class="tocline"><a class="tocxref" href="#70DDEAA4"><bdi class="secno">2.2 </bdi>Visie</a></li><li class="tocline"><a class="tocxref" href="#7BCF1AAB"><bdi class="secno">2.3 </bdi>Financiën </a></li></ol></li><li class="tocline"><a class="tocxref" href="#5AE88FF8"><bdi class="secno">3. </bdi>Tactiek</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2C5ABC1A"><bdi class="secno">3.1 </bdi>Community</a></li><li class="tocline"><a class="tocxref" href="#30830BA9"><bdi class="secno">3.2 </bdi>Architectuur</a></li><li class="tocline"><a class="tocxref" href="#3F9222D8"><bdi class="secno">3.3 </bdi>Rechtenbeleid</a></li><li class="tocline"><a class="tocxref" href="#7C0F229A"><bdi class="secno">3.4 </bdi>Adoptie en erkenning</a></li><li class="tocline"><a class="tocxref" href="#44553739"><bdi class="secno">3.5 </bdi>Kwaliteitsbeleid en benchmarking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#083B8D00"><bdi class="secno">4. </bdi>Operationeel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#741CFF7D"><bdi class="secno">4.1 </bdi>Initiatie</a></li><li class="tocline"><a class="tocxref" href="#598C31A3"><bdi class="secno">4.2 </bdi>Wensen en eisen</a></li><li class="tocline"><a class="tocxref" href="#6DADA5C8"><bdi class="secno">4.3 </bdi>Ontwikkeling</a></li><li class="tocline"><a class="tocxref" href="#32D5C642"><bdi class="secno">4.4 </bdi>Uitvoering</a></li><li class="tocline"><a class="tocxref" href="#79A4FC48"><bdi class="secno">4.5 </bdi>Documentatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#790C686D"><bdi class="secno">5. </bdi>Implementatieondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#19CC20AC"><bdi class="secno">5.1 </bdi>Helpdesk </a></li><li class="tocline"><a class="tocxref" href="#7F2DAEAA"><bdi class="secno">5.2 </bdi>Opleiding (van gebruikers)</a></li><li class="tocline"><a class="tocxref" href="#0629E0B3"><bdi class="secno">5.3 </bdi>Module ontwikkeling</a></li><li class="tocline"><a class="tocxref" href="#37DFF1B1"><bdi class="secno">5.4 </bdi>Pilots en testbeds</a></li><li class="tocline"><a class="tocxref" href="#6D48D65F"><bdi class="secno">5.5 </bdi>Validatie en certificatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#485DFB58"><bdi class="secno">6. </bdi>Communicatie </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#10A2571C"><bdi class="secno">6.1 </bdi>Publicatie</a></li><li class="tocline"><a class="tocxref" href="#4D64FC74"><bdi class="secno">6.2 </bdi>Promotie</a></li><li class="tocline"><a class="tocxref" href="#4BC97160"><bdi class="secno">6.3 </bdi>Escalatie- en klachtenafhandeling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#2539E21D"><bdi class="secno">6.3.1 </bdi>Sturende principes bij escalatie</a></li><li class="tocline"><a class="tocxref" href="#380B400B"><bdi class="secno">6.3.2 </bdi>Klachtenafhandeling</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#56B1B14E"><bdi class="secno">7. </bdi>IMEV producten</a></li></ol></nav>
+      <section class="introductory informative" id="versiebeheer"><div class="header-wrapper"><h2 id="47B5C444">Versiebeheer</h2><a class="self-link" href="#47B5C444" aria-label="Permalink for this Section"></a></div><p><em>Dit onderdeel is niet normatief.</em></p><p>Dit document wordt bijgewerkt op basis van ontwikkelingen rond het beheer van het Informatiemodel Externe Veiligheid. In onderstaand overzicht houden wij de status van verschillende versies van dit document bij. Zo ziet u altijd wanneer de laatste versie is verschenen. </p>
+<table style="width: 100%;"><caption>Tabel 1 - Document versiebeheer</caption>
+<colgroup><col id="col1" style="width: 9.801876955161628%;">
+<col id="col2" style="width: 21.3532614992469%;">
+<col id="col3" style="width: 14.772332290580465%;">
+<col id="col4" style="width: 54.072529255011005%;">
+</colgroup>
+<thead><tr><th class="left"><p id="2BB7218D"><b>Versie</b></p></th>
+<th class="left"><p id="2B8EDE10"><b>Datum</b></p></th>
+<th class="left"><p id="22E9DC5D"><b>Status</b></p></th>
+<th class="left"><p id="00B79961"><b>Aanpassing</b></p></th>
+</tr></thead>
+<tbody><tr><td class="left"><p id="43D756B8">1.0</p></td>
+<td class="left"><p id="3726B6C9">November 2023</p></td>
+<td class="left"><p id="633F0865">Definitief</p></td>
+<td class="left"><p id="0432008F">Oplevering</p></td>
+</tr>
+<tr><td class="left"><p id="6A555544">1.1</p></td>
+<td class="left"><p id="66B4F1D6">27 augustus 2025</p></td>
+<td class="left"><p id="46AE7A4E">Definitief</p></td>
+<td class="left"><p id="17D74612">- Actualisatie beheerplan.</p><p id="2E96DAD4">- Omzetting beheerplan naar publiek document voor ontsluiting via de Geonovum website.<br>
+- Naast actualisatie zijn de wijzigingen: <a href="#3F808C16">paragraaf Governance</a> toelichting TRIP en Adviesgroep toegevoegd; <a href="#70DDEAA4">paragraaf Visie</a> is de koppeling met het DSO toegevoegd; <a href="#30830BA9">paragraaf Architectuur</a> zijn de API standaarden, NL-SBB, IMOW en IM Geluid toegevoegd; <a href="#741CFF7D">paragraaf Initiatie</a> is de rol van de Adviesgroep toegelicht.</p></td>
+</tr>
+</tbody>
+</table></section>
+      <section class="chapter" id="inleiding"><div class="header-wrapper"><h2 id="43941D42"><bdi class="secno">1. </bdi>Inleiding</h2><a class="self-link" href="#43941D42" aria-label="Permalink for Section 1."></a></div><section id="introductie"><div class="header-wrapper"><h3 id="24334864"><bdi class="secno">1.1 </bdi>Introductie </h3><a class="self-link" href="#24334864" aria-label="Permalink for Section 1.1"></a></div><p>Onder de Omgevingswet worden gegevens over externe veiligheidsrisico’s via het Register Externe Veiligheidsrisico's verzameld, beheerd en beschikbaar gesteld. In dit register staan bijvoorbeeld alle bedrijven die brandbare, explosieve, giftige en nucleaire stoffen verwerken of opslaan en transportroutes en buisleidingen voor gevaarlijke stoffen. 
+<br>
+<br>
+Voor de meeste <a href="https://iplo.nl/regelgeving/regels-voor-activiteiten/toelichting-milieubelastende-activiteiten/" target="_blank">milieubelastende activiteiten</a> met veiligheidsrisico's is de provincie of de gemeente het bevoegd gezag. Het Ministerie van Economische Zaken en Klimaat verzamelt de gegevens voor het aanleggen en exploiteren van een mijnbouwwerk. Het Ministerie van Infrastructuur en Waterstaat verzamelt de gegevens voor buisleidingen. Net als de gegevens voor het <a href="https://www.infomil.nl/onderwerpen/veiligheid/basisnet/" target="_blank">basisnet</a>. Voor vervoer van gevaarlijke stoffen over andere openbare wegen en vaarwegen, verzamelt de beheerder van die (vaar)wegen de gegevens. Afhankelijk van de (vaar)weg is dit de gemeente, de provincie of het waterschap.
+<br>
+<br>
+Om deze gegevens allemaal op dezelfde manier beschikbaar te kunnen stellen via het Register Externe Veiligheidsrisico's (REV), is er het Informatiemodel Externe Veiligheid. Dit informatiemodel beschrijft de structuur waarin gegevens moeten worden vastgelegd zodat de gegevens zowel door een machine als een mens te verwerken zijn. Daarbij is er veel aandacht voor de betekenis – de semantiek - van gegevens. Er zijn immers verschillende aanleverende partijen betrokken en veel verschillende afnemers van de data die in het REV is opgeslagen. Voor ieder van hen moet de betekenis van gegevens eenduidig zijn. Daarom is het informatiemodel uitgerust met een gegevenswoordenboek. Hierin zijn de gehanteerde begrippen zo eenduidig mogelijk vastgelegd.
+In het <a href="https://docs.geostandaarden.nl/imev/imev/" target="_blank">informatiemodel externe veiligheid</a> staat:</p>
+<ul><li>welke gegevens opgenomen worden in het REV;</li>
+<li>wat die gegevens precies betekenen;</li>
+<li>de structuur van de gegevens in de vorm van objecten, attributen en relaties;</li>
+<li>of een gegeven verplicht is of niet;</li>
+<li>welke overige afspraken kunnen worden vastgelegd over de gegevens;</li>
+<li>en hoe deze gegevens in het register moeten worden vastgelegd.</li>
+</ul>
+<br>
+De nadruk van het informatiemodel ligt op het beschrijven van de gegevens die noodzakelijk zijn om de plaatsgebonden risicocontouren en aandachtsgebieden uit te wisselen die horen bij operationeel uitgevoerde externe veiligheidsactiviteiten. 
+<i>Welke</i> gegevens bevoegde gezagen ten aanzien van de externe veiligheid moeten verzamelen, staat  beschreven in artikel 11.2 tot en met 11.7 van het <a href="https://wetten.overheid.nl/BWBR0041313" target="_blank">Besluit kwaliteit leefomgeving</a> (Bkl). In bijlagen VII-X van het Bkl zijn de kenmerken over opslag, productie, gebruik en vervoer van gevaarlijke stoffen, windturbines en de milieubelastende activiteiten met vastgestelde afstanden opgenomen. Het informatiemodel beschrijft <i>hoe</i> deze locatiegebonden veiligheidsrisico's moeten worden vastgelegd en beschikbaar moeten worden gesteld aan het Register Externe Veiligheidsrisico's. Het informatiemodel externe veiligheid is daarmee de basis voor software waarmee de bevoegde gezagen hun gegevens aan het register aanleveren. Het <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">informatiemodel externe veiligheid</a><u> </u>wordt in opdracht van het Ministerie van Infrastructuur en Waterstaat beheerd door <a href="https://www.geonovum.nl/over-geonovum/wie-wij-zijn" target="_blank">Geonovum</a>. Met dit beheerplan geeft Geonovum inzicht wat het beheer is en hoe wij dat uitvoeren. 
+<br>
+<br>
+De data uit het <a href="https://www.registerexterneveiligheid.nl/" target="_blank">Register Externe Veiligheidsrisico's</a> is te bekijken via de <a href="https://www.atlasleefomgeving.nl/thema/veiligheid" target="_blank">Atlas Leefomgeving</a>. Burgers en bedrijven kunnen zo een beeld krijgen van de risico's in hun leefomgeving. Het REV is ook van belang voor het <a href="https://iplo.nl/thema/externe-veiligheid/register-externe-veiligheidsrisico/" target="_blank">bevoegd gezag</a>. Via het REV kunnen verschillende overheden de door hen ingewonnen gegevens over externe veiligheidsrisico’s gemakkelijk delen. De overheid heeft deze gegevens nodig voor de oordeelsvorming bij het nemen van besluiten over omgevingsvergunningen en voor omgevingsplannen. 
+Het REV is een landelijk register en vervangt sinds 1 januari 2023 het register risicosituaties gevaarlijke stoffen (RRGS). Het REV is de basis voor alle data rond externe veiligheidsrisico’s. Het beheer van dit register valt onder de verantwoordelijkheid van het Ministerie van Infrastructuur en Waterstaat (artikel&nbsp;11.8 van het <a href="https://iplo.nl/thema/externe-veiligheid/register-externe-veiligheidsrisico" target="_blank">Besluit kwaliteit leefomgeving</a> (Bkl)). Het beheer van het REV wordt uitgevoerd door Rijkswaterstaat (WVL). 
+
+</section><section id="ontwikkelen-en-beheren-van-standaarden"><div class="header-wrapper"><h3 id="34787AAB"><bdi class="secno">1.2 </bdi>Ontwikkelen en beheren van standaarden </h3><a class="self-link" href="#34787AAB" aria-label="Permalink for Section 1.2"></a></div><p>Sinds 2021 beheert Geonovum het Informatiemodel Externe Veiligheid (IMEV). Wij doen dat in opdracht van het Ministerie van Infrastructuur en Waterstaat (IenW). Geonovum beheert ook de standaarden voor de aanpalende thema’s in de Omgevingswet, zoals Informatiemodel Geluid in opdracht van RIVM en de Toepassingsprofielen voor Omgevingsdocumenten (TPOD) in opdracht van het Ministerie voor Volkshuisvesting en Ruimtelijke Ordening (VRO). Daarnaast is Geonovum betrokken bij de aansluiting van informatiebronnen (zoals het REV) op het Digitaal Stelsel Omgevingswet (DSO-LV). Tevens werken wij in opdracht van het Ministerie van Infrastructuur en Waterstaat aan de standaarden voor het Digitaal Stelsel VTH. In het kader van de <a href="https://www.geonovum.nl/themas/europese-datastrategie" target="_blank">Europese datastrategie</a> zijn wij betrokken bij de ontwikkeling van dataspaces, met name die voor de Green Deal.
+<br>
+<br>
+De maatschappij beter laten presteren met geo-informatie. Dat is waar wij bij Geonovum dagelijks aan werken. Onze ambitie is een geodata infrastructuur waarop je letterlijk en figuurlijk kunt bouwen. Of je nu geo-specialist bent, beleidsregels maakt, een vergunning aanvraagt of apps bouwt. Wij doen dit door ontwikkelingen rond geo-informatie te verkennen, door partijen te verbinden en door gemaakte afspraken in standaarden te verankeren. Dit doen wij in opdracht van en voor de overheid. Geonovum is een organisatie met veel kennis en een rijk netwerk. Wij opereren doelgericht, zelfstandig en pragmatisch. Onze inhoudelijke specialismen zijn de standaardisatie en architectuur van de geo-informatie infrastructuur. Onze organisatorische expertise ligt in het vermogen verschillende partijen met elkaar te verbinden en samenwerking tot stand te brengen.
+De <a href="https://organisaties.overheid.nl/27912339/Stichting_Geonovum" target="_blank">stichting Geonovum</a> is in 2007 <a href="https://www.geonovum.nl/uploads/documents/brief_VROM_oprichting_Geonovum_KST103843.pdf" target="_blank">opgericht</a> door het ministerie van VROM. De grondslag voor Geonovums werk is vastgelegd in het <a href="https://zoek.officielebekendmakingen.nl/stcrt-2023-31981.html" target="_blank">convenant</a> Nationale Geo-Informatie Infrastructuur tussen het ministerie van Binnenlandse Zaken en Koninkrijksrelaties en Geonovum.
+<br>
+<br>
+Bij de ontwikkeling van standaarden volgen wij de FAIR principes: geodata moeten Findable (vindbaar) zijn, Accessible (toegankelijk), Interoperable (interoperabel) en Reusable (herbruikbaar). 
+Het beheer van onze standaarden geven wij gestalte en voeren wij uit in de context van de standaarden, architectuur en voorzieningen en de gebruikers in de keten. Leidraad in bij het (door)ontwikkelen en beheren van standaarden is het ‘Beheer en Ontwikkel Model Open Standaarden’: <a href="https://www.logius.nl/diensten/bomos" target="_blank">BOMOS</a> (zie <a href="#d4e628">Figuur 1</a>). Geonovum past in haar werk de BOMOS en FAIR-principes toe. Dit draagt bij aan de voorspelbaarheid van onze werkwijze en onze resultaten. We zijn bereikbaar voor alle gebruikers van onze standaarden: we sluiten niemand uit en we hanteren het ‘no wrong door’-uitgangspunt bij de <a href="#19CC20AC">helpdesks</a>. </p>
+<figure id="d4e628"><img src="media/image1.png" alt="In de figuur is het Beheer- en Ontwikkelmodel weergegeven: een gelaagde structuur van onderwerpen die nodig zijn voor het ontwikkelen en beheren van een open standaard." style="width: 89.67322060092565%;">
+<figcaption><a class="self-link" href="#d4e628">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">De structuur van het Beheer- en Ontwikkelmodel voor Open Standaarden</span></figcaption></figure>
+
+</section><section id="leeswijzer"><div class="header-wrapper"><h3 id="6981FF72"><bdi class="secno">1.3 </bdi>Leeswijzer</h3><a class="self-link" href="#6981FF72" aria-label="Permalink for Section 1.3"></a></div><p>In dit beheerplan geven wij per BOMOS hoofdactiviteit welke activiteiten we uitvoeren voor het beheer de doorontwikkeling van het Informatiemodel Externe Veiligheid. Achtereenvolgens komen in dit beheerplan aan de orde: </p>
+<ul><li><a href="#491B6E78">Hoofdstuk 2</a> - strategie,</li>
+<li><a href="#5AE88FF8">Hoofdstuk 3</a> - tactiek,</li>
+<li><a href="#083B8D00">Hoofdstuk 4</a> - operationeel,</li>
+<li><a href="#790C686D">Hoofdstuk 5</a> - implementatieondersteuning,</li>
+<li><a href="#485DFB58">Hoofdstuk 6</a> – communicatie,</li>
+<li><a href="#56B1B14E">Hoofdstuk 7</a> – IMEV producten.</li>
+</ul></section></section>
+      <section class="chapter" id="strategie"><div class="header-wrapper"><h2 id="491B6E78"><bdi class="secno">2. </bdi>Strategie</h2><a class="self-link" href="#491B6E78" aria-label="Permalink for Section 2."></a></div><p><b>Governance, visie en financiën zijn de strategische activiteiten voor het beheer van standaarden.</b></p>
+<section id="governance"><div class="header-wrapper"><h3 id="3F808C16"><bdi class="secno">2.1 </bdi>Governance</h3><a class="self-link" href="#3F808C16" aria-label="Permalink for Section 2.1"></a></div><p>In opdracht van het Ministerie van Infrastructuur en Waterstaat beheert Geonovum het Informatiemodel Externe Veiligheid. Inhoudelijke en financiële verantwoording legt Geonovum af via kwartaalrapportages. Jaarlijks leggen wij de feedback van de opdrachtgever over ons werk vast door middel van een evaluatie. Door middel van een meerjarige opdracht is de inzet van mensen voor het beheer van het IMEV voor de lange termijn geborgd. 
+Rijkswaterstaat is in opdracht van het ministerie van IenW de beheerder van het Register Externe Veiligheidsrisico’s. Rijkswaterstaat is daardoor de senior user van het informatiemodel. In <a href="#d4e974">Figuur 2</a> is de organisatiestructuur weergegeven voor het beheer van het IMEV. In <a href="#tGBMVS">Tabel 2</a> is de governance van de IMEV beheeropdracht samengevat. 
+<br></p>
+<table id="tGBMVS" style="width: 100%;"><caption>Tabel 2 - Governance beheeropdracht IMEV</caption> 
+<colgroup><col id="col1" style="width: 39.34312478316179%;">
+<col id="col2" style="width: 60.656875216838216%;">
+</colgroup>
+<thead></thead><tbody><tr><th class="left"><p id="6663781E"><b>Organisatie</b></p></th>
+<th class="left"><p id="1104136F"><b>Rol</b></p></th>
+</tr>
+</tbody><tbody><tr><td class="left"><p id="5A049DA5">Ministerie van Infrastructuur en Waterstaat, Directoraat-generaal Milieu en Internationaal</p></td>
+<td class="left"><p id="7E20A52B">Opdrachtgever – Rianne Dobbelsteen</p></td>
+</tr>
+<tr><td class="left"><p id="1135A1D0">Geonovum</p></td>
+<td class="left"><p id="518D61F5">Opdrachtnemer – Monique van Scherpenzeel </p></td>
+</tr>
+<tr><td class="left"><p id="1FF5E017">Rijkswaterstaat (WVL)</p></td>
+<td class="left"><p id="36A297D1">Beheerder Register Externe Veiligheidsrisico’s en senior user van het IMEV – Bob Felix</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<figure id="d4e974"><img src="media/image2.jpeg" alt="Organisatiestructuur IMEV op basis van BOMOS" style="width: 100%;">
+<figcaption><a class="self-link" href="#d4e974">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Organisatiestructuur IMEV op basis van <a href="https://logius-standaarden.github.io/BOMOS-Verdieping/" target="_blank">BOMOS</a></span></figcaption></figure>
+
+<p>Er zijn twee gremia die niet onderdeel zijn van de governance maar op tactische niveau wel bijdragen aan de uitvoering van de IMEV beheeropdracht: de IMEV Adviesgroep en het Tripartite overleg (TRIP). 
+De bronhouders worden via de koepels IPO, VNG en ODNL vertegenwoordigd in de IMEV Adviesgroep. Ook het  ministerie van IenW als opdrachtgever, Rijkswaterstaat als beheerder van het REV en Geonovum als beheerder van het IMEV nemen deel aan deze adviesgroep. De adviesgroep heeft een onafhankelijk voorzitter. Het doel is het controleren van het tot zover doorlopen wijzigingsproces, het wijzigingsvoorstel van advies te voorzien en dit advies aan de opdrachtgever voor te leggen. De opdrachtgever besluit of de wijzigingen worden doorgevoerd op het IMEV. 
+In het TRIP stemmen het ministerie van IenW, Geonovum en Rijkswaterstaat op basis van beleid en visie de roadmap en planning van het beheer en de doorontwikkeling van het IMEV en REV af. </p>
+</section><section id="visie"><div class="header-wrapper"><h3 id="70DDEAA4"><bdi class="secno">2.2 </bdi>Visie</h3><a class="self-link" href="#70DDEAA4" aria-label="Permalink for Section 2.2"></a></div><p>Geonovum ontwikkelt en beheert nationale en sectorale standaarden op het gebied van geo-informatie. De standaarden die Geonovum in beheer heeft, zijn ingebed in nationale en internationale standaarden. Geonovum voert beheertaken transparant uit en in samenwerking met belanghebbende partijen. Alle activiteiten in het beheer en (door)ontwikkeling zijn gericht op het structureel werken aan, beschikbaar stellen en houden van een (set van) standaard(en) die steeds past bij de actuele behoefte van de belanghebbenden.
+<br>
+<br>
+Beheer van een standaard betekent altijd beheer <i>én</i> ontwikkeling van die standaard. Het beheer van standaarden heeft betrekking op het beschikbaar houden en aanpassen van bestaande standaarden op basis van nieuwe wensen en eisen zonder dat er sprake is van functionele uitbreidingen. Denk aan het voor iedereen toegankelijk maken van een standaard op een website, het bieden van implementatie ondersteuning, het verzamelen van wensen en eisen en naar behoefte uitbrengen van nieuwe versies.
+Het ontwikkelen van standaarden heeft betrekking op de ontwikkeling van oplossingen voor nieuwe functionaliteiten. Dit kan betekenen dat op basis van de ontwikkeling de bestaande standaard wordt uitgebreid, bijvoorbeeld op grond van wet- en regelgeving worden nieuwe milieubelastende activiteiten aan het IMEV toegevoegd, of dat er een nieuwe standaard ontstaat, bijvoorbeeld afspraken rondom visualisering op uitwisseling. 
+<br>
+<br>
+De grondslag voor het beheer en de (door)ontwikkeling van het IMEV:  </p>
+<ul><li>Omgevingswet;</li>
+<li>Besluit kwaliteit leefomgeving;</li>
+<li>Besluit activiteiten leefomgeving;</li>
+<li>Omgevingsbesluit;</li>
+<li>Omgevingsregeling (artikel 12.2).</li>
+</ul>
+<br>
+
+<p>De documentatie met uitgangspunten (visie, doelarchitectuur) van het Digitaal Stelsel Omgevingswet (DSO) vormen de randvoorwaarden voor het REV. In het DSO is ervoor gekozen gegevens te ontsluiten vanuit de bron. Het REV is een van de eerste vier <a href="https://iplo.nl/digitaal-stelsel/stelselcatalogus-omgevingswet/informatieproducten/" target="_blank">informatieproducten</a> die worden gekoppeld aan het DSO. De gegevens over externe veiligheidsrisico’s zijn daardoor ook via het Omgevingsloket van het DSO te gebruiken. Het in 2024 gestarte programma Digitaal Stelsel VTH is voor Geonovum en Rijkswaterstaat een belangrijke ketenpartner voor het VTH-proces bij de bronhouders.</p>
+</section><section id="financien"><div class="header-wrapper"><h3 id="7BCF1AAB"><bdi class="secno">2.3 </bdi>Financiën </h3><a class="self-link" href="#7BCF1AAB" aria-label="Permalink for Section 2.3"></a></div><p>Sinds 2021 beheert Geonovum het Informatiemodel Externe Veiligheid. Wij doen dat in opdracht van het ministerie van Infrastructuur en Waterstaat. In het kader van een meerjarige opdracht volgt de financiering uit een jaarlijks offerteverzoek van IenW, offerte van Geonovum en vaststelling bijdrage door IenW. Jaarlijkse wordt het benodigd budget tussen opdrachtgever en opdrachtnemer afgestemd. 
+Eens per kwartaal rapporteert Geonovum aan het ministerie van IenW over de voortgang van het beheer van de standaard. Naast rapportage over activiteiten en resultaten, leggen wij met de kwartaalrapportage ook verantwoording af aan de opdrachtgever over de besteding van het toegekende budget.</p>
+</section></section>
+      <section class="chapter" id="tactiek"><div class="header-wrapper"><h2 id="5AE88FF8"><bdi class="secno">3. </bdi>Tactiek</h2><a class="self-link" href="#5AE88FF8" aria-label="Permalink for Section 3."></a></div><p><b>Community, architectuur, rechtenbeleid, adoptie en erkenning, kwaliteitsbeleid en benchmarking zijn de tactische activiteiten voor het beheer van de standaarden.</b></p>
+<section id="community"><div class="header-wrapper"><h3 id="2C5ABC1A"><bdi class="secno">3.1 </bdi>Community</h3><a class="self-link" href="#2C5ABC1A" aria-label="Permalink for Section 3.1"></a></div><p>Stichting Geonovum heeft een onafhankelijke positie als beheerder van geo-standaarden. Het ontwikkelen en beheren van standaarden doen wij open en transparant. Betrokkenheid van de gemeenschap bij de verdere doorontwikkeling van de standaarden is voor het gebruik en het draagvlak ervan van groot belang. De standaarden gelden voor en worden gebruikt door publieke en private organisaties en bijvoorbeeld kennisinstellingen. Zij vormen samen de community. Alle (overheids)stakeholders, en commerciële stakeholders, hebben inspraak in het beheer en (door)ontwikkeling van het IMEV in vorm van bijvoorbeeld leveranciers- en bronhoudersoverleggen maar zij zijn niet beslissingsbevoegd (zie <a href="#d4e974">Figuur 2</a>). Aan deze inspraak zijn geen kosten verbonden.
+<br>
+<br>
+Er zijn verschillende gremia die het EV netwerk bijeenbrengen. De gremia zijn met name op operationeel niveau ingericht en hebben tot doel het gebruik van het REV, de kennis en ervaring met het REV en actualiteiten te delen. Het IMEV-beheerteam neemt deel aan het door Rijkswaterstaat georganiseerde bronhoudersoverleg, het Operationeel Overleg Gebruikers (OOG - gebruikers van de REV data) en het Operationeel Overleg Registrerende gebruikers (OOR - leveranciers van de REV data). Het IMEV-beheerteam levert ook een tactisch en operationele bijdrage aan bij het REV beheerteam voor het verbeteren van de datakwaliteit van het REV. Geonovum organiseert het softwareleveranciers overleg gericht op de technische implementatie IMEV. Doelgroep voor deze bijeenkomst zijn softwareleveranciers, buisleidingbeheerders, omgevingsdiensten en veiligheidsdiensten die software ontwikkelen voor het aanleveren en muteren van data in het Register Externe Veiligheidsrisico's.
+<br>
+<br>
+Geonovum informeert en betrekt de community via haar website en via nieuwsbrieven van de beheerder van REV en Geonovum zelf. Vanuit de community worden (al dan niet ad hoc) werkgroepen gevormd voor het klankborden over ontvangen wijzigingsverzoeken en het ontwikkelen van oplossingen op het moment dat dit nodig is. De vergaderdata van deze werkgroepen worden gepubliceerd op de <a href="https://www.geonovum.nl/agenda" target="_blank">Geonovum website</a> en de <a href="https://www.registerexterneveiligheid.nl/agenda" target="_blank">REV website</a>. Inschrijven voor bijeenkomsten over het IMEV is mogelijk via <a href="mailto:imev@geonovum.nl">imev@geonovum.nl</a>.</p>
+</section><section id="architectuur"><div class="header-wrapper"><h3 id="30830BA9"><bdi class="secno">3.2 </bdi>Architectuur</h3><a class="self-link" href="#30830BA9" aria-label="Permalink for Section 3.2"></a></div><p>Onze standaarden en informatiemodellen ontwikkelen wij niet in splendid isolation; ze moeten opgehangen zijn aan en/of binnen nationale en internationale standaarden. Door onze producten op te hangen aan, of in te passen in nationale en internationale standaarden, architecturen en infrastructuren, wordt de uitwisseling van gegevens gemakkelijker en hoeft niet iedere keer het wiel opnieuw te worden uitgevonden. 
+<br>
+<br>
+Het IMEV wordt permanent afgestemd met de volgende standaarden: </p>
+<ul><li>Metamodel voor informatiemodellering – MIM;</li>
+<li>Standaard voor beschrijven van begrippen - NL-SBB;</li>
+<li>INSPIRE en Europese richtlijnen (waaronder Seveso);</li>
+<li>Basismodel voor geo-informatie - NEN3610 (zie <a href="#d4e1428">Figuur 3</a>);</li>
+<li>Internationale OGC API standaarden;</li>
+<li>API standaarden op de <a href="https://www.forumstandaardisatie.nl/" target="_blank">lijst open standaarden van het Forum Standaardisatie</a>;</li>
+<li>Informatiemodel Omgevingswet – IMOW;</li>
+<li>Informatiemodel Geluid.</li>
+</ul>
+<br>
+De internationale API standaarden zijn volop in ontwikkeling en zullen effect hebben op de IMEV API specificaties. Ook de ontwikkeling van de standaarden voor het Digitaal Stelsel VTH, waaronder het CIM VTH Flo, zullen op termijn invloed kunnen hebben op de doorontwikkeling van het IMEV. 
+<figure id="d4e1428"><img src="media/image3.jpeg" alt="samenhang standaarden in de NEN3610 piramide vormgegeven" style="width: 58.88373228893201%;">
+<figcaption><a class="self-link" href="#d4e1428">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title">IMEV als domeinmodel onder het nationale NEN3610 Basismodel voor geo-informatie</span></figcaption></figure>
+
+</section><section id="rechtenbeleid"><div class="header-wrapper"><h3 id="3F9222D8"><bdi class="secno">3.3 </bdi>Rechtenbeleid</h3><a class="self-link" href="#3F9222D8" aria-label="Permalink for Section 3.3"></a></div><p>Het onderwerp rechtenbeleid uit BOMOS vertaalt zich naar gebruiksvoorwaarden van de producten van de standaarden. Niet alleen voor de documentatie maar ook voor de technische bestanden. 
+<br>
+<br>
+Geonovum hanteert <a href="https://creativecommons.nl/" target="_blank">Creative Commons</a> om voor de producten van de standaarden aan te geven voor wie en op welke wijze de standaarden beschikbaar zijn:
+<i>Elk nieuw document dat vanaf 1 januari 2018 door Geonovum  wordt  gepubliceerd, is voorzien van  de volgende licentie: </i><a href="https://creativecommons.org/licenses/by-nd/4.0/deed.nl" target="_blank"><i>https://creativecommons.org/licenses/by-nd/4.0/deed.nl</i></a> (kort: CC BY-ND 4.0). 
+<br>
+<br>
+In het geval (delen van) standaarden zijn opgenomen in wet- en regelgeving (zoals het geval is bij het IMEV) zijn de gebruiksvoorwaarden van Geonovum niet van toepassing omdat de Nederlandse wetgeving boven creative commons geldt. De grondslag voor het gebruik van het informatiemodel externe veiligheid is opgenomen in artikel 12.2 van de <a href="https://wetten.overheid.nl/BWBR0045528" target="_blank">Omgevingsregeling</a> van de Omgevingswet. 
+<br>
+<br>
+Geonovum zorgt ervoor dat de documentatie van onze standaarden toegankelijk is conform de WCAG richtlijnen. Hiervoor gebruiken wij html-formaat conform ReSpec (zoals met dit document). De Nederlandse set van ReSpec afspraken wordt door Logius beheerd. </p>
+</section><section id="adoptie-en-erkenning"><div class="header-wrapper"><h3 id="7C0F229A"><bdi class="secno">3.4 </bdi>Adoptie en erkenning</h3><a class="self-link" href="#7C0F229A" aria-label="Permalink for Section 3.4"></a></div><p>Het gebruik van de standaarden is niet vanzelfsprekend. Voor de adoptie en erkenning van het IMEV is het van belang dat de standaarden goed aansluiten bij de werkpraktijk. De samenwerking met gebruikers- en expertgroepen van het IMEV en het REV is daarom cruciaal. Om signalen vanuit de dagelijkse praktijk vroeg op te kunnen vangen, neemt Geonovum ook deel aan bij de bronhoudersoverleggen. Via de REV-nieuwsbrief houden wij het netwerk op de hoogte van ontwikkelingen en kunnen we antwoorden op veel gestelde vragen proactief delen. </p>
+</section><section id="kwaliteitsbeleid-en-benchmarking"><div class="header-wrapper"><h3 id="44553739"><bdi class="secno">3.5 </bdi>Kwaliteitsbeleid en benchmarking</h3><a class="self-link" href="#44553739" aria-label="Permalink for Section 3.5"></a></div><p>Kwaliteit is de basis voor een bruikbare standaard. Het gebruik, de bruikbaarheid en de gebruikers staan centraal. De standaard is een middel in het werkproces van overheden die hen beter moet laten presteren. Periodiek overleg met de IMEV Adviesgroep, overleggen met softwareleveranciers, opdrachtgever, bevoegde gezagen c.q. bronhouders, andere gebruikers van de standaard, belanghebbenden en contacten via de helpdesk zijn instrumenten die ons helpen de kwaliteit van het IMEV te bewaken en te verbeteren. De technische kwaliteit van de toepassing van de standaard is te toetsen met behulp van validatieregels. Voor het wijzigen van de standaard hanteren we een vaste werkwijze dat is vastgelegd in het <a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/" target="_blank">Wijzigingsprotocol Informatiemodel Externe Veiligheid</a>. 
+<br>
+<br>
+<a href="#34787AAB">BOMOS</a> en de <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR Principes</a> zijn de basis voor het standaardisatiewerk van Geonovum. Op eenduidige manieren samenwerken om informatie zo beter te kunnen beveiligen, makkelijker uit te wisselen en toegankelijker te maken voor iedereen. Dat is hoe open standaarden de samenwerking bevorderen tussen de overheid, burger en het bedrijfsleven. De FAIR Principes zijn een hulpmiddel daarin: het doel van de principes is het hergebruik van waardevolle data mogelijk maken. De FAIR Principes dwingen geen standaarden af, maar moedigen communities aan om data en diensten vindbaar, toegankelijk, interoperabel en herbruikbaar te maken.
+Geonovum maakt standaarden, informatiemodellen en andere afspraken die <u>geodata</u> FAIR maken: De verbindende kracht van standaardisatie in vindbare, toegankelijke, uitwisselbare en herbruikbare geo-informatie: </p>
+<ul><li><b>Findable</b><b> (vindbaar)</b> De eerste stap bij het (her)gebruiken van data is om de data te vinden. Metadata en data moeten gemakkelijk te vinden zijn voor zowel mensen als computers. Machineleesbare metadata is essentieel voor het ontdekken van datasets en services.</li>
+<li><b>Accessible</b><b> (toegankelijkheid)</b> Zodra de gebruiker de benodigde gegevens heeft gevonden, moet hij/zij weten hoe deze kunnen worden geraadpleegd, inclusief authenticatie en autorisatie.</li>
+<li><b>Interoperable</b><b> (</b><b>interoperabel</b><b>)</b> De gegevens moeten meestal worden geïntegreerd met andere gegevens. Bovendien moeten de gegevens samenwerken met applicaties of workflows voor analyse, opslag en verwerking.</li>
+<li><b>Reusable</b><b> (herbruikbaar)</b> Het uiteindelijke doel van FAIR is het hergebruik van data te optimaliseren. Om dit te bereiken moeten metadata en data goed worden beschreven, zodat ze in verschillende situaties kunnen worden gerepliceerd en/of gecombineerd.</li>
+</ul>
+<br>
+Bij het beheer van het REV is datakwaliteit een belangrijk speerpunt. Het IMEV is de basis voor de bestaande datastructuur in het REV. Het IMEV-beheerteam is betrokken, wordt geconsulteerd en geeft advies over de (on)mogelijkheden van het gebruik van IMEV voor datakwaliteit. Hogere eisen aan datakwaliteit kunnen aanleiding zijn voor doorontwikkeling van het IMEV. Het inzetten van een REV validator (zie paragraaf <a href="#6D48D65F">validatie en certificatie</a>) kan ervoor zorgen dat gebruikers van standaarden de correctheid van de implementaties kunnen testen.
+<br>
+<br>
+Kwaliteit van de IMEV producten en van onze andere standaarden wordt getoetst in de interne Geonovum architectuurraad. De <a href="https://gitdocumentatie.logius.nl/publicatie/bomos/verdieping/" target="_blank">kwaliteitsinstrumenten van BOMOS</a> geven hiervoor richting. Het beheer van de standaard is toegelicht op de Geonovum website, <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">pagina IMEV</a>, waar ook dit beheerplan en het <a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/" target="_blank">wijzigingsprotocol</a> beschikbaar en raadpleegbaar zijn. Jaarlijks toetsen wij het beheer en kijken vooruit met behulp van de <a href="https://logius.nl/domeinen/infrastructuur/bomos/self-assessment" target="_blank">BOMOS self-assessment</a> om het beheer van het IMEV doelgericht te optimaliseren. De resultaten van de self-assessment bespreken wij met de opdrachtgever.  
+<br>
+<br>
+Het IMEV is een bij de Omgevingswet- en regelgeving voorgeschreven standaard. Geonovum voert geen activiteiten uit ten behoeve van benchmarking.</section></section>
+      <section class="chapter" id="operationeel"><div class="header-wrapper"><h2 id="083B8D00"><bdi class="secno">4. </bdi>Operationeel</h2><a class="self-link" href="#083B8D00" aria-label="Permalink for Section 4."></a></div><p><b>Initiatie, wensen en eisen, ontwikkeling, uitvoering, documentatie en hulpmiddelen zijn onderdeel van de operationele activiteiten voor het beheer van de standaarden.</b></p>
+<section id="initiatie"><div class="header-wrapper"><h3 id="741CFF7D"><bdi class="secno">4.1 </bdi>Initiatie</h3><a class="self-link" href="#741CFF7D" aria-label="Permalink for Section 4.1"></a></div><p>Identificatie van nieuwe ideeën voor bijvoorbeeld een nieuwe specificatie, werkafspraak, documentatie of voorbeelden is een taak van het beheerteam. De signaalfunctie is voor het beheerteam belangrijk. Deze signaalfunctie kan alleen werken door het voeren van de IMEV helpdesk, samenwerking en goed contact met de opdrachtgever, softwareleveranciers, REV beheerders en andere gebruikers van de standaard. Na identificatie van een vraagstuk kan dit leiden tot nieuwe implementatieondersteuning of wijzigingsverzoeken voor de doorontwikkeling van het IMEV. Voorbeelden van initiatie voor het IMEV zijn: </p>
+<ul><li>Nieuwe milieubelastende activiteiten in de Omgevingswet- en regelgeving (met name het Bkl);</li>
+<li>Doorontwikkeling en beheer van testbestanden en voorbeeldbestanden in samenwerking met Rijkswaterstaat;</li>
+<li>Doorontwikkeling van de OGC API standaarden en de invloed op het IMEV, de API specificaties van het IMEV en de REV-API;</li>
+<li>De datakoppeling met het knooppunt van het DSO en de Atlas Leefomgeving.</li>
+</ul>
+<br>
+Het beheerteam beheert de lijst van wensen en eisen voor het IMEV in de publieke IMEV werkomgeving op <a href="https://github.com/Geonovum/imev-werkomgeving/issues" target="_blank">GitHub</a> en initieert in overleg met de opdrachtgever een wijzigingsproces van de standaard. Het wijzigingsproces volgt de afspraken zoals deze zijn vastgelegd in het <a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/" target="_blank">wijzigingsprotocol</a>. 
+In het wijzigingsprotocol staan de sturende principes achter het wijzigingsproces voor het IMEV: de manier waarop wijzigingen in de betreffende standaard plaatsvinden. Met het protocol wordt elke wijziging van de standaard een voorspelbaar proces voor de ketenpartners. De IMEV Adviesgroep heeft een belangrijke rol in het wijzigingsproces: zij stuurt op verbinding en samenhang, controleert het wijzigingsproces en voorziet het wijzigingsvoorstel van advies voor het al dan niet doorvoeren van de wijzigingen en opleveren van een nieuwe versie van IMEV. De opdrachtgever besluit of de wijzigingen worden doorgevoerd op het IMEV.
+<br>
+In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies verstaan wordt, en wanneer deze nieuwe versie(s) verwacht mogen worden. De daadwerkelijke planning van een nieuwe versie is op hoofdlijnen uitgewerkt in de jaarplanning van de standaard. De jaarplanning is een uitwerking van de (nog te ontwikkelen) roadmap van de betreffende standaard waarin voor de komende jaren de verdere ontwikkeling en de uitfasering en implementatieondersteuning van de (verschillende versies van de) standaard is opgenomen. Met behulp van een wijzigingsprotocol voor de standaard geeft Geonovum:
+<ul><li>inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>inzicht in de aangeboden wijzigingsvoorstellen;</li>
+<li>stabiliteit aan de standaard;</li>
+<li>continuïteit aan de standaard;</li>
+<li>een eenduidige aanpak.</li>
+</ul>
+<br>
+Het IMEV-beheerteam initieert in overleg met de opdrachtgever en ketenpartners een wijzigingsproces van de standaard.
+
+</section><section id="wensen-en-eisen"><div class="header-wrapper"><h3 id="598C31A3"><bdi class="secno">4.2 </bdi>Wensen en eisen</h3><a class="self-link" href="#598C31A3" aria-label="Permalink for Section 4.2"></a></div><p>Belanghebbenden, gebruikers van de standaard, kunnen wijzigingsverzoeken variërend van wensen tot aanpassing van en fouten in de standaard, per mail aan de <a href="mailto:imev@geonovum.nl" target="_blank">IMEV helpdesk</a> indienen bij Geonovum. Het IMEV-beheerteam onderzoekt of de melding inderdaad een wijzigingsverzoek is of een vraag over de standaard. Wanneer de vraag een wijzigingsverzoek blijkt te zijn plaatsen wij deze op de lijst van wijzigingsverzoeken op onze publieke IMEV werkomgeving op <a href="https://github.com/Geonovum/imev-werkomgeving/issues" target="_blank">GitHub</a>. Per wijzigingsverzoek leggen we vast:</p>
+<ul><li>aanleiding van het wijzigingsverzoek;</li>
+<li>voorgestelde wijziging;</li>
+<li>impactanalyse;</li>
+<li>prioriteit;</li>
+<li>toelichting.</li>
+</ul>
+De issues worden van labels voorzien die ook in het wijzigingsvoorstel terugkomen, bijvoorbeeld nieuwe MBA, bug of conformiteit. Zo is te volgen of een melding onderzocht wordt, of bijvoorbeeld op korte termijn meegenomen in een wijzigingsvoorstel. Het doel is transparantie in het beheer en de doorontwikkeling van de standaard. 
+<br>
+<br>
+<figure id="fig-betrokkenen-bij-het-beheer-en-de-doorontwikkeling-het-imev"><img src="media/image4.jpeg" alt="Betrokkenen bij het beheer en de doorontwikkeling het IMEV" style="width: 100%;">
+<figcaption><a class="self-link" href="#fig-betrokkenen-bij-het-beheer-en-de-doorontwikkeling-het-imev">Figuur <bdi class="figno">4</bdi></a> <span class="fig-title">Betrokkenen bij het beheer en de doorontwikkeling het IMEV</span></figcaption></figure>
+ 
+</section><section id="ontwikkeling"><div class="header-wrapper"><h3 id="6DADA5C8"><bdi class="secno">4.3 </bdi>Ontwikkeling</h3><a class="self-link" href="#6DADA5C8" aria-label="Permalink for Section 4.3"></a></div><p>Sinds ingebruikname van het REV op 1 januari 2023 en het inwerkingtreden van de Omgevingswet is het IMEV in gebruik voor het aanleveren van dat aan het REV. Het IMEV bevindt zich in de fase ‘volwaardige toepassing’ (zie <a href="#d4e2263">Figuur 5</a>). 
+<br>
+<br></p>
+<figure id="fig-levensfases-van-een-standaard-volgens-bomos"><img src="media/image5.png" alt="Levensfases van een standaard volgens BOMOS" style="width: 100%;">
+<figcaption><a class="self-link" href="#fig-levensfases-van-een-standaard-volgens-bomos">Figuur <bdi class="figno">5</bdi></a> <span class="fig-title">Levensfases van een standaard volgens <a href="https://gitdocumentatie.logius.nl/publicatie/bomos/fundament/" target="_blank">BOMOS</a></span></figcaption></figure>
+
+<br>
+<br>
+Afspraken over de doorontwikkeling van het informatiemodel zijn vastgelegd in het <a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/" target="_blank">IMEV wijzigingsprotocol</a>. Tijdens het wijzigingsproces worden de fasen Inhoud, Toetsing, Besluitvorming en Implementatie doorlopen (zie <a href="#d4e2366">Figuur 6</a>). De type wijzing, van foutherstel tot het toevoegen van nieuwe milieubelastende activiteiten, heeft invloed op de zwaarte van het wijzigingsproces. Het releasebeleid, waaronder versiebeheer en consultaties, is ook vastgelegd in het wijzigingsprotocol. De hulpmiddelen die het IMEV-beheerteam inzet, zijn benoemd in paragraaf <a href="#32D5C642">uitvoering</a>. 
+<br>
+<br>
+<figure id="fig-fasen-wijzigingsproces"><img src="media/image6.png" alt="Fasen wijzigingsproces IMEV" style="width: 41.731281101724335%;">
+<figcaption><a class="self-link" href="#fig-fasen-wijzigingsproces">Figuur <bdi class="figno">6</bdi></a> <span class="fig-title">Fasen wijzigingsproces</span></figcaption></figure>
+
+</section><section id="uitvoering"><div class="header-wrapper"><h3 id="32D5C642"><bdi class="secno">4.4 </bdi>Uitvoering</h3><a class="self-link" href="#32D5C642" aria-label="Permalink for Section 4.4"></a></div><p>Voor de uitvoering van het beheer van het informatiemodel externe veiligheid, zet Geonovum adviseurs geo-standaarden, een informatiemodelleur en communicatieadviseurs in. Onderling verdelen zij de werkzaamheden. De leidraad daarbij is: </p>
+<ul><li>Het Informatiemodel is voor de mens- en machineleesbaar, testbaar, implementeerbaar, is duidelijk, kent geen inhoudelijk fouten en is betrouwbaar;</li>
+<li>Toetsing doen wij samen met gebruikers- en expertgroepen.</li>
+</ul>
+<br>
+Wij gebruiken hierbij de volgende hulpmiddelen en tooling. 
+De <a href="https://www.geonovum.nl/" target="_blank">Geonovum website</a> is de centrale toegang om in contact te komen met Geonovum en informatie in te winnen over ons werk: Geonovum verbindt, verkent en verankert. Dit betekent dat nieuwe opdrachten, nieuwe werkzaamheden, nieuwe thema’s via de Geonovum website worden ontsloten en alleen bij hoge uitzondering en een degelijke onderbouwing er een nieuwe separate website wordt ontwikkeld. 
+<br>
+<br>
+De publieke werk- en ontwikkelomgeving van de standaarden en de producten van de standaarden is de <a href="https://github.com/Geonovum" target="_blank">Geonovum GitHub</a>. Geonovum gebruikt voor de standaarden en de producten van de standaarden die wij ontwikkelen en beheren zogenoemde publicatieservers. Deze publicatieservers gelden als bronlocatie voor de producten van onze standaarden en zijn vindbaar. De publicatieservers zijn: 
+<ul><li><a href="http://register.geostandaarden.nl/" target="_blank">Technisch register</a>: Publiceren van technische bestanden, behorend bij standaarden ten behoeve van implementatieondersteuning. Het technisch register is de centrale vindplaats voor de informatiemodellen uit het NEN3610 stelsel, plus de technische standaarden die bij die informatiemodellen horen zoals het IMEV.</li>
+<li><a href="https://definities.geostandaarden.nl/" target="_blank">Conceptenbibliotheek</a>: Publiceren van semantische begrippen uit informatiemodellen. In de conceptenbibliotheek zijn de definities van concepten die gebruikt worden in NEN 3610 informatiemodellen opgenomen, waarmee wij harmonisatie en integratie bevorderen. De concepten/ objecten zijn beschreven in het informatiemodel externe veiligheid. Ten behoeve van de conceptenbibliotheek hebben we een <a href="https://staging-definities.geostandaarden.nl" target="_blank">testomgeving van de conceptenbibliotheek</a>.</li>
+<li><a href="https://docs.geostandaarden.nl/" target="_blank">Documenten register</a>: Publiceren van formele versies (consultatieversie, versie ter vaststelling, vastgestelde versie) van standaarden en eindversies van publieke documentatie. Door eenduidige, eenmalige bronlocatie van de (technische) documentatie van de standaarden die wij ontwikkelen en beheren in ReSpec (HTML) formaat, zijn de standaarden goed vindbaar op een persistente URI, voor zowel actieve als archiefversies. Met deze werkwijze voorkomen we het werken met oude kopieën (gebruik “standaarden bij de bron”). Daarnaast is de levensloop van standaarden volledig transparant. </li>
+<li><a href="https://modellen.geostandaarden.nl/" target="_blank">Ontologieën register</a>: Publiceren van ontologieën die zijn afgeleid van informatiemodellen die Geonovum beheert, vooralsnog doen we dit alleen voor NEN 3610.</li>
+</ul>
+<br>
+<br>
+De volgende tooling zetten wij voor de ontwikkeling en het beheer van de producten van onze standaarden. 
+<ul><li><b>Enterprise architect</b>: applicatie voor ontwikkeling van informatiemodellen (UML modellering);</li>
+<li><b>GitHub</b>: publieke werkomgeving voor zowel niet-formele versies (werkversies) van documenten als technische onderdelen van de standaarden: beheer van de producten van de standaarden. Doel: transparante ontwikkeling van onze producten en gericht op de inhoud; </li>
+<li><b>Imvertor: </b>MIM-conformiteit toetsen van informatiemodellen, het genereren documentatie en technische bestanden;</li>
+<li><b>Jira</b>: Het IMEV-beheerteam hanteert voor de tijd en planning een kanban bord in Jira waar ook de IMEV helpdesk is ingericht. We hanteren BOMOS als leidraad voor de type werkzaamheden.</li>
+<li><b>Oxygen</b>: het editen, vergelijken en valideren van XML en JSON bestanden;</li>
+<li><b>ReSpec</b>: automatische opmaak, referentie- en versiebeheer voor publiceren op het web van standaarden en andere gerelateerde documenten (in HTML formaat) op docs.geostandaarden.nl;</li>
+<li><b>Subversion</b>: technische beheeromgeving en versiebeheer van de UML modellen op svn.geostandaarden.nl;</li>
+<li><b>Visual Studio Code: </b>Editor voor de markdown bestanden. Er blijkt dat verschillend parallel gebruik van verschillende editors kunnen leiden tot verschillen in uitkomst in ReSpec. ReSpec vereist GitHub Flavoured Markdown.</li>
+</ul>
+<br>
+
+</section><section id="documentatie"><div class="header-wrapper"><h3 id="79A4FC48"><bdi class="secno">4.5 </bdi>Documentatie</h3><a class="self-link" href="#79A4FC48" aria-label="Permalink for Section 4.5"></a></div><p>De volgende type documentatie worden door Geonovum gebruikt bij de ontwikkeling en het beheer van standaarden. </p>
+<ul><li><b>Norm: </b>een norm is bij een officieel standaardisatie instituut ondergebracht en bevat bindende afspraken. Naast het gebruik van normen is NEN 3610 de enige norm waar Geonovum een inhoudelijke verantwoordelijkheid heeft. Het formele beheer en beslissingen worden genomen in de NEN normcommissie 351 240 waar Geonovum de voorzitter van is. NEN is een normalisatie instituut. NEN is net als Geonovum een stichting en kan daarmee geen juridische status toekennen aan normen. Het  verwijst vooral naar de status die de NEN heeft vanuit de overheid en in het werken vanuit lidstaten.  </li>
+<li><b>Standaard:</b> een document met (bindende) afspraken. Overkoepelende term voor de verschillende types standaarden. Normen zijn in principe niet meer bindend dan standaarden. </li>
+<li><b>Informatiemodel:</b> een standaard waarbij door de term informatiemodel te hanteren wordt aangegeven dat het een abstractie (het model) vormt van de werkelijkheid zoals beschreven binnen een bepaalde sector/domein. Informatiemodellen zijn een semantische invulling van normen voor sectoren zoals ruimtelijke ordening, kabels en leidingen, water, etc..</li>
+<li><b>Praktijkrichtlijn: </b>praktijkrichtlijnen zijn producten die informatie geven, vaak met een technisch karakter, die nodig is voor het toepassen van standaarden. Een praktijkrichtlijn hoort altijd bij een standaard/norm.</li>
+<li><b>Handreiking:</b> op zichzelf staande documentatie dat als doel heeft een hulpmiddel te zijn, niet verplichtend maar ondersteunend.</li>
+<li><b>Werkafspraak: </b>legt uit hoe wetgeving moet worden toegepast bij onduidelijkheden, discrepanties of fouten in de standaarden.</li>
+<li><b>Algemeen: </b>op zichzelf staande algemene documentatie over standaarden. De documentatie betreft niet een specifieke standaard of onderdeel daarvan, het is ook geen beheerdocumentatie van een specifieke standaard.</li>
+<li><b>Beheerdocumentatie: </b>documentatie met betrekking tot het beheerproces van de standaard. Deze documentatie betreft niet een standaard of onderdeel daarvan, zoals een handreiking of werkafspraak. Dit kan interne gerichte documentatie zijn voor vastleggen van stappen in het dagelijkse werkproces, planning of hoe de helpdesk werkt. Ook kan dit een beheerplan of handboek zijn. Als dit soort documentatie publiekelijk beschikbaar wordt gesteld, dan gebeurt dit door middel van ReSpec. </li>
+</ul></section></section>
+      <section class="chapter" id="implementatieondersteuning"><div class="header-wrapper"><h2 id="790C686D"><bdi class="secno">5. </bdi>Implementatieondersteuning</h2><a class="self-link" href="#790C686D" aria-label="Permalink for Section 5."></a></div><p><b>Helpdesk, opleiding van gebruikers, module ontwikkeling, pilots, validatie en certificatie zijn de implementatieondersteuning activiteiten voor het beheer van de standaarden.</b></p>
+<section id="helpdesk"><div class="header-wrapper"><h3 id="19CC20AC"><bdi class="secno">5.1 </bdi>Helpdesk </h3><a class="self-link" href="#19CC20AC" aria-label="Permalink for Section 5.1"></a></div><p>De helpdesk heeft voor Geonovum als beheerder van standaarden een belangrijke signaal functie. Doordat de mensen werken met de standaard via software waar de standaard in is geïmplementeerd, heeft men vragen. Voor antwoord op deze vragen is er documentatie maar kan ook gebruik worden gemaakt van de helpdesk. Hierdoor kunnen problemen met de standaard aan het licht komen, maar ook problemen in de keten of zelfs in wet- en regelgeving. Ook kan duidelijk worden of aangeboden documentatie of informatie via de website beter kan.
+<br>
+<br>
+Geonovum heeft geen klant contact centrum (KCC) voor het ontvangen en beantwoorden van vragen. De Geonovum website is voor ons de centrale ingang om informatie te delen over de standaarden. Hier vind je hoe je met ons contact kunt opnemen. Een overzicht van de Geonovum helpdesks, waaronder voor IMEV, staat op de <a href="https://www.geonovum.nl/over-geonovum/contact" target="_blank">Geonovum website</a>. Geonovum beantwoordt de technische, inhoudelijke en domeinspecifieke aspecten van het Informatiemodel Externe Veiligheid. Geonovum houdt een registratie van de binnengekomen vragen, vraagsteller en gegeven antwoorden bij, zodat hier indien nodig ook door de andere helpdesks kennis van kan worden genomen. Meldingen worden voorzien van een status, zie hiervoor <a href="#d4e3139">Tabel 3</a> in deze paragraaf. 
+<br>
+<br>
+<b>Serviceniveau</b><br>
+Voor vragen, wensen en eisen, klachten en incidenten over een standaard in beheer bij Geonovum kunnen alle gebruikers en belanghebbende per mail bij Geonovum terecht. Ons beleid: no wrong door, wat betekent dat wij de vraagsteller altijd van antwoord voorzien en verder helpen. 
+Onze helpdesk is 24 uur per dag bereikbaar via mail. Het beheerteam reageert binnen 2 werkdagen op de melding. Binnen 5 werkdagen na de eerste reactie ontvangt de vraagsteller antwoord. Wensen en eisen via de helpdesk binnengekomen worden door het beheerteam op de wensen- en eisenlijst geplaatst, die inzichtelijk is via de Geonovum website. Veel gestelde vragen delen we via de REV nieuwsbrief en de Geonovum website. 
+Onze helpdesks opereren zowel als 1<sup>e</sup>- en 2<sup>e</sup>-lijns helpdesk. Bij het REV kunnen ook vragen over het IMEV binnenkomen. Vragen die door het REV beheerteam op basis van basiskennis van het IMEV kunnen worden beantwoord, handelt het REV beheerteam af. Alle andere IMEV vragen, wensen,  eisen en klachten worden in dat geval doorgezet naar de IMEV helpdesk van Geonovum en in behandeling genomen. Geonovum is in dit geval de zgn. 2<sup>e</sup> lijn. De helpdesk is voor de gebruikers van de standaard, als open standaard en conform BOMOS, ook altijd direct bereikbaar per mail. Dit noemen we de 1<sup>e</sup> lijn. 
+<br>
+<br>
+Voor alle helpdesks bij Geonovum zijn generieke afspraken rondom privacy. Wij registeren de persoonsgegevens voor het beantwoorden van de vragen. In het kader van doorontwikkeling van de  standaarden kunnen de contactgegevens worden gebruikt voor het terugkoppelen van eerder ingediende wensen en eisen voor de standaard. De gegevens worden niet doorverkocht of hergebruikt voor andere doeleinden zoals bijvoorbeeld nieuwsbrieven. De gegevens worden niet gebruikt voor het samenstellen van mailinglijsten. Voor de nieuwsbrieven hebben wij separate mailinglijsten. Geïnteresseerden moeten zich hiervoor apart inschrijven. Na indienen van een vraag aan een van onze helpdesks krijgt de vraagsteller automatisch bericht wat wij met zijn/ haar gegevens doen. 
+<br>
+<br>
+Dit is voor Geonovum de basis bij afspraken met andere partijen (opdrachtgevers, ketenpartners) bij vastleggen van afspraken in een Service Level Agreement (SLA). De SLA is doorgaans de basis op voor <a href="#7BCF1AAB">rapportage</a> aan de opdrachtgever; hoeveel vragen over welke onderwerpen zijn er in een bepaalde periode binnen gekomen, wat was de behandeltijd en wat kunnen we daarvan leren.
+<br></p>
+<table id="d4e3139" style="width: 100%;"><caption>Tabel 3 - Status helpdeskmelding</caption>
+<colgroup><col id="col1" style="width: 24.643726103580118%;">
+<col id="col2" style="width: 75.35627389641988%;">
+</colgroup>
+<thead><tr><th class="left"><p id="4AC11851">Status</p></th>
+<th class="left"><p id="6CCEC7FF">Beschrijving activiteiten</p>
+</th></tr></thead>
+<tbody><tr><td class="left"><p id="22737BEF">WACHTEN OP SUPPORT</p></td>
+<td class="left"><p id="4366389F">Als een gebruiker een melding indient krijgt deze de status “wachten op support”. Deze melding nemen we in behandeling; de status wijzig je handmatig.</p></td>
+</tr>
+<tr><td class="left"><p id="11ED0B92">Uitzoeken</p></td>
+<td class="left"><p id="4DE1A280">Er moet eerst iets uitgezocht worden voordat een vraag verder behandeld kan worden.</p></td>
+</tr>
+<tr><td class="left"><p id="50588DA5">IN BEHANDELING</p></td>
+<td class="left"><p id="703EE5BB">De actiehouder van de melding controleert of de melding volledig en helder is. Bij een fout gaat hij/zij in de standaard na of dit inderdaad het geval is. Hij/zij kan informatie opvragen of een onderzoek uitvoeren.</p></td>
+</tr>
+<tr><td class="left"><p id="7722BB91">OPGELOST</p></td>
+<td class="left"><p id="0A82AEE7">De melding is opgelost als de melding/ helpdeskvraag is beantwoord aan de vraagsteller.</p></td>
+</tr>
+<tr><td class="left"><p id="0E2981F4">WACHTEN</p></td>
+<td class="left"><p id="696B265C">Indien de vraag naar de vraagsteller is beantwoord maar nog niet is opgelost, of in het geval aan de vraagsteller is gemeld dat wij nog iets uitzoeken, wordt de status van de melding op ‘wachten’ gezet.   </p></td>
+</tr>
+<tr><td class="left"><p id="2507A7C7">GEANNULEERD</p></td>
+<td class="left"><p id="31BC3F62">Deze status wordt gebruikt bij spamberichten in de helpdesk of bijvoorbeeld bij testberichten.</p></td>
+</tr>
+<tr><td class="left"><p id="0E35F13B">GEESCALEERD</p></td>
+<td class="left"><p id="46742EFD">Alleen in het geval de escalatieprocedure moet worden ingezet wordt deze status gebruikt.</p></td>
+</tr>
+<tr><td class="left"><p id="6D30BE23">GESLOTEN</p></td>
+<td class="left"><p id="01FB39AF">De melding is niet alleen opgelost maar kan ook worden afgesloten.</p></td>
+</tr>
+</tbody>
+</table>
+
+</section><section id="opleiding-van-gebruikers"><div class="header-wrapper"><h3 id="7F2DAEAA"><bdi class="secno">5.2 </bdi>Opleiding (van gebruikers)</h3><a class="self-link" href="#7F2DAEAA" aria-label="Permalink for Section 5.2"></a></div><p>Geonovum heeft geen generiek advies- en opleidingstraject omdat dit maatwerk is per standaard. 
+In het algemeen richten we ons op het trainen van de trainers en het verzorgen van workshops om kennis te delen met het werkveld waarbij het gebruik van de standaarden een centrale rol speelt. 
+<br>
+<br>
+Voor de toepassing van het IMEV ondersteunt het IMEV-beheerteam samen met het REV beheerteam van Rijkswaterstaat de gebruikers die het IMEV (gaan) gebruiken. We werken samen met het ministerie van IenW en Rijkswaterstaat bij Informatiebijeenkomsten zoals het bronhoudersoverleg. 
+We adviseren het REV beheerteam bij toepassen van de INSPIRE richtlijn met betrekking tot  het IMEV en de verplichting tot het aanleveren van data aan Europa die voortaan vanuit het REV worden voldaan. Dit gaat niet om alle REV-data, maar wel om bijvoorbeeld informatie van SEVESO-inrichtingen, delfstofwinning, industrie, distributie van gas ed..  </p>
+</section><section id="module-ontwikkeling"><div class="header-wrapper"><h3 id="0629E0B3"><bdi class="secno">5.3 </bdi>Module ontwikkeling</h3><a class="self-link" href="#0629E0B3" aria-label="Permalink for Section 5.3"></a></div><p>Voor het beheer en de doorontwikkeling van het IMEV is module ontwikkeling niet van toepassing. </p>
+</section><section id="pilots-en-testbeds"><div class="header-wrapper"><h3 id="37DFF1B1"><bdi class="secno">5.4 </bdi>Pilots en testbeds</h3><a class="self-link" href="#37DFF1B1" aria-label="Permalink for Section 5.4"></a></div><p>Voor het in gebruik nemen van de standaard in de praktijk is voor softwareleveranciers en bronhouders van EV data een pilot een uitgelezen moment om de standaard en werkwijze te leren kennen. Het beheerteam beoordeelt per wijziging van de standaard of een pilot een toepasselijk middel is bij de implementatieondersteuning van de nieuwe versie van het IMEV. 
+Er is een sterke afhankelijkheid tussen de toets van een wijzigingsvoorstel en de implementatie van de nieuwe (versie van de) standaard in de praktijk. Deze toets voeren wij uit in de vorm van publieke consultatie, pilots (praktijkproeven) en testbeds. Zij zijn van primair belang voor het slagen van het wijzigingsproces en ingebruikname van de nieuwe (versie van de) standaard. Niet goed doordachte wijzigingen zullen het werkveld in grote problemen brengen. Het werkveld betrekken wij daarom nauw bij de uitvoering van de pilots en testbed. Welke actoren en werkgroepen betrokken zijn is aangegeven in het wijzigingsprotocol van de standaarden.</p>
+</section><section id="validatie-en-certificatie"><div class="header-wrapper"><h3 id="6D48D65F"><bdi class="secno">5.5 </bdi>Validatie en certificatie</h3><a class="self-link" href="#6D48D65F" aria-label="Permalink for Section 5.5"></a></div><p>Na het opleveren van de nieuwe standaard inclusief de verschillende producten, richten wij ons op de implementatie ondersteuning van de standaard door softwareleveranciers, beheerder van het REV en de bronhouders: dit is implementatieondersteuning vanuit optiek van het gebruik van de standaard in de praktijk. Bij softwareleveranciers en het register is de ondersteuning vooral technisch van aard. De validator is het hulpmiddel bij uitstek hierbij. De validatieregels zijn bij de meeste van onze standaarden een van de producten. De validator is een tooling die doorgaans bij een voorziening/ register van dezelfde keten wordt beheerd. Bij het REV wordt nog beperkt ingezet op validatiemogelijkheden op basis van het IMEV. 
+De regels opgenomen in IMEV (UML - constraints) zijn nog niet als apart product beschikbaar. Wanneer de validator van het REV beschikbaar is en wordt doorontwikkeld, stemmen we de ontwikkeling van IMEV validatieregels als apart product en de implementatie daarvan af met Rijkswaterstaat en de softwareleveranciers.<br><br>
+<br>
+Soms zet Geonovum conformiteitstoetsing in. In dat geval wordt een testprotocol voor een conformiteitstoets beschikbaar gesteld, waarmee (handmatig) kan worden gecontroleerd of een implementatie aan de norm voldoet. In hoofdstuk 6 van <a href="https://www.geonovum.nl/geo-standaarden/nen-3610-basismodel-voor-informatiemodellen" target="_blank">NEN3610:2022</a> is ook informatie rondom conformiteit opgenomen. Voor versie 3.0 van het IMEV is deze conformiteitstoets uitgevoerd en is het IMEV op onderdelen aangepast. 
+Ook certificering van applicaties is mogelijk. Certificering van applicaties ondersteunt niet zozeer de (kwaliteit en de) implementatie van de standaarden, als wel de (snelheid van) adoptie ervan. Zodra het werkveld voldoende volwassen is en certificering niet meer nodig is om adoptie te versnellen, kan certificering komen te vervallen. Voor IMEV en EV domein is geen sprake van certificering.</p>
+</section></section>
+      <section class="chapter" id="communicatie"><div class="header-wrapper"><h2 id="485DFB58"><bdi class="secno">6. </bdi>Communicatie </h2><a class="self-link" href="#485DFB58" aria-label="Permalink for Section 6."></a></div><p><b>Publicatie, promotie en escalatie- en klachtenafhandeling zijn de communicatie activiteiten voor het beheer van de standaarden.</b>
+<br>
+<br>
+Geonovum is in brede zin zichtbaar en bereikbaar voor <i>alle</i> gebruikers van de standaarden en dat doen wij door middel van:</p>
+<ul><li><a href="https://www.geonovum.nl/" target="_blank">Geonovum website</a>;</li>
+<li><a href="https://www.geonovum.nl/over-geonovum/actueel" target="_blank">Nieuwsbrieven</a>;</li>
+<li><a href="https://www.geonovum.nl/over-geonovum/agenda" target="_blank">Activiteiten zoals (online) bijeenkomsten</a>;</li>
+<li><a href="https://www.geonovum.nl/over-geonovum/contact" target="_blank">Helpdesk</a>;</li>
+<li><a href="https://github.com/Geonovum" target="_blank">GitHub</a>.</li>
+</ul>
+<br> 
+
+<section id="publicatie"><div class="header-wrapper"><h3 id="10A2571C"><bdi class="secno">6.1 </bdi>Publicatie</h3><a class="self-link" href="#10A2571C" aria-label="Permalink for Section 6.1"></a></div><p>Onder publicatie verstaan we het vrij toegankelijk op internet publiceren van de relevante documentatie van en over het informatiemodel externe veiligheid. Dit betreft onder andere de ontsluiting van de (toelichting op het) informatiemodel en technische implementatiebestanden. Deze documentatie kan voorkomen in presentatieformaten (zoals HTML) als in technische formaten (zoals JSON). Het IMEV-beheerteam draagt zorg voor de ontsluiting van deze documentatie via de verschillende kanalen voor de gebruikers van de standaarden. Als centrale toegang voor iedereen gebruiken we hiervoor de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a>. <a href="https://github.com/Geonovum/imev-werkomgeving" target="_blank">GitHub</a> is onze publieke IMEV werk- en ontwikkelomgeving. Publicatie van bijvoorbeeld een consultatieversie of vastgestelde versie van producten van het IMEV doen wij via onze <a href="#32D5C642">publicatieservers</a>. 
+Naast de vigerende standaard zijn ook eerdere versies te beschikbaar en raadpleegbaar. Zo is de historie van de standaarden voor iedereen in te zien. In publicaties verwijzen wij altijd naar de site voor meer informatie.
+<br>
+<br>
+In 2023 is het IMEV op grond van artikel 12.2 van de <a href="https://wetten.overheid.nl/BWBR0045528" target="_blank">Omgevingsregeling</a> opgenomen in Bijlage II door middel van een URL zonder versie: <a href="https://docs.geostandaarden.nl/imev/imev/" target="_blank">https://docs.geostandaarden.nl/imev/imev/</a>.<br>De wetgever kan aanvullende eisen stellen aan publicatie en beschikbaarstelling van de volledige inhoud van de standaard voor een langere periode (tientallen jaren), bijvoorbeeld het toevoegen van een versienummer. In het informatiemodel zijn de specifieke versies opgenomen. 
+<br></p>
+</section><section id="promotie"><div class="header-wrapper"><h3 id="4D64FC74"><bdi class="secno">6.2 </bdi>Promotie</h3><a class="self-link" href="#4D64FC74" aria-label="Permalink for Section 6.2"></a></div><p>Is een (nieuwe versie van een) standaard eenmaal vastgesteld, dan kan deze in gebruik worden genomen en gaat het IMEV-beheerteam over tot implementatieondersteuning (zie de activiteiten in hoofdstuk <a href="#790C686D">6</a>). De belangrijkste communicatiefunctie bij het gebruik van het IMEV is promotie van de standaard. Door de juiste partijen aan tafel te hebben en door open te communiceren over wat er in de werkgroepen gebeurt, werken wij van meet af aan de acceptatie van de standaard door het werkveld. Om de invoering van onze standaarden tot een succes te maken is onze helpdesk cruciaal. Door mensen kundig en tijdig te woord te staan, voorkomen wij ergernis en houden wij de dialoog met het werkveld open. Ter promotie van het IMEV werken wij samen met Rijkswaterstaat bij bijeenkomsten (online en fysiek) en de REV nieuwsbrief. Voor (visuele) communicatie dragen communicatieadviseurs bij aan het werk van het IMEV-beheerteam. We werken samen met het ministerie van IenW, Rijkswaterstaat, VNG, ODNL en IPO in het REV-communicatieoverleg. </p>
+</section><section id="escalatie-en-klachtenafhandeling"><div class="header-wrapper"><h3 id="4BC97160"><bdi class="secno">6.3 </bdi>Escalatie- en klachtenafhandeling</h3><a class="self-link" href="#4BC97160" aria-label="Permalink for Section 6.3"></a></div><p>We doorlopen een escalatieprocedure als er een wijziging noodzakelijk is die niet in het reguliere wijzigingsproces van IMEV doorgevoerd <i>kan</i> worden, omdat dit te lang duurt. Een uitputtende lijst met situaties en criteria wanneer dit van toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke wijziging leidt tot onaanvaardbare risico's voor de uitvoeringspraktijk of het onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van werkzaamheden.
+De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door te kunnen voeren; daarvoor is het <a href="https://docs.geostandaarden.nl/imev/IMEV-wijzigingsprotocol/" target="_blank">IMEV wijzigingsprotocol</a>. </p>
+<section id="sturende-principes-bij-escalatie"><div class="header-wrapper"><h4 id="2539E21D"><bdi class="secno">6.3.1 </bdi>Sturende principes bij escalatie</h4><a class="self-link" href="#2539E21D" aria-label="Permalink for Section 6.3.1"></a></div><p>Er wordt geen vast proces gegeven om de escalatieprocedure te doorlopen, omdat verschillende situaties wellicht tot een verschillende wijze van handelen moeten leiden. In plaats daarvan zijn onderstaande sturende principes leidend om verantwoordelijkheden te duiden.
+<br>
+<br></p>
+<ul><li><b>Signalering: </b>Uit het werkveld kunnen signalen ontstaan dat er met spoed iets gewijzigd zou moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden zullen ontstaan. Het is wel van belang om de rol van Geonovum te onderkennen als antennefunctie voor het werkveld. In ieder geval zullen deze signalen op enig moment de opdrachtgever of Geonovum bereiken, en op dat moment zal er overleg gevoerd worden over deze signalen. </li>
+<li><b>Overleg: </b>Bij de besluitvorming binnen de escalatieprocedure wordt er in principe overleg gevoerd tussen de opdrachtgever voor het beheer van de betreffende standaard en Geonovum. Beide partijen raadplegen de betrokkenen daar waar nodig.</li>
+<li><b>Besluitvorming: </b>De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de voorzitter het gremium dat de beheeropdracht monitort, dan wel de contactpersoon bij de opdrachtgever. Ook het besluit <i>welke</i> wijzigingen er precies doorgevoerd moeten worden en op welke manier, wordt genomen door dezelfde persoon.</li>
+<li><b>Coördinatie: </b>De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de voorzitter het gremium dat de beheeropdracht monitort, dan wel de contactpersoon bij de opdrachtgever. </li>
+<li><b>Communicatie met het werkveld: </b>De communicatie met het werkveld wordt uitgevoerd door Geonovum. Als beheerder van de betreffende standaard wordt verwacht dat Geonovum het meest directe contacten heeft met het werkveld.</li>
+</ul>
+<br> 
+
+</section><section id="klachtenafhandeling"><div class="header-wrapper"><h4 id="380B400B"><bdi class="secno">6.3.2 </bdi>Klachtenafhandeling</h4><a class="self-link" href="#380B400B" aria-label="Permalink for Section 6.3.2"></a></div><p>Het garanderen van het serieus nemen van klachten kan alleen, door deze volgens een zorgvuldige procedure te behandelen. Klachten kunnen ook beschouwd worden als verbetersuggestie. We onderscheiden daarom twee verschillende type klachten met betrekking tot de standaarden:</p>
+<ul><li>Klachten over de toepassingsmogelijkheid van de standaard;</li>
+<li>Klachten over het beheer van de standaard.</li>
+</ul>
+<br>
+In het eerste geval is het feitelijk geen klacht maar een wens of eis tot het aanpassen van de standaard. De beheerders van de betreffende standaard nemen dit in behandeling en vastgelegd als wijzigingsverzoek en niet als klacht. In dit geval doet Geonovum haar werk goed. 
+In het tweede geval is er sprake van ontevredenheid over de uitvoering van het beheerproces van de standaard en betreft niet de inhoud, de standaard zelf. De indiener is van mening dat Geonovum, het IMEV-beheerteam, dan wel een persoon daarvan het werk niet naar behoren uitvoert. In dat geval wordt de klacht doorgezet naar de opdrachtgever, de contactpersoon bij het het Ministerie van Infrastructuur en Waterstaat. 
+<br>
+<br>
+De route van indienen van klachten is bij Geonovum in principe via de helpdesk van de betreffende standaard. Dit is de manier om met Geonovum in contact te komen, vragen te stellen en wensen en eisen met betrekking tot de standaard kenbaar te maken. Door het via een helpdesk te laten verlopen, registreren we de type issues. De helpdesk route voor zowel vragen, wijzigingsverzoeken, klachten en incidenten geeft een zo compleet mogelijk overzicht in het contact met de gebruikers van de standaarden, over de standaarden.</section></section></section>
+      <section class="chapter" id="imev-producten"><div class="header-wrapper"><h2 id="56B1B14E"><bdi class="secno">7. </bdi>IMEV producten</h2><a class="self-link" href="#56B1B14E" aria-label="Permalink for Section 7."></a></div><p>Het Informatiemodel Externe Veiligheid (IMEV) bevat op grond van de wet- en regelgeving afspraken over de digitale structuur waarin overheden gegevens vastleggen over de opslag, het transport en het gebruik van gevaarlijke stoffen. Bevoegde gezagen leveren deze gegeven conform het IMEV aan bij het Register Externe Veiligheidsrisico's. Op kaarten via bijvoorbeeld de Atlas Leefomgeving is vervolgens te zien waar externe veiligheidsrisico’s van toepassing zijn. 
+<br>
+<br>
+Het informatiemodel is de basis voor een aantal producten, waaronder technische implementatiebestanden, die onderdeel zijn van de standaard, die wij via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid-imev" target="_blank">Geonovum website</a> beschikbaar stellen aan alle belanghebbenden en gebruikers van het informatiemodel. De producten zijn:  </p>
+<ul><li>Het <b>modeldocument</b> is vindbaar en raadpleegbaar via de <a href="https://docs.geostandaarden.nl/imev/imev/" target="_blank">Geonovum website</a>;</li>
+<li>Het <b>JSON-schema</b> is beschikbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a> en direct via het <a href="https://register.geostandaarden.nl/?url=imev/index.html" target="_blank">technisch register</a>;</li>
+<li>De <b>API-specificaties</b> zijn onderdeel van het JSON-schema. De <a href="https://www.registerexterneveiligheid.nl/api-informatie-en-ondersteuning" target="_blank">REV-API</a> is via de REV website beschikbaar; </li>
+<li>De nadere regels in het IMEV zijn vastgelegd in constraints in het modeldocument en het JSON-schema;</li>
+<li><b>Voorbeeldbestanden</b> zijn technisch gerichte bestanden beschikbaar via de <a href="https://www.geonovum.nl/geo-standaarden/informatiemodel-externe-veiligheid" target="_blank">Geonovum website</a> en direct via het <a href="https://register.geostandaarden.nl/?url=imev/index.html" target="_blank">technisch register</a>.</li>
+</ul></section>
+   
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Beheerdocumentatie - Vastgestelde versie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
