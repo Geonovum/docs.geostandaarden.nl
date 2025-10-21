@@ -1,0 +1,1802 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.4.1">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+    
+    
+    
+    
+<title>Batching</title>
+    
+    
+    
+    
+<link rel="stylesheet" type="text/css" href="media/respec/style.css">
+    
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<meta name="description" content="This module defines a standardized approach for performing batch operations in RESTful APIs. The objective of batching is to improve efficiency and scalability in situations where clients need to retrieve multiple resources in a single interaction.">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #000000;
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Kennisplatform API's",
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://gitdocumentatie.logius.nl/publicatie/respec/style/logos/figure-logius.svg",
+      "alt": "Logius",
+      "id": "Logius",
+      "height": 77,
+      "width": 44,
+      "url": "https://www.logius.nl/standaarden"
+    }
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/",
+    "publishVersion"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/",
+    "previousPublishVersion"
+  ],
+  "isNoTrack": true,
+  "useLogo": false,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Draft",
+      "cv": "Candidate version",
+      "vv": "Proposed version",
+      "def": "Definitive version",
+      "basis": "Document",
+      "eo": "Outdated version",
+      "tg": "Rescinded version",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Proposed recommendation",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "basis": "Document",
+      "eo": "Verouderde versie",
+      "tg": "Teruggetrokken versie",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl_organisationName": "Kennisplatform API's",
+    "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+    "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+    "logos": [
+      {
+        "src": "https://gitdocumentatie.logius.nl/publicatie/respec/style/logos/figure-logius.svg",
+        "alt": "Logius",
+        "id": "Logius",
+        "height": 77,
+        "width": 44,
+        "url": "https://www.logius.nl/standaarden"
+      }
+    ],
+    "latestVersion": [
+      "nl_organisationPublishURL",
+      "pubDomain",
+      "/",
+      "shortName"
+    ],
+    "thisVersion": [
+      "nl_organisationPublishURL",
+      "pubDomain",
+      "/",
+      "shortName",
+      "/",
+      "publishVersion"
+    ],
+    "prevVersion": [
+      "nl_organisationPublishURL",
+      "pubDomain",
+      "/",
+      "shortName",
+      "/",
+      "previousPublishVersion"
+    ],
+    "isNoTrack": true,
+    "useLogo": false,
+    "useLabel": true,
+    "license": "cc-by",
+    "addSectionLinks": true,
+    "localizationStrings": {
+      "en": {
+        "wv": "Draft",
+        "cv": "Candidate version",
+        "vv": "Proposed version",
+        "def": "Definitive version",
+        "basis": "Document",
+        "eo": "Outdated version",
+        "tg": "Rescinded version",
+        "no": "Norm",
+        "st": "Standard",
+        "im": "Information model",
+        "pr": "Guideline",
+        "hr": "Guide",
+        "wa": "Proposed recommendation",
+        "al": "General",
+        "bd": "Governance documentation",
+        "bp": "Best practice"
+      },
+      "nl": {
+        "wv": "Werkversie",
+        "cv": "Consultatieversie",
+        "vv": "Versie ter vaststelling",
+        "def": "Vastgestelde versie",
+        "basis": "Document",
+        "eo": "Verouderde versie",
+        "tg": "Teruggetrokken versie",
+        "no": "Norm",
+        "st": "Standaard",
+        "im": "Informatiemodel",
+        "pr": "Praktijkrichtlijn",
+        "hr": "Handreiking",
+        "wa": "Werkafspraak",
+        "al": "Algemeen",
+        "bd": "Beheerdocumentatie",
+        "bp": "Best practice"
+      }
+    },
+    "sotdText": {
+      "nl": {
+        "sotd": "Status van dit document",
+        "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+        "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie.",
+        "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar ",
+        "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+        "basis": "Dit is een document zonder officiële status."
+      },
+      "en": {
+        "sotd": "Status of This Document",
+        "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+        "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO.",
+        "cv": "This is a proposed version approved by the technical commitee. Comments regarding this document may be shared through GitHub: https://github.com/Geonovum/KP-APIs/issues",
+        "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+        "basis": "This document has no official standing."
+      }
+    },
+    "labelColor": {
+      "def": "#154273",
+      "wv": "#32a852",
+      "cv": "#000000",
+      "vv": "#000000"
+    },
+    "licenses": {
+      "cc0": {
+        "name": "Creative Commons 0 Public Domain Dedication",
+        "short": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+      },
+      "cc-by": {
+        "name": "Creative Commons Attribution 4.0 International Public License",
+        "short": "CC-BY",
+        "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+        "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+      },
+      "cc-by-nd": {
+        "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+        "short": "CC-BY-ND",
+        "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+        "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+      }
+    },
+    "localBiblio": {
+      "ADR": {
+        "authors": [
+          "Jasper Roes",
+          "Joost Farla"
+        ],
+        "date": "Juli 2020",
+        "href": "https://publicatie.centrumvoorstandaarden.nl/api/adr/",
+        "publisher": "Logius",
+        "title": "API Design Rules (Nederlandse API Strategie IIa)"
+      },
+      "ADR-ext": {
+        "authors": [
+          "Jasper Roes",
+          "Linda van den Brink"
+        ],
+        "date": "Januari 2020",
+        "href": "https://docs.geostandaarden.nl/api/API-Strategie-ext",
+        "publisher": "Geonovum/Kennisplatform APi's",
+        "title": "API Designrules Extensions (Nederlandse API Strategie IIb)"
+      },
+      "Algemene Voorwaarden Logius": {
+        "date": "12 juni 2018",
+        "href": "https://www.logius.nl/onze-organisatie/zakendoen-met-logius/voorwaarden/algemene-voorwaarden-logius",
+        "publisher": "Logius",
+        "title": "Algemene voorwaarden Logius"
+      },
+      "API Design Rules": {
+        "authors": [
+          "Jasper Roes",
+          "Joost Farla"
+        ],
+        "date": "Juli 2020",
+        "href": "https://publicatie.centrumvoorstandaarden.nl/api/adr/",
+        "publisher": "Logius",
+        "title": "API Design Rules (Nederlandse API Strategie IIa)"
+      },
+      "API Design Rules-Extensions": {
+        "authors": [
+          "Jasper Roes",
+          "Linda van den Brink"
+        ],
+        "date": "Januari 2020",
+        "href": "https://docs.geostandaarden.nl/api/API-Strategie-ext",
+        "publisher": "Geonovum/Kennisplatform APi's",
+        "title": "API Designrules Extensions (Nederlandse API Strategie IIb)"
+      },
+      "BCP195": {
+        "authors": [
+          "Y. Sheffer, R. Holz, P. Saint-Andre"
+        ],
+        "date": "May 2015",
+        "href": "https://tools.ietf.org/html/bcp195",
+        "publisher": "IETF",
+        "title": "Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"
+      },
+      "Beheermodel": {
+        "date": "Oktober 2017",
+        "href": "https://www.logius.nl/sites/default/files/public/bestanden/diensten/DigiKoppeling/Standaarden/Digikoppeling-Beheermodel.pdf",
+        "publisher": "Logius",
+        "title": "Beheermodel en releasebeleid Digikoppeling v1.5"
+      },
+      "Beveiligingsdocument": {
+        "href": "https://publicatie.centrumvoorstandaarden.nl/dk/beveilig/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Beveiligingsstandaarden en voorschriften"
+      },
+      "Certificaten": {
+        "href": "https://cert.pkioverheid.nl/",
+        "publisher": "Logius",
+        "title": "PkIoverheid certificaten"
+      },
+      "CloudEvents": {
+        "authors": [
+          "@@@"
+        ],
+        "date": "May 2011",
+        "href": "https://github.com/cloudevents/spec/blob/v1.0.1/spec.md",
+        "publisher": "@@@",
+        "title": "CloudEvents - Version 1.0.1"
+      },
+      "Compliance": {
+        "href": "https://portaal.digikoppeling.nl",
+        "publisher": "Logius",
+        "title": "Digikoppeling Compliance Voorziening"
+      },
+      "Deployment Guide 1.1": {
+        "authors": [
+          "Pete Wenzel",
+          "Jacques Durand"
+        ],
+        "date": "June 2005",
+        "href": "http://www.oasis-open.org/apps/org/workgroup/ebxml-iic-deployment-profile-template-intro-100406.doc",
+        "publisher": "OASIS",
+        "title": "Deployment Profile Template For OASIS ebXML Message Service 2.0"
+      },
+      "Digikoppeling Actuele Documentatie": {
+        "href": "http://www.logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Digikoppeling Overzicht Actuele Documentatie en Compliance"
+      },
+      "Digikoppeling Beheermodel": {
+        "date": "Oktober 2017",
+        "href": "https://www.logius.nl/sites/default/files/public/bestanden/diensten/DigiKoppeling/Standaarden/Digikoppeling-Beheermodel.pdf",
+        "publisher": "Logius",
+        "title": "Beheermodel en releasebeleid Digikoppeling v1.5"
+      },
+      "Digikoppeling Best Practices ebMS2": {
+        "date": "2019",
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie",
+        "publisher": "Logius",
+        "title": "Digikoppeling Best Practices ebMS2"
+      },
+      "Digikoppeling Best Practices Grote Berichten": {
+        "date": "2019",
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie",
+        "publisher": "Logius",
+        "title": "Digikoppeling Best Practices Grote Berichten"
+      },
+      "Digikoppeling Best Practices WUS": {
+        "date": "2019",
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie",
+        "publisher": "Logius",
+        "title": "Digikoppeling Best Practices WUS"
+      },
+      "Digikoppeling Beveiligingsdocument": {
+        "date": "2021",
+        "href": "https://gitdocumentatie.logius.nl/publicatie/dk/beveilig/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Beveiligingsstandaarden en voorschriften"
+      },
+      "Digikoppeling Compliance Voorziening": {
+        "href": "https://portaal.digikoppeling.nl",
+        "publisher": "Logius",
+        "title": "Digikoppeling Compliance Voorziening"
+      },
+      "Digikoppeling Gebruik Certificaten": {
+        "href": "http://www.logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Digikoppeling Gebruik en achtergrond certificaten"
+      },
+      "Digikoppeling Identificatie-Authenticatie": {
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie",
+        "publisher": "Logius",
+        "title": "Digikoppeling Identificatie en Authenticatie"
+      },
+      "Digikoppeling Koppelvlakstandaard ebMS2": {
+        "date": "mei 2019",
+        "href": "https://logius-standaarden.github.io/Digikoppeling-Koppelvlakstandaard-ebMS2/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Koppelvlakstandaard ebMS2"
+      },
+      "Digikoppeling Koppelvlakstandaard Grote Berichten": {
+        "date": "september 2020",
+        "href": "https://logius-standaarden.github.io/Digikoppeling-Koppelvlakstandaard-GB/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Koppelvlakstandaard Grote Berichten"
+      },
+      "Digikoppeling Koppelvlakstandaard REST API": {
+        "date": "februari 2021",
+        "href": "https://centrumvoorstandaarden.github.io/DigikoppelingRestfulApiProfiel/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Restful API Profiel (Concept)"
+      },
+      "Digikoppeling Koppelvlakstandaard WUS": {
+        "date": "oktober 2020",
+        "href": "https://logius-standaarden.github.io/Digikoppeling-Koppelvlakstandaard-WUS/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Koppelvlakstandaard ebMS2"
+      },
+      "Digikoppeling Logius website": {
+        "href": "https://logius.nl/diensten/digikoppeling/documentatie",
+        "publisher": "Logius",
+        "title": "Logius Digikoppeling"
+      },
+      "Digikoppeling REST API profiel": {
+        "href": "https://publicatie.centrumvoorstandaarden.nl/dk/restapi/",
+        "publisher": "Logius",
+        "title": "Digikoppeling REST API profiel"
+      },
+      "Digikoppeling-Architectuur": {
+        "href": "https://publicatie.centrumvoorstandaarden.nl/dk/architectuur/",
+        "publisher": "Logius",
+        "title": "Digikoppeling Architectuur"
+      },
+      "Digikoppeling-Beveiligingsdocument": {
+        "href": "https://publicatie.centrumvoorstandaarden.nl/dk/beveilig",
+        "publisher": "Logius",
+        "title": "Digikoppeling Beveiligingsstandaarden en voorschriften"
+      },
+      "Digikoppeling-Cert": {
+        "href": "http://www.logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Gebruik en achtergrond van Digikoppeling certificaten"
+      },
+      "Digikoppeling-Compliance-Voorziening": {
+        "href": "https://portaal.digikoppeling.nl",
+        "publisher": "Logius",
+        "title": "Digikoppeling Compliance Voorziening"
+      },
+      "Digikoppeling-Identificatie-Authenticatie": {
+        "href": "https://publicatie.centrumvoorstandaarden.nl/dk/idauth",
+        "publisher": "Logius",
+        "title": "Digikoppeling Identificatie en Authenticatie"
+      },
+      "ebCPP": {
+        "authors": [
+          "Oasis"
+        ],
+        "date": "september 2002",
+        "href": "http://www.ebxml.org/specs/ebcpp-2.0.pdf",
+        "publisher": "Oasis",
+        "title": "Collaboration-Protocol Profile and Agreement Specification Version 2.0"
+      },
+      "ebMS3": {
+        "authors": [
+          "Ian Jones",
+          "Pete Wenzel"
+        ],
+        "date": "October 2007",
+        "href": "https://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html",
+        "publisher": "Oasis",
+        "title": "Collaboration-Protocol Profile and Agreement Specification Version 2.0"
+      },
+      "ebXML CPPA V 2.0": {
+        "authors": [
+          "Oasis"
+        ],
+        "date": "september 2002",
+        "href": "http://www.ebxml.org/specs/ebcpp-2.0.pdf",
+        "publisher": "Oasis",
+        "title": "Collaboration-Protocol Profile and Agreement Specification Version 2.0"
+      },
+      "Eisen Pkioverheid": {
+        "href": "https://www.logius.nl/diensten/pkioverheid/aansluiten-als-tsp/pogramma-van-eisen",
+        "publisher": "Logius",
+        "title": "Programma van Eisen (PKIoverheid)"
+      },
+      "Expert": {
+        "authors": [
+          "@@@"
+        ],
+        "date": "@@@",
+        "href": "https://www.forumstandaardisatie.nl/sites/bfs/files/@@@.pdf",
+        "publisher": "Forum Standaardisatie",
+        "title": "Expertadvies CloudEvents 1.0"
+      },
+      "Gebruiksvoorwaarden Digikoppeling": {
+        "date": "1 januari 2021",
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie/gebruiksvoorwaarden-digikoppeling",
+        "publisher": "Logius",
+        "title": "Gebruiksvoorwaarden Digikoppeling"
+      },
+      "HEART.OAuth2": {
+        "authors": [
+          "J. Richer"
+        ],
+        "date": "April 25, 2017",
+        "href": "https://openid.net/specs/openid-heart-oauth2-1_0.html",
+        "publisher": "OpenID foundation",
+        "title": "Health Relationship Trust Profile for OAuth 2.0"
+      },
+      "HTTPS-factsheet NCSC": {
+        "date": "Nov 2014",
+        "href": "https://www.ncsc.nl/documenten/factsheets/2019/juni/01/factsheet-https-kan-een-stuk-veiliger",
+        "publisher": "NCSC",
+        "title": "Factsheet HTTPS kan een stuk veiliger"
+      },
+      "I-D.ietf-oauth-pop-architecture": {
+        "authors": [
+          "P. Hunt, J. Richer, W. Mills, P. Mishra, H. Tschofenig"
+        ],
+        "date": "July 8, 2016",
+        "href": "https://tools.ietf.org/html/draft-ietf-oauth-pop-architecture-08",
+        "publisher": "IETF",
+        "title": "OAuth 2.0 Proof-of-Possession (PoP) Security Architecture"
+      },
+      "iGOV.OAuth2": {
+        "authors": [
+          "J. Richer, M. Varley, P. Grassi"
+        ],
+        "date": "October 5 2018",
+        "href": "https://openid.net/specs/openid-igov-oauth2-1_0.html",
+        "publisher": "OpenID foundation",
+        "title": "International Government Assurance Profile (iGov) for OAuth 2.0"
+      },
+      "iGOV.OpenID": {
+        "authors": [
+          "M. Varley, P. Grassi"
+        ],
+        "date": "October 5 2018",
+        "href": "https://openid.net/specs/openid-igov-openid-connect-1_0.html",
+        "publisher": "OpenID foundation",
+        "title": "International Government Assurance Profile (iGov) for OpenID Connect 1.0 - draft 3"
+      },
+      "Introspection": {
+        "authors": [
+          "J. Richer"
+        ],
+        "date": "October 2015",
+        "href": "https://tools.ietf.org/html/rfc7662",
+        "publisher": "IETF",
+        "title": "OAuth 2.0 Token Introspection"
+      },
+      "JWA": {
+        "authors": [
+          "M. Jones"
+        ],
+        "date": "may 2015",
+        "href": "https://tools.ietf.org/html/rfc7518",
+        "publisher": "IETF",
+        "title": "JSON Web Algorithms (JWA)"
+      },
+      "JWE": {
+        "authors": [
+          "M. Jones, J. Hildebrand"
+        ],
+        "date": "may 2015",
+        "href": "https://tools.ietf.org/html/rfc7516",
+        "publisher": "IETF",
+        "title": "JSON Web Encryption (JWE)"
+      },
+      "JWK": {
+        "authors": [
+          "M. Jones"
+        ],
+        "date": "may 2015",
+        "href": "https://tools.ietf.org/html/rfc7517",
+        "publisher": "IETF",
+        "title": "JSON Web Key (JWK))"
+      },
+      "JWS": {
+        "authors": [
+          "M. Jones, J. Bradley, N. Sakimura"
+        ],
+        "date": "may 2015",
+        "href": "https://tools.ietf.org/html/rfc7515",
+        "publisher": "IETF",
+        "title": "JSON Web Signature (JWS)"
+      },
+      "JWS.JWE.Algs": {
+        "authors": [
+          "Jim Schaad, Jeff Hodges, Joe Hildebrand, Sean Turner"
+        ],
+        "date": "",
+        "href": "https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms",
+        "publisher": "IANA",
+        "title": "IANA JSON Web Signatures and Encryption Algorithms registry"
+      },
+      "JWT": {
+        "authors": [
+          "M. Jones, J. Bradley, N. Sakimura"
+        ],
+        "date": "may 2015",
+        "href": "https://tools.ietf.org/html/rfc7519",
+        "publisher": "IETF",
+        "title": "JSON Web Token (JWT)"
+      },
+      "Logius": {
+        "href": "https://logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Logius Digikoppeling"
+      },
+      "Logius website": {
+        "href": "https://logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Logius Digikoppeling"
+      },
+      "Logius-website": {
+        "href": "https://logius.nl/digikoppeling",
+        "publisher": "Logius",
+        "title": "Logius Digikoppeling"
+      },
+      "NCSC 2019": {
+        "date": "April 2019",
+        "href": "https://www.ncsc.nl/documenten/publicaties/2019/mei/01/ict-beveiligingsrichtlijnen-voor-transport-layer-security-tls",
+        "publisher": "NCSC",
+        "title": "ICT-beveiligingsrichtlijnen voor Transport Layer Security (TLS) v2.0"
+      },
+      "NCSC 2021": {
+        "date": "Jan 2021",
+        "href": "https://www.ncsc.nl/documenten/publicaties/2021/januari/19/ict-beveiligingsrichtlijnen-voor-transport-layer-security-2.1",
+        "publisher": "NCSC",
+        "title": "ICT-beveiligingsrichtlijnen voor Transport Layer Security (TLS) v2.1"
+      },
+      "NEN3610": {
+        "authors": [
+          ""
+        ],
+        "date": "Maart 2011",
+        "href": "https://www.nen.nl/nen-3610-2011-a1-2016-nl-217738",
+        "publisher": "Nederlands Normalisatie-instituut",
+        "title": "Basismodel Geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten"
+      },
+      "no-Reliable-messaging": {
+        "authors": [
+          "Marc de Graauw"
+        ],
+        "date": "June 18, 2010",
+        "href": "https://www.infoq.com/articles/no-reliable-messaging/",
+        "publisher": "infoQ",
+        "title": "Nobody Needs Reliable Messaging"
+      },
+      "OAuth2": {
+        "authors": [
+          "D. Hardt"
+        ],
+        "date": "October 2012",
+        "href": "https://tools.ietf.org/html/rfc6749",
+        "publisher": "The Internet Engineering Task Force",
+        "title": "The OAuth 2.0 Authorization Framework"
+      },
+      "OpenID.Core": {
+        "authors": [
+          "N. Sakimura, J. Bradley, M. Jones, B. de Medeiros, C. Mortimore"
+        ],
+        "date": "November 8 2014",
+        "href": "https://openid.net/specs/openid-connect-core-1_0.html",
+        "publisher": "OpenID foundation",
+        "title": "OpenID Connect Core 1.0"
+      },
+      "OpenID.Discovery": {
+        "authors": [
+          "N. Sakimura, J. Bradley, M. Jones, E. Jay"
+        ],
+        "date": "November 8 2014",
+        "href": "https://openid.net/specs/openid-connect-discovery-1_0.html",
+        "publisher": "OpenID foundation",
+        "title": "OpenID Connect Discovery 1.0"
+      },
+      "Pas-toe-of-leg-uit": {
+        "href": "https://www.forumstandaardisatie.nl/open-standaarden/verplicht",
+        "publisher": "Forum Standaardisatie",
+        "title": "Lijst Verplichte standaarden"
+      },
+      "PKCE": {
+        "authors": [
+          "N. Sakimura, J. Bradley, N. Agarwal"
+        ],
+        "date": "september 2015",
+        "href": "https://tools.ietf.org/html/rfc7636",
+        "publisher": "IETF",
+        "title": "Proof Key for Code Exchange by OAuth Public Clients"
+      },
+      "PKI CA": {
+        "href": "https://www.logius.nl/diensten/pkioverheid/aansluiten-als-tsp/toegetreden-vertrouwensdienstverleners",
+        "publisher": "Logius",
+        "title": "Toegetreden vertrouwensdienstverleners"
+      },
+      "PKI Policy": {
+        "href": "https://www.logius.nl/diensten/pkioverheid/aansluiten-als-tsp/pogramma-van-eisen",
+        "publisher": "Logius",
+        "title": "Programma van Eisen (PKIoverheid)"
+      },
+      "PKI PvE": {
+        "href": "https://www.logius.nl/sites/default/files/public/bestanden/diensten/PKIoverheid/PoR-2022/PKIoverheid%20Programme%20of%20Requirements%20v4.10%20-%20Part%203j%20Certificate%20Policy%20for%20Server%20certificates%20in%20Server%202020%20%28EV%20G1%29%20Domain.pdf",
+        "publisher": "Logius",
+        "title": "Programma van Eisen Pkioverheid, deel 3j"
+      },
+      "PKI-CA": {
+        "href": "https://www.logius.nl/diensten/pkioverheid/aansluiten-als-tsp/toegetreden-vertrouwensdienstverleners",
+        "publisher": "Logius",
+        "title": "Toegetreden vertrouwensdienstverleners"
+      },
+      "PKI-Policy": {
+        "href": "https://www.logius.nl/diensten/pkioverheid/aansluiten-als-tsp/pogramma-van-eisen",
+        "publisher": "Logius",
+        "title": "Programma van Eisen (PKIoverheid)"
+      },
+      "PKIoverheid": {
+        "href": "https://www.logius.nl/diensten/pkioverheid",
+        "publisher": "Logius",
+        "title": "PKIoverheid"
+      },
+      "PKIoverheid Certificaten": {
+        "href": "https://cert.pkioverheid.nl/",
+        "publisher": "Logius",
+        "title": "Pkioverheid certificaten"
+      },
+      "PKIoverheid-Certificaten": {
+        "href": "https://cert.pkioverheid.nl/",
+        "publisher": "Logius",
+        "title": "Pkioverheid certificaten"
+      },
+      "SemVer": {
+        "authors": [
+          "T. Preston-Werner"
+        ],
+        "date": "June 2013",
+        "href": "https://semver.org",
+        "title": "Semantic Versioning 2.0.0"
+      },
+      "UMMR10": {
+        "authors": [
+          ""
+        ],
+        "date": "2001",
+        "href": "https://unece.org/DAM/cefact/umm/UMM_Revision_10_2001.zip",
+        "publisher": "UN/CEFACT",
+        "title": "UMM Revision 10"
+      },
+      "UMMUG": {
+        "authors": [
+          ""
+        ],
+        "date": "2003",
+        "href": "https://www.unece.org/fileadmin/DAM/cefact/umm/UMM_userguide_220606.pdf",
+        "publisher": "UN/CEFACT",
+        "title": "UN/CEFACT Modeling Methodology (UMM) User Guide"
+      },
+      "UUID": {
+        "authors": [
+          "P. Leach",
+          "M. Mealling",
+          "R. Salz"
+        ],
+        "date": "July 2005",
+        "href": "https://tools.ietf.org/html/rfc4122",
+        "publisher": "The Internet Engineering Task Force",
+        "title": "A Universally Unique IDentifier (UUID) URN Namespace"
+      },
+      "Voorbeelden": {
+        "href": "https://www.logius.nl/sites/default/files/public/bestanden/diensten/DigiKoppeling/Overig/Digikoppeling-Koppelvlakstandaard-WUS-Voorbeeldberichten.zip",
+        "publisher": "Logius",
+        "title": "Digikoppeling WUS voorbeelden (zip)"
+      },
+      "Voorwaarden Digikoppeling": {
+        "date": "1 januari 2021",
+        "href": "https://www.logius.nl/diensten/digikoppeling/documentatie/voorwaarden-digikoppeling",
+        "publisher": "Logius",
+        "title": "Voorwaarden Digikoppeling"
+      },
+      "X520": {
+        "href": "https://www.iso.org/standard/43796.html",
+        "publisher": "ISO",
+        "title": "ITU-T Recommendation X.520 (2001) ISO/IEC 9594-6"
+      },
+      "ADR-Validator": {
+        "href": "https://gitlab.com/commonground/don/adr-validator/-/blob/v0.1.0/pkg/adr/rules.go",
+        "title": "Technical ADR Validation rule testset 0.1.0",
+        "authors": [
+          "H. Stijns"
+        ],
+        "publisher": "Geonovum",
+        "date": "December 2022"
+      }
+    },
+    "en": {
+      "sotd": "Status of This Document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO.",
+      "cv": "This is a proposed version authored by the ADR \"orchestration\" working group. Comments regarding this document may be shared through GitHub: https://github.com/Geonovum/KP-APIs/issues",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing."
+    }
+  },
+  "labelColor": {
+    "def": "#154273",
+    "wv": "#32a852",
+    "cv": "#000000",
+    "vv": "#000000"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "OData JSON Format": {
+      "href": "https://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html",
+      "title": "OData JSON Format Version 4.01",
+      "authors": [
+        "OASIS"
+      ],
+      "date": "11 May 2020",
+      "id": "odata json format"
+    }
+  },
+  "title": "Batching",
+  "specStatus": "cv",
+  "specType": "st",
+  "pubDomain": "api",
+  "shortName": "API-Strategie-mod-batching",
+  "edDraftURI": "https://geonovum.github.io/KP-APIs/API-strategie-modules/batching",
+  "editors": [
+    {
+      "name": "Joost Farla",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Joost Farla",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Frank Terpstra",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Martin van der Plas",
+      "company": "Logius",
+      "companyURL": "https://www.logius.nl"
+    },
+    {
+      "name": "Peter Haasnoot",
+      "company": "Logius",
+      "companyURL": "https://www.logius.nl"
+    },
+    {
+      "name": "Pano Maria",
+      "company": "Skemu",
+      "companyURL": "https://skemu.com"
+    }
+  ],
+  "github": "https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching"
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
+
+  <body class="h-entry"><div class="head">
+     <h1 id="title" class="title">Batching</h1>
+    
+    <h2>
+      Kennisplatform API's Standard<br>
+      Candidate version
+      <time class="dt-published" datetime="2025-10-16">October 21, 2025</time>
+    </h2>
+    <dl>
+       
+      <dt>Latest version</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-batching/">https://docs.geostandaarden.nl/api/API-Strategie-mod-batching/</a></dd>
+	  
+	  <dt>This version</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-batching-20251021">https://docs.geostandaarden.nl/api/API-Strategie-mod-batching-20251021</a></dd>
+      
+      
+      <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/batching">https://geonovum.github.io/KP-APIs/API-strategie-modules/batching</a></dd>
+      
+      
+      <dt>Editor:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Joost Farla</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd>
+      
+      <dt>Authors:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Joost Farla</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Frank Terpstra</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Martin van der Plas</span> (<a class="p-org org h-org" href="https://www.logius.nl">Logius</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Peter Haasnoot</span> (<a class="p-org org h-org" href="https://www.logius.nl">Logius</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Pano Maria</span> (<a class="p-org org h-org" href="https://skemu.com">Skemu</a>)
+  </dd>
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/">GitHub Geonovum/KP-APIs</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/issues/">File an issue</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/commits/">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            This document is licensed under 
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2><p>This module defines a standardized approach for performing batch operations in RESTful APIs. The objective of batching is to improve efficiency and scalability in situations where clients need to retrieve multiple resources in a single interaction.</p>
+<p>The module specifies conventions for endpoint design, request and response formats, and error handling. By following these rules, API providers enable consistent client implementations, reduce network overhead, and improve overall performance and reliability in distributed environments.</p>
+</section>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>This is a proposed version authored by the ADR "orchestration" working group. Comments regarding this document may be shared through GitHub: https://github.com/Geonovum/KP-APIs/issues</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">2. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope"><bdi class="secno">2.1 </bdi>Scope</a></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">2.2 </bdi>Use cases</a></li></ol></li><li class="tocline"><a class="tocxref" href="#summary"><bdi class="secno">3. </bdi>Summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#list-of-technical-rules"><bdi class="secno">3.1 </bdi>List of technical rules</a></li></ol></li><li class="tocline"><a class="tocxref" href="#architecture"><bdi class="secno">4. </bdi>Architecture</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#data-distribution"><bdi class="secno">4.1 </bdi>Data distribution</a></li><li class="tocline"><a class="tocxref" href="#the-n-1-problem"><bdi class="secno">4.2 </bdi>The N+1 problem</a></li><li class="tocline"><a class="tocxref" href="#transactionality"><bdi class="secno">4.3 </bdi>Transactionality</a></li><li class="tocline"><a class="tocxref" href="#design-principles"><bdi class="secno">4.4 </bdi>Design principles</a></li></ol></li><li class="tocline"><a class="tocxref" href="#endpoints"><bdi class="secno">5. </bdi>Batch endpoints</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#endpoint-path"><bdi class="secno">5.1 </bdi>Endpoint path</a></li><li class="tocline"><a class="tocxref" href="#request-format"><bdi class="secno">5.2 </bdi>Request format</a></li><li class="tocline"><a class="tocxref" href="#response-format"><bdi class="secno">5.3 </bdi>Response format</a></li></ol></li><li class="tocline"><a class="tocxref" href="#singular"><bdi class="secno">6. </bdi>Singular resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#singular-request"><bdi class="secno">6.1 </bdi>Singular request</a></li><li class="tocline"><a class="tocxref" href="#singular-response"><bdi class="secno">6.2 </bdi>Singular response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#collection"><bdi class="secno">7. </bdi>Collection resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#collection-request"><bdi class="secno">7.1 </bdi>Collection request</a></li><li class="tocline"><a class="tocxref" href="#collection-response"><bdi class="secno">7.2 </bdi>Collection response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#error-handling"><bdi class="secno">8. </bdi>Error handling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#invalid-request"><bdi class="secno">8.1 </bdi>Invalid request</a></li><li class="tocline"><a class="tocxref" href="#request-limit-exceeding"><bdi class="secno">8.2 </bdi>Request limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#response-limit-exceeding"><bdi class="secno">8.3 </bdi>Response limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#invalid-keys"><bdi class="secno">8.4 </bdi>Invalid keys</a></li></ol></li><li class="tocline"><a class="tocxref" href="#existing-standards"><bdi class="secno">9. </bdi>Existing standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#elasticsearch-multi-get"><bdi class="secno">9.1 </bdi>Elasticsearch <code>Multi-Get</code></a></li><li class="tocline"><a class="tocxref" href="#odata-batch"><bdi class="secno">9.2 </bdi>OData <code>$batch</code></a></li><li class="tocline"><a class="tocxref" href="#google-apis"><bdi class="secno">9.3 </bdi>Google APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+    <section id="conformance"><div class="header-wrapper"><h2 id="x1-conformance"><bdi class="secno">1. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 1."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all
+        capitals, as shown here.
+      </p></section>
+    <section id="introduction" class="informative"><div class="header-wrapper"><h2 id="x2-introduction"><bdi class="secno">2. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 2."></a></div><p><em>This section is non-normative.</em></p>
+<p>Batching provides a standardized way for clients to retrieve multiple resources in a single call, reducing network overhead and simplifying access patterns in distributed systems.</p>
+<p>The design rules in this document address common challenges such as the <em>N+1 problem</em>, orchestration across distributed sources, and predictable request–response mapping. They are intended to complement, not replace, existing singular and collection endpoints, ensuring consistency, scalability, and ease of use across APIs.</p>
+<section id="scope"><div class="header-wrapper"><h3 id="x2-1-scope"><bdi class="secno">2.1 </bdi>Scope</h3><a class="self-link" href="#scope" aria-label="Permalink for Section 2.1"></a></div>
+<p>This module defines rules for implementing batch operations in RESTful APIs. Batching is introduced as a complementary access pattern to singular and collection endpoints, designed to improve efficiency, scalability, and client usability.</p>
+<p>The design rules specify when and how to expose batch endpoints, how to structure requests and responses, and how to handle errors consistently. By standardizing these aspects, batching ensures predictable client–server interactions, reduces the risk of divergent implementations, and promotes interoperability across APIs in distributed architectures.</p>
+<p>The scope of this batching module is limited to synchronous read operations. It does not include write operations, transactional guarantees across multiple requests, or global batch endpoints spanning multiple collections. Each batch item is processed independently, and partial successes or failures are explicitly allowed and expected. Asynchronous patterns like 'Claim-Check', 'Subscribe-Notification' and 'Call-back' are also out of scope.</p>
+</section><section id="use-cases"><div class="header-wrapper"><h3 id="x2-2-use-cases"><bdi class="secno">2.2 </bdi>Use cases</h3><a class="self-link" href="#use-cases" aria-label="Permalink for Section 2.2"></a></div>
+<p>Batch endpoints are useful in situations where multiple related resources need to be retrieved in a single operation. Typical use cases include:</p>
+<ul>
+<li><p><strong>Orchestration across distributed data sources</strong></p>
+<p>Resources are often spread across multiple data sources, residing at different physical locations. A batch endpoint enables an application (or orchestration component) to perform distributed lookups efficiently, by reducing the complexity and client–server chatter.</p>
+<p>For example: a client retrieves a list of persons from one source, which only contains address identifiers. Instead of performing a separate request per person to fetch the corresponding address, the client can submit a single batch request to the batch endpoint to retrieve all addresses at once.</p>
+</li>
+<li><p><strong>Fetching multiple known resources</strong></p>
+<p>A client needs details for a set of known resource identifiers. Instead of issuing one request per identifier, the client can submit them in a single batch request, simplifying logic and reducing latency.</p>
+</li>
+<li><p><strong>Parallel evaluation of collection filters</strong></p>
+<p>A reporting tool needs to query the same resource collection multiple times with different filter criteria (e.g. addresses in different postal code areas). A batch request allows all queries to be executed in parallel, returning the results in a single response.</p>
+</li>
+</ul>
+</section></section>
+    <section id="summary"><div class="header-wrapper"><h2 id="x3-summary"><bdi class="secno">3. </bdi>Summary</h2><a class="self-link" href="#summary" aria-label="Permalink for Section 3."></a></div>
+<section id="list-of-technical-rules"><div class="header-wrapper"><h3 id="x3-1-list-of-technical-rules"><bdi class="secno">3.1 </bdi>List of technical rules</h3><a class="self-link" href="#list-of-technical-rules" aria-label="Permalink for Section 3.1"></a></div>
+<ul id="technicalList"><li><a href="#/batching/path">/batching/path</a>: Expose a standardized batch endpoint for collections</li><li><a href="#/batching/req-format">/batching/req-format</a>: Use the standardized payload format for batch requests</li><li><a href="#/batching/res-format">/batching/res-format</a>: Use the standardized payload format for batch responses</li><li><a href="#/batching/req-singular">/batching/req-singular</a>: Specify a list of singular requests when batching singular resources</li><li><a href="#/batching/res-singular">/batching/res-singular</a>: Return a list of singular results when batching singular resources</li><li><a href="#/batching/req-collection">/batching/req-collection</a>: Specify a list of collection requests when batching collection resources</li><li><a href="#/batching/res-collection">/batching/res-collection</a>: Return a list of collection results when batching collection resources</li><li><a href="#/batching/err-req-invalid">/batching/err-req-invalid</a>: Reject invalid batch requests using problem+json</li><li><a href="#/batching/err-req-limit">/batching/err-req-limit</a>: Reject batch requests that exceed the maximum number of items</li><li><a href="#/batching/err-res-limit">/batching/err-res-limit</a>: Reject batch requests that would produce oversized responses</li><li><a href="#/batching/err-invalid keys">/batching/err-invalid keys</a>: Reject singular batch requests with invalid keys</li></ul></section></section>
+    <section id="architecture" class="informative"><div class="header-wrapper"><h2 id="x4-architecture"><bdi class="secno">4. </bdi>Architecture</h2><a class="self-link" href="#architecture" aria-label="Permalink for Section 4."></a></div><p><em>This section is non-normative.</em></p>
+<p>Batching is an architectural pattern that complements the standard RESTful model of singular and collection endpoints. Its purpose is to improve efficiency in distributed systems by reducing network overhead and providing predictable request–response mappings in situations where multiple resources need to be fetched at once.</p>
+<section id="data-distribution"><div class="header-wrapper"><h3 id="x4-1-data-distribution"><bdi class="secno">4.1 </bdi>Data distribution</h3><a class="self-link" href="#data-distribution" aria-label="Permalink for Section 4.1"></a></div>
+<p>Modern APIs often operate in a distributed data landscape. A single logical query may require access to multiple underlying systems or databases, each with its own identifiers, query capabilities, and performance characteristics. This distribution introduces challenges:</p>
+<ul>
+<li><strong>Network latency</strong>: many small requests across services accumulate delay.</li>
+<li><strong>Inconsistent availability</strong>: resources may exist in one system but be missing or stale in another.</li>
+<li><strong>Limited scalability</strong>: issuing hundreds of small requests can overwhelm back-end systems or gateways.</li>
+</ul>
+<p>Batching mitigates these issues by grouping multiple requests into a single network call, enabling the server to optimize access to underlying systems and respond in a coordinated manner.</p>
+</section><section id="the-n-1-problem"><div class="header-wrapper"><h3 id="x4-2-the-n-1-problem"><bdi class="secno">4.2 </bdi>The N+1 problem</h3><a class="self-link" href="#the-n-1-problem" aria-label="Permalink for Section 4.2"></a></div>
+<p>A common inefficiency in distributed APIs is the <em>N+1 problem</em>. For example, a client queries one collection to retrieve N entities, then performs N additional singular lookups to fetch related resources. The result is N+1 total calls, each incurring network and processing overhead.</p>
+<p>Batch endpoints provide a standardized way to replace N+1 calls with just two calls: one to retrieve the initial collection and one batch request to fetch all related resources in parallel. This pattern reduces latency and lowers the load on both clients and servers.</p>
+<ul>
+<li>Clients <strong><em class="rfc2119">SHOULD</em></strong> use batching when multiple lookups are required at once, but continue to use singular or collection endpoints for simpler interactions.</li>
+</ul>
+<p>Batching is a performance optimization, not a replacement for singular or collection endpoints.</p>
+</section><section id="transactionality"><div class="header-wrapper"><h3 id="x4-3-transactionality"><bdi class="secno">4.3 </bdi>Transactionality</h3><a class="self-link" href="#transactionality" aria-label="Permalink for Section 4.3"></a></div>
+<p>Batching is not a transaction mechanism. Each request item in a batch is processed independently, and the success or failure of one item does not affect the others. There is no guarantee of atomicity, consistency, isolation, or durability (ACID) across items in a batch.</p>
+<ul>
+<li>For <a href="#singular-request">singular requests</a>, a missing or inaccessible resource is represented by <code>null</code>.</li>
+<li>For <a href="#collection-request">collection requests</a>, no matches are represented by an empty <code>items</code> array.</li>
+<li>Partial errors <strong><em class="rfc2119">MUST</em></strong> be conveyed at the item level, not by failing the entire batch.</li>
+</ul>
+<p>This design ensures resilience: a batch <strong><em class="rfc2119">MAY</em></strong> contain both successful and unsuccessful entries, but the overall response is always delivered in a predictable format.</p>
+</section><section id="design-principles"><div class="header-wrapper"><h3 id="x4-4-design-principles"><bdi class="secno">4.4 </bdi>Design principles</h3><a class="self-link" href="#design-principles" aria-label="Permalink for Section 4.4"></a></div>
+<p>The following principles guide the architecture of batch endpoints:</p>
+<ul>
+<li><strong>Complementary</strong>: batch endpoints sit alongside singular and collection endpoints, they do not replace them.</li>
+<li><strong>Deterministic</strong>: every request item produces exactly one result item at the same array position.</li>
+<li><strong>Scoped</strong>: batch endpoints operate at the level of a single collection; a global batching mechanism is explicitly out of scope.</li>
+<li><strong>Stateless</strong>: each batch request is self-contained; no client state is stored between requests.</li>
+<li><strong>Non-transactional</strong>: items are processed independently; partial failure is expected and explicitly represented.</li>
+<li><strong>Performance-oriented</strong>: designed to reduce round-trips and mitigate the N+1 problem in distributed environments.</li>
+</ul>
+<blockquote>
+<p>This batching architecture extends the architecture document of het NL API Strategy as published on: <a href="https://docs.geostandaarden.nl/api/API-Strategie-architectuur/">docs.geostandaarden.nl/api/API-Strategie-architectuur</a></p>
+</blockquote>
+</section></section>
+    <section id="endpoints" class="informative"><div class="header-wrapper"><h2 id="x5-batch-endpoints"><bdi class="secno">5. </bdi>Batch endpoints</h2><a class="self-link" href="#endpoints" aria-label="Permalink for Section 5."></a></div><p><em>This section is non-normative.</em></p>
+<p>Batch endpoints provide a standardized way to retrieve multiple resources in a single operation. They are designed to reduce the number of network round-trips and to mitigate the N+1 problem, where a client would otherwise need to issue many separate requests for related resources. Batch endpoints are exposed per collection and follow a uniform request and response format, ensuring predictable behavior across APIs.</p>
+<section id="endpoint-path"><div class="header-wrapper"><h3 id="x5-1-endpoint-path"><bdi class="secno">5.1 </bdi>Endpoint path</h3><a class="self-link" href="#endpoint-path" aria-label="Permalink for Section 5.1"></a></div>
+<div class="rule" id="/batching/path" data-type="technical">
+   <p class="rulelab"><a href="#/batching/path">/batching/path</a>: Expose a standardized batch endpoint for collections</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>Each collection resource that supports batch requests must expose a dedicated batch endpoint. The path of the batch endpoint must be constructed by appending the literal <code>/_batch</code> to the path of the collection resource. The batch endpoint must implement the <code>POST</code> method.</p>
+         <div class="example">
+            <p>For the <code>adressen</code> collection, the batch endpoint is:</p>
+            <pre aria-busy="false"><code class="hljs">POST /adressen/_batch</code></pre>
+         </div>
+         <p>Which collections require batch support depends on the context and client use cases, and is left up to the API designer.</p>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Using a fixed suffix (<code>/_batch</code>) makes batch endpoints predictable and discoverable for clients. By scoping the batch endpoint directly under the collection, the semantics of the request are unambiguous: all items in the batch relate to resources of that collection. Restricting the method to <code>POST</code> ensures consistent support across frameworks and avoids limitations of <code>GET</code> requests with bodies or overly long query strings.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients can deterministically construct the batch endpoint URL once the collection path is known, without relying on documentation or discovery mechanisms.</li>
+            <li>Servers must implement the batch endpoint as a distinct operation for each collection that supports batching.</li>
+            <li>The rule does not mandate batch support for all collections; API designers must decide based on use cases and performance needs.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="request-format"><div class="header-wrapper"><h3 id="x5-2-request-format"><bdi class="secno">5.2 </bdi>Request format</h3><a class="self-link" href="#request-format" aria-label="Permalink for Section 5.2"></a></div>
+<div class="rule" id="/batching/req-format" data-type="technical">
+   <p class="rulelab"><a href="#/batching/req-format">/batching/req-format</a>: Use the standardized payload format for batch requests</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>A batch request must be sent as a JSON object containing a top-level <code>requests</code> property, whose value must be an ordered array of request items. Each entry in requests must be a JSON object that specifies exactly one selection criterion for that entry (see the specific rules for <a href="#singular-request">singular</a> and <a href="#collection-request">collection</a> requests). The order of the <code>requests</code> items is significant and preserved in the response.</p>
+         <p>The batch request must be submitted using the <code>POST</code> method and content type <code>application/json</code>.
+         </p><p>An implementation-defined maximum applies to the number of entries in <code>requests</code>. Requests that exceed this maximum must be <a href="#request-limit-exceeding">rejected</a>.
+         </p><p>The payload may include an additional top-level <code>context</code> property alongside <code>requests</code>, to provide contextual request criteria to apply on all request items (such as time travelling).</p>
+         <div class="example">
+            <p>For the <code>adressen</code> collection, the batch endpoint is:</p>
+            <pre aria-busy="false"><code class="hljs css">{
+    "context": {
+        "peildatum": <span class="hljs-string">"2025-09-12"</span>
+    },
+    "requests": [
+        { ... },
+        { ... },
+        { ... }
+    ]
+}</code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Using a standardized JSON envelope with a <code>requests</code> property makes batch requests predictable and uniform across all collections. It ensures that client and server implementations can rely on a single pattern, reducing ambiguity and implementation errors. The use of <code>POST</code> with a request payload avoids limitations of URL length and tooling support for <code>GET</code> request bodies. The optional <code>context</code> property provides a forward-compatible mechanism for passing shared criteria without breaking the core structure.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients must always wrap batch input in a <code>requests</code> array and preserve the intended order of items.</li>
+            <li>Servers must validate the request structure and enforce the maximum number of allowed items.</li>
+            <li>Clients can depend on a deterministic mapping between request items and response items by array position.</li>
+            <li>The optional <code>context</code> property allows cross-cutting parameters to be added without introducing new endpoints or breaking existing clients.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="response-format"><div class="header-wrapper"><h3 id="x5-3-response-format"><bdi class="secno">5.3 </bdi>Response format</h3><a class="self-link" href="#response-format" aria-label="Permalink for Section 5.3"></a></div>
+<div class="rule" id="/batching/res-format" data-type="technical">
+   <p class="rulelab"><a href="#/batching/res-format">/batching/res-format</a>: Use the standardized payload format for batch responses</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>A batch response must be sent as a JSON object containing a top-level <code>results</code> property, whose value must be an ordered array of result items. The number of items in <code>results</code> must be exactly equal to the number of items in the input <code>requests</code> array. The order of the <code>results</code> items must be identical to the order of the corresponding request items.</p>
+         <p>Each entry in <code>results</code> must correspond to exactly one request item:</p>
+         <ul>
+            <li>For singular requests, the entry must be the resource object if found, or <code>null</code> if not found or not accessible.</li>
+            <li>For collection requests, the entry must be a JSON object with an <code>items</code> array, which may be empty if no resources matched the criteria.</li>
+         </ul>
+         <p>Servers may include additional top-level properties in the response (such as metadata), provided they do not alter the semantics of <code>results</code>.</p>
+         <div class="example">
+            <p>Example response for a batch request combining a singular and a collection criterion:</p>
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"results"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"identificatie"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"12345"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"postcode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1234AB"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"huisnummer"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+                <span class="hljs-punctuation">{</span>
+                    <span class="hljs-attr">"identificatie"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"34567"</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">"postcode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"3456AB"</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">"huisnummer"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span>
+                <span class="hljs-punctuation">}</span>
+            <span class="hljs-punctuation">]</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Wrapping batch results in a <code>results</code> array guarantees a predictable, deterministic mapping between requests and responses. By enforcing equal length and order, clients can align response entries with their original requests by array index, without the need for correlation keys. Using <code>null</code> or empty arrays distinguishes clearly between "not found" and "no matches," improving client-side error handling and reducing ambiguity.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients can reliably map each request item to a result by array position, simplifying processing logic.</li>
+            <li>Servers must always return a <code>results</code> array of the same length as <code>requests</code>, even if some entries are <code>null</code> or empty.</li>
+            <li>Requests containing invalid keys must result in an <a href="#invalid-keys">error response</a>.</li>
+            <li>Additional metadata can be included at the top level, but must not affect the semantics of the <code>results</code> property.</li>
+         </ul>
+      </dd>
+   </dl>
+</div></section></section>
+    <section id="singular" class="informative"><div class="header-wrapper"><h2 id="x6-singular-resources"><bdi class="secno">6. </bdi>Singular resources</h2><a class="self-link" href="#singular" aria-label="Permalink for Section 6."></a></div><p><em>This section is non-normative.</em></p>
+<p>Singular resource requests target one specific resource by its unique identifier. This chapter defines how such requests are represented in batch operations, using the <code>key</code> property to identify resources consistently with their canonical URI. The rules ensure that both simple and compound identifiers can be handled reliably in batch requests and responses.</p>
+<section id="singular-request"><div class="header-wrapper"><h3 id="x6-1-singular-request"><bdi class="secno">6.1 </bdi>Singular request</h3><a class="self-link" href="#singular-request" aria-label="Permalink for Section 6.1"></a></div>
+<div class="rule" id="/batching/req-singular" data-type="technical">
+   <p class="rulelab"><a href="#/batching/req-singular">/batching/req-singular</a>: Specify a list of singular requests when batching singular resources</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>When requesting a batch of singular resources, a list of singular requests must be specified.</p>
+         <p>Each singular request must contain at least the unique identifier of the thing that the singular resource represents, using the <code>key</code> property. In most cases, things are identified by a single scalar value (string or number). However, they could also be identified by a compound value, consisting of multiple scalar values (in the resource URI, they would typically be represented by multiple path segments).</p>
+         <div class="example">
+            <p>An example request for requesting two building resources in a single batch operation:</p>
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// POST https://api.example.org/v1/gebouwen/_batch</span>
+<span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"requests"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"3b9710c4-6614-467a-ab82-36822cf48db1"</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"609b0651-acad-4091-9144-432621df8bf8"</span> <span class="hljs-punctuation">}</span>
+   <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+         <p>In case of a compound identifier, the value of the <code>key</code> property must be an array, in the exact same order as the path segments of the corresponding resource URI. The value type of the <code>key</code> property must be identical to the original value of the identifier. In case of a compound identifier, this could differ per part.</p>
+         <div class="example">
+            <p>When a singular resource has a compound identifier, an array value must be provided. In this example, the first identifier part is a string, and the second part is numeric.</p>
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// POST https://api.example.org/v1/gebouwen/_batch</span>
+<span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"requests"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"key-1-part-1"</span><span class="hljs-punctuation">,</span> <span class="hljs-number">123</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"key-2-part-1"</span><span class="hljs-punctuation">,</span> <span class="hljs-number">456</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">}</span>
+   <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Using a standardized <code>key</code> property for singular requests ensures consistency across all batch-enabled collections. It mirrors the way singular resources are addressed in URIs, making the mapping intuitive for both clients and server implementers. Supporting both scalar and compound identifiers provides flexibility for resources that require multi-part keys, while preserving strict typing and ordering prevents ambiguity in request processing.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients must always supply the <code>key</code> property for singular requests, with either a scalar or an ordered array depending on the resource’s identifier model.</li>
+            <li>Clients must use the same data types for identifier values as the canonical resource definition (e.g., string vs. integer), ensuring compatibility with singular endpoints.</li>
+            <li>Servers must validate the structure and types of the <code>key</code> property, and <a href="#invalid-request">reject requests</a> with malformed or incomplete identifiers.</li>
+            <li>By preserving the exact order of identifier parts, clients and servers avoid mismatches and maintain consistency with URI path semantics.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="singular-response"><div class="header-wrapper"><h3 id="x6-2-singular-response"><bdi class="secno">6.2 </bdi>Singular response</h3><a class="self-link" href="#singular-response" aria-label="Permalink for Section 6.2"></a></div>
+<div class="rule" id="/batching/res-singular" data-type="technical">
+   <p class="rulelab"><a href="#/batching/res-singular">/batching/res-singular</a>: Return a list of singular results when batching singular resources</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>When returning the results of a batch of singular requests, the response must contain a top-level <code>results</code> property. The value of <code>results</code> must be an array with exactly the same number of items, and in the same order, as the <code>requests</code> array in the corresponding request.</p>
+         <p>Each entry in <code>results</code> must correspond to exactly one request item:</p>
+         <ul>
+            <li>If the resource exists and the user is authorized to access the resource, the entry must be the resource object.</li>
+            <li>If the resource does not exist or the user is not authorized to access the resource, the entry must be <code>null</code>.</li>
+         </ul>
+         <div class="example">
+            <p>Example response for two building resources, one found and one missing:</p>
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"results"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">"identificatie"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"3b9710c4-6614-467a-ab82-36822cf48db1"</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">"naam"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Stadhuis"</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">"bouwjaar"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1978</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-literal"><span class="hljs-keyword">null</span></span>
+   <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Returning a <code>results</code> array of equal length and order ensures deterministic mapping between request and response items. Using <code>null</code> to represent missing or inaccessible resources simplifies client-side error handling and reduces ambiguity. Additionally, returning <code>null</code> for both non-existent and unauthorized resources prevents clients from inferring whether a resource exists but is protected, or simply does not exist. This consistent response pattern mitigates potential information disclosure risks.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients can map each response entry directly to its request by array index, without correlation keys or additional matching logic.</li>
+            <li>Servers must always produce a <code>results</code> array of the same length as the request, even when some entries are <code>null</code>.</li>
+            <li>Clients must handle <code>null</code> entries gracefully, treating them as "resource not found" or "user not authorized".</li>
+            <li>This structure enables batch responses to remain predictable, consistent, and easy to process in client libraries and tooling.</li>
+         </ul>
+      </dd>
+   </dl>
+</div></section></section>
+    <section id="collection" class="informative"><div class="header-wrapper"><h2 id="x7-collection-resources"><bdi class="secno">7. </bdi>Collection resources</h2><a class="self-link" href="#collection" aria-label="Permalink for Section 7."></a></div><p><em>This section is non-normative.</em></p>
+<p>Collection resource requests allow clients to retrieve multiple resources that match a set of filter criteria. In batch operations, these requests are expressed with a standardized <code>filter</code> object. This chapter describes how such requests are structured, how results are returned, and how empty matches are represented. The rules align with existing collection query semantics while ensuring deterministic mapping between requests and responses.</p>
+<section id="collection-request"><div class="header-wrapper"><h3 id="x7-1-collection-request"><bdi class="secno">7.1 </bdi>Collection request</h3><a class="self-link" href="#collection-request" aria-label="Permalink for Section 7.1"></a></div>
+<div class="rule" id="/batching/req-collection" data-type="technical">
+   <p class="rulelab"><a href="#/batching/req-collection">/batching/req-collection</a>: Specify a list of collection requests when batching collection resources</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>When requesting a batch of collection resources, a list of collection requests must be specified.</p>
+         <p>Each collection request must contain a <code>filter</code> property, whose value is an object containing one or more filter criteria. These criteria must correspond to valid query parameters or attributes defined for the collection resource. A combination of multiple filter criteria in a single request is allowed, if the collection request supports it.</p>
+         <p>The structure of the <code>filter</code> object must follow the same typing rules as the underlying resource attributes, ensuring that values match the expected data types. An empty result set must be returned when no resources match the given filter criteria.</p>
+         <div class="example">
+            <p>Example request when requesting two address collection resources in a single batch operation:</p>
+            <pre aria-busy="false"><code class="hljs css">// POST https://api.example.org/v1/adressen/_batch
+{
+   "requests": [
+      { "<span class="hljs-attribute">filter</span>": { "postcode": <span class="hljs-string">"1234AB"</span>, <span class="hljs-string">"huisnummer"</span>: <span class="hljs-number">1</span> }},
+      { "<span class="hljs-attribute">filter</span>": { "postcode": <span class="hljs-string">"3456XY"</span>, <span class="hljs-string">"huisnummer"</span>: <span class="hljs-number">32</span> }}
+   ]
+}</code></pre>
+         </div>
+      </dd>
+       <dt>Rationale</dt>
+      <dd>
+         <p>Using a standardized <code>filter</code> object for collection requests ensures consistency with existing collection endpoints, where filtering is already a core concept. This approach allows multiple sets of filter criteria to be evaluated in a single request, reducing the number of round-trips and eliminating the need for clients to reassemble paginated or mixed results manually. It also enables flexible querying while keeping batch requests predictable and self-contained.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients must provide a <code>filter</code> object for each collection request, with criteria that are valid for the targeted collection resource.</li>
+            <li>Servers must validate the filter object against the allowed fields and <a href="#invalid-request">reject requests</a> with unsupported or malformed filter criteria.</li>
+            <li>Each collection request in the batch produces exactly one result entry in the <code>results</code> array, containing an <code>items</code> array of zero or more matching resources.</li>
+            <li>Clients can rely on the position of results in the response to map back to the corresponding filter criteria without additional correlation logic.</li>
+            <li>If no resources match a filter, servers must return an empty <code>items</code> array rather than omitting the result.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="collection-response"><div class="header-wrapper"><h3 id="x7-2-collection-response"><bdi class="secno">7.2 </bdi>Collection response</h3><a class="self-link" href="#collection-response" aria-label="Permalink for Section 7.2"></a></div>
+<div class="rule" id="/batching/res-collection" data-type="technical">
+   <p class="rulelab"><a href="#/batching/res-collection">/batching/res-collection</a>: Return a list of collection results when batching collection resources</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>When returning the results of a batch of collection requests, the response must contain a top-level <code>results</code> property. The value of <code>results</code> must be an array with exactly the same number of items, and in the same order, as the <code>requests</code> array in the corresponding request.</p>
+         <p>Each entry in <code>results</code> must correspond to exactly one collection request and must be a JSON object containing an <code>items</code> property. The value of <code>items</code> must be an array of zero or more resource objects that match the specified filter criteria.</p>
+         <p>If no resources match a filter, the corresponding <code>items</code> array must be empty. The result entry itself must never be omitted.</p>
+         <p>Pagination of <code>items</code> within a result entry is currently not standardized. Implementations that support pagination may include additional fields (e.g. <code>nextToken</code> or <code>nextLink</code>) in the result entry. Such extensions must not alter the semantics of <code>items</code> and must be optional for clients to consume.</p>
+         <div class="example">
+            <p>Example response for two address collection requests, where the first returns matches and the second none:</p>
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"results"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+            <span class="hljs-punctuation">{</span>
+               <span class="hljs-attr">"identificatie"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"12345"</span><span class="hljs-punctuation">,</span>
+               <span class="hljs-attr">"postcode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1234AB"</span><span class="hljs-punctuation">,</span>
+               <span class="hljs-attr">"huisnummer"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+            <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-punctuation">{</span>
+               <span class="hljs-attr">"identificatie"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"67890"</span><span class="hljs-punctuation">,</span>
+               <span class="hljs-attr">"postcode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1234AB"</span><span class="hljs-punctuation">,</span>
+               <span class="hljs-attr">"huisnummer"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span>
+            <span class="hljs-punctuation">}</span>
+         <span class="hljs-punctuation">]</span>
+         <span class="hljs-comment">// optional, implementation-specific</span>
+         <span class="hljs-attr">"nextToken"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"eyJwYWdlIjoxfQ=="</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">"items"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span>
+   <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Standardizing collection results as objects with an <code>items</code> array ensures predictable and uniform handling across all batch-enabled collections. It distinguishes clearly between “no results” (<code>items</code> is empty) and “request missing” (not allowed). Preserving array length and order maintains deterministic mapping between request filters and result sets. Optional pagination fields allow flexibility for large collections without constraining implementations to a single standard prematurely.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Clients can reliably map each collection request to its result by array position, simplifying client-side processing.</li>
+            <li>Servers must always return a result entry for each request, even if <code>items</code> is empty.</li>
+            <li>Clients must be prepared to handle large <code>items</code> arrays; servers may <a href="#response-limit-exceeding">enforce limits</a> per batch to protect performance.</li>
+            <li>Implementations that support pagination must document their chosen approach and ensure that clients can still consume <code>items</code> without using pagination extensions.</li>
+            <li>The lack of a standardized pagination mechanism means interoperability may vary until a common approach is agreed upon.</li>
+         </ul>
+      </dd>
+   </dl>
+</div></section></section>
+    <section id="error-handling" class="informative"><div class="header-wrapper"><h2 id="x8-error-handling"><bdi class="secno">8. </bdi>Error handling</h2><a class="self-link" href="#error-handling" aria-label="Permalink for Section 8."></a></div><p><em>This section is non-normative.</em></p>
+<p>Batch endpoints must use the standardized Problem Details (<code>problem+json</code>) [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9457" title="Problem Details for HTTP APIs">rfc9457</a></cite>] format to represent errors. Problem details provide a machine-readable structure while still being human-readable, ensuring interoperability and consistency across APIs.</p>
+<p>Errors are reported using an HTTP error status and a <code>problem+json</code> body. Item-level errors within a batch response must not trigger a batch-level error but must be represented in the <code>results</code> array.</p>
+<section id="invalid-request"><div class="header-wrapper"><h3 id="x8-1-invalid-request"><bdi class="secno">8.1 </bdi>Invalid request</h3><a class="self-link" href="#invalid-request" aria-label="Permalink for Section 8.1"></a></div>
+<div class="rule" id="/batching/err-req-invalid" data-type="technical">
+   <p class="rulelab"><a href="#/batching/err-req-invalid">/batching/err-req-invalid</a>: Reject invalid batch requests using problem+json</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>If a batch request is malformed, contains invalid JSON, or fails schema validation, the server must reject it with status code <code>400 Bad Request</code> and return a <code>problem+json</code> body.</p>
+         <div class="example">
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// HTTP/1.1 400 Bad Request</span>
+<span class="hljs-comment">// Content-Type: application/problem+json</span>
+<span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://api.example.org/problems/invalid-request"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Invalid request"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"detail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"The request payload is missing the required property 'requests'."</span>
+<span class="hljs-punctuation">}</span></code></pre>
+        </div>
+    </dd>
+    <dt>Rationale</dt>
+    <dd>
+        <p>Explicitly rejecting invalid requests ensures clients receive clear feedback on how to correct errors, instead of undefined or partial behavior. Using the standardized problem+json format promotes interoperability across APIs.</p>
+    </dd>
+    <dt>Implications</dt>
+    <dd>
+        <ul>
+        <li>Clients must validate requests before submission to avoid unnecessary rejections.</li>
+        <li>Servers must consistently return problem+json for all 400-level errors in batch requests.</li>
+        <li>Error responses must include human-readable details and machine-readable fields for automated handling.</li>
+        </ul>
+    </dd>
+</dl></div>
+
+</section><section id="request-limit-exceeding"><div class="header-wrapper"><h3 id="x8-2-request-limit-exceeding"><bdi class="secno">8.2 </bdi>Request limit exceeding</h3><a class="self-link" href="#request-limit-exceeding" aria-label="Permalink for Section 8.2"></a></div>
+<div class="rule" id="/batching/err-req-limit" data-type="technical">
+   <p class="rulelab"><a href="#/batching/err-req-limit">/batching/err-req-limit</a>: Reject batch requests that exceed the maximum number of items</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>If the number of entries in <code>requests</code> exceeds the server-defined maximum, the server must reject the request with status code <code>400 Bad Request</code> and return a <code>problem+json</code> body.</p>
+         <div class="example">
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// HTTP/1.1 400 Bad Request</span>
+<span class="hljs-comment">// Content-Type: application/problem+json</span>
+<span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://api.example.org/problems/request-limit-exceeded"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Request limit exceeded"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"detail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Batch requests are limited to 100 items, but 114 items were submitted."</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Exceeding the maximum number of request items is a client-side input error, not a payload overflow. Returning <code>400 Bad Request</code> clarifies that the client must correct the request, while still using the standardized <code>problem+json</code> format for machine-readable feedback.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Servers must document their maximum batch size and enforce it consistently.</li>
+            <li>Clients must be prepared to split large batches into multiple smaller ones.</li>
+            <li>Validation of request size becomes part of standard request validation logic, not just transport-level checks.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="response-limit-exceeding"><div class="header-wrapper"><h3 id="x8-3-response-limit-exceeding"><bdi class="secno">8.3 </bdi>Response limit exceeding</h3><a class="self-link" href="#response-limit-exceeding" aria-label="Permalink for Section 8.3"></a></div>
+<div class="rule" id="/batching/err-res-limit" data-type="technical">
+   <p class="rulelab"><a href="#/batching/err-res-limit">/batching/err-res-limit</a>: Reject batch requests that would produce oversized responses</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>If fulfilling a batch request would result in a response exceeding server-defined limits (for example, too many results or an oversized payload), the server must reject the request with status code <code>400 Bad Request</code> and return a <code>problem+json</code> body.</p>
+         <div class="example">
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// HTTP/1.1 400 Bad Request</span>
+<span class="hljs-comment">// Content-Type: application/problem+json</span>
+<span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://api.example.org/problems/response-limit-exceeded"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Response limit exceeded"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"detail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"The response would exceed the maximum allowed size of 10 MB."</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Requests that would result in an oversized response represent invalid client input rather than an infrastructure failure. Using <code>400 Bad Request</code> makes it clear that the client must adjust filters or batch size. The standardized <code>problem+json</code> body provides actionable details.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Servers must define reasonable response size limits and enforce them consistently across batch endpoints.</li>
+            <li>Clients must anticipate possible rejections and adapt (e.g., by narrowing filter criteria or splitting requests).</li>
+            <li>Clear feedback helps prevent repeated oversized queries and supports monitoring of misuse or misconfiguration.</li>
+         </ul>
+      </dd>
+   </dl>
+</div>
+
+</section><section id="invalid-keys"><div class="header-wrapper"><h3 id="x8-4-invalid-keys"><bdi class="secno">8.4 </bdi>Invalid keys</h3><a class="self-link" href="#invalid-keys" aria-label="Permalink for Section 8.4"></a></div>
+<div class="rule" id="/batching/err-invalid keys" data-type="technical">
+   <p class="rulelab"><a href="#/batching/err-invalid keys">/batching/err-invalid keys</a>: Reject singular batch requests with invalid keys</p>
+   <dl>
+      <dt>Statement</dt>
+      <dd>
+         <p>If a singular batch request contains invalid keys (for example, an invalid UUID), the server must reject the entire batch with status code <code>400 Bad Request</code> and return a <code>problem+json</code> body. The response must indicate which keys caused the failure.</p>
+         <div class="example">
+            <pre aria-busy="false"><code class="hljs json"><span class="hljs-comment">// HTTP/1.1 400 Bad Request</span>
+<span class="hljs-comment">// Content-Type: application/problem+json</span>
+<span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://api.example.org/problems/invalid-keys"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Invalid keys"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"detail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"One or more provided keys are invalid."</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"invalidKeys"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">"not-a-uuid"</span>
+    <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+         </div>
+      </dd>
+      <dt>Rationale</dt>
+      <dd>
+         <p>Invalid keys represent client input errors. Rejecting the entire batch avoids returning mixed results that could confuse clients and ensures that request validation is strict and predictable. Including the list of failing keys helps clients identify and correct errors efficiently.</p>
+      </dd>
+      <dt>Implications</dt>
+      <dd>
+         <ul>
+            <li>Servers must validate all keys before processing and reject the batch if any are invalid.</li>
+            <li>Clients must ensure that all identifiers conform to the expected format before submitting the request.</li>
+            <li>The error response may include an <code>invalidKeys</code> array or equivalent field to indicate which keys failed, enabling corrective actions.</li>
+         </ul>
+      </dd>
+   </dl>
+</div></section></section>
+    <section id="existing-standards" class="informative"><div class="header-wrapper"><h2 id="x9-existing-standards"><bdi class="secno">9. </bdi>Existing standards</h2><a class="self-link" href="#existing-standards" aria-label="Permalink for Section 9."></a></div><p><em>This section is non-normative.</em></p>
+<p>A number of widely used APIs and standards support batching. Approaches vary along several axes: endpoint scope (per-collection vs global), payload shape (JSON envelope vs multipart/mixed), operation types (read-only vs mixed read/write), result mapping (position vs correlation IDs), and error semantics (uniform result vs per-subrequest HTTP response).</p>
+<section id="elasticsearch-multi-get"><div class="header-wrapper"><h3 id="x9-1-elasticsearch-multi-get"><bdi class="secno">9.1 </bdi>Elasticsearch <code>Multi-Get</code></h3><a class="self-link" href="#elasticsearch-multi-get" aria-label="Permalink for Section 9.1"></a></div>
+<p>Elasticsearch exposes a per-index and global <code>_mget</code> endpoint that retrieves multiple documents by ID in a single call. Clients submit an array of document identifiers in the request payload and receive a result per requested identifier. The model is read-only, index-scoped by default, and result order corresponds to the request order.</p>
+<p>Example request payload:</p>
+<pre><code class="json hljs" aria-busy="false"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"docs"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</section><section id="odata-batch"><div class="header-wrapper"><h3 id="x9-2-odata-batch"><bdi class="secno">9.2 </bdi>OData <code>$batch</code></h3><a class="self-link" href="#odata-batch" aria-label="Permalink for Section 9.2"></a></div>
+<p>OData defines a global <code>$batch</code> endpoint that can combine heterogeneous operations (reads and writes) into a single HTTP request. Historically, batching used media type <code>multipart/mixed</code>; OData v4 additionally defines a JSON batch request/response format as part of the [<cite><a class="bibref" data-link-type="biblio" href="#bib-odata json format" title="OData JSON Format Version 4.01">OData JSON Format</a></cite>]. Responses contain per-subrequest status, headers, and bodies, effectively embedding multiple HTTP exchanges in one envelope. Ordering and dependencies can be expressed.</p>
+<p>Example request payload (JSON batch format):</p>
+<pre><code class="json hljs" aria-busy="false"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"requests"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"get"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://example.org/api/buildings/1"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"method"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"get"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://example.org/api/buildings/2"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</section><section id="google-apis"><div class="header-wrapper"><h3 id="x9-3-google-apis"><bdi class="secno">9.3 </bdi>Google APIs</h3><a class="self-link" href="#google-apis" aria-label="Permalink for Section 9.3"></a></div>
+<p>Several Google APIs accept batch requests as a single HTTP call with media type <code>multipart/mixed</code>, where each part is a nested HTTP request. This enables combining multiple heterogeneous operations; responses mirror the embedded HTTP results. The format prioritizes transport flexibility but is more complex to implement efficiently than a pure-JSON envelope.</p>
+</section></section>
+  
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references">
+    <div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    <dl class="bibliography"><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd></dl>
+  </section><section id="informative-references">
+    <div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    <dl class="bibliography"><dt id="bib-odata json format">[OData JSON Format]</dt><dd>
+      <a href="https://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html"><cite>OData JSON Format Version 4.01</cite></a>. OASIS. 11 May 2020. URL: <a href="https://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html">https://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html</a>
+    </dd><dt id="bib-rfc9457">[rfc9457]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc9457"><cite>Problem Details for HTTP APIs</cite></a>. M. Nottingham; E. Wilde; S. Dalal.  IETF. July 2023. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9457">https://www.rfc-editor.org/rfc/rfc9457</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Kennisplatform API's Standard - Candidate version</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
