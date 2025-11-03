@@ -10,6 +10,8 @@ on:
     branches:
       - develop
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 1 * *'
 
 jobs:
   deploy:
@@ -66,3 +68,71 @@ jobs:
             -e "ssh -i ~/.ssh/id_rsa" \
             . \
             "${SSH_USER}@${SSH_HOST}:${{ steps.path.outputs.dir }}/"
+
+  monthly_linkcheck:
+    name: Monthly Linkchecker Report
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'schedule'
+    steps:
+      - name: Install linkchecker and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y linkchecker jq
+
+      - name: Run linkchecker
+        id: linkchecker
+        run: |
+          set +e
+          linkchecker --no-warnings -o html -t 1 https://docs.geostandaarden.nl/ > linkchecker-report.html
+          STATUS=$?
+          if [ ! -s linkchecker-report.html ]; then
+            echo "<p>Linkchecker failed with exit code ${STATUS}</p>" > linkchecker-report.html
+          fi
+          echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
+          exit "$STATUS"
+
+      - name: Upload linkchecker report to Slack
+        if: always()
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: |
+          set -e
+          FILESIZE=$(wc -c < linkchecker-report.html)
+          echo "File size: $FILESIZE"
+
+          UPLOAD_JSON=$(curl --silent --request POST \
+            --url https://slack.com/api/files.getUploadURLExternal \
+            --header "authorization: Bearer $SLACK_TOKEN" \
+            --header "content-type: application/x-www-form-urlencoded; charset=utf-8" \
+            --data filename=linkchecker-report.html \
+            --data length=$FILESIZE)
+
+          echo "UPLOAD_JSON: $UPLOAD_JSON"
+
+          UPLOAD_URL=$(echo "$UPLOAD_JSON" | jq -r '.upload_url')
+          FILE_ID=$(echo "$UPLOAD_JSON" | jq -r '.file_id')
+
+          if [ "$UPLOAD_URL" = "null" ] || [ -z "$UPLOAD_URL" ]; then
+            echo "Upload URL ontbreekt! Slack response: $UPLOAD_JSON"
+            exit 1
+          fi
+
+          UPLOAD_HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            -F "filename=@linkchecker-report.html" \
+            "$UPLOAD_URL")
+
+          echo "UPLOAD HTTP STATUS: $UPLOAD_HTTP_STATUS"
+          sleep 5
+
+          COMPLETE_RESPONSE=$(curl --silent -X POST \
+            -H "Authorization: Bearer $SLACK_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "{\"files\":[{\"id\":\"$FILE_ID\"}],\"channel_id\":\"$CHANNEL_ID\",\"initial_comment\":\"Linkchecker rapport (exit code ${{ steps.linkchecker.outputs.status }}):\"}" \
+            https://slack.com/api/files.completeUploadExternal)
+
+          echo "COMPLETE_RESPONSE: $COMPLETE_RESPONSE"
+          if [ "$(echo "$COMPLETE_RESPONSE" | jq -r '.ok')" != "true" ]; then
+            echo "Error completing upload: $COMPLETE_RESPONSE"
+            exit 1
+          fi
