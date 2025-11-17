@@ -1,73 +1,43 @@
-name: Deploy Static Docs
+name: Build & Deploy Static Docs
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
   push:
     branches:
-      - develop
+      - main
   workflow_dispatch:
   schedule:
     - cron: '0 6 1 * *'
 
+env:
+  AZURE_CONTAINER_REGISTRY: geonovumregistrytest.azurecr.io
+  WEB_IMAGE_NAME: geonovumregistrytest.azurecr.io/docs-geostandaarden
+
 jobs:
-  deploy:
-    name: Deploy `/docs` via SCP
-    runs-on: ubuntu-22.04
-
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
-
-    env:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
-      SSH_HOST:        ${{ secrets.SSH_HOST }}
-      SSH_USER:        ${{ secrets.SSH_USER }}
+  build-and-push-web:
+    name: Build & Push Web Image
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: 23
-#
-#      - name: Run build script
-#        run: node build.js
+      - name: Login to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.AZURE_CONTAINER_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
-
-      - name: Set target path based on branch
-        id: path
-        run: |
-          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
-            echo "dir=${{ secrets.SSH_TARGET_DIR_PROD }}" >> $GITHUB_OUTPUT
-          else
-            echo "dir=${{ secrets.SSH_TARGET_DIR_DEV }}" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Copy `.` via rsync
-        run: |
-          rsync -avz \
-            --partial \
-            --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='.gitignore' \
-            --exclude='.gitattributes' \
-            --exclude='.DS_Store' \
-            --exclude='img/' \
-            --exclude='README.md/' \
-            -e "ssh -i ~/.ssh/id_rsa" \
-            . \
-            "${SSH_USER}@${SSH_HOST}:${{ steps.path.outputs.dir }}/"
+      - name: Build & push container image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.WEB_IMAGE_NAME }}:latest
+            ${{ env.WEB_IMAGE_NAME }}:${{ github.sha }}
 
   monthly_linkcheck:
     name: Monthly Linkchecker Report
