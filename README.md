@@ -41,6 +41,17 @@ Deze repository wordt **automatisch bijgewerkt** vanuit andere repositories die 
 - **Merge de PR alleen als alles klopt**.
   - Na merge wordt automatisch gedeployed naar **productie**.
 
+## Index bijwerken
+
+De hoofdpagina (`index.html`) wordt tijdens de build vooraf gegenereerd met Node:
+
+```bash
+npm install # alleen de eerste keer
+npm run generate:index
+```
+
+Het script (`scripts/generate-index.js`) leest de mappen in deze repository en bouwt dezelfde inhoudsopgave die eerder via `index.php` dynamisch werd opgebouwd. Draai dit script wanneer er folders bijkomen of verdwijnen zodat de pipeline een volledig statische site oplevert.
+
 ---
 
 ## Vragen?

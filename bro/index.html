@@ -1,57 +1,4 @@
 <!DOCTYPE html>
-
-<?php if (isset($_GET['browse']) && $_GET['browse']==true) { ?>
-<ul>
-<?php $files= scandir('.'); ?>
-<?php foreach ($files as $file) {	?>
-
-<li><a href="<?php echo $file;?>"><?php echo $file; ?></a></li>
-
-
-<?php } ?>
-</ul>
-<?php exit;}  ?>
-
-
-<?php 
-
-$config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronderzoek',
-														   'BHR-GT' => 'Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse',
-														   'bhr-p' => 'Bodemkundig Booronderzoek',
-														   'CPT' => 'Geotechnisch sondeeronderzoek',
-														   'sfr' => 'Wandonderzoek - bodemkunde',														   
-														   ),
-				'Domein Grondwatergebruik' => array( 'guf' => 'Grondwatergebruiksysteem',
-													 'gpd' => 'Grondwaterproductiedossier',
-													 
-													),
-				'Domein Grondwatermonitoring' => array('FRD' => 'Formatieweerstand onderzoek',
-													   'gmn' => 'Grondwatermonitoringnet',
-													   'gmw' => 'Grondwatermonitoringput',
-													   'gar' => 'Grondwatersamenstellingsonderzoek',
-													   'gld' => 'Grondwaterstandonderzoek',
-													   
-													   ),
-				'Domein Mijnbouwwet' => array('EPC' => 'Mijnbouwconstructie',
-											  'EPL' => 'Mijnbouwwetvergunning',
-											  ),
-				'Modellen' => array(
-								'SGM' => 'Bodemkaart',
-								'DGM' => 'Digitaal Geologisch Model', 
-								'GMM' => 'Geomorfologische kaart',
-								'GTM' => 'GeoTOP',
-								'wdm' => 'Model Grondwaterspiegeldiepte',
-								'HGM' => 'REGIS II',				
-								
-							 ),
-				'Milieukwaliteit' => array(
-								'sad' => 'Milieuhygiënisch bodemonderzoek',			
-								'sld' => 'Overheidsbesluit bodemverontreiniging',	
-								
-							 ),			 
-				);
-
-?>
 <html lang="nl">
 <head>
    <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -169,37 +116,41 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
       <p>Op <a href="https://docs.geostandaarden.nl/bro">https://docs.geostandaarden.nl/bro</a> publiceert Geonovum de standaarden en technische documenten voor de Basisregistratie Ondergrond (BRO).</p>
       <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.bro-productomgeving.nl/bpo/latest/">BRO Productomgeving</a> voor toelichting op de documentatie.</p>
       <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
-     
-	  
-
-<?php 
-
-foreach ($config as $domein => $registratieobjecten) { 	
-	
-	echo '<div class="pubDomain">';	
-	
-	echo '<h2><a href="bro">' . $domein . '</a></h2>';
-	
-	if (count($registratieobjecten) == 0) {
-		echo '<i>Geen publicaties</i>';
-	}
-	foreach ($registratieobjecten as $mnemonic=>$naam) {
-		echo '<h3><a href="./' . $mnemonic . '">'.$naam . ' ('.strtoupper($mnemonic) . ')</a></h3>';
-	}
-	echo '</div>';
-}
-	
-	/* echo '<ul class="docs">';
-	foreach ($registratieobjecten as $mnemonic=>$naam) {
-		echo ' <li>';
-		echo '  <span class="final">';
-		echo '   <a href="./' . strtolower($mnemonic) . '">'.$naam . ' ('.$mnemonic . ')</a>';
-		echo '  </span>';
-		echo ' </li>';
-	}
-	echo '</ul>'; 
-}*/
-?>			 
-   
+<div class="pubDomain">
+  <h2><a href="bro">Domein Bodem- en grondonderzoek</a></h2>
+  <h3><a href="./bhr-g">Booronderzoek (BHR-G)</a></h3>
+  <h3><a href="./BHR-GT">Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse (BHR-GT)</a></h3>
+  <h3><a href="./bhr-p">Bodemkundig Booronderzoek (BHR-P)</a></h3>
+  <h3><a href="./CPT">Geotechnisch sondeeronderzoek (CPT)</a></h3>
+  <h3><a href="./sfr">Wandonderzoek - bodemkunde (SFR)</a></h3>
+</div><div class="pubDomain">
+  <h2><a href="bro">Domein Grondwatergebruik</a></h2>
+  <h3><a href="./guf">Grondwatergebruiksysteem (GUF)</a></h3>
+  <h3><a href="./gpd">Grondwaterproductiedossier (GPD)</a></h3>
+</div><div class="pubDomain">
+  <h2><a href="bro">Domein Grondwatermonitoring</a></h2>
+  <h3><a href="./FRD">Formatieweerstand onderzoek (FRD)</a></h3>
+  <h3><a href="./gmn">Grondwatermonitoringnet (GMN)</a></h3>
+  <h3><a href="./gmw">Grondwatermonitoringput (GMW)</a></h3>
+  <h3><a href="./gar">Grondwatersamenstellingsonderzoek (GAR)</a></h3>
+  <h3><a href="./gld">Grondwaterstandonderzoek (GLD)</a></h3>
+</div><div class="pubDomain">
+  <h2><a href="bro">Domein Mijnbouwwet</a></h2>
+  <h3><a href="./EPC">Mijnbouwconstructie (EPC)</a></h3>
+  <h3><a href="./EPL">Mijnbouwwetvergunning (EPL)</a></h3>
+</div><div class="pubDomain">
+  <h2><a href="bro">Modellen</a></h2>
+  <h3><a href="./SGM">Bodemkaart (SGM)</a></h3>
+  <h3><a href="./DGM">Digitaal Geologisch Model (DGM)</a></h3>
+  <h3><a href="./GMM">Geomorfologische kaart (GMM)</a></h3>
+  <h3><a href="./GTM">GeoTOP (GTM)</a></h3>
+  <h3><a href="./wdm">Model Grondwaterspiegeldiepte (WDM)</a></h3>
+  <h3><a href="./HGM">REGIS II (HGM)</a></h3>
+</div><div class="pubDomain">
+  <h2><a href="bro">Milieukwaliteit</a></h2>
+  <h3><a href="./sad">Milieuhygiënisch bodemonderzoek (SAD)</a></h3>
+  <h3><a href="./sld">Overheidsbesluit bodemverontreiniging (SLD)</a></h3>
+</div>
    </div>
 </body>
+</html>
