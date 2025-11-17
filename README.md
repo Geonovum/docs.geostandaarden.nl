@@ -46,7 +46,7 @@ Deze repository wordt **automatisch bijgewerkt** vanuit andere repositories die 
 De hoofdpagina (`index.html`) wordt tijdens de build vooraf gegenereerd met Node:
 
 ```bash
-npm install # alleen de eerste keer
+npm install
 npm run generate:index
 ```
 
