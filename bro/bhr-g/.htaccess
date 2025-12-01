@@ -1,3 +1,5 @@
 RewriteEngine On
-RewriteRule ^(.*)$ /bro/vv-im-bhr-g-20241220/$1 [NC,L]
-
+# Redirect map-root en onderliggende paden naar de nieuwste versie-map
+RewriteRule ^$           /bro/vv-st-bhr-g-20251002/ [R=302,L]
+RewriteRule ^(.+)$       /bro/vv-st-bhr-g-20251002/$1 [R=302,L]
+Options -Indexes
