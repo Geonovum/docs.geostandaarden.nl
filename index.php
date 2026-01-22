@@ -117,7 +117,7 @@
 <?php
 $pubDomainListURL = 'pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['NWBBGT', '.GIT', 'BRTNEXT', 'SFR', 'MEDIA'];
+$ignoreList = ['NWBBGT', '.GIT', 'BRTNEXT', 'SFR', 'MEDIA','.WELL-KNOWN','.GITHUB'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
 $publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
