@@ -8,6 +8,9 @@ on:
   schedule:
     - cron: '0 6 1 * *'
 
+env:
+  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+
 jobs:
   build-and-push-web:
     name: Build & Push Web Image
@@ -21,13 +24,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set image name
-        run: echo "WEB_IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+      - name: Validate container registry variable
+        run: |
+          if [ -z "${CONTAINER_REGISTRY}" ]; then
+            echo "CONTAINER_REGISTRY is not set. Configure it as an org or repo variable in GitHub Actions settings."
+            exit 1
+          fi
 
-      - name: Login to GHCR
+      - name: Set image name
+        run: echo "WEB_IMAGE_NAME=${CONTAINER_REGISTRY}/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+
+      - name: Login to container registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.CONTAINER_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
