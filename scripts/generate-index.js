@@ -19,6 +19,10 @@ const IGNORE_LIST = new Set([
 ]);
 const PUBLISH_ALL_LIST = new Set(['G4W', 'KL', 'MIM', 'OOV', 'RO', 'SERV']);
 
+function sanitizeLogValue(value) {
+  return String(value).replace(/[\r\n\t]/g, ' ').trim();
+}
+
 // Map specType abbreviations to the buckets shown on the landing page.
 const SPEC_TYPE_GROUP = new Map([
   ['no', 'norm'],
@@ -42,7 +46,7 @@ const TEMPLATE_START = `<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Geonovum specificaties</title>
     <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico' />
     <style>
@@ -82,6 +86,7 @@ const TEMPLATE_START = `<!DOCTYPE html>
         border-bottom: 4px solid rgb(141, 182, 63);
         line-height: 4rem;
         width: 34rem;
+        max-width: 100%;
     }
 
     h3 {
@@ -127,6 +132,7 @@ const TEMPLATE_START = `<!DOCTYPE html>
 
     div.pubDomain {
       width: 44rem;
+      max-width: 100%;
       display: inline-grid;
     }
 
@@ -138,6 +144,7 @@ const TEMPLATE_START = `<!DOCTYPE html>
     ul.docs {
       border-bottom: 1px solid rgba(94, 94, 94, 0.2);
       width: 36rem;
+      max-width: 100%;
       padding-bottom: 2rem;
     }
 
@@ -163,7 +170,7 @@ const TEMPLATE_END = `
   try {
     const html = await buildIndexPage();
     await fs.writeFile(OUTPUT_FILE, html);
-    console.log(`Updated ${path.relative(rootDir, OUTPUT_FILE)}`);
+    console.log(`Updated ${sanitizeLogValue(path.relative(rootDir, OUTPUT_FILE))}`);
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
