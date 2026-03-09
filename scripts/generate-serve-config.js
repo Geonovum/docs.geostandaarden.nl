@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Converts .htaccess RewriteRule directives to serve.json redirects
- * so the site can be served locally with `serve` without Apache.
+ * Generates serve.json with redirect rules from two sources:
  *
- * Only handles the common pattern:
- *   RewriteRule ^(.*)$ /destination/path/$1 [NC,L]
+ * 1. .htaccess RewriteRule directives (local path rewrites)
+ *      RewriteRule ^(.*)$ /destination/path/$1 [NC,L]
+ *
+ * 2. index.html <meta http-equiv="refresh"> redirects (external URL redirects)
+ *    Scanned from direct subdirectories of the project root only.
+ *    These replace the old PHP `Location:` header redirects with proper HTTP 301s.
  */
 
 const fs = require('fs/promises');
@@ -21,11 +24,14 @@ const IGNORE_DIRS = new Set([
 // Matches: RewriteRule ^(.*)$ /destination/$1 [flags]
 // Captures the destination prefix before the $1 back-reference.
 // Only local (non-proxy) rewrites — skips rules with external URLs or [P] flag.
-// Using RegExp constructor to avoid shell-escaping confusion with \$
 const REWRITE_RULE_RE = new RegExp(
   String.raw`^RewriteRule\s+\S+\s+(\/\S+?)\$1(?:\s+\[([^\]]*)\])?$`,
   'i'
 );
+
+// Matches: <meta http-equiv="refresh" content="0; url=https://...">
+const META_REFRESH_RE =
+  /<meta\s+http-equiv=["']refresh["'][^>]+content=["'][^;]*;\s*url=([^"'>]+)/i;
 
 async function findHtaccessFiles(dir, results = []) {
   let entries;
@@ -59,7 +65,7 @@ function parseRewriteDestination(content) {
   return null;
 }
 
-async function main() {
+async function collectHtaccessRedirects() {
   const htaccessFiles = await findHtaccessFiles(rootDir);
   const redirects = [];
 
@@ -69,16 +75,65 @@ async function main() {
     if (!destination) continue;
 
     const relDir = path.relative(rootDir, path.dirname(htaccessPath)).replace(/\\/g, '/');
-    const source = `/${relDir}`;
+    // Skip root-level .htaccess — relDir is empty, which would produce malformed paths
+    if (!relDir) continue;
 
+    const source = `/${relDir}`;
     // Redirect both the bare directory and any sub-paths within it
     redirects.push({ source, destination, type: 301 });
     redirects.push({ source: `${source}/:path*`, destination: `${destination}:path*`, type: 301 });
   }
+  return redirects;
+}
 
+async function collectMetaRefreshRedirects() {
+  const redirects = [];
+  let entries;
+  try {
+    entries = await fs.readdir(rootDir, { withFileTypes: true });
+  } catch {
+    return redirects;
+  }
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    if (IGNORE_DIRS.has(entry.name)) continue;
+
+    const indexPath = path.join(rootDir, entry.name, 'index.html');
+    let content;
+    try {
+      content = await fs.readFile(indexPath, 'utf8');
+    } catch {
+      continue;
+    }
+
+    const match = content.match(META_REFRESH_RE);
+    if (!match) continue;
+
+    const destination = match[1].trim();
+    redirects.push({ source: `/${entry.name}`, destination, type: 301 });
+  }
+  return redirects;
+}
+
+async function main() {
+  const [htaccessRedirects, metaRefreshRedirects] = await Promise.all([
+    collectHtaccessRedirects(),
+    collectMetaRefreshRedirects(),
+  ]);
+
+  // .htaccess redirects take precedence — skip meta-refresh entries for already-covered paths
+  const htaccessSources = new Set(htaccessRedirects.map((r) => r.source));
+  const externalRedirects = metaRefreshRedirects.filter((r) => !htaccessSources.has(r.source));
+
+  const redirects = [...htaccessRedirects, ...externalRedirects];
   const config = { redirects };
+
   await fs.writeFile(OUTPUT_FILE, JSON.stringify(config, null, 2) + '\n');
-  console.log(`Generated serve.json with ${redirects.length / 2} redirect(s)`);
+  console.log(
+    `Generated serve.json with ${htaccessRedirects.length / 2} .htaccess redirect(s)` +
+    ` and ${externalRedirects.length} meta-refresh redirect(s)`
+  );
 }
 
 main().catch((err) => {
