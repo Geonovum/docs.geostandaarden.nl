@@ -70,16 +70,23 @@ jobs:
             echo "<p>Linkchecker failed with exit code ${STATUS}</p>" > linkchecker-report.html
           fi
           echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
-          exit "$STATUS"
       
       - name: Upload linkchecker to Slack
+        id: slack_upload
         if: always()
         uses: slackapi/slack-github-action@v2.1.1
         with:
+          errors: true
           method: files.uploadV2
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-            initial_comment: "Linkchecker rapport:"
+            initial_comment: "Linkchecker rapport (exit code ${{ steps.linkchecker.outputs.status }}):"
             file: "./linkchecker-report.html"
             filename: "linkchecker-report.html"
+
+      - name: Fail job when linkchecker finds issues
+        if: steps.linkchecker.outputs.status != '0'
+        run: |
+          echo "Linkchecker exited with status ${{ steps.linkchecker.outputs.status }}."
+          exit 1
