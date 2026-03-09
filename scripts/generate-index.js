@@ -12,6 +12,7 @@ const IGNORE_LIST = new Set([
   'NWBBGT',
   '.GIT',
   '.GITHUB',
+  '.WELL-KNOWN',
   'BRTNEXT',
   'SFR',
   'MEDIA',
