@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "generate:index": "node scripts/generate-index.js",
-    "start": "serve -l ${PORT:-4173} ."
+    "generate:serve-config": "node scripts/generate-serve-config.js",
+    "build": "npm run generate:index && npm run generate:serve-config",
+    "start": "serve -l ${PORT:-8080} ."
   },
   "engines": {
     "node": ">=18"
@@ -13,3 +15,4 @@
     "serve": "^14.2.1"
   }
 }
+  

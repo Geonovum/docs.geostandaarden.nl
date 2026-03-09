@@ -9,7 +9,7 @@ COPY pubDomainList.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run generate:index
+RUN npm run build
 
 # Runtime stage: serve the static site
 FROM node:20-alpine
