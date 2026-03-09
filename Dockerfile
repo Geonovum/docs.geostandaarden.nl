@@ -5,9 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY scripts ./scripts
 COPY pubDomainList.json ./
-COPY . .
 
 RUN npm ci
+
+COPY . .
 RUN npm run generate:index
 
 # Runtime stage: serve the static site
