@@ -6,17 +6,23 @@ on:
       - main
       - develop
   workflow_dispatch:
+    inputs:
+      run_linkcheck:
+        description: Run monthly linkcheck job
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '0 6 1 * *'
 
 env:
-  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+  CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
 
 jobs:
   build-and-push-web:
     name: Build & Push Web Image
     runs-on: ubuntu-latest
-    if: github.event_name != 'schedule'
+    if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.run_linkcheck)
     permissions:
       contents: read
       packages: write
@@ -24,13 +30,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Validate container registry variable
-        run: |
-          if [ -z "${CONTAINER_REGISTRY}" ]; then
-            echo "CONTAINER_REGISTRY is not set. Configure it as an org or repo variable in GitHub Actions settings."
-            exit 1
-          fi
 
       - name: Set image name
         run: echo "WEB_IMAGE_NAME=${CONTAINER_REGISTRY}/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
@@ -51,11 +50,10 @@ jobs:
           tags: |
             ${{ env.WEB_IMAGE_NAME }}:latest
             ${{ env.WEB_IMAGE_NAME }}:${{ github.sha }}
-
   monthly_linkcheck:
     name: Monthly Linkchecker Report
     runs-on: ubuntu-22.04
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_linkcheck)
     steps:
       - name: Install linkchecker and jq
         run: |
@@ -73,49 +71,15 @@ jobs:
           fi
           echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
           exit "$STATUS"
-
-      - name: Upload linkchecker report to Slack
+      
+      - name: Upload linkchecker to Slack
         if: always()
-        env:
-          SLACK_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-        run: |
-          set -e
-          FILESIZE=$(wc -c < linkchecker-report.html)
-          echo "File size: $FILESIZE"
-
-          UPLOAD_JSON=$(curl --silent --request POST \
-            --url https://slack.com/api/files.getUploadURLExternal \
-            --header "authorization: Bearer $SLACK_TOKEN" \
-            --header "content-type: application/x-www-form-urlencoded; charset=utf-8" \
-            --data filename=linkchecker-report.html \
-            --data length=$FILESIZE)
-
-          echo "UPLOAD_JSON: $UPLOAD_JSON"
-
-          UPLOAD_URL=$(echo "$UPLOAD_JSON" | jq -r '.upload_url')
-          FILE_ID=$(echo "$UPLOAD_JSON" | jq -r '.file_id')
-
-          if [ "$UPLOAD_URL" = "null" ] || [ -z "$UPLOAD_URL" ]; then
-            echo "Upload URL ontbreekt! Slack response: $UPLOAD_JSON"
-            exit 1
-          fi
-
-          UPLOAD_HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-            -F "filename=@linkchecker-report.html" \
-            "$UPLOAD_URL")
-
-          echo "UPLOAD HTTP STATUS: $UPLOAD_HTTP_STATUS"
-          sleep 5
-
-          COMPLETE_RESPONSE=$(curl --silent -X POST \
-            -H "Authorization: Bearer $SLACK_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data "{\"files\":[{\"id\":\"$FILE_ID\"}],\"channel_id\":\"$CHANNEL_ID\",\"initial_comment\":\"Linkchecker rapport (exit code ${{ steps.linkchecker.outputs.status }}):\"}" \
-            https://slack.com/api/files.completeUploadExternal)
-
-          echo "COMPLETE_RESPONSE: $COMPLETE_RESPONSE"
-          if [ "$(echo "$COMPLETE_RESPONSE" | jq -r '.ok')" != "true" ]; then
-            echo "Error completing upload: $COMPLETE_RESPONSE"
-            exit 1
-          fi
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: files.uploadV2
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+            initial_comment: "Linkchecker rapport:"
+            file: "./linkchecker-report.html"
+            filename: "linkchecker-report.html"
