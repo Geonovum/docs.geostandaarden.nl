@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="text/html; charset=utf-8" http-equiv="content-type">
-<meta name="generator" content="ReSpec 35.4.1">
+<meta name="generator" content="ReSpec 35.6.1">
 <style>
 dfn{cursor:pointer}
 .dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
@@ -27,15 +27,10 @@ dfn{cursor:pointer}
     
     
     
-<title>Batching</title>
+<title>API Batching module</title>
     
     
     
-    
-<link rel="stylesheet" type="text/css" href="media/respec/style.css">
-    
-<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
-  
 <style id="respec-mainstyle">
 @keyframes pop{
 0%{transform:scale(1,1)}
@@ -79,6 +74,11 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
+    
+<link rel="stylesheet" type="text/css" href="../../media/respec/style.css">
+    
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
 <style id="respec-nlgov">
 img.license{float:left;padding-right:5px;background:0 0}
 </style>
@@ -912,12 +912,13 @@ img.license{float:left;padding-right:5px;background:0 0}
       "id": "odata json format"
     }
   },
-  "title": "Batching",
+  "title": "API Batching module",
   "specStatus": "cv",
   "specType": "st",
   "pubDomain": "api",
   "shortName": "API-Strategie-mod-batching",
   "edDraftURI": "https://geonovum.github.io/KP-APIs/API-strategie-modules/batching",
+  "publishDate": "2025-03-11",
   "editors": [
     {
       "name": "Joost Farla",
@@ -957,21 +958,20 @@ img.license{float:left;padding-right:5px;background:0 0}
 <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
 
   <body class="h-entry"><div class="head">
-     <h1 id="title" class="title">Batching</h1>
+     <h1 id="title" class="title">API Batching module</h1>
     
     <h2>
       Kennisplatform API's Standard<br>
       Candidate version
-      <time class="dt-published" datetime="2025-10-16">October 21, 2025</time>
+      <time class="dt-published" datetime="2025-03-11">March 11, 2025</time>
     </h2>
     <dl>
-       
-      <dt>Latest version</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-batching/">https://docs.geostandaarden.nl/api/API-Strategie-mod-batching/</a></dd>
-	  
-	  <dt>This version</dt><dd><a href="https://docs.geostandaarden.nl/api/API-Strategie-mod-batching-20251021">https://docs.geostandaarden.nl/api/API-Strategie-mod-batching-20251021</a></dd>
       
       
       <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/batching">https://geonovum.github.io/KP-APIs/API-strategie-modules/batching</a></dd>
+      
+      
+      
       
       
       <dt>Editor:</dt>
@@ -993,11 +993,11 @@ img.license{float:left;padding-right:5px;background:0 0}
       <dt>Participate:</dt><dd>
     <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/">GitHub Geonovum/KP-APIs</a>
   </dd><dd>
-    <a href="https://github.com/Geonovum/KP-APIs/issues/">File an issue</a>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/issues/">File an issue</a>
   </dd><dd>
-    <a href="https://github.com/Geonovum/KP-APIs/commits/">Commit history</a>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/commits/">Commit history</a>
   </dd><dd>
-    <a href="https://github.com/Geonovum/KP-APIs/pulls/">Pull requests</a>
+    <a href="https://github.com/Geonovum/KP-APIs/tree/master/API-strategie-modules/batching/pulls/">Pull requests</a>
   </dd>
     </dl>
     
@@ -1012,7 +1012,7 @@ img.license{float:left;padding-right:5px;background:0 0}
     <section id="abstract" class="introductory"><h2>Abstract</h2><p>This module defines a standardized approach for performing batch operations in RESTful APIs. The objective of batching is to improve efficiency and scalability in situations where clients need to retrieve multiple resources in a single interaction.</p>
 <p>The module specifies conventions for endpoint design, request and response formats, and error handling. By following these rules, API providers enable consistent client implementations, reduce network overhead, and improve overall performance and reliability in distributed environments.</p>
 </section>
-    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>This is a proposed version authored by the ADR "orchestration" working group. Comments regarding this document may be shared through GitHub: https://github.com/Geonovum/KP-APIs/issues</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">2. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope"><bdi class="secno">2.1 </bdi>Scope</a></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">2.2 </bdi>Use cases</a></li></ol></li><li class="tocline"><a class="tocxref" href="#summary"><bdi class="secno">3. </bdi>Summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#list-of-technical-rules"><bdi class="secno">3.1 </bdi>List of technical rules</a></li></ol></li><li class="tocline"><a class="tocxref" href="#architecture"><bdi class="secno">4. </bdi>Architecture</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#data-distribution"><bdi class="secno">4.1 </bdi>Data distribution</a></li><li class="tocline"><a class="tocxref" href="#the-n-1-problem"><bdi class="secno">4.2 </bdi>The N+1 problem</a></li><li class="tocline"><a class="tocxref" href="#transactionality"><bdi class="secno">4.3 </bdi>Transactionality</a></li><li class="tocline"><a class="tocxref" href="#design-principles"><bdi class="secno">4.4 </bdi>Design principles</a></li></ol></li><li class="tocline"><a class="tocxref" href="#endpoints"><bdi class="secno">5. </bdi>Batch endpoints</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#endpoint-path"><bdi class="secno">5.1 </bdi>Endpoint path</a></li><li class="tocline"><a class="tocxref" href="#request-format"><bdi class="secno">5.2 </bdi>Request format</a></li><li class="tocline"><a class="tocxref" href="#response-format"><bdi class="secno">5.3 </bdi>Response format</a></li></ol></li><li class="tocline"><a class="tocxref" href="#singular"><bdi class="secno">6. </bdi>Singular resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#singular-request"><bdi class="secno">6.1 </bdi>Singular request</a></li><li class="tocline"><a class="tocxref" href="#singular-response"><bdi class="secno">6.2 </bdi>Singular response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#collection"><bdi class="secno">7. </bdi>Collection resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#collection-request"><bdi class="secno">7.1 </bdi>Collection request</a></li><li class="tocline"><a class="tocxref" href="#collection-response"><bdi class="secno">7.2 </bdi>Collection response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#error-handling"><bdi class="secno">8. </bdi>Error handling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#invalid-request"><bdi class="secno">8.1 </bdi>Invalid request</a></li><li class="tocline"><a class="tocxref" href="#request-limit-exceeding"><bdi class="secno">8.2 </bdi>Request limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#response-limit-exceeding"><bdi class="secno">8.3 </bdi>Response limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#invalid-keys"><bdi class="secno">8.4 </bdi>Invalid keys</a></li></ol></li><li class="tocline"><a class="tocxref" href="#existing-standards"><bdi class="secno">9. </bdi>Existing standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#elasticsearch-multi-get"><bdi class="secno">9.1 </bdi>Elasticsearch <code>Multi-Get</code></a></li><li class="tocline"><a class="tocxref" href="#odata-batch"><bdi class="secno">9.2 </bdi>OData <code>$batch</code></a></li><li class="tocline"><a class="tocxref" href="#google-apis"><bdi class="secno">9.3 </bdi>Google APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>This is a proposed version authored by the ADR "orchestration" working group. Comments regarding this document may be shared through GitHub: https://github.com/Geonovum/KP-APIs/issues</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">2. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scope"><bdi class="secno">2.1 </bdi>Scope</a></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">2.2 </bdi>Use cases</a></li></ol></li><li class="tocline"><a class="tocxref" href="#summary"><bdi class="secno">3. </bdi>Summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#list-of-technical-rules"><bdi class="secno">3.1 </bdi>List of technical rules</a></li></ol></li><li class="tocline"><a class="tocxref" href="#architecture"><bdi class="secno">4. </bdi>Architecture</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#data-distribution"><bdi class="secno">4.1 </bdi>Data distribution</a></li><li class="tocline"><a class="tocxref" href="#the-n-1-problem"><bdi class="secno">4.2 </bdi>The N+1 problem</a></li><li class="tocline"><a class="tocxref" href="#transactionality"><bdi class="secno">4.3 </bdi>Transactionality</a></li><li class="tocline"><a class="tocxref" href="#design-principles"><bdi class="secno">4.4 </bdi>Design principles</a></li></ol></li><li class="tocline"><a class="tocxref" href="#endpoints"><bdi class="secno">5. </bdi>Batch endpoints</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#endpoint-path"><bdi class="secno">5.1 </bdi>Endpoint path</a></li><li class="tocline"><a class="tocxref" href="#request-format"><bdi class="secno">5.2 </bdi>Request format</a></li><li class="tocline"><a class="tocxref" href="#response-format"><bdi class="secno">5.3 </bdi>Response format</a></li></ol></li><li class="tocline"><a class="tocxref" href="#singular"><bdi class="secno">6. </bdi>Singular resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#singular-request"><bdi class="secno">6.1 </bdi>Singular request</a></li><li class="tocline"><a class="tocxref" href="#singular-response"><bdi class="secno">6.2 </bdi>Singular response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#collection"><bdi class="secno">7. </bdi>Collection resources</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#collection-request"><bdi class="secno">7.1 </bdi>Collection request</a></li><li class="tocline"><a class="tocxref" href="#collection-response"><bdi class="secno">7.2 </bdi>Collection response</a></li></ol></li><li class="tocline"><a class="tocxref" href="#error-handling"><bdi class="secno">8. </bdi>Error handling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#invalid-request"><bdi class="secno">8.1 </bdi>Invalid request</a></li><li class="tocline"><a class="tocxref" href="#request-limit-exceeding"><bdi class="secno">8.2 </bdi>Request limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#response-limit-exceeding"><bdi class="secno">8.3 </bdi>Response limit exceeding</a></li><li class="tocline"><a class="tocxref" href="#invalid-keys"><bdi class="secno">8.4 </bdi>Invalid keys</a></li></ol></li><li class="tocline"><a class="tocxref" href="#existing-standards"><bdi class="secno">9. </bdi>Existing standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#elasticsearch-multi-get"><bdi class="secno">9.1 </bdi>Elasticsearch <code>Multi-Get</code></a></li><li class="tocline"><a class="tocxref" href="#odata-batch"><bdi class="secno">9.2 </bdi>OData <code>$batch</code></a></li><li class="tocline"><a class="tocxref" href="#google-apis"><bdi class="secno">9.3 </bdi>Google APIs</a></li><li class="tocline"><a class="tocxref" href="#relation-to-this-module"><bdi class="secno">9.4 </bdi>Relation to this module</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#what-was-adopted"><bdi class="secno">9.4.1 </bdi>What was adopted</a></li><li class="tocline"><a class="tocxref" href="#what-was-not-adopted"><bdi class="secno">9.4.2 </bdi>What was not adopted</a></li><li class="tocline"><a class="tocxref" href="#alternative-considered-collection-filtering"><bdi class="secno">9.4.3 </bdi>Alternative considered: collection filtering</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
     <section id="conformance"><div class="header-wrapper"><h2 id="x1-conformance"><bdi class="secno">1. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 1."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
         The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
         are to be interpreted as described in
@@ -1112,6 +1112,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>The rule does not mandate batch support for all collections; API designers must decide based on use cases and performance needs.</li>
          </ul>
       </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Identify a collection resource that supports batching (e.g. <code>/adressen</code>).</li>
+            <li>Issue an HTTP POST request to the batch endpoint by appending <code>/_batch</code> to the collection path (e.g. <code>POST /adressen/_batch</code>).</li>
+            <li>Validate that the server accepts the request and returns a valid response (status code <code>200</code>).</li>
+            <li>Validate that issuing the same request with a different HTTP method (e.g. GET) returns status code <code>405 Method Not Allowed</code>.</li>
+            <li>Validate that the batch endpoint path follows the pattern <code>{collection}/_batch</code> consistently across all batch-enabled collections.</li>
+         </ul>
+      </dd>
    </dl>
 </div>
 
@@ -1150,6 +1160,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Servers must validate the request structure and enforce the maximum number of allowed items.</li>
             <li>Clients can depend on a deterministic mapping between request items and response items by array position.</li>
             <li>The optional <code>context</code> property allows cross-cutting parameters to be added without introducing new endpoints or breaking existing clients.</li>
+         </ul>
+      </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint with <code>Content-Type: application/json</code> and a JSON body containing a <code>requests</code> array.</li>
+            <li>Validate that the server accepts the request and returns status code <code>200</code>.</li>
+            <li>Validate that a request without a <code>requests</code> property is rejected with status code <code>400</code>.</li>
+            <li>Validate that a request with an empty <code>requests</code> array is handled appropriately (either accepted with an empty <code>results</code> array, or rejected per server policy).</li>
+            <li>If the server supports a <code>context</code> property, validate that it can be included alongside <code>requests</code> and affects the response as documented.</li>
          </ul>
       </dd>
    </dl>
@@ -1203,6 +1223,17 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Additional metadata can be included at the top level, but must not affect the semantics of the <code>results</code> property.</li>
          </ul>
       </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint with a valid <code>requests</code> array containing multiple items.</li>
+            <li>Validate that the response contains a <code>results</code> array with exactly the same number of items as the <code>requests</code> array.</li>
+            <li>Validate that the order of items in <code>results</code> corresponds to the order of items in <code>requests</code>.</li>
+            <li>For singular requests, validate that found resources are returned as objects and missing or inaccessible resources are returned as <code>null</code>.</li>
+            <li>For collection requests, validate that each result entry contains an <code>items</code> array (which may be empty if no resources matched).</li>
+            <li>Validate that any additional top-level properties in the response do not interfere with the <code>results</code> array structure.</li>
+         </ul>
+      </dd>
    </dl>
 </div></section></section>
     <section id="singular" class="informative"><div class="header-wrapper"><h2 id="x6-singular-resources"><bdi class="secno">6. </bdi>Singular resources</h2><a class="self-link" href="#singular" aria-label="Permalink for Section 6."></a></div><p><em>This section is non-normative.</em></p>
@@ -1250,6 +1281,17 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>By preserving the exact order of identifier parts, clients and servers avoid mismatches and maintain consistency with URI path semantics.</li>
          </ul>
       </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint (e.g. <code>/gebouwen/_batch</code>) with a JSON body containing a <code>requests</code> array, where each item has a <code>key</code> property with a valid identifier.</li>
+            <li>Validate that a response with status code <code>200</code> is returned.</li>
+            <li>Validate that the response contains a <code>results</code> array with the same number of items as the <code>requests</code> array.</li>
+            <li>For resources with compound identifiers, issue a request where the <code>key</code> property is an array of values in the correct order and with the correct data types.</li>
+            <li>Validate that compound keys are processed correctly by verifying the returned resource matches the requested identifier parts.</li>
+            <li>Issue a request with an invalid or malformed key and validate that the server returns a <code>400 Bad Request</code> response.</li>
+         </ul>
+      </dd>
    </dl>
 </div>
 
@@ -1292,6 +1334,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>This structure enables batch responses to remain predictable, consistent, and easy to process in client libraries and tooling.</li>
          </ul>
       </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint with multiple singular requests (each containing a <code>key</code> property).</li>
+            <li>Validate that the response contains a <code>results</code> array with exactly the same number of items as the <code>requests</code> array.</li>
+            <li>Validate that the order of results matches the order of the original requests.</li>
+            <li>Request a mix of existing and non-existing resources and validate that existing resources return the resource object while non-existing resources return <code>null</code>.</li>
+            <li>Validate that <code>null</code> is returned for resources the user is not authorized to access (indistinguishable from non-existing resources).</li>
+         </ul>
+      </dd>
    </dl>
 </div></section></section>
     <section id="collection" class="informative"><div class="header-wrapper"><h2 id="x7-collection-resources"><bdi class="secno">7. </bdi>Collection resources</h2><a class="self-link" href="#collection" aria-label="Permalink for Section 7."></a></div><p><em>This section is non-normative.</em></p>
@@ -1328,6 +1380,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Each collection request in the batch produces exactly one result entry in the <code>results</code> array, containing an <code>items</code> array of zero or more matching resources.</li>
             <li>Clients can rely on the position of results in the response to map back to the corresponding filter criteria without additional correlation logic.</li>
             <li>If no resources match a filter, servers must return an empty <code>items</code> array rather than omitting the result.</li>
+         </ul>
+      </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint (e.g. <code>/adressen/_batch</code>) with a JSON body containing a <code>requests</code> array, where each item has a <code>filter</code> object with valid filter criteria.</li>
+            <li>Validate that a response with status code <code>200</code> is returned.</li>
+            <li>Validate that the response contains a <code>results</code> array with the same number of items as the <code>requests</code> array.</li>
+            <li>Validate that each result entry contains an <code>items</code> array (which may be empty if no resources match).</li>
+            <li>Issue a request with an invalid or unsupported filter criterion and validate that the server returns a <code>400 Bad Request</code> response.</li>
          </ul>
       </dd>
    </dl>
@@ -1384,6 +1446,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>The lack of a standardized pagination mechanism means interoperability may vary until a common approach is agreed upon.</li>
          </ul>
       </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint with multiple collection requests (each containing a <code>filter</code> object).</li>
+            <li>Validate that the response contains a <code>results</code> array with exactly the same number of items as the <code>requests</code> array.</li>
+            <li>Validate that each entry in <code>results</code> is a JSON object containing an <code>items</code> property.</li>
+            <li>Validate that the order of results matches the order of the original requests.</li>
+            <li>Issue a request with a filter that matches no resources and validate that the corresponding result entry contains an empty <code>items</code> array (not <code>null</code> or omitted).</li>
+         </ul>
+      </dd>
    </dl>
 </div></section></section>
     <section id="error-handling" class="informative"><div class="header-wrapper"><h2 id="x8-error-handling"><bdi class="secno">8. </bdi>Error handling</h2><a class="self-link" href="#error-handling" aria-label="Permalink for Section 8."></a></div><p><em>This section is non-normative.</em></p>
@@ -1419,7 +1491,17 @@ img.license{float:left;padding-right:5px;background:0 0}
         <li>Error responses must include human-readable details and machine-readable fields for automated handling.</li>
         </ul>
     </dd>
-</dl></div>
+    <dt>How to test</dt>
+    <dd>
+        <ul>
+        <li>Issue an HTTP POST request to a batch endpoint with malformed JSON (e.g. missing closing braces) and validate that the server returns status code <code>400</code> with a <code>problem+json</code> response.</li>
+        <li>Issue a request with a body that is missing the required <code>requests</code> property and validate that the server returns status code <code>400</code>.</li>
+        <li>Validate that the error response contains the required problem+json fields: <code>type</code>, <code>title</code>, <code>status</code>, and <code>detail</code>.</li>
+        <li>Validate that the <code>Content-Type</code> header of the error response is <code>application/problem+json</code>.</li>
+        </ul>
+    </dd>
+   </dl>
+</div>
 
 </section><section id="request-limit-exceeding"><div class="header-wrapper"><h3 id="x8-2-request-limit-exceeding"><bdi class="secno">8.2 </bdi>Request limit exceeding</h3><a class="self-link" href="#request-limit-exceeding" aria-label="Permalink for Section 8.2"></a></div>
 <div class="rule" id="/batching/err-req-limit" data-type="technical">
@@ -1449,6 +1531,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Servers must document their maximum batch size and enforce it consistently.</li>
             <li>Clients must be prepared to split large batches into multiple smaller ones.</li>
             <li>Validation of request size becomes part of standard request validation logic, not just transport-level checks.</li>
+         </ul>
+      </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Determine the server's documented maximum batch size (e.g. 100 items).</li>
+            <li>Issue an HTTP POST request to a batch endpoint with a <code>requests</code> array containing more items than the maximum allowed.</li>
+            <li>Validate that the server returns status code <code>400</code> with a <code>problem+json</code> response.</li>
+            <li>Validate that the error response indicates that the request limit was exceeded.</li>
+            <li>Issue a request with exactly the maximum number of items and validate that it is accepted (status code <code>200</code>).</li>
          </ul>
       </dd>
    </dl>
@@ -1482,6 +1574,15 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Servers must define reasonable response size limits and enforce them consistently across batch endpoints.</li>
             <li>Clients must anticipate possible rejections and adapt (e.g., by narrowing filter criteria or splitting requests).</li>
             <li>Clear feedback helps prevent repeated oversized queries and supports monitoring of misuse or misconfiguration.</li>
+         </ul>
+      </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint with collection requests that would produce a very large combined response (e.g. filters that match many resources).</li>
+            <li>Validate that if the server enforces response size limits, it returns status code <code>400</code> with a <code>problem+json</code> response when the limit would be exceeded.</li>
+            <li>Validate that the error response indicates that the response limit was exceeded and provides guidance on how to adjust the request.</li>
+            <li>Issue a request with narrower filter criteria that produces a smaller response and validate that it is accepted.</li>
          </ul>
       </dd>
    </dl>
@@ -1518,6 +1619,16 @@ img.license{float:left;padding-right:5px;background:0 0}
             <li>Servers must validate all keys before processing and reject the batch if any are invalid.</li>
             <li>Clients must ensure that all identifiers conform to the expected format before submitting the request.</li>
             <li>The error response may include an <code>invalidKeys</code> array or equivalent field to indicate which keys failed, enabling corrective actions.</li>
+         </ul>
+      </dd>
+      <dt>How to test</dt>
+      <dd>
+         <ul>
+            <li>Issue an HTTP POST request to a batch endpoint for singular resources with one or more invalid keys (e.g. a malformed UUID like <code>"not-a-uuid"</code>).</li>
+            <li>Validate that the server returns status code <code>400</code> with a <code>problem+json</code> response.</li>
+            <li>Validate that the error response indicates which keys are invalid (e.g. via an <code>invalidKeys</code> array).</li>
+            <li>Validate that the entire batch is rejected, not just the invalid items.</li>
+            <li>Issue a request with all valid keys (even for non-existing resources) and validate that the server returns status code <code>200</code> (with <code>null</code> for non-existing resources in the results).</li>
          </ul>
       </dd>
    </dl>
@@ -1558,8 +1669,123 @@ img.license{float:left;padding-right:5px;background:0 0}
 </code></pre>
 </section><section id="google-apis"><div class="header-wrapper"><h3 id="x9-3-google-apis"><bdi class="secno">9.3 </bdi>Google APIs</h3><a class="self-link" href="#google-apis" aria-label="Permalink for Section 9.3"></a></div>
 <p>Several Google APIs accept batch requests as a single HTTP call with media type <code>multipart/mixed</code>, where each part is a nested HTTP request. This enables combining multiple heterogeneous operations; responses mirror the embedded HTTP results. The format prioritizes transport flexibility but is more complex to implement efficiently than a pure-JSON envelope.</p>
-</section></section>
+</section><section id="relation-to-this-module"><div class="header-wrapper"><h3 id="x9-4-relation-to-this-module"><bdi class="secno">9.4 </bdi>Relation to this module</h3><a class="self-link" href="#relation-to-this-module" aria-label="Permalink for Section 9.4"></a></div>
+<p>The working group analyzed the standards described above and made deliberate trade-offs to optimize for simplicity, predictability, and the specific needs of Dutch government APIs.</p>
+<section id="what-was-adopted"><div class="header-wrapper"><h4 id="x9-4-1-what-was-adopted"><bdi class="secno">9.4.1 </bdi>What was adopted</h4><a class="self-link" href="#what-was-adopted" aria-label="Permalink for Section 9.4.1"></a></div>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Adopted from</th>
+<th>How it is applied</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Per-collection endpoint</td>
+<td>Elasticsearch</td>
+<td>Batch endpoints are scoped per collection (<code>/_batch</code> suffix), not global. This keeps semantics clear and avoids mixing unrelated resources.</td>
+</tr>
+<tr>
+<td>JSON envelope with <code>requests</code> array</td>
+<td>OData</td>
+<td>The request payload uses a top-level <code>requests</code> property containing an ordered array, similar to OData's JSON batch format.</td>
+</tr>
+<tr>
+<td>Positional result mapping</td>
+<td>Elasticsearch</td>
+<td>Results are returned in the same order as the requests, allowing clients to map responses by array index without correlation IDs.</td>
+</tr>
+</tbody></table>
+</section><section id="what-was-not-adopted"><div class="header-wrapper"><h4 id="x9-4-2-what-was-not-adopted"><bdi class="secno">9.4.2 </bdi>What was not adopted</h4><a class="self-link" href="#what-was-not-adopted" aria-label="Permalink for Section 9.4.2"></a></div>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Present in</th>
+<th>Reason for exclusion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Global batch endpoint</td>
+<td>OData, Google APIs</td>
+<td>A single global endpoint that can address any resource increases complexity and reduces predictability. Per-collection endpoints are simpler to implement, document, and secure.</td>
+</tr>
+<tr>
+<td>Multipart/mixed format</td>
+<td>OData, Google APIs</td>
+<td>The <code>multipart/mixed</code> format embeds full HTTP requests and responses, adding parsing complexity. A pure JSON format is easier to implement, debug, and consume in modern client libraries.</td>
+</tr>
+<tr>
+<td>Per-subrequest HTTP semantics</td>
+<td>OData, Google APIs</td>
+<td>Embedding HTTP status codes and headers per subrequest adds overhead and complexity. This module uses <code>null</code> for missing resources and a separate error response for batch-level failures, reducing ambiguity.</td>
+</tr>
+<tr>
+<td>Correlation IDs</td>
+<td>OData</td>
+<td>Requiring clients to generate and match correlation IDs adds implementation burden. Positional mapping (by array index) achieves the same goal more simply.</td>
+</tr>
+<tr>
+<td>Mixed read/write operations</td>
+<td>OData, Google APIs</td>
+<td>Supporting heterogeneous operations (GET, POST, PUT, DELETE) in a single batch increases transactional complexity and error handling. This module focuses on read-only batching.</td>
+</tr>
+<tr>
+<td>Dependency expressions</td>
+<td>OData</td>
+<td>OData allows expressing dependencies between subrequests (e.g., use the result of request 1 in request 2). This adds significant complexity and is not needed for the read-only use case.</td>
+</tr>
+</tbody></table>
+</section><section id="alternative-considered-collection-filtering"><div class="header-wrapper"><h4 id="x9-4-3-alternative-considered-collection-filtering"><bdi class="secno">9.4.3 </bdi>Alternative considered: collection filtering</h4><a class="self-link" href="#alternative-considered-collection-filtering" aria-label="Permalink for Section 9.4.3"></a></div>
+<p>The working group also evaluated <strong>collection filtering via query parameters</strong> as an alternative to a dedicated batch endpoint. Batch support could be implemented by passing a series of criteria as filters to an existing collection endpoint. However, this approach has significant drawbacks compared to the standards above:</p>
+<ul>
+<li>URL length limitations may cause problems</li>
+<li>Expressing a list of complex criteria in a URL is difficult</li>
+<li>Clients would need to handle pagination</li>
+<li>Clients would need to detect which objects yield results and map results back to criteria</li>
+<li>Clients might need to re-group and/or re-sort results</li>
+</ul>
+<p>A dedicated batch endpoint with a JSON request body avoids these issues while providing the same benefits as Elasticsearch and OData.</p>
+</section></section></section>
   
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references">
     <div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
