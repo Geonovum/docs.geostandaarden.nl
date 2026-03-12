@@ -1,24 +1,19 @@
 name: Deploy Static Docs
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
   push:
     branches:
+      - main
       - develop
   workflow_dispatch:
   schedule:
     - cron: '0 6 1 * *'
-
 jobs:
   deploy:
     name: Deploy `/docs` via SCP
     runs-on: ubuntu-22.04
 
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
 
     env:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
