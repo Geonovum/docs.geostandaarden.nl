@@ -178,7 +178,7 @@ foreach ($config as $domein => $registratieobjecten) {
 	
 	echo '<div class="pubDomain">';	
 	
-	echo '<h2><a href="bro">' . $domein . '</a></h2>';
+	echo '<h2>' . $domein . '</h2>';
 	
 	if (count($registratieobjecten) == 0) {
 		echo '<i>Geen publicaties</i>';
