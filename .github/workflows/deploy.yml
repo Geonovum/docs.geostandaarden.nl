@@ -1,6 +1,10 @@
 name: Deploy Static Docs
 
 on:
+  pull_request:
+    branches:
+      - main
+      - develop
   push:
     branches:
       - main
@@ -9,6 +13,18 @@ on:
   schedule:
     - cron: '0 6 1 * *'
 jobs:
+  pr_check:
+    name: Pull request deploy check
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Validate repository contents
+        run: git ls-files --error-unmatch pubDomainList.json
+
   deploy:
     name: Deploy `/docs` via SCP
     runs-on: ubuntu-22.04
@@ -50,9 +66,16 @@ jobs:
 
       - name: Copy `.` via rsync
         run: |
+          # Hide generated Word export artefacts from the sender, but allow
+          # --delete to remove already deployed copies from the target.
           rsync -avz \
             --partial \
             --delete \
+            --filter='-s **/data/msword/***' \
+            --filter='-s **/*.msword.html' \
+            --filter='-s **/*.[dD][oO][cC]' \
+            --filter='-s **/*.[dD][oO][cC][xX]' \
+            --filter='-s **/*.[dD][oO][cC][mM]' \
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='.gitignore' \
