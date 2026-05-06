@@ -1,6 +1,10 @@
 name: Deploy Static Docs
 
 on:
+  pull_request:
+    branches:
+      - main
+      - develop
   push:
     branches:
       - main
@@ -9,6 +13,79 @@ on:
   schedule:
     - cron: '0 6 1 * *'
 jobs:
+  changed_html:
+    name: Detect changed HTML files
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    outputs:
+      any_changed: ${{ steps.changed-html-files.outputs.any_changed }}
+      files: ${{ steps.changed-html-files.outputs.all_changed_files }}
+      directories: ${{ steps.changed-html-directories.outputs.all_changed_files }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Get changed HTML files
+        id: changed-html-files
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+        with:
+          matrix: true
+          files: |
+            **/*.html
+
+      - name: Get directories with changed HTML files
+        id: changed-html-directories
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+        with:
+          dir_names: true
+          matrix: true
+          files: |
+            **/*.html
+
+  proof_html:
+    name: Proof HTML
+    runs-on: ubuntu-22.04
+    needs: changed_html
+    if: needs.changed_html.outputs.any_changed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        html_directory: ${{ fromJSON(needs.changed_html.outputs.directories) }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Validate HTML
+        uses: anishathalye/proof-html@a76b66427e600c6992e8937a741afffd2264a613 # v2.2.3
+        with:
+          directory: ${{ matrix.html_directory }}
+          check_css: false
+          disable_external: true
+
+  link_check:
+    name: Lychee link check
+    runs-on: ubuntu-22.04
+    needs: changed_html
+    if: needs.changed_html.outputs.any_changed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        html_file: ${{ fromJSON(needs.changed_html.outputs.files) }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+        with:
+          args: --offline --root-dir "${{ github.workspace }}" --remap "^https://docs\.geostandaarden\.nl file://${{ github.workspace }}" "${{ matrix.html_file }}"
+          fail: true
+
   deploy:
     name: Deploy `/docs` via SCP
     runs-on: ubuntu-22.04
@@ -22,15 +99,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
-
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: 23
-#
-#      - name: Run build script
-#        run: node build.js
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup SSH key
         run: |
@@ -50,9 +119,16 @@ jobs:
 
       - name: Copy `.` via rsync
         run: |
+          # Hide generated Word export artefacts from the sender, but allow
+          # --delete to remove already deployed copies from the target.
           rsync -avz \
             --partial \
             --delete \
+            --filter='-s **/data/msword/***' \
+            --filter='-s **/*.msword.html' \
+            --filter='-s **/*.[dD][oO][cC]' \
+            --filter='-s **/*.[dD][oO][cC][xX]' \
+            --filter='-s **/*.[dD][oO][cC][mM]' \
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='.gitignore' \
