@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.8.0">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+      
+      
+      
+<meta name="publisher" content="Geonovum">
+      
+<meta name="author" content="Monique van Scherpenzeel">
+      
+<meta name="description" content="Gebruik activiteiten Restcategorie en Andere insluitsystemen">
+      
+<meta name="date" content="2026-04-15">
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/imev/Geonovum.ico">
+      
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/imev/style.css">
+      
+<title>Gebruik activiteiten Restcategorie en Andere insluitsystemen</title>
+   
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://docs.geostandaarden.nl/imev/werkafspraken/">
+<script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "w3p": "http://www.w3.org/2001/02pd/rec54#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/imev/werkafspraken/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Gebruik activiteiten Restcategorie en Andere insluitsystemen",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2026-05-19",
+  "copyrightHolder": {
+    "name": "World Wide Web Consortium",
+    "url": "https://www.w3.org/"
+  },
+  "discussionUrl": "https://github.com/geonovum/imev-werkafspraken/issues/",
+  "alternativeHeadline": "",
+  "description": "Gebruik activiteiten Restcategorie en Andere insluitsystemen",
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Monique van Scherpenzeel",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "doJsonLd": true,
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "ld": "Living document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "ld": "Levend document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "ld": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/imev/",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/imev/werkafspraken/"
+  ],
+  "thisVersion": [
+    "https://geonovum.github.io/imev-werkafspraken/"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/",
+    "previousPublishDate"
+  ],
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/imev/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/imev/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly.",
+      "cv": "This is a proposed recommendation. Comments can be submitted via the consultation procedure published as a news item on www.geonovum.nl.",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt.",
+      "cv": "Dit is een consultatieversie. Commentaar kan ingediend worden via de consultatieprocedure gepubliceerd als nieuwsbericht op www.geonovum.nl.",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Gebruik activiteiten Restcategorie en Andere insluitsystemen",
+  "shortName": "restcat-insluit",
+  "pubDomain": "imev",
+  "specStatus": "def",
+  "specType": "wa",
+  "license": "cc-by-nd",
+  "publishDate": "2026-05-19",
+  "github": "https://github.com/geonovum/imev-werkafspraken/",
+  "issueBase": "https://github.com/geonovum/imev-werkafspraken/issues/",
+  "edDraftURI": "https://geonovum.github.io/imev-werkafspraken/",
+  "canonicalURI": "https://docs.geostandaarden.nl/imev/werkafspraken/",
+  "authors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/imev/base.css"></head>
+   <body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/imev/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Gebruik activiteiten Restcategorie en Andere insluitsystemen</h1>
+    
+    <h2>
+      Geonovum Werkafspraak<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2026-05-19">19 mei 2026</time>
+    </h2>
+    <dl>
+      
+      
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/imev-werkafspraken/">https://geonovum.github.io/imev-werkafspraken/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/geonovum/imev-werkafspraken/">GitHub geonovum/imev-werkafspraken</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-werkafspraken/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-werkafspraken/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/geonovum/imev-werkafspraken/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+      
+      <nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#374A1FE8"><bdi class="secno">1. </bdi><b><i>Aanleiding </i></b></a></li><li class="tocline"><a class="tocxref" href="#1A62F6AC"><bdi class="secno">2. </bdi><b><i>Uitgangspunten</i></b></a></li><li class="tocline"><a class="tocxref" href="#443ED03F"><bdi class="secno">3. </bdi><b><i>Werkafspraak tot inwerkingtreden wijziging IMEV </i></b></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#17E7D860"><bdi class="secno">3.1 </bdi><b><i>Werkwijze</i></b></a></li><li class="tocline"><a class="tocxref" href="#4BD696CA"><bdi class="secno">3.2 </bdi><b><i>Impact</i></b></a></li><li class="tocline"><a class="tocxref" href="#3B58A240"><bdi class="secno">3.3 </bdi><b><i>Wijzigingsvoorstel </i></b></a></li></ol></li><li class="tocline"><a class="tocxref" href="#2D70D0E4"><bdi class="secno">4. </bdi><b><i>Resultaat </i></b></a></li></ol></nav>
+      <section class="chapter" id="aanleiding"><h2 id="374A1FE8"><bdi class="secno">1. </bdi><b><i>Aanleiding </i></b></h2><p>Welke gegevens bevoegde gezagen ten aanzien van de externe veiligheid moeten verzamelen, staat beschreven in de artikelen 11.2 tot en met 11.7 van het <a href="https://wetten.overheid.nl/BWBR0041313" target="_blank">Besluit kwaliteit leefomgeving</a> (Bkl). In bijlagen VII tot en met X van het Bkl zijn de kenmerken over opslag, productie, gebruik en vervoer van gevaarlijke stoffen, windturbines en de milieubelastende activiteiten met vastgestelde afstanden opgenomen. De grondslag voor het verplicht gebruik door bevoegde gezagen van het Informatiemodel Externe Veiligheid (IMEV) door bevoegde gezagen is opgenomen in artikel 12.2 van de <a href="https://wetten.overheid.nl/BWBR0045528" target="_blank">Omgevingsregeling</a> van de Omgevingswet. Het informatiemodel beschrijft <i>hoe</i> deze locatie gebonden veiligheidsrisico’s door bevoegde gezagen (hierna: bronhouders) moeten worden vastgelegd en beschikbaar gesteld aan het Register Externe Veiligheidsrisico's (REV). Het REV vervangt sinds 1 januari 2023 het <a href="https://www.registerexterneveiligheid.nl/sites/default/files/2022-12/2022-12-22%20Vervanging%20RRGS%20door%20register%20externe%20veiligheidsrisico%E2%80%99s%20%28REV%29.pdf" target="_blank">Register Risicosituaties Gevaarlijke Stoffen</a> (RRGS). 
+<br>
+<br>
+Uit onderzoek is gebleken dat het REV onder de activiteiten ‘Restcategorie’ en ‘Andere insluitsystemen’ gegevens bevat die niet voldoen aan bovenstaande vereisten. Dit betekent voor de raadpleger van de REV-gegevens dat:</p>
+<ul><li>niet duidelijk is wat voor gegevens dit zijn;</li>
+<li>niet duidelijk is wat de gegevens betekenen;</li>
+<li>niet duidelijk is of deze gegevens relevant zijn voor de raadpleger. </li>
+</ul>
+<br>
+<br>
+<b>Activiteit Restcategorie </b>
+Om alle gegevens van het oude RRGS over te kunnen zetten naar het REV is in het verleden in het IMEV de <i>tijdelijke</i> activiteit Restcategorie gecreëerd. Hierdoor konden activiteiten die in het RRGS zaten en waarvoor in het Bkl geen classificatie was opgenomen ook worden geconverteerd.  Hiermee werd verzekerd dat de gegevens uit het RRGS niet verloren zouden gaan. De activiteit restcategorie heeft een tijdelijk karakter en is niet bedoeld voor nieuwe of andere gegevens. In de praktijk is gebleken dat bevoegde gezagen nieuwe MBA’s, die juridisch gezien (nog) niet in het REV thuishoren, als een restcategorie activiteit aanleveren aan het REV. 
+<br>
+<br>
+<b>Activiteit Andere insluitsystemen</b>
+In <a href="https://wetten.overheid.nl/BWBR0041313" target="_blank">bijlage VII -E 12 Andere insluitsystemen</a> van het Bkl luidt de eerste zin <i>“Elke </i><b><i>andere</i></b><i> milieubelastende activiteit die […] met:” </i>gevolgd door een limitatieve lijst met hoeveelheden en typen van gevaarlijke stoffen (categorieën) waarvoor de situatie van toepassing is. De limitatieve lijst is opgenomen in bijlage VII E.12 onder a. t/m g. van het Bkl. 
+De term ‘andere’ wordt, door sommige bronhouders zo geïnterpreteerd dat zij ook andere MBA’s, die een insluitsysteem hebben en maar niet voldoen aan de limitatieve lijst of die niet voorkomen in het Bal, toch aanleveren aan het REV.    
+<br>
+<br>
+<b>Werkafspraak </b>
+Het ministerie van Infrastructuur en Waterstaat heeft in overleg met de <a href="https://docs.geostandaarden.nl/imev/imev-wijzigingsprotocol/#begrippen" target="_blank">IMEV-adviesgroep</a> besloten dat het aanleveren van nieuwe gegevens anders dan nu in de Omgevingswet- en regelgeving is bepaald, zo snel mogelijk stopt. Geonovum is gevraagd hiervoor deze werkafspraak op te stellen. Rijkswaterstaat heeft als beheerder van het REV het <a href="https://www.registerexterneveiligheid.nl/nieuws/uitfasering-restcategorie-in-rev-wat-verandert-er-en-waarom" target="_blank">aanleveren van nieuwe MBA's voor de restcategorie bevroren</a>. Bronhouders kunnen nog wel MBA's uit de restcategorie verwijderen uit het REV. Dit is gedaan vooruitlopend op IMEV versie 4.0 waarin de restcategorie uit het informatiemodel wordt verwijderd en de Omgevingswet- en regelgeving voor externe veiligheid wordt aangepast.</section>
+      <section class="chapter" id="uitgangspunten"><h2 id="1A62F6AC"><bdi class="secno">2. </bdi><b><i>Uitgangspunten</i></b></h2><p>De volgende uitgangspunten gelden voor de activiteiten ‘Restcategorie’ en ‘Andere insluitsystemen’ in het IMEV: 
+<br></p>
+<ul><li>Vooruitlopend op nieuwe wet- en regelgeving kunnen bronhouders alvast gegevens verzamelen over nieuwe MBA’s en verwerken in een eigen intern (zaak)systeem. Totdat de wet- en regelgeving is gewijzigd registreren bronhouders deze gegevens niet in het Register Externe Veiligheidsrisico’s omdat deze juridisch gezien nog niet in het register thuishoren. </li>
+</ul>
+<br>
+<br>
+<ul><li>De Restcategorie in het Informatiemodel Externe Veiligheid is alleen bedoelt voor bestaande gegevens uit het RRGS die waren overgebleven nadat de gegevens van het RRGS waren geconverteerd en opgenomen in het Register Externe Veiligheid. Voor de restcategorie gaat het om gegevens die (nog) geen vaste plek hadden binnen de systematiek van milieubelastende activiteiten (MBA’s) uit het Bkl waarvoor opname in het REV verplicht is. <br>
+</li>
+</ul></section>
+      <section class="chapter" id="werkafspraak-tot-inwerkingtreden-wijziging-imev"><h2 id="443ED03F"><bdi class="secno">3. </bdi><b><i>Werkafspraak tot inwerkingtreden wijziging IMEV </i></b></h2><p>Deze werkafspraak heeft de formele <a href="https://docs.geostandaarden.nl/imev/imev-wijzigingsprotocol/#tussentijdse-werkafspraken" target="_blank">status</a> van een advies van Geonovum aan de gebruikers van het IMEV. De werkafspraak vervangt niet de in gebruik zijnde <a href="https://docs.geostandaarden.nl/imev/def-im-imev-20250710/" target="_blank">IMEV versie 3.0.2</a>. Vanaf publicatie van deze werkafspraak tot het tijdstip van inwerkingtreden van IMEV 4.0 dan wel nader bericht van de beheerder van het IMEV geldt de volgende werkafspraak:
+<br>
+<br>
+<b>Tot het inwerkingtreden van het Informatiemodel Externe Veiligheid 4.0 worden door de bronhouders geen nieuwe gegevens aan het REV aangeleverd als activiteit ‘Restcategorie’.</b> 
+<br>
+<br>
+<b>Tot het inwerkingtreden van het Informatiemodel Externe Veiligheid 4.0 worden door de bronhouders alleen die gegevens voor de activiteit ‘Andere insluitsystemen’ aan het REV aangeleverd die exact voldoen aan de randvoorwaarden zoals opgenomen in de limitatieve lijst in bijlage VII E.12 van het Bkl.</b> </p>
+<section id="werkwijze"><h3 id="17E7D860"><bdi class="secno">3.1 </bdi><b><i>Werkwijze</i></b></h3><p>Bevoegde gezagen leveren aan het REV alleen de gegevens over MBA’s op grond van artikelen 11.2 tot en met 11.7 van het <a href="https://wetten.overheid.nl/BWBR0041313" target="_blank">Besluit kwaliteit leefomgeving</a> (Bkl) en bijlagen VII, VIII en IX en X van het Bkl. 
+<br>
+<br>
+Het is voor bevoegde gezagen (bronhouders) tot inwerkingtreding van het IMEV 4.0 (naar verwachting op 1 juli 2027) mogelijk bestaande gegevens in de restcategorie van het REV te voorzien van een eindGeldigheid. 
+<br>
+<br>
+Met de inwerkingtreding van het IMEV 4.0 (naar verwachting op 1 juli 2027) komt de restcategorie niet meer voor in het informatiemodel. Na inwerkingtreding van het IMEV 4.0 zal de beheerder van het REV deze gegevens in de restcategorie voorzien van een eindRegistratie en zal de beheerder van het REV de opgenomen gegevens in de restcategorie uit het REV worden <a href="https://www.registerexterneveiligheid.nl/nieuws/uitfasering-restcategorie-in-rev-wat-verandert-er-en-waarom" target="_blank">verwijderd</a>. Andere wijzigingen aan gegevens van de restcategorie worden niet doorgevoerd. De restcategorie gegevens in het REV zullen niet verloren zullen gaan, maar door Rijkswaterstaat als beheerder van het REV zorgvuldig worden <a href="https://www.registerexterneveiligheid.nl/nieuws/uitfasering-restcategorie-in-rev-wat-verandert-er-en-waarom" target="_blank">gearchiveerd</a>.</p>
+</section><section id="impact"><h3 id="4BD696CA"><bdi class="secno">3.2 </bdi><b><i>Impact</i></b></h3><p>Welke gegevens bevoegde gezagen ten aanzien van externe veiligheid moeten verzamelen en aanleveren aan het REV en op welke wijze, staat beschreven in de Omgevingswet, het omgevingsbesluit, de omgevingsregeling en het Bkl. Andere gegevens dienen niet te worden aangeleverd. De impact van deze werkafspraak is voor de bronhouder dan ook zeer beperkt omdat zij andere gegevens niet aan zouden moeten leveren. Voor het Register Externe Veiligheidsrisico's is er geen impact omdat de API sinds 1 april 2026 geen nieuwe Restcategorie activiteiten meer toestaat. Voor softwareleveranciers is er geen impact omdat aanpassing van de software door de werkafspraak juist niet nodig zal zijn. </p>
+</section><section id="wijzigingsvoorstel"><h3 id="3B58A240"><bdi class="secno">3.3 </bdi><b><i>Wijzigingsvoorstel </i></b></h3><p>Deze werkafspraak is van toepassing totdat de wijzigingsverzoeken <a href="https://github.com/Geonovum/imev-werkomgeving/issues/155" target="_blank">'verwijderen restcategorie uit het IMEV'</a> en <a href="https://github.com/Geonovum/imev-werkomgeving/issues/177" target="_blank">‘gebruik andere insluitsystemen’</a> zijn verwerkt in IMEV versie 4.0 en de Omgevingswet- en regelgeving voor de activiteit Andere insluitsystemen is aangepast.</p>
+</section></section>
+      <section class="chapter" id="resultaat"><h2 id="2D70D0E4"><bdi class="secno">4. </bdi><b><i>Resultaat </i></b></h2><p>In aanloop naar inwerkingtreden van de vernieuwde Omgevingswet- en regelgeving en IMEV 4.0 draagt de bronhouder bij aan hogere datakwaliteit in het REV: de raadpleger van de REV-gegevens weet wat voor gegevens dit zijn en wat de gegevens betekenen. 
+<br></p>
+</section>
+   
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Werkafspraak - Vastgestelde versie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
