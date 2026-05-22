@@ -1,2 +1,5 @@
 RewriteEngine On
-RewriteRule ^(.*)$ /geo-standaarden/cv-bd-gsw-20251009/$1 [NC,L]
+# Redirect map-root en onderliggende paden naar de nieuwste versie-map
+RewriteRule ^$           /geo-standaarden/vv-bd-gsw-20260521/ [R=302,L]
+RewriteRule ^(.+)$       /geo-standaarden/vv-bd-gsw-20260521/$1 [R=302,L]
+Options -Indexes
