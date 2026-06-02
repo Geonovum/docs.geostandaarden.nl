@@ -1,6 +1,10 @@
 name: Build & Push Static Docs Image
 
 on:
+  pull_request:
+    branches:
+      - main
+      - develop
   push:
     branches:
       - main
@@ -19,30 +23,103 @@ env:
   CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
 
 jobs:
+  changed_html:
+    name: Detect changed HTML files
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    outputs:
+      any_changed: ${{ steps.changed-html-files.outputs.any_changed }}
+      files: ${{ steps.changed-html-files.outputs.all_changed_files }}
+      directories: ${{ steps.changed-html-directories.outputs.all_changed_files }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Get changed HTML files
+        id: changed-html-files
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+        with:
+          matrix: true
+          files: |
+            **/*.html
+
+      - name: Get directories with changed HTML files
+        id: changed-html-directories
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
+        with:
+          dir_names: true
+          matrix: true
+          files: |
+            **/*.html
+
+  proof_html:
+    name: Proof HTML
+    runs-on: ubuntu-22.04
+    needs: changed_html
+    if: needs.changed_html.outputs.any_changed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        html_directory: ${{ fromJSON(needs.changed_html.outputs.directories) }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Validate HTML
+        uses: anishathalye/proof-html@a76b66427e600c6992e8937a741afffd2264a613 # v2.2.3
+        with:
+          directory: ${{ matrix.html_directory }}
+          check_css: false
+          disable_external: true
+
+  link_check:
+    name: Lychee link check
+    runs-on: ubuntu-22.04
+    needs: changed_html
+    if: needs.changed_html.outputs.any_changed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        html_file: ${{ fromJSON(needs.changed_html.outputs.files) }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+        with:
+          args: --offline --root-dir "${{ github.workspace }}" --remap "^https://docs\.geostandaarden\.nl file://${{ github.workspace }}" "${{ matrix.html_file }}"
+          fail: true
+
   build-and-push-web:
     name: Build & Push Web Image
-    runs-on: ubuntu-latest
-    if: github.event_name != 'schedule' && !(github.event_name == 'workflow_dispatch' && inputs.run_linkcheck)
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.run_linkcheck)
     permissions:
       contents: read
       packages: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set image name
         run: echo "WEB_IMAGE_NAME=${CONTAINER_REGISTRY}/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
 
       - name: Login to container registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3.5.0
         with:
           registry: ${{ env.CONTAINER_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build & push container image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         with:
           context: .
           file: ./Dockerfile
@@ -50,6 +127,7 @@ jobs:
           tags: |
             ${{ env.WEB_IMAGE_NAME }}:latest
             ${{ env.WEB_IMAGE_NAME }}:${{ github.sha }}
+
   monthly_linkcheck:
     name: Monthly Linkchecker Report
     runs-on: ubuntu-22.04
@@ -70,11 +148,11 @@ jobs:
             echo "<p>Linkchecker failed with exit code ${STATUS}</p>" > linkchecker-report.html
           fi
           echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
-      
+
       - name: Upload linkchecker to Slack
         id: slack_upload
         if: always()
-        uses: slackapi/slack-github-action@v2.1.1
+        uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
         with:
           errors: true
           method: files.uploadV2

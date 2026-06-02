@@ -1,0 +1,1964 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.8.0">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+  
+  
+  
+  
+
+  
+<title>Wijzigingsprotocol geo-standaarden 2.0.1</title>
+  
+<script>document.title = respecConfig.title</script>
+
+  
+  
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+
+  
+
+  
+  
+<style>
+div.imageinfo img {max-width: none;}
+</style>
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<meta name="description" content="Open geo-standaarden zorgen ervoor dat geo-informatie betekenisvol voor diverse taken en in verschillende softwarepakketten te gebruiken is. Geonovum ontwikkelt en beheert de Nederlandse basisset van geo-standaarden voor het vindbaar, toegankelijk, uitwisselbaar en herbruikbaar maken van geo-informatie. Mensen die in de praktijk werken met de geo-standaarden hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van de basisset geo-standaarden. 
+Dit wijzigingsprotocol geeft inzicht in het wijzigingsproces, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (gebruikers en ketenpartners) bij het onderhouden en gebruiken van de geo-standaarden. De gebruikers en ketenpartners worden op diverse momenten betrokken in dit proces. In dit protocol beschrijven we één onderdeel van het beheer: de manier waarop de wijzigingen van een basis geo-standaard plaatsvinden. Dit wijzigingsprotocol is dan ook alleen van toepassing op de basisset geo-standaarden, voor zover die bij Geonovum in beheer zijn.">
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://docs.geostandaarden.nl/media/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by-nd",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie.",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment.",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://docs.geostandaarden.nl/media/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://docs.geostandaarden.nl/media/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://docs.geostandaarden.nl/media/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    },
+    "MIM12": {
+      "id": "MIM12",
+      "title": "MIM - Metamodel Informatie Modellering (Versie 1.2)",
+      "href": "https://docs.geostandaarden.nl/mim/def-st-mim-20240613/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2024-06-13"
+    },
+    "3DTILES": {
+      "title": "3D Tiles Specification 1.0",
+      "href": "http://docs.opengeospatial.org/cs/18-053r2/18-053r2.html",
+      "status": "Approved for public release",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Patrick Cozzi",
+        "Sean Lilley",
+        "Gabby Getz"
+      ],
+      "date": "2019-01-31",
+      "id": "3DTILES"
+    },
+    "adr-mod-geo": {
+      "title": "API Design rules Module: Geospatial",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie-mod-geo/",
+      "status": "Consultatieversie",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink"
+      ],
+      "authors": [
+        "Pieter Bresters",
+        "Linda van den Brink",
+        "Paul van Genuchten",
+        "George Mathijssen",
+        "Mark Strijker"
+      ],
+      "date": "2022-09-30",
+      "id": "adr-mod-geo"
+    },
+    "CIS10": {
+      "title": "ISO 19123-2:2018 Geographic information — Schema for coverage geometry and functions — Part 2: Coverage implementation schema",
+      "href": "https://www.iso.org/standard/70948.html",
+      "status": "Published",
+      "publisher": "ISD",
+      "date": "2018-10-01",
+      "id": "CIS10"
+    },
+    "CityGML2": {
+      "title": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "href": "https://portal.ogc.org/files/?artifact_id=47842",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Gerhard Gröger",
+        "Thomas H. Kolbe",
+        "Claus Nagel",
+        "Karl-Heinz Häfele"
+      ],
+      "date": "2012-04-04",
+      "id": "CityGML2"
+    },
+    "CityGML3": {
+      "title": "OGC City Geography Markup Language (CityGML) Part 1: Conceptual Model Standard v3.0",
+      "href": "https://docs.ogc.org/is/20-010/20-010.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Thomas H. Kolbe",
+        "Tatjana Kutzner",
+        "Carl Stephen Smyth",
+        "Claus Nagel",
+        "Carsten Roensdorf",
+        "Charles Heazel"
+      ],
+      "date": "2021-09-13",
+      "id": "CityGML3"
+    },
+    "CityJSON": {
+      "title": "CityJSON Community Standard 1.0",
+      "href": "https://docs.ogc.org/cs/20-072r2/20-072r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Hugo Ledoux"
+      ],
+      "date": "2021-08-13",
+      "id": "CityJSON"
+    },
+    "COVJSON": {
+      "title": "OGC CoverageJSON Community Standard 1.0-draft_0.2.2",
+      "href": "https://portal.ogc.org/files/102051",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Chris Little",
+        "Jon Blower",
+        "Maik Riechert"
+      ],
+      "id": "COVJSON"
+    },
+    "CSW2APISO": {
+      "title": "OpenGIS Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=21460",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "Open Geospatial Consortium",
+      "id": "CSW2APISO"
+    },
+    "CSWISOAP": {
+      "title": "OGC 07-045r2: OGC Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile: Corrigendum, version 1.0.2",
+      "href": "https://portal.ogc.org/files/80534",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Uwe Voges",
+        "Kristian Senkler"
+      ],
+      "date": "2020-11-19",
+      "id": "CSWISOAP"
+    },
+    "DCAT-AP-2.1.1": {
+      "title": "DCAT Application Profile for data portals in Europe 2.1.1",
+      "href": "https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/releases",
+      "publisher": "European Commission",
+      "date": "2022-06-24",
+      "id": "DCAT-AP-2.1.1"
+    },
+    "epsg": {
+      "title": "EPSG Geodetic Parameter Dataset",
+      "href": "https://epsg.org/home.html",
+      "status": "Published",
+      "publisher": "Geodesy Subcommittee of the IOGP Geomatics Committee",
+      "id": "epsg"
+    },
+    "FE20": {
+      "title": "OGC 09-026r2: OGC Filter Encoding 2.0 Encoding Standard - With Corrigendum, Version 2.0.3",
+      "href": "http://docs.opengeospatial.org/is/09-026r2/09-026r2.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis (Peter) A. Vretanos",
+      "date": "2014-08-18",
+      "id": "FE20"
+    },
+    "GeoPackage": {
+      "title": "OGC GeoPackage Encoding Standard - with Corrigendum, v1.3.1",
+      "href": "https://www.geopackage.org/spec131/",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Jeff Yutzler"
+      ],
+      "date": "2021-11-16",
+      "id": "GeoPackage"
+    },
+    "GEOSPARQL11": {
+      "title": "OGC GeoSPARQL - A Geographic Query Language for RDF Data",
+      "href": "https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Nicholas J. Car",
+        "Timo Homburg",
+        "Matthew Perry",
+        "John Herring",
+        "Frans Knibbe",
+        "Simon J.D. Cox",
+        "Joseph Abhayaratna",
+        "Mathias Bonduel"
+      ],
+      "date": "2022",
+      "id": "GEOSPARQL11"
+    },
+    "GeoTIFF": {
+      "title": "OGC GeoTIFF standard v1.1",
+      "href": "http://docs.opengeospatial.org/is/19-008r4/19-008r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Emmanuel Devys",
+        "Ted Habermann",
+        "Chuck Heazel",
+        "Roger Lott",
+        "Even Rouault"
+      ],
+      "date": "2019-09-14",
+      "id": "GeoTIFF"
+    },
+    "GIMEG": {
+      "href": "https://docs.geostandaarden.nl/nen3610/gimeg",
+      "publisher": "Geonovum",
+      "status": "Vastgesteld",
+      "authors": [
+        "Linda van den Brink",
+        "Paul Janssen",
+        "Wilko Quak"
+      ],
+      "title": "Geometrie in model en GML",
+      "date": "2021-03-26",
+      "id": "GIMEG"
+    },
+    "GML31": {
+      "title": "OpenGIS® Geography Markup Language (GML) Implementation Specification, v3.1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=4700",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox",
+        "Paul Daisey",
+        "Ron Lake",
+        "Clemens Portele",
+        "Arliss Whiteside"
+      ],
+      "date": "2004-02-07",
+      "id": "GML31"
+    },
+    "GML33": {
+      "title": "OGC® Geography Markup Language (GML) — Extended schemas and encoding rules, v3.3",
+      "href": "https://portal.ogc.org/files/?artifact_id=46568",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele"
+      ],
+      "date": "2012-02-07",
+      "id": "GML33"
+    },
+    "GMLJPEG2000": {
+      "title": "OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core v.2.1",
+      "href": "http://docs.opengeospatial.org/is/08-085r8/08-085r8.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Lucio Colaiacomo",
+        "Joan Masó",
+        "Emmanuel Devys",
+        "Eric Hirschorn"
+      ],
+      "date": "2018-08-27",
+      "id": "GMLJPEG2000"
+    },
+    "GMLSF": {
+      "title": "Geography Markup Language (GML) simple features profile (with Corrigendum) (2.0)",
+      "href": "https://portal.ogc.org/files/?artifact_id=42729",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Linda van den Brink",
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "date": "2012-04-05",
+      "id": "GMLSF"
+    },
+    "HDF5": {
+      "title": "OGC Hierarchical Data Format Version 5 (HDF5®) Core Standard",
+      "href": "http://docs.opengeospatial.org/is/18-043r3/18-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Aleksandar Jelenak",
+        "Ted Habermann",
+        "Gerd Heber"
+      ],
+      "date": "2019-03-27",
+      "id": "HDF5"
+    },
+    "HDFEOS": {
+      "title": "HDF-EOS5 Data Model, File Format and Library (v1.1)",
+      "href": "https://www.earthdata.nasa.gov/sites/default/files/imported/ESDS-RFC-008-v1.1.pdf",
+      "status": "Recommended",
+      "publisher": "NASA",
+      "editors": [
+        "Larry Klein",
+        "Abe Taaheri"
+      ],
+      "date": "2016-05-01",
+      "id": "HDFEOS"
+    },
+    "HRCRS": {
+      "title": "Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie",
+      "href": "https://docs.geostandaarden.nl/crs/crs/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Friso Penninga",
+        "Lennard Huisman"
+      ],
+      "date": "2022-03-14",
+      "id": "HRCRS"
+    },
+    "HRLFG": {
+      "title": "Geometrie in uitwisselingsformaten",
+      "href": "https://docs.geostandaarden.nl/g4w/geox/#inleiding",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink",
+        "Gabriella Wiersma"
+      ],
+      "date": "2022-02-04",
+      "id": "HRLFG"
+    },
+    "HRTOEG": {
+      "title": "Handreiking digitaal toegankelijk locatiedata",
+      "href": "https://docs.geostandaarden.nl/visu/toeg/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Edward Mac Gillavry",
+        "Sjors Slaats",
+        "Theo OVerduin",
+        "Thijs Brentjens",
+        "Victor Zuydweg"
+      ],
+      "date": "2021-08-02",
+      "id": "HRTOEG"
+    },
+    "HRWC": {
+      "title": "Handreiking webcartografie",
+      "href": "https://www.geonovum.nl/uploads/standards/downloads/handreiking%20webcartografie%201.0.1_0.pdf",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2010-11-18",
+      "id": "HRWC"
+    },
+    "I3S": {
+      "title": "OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Community Standard Version 1.2",
+      "href": "http://docs.opengeospatial.org/cs/17-014r8/17-014r8.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Carl Reed",
+        "Tamrat Belayneh"
+      ],
+      "date": "2021-05-11",
+      "id": "I3S"
+    },
+    "IMMetingen": {
+      "title": "Informatiemodel Metingen",
+      "href": "https://www.sikb.nl/datastandaarden/richtlijnen/sikb0101",
+      "status": "Vastgesteld",
+      "publisher": "SIKB en IHW",
+      "id": "IMMetingen"
+    },
+    "INSGPGeopackage": {
+      "title": "GeoPackage encoding of INSPIRE datasets. INSPIRE good practise",
+      "href": "https://inspire.ec.europa.eu/good-practice/geopackage-encoding-inspire-datasets",
+      "status": "Candidate",
+      "publisher": "INSPIRE",
+      "id": "INSGPGeopackage"
+    },
+    "INSGPOAPIF": {
+      "title": "OGC API - Features as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-api-%E2%80%93-features-inspire-download-service",
+      "status": "Endorsed Good Practice",
+      "publisher": "IOC TF",
+      "id": "INSGPOAPIF"
+    },
+    "INSGPSTA": {
+      "title": "OGC SensorThings API as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-sensorthings-api-inspire-download-service",
+      "status": "Endorsed good practice",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "id": "INSGPSTA"
+    },
+    "inspire-19115-19119": {
+      "title": "INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119",
+      "href": "http://inspire.ec.europa.eu/documents/Metadata/INSPIRE_MD_IR_and_ISO_v1_2_20100616.pdf",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2007-10-26",
+      "id": "inspire-19115-19119"
+    },
+    "inspire-cirmd": {
+      "title": "Corrigendum to INSPIRE Metadata Regulation",
+      "href": "https://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=CELEX:32008R1205R(02)&from=EN",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2010-01-15",
+      "id": "inspire-cirmd"
+    },
+    "inspire-crs": {
+      "title": "INSPIRE Data Specification on Coordinate Reference Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/rs",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-crs"
+    },
+    "inspire-gcm": {
+      "title": "Generic Conceptual Model of the INSPIRE data specifications",
+      "href": "https://inspire.ec.europa.eu/documents/inspire-generic-conceptual-model",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-07",
+      "id": "inspire-gcm"
+    },
+    "inspire-gen": {
+      "title": "Guidelines for the encoding of spatial data",
+      "href": "https://inspire.ec.europa.eu/documents/guidelines-encoding-spatial-data",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-08",
+      "id": "inspire-gen"
+    },
+    "inspire-ggs": {
+      "title": "Guidelines INSPIRE Data Specification on Geographical Grid Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/gg",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-ggs"
+    },
+    "inspire-irmd": {
+      "title": "Implementing Rules for Metadata",
+      "href": "http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32008R1205",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2008-12-03",
+      "id": "inspire-irmd"
+    },
+    "inspire-mds": {
+      "title": "Methodology for the development of data specifications: baseline version (D 2.6, Version 3.0)",
+      "href": "https://inspire.ec.europa.eu/documents/methodology-development-data-specifications-baseline-version-d-26-version-30",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2008-04-06",
+      "id": "inspire-mds"
+    },
+    "inspire-TG-metadata": {
+      "title": "Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007",
+      "href": "https://github.com/INSPIRE-MIF/technical-guidelines/blob/2022.2/metadata/metadata-iso19139/metadata-iso19139.adoc",
+      "status": [
+        "Tehnical Guidance"
+      ],
+      "authors": [
+        "Temporary MIWP 2021-2024 sub-group 2.3.1"
+      ],
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2022-08-01",
+      "id": "inspire-TG-metadata"
+    },
+    "INSTGDiS": {
+      "title": "Technical Guidance for the implementation of Inspire Discovery Service, version 3.1",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-discovery-services-0",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2011-11-07",
+      "id": "INSTGDiS"
+    },
+    "INSTGDS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2013-08-09",
+      "id": "INSTGDS"
+    },
+    "INSTGDSSOS": {
+      "title": "Technical Guidance for implementing download services using the OGC Sensor Observation Service and ISO 19143 Filter Encoding, version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-sos",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSSOS"
+    },
+    "INSTGDSWCS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services using Web Coverage Services (WCS), version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-wcs",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSWCS"
+    },
+    "INSTGVS": {
+      "title": "Technical Guidance for the implementation of Inspire View Service",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-view-services-1",
+      "status": "Definitief",
+      "publisher": "IOC TF",
+      "date": "2022-08-01",
+      "id": "INSTGVS"
+    },
+    "ISO15836": {
+      "title": "ISO 15836: 2004, Information and documentation - The Dublin Core metadata element set",
+      "href": "https://www.iso.org/standard/37629.htm",
+      "publisher": "International Organization for Standardization",
+      "date": "2004",
+      "id": "ISO15836"
+    },
+    "ISO19101": {
+      "title": "ISO 19101-1:2014 Geographic information — Reference model — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/59164.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2014-11-01",
+      "id": "ISO19101"
+    },
+    "ISO19103": {
+      "title": "ISO 19103:2015 Geographic information — Conceptual schema language",
+      "href": "https://www.iso.org/standard/56734.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19103"
+    },
+    "ISO19107": {
+      "title": "ISO 19107:2019 Geographic information — Spatial schema",
+      "href": "https://www.iso.org/standard/66175.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-12-01",
+      "id": "ISO19107"
+    },
+    "ISO19108": {
+      "title": "ISO 19108:2002 Geographic information — Temporal schema",
+      "href": "https://www.iso.org/standard/26013.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-08",
+      "id": "ISO19108"
+    },
+    "ISO19109": {
+      "title": "ISO 19109:2015 Geographic information — Rules for application schema",
+      "href": "https://www.iso.org/standard/59193.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19109"
+    },
+    "ISO19110": {
+      "title": "ISO 19110:2016 Geographic information — Methodology for feature cataloguing",
+      "href": "https://www.iso.org/standard/57303.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2016-12-01",
+      "id": "ISO19110"
+    },
+    "ISO19111": {
+      "title": "ISO 19111:2019 Geographic information — Referencing by coordinates",
+      "href": "https://www.iso.org/standard/74039.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-01-01",
+      "id": "ISO19111"
+    },
+    "ISO19115-2003": {
+      "title": "ISO 19115:2003  Geographic information -- Metadata",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2003-05-01",
+      "id": "ISO19115-2003"
+    },
+    "ISO19115-2006": {
+      "title": "ISO 19115:2003/Cor 1:2006 Geographic information — Metadata — Technical Corrigendum 1",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2006-06-01",
+      "id": "ISO19115-2006"
+    },
+    "ISO19115-2009": {
+      "title": "ISO 19115-2:2009 Geographic information — Metadata — Part 2: Extensions for imagery and gridded data",
+      "href": "https://www.iso.org/standard/39229.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2009-02-01",
+      "id": "ISO19115-2009"
+    },
+    "ISO19115-2014": {
+      "title": "ISO 19115-1:2014 Geographic information — Metadata — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/53798.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2014-04-01",
+      "id": "ISO19115-2014"
+    },
+    "ISO19117": {
+      "title": "ISO 19117:2012 Geographic Information - Portrayal",
+      "href": "https://www.iso.org/standard/46226.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-01",
+      "id": "ISO19117"
+    },
+    "ISO19118": {
+      "title": "ISO 19118:2011 Geographic information — Encoding",
+      "href": "https://www.iso.org/standard/44212.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2011-10-01",
+      "id": "ISO19118"
+    },
+    "ISO19119": {
+      "title": "Geographic information - Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119"
+    },
+    "ISO19119-2005": {
+      "title": "ISO 19119:2005 Geographic information — Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119-2005"
+    },
+    "ISO19119-2008": {
+      "title": "ISO 19119:2005/Amd 1:2008 Geographic information — Services — Amendment 1: Extensions of the service metadata model",
+      "href": "https://www.iso.org/standard/44268.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2008-05-01",
+      "id": "ISO19119-2008"
+    },
+    "ISO19126-2009": {
+      "title": "ISO 19126:2009 Geographic information - Feature concept dictionaries and registers",
+      "href": "https://www.iso.org/standard/44875.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2009-11-01",
+      "id": "ISO19126-2009"
+    },
+    "ISO19131": {
+      "title": "ISO 19131:2022 Geographic information — Data product specifications",
+      "href": "https://www.iso.org/standard/85092.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-11-01",
+      "id": "ISO19131"
+    },
+    "ISO19136": {
+      "title": "ISO 19136-1:2020 Geographic information — Geography Markup Language (GML) — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/75676.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2020-01-01",
+      "id": "ISO19136"
+    },
+    "ISO19139": {
+      "title": "ISO/TS 19139:2007 Geographic information - Metadata - XML schema implementation",
+      "href": "https://www.iso.org/standard/32557.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2007-04-01",
+      "id": "ISO19139"
+    },
+    "ISO6709": {
+      "title": "ISO 6709:2022 Standard representation of geographic point location by coordinates",
+      "href": "https://www.iso.org/standard/75147.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-09-01",
+      "id": "ISO6709"
+    },
+    "ISOJPEG2000": {
+      "title": "ISO/IEC 15444-1:2019 Information technology — JPEG 2000 image coding system — Part 1: Core coding system",
+      "href": "https://www.iso.org/standard/78321.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-10-01",
+      "id": "ISOJPEG2000"
+    },
+    "ISOts19127": {
+      "title": "ISO/TS 19127 Geographic Information - Geodetic codes and parameters",
+      "href": "https://www.iso.org/standard/41784.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2005-06-01",
+      "id": "ISOts19127"
+    },
+    "JSON-FG": {
+      "title": "OGC Features and Geometries JSON - Part 1: Core",
+      "href": "https://docs.ogc.org/DRAFTS/21-045.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "id": "JSON-FG"
+    },
+    "MBS": {
+      "title": "Mapbox GL JS Style Specification",
+      "href": "https://docs.mapbox.com/mapbox-gl-js/style-spec/",
+      "status": "Unofficial",
+      "publisher": "Mapbox",
+      "id": "MBS"
+    },
+    "MIM": {
+      "title": "MIM - Metamodel Informatie Modellering",
+      "href": "https://docs.geostandaarden.nl/mim/mim/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Dick Krijtenburg",
+        "Paul Janssen",
+        "Lennart van Bergen"
+      ],
+      "authors": [
+        "Lennart van Bergen",
+        "Thies Mesdag",
+        "Marco Brattinga",
+        "Paul Janssen",
+        "Pano Maria",
+        "Johan Boer"
+      ],
+      "date": "2022-02-17",
+      "id": "MIM"
+    },
+    "NEN3610": {
+      "title": "NEN 3610:2022 nl - BBasismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "href": "https://www.nen.nl/nen-3610-2022-nl-296137",
+      "status": "Definitief",
+      "publisher": "NEN",
+      "date": "2022-05-31",
+      "id": "NEN3610"
+    },
+    "NETCDF": {
+      "title": "OGC Network Common Data Form (NetCDF) Core Encoding Standard version 1.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=43732",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Ben Domenico"
+      ],
+      "date": "2011-04-05",
+      "id": "NETCDF"
+    },
+    "NLAPIS": {
+      "title": "API Strategie Algemeen (Nederlandse API Strategie I)",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2022-03-09",
+      "id": "NLAPIS"
+    },
+    "NLDP": {
+      "title": "NEN 3610 - Linked Data",
+      "href": "https://docs.geostandaarden.nl/nen3610/nldp/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Paul Janssen"
+      ],
+      "authors": [
+        "Linda van den Brink",
+        "Marco Brattinga",
+        "Marinus Vonhof",
+        "Niels Hoffmann",
+        "Pano Maria",
+        "Hans Schevers",
+        "Ronald van Lanen",
+        "Joep van Genuchten"
+      ],
+      "date": "2020-03-23",
+      "id": "NLDP"
+    },
+    "NLISO19115": {
+      "title": "Nederlands metadata profiel op ISO 19115 voor geografie versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19115/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19115"
+    },
+    "NLISO19119": {
+      "title": "Nederlands metadata profiel op ISO 19119 voor services versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19119/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19119"
+    },
+    "NL-SBB-20241010": {
+      "title": "NNL-SBB - Standaard voor het beschrijven van begrippen",
+      "href": "https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2024-10-10",
+      "id": "NL-SBB-20241010"
+    },
+    "NLWFS": {
+      "title": "Nederlands profiel op ISO 19142 Geographic information — Web Feature Service, Versie 1.1",
+      "href": "https://www.geonovum.nl/geo-standaarden/services/nederlands-wfs-profiel-11-op-iso-19142-voor-web-feature-services-20",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWFS"
+    },
+    "NLWMS": {
+      "title": "Nederlands profiel op ISO 19128 Geographic information — Web Map Server Interface",
+      "href": "https://www.geonovum.nl/uploads/documents/nederlands_profiel_op_iso_19128_wms_1.3_-_versie_1.0.pdf",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWMS"
+    },
+    "OaMt1": {
+      "title": "OGC Timeseries Profile of Observations and Measurements v1.0",
+      "href": "http://docs.opengeospatial.org/is/15-043r3/15-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "James Tomkins",
+        "Dominic Lowe"
+      ],
+      "id": "OaMt1"
+    },
+    "OaMx2": {
+      "title": "Observations and Measurements - XML Implementation v2.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=41510",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox"
+      ],
+      "id": "OaMx2"
+    },
+    "OAPIC": {
+      "title": "OGC 19-087: OGC API - Coverages - Part 1: Core, version 0.0.6",
+      "href": "http://docs.ogc.org/DRAFTS/19-087.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Charles Heazel",
+        "Jerome St-Louis"
+      ],
+      "id": "OAPIC"
+    },
+    "OAPIEDR": {
+      "title": "OGC 19-086r5: OGC API - Environmental Data Retrieval Standard, Version 1.0.1",
+      "href": "https://docs.ogc.org/is/19-086r5/19-086r5.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Mark Burgoyne",
+        "David Blodgett",
+        "Charles Heazel",
+        "Chris Little"
+      ],
+      "date": "2022-08-05",
+      "id": "OAPIEDR"
+    },
+    "OAPIF1": {
+      "title": "OGC 17-069r4: OGC API - Features - Part 1: Core corrigendum, Version 1.0.1",
+      "href": "https://docs.opengeospatial.org/is/17-069r4/17-069r4.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele",
+        "Charles Heazel"
+      ],
+      "date": "2022-05-11",
+      "id": "OAPIF1"
+    },
+    "OAPIF2": {
+      "title": "OGC 18-058: OGC API - Features - Part 2: Coordinate Reference Systems by Reference, Version 1.0",
+      "href": "https://docs.opengeospatial.org/is/18-058r1/18-058r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "date": "2020-11-02",
+      "id": "OAPIF2"
+    },
+    "OAPIF3": {
+      "title": "OGC 19-079r1: OGC API - Features - Part 3: Filtering, Version 1.0.0-rc1",
+      "href": "http://docs.ogc.org/DRAFTS/19-079r1.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF3"
+    },
+    "OAPIF4": {
+      "title": "OGC 20-002: OGC API - Features - Part 4: Create, Replace, Update and Delete, Version 1.0.0 snapshot (editor's draft",
+      "href": "http://docs.ogc.org/DRAFTS/20-002.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF4"
+    },
+    "OAPIMAPS": {
+      "title": "OGC 20-058: OGC API - Maps - Part 1: Core, Version 0.1.0",
+      "href": "http://docs.ogc.org/DRAFTS/20-058.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Joan Masó",
+      "date": "2022-06-06",
+      "id": "OAPIMAPS"
+    },
+    "OAPIRECORDS1": {
+      "title": "OGC 20-224: OGC API - Records - Part 1: Core",
+      "href": "http://docs.ogc.org/DRAFTS/20-004.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Tom Kralidis",
+        "Charles Heazel"
+      ],
+      "date": "2020-01-13",
+      "id": "OAPIRECORDS1"
+    },
+    "OAPISTYLES": {
+      "title": "OGC 20-009: OGC API Styles",
+      "href": "http://docs.opengeospatial.org/DRAFTS/20-009.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "C. Portele",
+      "id": "OAPISTYLES"
+    },
+    "OAPITILES1": {
+      "title": "OGC 20-057: OGC API - Tiles - Part 1: Core",
+      "href": "https://docs.ogc.org/is/20-057/20-057.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Joan Masó",
+        "Jérôme St-Louis"
+      ],
+      "date": "26-08-2022",
+      "id": "OAPITILES1"
+    },
+    "OMS3": {
+      "title": "OGC Abstract Specification Topic 20: Observations, measurements and samples v3.0.0",
+      "href": "https://docs.ogc.org/as/20-082r4/20-082r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Katharina Schleidt",
+        "Ilkka Rinne"
+      ],
+      "date": "2023-05-26",
+      "id": "OMS3"
+    },
+    "OREFCO": {
+      "title": "OGC Abstract Specification Topic 2: Referencing by coordinates",
+      "href": "http://docs.opengeospatial.org/as/18-005r4/18-005r4.html",
+      "status": "OGC® Publicly Available Standard",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Roger Lott"
+      ],
+      "date": "2019-02-08",
+      "id": "OREFCO"
+    },
+    "SE11": {
+      "title": "OGC 05-077r4: OpenGIS Symbology Encoding Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=16700",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2006-07-21",
+      "id": "SE11"
+    },
+    "SensorML": {
+      "title": "OGC SensorML: Model and XML Encoding Standard v2.1",
+      "href": "http://docs.ogc.org/is/12-000r2/12-000r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Mike Botts",
+        "Alexandre Robin",
+        "Eric Hirschorn"
+      ],
+      "date": "2020-08-10",
+      "id": "SensorML"
+    },
+    "SLD11": {
+      "title": "OGC 05-078r4: Styled Layer Descriptor profile of the Web Map Service Implementation Specification, Version 1.1",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=22364",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2007-06-29",
+      "id": "SLD11"
+    },
+    "STAS": {
+      "title": "OGC 18-088: OGC SensorThings API Part 1 - Sensing, Version 1.1",
+      "href": "https://docs.ogc.org/is/18-088/18-088.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi",
+        "Hylke van der Schaaf"
+      ],
+      "date": "2021-08-04",
+      "id": "STAS"
+    },
+    "STAT": {
+      "title": "OGC 17-079r1: OGC SensorThings API Part 1 - Tasking Core, Version 1.0",
+      "href": "http://docs.opengeospatial.org/is/17-079r1/17-079r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi"
+      ],
+      "date": "2019-01-08",
+      "id": "STAT"
+    },
+    "WCS21": {
+      "title": "OGC 17-089r1: OGC Web Coverage Service (WCS) 2.1 Interface Standard - Core",
+      "href": "http://docs.opengeospatial.org/is/17-089r1/17-089r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2018-08-16",
+      "id": "WCS21"
+    },
+    "WFS11": {
+      "title": "Web Feature Service Implementation Specification with Corrigendum, Version 1.1.3",
+      "href": "http://docs.opengeospatial.org/is/04-094r1/04-094r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis A. Vretanos",
+      "date": "2016-10-26",
+      "id": "WFS11"
+    },
+    "WMC11": {
+      "title": "OpenGIS 05-005: Web Map Context Documents Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=8618",
+      "status": "Adopted specification",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "J. Sonnet",
+      "date": "2005-01-19",
+      "id": "WMC11"
+    },
+    "WMCC11": {
+      "title": "OpenGIS 08-050: Corrigendum for OpenGIS Implementation Standard Web Map Context Documents - Corrigendum 1",
+      "href": "https://portal.ogc.org/files/?artifact_id=27286",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "T. Kralidis",
+      "date": "2008-03-14",
+      "id": "WMCC11"
+    }
+  },
+  "title": "Wijzigingsprotocol geo-standaarden",
+  "specStatus": "vv",
+  "specType": "BD",
+  "pubDomain": "geo-standaarden",
+  "shortName": "gsw",
+  "publishDate": "2026-05-21",
+  "publishVersion": "2.0.1",
+  "previousVersion": "2.0.0",
+  "previousPublishDate": "2025-10-09",
+  "previousMaturity": "cv",
+  "editors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Monique van Scherpenzeel",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "github": "https://github.com/Geonovum/Geo-standaarden-wijzigingsprotocol"
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
+
+<body class="h-entry informative toc-inline"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://docs.geostandaarden.nl/media/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Wijzigingsprotocol geo-standaarden 2.0.1</h1>
+    
+    <h2>
+      Geonovum Beheerdocumentatie<br>
+      Versie ter vaststelling
+      <time class="dt-published" datetime="2026-05-21">21 mei 2026</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/geo-standaarden/vv-bd-gsw-20260521">https://docs.geostandaarden.nl/geo-standaarden/vv-bd-gsw-20260521</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/geo-standaarden/gsw/">https://docs.geostandaarden.nl/geo-standaarden/gsw/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/Geo-standaarden-wijzigingsprotocol/">https://geonovum.github.io/Geo-standaarden-wijzigingsprotocol/</a></dd>
+      
+      
+      
+      <dt>Vorige versie:</dt><dd><a href="https://docs.geostandaarden.nl/geo-standaarden/cv-bd-gsw-20251009">https://docs.geostandaarden.nl/geo-standaarden/cv-bd-gsw-20251009</a></dd>
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Monique van Scherpenzeel</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/Geo-standaarden-wijzigingsprotocol/">GitHub Geonovum/Geo-standaarden-wijzigingsprotocol</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/Geo-standaarden-wijzigingsprotocol/issues/">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/Geo-standaarden-wijzigingsprotocol/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/Geo-standaarden-wijzigingsprotocol/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://docs.geostandaarden.nl/media/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+<section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Open geo-standaarden zorgen ervoor dat geo-informatie betekenisvol voor diverse taken en in verschillende softwarepakketten te gebruiken is. Geonovum ontwikkelt en beheert de Nederlandse basisset van geo-standaarden voor het vindbaar, toegankelijk, uitwisselbaar en herbruikbaar maken van geo-informatie. Mensen die in de praktijk werken met de geo-standaarden hebben vragen over de toepassing ervan, willen weten welke ontwikkelingen spelen, en hebben mogelijk suggesties voor aanpassingen van de basisset geo-standaarden. 
+Dit wijzigingsprotocol geeft inzicht in het wijzigingsproces, evenals de belangrijkste taken en verantwoordelijkheden van de betrokkenen (gebruikers en ketenpartners) bij het onderhouden en gebruiken van de geo-standaarden. De gebruikers en ketenpartners worden op diverse momenten betrokken in dit proces. In dit protocol beschrijven we één onderdeel van het beheer: de manier waarop de wijzigingen van een basis geo-standaard plaatsvinden. Dit wijzigingsprotocol is dan ook alleen van toepassing op de basisset geo-standaarden, voor zover die bij Geonovum in beheer zijn.</p>
+<blockquote>
+<p>Het is van belang te beseffen dat wijzigingen in de basisset geo-standaarden impact op conformiteit kan hebben met onderliggende standaarden. Deze relaties dienen in de wijzigings- advies- en besluitprocedure meegenomen te worden.</p>
+</blockquote>
+<br>
+Concreet bestaat de basisset geo-standaarden uit: 
+<ul><li><a href="https://www.geonovum.nl/onderwerpen/basismodel-geo-informatie-nen3610" target="_blank">Basismodel geo-informatie NEN 3610</a>; </li>
+<li><a href="https://www.geonovum.nl/onderwerpen/geography-markup-language-gml" target="_blank">Geography Markup Language (GML)</a>; </li>
+<li><a href="https://www.geonovum.nl/geo-standaarden/geopackage" target="_blank">GeoPackage</a>; </li>
+<li><a href="https://www.geonovum.nl/geo-standaarden/metadata" target="_blank">Metadata-profielen voor geografie en webservices</a>; </li>
+<li><a href="https://www.geonovum.nl/geo-standaarden/ogc-apis" target="_blank">OGC API Features</a>; </li>
+<li><a href="https://www.geonovum.nl/geo-standaarden/ogc-apis" target="_blank">OGC API Tiles</a>. </li>
+</ul>
+<br>
+De basisset geo-standaarden staat op de ‘<a href="https://www.forumstandaardisatie.nl/open-standaarden" target="_blank">Pas toe of leg uit -standaarden lijst van het Forum Standaardisatie</a>. 
+
+<p>Dit wijzigingsprotocol is niet van toepassing op de domeinstandaarden die Geonovum in beheer heeft. Iedere domeinstandaard in beheer bij Geonovum heeft een eigen wijzigingsprotocol of zou dit moeten hebben. Deze zijn beschikbaar via de Geonovum website. Het wijzigingsprotocol voor de basisset geo-standaarden geldt als het generieke wijzigingsprotocol. Andere wijzigingsprotocollen dienen hiervan te worden afgeleid en hiermee in lijn te zijn.
+<br>
+<br>
+In het <a href="https://docs.geostandaarden.nl/gbd/gsb/" target="_blank">beheerplan geo-standaarden</a> zijn de verschillende beheeraspecten voor de basisset geo-standaarden beschreven zoals implementatieondersteuning, wijzigingsproces, governance, etc. zodat iedere organisatie die de basisset geo-standaarden gebruikt hun weg weten te vinden in de geo-standaarden.</p>
+</section>
+<section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#55B54A46"><bdi class="secno">1. </bdi>Inleiding </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#365FC39A"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</a></li><li class="tocline"><a class="tocxref" href="#301821F8"><bdi class="secno">1.2 </bdi>Begrippen </a></li></ol></li><li class="tocline"><a class="tocxref" href="#41513FF0"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#7CDE8796"><bdi class="secno">2.1 </bdi>Protocol versus proces</a></li><li class="tocline"><a class="tocxref" href="#000486F9"><bdi class="secno">2.2 </bdi>Releasebeleid</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#48BAAD23"><bdi class="secno">2.2.1 </bdi>Nieuwe versie van de standaard</a></li><li class="tocline"><a class="tocxref" href="#4AD37261"><bdi class="secno">2.2.2 </bdi>Consultatie </a></li><li class="tocline"><a class="tocxref" href="#3C90F7C6"><bdi class="secno">2.2.3 </bdi>Oudere versie van een standaard</a></li></ol></li><li class="tocline"><a class="tocxref" href="#207E4963"><bdi class="secno">2.3 </bdi>Proces varianten bij wijzigingen </a></li><li class="tocline"><a class="tocxref" href="#446369FA"><bdi class="secno">2.4 </bdi>Betrokkenen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#60D731F6"><bdi class="secno">3. </bdi>Wijzigingsproces</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#24999071"><bdi class="secno">3.1 </bdi>Fasen in het wijzigingsproces</a></li><li class="tocline"><a class="tocxref" href="#21D2F6BA"><bdi class="secno">3.2 </bdi>Inzicht in het wijzigingsproces</a></li></ol></li><li class="tocline"><a class="tocxref" href="#572CC78A"><bdi class="secno">4. </bdi>Tussentijdse werkafspraken</a></li><li class="tocline"><a class="tocxref" href="#6BEFD657"><bdi class="secno">5. </bdi>Implementatie ondersteuning</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#4B0AA488"><bdi class="secno">5.1 </bdi>Technische bestanden</a></li><li class="tocline"><a class="tocxref" href="#7256DB88"><bdi class="secno">5.2 </bdi>Validatie en certificatie</a></li><li class="tocline"><a class="tocxref" href="#0930E05A"><bdi class="secno">5.3 </bdi>Opleiding</a></li><li class="tocline"><a class="tocxref" href="#331B9E8F"><bdi class="secno">5.4 </bdi>Communicatie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#718CA66D"><bdi class="secno">6. </bdi>Escalatie- en klachtenprocedure</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#24F83D78"><bdi class="secno">6.1 </bdi>Sturende principes bij escalatie</a></li><li class="tocline"><a class="tocxref" href="#625AEBC6"><bdi class="secno">6.2 </bdi>Klachtenafhandeling</a></li></ol></li></ol></nav>
+
+  <section class="chapter"><p><strong>Versiebeheer</strong></p>
+<p>Dit document is aan verandering onderhevig. Het versiebeheer van het document geeft inzicht in wijzigen en de actualiteit ervan.</p>
+<table style="width: 100%;"><caption></caption>
+<colgroup><col id="col0001" style="width: 9.801876955161628%;">
+<col id="col0002" style="width: 18.06279689491368%;">
+<col id="col3" style="width: 14.78391843355347%;">
+<col id="col4" style="width: 57.35140771637121%;">
+</colgroup>
+<tbody><tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="1818B153"><b>Versie</b></p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="065781CA"><b>Datum</b></p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="661AE48B"><b>Status</b></p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="30BE913F"><b>Toelichting</b></p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="6688B0A3">1.0</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="24ED4FA2">Augustus 2018</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="3F14BB57">Vervallen </p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="1963C902">Aanbieden aan Programmaraad ter vaststelling. Door Programmaraad ter advisering aan Regieoverleg overgedragen.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="6DF8D428">1.1</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="7DEFEE46">Juni 2019</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="7894FB6C">Vervallen</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="067E5227">Opmerkingen Regieoverleg verwerkt en opnieuw aangeboden aan Regieoverleg. Belangrijkste wijzigingen: X-wijz. max 1x per 3 jaar, Y-wijz. max 1x per jaar, Z-wijz. z.s.m. Verder formuleringen aangescherpt over rol NEN bij NEN3610, OGC bij GML en Forum bij toekennen PTOLU-status aan standaarden. Aanbieden aan Programmaraad ter vaststelling.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="3B3C6C9D">1.1</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="181F9C6D">19 oktober 2021</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="0FC0CFD3">Vastgesteld</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="72F19D67"><a href="https://www.geonovum.nl/over-geonovum/wie-wij-zijn" target="_blank">Programmaraad</a></p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="6E7C7582">2.0</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="37B4DEAF">9 oktober 2025</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="30CFAD20">Consultatieversie</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="275F95BF">Actualisatie van het wijzigingsprotocol en in lijn brengen met het <a href="https://docs.geostandaarden.nl/gbd/gsb/" target="_blank">beheerplan geo-standaarden</a>. </p><p id="2A317E64">De wijzigingen zijn: <a href="#365FC39A">Paragraaf 1.1</a> van introductie hernoemd naar samenvatting; uitbreiding van de begrippenlijst in <a href="#301821F8">paragraaf 1.3</a>; paragraaf Fasen en resultaten is verplaatst van hoofdstuk 2 naar hoofdstuk 3 en hernoemd naar <a href="#24999071">Fasen in het wijzigingsproces</a>; aan 
+<a href="#000486F9">paragraaf 2.2</a> zijn de sturende principes voor consultatie toegevoegd; de rol van de het <a href="#446369FA">Regie-overleg geo-standaarden</a> is toegevoegd in het wijzigingsproces; <a href="#21D2F6BA">paragraaf 3.2</a> is zowel het proces als de figuur geactualiseerd; het hoofdstuk Tussentijdse werkafspraken is toegevoegd als <a href="#572CC78A">hoofdstuk 4</a>; in <a href="#718CA66D">hoofdstuk 6</a> is een verwijzing toegevoegd naar het beheerplan geo-standaarden met betrekking tot de klachten over standaarden in plaats van klachten over het wijzigingsproces; <b>hoofdstuk 7 </b>(overzicht status van wijzigingsverzoeken) is vervallen omdat deze niet relevant is voor de werkwijze op GitHub.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="3B3C6C9E">2.0.1</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="181F9C6E">20 april 2026</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="0FC0CFD4">Versie ter vaststelling</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="72F19D68">Na consultatie van het wijzigingsprotocol versie 2.0 in het Regie-overleg geo-standaarden op 12 februari 2026 zijn aandachtspunten toegevoegd aan de samenvatting van dit document en de fasen van het wijzigingsproces (<a href="#24999071">paragraaf 3.1</a>). Deze aandachtspunten zijn uitgelicht via een grijze verticale balk. Verder is de laatste zin bij de uitleg van de Programmaraad aangepast: van ‘Zij zijn de voornaamste belanghebbenden van Geonovum.’ naar ‘De vertegenwoordigers spreken namens hun publieke organisaties als voornaamste belanghebbenden van het werk van het basisprogramma van Geonovum.’</p></td>
+</tr>
+</tbody>
+</table></section>
+  <section class="chapter" id="inleiding"><div class="header-wrapper"><h2 id="55B54A46"><bdi class="secno">1. </bdi>Inleiding </h2><a class="self-link" href="#55B54A46" aria-label="Permalink for Section 1."></a></div><section id="waarom-een-wijzigingsprotocol"><div class="header-wrapper"><h3 id="365FC39A"><bdi class="secno">1.1 </bdi>Waarom een wijzigingsprotocol</h3><a class="self-link" href="#365FC39A" aria-label="Permalink for Section 1.1"></a></div><p>In dit wijzigingsprotocol staan de sturende principes achter het wijzigingsproces voor de standaarden in de basisset geo-standaarden; de manier waarop wijzigingen in geo-standaarden plaatsvinden in afstemming met de gebruikers en ketenpartners. Met het protocol wordt elke wijziging van de standaard een voorspelbaar en transparant proces voor de gebruikers van de geo-standaarden. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies van de standaard verstaan wordt en wanneer deze nieuwe versie(s) verwacht mogen worden. Tevens is een processchema uitgewerkt, dat invulling geeft aan de stappen die de gebruikers en ketenpartners met elkaar doorlopen om tot een wijziging van de geo-standaarden te komen.</p>
+</section><section id="begrippen"><div class="header-wrapper"><h3 id="301821F8"><bdi class="secno">1.2 </bdi>Begrippen </h3><a class="self-link" href="#301821F8" aria-label="Permalink for Section 1.2"></a></div><table style="width: 100%;"><caption></caption>
+<colgroup><col id="col0011" style="width: 21.608156644652997%;">
+<col id="col0012" style="width: 78.391843355347%;">
+</colgroup>
+<tbody><tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="1BF055C7"><b>Begrip</b></p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="6E17838A"><b>Uitleg</b></p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="5A8D3482">Basisset geo-standaarden</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="7624529D">De basisset geo-standaarden bevat de domein overstijgende standaarden die nodig zijn om de Nederlandse geo-informatie infrastructuur goed te laten functioneren.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="47C622DC">Basisprogramma Standaardisatie &amp; Innovatie</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="173425C5">Het beheer en de doorontwikkeling van de set geo-standaarden is een basistaak van Geonovum en is belegd in basisprogramma Standaardisatie &amp; Innovatie.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="7CAD84B6">Geo-standaard</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="27C9330E">Standaard uit de basisset geo-standaarden die is opgenomen op de ‘Pas toe of leg uit’ -standaarden lijst van het Forum Standaardisatie.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="7767819A">Programmaraad</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="58E3DF77">De Programmaraad van Geonovum adviseert het bestuur van Geonovum over de inhoud en prioriteiten voor het basisprogramma en over onze andere werkzaamheden. De Programmaraad treedt op als stuurgroep voor het basisprogramma. De Programmaraad beoordeelt en besluit over wijzigingsvoorstellen en stelt een nieuwe (versie) van de geo-standaarden vast die bij Geonovum in beheer zijn. Ook is de Programmaraad aanspreekpunt voor klachten over het beheer van de standaarden door Geonovum. De Programmaraad bestaat uit vertegenwoordigers van publieke organisaties in het geo-werkveld. De vertegenwoordigers spreken namens hun publieke organisaties als voornaamste belanghebbenden van het werk van het basisprogramma van Geonovum.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="5828D48E">Regie-overleg geo-standaarden</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="316F3E3A">Het Regie-overleg geo-standaarden richt zich op het borgen en vergroten van de samenhang tussen de standaarden in de set geo-standaarden en brengt daarover advies uit aan de Programmaraad.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="6A493362">Standaardenteam</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p>Binnen Geonovum het team van adviseurs dat werkt  aan de uitvoering van het basisprogramma Standaardisatie &amp; Innovatie.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="000E3CB7">Wijzigingsprotocol</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="3D3BEE81">Hiermee wordt het geheel van vastgelegde regels en afspraken voor het wijzigen van de standaard vastgelegd.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="2139CF29">Wijzigingsproces</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="41CD0EBE">Het wijzigingsproces is de daadwerkelijke wijziging van de geo-standaard op een bepaald moment. Het volledige wijzigingsproces doorloopt de fasen van het wijzigingsprotocol met een datum van inwerkingtreding van de nieuwe versie van de geo-standaard.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="1A793A8C">Wijzigingsverzoek</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="37C7C5BB">Wijzigingsverzoeken zijn wensen of eisen voor aanpassing van de geo-standaard. wordt door een gebruiker van de standaard ingediend bij Geonovum. Het wijzigingsverzoek wordt door het standaardenteam van Geonovum beoordeeld, ingeschat en aan de wensen- en eisenlijst toegevoegd, die inclusief status inzichtelijk is via de Geonovum website. Een wijzigingsverzoek dat niet wordt ingewilligd, wordt beargumenteerd afgewezen.</p></td>
+</tr>
+<tr><td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="4CA1D686">Wijzigingsvoorstel</p></td>
+<td class="left" style="border-top: 0.5pt solid #000000; border-left: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; border-right: 0.5pt solid #000000;"><p id="77AFBBE0">In het wijzigingsproces worden meerdere wijzigingsverzoeken meegenomen en gebundeld tot één wijzigingsvoorstel voor het wijzigen van de standaard en de bijkomende beheerobjecten.</p></td>
+</tr>
+</tbody>
+</table></section></section>
+  <section class="chapter" id="gebruik-van-het-wijzigingsprotocol"><div class="header-wrapper"><h2 id="41513FF0"><bdi class="secno">2. </bdi>Gebruik van het wijzigingsprotocol</h2><a class="self-link" href="#41513FF0" aria-label="Permalink for Section 2."></a></div><p>Het wijzigingsprotocol schrijft een vast stramien voor het wijzigen van de standaard voor. Het protocol benoemt de fasen en de op te leveren resultaten. Belangrijk zijn de randvoorwaarden en uitgangspunten. De gebruikers en ketenpartners van de geo-standaarden worden bij het wijzigen van de standaard nauw betrokken. </p>
+<section id="protocol-versus-proces"><div class="header-wrapper"><h3 id="7CDE8796"><bdi class="secno">2.1 </bdi>Protocol versus proces</h3><a class="self-link" href="#7CDE8796" aria-label="Permalink for Section 2.1"></a></div><p>De titel van dit document geeft aan dat het hier om een protocol gaat. Toch wordt in dit document ook gesproken over processen. Een wijzigingsprotocol beschrijft de manier waarop wijzigingen in de basisset geo-standaarden plaatsvinden: het wijzigingsproces. In het protocol zijn basisbegrippen en uitgangspunten uiteengezet voor het wijzigingsproces, bijvoorbeeld wat onder nieuwe en volgende versies verstaan wordt en wanneer deze verwacht mogen worden. De daadwerkelijke planning van een nieuwe versie is op hoofdlijnen uitgewerkt in de standaardenagenda, en meer in detail in de tijdens de kwartaalplanning uitgewerkt. Deze standaardenagenda zal nog worden vertaald naar een roadmap, waarin voor de komende jaren de verdere ontwikkeling en de uitfasering van de (verschillende versies van de) standaarden wordt getoond.
+<br>
+<br>
+Met behulp van een wijzigingsprotocol voor de basisset geo-standaarden geeft Geonovum:</p>
+<ul><li>inzicht in het behandel- en besluitproces dat ten grondslag ligt aan het versiebeheer;</li>
+<li>inzicht in de aangeboden wijzigingsvoorstellen;</li>
+<li>stabiliteit aan de standaard;</li>
+<li>continuïteit aan de standaard;</li>
+<li>een eenduidige aanpak.</li>
+</ul><br>
+De stabiliteit en continuïteit van de standaard maken wij inzichtelijk met het jaarplan voor standaardisatie en innovatie. Hierin staan de activiteiten die wij uitvoeren om de interoperabiliteit binnen onze nationale geodata infrastructuur (NGII) te borgen en de innovaties die wij in dit kader verkennen.
+<br>
+
+</section><section id="releasebeleid"><div class="header-wrapper"><h3 id="000486F9"><bdi class="secno">2.2 </bdi>Releasebeleid</h3><a class="self-link" href="#000486F9" aria-label="Permalink for Section 2.2"></a></div><p>In deze paragraaf gaan we in op het releasebeleid van Geonovum. Dit beleid passen wij toe op de basisset geo-standaarden die in beheer is bij Geonovum. Concreet gaat het om het releasebeleid voor de Metadata-profielen voor geografie en webservices. Voor GML, GeoPackage, OGC API Features en OGC API Tiles geldt dat deze standaarden worden beheerd door OGC en het <a href="https://docs.ogc.org/pol/05-020r29/05-020r29.html" target="_blank">beleid en procedures van de Technische Commissie van de OGC</a> wordt toegepast. Voor het Basismodel Geo-informatie (NEN 3610) geldt dat de Programmaraad  de nieuwe versie van NEN 3610 niet vaststelt, maar keurt hem goed (of af) en draagt deze vervolgens voor aan de NEN normcommissie 351 240 Geo-informatie. Deze commissie verzorgt de openbare consultatie en stelt deze geo-standaard formeel vast.
+<br>
+Een release van een standaard is een nieuwe uitgave van de standaard. De nieuwe release kenmerkt zich ten opzichte van de oude versie door een hoger versienummer. Een release betreft 1 product van een standaard of is een bundel van meerdere producten van de betreffende standaard. Bij de release is ieder product voorzien van een nieuw versienummer conform X.Y.Z schrijfwijze (zie <a href="#48BAAD23">paragraaf 2.2.1</a>) en een status. Een voorbeeld van een bundel is de nieuwe uitgave van een informatiemodel, een schema (bijvoorbeeld .xsd of .json), een schematron (.sch) en een praktijkrichtlijn. 
+<br>
+<br>
+We werken aan een nieuwe uitgave van een product van de standaard op GitHub. Bij een release wordt de nieuwe versie van het product/ de bundel van producten opgeleverd en gepubliceerd van GitHub naar een van de volgende Geonovum publicatieservers. Welke publicatieserver is afhankelijk van het type product.  </p>
+<ul><li><a href="https://register.geostandaarden.nl/" target="_blank">Technisch register</a>;</li>
+<li><a href="https://definities.geostandaarden.nl/" target="_blank">Conceptenbibliotheek</a>;</li>
+<li><a href="https://docs.geostandaarden.nl/" target="_blank">Documenten register</a>;</li>
+<li><a href="https://modellen.geostandaarden.nl/" target="_blank">Ontologieën register</a>.</li>
+</ul><br> 
+Ontsluiting breed naar ons netwerk vindt vervolgens altijd plaats via de Geonovum website op de geo-standaarden pagina en nieuwsbrieven. Op de Geonovum website verwijzen we voor het raadplegen en downloaden van de nieuwe uitgave altijd naar de bronlocatie: onze publicatieservers. 
+<br>
+
+<section id="nieuwe-versie-van-de-standaard"><div class="header-wrapper"><h4 id="48BAAD23"><bdi class="secno">2.2.1 </bdi>Nieuwe versie van de standaard</h4><a class="self-link" href="#48BAAD23" aria-label="Permalink for Section 2.2.1"></a></div><p>Elk product van onze standaarden is altijd voorzien van een versienummer. Bij het aanpassen van dat product, wijzigt het versienummer. De grootte van de wijzigingen (major, minor, patch ofwel X,Y,Z wijzigingen) heeft gevolg voor de implementatie van de standaard en wordt uitgedrukt in de  versienummering. Hierbij wordt de ‘Semantic Versioning’ (<a href="https://semver.org/lang/nl/" target="_blank">SemVer</a>) methodiek aangehouden.
+<br>
+<br>
+We hanteren drie typen versies voor een wijziging van een standaard. Bijvoorbeeld: versie 2.1.0 (=X.Y.Z):</p>
+<ul><li><b>X-wijzigingen </b>Dit zijn grote (major) wijzigingen van de standaard die niet backwards compatible zijn.</li>
+<li><b>Y-wijzigingen </b>Dit zijn wijzigingen die wel backwards compatible zijn.</li>
+<li><b>Z-wijzigingen </b>Dit zijn in feite oplossingen van technische fouten of verbeteringen van technische aard, alsmede tekstuele verbeteringen. Deze wijzigingen zijn backwards compatible.</li>
+</ul>
+
+</section><section id="consultatie"><div class="header-wrapper"><h4 id="4AD37261"><bdi class="secno">2.2.2 </bdi>Consultatie </h4><a class="self-link" href="#4AD37261" aria-label="Permalink for Section 2.2.2"></a></div><p>Met (door)ontwikkelen van een standaard leveren wij nieuwe versies van de producten van de standaard op. Doel van een consultatie is ons netwerk, de gebruikers van de standaard en de ketenpartners te raadplegen; wij vragen hen om advies, zodat de standaard zo goed mogelijk aansluit op de werkprocessen van de eindgebruikers van de standaarden. 
+De consultaties zijn openbaar/ publiek en daardoor mag iedereen reageren op de nieuwe versie. Consultaties duren minimaal 3 weken en maximaal 8 weken. Bekendmaking gebeurt via de Geonovum website door middel van een nieuwsbericht. We attenderen de gebruikers en de ketenpartners via onze nieuwsbrief de Geo-standaard (inschrijving daarvoor vindt plaats via de Geonovum website). 
+Wanneer en hoe lang een consultatie plaatst vindt, is afhankelijk van proces varianten bij wijzigingen (zie <a href="#207E4963">paragraaf 2.3</a>).
+<br></p>
+</section><section id="oudere-versie-van-een-standaard"><div class="header-wrapper"><h4 id="3C90F7C6"><bdi class="secno">2.2.3 </bdi>Oudere versie van een standaard</h4><a class="self-link" href="#3C90F7C6" aria-label="Permalink for Section 2.2.3"></a></div><p>De SemVer-methodiek schrijft backwards compatibility voor op het Y-niveau. Na het uitbrengen van een nieuwe versie van een bij Geonovum in beheer zijnde standaard blijven oudere versies beschikbaar en zijn vindbaar via de Geonovum website. Een nieuwe versie dwingt daarmee geen directe overstap af bij de gebruikers, tenzij anders (bijvoorbeeld wettelijk) bepaald. Na het uitbrengen van de nieuwe versie van een standaard wordt de ontwikkeling van de oude versie stopgezet.
+<br>
+<br>
+Voor het onderhoud en de ondersteuning van een oude versie van een standaard gelden de volgende uitgangspunten:</p>
+<ul><li>Aan een oude versie worden geen nieuwe features toegevoegd, geen aanpassingen gedaan op X en Y niveau na het uitbrengen van een nieuwe versie. Verzoeken om aanpassing en wijziging voor nieuwe functionaliteit worden niet meer voor de oude standaard in behandeling genomen maar doorgegeven aan het ontwikkelteam. Correcties (Z-wijzigingen) worden wel uitgevoerd op de vorige versies zolang deze nog ondersteund worden.</li>
+<li>Bij oplevering van een nieuwe versie wordt de voorgaande versie nog een vooraf vastgestelde periode ondersteund. De duur van de overgangsperiode wordt mede bepaald door de omvang van de wijzigingen (X, Y en Z wijzigingen op de vorige versies), de staat van ontwikkeling van de standaard en of de standaard in voorlopig dan wel permanent beheer is.</li>
+<li>Oudere versies van (producten van) de standaard moeten voor onbepaalde tijd beschikbaar blijven via onze publicatie registers via de url’s zoals ze gepubliceerd.</li>
+</ul>
+
+</section></section><section id="proces-varianten-bij-wijzigingen"><div class="header-wrapper"><h3 id="207E4963"><bdi class="secno">2.3 </bdi>Proces varianten bij wijzigingen </h3><a class="self-link" href="#207E4963" aria-label="Permalink for Section 2.3"></a></div><p>In <a href="#000486F9">paragraaf 2.2</a> zijn de X, Y en Z wijzigingen uitgelegd. Voor wijzigingen kent Geonovum twee proces varianten. Eén voor X en Y wijzigingen en één voor Z wijzigingen.
+<br>
+<br>
+<b>Proces voor X en Y wijzigingen</b>: 
+Deze vergen volledige afstemming en het doorlopen van alle in <a href="#446369FA">paragraaf 2.4</a> beschreven fasen: Inhoud, Toetsing, Besluitvorming en Implementatie. Voor de inhoudelijke fase wordt een werkgroep gestart met daarin vertegenwoordiging van belangrijke gebruikers en ketenpartners van de betreffende standaard. Het resultaat van de werkgroep wordt in een openbare consultatie getoetst. Nadat het Regie-overleg geo-standaarden is gevraagd te adviseren over de wijziging, vindt besluitvorming over vaststelling van de geo-standaard plaats in de Programmaraad van Geonovum. Indien nodig wordt met softwareleveranciers een convenant afgesloten of een bestaand convenant uitgebreid, waarin wordt afgesproken dat zij (onderdelen van) de standaard gaan ondersteunen.
+<br>
+<br>
+<b>Proces voor Z wijzigingen</b>: 
+Deze dienen zo snel als mogelijk uitgevoerd te worden. De inhoudelijke fase wordt door een medewerker van Geonovum gedaan. Toetsing vindt plaats door middel van een (beperkte) consultatie in het standaardenteam van Geonovum en met gebruikers en ketenpartners. Besluitvorming vindt plaats door het standaardenteam van Geonovum met een notificatie van de wijziging aan de Programmaraad. Implementatie vindt plaats door het publiceren van de wijziging op de website van Geonovum.
+<br></p>
+</section><section id="betrokkenen"><div class="header-wrapper"><h3 id="446369FA"><bdi class="secno">2.4 </bdi>Betrokkenen</h3><a class="self-link" href="#446369FA" aria-label="Permalink for Section 2.4"></a></div><p>De volgende groepen van gebruikers en ketenpartners zijn betrokken bij het wijzigingsproces van een geo-standaard:</p>
+<ul>
+<li>Programmaraad van Geonovum;</li>
+<li>Regie-overleg geo-standaarden;</li>
+<li>Werkgroepen;</li>
+<li>Standaardenteam;</li>
+<li>Softwareleveranciers;</li>
+<li>Forum Standaardisatie.</li>
+</ul><br>
+
+<figure id="fig-betrokkenen-bij-wijzigingen-van-geo-standaarden"><img src="media/image3.jpeg" alt="De Programmaraad, het standaardenteam van Geonovum, het Regie-overleg geo-standaarden, werkgroepen en softwareleveranciers zijn betrokken bij het wijzigingsproces van een geo-standaard.B" style="width: 100%;">
+<figcaption><a class="self-link" href="#fig-betrokkenen-bij-wijzigingen-van-geo-standaarden">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Betrokkenen bij wijzigingen van geo-standaarden</span></figcaption></figure>
+
+<p><b>Programmaraad</b>: 
+Bij het vaststellen van een nieuwe versie (X, Y) van de Metadata-profielen voor geografie en webservices stelt de <a href="https://www.geonovum.nl/over-geonovum/wie-wij-zijn" target="_blank">Programmaraad</a> met advies van Geonovum vast hoelang een oude versie wordt ondersteund en wanneer een oude versie komt te vervallen. Het vaststellen van Z-wijzigingen, zie <a href="#3C90F7C6">paragraaf 2.2.3</a> wordt door Geonovum zelf uitgevoerd zonder tussenkomst van de Programmaraad van Geonovum.<br><br>
+<br>
+<b>Regie-overleg geo-standaarden</b>: 
+Het Regie-overleg geo-standaarden richt zich op het borgen en vergroten van de samenhang tussen de standaarden in de set geo-standaarden. Dit gaat om de basisset geo-standaarden zoals die geplaatst is op de ‘<a href="https://www.forumstandaardisatie.nl/open-standaarden/verplicht?trefwoord=182" target="_blank">Pas toe of leg uit</a>’ -standaarden lijst van het Forum Standaardisatie en de domeinstandaarden, die gebaseerd zijn op het basismodel voor geo-informatie NEN 3610. 
+Het Regie-overleg geo-standaarden:</p>
+<ul><li>is domein-overstijgend;</li>
+<li>is gevuld met beheerders van de domeinstandaarden die gebaseerd zijn op NEN 3610;</li>
+<li>is tactisch op de inhoud om de verbinding met de geo-standaarden te leggen;</li>
+<li>is aanvullend op/ aan de bestaande gremia.</li>
+</ul><br>
+Het Regie-overleg geo-standaarden gaat nadrukkelijk niet over de governance van domeinstandaarden. Wanneer vanuit samenhang de behoefte aan besluitvorming ontstaat bij een individuele domeinstandaard, dan brengt de beheerder dit in de governance van de domeinstandaard in.
+Het Regie-overleg geo-standaarden heeft voornamelijk een faciliterende rol, waarbij de focus ligt op het ondersteunen van verbindingen tussen verschillende partijen op het gebied van geo-standaarden. Het overleg heeft een informerende, signalerende en adviserende functie ten opzichte van de Programmaraad, maar neemt zelf geen besluiten – de Programmaraad van Geonovum besluit. 
+<br>
+<br>
+<b>Standaardenteam</b>:
+Het beheer en de doorontwikkeling van de set geo-standaarden is een basistaak van Geonovum en is belegd in basisprogramma Standaardisatie &amp; Innovatie. Het standaardenteam is het team van adviseurs dat samen met de werkgroep(en) werkt aan de nieuwe versie van de geo-standaard. 
+<br>
+<br>
+<b>Werkgroep en softwareleveranciers</b>: 
+Nieuwe versies van een geo-standaard bereidt het standaardenteam van Geonovum voor in samenwerking met de werkgroep(en) met daarin gebruikers en/of softwareleveranciers. We streven naar een unanieme instemming met de standaard. Dit versterkt het draagvlak en zorgt voor een betere implementatie van de geo-standaard in het werkveld. 
+<br>
+<br>
+<b>Forum Standaardisatie</b>: 
+Het Forum Standaardisatie adviseert de Nederlandse overheid over het gebruik van <a href="https://www.forumstandaardisatie.nl/open-standaarden" target="_blank">open standaarden</a>. Het Forum Standaardisatie voert het beheer over twee lijsten, namelijk de lijst met verplichte open standaarden voor ‘pas toe of leg uit’ en een lijst met aanbevolen open standaarden.
+Voor de standaarden op de ‘pas toe of leg uit’ lijst met open standaarden geldt dat (semi-) publieke organisaties het 'pas toe of leg uit'-principe moeten volgen. De basisset geo-standaarden staat op de ‘<a href="https://forumstandaardisatie.nl/open-standaarden/verplicht" target="_blank">Pas toe of leg uit’ -standaarden lijst</a> van het Forum Standaardisatie. Organisatorisch bestaat er geen formele relatie tussen de Programmaraad en het Forum Standaardisatie. De Programmaraad van Geonovum stelt (versies van) geo-standaarden vast (voor zover dat niet in de governancestructuur van NEN of OGC gebeurt); het Forum Standaardisatie besluit uiteindelijk of die vastgestelde (versies van) geo-standaarden ook de status krijgen die behoort bij opname op de Pas toe of leg uit -standaarden lijst (de verplichting voor overheden om die standaarden uit te vragen bij aanbestedingen). 
+<br>
+<br>
+Geonovum heeft het predicaat uitstekend beheer voor de huidige standaarden (NEN 3610, GML, serviceprofielen en metadataprofielen) in de basisset geo-standaarden. Dit betekent dat Geonovum het beheer en versiebeheer van die geo-standaarden zodanig open en structureel heeft vormgegeven, dat het Forum erop vertrouwt dat alle mogelijke belangen die spelen rondom de standaarden correct zijn meegenomen en afgewogen door Geonovum bij de totstandkoming van de nieuwe versie van de standaard. Op het moment dat Geonovum (of een andere partij) een nieuwe versie van een basis geo-standaard aanmeldt, wordt deze door het Forum in de regel na een veel lichtere procedure opgenomen.
+Geonovum kondigt consultaties over de basis geo-standaarden aan bij Bureau Forum Standaardisatie, zodat zij hierover kan berichten op haar website of twitterkanaal.</section></section>
+  <section class="chapter" id="wijzigingsproces"><div class="header-wrapper"><h2 id="60D731F6"><bdi class="secno">3. </bdi>Wijzigingsproces</h2><a class="self-link" href="#60D731F6" aria-label="Permalink for Section 3."></a></div><p>De basis onder ons standaardisatiewerk is het afstemmen van deze standaarden met zowel internationale als nationale standaardisatie organisaties. Geonovum is lid van de internationale standaardisatie organisaties OGC en W3C en wij nemen actief deel aan verschillende werkgroepen. Geonovum levert de voorzitter van de NEN Normcommissie 351 240 voor Geo-informatie van waaruit we ook deelnemen in het Europese ISO. Het afstemwerk dat we in al deze organisaties doen, is gericht op het borgen van vindbaarheid, toegankelijkheid, uitwisselbaarheid en herbruikbaarheid van geodata onderling en met andere databronnen. Bovendien kunnen we er zo voor zorgen dat de standaarden die we in Nederland toepassen, mee blijven bewegen met technologische innovaties en internationale ontwikkelingen.
+<br>
+<br>
+De aanleiding voor een wijzigingsproces is gebaseerd op meldingen: de wensen en gevonden fouten in de geo-standaard, die aanleiding zijn om de standaard te vernieuwen. Samen vormen zij het wijzigingsvoorstel. Geonovum neemt als beheerder het initiatief om een wijzigingsproces te starten.
+<br></p>
+<section id="fasen-in-het-wijzigingsproces"><div class="header-wrapper"><h3 id="24999071"><bdi class="secno">3.1 </bdi>Fasen in het wijzigingsproces</h3><a class="self-link" href="#24999071" aria-label="Permalink for Section 3.1"></a></div><p>Het volledige wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie, zoals weergegeven in onderstaand figuur. 
+<br>
+<br></p>
+<figure id="fig-fasen-wijzigingsproces"><img src="media/image2.png" alt="Het volledige wijzigingsproces doorloopt de fasen Inhoud, Toetsing, Besluitvorming en Implementatie." style="width: 50%;">
+<figcaption><a class="self-link" href="#fig-fasen-wijzigingsproces">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Fasen wijzigingsproces</span></figcaption></figure>
+
+<p><b>Inhoud</b>: 
+In de fase Inhoud wordt voor iedere melding bepaald of deze wordt opgenomen in de nieuwe versie van de standaard of niet. Dit wordt vastgelegd met behulp van GitHub of een andere issue tracker en is zichtbaar via de website van Geonovum. Voor meldingen die worden meegenomen in de nieuwe versie van de standaard, worden oplossingen uitgewerkt, op basis waarvan vervolgens de specificatie wordt aangepast. Dit gebeurt door Geonovum in samenwerking met inhoudelijke experts. Afhankelijk van de omvang van de wijziging ten opzichte van de voorgaande versie is de groep van experts evenredig groter of kleiner. 
+<br>
+<br>
+<b>Toetsing</b>: 
+De fase Toetsing vormt een brug tussen de inhoud, besluitvorming en de implementatie. In deze fase wordt eenieder (X, Y wijziging) of een beperkte groep belanghebbenden (Z wijziging) uitgenodigd om zijn visie te geven op de nieuwe versie van de standaard. De reacties uit de consultatie worden verwerkt in de specificatie. In het geval van een X of Y wijziging wordt de nieuw voorgestelde versie voorgelegd aan het Regie-overleg met het verzoek advies uit te brengen aan de Programmaraad van Geonovum (zie <a href="#21D2F6BA">paragraaf 3.2</a>). </p>
+<blockquote>
+<p>In het consultatieproces zit ook het aspect van toetsen en bepalen van impact van nieuwe versies van een basisstandaard op conformiteit met domeinstandaarden. Dit wordt meegenomen in de overwegingen van het op te stellen advies door het Regie-overleg.  </p>
+</blockquote>
+<br>
+<b>Besluitvorming</b>: 
+Bij Besluitvorming wordt besloten om de gewijzigde specificatie vast te stellen en te publiceren. Afhankelijk van het type wijziging en de betreffende geo-standaard (X, Y of Z, zie [paragraaf 2.3](#207E4963)) besluit de Programmaraad van Geonovum dan wel het standaardenteam van Geonovum. Eenmaal vastgesteld en gepubliceerd, wordt de nieuwe versie van de standaard door Geonovum aangemeld bij het <a href="https://forumstandaardisatie.nl" target="_blank">Forum Standaardisatie</a>.
+
+<blockquote>
+<p>Onderdeel van de besluitvorming is de samenhang en impact van de gewijzigde standaard op de totaliteit van het standaardenlandschap.</p>
+</blockquote>
+<br>
+<b>Implementatie</b>: 
+Het in gebruik nemen van de geo-standaard in de praktijk staat centraal in deze fase. Hiervoor leveren we verschillende technische bestanden op, zoals implementatiebestanden, voorbeeldbestanden en voorbeeldberichten. Deze bestanden ondersteunen softwareleveranciers en gebruikers van de geo-standaard bij de implementatie van de standaard in hun software. Beheerders van de voorziening/ het register e.d. nemen de geo-standaard over. Daarnaast stelt Geonovum validators beschikbaar, waarmee de technische juistheid van de implementatie van standaarden kan worden getoetst. Wij ondersteunen de implementatie bovendien door de werking van de geo-standaard toe te lichten met behulp van handreikingen en wegwijzers. Resultaat van deze fase is dat de gebruikers data kunnen maken en uitwisselen conform de nieuwe standaard. In [hoofdstuk 5](#6BEFD657) wordt dit verder toegelicht.
+<br>
+
+</section><section id="inzicht-in-het-wijzigingsproces"><div class="header-wrapper"><h3 id="21D2F6BA"><bdi class="secno">3.2 </bdi>Inzicht in het wijzigingsproces</h3><a class="self-link" href="#21D2F6BA" aria-label="Permalink for Section 3.2"></a></div><p>De meldingen en wijzigingsverzoeken alsook (inter)nationale ontwikkelingen geven aanleiding tot de verdere ontwikkeling voor een geo-standaard. Het wijzigingsproces doorloopt de fasen zoals geschetst in <a href="#24999071">paragraaf 3.1</a>. 
+In figuur 3 ‘Wijzigingen doorvoeren in de geo-standaarden’ is het proces voor X en Y wijzigingen weergegeven. Het standaardenteam kan 1 of meerdere werkgroepen samenstellen. De werkgroep onderzoekt de wijzigingsverzoeken en werkt aan een nieuwe versie van de geo-standaard door dit vast te leggen in een wijzigingsvoorstel. Het standaardenteam vraagt ook aan softwareleveranciers advies over de wijzigingsverzoeken en de wijze waarop deze in de nieuwe versie worden verwerkt. Na consultatie van het wijzigingsvoorstel (zie <a href="#4AD37261">paragraaf 2.2.2</a>) legt het standaardenteam het voorstel voor aan het Regie-overleg geo-standaarden. Op basis van het advies van het Regie-overleg geo-standaarden besluit de Programmaraad van Geonovum over het wijzigingsvoorstel. 
+<br>
+<br>
+Bij het vaststellen van een nieuwe versie van een standaard stelt de Programmaraad met advies van Geonovum vast hoelang een oude versie van de geo-standaard wordt ondersteund en wanneer een oude versie komt te vervallen. Een uitzondering hierop is het Basismodel Geo-informatie (NEN 3610). Ook nieuwe versies van deze standaard bereidt Geonovum voor in samenwerking met werkgroepen. De programmaraad stelt de nieuwe versie niet vast, maar keurt hem goed (of af) en draagt deze vervolgens voor aan de <a href="https://www.nen.nl/normcommissie-geo-informatie" target="_blank">NEN normcommissie 351 240 Geo-informatie</a>. Deze commissie verzorgt de openbare consultatie en stelt de standaard formeel vast. De Programmaraad beslist, op advies van Geonovum, of zij een vastgestelde standaard voordraagt voor opname op de ‘Pas toe of leg uit’ -standaarden lijst van het Forum Standaardisatie. Bij een positief besluit verzorgt Geonovum de voordracht bij het Forum Standaardisatie. Organisatorisch bestaat er geen formele relatie tussen de Programmaraad en het Forum Standaardisatie, inhoudelijk dus wel.
+<br></p>
+</section></section>
+  <section class="chapter" id="tussentijdse-werkafspraken"><div class="header-wrapper"><h2 id="572CC78A"><bdi class="secno">4. </bdi>Tussentijdse werkafspraken</h2><a class="self-link" href="#572CC78A" aria-label="Permalink for Section 4."></a></div><p>Het toepassen van een geo-standaard roept soms vragen op. Bij onduidelijkheden, discrepanties of fouten in de standaard kunnen in de praktijk vragen ontstaan over hoe de standaard – in afwachting van een formele wijziging– toe te passen. Met name bij een X wijziging van de standaard, die een grote impact op toepassing in de praktijk heeft, zullen geconstateerde fouten of gewenste wijzigingen in de regel niet heel snel worden doorgevoerd. Een tussentijds gebruiksadvies wordt dan opgesteld in de vorm van een <i>tussentijdse werkafspraak</i>. In dit hoofdstuk wordt het maken van werkafspraken toegelicht.
+Als er een fout of probleem wordt geconstateerd, gaat er doorgaans altijd enige tijd overheen voordat de fout of het probleem wordt hersteld in de nieuwe geo-standaard. Typische voorbeelden van dit soort fouten of problemen zijn in algemene zin:</p>
+<ul><li>In de geo-standaard zijn bepaalde technische vrijheden mogelijk die op grond van een goede praktijk niet zouden moeten worden benut;</li>
+<li>In de geo-standaard is iets wel mogelijk, maar niet verplicht, terwijl dit wel sterk gewenst is.</li>
+</ul><br>
+
+<p>In dit soort gevallen zal het beheer na consultatie een werkafspraak publiceren over hoe in afwachting van de wijziging (een reparatie) van de geo-standaard moet worden omgegaan met een geconstateerde fout of probleem. Zo’n werkafspraak heeft de formele status van een advies van het beheer aan de gebruikers van de geo-standaard. De tussentijdse werkafspraak vervangt niet de in gebruik zijnde versie van geo-standaard (de vastgestelde versie), maar geldt wel als werkwijze in afwachting van de nieuwe versie van de geo-standaard (na reparatie).
+Voor bovengenoemde voorbeelden zouden de werkafspraken resp. als volgt kunnen zijn:</p>
+<ul><li>Gebruik nooit de mogelijkheid A die de geo-standaard biedt;</li>
+<li>Doe het altijd op manier B.</li>
+</ul><br>
+
+<p>De status van deze werkafspraken is als volgt:</p>
+<ol><li>De tussentijdse werkafspraken zijn van toepassing totdat de wijzigingen in werking zijn getreden, daarna zijn de werkafspraken niet meer van toepassing;</li>
+<li>Indien mogelijk zijn de werkafspraken altijd een directe voorloper van de wijzigingen zelf die zullen worden doorgevoerd;</li>
+<li>Binnen het wijzigingsbeheer worden alleen werkafspraken gemaakt, die vooruitlopen op daadwerkelijk aanstaande wijzigingen. Er worden binnen dit kader geen permanente werkafspraken gemaakt die niet verankerd zullen worden in de geo-standaard;</li>
+<li>Het toepassen van de werkafspraken is (van rechtswege) niet verplicht, maar geeft duidelijkheid en richting bij implementatie door softwareleveranciers;</li>
+<li>Het toepassen van de werkafspraken vergemakkelijkt de implementatie van wijzigingen, omdat het een al een voorbereidende werkwijze is voor het ander;</li>
+<li>Gegevens, die niet voldoen aan de werkafspraken, zullen niet worden afgekeurd door een validator gebaseerd op de geo-standaard. Eventueel kan wel een waarschuwing of andersoortige melding worden gegeven over de geconstateerde afwijking van de werkafspraak.</li>
+</ol></section>
+  <section class="chapter" id="implementatie-ondersteuning"><div class="header-wrapper"><h2 id="6BEFD657"><bdi class="secno">5. </bdi>Implementatie ondersteuning</h2><a class="self-link" href="#6BEFD657" aria-label="Permalink for Section 5."></a></div><p><b>Het in gebruik nemen van (een volgende versie van ) een geo-standaard staat centraal in deze fase. Hiervoor leveren we de verschillende implementatiebestanden op. Wij ondersteunen de implementatie met onder meer een helpdesk en een validator.</b></p>
+<section id="technische-bestanden"><div class="header-wrapper"><h3 id="4B0AA488"><bdi class="secno">5.1 </bdi>Technische bestanden</h3><a class="self-link" href="#4B0AA488" aria-label="Permalink for Section 5.1"></a></div><p>Om softwareleveranciers en gebruikers te ondersteunen bij de implementatie van een nieuwe versie van de geo-standaard, leveren wij afhankelijk van de behoefte in de praktijk verschillende bestanden en documentatie op:
+<br>
+<br></p>
+<ul><li>Implementatiebestanden;</li>
+<li>Voorbeeldbestanden;</li>
+<li>Voorbeeldberichten.</li>
+</ul><br>
+Schema’s en Schematron (validatieregels) zijn voorbeelden van implementatiebestanden die als onderdeel van standaarden door Geonovum worden opgeleverd. Het kan hier ook gaan om implementatiebestanden voor visualisatieregels en iconen.
+Voorbeeldbestanden en voorbeeldberichten kunnen worden gebruikt voor het testen van applicaties.
+<br>
+
+</section><section id="validatie-en-certificatie"><div class="header-wrapper"><h3 id="7256DB88"><bdi class="secno">5.2 </bdi>Validatie en certificatie</h3><a class="self-link" href="#7256DB88" aria-label="Permalink for Section 5.2"></a></div><p>Na het opleveren van de nieuwe standaard inclusief de verschillende onderdelen, richten wij ons op de ondersteuning van de standaard door softwareleveranciers en beheerders van voorzieningen/ registers. Bij deze groep gebruikers is de ondersteuning vooral technisch van aard. De linter of validator is het hulpmiddel bij uitstek hierbij. Geonovum biedt waar dit wenselijk is linters of validators aan waarmee ontwikkelaars tijdens het schrijven van hun code, danwel achteraf, kunnen controleren of hun software voldoet aan de standaarden.
+Soms zetten we conformiteitstoetsing in zoals bij NEN 3610. In dat geval wordt een testprotocol voor een conformiteitstoets beschikbaar gesteld, waarmee (handmatig) kan worden gecontroleerd of een implementatie aan de norm voldoet.
+Ook certificering van applicaties is mogelijk. Certificering van applicaties ondersteunt niet zozeer de (kwaliteit van de) implementatie van de standaarden, als wel de (snelheid van) adoptie ervan. Zodra het werkveld voldoende volwassen is en certificering niet meer nodig is om adoptie te versnellen, kan certificering komen te vervallen.
+<br></p>
+</section><section id="opleiding"><div class="header-wrapper"><h3 id="0930E05A"><bdi class="secno">5.3 </bdi>Opleiding</h3><a class="self-link" href="#0930E05A" aria-label="Permalink for Section 5.3"></a></div><p>Opleiding en advies kunnen van toegevoegde waarde zijn bij de ondersteuning van de gebruikers die de geo-standaarden gebruiken. Middelen als documentatie, (online) bijeenkomsten, workshops, pilots en hackatons worden ingezet om de kennis over de wijzigingen in de versie van nieuwe geo-standaard te delen en te ondersteunen bij het in gebruik nemen van de nieuwe versie van de standaard. 
+<br></p>
+</section><section id="communicatie"><div class="header-wrapper"><h3 id="331B9E8F"><bdi class="secno">5.4 </bdi>Communicatie</h3><a class="self-link" href="#331B9E8F" aria-label="Permalink for Section 5.4"></a></div><p>Het hele wijzigingsproces staat of valt met een goede communicatie. Onder goede communicatie wordt verstaan het tijdig leveren van de juiste informatie aan de juiste belanghebbenden. Dit betreft zowel de proceskant alsook de producten die er worden opgeleverd.
+<br>
+<br>
+<b>Website(s)</b>:
+De actuele vigerende versies van de basisset geo-standaarden zijn beschikbaar en raadpleegbaar via de Geonovum website. 
+<br>
+<br>
+<b>Consultatie</b>:
+Bij X-wijzigingen van de Metadata-profielen voor geografie en webservices zal Geonovum de aanpassingen in het model in een publieke consultatie aan eenieder voorleggen (zie <a href="#4AD37261">paragraaf 2.2.2</a>). In het geval van GML, GeoPackage, OGC API Features en OGC API Tiles doet OGC een consultatie. Geonovum attendeert in dat geval het Nederlandse werkveld via de Geonovum website. 
+<br>
+<br>
+<b>Werkafspraken</b>:
+De werkafspraken bepalen hoe er in de tussentijd moet worden omgegaan met geconstateerde fouten en problemen (zie <a href="#572CC78A">Hoofdstuk 4</a>). De werkafspraken publiceren wij via de Geonovum website. Door middel van nieuwsberichten op de website en het versturen van de nieuwsbrief De Geo-standaard informeren wij het werkveld over de nieuwe dan wel aangepaste werkafspraak.
+<br>
+<br>
+<b>Nieuwe producten inclusief releasenotes</b>: 
+In de releasenotes bij de geo-standaard beschrijven wij de wijzigingen in de geo-standaard. De relasenotes worden in de bijlage van de nieuwe versie van de geo-standaarden opgenomen.</p>
+</section></section>
+  <section class="chapter" id="escalatie-en-klachtenprocedure"><div class="header-wrapper"><h2 id="718CA66D"><bdi class="secno">6. </bdi>Escalatie- en klachtenprocedure</h2><a class="self-link" href="#718CA66D" aria-label="Permalink for Section 6."></a></div><p>In voorgaande hoofdstukken gaat het protocol ervan uit dat er wijzigingen "in vrijheid" worden doorgevoerd. In het primaire proces wordt geen rekening gehouden met noodzakelijke wijzigingen die met spoed of onder druk van bijvoorbeeld externe nieuwe regelgeving moeten worden doorgevoerd. Dit is mogelijk middels een escalatieprocedure.
+We doorlopen een escalatieprocedure als er een wijziging van de standaard noodzakelijk is die niet in het reguliere wijzigingsproces doorgevoerd kan worden, omdat dit te lang duurt. Een uitputtende lijst met situaties en criteria wanneer dit van toepassing is, valt op voorhand niet te geven. Maar voor de beeldvorming: het gaat om situaties waarbij het niet doorvoeren van een bepaalde noodzakelijke wijziging leidt tot onaanvaardbare risico's voor de uitvoeringspraktijk of het onmogelijk uitvoeren (vanwege bijvoorbeeld tegenstrijdige wetten) van werkzaamheden.
+De escalatieprocedure wordt niet gebruikt om reguliere wijzigingen sneller door te kunnen voeren.</p>
+<section id="sturende-principes-bij-escalatie"><div class="header-wrapper"><h3 id="24F83D78"><bdi class="secno">6.1 </bdi>Sturende principes bij escalatie</h3><a class="self-link" href="#24F83D78" aria-label="Permalink for Section 6.1"></a></div><p>Er wordt geen vast proces gegeven om de escalatieprocedure te doorlopen, omdat verschillende situaties wellicht tot een verschillende wijze van handelen moeten leiden. In plaats daarvan zijn onderstaande sturende principes leidend om verantwoordelijkheden bij escalatie te duiden.
+<br>
+<br>
+<b>Signalering</b>: 
+Uit het werkveld kunnen signalen ontstaan dat er met spoed iets gewijzigd zou moeten worden. Het is vooraf niet aan te geven uit welke kanalen deze geluiden zullen ontstaan. Het is wel van belang om de rol van Geonovum te onderkennen als antennefunctie voor het werkveld. In ieder geval zullen deze signalen op enig moment Geonovum bereiken, en op dat moment zal er overleg gevoerd worden over deze signalen. 
+<br>
+<br>
+<b>Overleg</b>: 
+Bij de besluitvorming binnen de escalatieprocedure wordt er in principe overleg gevoerd tussen de Programmaraad en Geonovum (standaardenteam). Beide partijen raadplegen de betrokkenen daar waar nodig.
+<br>
+<br>
+<b>Besluitvorming</b>: 
+De beoordeling of de escalatieprocedure van toepassing is, wordt genomen door de voorzitter van Programmaraad van Geonovum. Ook het besluit <i>welke</i> wijzigingen er precies doorgevoerd moeten worden en op welke manier, wordt genomen door de voorzitter van Programmaraad.
+<br>
+<br>
+<b>Coördinatie</b>: 
+De coördinatie tijdens de escalatieprocedure wordt uitgevoerd door de voorzitter van Programmaraad van Geonovum. 
+<br>
+<br>
+<b>Communicatie met het werkveld</b>: 
+De communicatie met het werkveld wordt uitgevoerd door Geonovum. Als beheerder van de basisset geo-standaarden wordt verwacht dat Geonovum het meest directe contacten heeft met het werkveld.
+<br></p>
+</section><section id="klachtenafhandeling"><div class="header-wrapper"><h3 id="625AEBC6"><bdi class="secno">6.2 </bdi>Klachtenafhandeling</h3><a class="self-link" href="#625AEBC6" aria-label="Permalink for Section 6.2"></a></div><p>Het betrekken van alle belanghebbenden in een wijzigingsproces is een belangrijk uitgangspunt van Geonovum. Eventuele klachten worden ingebracht binnen de bestaande governancestructuren van Geonovum. Voor inhoudelijke klachten met betrekking op de basisset geo-standaarden kunnen belanghebbenden zich richten tot de directie van Geonovum. De directie zal inhoudelijke klachten bespreken met de voorzitter van de Programmaraad, waarna de voorzitter van de Programmaraad beoordeelt hoe de klacht het beste binnen deze lijn kan worden geagendeerd.
+<br>
+<br>
+Het garanderen van het serieus nemen van klachten kan alleen, door deze volgens een zorgvuldige procedure te behandelen. 
+Er kunnen ook klachten bij Geonovum worden kenbaar gemaakt met betrekking tot de standaarden: </p>
+<ul><li>Klachten over de toepassingsmogelijkheid van de standaard;</li>
+<li>Klachten over het beheer van de standaard.</li>
+</ul><br>
+In dat geval geldt de klachtenafhandeling zoals opgenomen in hoofdstuk 6 van het <a href="https://docs.geostandaarden.nl/gbd/gsb/" target="_blank">beheerplan geo-standaarden</a>.</section></section>
+
+
+
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Beheerdocumentatie - Versie ter vaststelling</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
