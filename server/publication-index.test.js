@@ -56,6 +56,51 @@ test("runtime exposes publication environment without changing content branch", 
   assert.deepEqual(JSON.parse(response.body), { environment: "test-omgeving" });
 });
 
+test("runtime sets compatible security headers by default", async () => {
+  const app = createApp({ cspMode: "enforce" });
+  const response = new MockResponse();
+
+  await app({ method: "GET", url: "/healthz", headers: { host: "localhost" } }, response);
+
+  assert.equal(response.headers["x-content-type-options"], "nosniff");
+  assert.equal(response.headers["x-frame-options"], "SAMEORIGIN");
+  assert.equal(response.headers["referrer-policy"], "strict-origin-when-cross-origin");
+  assert.equal(response.headers["strict-transport-security"], "max-age=31536000");
+  assert.match(response.headers["content-security-policy"], /default-src 'self'/);
+  assert.match(response.headers["content-security-policy"], /object-src 'none'/);
+  assert.match(response.headers["content-security-policy"], /frame-ancestors 'self'/);
+});
+
+test("runtime can run CSP in report-only mode", async () => {
+  const app = createApp({ cspMode: "report-only", hstsEnabled: "false" });
+  const response = new MockResponse();
+
+  await app({ method: "GET", url: "/healthz", headers: { host: "localhost" } }, response);
+
+  assert.equal(response.headers["content-security-policy"], undefined);
+  assert.match(response.headers["content-security-policy-report-only"], /default-src 'self'/);
+  assert.equal(response.headers["strict-transport-security"], undefined);
+});
+
+test("runtime blocks repository dotfiles but allows security.txt redirect", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-security-"));
+  await writeFile(path.join(root, ".dockerignore"), "node_modules\n");
+  const app = createApp({
+    rootDir: root,
+    securityTxtUrl: "https://www.geonovum.nl/.well-known/security.txt"
+  });
+
+  const dotfileResponse = new MockResponse();
+  await app({ method: "GET", url: "/.dockerignore", headers: { host: "localhost" } }, dotfileResponse);
+
+  const securityTxtResponse = new MockResponse();
+  await app({ method: "GET", url: "/.well-known/security.txt", headers: { host: "localhost" } }, securityTxtResponse);
+
+  assert.equal(dotfileResponse.statusCode, 404);
+  assert.equal(securityTxtResponse.statusCode, 302);
+  assert.equal(securityTxtResponse.headers.location, "https://www.geonovum.nl/.well-known/security.txt");
+});
+
 class MockResponse {
   headers = {};
   statusCode = 200;

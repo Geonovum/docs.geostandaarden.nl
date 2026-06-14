@@ -2,6 +2,8 @@ FROM node:22-alpine
 
 ENV NODE_ENV=production
 ENV PUBLICATION_ENV=production
+ENV CSP_MODE=enforce
+ENV HSTS_ENABLED=true
 ENV HOST=0.0.0.0
 ENV PORT=8080
 

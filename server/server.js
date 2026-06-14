@@ -86,9 +86,36 @@ const LEGACY_REDIRECTS = new Map([
   ["/dsgo/index.php", "/dsgo/vv-hr-DSGO-20220316/"]
 ]);
 
-export function createApp({ rootDir = DEFAULT_ROOT, environment = process.env.PUBLICATION_ENV ?? "production" } = {}) {
+const DEFAULT_CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "img-src 'self' https: data:",
+  "font-src 'self' https: data:",
+  "style-src 'self' https: 'unsafe-inline'",
+  "script-src 'self' https: 'unsafe-inline' 'unsafe-eval'",
+  "connect-src 'self' https:",
+  "media-src 'self' https: data:",
+  "frame-src 'self' https:",
+  "upgrade-insecure-requests"
+].join("; ");
+
+export function createApp({
+  rootDir = DEFAULT_ROOT,
+  environment = process.env.PUBLICATION_ENV ?? "production",
+  cspMode = process.env.CSP_MODE ?? "enforce",
+  hstsEnabled = process.env.HSTS_ENABLED ?? "true",
+  securityTxtUrl = process.env.SECURITY_TXT_URL
+} = {}) {
   const resolvedRoot = path.resolve(rootDir);
   const publicationEnvironment = normalizeEnvironment(environment);
+  const securityHeaders = createSecurityHeaders({
+    cspMode,
+    hstsEnabled,
+    publicationEnvironment
+  });
 
   return async function handleRequest(req, res) {
     try {
@@ -100,10 +127,14 @@ export function createApp({ rootDir = DEFAULT_ROOT, environment = process.env.PU
       const requestUrl = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
       const pathname = normalizePathname(requestUrl.pathname);
 
-      setBaseHeaders(res, publicationEnvironment);
+      setBaseHeaders(res, securityHeaders);
 
       if (pathname === "/healthz") {
         return sendText(res, 200, "ok\n", method, "text/plain; charset=utf-8");
+      }
+
+      if (pathname === "/.well-known/security.txt" && securityTxtUrl) {
+        return sendRedirect(res, securityTxtUrl, 302);
       }
 
       if (pathname === "/environment.json") {
@@ -214,11 +245,18 @@ async function serveStaticOrDirectory(req, res, rootDir, pathname, method) {
 
 function resolveFilePath(rootDir, pathname) {
   const relative = pathname.replace(/^\/+/, "");
+  if (hasBlockedPathSegment(relative)) return null;
   const [topLevel] = relative.split("/");
   if (BLOCKED_TOP_LEVEL_PATHS.has(topLevel.toLowerCase())) return null;
-  if (path.basename(relative) === ".htaccess") return null;
   const filePath = path.resolve(rootDir, relative);
   return filePath === rootDir || filePath.startsWith(`${rootDir}${path.sep}`) ? filePath : null;
+}
+
+function hasBlockedPathSegment(relativePath) {
+  return relativePath
+    .split("/")
+    .filter(Boolean)
+    .some((segment) => segment.startsWith(".") && segment !== ".well-known");
 }
 
 function sendFile(req, res, filePath, stats, method) {
@@ -294,9 +332,38 @@ function sendJson(res, statusCode, body, method) {
   return sendText(res, statusCode, `${JSON.stringify(body)}\n`, method, "application/json; charset=utf-8");
 }
 
-function setBaseHeaders(res, publicationEnvironment) {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-Publication-Environment", publicationEnvironment);
+function createSecurityHeaders({ cspMode, hstsEnabled, publicationEnvironment }) {
+  const headers = new Map([
+    ["X-Content-Type-Options", "nosniff"],
+    ["X-Frame-Options", "SAMEORIGIN"],
+    ["Referrer-Policy", "strict-origin-when-cross-origin"],
+    ["Permissions-Policy", "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"],
+    ["X-Permitted-Cross-Domain-Policies", "none"],
+    ["X-Publication-Environment", publicationEnvironment]
+  ]);
+
+  if (normalizeBoolean(hstsEnabled)) {
+    headers.set("Strict-Transport-Security", "max-age=31536000");
+  }
+
+  const normalizedCspMode = String(cspMode ?? "enforce").toLowerCase();
+  if (normalizedCspMode === "report-only") {
+    headers.set("Content-Security-Policy-Report-Only", DEFAULT_CSP);
+  } else if (normalizedCspMode !== "off") {
+    headers.set("Content-Security-Policy", DEFAULT_CSP);
+  }
+
+  return headers;
+}
+
+function normalizeBoolean(value) {
+  return !["0", "false", "off", "no"].includes(String(value ?? "").toLowerCase());
+}
+
+function setBaseHeaders(res, securityHeaders) {
+  for (const [name, value] of securityHeaders) {
+    res.setHeader(name, value);
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

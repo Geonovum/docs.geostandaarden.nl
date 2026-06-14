@@ -54,6 +54,28 @@ De server luistert standaard op poort `8080` en heeft een health endpoint op
 `production`. Die waarde komt terug in de HTTP-header
 `X-Publication-Environment` en in `/environment.json`.
 
+De Node-runtime zet standaard security headers:
+
+- `Content-Security-Policy`
+- `Strict-Transport-Security`
+- `X-Content-Type-Options`
+- `X-Frame-Options`
+- `Referrer-Policy`
+- `Permissions-Policy`
+- `X-Permitted-Cross-Domain-Policies`
+
+De CSP is bewust compatibel met historische ReSpec/publicatiepagina's en staat
+daarom nog inline scripts en styles toe. Gebruik `CSP_MODE=report-only` om een
+hostingomgeving eerst non-breaking te monitoren, of `CSP_MODE=off` om tijdelijk
+geen CSP-header te sturen. `HSTS_ENABLED=false` schakelt HSTS uit voor lokale of
+bijzondere testopstellingen.
+
+Voor `security.txt` kan de runtime naar een centrale meldingpagina verwijzen:
+
+```bash
+-e SECURITY_TXT_URL=https://www.geonovum.nl/.well-known/security.txt
+```
+
 Voor een testomgeving die exact dezelfde publicatiebestanden als productie
 draait:
 
