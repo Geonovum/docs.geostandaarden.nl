@@ -96,7 +96,7 @@ ${sections.join("\n")}`
 export function renderBroIndex() {
   const sections = Object.entries(broDomains).map(([domain, registrations]) => {
     const items = Object.entries(registrations).map(([mnemonic, title]) => {
-      return `<h3><a href="./${encodeURI(mnemonic)}">${escapeHtml(title)} (${escapeHtml(mnemonic.toUpperCase())})</a></h3>`;
+      return `<h3><a href="/bro/${encodeURI(mnemonic)}">${escapeHtml(title)} (${escapeHtml(mnemonic.toUpperCase())})</a></h3>`;
     });
     const content = items.length > 0 ? items.join("\n") : "<i>Geen publicaties</i>";
     return `<div class="pubDomain"><h2>${escapeHtml(domain)}</h2>${content}</div>`;
@@ -164,23 +164,26 @@ async function renderPubDomain(rootDir, pubDomain, allPubDomains) {
 
   const blocks = [];
   if (groups.unknown.length > 0) {
-    blocks.push("<h3>Laatste versies</h3>");
-    blocks.push(subDirsAsList(groups.unknown, pubDomain, `./${pubDomain}`));
+    pushListBlock(blocks, "Laatste versies", groups.unknown, pubDomain, `/${pubDomain}`);
   }
   if (groups.norm.length > 0) {
-    blocks.push("<h3>Standaarden</h3>");
-    blocks.push(subDirsAsList(groups.norm, pubDomain, `./${pubDomain}`));
+    pushListBlock(blocks, "Standaarden", groups.norm, pubDomain, `/${pubDomain}`);
   }
   if (groups.toelichting.length > 0) {
-    blocks.push("<h3>Toelichtingen</h3>");
-    blocks.push(subDirsAsList(groups.toelichting, pubDomain, `./${pubDomain}`));
+    pushListBlock(blocks, "Toelichtingen", groups.toelichting, pubDomain, `/${pubDomain}`);
   }
   if (groups.documentatie.length > 0) {
-    blocks.push("<h3>Documentatie</h3>");
-    blocks.push(subDirsAsList(groups.documentatie, pubDomain, `./${pubDomain}`));
+    pushListBlock(blocks, "Documentatie", groups.documentatie, pubDomain, `/${pubDomain}`);
   }
 
-  return `<div class="pubDomain"><h2><a href="${encodeURI(pubDomain)}">${getPubDomainTitle(pubDomain, allPubDomains)}</a></h2>${blocks.join("\n")}</div>`;
+  return `<div class="pubDomain"><h2><a href="/${encodeURI(pubDomain)}">${getPubDomainTitle(pubDomain, allPubDomains)}</a></h2>${blocks.join("\n")}</div>`;
+}
+
+function pushListBlock(blocks, heading, subdirs, pubDomain, lookIntoDir) {
+  const listHtml = subDirsAsList(subdirs, pubDomain, lookIntoDir);
+  if (!listHtml) return;
+  blocks.push(`<h3>${heading}</h3>`);
+  blocks.push(listHtml);
 }
 
 function classifySpecGroup(subdir) {

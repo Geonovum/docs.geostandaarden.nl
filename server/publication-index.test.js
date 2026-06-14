@@ -11,22 +11,33 @@ test("main index groups definitive publications and latest versions", async () =
   const root = await mkdtemp(path.join(os.tmpdir(), "docs-index-"));
   await writeFile(
     path.join(root, "pubDomainList.json"),
-    JSON.stringify({ Geonovum: [{ pubDomain: "api", pubDomainTitle: "API" }] })
+    JSON.stringify({
+      Geonovum: [
+        { pubDomain: "api", pubDomainTitle: "API" },
+        { pubDomain: "empty", pubDomainTitle: "Empty" }
+      ]
+    })
   );
   await mkdir(path.join(root, "api", "API-Strategie"), { recursive: true });
   await mkdir(path.join(root, "api", "def-st-api-designrules-20200117"), { recursive: true });
   await mkdir(path.join(root, "api", "cv-st-api-designrules-20200117"), { recursive: true });
+  await mkdir(path.join(root, "empty", "cv-st-only-consultation-20200117"), { recursive: true });
   await mkdir(path.join(root, "server"), { recursive: true });
   await mkdir(path.join(root, ".claude"), { recursive: true });
 
   const html = await renderMainIndex(root);
 
   assert.match(html, /API/);
+  assert.match(html, /href="\/api"/);
+  assert.match(html, /href="\/api\/API-Strategie"/);
   assert.match(html, /Laatste versie: API-Strategie/);
   assert.match(html, /Definitieve versie: def-st-api-designrules-20200117/);
   assert.doesNotMatch(html, /Consultatie versie: cv-st-api-designrules-20200117/);
+  assert.doesNotMatch(html, /<h3>Standaarden<\/h3><\/div>/);
   assert.doesNotMatch(html, /server/);
   assert.doesNotMatch(html, /\.claude/);
+  assert.doesNotMatch(html, /<style>/);
+  assert.match(html, /href="\/media\/publication-index\.css"/);
 });
 
 test("BRO index renders configured registration object links", () => {
@@ -34,7 +45,7 @@ test("BRO index renders configured registration object links", () => {
 
   assert.match(html, /Basisregistratie Ondergrond/);
   assert.match(html, /Booronderzoek \(BHR-G\)/);
-  assert.match(html, /href="\.\/bhr-g"/);
+  assert.match(html, /href="\/bro\/bhr-g"/);
 });
 
 test("bibliography helpers parse final urls and ReSpec config JSON", () => {
@@ -99,6 +110,38 @@ test("runtime blocks repository dotfiles but allows security.txt redirect", asyn
   assert.equal(dotfileResponse.statusCode, 404);
   assert.equal(securityTxtResponse.statusCode, 302);
   assert.equal(securityTxtResponse.headers.location, "https://www.geonovum.nl/.well-known/security.txt");
+});
+
+test("BRO CORS compatibility route serves only local bro/gen files without credentialed origin reflection", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-cors-"));
+  await mkdir(path.join(root, "bro", "gen"), { recursive: true });
+  await writeFile(path.join(root, "bro", "gen", "example.json"), "{}\n");
+  const app = createApp({ rootDir: root });
+
+  const validResponse = new MockResponse();
+  await app(
+    {
+      method: "HEAD",
+      url: "/bro/gen/cors.php?url=https%3A%2F%2Fdocs.geostandaarden.nl%2Fbro%2Fgen%2Fexample.json",
+      headers: { host: "localhost", origin: "https://attacker.example" }
+    },
+    validResponse
+  );
+
+  const invalidResponse = new MockResponse();
+  await app(
+    {
+      method: "HEAD",
+      url: "/bro/gen/cors.php?url=https%3A%2F%2Fexample.org%2Fhttps%3A%2F%2Fdocs.geostandaarden.nl%2Fbro%2Fgen%2Fexample.json",
+      headers: { host: "localhost", origin: "https://attacker.example" }
+    },
+    invalidResponse
+  );
+
+  assert.equal(validResponse.statusCode, 200);
+  assert.equal(validResponse.headers["access-control-allow-origin"], "*");
+  assert.equal(validResponse.headers["access-control-allow-credentials"], undefined);
+  assert.equal(invalidResponse.statusCode, 400);
 });
 
 class MockResponse {

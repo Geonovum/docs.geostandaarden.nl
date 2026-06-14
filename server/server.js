@@ -153,7 +153,7 @@ export function createApp({
       }
 
       if (pathname === "/bro/gen/cors.php" || pathname === "/bro/gen/cors") {
-        return handleCorsProxy(req, res, requestUrl, method);
+        return handleCorsProxy(req, res, requestUrl, method, resolvedRoot);
       }
 
       if (pathname === "/") {
@@ -202,25 +202,32 @@ function resolveRedirect(pathname) {
   return null;
 }
 
-async function handleCorsProxy(req, res, requestUrl, method) {
+async function handleCorsProxy(req, res, requestUrl, method, rootDir) {
   const target = requestUrl.searchParams.get("url");
-  if (!target?.startsWith("https://docs.geostandaarden.nl/bro/gen/")) {
+  const targetUrl = parseBroGenUrl(target);
+  if (!targetUrl) {
     return sendText(res, 400, "Invalid url\n", method);
   }
 
-  if (req.headers.origin) {
-    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "86400");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Max-Age", "86400");
+
+  return serveStaticOrDirectory(req, res, rootDir, targetUrl.pathname, method);
+}
+
+function parseBroGenUrl(target) {
+  if (!target) return null;
+  let targetUrl;
+  try {
+    targetUrl = new URL(target);
+  } catch {
+    return null;
   }
 
-  const response = await fetch(target);
-  res.writeHead(response.status, {
-    "Content-Type": response.headers.get("content-type") ?? "application/octet-stream"
-  });
-  if (method === "HEAD") return res.end();
-  const body = Buffer.from(await response.arrayBuffer());
-  return res.end(body);
+  if (targetUrl.protocol !== "https:") return null;
+  if (targetUrl.hostname !== "docs.geostandaarden.nl") return null;
+  if (!targetUrl.pathname.startsWith("/bro/gen/")) return null;
+  return targetUrl;
 }
 
 async function serveStaticOrDirectory(req, res, rootDir, pathname, method) {
