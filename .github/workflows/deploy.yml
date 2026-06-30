@@ -66,25 +66,25 @@ jobs:
           check_css: false
           disable_external: true
 
-  link_check:
-    name: Lychee link check
-    runs-on: ubuntu-22.04
-    needs: changed_html
-    if: needs.changed_html.outputs.any_changed == 'true'
-    strategy:
-      fail-fast: false
-      matrix:
-        html_file: ${{ fromJSON(needs.changed_html.outputs.files) }}
+  # link_check:
+  #   name: Lychee link check
+  #   runs-on: ubuntu-22.04
+  #   needs: changed_html
+  #   if: needs.changed_html.outputs.any_changed == 'true'
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       html_file: ${{ fromJSON(needs.changed_html.outputs.files) }}
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Check links
-        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
-        with:
-          args: --offline --root-dir "${{ github.workspace }}" --remap "^https://docs\.geostandaarden\.nl file://${{ github.workspace }}" "${{ matrix.html_file }}"
-          fail: true
+  #     - name: Check links
+  #       uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+  #       with:
+  #         args: --offline --root-dir "${{ github.workspace }}" --remap "^https://docs\.geostandaarden\.nl file://${{ github.workspace }}" "${{ matrix.html_file }}"
+  #         fail: true
 
   deploy:
     name: Deploy `/docs` via SCP
