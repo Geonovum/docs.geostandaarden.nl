@@ -20,7 +20,6 @@ jobs:
     outputs:
       any_changed: ${{ steps.changed-html-files.outputs.any_changed }}
       files: ${{ steps.changed-html-files.outputs.all_changed_files }}
-      directories: ${{ steps.changed-html-directories.outputs.all_changed_files }}
 
     steps:
       - name: Checkout repo
@@ -36,15 +35,6 @@ jobs:
           files: |
             **/*.html
 
-      - name: Get directories with changed HTML files
-        id: changed-html-directories
-        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
-        with:
-          dir_names: true
-          matrix: true
-          files: |
-            **/*.html
-
   proof_html:
     name: Proof HTML
     runs-on: ubuntu-22.04
@@ -53,16 +43,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        html_directory: ${{ fromJSON(needs.changed_html.outputs.directories) }}
+        html_file: ${{ fromJSON(needs.changed_html.outputs.files) }}
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Prepare changed HTML file for validation
+        run: |
+          set -euo pipefail
+          html_file="${{ matrix.html_file }}"
+          html_dir="$(dirname "$html_file")"
+          proof_dir="$RUNNER_TEMP/proof-html/$html_dir"
+
+          mkdir -p "$proof_dir"
+          rsync -a --exclude='*.html' "$html_dir/" "$proof_dir/"
+          cp "$html_file" "$proof_dir/$(basename "$html_file")"
+
       - name: Validate HTML
         uses: anishathalye/proof-html@a76b66427e600c6992e8937a741afffd2264a613 # v2.2.3
         with:
-          directory: ${{ matrix.html_directory }}
+          directory: ${{ runner.temp }}/proof-html
           check_css: false
           disable_external: true
 
