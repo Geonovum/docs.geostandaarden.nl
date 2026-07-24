@@ -16,7 +16,7 @@
 <?php 
 
 $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronderzoek',
-														   'BHR-GT' => 'Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse',
+														   'bhr-gt' => 'Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse',
 														   'bhr-p' => 'Bodemkundig Booronderzoek',
 														   'CPT' => 'Geotechnisch sondeeronderzoek',
 														   'sfr' => 'Wandonderzoek - bodemkunde',														   
