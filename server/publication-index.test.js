@@ -38,6 +38,7 @@ test("main index groups definitive publications and latest versions", async () =
   assert.doesNotMatch(html, /\.claude/);
   assert.doesNotMatch(html, /<style>/);
   assert.match(html, /href="\/media\/publication-index\.css"/);
+  assert.doesNotMatch(html, /<\/div>\s+<div class="pubDomain">/);
 });
 
 test("BRO index renders configured registration object links", () => {
@@ -46,6 +47,10 @@ test("BRO index renders configured registration object links", () => {
   assert.match(html, /Basisregistratie Ondergrond/);
   assert.match(html, /Booronderzoek \(BHR-G\)/);
   assert.match(html, /href="\/bro\/bhr-g"/);
+  assert.match(html, /Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse \(BHR-GT\)/);
+  assert.match(html, /href="\/bro\/bhr-gt"/);
+  assert.doesNotMatch(html, /href="\/bro\/BHR-GT"/);
+  assert.doesNotMatch(html, /<\/div>\s+<div class="pubDomain">/);
 });
 
 test("bibliography helpers parse final urls and ReSpec config JSON", () => {

@@ -33,7 +33,7 @@ const SPEC_GROUPS = {
 export const broDomains = {
   "Domein Bodem- en grondonderzoek": {
     "bhr-g": "Booronderzoek",
-    "BHR-GT": "Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse",
+    "bhr-gt": "Booronderzoek: Geotechnische boormonsterbeschrijving en boormonsteranalyse",
     "bhr-p": "Bodemkundig Booronderzoek",
     CPT: "Geotechnisch sondeeronderzoek",
     sfr: "Wandonderzoek - bodemkunde"
@@ -89,7 +89,7 @@ export async function renderMainIndex(rootDir) {
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
 <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
-${sections.join("\n")}`
+${sections.join("")}`
   });
 }
 
@@ -109,7 +109,7 @@ export function renderBroIndex() {
 <p>Op <a href="https://docs.geostandaarden.nl/bro">https://docs.geostandaarden.nl/bro</a> publiceert Geonovum de standaarden en technische documenten voor de Basisregistratie Ondergrond (BRO).</p>
 <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.bro-productomgeving.nl/bpo/latest/">BRO Productomgeving</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
-${sections.join("\n")}`
+${sections.join("")}`
   });
 }
 
