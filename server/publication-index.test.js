@@ -1,5 +1,6 @@
 import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
 import os from "node:os";
+import http from "node:http";
 import path from "node:path";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -117,6 +118,60 @@ test("runtime blocks repository dotfiles but allows security.txt redirect", asyn
   assert.equal(securityTxtResponse.headers.location, "https://www.geonovum.nl/.well-known/security.txt");
 });
 
+test("runtime applies .htaccess redirect rules for publication aliases", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-redirect-"));
+  await mkdir(path.join(root, "bro", "bhr-gt"), { recursive: true });
+  await mkdir(path.join(root, "bro", "vv-st-bhr-gt-20260724"), { recursive: true });
+  await writeFile(
+    path.join(root, "bro", "bhr-gt", ".htaccess"),
+    "RewriteEngine On\nRewriteRule ^$ /bro/vv-st-bhr-gt-20260724/ [R=302,L]\nRewriteRule ^(.+)$ /bro/vv-st-bhr-gt-20260724/$1 [R=302,L]\nOptions -Indexes\n"
+  );
+  await writeFile(path.join(root, "bro", "vv-st-bhr-gt-20260724", "index.html"), "<h1>BHR-GT</h1>");
+
+  await withServer(root, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/bro/bhr-gt/`, { redirect: "manual" });
+
+    assert.equal(response.status, 302);
+    assert.equal(response.headers.get("location"), "/bro/vv-st-bhr-gt-20260724/");
+  });
+});
+
+test("runtime applies .htaccess internal rewrite rules for publication aliases", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-rewrite-"));
+  await mkdir(path.join(root, "api", "API-Strategie"), { recursive: true });
+  await mkdir(path.join(root, "api", "vv-hr-API-Strategie-20231221"), { recursive: true });
+  await writeFile(
+    path.join(root, "api", "API-Strategie", ".htaccess"),
+    "RewriteEngine On\nRewriteRule ^(.*)$ /api/vv-hr-API-Strategie-20231221/$1 [NC,L]\n"
+  );
+  await writeFile(path.join(root, "api", "vv-hr-API-Strategie-20231221", "index.html"), "<h1>API Strategie</h1>");
+
+  await withServer(root, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/API-Strategie/`);
+    const html = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.match(html, /API Strategie/);
+    assert.doesNotMatch(html, /Index of \/api\/API-Strategie\//);
+  });
+});
+
+test("runtime redirects absolute .htaccess rewrite targets", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-absolute-"));
+  await mkdir(path.join(root, "bro", "def-im-bhr-p-20170627"), { recursive: true });
+  await writeFile(
+    path.join(root, "bro", "def-im-bhr-p-20170627", ".htaccess"),
+    "RewriteEngine On\nRewriteRule ^(.*)$ https://www.bro-productomgeving.nl/bpo/catalogus/$1 [NC,L]\n"
+  );
+
+  await withServer(root, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/bro/def-im-bhr-p-20170627/`, { redirect: "manual" });
+
+    assert.equal(response.status, 302);
+    assert.equal(response.headers.get("location"), "https://www.bro-productomgeving.nl/bpo/catalogus/");
+  });
+});
+
 test("BRO CORS compatibility route serves only local bro/gen files without credentialed origin reflection", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "docs-cors-"));
   await mkdir(path.join(root, "bro", "gen"), { recursive: true });
@@ -148,6 +203,19 @@ test("BRO CORS compatibility route serves only local bro/gen files without crede
   assert.equal(validResponse.headers["access-control-allow-credentials"], undefined);
   assert.equal(invalidResponse.statusCode, 400);
 });
+
+async function withServer(rootDir, callback) {
+  const server = http.createServer(createApp({ rootDir }));
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const { port } = server.address();
+  try {
+    await callback(`http://127.0.0.1:${port}`);
+  } finally {
+    await new Promise((resolve, reject) => {
+      server.close((error) => (error ? reject(error) : resolve()));
+    });
+  }
+}
 
 class MockResponse {
   headers = {};

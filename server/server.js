@@ -1,5 +1,6 @@
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -230,7 +231,15 @@ function parseBroGenUrl(target) {
   return targetUrl;
 }
 
-async function serveStaticOrDirectory(req, res, rootDir, pathname, method) {
+async function serveStaticOrDirectory(req, res, rootDir, pathname, method, rewriteDepth = 0) {
+  if (rewriteDepth > 5) return sendText(res, 508, "Rewrite loop detected\n", method);
+
+  const rewrite = await resolveHtaccessRewrite(rootDir, pathname);
+  if (rewrite) {
+    if (rewrite.type === "redirect") return sendRedirect(res, rewrite.target, rewrite.statusCode);
+    return serveStaticOrDirectory(req, res, rootDir, rewrite.target, method, rewriteDepth + 1);
+  }
+
   const filePath = resolveFilePath(rootDir, pathname);
   if (!filePath) return send404(res, method);
 
@@ -248,6 +257,84 @@ async function serveStaticOrDirectory(req, res, rootDir, pathname, method) {
 
   if (!stats.isFile()) return send404(res, method);
   return sendFile(req, res, filePath, stats, method);
+}
+
+async function resolveHtaccessRewrite(rootDir, pathname) {
+  const relativePath = pathname.replace(/^\/+/, "");
+  if (hasBlockedPathSegment(relativePath)) return null;
+
+  const segments = relativePath.split("/").filter(Boolean);
+  for (let depth = segments.length; depth >= 0; depth -= 1) {
+    const directorySegments = segments.slice(0, depth);
+    const directoryUrlPath = `/${directorySegments.join("/")}`;
+    const directoryPath = path.resolve(rootDir, ...directorySegments);
+    if (!(directoryPath === rootDir || directoryPath.startsWith(`${rootDir}${path.sep}`))) continue;
+
+    const directoryStats = await stat(directoryPath).catch(() => null);
+    if (!directoryStats?.isDirectory()) continue;
+
+    const rules = await readHtaccessRewriteRules(path.join(directoryPath, ".htaccess"));
+    if (!rules.length) continue;
+
+    const relativeToDirectory = segments.slice(depth).join("/");
+    for (const rule of rules) {
+      const match = rule.regex.exec(relativeToDirectory);
+      if (!match) continue;
+
+      const target = normalizeRewriteTarget(applyRewriteSubstitution(rule.substitution, match, directoryUrlPath));
+      if (!target || target.location === pathname) continue;
+      if (rule.redirect || target.external) {
+        return { type: "redirect", target: target.location, statusCode: rule.statusCode };
+      }
+      return { type: "rewrite", target: target.location };
+    }
+  }
+
+  return null;
+}
+
+async function readHtaccessRewriteRules(htaccessPath) {
+  const content = await readFile(htaccessPath, "utf8").catch(() => "");
+  if (!content) return [];
+
+  const rules = [];
+  for (const line of content.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+
+    const match = trimmed.match(/^RewriteRule\s+(\S+)\s+(\S+)(?:\s+\[([^\]]+)])?/i);
+    if (!match) continue;
+
+    const [, pattern, substitution, rawFlags = ""] = match;
+    const flags = rawFlags.split(",").map((flag) => flag.trim().toUpperCase()).filter(Boolean);
+    const redirectFlag = flags.find((flag) => flag === "R" || flag.startsWith("R="));
+    const statusCode = redirectFlag?.includes("=") ? Number(redirectFlag.split("=", 2)[1]) : 302;
+    rules.push({
+      regex: new RegExp(pattern, flags.includes("NC") ? "i" : ""),
+      substitution,
+      redirect: Boolean(redirectFlag),
+      statusCode: Number.isInteger(statusCode) ? statusCode : 302
+    });
+  }
+  return rules;
+}
+
+function applyRewriteSubstitution(substitution, match, directoryUrlPath) {
+  const substituted = substitution.replace(/\$(\d+)/g, (_, index) => match[Number(index)] ?? "");
+  if (/^https?:\/\//i.test(substituted)) return substituted;
+  if (substituted.startsWith("/")) return substituted;
+
+  const normalizedDirectory = directoryUrlPath === "/" ? "" : directoryUrlPath;
+  return `${normalizedDirectory}/${substituted}`;
+}
+
+function normalizeRewriteTarget(target) {
+  try {
+    if (/^https?:\/\//i.test(target)) return { location: target, external: true };
+    return { location: new URL(target, "http://localhost").pathname, external: false };
+  } catch {
+    return null;
+  }
 }
 
 function resolveFilePath(rootDir, pathname) {
