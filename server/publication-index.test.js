@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readdir, writeFile } from "node:fs/promises";
 import os from "node:os";
 import http from "node:http";
 import path from "node:path";
@@ -118,13 +118,24 @@ test("runtime blocks repository dotfiles but allows security.txt redirect", asyn
   assert.equal(securityTxtResponse.headers.location, "https://www.geonovum.nl/.well-known/security.txt");
 });
 
-test("runtime applies .htaccess redirect rules for publication aliases", async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-redirect-"));
+test("runtime applies manifest redirect routes for publication aliases", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-routes-redirect-"));
   await mkdir(path.join(root, "bro", "bhr-gt"), { recursive: true });
   await mkdir(path.join(root, "bro", "vv-st-bhr-gt-20260724"), { recursive: true });
   await writeFile(
-    path.join(root, "bro", "bhr-gt", ".htaccess"),
-    "RewriteEngine On\nRewriteRule ^$ /bro/vv-st-bhr-gt-20260724/ [R=302,L]\nRewriteRule ^(.+)$ /bro/vv-st-bhr-gt-20260724/$1 [R=302,L]\nOptions -Indexes\n"
+    path.join(root, "publication-routes.json"),
+    JSON.stringify({
+      version: 1,
+      routes: [
+        {
+          source: "/bro/bhr-gt",
+          match: "prefix",
+          type: "redirect",
+          statusCode: 302,
+          target: "/bro/vv-st-bhr-gt-20260724/"
+        }
+      ]
+    })
   );
   await writeFile(path.join(root, "bro", "vv-st-bhr-gt-20260724", "index.html"), "<h1>BHR-GT</h1>");
 
@@ -136,13 +147,23 @@ test("runtime applies .htaccess redirect rules for publication aliases", async (
   });
 });
 
-test("runtime applies .htaccess internal rewrite rules for publication aliases", async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-rewrite-"));
+test("runtime applies manifest internal rewrite routes for publication aliases", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-routes-rewrite-"));
   await mkdir(path.join(root, "api", "API-Strategie"), { recursive: true });
   await mkdir(path.join(root, "api", "vv-hr-API-Strategie-20231221"), { recursive: true });
   await writeFile(
-    path.join(root, "api", "API-Strategie", ".htaccess"),
-    "RewriteEngine On\nRewriteRule ^(.*)$ /api/vv-hr-API-Strategie-20231221/$1 [NC,L]\n"
+    path.join(root, "publication-routes.json"),
+    JSON.stringify({
+      version: 1,
+      routes: [
+        {
+          source: "/api/API-Strategie",
+          match: "prefix",
+          type: "rewrite",
+          target: "/api/vv-hr-API-Strategie-20231221/"
+        }
+      ]
+    })
   );
   await writeFile(path.join(root, "api", "vv-hr-API-Strategie-20231221", "index.html"), "<h1>API Strategie</h1>");
 
@@ -151,17 +172,29 @@ test("runtime applies .htaccess internal rewrite rules for publication aliases",
     const html = await response.text();
 
     assert.equal(response.status, 200);
+    assert.equal(response.url, `${baseUrl}/api/API-Strategie/`);
     assert.match(html, /API Strategie/);
     assert.doesNotMatch(html, /Index of \/api\/API-Strategie\//);
   });
 });
 
-test("runtime redirects absolute .htaccess rewrite targets", async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "docs-htaccess-absolute-"));
+test("runtime redirects absolute manifest route targets", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-routes-absolute-"));
   await mkdir(path.join(root, "bro", "def-im-bhr-p-20170627"), { recursive: true });
   await writeFile(
-    path.join(root, "bro", "def-im-bhr-p-20170627", ".htaccess"),
-    "RewriteEngine On\nRewriteRule ^(.*)$ https://www.bro-productomgeving.nl/bpo/catalogus/$1 [NC,L]\n"
+    path.join(root, "publication-routes.json"),
+    JSON.stringify({
+      version: 1,
+      routes: [
+        {
+          source: "/bro/def-im-bhr-p-20170627",
+          match: "prefix",
+          type: "redirect",
+          statusCode: 302,
+          target: "https://www.bro-productomgeving.nl/bpo/catalogus/"
+        }
+      ]
+    })
   );
 
   await withServer(root, async (baseUrl) => {
@@ -170,6 +203,13 @@ test("runtime redirects absolute .htaccess rewrite targets", async () => {
     assert.equal(response.status, 302);
     assert.equal(response.headers.get("location"), "https://www.bro-productomgeving.nl/bpo/catalogus/");
   });
+});
+
+test("repository does not ship Apache .htaccess files", async () => {
+  const repoRoot = path.resolve(import.meta.dirname, "..");
+  const htaccessFiles = await findFiles(repoRoot, repoRoot, ".htaccess");
+
+  assert.deepEqual(htaccessFiles, []);
 });
 
 test("BRO CORS compatibility route serves only local bro/gen files without credentialed origin reflection", async () => {
@@ -236,4 +276,21 @@ class MockResponse {
   end(body = "") {
     this.body += body;
   }
+}
+
+async function findFiles(root, directory, filename) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const matches = [];
+
+  for (const entry of entries) {
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      matches.push(...(await findFiles(root, entryPath, filename)));
+    } else if (entry.name === filename) {
+      matches.push(path.relative(root, entryPath));
+    }
+  }
+
+  return matches.sort();
 }
