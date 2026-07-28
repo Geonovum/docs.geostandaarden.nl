@@ -5,9 +5,10 @@ Deze repository publiceert automatisch publicaties op:
 - **Productieomgeving**: [https://docs.geostandaarden.nl/](https://docs.geostandaarden.nl/) → `main` branch  
 - **Testomgeving**: [https://test.docs.geostandaarden.nl/](https://test.docs.geostandaarden.nl/) → `develop` branch
 
-De repository bevat daarnaast een Node.js container-runtime voor dezelfde
-statische publicaties. De oude PHP-indexen en PHP-redirects zijn vervangen door
-routes in `server/server.js`.
+De repository bevat daarnaast een nginx container-runtime voor dezelfde
+statische publicaties. De oude PHP/Apache-redirects zijn vervangen door
+routes in `publication-routes.json`; tijdens de container build wordt daaruit
+nginx configuratie gegenereerd.
 
 ---
 
@@ -42,6 +43,9 @@ Lokaal starten:
 npm start
 ```
 
+Dat start de Node-compatibiliteitsserver voor lokale ontwikkeling. De
+productiecontainer draait nginx.
+
 Met Docker:
 
 ```bash
@@ -49,12 +53,12 @@ docker build -t docs-geostandaarden .
 docker run --rm -p 8080:8080 docs-geostandaarden
 ```
 
-De server luistert standaard op poort `8080` en heeft een health endpoint op
+De nginx runtime luistert op poort `8080` en heeft een health endpoint op
 `/healthz`. De runtime markeert de omgeving met `PUBLICATION_ENV`, standaard
 `production`. Die waarde komt terug in de HTTP-header
 `X-Publication-Environment` en in `/environment.json`.
 
-De Node-runtime zet standaard security headers:
+De nginx-runtime zet standaard security headers:
 
 - `Content-Security-Policy`
 - `Strict-Transport-Security`
@@ -65,16 +69,15 @@ De Node-runtime zet standaard security headers:
 - `X-Permitted-Cross-Domain-Policies`
 
 De CSP is bewust compatibel met historische ReSpec/publicatiepagina's en staat
-daarom nog inline scripts en styles toe. Gebruik `CSP_MODE=report-only` om een
-hostingomgeving eerst non-breaking te monitoren, of `CSP_MODE=off` om tijdelijk
-geen CSP-header te sturen. `HSTS_ENABLED=false` schakelt HSTS uit voor lokale of
-bijzondere testopstellingen.
+daarom nog inline scripts en styles toe.
 
-Voor `security.txt` kan de runtime naar een centrale meldingpagina verwijzen:
+Voor `security.txt` verwijst de runtime naar de centrale meldingpagina:
 
-```bash
--e SECURITY_TXT_URL=https://www.geonovum.nl/.well-known/security.txt
-```
+`https://www.geonovum.nl/.well-known/security.txt`
+
+Redirects en interne rewrites worden beheerd in `publication-routes.json`.
+`npm run build:nginx` genereert daaruit `build/nginx/default.conf.template` en
+een statische publicatiemap voor de nginx image.
 
 Voor een testomgeving die exact dezelfde publicatiebestanden als productie
 draait:

@@ -115,8 +115,12 @@ async function urlToHtmlPath(rootDir, url) {
 
   const stats = await stat(basePath).catch(() => null);
   if (!stats) return null;
-  if (stats.isDirectory()) return path.join(basePath, "index.html");
-  return basePath.endsWith(".html") ? basePath : null;
+  if (stats.isDirectory()) {
+    const indexPath = path.join(basePath, "index.html");
+    const indexStats = await stat(indexPath).catch(() => null);
+    return indexStats?.isFile() ? indexPath : null;
+  }
+  return stats.isFile() && basePath.endsWith(".html") ? basePath : null;
 }
 
 function addField(target, value) {

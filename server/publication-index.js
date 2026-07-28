@@ -13,6 +13,8 @@ const ROOT_IGNORE_LIST = new Set([
   "MEDIA",
   "NODE_MODULES",
   "SERVER",
+  "BUILD",
+  "DIST",
   ".WELL-KNOWN",
   ".GITHUB"
 ]);

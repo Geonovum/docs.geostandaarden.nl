@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { renderBroIndex, renderMainIndex } from "./publication-index.js";
-import { extractFinalUrls, extractInitialUserConfig } from "./bibliography.js";
+import { extractFinalUrls, extractInitialUserConfig, renderBibliography } from "./bibliography.js";
 import { createApp } from "./server.js";
 
 test("main index groups definitive publications and latest versions", async () => {
@@ -24,6 +24,7 @@ test("main index groups definitive publications and latest versions", async () =
   await mkdir(path.join(root, "api", "cv-st-api-designrules-20200117"), { recursive: true });
   await mkdir(path.join(root, "empty", "cv-st-only-consultation-20200117"), { recursive: true });
   await mkdir(path.join(root, "server"), { recursive: true });
+  await mkdir(path.join(root, "build"), { recursive: true });
   await mkdir(path.join(root, ".claude"), { recursive: true });
 
   const html = await renderMainIndex(root);
@@ -36,6 +37,7 @@ test("main index groups definitive publications and latest versions", async () =
   assert.doesNotMatch(html, /Consultatie versie: cv-st-api-designrules-20200117/);
   assert.doesNotMatch(html, /<h3>Standaarden<\/h3><\/div>/);
   assert.doesNotMatch(html, /server/);
+  assert.doesNotMatch(html, /build/);
   assert.doesNotMatch(html, /\.claude/);
   assert.doesNotMatch(html, /<style>/);
   assert.match(html, /href="\/media\/publication-index\.css"/);
@@ -60,6 +62,17 @@ test("bibliography helpers parse final urls and ReSpec config JSON", () => {
 
   assert.deepEqual(extractFinalUrls(html), ["./api/API-Strategie"]);
   assert.equal(extractInitialUserConfig(html).localBiblio.X.title, "Example");
+});
+
+test("bibliography skips final urls without an index file", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "docs-biblio-missing-index-"));
+  await writeFile(path.join(root, "pubDomainList.json"), JSON.stringify({ Geonovum: [] }));
+  await mkdir(path.join(root, "api", "API-Strategie"), { recursive: true });
+
+  const html = await renderBibliography(root);
+
+  assert.match(html, /Referentie Bibliografie/);
+  assert.doesNotMatch(html, /API-Strategie/);
 });
 
 test("runtime exposes publication environment without changing content branch", async () => {
@@ -298,7 +311,7 @@ async function findFiles(root, directory, filename) {
   const matches = [];
 
   for (const entry of entries) {
-    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    if (entry.name === ".git" || entry.name === "node_modules" || entry.name === "build" || entry.name === "dist") continue;
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
       matches.push(...(await findFiles(root, entryPath, filename)));
