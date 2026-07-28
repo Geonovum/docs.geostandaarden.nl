@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, readdir, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
 import http from "node:http";
 import path from "node:path";
@@ -210,6 +210,21 @@ test("repository does not ship Apache .htaccess files", async () => {
   const htaccessFiles = await findFiles(repoRoot, repoRoot, ".htaccess");
 
   assert.deepEqual(htaccessFiles, []);
+});
+
+test("manifest internal route targets exist in the repository", async () => {
+  const repoRoot = path.resolve(import.meta.dirname, "..");
+  const manifest = JSON.parse(await readFile(path.join(repoRoot, "publication-routes.json"), "utf8"));
+  const missingTargets = [];
+
+  for (const route of manifest.routes) {
+    if (/^https?:\/\//i.test(route.target)) continue;
+    const targetPath = path.join(repoRoot, route.target.replace(/^\/+/, ""));
+    const targetStats = await stat(targetPath).catch(() => null);
+    if (!targetStats?.isDirectory()) missingTargets.push(`${route.source} -> ${route.target}`);
+  }
+
+  assert.deepEqual(missingTargets, []);
 });
 
 test("BRO CORS compatibility route serves only local bro/gen files without credentialed origin reflection", async () => {
