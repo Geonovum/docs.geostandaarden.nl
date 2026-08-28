@@ -62,6 +62,7 @@ test("nginx site build pre-renders dynamic publication pages", async () => {
     `<span class="final"><a href="./api/API-Strategie">Laatste versie</a></span>
 <script id="initialUserConfig" type="application/json">{"localBiblio":{"X":{"href":"https://example.test","title":"Example"}}}</script>`
   );
+  await writeFile(path.join(root, "llms.txt"), "# Test publications\n");
   await writeFile(path.join(root, "publication-routes.json"), JSON.stringify({ version: 1, routes: [] }));
 
   await buildNginxSite({ rootDir: root, outDir });
@@ -69,11 +70,13 @@ test("nginx site build pre-renders dynamic publication pages", async () => {
   const rootIndex = await readFile(path.join(outDir, "html", "index.html"), "utf8");
   const broIndex = await readFile(path.join(outDir, "html", "bro", "index.html"), "utf8");
   const biblio = await readFile(path.join(outDir, "html", "biblio.php"), "utf8");
+  const llmsTxt = await readFile(path.join(outDir, "html", "llms.txt"), "utf8");
 
   assert.match(rootIndex, /Standaarden en technische documenten/);
   assert.match(rootIndex, /Laatste versie: API-Strategie/);
   assert.match(broIndex, /Basisregistratie Ondergrond/);
   assert.match(biblio, /https:\/\/example\.test/);
+  assert.equal(llmsTxt, "# Test publications\n");
   assert.equal(await exists(path.join(outDir, "html", "server")), false);
   assert.equal(await exists(path.join(outDir, "default.conf.template")), true);
 });

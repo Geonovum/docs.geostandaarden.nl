@@ -225,6 +225,19 @@ test("repository does not ship Apache .htaccess files", async () => {
   assert.deepEqual(htaccessFiles, []);
 });
 
+test("root llms.txt is published as plain-text Markdown guidance", async () => {
+  const repoRoot = path.resolve(import.meta.dirname, "..");
+
+  await withServer(repoRoot, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/llms.txt`);
+    const body = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /^text\/plain;/);
+    assert.match(body, /^# Geonovum standaarden en technische documenten$/m);
+  });
+});
+
 test("manifest internal route targets exist in the repository", async () => {
   const repoRoot = path.resolve(import.meta.dirname, "..");
   const manifest = JSON.parse(await readFile(path.join(repoRoot, "publication-routes.json"), "utf8"));
