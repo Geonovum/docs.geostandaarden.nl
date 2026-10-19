@@ -168,9 +168,71 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
       <h1>Basisregistratie Ondergrond (BRO): standaarden en technische documentatie</h1>
       <p>Op <a href="https://docs.geostandaarden.nl/bro">https://docs.geostandaarden.nl/bro</a> publiceert Geonovum de standaarden en technische documenten voor de Basisregistratie Ondergrond (BRO).</p>
       <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.bro-productomgeving.nl/bpo/latest/">BRO Productomgeving</a> voor toelichting op de documentatie.</p>
-      <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
-     
-	  
+
+      <p>
+        Hieronder nadere uitleg over de formele en niet-formele versies van een catalogus
+        en de termen daarbij:
+      </p>
+
+      <p><em>Niet-formele versie:</em></p>
+
+      <ul>
+        <li>
+          <strong>Werkversie (wv)</strong>: Dit is de versie van het document waaraan
+          wordt gewerkt. Deze versie is continu 'under-construction' en staat op GitHub.
+        </li>
+      </ul>
+
+      <p><em>Formele versies van een catalogus:</em></p>
+
+      <ul>
+        <li>
+          <strong>Consultatieversie (cv)</strong>: Dit is een 'snapshot' van de versie
+          die in 'publieke consultatie' (PuCo) wordt gezet. Aan deze versie wordt niks
+          meer gedaan totdat de publieke consultatie is afgelopen. Daarna worden alle
+          op- en aanmerkingen uit de consultatieronde verwerkt.
+        </li>
+        <li>
+          <strong>Versie ter vaststelling (vv)</strong>: Dit is een 'snapshot' van de
+          versie na het verwerken van de op- en aanmerkingen uit de PuCo is ontstaan.
+          Deze versie wordt eerst aangeboden aan de betreffende domeinbegeleidingsroep
+          (DBG), en vervolgens aangeboden aan de jurist van het ministerie, om te
+          worden aangeboden aan de Begeleidingsgroep BRO (voorheen
+          Programmabegeleidingsgroep (PBG)).
+        </li>
+        <li>
+          <strong>Vastgestelde versie (def)</strong>: Dit is de definitieve versie van
+          de catalogus; de Programmaraad ZoN/DF (voorheen programmastuurgroep BRO
+          (PSG)) adviseert de minister om deze op te nemen als bijlage bij de Regeling
+          basisregistratie ondergrond (bro). Van deze versie wordt opnieuw een
+          'snapshot' gemaakt in ReSpec. Deze versie wordt als bijlage opgenomen in een
+          door de minister vast te stellen wijzigingsregeling van de Regeling bro.
+        </li>
+      </ul>
+
+      <p>Hieronder nadere uitleg van de 'termen' voor een catalogus:</p>
+
+      <ul>
+        <li>
+          <strong>Deze versie</strong>: dit kan de Werkversie, Consultatieversie,
+          Versie ter vaststelling of Vastgestelde versie zijn.
+        </li>
+        <li>
+          <strong>Laatst gepubliceerde versie</strong>: dit is de meest recente versie:
+          kan de Consultatieversie, Versie ter vaststelling of Vastgestelde versie zijn.
+        </li>
+        <li>
+          <strong>Laatste werkversie</strong>: de huidige en laatste werkversie in
+          ontwikkeling alvorens deze ter publieke consultatie wordt aangeboden en
+          waarbij de (laatste) wijzigingen op dat moment nog niet in de Landelijke
+          Voorziening staan.
+        </li>
+        <li>
+          <strong>Vorige versie</strong>: de vorige gepubliceerde versie.
+        </li>
+      </ul>
+
+      <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>	  
 
 <?php 
 
