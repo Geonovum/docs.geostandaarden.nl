@@ -1,0 +1,2649 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 37.2.0">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+  
+  
+  
+  
+
+  
+<title>Onderzoek logboek dataverwerkingen voor (geo) objecten</title>
+
+  
+<link rel="shortcut icon" type="image/x-icon" href="https://docs.geostandaarden.nl/media/Geonovum.ico">
+
+  
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<style>
+ul.index{columns:30ch;column-gap:1.5em}
+ul.index li{list-style:inherit}
+ul.index li span{color:inherit;cursor:pointer;white-space:normal}
+#index-defined-here ul.index li{font-size:.9rem}
+ul.index code{color:inherit}
+#index-defined-here .print-only{display:none}
+@media print{
+#index-defined-here .print-only{display:initial}
+}
+</style>
+<meta name="description" content="De overheid wil voor burgers en bedrijven zo transparant mogelijk zijn in de omgang met hun gegevens. Daarom is het bij de informatieverwerking in datasets belangrijk om voor elke mutatie of raadpleging vast te leggen wie deze actie wanneer uitvoert, en waarom. Deze herleidbaarheid speelt zowel een rol in het kader van de wetgeving op het gebied van privacy als ook het streven naar openheid en transparantie bij de overheid. Voor een optimale samenwerking over organisaties en bronnen heen is voor deze logging een algemene standaard nodig.">
+<style>
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #80CC28;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://docs.geostandaarden.nl/media/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie.",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment.",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://docs.geostandaarden.nl/media/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://docs.geostandaarden.nl/media/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://docs.geostandaarden.nl/media/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    },
+    "MIM12": {
+      "id": "MIM12",
+      "title": "MIM - Metamodel Informatie Modellering (Versie 1.2)",
+      "href": "https://docs.geostandaarden.nl/mim/def-st-mim-20240613/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2024-06-13"
+    },
+    "3DTILES": {
+      "title": "3D Tiles Specification 1.0",
+      "href": "http://docs.opengeospatial.org/cs/18-053r2/18-053r2.html",
+      "status": "Approved for public release",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Patrick Cozzi",
+        "Sean Lilley",
+        "Gabby Getz"
+      ],
+      "date": "2019-01-31",
+      "id": "3DTILES"
+    },
+    "adr-mod-geo": {
+      "title": "API Design rules Module: Geospatial",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie-mod-geo/",
+      "status": "Consultatieversie",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink"
+      ],
+      "authors": [
+        "Pieter Bresters",
+        "Linda van den Brink",
+        "Paul van Genuchten",
+        "George Mathijssen",
+        "Mark Strijker"
+      ],
+      "date": "2022-09-30",
+      "id": "adr-mod-geo"
+    },
+    "CIS10": {
+      "title": "ISO 19123-2:2018 Geographic information — Schema for coverage geometry and functions — Part 2: Coverage implementation schema",
+      "href": "https://www.iso.org/standard/70948.html",
+      "status": "Published",
+      "publisher": "ISD",
+      "date": "2018-10-01",
+      "id": "CIS10"
+    },
+    "CityGML2": {
+      "title": "OGC City Geography Markup Language (CityGML) Encoding Standard",
+      "href": "https://portal.ogc.org/files/?artifact_id=47842",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Gerhard Gröger",
+        "Thomas H. Kolbe",
+        "Claus Nagel",
+        "Karl-Heinz Häfele"
+      ],
+      "date": "2012-04-04",
+      "id": "CityGML2"
+    },
+    "CityGML3": {
+      "title": "OGC City Geography Markup Language (CityGML) Part 1: Conceptual Model Standard v3.0",
+      "href": "https://docs.ogc.org/is/20-010/20-010.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Thomas H. Kolbe",
+        "Tatjana Kutzner",
+        "Carl Stephen Smyth",
+        "Claus Nagel",
+        "Carsten Roensdorf",
+        "Charles Heazel"
+      ],
+      "date": "2021-09-13",
+      "id": "CityGML3"
+    },
+    "CityJSON": {
+      "title": "CityJSON Community Standard 1.0",
+      "href": "https://docs.ogc.org/cs/20-072r2/20-072r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Hugo Ledoux"
+      ],
+      "date": "2021-08-13",
+      "id": "CityJSON"
+    },
+    "COVJSON": {
+      "title": "OGC CoverageJSON Community Standard 1.0-draft_0.2.2",
+      "href": "https://portal.ogc.org/files/102051",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Chris Little",
+        "Jon Blower",
+        "Maik Riechert"
+      ],
+      "id": "COVJSON"
+    },
+    "CSW2APISO": {
+      "title": "OpenGIS Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=21460",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "Open Geospatial Consortium",
+      "id": "CSW2APISO"
+    },
+    "CSWISOAP": {
+      "title": "OGC 07-045r2: OGC Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile: Corrigendum, version 1.0.2",
+      "href": "https://portal.ogc.org/files/80534",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Uwe Voges",
+        "Kristian Senkler"
+      ],
+      "date": "2020-11-19",
+      "id": "CSWISOAP"
+    },
+    "DCAT-AP-2.1.1": {
+      "title": "DCAT Application Profile for data portals in Europe 2.1.1",
+      "href": "https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/releases",
+      "publisher": "European Commission",
+      "date": "2022-06-24",
+      "id": "DCAT-AP-2.1.1"
+    },
+    "epsg": {
+      "title": "EPSG Geodetic Parameter Dataset",
+      "href": "https://epsg.org/home.html",
+      "status": "Published",
+      "publisher": "Geodesy Subcommittee of the IOGP Geomatics Committee",
+      "id": "epsg"
+    },
+    "FE20": {
+      "title": "OGC 09-026r2: OGC Filter Encoding 2.0 Encoding Standard - With Corrigendum, Version 2.0.3",
+      "href": "http://docs.opengeospatial.org/is/09-026r2/09-026r2.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis (Peter) A. Vretanos",
+      "date": "2014-08-18",
+      "id": "FE20"
+    },
+    "GeoPackage": {
+      "title": "OGC GeoPackage Encoding Standard - with Corrigendum, v1.3.1",
+      "href": "https://www.geopackage.org/spec131/",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Jeff Yutzler"
+      ],
+      "date": "2021-11-16",
+      "id": "GeoPackage"
+    },
+    "GEOSPARQL11": {
+      "title": "OGC GeoSPARQL - A Geographic Query Language for RDF Data",
+      "href": "https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Nicholas J. Car",
+        "Timo Homburg",
+        "Matthew Perry",
+        "John Herring",
+        "Frans Knibbe",
+        "Simon J.D. Cox",
+        "Joseph Abhayaratna",
+        "Mathias Bonduel"
+      ],
+      "date": "2022",
+      "id": "GEOSPARQL11"
+    },
+    "GeoTIFF": {
+      "title": "OGC GeoTIFF standard v1.1",
+      "href": "http://docs.opengeospatial.org/is/19-008r4/19-008r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Emmanuel Devys",
+        "Ted Habermann",
+        "Chuck Heazel",
+        "Roger Lott",
+        "Even Rouault"
+      ],
+      "date": "2019-09-14",
+      "id": "GeoTIFF"
+    },
+    "GIMEG": {
+      "href": "https://docs.geostandaarden.nl/nen3610/gimeg",
+      "publisher": "Geonovum",
+      "status": "Vastgesteld",
+      "authors": [
+        "Linda van den Brink",
+        "Paul Janssen",
+        "Wilko Quak"
+      ],
+      "title": "Geometrie in model en GML",
+      "date": "2021-03-26",
+      "id": "GIMEG"
+    },
+    "GML31": {
+      "title": "OpenGIS® Geography Markup Language (GML) Implementation Specification, v3.1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=4700",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox",
+        "Paul Daisey",
+        "Ron Lake",
+        "Clemens Portele",
+        "Arliss Whiteside"
+      ],
+      "date": "2004-02-07",
+      "id": "GML31"
+    },
+    "GML33": {
+      "title": "OGC® Geography Markup Language (GML) — Extended schemas and encoding rules, v3.3",
+      "href": "https://portal.ogc.org/files/?artifact_id=46568",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele"
+      ],
+      "date": "2012-02-07",
+      "id": "GML33"
+    },
+    "GMLJPEG2000": {
+      "title": "OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core v.2.1",
+      "href": "http://docs.opengeospatial.org/is/08-085r8/08-085r8.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Lucio Colaiacomo",
+        "Joan Masó",
+        "Emmanuel Devys",
+        "Eric Hirschorn"
+      ],
+      "date": "2018-08-27",
+      "id": "GMLJPEG2000"
+    },
+    "GMLSF": {
+      "title": "Geography Markup Language (GML) simple features profile (with Corrigendum) (2.0)",
+      "href": "https://portal.ogc.org/files/?artifact_id=42729",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Linda van den Brink",
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "date": "2012-04-05",
+      "id": "GMLSF"
+    },
+    "HDF5": {
+      "title": "OGC Hierarchical Data Format Version 5 (HDF5®) Core Standard",
+      "href": "http://docs.opengeospatial.org/is/18-043r3/18-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Aleksandar Jelenak",
+        "Ted Habermann",
+        "Gerd Heber"
+      ],
+      "date": "2019-03-27",
+      "id": "HDF5"
+    },
+    "HDFEOS": {
+      "title": "HDF-EOS5 Data Model, File Format and Library (v1.1)",
+      "href": "https://www.earthdata.nasa.gov/sites/default/files/imported/ESDS-RFC-008-v1.1.pdf",
+      "status": "Recommended",
+      "publisher": "NASA",
+      "editors": [
+        "Larry Klein",
+        "Abe Taaheri"
+      ],
+      "date": "2016-05-01",
+      "id": "HDFEOS"
+    },
+    "HRCRS": {
+      "title": "Handreiking Gebruik coördinaatreferentiesystemen bij uitwisseling en visualisatie van geo-informatie",
+      "href": "https://docs.geostandaarden.nl/crs/crs/",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Friso Penninga",
+        "Lennard Huisman"
+      ],
+      "date": "2022-03-14",
+      "id": "HRCRS"
+    },
+    "HRLFG": {
+      "title": "Geometrie in uitwisselingsformaten",
+      "href": "https://docs.geostandaarden.nl/g4w/geox/#inleiding",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "editors": [
+        "Linda van den Brink",
+        "Gabriella Wiersma"
+      ],
+      "date": "2022-02-04",
+      "id": "HRLFG"
+    },
+    "HRTOEG": {
+      "title": "Handreiking digitaal toegankelijk locatiedata",
+      "href": "https://docs.geostandaarden.nl/visu/toeg/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Edward Mac Gillavry",
+        "Sjors Slaats",
+        "Theo OVerduin",
+        "Thijs Brentjens",
+        "Victor Zuydweg"
+      ],
+      "date": "2021-08-02",
+      "id": "HRTOEG"
+    },
+    "HRWC": {
+      "title": "Handreiking webcartografie",
+      "href": "https://www.geonovum.nl/uploads/standards/downloads/handreiking%20webcartografie%201.0.1_0.pdf",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2010-11-18",
+      "id": "HRWC"
+    },
+    "I3S": {
+      "title": "OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Community Standard Version 1.2",
+      "href": "http://docs.opengeospatial.org/cs/17-014r8/17-014r8.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Carl Reed",
+        "Tamrat Belayneh"
+      ],
+      "date": "2021-05-11",
+      "id": "I3S"
+    },
+    "IMMetingen": {
+      "title": "Informatiemodel Metingen",
+      "href": "https://www.sikb.nl/datastandaarden/richtlijnen/sikb0101",
+      "status": "Vastgesteld",
+      "publisher": "SIKB en IHW",
+      "id": "IMMetingen"
+    },
+    "INSGPGeopackage": {
+      "title": "GeoPackage encoding of INSPIRE datasets. INSPIRE good practise",
+      "href": "https://inspire.ec.europa.eu/good-practice/geopackage-encoding-inspire-datasets",
+      "status": "Candidate",
+      "publisher": "INSPIRE",
+      "id": "INSGPGeopackage"
+    },
+    "INSGPOAPIF": {
+      "title": "OGC API - Features as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-api-%E2%80%93-features-inspire-download-service",
+      "status": "Endorsed Good Practice",
+      "publisher": "IOC TF",
+      "id": "INSGPOAPIF"
+    },
+    "INSGPSTA": {
+      "title": "OGC SensorThings API as an INSPIRE download service",
+      "href": "https://inspire.ec.europa.eu/good-practice/ogc-sensorthings-api-inspire-download-service",
+      "status": "Endorsed good practice",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "id": "INSGPSTA"
+    },
+    "inspire-19115-19119": {
+      "title": "INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119",
+      "href": "http://inspire.ec.europa.eu/documents/Metadata/INSPIRE_MD_IR_and_ISO_v1_2_20100616.pdf",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2007-10-26",
+      "id": "inspire-19115-19119"
+    },
+    "inspire-cirmd": {
+      "title": "Corrigendum to INSPIRE Metadata Regulation",
+      "href": "https://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=CELEX:32008R1205R(02)&from=EN",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2010-01-15",
+      "id": "inspire-cirmd"
+    },
+    "inspire-crs": {
+      "title": "INSPIRE Data Specification on Coordinate Reference Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/rs",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-crs"
+    },
+    "inspire-gcm": {
+      "title": "Generic Conceptual Model of the INSPIRE data specifications",
+      "href": "https://inspire.ec.europa.eu/documents/inspire-generic-conceptual-model",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-07",
+      "id": "inspire-gcm"
+    },
+    "inspire-gen": {
+      "title": "Guidelines for the encoding of spatial data",
+      "href": "https://inspire.ec.europa.eu/documents/guidelines-encoding-spatial-data",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2014-04-08",
+      "id": "inspire-gen"
+    },
+    "inspire-ggs": {
+      "title": "Guidelines INSPIRE Data Specification on Geographical Grid Systems - Technical Guidelines",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/gg",
+      "status": "Published",
+      "publisher": "INSPIRE Thematic Working Group Coordinate Reference Systems & Geographical Grid Systems",
+      "date": "2014-04-16",
+      "id": "inspire-ggs"
+    },
+    "inspire-irmd": {
+      "title": "Implementing Rules for Metadata",
+      "href": "http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32008R1205",
+      "authors": [
+        "Drafting Team Metadata and European Commission Joint Research Centre"
+      ],
+      "publisher": "European Commission Joint Research Centre",
+      "date": "2008-12-03",
+      "id": "inspire-irmd"
+    },
+    "inspire-mds": {
+      "title": "Methodology for the development of data specifications: baseline version (D 2.6, Version 3.0)",
+      "href": "https://inspire.ec.europa.eu/documents/methodology-development-data-specifications-baseline-version-d-26-version-30",
+      "status": "Published",
+      "publisher": "INSPIRE Drafting Team Data Specifications",
+      "date": "2008-04-06",
+      "id": "inspire-mds"
+    },
+    "inspire-TG-metadata": {
+      "title": "Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007",
+      "href": "https://github.com/INSPIRE-MIF/technical-guidelines/blob/2022.2/metadata/metadata-iso19139/metadata-iso19139.adoc",
+      "status": [
+        "Tehnical Guidance"
+      ],
+      "authors": [
+        "Temporary MIWP 2021-2024 sub-group 2.3.1"
+      ],
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2022-08-01",
+      "id": "inspire-TG-metadata"
+    },
+    "INSTGDiS": {
+      "title": "Technical Guidance for the implementation of Inspire Discovery Service, version 3.1",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-discovery-services-0",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2011-11-07",
+      "id": "INSTGDiS"
+    },
+    "INSTGDS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",
+      "status": "Approved",
+      "publisher": "IOC TF",
+      "date": "2013-08-09",
+      "id": "INSTGDS"
+    },
+    "INSTGDSSOS": {
+      "title": "Technical Guidance for implementing download services using the OGC Sensor Observation Service and ISO 19143 Filter Encoding, version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-sos",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSSOS"
+    },
+    "INSTGDSWCS": {
+      "title": "Technical Guidance for the implementation of Inspire Download Services using Web Coverage Services (WCS), version 1.0",
+      "href": "https://inspire.ec.europa.eu/id/document/tg/download-wcs",
+      "status": "Approved",
+      "publisher": "INSPIRE Maintenance and Implementation Group (MIG)",
+      "date": "2016-12-16",
+      "id": "INSTGDSWCS"
+    },
+    "INSTGVS": {
+      "title": "Technical Guidance for the implementation of Inspire View Service",
+      "href": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-view-services-1",
+      "status": "Definitief",
+      "publisher": "IOC TF",
+      "date": "2022-08-01",
+      "id": "INSTGVS"
+    },
+    "ISO15836": {
+      "title": "ISO 15836: 2004, Information and documentation - The Dublin Core metadata element set",
+      "href": "https://www.iso.org/standard/37629.htm",
+      "publisher": "International Organization for Standardization",
+      "date": "2004",
+      "id": "ISO15836"
+    },
+    "ISO19101": {
+      "title": "ISO 19101-1:2014 Geographic information — Reference model — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/59164.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2014-11-01",
+      "id": "ISO19101"
+    },
+    "ISO19103": {
+      "title": "ISO 19103:2015 Geographic information — Conceptual schema language",
+      "href": "https://www.iso.org/standard/56734.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19103"
+    },
+    "ISO19107": {
+      "title": "ISO 19107:2019 Geographic information — Spatial schema",
+      "href": "https://www.iso.org/standard/66175.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-12-01",
+      "id": "ISO19107"
+    },
+    "ISO19108": {
+      "title": "ISO 19108:2002 Geographic information — Temporal schema",
+      "href": "https://www.iso.org/standard/26013.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-08",
+      "id": "ISO19108"
+    },
+    "ISO19109": {
+      "title": "ISO 19109:2015 Geographic information — Rules for application schema",
+      "href": "https://www.iso.org/standard/59193.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2015-12-01",
+      "id": "ISO19109"
+    },
+    "ISO19110": {
+      "title": "ISO 19110:2016 Geographic information — Methodology for feature cataloguing",
+      "href": "https://www.iso.org/standard/57303.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2016-12-01",
+      "id": "ISO19110"
+    },
+    "ISO19111": {
+      "title": "ISO 19111:2019 Geographic information — Referencing by coordinates",
+      "href": "https://www.iso.org/standard/74039.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-01-01",
+      "id": "ISO19111"
+    },
+    "ISO19115-2003": {
+      "title": "ISO 19115:2003  Geographic information -- Metadata",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2003-05-01",
+      "id": "ISO19115-2003"
+    },
+    "ISO19115-2006": {
+      "title": "ISO 19115:2003/Cor 1:2006 Geographic information — Metadata — Technical Corrigendum 1",
+      "href": "https://www.iso.org/standard/26020.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2006-06-01",
+      "id": "ISO19115-2006"
+    },
+    "ISO19115-2009": {
+      "title": "ISO 19115-2:2009 Geographic information — Metadata — Part 2: Extensions for imagery and gridded data",
+      "href": "https://www.iso.org/standard/39229.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2009-02-01",
+      "id": "ISO19115-2009"
+    },
+    "ISO19115-2014": {
+      "title": "ISO 19115-1:2014 Geographic information — Metadata — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/53798.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2014-04-01",
+      "id": "ISO19115-2014"
+    },
+    "ISO19117": {
+      "title": "ISO 19117:2012 Geographic Information - Portrayal",
+      "href": "https://www.iso.org/standard/46226.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2012-12-01",
+      "id": "ISO19117"
+    },
+    "ISO19118": {
+      "title": "ISO 19118:2011 Geographic information — Encoding",
+      "href": "https://www.iso.org/standard/44212.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2011-10-01",
+      "id": "ISO19118"
+    },
+    "ISO19119": {
+      "title": "Geographic information - Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119"
+    },
+    "ISO19119-2005": {
+      "title": "ISO 19119:2005 Geographic information — Services",
+      "href": "https://www.iso.org/standard/39890.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2005-02-01",
+      "id": "ISO19119-2005"
+    },
+    "ISO19119-2008": {
+      "title": "ISO 19119:2005/Amd 1:2008 Geographic information — Services — Amendment 1: Extensions of the service metadata model",
+      "href": "https://www.iso.org/standard/44268.html",
+      "publisher": "International Organization for Standardization",
+      "date": "2008-05-01",
+      "id": "ISO19119-2008"
+    },
+    "ISO19126-2009": {
+      "title": "ISO 19126:2009 Geographic information - Feature concept dictionaries and registers",
+      "href": "https://www.iso.org/standard/44875.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2009-11-01",
+      "id": "ISO19126-2009"
+    },
+    "ISO19131": {
+      "title": "ISO 19131:2022 Geographic information — Data product specifications",
+      "href": "https://www.iso.org/standard/85092.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-11-01",
+      "id": "ISO19131"
+    },
+    "ISO19136": {
+      "title": "ISO 19136-1:2020 Geographic information — Geography Markup Language (GML) — Part 1: Fundamentals",
+      "href": "https://www.iso.org/standard/75676.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2020-01-01",
+      "id": "ISO19136"
+    },
+    "ISO19139": {
+      "title": "ISO/TS 19139:2007 Geographic information - Metadata - XML schema implementation",
+      "href": "https://www.iso.org/standard/32557.html",
+      "status": [
+        "Adopted specification"
+      ],
+      "publisher": "International Organization for Standardization",
+      "date": "2007-04-01",
+      "id": "ISO19139"
+    },
+    "ISO6709": {
+      "title": "ISO 6709:2022 Standard representation of geographic point location by coordinates",
+      "href": "https://www.iso.org/standard/75147.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2022-09-01",
+      "id": "ISO6709"
+    },
+    "ISOJPEG2000": {
+      "title": "ISO/IEC 15444-1:2019 Information technology — JPEG 2000 image coding system — Part 1: Core coding system",
+      "href": "https://www.iso.org/standard/78321.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2019-10-01",
+      "id": "ISOJPEG2000"
+    },
+    "ISOts19127": {
+      "title": "ISO/TS 19127 Geographic Information - Geodetic codes and parameters",
+      "href": "https://www.iso.org/standard/41784.html",
+      "status": "Published",
+      "publisher": "ISO",
+      "date": "2005-06-01",
+      "id": "ISOts19127"
+    },
+    "JSON-FG": {
+      "title": "OGC Features and Geometries JSON - Part 1: Core",
+      "href": "https://docs.ogc.org/DRAFTS/21-045.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Clemens Portele",
+        "Panagiotis (Peter) A. Vretanos"
+      ],
+      "id": "JSON-FG"
+    },
+    "MBS": {
+      "title": "Mapbox GL JS Style Specification",
+      "href": "https://docs.mapbox.com/mapbox-gl-js/style-spec/",
+      "status": "Unofficial",
+      "publisher": "Mapbox",
+      "id": "MBS"
+    },
+    "MIM": {
+      "title": "MIM - Metamodel Informatie Modellering",
+      "href": "https://docs.geostandaarden.nl/mim/mim/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Dick Krijtenburg",
+        "Paul Janssen",
+        "Lennart van Bergen"
+      ],
+      "authors": [
+        "Lennart van Bergen",
+        "Thies Mesdag",
+        "Marco Brattinga",
+        "Paul Janssen",
+        "Pano Maria",
+        "Johan Boer"
+      ],
+      "date": "2022-02-17",
+      "id": "MIM"
+    },
+    "NEN3610": {
+      "title": "NEN 3610:2022 nl - Basismodel geo-informatie - Termen, definities, relaties en algemene regels voor de uitwisseling van informatie over aan de aarde gerelateerde ruimtelijke objecten",
+      "href": "https://www.nen.nl/nen-3610-2022-nl-296137",
+      "status": "Definitief",
+      "publisher": "NEN",
+      "date": "2022-05-31",
+      "id": "NEN3610"
+    },
+    "NETCDF": {
+      "title": "OGC Network Common Data Form (NetCDF) Core Encoding Standard version 1.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=43732",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Ben Domenico"
+      ],
+      "date": "2011-04-05",
+      "id": "NETCDF"
+    },
+    "NLAPIS": {
+      "title": "API Strategie Algemeen (Nederlandse API Strategie I)",
+      "href": "https://docs.geostandaarden.nl/api/API-Strategie/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2022-03-09",
+      "id": "NLAPIS"
+    },
+    "NLDP": {
+      "title": "NEN 3610 - Linked Data",
+      "href": "https://docs.geostandaarden.nl/nen3610/nldp/",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "editors": [
+        "Paul Janssen"
+      ],
+      "authors": [
+        "Linda van den Brink",
+        "Marco Brattinga",
+        "Marinus Vonhof",
+        "Niels Hoffmann",
+        "Pano Maria",
+        "Hans Schevers",
+        "Ronald van Lanen",
+        "Joep van Genuchten"
+      ],
+      "date": "2020-03-23",
+      "id": "NLDP"
+    },
+    "NLISO19115": {
+      "title": "Nederlands metadata profiel op ISO 19115 voor geografie versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19115/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19115"
+    },
+    "NLISO19119": {
+      "title": "Nederlands metadata profiel op ISO 19119 voor services versie 2.1.0",
+      "href": "https://docs.geostandaarden.nl/md/mdprofiel-iso19119/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2020-06-30",
+      "id": "NLISO19119"
+    },
+    "NL-SBB-20241010": {
+      "title": "NL-SBB - Standaard voor het beschrijven van begrippen",
+      "href": "https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/",
+      "status": "Vastgestelde versie",
+      "publisher": "Geonovum",
+      "date": "2024-10-10",
+      "id": "NL-SBB-20241010"
+    },
+    "NLWFS": {
+      "title": "Nederlands profiel op ISO 19142 Geographic information — Web Feature Service, Versie 1.1",
+      "href": "https://www.geonovum.nl/geo-standaarden/services/nederlands-wfs-profiel-11-op-iso-19142-voor-web-feature-services-20",
+      "status": "Definitief",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWFS"
+    },
+    "NLWMS": {
+      "title": "Nederlands profiel op ISO 19128 Geographic information — Web Map Server Interface",
+      "href": "https://www.geonovum.nl/uploads/documents/nederlands_profiel_op_iso_19128_wms_1.3_-_versie_1.0.pdf",
+      "status": "Vastgesteld",
+      "publisher": "Geonovum",
+      "date": "2015-04-24",
+      "id": "NLWMS"
+    },
+    "OaMt1": {
+      "title": "OGC Timeseries Profile of Observations and Measurements v1.0",
+      "href": "http://docs.opengeospatial.org/is/15-043r3/15-043r3.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "James Tomkins",
+        "Dominic Lowe"
+      ],
+      "id": "OaMt1"
+    },
+    "OaMx2": {
+      "title": "Observations and Measurements - XML Implementation v2.0",
+      "href": "https://portal.ogc.org/files/?artifact_id=41510",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Simon Cox"
+      ],
+      "id": "OaMx2"
+    },
+    "OAPIC": {
+      "title": "OGC 19-087: OGC API - Coverages - Part 1: Core, version 0.0.6",
+      "href": "http://docs.ogc.org/DRAFTS/19-087.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Charles Heazel",
+        "Jerome St-Louis"
+      ],
+      "id": "OAPIC"
+    },
+    "OAPIEDR": {
+      "title": "OGC 19-086r5: OGC API - Environmental Data Retrieval Standard, Version 1.0.1",
+      "href": "https://docs.ogc.org/is/19-086r5/19-086r5.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Mark Burgoyne",
+        "David Blodgett",
+        "Charles Heazel",
+        "Chris Little"
+      ],
+      "date": "2022-08-05",
+      "id": "OAPIEDR"
+    },
+    "OAPIF1": {
+      "title": "OGC 17-069r4: OGC API - Features - Part 1: Core corrigendum, Version 1.0.1",
+      "href": "https://docs.opengeospatial.org/is/17-069r4/17-069r4.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele",
+        "Charles Heazel"
+      ],
+      "date": "2022-05-11",
+      "id": "OAPIF1"
+    },
+    "OAPIF2": {
+      "title": "OGC 18-058: OGC API - Features - Part 2: Coordinate Reference Systems by Reference, Version 1.0",
+      "href": "https://docs.opengeospatial.org/is/18-058r1/18-058r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "date": "2020-11-02",
+      "id": "OAPIF2"
+    },
+    "OAPIF3": {
+      "title": "OGC 19-079r1: OGC API - Features - Part 3: Filtering, Version 1.0.0-rc1",
+      "href": "http://docs.ogc.org/DRAFTS/19-079r1.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF3"
+    },
+    "OAPIF4": {
+      "title": "OGC 20-002: OGC API - Features - Part 4: Create, Replace, Update and Delete, Version 1.0.0 snapshot (editor's draft",
+      "href": "http://docs.ogc.org/DRAFTS/20-002.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Clemens Portele"
+      ],
+      "id": "OAPIF4"
+    },
+    "OAPIMAPS": {
+      "title": "OGC 20-058: OGC API - Maps - Part 1: Core, Version 0.1.0",
+      "href": "http://docs.ogc.org/DRAFTS/20-058.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Joan Masó",
+      "date": "2022-06-06",
+      "id": "OAPIMAPS"
+    },
+    "OAPIRECORDS1": {
+      "title": "OGC 20-224: OGC API - Records - Part 1: Core",
+      "href": "http://docs.ogc.org/DRAFTS/20-004.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Panagiotis (Peter) A. Vretanos",
+        "Tom Kralidis",
+        "Charles Heazel"
+      ],
+      "date": "2020-01-13",
+      "id": "OAPIRECORDS1"
+    },
+    "OAPISTYLES": {
+      "title": "OGC 20-009: OGC API Styles",
+      "href": "http://docs.opengeospatial.org/DRAFTS/20-009.html",
+      "status": "Draft",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "C. Portele",
+      "id": "OAPISTYLES"
+    },
+    "OAPITILES1": {
+      "title": "OGC 20-057: OGC API - Tiles - Part 1: Core",
+      "href": "https://docs.ogc.org/is/20-057/20-057.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Joan Masó",
+        "Jérôme St-Louis"
+      ],
+      "date": "26-08-2022",
+      "id": "OAPITILES1"
+    },
+    "OMS3": {
+      "title": "OGC Abstract Specification Topic 20: Observations, measurements and samples v3.0.0",
+      "href": "https://docs.ogc.org/as/20-082r4/20-082r4.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Katharina Schleidt",
+        "Ilkka Rinne"
+      ],
+      "date": "2023-05-26",
+      "id": "OMS3"
+    },
+    "OREFCO": {
+      "title": "OGC Abstract Specification Topic 2: Referencing by coordinates",
+      "href": "http://docs.opengeospatial.org/as/18-005r4/18-005r4.html",
+      "status": "OGC® Publicly Available Standard",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Roger Lott"
+      ],
+      "date": "2019-02-08",
+      "id": "OREFCO"
+    },
+    "SE11": {
+      "title": "OGC 05-077r4: OpenGIS Symbology Encoding Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=16700",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2006-07-21",
+      "id": "SE11"
+    },
+    "SensorML": {
+      "title": "OGC SensorML: Model and XML Encoding Standard v2.1",
+      "href": "http://docs.ogc.org/is/12-000r2/12-000r2.html",
+      "status": "Published",
+      "publisher": "Open Geospatial Consortium",
+      "editors": [
+        "Mike Botts",
+        "Alexandre Robin",
+        "Eric Hirschorn"
+      ],
+      "date": "2020-08-10",
+      "id": "SensorML"
+    },
+    "SLD11": {
+      "title": "OGC 05-078r4: Styled Layer Descriptor profile of the Web Map Service Implementation Specification, Version 1.1",
+      "href": "http://portal.opengeospatial.org/files/?artifact_id=22364",
+      "status": "Final version",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2007-06-29",
+      "id": "SLD11"
+    },
+    "STAS": {
+      "title": "OGC 18-088: OGC SensorThings API Part 1 - Sensing, Version 1.1",
+      "href": "https://docs.ogc.org/is/18-088/18-088.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi",
+        "Hylke van der Schaaf"
+      ],
+      "date": "2021-08-04",
+      "id": "STAS"
+    },
+    "STAT": {
+      "title": "OGC 17-079r1: OGC SensorThings API Part 1 - Tasking Core, Version 1.0",
+      "href": "http://docs.opengeospatial.org/is/17-079r1/17-079r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": [
+        "Steve Liang",
+        "Tania Khalafbeigi"
+      ],
+      "date": "2019-01-08",
+      "id": "STAT"
+    },
+    "WCS21": {
+      "title": "OGC 17-089r1: OGC Web Coverage Service (WCS) 2.1 Interface Standard - Core",
+      "href": "http://docs.opengeospatial.org/is/17-089r1/17-089r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "date": "2018-08-16",
+      "id": "WCS21"
+    },
+    "WFS11": {
+      "title": "Web Feature Service Implementation Specification with Corrigendum, Version 1.1.3",
+      "href": "http://docs.opengeospatial.org/is/04-094r1/04-094r1.html",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "Panagiotis A. Vretanos",
+      "date": "2016-10-26",
+      "id": "WFS11"
+    },
+    "WMC11": {
+      "title": "OpenGIS 05-005: Web Map Context Documents Implementation Specification, version 1.1",
+      "href": "https://portal.ogc.org/files/?artifact_id=8618",
+      "status": "Adopted specification",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "J. Sonnet",
+      "date": "2005-01-19",
+      "id": "WMC11"
+    },
+    "WMCC11": {
+      "title": "OpenGIS 08-050: Corrigendum for OpenGIS Implementation Standard Web Map Context Documents - Corrigendum 1",
+      "href": "https://portal.ogc.org/files/?artifact_id=27286",
+      "status": "Approved",
+      "publisher": "Open Geospatial Consortium (OGC)",
+      "editors": "T. Kralidis",
+      "date": "2008-03-14",
+      "id": "WMCC11"
+    },
+    "LDV": {
+      "title": "Logboek dataverwerkingen",
+      "href": "https://logius-standaarden.github.io/logboek-dataverwerkingen/",
+      "publisher": "Logius",
+      "status": "Werkversie",
+      "id": "ldv"
+    },
+    "LDV_OBJECTEN": {
+      "title": "Logboek dataverwerkingen - Extensie (geo)objecten",
+      "href": "https://logius-standaarden.github.io/logboek-extensie-object/",
+      "publisher": "Logius",
+      "status": "Werkversie",
+      "id": "ldv_objecten"
+    },
+    "JB_LDV": {
+      "title": "Logboek dataverwerkingen - Juridisch beleidskader",
+      "href": "https://logius-standaarden.github.io/logboek-dataverwerkingen-juridisch-beleidskader/",
+      "publisher": "Logius",
+      "status": "Werkversie",
+      "id": "jb_ldv"
+    },
+    "NL_SBB": {
+      "title": "NL-SBB - Standaard voor het beschrijven van begrippen",
+      "href": "https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/",
+      "publisher": "Geonovum",
+      "id": "nl_sbb"
+    },
+    "DCAT_AP_NL": {
+      "title": "DCAT-AP-NL - Nederlands profiel voor DCAT",
+      "href": "https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/",
+      "publisher": "Geonovum",
+      "id": "dcat_ap_nl"
+    },
+    "DPV": {
+      "title": "Data Privacy Vocabulary (DPV) v2.2",
+      "href": "https://w3c-cg.github.io/dpv/2.2/dpv/",
+      "publisher": "W3C Data Privacy Vocabularies and Controls Community Group",
+      "status": "Final Community Group Report",
+      "date": "2025-10-31",
+      "id": "dpv"
+    },
+    "GDPR": {
+      "title": "General Data Protection Regulation",
+      "href": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "publisher": "EU",
+      "id": "gdpr"
+    },
+    "MLDCAT_AP": {
+      "title": "MLDCAT-AP - Machine Learning DCAT Application Profile, versie 2.0.0",
+      "href": "https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/",
+      "publisher": "SEMIC (Europese Commissie)",
+      "id": "mldcat_ap"
+    },
+    "DPROD": {
+      "title": "Data Product Ontology (DPROD)",
+      "href": "https://ekgf.org/dprod/",
+      "publisher": "Enterprise Knowledge Graph Forum, Object Management Group® (OMG®)",
+      "id": "dprod"
+    }
+  },
+  "title": "Onderzoek logboek dataverwerkingen voor (geo) objecten",
+  "specStatus": "basis",
+  "specType": "hr",
+  "pubDomain": "ldv",
+  "shortName": "logboek-dataverwerkingen-voor-objecten",
+  "publishDate": "2026-09-24",
+  "publishVersion": [],
+  "edDraftURI": "https://geonovum.github.io/logboek-dataverwerkingen-voor-objecten/",
+  "editors": [
+    {
+      "name": "Niels Hoffmann",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Frank Terpstra",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Niels Hoffmann",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    },
+    {
+      "name": "Frank Terpstra",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "github": "https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten",
+  "maxTocLevel": 3
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
+
+<body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://docs.geostandaarden.nl/media/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Onderzoek logboek dataverwerkingen voor (geo) objecten</h1>
+    
+    <h2>
+      Geonovum Handreiking<br>
+      Document
+      <time class="dt-published" datetime="2026-09-24">24 september 2026</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/ldv/basis-hr-logboek-dataverwerkingen-voor-objecten-20260924">https://docs.geostandaarden.nl/ldv/basis-hr-logboek-dataverwerkingen-voor-objecten-20260924</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/ldv/logboek-dataverwerkingen-voor-objecten/">https://docs.geostandaarden.nl/ldv/logboek-dataverwerkingen-voor-objecten/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/logboek-dataverwerkingen-voor-objecten/">https://geonovum.github.io/logboek-dataverwerkingen-voor-objecten/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteurs:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Niels Hoffmann</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Frank Terpstra</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteurs:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Niels Hoffmann</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Frank Terpstra</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/">GitHub Geonovum/logboek-dataverwerkingen-voor-objecten</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/issues/">Alle issues</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/issues/new/choose">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://docs.geostandaarden.nl/media/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+
+<section id="abstract" class="introductory"><h2>Samenvatting</h2>
+<p>De overheid wil voor burgers en bedrijven zo transparant mogelijk zijn in de omgang met hun gegevens. Daarom is het bij de informatieverwerking in datasets belangrijk om voor elke mutatie of raadpleging vast te leggen wie deze actie wanneer uitvoert, en waarom. Deze herleidbaarheid speelt zowel een rol in het kader van de wetgeving op het gebied van privacy als ook het streven naar openheid en transparantie bij de overheid. Voor een optimale samenwerking over organisaties en bronnen heen is voor deze logging een algemene standaard nodig.</p>
+<p>Het project Logboek dataverwerkingen (voorheen: Verwerkingenlogging) maakt deel uit van het <a href="https://www.digitaleoverheid.nl/data-bij-de-bron/">actieplan Data bij de Bron</a> en onderzoekt met Digilab in samenwerking met diverse overheidspartijen (ministeries, uitvoeringsorganisaties en gemeentes) of we op basis van de tot nu toe opgedane inzichten een overheidsbrede standaard kunnen vaststellen.</p>
+<blockquote>
+<p>bron: <a href="https://digilab.overheid.nl/projecten/logboek-dataverwerkingen/">Digilab</a></p>
+</blockquote>
+<p>Aanvullend op de standaard onderzoeken we in deze handreiking welke kansen en uitdagingen er liggen in het toepassen van deze standaard op het loggen van (geo)objecten.
+In de kern is de standaard zo generiek gehouden dat deze zeker toe te passen is op het loggen van (geo)objecten. Bij het uitwerken van scenario's van die toepassing komt wel naar boven dat het 'ecosysteem' van digitale tweelingen andere karakteristieken kent dan de scenario's waarin de standaard tot nu toe is beproefd. Dit heeft onder meer te maken met het meer dynamisch gebruik van verschillende bouwblokken (algoritmen) om tot beleidsinzichten te komen.</p>
+<section id="verwijzingen"><div class="header-wrapper"><h3 id="verwijzingen-0">Verwijzingen</h3><a class="self-link" href="#verwijzingen" aria-label="Permalink for this Section"></a></div>
+<p>De standaard Logboek dataverwerkingen (LDV) bestaat uit de volgende documenten:</p>
+<table>
+<thead>
+<tr>
+<th>Beschrijving van het document</th>
+<th>Gepubliceerde versie</th>
+<th>Werkversie</th>
+<th>Repository</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. De LDV Normatieve Standaard</td>
+<td>-</td>
+<td><a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/">Logboek dataverwerkingen (werkversie)</a></td>
+<td><a href="https://github.com/Logius-standaarden/logboek-dataverwerkingen">logboek-dataverwerkingen</a></td>
+</tr>
+<tr>
+<td>2. De Algemene Inleiding</td>
+<td>-</td>
+<td><a href="https://logius-standaarden.github.io/logboek-dataverwerkingen-inleiding/">De Algemene Inleiding (werkversie)</a></td>
+<td><a href="https://github.com/Logius-standaarden/logboek-dataverwerkingen-inleiding">logboek-dataverwerkingen-inleiding</a></td>
+</tr>
+<tr>
+<td>3. Het Juridisch beleidskader</td>
+<td>-</td>
+<td><a href="https://logius-standaarden.github.io/logboek-dataverwerkingen-juridisch-beleidskader/">Juridisch beleidskader (werkversie)</a></td>
+<td><a href="https://github.com/Logius-standaarden/logboek-dataverwerkingen-juridisch-beleidskader/">logboek-dataverwerkingen-juridisch-beleidskader</a></td>
+</tr>
+</tbody></table>
+</section></section>
+<section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is een document zonder officiële status.</p><p>Dit document beschrijft de resultaten van het onderzoek naar de toepassing van de standaard Logboek dataverwerkingen [<cite><a class="bibref" data-link-type="biblio" href="#bib-ldv" title="Logboek dataverwerkingen">LDV</a></cite>] op (geo)objecten. Geonovum voerde dit onderzoek uit met innovatiebudget van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties (IDO240584K). Het project is eind 2025 afgerond. Daarna is het document aangevuld met informatie die op dat moment nog ontbrak, en in september 2026 als basisdocument gepubliceerd.</p>
+<p>De inhoud en de verwijzingen geven de stand van zaken van eind 2025 weer. Waar de tekst naar Logboek dataverwerkingen of andere standaarden verwijst, gaat het om de versies die toen beschikbaar waren. Wijzigingen in Logboek dataverwerkingen die in 2025 zijn doorgevoerd, zoals het hernoemen van volwassenheidsniveaus naar detailniveaus, zijn wel in de tekst verwerkt. Ontwikkelingen van na 2025 zijn niet in de tekst verwerkt; de belangrijkste staan hieronder.</p>
+<p><strong>Ontwikkelingen sinds eind 2025</strong> (stand september 2026):</p>
+<ul>
+<li>Logboek dataverwerkingen is vastgesteld. In februari 2026 verscheen de versie ter vaststelling en op 9 april 2026 is <a href="https://gitdocumentatie.logius.nl/publicatie/logboek/dataverwerkingen/1.0.0/">versie 1.0.0</a> vastgesteld. Ook de <a href="https://gitdocumentatie.logius.nl/publicatie/logboek/inleiding/">Algemene inleiding</a> en het <a href="https://gitdocumentatie.logius.nl/publicatie/logboek/juridisch/">Juridisch beleidskader</a> zijn inmiddels als vastgestelde versie gepubliceerd. De tabel in de samenvatting noemt daarom alleen werkversies.</li>
+<li>In mei 2026 is de paragraaf over het werkingsgebied uit Logboek dataverwerkingen verwijderd. Het functioneel toepassingsgebied dat in <a href="#huidige-situatie" class="sec-ref"><bdi class="secno">2.1 </bdi>Huidige situatie</a> wordt aangehaald, staat daardoor niet meer in de standaard.</li>
+<li>De extensie (geo)objecten van Logius [<cite><a class="bibref" data-link-type="biblio" href="#bib-ldv_objecten" title="Logboek dataverwerkingen - Extensie (geo)objecten">LDV_OBJECTEN</a></cite>], met de attributen uit <a href="#H3" class="sec-ref"><bdi class="secno">3. </bdi>Extensie (geo)objecten</a>, is nog een werkversie en is niet vastgesteld.</li>
+<li>NL-SBB [<cite><a class="bibref" data-link-type="biblio" href="#bib-nl_sbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NL_SBB</a></cite>] staat sinds 1 januari 2026 op de lijst met verplichte (pas-toe-of-leg-uit) standaarden van het Forum Standaardisatie.</li>
+<li>Van twee andere bronnen zijn nieuwere versies verschenen: Data Privacy Vocabulary 2.3 (februari 2026) en MLDCAT-AP 3.1.0 (mei 2026).</li>
+</ul>
+</section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verwijzingen">Verwijzingen</a></li></ol></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#H1"><bdi class="secno">1. </bdi>Inleiding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#de-opdracht-het-resultaat-en-te-bereiken-effect"><bdi class="secno">1.1 </bdi>De opdracht, het resultaat en te bereiken effect</a></li><li class="tocline"><a class="tocxref" href="#relaties-met-andere-projecten"><bdi class="secno">1.2 </bdi>Relaties met andere projecten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H2"><bdi class="secno">2. </bdi>Architectuur</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#huidige-situatie"><bdi class="secno">2.1 </bdi>Huidige situatie</a></li><li class="tocline"><a class="tocxref" href="#gewenste-situatie"><bdi class="secno">2.2 </bdi>Gewenste situatie</a></li><li class="tocline"><a class="tocxref" href="#positionering"><bdi class="secno">2.3 </bdi>Positionering</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gdi-gegevensuitwisseling"><bdi class="secno">2.3.1 </bdi>GDI Gegevensuitwisseling</a></li><li class="tocline"><a class="tocxref" href="#nora-nationaal-semantisch-vlak"><bdi class="secno">2.3.2 </bdi>NORA Nationaal Semantisch Vlak</a></li></ol></li><li class="tocline"><a class="tocxref" href="#aandachtsgebieden"><bdi class="secno">2.4 </bdi>Aandachtsgebieden</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#implementatiekeuzes"><bdi class="secno">2.4.1 </bdi>Implementatiekeuzes</a></li><li class="tocline"><a class="tocxref" href="#afwegingskader"><bdi class="secno">2.4.2 </bdi>Afwegingskader</a></li><li class="tocline"><a class="tocxref" href="#detailniveaus"><bdi class="secno">2.4.3 </bdi>Detailniveaus</a></li></ol></li><li class="tocline"><a class="tocxref" href="#extensies"><bdi class="secno">2.5 </bdi>Extensies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensie-geo-objecten"><bdi class="secno">2.5.1 </bdi>Extensie (geo)objecten</a></li><li class="tocline"><a class="tocxref" href="#mapping-naar-prov-o"><bdi class="secno">2.5.2 </bdi>Mapping naar PROV-O</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H3"><bdi class="secno">3. </bdi>Extensie (geo)objecten</a></li><li class="tocline"><a class="tocxref" href="#H4"><bdi class="secno">4. </bdi>Mapping naar PROV-O</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#logboek-interface-normatieve-standaard"><bdi class="secno">4.1 </bdi>Logboek Interface (Normatieve standaard)</a></li><li class="tocline"><a class="tocxref" href="#logboek-interface-objecten"><bdi class="secno">4.2 </bdi>Logboek Interface (objecten)</a></li><li class="tocline"><a class="tocxref" href="#voorbeelduitwerking"><bdi class="secno">4.3 </bdi>Voorbeelduitwerking</a></li></ol></li><li class="tocline"><a class="tocxref" href="#H5"><bdi class="secno">5. </bdi>Implementaties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mvp-met-pygeoapi"><bdi class="secno">5.1 </bdi>MVP met pygeoapi</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#remote-sensing-gebiedsclassificatie-op-basis-van-ai-beeldherkenning"><bdi class="secno">5.1.1 </bdi>Remote-sensing-gebiedsclassificatie op basis van AI-beeldherkenning</a></li><li class="tocline"><a class="tocxref" href="#maaidata-analyse-remote-sensingbeelden-analyseren-of-percelen-wel-niet-gemaaid-zijn"><bdi class="secno">5.1.2 </bdi>Maaidata-analyse: remote-sensingbeelden analyseren of percelen wel/niet gemaaid zijn</a></li><li class="tocline"><a class="tocxref" href="#aanvraag-kapvergunning"><bdi class="secno">5.1.3 </bdi>Aanvraag kapvergunning</a></li></ol></li><li class="tocline"><a class="tocxref" href="#implementatie-in-tooling-voor-digitale-tweelingen"><bdi class="secno">5.2 </bdi>Implementatie in tooling voor digitale tweelingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vraagstukken"><bdi class="secno">5.2.1 </bdi>Vraagstukken</a></li><li class="tocline"><a class="tocxref" href="#uitgewerkte-scenario-s"><bdi class="secno">5.2.2 </bdi>Uitgewerkte scenario's</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#bevindingen"><bdi class="secno">5.2.3 </bdi>Bevindingen</a><ol class="toc"></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#H6"><bdi class="secno">6. </bdi>Conclusies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensie-geo-objecten-0"><bdi class="secno">6.1 </bdi>Extensie (geo)objecten</a></li><li class="tocline"><a class="tocxref" href="#mapping-prov-o"><bdi class="secno">6.2 </bdi>Mapping PROV-O</a></li></ol></li><li class="tocline"><a class="tocxref" href="#index"><bdi class="secno">A. </bdi>Index</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#index-defined-here"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</a></li><li class="tocline"><a class="tocxref" href="#index-defined-elsewhere"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#namespace-verklaringen"><bdi class="secno">B. </bdi>Namespace verklaringen</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">C. </bdi>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informatieve-referenties"><bdi class="secno">C.1 </bdi>Informatieve referenties</a></li></ol></li></ol></nav>
+
+
+
+<section id="H1" class="informative"><div class="header-wrapper"><h2 id="x1-inleiding"><bdi class="secno">1. </bdi>Inleiding</h2><a class="self-link" href="#H1" aria-label="Permalink for Section 1."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>BZK heeft op basis van een aanvraag in samenwerking met Geonovum innovatiebudget toegewezen gekregen voor het onderwerp 'Standaard voor transparantie besluitvorming' (IDO240584K). Het belang dat de overheid verantwoording en transparantie biedt aan burgers en bedrijven over hoe zij handelt, is groot. Burgers en bedrijven dienen op de hoogte te zijn van de gebruikte gegevens en besluitvormingsprocessen van de overheid. Hiervoor worden niet alleen persoonsgegevens maar bijvoorbeeld ook data over objecten uit de fysieke leefomgeving gebruikt. Het ministerie van Binnenlandse Zaken en Koninkrijksrelaties directie Digitale Overheid (regievoerder) heeft aan Geonovum gevraagd hierin ondersteuning te bieden en een offerte uit te brengen voor het uitbreiden van Logboek dataverwerkingen.</p>
+<section id="de-opdracht-het-resultaat-en-te-bereiken-effect"><div class="header-wrapper"><h3 id="x1-1-de-opdracht-het-resultaat-en-te-bereiken-effect"><bdi class="secno">1.1 </bdi>De opdracht, het resultaat en te bereiken effect</h3><a class="self-link" href="#de-opdracht-het-resultaat-en-te-bereiken-effect" aria-label="Permalink for Section 1.1"></a></div>
+<p>Het probleem dat BZK en Geonovum signaleren is dat het steeds lastiger maar ook steeds belangrijker wordt om aan te geven welke gegevens op welke manier worden gebruikt door de overheid, bijvoorbeeld bij het nemen van besluiten of formuleren van beleid. BZK ziet namelijk dat de informatievoorziening van de overheid steeds meer toe gaat naar een federatieve opzet waarbij meerdere bronnen van verschillende overheidsorganisaties gecombineerd worden om informatievragen te beantwoorden of om besluiten te nemen over een aanvraag van een burger. Daarbij is het heel belangrijk om verantwoording af te kunnen leggen hoe een antwoord op een informatievraag of een besluit tot stand is gekomen. Dit verhoogt de transparantie in het handelen van de overheid. De conceptstandaard voor loggen van verwerkingen (Logboek dataverwerkingen) is daar een belangrijke bouwsteen in.</p>
+<p>We willen deze standaard beproeven bij het loggen van transacties met (geo)objecten, in hoeverre is de standaard daar toereikend voor en welke aanvullende aandachtspunten komen er naar voren. Verder willen we onderzoeken hoe de verbinding tussen de standaard Logboek dataverwerkingen en semantische standaarden zoals NL-SBB en DCAT-AP-NL gelegd kan worden.</p>
+</section><section id="relaties-met-andere-projecten"><div class="header-wrapper"><h3 id="x1-2-relaties-met-andere-projecten"><bdi class="secno">1.2 </bdi>Relaties met andere projecten</h3><a class="self-link" href="#relaties-met-andere-projecten" aria-label="Permalink for Section 1.2"></a></div>
+<ul>
+<li>DCAT-AP-NL 3.0 [<cite><a class="bibref" data-link-type="biblio" href="#bib-dcat_ap_nl" title="DCAT-AP-NL - Nederlands profiel voor DCAT">DCAT_AP_NL</a></cite>]</li>
+<li>NL-SBB [<cite><a class="bibref" data-link-type="biblio" href="#bib-nl_sbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NL_SBB</a></cite>]</li>
+<li><a href="https://www.geonovum.nl/over-geonovum/actueel/werken-aan-digital-twin-as-a-service">DTaaS</a> (de use cases om de extensie mee te beproeven zijn gezocht binnen het DTaaS-project, zie <a href="#H5" class="sec-ref"><bdi class="secno">5. </bdi>Implementaties</a>)</li>
+<li>MIM [<cite><a class="bibref" data-link-type="biblio" href="#bib-mim12" title="MIM - Metamodel Informatie Modellering (Versie 1.2)">MIM12</a></cite>]</li>
+</ul>
+</section></section>
+<section id="H2" class="informative"><div class="header-wrapper"><h2 id="x2-architectuur"><bdi class="secno">2. </bdi>Architectuur</h2><a class="self-link" href="#H2" aria-label="Permalink for Section 2."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>De standaard Logboek dataverwerkingen gaat over het verantwoorden van het gebruik van informatie door de overheid. Hierbij moeten er keuzes gemaakt worden wat er wel en niet vastgelegd wordt. Het is immers in de praktijk niet haalbaar om elke individuele transactie of bevraging vast te leggen en daar nog waardevolle inzichten uit te kunnen halen. Deze 'implementatierichtlijnen' vallen buiten de scope van de standaard zelf. Hierdoor kan de standaard in principe heel breed ingezet worden.</p>
+<section id="huidige-situatie"><div class="header-wrapper"><h3 id="x2-1-huidige-situatie"><bdi class="secno">2.1 </bdi>Huidige situatie</h3><a class="self-link" href="#huidige-situatie" aria-label="Permalink for Section 2.1"></a></div>
+<p>Bij de start van dit onderzoek beschreef de standaard Logboek dataverwerkingen [<cite><a class="bibref" data-link-type="biblio" href="#bib-ldv" title="Logboek dataverwerkingen">LDV</a></cite>] als werkingsgebied:</p>
+<p><em>Functioneel toepassingsgebied: De standaard Logboek dataverwerkingen moet worden toegepast als persoonsgegevens worden verwerkt ten behoeve van het ontsluiten van overheidsinformatie en/of functionaliteit.</em></p>
+<p>Dit kan beschouwd worden als een 'minimaal verplichte' scope.
+De standaard is echter zo generiek opgesteld dat deze breder toegepast kan worden.</p>
+<p>In november 2025 is het functioneel toepassingsgebied in de werkversie verbreed naar:</p>
+<p><em>De standaard kan worden toegepast bij het uitvoeren van dataverwerkingen en het aan elkaar relateren van dataverwerkingen van verschillende verwerkingsverantwoordelijken.</em></p>
+<p>Daarmee is de standaard niet langer beperkt tot de verwerking van persoonsgegevens. De attributen in de <code>dpl.core</code>-namespace blijven wel gericht op persoonsgegevens en het register van verwerkingsactiviteiten.</p>
+</section><section id="gewenste-situatie"><div class="header-wrapper"><h3 id="x2-2-gewenste-situatie"><bdi class="secno">2.2 </bdi>Gewenste situatie</h3><a class="self-link" href="#gewenste-situatie" aria-label="Permalink for Section 2.2"></a></div>
+<p>Bij de bredere toepassing van de standaard voor het loggen van (geo)objecten dienen zich een aantal aanvullende vragen aan. De uitwerking in dit document probeert antwoorden te geven op die aanvullende vragen.</p>
+<p>Een van de vragen betreft het bepalen vanuit welk beleidskader het loggen van dataverwerkingen uitgevoerd wordt. De primaire scope van de standaard richt zich op het register van verwerkingsactiviteiten in het kader van de AVG. Bij het uitbreiden van de scope is het van belang te bepalen bij welke registers nog meer het loggen van dataverwerkingen als instrument ingezet kan worden. Voor dit onderzoek kiezen we voor het <a href="https://algoritmes.overheid.nl/nl">Algoritmeregister</a> als kader om te bepalen of een verwerking gelogd moet worden of niet. De gedachte hierachter is dat het waardevol is om niet alleen te weten dat een algoritme ingezet wordt in een bepaalde beleidscontext, maar ook wanneer en op welke data dit algoritme dan is toegepast.</p>
+<p>Met de uitbreiding van de scope van de te loggen verwerkingen wordt de semantische duiding van de verwerking en het object waar de verwerking op van toepassing is belangrijker. Daar waar de scope van een persoonsgegeven redelijk eenduidig is, kan de scope van een gelogd objectgegeven zeer divers zijn. Het kan gaan om een object uit een van de basisregistraties, maar ook een object uit een geheel andere dataset.</p>
+<aside class="example" id="example-1"><div class="marker">
+    <a class="self-link" href="#example-1">Voorbeeld<bdi> 1</bdi></a>
+  </div>
+Als er uit de log blijkt dat er een object 'Station' gebruikt is, gaat het dan om een 'Waarnemingsstation' in de context van een sensor waarneming, of over een 'Treinstation' in de context van vertraging op het spoor?
+</aside><p>Daarom is het voor het loggen van (geo)objectgegevens extra interessant om een uitbreiding op de standaard te realiseren die specificeert op welke manier het objectgegeven geïnterpreteerd moet worden. Voor deze uitbreiding denken we dat het meerwaarde heeft om de gegevens te kunnen definiëren in termen van de PROV-O-standaard [<cite><a class="bibref" data-link-type="biblio" href="#bib-prov-o" title="PROV-O: The PROV Ontology">PROV-O</a></cite>]. Vanuit deze mapping is een verbinding naar bijvoorbeeld de [<cite><a class="bibref" data-link-type="biblio" href="#bib-nl_sbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NL_SBB</a></cite>] of de [<cite><a class="bibref" data-link-type="biblio" href="#bib-dcat_ap_nl" title="DCAT-AP-NL - Nederlands profiel voor DCAT">DCAT_AP_NL</a></cite>] standaard interessant.</p>
+</section><section id="positionering"><div class="header-wrapper"><h3 id="x2-3-positionering"><bdi class="secno">2.3 </bdi>Positionering</h3><a class="self-link" href="#positionering" aria-label="Permalink for Section 2.3"></a></div>
+<section id="gdi-gegevensuitwisseling"><div class="header-wrapper"><h4 id="x2-3-1-gdi-gegevensuitwisseling"><bdi class="secno">2.3.1 </bdi>GDI Gegevensuitwisseling</h4><a class="self-link" href="#gdi-gegevensuitwisseling" aria-label="Permalink for Section 2.3.1"></a></div>
+<p><img src="media/gdi-gegevensuitwisseling-bedrijfsobjectenmodel.png" alt="GDI Gegevensuitwisseling Bedrijfsobjectenmodel">
+<a href="https://minbzk.github.io/gdi-gegevensuitwisseling/?view=id-efc531031d114860a309f6eeacdad289">Bedrijfsobjectenmodel GDI Gegevensuitwisseling</a></p>
+<p>De standaard Logboek dataverwerkingen kan gepositioneerd worden in de GDI Gegevensuitwisseling als standaard waarin een 'Uitwisselingsafspraak' geformaliseerd wordt. Waarbij de daadwerkelijke logging betrekking heeft op de 'Operatie'.</p>
+</section><section id="nora-nationaal-semantisch-vlak"><div class="header-wrapper"><h4 id="x2-3-2-nora-nationaal-semantisch-vlak"><bdi class="secno">2.3.2 </bdi>NORA Nationaal Semantisch Vlak</h4><a class="self-link" href="#nora-nationaal-semantisch-vlak" aria-label="Permalink for Section 2.3.2"></a></div>
+<p><img src="media/Nora-Nationaal_semantisch_vlak.png" alt="NORA Nationaal Semantisch Vlak">
+<a href="https://www.noraonline.nl/wiki/Nationaal_Semantisch_Vlak">NORA Nationaal Semantisch Vlak</a></p>
+<p>In het kader van het NORA Nationaal Semantisch Vlak kan de standaard Logboek dataverwerkingen gepositioneerd worden als het vastleggen van een gebeurtenis die betrekking heeft op een informatieobject.</p>
+</section></section><section id="aandachtsgebieden"><div class="header-wrapper"><h3 id="x2-4-aandachtsgebieden"><bdi class="secno">2.4 </bdi>Aandachtsgebieden</h3><a class="self-link" href="#aandachtsgebieden" aria-label="Permalink for Section 2.4"></a></div>
+<p>De conclusie is dat de kern van de standaard zodanig generiek is dat deze in principe ook toegepast kan worden voor het loggen van (geo)objecten.
+De aandachtspunten liggen vooral in de te maken keuzes in de implementatie of het uitbreiden met een extensie voor inzage.</p>
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><aside class=""><p>Vanuit het juridisch beleidskader [<cite><a class="bibref" data-link-type="biblio" href="#bib-jb_ldv" title="Logboek dataverwerkingen - Juridisch beleidskader">JB_LDV</a></cite>] wordt duidelijk dat <code>dpl.core.data_subject_id</code> alleen gebruikt dient te worden voor het verwijzen naar een persoonsgegeven. Bij het loggen van (geo)objecten maken we dan ook geen gebruik van <code>dpl.core.data_subject_id</code> maar definiëren we een extensie: <code>dpl.objects</code> om informatie over (geo)objecten te loggen. <code>dpl.core.data_subject_id</code> blijft leeg als er niet naar een persoonsgegeven verwezen wordt.</p>
+</aside></div><section id="implementatiekeuzes"><div class="header-wrapper"><h4 id="x2-4-1-implementatiekeuzes"><bdi class="secno">2.4.1 </bdi>Implementatiekeuzes</h4><a class="self-link" href="#implementatiekeuzes" aria-label="Permalink for Section 2.4.1"></a></div>
+<p>Voor dit onderzoek kiezen we ervoor om de standaard te beproeven met een implementatie in een digitale tweeling.</p>
+<p><a href="https://www.geonovum.nl/themas/digital-twins">Digitale tweelingen zijn een praktisch hulpmiddel om alles wat bekend is over de leefomgeving, integraal inzichtelijk te maken.</a> Een digitale tweeling wordt gevormd door een aantal bouwblokken. Door de functionaliteit van Logboek dataverwerkingen in te zetten in het bouwblok 'rekenen' leggen we data vast die gebruikt kan worden in het bouwblok 'vertrouwen'. Zie het rapport <a href="https://www.geonovum.nl/uploads/documents/Eindrapport%20Advies%20Beleid%20en%20Digital%20Twins%20-%20provincie%20Utrecht%20v1.3d.pdf">Beleidsprocessen en bouwblokken voor Digitale Tweelingen</a> voor een uitleg van de verschillende bouwblokken.</p>
+<p>Bij het onderzoek naar het implementeren van de standaard Logboek dataverwerkingen speelt de dynamiek van het ecosysteem van digitale tweelingen een grote rol. In de beoogde architectuur ontstaat er een catalogus (of 'appstore') van rekenmodellen die een gebruiker naar behoefte kan inzetten. Het is vooraf dus nog niet duidelijk welke organisatie welk aangeboden rekenmodel gaat inzetten voor het analyseren van een bepaald beleidsvraagstuk. De verwerkingsketen is daarmee op voorhand nog niet bekend en er is een scheiding van de verantwoordelijke organisatie en de aanbieder van het rekenmodel. Dit brengt implementatievraagstukken met zich mee waar we meer inzicht in willen krijgen.</p>
+<p><img src="media/Front-Backend_achtergrond.png" alt="Dynamiek in het ecosysteem van digitale tweelingen">
+Illustratieve indicatie van de verschillende bouwblokken in een ecosysteem van digitale tweelingen. Bron: Geonovum</p>
+</section><section id="afwegingskader"><div class="header-wrapper"><h4 id="x2-4-2-afwegingskader"><bdi class="secno">2.4.2 </bdi>Afwegingskader</h4><a class="self-link" href="#afwegingskader" aria-label="Permalink for Section 2.4.2"></a></div>
+<p>In de kern van de standaard wordt een <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#register">Register</a> gedefinieerd. Als de standaard toegepast wordt voor het loggen van persoonsgegevens wordt hier het register van verwerkingsactiviteiten in het kader van de AVG voor gebruikt. Voor het bepalen of een dataverwerking van een objectgegeven gelogd moet worden gaan wij in dit onderzoek uit van het Algoritmeregister als afwegingskader.</p>
+<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Noot</span></div><aside class=""><p>Als een organisatie dataverwerkingen doet in het kader van een algoritme dat in het Algoritmeregister is geregistreerd, dan zouden deze dataverwerkingen gelogd moeten worden op basis van deze standaard.</p>
+</aside></div></section><section id="detailniveaus"><div class="header-wrapper"><h4 id="x2-4-3-detailniveaus"><bdi class="secno">2.4.3 </bdi>Detailniveaus</h4><a class="self-link" href="#detailniveaus" aria-label="Permalink for Section 2.4.3"></a></div>
+<p>Een ander aandachtspunt bij het beschrijven van de functionaliteit voor het loggen van objectgegevens betreft de detailniveaus. Logging kan op verschillende detailniveaus: hoe hoger het detailniveau, hoe gedetailleerder er wordt gelogd.</p>
+<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Noot</span></div><aside class=""><p>In eerdere werkversies van Logboek dataverwerkingen heetten deze niveaus 'volwassenheidsniveaus'. In juni 2025 zijn ze hernoemd naar 'detailniveaus'. Dit document volgt de nieuwe term.</p>
+</aside></div><p>Welk detailniveau gebruikt wordt hangt van meerdere factoren af. De informatiebehoefte van de verantwoording, maar zeker ook wat er technisch gezien mogelijk is om te implementeren.</p>
+<p>De volgende niveaus worden gehanteerd:</p>
+<ul>
+<li>Niveau 1: registerverwijzing</li>
+<li>Niveau 2: kolomverwijzing</li>
+<li>Niveau 3: concrete data</li>
+</ul>
+<p>Zie <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#detailniveaus">Detailniveaus</a> in de standaard Logboek dataverwerkingen voor de verdere toelichting hierop.</p>
+</section></section><section id="extensies"><div class="header-wrapper"><h3 id="x2-5-extensies"><bdi class="secno">2.5 </bdi>Extensies</h3><a class="self-link" href="#extensies" aria-label="Permalink for Section 2.5"></a></div>
+<p>In de standaard wordt de basisfunctionaliteit beschreven, en wordt een <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#extensies">extensieaanpak</a> beschreven om de standaard uit te breiden. </p>
+<p><img src="media/extensie-metadata.drawio.png" alt="Positionering extensies"></p>
+<p>Positionering extensies</p>
+<section id="extensie-geo-objecten"><div class="header-wrapper"><h4 id="x2-5-1-extensie-geo-objecten"><bdi class="secno">2.5.1 </bdi>Extensie (geo)objecten</h4><a class="self-link" href="#extensie-geo-objecten" aria-label="Permalink for Section 2.5.1"></a></div>
+<p><code>dpl.core.processing_activity_id</code> is gereserveerd voor het verwijzen naar het register van verwerkingsactiviteiten in het kader van de AVG en <code>dpl.core.data_subject_id</code> is gereserveerd voor het verwijzen naar een persoonsgegeven.</p>
+<p><strong>Voor het loggen van (geo)objectgegevens definiëren we de volgende extensie:
+<code>dpl.objects</code></strong></p>
+<p>De uitwerking van de te gebruiken attributen in deze namespace staat in <a href="#H3" class="sec-ref"><bdi class="secno">3. </bdi>Extensie (geo)objecten</a>. Deze uitwerking is in juni 2025 als werkversie van een extensie ondergebracht bij Logius [<cite><a class="bibref" data-link-type="biblio" href="#bib-ldv_objecten" title="Logboek dataverwerkingen - Extensie (geo)objecten">LDV_OBJECTEN</a></cite>].</p>
+</section><section id="mapping-naar-prov-o"><div class="header-wrapper"><h4 id="x2-5-2-mapping-naar-prov-o"><bdi class="secno">2.5.2 </bdi>Mapping naar PROV-O</h4><a class="self-link" href="#mapping-naar-prov-o" aria-label="Permalink for Section 2.5.2"></a></div>
+<p>Om de interoperabiliteit tussen de standaard Logboek dataverwerkingen en andere systemen te verbeteren kijken we naar de mapping van het gebruikte model (op basis van OpenTelemetry) naar [<cite><a class="bibref" data-link-type="biblio" href="#bib-prov-o" title="PROV-O: The PROV Ontology">PROV-O</a></cite>]. [<cite><a class="bibref" data-link-type="biblio" href="#bib-prov-o" title="PROV-O: The PROV Ontology">PROV-O</a></cite>] wordt op diverse plaatsen, zowel nationaal als internationaal gebruikt om 'provenance' vast te leggen. </p>
+<p>Behalve naar [<cite><a class="bibref" data-link-type="biblio" href="#bib-prov-o" title="PROV-O: The PROV Ontology">PROV-O</a></cite>] onderzoeken we ook de relatie naar de [<cite><a class="bibref" data-link-type="biblio" href="#bib-nl_sbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NL_SBB</a></cite>] standaard, deze standaard voor het beschrijven van begrippen, wordt samen met [<cite><a class="bibref" data-link-type="biblio" href="#bib-dcat_ap_nl" title="DCAT-AP-NL - Nederlands profiel voor DCAT">DCAT_AP_NL</a></cite>] bijvoorbeeld ingezet in het Federatief Datastelsel om metadata te beschrijven.</p>
+<p>De mapping is uitgewerkt in <a href="#H4" class="sec-ref"><bdi class="secno">4. </bdi>Mapping naar PROV-O</a>.</p>
+</section></section></section>
+<section id="H3" class="informative"><div class="header-wrapper"><h2 id="x3-extensie-geo-objecten"><bdi class="secno">3. </bdi>Extensie (geo)objecten</h2><a class="self-link" href="#H3" aria-label="Permalink for Section 3."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>Het loggen van (geo)objecten is een bijzonder ruim en daarmee flexibel onderwerp. Er zijn zeer veel mogelijke scenario's, afhankelijk van de gebruikte data, 
+het type analyse of algoritme en het gewenste detailniveau.</p>
+<p>We nemen een paar uitgangspunten op om de scope te verduidelijken.</p>
+<div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="3"><span>Noot</span></div><aside class=""><p>Deze uitgangspunten zijn beproefd in de implementaties in <a href="#H5" class="sec-ref"><bdi class="secno">5. </bdi>Implementaties</a>.</p>
+<p>Daarbij bleek dat theorie en praktijk uit elkaar kunnen lopen. Bijvoorbeeld voor wat betreft het abstractieniveau waarop een algoritme in een algoritmeregister is 
+beschreven en de daadwerkelijke implementatie in een systeem en de (technische) mogelijkheden om logging te implementeren (zie <a href="#granulariteit-van-verantwoording-register-versus-modules-in-de-tooling" class="sec-ref"><bdi class="secno">5.2.3.5 </bdi>Granulariteit van verantwoording: register versus modules in de tooling</a>).</p>
+</aside></div><ol>
+<li>Input- en outputpoorten conform het idee van 'dataproducten' als uitgangspunt voor de afbakening van het proces wat wordt gelogd.</li>
+<li>API-specificatie van een proces (als het goed is gelijk aan 1.)</li>
+</ol>
+<p>In de standaard Logboek dataverwerkingen wordt het OpenTelemetry-protocol (OTLP) aanbevolen om de <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#interface">interface</a> 
+naar het logboek mee te implementeren.</p>
+<p>OpenTelemetry kent een aantal categorieën (signals) om telemetrie vast te leggen. Voor de standaard Logboek dataverwerkingen wordt de <a href="https://opentelemetry.io/docs/concepts/signals/traces/">traces</a> categorie gebruikt.
+Op het 'hoogste' niveau kent OpenTelemetry ook nog het concept <a href="https://opentelemetry.io/docs/concepts/resources/">resource</a>.</p>
+<p>Bij het opzetten van een interface voor Logboek dataverwerkingen kan er dus informatie op het niveau van resource vastgelegd worden. Dit is typisch informatie over het systeem waar de betreffende logging vandaan komt.</p>
+<p>De traces zijn vervolgens de individuele verwerkingen die door het betreffende systeem gedaan worden.</p>
+<p><strong>resource</strong></p>
+<p>service.name = Logical name of the service
+service.instance.id = The string ID of the service instance</p>
+<p>Overeenkomstig de OpenTelemetry-specificatie.</p>
+<p>Elk individueel dataproduct/proces krijgt een eigen naam en id. Dus als er meerdere algoritmes/processen op een server zijn geïmplementeerd moet de service.name op het niveau van
+het individuele product/proces geïnstantieerd worden.</p>
+<p><strong>trace</strong></p>
+<p>Voor het loggen van gegevens binnen een trace maken we gebruik van het idee van 'dataproducten' zoals die in de [<cite><a class="bibref" data-link-type="biblio" href="#bib-dprod" title="Data Product Ontology (DPROD)">DPROD</a></cite>] ontologie gepositioneerd worden.</p>
+<p>Definitie van een <a href="https://ekgf.github.io/dprod/#dataproductshape">dataproduct</a> volgens [<cite><a class="bibref" data-link-type="biblio" href="#bib-dprod" title="Data Product Ontology (DPROD)">DPROD</a></cite>]: 
+<em>A rational, managed, and governed collection of data, with purpose, value and ownership, meeting consumer needs over a planned life-cycle. A data product may have input and output ports, code and metadata.</em> </p>
+<p>Open Data Mesh beschrijft een <a href="https://dpds.opendatamesh.org/concepts/data-product/">dataproduct</a> als:
+<em>It's the smallest unit that can be independently deployed and managed in a data architecture (i.e. architectural quantum). It is composed of all the structural components that it requires to do its function: the metadata, the data, the code, the policies that govern the data and its dependencies on infrastructure.</em> </p>
+<p>Dit sluit goed aan op het abstractieniveau van wat we willen loggen met Logboek dataverwerkingen. De beschreven structuur hieronder legt deze structurele componenten vast.</p>
+<p>Afhankelijk van het gekozen niveau wordt er alleen gelogd op het niveau van het dataproduct (niveau 1), op het niveau van de datasets (of tabellen) en eventueel de features (rijen in de tabellen) (niveau 2), of zelfs de attributen en de waarden binnen de features (niveau 3).</p>
+<pre><code class="text hljs" aria-busy="false">dpl.objects.algorithm_id
+dpl.objects.vendor_operation_ref
+dpl.objects.dataproduct_id 
+dpl.objects.dataset [
+    dataset_id
+    dataset_def
+    dataset_port
+    feature [
+        feature_id
+        feature_def
+        feature_port
+    
+        feature_attribute [
+            attribute_name
+            attribute_value
+            attribute_def
+        ]
+    ]   
+]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>attribuut</th>
+<th>niveau</th>
+<th>beschrijving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dpl.objects.algorithm_id</td>
+<td>1</td>
+<td>verwijzing naar het register van het betreffende algoritme. uri naar uniek identificeerbaar algoritme</td>
+</tr>
+<tr>
+<td>dpl.objects.vendor_operation_ref</td>
+<td>1</td>
+<td>verwijzing naar documentatie of aanvullende informatie over het rekenmodel of algoritme bij de leverancier (zie <a href="#voorstel-aanvullende-eigenschap-om-op-te-nemen-in-de-log" class="sec-ref"><bdi class="secno">5.2.3.9 </bdi>Voorstel aanvullende eigenschap om op te nemen in de log</a>)</td>
+</tr>
+<tr>
+<td>dpl.objects.dataproduct_id</td>
+<td>1</td>
+<td>uri naar een catalogus met de dataproduct metadata</td>
+</tr>
+<tr>
+<td>dpl.objects.dataset</td>
+<td>2a</td>
+<td>lijst met datasets (input en/of output van het dataproduct)</td>
+</tr>
+<tr>
+<td>dataset_id</td>
+<td>2a</td>
+<td>unieke id van de dataset</td>
+</tr>
+<tr>
+<td>dataset_def</td>
+<td>2a</td>
+<td>uri naar de definitie/metadata van de dataset (catalog_record/dcat_ap_nl)</td>
+</tr>
+<tr>
+<td>dataset_port</td>
+<td>2a</td>
+<td>input/output dataset, dit wordt in de log vastgelegd omdat het niet noodzakelijk uit de metadata in de catalogus afgeleid kan worden</td>
+</tr>
+<tr>
+<td>feature</td>
+<td>2b</td>
+<td>lijst met features:</td>
+</tr>
+<tr>
+<td>feature_id</td>
+<td>2b</td>
+<td>unieke id van het feature</td>
+</tr>
+<tr>
+<td>feature_def</td>
+<td>2b</td>
+<td>uri naar een definitie van het feature</td>
+</tr>
+<tr>
+<td>feature_port</td>
+<td>2b</td>
+<td>input/output feature, dit wordt in de log vastgelegd omdat het niet noodzakelijk uit de metadata in de catalogus afgeleid kan worden</td>
+</tr>
+<tr>
+<td>feature_attribute</td>
+<td>3</td>
+<td>lijst van attributen van het feature</td>
+</tr>
+<tr>
+<td>attribute_name</td>
+<td>3</td>
+<td>unieke identifier van het attribuut</td>
+</tr>
+<tr>
+<td>attribute_value</td>
+<td>3</td>
+<td>waarde van het attribuut in de specifieke verwerking / logregel</td>
+</tr>
+<tr>
+<td>attribute_def</td>
+<td>3</td>
+<td>verwijzing naar de metadata van het attribuut</td>
+</tr>
+</tbody></table>
+<p>Afhankelijk van het detailniveau wordt er meer gelogd. Voor de hogere niveaus geldt dat de gegevens van het lagere niveau ook gelogd worden.</p>
+<p>Voor niveau 2 ('kolomverwijzing') geldt dat er op gehele dataset gelogd kan worden (2a), of dat er specifiek aangegeven kan worden welke features in een dataset gebruikt zijn (2b). Voor (geo)objecten wordt niveau 2 dus breder uitgelegd dan in Logboek dataverwerkingen: het gaat om verwijzingen naar de gebruikte datasets en features, maar nog niet om de waarden van hun attributen. Die worden pas op niveau 3 ('concrete data') gelogd.</p>
+<hr>
+</section>
+<section id="H4" class="informative"><div class="header-wrapper"><h2 id="x4-mapping-naar-prov-o"><bdi class="secno">4. </bdi>Mapping naar PROV-O</h2><a class="self-link" href="#H4" aria-label="Permalink for Section 4."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>De kern van het [<cite><a class="bibref" data-link-type="biblio" href="#bib-prov-o" title="PROV-O: The PROV Ontology">PROV-O</a></cite>]-model bestaat uit een Activiteit, een Entiteit en een Agent.</p>
+<p><img src="media/prov-dm.png" alt="prov-dm"></p>
+<p><a href="https://www.w3.org/TR/prov-dm/#prov-core-structures">Illustratie van het PROV-kernmodel</a></p>
+<p>Om een goede mapping te kunnen maken tussen de standaard Logboek dataverwerkingen en PROV-O volstaat het kernmodel niet. We kijken daarom naar de complete ontologie om alle constructies goed te kunnen mappen.</p>
+<p>De basis van de standaard kent het Logboek (met de <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#interface">interface</a> beschrijving), de Applicatie die naar het Logboek schrijft en het Register waarnaar verwezen wordt ter verantwoording van de verwerkingsactiviteit.</p>
+<p><img src="media/architecture-grenzen.svg" alt="ldv"></p>
+<p><a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#fig-componenten-in-context">Illustratie uit de standaard Logboek dataverwerkingen, componenten in context</a></p>
+<p>Het Logboek is in essentie een lijst van PROV-O Activities. De data die bij zo'n activiteit gebruikt of gewijzigd wordt, waaronder het object waar de verwerking over gaat, is een PROV-O Entity. Een PROV-O Agent is de actor die de verwerking uitvoert; in de voorbeelden hieronder wordt ook de betrokkene als Agent gemodelleerd.
+Zowel Agent als Entity komen niet rechtstreeks in het kernmodel van het logboek voor.</p>
+<p>Als we een laag dieper kijken naar de <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#interface">interface</a> beschrijving vinden we daar echter wel aanknopingspunten voor een verdere mapping.</p>
+<section id="logboek-interface-normatieve-standaard"><div class="header-wrapper"><h3 id="x4-1-logboek-interface-normatieve-standaard"><bdi class="secno">4.1 </bdi>Logboek Interface (Normatieve standaard)</h3><a class="self-link" href="#logboek-interface-normatieve-standaard" aria-label="Permalink for Section 4.1"></a></div>
+<pre><code class="text hljs" aria-busy="false">    Een van de gedefinieerde attributen is het veld `resource`. 
+    Dit is een bericht, opgebouwd uit het volgende veld:
+
+    - `attributes`: Lijst attributen in de vorm van *KeyValue pairs*. 
+    De organisatie kan deze lijst gebruiken om een systeem, 
+    applicatie of component aan te duiden op een manier die binnen de 
+    organisatie gebruikelijk is. 
+    Dit zijn bijvoorbeeld naam en versienummer van een applicatie, 
+    of een verwijzing naar een record in een CMDB.
+
+    Het veld `attributes` is een lijst van *key-value pairs*, 
+    in een namespace met prefix `dpl.` (data processing log). 
+    De volgende attributen zijn mogelijk in de namespace `core`:
+
+    - `dpl.core.processing_activity_id`: URI; Verwijzing naar Register 
+    met meer informatie over de Verwerkingsactiviteit
+    - `dpl.core.data_subject_id`: Unieke identificerende code van de Betrokkene; versleuteld. 
+    Hiermee wordt aangeduid welke persoon Betrokkene is bij de verwerking, gelet op de AVG.
+    - `dpl.core.data_subject_id_type`: Type van het veld data_subject_id. 
+    Dit is bijvoorbeeld BSN, Personeelsnummer of Vreemdelingennummer, 
+    of een URI naar een Register waar het veld meer precies wordt geduid.
+</code></pre>
+<p>In de attributes zien we dus de constructie om te verwijzen naar het register via <code>dpl.core.processing_activity_id</code>. En we zien met <code>dpl.core.data_subject_id</code> een constructie om te verwijzen naar het subject van de verwerking, en met <code>dpl.core.data_subject_id_type</code> een nadere duiding van het soort subject.</p>
+<p>Via een <code>prov:qualifiedUsage</code> relatie kan een Activiteit (dus een regel in het Logboek) gerelateerd worden aan een verwerkingsactiviteit in het Register.</p>
+<pre><code class="turtle hljs" aria-busy="false"><span class="hljs-type">@prefix</span> <span class="hljs-symbol">:</span> <span class="hljs-literal">&lt;http://example.org/&gt;</span> .
+<span class="hljs-type">@prefix</span> <span class="hljs-symbol">prov:</span> <span class="hljs-literal">&lt;http://www.w3.org/ns/prov#&gt;</span> .
+
+<span class="hljs-symbol">:logregel_X</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Activity</span> ;
+    <span class="hljs-symbol">prov:used</span> <span class="hljs-symbol">:data_subject_Y</span> ;
+    <span class="hljs-symbol">prov:qualifiedUsage</span> [
+        <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Usage</span> ;
+        <span class="hljs-symbol">prov:entity</span> <span class="hljs-symbol">:data_subject_Y</span> ;
+        <span class="hljs-symbol">:verwerkingsactiviteit</span> <span class="hljs-symbol">:pai_Z</span>
+    ] .
+
+<span class="hljs-symbol">:data_subject_Y</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Entity</span> ;
+    <span class="hljs-symbol">:data_subject_Y_type</span> <span class="hljs-string">"BSN"</span> .
+
+<span class="hljs-symbol">:pai_Z</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Agent</span> ;
+    <span class="hljs-symbol">:verwerkingsactiviteit_naam</span> <span class="hljs-string">"uitgeven paspoort"</span> .
+</code></pre>
+<p><img src="media/qualified_usage_voorbeeld.png" alt="Voorbeeld van qualified usage"></p>
+<p>Voorbeeld van qualified usage</p>
+<p>De mapping van het technisch (OpenTelemetry-)model van de standaard Logboek dataverwerkingen naar PROV-O maakt het vervolgens makkelijker om de loggegevens interoperabel te maken met andere systemen.</p>
+</section><section id="logboek-interface-objecten"><div class="header-wrapper"><h3 id="x4-2-logboek-interface-objecten"><bdi class="secno">4.2 </bdi>Logboek Interface (objecten)</h3><a class="self-link" href="#logboek-interface-objecten" aria-label="Permalink for Section 4.2"></a></div>
+<p>Net zoals de core standaard attributen definieert in de <code>dpl.core</code> namespace, definiëren we attributen voor (geo)objecten in de <code>dpl.objects</code> namespace. 
+Deze mapping is niet op dezelfde wijze te doen omdat we in de logging niet een individueel aanwijsbaar object vastleggen maar een lijst met objecten.</p>
+<ul>
+<li>optie: onderzoeken of het waardevol is een mapping naar MLDCAT-AP [<cite><a class="bibref" data-link-type="biblio" href="#bib-mldcat_ap" title="MLDCAT-AP - Machine Learning DCAT Application Profile, versie 2.0.0">MLDCAT_AP</a></cite>] te doen.</li>
+<li>optie: onderzoeken of het waardevol is een mapping naar [<cite><a class="bibref" data-link-type="biblio" href="#bib-dprod" title="Data Product Ontology (DPROD)">DPROD</a></cite>], Data Product Ontology te doen.</li>
+</ul>
+</section><section id="voorbeelduitwerking"><div class="header-wrapper"><h3 id="x4-3-voorbeelduitwerking"><bdi class="secno">4.3 </bdi>Voorbeelduitwerking</h3><a class="self-link" href="#voorbeelduitwerking" aria-label="Permalink for Section 4.3"></a></div>
+<p>Onderstaand een voorbeeld van een log vanuit OpenTelemetry:</p>
+<pre><code class="json hljs" aria-busy="false"><span class="hljs-attr">"spans"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+                        <span class="hljs-punctuation">{</span>
+                            <span class="hljs-attr">"traceId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"98bdcae79e7fa7d4ccbc981e0653e8fd"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"spanId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dff0fb279813ee0d"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"parentSpanId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"flags"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">256</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Aanvraag_span"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"kind"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"startTimeUnixNano"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1739370701786437325"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"endTimeUnixNano"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1739370702000265566"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"attributes"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+                                <span class="hljs-punctuation">{</span>
+                                    <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dpl.objects.processing_association_id"</span><span class="hljs-punctuation">,</span>
+                                    <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                        <span class="hljs-attr">"stringValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"http://aanvraag"</span>
+                                    <span class="hljs-punctuation">}</span>
+                                <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+                                <span class="hljs-punctuation">{</span>
+                                    <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dpl.core.processing_activity_id"</span><span class="hljs-punctuation">,</span>
+                                    <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                        <span class="hljs-attr">"stringValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"RVA: Aanvraag Kapvergunning"</span>
+                                    <span class="hljs-punctuation">}</span>
+                                <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+                                <span class="hljs-punctuation">{</span>
+                                    <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dpl.objects.data_object_id"</span><span class="hljs-punctuation">,</span>
+                                    <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                        <span class="hljs-attr">"intValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2069296"</span>
+                                    <span class="hljs-punctuation">}</span>
+                                <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+                                <span class="hljs-punctuation">{</span>
+                                    <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dpl.objects.data_object_def"</span><span class="hljs-punctuation">,</span>
+                                    <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                        <span class="hljs-attr">"stringValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"http://brt.basisregistraties.overheid.nl/id/concept/Boom"</span>
+                                    <span class="hljs-punctuation">}</span>
+                                <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+                                <span class="hljs-punctuation">{</span>
+                                    <span class="hljs-attr">"key"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dpl.core.data_subject_id"</span><span class="hljs-punctuation">,</span>
+                                    <span class="hljs-attr">"value"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                        <span class="hljs-attr">"stringValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Meneer van Eik"</span>
+                                    <span class="hljs-punctuation">}</span>
+                                <span class="hljs-punctuation">}</span>
+                            <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"status"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                                <span class="hljs-attr">"code"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+                            <span class="hljs-punctuation">}</span>
+                        <span class="hljs-punctuation">}</span>
+                    <span class="hljs-punctuation">]</span>                                                         
+</code></pre>
+<div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Noot</span></div><aside class=""><p>Dit voorbeeld komt uit een eerdere iteratie van de extensie. Het gebruikt nog attribuutnamen (<code>dpl.objects.processing_association_id</code>, <code>dpl.objects.data_object_id</code> en <code>dpl.objects.data_object_def</code>) die later zijn vervangen door de structuur uit <a href="#H3" class="sec-ref"><bdi class="secno">3. </bdi>Extensie (geo)objecten</a>. Voor de leesbaarheid bevat <code>dpl.core.data_subject_id</code> hier een naam en <code>dpl.core.processing_activity_id</code> een omschrijving; volgens de standaard zijn dat respectievelijk een versleutelde identificatie en een URI.</p>
+</aside></div><p>Met RML kan deze JSON-data geconverteerd worden naar RDF/Turtle.</p>
+<blockquote>
+<p>Zie de <a href="https://rml.io/docs/rml/introduction/">introductie van RML</a> voor meer informatie over RML.</p>
+</blockquote>
+<p>In de <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/tree/main/prov-o_mapping">Git repository</a> zijn het voorbeeld van de RML-transformatie, de input (JSON) en de output (Turtle) te vinden om bovenstaande log om te zetten naar RDF conform de PROV-O ontologie.</p>
+<p>Deze trace zou er in RDF als volgt uit kunnen zien:</p>
+<pre><code class="turtle hljs" aria-busy="false"><span class="hljs-type">@prefix</span> <span class="hljs-symbol">dcterms:</span> <span class="hljs-literal">&lt;http://purl.org/dc/terms/&gt;</span> .
+<span class="hljs-type">@prefix</span> <span class="hljs-symbol">prov:</span> <span class="hljs-literal">&lt;http://www.w3.org/ns/prov#&gt;</span> .
+<span class="hljs-type">@prefix</span> <span class="hljs-symbol">rdfs:</span> <span class="hljs-literal">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/span/dff0fb279813ee0d&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Activity</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"Aanvraag_span"</span> ;
+    <span class="hljs-symbol">prov:endedAtTime</span> <span class="hljs-string">"1739370702000265566"</span> ;
+    <span class="hljs-symbol">prov:qualifiedAssociation</span> <span class="hljs-literal">&lt;http://trace.example.com/association/RVA%3A%20Aanvraag%20Kapvergunning&gt;</span> ;
+    <span class="hljs-symbol">prov:qualifiedUsage</span> <span class="hljs-literal">&lt;http://trace.example.com/usage/2069296&gt;</span> ;
+    <span class="hljs-symbol">prov:startedAtTime</span> <span class="hljs-string">"1739370701786437325"</span> ;
+    <span class="hljs-symbol">prov:wasGeneratedBy</span> <span class="hljs-literal">&lt;http://trace.example.com/trace/98bdcae79e7fa7d4ccbc981e0653e8fd&gt;</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/agent/RVA%3A%20Aanvraag%20Kapvergunning&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Agent</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"RVA: Aanvraag Kapvergunning"</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"de verwerkingsactiviteit"</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/association/Meneer%20van%20Eik&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Association</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"de qualified association relatie naar het subject"</span> ;
+    <span class="hljs-symbol">prov:agent</span> <span class="hljs-literal">&lt;http://trace.example.com/subject/Meneer%20van%20Eik&gt;</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/association/RVA%3A%20Aanvraag%20Kapvergunning&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Association</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"de qualified association relatie naar het register"</span> ;
+    <span class="hljs-symbol">prov:agent</span> <span class="hljs-literal">&lt;http://trace.example.com/agent/RVA%3A%20Aanvraag%20Kapvergunning&gt;</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/entity/http%3A%2F%2Fbrt.basisregistraties.overheid.nl%2Fid%2Fconcept%2FBoom&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Entity</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"definitie van het object"</span> ;
+    <span class="hljs-symbol">dcterms:source</span> <span class="hljs-string">"http://brt.basisregistraties.overheid.nl/id/concept/Boom"</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/subject/Meneer%20van%20Eik&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Agent</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"Meneer van Eik"</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"het subject"</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/trace/98bdcae79e7fa7d4ccbc981e0653e8fd&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Activity</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"98bdcae79e7fa7d4ccbc981e0653e8fd"</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"Trace"</span> .
+
+<span class="hljs-literal">&lt;http://trace.example.com/usage/2069296&gt;</span> <span class="hljs-built_in">a</span> <span class="hljs-symbol">prov:Usage</span> ;
+    <span class="hljs-symbol">rdfs:label</span> <span class="hljs-string">"2069296"</span> ;
+    <span class="hljs-symbol">rdfs:comment</span> <span class="hljs-string">"de qualified usage relatie naar het object"</span> ;
+    <span class="hljs-symbol">prov:entity</span> <span class="hljs-literal">&lt;http://trace.example.com/entity/http%3A%2F%2Fbrt.basisregistraties.overheid.nl%2Fid%2Fconcept%2FBoom&gt;</span> ;
+    <span class="hljs-symbol">prov:qualifiedAssociation</span> <span class="hljs-literal">&lt;http://trace.example.com/association/Meneer%20van%20Eik&gt;</span> .
+</code></pre>
+<p><img src="media/RML-prov-o-result.png" alt="RML naar PROV-O voorbeeld"></p>
+<div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Noot</span></div><aside class=""><p>Deze mapping is een eerste, illustratieve uitwerking. Bij verdere uitwerking verdienen de volgende punten aandacht:</p>
+<ul>
+<li>begin- en eindtijden als <code>xsd:dateTime</code> vastleggen in plaats van als tijdstempel in nanoseconden;</li>
+<li>de relatie tussen span en trace uitdrukken met bijvoorbeeld <code>prov:wasInformedBy</code> of <code>dcterms:isPartOf</code>; <code>prov:wasGeneratedBy</code> is bedoeld voor een Entity die door een Activity is gegenereerd;</li>
+<li><code>prov:qualifiedAssociation</code> hoort bij een Activity en niet bij een <code>prov:Usage</code>.</li></ul></aside></div>
+
+</section></section>
+<section id="H5" class="informative"><div class="header-wrapper"><h2 id="x5-implementaties"><bdi class="secno">5. </bdi>Implementaties</h2><a class="self-link" href="#H5" aria-label="Permalink for Section 5."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<section id="mvp-met-pygeoapi"><div class="header-wrapper"><h3 id="x5-1-mvp-met-pygeoapi"><bdi class="secno">5.1 </bdi>MVP met pygeoapi</h3><a class="self-link" href="#mvp-met-pygeoapi" aria-label="Permalink for Section 5.1"></a></div>
+<p>In de <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/tree/main/mvp_pygeoapi_logging_demo">GitHub-repository</a> staat een Minimum Viable Product (MVP) waarin 
+gedemonstreerd wordt hoe het OpenTelemetry-protocol geïmplementeerd kan worden in een OGC API Processes-functie.</p>
+<p><strong>Use cases detailniveaus</strong></p>
+<p>Om de eigenschappen voor de extensie (geo)objecten goed uit te werken helpt het om te kijken naar een aantal voorbeelden en wat er dan gewenst is om vast te leggen.</p>
+<section id="remote-sensing-gebiedsclassificatie-op-basis-van-ai-beeldherkenning"><div class="header-wrapper"><h4 id="x5-1-1-remote-sensing-gebiedsclassificatie-op-basis-van-ai-beeldherkenning"><bdi class="secno">5.1.1 </bdi>Remote-sensing-gebiedsclassificatie op basis van AI-beeldherkenning</h4><a class="self-link" href="#remote-sensing-gebiedsclassificatie-op-basis-van-ai-beeldherkenning" aria-label="Permalink for Section 5.1.1"></a></div>
+<p>Dit is een voorbeeld waarbij een organisatie remote-sensingbeelden met AI-beeldherkenning verwerkt om gebieden te classificeren. Bijvoorbeeld om natuurgebieden te bepalen. 
+In dit geval is er niet direct een betrokkene aan te wijzen (uiteindelijk heeft het gebied natuurlijk wel een eigenaar, maar de gegevens over de eigenaar worden niet direct gebruikt bij de classificatie van het gebied). 
+Het is wel van belang om vast te leggen met welke batch remote-sensingbeelden deze analyse is uitgevoerd en welk algoritme gebruikt is. Beeldkwaliteit door bijvoorbeeld bewolking of 
+een defect aan een sensor kunnen de classificatie beïnvloed hebben en dan wil je weten voor welke gebieden dit gevolgen heeft gehad.</p>
+<p>Dit kan als Niveau 2: 'kolomverwijzing' beschouwd worden. Met dien verstande dat er verwezen wordt naar het type remote-sensingdata (bv Sentinel-2, LIDAR) en niet de gebruikte beeldwaarden 
+van de remote-sensingbeelden. Er dient wel metadata van het gebruikte dataproduct vastgelegd te worden (timestamp, series) of een identifier die het specifieke dataproduct uniek identificeert.</p>
+<p>Minimale implementatie (niveau 1):</p>
+<ul>
+<li>dpl.objects.algorithm_id</li>
+<li>dpl.objects.dataproduct_id</li>
+</ul>
+<aside class="example" id="example-2"><div class="marker">
+    <a class="self-link" href="#example-2">Voorbeeld<bdi> 2</bdi></a>
+  </div>
+dpl.objects.algorithm_id: Str(http://localhost/processes/Satellite_classifier)<p>dpl.objects.dataproduct_id: Str(<a href="http://localhost/collections/imagery/dune_images">http://localhost/collections/imagery/dune_images</a>)</p>
+</aside><p>Uitgebreidere implementatie (niveau 2):</p>
+<ul>
+<li>dpl.objects.algorithm_id</li>
+<li>dpl.objects.dataproduct_id</li>
+<li>dpl.objects.dataset[<ul>
+<li>dataset_id</li>
+<li>dataset_def</li>
+<li>dataset_port (input)</li>
+</ul>
+</li>
+</ul>
+<p>],</p>
+<ul>
+<li>dpl.objects.dataset[<ul>
+<li>dataset_id</li>
+<li>dataset_def</li>
+<li>dataset_port (output)</li>
+</ul>
+</li>
+</ul>
+<p>]</p>
+<aside class="example" id="example-3"><div class="marker">
+    <a class="self-link" href="#example-3">Voorbeeld<bdi> 3</bdi></a>
+  </div><pre><code class="text hljs" aria-busy="false">    dpl.objects.algorithm_id: Str(http://localhost/processes/Satellite_classifier)
+    dpl.objects.dataproduct_id: Str(http://localhost/collections/imagery/dune_images)
+    dpl.objects.dataset[
+    {
+        dataset_id: "image_1",
+        dataset_def: Str(http://localhost/collections/imagery/dune_images/image_1),
+        dataset_port: "input"
+    },
+    {
+        dataset_id: "image_2",
+        dataset_def: Str(http://localhost/collections/imagery/dune_images/image_2),
+        dataset_port: "input"
+    },
+    {
+        dataset_id: "image_out",
+        dataset_def: Str(http://localhost/collections/imagery/output/image_out),
+        dataset_port: "output"
+    }
+    ]
+</code></pre>
+</aside></section><section id="maaidata-analyse-remote-sensingbeelden-analyseren-of-percelen-wel-niet-gemaaid-zijn"><div class="header-wrapper"><h4 id="x5-1-2-maaidata-analyse-remote-sensingbeelden-analyseren-of-percelen-wel-niet-gemaaid-zijn"><bdi class="secno">5.1.2 </bdi>Maaidata-analyse: remote-sensingbeelden analyseren of percelen wel/niet gemaaid zijn</h4><a class="self-link" href="#maaidata-analyse-remote-sensingbeelden-analyseren-of-percelen-wel-niet-gemaaid-zijn" aria-label="Permalink for Section 5.1.2"></a></div>
+<p>Dit is een voorbeeld van het verwerken van satellietbeelden om te signaleren of graslanden worden gemaaid tijdens het broedseizoen van beschermde vogelsoorten. 
+Dit toezicht is van belang in verband met subsidieverstrekking voor natuurvriendelijk beheer. In deze analyse worden zowel remote-sensingbeelden gebruikt als percelen. 
+Het resultaat van de analyse heeft een direct gevolg voor de eigenaar (betrokkene) van het perceel. (los van het feit dat er in de implementatie van het algoritme wel een menselijke check plaatsvindt)
+Afhankelijk van de implementatie kan het ook nog zo zijn dat de analyse van de percelen zodanig gedaan wordt dat hier een betrokkene nog niet rechtstreeks te achterhalen is.</p>
+<p>Dit kan als Niveau 2: 'kolomverwijzing' gelogd worden, maar zou ook als Niveau 3: 'concrete data' geïmplementeerd kunnen worden.</p>
+<p>Niveau 2:</p>
+<ul>
+<li>dpl.core.processing_activity_id (verwijzing naar de subsidieverlening)</li>
+<li>dpl.core.data_subject_id (indien bekend in de verwerking van percelen)</li>
+<li>dpl.objects.algorithm_id (verwijzing naar het Algoritmeregister)</li>
+<li>dpl.objects.dataproduct_id </li>
+<li>dpl.objects.dataset[<ul>
+<li>dataset_id</li>
+<li>dataset_def</li>
+<li>dataset_port 
+]</li>
+</ul>
+</li>
+</ul>
+<aside class="example" id="example-4"><div class="marker">
+    <a class="self-link" href="#example-4">Voorbeeld<bdi> 4</bdi></a>
+  </div><pre><code class="text hljs" aria-busy="false">    dpl.core.processing_activity_id: Str(https://organisatie/rvva/subsidie_maaibeleid)
+    dpl.core.data_subject_id: ""
+    dpl.objects.algorithm_id: Str(http://localhost/processes/Maaidata_classifier)
+    dpl.objects.dataproduct_id: Str(http://localhost/collections/imagery/satimage)
+    dpl.objects.dataset[
+    {
+        dataset_id: "image_1",
+        dataset_def: Str(http://localhost/collections/imagery/satimage/image_1),
+        dataset_port: "input"
+    },
+    {
+        dataset_id: "percelen_1",
+        dataset_def: Str(http://localhost/collections/percelen),
+        dataset_port: "input"
+    },
+    {
+        dataset_id: "subsidie",
+        dataset_def: Str(http://localhost/collections/subsidie),
+        dataset_port: "output"
+    }
+    ]
+</code></pre>
+</aside><p>Niveau 3:</p>
+<ul>
+<li>dpl.core.processing_activity_id (verwijzing naar de subsidieverlening)</li>
+<li>dpl.core.data_subject_id (indien bekend in de verwerking van percelen)</li>
+<li>dpl.objects.algorithm_id (verwijzing naar het Algoritmeregister)</li>
+<li>dpl.objects.dataproduct_id</li>
+<li>dpl.objects.dataset[<ul>
+<li>dataset_id </li>
+<li>dataset_def</li>
+<li>dataset_port</li>
+<li>feature [<ul>
+<li><p>feature_id</p>
+</li>
+<li><p>feature_def</p>
+</li>
+<li><p>feature_attribute [</p>
+<ul>
+<li>attribute_name</li>
+<li>attribute_value</li>
+<li>attribute_def
+  ]
+  ]
+]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<aside class="example" id="example-5"><div class="marker">
+    <a class="self-link" href="#example-5">Voorbeeld<bdi> 5</bdi></a>
+  </div><pre><code class="text hljs" aria-busy="false">    dpl.core.processing_activity_id: Str(https://organisatie/rvva/subsidie_maaibeleid)
+    dpl.core.data_subject_id: "13j2ec27-0cc4-3541-9av6-219a178fcgh6"
+    dpl.objects.algorithm_id: Str(http://localhost/processes/Maaidata_classifier)
+    dpl.objects.dataproduct_id: Str(http://localhost/collections/imagery/satimage)
+    dpl.objects.dataset[
+    {
+        dataset_id: "image_1",
+        dataset_def: Str(http://localhost/collections/imagery/satimage/image_1),
+        dataset_port: "input"
+    },
+    {
+        dataset_id: "percelen_1",
+        dataset_def: Str(http://localhost/collections/percelen),
+        dataset_port: "input",
+        feature: [
+            {
+                feature_id: "perceelnr",
+                feature_def: Str(http://localhost/collections/percelen/perceelnr),
+                feature_attribute: [
+                    {
+                        attribute_name: "perceelnr",
+                        attribute_value: "28"
+                    },
+                    {
+                        attribute_name: "maairegime",
+                        attribute_value: "niet klepelen"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        dataset_id: "subsidie",
+        dataset_def: Str(http://localhost/collections/subsidie),
+        dataset_port: "output"
+    }
+    ]
+</code></pre>
+</aside></section><section id="aanvraag-kapvergunning"><div class="header-wrapper"><h4 id="x5-1-3-aanvraag-kapvergunning"><bdi class="secno">5.1.3 </bdi>Aanvraag kapvergunning</h4><a class="self-link" href="#aanvraag-kapvergunning" aria-label="Permalink for Section 5.1.3"></a></div>
+<p>Dit is een (fictief) voorbeeld waar een betrokkene een aanvraag voor een kapvergunning indient. Hierbij moet beoordeeld worden of de betreffende boom gekapt mag worden, of bijvoorbeeld een monumentale status heeft.
+In dit geval is er zowel een betrokkene en een activiteit in het register van verwerkingsactiviteiten, als een aanwijsbaar object (de boom). </p>
+<p>Dit kan zowel als Niveau 2: 'kolomverwijzing', maar ook als Niveau 3: 'concrete data' gelogd worden. Het ligt daarbij wel voor de hand om Niveau 3 te kiezen omdat de boom direct aanwijsbaar is.</p>
+<p>Niveau 3:</p>
+<ul>
+<li>dpl.core.processing_activity_id (verwijzing naar de verwerkingsactiviteit kapvergunning)</li>
+<li>dpl.core.data_subject_id (de aanvrager van de kapvergunning)</li>
+<li>dpl.objects.algorithm_id (verwijzing naar het Algoritmeregister)</li>
+<li>dpl.objects.dataproduct_id</li>
+<li>dpl.objects.dataset [<ul>
+<li>dataset_id </li>
+<li>dataset_def</li>
+<li>dataset_port</li>
+<li>feature [<ul>
+<li><p>feature_id</p>
+</li>
+<li><p>feature_def</p>
+</li>
+<li><p>feature_port</p>
+</li>
+<li><p>feature_attribute [</p>
+<ul>
+<li>attribute_name</li>
+<li>attribute_value</li>
+<li>attribute_def
+  ]
+  ]
+]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<aside class="example" id="example-6"><div class="marker">
+    <a class="self-link" href="#example-6">Voorbeeld<bdi> 6</bdi></a>
+  </div><pre><code class="text hljs" aria-busy="false">    dpl.core.processing_activity_id: Str(https://organisatie/rvva/kapvergunning)
+    dpl.core.data_subject_id: "13j2ec27-0cc4-3541-9av6-219a178fcgh6"
+    dpl.objects.algorithm_id: Str(http://localhost/processes/beoordelen_aanvraag)
+    dpl.objects.dataproduct_id: Str(http://localhost/collections/basisdata/bomen)
+    dpl.objects.dataset[
+    {
+        dataset_id: "bomen",
+        dataset_def: Str(http://localhost/metadata/basisdata/bomen),
+        dataset_port: "input",
+        feature: [
+            {
+                feature_id: "boom",
+                feature_attribute: [
+                    {
+                        attribute_name: "identificatie",
+                        attribute_value: "2069296"
+                    }
+                ]
+            }
+        ]
+    }
+    ]
+</code></pre>
+</aside></section></section><section id="implementatie-in-tooling-voor-digitale-tweelingen"><div class="header-wrapper"><h3 id="x5-2-implementatie-in-tooling-voor-digitale-tweelingen"><bdi class="secno">5.2 </bdi>Implementatie in tooling voor digitale tweelingen</h3><a class="self-link" href="#implementatie-in-tooling-voor-digitale-tweelingen" aria-label="Permalink for Section 5.2"></a></div>
+<p>Naast het MVP-voorbeeld en de use cases ter verdieping van de requirements voor de extensie doen we ook een beproeving in de implementatie in systemen voor digitale tweelingen. 
+Deze beproeving dient vooral om de context zoals die in <a href="#implementatiekeuzes" class="sec-ref"><bdi class="secno">2.4.1 </bdi>Implementatiekeuzes</a> is beschreven beter te begrijpen.</p>
+<section id="vraagstukken"><div class="header-wrapper"><h4 id="x5-2-1-vraagstukken"><bdi class="secno">5.2.1 </bdi>Vraagstukken</h4><a class="self-link" href="#vraagstukken" aria-label="Permalink for Section 5.2.1"></a></div>
+<ul>
+<li>Kunnen we de loggingstandaard implementeren in de tooling van de leveranciers</li>
+<li>Kunnen we met de aanroep van API's tussen de systemen ook de tracecontext meegeven zodat logs aan elkaar te relateren zijn</li>
+<li>Kunnen we de rekenmodellen die in de systemen gebruikt worden goed genoeg vastleggen in het Algoritmeregister en kunnen we daar dan naar verwijzen</li>
+</ul>
+</section><section id="uitgewerkte-scenario-s"><div class="header-wrapper"><h4 id="x5-2-2-uitgewerkte-scenario-s"><bdi class="secno">5.2.2 </bdi>Uitgewerkte scenario's</h4><a class="self-link" href="#uitgewerkte-scenario-s" aria-label="Permalink for Section 5.2.2"></a></div>
+<p>De scenario's worden geplaatst in de context van de <a href="https://geonovum.github.io/NLDT-Architectuur/">NLDT architectuur</a>. 
+Deze architectuur kent een basispatroon zoals getoond in de volgende afbeelding:</p>
+<img src="media/architectuur_driehoek.png" alt="Basis bouwblokken NLDT Architectuur" width="900"><section id="imagem"><div class="header-wrapper"><h5 id="x5-2-2-1-imagem"><bdi class="secno">5.2.2.1 </bdi>Imagem</h5><a class="self-link" href="#imagem" aria-label="Permalink for Section 5.2.2.1"></a></div>
+<p>De Planspace Simulator-software van Imagem wordt hier gebruikt als visualisatiecomponent, waarbij rekenmodellen van Nelen &amp; Schuurmans, en Tygron worden aangeroepen.
+In de user interface van Imagem wordt een knop getoond waarmee een 'besluit' vastgelegd kan worden. De stappen om dit besluit vast te leggen bestaan uit het laden van de relevante datalagen, het aanroepen van een rekenmodel, het tonen van het resultaat van het rekenmodel en het vastleggen van de conclusie die uit de resultaten getrokken worden. </p>
+<img src="media/diagram-logging.png" alt="logging flow in Planspace Simulator" width="900"><p>Er wordt dus een logfile aangelegd waarbij de verschillende stappen als 'spans' vastgelegd worden. De aanroep van het rekenmodel initieert het aanleggen van een logfile op het platform van het rekenmodel, waarbij de tracecontext meegegeven wordt om de losse logfiles in een later stadium aan elkaar te kunnen relateren.</p>
+<p>Een voorbeeld van de log zoals deze door Imagem is vastgelegd is <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/blob/main/codesprint-resultaten/trace-imagem.json">hier</a> te vinden.</p>
+<p>Er zijn hierbij 2 verschillende implementaties gedaan:</p>
+<ul>
+<li>De aanroep van het hittestressmodel van Tygron wordt synchroon gedaan (het visualisatieplatform 'wacht op antwoord' en doet niets in de tussentijd).</li>
+<li>De aanroep van het overstromingsmodel van Nelen &amp; Schuurmans wordt asynchroon gedaan (het visualisatieplatform kan in de tussentijd doorgaan met andere activiteiten en krijgt op een later moment een melding van het resultaat van het rekenmodel).</li>
+</ul>
+</section><section id="nelen-schuurmans"><div class="header-wrapper"><h5 id="x5-2-2-2-nelen-schuurmans"><bdi class="secno">5.2.2.2 </bdi>Nelen &amp; Schuurmans</h5><a class="self-link" href="#nelen-schuurmans" aria-label="Permalink for Section 5.2.2.2"></a></div>
+<p>In de uitgewerkte scenario's acteert het 3Di platform van Nelen &amp; Schuurmans als rekenmodel voor overstromingsberekeningen. (Nelen &amp; Schuurmans heeft ook een eigen visualisatiecomponent, maar dat is in dit scenario niet ingezet).</p>
+<p>De aanroep van het Imagem Planspace Simulator platform resulteert in het aanleggen van een logfile van de berekening, waarbij het trace_id van de aanroepende applicatie vastgelegd wordt om de logfiles op een later moment aan elkaar te kunnen relateren.</p>
+<p>Er is hierbij gekeken naar het implementeren van de verschillende <a href="#detailniveaus">detailniveaus</a> van logging en de wijze waarop een hoger detailniveau (2/3) gelogd zou kunnen worden.</p>
+<ul>
+<li>de eerste implementatie is de mogelijkheid om in de log de uitgevoerde stappen te loggen op basis van de specificatie in dit document.</li>
+<li>de tweede implementatie is de mogelijkheid om in de log te verwijzen naar de interne log van het 3Di systeem, waar toch al alle details vastgelegd worden.</li>
+</ul>
+<p>Het voordeel van de eerste implementatie is de vastlegging in de log ten behoeve van de verantwoording, maar dit vraagt extra implementatie-inspanning en veroorzaakt dubbele logging.
+Het voordeel van de tweede implementatie is dat deze logging toch al gedaan wordt en alles bevat om een complete 'replay' van het model uit te voeren. Dit is alleen wel een platformspecifieke implementatie en daarmee minder direct toegankelijk voor verantwoording.</p>
+<p>Een voorbeeld van de log zoals deze door Nelen &amp; Schuurmans is vastgelegd is <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/blob/main/codesprint-resultaten/trace-nelen_schuurmans.json">hier</a> te vinden.</p>
+<p>Behalve de implementatie van de logging heeft Nelen &amp; Schuurmans ook een Proof-of-Concept opgeleverd van een 'logviewer', een applicatie om de verschillende logfiles aan elkaar te relateren en een integraal beeld te geven van de gevolgde stappen.</p>
+<img src="media/otel-trace-viewer.png" alt="Demo viewer that aggregates different trace files" width="900"></section><section id="tygron"><div class="header-wrapper"><h5 id="x5-2-2-3-tygron"><bdi class="secno">5.2.2.3 </bdi>Tygron</h5><a class="self-link" href="#tygron" aria-label="Permalink for Section 5.2.2.3"></a></div>
+<p>Het platform van Tygron is ingezet als rekenmodel, waarbij de aanroep vanuit het Imagem Planspace Simulator platform gebeurt. Hier wordt een logfile aangelegd waarbij het trace_id vanuit de aanroepende applicatie vastgelegd wordt om de logfiles op een later moment aan elkaar te kunnen relateren. In deze implementatie is vooral gekeken naar de compleetheid van de attributen zoals die gedefinieerd zijn in deze handreiking. </p>
+<p>Een voorbeeld van de log zoals deze door Tygron is vastgelegd is <a href="https://github.com/Geonovum/logboek-dataverwerkingen-voor-objecten/blob/main/codesprint-resultaten/trace-tygron.json">hier</a> te vinden.</p>
+<p>Daarnaast is er een scenario uitgewerkt waarbij het Tygron platform gebruikt wordt als zowel visualisatiecomponent als rekenmodel. Dit scenario onderstreept het verschil in benadering van het gebruik van een digitaletweelingtoepassing en het vastleggen van een besluit vanuit het oogpunt van de verantwoording.</p>
+</section></section><section id="bevindingen"><div class="header-wrapper"><h4 id="x5-2-3-bevindingen"><bdi class="secno">5.2.3 </bdi>Bevindingen</h4><a class="self-link" href="#bevindingen" aria-label="Permalink for Section 5.2.3"></a></div>
+<p>Tijdens het implementeren in de tooling zijn de volgende onderwerpen naar boven gekomen.</p>
+<section id="verschil-in-invalshoek-tussen-loggen-vanuit-verantwoording-en-gebruik-van-platformen-voor-digitale-tweelingen"><div class="header-wrapper"><h5 id="x5-2-3-1-verschil-in-invalshoek-tussen-loggen-vanuit-verantwoording-en-gebruik-van-platformen-voor-digitale-tweelingen"><bdi class="secno">5.2.3.1 </bdi>Verschil in invalshoek tussen loggen vanuit verantwoording en gebruik van platformen voor digitale tweelingen</h5><a class="self-link" href="#verschil-in-invalshoek-tussen-loggen-vanuit-verantwoording-en-gebruik-van-platformen-voor-digitale-tweelingen" aria-label="Permalink for Section 5.2.3.1"></a></div>
+<p>Een van de belangrijkste vraagstukken tijdens de implementatie was de 'variabiliteit' waarvoor een platform voor digitale tweelingen ingezet wordt. Er is in de regel niet een specifiek vastgelegd werkproces of stappenplan om tot een bepaalde beleidsbeslissing te komen. Hiermee wordt het ingewikkeld om in de logging specifiek af te bakenen welk deel te relateren is aan een specifiek algoritme of het tot stand komen van een besluit.</p>
+<p>Dit is geadresseerd door in het platform van Imagem een specifieke knop te maken die het stappenplan tot het nemen van een besluit initieert. Of dit in de praktijk werkt, is niet verder onderzocht.</p>
+<p>Ter illustratie is in het platform van Tygron een log aangelegd die de standaard gang van zaken van het gebruik van het platform logt. (initiëren omgeving, laden data, laden modellen, uitvoeren scenario's, visualiseren resultaten). </p>
+</section><section id="verantwoording-transparantie-en-herleidbaarheid"><div class="header-wrapper"><h5 id="x5-2-3-2-verantwoording-transparantie-en-herleidbaarheid"><bdi class="secno">5.2.3.2 </bdi>Verantwoording, transparantie en herleidbaarheid</h5><a class="self-link" href="#verantwoording-transparantie-en-herleidbaarheid" aria-label="Permalink for Section 5.2.3.2"></a></div>
+<p>De standaard Logboek dataverwerkingen redeneert sterk vanuit de juridische beleidscontext en de verantwoording van dataverwerkingen op basis hiervan. 
+Voor de scope van de originele standaard past dit goed bij het registreren van verwerkingen op basis van het register van verwerkingsactiviteiten gerelateerd aan persoonsgegevens.</p>
+<p>In de praktijk blijkt het niet triviaal om de dynamiek van het werken met digitale tweelingen eenduidig aan specifieke dataverwerkingen te relateren (zie ook <a href="#verschil-in-invalshoek-tussen-loggen-vanuit-verantwoording-en-gebruik-van-platformen-voor-digitale-tweelingen" class="sec-ref"><bdi class="secno">5.2.3.1 </bdi>Verschil in invalshoek tussen loggen vanuit verantwoording en gebruik van platformen voor digitale tweelingen</a>), de term verantwoording lijkt dan niet altijd passend. De transparantie en herleidbaarheid van dataverwerkingen in de verschillende platformen wordt echter wel als heel belangrijk beschouwd. De platformen hebben in de praktijk dus veelal logging ingebouwd om dataverwerkingen te kunnen herleiden en inzicht te geven in de gevolgde stappen. </p>
+</section><section id="doelgroep-voor-logging"><div class="header-wrapper"><h5 id="x5-2-3-3-doelgroep-voor-logging"><bdi class="secno">5.2.3.3 </bdi>Doelgroep voor Logging</h5><a class="self-link" href="#doelgroep-voor-logging" aria-label="Permalink for Section 5.2.3.3"></a></div>
+<p>Het inzicht dat de standaard Logboek dataverwerkingen geeft in de context van de AVG is in principe rechtstreeks relevant voor betrokken personen. In de scenario's die uitgewerkt zijn in de fysieke leefomgeving zijn de expertmodellen die gebruikt worden een stuk lastiger te interpreteren. Het ontsluiten van deze logs zou daarom misschien niet rechtstreeks naar burgers moeten zijn, maar naar 'experts' die de context van het model kunnen interpreteren.</p>
+</section><section id="tracecontext-een-overkoepelend-trace_id-of-per-systeem-een-eigen-trace_id"><div class="header-wrapper"><h5 id="x5-2-3-4-tracecontext-een-overkoepelend-trace_id-of-per-systeem-een-eigen-trace_id"><bdi class="secno">5.2.3.4 </bdi>Tracecontext: één overkoepelend trace_id of per systeem een eigen trace_id</h5><a class="self-link" href="#tracecontext-een-overkoepelend-trace_id-of-per-systeem-een-eigen-trace_id" aria-label="Permalink for Section 5.2.3.4"></a></div>
+<p>Bij het implementeren van de tracecontext over systemen heen kwam een onduidelijkheid in de specificatie naar boven. Het standaard gedrag van een OpenTelemetry SDK implementatie is het overnemen van hetzelfde trace_id in de verschillende applicaties. In de <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/#interface">LDV-specificatie</a> stond ten tijde van de implementatie dat de applicatie van een andere organisatie het trace_id van de aanroepende applicatie moest vastleggen in een 'foreign_operation.trace_id'. Dit kan geïmplementeerd worden maar vergt een specifieke implementatie, afwijkend van het standaard gedrag. In oktober 2025 is <code>dpl.core.foreign_operation.trace_id</code> uit de normatieve tekst van de standaard verwijderd.</p>
+</section><section id="granulariteit-van-verantwoording-register-versus-modules-in-de-tooling"><div class="header-wrapper"><h5 id="x5-2-3-5-granulariteit-van-verantwoording-register-versus-modules-in-de-tooling"><bdi class="secno">5.2.3.5 </bdi>Granulariteit van verantwoording: register versus modules in de tooling</h5><a class="self-link" href="#granulariteit-van-verantwoording-register-versus-modules-in-de-tooling" aria-label="Permalink for Section 5.2.3.5"></a></div>
+<p>Bij het bepalen van het <a href="#afwegingskader">afwegingskader</a> voor de implementatie van Logboek dataverwerkingen voor (geo)objecten is gekozen om te verwijzen naar het Algoritmeregister. Er zijn <a href="https://algoritmes.overheid.nl/nl/algoritme?page=1&amp;organisation=Stichting+Geonovum">3 algoritmes</a> opgenomen in het Algoritmeregister ten behoeve van dit onderzoek. </p>
+<p>Tijdens de implementatie van de logging in de platformen blijkt dat er vaak meerdere stappen gerelateerd zijn aan het algoritme zoals dat vastgelegd is in het register. Dit geeft ruimte voor interpretatieverschillen welke stappen wel of niet onderdeel zijn van het algoritme zoals het geregistreerd staat in het register.</p>
+</section><section id="dynamiek-in-gebruik-van-systemen-voor-digitale-tweelingen"><div class="header-wrapper"><h5 id="x5-2-3-6-dynamiek-in-gebruik-van-systemen-voor-digitale-tweelingen"><bdi class="secno">5.2.3.6 </bdi>Dynamiek in gebruik van systemen voor digitale tweelingen</h5><a class="self-link" href="#dynamiek-in-gebruik-van-systemen-voor-digitale-tweelingen" aria-label="Permalink for Section 5.2.3.6"></a></div>
+<p>Het ecosysteem van digitale tweelingen werkt toe naar een omgeving waar organisaties 'naar behoefte' een rekenmodel aan kunnen roepen als SaaS (Software as a Service) dienst. Dit roept het vraagstuk op dat een leverancier van een rekenmodel (zoals Nelen &amp; Schuurmans of Tygron) van tevoren niet noodzakelijk weet welke organisaties een dienst gaan afnemen. Om toch een log vast te kunnen leggen van verwerkingen in de context van een vooraf nog onbekende organisatie moet er het nodige geregeld worden in de wijze waarop de SaaS dienst aangeboden wordt. De consequenties hiervan zijn op dit moment nog onduidelijk.</p>
+</section><section id="loggen-in-ldv-log-of-verwijzen-naar-systeemlog"><div class="header-wrapper"><h5 id="x5-2-3-7-loggen-in-ldv-log-of-verwijzen-naar-systeemlog"><bdi class="secno">5.2.3.7 </bdi>Loggen in LDV log of verwijzen naar systeemlog</h5><a class="self-link" href="#loggen-in-ldv-log-of-verwijzen-naar-systeemlog" aria-label="Permalink for Section 5.2.3.7"></a></div>
+<p>De rekenmodellen leggen standaard in hun implementaties al een uitgebreide log aan waarmee de scenario's opnieuw opgebouwd of afgespeeld kunnen worden. Dit is leverancierspecifiek ingericht. De platformen zijn zeer flexibel en dynamisch ingericht waardoor het niet triviaal is om vast te leggen welke gegevens er op een gegeven moment betrokken zijn bij het komen tot een besluit. Om al deze gegevens via Logboek dataverwerkingen voor (geo)objecten vast te leggen is daarmee ook een complexe opgave. De vraag dient zich aan of de hogere detailniveaus haalbaar zijn om te implementeren, en of het verwijzen naar de implementatiespecifieke systeemlogs een oplossing zou kunnen zijn. </p>
+</section><section id="granulariteit-in-het-algoritmeregister-en-juridische-kaders"><div class="header-wrapper"><h5 id="x5-2-3-8-granulariteit-in-het-algoritmeregister-en-juridische-kaders"><bdi class="secno">5.2.3.8 </bdi>Granulariteit in het Algoritmeregister en juridische kaders</h5><a class="self-link" href="#granulariteit-in-het-algoritmeregister-en-juridische-kaders" aria-label="Permalink for Section 5.2.3.8"></a></div>
+<p>De algoritmes zoals deze nu in het Algoritmeregister zijn vastgelegd kunnen op basis van <a href="https://algoritmes.overheid.nl/nl/algoritme/modelleringssoftware-hittestress-stichting-geonovum/21577420#verantwoordGebruik">verschillende wettelijke grondslagen ingezet worden</a>. Hittestress kan bijvoorbeeld zowel een onderwerp zijn in het kader van planvorming en vergunningverlening in het kader van de Omgevingswet, maar het kan ook onderdeel zijn van het monitoren van gevaarlijke situaties op basis van de Algemene wet bestuursrecht.</p>
+<p>De vraag dient zich dus aan of, en op welke wijze we dat onderscheid kunnen maken in de logging in de applicaties. Mogelijk is hierdoor alsnog onvoldoende duidelijk op welke gronden besluiten genomen zijn en daarmee neemt de waarde van de logging significant af. </p>
+<p>Een mogelijke oplossing zou kunnen zijn om een extra eigenschap op te nemen in de logging om expliciet te maken in het kader van welke wet een bepaalde dataverwerking is gedaan. Hoe dit exact zou moeten en welke consequentie dit voor de werkprocessen zou hebben is nog niet uitgewerkt tijdens dit onderzoek.</p>
+</section><section id="voorstel-aanvullende-eigenschap-om-op-te-nemen-in-de-log"><div class="header-wrapper"><h5 id="x5-2-3-9-voorstel-aanvullende-eigenschap-om-op-te-nemen-in-de-log"><bdi class="secno">5.2.3.9 </bdi>Voorstel aanvullende eigenschap om op te nemen in de log</h5><a class="self-link" href="#voorstel-aanvullende-eigenschap-om-op-te-nemen-in-de-log" aria-label="Permalink for Section 5.2.3.9"></a></div>
+<p>Behalve de verwijzing naar een formele catalogus of het Algoritmeregister hebben platformleveranciers vaak ook een plek waar documentatie of aanvullende informatie van een rekenmodel of algoritme te vinden is. Hiervoor nemen we een aanvullende eigenschap op: <code>dpl.objects.vendor_operation_ref</code> (zie <a href="#H3" class="sec-ref"><bdi class="secno">3. </bdi>Extensie (geo)objecten</a>). Deze eigenschap is geen onderdeel van de werkversie van de extensie bij Logius [<cite><a class="bibref" data-link-type="biblio" href="#bib-ldv_objecten" title="Logboek dataverwerkingen - Extensie (geo)objecten">LDV_OBJECTEN</a></cite>].</p>
+</section><section id="processing_activity_id-gelijk-houden-over-namespaces-heen-of-specifiek-houden"><div class="header-wrapper"><h5 id="x5-2-3-10-processing_activity_id-gelijk-houden-over-namespaces-heen-of-specifiek-houden"><bdi class="secno">5.2.3.10 </bdi>processing_activity_id gelijk houden over namespaces heen of specifiek houden</h5><a class="self-link" href="#processing_activity_id-gelijk-houden-over-namespaces-heen-of-specifiek-houden" aria-label="Permalink for Section 5.2.3.10"></a></div>
+<p>Het kan verwarrend zijn om dezelfde eigenschap (processing_activity_id) in verschillende namespaces te hebben. We kiezen ervoor om de verwijzing naar een register zo expliciet mogelijk te maken. En daarom kiezen we ervoor om dpl.objects.processing_activity_id te hernoemen naar dpl.objects.algorithm_id.</p>
+</section></section></section></section>
+<section id="H6" class="informative"><div class="header-wrapper"><h2 id="x6-conclusies"><bdi class="secno">6. </bdi>Conclusies</h2><a class="self-link" href="#H6" aria-label="Permalink for Section 6."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<section id="extensie-geo-objecten-0"><div class="header-wrapper"><h3 id="x6-1-extensie-geo-objecten"><bdi class="secno">6.1 </bdi>Extensie (geo)objecten</h3><a class="self-link" href="#extensie-geo-objecten-0" aria-label="Permalink for Section 6.1"></a></div>
+<ul>
+<li><p>Technisch gezien is de standaard goed te implementeren in de software die gebruikt wordt voor digitale tweelingen. Het helpt als de interfacespecificatie van Logboek dataverwerkingen goed overeenkomt met de SDK/API voor OpenTelemetry. In de loop van het onderzoek zijn er een aantal wijzigingen in de standaard Logboek dataverwerkingen doorgevoerd om de aansluiting tussen de standaard en OpenTelemetry te verbeteren.</p>
+<ul>
+<li>Aanpassing naamgeving operation_id naar span_id om in overeenstemming te zijn met de OpenTelemetry-specificatie</li>
+<li>Expliciet gemaakt dat de betrokkene ook een niet-natuurlijk persoon kan zijn</li>
+<li>Het implementeren van tracecontext en foreign_operation kan in de praktijk net anders uitpakken dan in de standaard beschreven (in oktober 2025 is <code>dpl.core.foreign_operation.trace_id</code> uit de normatieve tekst verwijderd)</li>
+</ul>
+</li>
+<li><p>In de praktijk blijken de beleidsprocessen in de fysieke leefomgeving minder strak afgebakend dan de processen in het kader van de AVG waar de standaard Logboek dataverwerkingen in eerste instantie voor ontwikkeld is. Het uitvoeren van een analyse voor bijvoorbeeld hittestress kan zowel gedaan worden in het kader van een vergunningverleningstraject, waar de Omgevingswet het juridische kader is, als voor een risicoanalyse voor een beleidsmaatregel die valt onder het juridisch kader van de Algemene wet bestuursrecht.</p>
+</li>
+<li><p>De wijze waarop medewerkers een platform voor digitale tweelingen typisch gebruiken, door verschillende datalagen te laden en analyses uit te voeren waarbij niet alle datalagen relevant hoeven te zijn voor de uitgevoerde analyse maakt het ingewikkelder om precies dat te loggen wat voor de verantwoording van een beleidsproces van belang is. </p>
+</li>
+<li><p>Om besluiten in de context van beleidsprocessen voor de fysieke leefomgeving eenduidiger te kunnen loggen is niet alleen een gedegen implementatie in software nodig, maar zal er ook in de werkprocessen een aanpassing gedaan moeten worden. </p>
+</li>
+<li><p>Het relateren van een dataverwerking aan een algoritme in het Algoritmeregister blijkt niet eenduidig genoeg. Onderzocht zou moeten worden of een aanvullende verwijzing naar bijvoorbeeld wetten.overheid.nl voldoende eenduidigheid kan geven.</p>
+</li>
+<li><p>De standaard biedt veel flexibiliteit door het definiëren van de verschillende detailniveaus. Het is wenselijk om een beleidskader uit te werken waarmee bepaald kan worden welk detailniveau gewenst is in verschillende situaties. Dit zou gerelateerd kunnen zijn aan de classificatie van een algoritme in het Algoritmeregister, maar zou ook gerelateerd kunnen zijn aan het soort werkproces of beleidsproces waar de dataverwerking onderdeel van is.</p>
+</li>
+</ul>
+</section><section id="mapping-prov-o"><div class="header-wrapper"><h3 id="x6-2-mapping-prov-o"><bdi class="secno">6.2 </bdi>Mapping PROV-O</h3><a class="self-link" href="#mapping-prov-o" aria-label="Permalink for Section 6.2"></a></div>
+<ul>
+<li><p>De mapping naar de PROV-O standaard is mogelijk voor het normatieve deel van de standaard. De patronen komen daarvoor voldoende overeen. </p>
+</li>
+<li><p>Tijdens de afronding van dit onderzoek kwam de 'Data Privacy Vocabulary' in beeld. Deze vocabulaire is opgesteld door een W3C Community Group en gepubliceerd als Final Community Group Report. Daarmee is het geen formele W3C-standaard, maar er lijken veel aanknopingspunten in te zitten om de mapping met deze standaard uit te breiden.</p>
+</li>
+</ul>
+<div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Noot</span></div><aside class="">
+The Data Privacy Vocabulary [<cite><a class="bibref" data-link-type="biblio" href="#bib-dpv" title="Data Privacy Vocabulary (DPV) v2.2">DPV</a></cite>] enables expressing machine-readable metadata about 
+the use and processing of (personal or otherwise) data and technologies based on
+legislative requirements such as the General Data Protection Regulation [<cite><a class="bibref" data-link-type="biblio" href="#bib-gdpr" title="General Data Protection Regulation">GDPR</a></cite>].
+</aside></div><ul>
+<li><p>Voor de mapping van het loggen van (geo)objecten is er naast PROV-O behoefte aan een vocabulaire die de complexiteit van de gelogde informatie goed weer kan geven. DCAT(-AP-NL) blijft geschikt voor de metadata van de datasets waar <code>dataset_def</code> naar verwijst, maar is niet toereikend om de samenhang tussen algoritme, dataproduct en datasets in een verwerking te beschrijven. Een mogelijke kandidaat is de Data Product Ontology [<cite><a class="bibref" data-link-type="biblio" href="#bib-dprod" title="Data Product Ontology (DPROD)">DPROD</a></cite>]. Er is ook gekeken naar het applicatieprofiel MLDCAT-AP [<cite><a class="bibref" data-link-type="biblio" href="#bib-mldcat_ap" title="MLDCAT-AP - Machine Learning DCAT Application Profile, versie 2.0.0">MLDCAT_AP</a></cite>], een uitbreiding op het Europese DCAT-AP-profiel, maar de insteek op machine learning lijkt in de context van het vastleggen van de rekenmodellen onvoldoende aan te sluiten. Een mapping naar DPROD lijkt beter aan te sluiten.</p>
+</li>
+<li><p>De koppeling met NL-SBB [<cite><a class="bibref" data-link-type="biblio" href="#bib-nl_sbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NL_SBB</a></cite>] loopt via de <code>_def</code>-attributen van de extensie. Die kunnen verwijzen naar begrippen die volgens NL-SBB zijn beschreven, zoals in het voorbeeld in <a href="#H4" class="sec-ref"><bdi class="secno">4. </bdi>Mapping naar PROV-O</a> het BRT-begrip 'boom'. Een verdere uitwerking van deze relatie valt buiten dit onderzoek.</p>
+</li>
+</ul>
+</section></section>
+
+
+<section id="index" class="appendix"><div class="header-wrapper"><h2 id="a-index"><bdi class="secno">A. </bdi>Index</h2><a class="self-link" href="#index" aria-label="Permalink for Appendix A."></a></div><section id="index-defined-here">
+    <div class="header-wrapper"><h3 id="a-1-termen-gedefinieerd-door-deze-specificatie"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</h3><a class="self-link" href="#index-defined-here" aria-label="Permalink for Appendix A.1"></a></div>
+    <ul class="index">
+    
+  </ul>
+  </section><section id="index-defined-elsewhere">
+    <div class="header-wrapper"><h3 id="a-2-termen-gedefinieerd-door-verwijzing"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</h3><a class="self-link" href="#index-defined-elsewhere" aria-label="Permalink for Appendix A.2"></a></div>
+    <ul class="index">
+    
+  </ul>
+  </section></section>
+<section class="appendix" id="namespace-verklaringen"><div class="header-wrapper"><h2 id="b-namespace-verklaringen"><bdi class="secno">B. </bdi>Namespace verklaringen</h2><a class="self-link" href="#namespace-verklaringen" aria-label="Permalink for Appendix B."></a></div>
+<p>Binnen dit document worden de volgende prefixes gehanteerd.</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Namespace</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:</td>
+<td><a href="http://example.org/">http://example.org/</a> (voorbeelden)</td>
+</tr>
+<tr>
+<td>dcterms:</td>
+<td><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></td>
+</tr>
+<tr>
+<td>prov:</td>
+<td><a href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</a></td>
+</tr>
+<tr>
+<td>rdfs:</td>
+<td><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></td>
+</tr>
+</tbody></table>
+</section>
+
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="c-referenties"><bdi class="secno">C. </bdi>Referenties</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix C."></a></div><section id="informatieve-referenties">
+    <div class="header-wrapper"><h3 id="c-1-informatieve-referenties"><bdi class="secno">C.1 </bdi>Informatieve referenties</h3><a class="self-link" href="#informatieve-referenties" aria-label="Permalink for Appendix C.1"></a></div>
+    <dl class="bibliography"><dt id="bib-dcat_ap_nl">[DCAT_AP_NL]</dt><dd>
+      <a href="https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/"><cite>DCAT-AP-NL - Nederlands profiel voor DCAT</cite></a>.  Geonovum. URL: <a href="https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/">https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/</a>
+    </dd><dt id="bib-dprod">[DPROD]</dt><dd>
+      <a href="https://ekgf.org/dprod/"><cite>Data Product Ontology (DPROD)</cite></a>.  Enterprise Knowledge Graph Forum, Object Management Group® (OMG®). URL: <a href="https://ekgf.org/dprod/">https://ekgf.org/dprod/</a>
+    </dd><dt id="bib-dpv">[DPV]</dt><dd>
+      <a href="https://w3c-cg.github.io/dpv/2.2/dpv/"><cite>Data Privacy Vocabulary (DPV) v2.2</cite></a>.  W3C Data Privacy Vocabularies and Controls Community Group. 2025-10-31. Final Community Group Report. URL: <a href="https://w3c-cg.github.io/dpv/2.2/dpv/">https://w3c-cg.github.io/dpv/2.2/dpv/</a>
+    </dd><dt id="bib-gdpr">[GDPR]</dt><dd>
+      <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"><cite>General Data Protection Regulation</cite></a>.  EU. URL: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a>
+    </dd><dt id="bib-jb_ldv">[JB_LDV]</dt><dd>
+      <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen-juridisch-beleidskader/"><cite>Logboek dataverwerkingen - Juridisch beleidskader</cite></a>.  Logius. Werkversie. URL: <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen-juridisch-beleidskader/">https://logius-standaarden.github.io/logboek-dataverwerkingen-juridisch-beleidskader/</a>
+    </dd><dt id="bib-ldv">[LDV]</dt><dd>
+      <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/"><cite>Logboek dataverwerkingen</cite></a>.  Logius. Werkversie. URL: <a href="https://logius-standaarden.github.io/logboek-dataverwerkingen/">https://logius-standaarden.github.io/logboek-dataverwerkingen/</a>
+    </dd><dt id="bib-ldv_objecten">[LDV_OBJECTEN]</dt><dd>
+      <a href="https://logius-standaarden.github.io/logboek-extensie-object/"><cite>Logboek dataverwerkingen - Extensie (geo)objecten</cite></a>.  Logius. Werkversie. URL: <a href="https://logius-standaarden.github.io/logboek-extensie-object/">https://logius-standaarden.github.io/logboek-extensie-object/</a>
+    </dd><dt id="bib-mim12">[MIM12]</dt><dd>
+      <a href="https://docs.geostandaarden.nl/mim/def-st-mim-20240613/"><cite>MIM - Metamodel Informatie Modellering (Versie 1.2)</cite></a>.  Geonovum. 2024-06-13. Definitief. URL: <a href="https://docs.geostandaarden.nl/mim/def-st-mim-20240613/">https://docs.geostandaarden.nl/mim/def-st-mim-20240613/</a>
+    </dd><dt id="bib-mldcat_ap">[MLDCAT_AP]</dt><dd>
+      <a href="https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/"><cite>MLDCAT-AP - Machine Learning DCAT Application Profile, versie 2.0.0</cite></a>.  SEMIC (Europese Commissie). URL: <a href="https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/">https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/</a>
+    </dd><dt id="bib-nl_sbb">[NL_SBB]</dt><dd>
+      <a href="https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/"><cite>NL-SBB - Standaard voor het beschrijven van begrippen</cite></a>.  Geonovum. URL: <a href="https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/">https://docs.geostandaarden.nl/nl-sbb/def-st-nl-sbb-20241010/</a>
+    </dd><dt id="bib-prov-o">[PROV-O]</dt><dd>
+      <a href="https://www.w3.org/TR/prov-o/"><cite>PROV-O: The PROV Ontology</cite></a>. Timothy Lebo; Satya Sahoo; Deborah McGuinness.  W3C. 30 April 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/prov-o/">https://www.w3.org/TR/prov-o/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement | null} */
+  let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement | null} */
+        const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement | null} */
+    const caret = panel.querySelector(".caret");
+    if (caret) caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement | null} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Handreiking - Document</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
