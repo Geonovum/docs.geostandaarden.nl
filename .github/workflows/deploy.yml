@@ -54,20 +54,18 @@ jobs:
           set -euo pipefail
           html_file="${{ matrix.html_file }}"
           html_dir="$(dirname "$html_file")"
-          proof_dir="$RUNNER_TEMP/proof-html/$html_dir"
+          # Binnen de workspace, zodat de gedeelde actie het pad kan doorgeven.
+          proof_dir="$GITHUB_WORKSPACE/.proof-html/$html_dir"
 
           mkdir -p "$proof_dir"
-          rsync -a --exclude='*.html' "$html_dir/" "$proof_dir/"
+          rsync -a --exclude='*.html' --exclude='.git' --exclude='.proof-html' "$html_dir/" "$proof_dir/"
           cp "$html_file" "$proof_dir/$(basename "$html_file")"
 
+      # Zelfde controle (versie en opties) als de build in de documentrepos.
       - name: Validate HTML
-        uses: anishathalye/proof-html@f060b7619c2410bd85d970459a60ef431cf47ed5 # v2.2.5
+        uses: Geonovum/NL-ReSpec-workflows/.github/actions/validate-html@v1
         with:
-          directory: ${{ runner.temp }}/proof-html
-          check_css: false
-          disable_external: true
-          enforce_https: false
-          ignore_empty_alt: true
+          directory: .proof-html
 
   link_check:
     name: Lychee link check
@@ -83,11 +81,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      # Zelfde controle (versie en opties) als de build in de documentrepos.
       - name: Check links
-        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        uses: Geonovum/NL-ReSpec-workflows/.github/actions/check-links@v1
         with:
-          args: --offline --root-dir "${{ github.workspace }}" --remap "^https://docs\.geostandaarden\.nl file://${{ github.workspace }}" "${{ matrix.html_file }}"
-          fail: true
+          files: '"${{ matrix.html_file }}"'
+          root-dir: ${{ github.workspace }}
+          remap: '^https://docs\.geostandaarden\.nl file://${{ github.workspace }}'
 
   deploy:
     name: Deploy `/docs` via SCP
