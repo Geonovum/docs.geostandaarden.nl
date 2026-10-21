@@ -198,13 +198,15 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
           Deze versie wordt eerst aangeboden aan de betreffende domeinbegeleidingsroep
           (DBG), en vervolgens aangeboden aan de jurist van het ministerie, om te
           worden aangeboden aan de Begeleidingsgroep BRO (voorheen
-          Programmabegeleidingsgroep (PBG)).
+          Programmabegeleidingsgroep (PBG)) respectievelijk de Programmaraad ZoN/DF
+          (voorheen programmastuurgroep BRO (PSG)). De Programmaraad ZoN/DF 
+          (voorheen programmastuurgroep BRO (PSG)) adviseert de minister om de
+          catalogus op te nemen als bijlage bij de Regeling basisregistratie ondergrond
+          (BRO).
         </li>
         <li>
           <strong>Vastgestelde versie (def)</strong>: Dit is de definitieve versie van
-          de catalogus; de Programmaraad ZoN/DF (voorheen programmastuurgroep BRO
-          (PSG)) adviseert de minister om deze op te nemen als bijlage bij de Regeling
-          basisregistratie ondergrond (bro). Van deze versie wordt opnieuw een
+          de catalogus. Van deze versie wordt opnieuw een
           'snapshot' gemaakt in ReSpec. Deze versie wordt als bijlage opgenomen in een
           door de minister vast te stellen wijzigingsregeling van de Regeling bro.
         </li>
