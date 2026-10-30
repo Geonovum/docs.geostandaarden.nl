@@ -39,6 +39,10 @@ const COPY_EXCLUDE = new Set([
   "README.md"
 ]);
 
+const SAFE_PATH = /^\/(?:[A-Za-z0-9._~-]+\/)*[A-Za-z0-9._~-]*$/;
+const SAFE_EXTERNAL_URL = /^https?:\/\/[A-Za-z0-9.-]+(?::\d+)?(?:\/[A-Za-z0-9._~%-]*)*$/;
+const REDIRECT_STATUS_CODES = new Set([301, 302, 303, 307, 308]);
+
 export async function buildNginxSite({ rootDir, outDir, copyContent = true }) {
   const htmlDir = path.join(outDir, "html");
   const manifest = JSON.parse(await readFile(path.join(rootDir, "publication-routes.json"), "utf8"));
@@ -76,6 +80,7 @@ export function generateNginxConfig(manifest) {
   root /usr/share/nginx/html;
   index index.html;
   autoindex on;
+  server_tokens off;
   absolute_redirect off;
   port_in_redirect off;
   charset utf-8;
@@ -107,6 +112,7 @@ ${indentLines(generateSecurityHeadersSnippet(), 2)}
 
   location ^~ /_cors/bro/gen/ {
     internal;
+${indentLines(generateSecurityHeadersSnippet(), 4)}
     add_header Access-Control-Allow-Origin "*" always;
     add_header Access-Control-Max-Age "86400" always;
     rewrite ^/_cors(/bro/gen/.*)$ $1 break;
@@ -184,13 +190,26 @@ function normalizeRoute(route) {
   const target = normalizeTarget(route.target);
   if (!source || !target) return null;
 
+  // Routes are written verbatim into the nginx config, so only plain URL paths are allowed.
+  if (!isSafePath(source)) throw new Error(`Invalid route source: ${route.source}`);
+  if (isExternalTarget(target) ? !SAFE_EXTERNAL_URL.test(target) : !isSafePath(target)) {
+    throw new Error(`Invalid route target: ${route.target}`);
+  }
+
+  const statusCode = route.statusCode === undefined ? 302 : Number(route.statusCode);
+  if (!REDIRECT_STATUS_CODES.has(statusCode)) throw new Error(`Invalid route statusCode: ${route.statusCode}`);
+
   return {
     source,
     target,
     match: route.match === "exact" ? "exact" : "prefix",
     type: route.type === "redirect" || isExternalTarget(target) ? "redirect" : "rewrite",
-    statusCode: Number.isInteger(Number(route.statusCode)) ? Number(route.statusCode) : 302
+    statusCode
   };
+}
+
+function isSafePath(value) {
+  return SAFE_PATH.test(value) && !value.split("/").some((segment) => segment === "." || segment === "..");
 }
 
 function normalizePath(value) {

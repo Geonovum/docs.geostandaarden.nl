@@ -94,3 +94,27 @@ test("nginx site build can generate only Docker overlay files", async () => {
 async function exists(filePath) {
   return Boolean(await stat(filePath).catch(() => null));
 }
+
+test("nginx config rejects routes that could inject nginx directives", () => {
+  const route = { source: "/bro/x", match: "prefix", type: "redirect", statusCode: 302, target: "/bro/y/" };
+  const invalidRoutes = [
+    { ...route, target: "/bro/y/; return 200 owned" },
+    { ...route, source: "/bro/x { }" },
+    { ...route, target: "/bro/../etc/" },
+    { ...route, target: "https://example.org/a b" },
+    { ...route, statusCode: 200 }
+  ];
+
+  for (const invalid of invalidRoutes) {
+    assert.throws(() => generateNginxConfig({ routes: [invalid] }), /Invalid route/);
+  }
+  assert.doesNotThrow(() => generateNginxConfig({ routes: [route, { ...route, target: "https://example.org/docs/" }] }));
+});
+
+test("nginx config hides the server version and keeps security headers on CORS responses", () => {
+  const config = generateNginxConfig({ routes: [] });
+  const corsLocation = config.slice(config.indexOf("location ^~ /_cors/bro/gen/"));
+
+  assert.match(config, /server_tokens off;/);
+  assert.match(corsLocation.slice(0, corsLocation.indexOf("try_files")), /Content-Security-Policy/);
+});
