@@ -59,8 +59,7 @@ test("nginx site build pre-renders dynamic publication pages", async () => {
   await mkdir(path.join(root, "api", "def-st-api-designrules-20200117"), { recursive: true });
   await writeFile(
     path.join(root, "api", "API-Strategie", "index.html"),
-    `<span class="final"><a href="./api/API-Strategie">Laatste versie</a></span>
-<script id="initialUserConfig" type="application/json">{"localBiblio":{"X":{"href":"https://example.test","title":"Example"}}}</script>`
+    `<span class="final"><a href="./api/API-Strategie">Laatste versie</a></span>`
   );
   await writeFile(path.join(root, "publication-routes.json"), JSON.stringify({ version: 1, routes: [] }));
 
@@ -68,12 +67,11 @@ test("nginx site build pre-renders dynamic publication pages", async () => {
 
   const rootIndex = await readFile(path.join(outDir, "html", "index.html"), "utf8");
   const broIndex = await readFile(path.join(outDir, "html", "bro", "index.html"), "utf8");
-  const biblio = await readFile(path.join(outDir, "html", "biblio.php"), "utf8");
 
   assert.match(rootIndex, /Standaarden en technische documenten/);
   assert.match(rootIndex, /Laatste versie: API-Strategie/);
   assert.match(broIndex, /Basisregistratie Ondergrond/);
-  assert.match(biblio, /https:\/\/example\.test/);
+  assert.equal(await exists(path.join(outDir, "html", "biblio.php")), false);
   assert.equal(await exists(path.join(outDir, "html", "server")), false);
   assert.equal(await exists(path.join(outDir, "default.conf.template")), true);
 });

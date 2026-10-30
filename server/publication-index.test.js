@@ -5,7 +5,6 @@ import path from "node:path";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { renderBroIndex, renderMainIndex } from "./publication-index.js";
-import { extractFinalUrls, extractInitialUserConfig, renderBibliography } from "./bibliography.js";
 import { createApp } from "./server.js";
 
 test("main index groups definitive publications and latest versions", async () => {
@@ -54,25 +53,6 @@ test("BRO index renders configured registration object links", () => {
   assert.match(html, /href="\/bro\/bhr-gt"/);
   assert.doesNotMatch(html, /href="\/bro\/BHR-GT"/);
   assert.doesNotMatch(html, /<\/div>\s+<div class="pubDomain">/);
-});
-
-test("bibliography helpers parse final urls and ReSpec config JSON", () => {
-  const html = `<span class="final"><a href="./api/API-Strategie">Laatste versie</a></span>
-<script id="initialUserConfig" type="application/json">{"localBiblio":{"X":{"href":"https://example.test","title":"Example"}}}</script>`;
-
-  assert.deepEqual(extractFinalUrls(html), ["./api/API-Strategie"]);
-  assert.equal(extractInitialUserConfig(html).localBiblio.X.title, "Example");
-});
-
-test("bibliography skips final urls without an index file", async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "docs-biblio-missing-index-"));
-  await writeFile(path.join(root, "pubDomainList.json"), JSON.stringify({ Geonovum: [] }));
-  await mkdir(path.join(root, "api", "API-Strategie"), { recursive: true });
-
-  const html = await renderBibliography(root);
-
-  assert.match(html, /Referentie Bibliografie/);
-  assert.doesNotMatch(html, /API-Strategie/);
 });
 
 test("runtime exposes publication environment without changing content branch", async () => {

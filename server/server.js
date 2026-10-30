@@ -3,7 +3,6 @@ import { stat } from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { renderBibliography } from "./bibliography.js";
 import { renderBroIndex, renderDirectoryListing, renderMainIndex } from "./publication-index.js";
 import { loadPublicationRoutes, resolvePublicationRoute } from "./publication-routes.js";
 
@@ -146,12 +145,6 @@ export function createApp({
       const redirect = resolveRedirect(pathname);
       if (redirect) {
         return sendRedirect(res, redirect, 301);
-      }
-
-      if (pathname === "/biblio.php" || pathname === "/biblio") {
-        if (!requestUrl.searchParams.has("geonovum")) return sendText(res, 404, "Not Found\n", method);
-        const html = await renderBibliography(resolvedRoot);
-        return sendText(res, 200, html, method, "text/html; charset=utf-8");
       }
 
       if (pathname === "/bro/gen/cors.php" || pathname === "/bro/gen/cors") {

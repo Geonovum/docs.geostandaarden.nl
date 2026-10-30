@@ -1,6 +1,5 @@
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { renderBibliography } from "./bibliography.js";
 import { renderBroIndex, renderMainIndex } from "./publication-index.js";
 
 const DEFAULT_CSP = [
@@ -53,8 +52,6 @@ export async function buildNginxSite({ rootDir, outDir, copyContent = true }) {
   await writeFile(path.join(htmlDir, "index.html"), await renderMainIndex(rootDir));
   await mkdir(path.join(htmlDir, "bro"), { recursive: true });
   await writeFile(path.join(htmlDir, "bro", "index.html"), renderBroIndex());
-  await writeFile(path.join(htmlDir, "biblio.php"), await renderBibliography(rootDir));
-  await writeFile(path.join(htmlDir, "biblio"), await renderBibliography(rootDir));
   await writeFile(path.join(outDir, "default.conf.template"), generateNginxConfig(manifest));
 }
 
@@ -98,20 +95,6 @@ ${indentLines(generateSecurityHeadersSnippet(), 2)}
 
   location = /.well-known/security.txt {
     return 302 https://www.geonovum.nl/.well-known/security.txt;
-  }
-
-  location = /biblio.php {
-    if ($arg_geonovum = "") {
-      return 404;
-    }
-    try_files /biblio.php =404;
-  }
-
-  location = /biblio {
-    if ($arg_geonovum = "") {
-      return 404;
-    }
-    try_files /biblio =404;
   }
 
   location = /bro/gen/cors.php {
