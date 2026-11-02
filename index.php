@@ -80,6 +80,10 @@
       /*font-size: 0.85em;*/
     }
 
+    span.ld, span.ld a {
+      color: #80CC28; 
+    }
+
     .warning {
       background-color: #ffbb66;
       border: 1px solid black;
@@ -168,19 +172,22 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     $docType="Laatste versie";
     $cls="final";
     if (startsWith($subdir, "def-")) {
-      $docType="Definitieve versie";
+      $docType="Vastgestelde versie";
       $cls="def";
     } elseif (startsWith($subdir, "cv-")) {
       $docType="Consultatie versie";
       $cls="cv";
     } elseif (startsWith($subdir, "vv-")) {
-      $docType="Vastgestelde versie";
+      $docType="Versie ter vaststelling";
       $cls="vv";
+    } elseif (startsWith($subdir, "ld-")) {
+      $docType="Levend document";
+      $cls="ld";
     }
     // TODO: why only definitieve versie?
     // show cv versions too?
     // if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList) and $docType="Definitieve versie")) {
-    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Definitieve versie") {
+    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Vastgestelde versie") {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
