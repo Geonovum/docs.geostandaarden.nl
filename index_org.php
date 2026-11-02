@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
   <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TEST - Geonovum specificaties</title>
     <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico' />
@@ -80,6 +80,10 @@
       /*font-size: 0.85em;*/
     }
 
+    span.ld, span.ld a {
+      color: #80CC28; 
+    }
+
     .warning {
       background-color: #ffbb66;
       border: 1px solid black;
@@ -117,7 +121,7 @@
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['BRO', 'NWBBGT', '.GIT'];
+$ignoreList = ['BRO', 'NWBBGT', '.GIT', 'BRTNEXT', 'SFR', 'MEDIA','.WELL-KNOWN','.GITHUB'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
 $publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
@@ -168,19 +172,22 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     $docType="Laatste versie";
     $cls="final";
     if (startsWith($subdir, "def-")) {
-      $docType="Definitieve versie";
+      $docType="Vastgestelde versie";
       $cls="def";
     } elseif (startsWith($subdir, "cv-")) {
       $docType="Consultatie versie";
       $cls="cv";
     } elseif (startsWith($subdir, "vv-")) {
-      $docType="Vastgestelde versie";
+      $docType="Versie ter vaststelling";
       $cls="vv";
+    } elseif (startsWith($subdir, "ld-")) {
+      $docType="Levend document";
+      $cls="ld";
     }
     // TODO: why only definitieve versie?
     // show cv versions too?
     // if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList) and $docType="Definitieve versie")) {
-    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Definitieve versie") {
+    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Vastgestelde versie") {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
@@ -270,7 +277,8 @@ foreach ($pubDomains as $pubDomain) {
           echo subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList);
         }
         if (count($norm) > 0) {
-          echo "<h3>Normen</h3>";
+          // echo "<h3>Normen</h3>";  edit 20220317 AdB
+		      echo "<h3>Standaarden</h3>";
           echo subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList);
         }
         if (count($toelichting) > 0) {
