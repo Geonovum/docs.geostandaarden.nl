@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TESTOMGEVING - Geonovum specificaties - TESTOMGEVING</title>
-    <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico' />
+    <link rel='shortcut icon' type='image/x-icon' href='https://docs.geostandaarden.nl/media/Geonovum.ico' />
     <!-- TODO: css to external doc and/or use geonovum css file -->
     <style>
 
@@ -120,7 +120,7 @@ $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/mas
 // directories to be ignored. Uppercase
 $ignoreList = ['BRO', 'NWBBGT', '.GIT'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
-$publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
+$publishAllList = []; // ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
 // -------------------------------
 // get the list of pubDomains:
@@ -164,24 +164,21 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
 {
   $ul = False;
   $htmlList = "";
-  // $publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
     $cls="final";
     if (startsWith($subdir, "def-")) {
-      $docType="Definitieve versie";
+      $docType="Vastgestelde versie";
       $cls="def";
     } elseif (startsWith($subdir, "cv-")) {
       $docType="Consultatie versie";
       $cls="cv";
     } elseif (startsWith($subdir, "vv-")) {
-      $docType="Vastgestelde versie";
+      $docType="Versie ter vaststelling";
       $cls="vv";
     }
-    // TODO: why only definitieve versie?
-    // show cv versions too?
-    // if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList) and $docType="Definitieve versie")) {
-    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Definitieve versie") {
+    // TODO: why only Vastgestelde versie?
+    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Vastgestelde versie") {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
