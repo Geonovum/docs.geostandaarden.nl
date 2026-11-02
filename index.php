@@ -178,7 +178,7 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
       $cls="vv";
     }
     // TODO: why only Vastgestelde versie?
-    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Vastgestelde versie") {
+    if ($docType=="Laatste versie" or $docType=="Vastgestelde versie" or count($publishAllList)==0 or (in_array(strtoupper($pubDomain), $publishAllList)) ) {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
