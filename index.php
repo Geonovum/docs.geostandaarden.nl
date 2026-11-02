@@ -67,17 +67,18 @@
 
     span.def, span.def a {
       color: #005a9c;
-      /*font-size: 0.85em;*/
     }
 
     span.cv, span.cv a {
       color: orange;
-      /*font-size: 0.85em;*/
     }
 
     span.vv, span.vv a {
       color: green;
-      /*font-size: 0.85em;*/
+    }
+
+    span.ld, span.ld a {
+      color: #80CC28; 
     }
 
     .warning {
@@ -118,7 +119,7 @@
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['BRO', 'NWBBGT', '.GIT'];
+$ignoreList = ['BRO', 'NWBBGT', '.GIT', 'https--docs.geostandaarden.nl-geen-respec-', 'https--docs.geostandaarden.nl-geen-basis-bd-respec-20251117-'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
 $publishAllList = []; // ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
@@ -176,15 +177,18 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "vv-")) {
       $docType="Versie ter vaststelling";
       $cls="vv";
+    } elseif (startsWith($subdir, "ld-")) {
+      $docType="Levend document";
+      $cls="ld";
     }
     // TODO: why only Vastgestelde versie?
-    if ($docType=="Laatste versie" or $docType=="Vastgestelde versie" or count($publishAllList)==0 or (in_array(strtoupper($pubDomain), $publishAllList)) ) {
+    //if ($docType=="Laatste versie" ($docType=="Vastgestelde versie" or (in_array(strtoupper($pubDomain), $publishAllList)) ) {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
       }
       $htmlList .= "<li><span class='".$cls."'><a href='".$lookintodir . "/" . $subdir."'>".$docType.": ".$subdir."</a></span></li>";
-    }
+    //}
   }
   if ($ul == True){
     $htmlList .= "</ul>";
