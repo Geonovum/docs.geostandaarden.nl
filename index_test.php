@@ -118,7 +118,7 @@
   </label>
   <script>
     const showLatestCheckbox = document.getElementById("showLatest");
-    showDeprecatedCheckbox.addEventListener("change", updatePage);
+    showLatestCheckbox.addEventListener("change", updatePage);
 
     function updatePage() {
       //const showLatest = showLatestCheckbox.checked;
