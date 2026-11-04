@@ -23,7 +23,6 @@
       margin-top: 2rem;
     }
 
-
     h1, h2, h3, h4, h5, h6 {
       font-family: Montserrat, "Open Sans", sans-serif;
     }
@@ -37,18 +36,21 @@
     }
 
     h2 {
-        font-size: 1.8rem;
-        font-weight: 500;
-        /*background-color: #f7f7f7;*/
-        padding-left: 0.5em;
-        border-bottom: 4px solid rgb(141, 182, 63);
-        line-height: 4rem;
-        width: 34rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+      padding-left: 0.5em;
+      border-bottom: 4px solid rgb(141, 182, 63);
+      line-height: 3rem;
+      width: 34rem;
+      margin-bottom: 0.4em;
+      margin-top: 0.4em;
     }
 
     h3 {
-        margin-left: 1.8em;
-        font-weight: 500;
+      margin-left: 1.8em;
+      font-weight: 500;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
     }
 
     a {
@@ -119,9 +121,9 @@
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['BRO', 'NWBBGT', '.GIT', 'https--docs.geostandaarden.nl-geen-respec-', 'https--docs.geostandaarden.nl-geen-basis-bd-respec-20251117-'];
+$ignoreList = ['BRO', 'NWBBGT', '.GIT'];
 // directories for which all files should be shown (containing PDFs instead of ReSpec docs)
-$publishAllList = []; // ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
+$publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
 // -------------------------------
 // get the list of pubDomains:
@@ -182,7 +184,7 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
       $cls="ld";
     }
     // TODO: why only Vastgestelde versie?
-    //if ($docType=="Laatste versie" ($docType=="Vastgestelde versie" or (in_array(strtoupper($pubDomain), $publishAllList)) ) {
+    //if ($docType=="Laatste versie" or $docType=="Vastgestelde versie" or in_array(strtoupper($pubDomain), $publishAllList)) ) {
       if ($ul == False) {
         $htmlList .= "<ul class='docs'>";
         $ul = True;
@@ -208,7 +210,7 @@ foreach ($pubDomains as $pubDomain) {
     $toelichting = [];
     $documentatie = [];
     $unknown = [];
-    if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList)) {
+    if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList) and !startsWith($pubDomain, 'https-')) {
         echo "<div class='pubDomain'><h2><a href='".$pubDomain."'>".getPubDomainTitle($pubDomain, $allPubDomains)."</a></h2>";
         // loop over the folders again to find docs
         $lookintodir = $path . "/" . $pubDomain;
