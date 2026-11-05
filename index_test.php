@@ -244,7 +244,7 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
 function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
 {
   $htmlList = [];
-  
+
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
     $cls="final";
@@ -341,16 +341,16 @@ foreach ($pubDomains as $pubDomain) {
     // TODO: order on types. If no def-, ... ..., then it could be a basedir
     // now loop over all arrays with $subdirs
     if (count($unknown) > 0) { // ook subdirs
-      groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList));
+      $groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($norm) > 0) {
-      groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList));
+      $groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($toelichting) > 0) {
-      groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList));
+      $groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($documentatie) > 0) {
-      groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList));
+      $groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList));
     }
 
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
