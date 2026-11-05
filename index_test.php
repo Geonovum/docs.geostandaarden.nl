@@ -368,7 +368,7 @@ echo "<script>console.log('" .json_encode($domain). "');</script>"
 ?>
 
 <script>
-  const window.domains = <?php echo json_encode($domain); ?>; 
+  const domains = <?php echo json_encode($domain); ?>; 
 </script>
 </div>
 </body>
