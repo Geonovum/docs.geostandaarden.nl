@@ -366,7 +366,8 @@ foreach ($pubDomains as $pubDomain) {
 echo "<script>console.log('" .json_encode($domain). "');</script>"
 
 echo "<script>"
-echo "//window.domains = '" .json_encode($domain). "';"
+echo "// test"
+//echo "#window.domains = '" .json_encode($domain). "';"
 //echo "window.doContent('all');"
 echo "</script>";
 ?>
