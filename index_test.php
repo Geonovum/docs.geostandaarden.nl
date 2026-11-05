@@ -361,9 +361,9 @@ foreach ($pubDomains as $pubDomain) {
 }
 echo "<script>console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");</script>"
 
-echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
+//echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
 //echo "window.doContent();"
-echo "</script>";
+//echo "</script>";
 ?>
 </div>
 </body>
