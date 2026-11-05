@@ -76,14 +76,11 @@
       li.vv span, li.vv span a {
         color: green;
       }
-      li.ld span, li.ld span a {
+      li.ld span, li.ld span a,
+      li.basis span, li.basis span a {
         color: #80CC28; 
       }
 
-      li.nofinal, li.nodef, div.hidden {
-        visibility: hidden;
-        height: 0px
-      }
       .warning {
         background-color: #ffbb66;
         border: 1px solid black;
@@ -136,7 +133,6 @@
           domaindiv.appendChild(h2);
 
           var groups = domain[3];
-          //groups = groups.filter((group) => (which == 'all' || (which == 'latest' && group[0] == 'Laatste versies')));
 
           // per groep
           groups.forEach((group) => { // 0 name, 1 docs
@@ -267,6 +263,9 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "ld-")) {
       $docType="Levend document";
       $cls="ld";
+    } elseif (startsWith($subdir, "basis-")) {
+      $docType="Document";
+      $cls="basis";
      } elseif (startsWith($subdir, "wv-")) {
       // skip wv...
       continue;
