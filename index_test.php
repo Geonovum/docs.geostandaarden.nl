@@ -363,13 +363,12 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "<script>console.log('" .json_encode($domain). "');</script>"
 
-echo "<script>"
-echo "// test"
-//echo "#window.domains = '" .json_encode($domain). "';"
-//echo "window.doContent('all');"
-echo "</script>";
+echo "<script>console.log('" .json_encode($domain). "');</script>"
 ?>
+
+<script>
+  const window.domains = <?php echo json_encode($domain); ?>; 
+</script>
 </div>
 </body>
