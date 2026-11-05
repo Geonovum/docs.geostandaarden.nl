@@ -176,10 +176,10 @@
 <h1>Standaarden en technische documenten</h1>
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
   <label style="margin-left: 20px;">
-    <input type="checkbox" id="showLatest" />Laat alleen laatste versies zien
+    <input type="checkbox" id="showLatest" />Laat alleen <b>laatste</b> versies zien
   </label>
   <label style="margin-left: 20px;">
-    <input type="checkbox" id="showDef" />Laat alleen definitieve versies zien
+    <input type="checkbox" id="showDef" />Laat alleen <b>vastgestelde</b> versies zien
   </label>
   <script>
     const showLatestCheckbox = document.getElementById("showLatest");
