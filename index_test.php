@@ -165,7 +165,7 @@
             docsdiv.appendChild(ul);
             domaindiv.appendChild(docsdiv);
           });
-          contentContainer.appendChild(div);
+          contentContainer.appendChild(domaindiv);
         });
       }
     </script>
