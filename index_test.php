@@ -133,7 +133,7 @@
           const span = document.createElement(span);
           span.className = 'pubDomainAbbr';
           span.textContent = concat('(', domain[0].toLowerCase(), ')');
-          anchor appendChild(span);
+          anchor.appendChild(span);
           h2.appendChild(anchor);
           domaindiv.appendChild(h2);
 
@@ -359,7 +359,7 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "<script>console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");</script>"
+echo "<script>console.log(" .json_encode($domain). ");</script>"
 
 //echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
 //echo "window.doContent();"
