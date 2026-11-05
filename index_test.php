@@ -109,9 +109,9 @@
     </style>
 
     <script>
-      window.domains = "[['3d', '3D geo-informatie', '3d',[['Laatste versies',[['final', 'Laatste versie: 3dstrap', './3d/3dstrap']]],['Documentatie',[['final', 'Laatste versie: basis-al-3dstrap-20261104', './3d/basis-al-3dstrap-20261104'],['ld', 'Levend document: ld-hr-3d-tiling-2025-01-13', './3d/ld-hr-3d-tiling-2025-01-13']] ]]]]".replace(/'/g,"\"");
+      window.domains = "[['3d','3D geo-informatie','3d',[['Laatste versies',[['final','Laatste versie: 3dstrap','./3d/3dstrap']]],['Documentatie',[['final', 'Laatste versie: basis-al-3dstrap-20261104','./3d/basis-al-3dstrap-20261104'],['ld','Levend document: ld-hr-3d-tiling-2025-01-13','./3d/ld-hr-3d-tiling-2025-01-13']] ]]]]".replace(/'/g,"\"");
       window.doContent = function(which = "all") {
-        console.log(which);
+        console.log(which, domains.length);
 
         // cleanup previous
         const contentContainer = document.getElementById("content");
@@ -120,8 +120,7 @@
         }
 
         var domains = JSON.parse(window.domains);
-        //filter
-
+        
         // per domain
         domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
           const domaindiv = document.createElement("div");
@@ -129,41 +128,47 @@
           const h2 = document.createElement("h2");
           const anchor = document.createElement("a");
           anchor.href = domain[2];
-          anchor.textContent = domain[1];
           const span = document.createElement("span");
           span.className = 'pubDomainAbbr';
           span.textContent = "(".concat(domain[0].toLowerCase(), ")");
           anchor.appendChild(span);
+          anchor.textContent = domain[1];
           h2.appendChild(anchor);
           domaindiv.appendChild(h2);
 
           var groups = domain[3];
+          groups = groups.filter((group) => (which == 'def' and group[0] != 'Laatste versies'));
+
           // per groep
           groups.forEach((group) => { // 0 name, 1 docs
             var name = group[0];
             var docs = group[1];
-            const docsdiv = document.createElement("div");
-            docsdiv.className = 'docs';
-            const h3 = document.createElement("h3");
-            h3.textContent = name;
-            docsdiv.appendChild(h3);
+            docs = docs.filter((doc) => (which == 'def' and doc[0] != 'def'));
+            docs = docs.filter((doc) => (which == 'latest' and doc[0] != 'final'));
+            if (docs.length > 0) {
+              const docsdiv = document.createElement("div");
+              docsdiv.className = 'docs';
+              const h3 = document.createElement("h3");
+              h3.textContent = name;
+              docsdiv.appendChild(h3);
 
-            const ul = document.createElement("ul");
-            // per document
-            docs.forEach((doc) => { // 0 cls, 1 title, 2 path
-              const li = document.createElement("li");
-              li.className = doc[0];
-              const span2 = document.createElement("span");
-              const a2 = document.createElement("a");
-              a2.href = doc[2];
-              a2.textContent = doc[1];
-              span2.appendChild(a2);
-              li.appendChild(span2);
-              ul.appendChild(li);
-            });
+              const ul = document.createElement("ul");
+              // per document
+              docs.forEach((doc) => { // 0 cls, 1 title, 2 path
+                const li = document.createElement("li");
+                li.className = doc[0];
+                const span2 = document.createElement("span");
+                const a2 = document.createElement("a");
+                a2.href = doc[2];
+                a2.textContent = doc[1];
+                span2.appendChild(a2);
+                li.appendChild(span2);
+                ul.appendChild(li);
+              });
 
-            docsdiv.appendChild(ul);
-            domaindiv.appendChild(docsdiv);
+              docsdiv.appendChild(ul);
+              domaindiv.appendChild(docsdiv);
+            }
           });
           contentContainer.appendChild(domaindiv);
         });
@@ -359,10 +364,10 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "<script>console.log(" .json_encode($domain). ");</script>"
+echo "<script>console.log('" .json_encode($domain). "');</script>"
 
-//echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
-//echo "window.doContent();"
+//echo "<script>window.domains = " .json_encode($domain). ";"
+//echo "window.doContent('all');"
 //echo "</script>";
 ?>
 </div>
