@@ -91,11 +91,11 @@
     }
 
     div.pubDomain {
-      width: 44rem;
+      width: 43.8rem;
       display: inline-grid;
     }
 
-    span.pubDomainAbbr{
+    span.pubDomainAbbr {
       font-size: 0.8rem;
       margin-right: 0.5rem;
     }

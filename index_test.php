@@ -124,13 +124,13 @@
 
         // per domain
         domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
-          const domaindiv = document.createElement(div);
+          const domaindiv = document.createElement("div");
           domaindiv.className = 'pubDomain';
-          const h2 = document.createElement(h2);
-          const anchor = document.createElement(a);
+          const h2 = document.createElement("h2");
+          const anchor = document.createElement("a");
           anchor.href = domain[2];
           anchor.textContent = domain[1];
-          const span = document.createElement(span);
+          const span = document.createElement("span");
           span.className = 'pubDomainAbbr';
           span.textContent = concat('(', domain[0].toLowerCase(), ')');
           anchor.appendChild(span);
@@ -142,19 +142,19 @@
           groups.forEach((group) => { // 0 name, 1 docs
             var name = group[0];
             var docs = group[1];
-            const docsdiv = document.createElement(div);
+            const docsdiv = document.createElement("div");
             docsdiv.className = 'docs';
-            const h3 = document.createElement(h3);
+            const h3 = document.createElement("h3");
             h3.textContent = name;
             docsdiv.appendChild(h3);
 
-            const ul = document.createElement(ul);
+            const ul = document.createElement("ul");
             // per document
             docs.forEach((doc) => { // 0 cls, 1 title, 2 path
-              const li = document.createElement(li);
+              const li = document.createElement("li");
               li.className = doc[0];
-              const span2 = document.createElement(span);
-              const a2 = document.createElement(a);
+              const span2 = document.createElement("span");
+              const a2 = document.createElement("a");
               a2.href = doc[2];
               a2.textContent = doc[1];
               span2.appendChild(a2);
