@@ -186,14 +186,14 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     // TODO: why only Vastgestelde versie?
     //if ($docType=="Laatste versie" or $docType=="Vastgestelde versie" or in_array(strtoupper($pubDomain), $publishAllList)) ) {
       if ($ul == False) {
-        $htmlList .= "<ul class='docs'>";
+        $htmlList .= "<ul class='docs'>\n";
         $ul = True;
       }
-      $htmlList .= "<li><span class='".$cls."'><a href='".$lookintodir . "/" . $subdir."'>".$docType.": ".$subdir."</a></span></li>";
+      $htmlList .= "<li><span class='".$cls."'><a href='".$lookintodir . "/" . $subdir."'>".$docType.": ".$subdir."</a></span></li>\n";
     //}
   }
   if ($ul == True){
-    $htmlList .= "</ul>";
+    $htmlList .= "</ul>\n";
     $ul == False;
   }
   return $htmlList;
@@ -211,7 +211,7 @@ foreach ($pubDomains as $pubDomain) {
     $documentatie = [];
     $unknown = [];
     if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList) and !startsWith($pubDomain, 'https-')) {
-        echo "<div class='pubDomain'><h2><a href='".$pubDomain."'>".getPubDomainTitle($pubDomain, $allPubDomains)."</a></h2>";
+        echo "<div class='pubDomain'><h2><a href='".$pubDomain."'>".getPubDomainTitle($pubDomain, $allPubDomains)."</a></h2>\n";
         // loop over the folders again to find docs
         $lookintodir = $path . "/" . $pubDomain;
         $subdirs = scandir($lookintodir);
@@ -285,7 +285,7 @@ foreach ($pubDomains as $pubDomain) {
           echo "<h3>Documentatie</h3>";
           echo subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList);
         }
-        echo "</div>";
+        echo "</div>\n";
     }
 }
 ?>

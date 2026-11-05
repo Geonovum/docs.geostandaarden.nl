@@ -50,7 +50,7 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
    <meta content="text/html; charset=utf-8" http-equiv="content-type">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <title>Geonovum specificaties</title>
-   <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico'/>
+   <link rel='shortcut icon' type='image/x-icon' href='https://docs.geostandaarden.nl/media/Geonovum.ico'/>
    <!-- TODO: css to external doc and/or use geonovum css file -->
    <style>
 

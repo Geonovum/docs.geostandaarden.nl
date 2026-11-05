@@ -109,7 +109,7 @@
     </style>
 
     <script>
-      window.domains = "[['3d', '3D geo-informatie', '3d',[['Laatste versies',[['final', 'Laatste versie: 3dstrap', './3d/3dstrap']]],['Documentatie',[['final', 'Laatste versie: basis-al-3dstrap-20261104', './3d/basis-al-3dstrap-20261104'],['ld', 'Levend document: ld-hr-3d-tiling-2025-01-13', './3d/ld-hr-3d-tiling-2025-01-13']] ]]]]";
+      window.domains = "[['3d', '3D geo-informatie', '3d',[['Laatste versies',[['final', 'Laatste versie: 3dstrap', './3d/3dstrap']]],['Documentatie',[['final', 'Laatste versie: basis-al-3dstrap-20261104', './3d/basis-al-3dstrap-20261104'],['ld', 'Levend document: ld-hr-3d-tiling-2025-01-13', './3d/ld-hr-3d-tiling-2025-01-13']] ]]]]".replace(/'/g,"\"");
       window.doContent = function(which = "all") {
         console.log(which);
 
