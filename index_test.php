@@ -188,12 +188,12 @@
     showDefCheckbox.addEventListener("change", updatePageDef);
 
     function updatePage() {
-      showDefCheckbox.disabled = !showDefCheckbox.disabled;
-      window.doContent(showDefCheckbox.disabled ? "latest" : "all");
+      showDefCheckbox.checked = false;
+      window.doContent(showLatestCheckbox.checked ? "latest" : "all");
     }
     function updatePageDef() {
-      showLatestCheckbox.disabled = !showLatestCheckbox.disabled;
-      window.doContent(showLatestCheckbox.disabled ? "def" : "all");
+      showLatestCheckbox.checked = false;      
+      window.doContent(showDefCheckbox.checked ? "def" : "all");
     }
   </script>
 
