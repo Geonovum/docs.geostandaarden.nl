@@ -193,11 +193,11 @@
 
     function updatePage() {
       showDefCheckbox.disabled = !showDefCheckbox.disabled;
-      window.doContent("latest");
+      window.doContent(showDefCheckbox.disabled ? "latest" : "all");
     }
     function updatePageDef() {
       showLatestCheckbox.disabled = !showLatestCheckbox.disabled;
-      window.doContent("def");
+      window.doContent(showLatestCheckbox.disabled ? "def" : "all");
     }
   </script>
 
@@ -363,11 +363,11 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "<script>console.log('" .json_encode($domain). "');</script>"
+// echo "<script>console.log('" .json_encode($domain). "');</script>"
 
-//echo "<script>window.domains = " .json_encode($domain). ";"
-//echo "window.doContent('all');"
-//echo "</script>";
+echo "<script>window.domains = " .json_encode($domain). ";"
+echo "window.doContent('all');"
+echo "</script>";
 ?>
 </div>
 </body>
