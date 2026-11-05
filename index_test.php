@@ -132,7 +132,7 @@
           anchor.textContent = domain[1];
           const span = document.createElement("span");
           span.className = 'pubDomainAbbr';
-          span.textContent = concat('(', domain[0].toLowerCase(), ')');
+          span.textContent = "(".concat(domain[0].toLowerCase(), ")");
           anchor.appendChild(span);
           h2.appendChild(anchor);
           domaindiv.appendChild(h2);
