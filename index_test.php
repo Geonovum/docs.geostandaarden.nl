@@ -234,10 +234,8 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
   // default to pubdomain
   $title = strtoupper($pubDomain);
   foreach ($allPubDomains as $pd) {
-    if ($pd['pubDomain'] == $pubDomain) {
-      if (strlen($pd['pubDomainTitle']) > 0) {
-        $title = $pd['pubDomainTitle'];
-      }
+    if ($pd['pubDomain'] == $pubDomain and strlen($pd['pubDomainTitle']) > 0) {
+      $title = $pd['pubDomainTitle'];
     }
   }
   return $title;
@@ -246,6 +244,7 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
 function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
 {
   $htmlList = [];
+  
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
     $cls="final";
@@ -262,7 +261,7 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
       $docType="Levend document";
       $cls="ld";
     }
-      $htmlList[] = [$cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir];
+      $htmlList[] = array($cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir);
   }
 
   return $htmlList;
@@ -342,22 +341,22 @@ foreach ($pubDomains as $pubDomain) {
     // TODO: order on types. If no def-, ... ..., then it could be a basedir
     // now loop over all arrays with $subdirs
     if (count($unknown) > 0) { // ook subdirs
-      groups[] = ["Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList)];
+      groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($norm) > 0) {
-      groups[] = ["Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList)];
+      groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($toelichting) > 0) {
-      groups[] = ["Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList)];
+      groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList));
     }
     if (count($documentatie) > 0) {
-      groups[] = ["Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList)];
+      groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList));
     }
 
-    $domain[] = [$pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups];
+    $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
+//echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
 
 //echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
 //echo "doContent();"
