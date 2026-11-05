@@ -267,6 +267,9 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "ld-")) {
       $docType="Levend document";
       $cls="ld";
+     } elseif (startsWith($subdir, "wv-")) {
+      // skip wv...
+      continue;
     }
       $htmlList[] = array($cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir);
   }
