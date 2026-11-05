@@ -37,18 +37,21 @@
     }
 
     h2 {
-        font-size: 1.8rem;
-        font-weight: 500;
-        /*background-color: #f7f7f7;*/
-        padding-left: 0.5em;
-        border-bottom: 4px solid rgb(141, 182, 63);
-        line-height: 4rem;
-        width: 34rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+      padding-left: 0.5em;
+      border-bottom: 4px solid rgb(141, 182, 63);
+      line-height: 3rem;
+      width: 34rem;
+      margin-bottom: 0.4em;
+      margin-top: 0.4em;
     }
 
     h3 {
-        margin-left: 1.8em;
-        font-weight: 500;
+      margin-left: 1.8em;
+      font-weight: 500;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
     }
 
     a {
@@ -77,7 +80,7 @@
       color: #80CC28; 
     }
 
-    li.nofinal, li.nodef {
+    li.nofinal, li.nodef, div.hidden {
       visibility: hidden;
       height: 0px
     }
@@ -116,25 +119,121 @@
   <label style="margin-left: 20px;">
     <input type="checkbox" id="showLatest" />Laat alleen laatste versies zien
   </label>
+  <label style="margin-left: 20px;">
+    <input type="checkbox" id="showDef" />Laat alleen definitieve versies zien
+  </label>
   <script>
     const showLatestCheckbox = document.getElementById("showLatest");
     showLatestCheckbox.addEventListener("change", updatePage);
+    const showDefCheckbox = document.getElementById("showDef");
+    showDefCheckbox.addEventListener("change", updatePageDef);
 
     function updatePage() {
+      // toggle class and disabled
       //const showLatest = showLatestCheckbox.checked;
+      const elementHiddenList = document.querySelectorAll('div.hidden');
+      elementHiddenList.forEach((divItem) => {
+        divItem.classList.toggle("hidden");
+      });
+
       const elementList = document.querySelectorAll("li.vv, li.cv, li.ld, li.def");
       elementList.forEach((liItem) => {
         liItem.classList.toggle("nofinal");
       });
 
+      showDefCheckbox.disabled = !showDefCheckbox.disabled;
+
+      const elementWithVisibleLiList = document.querySelectorAll('div.docs:not(:has(li:visible))');
+      elementWithVisibleLiList.forEach((divItem) => {
+        divItem.classList.toggle("hidden");
+      });
+
       //if (!showLatest) {}
       //  return false;
+    }
+    function updatePageDef() {
+      // toggle class and disabled
+      //const showDef = showDefCheckbox.checked;
+      const elementHiddenList = document.querySelectorAll('div.hidden');
+      elementHiddenList.forEach((divItem) => {
+        divItem.classList.toggle("hidden");
+      });
+
+      const elementList = document.querySelectorAll("li.vv, li.cv, li.ld, li.final");
+      elementList.forEach((liItem) => {
+        liItem.classList.toggle("nodef");
+      });
+
+      showLatestCheckbox.disabled = !showLatestCheckbox.disabled;
+
+      const elementWithVisibleLiList = document.querySelectorAll('div.docs:not(:has(li:visible))');
+      elementWithVisibleLiList.forEach((divItem) => {
+        divItem.classList.toggle("hidden");
+      });
+
+      //if (!showDef) {}
+      //  return false;
+    }
+
+    function doContent () {
+      // cleanup previous
+      const contentContainer = document.getElementById("content");
+      while (contentContainer.firstChild){
+        contentContainer.removeChild(contentContainer.firstChild);
+      }
+
+      // per domain
+      window.domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
+        const domaindiv = document.createElement(div);
+        domaindiv.className = 'pubDomain';
+        const h2 = document.createElement(h2);
+        const anchor = document.createElement(a);
+        anchor.href = domain[2];
+        anchor.textContent = domain[1];
+        const span = document.createElement(span);
+        span.className = 'pubDomainAbbr';
+        span.textContent = concat('(', domain[0]toLowerCase(), ')');
+        anchor appendChild(span);
+        h2.appendChild(anchor);
+        domaindiv.appendChild(h2);
+
+        var groups = domain[3];
+        // per groep
+        groups.forEach((group) => { // 0 name, 1 docs
+          var name = group[0];
+          var docs = group[1];
+          const docsdiv = document.createElement(div);
+          docsdiv.className = 'docs';
+          const h3 = document.createElement(h3);
+          h3.textContent = name;
+          docsdiv.appendChild(h3);
+
+          const ul = document.createElement(ul);
+          // per document
+          docs.forEach((doc) => { // 0 cls, 1 title, 2 path
+            const li = document.createElement(li);
+            li.className = doc[0];
+            const span2 = document.createElement(span);
+            const a2 = document.createElement(a);
+            a2.href = doc[2];
+            a2.textContent = doc[1];
+            span2.appendChild(a2);
+            li.appendChild(span2);
+            ul.appendChild(li);
+          });
+
+          docsdiv.appendChild(ul);
+          domaindiv.appendChild(docsdiv);
+        });
+        contentContainer.appendChild(div);
+      });
     }
   </script>
 
 <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
 
+<div id="content>
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
@@ -176,14 +275,12 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
       }
     }
   }
-  $titleFull = "<span class='pubDomainAbbr'>(".strtolower($pubDomain).")</span>".$title;
-  return $titleFull;
+  return $title;
 }
 
 function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
 {
-  $ul = False;
-  $htmlList = "";
+  $htmlList = [];
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
     $cls="final";
@@ -200,42 +297,33 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
       $docType="Levend document";
       $cls="ld";
     }
-    // TODO: why only definitieve versie?
-    // show cv versions too?
-    // if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList) and $docType="Definitieve versie")) {
-    if ($docType=="Laatste versie" or (in_array(strtoupper($pubDomain), $publishAllList)) or $docType=="Vastgestelde versie") {
-      if ($ul == False) {
-        $htmlList .= "<ul class='docs'>";
-        $ul = True;
-      }
-      $htmlList .= "<li class='".$cls."'><span><a href='".$lookintodir . "/" . $subdir."'>".$docType.": ".$subdir."</a></span></li>";
-    }
+      $htmlList[] = [$cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir];
   }
-  if ($ul == True){
-    $htmlList .= "</ul>";
-    $ul == False;
-  }
+
   return $htmlList;
 }
 
-
+// inlezen data
 $path = '.';
 $pubDomains = scandir($path);
+$domain = [];
 
 foreach ($pubDomains as $pubDomain) {
     if ($pubDomain === '.' or $pubDomain === '..') continue;
+
+    $groups = [];
+
     // reset the arrays for types
     $norm = [];
     $toelichting = [];
     $documentatie = [];
-    $unknown = [];
-    if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList)) {
-        echo "<div class='pubDomain'><h2><a href='".$pubDomain."'>".getPubDomainTitle($pubDomain, $allPubDomains)."</a></h2>";
+    $unknown = [];      // also latest
+
+    if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList) and !startsWith($pubDomain, 'https-')) {
         // loop over the folders again to find docs
         $lookintodir = $path . "/" . $pubDomain;
         $subdirs = scandir($lookintodir);
         $lastVersion = [];
-        $ul = False;
         foreach ($subdirs as $subdir) {
             if ($subdir === '.' or $subdir === '..') continue;
             if (is_dir($lookintodir . "/" . $subdir)) {
@@ -288,26 +376,26 @@ foreach ($pubDomains as $pubDomain) {
         // loop over all docs
         // TODO: order on types. If no def-, ... ..., then it could be a basedir
         // now loop over all arrays with $subdirs
-        if (count($unknown) > 0) {
-          echo "<h3>Laatste versies</h3>";
-          echo subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList);
+        if (count($unknown) > 0) { // ook subdirs
+          groups[] = ["Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList)];
         }
         if (count($norm) > 0) {
-          // echo "<h3>Normen</h3>";  edit 20220317 AdB
-		      echo "<h3>Standaarden</h3>";
-          echo subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList);
+          groups[] = ["Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList)];
         }
         if (count($toelichting) > 0) {
-          echo "<h3>Toelichtingen</h3>";
-          echo subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList);
+          groups[] = ["Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList)];
         }
         if (count($documentatie) > 0) {
-          echo "<h3>Documentatie</h3>";
-          echo subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList);
+          groups[] = ["Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList)];
         }
-        echo "</div>";
+
+        $domain[] = [$pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups];
     }
 }
+
+echo "<script>window.domains = JSON.parse(" .json_encode($domain). ");"
+echo "doContent();</script>";
 ?>
+</div>
 </div>
 </body>
