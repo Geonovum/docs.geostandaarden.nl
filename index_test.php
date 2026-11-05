@@ -109,7 +109,9 @@
     </style>
 
     <script>
-      function doContent (which = "all") {
+      window.doContent = function(which = "all") {
+        console.log(which);
+        
         // cleanup previous
         const contentContainer = document.getElementById("content");
         while (contentContainer.firstChild){
@@ -185,12 +187,12 @@
     showDefCheckbox.addEventListener("change", updatePageDef);
 
     function updatePage() {
-      doContent("latest");
       showDefCheckbox.disabled = !showDefCheckbox.disabled;
+      window.doContent("latest");
     }
     function updatePageDef() {
-      doContent("def");
       showLatestCheckbox.disabled = !showLatestCheckbox.disabled;
+      window.doContent("def");
     }
   </script>
 
@@ -356,7 +358,7 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-//echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
+echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
 
 //echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
 //echo "doContent();"
