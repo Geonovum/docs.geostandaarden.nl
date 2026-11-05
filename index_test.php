@@ -5,110 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TEST - Geonovum specificaties</title>
     <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico' />
+
     <!-- TODO: css to external doc and/or use geonovum css file -->
     <style>
+      body {
+        line-height: 1.5;
+        font-family: "Open Sans", sans-serif;
+        color: #5e5e5e;
+        font-size: .875rem;
+        line-height: 1.5;
+      }
 
-    body {
-      line-height: 1.5;
-      font-family: "Open Sans", sans-serif;
-      color: #5e5e5e;
-      font-size: .875rem;
-      line-height: 1.5;
-    }
-
-    .page {
-      max-width: 88rem;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 2rem;
-    }
+      .page {
+        max-width: 88rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem;
+      }
 
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: Montserrat, "Open Sans", sans-serif;
-    }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: Montserrat, "Open Sans", sans-serif;
+      }
 
-    h1 {
-      margin: 1em 0 2em;
-      font-size: 1.25rem;
-      line-height: 4em;
-      border-bottom: 1px solid rgba(94,94,94,.2);
-      font-weight: 500;
-    }
+      h1 {
+        margin: 1em 0 2em;
+        font-size: 1.25rem;
+        line-height: 4em;
+        border-bottom: 1px solid rgba(94,94,94,.2);
+        font-weight: 500;
+      }
 
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      padding-left: 0.5em;
-      border-bottom: 4px solid rgb(141, 182, 63);
-      line-height: 3rem;
-      width: 34rem;
-      margin-bottom: 0.4em;
-      margin-top: 0.4em;
-    }
+      h2 {
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding-left: 0.5em;
+        border-bottom: 4px solid rgb(141, 182, 63);
+        line-height: 3rem;
+        width: 34rem;
+        margin-bottom: 0.4em;
+        margin-top: 0.4em;
+      }
 
-    h3 {
-      margin-left: 1.8em;
-      font-weight: 500;
-      margin-bottom: 0.2em;
-      margin-top: 0.2em;
-    }
+      h3 {
+        margin-left: 1.8em;
+        font-weight: 500;
+        margin-bottom: 0.2em;
+        margin-top: 0.2em;
+      }
 
-    a {
-      color: #005a9c;
-    }
+      a {
+        color: #005a9c;
+      }
 
-    h2 > a {
-      text-decoration: none;
-      color: rgb(94,94,94);
-    }
+      h2 > a {
+        text-decoration: none;
+        color: rgb(94,94,94);
+      }
 
-    li.final span, li.final span a {
-      font-weight: normal;
-      color: #005a9c;
-    }
-    li.def span, li.def span a {
-      color: #005a9c;
-    }
-    li.cv span, li.cv span a {
-      color: orange;
-    }
-    li.vv span, li.vv span a {
-      color: green;
-    }
-    li.ld span, li.ld span a {
-      color: #80CC28; 
-    }
+      li.final span, li.final span a {
+        font-weight: normal;
+        color: #005a9c;
+      }
+      li.def span, li.def span a {
+        color: #005a9c;
+      }
+      li.cv span, li.cv span a {
+        color: orange;
+      }
+      li.vv span, li.vv span a {
+        color: green;
+      }
+      li.ld span, li.ld span a {
+        color: #80CC28; 
+      }
 
-    li.nofinal, li.nodef, div.hidden {
-      visibility: hidden;
-      height: 0px
-    }
+      li.nofinal, li.nodef, div.hidden {
+        visibility: hidden;
+        height: 0px
+      }
+      .warning {
+        background-color: #ffbb66;
+        border: 1px solid black;
+        padding: 1em;
+        margin: 1em;
+      }
 
-    .warning {
-      background-color: #ffbb66;
-      border: 1px solid black;
-      padding: 1em;
-      margin: 1em;
-    }
+      div.pubDomain {
+        width: 44rem;
+        display: inline-grid;
+      }
 
-    div.pubDomain {
-      width: 44rem;
-      display: inline-grid;
-    }
+      span.pubDomainAbbr{
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+      }
 
-    span.pubDomainAbbr{
-      font-size: 0.8rem;
-      margin-right: 0.5rem;
-    }
-
-    ul.docs {
-      border-bottom: 1px solid rgba(94, 94, 94, 0.2);
-      width: 36rem;
-      padding-bottom: 2rem;
-    }
-
+      ul.docs {
+        border-bottom: 1px solid rgba(94, 94, 94, 0.2);
+        width: 36rem;
+        padding-bottom: 2rem;
+      }
     </style>
+
+    <script>
+      function doContent () {
+        // cleanup previous
+        const contentContainer = document.getElementById("content");
+        while (contentContainer.firstChild){
+          contentContainer.removeChild(contentContainer.firstChild);
+        }
+
+        // per domain
+        window.domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
+          const domaindiv = document.createElement(div);
+          domaindiv.className = 'pubDomain';
+          const h2 = document.createElement(h2);
+          const anchor = document.createElement(a);
+          anchor.href = domain[2];
+          anchor.textContent = domain[1];
+          const span = document.createElement(span);
+          span.className = 'pubDomainAbbr';
+          span.textContent = concat('(', domain[0]toLowerCase(), ')');
+          anchor appendChild(span);
+          h2.appendChild(anchor);
+          domaindiv.appendChild(h2);
+
+          var groups = domain[3];
+          // per groep
+          groups.forEach((group) => { // 0 name, 1 docs
+            var name = group[0];
+            var docs = group[1];
+            const docsdiv = document.createElement(div);
+            docsdiv.className = 'docs';
+            const h3 = document.createElement(h3);
+            h3.textContent = name;
+            docsdiv.appendChild(h3);
+
+            const ul = document.createElement(ul);
+            // per document
+            docs.forEach((doc) => { // 0 cls, 1 title, 2 path
+              const li = document.createElement(li);
+              li.className = doc[0];
+              const span2 = document.createElement(span);
+              const a2 = document.createElement(a);
+              a2.href = doc[2];
+              a2.textContent = doc[1];
+              span2.appendChild(a2);
+              li.appendChild(span2);
+              ul.appendChild(li);
+            });
+
+            docsdiv.appendChild(ul);
+            domaindiv.appendChild(docsdiv);
+          });
+          contentContainer.appendChild(div);
+        });
+      }
+    </script>
   </head>
 <body>
 <div class="page">
@@ -174,66 +228,13 @@
       //if (!showDef) {}
       //  return false;
     }
-
-    function doContent () {
-      // cleanup previous
-      const contentContainer = document.getElementById("content");
-      while (contentContainer.firstChild){
-        contentContainer.removeChild(contentContainer.firstChild);
-      }
-
-      // per domain
-      window.domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
-        const domaindiv = document.createElement(div);
-        domaindiv.className = 'pubDomain';
-        const h2 = document.createElement(h2);
-        const anchor = document.createElement(a);
-        anchor.href = domain[2];
-        anchor.textContent = domain[1];
-        const span = document.createElement(span);
-        span.className = 'pubDomainAbbr';
-        span.textContent = concat('(', domain[0]toLowerCase(), ')');
-        anchor appendChild(span);
-        h2.appendChild(anchor);
-        domaindiv.appendChild(h2);
-
-        var groups = domain[3];
-        // per groep
-        groups.forEach((group) => { // 0 name, 1 docs
-          var name = group[0];
-          var docs = group[1];
-          const docsdiv = document.createElement(div);
-          docsdiv.className = 'docs';
-          const h3 = document.createElement(h3);
-          h3.textContent = name;
-          docsdiv.appendChild(h3);
-
-          const ul = document.createElement(ul);
-          // per document
-          docs.forEach((doc) => { // 0 cls, 1 title, 2 path
-            const li = document.createElement(li);
-            li.className = doc[0];
-            const span2 = document.createElement(span);
-            const a2 = document.createElement(a);
-            a2.href = doc[2];
-            a2.textContent = doc[1];
-            span2.appendChild(a2);
-            li.appendChild(span2);
-            ul.appendChild(li);
-          });
-
-          docsdiv.appendChild(ul);
-          domaindiv.appendChild(docsdiv);
-        });
-        contentContainer.appendChild(div);
-      });
-    }
   </script>
 
 <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
 
-<div id="content>
+<div id="content"></div>
+
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
@@ -393,9 +394,8 @@ foreach ($pubDomains as $pubDomain) {
     }
 }
 
-echo "<script>window.domains = JSON.parse(" .json_encode($domain). ");"
-echo "doContent();</script>";
+//echo "<script>window.domains = JSON.parse(" .json_encode($domain). ");"
+//echo "doContent();</script>";
 ?>
-</div>
 </div>
 </body>
