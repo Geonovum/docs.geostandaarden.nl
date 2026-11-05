@@ -126,23 +126,24 @@
           const h2 = document.createElement("h2");
           const anchor = document.createElement("a");
           anchor.href = domain[2];
+          const textnode = document.createTextNode(domain[1]);
+          anchor.appendChild(textnode);
           const span = document.createElement("span");
           span.className = 'pubDomainAbbr';
           span.textContent = "(".concat(domain[0].toLowerCase(), ")");
           anchor.appendChild(span);
-          anchor.textContent = domain[1];
           h2.appendChild(anchor);
           domaindiv.appendChild(h2);
 
           var groups = domain[3];
-          groups = groups.filter((group) => (which == 'all' || (which == 'def' && group[0] != 'Laatste versies')));
+          //groups = groups.filter((group) => (which == 'all' || (which == 'latest' && group[0] == 'Laatste versies')));
 
           // per groep
           groups.forEach((group) => { // 0 name, 1 docs
             var name = group[0];
             var docs = group[1];
-            docs = docs.filter((doc) => (which == 'all' || (which == 'def' && doc[0] == 'def')));
-            docs = docs.filter((doc) => (which == 'all' || (which == 'latest' && doc[0] == 'final')));
+            docs = docs.filter((doc) => (which == 'all' || (which == 'def' && doc[0] == 'def') || (which == 'latest' && doc[0] == 'final')));
+            
             if (docs.length > 0) {
               const docsdiv = document.createElement("div");
               docsdiv.className = 'docs';
