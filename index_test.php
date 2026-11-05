@@ -111,7 +111,7 @@
     <script>
       window.doContent = function(which = "all") {
         console.log(which);
-        
+
         // cleanup previous
         const contentContainer = document.getElementById("content");
         while (contentContainer.firstChild){
@@ -131,7 +131,7 @@
           anchor.textContent = domain[1];
           const span = document.createElement(span);
           span.className = 'pubDomainAbbr';
-          span.textContent = concat('(', domain[0]toLowerCase(), ')');
+          span.textContent = concat('(', domain[0].toLowerCase(), ')');
           anchor appendChild(span);
           h2.appendChild(anchor);
           domaindiv.appendChild(h2);
@@ -358,11 +358,11 @@ foreach ($pubDomains as $pubDomain) {
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
   }
 }
-echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
+//echo "console.log(" .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ");"
 
-//echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
-//echo "doContent();"
-//echo "</script>";
+echo "<script>window.domains = " .htmlspecialchars(json_encode($domain), ENT_QUOTES, 'UTF-8'). ";"
+echo "doContent();"
+echo "</script>";
 ?>
 </div>
 </body>
