@@ -137,14 +137,14 @@
           domaindiv.appendChild(h2);
 
           var groups = domain[3];
-          groups = groups.filter((group) => (which == 'def' and group[0] != 'Laatste versies'));
+          groups = groups.filter((group) => (which == 'def' && group[0] != 'Laatste versies'));
 
           // per groep
           groups.forEach((group) => { // 0 name, 1 docs
             var name = group[0];
             var docs = group[1];
-            docs = docs.filter((doc) => (which == 'def' and doc[0] != 'def'));
-            docs = docs.filter((doc) => (which == 'latest' and doc[0] != 'final'));
+            docs = docs.filter((doc) => (which == 'def' && doc[0] != 'def'));
+            docs = docs.filter((doc) => (which == 'latest' && doc[0] != 'final'));
             if (docs.length > 0) {
               const docsdiv = document.createElement("div");
               docsdiv.className = 'docs';
