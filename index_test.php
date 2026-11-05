@@ -109,7 +109,6 @@
     </style>
 
     <script>
-      window.domains = "[['3d','3D geo-informatie','3d',[['Laatste versies',[['final','Laatste versie: 3dstrap','./3d/3dstrap']]],['Documentatie',[['final', 'Laatste versie: basis-al-3dstrap-20261104','./3d/basis-al-3dstrap-20261104'],['ld','Levend document: ld-hr-3d-tiling-2025-01-13','./3d/ld-hr-3d-tiling-2025-01-13']] ]]]]".replace(/'/g,"\"");
       window.doContent = function(which = "all") {
         // cleanup previous
         const contentContainer = document.getElementById("content");
@@ -136,14 +135,14 @@
           domaindiv.appendChild(h2);
 
           var groups = domain[3];
-          groups = groups.filter((group) => (which == 'def' && group[0] != 'Laatste versies'));
+          groups = groups.filter((group) => (which == 'all' || (which == 'def' && group[0] != 'Laatste versies')));
 
           // per groep
           groups.forEach((group) => { // 0 name, 1 docs
             var name = group[0];
             var docs = group[1];
-            docs = docs.filter((doc) => (which == 'def' && doc[0] != 'def'));
-            docs = docs.filter((doc) => (which == 'latest' && doc[0] != 'final'));
+            docs = docs.filter((doc) => (which == 'all' || (which == 'def' && doc[0] == 'def')));
+            docs = docs.filter((doc) => (which == 'all' || (which == 'latest' && doc[0] == 'final')));
             if (docs.length > 0) {
               const docsdiv = document.createElement("div");
               docsdiv.className = 'docs';
@@ -367,6 +366,7 @@ foreach ($pubDomains as $pubDomain) {
 
 <script>
   window.domains = '<?php echo json_encode($domain); ?>'; 
+  window.doContent("all");
 </script>
 </div>
 </body>
