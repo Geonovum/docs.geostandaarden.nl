@@ -179,9 +179,9 @@
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
 <fieldset style="margin-left: 20px;">
   <legend>Laat alleen versies zien:</legend>
-  <label><input type="radio" id="showAll"    name="filter" value="all"   >Alle</label>  
-  <label><input type="radio" id="showLatest" name="filter" value="latest">Laatste</label>
-  <label><input type="radio" id="showDef"    name="filter" value="def"   >Vastgestelde</label>
+  <label><input type="radio" id="showAll"    name="filter" value="all" checked>Alle</label>  
+  <label><input type="radio" id="showLatest" name="filter" value="latest"     >Laatste</label>
+  <label><input type="radio" id="showDef"    name="filter" value="def"        >Vastgestelde</label>
 </fieldset>
 
 <script>
