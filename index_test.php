@@ -3,106 +3,106 @@
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TEST - Geonovum specificaties</title>
-    <link rel='shortcut icon' type='image/x-icon' href='https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico' />
-
+    <title>TESTOMGEVING - Geonovum specificaties - TESTOMGEVING</title>
+    <link rel='shortcut icon' type='image/x-icon' href='https://docs.geostandaarden.nl/media/Geonovum.ico' />
     <!-- TODO: css to external doc and/or use geonovum css file -->
     <style>
-      body {
-        line-height: 1.5;
-        font-family: "Open Sans", sans-serif;
-        color: #5e5e5e;
-        font-size: .875rem;
-        line-height: 1.5;
-      }
 
-      .page {
-        max-width: 88rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 2rem;
-      }
+    body {
+      line-height: 1.5;
+      font-family: "Open Sans", sans-serif;
+      color: #5e5e5e;
+      font-size: .875rem;
+      line-height: 1.5;
+    }
 
+    .page {
+      max-width: 88rem;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+    }
 
-      h1, h2, h3, h4, h5, h6 {
-        font-family: Montserrat, "Open Sans", sans-serif;
-      }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Montserrat, "Open Sans", sans-serif;
+    }
 
-      h1 {
-        margin: 1em 0 2em;
-        font-size: 1.25rem;
-        line-height: 4em;
-        border-bottom: 1px solid rgba(94,94,94,.2);
-        font-weight: 500;
-      }
+    h1 {
+      margin: 1em 0 2em;
+      font-size: 1.25rem;
+      line-height: 4em;
+      border-bottom: 1px solid rgba(94,94,94,.2);
+      font-weight: 500;
+    }
 
-      h2 {
-        font-size: 1.6rem;
-        font-weight: 500;
-        padding-left: 0.5em;
-        border-bottom: 4px solid rgb(141, 182, 63);
-        line-height: 3rem;
-        width: 34rem;
-        margin-bottom: 0.4em;
-        margin-top: 0.4em;
-      }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      padding-left: 0.5em;
+      border-bottom: 4px solid rgb(141, 182, 63);
+      line-height: 3rem;
+      width: 34rem;
+      margin-bottom: 0.4em;
+      margin-top: 0.4em;
+    }
 
-      h3 {
-        margin-left: 1.8em;
-        font-weight: 500;
-        margin-bottom: 0.2em;
-        margin-top: 0.2em;
-      }
+    h3 {
+      margin-left: 1.8em;
+      font-weight: 500;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
+    }
 
-      a {
-        color: #005a9c;
-      }
+    a {
+      color: #005a9c;
+    }
 
-      h2 > a {
-        text-decoration: none;
-        color: rgb(94,94,94);
-      }
+    h2 > a {
+      text-decoration: none;
+      color: rgb(94,94,94);
+    }
 
       li.final span, li.final span a {
-        font-weight: normal;
-        color: #005a9c;
-      }
+      font-weight: normal;
+      color: #005a9c;
+    }
       li.def span, li.def span a {
-        color: #005a9c;
-      }
+      color: #005a9c;
+    }
       li.cv span, li.cv span a {
-        color: orange;
-      }
-      li.vv span, li.vv span a {
-        color: green;
-      }
+      color: orange;
+    }
+
+    span.vv, span.vv a {
+      color: green;
+    }
       li.ld span, li.ld span a,
       li.basis span, li.basis span a {
-        color: #80CC28; 
-      }
+      color: #80CC28; 
+    }
 
-      .warning {
-        background-color: #ffbb66;
-        border: 1px solid black;
-        padding: 1em;
-        margin: 1em;
-      }
+    .warning {
+      background-color: #fcf93d;
+      border: 1px solid black;
+      padding: 1em;
+      margin: 1em;
+    }
 
-      div.pubDomain {
-        width: 44rem;
-        display: inline-grid;
-      }
+    div.pubDomain {
+      width: 43.8rem;
+      display: inline-grid;
+    }
 
-      span.pubDomainAbbr{
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
-      }
+    span.pubDomainAbbr {
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+    }
 
-      ul.docs {
-        border-bottom: 1px solid rgba(94, 94, 94, 0.2);
-        width: 36rem;
-        padding-bottom: 2rem;
-      }
+    ul.docs {
+      border-bottom: 1px solid rgba(94, 94, 94, 0.2);
+      width: 36rem;
+      padding-bottom: 2rem;
+    }
     </style>
 
     <script>
@@ -170,32 +170,31 @@
       }
     </script>
   </head>
+
 <body>
 <div class="page">
 <img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Home">
-<h1>Standaarden en technische documenten</h1>
+<h1>TESTOMGEVING Standaarden en technische documenten</h1>
+<h1><b>LET OP: DIT IS EEN TESTOMGEVING</b></h1>
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
-  <label style="margin-left: 20px;">
-    <input type="checkbox" id="showLatest" />Laat alleen <b>laatste</b> versies zien
-  </label>
-  <label style="margin-left: 20px;">
-    <input type="checkbox" id="showDef" />Laat alleen <b>vastgestelde</b> versies zien
-  </label>
-  <script>
-    const showLatestCheckbox = document.getElementById("showLatest");
-    showLatestCheckbox.addEventListener("change", updatePage);
-    const showDefCheckbox = document.getElementById("showDef");
-    showDefCheckbox.addEventListener("change", updatePageDef);
+<fieldset style="margin-left: 20px;">
+  <legend>Laat alleen versies zien:</legend>
+  <label><input type="radio" id="showAll"    name="filter" value="all"   >Alle</label>  
+  <label><input type="radio" id="showLatest" name="filter" value="latest">Laatste</label>
+  <label><input type="radio" id="showDef"    name="filter" value="def"   >Vastgestelde</label>
+</fieldset>
 
-    function updatePage() {
-      showDefCheckbox.checked = false;
-      window.doContent(showLatestCheckbox.checked ? "latest" : "all");
-    }
-    function updatePageDef() {
-      showLatestCheckbox.checked = false;      
-      window.doContent(showDefCheckbox.checked ? "def" : "all");
-    }
-  </script>
+<script>
+  const showAllRadio = document.getElementById("showAll");
+  showAllRadio.addEventListener("change", updatePage);
+  const showLatestRadio = document.getElementById("showLatest");
+  showLatestRadio.addEventListener("change", updatePage);
+  const showDefRadio = document.getElementById("showDef");
+  showDefRadio.addEventListener("change", updatePage);
+  function updatePage(e) {
+    window.doContent(e.target.value);
+  }
+</script>
 
 <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
@@ -205,9 +204,7 @@
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
-$ignoreList = ['BRO', 'NWBBGT', '.GIT', 'BRTNEXT', 'SFR', 'MEDIA','.WELL-KNOWN','.GITHUB'];
-// directories for which all files should be shown (containing PDFs instead of ReSpec docs)
-$publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
+$ignoreList = ['BRO', 'NWBBGT', '.GIT'];
 
 // -------------------------------
 // get the list of pubDomains:
@@ -238,15 +235,15 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
   $title = strtoupper($pubDomain);
   foreach ($allPubDomains as $pd) {
     if ($pd['pubDomain'] == $pubDomain and strlen($pd['pubDomainTitle']) > 0) {
-      $title = $pd['pubDomainTitle'];
+        $title = $pd['pubDomainTitle'];
     }
   }
   return $title;
 }
 
-function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
+function subDirsAsList($subdirs, $pubDomain, $lookintodir)
 {
-  $htmlList = [];
+  $list = [];
 
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
@@ -266,14 +263,15 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "basis-")) {
       $docType="Document";
       $cls="basis";
-     } elseif (startsWith($subdir, "wv-")) {
+    } elseif (startsWith($subdir, "wv-")) {
       // skip wv...
       continue;
     }
-      $htmlList[] = array($cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir);
+
+    $list[] = array($cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir);
   }
 
-  return $htmlList;
+  return $list;
 }
 
 // inlezen data
@@ -292,78 +290,79 @@ foreach ($pubDomains as $pubDomain) {
   $documentatie = [];
   $unknown = [];      // also latest
 
-  if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList) and !startsWith($pubDomain, 'https-')) {
-    // loop over the folders again to find docs
-    $lookintodir = $path . "/" . $pubDomain;
-    $subdirs = scandir($lookintodir);
-    $lastVersion = [];
-    foreach ($subdirs as $subdir) {
-        if ($subdir === '.' or $subdir === '..') continue;
-        if (is_dir($lookintodir . "/" . $subdir)) {
-            // find the specType https://github.com/Geonovum/respec/wiki/specType
-            // no, st, hr, im, pr, hr, wa
-            // split on -, get the second patt
-            // example: def-im-ro2012-20120418
-            $specType="";
-            // default: laatste versie?
-            $specGroup="laatste"; // norm, toelichting, documentatie, laatste
-            $dirParts = explode("-", $subdir);
-            if (count($dirParts) > 3) {
-              $specType=$dirParts[1];
-              switch ($specType) {
-                  case 'no':
-                      $norm[] = $subdir;
-                      break;
-                  case 'st':
-                      $norm[] = $subdir;
-                      break;
-                  case 'im':
-                      $norm[] = $subdir;
-                      break;
-                  case 'pr':
-                      $toelichting[] = $subdir;
-                      break;
-                  case 'al':
-                      $documentatie[] = $subdir;
-                      break;
-                  case 'bd':
-                      $documentatie[] = $subdir;
-                      break;
-                  case 'hr':
-                      $documentatie[] = $subdir;
-                      break;
-                  case 'wa':
-                      $documentatie[] = $subdir;
-                      break;
-                  default:
-                      $unknown[] = $subdir;
-                      // reset spectype
-                      $specType = "";
-              }
-            } else {
-              $unknown[] = $subdir;
+  if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList)) {
+        // loop over the folders again to find docs
+        $lookintodir = $path . "/" . $pubDomain;
+        $subdirs = scandir($lookintodir);
+        $lastVersion = [];
+        foreach ($subdirs as $subdir) {
+            if ($subdir === '.' or $subdir === '..') continue;
+            if (is_dir($lookintodir . "/" . $subdir)) {
+                // find the specType https://github.com/Geonovum/respec/wiki/specType
+                // no, st, hr, im, pr, hr, wa
+                // split on -, get the second patt
+                // example: def-im-ro2012-20120418
+                $specType="";
+                // default: laatste versie?
+                $specGroup="laatste"; // norm, toelichting, documentatie, laatste
+                $dirParts = explode("-", $subdir);
+                if (count($dirParts) > 3) {
+                  $specType=$dirParts[1];
+                  switch ($specType) {
+                      case 'no':
+                          $norm[] = $subdir;
+                          break;
+                      case 'st':
+                          $norm[] = $subdir;
+                          break;
+                      case 'im':
+                          $norm[] = $subdir;
+                          break;
+                      case 'pr':
+                          $toelichting[] = $subdir;
+                          break;
+                      case 'al':
+                          $documentatie[] = $subdir;
+                          break;
+                      case 'bd':
+                          $documentatie[] = $subdir;
+                          break;
+                      case 'hr':
+                          $documentatie[] = $subdir;
+                          break;
+                      case 'wa':
+                          $documentatie[] = $subdir;
+                          break;
+                      default:
+                          $unknown[] = $subdir;
+                          // reset spectype
+                          $specType = "";
+                  }
+                } else {
+                  $unknown[] = $subdir;
+                }
             }
+
         }
-    }
-    // reorder the types:
-    // loop over all docs
-    // TODO: order on types. If no def-, ... ..., then it could be a basedir
-    // now loop over all arrays with $subdirs
+        // reorder the types:
+        // loop over all docs
+        // TODO: order on types. If no def-, ... ..., then it could be a basedir
+        // now loop over all arrays with $subdirs
     if (count($unknown) > 0) { // ook subdirs
-      $groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList));
-    }
-    if (count($norm) > 0) {
-      $groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList));
-    }
-    if (count($toelichting) > 0) {
-      $groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList));
-    }
-    if (count($documentatie) > 0) {
-      $groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList));
-    }
+      $groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir));
+        }
+        if (count($norm) > 0) {
+      $groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir));
+        }
+        if (count($toelichting) > 0) {
+      $groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir));
+        }
+        if (count($documentatie) > 0) {
+      $groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir));
+        }
 
     $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
-  }
+    }
 }
 ?>
 
