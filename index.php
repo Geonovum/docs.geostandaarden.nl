@@ -62,24 +62,22 @@
       color: rgb(94,94,94);
     }
 
-    span.final, span.final a {
+      li.final span, li.final span a {
       font-weight: normal;
       color: #005a9c;
     }
-
-    span.def, span.def a {
+      li.def span, li.def span a {
       color: #005a9c;
     }
-
-    span.cv, span.cv a {
+      li.cv span, li.cv span a {
       color: orange;
     }
 
     span.vv, span.vv a {
       color: green;
     }
-
-    span.ld, span.ld a {
+      li.ld span, li.ld span a,
+      li.basis span, li.basis span a {
       color: #80CC28; 
     }
 
@@ -105,25 +103,108 @@
       width: 36rem;
       padding-bottom: 2rem;
     }
-
     </style>
+
+    <script>
+      window.doContent = function(which = "all") {
+        // cleanup previous
+        const contentContainer = document.getElementById("content");
+        while (contentContainer.firstChild){
+          contentContainer.removeChild(contentContainer.firstChild);
+        }
+
+        var domains = JSON.parse(window.domains);
+        console.log(which, domains.length);
+       
+        // per domain
+        domains.forEach((domain) => { // 0 domain, 1 title, 2 path, 3 groepen
+          const domaindiv = document.createElement("div");
+          domaindiv.className = 'pubDomain';
+          const h2 = document.createElement("h2");
+          const anchor = document.createElement("a");
+          anchor.href = domain[2];
+          const span = document.createElement("span");
+          span.className = 'pubDomainAbbr';
+          span.textContent = "(".concat(domain[0].toLowerCase(), ")");
+          anchor.appendChild(span);
+          const textnode = document.createTextNode(domain[1]);
+          anchor.appendChild(textnode);
+          h2.appendChild(anchor);
+          domaindiv.appendChild(h2);
+
+          var groups = domain[3];
+
+          // per groep
+          groups.forEach((group) => { // 0 name, 1 docs
+            var name = group[0];
+            var docs = group[1];
+            docs = docs.filter((doc) => (which == 'all' || (which == 'def' && doc[0] == 'def') || (which == 'latest' && doc[0] == 'final')));
+
+            if (docs.length > 0) {
+              const docsdiv = document.createElement("div");
+              docsdiv.className = 'docs';
+              const h3 = document.createElement("h3");
+              h3.textContent = name;
+              docsdiv.appendChild(h3);
+
+              const ul = document.createElement("ul");
+              // per document
+              docs.forEach((doc) => { // 0 cls, 1 title, 2 path
+                const li = document.createElement("li");
+                li.className = doc[0];
+                const span2 = document.createElement("span");
+                const a2 = document.createElement("a");
+                a2.href = doc[2];
+                a2.textContent = doc[1];
+                span2.appendChild(a2);
+                li.appendChild(span2);
+                ul.appendChild(li);
+              });
+
+              docsdiv.appendChild(ul);
+              domaindiv.appendChild(docsdiv);
+            }
+          });
+          contentContainer.appendChild(domaindiv);
+        });
+      }
+    </script>
   </head>
+
 <body>
 <div class="page">
 <img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Home">
 <h1>TESTOMGEVING Standaarden en technische documenten</h1>
 <h1><b>LET OP: DIT IS EEN TESTOMGEVING</b></h1>
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
-
-<p class="warning">Deze pagina is een TESTOMGEVING en slechts een kopie van de inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
+<p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.geonovum.nl">website van Geonovum</a> voor toelichting op de documentatie.</p>
 <p>Onderstaande documenten zijn op dit moment beschikbaar:</p>
+
+<fieldset style="margin-left: 20px;">
+  <legend>Laat alleen versies zien:</legend>
+  <label><input type="radio" id="showAll"    name="filter" value="all" checked>Alle</label>  
+  <label><input type="radio" id="showLatest" name="filter" value="latest"     >Laatste</label>
+  <label><input type="radio" id="showDef"    name="filter" value="def"        >Vastgestelde</label>
+</fieldset>
+
+<script>
+  const showAllRadio = document.getElementById("showAll");
+  showAllRadio.addEventListener("change", updatePage);
+  const showLatestRadio = document.getElementById("showLatest");
+  showLatestRadio.addEventListener("change", updatePage);
+  const showDefRadio = document.getElementById("showDef");
+  showDefRadio.addEventListener("change", updatePage);
+  function updatePage(e) {
+    window.doContent(e.target.value);
+  }
+</script>
+
+<div id="content"></div>
 
 <?php
 $pubDomainListURL = 'https://raw.githubusercontent.com/Geonovum/respec-utils/master/src/autodeploy/config/pubDomainList.json';
 // directories to be ignored. Uppercase
 $ignoreList = ['BRO', 'NWBBGT', '.GIT'];
-// directories for which all files should be shown (containing PDFs instead of ReSpec docs)
-$publishAllList = ['G4W', 'KL', 'MIM', 'OOV','RO','SERV'];
 
 // -------------------------------
 // get the list of pubDomains:
@@ -153,20 +234,17 @@ function getPubDomainTitle($pubDomain, $allPubDomains)
   // default to pubdomain
   $title = strtoupper($pubDomain);
   foreach ($allPubDomains as $pd) {
-    if ($pd['pubDomain'] == $pubDomain) {
-      if (strlen($pd['pubDomainTitle']) > 0) {
+    if ($pd['pubDomain'] == $pubDomain and strlen($pd['pubDomainTitle']) > 0) {
         $title = $pd['pubDomainTitle'];
-      }
     }
   }
-  $titleFull = "<span class='pubDomainAbbr'>(".strtolower($pubDomain).")</span>".$title;
-  return $titleFull;
+  return $title;
 }
 
-function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
+function subDirsAsList($subdirs, $pubDomain, $lookintodir)
 {
-  $ul = False;
-  $htmlList = "";
+  $list = [];
+
   foreach ($subdirs as $subdir) {
     $docType="Laatste versie";
     $cls="final";
@@ -182,41 +260,41 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "ld-")) {
       $docType="Levend document";
       $cls="ld";
+    } elseif (startsWith($subdir, "basis-")) {
+      $docType="Document";
+      $cls="basis";
+    } elseif (startsWith($subdir, "wv-")) {
+      // skip wv...
+      continue;
     }
-    // TODO: why only Vastgestelde versie?
-    //if ($docType=="Laatste versie" or $docType=="Vastgestelde versie" or in_array(strtoupper($pubDomain), $publishAllList)) ) {
-      if ($ul == False) {
-        $htmlList .= "<ul class='docs'>\n";
-        $ul = True;
-      }
-      $htmlList .= "<li><span class='".$cls."'><a href='".$lookintodir . "/" . $subdir."'>".$docType.": ".$subdir."</a></span></li>\n";
-    //}
+
+    $list[] = array($cls, $docType .": ". $subdir, $lookintodir . "/" . $subdir);
   }
-  if ($ul == True){
-    $htmlList .= "</ul>\n";
-    $ul == False;
-  }
-  return $htmlList;
+
+  return $list;
 }
 
-
+// inlezen data
 $path = '.';
 $pubDomains = scandir($path);
+$domain = [];
 
 foreach ($pubDomains as $pubDomain) {
-    if ($pubDomain === '.' or $pubDomain === '..') continue;
-    // reset the arrays for types
-    $norm = [];
-    $toelichting = [];
-    $documentatie = [];
-    $unknown = [];
-    if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList) and !startsWith($pubDomain, 'https-')) {
-        echo "<div class='pubDomain'><h2><a href='".$pubDomain."'>".getPubDomainTitle($pubDomain, $allPubDomains)."</a></h2>\n";
+  if ($pubDomain === '.' or $pubDomain === '..') continue;
+
+  $groups = [];
+
+  // reset the arrays for types
+  $norm = [];
+  $toelichting = [];
+  $documentatie = [];
+  $unknown = [];      // also latest
+
+  if (is_dir($path . '/' . $pubDomain) and !in_array(strtoupper($pubDomain), $ignoreList)) {
         // loop over the folders again to find docs
         $lookintodir = $path . "/" . $pubDomain;
         $subdirs = scandir($lookintodir);
         $lastVersion = [];
-        $ul = False;
         foreach ($subdirs as $subdir) {
             if ($subdir === '.' or $subdir === '..') continue;
             if (is_dir($lookintodir . "/" . $subdir)) {
@@ -264,30 +342,33 @@ foreach ($pubDomains as $pubDomain) {
                   $unknown[] = $subdir;
                 }
             }
+
         }
         // reorder the types:
         // loop over all docs
         // TODO: order on types. If no def-, ... ..., then it could be a basedir
         // now loop over all arrays with $subdirs
-        if (count($unknown) > 0) {
-          echo "<h3>Laatste versies</h3>";
-          echo subDirsAsList($unknown, $pubDomain, $lookintodir, $publishAllList);
+    if (count($unknown) > 0) { // ook subdirs
+      $groups[] = array("Laatste versies", subDirsAsList($unknown, $pubDomain, $lookintodir));
         }
         if (count($norm) > 0) {
-          echo "<h3>Standaarden</h3>";
-          echo subDirsAsList($norm, $pubDomain, $lookintodir, $publishAllList);
+      $groups[] = array("Standaarden", subDirsAsList($norm, $pubDomain, $lookintodir));
         }
         if (count($toelichting) > 0) {
-          echo "<h3>Toelichtingen</h3>";
-          echo subDirsAsList($toelichting, $pubDomain, $lookintodir, $publishAllList);
+      $groups[] = array("Toelichtingen", subDirsAsList($toelichting, $pubDomain, $lookintodir));
         }
         if (count($documentatie) > 0) {
-          echo "<h3>Documentatie</h3>";
-          echo subDirsAsList($documentatie, $pubDomain, $lookintodir, $publishAllList);
+      $groups[] = array("Documentatie", subDirsAsList($documentatie, $pubDomain, $lookintodir));
         }
-        echo "</div>\n";
+
+    $domain[] = array($pubDomain, getPubDomainTitle($pubDomain, $allPubDomains), $pubDomain, $groups);
     }
 }
 ?>
+
+<script>
+  window.domains = '<?php echo json_encode($domain); ?>'; 
+  window.doContent("all");
+</script>
 </div>
 </body>
