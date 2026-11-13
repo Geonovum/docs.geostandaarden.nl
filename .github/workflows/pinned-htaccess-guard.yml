@@ -1,0 +1,45 @@
+name: Bewaak gepinde .htaccess-bestanden
+
+# Vangnet naast de pin-guard in NL-ReSpec-workflows/publish.yml:
+# een PR die een .htaccess met de marker GEPINNED-do-not-overwrite wijzigt,
+# faalt, tenzij de PR het label 'pin-wijziging-ok' heeft.
+# Reden: sommige versieloze links (bijv. bro/sad en bro/sld) worden juridisch
+# aangehaald (wetten.nl, BWBR0040482) en moeten naar de vastgestelde versie wijzen.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+    paths:
+      - '**/.htaccess'
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Controleer gepinde .htaccess-bestanden
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          OVERRIDE: ${{ contains(github.event.pull_request.labels.*.name, 'pin-wijziging-ok') }}
+        run: |
+          set -euo pipefail
+          FAILED=0
+          while IFS= read -r f; do
+            [[ "$(basename "$f")" == ".htaccess" ]] || continue
+            if git show "$BASE_SHA:$f" 2>/dev/null | grep -q 'GEPINNED-do-not-overwrite'; then
+              if [[ "$OVERRIDE" == "true" ]]; then
+                echo "::warning file=$f::Gepinde .htaccess gewijzigd; toegestaan via label pin-wijziging-ok."
+              else
+                echo "::error file=$f::Deze .htaccess is gepind (GEPINNED-do-not-overwrite) en mag niet automatisch gewijzigd worden. Herstel het bestand in deze PR, of voeg het label 'pin-wijziging-ok' toe als de wijziging bewust is."
+                FAILED=1
+              fi
+            fi
+          done < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+          exit "$FAILED"
