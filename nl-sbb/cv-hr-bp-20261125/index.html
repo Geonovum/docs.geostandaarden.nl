@@ -1,0 +1,1720 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 37.2.0">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+  
+  
+  
+  
+  
+  
+  
+<script>document.title = respecConfig.title</script>
+<title>Best Practices en aanvullingen voor NL-SBB - Standaard voor het beschrijven van begrippen 1.0.1</title>
+  
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+  
+  
+  
+<style>
+div.imageinfo img {max-width: none;}
+</style>
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<style>
+ul.index{columns:30ch;column-gap:1.5em}
+ul.index li{list-style:inherit}
+ul.index li span{color:inherit;cursor:pointer;white-space:normal}
+#index-defined-here ul.index li{font-size:.9rem}
+ul.index code{color:inherit}
+#index-defined-here .print-only{display:none}
+@media print{
+#index-defined-here .print-only{display:initial}
+}
+</style>
+<meta name="description" content="Dit document bevat best practices en optionele uitbreidingen voor de Standaard voor het beschrijven van begrippen [NLSBB].">
+<style>
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/respec/style/",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://docs.geostandaarden.nl/media/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://docs.geostandaarden.nl/media/Geonovum.ico"
+    }
+  ],
+  "postProcess": [
+    null,
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie.",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment.",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#EE0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://docs.geostandaarden.nl/media/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://docs.geostandaarden.nl/media/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://docs.geostandaarden.nl/media/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "WETTENNL": {
+      "title": "Wetten.nl",
+      "href": "https://linkeddata.overheid.nl/terms/",
+      "publisher": "KOOP",
+      "id": "wettennl"
+    },
+    "SKOSLEX": {
+      "title": "Skos-lex",
+      "href": "http://bp4mc2.org/def/skos-lex",
+      "publisher": "bp4mc2",
+      "id": "skoslex"
+    },
+    "NLSBB": {
+      "title": "NL-SBB - Standaard voor het beschrijven van begrippen",
+      "href": "https://docs.geostandaarden.nl/nl-sbb/nl-sbb/",
+      "publisher": "Geonovum",
+      "authors": [
+        "Jesse Bakker",
+        "Arjen Santema",
+        "Kees Trautwein"
+      ],
+      "id": "nlsbb"
+    }
+  },
+  "title": "Best Practices en aanvullingen voor NL-SBB - Standaard voor het beschrijven van begrippen",
+  "specStatus": "cv",
+  "specType": "HR",
+  "pubDomain": "nl-sbb",
+  "shortName": "bp",
+  "edDraftURI": "https://geonovum.github.io/nl-sbb-bp/",
+  "publishDate": "2026-11-25",
+  "publishVersion": "1.0.1",
+  "authors": [
+    {
+      "name": "Jos van der Arend (Kennisnet)"
+    },
+    {
+      "name": "Jesse Bakker (Kadaster)"
+    },
+    {
+      "name": "Koos Boersma (IHW)"
+    },
+    {
+      "name": "Marco Brattinga (Nationale Politie)"
+    },
+    {
+      "name": "Linda van den Brink (Geonovum)"
+    },
+    {
+      "name": "Pieter van Everdingen (PLDN)"
+    },
+    {
+      "name": "Roeland Euwens (KNB)"
+    },
+    {
+      "name": "Casper le Gras (KOOP)"
+    },
+    {
+      "name": "Gerald Groot Roessink (DUO)"
+    },
+    {
+      "name": "Pano Maria (Skemu)"
+    },
+    {
+      "name": "Rik (CROW)"
+    },
+    {
+      "name": "Hans Overbeek (KOOP)"
+    },
+    {
+      "name": "Viyanti Ramdhiansing (Kennisnet)"
+    },
+    {
+      "name": "Arjen Santema (Kadaster)"
+    },
+    {
+      "name": "Frank Terpstra (Geonovum)"
+    },
+    {
+      "name": "Kees Trautwein (Logius)"
+    },
+    {
+      "name": "Jan Willem van Veen (ArchiXL)"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Jesse Bakker"
+    },
+    {
+      "name": "Arjen Santema"
+    },
+    {
+      "name": "Kees Trautwein"
+    }
+  ],
+  "github": "https://github.com/Geonovum/nl-sbb-bp"
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
+
+<body class="h-entry"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://docs.geostandaarden.nl/media/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Best Practices en aanvullingen voor NL-SBB - Standaard voor het beschrijven van begrippen 1.0.1</h1>
+    
+    <h2>
+      Geonovum Handreiking<br>
+      Consultatieversie
+      <time class="dt-published" datetime="2026-11-25">25 november 2026</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/nl-sbb/cv-hr-bp-20261125">https://docs.geostandaarden.nl/nl-sbb/cv-hr-bp-20261125</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/nl-sbb/bp/">https://docs.geostandaarden.nl/nl-sbb/bp/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/nl-sbb-bp/">https://geonovum.github.io/nl-sbb-bp/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteurs:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Jesse Bakker</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Arjen Santema</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Kees Trautwein</span>
+  </dd>
+      
+      <dt>Auteurs:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Jos van der Arend (Kennisnet)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Jesse Bakker (Kadaster)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Koos Boersma (IHW)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Marco Brattinga (Nationale Politie)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Linda van den Brink (Geonovum)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Pieter van Everdingen (PLDN)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Roeland Euwens (KNB)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Casper le Gras (KOOP)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Gerald Groot Roessink (DUO)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Pano Maria (Skemu)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Rik (CROW)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Hans Overbeek (KOOP)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Viyanti Ramdhiansing (Kennisnet)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Arjen Santema (Kadaster)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Frank Terpstra (Geonovum)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Kees Trautwein (Logius)</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Jan Willem van Veen (ArchiXL)</span>
+  </dd>
+      <dt>Doe mee:</dt><dd>
+    <a href="https://github.com/Geonovum/nl-sbb-bp/">GitHub Geonovum/nl-sbb-bp</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/nl-sbb-bp/issues/">Alle issues</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/nl-sbb-bp/issues/new/choose">Dien een melding in</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/nl-sbb-bp/commits/">Revisiehistorie</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/nl-sbb-bp/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://docs.geostandaarden.nl/media/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+          </p>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Samenvatting</h2><p>Dit document bevat best practices en optionele uitbreidingen voor de Standaard voor het beschrijven van begrippen [<cite><a class="bibref" data-link-type="biblio" href="#bib-nlsbb" title="NL-SBB - Standaard voor het beschrijven van begrippen">NLSBB</a></cite>]. </p>
+<p>Hoofdstuk 1 - <strong>Best practices</strong> geeft een overzicht van bestaande good practices voor het werken met de in deze standaard beschreven kenmerken van begrippen. Dit deel is bedoeld voor specialisten zoals analisten, informatiemodelleurs en -architecten en voor ontwikkelaars van ondersteunende tooling. </p>
+<p>Hoofdstuk 2 - <strong>Over het adopteren van NL-SBB en het verbinden met SKOS-begrippen</strong> beschrijft de verschillen tussen NL-SBB en SKOS en wat dat betekent bij de overstap naar NL-SBB en bij het gebruik van begrippen van anderen.</p>
+<p>Hoofdstuk 3 - <strong>Uitbreidingen</strong> geeft een niet-volledig overzicht van uitbreidingen op deze standaard die relevant zijn voor aanvullende use cases.</p>
+</section>
+  <section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is een consultatieversie.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Samenvatting</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#best-practices"><bdi class="secno">1. </bdi>Best practices</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#begrippen"><bdi class="secno">1.1 </bdi>Begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#termen"><bdi class="secno">1.1.1 </bdi>Termen</a></li><li class="tocline"><a class="tocxref" href="#definities-en-uitleg"><bdi class="secno">1.1.2 </bdi>Definities en uitleg</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#iso-704"><bdi class="secno">1.1.2.1 </bdi>ISO 704</a></li><li class="tocline"><a class="tocxref" href="#typen-definities"><bdi class="secno">1.1.2.2 </bdi>Typen definities</a></li><li class="tocline"><a class="tocxref" href="#nationale-politie"><bdi class="secno">1.1.2.3 </bdi>Nationale politie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hierarchische-relaties"><bdi class="secno">1.1.3 </bdi>Hiërarchische relaties</a></li></ol></li><li class="tocline"><a class="tocxref" href="#bronnen"><bdi class="secno">1.2 </bdi>Bronnen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#typering"><bdi class="secno">1.2.1 </bdi>Typering</a></li></ol></li><li class="tocline"><a class="tocxref" href="#harmonisatie-en-hergebruik"><bdi class="secno">1.3 </bdi>Harmonisatie en hergebruik</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#harmonisatie"><bdi class="secno">1.3.1 </bdi>Harmonisatie</a></li><li class="tocline"><a class="tocxref" href="#hergebruik"><bdi class="secno">1.3.2 </bdi>Hergebruik</a></li></ol></li><li class="tocline"><a class="tocxref" href="#samenwerking-informatiemodel-en-begrippenkader"><bdi class="secno">1.4 </bdi>Samenwerking Informatiemodel en Begrippenkader</a></li><li class="tocline"><a class="tocxref" href="#begrippenbeheer-en-metadata"><bdi class="secno">1.5 </bdi>Begrippenbeheer en metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#kernprincipes"><bdi class="secno">1.5.1 </bdi>Kernprincipes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gegevens-zijn-iets-anders-dan-de-onderwerpen-waarover-deze-gegevens-gaan"><bdi class="secno">1.5.1.1 </bdi>Gegevens zijn iets anders dan de onderwerpen waarover deze gegevens gaan</a></li><li class="tocline"><a class="tocxref" href="#om-het-over-een-onderwerp-te-kunnen-hebben-zul-je-eraan-moeten-kunnen-refereren"><bdi class="secno">1.5.1.2 </bdi>Om het over een onderwerp te kunnen hebben, zul je eraan moeten kunnen refereren</a></li><li class="tocline"><a class="tocxref" href="#onderwerpen-kunnen-gerelateerd-aan-elkaar-zijn-hierover-zijn-geen-gegevens-nodig"><bdi class="secno">1.5.1.3 </bdi>Onderwerpen kunnen gerelateerd aan elkaar zijn, hierover zijn geen gegevens nodig</a></li><li class="tocline"><a class="tocxref" href="#we-versioneren-gegevens-niet-de-onderwerpen-waarover-de-gegevens-gaan"><bdi class="secno">1.5.1.4 </bdi>We versioneren gegevens, niet de onderwerpen waarover de gegevens gaan</a></li><li class="tocline"><a class="tocxref" href="#als-we-het-over-de-gegevens-zelf-hebben-dan-hebben-we-het-over-metagegevens"><bdi class="secno">1.5.1.5 </bdi>Als we het over de gegevens zelf hebben, dan hebben we het over metagegevens</a></li><li class="tocline"><a class="tocxref" href="#van-een-onderwerp-kunnen-er-meerdere-gegevensobjecten-zijn"><bdi class="secno">1.5.1.6 </bdi>Van één onderwerp kunnen er meerdere gegevensobjecten zijn</a></li><li class="tocline"><a class="tocxref" href="#de-eenheid-van-beheer-bestaat-uit-een-of-meerdere-gegevensobjecten"><bdi class="secno">1.5.1.7 </bdi>De eenheid van beheer bestaat uit één of meerdere gegevensobjecten</a></li></ol></li><li class="tocline"><a class="tocxref" href="#varianten-voor-versiebeheer-van-begripsbeschrijvingen"><bdi class="secno">1.5.2 </bdi>Varianten voor versiebeheer van begripsbeschrijvingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#a-begripsbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.1 </bdi>A. Begripsbeschrijving als eenheid van beheer</a></li><li class="tocline"><a class="tocxref" href="#b-begrippenkaderbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.2 </bdi>B. Begrippenkaderbeschrijving als eenheid van beheer</a></li><li class="tocline"><a class="tocxref" href="#c-deel-van-een-begripsbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.3 </bdi>C. Deel van een begripsbeschrijving als eenheid van beheer</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tijdcontext-van-datasets"><bdi class="secno">1.5.3 </bdi>Tijdcontext van datasets</a></li><li class="tocline"><a class="tocxref" href="#taalbinding"><bdi class="secno">1.5.4 </bdi>Taalbinding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#taalbinding-begrippenkader-en-dataset-eenheid-van-publicatie-eenheid-van-beheer"><bdi class="secno">1.5.4.1 </bdi>Taalbinding Begrippenkader en Dataset (eenheid van publicatie, eenheid van beheer)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#begrippenkader-als-dataset"><bdi class="secno">1.5.4.1.1 </bdi>Begrippenkader als dataset</a></li></ol></li><li class="tocline"><a class="tocxref" href="#taalbinding-herkomstinformatie"><bdi class="secno">1.5.4.2 </bdi>Taalbinding Herkomstinformatie</a></li><li class="tocline"><a class="tocxref" href="#voorbeelduitwerkingen"><bdi class="secno">1.5.4.3 </bdi>Voorbeelduitwerkingen</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#over-het-adopteren-van-nl-sbb-en-het-verbinden-met-skos-begrippen"><bdi class="secno">2. </bdi>Over het adopteren van NL-SBB en het verbinden met SKOS-begrippen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanvullingen-en-aanscherpingen"><bdi class="secno">2.1 </bdi>Aanvullingen en aanscherpingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#begrip"><bdi class="secno">2.1.1 </bdi>Begrip</a></li><li class="tocline"><a class="tocxref" href="#begrippenkader"><bdi class="secno">2.1.2 </bdi>Begrippenkader</a></li><li class="tocline"><a class="tocxref" href="#collecties"><bdi class="secno">2.1.3 </bdi>Collecties</a></li><li class="tocline"><a class="tocxref" href="#brondocument"><bdi class="secno">2.1.4 </bdi>Brondocument</a></li></ol></li><li class="tocline"><a class="tocxref" href="#adoptie-van-nl-sbb"><bdi class="secno">2.2 </bdi>Adoptie van NL-SBB</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-wat-zijn-de-implicaties-als-ik-de-overstap-van-skos-naar-nl-sbb-maak"><bdi class="secno">2.2.1 </bdi>1. Wat zijn de implicaties als ik de overstap van SKOS naar NL-SBB maak?</a></li><li class="tocline"><a class="tocxref" href="#x2-kan-ik-begrippen-van-anderen-die-alleen-skos-volgen-gebruiken"><bdi class="secno">2.2.2 </bdi>2. Kan ik begrippen van anderen (die alleen SKOS volgen) gebruiken?</a></li><li class="tocline"><a class="tocxref" href="#x3-kunnen-anderen-die-geen-nl-sbb-gebruiken-mijn-begrippen-nog-gebruiken"><bdi class="secno">2.2.3 </bdi>3. Kunnen anderen (die geen NL-SBB gebruiken) mijn begrippen nog gebruiken?</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#uitbreidingen"><bdi class="secno">3. </bdi>Uitbreidingen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aanvullingen"><bdi class="secno">3.1 </bdi>Aanvullingen</a></li><li class="tocline"><a class="tocxref" href="#skos-xl"><bdi class="secno">3.2 </bdi>SKOS-XL</a></li><li class="tocline"><a class="tocxref" href="#skos-lex"><bdi class="secno">3.3 </bdi>Skos-lex</a></li><li class="tocline"><a class="tocxref" href="#ontolex"><bdi class="secno">3.4 </bdi>Ontolex</a></li><li class="tocline"><a class="tocxref" href="#lemon-tree"><bdi class="secno">3.5 </bdi>Lemon-tree</a></li><li class="tocline"><a class="tocxref" href="#xkos"><bdi class="secno">3.6 </bdi>XKOS</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">4. </bdi>Conformiteit</a></li><li class="tocline"><a class="tocxref" href="#tof"><bdi class="secno">5. </bdi>Lijst met figuren</a></li><li class="tocline"><a class="tocxref" href="#index"><bdi class="secno">A. </bdi>Index</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#index-defined-here"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</a></li><li class="tocline"><a class="tocxref" href="#index-defined-elsewhere"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>Referenties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normatieve-referenties"><bdi class="secno">B.1 </bdi>Normatieve referenties</a></li><li class="tocline"><a class="tocxref" href="#informatieve-referenties"><bdi class="secno">B.2 </bdi>Informatieve referenties</a></li></ol></li></ol></nav>
+
+  
+  <section class="informative" id="best-practices"><div class="header-wrapper"><h2 id="x1-best-practices"><bdi class="secno">1. </bdi>Best practices</h2><a class="self-link" href="#best-practices" aria-label="Permalink for Section 1."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<section id="begrippen"><div class="header-wrapper"><h3 id="x1-1-begrippen"><bdi class="secno">1.1 </bdi>Begrippen</h3><a class="self-link" href="#begrippen" aria-label="Permalink for Section 1.1"></a></div>
+<section id="termen"><div class="header-wrapper"><h4 id="x1-1-1-termen"><bdi class="secno">1.1.1 </bdi>Termen</h4><a class="self-link" href="#termen" aria-label="Permalink for Section 1.1.1"></a></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-gangbare-conventies-voor-het-beschrijven-van-termen-voorkeurstermen-alternatieve-termen-zijn"><bdi lang="en">Best Practice 1</bdi></a>: <span class="practicelab" id="bp-gangbare-conventies-voor-het-beschrijven-van-termen-voorkeurstermen-alternatieve-termen-zijn">Gangbare conventies voor het beschrijven van termen (voorkeurstermen, alternatieve termen) zijn:
+</span><p class="practicedesc"></p><p>Deze conventies gaan over de termen, dus de namen waarmee een begrip wordt aangeduid. Ze gaan niet over de URI van het begrip.</p>
+<ul>
+<li>Gebruik een zelfstandig naamwoord, eventueel gekwalificeerd met een bijvoeglijk naamwoord. Gebruik geen bijwoorden, lidwoorden en voorzetsels.</li>
+<li>Vermijd dubbele adjectieven.</li>
+<li>Gebruik geen werkwoorden.</li>
+<li>Gebruik geen afkortingen.</li>
+<li>Schrijf een term in kleine letters, zoals in een zin, behalve bij eigennamen.</li>
+<li>Gebruik Latijnse alfabetische karakters (UTF-8). Gebruik geen leestekens (streepjes, punten, komma's en dergelijke).</li>
+<li>Gebruik enkelvoud. Dit geldt specifiek voor Duits, Frans, Nederlands, niet voor het Engels.</li>
+<li>Gebruik de officiële spelling van de <a href="https://woordenlijst.org">Woordenlijst Nederlandse Taal</a> (het groene boekje). Gebruik ook de bijbehorende <a href="https://woordenlijst.org/leidraden">Leidraden</a>, bijvoorbeeld voor het schrijven van samenstellingen met Engelse leenwoorden: "datalineage" en niet "data lineage" (<a href="https://woordenlijst.org/zoeken/?leidraad=12-1">leidraad 12-1</a>).</li>
+</ul>
+<p></p></div><div class="practice advisement"><a class="marker self-link" href="#bp-de-voorkeursterm-sluit-aan-op-de-daadwerkelijke-term-zoals-deze-lexicaal-gebruikt-wordt"><bdi lang="en">Best Practice 2</bdi></a>: <span class="practicelab" id="bp-de-voorkeursterm-sluit-aan-op-de-daadwerkelijke-term-zoals-deze-lexicaal-gebruikt-wordt">De voorkeursterm sluit aan op de daadwerkelijke term zoals deze lexicaal gebruikt wordt.</span><p class="practicedesc"></p><p>
+</p><ul>
+<li>Het is verplicht dat voor iedere taal alle voorkeurstermen die in één taal voorkomen in één begrippenkader uniek zijn. De voorkeursterm is de daadwerkelijke term zoals deze lexicaal gebruikt wordt, dus met spaties, diakrieten en hoofdletters bij namen.</li> 
+<li>Mochten binnen één begrippenkader toch twee begrippen voorkomen die vaak met dezelfde term worden aangeduid, dan is het noodzakelijk - om spraakverwarring te voorkomen - om een postfix of prefix toe te voegen als dit algemeen gebruikelijk is. Denk aan <i>Hengelo (OV)</i> voor de plaats in Overijssel en <i>Hengelo (GLD)</i> voor de plaats in Gelderland.</li> 
+<li>Mocht een postfix of prefix in de praktijk niet worden gebruikt, dan is dit een sterke aanwijzing dat de twee begrippen feitelijk niet tot hetzelfde begrippenkader behoren, en uit elkaar gehaald moeten worden. De basisregel blijft gelden.</li> 
+<li>Als begrippen in verschillende begrippenkaders zijn geplaatst, dan is een nadere aanduiding van de context ongewenst. Als een lexicale term toch nader gekwalificeerd wordt dan is het aangeraden om een meer generieke of classificerende term te gebruiken en deze tussen haakjes achter de lexicale term te plaatsen in de term, conform ISO 25964. Bijvoorbeeld <i>Bank (Zitobject)</i> en <i>Bank (Financiële instelling)</i>.</li>
+</ul>
+<p></p></div><div class="practice advisement"><a class="marker self-link" href="#bp-maak-expliciet-voor-de-lezer-wanneer-in-een-zin-het-woord-zelf-en-niet-de-betekenis-van-het-woord-wordt-bedoeld"><bdi lang="en">Best Practice 3</bdi></a>: <span class="practicelab" id="bp-maak-expliciet-voor-de-lezer-wanneer-in-een-zin-het-woord-zelf-en-niet-de-betekenis-van-het-woord-wordt-bedoeld">Maak expliciet voor de lezer wanneer in een zin het woord zelf en niet de betekenis van het woord wordt bedoeld.</span><p class="practicedesc"></p><p>Wanneer een woord naar zichzelf verwijst, bijvoorbeeld in de zin "'Bank' is een zelfstandig naamwoord", dan zou dit moeten worden aangegeven met enkele of dubbele aanhalingstekens. Wanneer een term uit meerdere woorden bestaat en gebruikt wordt in een zin om een begrip aan te duiden zou dit kenbaar gemaakt moeten worden met guillemets (French quotation marks) «». Bijvoorbeeld «heeft bovenliggend begrip» relateert een begrip aan...". Dit zorgt ervoor dat er geen grammaticaal onlogische zinnen ontstaan en dat de lezer de tekst beter begrijpt.</p></div><div class="practice advisement"><a class="marker self-link" href="#bp-geef-bij-lexicale-labels-en-notities-aan-in-welke-taal-deze-gegeven-zijn"><bdi lang="en">Best Practice 4</bdi></a>: <span class="practicelab" id="bp-geef-bij-lexicale-labels-en-notities-aan-in-welke-taal-deze-gegeven-zijn">Geef bij lexicale labels en notities aan in welke taal deze gegeven zijn.
+</span><p class="practicedesc"></p><p>Voor labels moet aangegeven worden in welke taal deze gespecificeerd zijn.</p></div><div class="practice advisement"><a class="marker self-link" href="#bp-in-rdf-is-het-gebruikelijk-om-ieder-begrip-een-naam-in-de-vorm-van-een-rdfs-label-te-geven-daarmee-kunnen-ook-interfaces-overweg-die-de-verschillende-soorten-termen-voorkeursterm-alternatieve-term-zoekterm-niet-kunnen-onderscheiden-daarmee-krijgt-ieder-begrip-een-leesbare-naam-ongeacht-de-context"><bdi lang="en">Best Practice 5</bdi></a>: <span class="practicelab" id="bp-in-rdf-is-het-gebruikelijk-om-ieder-begrip-een-naam-in-de-vorm-van-een-rdfs-label-te-geven-daarmee-kunnen-ook-interfaces-overweg-die-de-verschillende-soorten-termen-voorkeursterm-alternatieve-term-zoekterm-niet-kunnen-onderscheiden-daarmee-krijgt-ieder-begrip-een-leesbare-naam-ongeacht-de-context">In RDF is het gebruikelijk om ieder begrip een naam in de vorm van een rdfs:label te geven. Daarmee kunnen ook interfaces overweg die de verschillende soorten termen (voorkeursterm, alternatieve term, zoekterm) niet kunnen onderscheiden. Daarmee krijgt ieder begrip een leesbare naam, ongeacht de context.</span><p class="practicedesc"></p><p>Anders dan bij de voorkeursterm, is het verstandig om wel context in de naam mee te geven door bijvoorbeeld tussen haakjes deze context weer te geven, zoals bij <i>bank (financiële instelling)</i>. Daardoor ontstaat geen verwarring in het kader van homoniemen. De algemene naam bevordert tevens de compatibiliteit met bestaande tools. Het is denkbaar dat tools deze term afleiden van bijvoorbeeld de (Engelse) voorkeursterm of de code.</p></div></section><section id="definities-en-uitleg"><div class="header-wrapper"><h4 id="x1-1-2-definities-en-uitleg"><bdi class="secno">1.1.2 </bdi>Definities en uitleg</h4><a class="self-link" href="#definities-en-uitleg" aria-label="Permalink for Section 1.1.2"></a></div>
+<p>Verschillende organisaties hebben uitgewerkte conventies voor het formuleren van een definitie. Deze conventies zijn één-op-één ook toepasbaar op het formuleren van een goede uitleg in begrijpelijke taal.</p>
+<section id="iso-704"><div class="header-wrapper"><h5 id="x1-1-2-1-iso-704"><bdi class="secno">1.1.2.1 </bdi>ISO 704</h5><a class="self-link" href="#iso-704" aria-label="Permalink for Section 1.1.2.1"></a></div>
+<p>In de NORA werkgroep begrippenkader hanteert men de <a href="https://www.iso.org/obp/ui/en/#iso:std:iso:704:ed-4:v1:en">ISO 704</a>. Een samenvatting daarvan is te vinden op <a href="https://www.noraonline.nl/wiki/Expertgroep_NORA_Begrippenkader_20231003#ISO_704">https://www.noraonline.nl/wiki/Expertgroep_NORA_Begrippenkader_20231003#ISO_704</a></p>
+</section><section id="typen-definities"><div class="header-wrapper"><h5 id="x1-1-2-2-typen-definities"><bdi class="secno">1.1.2.2 </bdi>Typen definities</h5><a class="self-link" href="#typen-definities" aria-label="Permalink for Section 1.1.2.2"></a></div>
+<p>Vanuit de Stichting SURVUZ zijn de volgende typen definities aangedragen:</p>
+<ul>
+<li><strong>Type 1</strong>: Typering (genus/differentia) - BEGRIP is afgeleide van hoger liggend begrip, met onderscheidend kenmerk X (overerving, generalisatie, supertype).<ul>
+<li>Voorbeeld: bles. Een paard met een wit voorhoofd. Palomino. Een paard met een goudgele vacht en lichte manen en staart.</li>
+<li>Afgedekte relaties uit NL-SBB: «heeft bovenliggend begrip», «is specialisatie van», «is exemplaar van», «is categorie van», «is onderdeel van».</li>
+</ul>
+</li>
+<li><strong>Type 2</strong>: Samenstelling (totum/dividere) - BEGRIP is een geheel dat is beschreven door de delen te beschrijven (hiërarchie, geheel/deel).<ul>
+<li>Voorbeeld: organisatie. Een groep mensen die met middelen samenwerkt. </li>
+<li>Voorbeeld: trein. Een locomotief met wagons.</li>
+<li>Afgedekte relaties uit NL-SBB: «omvat»</li>
+</ul>
+</li>
+<li><strong>Type 3</strong>: Onderdeel (pars) - BEGRIP is een onderdeel van een groter geheel, met een specifiek kenmerk.<ul>
+<li>Voorbeeld: blad – Een onderdeel van een plantaardig organisme, dat zich uitstrekt vanuit de stengel en dat een essentieel onderdeel vormt van het fotosyntheseproces.</li>
+<li>Afgedekte relaties uit NL-SBB: «heeft bovenliggend begrip», «is onderdeel van»</li>
+</ul>
+</li>
+<li><strong>Type 4</strong>: Relatie (associatio) - BEGRIP is een relatie tussen twee entiteiten (een associatie).<ul>
+<li>Voorbeeld: huwelijk - Een juridische relatie tussen twee personen.</li>
+</ul>
+</li>
+<li><strong>Type 5</strong>: Kenmerk (signum) - BEGRIP is een kenmerk van een entiteit (een eigenschap).<ul>
+<li>Voorbeeld: juistheid - De mate waarin iets z’n echte waarde correct weergeeft. </li>
+<li>Voorbeeld: beschikbaarheid - De mate waarin iets aanwezig is voor de beoogde situatie/doel.</li>
+</ul>
+</li>
+</ul>
+<p>NB: Voor taxonomieën maakt men bij voorkeur gebruik van uitsluitend Type 1 definities. Het topbegrip in een taxonomie zal echter van een ander type zijn.</p>
+</section><section id="nationale-politie"><div class="header-wrapper"><h5 id="x1-1-2-3-nationale-politie"><bdi class="secno">1.1.2.3 </bdi>Nationale politie</h5><a class="self-link" href="#nationale-politie" aria-label="Permalink for Section 1.1.2.3"></a></div>
+<p><strong>Aanleiding</strong></p>
+<p>Als mensen samenwerken dan is het noodzakelijk dat ze de gemeenschappelijke termen uit het dagelijks werk op dezelfde wijze interpreteren. Dat lijkt vanzelfsprekend, maar in de praktijk is dat zeker niet altijd zo. Zeker in een grote organisatie zoals de politie worden regelmatig termen op verschillende manieren geïnterpreteerd. Termen als 'draaideurcrimineel', 'jihadist' of 'huiselijk geweld' kunnen in verschillende organisatieonderdelen op een andere manier uitgelegd worden.</p>
+<p>Als dergelijke termen gebruikt worden bij de ontwikkeling van hulpmiddelen, zoals computersystemen of opleidingen of als gegevens gebaseerd op deze termen worden gedeeld binnen de Politie of met ketenpartners, dan kan dit tot ongewenste situaties leiden.</p>
+<p>Eenduidige definities van de begrippen die aangeduid worden met de gebruikte termen, zogenaamde begripsdefinities, kunnen zulke spraakverwarringen voorkomen. Een begripsdefinitie verbindt een term met een eenduidige betekenis. Zij nemen interpretatieverschillen bij de uitvoering van het werk weg. Begripsdefinities vormen een hulpmiddel om te komen tot één gemeenschappelijke taal. Met een goed geformuleerde definitie is het voor iedereen duidelijk wat onder een bepaalde term wordt verstaan in een specifieke context.</p>
+<p>Het definiëren van begrippen is niet nieuw. Ook binnen de politie bestaan al heel veel definities van begrippen. Hierbij zijn echter kanttekeningen te maken:</p>
+<ul>
+<li>Door het ontbreken van een duidelijke methode voor het definiëren van begrippen is de kwaliteit hiervan niet altijd optimaal.</li>
+<li>Door het ontbreken van een eenduidige beheer- en publicatiefunctie voor opgestelde definities is het eindresultaat vaak enkel bekend bij een beperkt aantal direct betrokkenen. Hierdoor raken definities uiteindelijk in de vergetelheid en dragen ze niet bij aan het streven naar één gemeenschappelijke taal.</li>
+<li>De status van bestaande definities is vaak onbekend, omdat onduidelijk is welke functionaris verantwoordelijk is voor de definitie, wie deze heeft opgesteld en wat de context ervan is. Bij nieuwe ontwikkelingen worden bestaande definities regelmatig genegeerd, omdat onduidelijk is of de bestaande definitie voldoende draagvlak heeft.</li>
+</ul>
+<p>Dit voorschrift geeft handvatten om eenduidige definities van goede kwaliteit op te stellen. Correct opgestelde definities worden na formele vaststelling opgenomen in de landelijke verzameling bedrijfsbegrippen die een onderdeel is van het Semantisch Model Politie (SMP). Eenduidige publicatie voor alle medewerkers vindt plaats vanuit deze landelijke verzameling.</p>
+<p>De landelijke verzameling bevat alleen goedgekeurde begripsdefinities. Definities die niet voldoen aan de regels uit dit voorschrift zullen eerst aangepast moeten worden tot ze wel juist zijn.</p>
+<p><strong>Achtergrond</strong></p>
+<p>Een begrip wordt gebruikt in het dagelijks politiewerk of de ondersteuning daarvan. Begrippen komen voor in geformuleerde bedrijfsregels. De termen (woorden of een samenstel van woorden) uit een bedrijfsregel duiden de begrippen aan. Voor de juiste interpretatie van een bedrijfsregel is het noodzakelijk dat gehanteerde termen eenduidig gedefinieerd zijn. Pas als iedereen een term op dezelfde manier interpreteert kan de bedrijfsregel op de juiste manier worden toegepast.
+In het volgende voorbeeld van een bedrijfsregel zijn de termen onderstreept die een (te definiëren) begrip aanduiden. Zonder goede definities zal het onmogelijk blijken om de bedrijfsregel overal op dezelfde manier toe te passen.</p>
+<p>‘Een <u>verdachte</u> die is <u>aangehouden</u> wegens het begaan van een <u>strafbaar feit</u> moet onmiddellijk worden <u>voorgeleid</u> aan een <u>hulpofficier van justitie</u>.’</p>
+<p>In de praktijk blijkt het heel lastig om goede definities op te stellen. Dit voorschrift helpt de opsteller om een definitie zodanig te formuleren dat deze eenduidig is, geen overtollige informatie bevat en een juiste weergave is van de politiewerkelijkheid.</p>
+<p>Dit voorschrift gaat uit van de begrippen zoals gedefinieerd in het SMP/SCM Metamodel.</p>
+</section></section><section id="hierarchische-relaties"><div class="header-wrapper"><h4 id="x1-1-3-hierarchische-relaties"><bdi class="secno">1.1.3 </bdi>Hiërarchische relaties</h4><a class="self-link" href="#hierarchische-relaties" aria-label="Permalink for Section 1.1.3"></a></div>
+<p>Het is toegestaan dat één begrip meerdere bovenliggende begrippen kent. Er is zo sprake van een <a data-link-type="dfn|abstract-op" href="#dfn-polyhierarchy" class="internalDFN" id="ref-for-dfn-polyhierarchy-1">polyhierarchy</a>. Een polyhiërarchie kan nuttig zijn omdat het een intuïtieve manier biedt om een begrip in meerdere categorieën te plaatsen. Veelal zie je dit dan ook toegepast in e-commerce. Hierdoor kunnen gebruikers via verschillende paden een bepaald product vinden. Toch wordt geadviseerd om hier terughoudend mee te zijn en bij het maken rekening te blijven houden met best practices en standaarden op dit gebied.</p>
+<div class="definitie">Een <dfn data-noexport="" id="dfn-polyhierarchy" tabindex="0" aria-haspopup="dialog">polyhierarchy</dfn> verwijst naar een hiërarchische structuur waar het is toegestaan dat een begrip meerdere bovenliggende begrippen heeft. Tegenovergesteld is een monohiërarchie, waar ieder begrip niet meer dan één bovenliggend begrip kent.</div></section></section><section id="bronnen"><div class="header-wrapper"><h3 id="x1-2-bronnen"><bdi class="secno">1.2 </bdi>Bronnen</h3><a class="self-link" href="#bronnen" aria-label="Permalink for Section 1.2"></a></div>
+<p>Een begrip kan zijn ontleend aan een op het web vindbare bron. Dit kan een (versie van) een bepaald werk zijn of een ander documentair iets waarin een beschrijving van het begrip is te vinden. Bronnen kunnen wel of niet beschreven zijn in RDF. Ook kan een begrip ontleend zijn aan een niet op het web vindbare bron. </p>
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Noot</span></div><p class="">Veelal gaat 'ontleend' hier over de betekenis van het begrip. Niet direct de definitie. Er ontbreekt namelijk vaak een bron waar de definitie letterlijk in voorkomt, en anders is het zelfs zo dat de bron daarvoor een net iets andere verwoording gebruikt. We hebben het daarom over de bron van de betekenis; en niet over bijvoorbeeld de bron van de definitie. Ook kunnen andere kenmerken ontleend zijn aan een bron; zoals een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-alternatieve-term">alternatieve term</a> of een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-code">code</a>.
+</p></div><p>In ieder scenario willen we voldoende informatie hebben over de bron zodat we deze kunnen vinden. Dit kan op basis van een <em><a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-url">url</a></em> of een <em><a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-bronverwijzing">bronverwijzing</a></em>. 
+In het eenvoudigste geval is de bron vindbaar op het web en is het voldoende om de bijbehorende url op te nemen als waarde van <em><a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-heeft-bron">heeft bron</a></em> (<code>dct:source</code>). De verwachting is dat middels deze url een mensleesbare representatie van het document gevonden kan worden. Dit kan er als volgt uitzien.</p>
+<div class="example" id="example-1">
+        <div class="marker">
+    <a class="self-link" href="#example-1">Voorbeeld<bdi> 1</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:ingezetene a skos:Concept ;
+  skos:definition <span class="hljs-string">"Zij die hun werkelijke woonplaats in de gemeente hebben"</span>@nl ;
+  dct:source &lt;https://wetten.overheid.nl/jci1.<span class="hljs-number">3</span>:c:BWBR0005416&amp;titeldeel=I&amp;artikel=<span class="hljs-number">2</span>&amp;z=<span class="hljs-number">2022</span>-<span class="hljs-number">05</span>-<span class="hljs-number">01</span>&amp;g=<span class="hljs-number">2022</span>-<span class="hljs-number">05</span>-<span class="hljs-number">01</span>&gt; .</code></pre>
+      </div><p>Op deze manier is goed aangegeven waar de betekenis van het begrip (gedocumenteerd als definitie) op gebaseerd is. Verder is er geen informatie over de bron. Wanneer de bron is beschreven in RDF is deze informatie er wel en kan dit meegenomen worden in de interpretatie van het begrip. </p>
+<p>Wanneer een bron als linked data op het web ontsloten is neem je als waarde van <em><a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-heeft-bron">heeft bron</a></em> de URI van de bron. Dit kan bijvoorbeeld een instantie van <code>foaf:Document</code> of <code>dct:BibliographicResource</code> zijn. Hoe deze precies is beschreven, maakt voor <em>heeft bron</em> niet uit, maar binnen dit profiel wordt de <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#specificatie-brondocument">specificatie voor bronnen</a> aangeraden.</p>
+<p>Het komt ook voor dat de bron niet vindbaar is op het web en/of niet als linked data ontsloten is. In dat geval kan de beheerder van het begrip zelf een beschrijving van de bron maken. De beschrijving bestaat minimaal uit een aanduiding van het brondocument en de naam. Als aanduiding van het brondocument kunnen in Linked data URI's of blank nodes gebruikt worden. Deze aanduiding is een directe identificatie van het brondocument (zie ook <a href="https://bp4mc2.org/modeling/">Fundamentals of Linked Data Modeling</a>). De beheerder van het begrip maakt een URI (of blank node) voor het brondocument dat hij gebruikt, maar waarvan hij niet de eigenaar is. Dit is conform een van de basisprincipes van Linked Data, <em>Anybody can say anything about anything</em>. Deze URI kan alleen niet direct gebruikt worden om een mensleesbaar document te vinden. Wanneer de bron vindbaar is op het web kan foaf:page (<a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-url">url</a>) gebruikt worden om naar deze vindplaats te verwijzen. Wanneer de bron niet op het web vindbaar is, kan dct:bibliographicCitation (<a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-bronverwijzing">bronverwijzing</a>) gebruikt worden om citeerinformatie vast te leggen. Het kan zijn dat een bron zowel een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-url">url</a> als een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-bronverwijzing">bronverwijzing</a> kent. De url van een beschreven brondocument hoort in foaf:page (<a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-url">url</a>), niet in de bronverwijzing: de bronverwijzing is een citeerregel in tekst (een literal), geen link.</p>
+<div class="practice advisement" id="conv-lido"><a class="marker self-link" href="#bp-conventie-verwijzing-wet-en-regelgeving"><bdi lang="en">Best Practice 6</bdi></a>: <span class="practicelab" id="bp-conventie-verwijzing-wet-en-regelgeving">Conventie verwijzing wet- en regelgeving</span><p class="practicedesc">Voor verwijzingen naar wet- en regelgeving moet <a href="http://wetten.overheid.nl/BWBR0005730/2022-04-01/#Hoofdstuk3_Paragraaf3.3">§ 3.3 Aanwijzingen voor de regelgeving</a> gevolgd worden. Met behulp van de Linktool van LiDO is het eenvoudig om verwijzingen te maken die aan de aanwijzingen voor de regelgeving voldoen.</p></div><p>In het volgende voorbeeld zien we een beschrijving van een op het web vindbare bron die door de beheerder van het begrip is opgesteld. De beheerder is eigenaar van de beschrijving; maar niet van de bron zelf.</p>
+<div class="example" id="example-2">
+        <div class="marker">
+    <a class="self-link" href="#example-2">Voorbeeld<bdi> 2</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:ingezetene a skos:Concept ;
+  skos:definition <span class="hljs-string">"Zij die hun werkelijke woonplaats in de gemeente hebben"</span>@nl ;
+  dct:source ex:GemeentewetArt2 .
+
+ex:GemeentewetArt2 a foaf:Document, dct:BibliographicResource ;
+  dct:title <span class="hljs-string">"Gemeentewet Art. 2"</span>@nl ;
+  rdfs:label <span class="hljs-string">"Gemeentewet Art. 2"</span>@nl ;
+  foaf:page &lt;https://wetten.overheid.nl/jci1.<span class="hljs-number">3</span>:c:BWBR0005416&amp;titeldeel=I&amp;artikel=<span class="hljs-number">2</span>&amp;z=<span class="hljs-number">2022</span>-<span class="hljs-number">05</span>-<span class="hljs-number">01</span>&amp;g=<span class="hljs-number">2022</span>-<span class="hljs-number">05</span>-<span class="hljs-number">01</span>&gt; ;
+  rdfs:comment <span class="hljs-string">"In deze wet wordt verstaan onder ingezetenen: zij die hun werkelijke woonplaats in de gemeente hebben."</span>@nl ;
+  dct:type &lt;http://id.loc.gov/vocabulary/marcgt/leg&gt; .</code></pre>
+      </div><p>De beschrijving van een niet op het web vindbare bron waarbij gekozen is voor het gebruik van een blank node kan er als volgt uitzien;</p>
+<div class="example" id="example-3">
+        <div class="marker">
+    <a class="self-link" href="#example-3">Voorbeeld<bdi> 3</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:Flora a skos:Concept ;
+  dct:source [ a foaf:Document, dct:BibliographicResource ;
+               dct:title <span class="hljs-string">"Heukels' Flora van Nederland"</span>@nl ;
+               rdfs:label <span class="hljs-string">"Heukels' Flora van Nederland"</span>@nl ;
+               dct:bibliographicCitation <span class="hljs-string">"Van der Meijden, R. (2005): Heukels' Flora van Nederland. Wolters-Noordhoff, Groningen/Houten (23e druk), 685 pp."</span> ;
+               dct:type &lt;http://id.loc.gov/vocabulary/marcgt/boo&gt; ] .</code></pre>
+      </div>
+<p>Het nadeel van blank nodes is dat de bronbeschrijving niet hergebruikt kan worden, voor ieder begrip dat naar een bepaalde bron verwijst, moet de beschrijving opnieuw gemaakt worden.</p>
+<section id="typering"><div class="header-wrapper"><h4 id="x1-2-1-typering"><bdi class="secno">1.2.1 </bdi>Typering</h4><a class="self-link" href="#typering" aria-label="Permalink for Section 1.2.1"></a></div>
+<p>De bron zelf kan op verschillende manieren beschreven worden, dat ligt immers bij de bronhouder. Er bestaan verschillende standaardvocabulaires die een oplossing hebben voor het beschrijven van en verwijzen naar bronnen, ook zonder de term bron te gebruiken. Denk bijvoorbeeld aan [<cite><a class="bibref" data-link-type="biblio" href="#bib-dcterms" title="DCMI Metadata Terms">DCTERMS</a></cite>], <a href="http://www.sparontologies.net/ontologies/frbr">FRBR</a>, <cite><a data-matched-text="[[[WETTENNL]]]" href="https://linkeddata.overheid.nl/terms/">Wetten.nl</a></cite> en [<cite><a class="bibref" data-link-type="biblio" href="#bib-foaf" title="FOAF Vocabulary Specification 0.99 (Paddington Edition)">FOAF</a></cite>], maar ook nationale of sectorale standaarden. Er is geen de facto standaard die van toepassing is op wat binnen dit profiel onder bron wordt verstaan. Om die reden leggen we geen restricties op de typering van de resource die we als bron voor een begrip aanmerken.</p>
+<p>Wel biedt dit profiel een aantal aanbevelingen.</p>
+<div class="practice advisement"><a class="marker self-link" href="#bp-het-is-aanbevolen-om-bronnen-te-typeren-als-foaf-document"><bdi lang="en">Best Practice 7</bdi></a>: <span class="practicelab" id="bp-het-is-aanbevolen-om-bronnen-te-typeren-als-foaf-document">Het is aanbevolen om bronnen te typeren als foaf:Document</span><p class="practicedesc">Vooral omdat dit de meest laagdrempelige typering is aan de hand van bestaande vocabulaires.</p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-het-is-aanbevolen-om-de-dcterms-vocabulaire-te-gebruiken-om-bronnen-te-beschrijven"><bdi lang="en">Best Practice 8</bdi></a>: <span class="practicelab" id="bp-het-is-aanbevolen-om-de-dcterms-vocabulaire-te-gebruiken-om-bronnen-te-beschrijven">Het is aanbevolen om de [<cite><a class="bibref" data-link-type="biblio" href="#bib-dcterms" title="DCMI Metadata Terms">DCTERMS</a></cite>] vocabulaire te gebruiken om bronnen te beschrijven.</span><p class="practicedesc"></p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-het-is-aanbevolen-om-bronnen-met-_dct-type_-te-classificeren"><bdi lang="en">Best Practice 9</bdi></a>: <span class="practicelab" id="bp-het-is-aanbevolen-om-bronnen-met-_dct-type_-te-classificeren">Het is aanbevolen om bronnen met _dct:type_ te classificeren</span><p class="practicedesc">Dit doen we aan de hand van een gecontroleerd vocabulaire, ofwel een classificatieschema. Een voorbeeld van zo'n classificatieschema is <a href="http://id.loc.gov/vocabulary/marcgt">MARC Genre/Terms Scheme</a>. Dit is in aanvulling op een <code>rdf:type</code> typering.</p></div></section></section><section id="harmonisatie-en-hergebruik"><div class="header-wrapper"><h3 id="x1-3-harmonisatie-en-hergebruik"><bdi class="secno">1.3 </bdi>Harmonisatie en hergebruik</h3><a class="self-link" href="#harmonisatie-en-hergebruik" aria-label="Permalink for Section 1.3"></a></div>
+<p>Om data goed te kunnen gebruiken, maar zeker ook om data te combineren met andere data is het belangrijk om deze te begrijpen. 
+Begrippenkaders versterken de interoperabiliteit van datasets omdat het duidelijk maakt wat de betekenis is van termen die gebruikt worden.
+Een vooralsnog belangrijk thema in data is silovorming en organisaties zijn ook nadrukkelijk bezig om silo's te ontmantelen omdat data in samenhang meer waarde kan leveren. Om data in samenhang te kunnen bevragen is het noodzakelijk dat de terminologie eenduidig is en op elkaar aansluit. We hebben daarom niet alleen afzonderlijke begrippenkaders per registratie (bijvoorbeeld het begrippenkader van de BRK) nodig maar juist een stelsel van verbonden begrippenkaders per domein (bijvoorbeeld het vastgoeddomein). </p>
+<p>Daarnaast is in deze standaard het begrippenkader vooral beschreven vanuit het aanbod van gegevens. Maar data wordt ook afgenomen. Denk aan een autohandelaar die een eigen begrippenkader kent en een registratie die je kan verwachten bij een autohandelaar. De autohandelaar maakt gebruik van de Basisregistratie Voertuigen (BRV). De context van autohandelaar (en dus het begrippenkader) heeft overlap met de context van de BRV. Het is dan zaak dat de begrippen uit de BRV, correct worden toegepast in de context van de autohandelaar om verkeerde data interpretatie te voorkomen. Juist bij het integreren van data wil je een verbinding leggen tussen de bijbehorende begrippenkaders.</p>
+<p>In dit hoofdstuk bespreken we best practices op dit gebied.</p>
+<p>Het verbinden van begrippenkaders kan op twee manieren: </p>
+<ol>
+<li>door begrippen te harmoniseren, en</li>
+<li>door begrippen te hergebruiken</li>
+</ol>
+<p>Wanneer we het hebben over een begrip dat gedefinieerd is in een 'andere context' dan noemen we dat voor het gemak een <dfn data-noexport="" id="dfn-extern-begrip" tabindex="0" aria-haspopup="dialog">extern begrip</dfn>. </p>
+<section id="harmonisatie"><div class="header-wrapper"><h4 id="x1-3-1-harmonisatie"><bdi class="secno">1.3.1 </bdi>Harmonisatie</h4><a class="self-link" href="#harmonisatie" aria-label="Permalink for Section 1.3.1"></a></div>
+<p>Onder de noemer harmonisatie beschrijven we hoe begrippen uit verschillende begrippenkaders op basis van betekenis aan elkaar kunnen worden gerelateerd. De letterlijke betekenis van harmoniseren is 'op elkaar afstemmen'. Verbinden is een eerste stap op weg naar afstemmen, maar het is strikt genomen geen afstemming en dus ook geen harmonisatie.
+Daarom gebruiken we nadrukkelijk geen owl:sameAs gezien dat impliceert dat de twee resources op alle mogelijke manieren identiek zijn (sterker nog: het zijn dezelfde resources). Ook als twee begrippen exact dezelfde betekenis hebben kunnen ze verschillende lexicale namen, eigenaren en documentatie hebben. Ook zijn de logische gevolgen van owl:sameAs hierdoor veelal ongewenst. Een voorbeeld van een ongewenste implicatie is dat het kan leiden tot meerdere voorkeurstermen per taal voor een begrip en dit is niet toegestaan. Dit zien we bijvoorbeeld bij de volgende set statements:</p>
+<div class="example" id="example-4">
+        <div class="marker">
+    <a class="self-link" href="#example-4">Voorbeeld<bdi> 4</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:B a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Bouwwerk"</span>@nl ;
+  skos:inScheme ex:BegrippenkaderA .
+
+ex2:C a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Constructie"</span>@nl ;
+  skos:inScheme ex2:BegrippenkaderB .
+
+ex:B owl:sameAs ex2:C .</code></pre>
+      </div><p>wat impliceert:</p>
+<div class="example" id="example-5">
+        <div class="marker">
+    <a class="self-link" href="#example-5">Voorbeeld<bdi> 5</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:B a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Bouwwerk"</span>@nl ;
+  skos:prefLabel <span class="hljs-string">"Constructie"</span>@nl ;
+  skos:inScheme ex:BegrippenkaderA ;
+  skos:inScheme ex2:BegrippenkaderB .
+
+ex2:C a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Constructie"</span>@nl ;
+  skos:prefLabel <span class="hljs-string">"Bouwwerk"</span>@nl ;
+  skos:inScheme ex2:BegrippenkaderB ;
+  skos:inScheme ex:BegrippenkaderA .</code></pre>
+      </div><p>N.B. Voorbeeld 4 en 5 zijn eigenlijk geen voorbeelden, maar contra-voorbeelden. Ze laten zien hoe het niet moet en wat er dan mis kan gaan.</p>
+<p>Als alternatief op owl:sameAs zijn harmonisatierelaties gedefinieerd in SKOS. Deze relaties worden gebruikt om de mapping tussen begrippen in verschillende begrippenkaders vast te leggen wanneer deze een vergelijkbare betekenis hebben. Bijvoorbeeld door te stellen dat het begrip «Woning» uit één begrippenkader een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-heeft-overeenkomstig-bovenliggend">heeft overeenkomstig bovenliggend</a> begrip «Pand» kent uit een ander begrippenkader.
+We nemen zo het begrip «Pand» niet op in het begrippenkader waar «Woning» gedefinieerd is. Op dezelfde wijze kunnen twee begrippen uit verschillende begrippenkaders gerelateerd zijn aan elkaar. </p>
+<p>Bij het harmoniseren van begrippenkaders blijft er binnen ieder begrippenkader controle over de beschrijving van de begrippen. Zelfs bij een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-is-exact-overeenkomstig">is exact overeenkomstig</a> relatie kunnen de betreffende begrippen verschillende voorkeurstermen hebben. De mapping ligt namelijk op de betekenis van het begrip en niet op de gerelateerde lexicale namen of documentatie bij het begrip. Op deze manier kan je bijvoorbeeld twee contexten op elkaar laten aansluiten waar verschillende voorkeurstermen dezelfde betekenis dragen zonder het taalgebruik van de betreffende domeinen aan te passen. Bijvoorbeeld omdat er vanuit één begrippenkader geen invloed uitgeoefend kan worden op het andere begrippenkader of omdat er twee perspectieven bestaan op één domein.
+Ook in situaties waar eenzelfde term in twee overlappende contexten net een specifiekere/andere betekenis heeft kan je ervoor kiezen om twee begrippen te onderkennen en deze te harmoniseren. In dit geval kunnen harmonisatierelaties gebruikt worden. Bijvoorbeeld twee contexten (ex: en ex2:) waar de term land gebruikt wordt. </p>
+<div class="example" id="example-6">
+        <div class="marker">
+    <a class="self-link" href="#example-6">Voorbeeld<bdi> 6</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:Land a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Land"</span>@nl ;
+  skos:definition <span class="hljs-string">"Een land is een gebied met grenzen en een eigen regering."</span>@nl .
+
+ex2:Land a skos:Concept ;
+  skos:closeMatch ex:Land ;
+  skos:definition <span class="hljs-string">"Een land is een gebied dat in ISO 3166-1 als land wordt beschouwd."</span>@nl .</code></pre>
+      </div><p>Het harmoniseren van begrippen is binnen één samenwerkingsverband of organisatie vaak niet het einddoel, maar een (belangrijke) tussenstap. Wanneer het duidelijk is wat de overlap tussen twee begrippenkaders precies is, is het pas mogelijk om tot een samenhangend netwerk of stelsel van begrippen te komen. Het harmoniseren van begrippenkaders kan dus een eerste stap zijn naar het kunnen hergebruiken van externe begrippen. Dit wordt nader toegelicht in <a href="#hergebruik">hergebruik</a>.</p>
+<p>Aanbevelingen:</p>
+<div class="practice advisement"><a class="marker self-link" href="#bp-er-kan-worden-verwezen-naar-een-extern-begrip-met-de-harmonisatierelaties-zoals-gedefinieerd-door-skos"><bdi lang="en">Best Practice 10</bdi></a>: <span class="practicelab" id="bp-er-kan-worden-verwezen-naar-een-extern-begrip-met-de-harmonisatierelaties-zoals-gedefinieerd-door-skos">Er kan worden verwezen naar een <a data-link-type="dfn|abstract-op" href="#dfn-extern-begrip" class="internalDFN" id="ref-for-dfn-extern-begrip-1">extern begrip</a> met de harmonisatierelaties zoals gedefinieerd door SKOS.</span><p class="practicedesc">We maken expliciet geen gebruik van owl:sameAs.</p></div></section><section id="hergebruik"><div class="header-wrapper"><h4 id="x1-3-2-hergebruik"><bdi class="secno">1.3.2 </bdi>Hergebruik</h4><a class="self-link" href="#hergebruik" aria-label="Permalink for Section 1.3.2"></a></div>
+<p>Het hergebruiken van begrippen is het opnemen van begrippen in verschillende begrippenkaders. In tegenstelling tot bij harmonisatie, waar twee losse verzamelingen van begrippen aan elkaar gerelateerd worden door extra relaties te leggen, wordt bij hergebruik één begrip aan verschillende begrippenkaders toegevoegd. In deze zin committeer je volledig aan de beschrijving van het begrip uit een ander begrippenkader. Dit is afgebeeld in het volgende diagram.</p>
+<p>
+      </p><figure id="fig-datastructuren-hergebruik-en-harmonisatie">
+        <img src="media/hergebruik.png" alt="">
+        <figcaption><a class="self-link" href="#fig-datastructuren-hergebruik-en-harmonisatie">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Datastructuren hergebruik en harmonisatie</span></figcaption>
+      </figure>
+    <p></p>
+<p>Begrippen komen zo terug in verschillende contexten. Dit is een algemene good practice omdat we hiermee contexten integreren (waarmee we expliciet dezelfde taal spreken) maar ook omdat we hiermee contexten kunnen modulariseren (conform het Don't Repeat Yourself-principe (DRY)).</p>
+<p>SKOS gaat ervan uit dat de betekenis van een begrip niet beïnvloed wordt door de statements die erover vastgelegd zijn. De eigenaar van het begrip bepaalt namelijk de betekenis. De statements over een begrip maken we om deze inherente betekenis te kunnen communiceren. Net zoals een huis niet blauw wordt puur omdat er is geregistreerd dat deze blauw is. Een goede beschrijving zorgt ervoor dat men het begrip juist interpreteert zodat we het begrip op de correcte wijze begrijpen. Wanneer je naar een blauw huis zoekt dat in de werkelijkheid helemaal niet blauw is, is het lastig om het betreffende huis te vinden. De betekenis van een begrip is dus niet afhankelijk van de statements die we erover maken, maar de statements verwoorden de betekenis die het begrip al heeft. </p>
+<p>In de praktijk betekent dit dat een begrip in elke context gebruikt kan worden, zonder dat de betekenis zal veranderen. Het toevoegen van eigenschappen is mogelijk, (<a href="https://www.w3.org/TR/2002/WD-rdf-concepts-20020829/#xtocid48014">anyone can say anything about anything</a>); al moet wel beoordeeld worden wat de impact is op de interpretatie van het begrip door mensen. Een begrip wordt onderdeel van een begrippenkader wanneer het een <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/#dfn-in-kader">in kader</a> relatie heeft naar het begrippenkader. Het is niet noodzakelijk om eigenschappen van het externe begrip, zoals de voorkeursterm, te repliceren wanneer het externe begrip gepubliceerd is. Een Semantic Web applicatie zal op basis van de URI de beschrijving kunnen ophalen, (dereferencen) of het gehele begrippenkader importeren, bijvoorbeeld op basis van een owl:imports statement. Hierbij komt versiebeheer van begrippen nadrukkelijk om de hoek kijken. Hiervoor is een uitwerking gemaakt in <a href="#begrippenbeheer-en-metadata">Begrippenbeheer en metadata</a>.</p>
+<p>Vervolgens kunnen relaties tussen de externe begrippen en de andere begrippen in het begrippenkader gelegd worden, waardoor een netwerk of stelsel ontstaat. In RDF kan dat er als volgt uitzien.</p>
+<div class="example" id="example-7">
+        <div class="marker">
+    <a class="self-link" href="#example-7">Voorbeeld<bdi> 7</bdi></a>
+  </div> <pre aria-busy="false"><code class="hljs css">ex:Referentiekader a skos:ConceptScheme .
+
+ex:BestuurlijkGebied a skos:Concept ;
+  skos:inScheme ex:Referentiekader ;
+  skos:inScheme ex2:GeoPolitiek .
+
+ex2:GeoPolitiek a skos:ConceptScheme ;
+  skos<span class="hljs-selector-pseudo">:has</span>TopConcept ex:BestuurlijkGebied .
+
+ex2:Land a skos:Concept ;
+  skos:prefLabel <span class="hljs-string">"Land"</span>@nl ;
+  skos:definition <span class="hljs-string">"Een land is een gebied met grenzen en een eigen regering."</span>@nl ;
+  skos:broader ex:BestuurlijkGebied .</code></pre>
+      </div><p>Aanbevelingen:</p>
+<div class="practice advisement"><a class="marker self-link" href="#bp-statements-over-externe-begrippen-van-de-bronhouder-kunnen-niet-veranderd-worden-je-committeert-je-namelijk-aan-het-begrip-zoals-het-beschreven-is-door-de-bronhouder"><bdi lang="en">Best Practice 11</bdi></a>: <span class="practicelab" id="bp-statements-over-externe-begrippen-van-de-bronhouder-kunnen-niet-veranderd-worden-je-committeert-je-namelijk-aan-het-begrip-zoals-het-beschreven-is-door-de-bronhouder">Statements over externe begrippen van de bronhouder kunnen niet veranderd worden, je committeert je namelijk aan het begrip zoals het beschreven is door de bronhouder.</span><p class="practicedesc">Wanneer een extern begrip wordt toegevoegd aan een begrippenkader kunnen enkel aanvullende statements worden gemaakt. Deze aanvullende statements maak je altijd in de omgeving die je zelf beheert, waarmee het eigenaarschap duidelijk is.</p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-het-externe-begrip-is-onderdeel-van-het-lokale-begrippenkader-en-krijgt-dus-een-in-kader-relatie-naar-het-lokale-begrippenkader-en-behoudt-de-in-kader-relatie-naar-het-oorspronkelijke-begrippenkader"><bdi lang="en">Best Practice 12</bdi></a>: <span class="practicelab" id="bp-het-externe-begrip-is-onderdeel-van-het-lokale-begrippenkader-en-krijgt-dus-een-in-kader-relatie-naar-het-lokale-begrippenkader-en-behoudt-de-in-kader-relatie-naar-het-oorspronkelijke-begrippenkader">Het externe begrip is onderdeel van het lokale begrippenkader en krijgt dus een 'in kader' relatie naar het lokale begrippenkader en behoudt de 'in kader' relatie naar het oorspronkelijke begrippenkader.</span><p class="practicedesc"></p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-een-extern-begrip-kan-een-plek-krijgen-in-de-hierarchie-van-het-lokale-begrippenkader-aan-de-hand-van-heeft-bovenliggend-begrip-relaties-van-en-naar-het-externe-begrip"><bdi lang="en">Best Practice 13</bdi></a>: <span class="practicelab" id="bp-een-extern-begrip-kan-een-plek-krijgen-in-de-hierarchie-van-het-lokale-begrippenkader-aan-de-hand-van-heeft-bovenliggend-begrip-relaties-van-en-naar-het-externe-begrip">Een extern begrip kan een plek krijgen in de hiërarchie van het lokale begrippenkader aan de hand van 'heeft bovenliggend begrip' relaties van en naar het externe begrip.</span><p class="practicedesc"></p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-een-extern-begrip-kan-een-startpunt-zijn-in-een-hierarchie-van-begrippen-en-zo-dus-een-heeft-topbegrip-relatie-of-inverse-daarvan-kennen"><bdi lang="en">Best Practice 14</bdi></a>: <span class="practicelab" id="bp-een-extern-begrip-kan-een-startpunt-zijn-in-een-hierarchie-van-begrippen-en-zo-dus-een-heeft-topbegrip-relatie-of-inverse-daarvan-kennen">Een extern begrip kan een startpunt zijn in een hiërarchie van begrippen, en zo dus een 'heeft topbegrip' relatie (of inverse daarvan) kennen.</span><p class="practicedesc"></p></div>
+<div class="practice advisement"><a class="marker self-link" href="#bp-wanneer-het-externe-begrip-is-gepubliceerd-is-het-niet-noodzakelijk-om-de-beschrijving-te-repliceren-dit-kan-opgehaald-worden-aan-de-hand-van-de-uri-van-het-begrip"><bdi lang="en">Best Practice 15</bdi></a>: <span class="practicelab" id="bp-wanneer-het-externe-begrip-is-gepubliceerd-is-het-niet-noodzakelijk-om-de-beschrijving-te-repliceren-dit-kan-opgehaald-worden-aan-de-hand-van-de-uri-van-het-begrip">Wanneer het externe begrip is gepubliceerd, is het niet noodzakelijk om de beschrijving te repliceren. Dit kan opgehaald worden aan de hand van de URI van het begrip.</span><p class="practicedesc"></p></div></section></section><section id="samenwerking-informatiemodel-en-begrippenkader"><div class="header-wrapper"><h3 id="x1-4-samenwerking-informatiemodel-en-begrippenkader"><bdi class="secno">1.4 </bdi>Samenwerking Informatiemodel en Begrippenkader</h3><a class="self-link" href="#samenwerking-informatiemodel-en-begrippenkader" aria-label="Permalink for Section 1.4"></a></div>
+<p>Ergens ligt een knip tussen een samenhangende beschrijving van begrippen in een begrippenkader en een model van klassen in een ontologie. Wikipedia definieert een ontologie (van het Grieks ὀν = zijnde en λόγος = woord, leer) of zijnsleer als de filosofische tak die het wezen onderzoekt dat achter de waargenomen werkelijkheid schuilgaat. De ontologie onderzoekt en beschrijft de eigenschappen, of breder: het zijn van het geheel van dingen, entiteiten of zijnden waarvan aangenomen wordt dat ze bestaan of beter: zijn. De ontologie gaat dus over de dingen zelf, hun 'zijn', terwijl begrippen gaan over de 'gedachte'. In de praktijk is het wel handig als deze twee op elkaar aansluiten. In de psychiatrie zijn voldoende voorbeelden waar de 'gedachte' over de wereld niet matcht met de wereld zelf. Dit wordt ook weerspiegeld in uitdrukkingen als 'met beide benen op de grond staan' (conceptualisering duidelijk verbonden met de fysieke werkelijkheid, de grond) en 'met het hoofd in de wolken lopen' (conceptualisering duidelijk los van de fysieke werkelijkheid, c.q. de grond).</p>
+<ul>
+<li>Dit komt bij elkaar in het idee van een "begrip" naast een "klasse" uit de ontologie: de werkelijkheid laat zich moeilijk vangen, maar we kunnen wel met elkaar afspreken hoe we tegen de werkelijkheid aan moeten willen kijken. Dit noemen we "ontological commitment": we committeren ons aan de ontologie, die klassen beschrijft waarvan de betekenis is gevangen in de begrippen. Het is de werkelijkheid zoals we met elkaar hebben afgesproken dat deze "waar" is.<ul>
+<li>In de praktijk is een ontologie de basis voor een datamodel. Ook hier geldt dat een datamodel waarin de structuur van dingen en de data die daarover worden vastgelegd goed moet aansluiten bij de betreffende dingen in de fysieke wereld (zoals beschreven in de ontologie) en de eigenschappen van die dingen.</li>
+<li>Soms wordt een ontologie ook gezien als een nog wat gedetailleerdere conceptualisering dan een thesaurus. Dit gebeurt bijvoorbeeld in de NEN 2660. Soms ook wordt een ontologie gezien als een soort informatiemodel of datamodel. In dit profiel doen we geen uitspraak over wat een ontologie is en waar exact de knip tussen een samenhangende beschrijving van begrippen en een ontologie ligt.</li>
+</ul>
+</li>
+<li>Good practice is om het begrippenkader en de ontologie te scheiden.</li>
+</ul>
+</section><section id="begrippenbeheer-en-metadata"><div class="header-wrapper"><h3 id="x1-5-begrippenbeheer-en-metadata"><bdi class="secno">1.5 </bdi>Begrippenbeheer en metadata</h3><a class="self-link" href="#begrippenbeheer-en-metadata" aria-label="Permalink for Section 1.5"></a></div>
+<section id="kernprincipes"><div class="header-wrapper"><h4 id="x1-5-1-kernprincipes"><bdi class="secno">1.5.1 </bdi>Kernprincipes</h4><a class="self-link" href="#kernprincipes" aria-label="Permalink for Section 1.5.1"></a></div>
+<p>Om versiebeheer uit te werken, hanteren we de volgende kernprincipes die we hieronder verder zullen uitwerken:</p>
+<ol>
+<li>Gegevens zijn iets anders dan de onderwerpen waarover deze gegevens gaan.</li>
+<li>Om het over een onderwerp te kunnen hebben, zul je eraan moeten kunnen refereren.</li>
+<li>Onderwerpen kunnen gerelateerd aan elkaar zijn, hierover zijn geen gegevens nodig.</li>
+<li>We versioneren gegevens, niet de onderwerpen waarover de gegevens gaan.</li>
+<li>Als we de gegevens zelf beschrijven, doen we dat met metagegevens.</li>
+<li>Van één onderwerp kunnen er meerdere gegevensobjecten zijn.</li>
+<li>De eenheid van beheer bestaat uit één of meerdere gegevensobjecten.</li>
+</ol>
+<section id="gegevens-zijn-iets-anders-dan-de-onderwerpen-waarover-deze-gegevens-gaan"><div class="header-wrapper"><h5 id="x1-5-1-1-gegevens-zijn-iets-anders-dan-de-onderwerpen-waarover-deze-gegevens-gaan"><bdi class="secno">1.5.1.1 </bdi>Gegevens zijn iets anders dan de onderwerpen waarover deze gegevens gaan</h5><a class="self-link" href="#gegevens-zijn-iets-anders-dan-de-onderwerpen-waarover-deze-gegevens-gaan" aria-label="Permalink for Section 1.5.1.1"></a></div>
+<p>Een website over Johan Cruyff is iets anders dan de persoon Johan Cruyff.</p>
+<p>Gegevens zien we als uitspraken over een bepaald onderwerp. Gegevens die over hetzelfde onderwerp gaan, noemen we een "gegevensobject".</p>
+<p>Als twee onderwerpen aan elkaar gerelateerd zijn, dan zijn (dus) de onderwerpen aan elkaar gerelateerd, en niet de gegevensobjecten.</p>
+<p>Omdat de relatie ook een uitspraak is, zul je (dus) moeten nadenken welk gegevensobject deze uitspraak omvat. Kandidaten zijn daarbij de gegevensobjecten die gaan over de onderwerpen van de relatie. Maar het is ook mogelijk om de relatie als een zelfstandig onderwerp te beschouwen. Op dat moment is het ook mogelijk om de gegevens over de relatie in een afzonderlijk gegevensobject op te nemen.</p>
+</section><section id="om-het-over-een-onderwerp-te-kunnen-hebben-zul-je-eraan-moeten-kunnen-refereren"><div class="header-wrapper"><h5 id="x1-5-1-2-om-het-over-een-onderwerp-te-kunnen-hebben-zul-je-eraan-moeten-kunnen-refereren"><bdi class="secno">1.5.1.2 </bdi>Om het over een onderwerp te kunnen hebben, zul je eraan moeten kunnen refereren</h5><a class="self-link" href="#om-het-over-een-onderwerp-te-kunnen-hebben-zul-je-eraan-moeten-kunnen-refereren" aria-label="Permalink for Section 1.5.1.2"></a></div>
+<p>Een referentie is niet het onderwerp zelf, maar we verwijzen er wel naar. Zoals we met de naam "Johan Cruyff" verwijzen naar de beroemde voetballer. Ook betreft dit niet een referentie naar het gegevensobject, maar juist de persoon zelf.</p>
+</section><section id="onderwerpen-kunnen-gerelateerd-aan-elkaar-zijn-hierover-zijn-geen-gegevens-nodig"><div class="header-wrapper"><h5 id="x1-5-1-3-onderwerpen-kunnen-gerelateerd-aan-elkaar-zijn-hierover-zijn-geen-gegevens-nodig"><bdi class="secno">1.5.1.3 </bdi>Onderwerpen kunnen gerelateerd aan elkaar zijn, hierover zijn geen gegevens nodig</h5><a class="self-link" href="#onderwerpen-kunnen-gerelateerd-aan-elkaar-zijn-hierover-zijn-geen-gegevens-nodig" aria-label="Permalink for Section 1.5.1.3"></a></div>
+<p>Uitspraken als "Johan Cruyff is een voetballer" of "Johan Cruyff is geboren in Amsterdam" zijn relaties tussen twee onderwerpen:</p>
+<ul>
+<li>De relatie tussen het onderwerp «Johan Cruyff» en het onderwerp «Voetballer»;</li>
+<li>De relatie tussen het onderwerp «Johan Cruyff» en het onderwerp «Amsterdam».</li>
+</ul>
+<p>Het gaat hier duidelijk niet over relaties tussen de gegevensobjecten. In de uitspraken gebruiken we de referenties naar de onderwerpen.</p>
+</section><section id="we-versioneren-gegevens-niet-de-onderwerpen-waarover-de-gegevens-gaan"><div class="header-wrapper"><h5 id="x1-5-1-4-we-versioneren-gegevens-niet-de-onderwerpen-waarover-de-gegevens-gaan"><bdi class="secno">1.5.1.4 </bdi>We versioneren gegevens, niet de onderwerpen waarover de gegevens gaan</h5><a class="self-link" href="#we-versioneren-gegevens-niet-de-onderwerpen-waarover-de-gegevens-gaan" aria-label="Permalink for Section 1.5.1.4"></a></div>
+<p>Johan Cruyff, voetbal en Amsterdam maken allemaal een levenscyclus door, en ook daarover kunnen we gegevens vastleggen. Maar als we het over versiebeheer hebben, gaat het over versies van de vastgelegde gegevens, niet over de onderwerpen zelf.</p>
+<p>Zo kan een website over Johan Cruyff meerdere versies hebben. Zo is de eerste versie van de Nederlandse wikipediapagina over Johan Cruyff gemaakt op 9 november 2003. Inmiddels zijn er meer dan 500 versies van die pagina.</p>
+</section><section id="als-we-het-over-de-gegevens-zelf-hebben-dan-hebben-we-het-over-metagegevens"><div class="header-wrapper"><h5 id="x1-5-1-5-als-we-het-over-de-gegevens-zelf-hebben-dan-hebben-we-het-over-metagegevens"><bdi class="secno">1.5.1.5 </bdi>Als we het over de gegevens zelf hebben, dan hebben we het over metagegevens</h5><a class="self-link" href="#als-we-het-over-de-gegevens-zelf-hebben-dan-hebben-we-het-over-metagegevens" aria-label="Permalink for Section 1.5.1.5"></a></div>
+<p>De uitspraak "De eerste versie van de Nederlandse wikipediapagina over Johan Cruyff is gemaakt op 9 november 2003" gaat over een gegevensobject dat zelf weer over een onderwerp gaat.</p>
+<p>Bovendien zit er eigenlijk nog een onderwerp verstopt in bovenstaande zin, namelijk de "Nederlandse wikipediapagina over Johan Cruyff". Als we uitspraken over dit onderwerp doen, dan zijn ook dat uitspraken die (net als uitspraken over het onderwerp zelf) kunnen veranderen door de tijd heen.</p>
+<p>Ook uitspraken over een versie van een gegevensobject kunnen veranderen door de tijd heen. Zoals de status van een versie. Dezelfde versie kan eerst de status «in concept» hebben, en op een later moment de status «gepubliceerd».</p>
+</section><section id="van-een-onderwerp-kunnen-er-meerdere-gegevensobjecten-zijn"><div class="header-wrapper"><h5 id="x1-5-1-6-van-een-onderwerp-kunnen-er-meerdere-gegevensobjecten-zijn"><bdi class="secno">1.5.1.6 </bdi>Van één onderwerp kunnen er meerdere gegevensobjecten zijn</h5><a class="self-link" href="#van-een-onderwerp-kunnen-er-meerdere-gegevensobjecten-zijn" aria-label="Permalink for Section 1.5.1.6"></a></div>
+<p>De wikipediapagina over Johan Cruyff bevat andere soorten gegevens dan het medisch dossier van Johan Cruyff. Toch zijn het beide gegevensobjecten over Johan Cruyff. Bij het nemen van beslissingen over versiebeheer is het van belang om na te denken welke soorten gegevens in welk gegevensobject worden beheerd.</p>
+</section><section id="de-eenheid-van-beheer-bestaat-uit-een-of-meerdere-gegevensobjecten"><div class="header-wrapper"><h5 id="x1-5-1-7-de-eenheid-van-beheer-bestaat-uit-een-of-meerdere-gegevensobjecten"><bdi class="secno">1.5.1.7 </bdi>De eenheid van beheer bestaat uit één of meerdere gegevensobjecten</h5><a class="self-link" href="#de-eenheid-van-beheer-bestaat-uit-een-of-meerdere-gegevensobjecten" aria-label="Permalink for Section 1.5.1.7"></a></div>
+<p>De eenheid van beheer is het geheel van gegevensobjecten dat als één gezamenlijke eenheid wordt beheerd. Die eenheden van beheer krijgen versies. Het is een keuze om de eenheid van beheer op het niveau van een enkel gegevensobject te doen (zoals bij de wikipediapagina van Johan Cruyff), of juist de eenheid van beheer te doen op een geheel van gegevensobjecten.</p>
+</section></section><section id="varianten-voor-versiebeheer-van-begripsbeschrijvingen"><div class="header-wrapper"><h4 id="x1-5-2-varianten-voor-versiebeheer-van-begripsbeschrijvingen"><bdi class="secno">1.5.2 </bdi>Varianten voor versiebeheer van begripsbeschrijvingen</h4><a class="self-link" href="#varianten-voor-versiebeheer-van-begripsbeschrijvingen" aria-label="Permalink for Section 1.5.2"></a></div>
+<p>Het toepassen van de kernprincipes voor versiebeheer leidt tot het volgende model.</p>
+<p>
+      </p><figure id="fig-conceptueel-model-versiebeheer">
+        <img src="media/versiebeheer.conceptueel.svg" alt="">
+        <figcaption><a class="self-link" href="#fig-conceptueel-model-versiebeheer">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">conceptueel model versiebeheer</span></figcaption>
+      </figure>
+    <p></p>
+<p>Het uitgangspunt is dat een dataset iets anders is dan een gegevensobject en een gegevensobject iets anders is dan een object.</p>
+<section id="a-begripsbeschrijving-als-eenheid-van-beheer"><div class="header-wrapper"><h5 id="x1-5-2-1-a-begripsbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.1 </bdi>A. Begripsbeschrijving als eenheid van beheer</h5><a class="self-link" href="#a-begripsbeschrijving-als-eenheid-van-beheer" aria-label="Permalink for Section 1.5.2.1"></a></div>
+<p>
+      </p><figure id="fig-variant-a">
+        <img src="media/versiebeheer.begripsbeschrijving.svg" alt="">
+        <figcaption><a class="self-link" href="#fig-variant-a">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title">Variant A</span></figcaption>
+      </figure>
+    <p></p>
+<p>Versiebeheer op begripsbeschrijving gaat ervan uit dat er een gegevensobject per begrip in een begrippenkader wordt gemaakt en dat het beheer op dat niveau wordt geregeld.
+Elke wijziging op een individuele begripsbeschrijving heeft geen impact op de andere begripsbeschrijvingen.</p>
+</section><section id="b-begrippenkaderbeschrijving-als-eenheid-van-beheer"><div class="header-wrapper"><h5 id="x1-5-2-2-b-begrippenkaderbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.2 </bdi>B. Begrippenkaderbeschrijving als eenheid van beheer</h5><a class="self-link" href="#b-begrippenkaderbeschrijving-als-eenheid-van-beheer" aria-label="Permalink for Section 1.5.2.2"></a></div>
+<p>
+      </p><figure id="fig-variant-b">
+        <img src="media/versiebeheer.begrippenkaderbeschrijving.svg" alt="">
+        <figcaption><a class="self-link" href="#fig-variant-b">Figuur <bdi class="figno">4</bdi></a> <span class="fig-title">Variant B</span></figcaption>
+      </figure>
+    <p></p>
+<p>Bij versiebeheer op begrippenkaderniveau zitten alle gegevensobjecten die horen bij de beschrijving van een begrippenkader onder de beheerset van dat begrippenkader.
+Wanneer een begripsbeschrijving wijzigt is er sprake van een nieuwe versie van de begrippenkaderbeschrijvingbeheerset.</p>
+</section><section id="c-deel-van-een-begripsbeschrijving-als-eenheid-van-beheer"><div class="header-wrapper"><h5 id="x1-5-2-3-c-deel-van-een-begripsbeschrijving-als-eenheid-van-beheer"><bdi class="secno">1.5.2.3 </bdi>C. Deel van een begripsbeschrijving als eenheid van beheer</h5><a class="self-link" href="#c-deel-van-een-begripsbeschrijving-als-eenheid-van-beheer" aria-label="Permalink for Section 1.5.2.3"></a></div>
+<p>
+      </p><figure id="fig-variant-c">
+        <img src="media/versiebeheer.begripsbeschrijvingDeel.svg" alt="">
+        <figcaption><a class="self-link" href="#fig-variant-c">Figuur <bdi class="figno">5</bdi></a> <span class="fig-title">Variant C</span></figcaption>
+      </figure>
+    <p></p>
+<p>Versiebeheer op een deel van de complete begripsbeschrijving gaat ervan uit dat bepaalde gegevens over een begrip tezamen beheerd worden, bijvoorbeeld harmonisatierelaties of hiërarchische relaties. Ieder begrip heeft zo mogelijk meerdere, complementaire, gegevensobjecten. Deze gegevensobjecten kunnen conform Variant A individueel, of conform Variant B als verzameling beheerd worden.</p>
+</section></section><section id="tijdcontext-van-datasets"><div class="header-wrapper"><h4 id="x1-5-3-tijdcontext-van-datasets"><bdi class="secno">1.5.3 </bdi>Tijdcontext van datasets</h4><a class="self-link" href="#tijdcontext-van-datasets" aria-label="Permalink for Section 1.5.3"></a></div>
+<p>Omdat er verschillende manieren zijn om versiebeheer in te richten schrijft dit profiel geen specifieke vorm van versiebeheer voor.</p>
+<p>Het is wel van belang om afspraken te maken over hoe de gegevens in een stelsel uitgewisseld moeten worden. 
+Een belangrijk aspect voor een stelsel is het in een tijdcontext kunnen relateren van gegevensobjecten.</p>
+<p>Daarmee moet van een gegevensobject in ieder geval bepaald kunnen worden:</p>
+<ul>
+<li>of het op een gegeven moment geldig was.</li>
+<li>of het op een gegeven moment beschikbaar was.</li>
+</ul>
+</section><section id="taalbinding"><div class="header-wrapper"><h4 id="x1-5-4-taalbinding"><bdi class="secno">1.5.4 </bdi>Taalbinding</h4><a class="self-link" href="#taalbinding" aria-label="Permalink for Section 1.5.4"></a></div>
+<p>De taalbinding die we voorstellen maakt gebruik van de volgende vocabulaires:</p>
+<ul>
+<li>SKOS voor het beschrijven van begrippen;</li>
+<li>DCAT voor het beschrijven van datasets (als eenheid van beheer, eenheid van publicatie of eenheid van gebruik);</li>
+<li>PROV voor het beschrijven van herkomstinformatie m.b.t. datasets.</li>
+</ul>
+<p>Met deze keuze voor de taalbinding is het van belang om rekening te houden met de volgende requirements:</p>
+<ol>
+<li>Een voorkomen van <code>skos:Concept</code> kan onderdeel zijn van meerdere voorkomens van <code>skos:ConceptScheme</code>.</li>
+<li>Elk onderdeel van de beschrijving van een <code>skos:Concept</code> wordt beheerd in precies één voorkomen van een <code>dcat:Dataset</code>.</li>
+<li>Elk onderdeel van de beschrijving van een <code>skos:Concept</code> kan gepubliceerd worden in meerdere voorkomens van een <code>dcat:Dataset</code>.</li>
+<li>Onderdelen van de beschrijving van een <code>skos:Concept</code> kunnen gebundeld worden in een voorkomen van een <code>dcat:Dataset</code>, zodat hierover herkomstinformatie genoteerd kan worden.</li>
+</ol>
+<section id="taalbinding-begrippenkader-en-dataset-eenheid-van-publicatie-eenheid-van-beheer"><div class="header-wrapper"><h5 id="x1-5-4-1-taalbinding-begrippenkader-en-dataset-eenheid-van-publicatie-eenheid-van-beheer"><bdi class="secno">1.5.4.1 </bdi>Taalbinding Begrippenkader en Dataset (eenheid van publicatie, eenheid van beheer)</h5><a class="self-link" href="#taalbinding-begrippenkader-en-dataset-eenheid-van-publicatie-eenheid-van-beheer" aria-label="Permalink for Section 1.5.4.1"></a></div>
+<p>In NL-SBB wordt gesproken over "Begrippenkader" en "in kader". De taalbinding voor deze twee termen is als volgt:</p>
+<ul>
+<li>Begrippenkader = <code>skos:ConceptScheme</code>;</li>
+<li>in kader = <code>skos:inScheme</code></li>
+</ul>
+<p>Begrippen kunnen in meerdere begrippenkaders voorkomen, maar worden in één dataset beheerd. Merk op dat we geen specifieke taalbinding hebben voor 'eenheid van beheer' of 'eenheid van publicatie'. Of een dataset een beheereenheid is of een publicatie-eenheid volgt uit het gebruik, niet uit de definitie. We onderkennen (dus) alleen de taalbinding:</p>
+<ul>
+<li>Dataset = <code>dcat:Dataset</code>.</li>
+</ul>
+<section id="begrippenkader-als-dataset"><div class="header-wrapper"><h6 id="x1-5-4-1-1-begrippenkader-als-dataset"><bdi class="secno">1.5.4.1.1 </bdi>Begrippenkader als dataset</h6><a class="self-link" href="#begrippenkader-als-dataset" aria-label="Permalink for Section 1.5.4.1.1"></a></div>
+<p>In de paragraaf hierboven is onderscheid gemaakt tussen begrippenkader en dataset. Als dit onderscheid minder belangrijk is kan er gekozen worden om dat onderscheid niet te maken. Indien een begrippenkader ook beoogd is als de dataset, dan geldt de taalbinding:</p>
+<ul>
+<li>Begrippenkader = <code>skos:ConceptScheme</code> EN <code>dcat:Dataset</code></li>
+</ul>
+<p>In het algemeen kun je stellen dat een object wordt beschreven in een gegevensobject en dit gegevensobject is onderdeel van een dataset. Dat is ook het patroon dat gehanteerd wordt voor het versiebeheer van begrippen(kaders).</p>
+<p>Cognitief maken mensen niet altijd een onderscheid tussen het ding-als-concept (“begrip”, “begrippenkader”, “taxonomie”, “lijstje”) en het ding-als-gegevensobject (waar dan dezelfde woorden worden gebruikt). We volgen dan een ander patroon voor versiebeheer. Het begrippenkader bevat begrippen én begripsbeschrijvingen. Dit maakt het begrippenkader zowel een 'conceptueel object' als een 'informatieobject'. Dit is een variatie op Variant B waarbij het begrippenkader én de begrippenkaderbeschrijving én de beheereenheid (of publicatie-eenheid) dezelfde identiteit hebben.</p>
+<p>De term "Begrippenkader" en synoniemen als "Taxonomie", "Thesaurus" of "Begrippenstelsel" zijn daarmee zowel bruikbaar voor situaties waarbij een abstracte verzameling van begrippen wordt bedoeld (via <code>skos:inScheme</code>) en voor situaties waarbij een verzameling van beschrijvingen van dergelijke begrippen wordt bedoeld (via <code>dcat:Dataset</code>). Alleen als in de taalbinding beide aanwezig zijn, wordt zowel een abstracte verzameling van begrippen bedoeld als een verzameling van beschrijvingen. Dit is een ruime opvatting van de definitie van begrippenkader maar dit wordt niet uitgesloten in NL-SBB.</p>
+<blockquote>
+<p>Advies is om expliciet aan te geven bij de beschrijving van een begrippenkader of ook sprake is van een eenheid van beheer, publicatie of herkomst.</p>
+</blockquote>
+<blockquote>
+<p>Advies is om afzonderlijke resources (met eigen URI's) te gebruiken op het moment dat het onderscheid van belang is.</p>
+</blockquote>
+</section></section><section id="taalbinding-herkomstinformatie"><div class="header-wrapper"><h5 id="x1-5-4-2-taalbinding-herkomstinformatie"><bdi class="secno">1.5.4.2 </bdi>Taalbinding Herkomstinformatie</h5><a class="self-link" href="#taalbinding-herkomstinformatie" aria-label="Permalink for Section 1.5.4.2"></a></div>
+<p>Voor de taalbinding van herkomstinformatie wordt gebruik gemaakt van PROV:</p>
+<ul>
+<li>Een eenheid van herkomstinformatie = <code>prov:Entity</code></li>
+</ul>
+</section><section id="voorbeelduitwerkingen"><div class="header-wrapper"><h5 id="x1-5-4-3-voorbeelduitwerkingen"><bdi class="secno">1.5.4.3 </bdi>Voorbeelduitwerkingen</h5><a class="self-link" href="#voorbeelduitwerkingen" aria-label="Permalink for Section 1.5.4.3"></a></div>
+<p>Voor de drie gedefinieerde varianten geven we een voorbeelduitwerking:</p>
+<ul>
+<li><a href="data/voorbeelduitwerkingen/VariantA.ttl">Variant A</a> De begripsbeschrijving is de eenheid van beheer</li>
+<li><a href="data/voorbeelduitwerkingen/variantB.ttl">Variant B</a> Het begrippenkader komt overeen met de eenheid van beheer</li>
+<li><a href="data/voorbeelduitwerkingen/VariantC.trig">Variant C</a> Een deel van een complete begripsbeschrijving als eenheid van beheer</li>
+</ul>
+<p>Aanvullend geven we twee extra uitwerkingen:</p>
+<ul>
+<li><a href="data/voorbeelduitwerkingen/VariantB1.ttl">Variant B.1</a> Het begrippenkader is óók de eenheid van beheer</li>
+<li><a href="data/voorbeelduitwerkingen/VariantB2.ttl">Variant B.2</a> De beheereenheid is een verzameling begripsbeschrijvingen die niet overeenkomt met het begrippenkader</li>
+</ul>
+</section></section></section></section>
+  <section class="informative" id="over-het-adopteren-van-nl-sbb-en-het-verbinden-met-skos-begrippen"><div class="header-wrapper"><h2 id="x2-over-het-adopteren-van-nl-sbb-en-het-verbinden-met-skos-begrippen"><bdi class="secno">2. </bdi>Over het adopteren van NL-SBB en het verbinden met SKOS-begrippen</h2><a class="self-link" href="#over-het-adopteren-van-nl-sbb-en-het-verbinden-met-skos-begrippen" aria-label="Permalink for Section 2."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>Het beschrijven en uitwisselen van begrippen is geen nieuwe aanpak.
+Het is dan ook niet verrassend dat er verschillende standaarden en methodieken bestaan voor het vastleggen van begrippen.
+Huidige beschrijvingen van begrippen zijn dan ook divers.
+NL-SBB is gebaseerd op een aantal van deze standaarden.
+Met name vanuit SKOS en ISO 25964 is er een duidelijke samenhang met NL-SBB.
+Bij reeds bestaande begrippenkaders is de kans groot dat ISO 25964 of SKOS toegepast is.
+Hoe maak je zelf de overstap naar NL-SBB en hoe kan je begrippen van derden toepassen die wellicht geen NL-SBB hanteren?
+In dit hoofdstuk kijken we vooral naar SKOS, een PTOLU-standaard, en minder naar ISO 25964 omdat bij de ontwikkeling van SKOS en de doorontwikkeling van ISO 25964 reeds gekeken is naar de compatibiliteit tussen deze standaarden (zie <a href="https://groups.niso.org/higherlogic/ws/public/download/12351/Correspondence%20ISO25964-SKOSXL-MADS-2013-12-11.pdf">Correspondence</a>).</p>
+<section id="aanvullingen-en-aanscherpingen"><div class="header-wrapper"><h3 id="x2-1-aanvullingen-en-aanscherpingen"><bdi class="secno">2.1 </bdi>Aanvullingen en aanscherpingen</h3><a class="self-link" href="#aanvullingen-en-aanscherpingen" aria-label="Permalink for Section 2.1"></a></div>
+<p>Aanvullingen en aanscherpingen t.o.v. SKOS worden per objecttype (begrip, begrippenkader, collectie en brondocument) in NL-SBB weergegeven.</p>
+<section id="begrip"><div class="header-wrapper"><h4 id="x2-1-1-begrip"><bdi class="secno">2.1.1 </bdi>Begrip</h4><a class="self-link" href="#begrip" aria-label="Permalink for Section 2.1.1"></a></div>
+<p>Aanscherpingen t.o.v. SKOS:</p>
+<ul>
+<li>Een begrip <em class="rfc2119">MOET</em> een voorkeursterm hebben. In SKOS is dit optioneel.</li>
+<li>Een begrip <em class="rfc2119">MOET</em> in een begrippenkader vallen. In SKOS kunnen begrippen los van een begrippenkader gedefinieerd worden.</li>
+<li>Een begrip <em class="rfc2119">MOET</em> een definitie hebben. In SKOS is dit optioneel.</li>
+<li>Voor lexicale labels <em class="rfc2119">MOET</em> expliciet vermeld worden in welke taal ze zijn opgesteld.
+Dit geldt voor «voorkeursterm», «alternatieve term» en «zoekterm». In SKOS is dit optioneel.</li>
+<li>Een code <em class="rfc2119">MOET</em> een literal zijn. In SKOS is het bereik effectief iedere rdfs:Resource.</li>
+<li>Voor notities <em class="rfc2119">MOET</em> expliciet vermeld worden in welke taal ze zijn opgesteld. 
+Dit geldt voor «definitie», «wijzigingsnotitie», «redactionele notitie», «historienotitie», «toelichting» en «voorbeeld». In SKOS wordt tevens een IRI als waardebereik toegestaan.</li>
+<li>Een topbegrip <em class="rfc2119">MOET</em> geen bovenliggende begrippen hebben. In SKOS mag dit wel.</li>
+</ul>
+<p>Aanvullend t.o.v. SKOS:</p>
+<ul>
+<li>Voor een begrip <em class="rfc2119">MAG</em> een uitleg gegeven worden.</li>
+<li>Voor een begrip <em class="rfc2119">MAG</em> een brondocument gegeven worden.</li>
+<li>Voor een begrip <em class="rfc2119">MAG</em> een naam gegeven worden.</li>
+<li>Voor een begrip <em class="rfc2119">MOGEN</em> hiërarchische relaties uitgedrukt worden in de specifieke vormen die gedefinieerd worden in ISO 25964.
+Dit zijn «is specialisatie van», «is generalisatie van», «is onderdeel van», «omvat», «is exemplaar van» en «is categorie van».</li>
+</ul>
+<p>De aanscherpingen en aanvullingen zijn weergegeven in de volgende tabel.</p>
+<table>
+<thead>
+<tr>
+<th>NL-SBB - term</th>
+<th>SKOS - term</th>
+<th>NL-SBB waardebereik</th>
+<th>SKOS waardebereik</th>
+<th>NL-SBB kardinaliteit</th>
+<th>SKOS-kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>voorkeursterm</td>
+<td>skos:prefLabel</td>
+<td><strong>rdf:langString</strong></td>
+<td>plain literal</td>
+<td><strong>1..*</strong></td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>alternatieve term</td>
+<td>skos:altLabel</td>
+<td><strong>rdf:langString</strong></td>
+<td>plain literal</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>zoekterm</td>
+<td>skos:hiddenLabel</td>
+<td><strong>rdf:langString</strong></td>
+<td>plain literal</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>code</td>
+<td>skos:notation</td>
+<td>sh:Literal</td>
+<td>rdfs:Resource (conventie: typed literal)</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>in kader</td>
+<td>skos:inScheme</td>
+<td>skos:ConceptScheme</td>
+<td>skos:ConceptScheme</td>
+<td><strong>1..*</strong></td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>is topbegrip van</td>
+<td>skos:topConceptOf</td>
+<td>skos:ConceptScheme</td>
+<td>skos:ConceptScheme</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td><strong>uitleg</strong></td>
+<td>rdfs:comment</td>
+<td>rdf:langString</td>
+<td>--</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td>definitie</td>
+<td>skos:definition</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td><strong>1..*</strong></td>
+<td>0..*</td>
+</tr>
+<tr>
+<td><strong>heeft bron</strong></td>
+<td>dct:source</td>
+<td>rdfs:Resource (aanbevolen: foaf:Document)</td>
+<td>--</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td>heeft bovenliggend begrip</td>
+<td>skos:broader</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>heeft onderliggend begrip</td>
+<td>skos:narrower</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>is gerelateerd aan</td>
+<td>skos:related</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>wijzigingsnotitie</td>
+<td>skos:changeNote</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>redactionele notitie</td>
+<td>skos:editorialNote</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>historienotitie</td>
+<td>skos:historyNote</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>toelichting</td>
+<td>skos:scopeNote</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>voorbeeld</td>
+<td>skos:example</td>
+<td><strong>rdf:langString</strong></td>
+<td>rdfs:Resource</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>heeft overeenkomstig bovenliggend</td>
+<td>skos:broadMatch</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>heeft overeenkomstig onderliggend</td>
+<td>skos:narrowMatch</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>is vrijwel overeenkomstig</td>
+<td>skos:closeMatch</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>is exact overeenkomstig</td>
+<td>skos:exactMatch</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td>is overeenkomstig verwant</td>
+<td>skos:relatedMatch</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+<tr>
+<td><strong>is specialisatie van</strong></td>
+<td>isothes:broaderGeneric</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>is generalisatie van</strong></td>
+<td>isothes:narrowerGeneric</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>is onderdeel van</strong></td>
+<td>isothes:broaderPartitive</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>omvat</strong></td>
+<td>isothes:narrowerPartitive</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>is exemplaar van</strong></td>
+<td>isothes:broaderInstantial</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>is categorie van</strong></td>
+<td>isothes:narrowerInstantial</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>naam</strong></td>
+<td>rdfs:label</td>
+<td>rdf:langString</td>
+<td>---</td>
+<td>0..*</td>
+<td>--</td>
+</tr>
+</tbody></table>
+</section><section id="begrippenkader"><div class="header-wrapper"><h4 id="x2-1-2-begrippenkader"><bdi class="secno">2.1.2 </bdi>Begrippenkader</h4><a class="self-link" href="#begrippenkader" aria-label="Permalink for Section 2.1.2"></a></div>
+<p>Aanvullingen</p>
+<ul>
+<li>Een begrippenkader <em class="rfc2119">MOET</em> een naam hebben. SKOS doet hier geen uitspraken over.</li>
+<li>Een begrippenkader <em class="rfc2119">MAG</em> een uitleg hebben. SKOS doet hier geen uitspraken over.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NL-SBB - term</th>
+<th>SKOS - term</th>
+<th>NL-SBB waardebereik</th>
+<th>SKOS waardebereik</th>
+<th>NL-SBB kardinaliteit</th>
+<th>SKOS-kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>1..*</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>uitleg</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>0..*</td>
+<td></td>
+</tr>
+<tr>
+<td>heeft topbegrip</td>
+<td>skos:hasTopConcept</td>
+<td>skos:Concept</td>
+<td>skos:Concept</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+</tbody></table>
+</section><section id="collecties"><div class="header-wrapper"><h4 id="x2-1-3-collecties"><bdi class="secno">2.1.3 </bdi>Collecties</h4><a class="self-link" href="#collecties" aria-label="Permalink for Section 2.1.3"></a></div>
+<p>Aanvullingen</p>
+<ul>
+<li>Een collectie <em class="rfc2119">MOET</em> een naam hebben. SKOS doet hier geen uitspraken over.</li>
+<li>Een collectie <em class="rfc2119">MAG</em> een uitleg hebben. SKOS doet hier geen uitspraken over.</li>
+</ul>
+<p>Beperkingen</p>
+<ul>
+<li>NL-SBB kent geen geordende collecties (<code>skos:OrderedCollection</code> met <code>skos:memberList</code>). SKOS wel.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NL-SBB - term</th>
+<th>SKOS - term</th>
+<th>NL-SBB waardebereik</th>
+<th>SKOS waardebereik</th>
+<th>NL-SBB kardinaliteit</th>
+<th>SKOS-kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>1..*</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>uitleg</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>0..*</td>
+<td></td>
+</tr>
+<tr>
+<td>bevat</td>
+<td>skos:member</td>
+<td>skos:Concept OR skos:Collection</td>
+<td>skos:Concept OR skos:Collection</td>
+<td>0..*</td>
+<td>0..*</td>
+</tr>
+</tbody></table>
+</section><section id="brondocument"><div class="header-wrapper"><h4 id="x2-1-4-brondocument"><bdi class="secno">2.1.4 </bdi>Brondocument</h4><a class="self-link" href="#brondocument" aria-label="Permalink for Section 2.1.4"></a></div>
+<table>
+<thead>
+<tr>
+<th>NL-SBB - term</th>
+<th>SKOS - term</th>
+<th>NL-SBB waardebereik</th>
+<th>SKOS waardebereik</th>
+<th>NL-SBB kardinaliteit</th>
+<th>SKOS-kardinaliteit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>naam</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>1..*</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>uitleg</strong></td>
+<td></td>
+<td>rdf:langString</td>
+<td></td>
+<td>0..*</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td></td>
+<td>sh:IRI</td>
+<td></td>
+<td>0..*</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>bronverwijzing</strong></td>
+<td></td>
+<td>xsd:string</td>
+<td></td>
+<td>0..*</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Aanvullingen</p>
+<ul>
+<li>Een brondocument <em class="rfc2119">MOET</em> een naam hebben. SKOS kent brondocumenten niet.</li>
+<li>Een brondocument <em class="rfc2119">MAG</em> een uitleg hebben. SKOS kent brondocumenten niet.</li>
+<li>Een brondocument <em class="rfc2119">MAG</em> een url hebben. SKOS kent brondocumenten niet.</li>
+<li>Een brondocument <em class="rfc2119">MAG</em> een bronverwijzing hebben. SKOS kent brondocumenten niet.</li>
+</ul>
+</section></section><section id="adoptie-van-nl-sbb"><div class="header-wrapper"><h3 id="x2-2-adoptie-van-nl-sbb"><bdi class="secno">2.2 </bdi>Adoptie van NL-SBB</h3><a class="self-link" href="#adoptie-van-nl-sbb" aria-label="Permalink for Section 2.2"></a></div>
+<p>Zoals gesteld bestaan er veel beschrijvingen van begrippen en over het algemeen wordt hier SKOS toegepast.
+Voor steeds meer begrippen, waaronder de bestaande begrippen, zal NL-SBB geadopteerd worden.
+Hierbij komen er een drietal vragen naar voren vanuit het perspectief van beheerders van begrippen:</p>
+<ol>
+<li>Wat zijn de implicaties als ik de overstap van SKOS naar NL-SBB maak?</li>
+<li>Als ik dat heb gedaan, kan ik dan nog begrippen van anderen gebruiken die niet op basis van NL-SBB zijn beschreven?</li>
+<li>Kunnen anderen (die geen NL-SBB gebruiken) mijn begrippen nog gebruiken?</li>
+</ol>
+<p>Voor het gemak gebruiken we de term <code>SKOS-begrip</code> wanneer we het over één of meerdere begrippen of een geheel begrippenkader hebben die zijn beschreven op basis van SKOS en <code>NL-SBB-begrip</code> wanneer deze zijn beschreven op basis van NL-SBB.</p>
+<section id="x1-wat-zijn-de-implicaties-als-ik-de-overstap-van-skos-naar-nl-sbb-maak"><div class="header-wrapper"><h4 id="x2-2-1-1-wat-zijn-de-implicaties-als-ik-de-overstap-van-skos-naar-nl-sbb-maak"><bdi class="secno">2.2.1 </bdi>1. Wat zijn de implicaties als ik de overstap van SKOS naar NL-SBB maak?</h4><a class="self-link" href="#x1-wat-zijn-de-implicaties-als-ik-de-overstap-van-skos-naar-nl-sbb-maak" aria-label="Permalink for Section 2.2.1"></a></div>
+<p>In veel gevallen hoeft er voor de overstap niets gedaan te worden, SKOS wordt ondersteund in NL-SBB.
+De conceptuele modellen van SKOS en NL-SBB zijn in lijn met elkaar.
+De informatie die een SKOS-begrip vangt kan dan ook begrepen worden met een NL-SBB-bril.
+Van omzetting is eigenlijk ook geen sprake.
+Waar het vooral om gaat is het toepassen van de afspraken die in NL-SBB beschreven zijn.
+Alhoewel er grote overlap is tussen NL-SBB en SKOS, is het zo dat NL-SBB op logisch niveau eisen stelt aan de beschrijving van een begrip die niet afgedwongen worden vanuit SKOS.
+Je kan er daarom niet vanuit gaan dat een willekeurig begrip waarvan de beschrijving voldoet aan SKOS, óók voldoet aan NL-SBB.
+Met name de aanscherpingen, die reeds benoemd zijn, kunnen aanvullende aandacht vragen.
+Wanneer een SKOS-begrip niet conform het toepassingsprofiel van NL-SBB blijkt (bijvoorbeeld omdat deze geen definitie heeft) is menselijke tussenkomst nodig om de problemen op te lossen.</p>
+<p>Daarnaast biedt NL-SBB kaders voor het vastleggen van informatie die niet in SKOS worden gedefinieerd. 
+Denk aan het verwijzen naar bronnen en het geven van een uitleg in begrijpelijke taal bij een begrip («uitleg», <code>rdfs:comment</code>). 
+Deze toevoegingen zijn optioneel en vormen geen hindernis in het kader van de overstap. 
+Als deze toevoegingen al onderdeel zijn van het SKOS-begrip, maar niet conform NL-SBB blijken, is hier wel een omzetting noodzakelijk. Een voorbeeld zou zijn dat een andere taalbinding is gekozen voor «heeft bron».</p>
+<p>Als we niet vanuit data maar vanuit de presentatie kijken, zien we dat ook hier impact is.
+Een doel van NL-SBB is dat we dezelfde taal spreken als we het hebben over begrippen en dat zo begrippencatalogi onderling meer interoperabel zijn en beter begrepen worden door gebruikers.
+Dit wordt bereikt omdat gebruikers dezelfde termen tegenkomen met steeds dezelfde betekenis.
+Dit is een gevolg van het consistent gebruiken van eenzelfde conceptueel model.
+Mogelijk moet de presentatie (de user interface) van begrippencatalogi aangepast worden om de vastgestelde (Nederlandse) termen te hanteren bij het presenteren van beschrijvingen van begrippen.
+Deze aanpassing heeft geen verdere invloed op beschrijvingen zelf.</p>
+</section><section id="x2-kan-ik-begrippen-van-anderen-die-alleen-skos-volgen-gebruiken"><div class="header-wrapper"><h4 id="x2-2-2-2-kan-ik-begrippen-van-anderen-die-alleen-skos-volgen-gebruiken"><bdi class="secno">2.2.2 </bdi>2. Kan ik begrippen van anderen (die alleen SKOS volgen) gebruiken?</h4><a class="self-link" href="#x2-kan-ik-begrippen-van-anderen-die-alleen-skos-volgen-gebruiken" aria-label="Permalink for Section 2.2.2"></a></div>
+<p>Met NL-SBB-begrippen kan je nog steeds gebruik maken van SKOS-begrippen. 
+Wel blijven de afwegingen die bij vraag 1 benoemd zijn. 
+Het gebruik van (externe) SKOS-begrippen kan op twee manieren: 1) door ernaar te verwijzen met harmonisatierelaties of 2) door ze op te nemen in het eigen begrippenkader (met «in kader»).
+Een SKOS-begrip (let op dat we het hier over de beschrijving hebben) is niet direct óók een NL-SBB-begrip.
+Met name bij het opnemen van een extern begrip in je eigen begrippenkader zal dit een aandachtspunt zijn.
+Wanneer problemen ontstaan, kan (met passende metadatering) het SKOS-begrip aangevuld worden om fouten te mitigeren.
+Er kan ook gekozen worden om een nieuw begrip te beschrijven dat geharmoniseerd wordt (bijvoorbeeld met «is exact overeenkomstig») met het externe begrip. 
+Het SHACL-profiel van NL-SBB houdt hier vanaf versie 1.0.1 rekening mee: een relatie naar een begrip dat in de gevalideerde data geen type heeft, wordt opgevat als verwijzing naar een extern begrip en levert geen melding op. Wordt het externe begrip wél als <code>skos:Concept</code> in de eigen data opgenomen, dan gelden daarvoor de eisen van NL-SBB.
+Bij het verbinden van begrippenkaders is het belangrijkste dat het conceptueel model (de ontologie) aansluit. En dat is het geval.</p>
+</section><section id="x3-kunnen-anderen-die-geen-nl-sbb-gebruiken-mijn-begrippen-nog-gebruiken"><div class="header-wrapper"><h4 id="x2-2-3-3-kunnen-anderen-die-geen-nl-sbb-gebruiken-mijn-begrippen-nog-gebruiken"><bdi class="secno">2.2.3 </bdi>3. Kunnen anderen (die geen NL-SBB gebruiken) mijn begrippen nog gebruiken?</h4><a class="self-link" href="#x3-kunnen-anderen-die-geen-nl-sbb-gebruiken-mijn-begrippen-nog-gebruiken" aria-label="Permalink for Section 2.2.3"></a></div>
+<p>Hergebruik van een begrip uit een NL-SBB-beschrijving binnen een SKOS-begrip is altijd mogelijk.
+Toepassing van NL-SBB leidt tot een beschrijving die uitgedrukt kan worden in (en conformeert aan) SKOS.
+Iedere tool die SKOS ondersteunt kan hiermee overweg.
+SKOS staat toe dat het conceptueel model wordt uitgebreid.
+De aanvullingen in NL-SBB ten opzichte van SKOS kunnen moeiteloos gebruikt worden in een SKOS-systeem.
+Een voorbeeld hiervan binnen NL-SBB is het kunnen relateren van begrippen aan brondocumenten.
+Dit kan al binnen SKOS; NL-SBB zorgt ervoor dat deze (veelvoorkomende) uitbreidingen consistent toegepast worden.</p>
+</section></section></section>
+  <section class="informative" id="uitbreidingen"><div class="header-wrapper"><h2 id="x3-uitbreidingen"><bdi class="secno">3. </bdi>Uitbreidingen</h2><a class="self-link" href="#uitbreidingen" aria-label="Permalink for Section 3."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
+<p>De hieronder beschreven uitbreidingen vallen buiten de scope van standaard begrippenlijsten, taxonomieën en thesauri. De beschrijvingen zijn hier opgenomen als voorbeeld van een uitbreiding op een standaard thesaurus.</p>
+<section id="aanvullingen"><div class="header-wrapper"><h3 id="x3-1-aanvullingen"><bdi class="secno">3.1 </bdi>Aanvullingen</h3><a class="self-link" href="#aanvullingen" aria-label="Permalink for Section 3.1"></a></div>
+<p>Voor specifieke domeinen kan het handig zijn om de samenhang van begrippen gedetailleerder te beschrijven dan in een standaardthesaurus. Dat kan door begrippen en/of relaties nader te typeren. Op zo'n manier voldoet het betreffende domein aan de hier beschreven standaard en kan de aanvullende informatie worden meegenomen. Voor de hieronder genoemde uitbreidingen geldt dat vastgesteld is dat sprake is van een aanvulling op de voorliggende standaard. Dergelijke nieuwe aanvullingen kunnen aangemeld worden via een <a href="https://github.com/Geonovum/nl-sbb-bp/issues/new">melding</a>. Domeinen die gebruik maken van een dergelijke aanvulling worden geadviseerd deze aan te melden, zodat een dergelijke vaststelling als uitbreiding kan worden opgenomen. Daarmee wordt de toepassing van dergelijke uitbreidingen ook voor anderen bruikbaar.</p>
+</section><section id="skos-xl"><div class="header-wrapper"><h3 id="x3-2-skos-xl"><bdi class="secno">3.2 </bdi>SKOS-XL</h3><a class="self-link" href="#skos-xl" aria-label="Permalink for Section 3.2"></a></div>
+<p><a href="https://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-skos-reference" title="SKOS Simple Knowledge Organization System Reference">SKOS-REFERENCE</a></cite>] is een uitbreiding op SKOS, gepubliceerd in de vorm van een appendix bij die standaard. SKOS-XL is ontwikkeld om informatie ook voor een term vast te kunnen leggen. Denk hierbij aan het doel van een term of aan de (beoogde) gebruikersgroep van een term, of in welke bronnen die specifieke term voor het begrip gebruikt wordt. In gevallen waar het vastleggen van dit soort informatie als tekstuele notities op het niveau van het begrip niet toereikend is, biedt deze uitbreiding op SKOS dus soelaas. Ook maakt SKOS-XL het mogelijk om relaties te leggen tussen termen, zoals dat een gegeven term een afkorting is voor een andere term van datzelfde begrip.</p>
+<ul>
+<li><strong>context van termen</strong> <em>(could have)</em>.  <em><strong>Als</strong></em> gebruiker van een begrip <em><strong>wil ik</strong></em> de verschillende termen ervoor beter begrijpen <em><strong>zodat ik</strong></em> inzicht heb in de context en het gebruik van specifieke termen, hoe ze zich tot elkaar verhouden, en hoe mijn gebruik zich verhoudt tot dat van andere gebruikersgroepen.</li>
+</ul>
+</section><section id="skos-lex"><div class="header-wrapper"><h3 id="x3-3-skos-lex"><bdi class="secno">3.3 </bdi>Skos-lex</h3><a class="self-link" href="#skos-lex" aria-label="Permalink for Section 3.3"></a></div>
+<p><cite><a data-matched-text="[[[SKOSLEX]]]" href="http://bp4mc2.org/def/skos-lex">Skos-lex</a></cite> is opgezet om begrippen juridisch te kunnen typeren. Skos-lex wordt onder andere toegepast bij het notariaat en het Kadaster en bij het Digitaal Stelsel Omgevingswet en het Afsprakenstelsel Zorgeloos Vastgoed. 
+Door begrippen te typeren als act (rechtshandeling), actor (uitvoerder van die handeling), agent (formele vastlegger van die handeling) en object (van handeling) wordt de (juridische) samenhang duidelijk. Zo kan in een beschrijving van de verkoop van een huis worden aangegeven welke begrippen de rechtshandeling beschrijven (koop/verkoop), welke begrippen de actoren beschrijven (koper, verkoper), welke begrippen de agent (notaris) beschrijven en welke begrippen het object van handeling (onroerende zaak) beschrijven. Dit patroon is relevant voor vrijwel alle overheidsorganisaties die voorvallen of overeenkomsten met rechtsgevolgen vastleggen, van de politie die feiten met daders en slachtoffers vastlegt tot een ambtenaar van de burgerlijke stand die een geboorteakte opmaakt en een notaris die een stichtingsakte opstelt. </p>
+<ul>
+<li><strong>juridische duiding</strong> <em>(could have)</em>.  <em><strong>Als</strong></em> uitvoeringsorganisatie/uitvoerder van wetgeving <em><strong>wil ik</strong></em> begrippen kunnen onderscheiden die gaan over rechtshandelingen, actoren, objecten van handeling en organisaties die dit soort rechtshandelingen ondersteunen <em><strong>zodat ik</strong></em> inzicht heb in hoe de juridische context voor mijn organisatie zoals die in wetgeving is beschreven werkt.</li>
+</ul>
+</section><section id="ontolex"><div class="header-wrapper"><h3 id="x3-4-ontolex"><bdi class="secno">3.4 </bdi>Ontolex</h3><a class="self-link" href="#ontolex" aria-label="Permalink for Section 3.4"></a></div>
+<p><a href="https://www.w3.org/2016/05/ontolex/">Ontolex</a> is opgezet om volledige taalkundige beschrijvingen van termen te kunnen vastleggen en koppelen aan een begrip. Zo maakt Ontolex het mogelijk om het woordgeslacht vast te leggen (mannelijk, vrouwelijk, onzijdig) en welke verbogen woordvormen bestaan voor een term, zoals meervoudsvormen en vormen voor derde persoon enkelvoud. Het vastleggen van zulke informatie faciliteert (al dan niet geautomatiseerde) vertalingen en andersoortige verwerkingen van informatiebronnen die zulke termen hanteren, o.a. binnen Natural Language Processing. Ontolex wordt veel gebruikt om kennis uit traditionele woordenboeken te delen op het web die uitgebreid worden met koppelingen naar een begrippenkader dat in SKOS is uitgedrukt.</p>
+<ul>
+<li><strong>taalkundige informatie</strong> <em>(could have)</em>.  <em><strong>Als</strong></em> ontwikkelaar <em><strong>wil ik</strong></em> toegang hebben tot taalkundige informatie over termen <em><strong>zodat ik</strong></em> verwerkings- en vertaalsoftware beter kan voeden met relevante kennis over welke vormen termen (en woorden in het algemeen) aan kunnen nemen in geschreven teksten of andere uitingen.</li>
+</ul>
+</section><section id="lemon-tree"><div class="header-wrapper"><h3 id="x3-5-lemon-tree"><bdi class="secno">3.5 </bdi>Lemon-tree</h3><a class="self-link" href="#lemon-tree" aria-label="Permalink for Section 3.5"></a></div>
+<p><a href="https://w3id.org/lemon-tree">Lemon-tree</a> is opgezet om op semantisch sterkere wijze de relatie tussen begrippenkaders en taalkundige informatie over termen te kunnen duiden. Lemon-tree verrijkt daarvoor SKOS en Ontolex met twee doeleinden. Het eerste doel is om conceptuele niveaus binnen een SKOS-hiërarchie te kunnen benoemen. Conceptuele niveaus worden in Lemon-tree beschreven als semantische lagen die betekenis krijgen door redactionele keuzes; ze worden gecontrasteerd met niveaus die enkel de statistische diepte vastleggen waarop een begrip zich binnen de hiërarchie bevindt, welke op zichzelf betekenisloos zijn maar kunnen samenvallen (of juist niet) met de semantische lagen. Het tweede doel van Lemon-tree is om taalkundige informatie over woorden duidelijker te positioneren ten opzichte van begrippen. Hiervoor is een relatie beschikbaar om te duiden dat een woord binnen het woordveld van een begrip kan vallen zonder dat begrip zelf als term uit te drukken. Dit zorgt ervoor dat taalkundige kennis kan worden gerelateerd aan een begrippenkader, zonder dat dat begrippenkader zelf alle genoemde woorden ook als begrippen moet bevatten (cf. woordenboeken die bekend staan als cumulatieve thesauri).</p>
+<ul>
+<li><strong>taalkundige informatie</strong> <em>(could have)</em>.  <em><strong>Als</strong></em> ontwikkelaar <em><strong>wil ik</strong></em> toegang hebben tot taalkundige informatie over termen en andere woorden die binnen een begrip vallen <em><strong>zodat ik</strong></em> verwerkings- en vertaalsoftware beter kan voeden met relevante kennis over welke vormen termen (en woorden in het algemeen) aan kunnen nemen in geschreven teksten of andere uitingen.</li>
+</ul>
+</section><section id="xkos"><div class="header-wrapper"><h3 id="x3-6-xkos"><bdi class="secno">3.6 </bdi>XKOS</h3><a class="self-link" href="#xkos" aria-label="Permalink for Section 3.6"></a></div>
+<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html">XKOS</a> is opgezet voor het publiceren van statistische gegevens over classificaties. Hiertoe breidt XKOS de SKOS-standaard uit met twee hoofddoelen: het beschrijven van te onderscheiden niveaus in een classificatie (1e, 2e, 3e niveau, etc.) en het verder uitbreiden van semantische kenmerken. Onder dit laatste vallen bijvoorbeeld kenmerken die aangeven in hoeverre de begrippen binnen een classificatieniveau gezamenlijk een bepaald (gespreks)veld dekken, zoals economische activiteiten of levende organismen. Hiermee wordt duidelijker benoemd of de classificatie in kwestie compleet is of dat er begrippen nog ontbreken op een niveau om voor te classificeren materiaal altijd een keuze te kunnen maken die geschikt is.</p>
+<ul>
+<li><strong>statistische duiding</strong> <em>(could have)</em>.  <em><strong>Als</strong></em> specialist op het gebied van in te zetten classificaties <em><strong>wil ik</strong></em> een overzicht uit hoeveel lagen een bestaande classificatie bestaat en in welke mate die lagen dekkend zijn <em><strong>zodat ik</strong></em> beter kan inschatten of een classificatie bruikbaar is binnen onze organisatie en collega's beter kan informeren over wat wel en niet mogelijk is met die classificatie, en alternatieven kan opzoeken voor eventuele hiaten.</li>
+</ul>
+</section></section>
+  
+
+  
+  
+  
+
+  
+  <section id="conformance"><div class="header-wrapper"><h2 id="x4-conformiteit"><bdi class="secno">4. </bdi>Conformiteit</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 4."></a></div><p>Naast onderdelen die als niet-normatief gemarkeerd zijn, zijn ook alle diagrammen, voorbeelden, en noten in dit document niet-normatief. Verder is alles in dit document normatief.</p><p>
+        De trefwoorden <em class="rfc2119">MAG</em>, <em class="rfc2119">MOET</em> en <em class="rfc2119">MOGEN</em> in dit
+        document moeten worden geïnterpreteerd als in
+        <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        als, en alleen als deze in hoofdletters zijn weergegeven, zoals hier
+        getoond.
+      </p></section> 
+  <section id="tof"><div class="header-wrapper"><h2 id="x5-lijst-met-figuren"><bdi class="secno">5. </bdi>Lijst met figuren</h2><a class="self-link" href="#tof" aria-label="Permalink for Section 5."></a></div><ul class="tof">
+        <li class="tofline">
+    <a class="tocxref" href="#fig-datastructuren-hergebruik-en-harmonisatie"><span class="self-link">Figuur <bdi class="figno">1</bdi></span> <span class="fig-title">Datastructuren hergebruik en harmonisatie</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-conceptueel-model-versiebeheer"><span class="self-link">Figuur <bdi class="figno">2</bdi></span> <span class="fig-title">conceptueel model versiebeheer</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-variant-a"><span class="self-link">Figuur <bdi class="figno">3</bdi></span> <span class="fig-title">Variant A</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-variant-b"><span class="self-link">Figuur <bdi class="figno">4</bdi></span> <span class="fig-title">Variant B</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-variant-c"><span class="self-link">Figuur <bdi class="figno">5</bdi></span> <span class="fig-title">Variant C</span></a>
+  </li>
+      </ul></section>
+  <section id="index" class="appendix"><div class="header-wrapper"><h2 id="a-index"><bdi class="secno">A. </bdi>Index</h2><a class="self-link" href="#index" aria-label="Permalink for Appendix A."></a></div><section id="index-defined-here">
+    <div class="header-wrapper"><h3 id="a-1-termen-gedefinieerd-door-deze-specificatie"><bdi class="secno">A.1 </bdi>Termen gedefinieerd door deze specificatie</h3><a class="self-link" href="#index-defined-here" aria-label="Permalink for Appendix A.1"></a></div>
+    <ul class="index">
+    <li>
+      <a class="index-term" href="#dfn-extern-begrip">extern begrip</a> 
+    <span class="print-only">§1.3</span></li><li>
+      <a class="index-term" href="#dfn-polyhierarchy">polyhierarchy</a> 
+    <span class="print-only">§1.1.3</span></li>
+  </ul>
+  </section><section id="index-defined-elsewhere">
+    <div class="header-wrapper"><h3 id="a-2-termen-gedefinieerd-door-verwijzing"><bdi class="secno">A.2 </bdi>Termen gedefinieerd door verwijzing</h3><a class="self-link" href="#index-defined-elsewhere" aria-label="Permalink for Appendix A.2"></a></div>
+    <ul class="index">
+    
+  </ul>
+  </section></section>
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="b-referenties"><bdi class="secno">B. </bdi>Referenties</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix B."></a></div><section id="normatieve-referenties">
+    <div class="header-wrapper"><h3 id="b-1-normatieve-referenties"><bdi class="secno">B.1 </bdi>Normatieve referenties</h3><a class="self-link" href="#normatieve-referenties" aria-label="Permalink for Appendix B.1"></a></div>
+    <dl class="bibliography"><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/info/rfc2119/"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc2119/">https://www.rfc-editor.org/info/rfc2119/</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/info/rfc8174/"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174/">https://www.rfc-editor.org/info/rfc8174/</a>
+    </dd></dl>
+  </section><section id="informatieve-referenties">
+    <div class="header-wrapper"><h3 id="b-2-informatieve-referenties"><bdi class="secno">B.2 </bdi>Informatieve referenties</h3><a class="self-link" href="#informatieve-referenties" aria-label="Permalink for Appendix B.2"></a></div>
+    <dl class="bibliography"><dt id="bib-dcterms">[DCTERMS]</dt><dd>
+      <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"><cite>DCMI Metadata Terms</cite></a>. DCMI Usage Board.  DCMI. 20 January 2020. DCMI Recommendation. URL: <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a>
+    </dd><dt id="bib-foaf">[FOAF]</dt><dd>
+      <a href="http://xmlns.com/foaf/spec/"><cite>FOAF Vocabulary Specification 0.99 (Paddington Edition)</cite></a>. Dan Brickley; Libby Miller.  FOAF project. 14 January 2014. URL: <a href="http://xmlns.com/foaf/spec/">http://xmlns.com/foaf/spec/</a>
+    </dd><dt id="bib-nlsbb">[NLSBB]</dt><dd>
+      <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/"><cite>NL-SBB - Standaard voor het beschrijven van begrippen</cite></a>. Jesse Bakker; Arjen Santema; Kees Trautwein.  Geonovum. URL: <a href="https://docs.geostandaarden.nl/nl-sbb/nl-sbb/">https://docs.geostandaarden.nl/nl-sbb/nl-sbb/</a>
+    </dd><dt id="bib-skos-reference">[SKOS-REFERENCE]</dt><dd>
+      <a href="https://www.w3.org/TR/skos-reference/"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. Alistair Miles; Sean Bechhofer.  W3C. 18 August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a>
+    </dd><dt id="bib-skoslex">[SKOSLEX]</dt><dd>
+      <a href="http://bp4mc2.org/def/skos-lex"><cite>Skos-lex</cite></a>.  bp4mc2. URL: <a href="http://bp4mc2.org/def/skos-lex">http://bp4mc2.org/def/skos-lex</a>
+    </dd><dt id="bib-wettennl">[WETTENNL]</dt><dd>
+      <a href="https://linkeddata.overheid.nl/terms/"><cite>Wetten.nl</cite></a>.  KOOP. URL: <a href="https://linkeddata.overheid.nl/terms/">https://linkeddata.overheid.nl/terms/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Terug naar boven">↑</abbr></a>
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-polyhierarchy" aria-label="Links in this document to definition: polyhierarchy">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-polyhierarchy" aria-label="Permalink for definition: polyhierarchy. Activate to close this dialog.">Permalink</a>
+         
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-polyhierarchy-1" title="§ 1.1.3 Hiërarchische relaties">§ 1.1.3 Hiërarchische relaties</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extern-begrip" aria-label="Links in this document to definition: extern begrip">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-extern-begrip" aria-label="Permalink for definition: extern begrip. Activate to close this dialog.">Permalink</a>
+         
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-extern-begrip-1" title="§ 1.3.1 Harmonisatie">§ 1.3.1 Harmonisatie</a> 
+    </li>
+  </ul>
+    </div><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement | null} */
+  let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement | null} */
+        const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement | null} */
+    const caret = panel.querySelector(".caret");
+    if (caret) caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement | null} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Handreiking - Consultatieversie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
