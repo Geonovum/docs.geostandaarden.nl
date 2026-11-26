@@ -80,6 +80,7 @@
       /*font-size: 0.85em;*/
     }
 
+    span.basis, span.basis a,
     span.ld, span.ld a {
       color: #80CC28; 
     }
@@ -111,7 +112,7 @@
   </head>
 <body>
 <div class="page">
-<img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Home">
+<img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Geonovum">
 <h1>Standaarden en technische documenten</h1>
 <p>Op <a href="https://docs.geostandaarden.nl/">https://docs.geostandaarden.nl/</a> publiceert Geonovum standaarden en technische documenten.</p>
 
@@ -183,6 +184,9 @@ function subDirsAsList($subdirs, $pubDomain, $lookintodir, $publishAllList)
     } elseif (startsWith($subdir, "ld-")) {
       $docType="Levend document";
       $cls="ld";
+    } elseif (startsWith($subdir, "basis-")) {
+      $docType="Document";
+      $cls="basis";
     }
     // TODO: why only definitieve versie?
     // show cv versions too?

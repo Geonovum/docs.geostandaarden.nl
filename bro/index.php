@@ -164,7 +164,7 @@ $config = array('Domein Bodem- en grondonderzoek' => array('bhr-g' => 'Booronder
 
 
    <div class="page">
-      <img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Home">
+      <img class="block-sitebranding__logo" src="https://www.geonovum.nl/logo.svg" alt="Geonovum">
       <h1>Basisregistratie Ondergrond (BRO): standaarden en technische documentatie</h1>
       <p>Op <a href="https://docs.geostandaarden.nl/bro">https://docs.geostandaarden.nl/bro</a> publiceert Geonovum de standaarden en technische documenten voor de Basisregistratie Ondergrond (BRO).</p>
       <p class="warning">Deze pagina is slechts een inhoudsopgave van documentatie die wij beheren. Ga naar de <a href="https://www.bro-productomgeving.nl/bpo/latest/">BRO Productomgeving</a> voor toelichting op de documentatie.</p>
