@@ -62,22 +62,21 @@
       color: rgb(94,94,94);
     }
 
-      li.final span, li.final span a {
+    li.final span, li.final span a {
       font-weight: normal;
       color: #005a9c;
     }
-      li.def span, li.def span a {
+    li.def span, li.def span a {
       color: #005a9c;
     }
-      li.cv span, li.cv span a {
+    li.cv span, li.cv span a {
       color: orange;
     }
-
-    span.vv, span.vv a {
+    li.vv span, li.vv span a {
       color: green;
     }
-      li.ld span, li.ld span a,
-      li.basis span, li.basis span a {
+    li.ld span, li.ld span a,
+    li.basis span, li.basis span a {
       color: #80CC28; 
     }
 
